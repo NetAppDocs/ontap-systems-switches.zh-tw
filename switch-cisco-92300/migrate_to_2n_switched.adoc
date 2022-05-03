@@ -1,0 +1,577 @@
+---
+permalink: switch-cisco-92300/migrate-to-2n-switched.html 
+sidebar: sidebar 
+keywords: 2-node switched Cisco 92300YC cluster switch migration 
+summary: 如果您有現有的雙節點無交換式叢集環境、可以使用Cisco Nexus 2300YC交換器移轉至雙節點交換式叢集環境、使您能夠擴充至叢集中的兩個節點之外。 
+---
+= 如何使用Cisco Nexus 2300YC交換器移轉至雙節點交換叢集
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果您有現有的雙節點無交換式叢集環境、可以使用Cisco Nexus 2300YC交換器移轉至雙節點交換式叢集環境、使您能夠擴充至叢集中的兩個節點之外。
+
+雙節點無交換器組態：
+
+* 雙節點無交換器組態必須正確設定並正常運作。
+* 節點必須執行ONTAP 的是32個以上的版本。
+* 所有叢集連接埠都必須處於「up」（開機）狀態。
+* 所有叢集邏輯介面（LIF）都必須處於「up」（開機）狀態、並位於其主連接埠上。
+
+
+Cisco Nexus 2300YC交換器組態：
+
+* 兩台交換器都必須具備管理網路連線能力。
+* 叢集交換器必須有主控台存取權。
+* Nexus 2300YC節點對節點交換器和交換器對交換器連線必須使用雙軸纜線或光纖纜線。
++
+。 https://hwu.netapp.com/SWITCH/INDEX["_-交換器_ Hardware Universe"^] 包含纜線的詳細資訊。
+
+* 交換器間連結（ISL）纜線必須連接至兩個92300YC交換器上的連接埠1/65和1/66。
+* 必須完成兩個92300YC交換器的初始自訂。因此：
++
+** 92300YC交換器正在執行最新版本的軟體
+** 參考組態檔（RCT）已套用至交換器任何站台自訂、例如必須在新交換器上設定任何站台、例如：SMTP、SNMP和SSH。
+
+
+
+
+本程序中的範例使用下列叢集交換器和節點命名法：
+
+* 92300YC交換器的名稱為CS1和CS2。
+* 叢集SVM的名稱為node1和node2。
+* lifs的名稱分別是節點1上的node1_clus1和node1_clus2、以及節點2上的node2_clus1和node2_clus2。
+* 「cluster1：*：>」提示會指出叢集的名稱。
+* 此程序中使用的叢集連接埠為e0a和e0b。
++
+。 https://hwu.netapp.com["_SUR__ Hardware Universe"^] 包含平台實際叢集連接埠的最新資訊。
+
+
+
+.步驟
+. 將權限等級變更為進階、並在系統提示您繼續時輸入「y」：
++
+"進階權限"
+
++
+出現進階提示（「*>」）。
+
+. 如果AutoSupport 此叢集啟用了「支援」功能、請叫用AutoSupport 下列訊息來禁止自動建立案例：
++
+「系統節點AutoSupport 不完整地叫用節點*-type all -Message MAn=xh」
+
++
+其中x是維護時段的持續時間（以小時為單位）。
+
++
+
+NOTE: 此資訊可通知技術支援人員執行此維護工作、以便在維護期間抑制自動建立案例。AutoSupport
+
++
+下列命令會禁止自動建立兩小時的個案：
+
++
+[listing, subs="+quotes"]
+----
+cluster1::*> *system node autosupport invoke -node * -type all -message MAINT=2h*
+----
+. 在新的叢集交換器CS1和CS2上停用所有面向節點的連接埠（非ISL連接埠）。
++
+您不得停用ISL連接埠。
+
++
+以下範例顯示、交換器CS1上的節點對介連接埠1至64已停用：
+
++
+[listing, subs="+quotes"]
+----
+cs1# *config*
+Enter configuration commands, one per line. End with CNTL/Z.
+cs1(config)# *interface e/1-64*
+cs1(config-if-range)# *shutdown*
+----
+. 驗證ISL和ISL上兩個92300YC交換器CS1和CS2之間的實體連接埠是否在連接埠1/65和1/66上正常運作：
++
+「How port-channel Summary」
+
++
+下列範例顯示交換器CS1上的ISL連接埠已開啟：
+
++
+[listing, subs="+quotes"]
+----
+cs1# *show port-channel summary*
+
+Flags:  D - Down        P - Up in port-channel (members)
+        I - Individual  H - Hot-standby (LACP only)
+        s - Suspended   r - Module-removed
+        b - BFD Session Wait
+        S - Switched    R - Routed
+        U - Up (port-channel)
+        p - Up in delay-lacp mode (member)
+        M - Not in use. Min-links not met
+--------------------------------------------------------------------------------
+Group Port-       Type     Protocol  Member Ports
+      Channel
+--------------------------------------------------------------------------------
+1     Po1(SU)     Eth      LACP      Eth1/65(P)   Eth1/66(P)
+----
++
+以下範例顯示交換器CS2上的ISL連接埠已開啟：
+
++
+[listing, subs="+quotes"]
+----
+(cs2)# *show port-channel summary*
+
+Flags:  D - Down        P - Up in port-channel (members)
+        I - Individual  H - Hot-standby (LACP only)
+        s - Suspended   r - Module-removed
+        b - BFD Session Wait
+        S - Switched    R - Routed
+        U - Up (port-channel)
+        p - Up in delay-lacp mode (member)
+        M - Not in use. Min-links not met
+--------------------------------------------------------------------------------
+Group Port-       Type     Protocol  Member Ports
+      Channel
+--------------------------------------------------------------------------------
+1     Po1(SU)     Eth      LACP      Eth1/65(P)   Eth1/66(P)
+----
+. 顯示鄰近裝置的清單：
++
+「How cup neighbor」
+
++
+此命令提供有關連線至系統之裝置的資訊。
+
++
+下列範例列出交換器CS1上的鄰近裝置：
+
++
+[listing, subs="+quotes"]
+----
+cs1# *show cdp neighbors*
+
+Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater,
+                  V - VoIP-Phone, D - Remotely-Managed-Device,
+                  s - Supports-STP-Dispute
+
+Device-ID          Local Intrfce  Hldtme Capability  Platform      Port ID
+cs2(FDO220329V5)    Eth1/65        175    R S I s   N9K-C92300YC  Eth1/65
+cs2(FDO220329V5)    Eth1/66        175    R S I s   N9K-C92300YC  Eth1/66
+
+Total entries displayed: 2
+----
++
+下列範例列出交換器CS2上的鄰近裝置：
+
++
+[listing, subs="+quotes"]
+----
+cs2# *show cdp neighbors*
+
+Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater,
+                  V - VoIP-Phone, D - Remotely-Managed-Device,
+                  s - Supports-STP-Dispute
+
+Device-ID          Local Intrfce  Hldtme Capability  Platform      Port ID
+cs1(FDO220329KU)    Eth1/65        177    R S I s   N9K-C92300YC  Eth1/65
+cs1(FDO220329KU)    Eth1/66        177    R S I s   N9K-C92300YC  Eth1/66
+
+Total entries displayed: 2
+----
+. 驗證所有叢集連接埠是否正常運作：
++
+「網路連接埠show -IPSpace Cluster」
+
++
+每個連接埠應顯示「Link」（連結）、「Health Status」（健全狀況狀態）則顯示為「Healthy」（健全狀況）。
+
++
+[listing, subs="+quotes"]
+----
+cluster1::*> *network port show -ipspace Cluster*
+
+Node: node1
+
+                                                  Speed(Mbps) Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status
+--------- ------------ ---------------- ---- ---- ----------- --------
+e0a       Cluster      Cluster          up   9000  auto/10000 healthy
+e0b       Cluster      Cluster          up   9000  auto/10000 healthy
+
+Node: node2
+
+                                                  Speed(Mbps) Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status
+--------- ------------ ---------------- ---- ---- ----------- --------
+e0a       Cluster      Cluster          up   9000  auto/10000 healthy
+e0b       Cluster      Cluster          up   9000  auto/10000 healthy
+
+4 entries were displayed.
+----
+. 驗證所有叢集生命體是否正常運作：
++
+「網路介面show -vserver叢集」
+
++
+每個叢集LIF都應該顯示為「IS Home」、並具有「狀態管理/作業」的「啟動/啟動」
+
++
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface show -vserver Cluster*
+
+            Logical    Status     Network            Current       Current Is
+Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
+----------- ---------- ---------- ------------------ ------------- ------- -----
+Cluster
+            node1_clus1  up/up    169.254.209.69/16  node1         e0a     true
+            node1_clus2  up/up    169.254.49.125/16  node1         e0b     true
+            node2_clus1  up/up    169.254.47.194/16  node2         e0a     true
+            node2_clus2  up/up    169.254.19.183/16  node2         e0b     true
+4 entries were displayed.
+----
+. 驗證是否已在所有叢集生命體上啟用自動還原：
++
+「網路介面show -vserver叢集-功能 變數自動回復」
+
++
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface show -vserver Cluster -fields auto-revert*
+
+          Logical
+Vserver   Interface     Auto-revert
+--------- ------------- ------------
+Cluster
+          node1_clus1   true
+          node1_clus2   true
+          node2_clus1   true
+          node2_clus2   true
+
+4 entries were displayed.
+----
+. 從節點1上的叢集連接埠e0a拔下纜線、然後使用2300YC交換器所支援的適當纜線、將e0a連接至叢集交換器CS1上的連接埠1。
++
+。 https://hwu.netapp.com/SWITCH/INDEX["_-交換器_ Hardware Universe"^] 包含纜線的詳細資訊。
+
+. 從節點2上的叢集連接埠e0a拔下纜線、然後使用2300YC交換器所支援的適當纜線、將e0a連接至叢集交換器CS1上的連接埠2。
+. 在叢集交換器CS1上啟用所有面向節點的連接埠。
++
+下列範例顯示交換器CS1上已啟用連接埠1/1至1/64：
+
++
+[listing, subs="+quotes"]
+----
+cs1# *config*
+Enter configuration commands, one per line. End with CNTL/Z.
+cs1(config)# *interface e1/1-64*
+cs1(config-if-range)# *no shutdown*
+----
+. 驗證所有叢集生命體是否都正常運作、並顯示為「is Home」（原為主目錄）：
++
+「網路介面show -vserver叢集」
+
++
+以下範例顯示、節點1和節點2上的所有lifs都已啟動、而且「是主目錄」結果為真：
+
++
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface show -vserver Cluster*
+
+         Logical      Status     Network            Current     Current Is
+Vserver  Interface    Admin/Oper Address/Mask       Node        Port    Home
+-------- ------------ ---------- ------------------ ----------- ------- ----
+Cluster
+         node1_clus1  up/up      169.254.209.69/16  node1       e0a     true
+         node1_clus2  up/up      169.254.49.125/16  node1       e0b     true
+         node2_clus1  up/up      169.254.47.194/16  node2       e0a     true
+         node2_clus2  up/up      169.254.19.183/16  node2       e0b     true
+
+4 entries were displayed.
+----
+. 顯示叢集中節點狀態的相關資訊：
++
+「叢集展示」
+
++
+下列範例顯示叢集中節點的健全狀況和資格資訊：
+
++
+[listing, subs="+quotes"]
+----
+cluster1::*> *cluster show*
+
+Node                 Health  Eligibility   Epsilon
+-------------------- ------- ------------  ------------
+node1                true    true          false
+node2                true    true          false
+
+2 entries were displayed.
+----
+. 從節點1上的叢集連接埠e0b拔下纜線、然後使用2300YC交換器所支援的適當纜線、將e0b連接至叢集交換器CS2上的連接埠1。
+. 從節點2上的叢集連接埠e0b拔下纜線、然後使用2300YC交換器所支援的適當纜線、將e0b連接至叢集交換器CS2上的連接埠2。
+. 在叢集交換器CS2上啟用所有面向節點的連接埠。
++
+下列範例顯示交換器CS2上已啟用連接埠1/1至1/64：
+
++
+[listing, subs="+quotes"]
+----
+cs2# *config*
+Enter configuration commands, one per line. End with CNTL/Z.
+cs2(config)# *interface e1/1-64*
+cs2(config-if-range)# *no shutdown*
+----
+. 驗證所有叢集連接埠是否正常運作：
++
+「網路連接埠show -IPSpace Cluster」
+
++
+以下範例顯示節點1和節點2上的所有叢集連接埠都已啟動：
+
++
+[listing, subs="+quotes"]
+----
+cluster1::*> *network port show -ipspace Cluster*
+
+Node: node1
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
+e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
+
+Node: node2
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
+e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
+
+4 entries were displayed.
+----
+. 驗證所有介面是否顯示「is Home」（原為主介面）為真：
++
+「網路介面show -vserver叢集」
+
++
+
+NOTE: 這可能需要幾分鐘的時間才能完成。
+
++
+以下範例顯示所有lifs都在node1和node2上、而且「is Home」結果為真：
+
++
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface show -vserver Cluster*
+
+          Logical      Status     Network            Current    Current Is
+Vserver   Interface    Admin/Oper Address/Mask       Node       Port    Home
+--------- ------------ ---------- ------------------ ---------- ------- ----
+Cluster
+          node1_clus1  up/up      169.254.209.69/16  node1      e0a     true
+          node1_clus2  up/up      169.254.49.125/16  node1      e0b     true
+          node2_clus1  up/up      169.254.47.194/16  node2      e0a     true
+          node2_clus2  up/up      169.254.19.183/16  node2      e0b     true
+
+4 entries were displayed.
+----
+. 驗證兩個節點各自與每個交換器都有一個連線：
++
+「How cup neighbor」
+
++
+以下範例顯示兩個交換器的適當結果：
+
++
+[listing, subs="+quotes"]
+----
+(cs1)# *show cdp neighbors*
+
+Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater,
+                  V - VoIP-Phone, D - Remotely-Managed-Device,
+                  s - Supports-STP-Dispute
+
+Device-ID          Local Intrfce  Hldtme Capability  Platform      Port ID
+node1               Eth1/1         133    H         FAS2980       e0a
+node2               Eth1/2         133    H         FAS2980       e0a
+cs2(FDO220329V5)    Eth1/65        175    R S I s   N9K-C92300YC  Eth1/65
+cs2(FDO220329V5)    Eth1/66        175    R S I s   N9K-C92300YC  Eth1/66
+
+Total entries displayed: 4
+
+
+(cs2)# *show cdp neighbors*
+
+Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater,
+                  V - VoIP-Phone, D - Remotely-Managed-Device,
+                  s - Supports-STP-Dispute
+
+Device-ID          Local Intrfce  Hldtme Capability  Platform      Port ID
+node1               Eth1/1         133    H         FAS2980       e0b
+node2               Eth1/2         133    H         FAS2980       e0b
+cs1(FDO220329KU)
+                    Eth1/65        175    R S I s   N9K-C92300YC  Eth1/65
+cs1(FDO220329KU)
+                    Eth1/66        175    R S I s   N9K-C92300YC  Eth1/66
+
+Total entries displayed: 4
+----
+. 顯示叢集中探索到的網路裝置相關資訊：
++
+「network device-dDiscovery show -protocol cup」
+
++
+[listing, subs="+quotes"]
+----
+cluster1::*> *network device-discovery show -protocol cdp*
+Node/       Local  Discovered
+Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
+----------- ------ ------------------------- ----------------  ----------------
+node2      /cdp
+            e0a    cs1                       0/2               N9K-C92300YC
+            e0b    cs2                       0/2               N9K-C92300YC
+node1      /cdp
+            e0a    cs1                       0/1               N9K-C92300YC
+            e0b    cs2                       0/1               N9K-C92300YC
+
+4 entries were displayed.
+----
+. 確認設定已停用：
++
+「網路選項、無交換式叢集展示」
+
++
+
+NOTE: 命令可能需要幾分鐘的時間才能完成。等待「3分鐘壽命即將到期」公告。
+
++
+下列範例中的假輸出顯示組態設定已停用：
+
++
+[listing, subs="+quotes"]
+----
+cluster1::*> *network options switchless-cluster show*
+Enable Switchless Cluster: false
+----
+. 驗證叢集中節點成員的狀態：
++
+「叢集展示」
+
++
+下列範例顯示叢集中節點的健全狀況和資格資訊：
+
++
+[listing, subs="+quotes"]
+----
+cluster1::*> *cluster show*
+
+Node                 Health  Eligibility   Epsilon
+-------------------- ------- ------------  --------
+node1                true    true          false
+node2                true    true          false
+----
+. 確保叢集網路具備完整連線能力：
++
+「叢集ping叢集節點節點名稱」
+
++
+[listing, subs="+quotes"]
+----
+cluster1::> *cluster ping-cluster -node node2*
+Host is node2
+Getting addresses from network interface table...
+Cluster node1_clus1 169.254.209.69 node1 e0a
+Cluster node1_clus2 169.254.49.125 node1 e0b
+Cluster node2_clus1 169.254.47.194 node2 e0a
+Cluster node2_clus2 169.254.19.183 node2 e0b
+Local = 169.254.47.194 169.254.19.183
+Remote = 169.254.209.69 169.254.49.125
+Cluster Vserver Id = 4294967293
+Ping status:
+
+Basic connectivity succeeds on 4 path(s)
+Basic connectivity fails on 0 path(s)
+
+Detected 9000 byte MTU on 4 path(s):
+Local 169.254.47.194 to Remote 169.254.209.69
+Local 169.254.47.194 to Remote 169.254.49.125
+Local 169.254.19.183 to Remote 169.254.209.69
+Local 169.254.19.183 to Remote 169.254.49.125
+Larger than PMTU communication succeeds on 4 path(s)
+RPC status:
+2 paths up, 0 paths down (tcp check)
+2 paths up, 0 paths down (udp check)
+----
+. 如果您禁止自動建立個案、請叫用AutoSupport 下列消息來重新啟用此功能：
++
+「系統節點AutoSupport 不完整地叫用節點*-type all -most MAn=end」
+
++
+[listing, subs="+quotes"]
+----
+cluster1::*> *system node autosupport invoke -node * -type all -message MAINT=END*
+----
+. 將權限層級變更回管理：
++
+「et -priv. admin」
+
+. 對於支援支援支援更新版本的版本、請使用下列命令啟用叢集交換器健全狀況監視器記錄收集功能、以收集交換器相關的記錄檔：ONTAP
++
+「系統叢集交換器記錄設定密碼」和「系統叢集交換器記錄啟用收集」
+
++
+[listing, subs="+quotes"]
+----
+cluster1::*> *system cluster-switch log setup-password*
+Enter the switch name: <return>
+The switch name entered is not recognized.
+Choose from the following list:
+cs1
+cs2
+
+cluster1::*> *system cluster-switch log setup-password*
+
+Enter the switch name: *cs1*
+RSA key fingerprint is e5:8b:c6:dc:e2:18:18:09:36:63:d9:63:dd:03:d9:cc
+Do you want to continue? {y|n}::[n] *y*
+
+Enter the password: <enter switch password>
+Enter the password again: <enter switch password>
+
+cluster1::*> *system cluster-switch log setup-password*
+
+Enter the switch name: *cs2*
+RSA key fingerprint is 57:49:86:a1:b9:80:6a:61:9a:86:8e:3c:e3:b7:1f:b1
+Do you want to continue? {y|n}:: [n] *y*
+
+Enter the password: <enter switch password>
+Enter the password again: <enter switch password>
+
+cluster1::*> *system cluster-switch log enable-collection*
+
+Do you want to enable cluster log collection for all nodes in the cluster?
+{y|n}: [n] *y*
+
+Enabling cluster switch log collection.
+
+cluster1::*>
+----
++
+
+NOTE: 如果這些命令中有任何一個出現錯誤、請聯絡NetApp支援部門。
+
+

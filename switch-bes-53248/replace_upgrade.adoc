@@ -1,0 +1,47 @@
+---
+permalink: switch-bes-53248/replace-upgrade.html 
+sidebar: sidebar 
+keywords: BES-53248 switches,upgrading,BES-53248 switches 
+summary: 升級BS-53248叢集交換器時、首先要準備好控制器以進行升級、安裝EFOS軟體、授權、以及參考組態檔（RCF）。安裝完成後、您可以在不中斷營運的升級（NDU）和不中斷營運環境（NDU）環境中還原控制器組態。 
+---
+= 在NDA/NDU環境中升級B譽-53248叢集交換器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+升級BES-53248叢集交換器時、首先要準備好控制器以進行升級、安裝EFOS軟體、授權和參考組態檔（RCF）。安裝之後、您可以在不中斷營運的升級（NDU）和不中斷營運（NDO）環境中還原控制器組態。
+
+在現有NetApp BS-53248叢集交換器上安裝EFOS軟體、授權和RCF檔案之前、必須符合下列條件：
+
+* 叢集必須是功能完整的叢集（沒有錯誤記錄訊息或其他問題）。
+* 叢集不得包含任何故障的叢集網路介面卡（NIC）。
+* 兩個叢集交換器上的所有連接埠都必須正常運作。
+* 所有叢集連接埠都必須正常運作。
+* 所有的叢集生命都必須以管理和作業方式在主連接埠上執行。
+* 使用指令《叢集ping叢集節點節點1》進階權限、必須指出所有路徑上的「大於PMTU通訊」都能成功。ONTAP
+* RCF和EFOS版本中的命令語法可能會有命令相依性。
+
+
+您必須參閱NetApp BS-53248交換器頁面上的交換器相容性表、以瞭解支援的EFOS、RCF及ONTAP 支援的版本： http://mysupport.netapp.com/site["NetApp Bes：53248交換器"^]。
+
+此程序適用於正常運作的叢集、並允許NDU和Nn。本程序中的範例使用下列交換器和節點命名法：
+
+* NetApp交換器名稱為「CS1」和「CS2」。
+* 此程序中使用的範例會在第二個交換器_CS2._上開始升級
+* 叢集LIF名稱為節點1的「node1_clus1」和「node1_clus2」、節點2的「node2_clus1」和「node2_clus2」。
+* IPspace名稱為叢集。
+* 「cluster1：>」提示會指出叢集的名稱。
+* 每個節點上的叢集連接埠名稱為「e0a」和「e0b」。
++
+請參閱_Hardware Universe__以瞭解平台上支援的實際叢集連接埠。
+
++
+https://hwu.netapp.com/Home/Index["NetApp Hardware Universe"^]
+
+* NetApp叢集交換器支援的交換器間連結（ISL）為連接埠0/55和0/56。
+* NetApp叢集交換器支援的節點連線是連接埠0/1到0/16、具有預設授權。
+* 本程序中的範例使用兩個節點、但叢集中最多可有24個節點。
+* 重複本節中的所有程序、以升級另一部交換器* CS1*上的EFOS軟體和RCF檔案。
+

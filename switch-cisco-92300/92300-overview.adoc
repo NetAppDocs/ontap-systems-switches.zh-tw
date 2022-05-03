@@ -1,0 +1,148 @@
+---
+permalink: switch-cisco-92300/92300-overview.html 
+sidebar: sidebar 
+keywords: cisco nexus 92300YC 
+summary: 如果您想要建置ONTAP 具有兩個以上節點的叢集、您需要兩個支援的叢集網路交換器。您可以使用額外的管理交換器、這是選用的。 
+---
+= Cisco Nexus 2300YC交換器總覽
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果您想要建置ONTAP 具有兩個以上節點的叢集、您需要兩個支援的叢集網路交換器。您可以使用額外的管理交換器、這是選用的。
+
+您可以將Cisco Nexus 2300YC交換器（X190003/R）安裝在NetApp系統機櫃或第三方機櫃中、並附有交換器隨附的標準支架。
+
+下表列出92300YC交換器、風扇和電源供應器的零件編號和說明：
+
+[cols="1,2"]
+|===
+| 產品編號 | 說明 
+
+
+ a| 
+190003.
+ a| 
+Cisco 92300YC、CLSW、48Pt10/25GB、18Pt100G、PTSx（PTSx =連接埠側邊排氣）
+
+
+
+ a| 
+190003R
+ a| 
+Cisco 92300YC、CLSW、48Pt10/25GB、18Pt100G、PSIN（PSIN =連接埠側邊輸入）
+
+
+
+ a| 
+X-NXA-FAN-35CFM-B
+ a| 
+風扇、Cisco N9K連接埠側進氣氣流
+
+
+
+ a| 
+X-NXA-FAN-35CFM-F
+ a| 
+風扇、Cisco N9K連接埠側邊排氣氣流
+
+
+
+ a| 
+X-NXA-PAC-650W-B
+ a| 
+電源供應器、Cisco 650W -連接埠側進
+
+
+
+ a| 
+X-NXA-PAC-650W-F
+ a| 
+電源供應器、Cisco 650W -連接埠側邊排氣
+
+|===
+Cisco Nexus 2300YC交換器氣流詳細資料：
+
+* 連接埠側排風（標準氣流）-冷空氣透過冷通道中的風扇和電源供應器模組進入機箱、並透過熱通道中的機箱連接埠端口排出。連接埠側邊的排氣氣流、搭配藍色色彩。
+* 連接埠側進氣（反轉氣流）-冷空氣透過冷通道的連接埠端進入機箱、並透過熱通道中的風扇和電源供應器模組排出。連接埠側進氣氣流、搭配酒紅色。
+
+
+.其他支援的交換器
+* Nexus 3232C
++
+您可以安裝Cisco Nexus 3232C交換器（X190100）NetApp系統機櫃以及交換器隨附的自訂支架、也可以將其安裝在機架中、並附有交換器隨附的標準支架。
+
+* Nexus 3132Q-V
++
+您可以將Cisco Nexus 3132Q-V交換器（X190001）安裝在NetApp系統機櫃或第三方機櫃中、並附有交換器隨附的標準支架。
+
+
+
+NetApp不再提供下列叢集交換器、但Cisco將在有限時間內提供支援：
+
+* Nexus 5596UP/5596T
++
+您可以將Cisco Nexus 5596UP交換器（X1967-R6）或5596T（X1989-R6）安裝在NetApp系統機櫃中、並附有交換器隨附的自訂支架、或是將其安裝在機架中、並附上交換器隨附的標準支架。
+
++
+Nexus 5596UP交換器也支援一或兩個16埠擴充模組（X1988至R6）。
+
++
+Nexus 5596T交換器僅支援做為FAS2520的叢集互連交換器、用於執行不中斷營運的硬體升級。
+
++
+http://support.netapp.com/info/communications/ECMP12454150.html["終止供應"] 詳細資料。
+
+
+
+下表列出Cisco Nexus 2300YC交換器可用的文件。
+
+|===
+
+
+| 標題 | 說明 
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-9336c-fx2/setup-switches.html["_設定Cisco®Nexus 2300YC叢集交換器_"^]
+ a| 
+說明如何設定和設定Cisco Nexus 2300YC叢集交換器。
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-92300/install-nxos-overview.html["_安裝NX-OS與參考組態檔（RCW）_"^]
+ a| 
+說明如何在Nexus 2300YC叢集交換器上安裝NX-OS和參考組態檔（RCFs）。
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-92300/configure-overview.html["_設定新的Cisco Nexus 2300YC交換器_"^]
+ a| 
+說明如何從使用舊版Cisco交換器的環境移轉至使用Cisco 92300YC交換器的環境。
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-92300/migrate-to-92300yc-overview.html["_從舊的Cisco交換器移轉至Cisco Nexus 2300YC交換器_"^]
+ a| 
+說明以Cisco Nexus 2300YC叢集交換器取代舊版Cisco交換器的程序。
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-92300/migrate-to-2n-switched.html["_從雙節點無交換器叢集移轉_"^]
+ a| 
+說明如何使用Cisco Nexus 2300YC叢集交換器、從雙節點無交換式叢集環境移轉至雙節點交換環境。
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-92300/replace-92300yc.html["_更換Cisco Nexus 2300YC叢集交換器_"^]
+ a| 
+說明在叢集中更換故障Cisco Nexus 2300YC交換器、以及下載交換器作業系統和參考組態檔的程序。
+
+|===

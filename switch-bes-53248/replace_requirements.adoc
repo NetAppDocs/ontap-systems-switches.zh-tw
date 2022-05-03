@@ -1,0 +1,14 @@
+---
+permalink: switch-bes-53248/replace-requirements.html 
+sidebar: sidebar 
+keywords: requirements, bes-53428 switches 
+summary: 若要設定叢集、您需要適當的叢集交換器纜線和纜線連接器數量和類型。視您初始設定的叢集交換器類型而定、您需要使用隨附的主控台纜線連接至交換器主控台連接埠、而且需要特定的網路資訊。 
+---
+= Bes - 53248叢集交換器組態需求
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+若要設定叢集、您需要適當的叢集交換器纜線和纜線連接器數量和類型。視您初始設定的叢集交換器類型而定、您需要使用隨附的主控台纜線連接至交換器主控台連接埠、而且需要特定的網路資訊。

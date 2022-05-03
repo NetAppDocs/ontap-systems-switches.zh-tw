@@ -1,0 +1,80 @@
+---
+permalink: switch-bes-53248/configure-ssh.html 
+sidebar: sidebar 
+keywords: ssh, requirement, cluster, switch, health, monitor, chsm, log, collection, feature, bes, enable ssh on bes-53248 cluster switches - bes-53248 switches 
+summary: 使用叢集交換器健全狀況監視器（CSHM\）和記錄收集功能時、必須使用SSH。若要在BSe-53248叢集交換器上啟用SSH、您必須先產生SSH金鑰、然後再啟用SSH。 
+---
+= 在BS-53248叢集交換器上啟用SSH - BS-53248交換器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用叢集交換器健全狀況監視器（CSHM）和記錄收集功能時、必須使用SSH。若要在BSe-53248叢集交換器上啟用SSH、您必須先產生SSH金鑰、然後再啟用SSH。
+
+.步驟
+. 產生SSH金鑰：
++
+*「cr密碼 編譯金鑰產生」*
+
++
+[listing]
+----
+(switch) # show ip ssh
+
+SSH Configuration
+
+Administrative Mode: .......................... Disabled
+SSH Port: ..................................... 22
+Protocol Level: ............................... Version 2
+SSH Sessions Currently Active: ................ 0
+Max SSH Sessions Allowed: ..................... 5
+SSH Timeout (mins): ........................... 5
+Keys Present: ................................. DSA(1024) RSA(1024) ECDSA(521)
+Key Generation In Progress: ................... None
+SCP server Administrative Mode: ............... Disabled
+
+(switch) # config
+
+(switch) (Config)# crypto key generate rsa
+
+Do you want to overwrite the existing RSA keys? (y/n): y
+
+
+(switch) (Config)# crypto key generate dsa
+
+Do you want to overwrite the existing DSA keys? (y/n): y
+
+
+(switch) (Config)# crypto key generate ecdsa 521
+
+Do you want to overwrite the existing ECDSA keys? (y/n): y
+
+
+(switch) (Config)# exit
+----
+. 確認SSH已啟用：
++
+*「show ip ssh」*
+
++
+[listing]
+----
+(switch) # show ip ssh
+
+SSH Configuration
+
+Administrative Mode: .......................... Enabled
+SSH Port: ..................................... 22
+Protocol Level: ............................... Version 2
+SSH Sessions Currently Active: ................ 0
+Max SSH Sessions Allowed: ..................... 5
+SSH Timeout (mins): ........................... 5
+Keys Present: ................................. DSA(1024) RSA(1024) ECDSA(521)
+Key Generation In Progress: ................... None
+SCP server Administrative Mode: ............... Disabled
+
+(switch) #
+----
+

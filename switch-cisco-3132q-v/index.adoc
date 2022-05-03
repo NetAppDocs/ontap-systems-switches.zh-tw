@@ -1,0 +1,78 @@
+---
+permalink: switch-cisco-3132q-v/index.html 
+sidebar: sidebar 
+keywords: Cisco, 3132Q-V 
+summary: 移轉至雙節點交換式叢集 
+---
+= Cisco Nexus 3132Q-V交換器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以將Cisco Nexus 3132Q-V交換器當作AFF 叢集交換器、放在您的叢FAS 集或叢集內。
+
+* 您可以在Cisco Nexus 3132Q-V叢集交換器上安裝NX-OS和參考組態檔（RCV）。
+* 您可以使用Cisco Nexus 3132Q-V叢集交換器、從雙節點無交換式叢集環境移轉至雙節點交換環境。
+* 您可以在叢集中更換故障的Cisco Nexus 3132Q-V交換器、並下載交換器作業系統和參考組態檔。
+* 您可以將Cisco Nexus 5596、Nexus 5020或Nexus 5010叢集交換器更換為Cisco Nexus 3132Q-V交換器。
+* 您可以使用Cisco Nexus 3132Q-V叢集交換器來取代NetApp CN1610交換器。
+
+
+下表列出Cisco Nexus 3132Q-V交換器可用的文件。
+
+|===
+
+
+| 標題 | 說明 
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-3132q-v/task-install-a-cisco-nexus-3232c-cluster-switch-and-pass-through-panel-in-a-netapp-cabinet.html["_在NetApp®機櫃中安裝Cisco®Nexus 3132Q-V叢集交換器和傳遞面板_"^]
+ a| 
+說明如何在機箱正面安裝電源連接器的系統機櫃中、以及電源分配單元位於機箱背面的系統機櫃中安裝直通面板。
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-9336c-fx2/setup-switches.html["_設定Cisco®Nexus 3132Q-V叢集交換器_"^]
+ a| 
+說明如何設定和設定Cisco Nexus 3132Q-V叢集交換器。
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-3132q-v/task-install-nx-os-software-and-rcfs-on-cisco-nexus-3132q-v-cluster-switches.html["_安裝NX-OS與參考組態檔（RCW）_"^]
+ a| 
+說明如何在Nexus 3132Q-V叢集交換器上安裝NX-OS和參考組態檔（RCV）。
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-3132q-v/concept-migrate-from-a-cisco-5596-switch-to-a-cisco-nexus-3232c.html["_使用Cisco Nexus 3132Q-V叢集交換器取代Cisco Nexus 5596叢集交換器_"^]
+ a| 
+說明如何從使用舊版Cisco交換器的環境移轉至使用Cisco 3132Q-V交換器的環境。
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-3132q-v/concept-migrate-a-cn1610-switch-to-a-cisco-nexus-3232c-cluster-switch.html["_使用Cisco Nexus 3132Q-V叢集交換器取代CN1610叢集交換器_"^]
+ a| 
+說明以Cisco Nexus 3132Q-V叢集交換器取代CN1610交換器的程序。
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-3132q-v/concept-migrate-from-a-two-node-switchless-cluster-to-a-cluster-with-cisco-nexus-3232c-cluster-switches.html["_從雙節點無交換器叢集移轉_"^]
+ a| 
+說明如何使用Cisco Nexus 3132Q-V叢集交換器、從雙節點無交換式叢集環境移轉至雙節點交換環境。
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-3132q-v/concept-replace-cisco-nexus-3132q-v-cluster-switches.html["_更換Cisco Nexus 3132Q-V叢集交換器_"^]
+ a| 
+說明在叢集中更換故障Cisco Nexus 3132Q-V交換器、以及下載交換器作業系統和參考組態檔的程序。
+
+|===

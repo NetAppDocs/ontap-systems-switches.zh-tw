@@ -1,0 +1,104 @@
+---
+permalink: switch-cisco-9336c-fx2/setup-switches.html 
+sidebar: sidebar 
+keywords: require, configuration, information, documentation, cluster, management, network, switches, set up the switches - cisco nexus 9336c-fx2 
+summary: 如果您還沒有必要的組態資訊和文件、則必須先收集這些資訊、再設定叢集和管理網路交換器。 
+---
+= 設定交換器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果您還沒有必要的組態資訊和文件、則必須先收集這些資訊、再設定叢集和管理網路交換器。
+
+* 您必須能在安裝站台存取HTTP、FTP或TFTP伺服器、才能下載適用的NX-OS和參考組態檔（RCF）版本。
+* 您必須擁有所需的叢集網路和管理網路交換器文件。
++
+請參閱 xref:setup-required-documentation.adoc[必要文件] 以取得更多資訊。
+
+* 您必須備有必要的控制器文件和ONTAP 參考文件。
++
+https://netapp.com/us/documenation/index.aspx["NetApp文件"^]
+
+* 您必須擁有適用的授權、網路和組態資訊、以及纜線。
+* 您必須備妥完整的佈線工作表。
++
+
+NOTE: 由於說明纜線層的複雜度、本指南不提供纜線圖形。本指南提供範例工作表、其中包含建議的連接埠指派和空白工作表、可用於設定叢集。
+
++
+
+NOTE: 如需詳細資訊、請參閱 https://hwu.netapp.com["Hardware Universe"^]。
+
+* 所有Cisco叢集網路和管理網路交換器都會以標準Cisco原廠預設組態送達。這些交換器也有NX-OS軟體的最新版本、但未載入RCFs。
+
+
+
+NOTE: 您必須從NetApp支援網站下載適用的NetApp叢集網路和管理網路RCT、網址為 http://mysupport.netapp.com/["mysupport.netapp.com"^] 適用於您收到的交換器。
+
+* 此外、您可能需要安裝所需的組態檔、以支援適用於92300YC叢集交換器的叢集交換器健全狀況監視器（CSHealth Monitor、CSHealth Monitor）。請參閱 link:setup_install_cshm_file.md#["安裝適用於92300YC交換器的叢集交換器健全狀況監視器（CSHM）組態檔"] 以取得詳細資料。
+
+
+.步驟
+. 將叢集網路和管理網路交換器與控制器架起。
++
+[cols="1,2"]
+|===
+| 如果您要安裝... | 然後... 
+
+
+ a| 
+NetApp系統機櫃中的Cisco Nexus 9336C-FX2
+ a| 
+請參閱NetApp機櫃指南中的_安裝Cisco Nexus 9336C-FX2叢集交換器與直通面板、以取得在NetApp機櫃中安裝交換器的指示。
+
+
+
+ a| 
+NetApp系統機櫃中的Cisco Nexus 3232C
+ a| 
+請參閱NetApp機櫃指南中的安裝Cisco Nexus 3232C叢集交換器與傳遞面板、以取得在NetApp機櫃中安裝交換器的指示。
+
+
+
+ a| 
+Cisco Nexus 3132Q-V位於NetApp系統機櫃中
+ a| 
+請參閱NetApp機櫃指南中的_安裝Cisco Nexus 3138S-V叢集交換器與直通面板、以取得在NetApp機櫃中安裝交換器的指示。
+
+
+
+ a| 
+電信機架中的設備
+ a| 
+請參閱交換器硬體安裝指南中提供的程序、以及NetApp安裝與設定說明。
+
+
+
+ a| 
+NetApp系統機櫃中的Cisco Nexus 5596UP/5596T
+ a| 
+請參閱NetApp機櫃指南中的_安裝Cisco Nexus 5596叢集交換器與傳遞面板、以取得在NetApp機櫃中安裝交換器的指示。
+
+|===
+. 使用完整的佈線工作表、將叢集網路和管理網路交換器連接至控制器。
+. 開啟叢集網路和管理網路交換器和控制器的電源。
+. 根據中提供的資訊、執行叢集網路交換器的初始組態 xref:setup-required-information.adoc[必要的組態資訊]。
+. 確認您在設定結束時所顯示的顯示器上所做的組態選擇、並確定您已儲存組態。
+. 檢查叢集網路交換器的版本、必要時將NetApp支援的軟體版本下載到交換器。
++
+如果您下載NetApp支援的軟體版本、則必須下載_NetApp叢集網路交換器參考組態檔案_、並將其與您在步驟5中儲存的組態合併。您可以從下載檔案和指示 https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器"^] 頁面。
+
+. 檢查網路交換器上的軟體版本、並視需要將NetApp支援的軟體版本下載至交換器。如果您有自己的交換器、請參閱 https://cisco.com["Cisco網站"^]。
++
+如果您下載NetApp支援的軟體版本、則必須下載_NetApp管理網路交換器參考組態檔案_、並將其與您在步驟5中儲存的組態合併。您可以從下載檔案和指示 https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器"^] 頁面。
+
+
+
+xref:setup-required-information.adoc[必要的叢集組態資訊]
+
+xref:setup-required-documentation.adoc[必要文件]
+
+xref:setup-worksheets-sample-cabling.adoc[佈線工作表範例和空白]

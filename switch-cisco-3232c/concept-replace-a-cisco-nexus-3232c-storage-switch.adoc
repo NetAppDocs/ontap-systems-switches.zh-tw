@@ -1,0 +1,28 @@
+---
+permalink: switch-cisco-3232c/concept-replace-a-cisco-nexus-3232c-storage-switch.html 
+sidebar: sidebar 
+keywords: replace, cisco nexus 3232c, storage switches 
+summary: 更換Cisco Nexus 3232C儲存交換器時、您必須注意特定的組態資訊、連接埠連線和纜線需求。 
+---
+= 更換Cisco Nexus 3232C儲存交換器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+更換Cisco Nexus 3232C儲存交換器時、您必須注意特定的組態資訊、連接埠連線和纜線需求。
+
+在Cisco Nexus儲存交換器上安裝NX-OS軟體和RCFs之前、您必須先確認下列情況：
+
+* 您的系統可支援Cisco Nexus 3232C儲存交換器。
+* 您必須查閱Cisco乙太網路交換器頁面上的交換器相容性表、以取得支援ONTAP 的版本、包括支援的功能、NX-OS和RCF。
++
+[NOTE]
+====
+您應該知道RCF和NX-OS版本中的命令語法可能會有相依性。
+
+====
+* 您必須參閱Cisco網站上提供的適當軟體與升級指南、以取得Cisco交換器升級與降級程序的完整文件、網址為 link:http://www.cisco.com/en/US/products/ps9670/prod_installation_guides_list.html["Cisco Nexus 3000系列交換器"^]。
+* 您必須下載適用的RCT。
+

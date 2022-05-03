@@ -1,0 +1,64 @@
+---
+section: switch-cisco-92300
+title: Cisco Nexus 2300YC交換器
+entries:
+- title: 總覽
+  url: "/switch-cisco-92300/92300-overview.html"
+- title: 設定
+  entries:
+  - title: 設定交換器
+    url: "/switch-cisco-9336c-fx2/setup-switches.html"
+  - title: 必要的叢集組態資訊
+    url: "/switch-cisco-9336c-fx2/setup-required-information.html"
+  - title: 安裝適用於92300YC交換器的叢集交換器健全狀況監視器（CSHM）組態檔
+    url: "/switch-cisco-9336c-fx2/setup-install-cshm-file.html"
+  - title: 必要文件
+    url: "/switch-cisco-9336c-fx2/setup-required-documentation.html"
+  - title: 使用Smart Call Home的考量事項
+    url: "/switch-cisco-9336c-fx2/setup-considerations-smart-call.html"
+  - title: 佈線工作表範例和空白
+    entries:
+    - title: Cisco Nexus 9336C-FX2纜線工作表
+      url: "/switch-cisco-9336c-fx2/setup-worksheet-9336c.html"
+    - title: Cisco Nexus 2300YC佈線工作表
+      url: "/switch-cisco-9336c-fx2/setup-worksheet-92300yc.html"
+    - title: Cisco Nexus 3232C佈線工作表
+      url: "/switch-cisco-9336c-fx2/setup-worksheet-3232c.html"
+    - title: Cisco Nexus 3132Q-V佈線工作表
+      url: "/switch-cisco-9336c-fx2/setup-worksheet-3132q.html"
+    - title: Cisco Nexus 5596UP和5596T佈線工作表
+      url: "/switch-cisco-9336c-fx2/setup-worksheet-5596.html"
+    - title: 佈線工作表範例
+      url: "/switch-cisco-9336c-fx2/setup-worksheets-sample-cabling.html"
+- title: 設定新的Cisco Nexus 2300YC交換器
+  entries:
+  - title: 總覽
+    url: "/switch-cisco-92300/configure-overview.html"
+  - title: Cisco Nexus 92300YC交換器的初始安裝
+    url: "/switch-cisco-92300/configure-install-initial.html"
+  - title: 安裝NX-OS軟體
+    url: "/switch-cisco-92300/configure-install-nxos.html"
+  - title: 安裝參考組態檔（RCF）
+    url: "/switch-cisco-92300/configure-install-rcf.html"
+- title: 在Cisco Nexus 2300YC叢集交換器上安裝NX-OS軟體和RCF
+  entries:
+  - title: 總覽
+    url: "/switch-cisco-92300/install-nxos-overview.html"
+  - title: 安裝NX-OS軟體
+    url: "/switch-cisco-92300/install-nxos-software.html"
+  - title: 安裝參考組態檔（RCF）
+    url: "/switch-cisco-92300/install-nxos-rcf.html"
+- title: 使用Cisco Nexus 2300YC交換器移轉至雙節點交換叢集
+  entries:
+  - title: 總覽
+    url: "/switch-cisco-92300/migrate-to-2n-switched-overview.html"
+  - title: 如何移轉
+    url: "/switch-cisco-92300/migrate-to-2n-switched.html"
+- title: 從Cisco交換器移轉至Cisco Nexus 2300YC交換器
+  entries:
+  - title: 總覽
+    url: "/switch-cisco-92300/migrate-to-92300yc-overview.html"
+  - title: 如何從Cisco交換器移轉至Cisco Nexus 2300YC交換器
+    url: "/switch-cisco-92300/migrate-to-92300yc.html"
+  - title: 更換Cisco Nexus 2300YC交換器
+    url: "/switch-cisco-92300/replace-92300yc.html"

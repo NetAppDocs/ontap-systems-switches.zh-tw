@@ -1,0 +1,12 @@
+---
+permalink: switch-cisco-9336c-fx2/index.html 
+sidebar: sidebar 
+keywords: cisco, switch, cisco 9336 switch 
+summary: Cisco 9336-FX2交換器 
+---
+= Cisco 9336C-FX2交換器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+

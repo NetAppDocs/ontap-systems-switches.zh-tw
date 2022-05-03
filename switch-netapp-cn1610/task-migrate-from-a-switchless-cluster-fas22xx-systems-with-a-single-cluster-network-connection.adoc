@@ -1,0 +1,185 @@
+---
+permalink: switch-netapp-cn1610/task-migrate-from-a-switchless-cluster-fas22xx-systems-with-a-single-cluster-network-connection.html 
+sidebar: sidebar 
+keywords: migrate, two-node switched cluster, fas22xx systems, single, network connection 
+summary: 如果您在現有的雙節點無交換式叢集中有FAS22xx系統、其中每個控制器模組都有單一的後端對後端10 GbE連線、以進行叢集連線、您可以使用無交換器式叢集網路選項、並以交換器連線取代直接的後端對後端連線。 
+---
+= 使用單一叢集網路連線、在FAS22xx系統中移轉至雙節點交換叢集
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果您在現有的雙節點無交換式叢集中有FAS22xx系統、其中每個控制器模組都有單一的後端對後端10 GbE連線、以進行叢集連線、您可以使用無交換器式叢集網路選項、並以交換器連線取代直接的後端對後端連線。
+
+.開始之前
+* 從無交換器組態移轉至交換式組態需要兩個叢集連線。
+* 叢集必須健全、並由兩個節點組成、並以後端對後端連線方式連線。
+* 節點必須執行ONTAP 的是版本8.2或更新版本。
+* 無交換器式叢集功能無法搭配兩個以上的節點使用。
+* 所有叢集連接埠都必須處於「up」狀態。
+
+
+此程序不中斷營運、可移除無交換器環境中的直接叢集連線、並以連線至合作夥伴節點的方式取代與交換器的每個連線。
+
+.步驟
+. 請將權限等級變更為進階、並在系統提示您繼續時輸入「y」：「et -priv榮幸 進階」
++
+出現進階提示（「*>」）。
+
+. 在任一節點的系統主控台檢查節點的叢集狀態：「cluster show」（叢集顯示）
++
+下列範例顯示叢集中節點的健全狀況和資格資訊：
+
++
+[listing]
+----
+
+cluster::*> cluster show
+Node                 Health  Eligibility   Epsilon
+-------------------- ------- ------------  ------------
+node1                true    true          false
+node2                true    true          false
+
+2 entries were displayed.
+----
+. 在任一節點的系統主控台檢查HA配對的狀態：「儲存容錯移轉顯示」
++
+以下範例顯示node1和node2的狀態：
+
++
+[listing]
+----
+
+Node           Partner        Possible State Description
+-------------- -------------- -------- -------------------------------------
+node1          node2          true      Connected to node2
+node2          node1          true      Connected to node1
+
+2 entries were displayed.
+----
+. 如果AutoSupport 此叢集啟用了「支援功能」、請叫用AutoSupport 「系統節點AutoSupport 支援功能叫用節點*-type all -most MAn=xh」訊息來禁止自動建立案例
++
+「x」是指維護所需時間（以小時計）。
+
++
+
+NOTE: 此訊息會通知技術支援人員此維護工作、以便在維護期間禁止自動建立案例。
+
++
+下列命令會禁止自動建立兩小時的個案：
+
++
+[listing]
+----
+cluster::*> system node autosupport invoke -node * -type all -message MAINT=2h
+----
+. 驗證無交換器叢集的目前狀態是否為「true」、然後停用無交換器叢集模式：「network options switchless叢集modify -enablen false」
+. 接管目標節點：「torage容錯移轉接管-ofnode_target節點名稱」
++
+無論哪個節點是目標節點、都沒有關係。接管之後、目標節點會自動重新開機、並顯示「正在等待恢復...」訊息。
+
++
+作用中節點現在正在為接管的合作夥伴（目標）節點提供資料。
+
+. 在接管受損節點後等待兩分鐘、以確認接管作業已成功完成。
+. 目標節點顯示「正在等待恢復...」訊息、請將其關閉。
++
+用來關閉節點的方法取決於您是否透過節點服務處理器（SP）使用遠端管理。
+
++
+|===
+| 如果SP | 然後... 
+
+
+ a| 
+已設定
+ a| 
+登入受損節點SP、然後關閉系統電源：「系統關機」
+
+
+
+ a| 
+尚未設定
+ a| 
+在受損節點提示下、按「Ctrl-C」、然後回應「y」來停止節點。
+
+|===
+. 在每個控制器模組上、拔下將10 GbE叢集連接埠連接至無交換器叢集的纜線。
+. 將10 GbE叢集連接埠連接至兩個控制器模組上的交換器。
+. 確認交換器上連接的10 GbE叢集連接埠已設定為同一個VLAN的一部分。
++
+如果您打算將每個控制器模組上的叢集連接埠連接至不同的交換器、則必須確認每個交換器上連接叢集連接埠的連接埠已設定為相同的VLAN、而且兩個交換器上的主幹連線均已正確設定。
+
+. 將儲存設備歸還給目標節點：「torage容錯移轉恢復-ofnode2」
+. 監控恢復作業的進度：「儲存容錯移轉顯示還原」
+. 恢復作業完成後、請確認HA配對正常、而且可以接管：「儲存容錯移轉顯示」
++
+輸出應類似於下列內容：
+
++
+[listing]
+----
+
+Node           Partner        Possible State Description
+-------------- -------------- -------- -------------------------------------
+node1          node2          true      Connected to node2
+node2          node1          true      Connected to node1
+
+2 entries were displayed.
+----
+. 驗證叢集連接埠LIF是否正常運作：「network interface show -role cluster」（網路介面顯示角色叢集）
++
+以下範例顯示、節點1和節點2上的lifs為「up」、且「is Home」欄結果為「true」：
+
++
+[listing]
+----
+
+cluster::*> network interface show -role cluster
+            Logical    Status     Network            Current       Current Is
+Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
+----------- ---------- ---------- ------------------ ------------- ------- ----
+node1
+            clus1        up/up    192.168.177.121/24  node1        e1a     true
+node2
+            clus1        up/up    192.168.177.123/24  node2        e1a     true
+
+2 entries were displayed.
+----
+. 在任一節點的系統主控台檢查節點的叢集狀態：「cluster show」（叢集顯示）
++
+下列範例顯示叢集中節點的健全狀況和資格資訊：
+
++
+[listing]
+----
+
+cluster::*> cluster show
+Node                 Health  Eligibility   Epsilon
+-------------------- ------- ------------  ------------
+node1                true    true          false
+node2                true    true          false
+
+2 entries were displayed.
+----
+. Ping叢集連接埠以驗證叢集連線能力：「叢集ping叢集local」
++
+命令輸出應顯示所有叢集連接埠之間的連線能力。
+
+. 如果您禁止自動建立個案、請叫用AutoSupport 下列消息來重新啟用此功能：
++
+「系統節點AutoSupport 不完整地叫用節點*-type all -most MAn=end」
+
++
+[listing]
+----
+cluster::*> system node autosupport invoke -node * -type all -message MAINT=END
+----
+. 將權限等級變更回admin：「et -priv. admin」
+
+
+*相關資訊*
+
+https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/How_to_suppress_automatic_case_creation_during_scheduled_maintenance_windows["NetApp知識庫文件編號1010449：如何在排程的維護期間、抑制自動建立案例"^]

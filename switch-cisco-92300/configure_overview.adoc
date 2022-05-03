@@ -1,0 +1,32 @@
+---
+permalink: switch-cisco-92300/configure-overview.html 
+sidebar: sidebar 
+keywords: confiure 92300yc cluster switch, cisco 92300yc 
+summary: 您可以完成本章所述的步驟、設定新的Nexus 2300YC交換器。 
+---
+= 設定新的Cisco Nexus 2300YC交換器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以完成本章所述的步驟、設定新的Nexus 2300YC交換器。
+
+在執行ONTAP __LW_9.6及更新版本的系統上安裝Nexus 2300YC交換器、首先設定IP位址和組態、讓交換器能夠透過管理介面進行通訊。然後您可以安裝NX-OS軟體和參考組態檔（RCF）。此程序旨在在準備Nexus 2300YC交換器、然後再新增控制器。
+
+本程序中的範例使用下列交換器和節點命名法：
+
+* Nexus 92300YC交換器名稱為「CS1」和「CS2」。
+* 此程序中使用的範例會在第二個交換器上開始升級、即：_* CS2*。_
+* 叢集LIF名稱為節點1的「node1_clus1」和「node1_clus2」、節點2的「node2_clus1」和「node2_clus2」。
+* IPspace名稱為「叢集」。
+* 「cluster1：*：>」提示會指出叢集的名稱。
+* 每個節點上的叢集連接埠名稱為「e0a」和「e0b」。
++
+請參閱 link:https://hwu.netapp.com/Home/Index["_SUR1__ Hardware Universe"] 以取得平台所支援的實際叢集連接埠。
+
+* Nexus 2300YC交換器支援的交換器間連結（ISL）為連接埠1/65和1/66。
+* Nexus 2300YC交換器支援的節點連線為連接埠1/1到1/66。
+* 本程序中的範例使用兩個節點、但叢集中最多可有24個節點。
+

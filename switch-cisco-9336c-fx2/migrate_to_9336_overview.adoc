@@ -1,0 +1,29 @@
+---
+permalink: switch-cisco-9336c-fx2/migrate-to-9336-overview.html 
+sidebar: sidebar 
+keywords: Cisco Nexus cluster switches,replacing older Cisco switches,9336C-FX2 cluster switches,migrate to newer cisco cluster switch 
+summary: 當您將舊的Cisco Nexus叢集交換器更換為Cisco Nexus 9336C-FX2叢集交換器時、必須注意特定的組態資訊、連接埠連線和纜線需求。 
+---
+= 從Cisco交換器移轉至Cisco Nexus 9336C-FX2叢集交換器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+當您將舊的Cisco Nexus叢集交換器更換為Cisco Nexus 9336C-FX2叢集交換器時、必須注意特定的組態資訊、連接埠連線和纜線需求。
+
+* 支援下列叢集交換器：
++
+** Nexus 9336C-FX2
+** Nexus 92300YC
+** Nexus 5596UP
+** Nexus 3232C
+** Nexus 3132Q-V
+
+
+* 請參閱 https://hwu.netapp.com/["Hardware Universe"^] 以取得支援連接埠及其組態的完整詳細資料。
+* 您已將Nexus 9336C-FX2交換器上的部分連接埠設定為以10 GbE或40 GbE執行。
+* 您已規劃、移轉並記錄10 GbE和40 GbE連線、從節點連接至Nexus 9336C-FX2叢集交換器。
+* 本程序所支援的支援的支援版本包括ONTAP https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器"^] 頁面。
+

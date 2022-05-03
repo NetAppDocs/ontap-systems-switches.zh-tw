@@ -1,0 +1,69 @@
+---
+permalink: switch-cisco-3232c/concept-migrate-a-cn1610-switch-to-a-cisco-nexus-3232c-cluster-switch.html 
+sidebar: sidebar 
+keywords: migrate, cn1610 switch, cisco nexus 3232c cluster 
+summary: 使用Cisco Nexus 3232C叢集交換器更換CN1610叢集交換器時、您必須注意特定的組態資訊、連接埠連線和纜線需求。 
+---
+= 將CN1610交換器移轉至Cisco Nexus 3232C叢集交換器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用Cisco Nexus 3232C叢集交換器更換CN1610叢集交換器時、您必須注意特定的組態資訊、連接埠連線和纜線需求。
+
+叢集交換器支援下列節點連線：
+
+* NetApp CN1610：連接埠0/1到0/12（10 GbE）
+* Cisco Nexus 3232C：連接埠E1/1-30（40或100或4x10GbE）
+
+
+叢集交換器使用下列交換器間連結（ISL）連接埠。
+
+* NetApp CN1610：連接埠0/13至0/16（10 GbE）
+* Cisco Nexus 3232C：連接埠1/31-32（100GbE）
+
+
+[NOTE]
+====
+您必須在Cisco Nexus 3232C叢集交換器上使用4x10G中斷連接纜線。
+
+====
+下表顯示從NetApp CN1610交換器移轉至Cisco Nexus 3232C叢集交換器時、每個階段所需的纜線連接：
+
+|===
+| 階段 | 說明 | 必要的纜線 
+
+
+ a| 
+初始
+ a| 
+CN1610至CN1610（SFP+至SFP+）
+ a| 
+4條SFP+光纖或銅線直接連接纜線
+
+
+
+ a| 
+移轉
+ a| 
+CN1610至3232C（QSFP至SFP+）
+ a| 
+1條QSFP和4條SFP+光纖或銅線中斷纜線
+
+
+
+ a| 
+最終版本
+ a| 
+3232C至3232C（QSFP至QSFP）
+ a| 
+2條QSFP光纖或銅線直接連接纜線
+
+|===
+您必須下載適用的參考組態檔（RCT）。10 GbE和40/100 GbE連接埠的數量是在上可用的RCFs中定義 https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco®叢集網路交換器參考組態檔案下載"^] 頁面。
+
+本程序所支援的支援的支援版本包括ONTAP link:https://mysupport.netapp.com/NOW/download/software/cm_switches/.html["Cisco乙太網路交換器頁面"^]。
+
+本程序所支援的支援的版本包括ONTAP link:http://support.netapp.com/NOW/download/software/cm_switches_ntap/.html["NetApp CN1601與CN1610交換器頁面"^]。

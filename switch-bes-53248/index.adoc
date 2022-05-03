@@ -1,0 +1,12 @@
+---
+permalink: switch-bes-53248/index.html 
+sidebar: sidebar 
+keywords: broadcom, support, bes, cluster, switch, broadcam-supported bes-53248 cluster switches 
+summary: Broadcom支援的Bes-53248叢集交換器 
+---
+= Broadcom支援的Bes-53248叢集交換器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+

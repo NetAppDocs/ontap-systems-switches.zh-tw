@@ -1,0 +1,558 @@
+---
+permalink: switch-cisco-9336c-fx2/install-nxos-rcf.html 
+sidebar: sidebar 
+keywords: install rcf, cisco switches 
+summary: 您可以在初次設定Nexus 9336C-FX2交換器之後安裝RCF。您也可以使用此程序來升級RCF版本。 
+---
+= 安裝參考組態檔（RCF）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以在初次設定Nexus 9336C-FX2交換器之後安裝RCF。您也可以使用此程序來升級RCF版本。
+
+本程序中的範例使用下列交換器和節點命名法：
+
+* 兩個Cisco交換器的名稱為CS1和CS2。
+* 節點名稱為cluster1-01、cluster1-02、cluster1-03和cluster1-04。
+* 叢集LIF名稱為cluster1-01_clus1、cluster1-01_clus2、cluster1-02_clus1、cluster1-02_clus2、cluster1-03_clus1、 cluster1-03_clus2、cluster1-04_clus1和cluster1-04_clus2。
+* 「cluster1：*：>」提示會指出叢集的名稱。
+
+
+
+NOTE: 此程序需要同時使用ONTAP 支援指令和Cisco Nexus 9000系列交換器的指令；ONTAP 除非另有說明、否則會使用支援指令。
+
+.步驟
+. 顯示連接至叢集交換器的每個節點上的叢集連接埠：「network device-dDiscovery show」
++
+[listing]
+----
+cluster1::*> network device-discovery show
+Node/       Local  Discovered
+Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
+----------- ------ ------------------------- ----------------  --------
+cluster1-01/cdp
+            e0a    cs1                       Ethernet1/7       N9K-C9336C
+            e0d    cs2                       Ethernet1/7       N9K-C9336C
+cluster1-02/cdp
+            e0a    cs1                       Ethernet1/8       N9K-C9336C
+            e0d    cs2                       Ethernet1/8       N9K-C9336C
+cluster1-03/cdp
+            e0a    cs1                       Ethernet1/1/1     N9K-C9336C
+            e0b    cs2                       Ethernet1/1/1     N9K-C9336C
+cluster1-04/cdp
+            e0a    cs1                       Ethernet1/1/2     N9K-C9336C
+            e0b    cs2                       Ethernet1/1/2     N9K-C9336C
+cluster1::*>
+----
+. 檢查每個叢集連接埠的管理和作業狀態。
++
+.. 驗證所有叢集連接埠是否都正常運作：「network port show–role cluster」（網路連接埠顯示–角色叢集）
++
+[listing]
+----
+cluster1::*> network port show -role cluster
+
+Node: cluster1-01
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+e0a       Cluster      Cluster          up   9000  auto/100000 healthy false
+e0d       Cluster      Cluster          up   9000  auto/100000 healthy false
+
+Node: cluster1-02
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+e0a       Cluster      Cluster          up   9000  auto/100000 healthy false
+e0d       Cluster      Cluster          up   9000  auto/100000 healthy false
+8 entries were displayed.
+
+Node: cluster1-03
+
+   Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
+e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
+
+Node: cluster1-04
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
+e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
+cluster1::*>
+----
+.. 驗證所有的叢集介面（lifs）都位於主連接埠：「network interface show -role cluster」（網路介面show -role cluster）
++
+[listing]
+----
+cluster1::*> network interface show -role cluster
+            Logical            Status     Network           Current      Current Is
+Vserver     Interface          Admin/Oper Address/Mask      Node         Port    Home
+----------- ------------------ ---------- ----------------- ------------ ------- ----
+Cluster
+            cluster1-01_clus1  up/up     169.254.3.4/23     cluster1-01  e0a     true
+            cluster1-01_clus2  up/up     169.254.3.5/23     cluster1-01  e0d     true
+            cluster1-02_clus1  up/up     169.254.3.8/23     cluster1-02  e0a     true
+            cluster1-02_clus2  up/up     169.254.3.9/23     cluster1-02  e0d     true
+            cluster1-03_clus1  up/up     169.254.1.3/23     cluster1-03  e0a     true
+            cluster1-03_clus2  up/up     169.254.1.1/23     cluster1-03  e0b     true
+            cluster1-04_clus1  up/up     169.254.1.6/23     cluster1-04  e0a     true
+            cluster1-04_clus2  up/up     169.254.1.7/23     cluster1-04  e0b     true
+8 entries were displayed.
+cluster1::*>
+----
+.. 驗證叢集是否顯示兩個叢集交換器的資訊：「系統叢集交換器show -is監控、啟用作業的true」
++
+[listing]
+----
+cluster1::*> system cluster-switch show -is-monitoring-enabled-operational true
+Switch                      Type               Address          Model
+--------------------------- ------------------ ---------------- -----
+cs1                         cluster-network    10.233.205.90    N9K-C9336C
+     Serial Number: FOCXXXXXXGD
+      Is Monitored: true
+            Reason: None
+  Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
+                    9.3(5)
+    Version Source: CDP
+
+cs2                         cluster-network    10.233.205.91    N9K-C9336C
+     Serial Number: FOCXXXXXXGS
+      Is Monitored: true
+            Reason: None
+  Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
+                    9.3(5)
+    Version Source: CDP
+cluster1::*>
+----
+
+
+. 停用叢集生命體上的自動還原。
++
+[listing]
+----
+cluster1::*> network interface modify -vserver Cluster -lif \* -auto-revert false
+----
+. 在叢集交換器CS2上、關閉連接至節點叢集連接埠的連接埠。
++
+[listing]
+----
+cs2(config)# interface eth1/1/1-2,eth1/7-8
+cs2(config-if-range)# shutdown
+----
+. 驗證叢集LIF是否已移轉至叢集交換器CS1上裝載的連接埠。這可能需要幾秒鐘的時間。'network interface show -role cluster（網路介面顯示角色叢集）'
++
+[listing]
+----
+cluster1::*> network interface show -role cluster
+            Logical           Status     Network            Current       Current Is
+Vserver     Interface         Admin/Oper Address/Mask       Node          Port    Home
+----------- ----------------- ---------- ------------------ ------------- ------- ----
+Cluster
+            cluster1-01_clus1 up/up      169.254.3.4/23     cluster1-01   e0a     true
+            cluster1-01_clus2 up/up      169.254.3.5/23     cluster1-01   e0a     false
+            cluster1-02_clus1 up/up      169.254.3.8/23     cluster1-02   e0a     true
+            cluster1-02_clus2 up/up      169.254.3.9/23     cluster1-02   e0a     false
+            cluster1-03_clus1 up/up      169.254.1.3/23     cluster1-03   e0a     true
+            cluster1-03_clus2 up/up      169.254.1.1/23     cluster1-03   e0a     false
+            cluster1-04_clus1 up/up      169.254.1.6/23     cluster1-04   e0a     true
+            cluster1-04_clus2 up/up      169.254.1.7/23     cluster1-04   e0a     false
+8 entries were displayed.
+cluster1::*>
+----
+. 驗證叢集是否正常：「叢集顯示」
++
+[listing]
+----
+cluster1::*> cluster show
+Node                 Health  Eligibility   Epsilon
+-------------------- ------- ------------  -------
+cluster1-01          true    true          false
+cluster1-02          true    true          false
+cluster1-03          true    true          true
+cluster1-04          true    true          false
+4 entries were displayed.
+cluster1::*>
+----
+. 清除交換器CS2上的組態、然後執行基本設定。
++
+
+CAUTION: 更新或套用新的RCF時、您必須清除交換器設定並執行基本組態。您必須使用序列主控台連線至交換器、才能清除交換器設定。
+
++
+.. 清除組態。此步驟需要主控台連線至交換器。
++
+[listing]
+----
+cs2# write erase
+Warning: This command will erase the startup-configuration.
+Do you wish to proceed anyway? (y/n)  [n] y
+cs2# reload
+This command will reboot the system. (y/n)?  [n] y
+cs2#
+----
+.. 執行交換器的基本設定。
+
+
+. 使用下列傳輸傳輸協定之一、將RCF複製到交換器CS2的bootflash：FTP、TFTP、SFTP或scp。如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000系列NX-OS命令參考"^] 指南：
++
+本範例顯示使用TFTP將RCF複製到交換器CS2上的bootFlash：
+
++
+[listing]
+----
+cs2# copy tftp: bootflash: vrf management
+Enter source filename: Nexus_9336C_RCF_v1.6-Cluster-HA-Breakout.txt
+Enter hostname for the tftp server: 172.22.201.50
+Trying to connect to tftp server......Connection to Server Established.
+TFTP get operation was successful
+Copy complete, now saving to disk (please wait)...
+----
+. 將先前下載的RCF套用至bootFlash。
++
+如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000系列NX-OS命令參考"^] 指南：
+
++
+此範例顯示在交換器CS2上安裝的RCF檔案「Nexus _9336C_RCF-v1.6-Cluster-HA-Breakout.txt'：
+
++
+[listing]
+----
+cs2# copy Nexus_9336C_RCF_v1.6-Cluster-HA-Breakout.txt running-config echo-commands
+----
+. 檢查「show banner motd」命令的橫幅輸出。您必須閱讀並遵循這些指示、以確保交換器的組態和操作正確無誤。
++
+[listing]
+----
+cs2# show banner motd
+
+******************************************************************************
+* NetApp Reference Configuration File (RCF)
+*
+* Switch   : Nexus N9K-C9336C-FX2
+* Filename : Nexus_9336C_RCF_v1.6-Cluster-HA-Breakout.txt
+* Date     : 10-23-2020
+* Version  : v1.6
+*
+* Port Usage:
+* Ports  1- 3: Breakout mode (4x10G) Intra-Cluster Ports, int e1/1/1-4, e1/2/1-4
+, e1/3/1-4
+* Ports  4- 6: Breakout mode (4x25G) Intra-Cluster/HA Ports, int e1/4/1-4, e1/5/
+1-4, e1/6/1-4
+* Ports  7-34: 40/100GbE Intra-Cluster/HA Ports, int e1/7-34
+* Ports 35-36: Intra-Cluster ISL Ports, int e1/35-36
+*
+* Dynamic breakout commands:
+* 10G: interface breakout module 1 port <range> map 10g-4x
+* 25G: interface breakout module 1 port <range> map 25g-4x
+*
+* Undo breakout commands and return interfaces to 40/100G configuration in confi
+g mode:
+* no interface breakout module 1 port <range> map 10g-4x
+* no interface breakout module 1 port <range> map 25g-4x
+* interface Ethernet <interfaces taken out of breakout mode>
+* inherit port-profile 40-100G
+* priority-flow-control mode auto
+* service-policy input HA
+* exit
+*
+******************************************************************************
+----
+. 確認RCF檔案為正確的更新版本：「How RF-config」
++
+當您檢查輸出以確認您擁有正確的RCF時、請確定下列資訊正確無誤：
+
++
+** RCF橫幅
+** 節點和連接埠設定
+** 自訂輸出會根據您的站台組態而有所不同。請檢查連接埠設定、並參閱版本說明、以瞭解您安裝的RCF的任何特定變更。
+
+
+. 驗證RCF版本和交換器設定是否正確之後、請將執行組態檔複製到啟動組態檔。
++
+如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000系列NX-OS命令參考"^] 指南：
+
++
+[listing]
+----
+cs2# copy running-config startup-config \[\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\] 100% Copy complete
+----
+. 重新開機交換器CS2。您可以在交換器重新開機時忽略節點上報告的「叢集連接埠當機」事件。
++
+[listing]
+----
+cs2# reload
+This command will reboot the system. (y/n)?  [n] y
+----
+. 驗證叢集上叢集連接埠的健全狀況。
++
+.. 驗證叢集中所有節點的e0d連接埠是否正常運作：「network port show -role cluster」（網路連接埠show -role叢集）
++
+[listing]
+----
+cluster1::*> network port show -role cluster
+
+Node: cluster1-01
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
+e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
+
+Node: cluster1-02
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
+e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
+
+Node: cluster1-03
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+e0a       Cluster      Cluster          up   9000  auto/100000 healthy false
+e0d       Cluster      Cluster          up   9000  auto/100000 healthy false
+
+Node: cluster1-04
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+e0a       Cluster      Cluster          up   9000  auto/100000 healthy false
+e0d       Cluster      Cluster          up   9000  auto/100000 healthy false
+8 entries were displayed.
+----
+.. 驗證叢集的交換器健全狀況（這可能不會顯示交換器CS2、因為LIF不是位於e0d上）。
++
+[listing]
+----
+cluster1::*> network device-discovery show -protocol cdp
+Node/       Local  Discovered
+Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
+----------- ------ ------------------------- ----------------- --------
+cluster1-01/cdp
+            e0a    cs1                       Ethernet1/7       N9K-C9336C
+            e0d    cs2                       Ethernet1/7       N9K-C9336C
+cluster01-2/cdp
+            e0a    cs1                       Ethernet1/8       N9K-C9336C
+            e0d    cs2                       Ethernet1/8       N9K-C9336C
+cluster01-3/cdp
+            e0a    cs1                       Ethernet1/1/1     N9K-C9336C
+            e0b    cs2                       Ethernet1/1/1     N9K-C9336C
+cluster1-04/cdp
+            e0a    cs1                       Ethernet1/1/2     N9K-C9336C
+            e0b    cs2                       Ethernet1/1/2     N9K-C9336C
+
+cluster1::*> system cluster-switch show -is-monitoring-enabled-operational true
+Switch                      Type               Address          Model
+--------------------------- ------------------ ---------------- -----
+cs1                         cluster-network    10.233.205.90    NX9-C9336C
+     Serial Number: FOCXXXXXXGD
+      Is Monitored: true
+            Reason: None
+  Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
+                    9.3(5)
+    Version Source: CDP
+
+cs2                         cluster-network    10.233.205.91    NX9-C9336C
+     Serial Number: FOCXXXXXXGS
+      Is Monitored: true
+            Reason: None
+  Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
+                    9.3(5)
+    Version Source: CDP
+
+2 entries were displayed.
+----
++
+
+NOTE: 您可能會在CS1交換器主控台觀察到下列輸出、視先前載入交換器的RCF版本而定：
+
+
+
++
+[listing]
+----
+2020 Nov 17 16:07:18 cs1 %$ VDC-1 %$ %STP-2-UNBLOCK_CONSIST_PORT: Unblocking port port-channel1 on VLAN0092. Port consistency restored.
+2020 Nov 17 16:07:23 cs1 %$ VDC-1 %$ %STP-2-BLOCK_PVID_PEER: Blocking port-channel1 on VLAN0001. Inconsistent peer vlan.
+2020 Nov 17 16:07:23 cs1 %$ VDC-1 %$ %STP-2-BLOCK_PVID_LOCAL: Blocking port-channel1 on VLAN0092. Inconsistent local vlan.
+----
+. 在叢集交換器CS1上、關閉連接至節點叢集連接埠的連接埠。
++
+下列範例使用步驟1的介面輸出範例：
+
++
+[listing]
+----
+cs1(config)# interface eth1/1/1-2,eth1/7-8
+cs1(config-if-range)# shutdown
+----
+. 驗證叢集LIF是否已移轉至交換器CS2上裝載的連接埠。這可能需要幾秒鐘的時間。「網路介面show -role cluster」
++
+[listing]
+----
+cluster1::*> network interface show -role cluster
+            Logical            Status     Network            Current             Current Is
+Vserver     Interface          Admin/Oper Address/Mask       Node                Port    Home
+----------- ------------------ ---------- ------------------ ------------------- ------- ----
+Cluster
+            cluster1-01_clus1  up/up      169.254.3.4/23     cluster1-01         e0d     false
+            cluster1-01_clus2  up/up      169.254.3.5/23     cluster1-01         e0d     true
+            cluster1-02_clus1  up/up      169.254.3.8/23     cluster1-02         e0d     false
+            cluster1-02_clus2  up/up      169.254.3.9/23     cluster1-02         e0d     true
+            cluster1-03_clus1  up/up      169.254.1.3/23     cluster1-03         e0b     false
+            cluster1-03_clus2  up/up      169.254.1.1/23     cluster1-03         e0b     true
+            cluster1-04_clus1  up/up      169.254.1.6/23     cluster1-04         e0b     false
+            cluster1-04_clus2  up/up      169.254.1.7/23     cluster1-04         e0b     true
+8 entries were displayed.
+cluster1::*>
+----
+. 驗證叢集是否正常：「叢集顯示」
++
+[listing]
+----
+cluster1::*> cluster show
+Node                 Health   Eligibility   Epsilon
+-------------------- -------- ------------- -------
+cluster1-01          true     true          false
+cluster1-02          true     true          false
+cluster1-03          true     true          true
+cluster1-04          true     true          false
+4 entries were displayed.
+cluster1::*>
+----
+. 在交換器CS1上重複步驟7至14。
+. 在叢集生命體上啟用自動還原。
++
+[listing]
+----
+cluster1::*> network interface modify -vserver Cluster -lif \* -auto-revert True
+----
+. 重新開機交換器CS1。您可以這樣做、觸發叢集生命期以恢復到其主連接埠。您可以在交換器重新開機時忽略節點上報告的「叢集連接埠當機」事件。
++
+[listing]
+----
+cs1# reload
+This command will reboot the system. (y/n)?  [n] y
+----
+. 驗證連接至叢集連接埠的交換器連接埠是否正常運作。
++
+[listing]
+----
+cs1# show interface brief \| grep up
+.
+.
+Eth1/1/1      1       eth  access up      none                    10G(D) --
+Eth1/1/2      1       eth  access up      none                    10G(D) --
+Eth1/7        1       eth  trunk  up      none                   100G(D) --
+Eth1/8        1       eth  trunk  up      none                   100G(D) --
+.
+.
+----
+. 驗證CS1和CS2之間的ISL是否正常運作：「show port-channel Summary」（顯示連接埠通道摘要）
++
+[listing]
+----
+cs1# show port-channel summary
+Flags:  D - Down        P - Up in port-channel (members)
+        I - Individual  H - Hot-standby (LACP only)
+        s - Suspended   r - Module-removed
+        b - BFD Session Wait
+        S - Switched    R - Routed
+        U - Up (port-channel)
+        p - Up in delay-lacp mode (member)
+        M - Not in use. Min-links not met
+--------------------------------------------------------------------------------
+Group Port-       Type     Protocol  Member Ports      Channel
+--------------------------------------------------------------------------------
+1     Po1(SU)     Eth      LACP      Eth1/35(P)        Eth1/36(P)
+cs1#
+----
+. 驗證叢集lifs是否已還原至其主連接埠：「network interface show -role cluster」（網路介面show -role叢集）
++
+[listing]
+----
+cluster1::*> network interface show -role cluster
+            Logical            Status     Network            Current             Current Is
+Vserver     Interface          Admin/Oper Address/Mask       Node                Port    Home
+----------- ------------------ ---------- ------------------ ------------------- ------- ----
+Cluster
+            cluster1-01_clus1  up/up      169.254.3.4/23     cluster1-01         e0d     true
+            cluster1-01_clus2  up/up      169.254.3.5/23     cluster1-01         e0d     true
+            cluster1-02_clus1  up/up      169.254.3.8/23     cluster1-02         e0d     true
+            cluster1-02_clus2  up/up      169.254.3.9/23     cluster1-02         e0d     true
+            cluster1-03_clus1  up/up      169.254.1.3/23     cluster1-03         e0b     true
+            cluster1-03_clus2  up/up      169.254.1.1/23     cluster1-03         e0b     true
+            cluster1-04_clus1  up/up      169.254.1.6/23     cluster1-04         e0b     true
+            cluster1-04_clus2  up/up      169.254.1.7/23     cluster1-04         e0b     true
+8 entries were displayed.
+cluster1::*>
+----
+. 驗證叢集是否正常：「叢集顯示」
++
+[listing]
+----
+cluster1::*> cluster show
+Node                 Health  Eligibility   Epsilon
+-------------------- ------- ------------- -------
+cluster1-01          true    true          false
+cluster1-02          true    true          false
+cluster1-03          true    true          true
+cluster1-04          true    true          false
+4 entries were displayed.
+cluster1::*>
+----
+. Ping遠端叢集介面以驗證連線能力：「叢集ping叢集節點local」
++
+[listing]
+----
+cluster1::*> cluster ping-cluster -node local
+Host is cluster1-03
+Getting addresses from network interface table...
+Cluster cluster1-03_clus1 169.254.1.3 cluster1-03 e0a
+Cluster cluster1-03_clus2 169.254.1.1 cluster1-03 e0b
+Cluster cluster1-04_clus1 169.254.1.6 cluster1-04 e0a
+Cluster cluster1-04_clus2 169.254.1.7 cluster1-04 e0b
+Cluster cluster1-01_clus1 169.254.3.4 cluster1-01 e0a
+Cluster cluster1-01_clus2 169.254.3.5 cluster1-01 e0d
+Cluster cluster1-02_clus1 169.254.3.8 cluster1-02 e0a
+Cluster cluster1-02_clus2 169.254.3.9 cluster1-02 e0d
+Local = 169.254.1.3 169.254.1.1
+Remote = 169.254.1.6 169.254.1.7 169.254.3.4 169.254.3.5 169.254.3.8 169.254.3.9
+Cluster Vserver Id = 4294967293
+Ping status:
+............
+Basic connectivity succeeds on 12 path(s)
+Basic connectivity fails on 0 path(s)
+................................................
+Detected 9000 byte MTU on 12 path(s):
+    Local 169.254.1.3 to Remote 169.254.1.6
+    Local 169.254.1.3 to Remote 169.254.1.7
+    Local 169.254.1.3 to Remote 169.254.3.4
+    Local 169.254.1.3 to Remote 169.254.3.5
+    Local 169.254.1.3 to Remote 169.254.3.8
+    Local 169.254.1.3 to Remote 169.254.3.9
+    Local 169.254.1.1 to Remote 169.254.1.6
+    Local 169.254.1.1 to Remote 169.254.1.7
+    Local 169.254.1.1 to Remote 169.254.3.4
+    Local 169.254.1.1 to Remote 169.254.3.5
+    Local 169.254.1.1 to Remote 169.254.3.8
+    Local 169.254.1.1 to Remote 169.254.3.9
+Larger than PMTU communication succeeds on 12 path(s)
+RPC status:
+6 paths up, 0 paths down (tcp check)
+6 paths up, 0 paths down (udp check)
+----
+

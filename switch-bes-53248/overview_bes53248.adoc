@@ -1,0 +1,83 @@
+---
+permalink: switch-bes-53248/overview-bes53248.html 
+sidebar: sidebar 
+keywords: cluster-mode,supported versions,switches supported,cluster network,efos 
+summary: Broadcom支援的Bes - 53248叢集交換器、設計用於ONTAP 大小介於2到24個節點的叢集、範圍涵蓋在《支援更新版本的2到24個節點之間。支援40/100 GbE叢集連接埠、從EFOS韌體版本3.4.4.6及更新版本開始。 
+---
+= Broadcom支援的Bes - 53248叢集交換器總覽
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Broadcom支援的Bes - 53248叢集交換器、設計用於ONTAP 大小介於2到24個節點的叢集、範圍涵蓋在《支援更新版本的2到24個節點之間。支援40/100 GbE叢集連接埠、從EFOS韌體版本3.4.4.6及更新版本開始。
+
+Bes - 53248是一款在Broadcom嵌入式作業系統上執行的交換器、稱為乙太網路架構作業系統（EFOS）。
+
+下表列出B底座 叢集交換器、機架安裝軌道套件、風扇和電源供應器的零件編號和說明：
+
+[cols="1,2"]
+|===
+| 產品編號 | 說明 
+
+
+ a| 
+X190005
+ a| 
+BS-53248、CLSW、16Pt10/25GB、PTSx、BRDCM（PTSx =連接埠側邊排氣）
+
+
+
+ a| 
+X190005R
+ a| 
+BF-53248、CLSW、16Pt10/25GB、PSIN、BRDCM（PSIN =連接埠側邊輸入）
+
+
+
+ a| 
+X-RAIL：4後190005
+ a| 
+機架安裝軌道套件Ozeki 4柱19吋
+
+
+
+ a| 
+X-Fan-190005-R
+ a| 
+風扇、連接埠側進氣X190005
+
+
+
+ a| 
+X-Fan-190005-F
+ a| 
+風扇、連接埠側邊排氣X190005
+
+
+
+ a| 
+X-PSU-190005-R
+ a| 
+電源供應器、連接埠側進氣X190005
+
+
+
+ a| 
+X-PSU-190005-F
+ a| 
+電源供應器、連接埠側排風X190005
+
+|===
+氣流總覽以所提供的兩種機型為基礎：
+
+* 連接埠側的排氣氣流（標準氣流）：冷空氣透過冷通道中的風扇和電源供應器模組進入機箱、並透過熱通道中的機箱連接埠端口排出。藍色色彩表示連接埠側邊的排氣氣流。這是最常見的選項。
+* 連接埠側進氣（反轉氣流）：冷空氣透過冷通道的連接埠端點進入機箱、並透過熱通道中的風扇和電源供應器模組排出。
+
+
+請參閱 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/MetroCluster/How_to_add_Additional_Port_Licensing_for_the_Broadcom-Supported_BES-53248_Switch["NetApp知識庫文章：如何為Broadcom支援的B怎麼53248交換器新增額外的連接埠授權"^] 如需新增其他連接埠授權的詳細資訊、
+
+如需相關連接器和纜線選項的相關資訊、以及其零件編號、請參閱 https://hwu.netapp.com/Home/Index["NetApp Hardware Universe"^]。
+
+如需更多資訊、請參閱「叢集網路與管理網路相容性對照表」（_Cluster Network and Management Network Compatibility Matrix）、此表可從BS-53248交換器下載網站取得 https://mysupport.netapp.com/site/products/all/details/broadcom-cluster-switches/downloads-tab["Broadcom叢集交換器"^]。

@@ -1,0 +1,65 @@
+---
+permalink: switch-bes-53248/configure-health-monitor.html 
+sidebar: sidebar 
+keywords: CSHM,initial setup,configuration file,cshm,enable SSH 
+summary: 您可以使用此程序來安裝適用的組態檔、以監控B交互 式叢集交換器的叢集交換器健全狀況。在版本9.5P7及更早版本、以及9.6P2及更早版本中、您必須分別下載叢集交換器健全狀況監視器組態檔。ONTAP在發行版本9.5P8及更新版本、9.6P3及更新版本、以及9.7及更新版本中、叢集交換器健全狀況監視器組態檔與不含更新版本的不含更新版本的不含更新版本的不含更新版本的不含更新版本的不ONTAP ONTAP 
+---
+= 安裝叢集交換器健全狀況監視器（CSHM）組態檔
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用此程序來安裝適用的組態檔、以監控B交互 式叢集交換器的叢集交換器健全狀況。在版本9.5P7及更早版本、以及9.6P2及更早版本中、您必須分別下載叢集交換器健全狀況監視器組態檔。ONTAP在發行版本9.5P8及更新版本、9.6P3及更新版本、以及9.7及更新版本中、叢集交換器健全狀況監視器組態檔與不含更新版本的不含更新版本的不含更新版本的不含更新版本的不含更新版本的不ONTAP ONTAP
+
+在您設定Bes - 53248叢集交換器的交換器健全狀況監視器之前、您必須確保ONTAP 該叢集已啟動並正在執行。
+
+
+NOTE: 建議啟用SSH、以便使用CSHM中的所有功能。
+
+.步驟
+. 根據對應ONTAP 的版本、下載叢集交換器健全狀況監視器組態壓縮檔。此檔案可從頁面取得： https://mysupport.netapp.com/NOW/cgi-bin/software/["NetApp軟體下載"^]
++
+.. 在「軟體」下載頁面上、選取*「交換器健全狀況監視器組態檔案」*
+.. 選取「Platform =* ONTAP S供*參考*」、然後按一下「* Go！*」
+.. 在「Switch Health Monitor Configuration Files for ONTAP Sfor the Sfor the」（交換器健全狀況監視器組態檔案以供參考）頁面上、按一下*
+.. 在「Switch Health Monitor Configuration Files for ONTAP Sfor the Sfor the Description」（交換器健全狀況監控組態檔案-說明）頁面上、按一下* Download *以取得適用的叢集交換器機型、例如：* Broadcom支援的BS-53245*
+.. 在「終端使用者授權合約」頁面上、按一下「*接受*」
+.. 在「交換器健全狀況監視器組態檔案以ONTAP 供參考-下載」頁面上、選取適用的組態檔、例如* Broadcom _BS-53248.壓縮*
+
+
+. 將適用的Zip檔案上傳至內部Web伺服器、其中IP位址為X.X.X.X
++
+如果內部Web伺服器IP位址為192．168．2、假設存在/usr/downloads目錄、您可以使用scp將壓縮檔上傳至Web伺服器：
+
++
+[listing]
+----
+% scp Broadcom_BES-53248.zip admin@192.168.2.20:/usr/download/Broadcom_BES-53248.zip
+----
+. 使用ONTAP 命令「show -privit advance"（進階設定）：
++
+[listing]
+----
+cluster1::> set -privilege advanced
+----
+. 執行交換器健全狀況監視器組態命令「系統叢集交換器設定-健全狀況監控-節點*-package-URL \http://server/file-location`:」
++
+[listing]
+----
+cluster1::> system cluster-switch configure-health-monitor -node * -package-url
+http://192.168.2.20/usr/download/Broadcom_BES-53248.zip
+----
+. 確認命令輸出包含文字字串「已成功處理下載的套件」。如果發生錯誤、請聯絡NetApp支援部門。
+. 在ONTAP 作業系統上執行命令「系統叢集交換器show」、並確保在監控欄位設定為「True」時、發現叢集交換器。
++
+[listing]
+----
+cluster1::> system cluster-switch show
+----
++
+
+NOTE: 如果您在任何時候回復到ONTAP 舊版的支援、則需要再次安裝CSHealth組態檔案、以啟用BS-53248叢集交換器的交換器健全狀況監控功能。
+
+

@@ -1,0 +1,16 @@
+---
+permalink: switch-cisco-9336c-fx2/migrate-to-2n-switched-overview.html 
+sidebar: sidebar 
+keywords: two-node switchless cluster,migrating to a Cisco 9336C-FX2 switch,tnsc 
+summary: 將雙節點無交換式叢集（不中斷營運）移轉至採用Cisco Nexus 9336C-FX2叢集交換器的叢集時、您必須瞭解某些組態資訊、連接埠連線和纜線需求。您使用的程序取決於每個控制器上是否有兩個專屬的叢集網路連接埠、或每個控制器上是否有一個叢集連接埠。記錄的程序適用於所有使用光纖或雙軸纜線連接埠的節點、但如果節點使用內建10Gb Base-T RJ45連接埠作為叢集網路連接埠、則此交換器不支援此程序。 
+---
+= 使用Cisco Nexus 9336C-FX2叢集交換器移轉至雙節點交換叢集
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+將雙節點無交換式叢集（不中斷營運）移轉至採用Cisco Nexus 9336C-FX2叢集交換器的叢集時、您必須瞭解某些組態資訊、連接埠連線和纜線需求。您使用的程序取決於每個控制器上是否有兩個專屬的叢集網路連接埠、或每個控制器上是否有一個叢集連接埠。記錄的程序適用於所有使用光纖或雙軸纜線連接埠的節點、但如果節點使用內建10Gb Base-T RJ45連接埠作為叢集網路連接埠、則此交換器不支援此程序。
+
+大多數系統在每個控制器上都需要兩個專用的叢集網路連接埠。請參閱 https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器"^]

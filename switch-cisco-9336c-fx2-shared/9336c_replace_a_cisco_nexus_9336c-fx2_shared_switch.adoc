@@ -1,0 +1,510 @@
+---
+sidebar: sidebar 
+permalink: switch-cisco-9336c-fx2-shared/9336c_replace_a_cisco_nexus_9336c-fx2_shared_switch.html 
+keywords:  
+summary:  
+---
+= 更換Cisco Nexus 9336C-FX2共享交換器
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+
+
+==== 更換Cisco Nexus 9336C-FX2共享交換器
+
+更換故障的Nexus 9336C-FX2共用交換器是不中斷營運的程序（NDU）。
+
+在目前環境和更換交換器上執行交換器更換之前、必須符合下列條件。
+
+* 現有的叢集與網路基礎架構：
++
+** 必須使用至少一個完全連接的叢集交換器、驗證現有叢集是否完全正常運作。
+** 所有叢集連接埠必須為* up *。
+** 所有叢集邏輯介面（LIF）都必須為* up *及其主連接埠。
+** 使用支援Ping叢ONTAP 集的節點節點node1命令時、必須指出所有路徑上的基本連線能力和大於PMTU的通訊均已成功完成。
+
+
+* Nexus 9336C-FX2替換交換器：
++
+** 替換交換器上的管理網路連線功能必須正常運作。
+** 更換交換器的主控台存取必須已就緒。
+** 節點連線為連接埠1/1至1/34：
+** 所有交換器間連結（ISL）連接埠必須在連接埠1/35和1/36上停用。
+** 所需的參考組態檔（RCF）和NX-OS作業系統映像交換器必須載入交換器。
+** 任何先前的站台自訂（例如STP、SNMP和SSH）都應該複製到新交換器。
+
+
+
+
+您必須執行命令、從裝載叢集LIF的節點移轉叢集LIF。
+
+本程序中的範例使用下列交換器和節點命名法：
+
+* 現有Nexus 9336C-FX2交換器的名稱為_SH1_和_sh2_。
+* 新Nexus 9336C-FX2交換器的名稱為_newsh1_和_newsh2_。
+* 節點名稱是_node1_和_node2_。
+* 每個節點上的叢集連接埠名稱為_e3a_和_e3c_。
+* 叢集LIF名稱為節點1的「node1_clus1」和「node1_clus2」、節點2的「node2_clus1」和「node2_clus2」。
+* 對所有叢集節點進行變更的提示為cluster1：：*>。
+
+
+
+NOTE: 下列程序以下列網路拓撲為基礎：
+
+[listing]
+----
+cluster1::*> network port show -ipspace Cluster
+
+Node: node1
+                                                                        Ignore
+                                                  Speed(Mbps)  Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper   Status   Status
+--------- ------------ ---------------- ---- ---- ------------ -------- ------
+e3a       Cluster      Cluster          up   9000  auto/100000 healthy  false
+e3b       Cluster      Cluster          up   9000  auto/100000 healthy  false
+
+Node: node2
+                                                                        Ignore
+                                                  Speed(Mbps)  Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper   Status   Status
+--------- ------------ ---------------- ---- ---- ------------ -------- ------
+e3a       Cluster      Cluster          up   9000  auto/100000 healthy  false
+e3b       Cluster      Cluster          up   9000  auto/100000 healthy  false
+4 entries were displayed.
+
+
+cluster1::*> network interface show -vserver Cluster
+            Logical    Status     Network            Current       Current Is
+Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
+----------- ---------- ---------- ------------------ ------------- ------- ----
+Cluster
+            node1_clus1  up/up    169.254.209.69/16  node1         e3a     true
+            node1_clus2  up/up    169.254.49.125/16  node1         e3b     true
+            node2_clus1  up/up    169.254.47.194/16  node2         e3a     true
+            node2_clus2  up/up    169.254.19.183/16  node2         e3b     true
+4 entries were displayed.
+
+cluster1::*> network device-discovery show -protocol cdp
+Node/       Local  Discovered
+Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
+----------- ------ ------------------------- ----------------  ----------------
+node2      /cdp
+            e3a    sh1                       Eth1/2            N9K-C9336C
+            e3b    sh2                       Eth1/2            N9K-C9336C
+
+node1      /cdp
+            e3a    sh1                       Eth1/1            N9K-C9336C
+            e3b    sh2                       Eth1/1            N9K-C9336C
+4 entries were displayed.
+
+sh1# show cdp neighbors
+Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater,
+                  V - VoIP-Phone, D - Remotely-Managed-Device,
+                  s - Supports-STP-Dispute
+Device-ID          Local Intrfce  Hldtme Capability  Platform      Port ID
+node1              Eth1/1         144    H           FAS2980       e3a
+node2              Eth1/2         145    H           FAS2980       e3a
+sh2                Eth1/35        176    R S I s     N9K-C9336C    Eth1/35
+sh2 (FDO220329V5)   Eth1/36       176    R S I s     N9K-C9336C    Eth1/36
+Total entries displayed: 4
+
+sh2# show cdp neighbors
+Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater,
+                  V - VoIP-Phone, D - Remotely-Managed-Device,
+                  s - Supports-STP-Dispute
+Device-ID          Local Intrfce  Hldtme Capability  Platform      Port ID
+node1              Eth1/1         139    H           FAS2980       eb
+node2              Eth1/2         124    H           FAS2980       eb
+sh1                Eth1/35        178    R S I s     N9K-C9336C    Eth1/35
+sh1                Eth1/36        178    R S I s     N9K-C9336C    Eth1/36
+Total entries displayed: 4
+----
+.步驟
+. 如果AutoSupport 此叢集啟用了「支援功能」、請叫用AutoSupport 「系統節點AutoSupport 支援功能叫用節點*-type all -most MAn=xh」訊息來禁止自動建立案例
++
+其中x是維護時段的持續時間（以小時為單位）。
+
+. 選用：在交換器newsh2上安裝適當的RCF和映像、並進行必要的站台準備。
++
+.. 如有必要、請針對新交換器驗證、下載及安裝適當版本的RCF和NX-OS軟體。如果您已確認新交換器已正確設定、而且不需要更新RCF和NX-OS軟體、請繼續執行 <<step3,步驟3.>>。
+.. 請前往NetApp支援網站上的NetApp叢集與管理網路交換器參考組態檔案說明頁面。
+.. 按一下叢集網路與管理網路相容性對照表的連結、然後記下所需的交換器軟體版本。
+.. 按一下瀏覽器的返回箭號以返回「Description（說明）」頁面、按一下「Continue（繼續）」、「Accept the license agreement（接受授權合約）」、然後前往「Download（下載）」頁面。
+.. 請依照下載頁面上的步驟、針對ONTAP 您要安裝的版本的更新軟體、下載正確的RCF和NX-OS檔案。
+
+
+. [[step3]在新交換器上、以admin身分登入、並關閉所有連接至節點叢集介面的連接埠（連接埠1/1至1/34）。如果您要更換的交換器無法正常運作且已關機、請前往 <<step4,步驟4.>>。叢集節點上的LIF應已容錯移轉至每個節點的其他叢集連接埠。
+
+
+[listing]
+----
+newsh2# config
+Enter configuration commands, one per line. End with CNTL/Z.
+newsh2(config)# interface e1/1-34
+newsh2(config-if-range)# shutdown
+----
+. [[step4]]確認所有叢集生命週年都已啟用自動還原功能。「網路介面show - vserver叢集-功能變數自動回復」
+
+
+[listing]
+----
+cluster1::> network interface show -vserver Cluster -fields auto-revert
+             Logical
+Vserver      Interface     Auto-revert
+------------ ------------- -------------
+Cluster      node1_clus1   true
+Cluster      node1_clus2   true
+Cluster      node2_clus1   true
+Cluster      node2_clus2   true
+4 entries were displayed.
+----
+. [[step5]驗證所有叢集l生命 週年是否都能通訊：「叢集ping cluster <節點名稱>」
+
+
+[listing]
+----
+cluster1::*> cluster ping-cluster node1
+Host is node2
+Getting addresses from network interface table...
+Cluster node1_clus1 169.254.209.69 node1 e3a
+Cluster node1_clus2 169.254.49.125 node1 e3b
+Cluster node2_clus1 169.254.47.194 node2 e3a
+Cluster node2_clus2 169.254.19.183 node2 e3b
+Local = 169.254.47.194 169.254.19.183
+Remote = 169.254.209.69 169.254.49.125
+Cluster Vserver Id = 4294967293
+Ping status:
+....
+Basic connectivity succeeds on 4 path(s)
+Basic connectivity fails on 0 path(s)
+................
+Detected 9000 byte MTU on 4 path(s):
+Local 169.254.47.194 to Remote 169.254.209.69
+Local 169.254.47.194 to Remote 169.254.49.125
+Local 169.254.19.183 to Remote 169.254.209.69
+Local 169.254.19.183 to Remote 169.254.49.125
+Larger than PMTU communication succeeds on 4 path(s)
+RPC status:
+2 paths up, 0 paths down (tcp check)
+2 paths up, 0 paths down (udp check)
+----
+. [[step6]關閉Nexus 9336C-FX2交換器SH1上的ISL連接埠1/35和1/36。
+
+
+[listing]
+----
+sh1# configure
+Enter configuration commands, one per line. End with CNTL/Z.
+sh1(config)# interface e1/35-36
+sh1(config-if-range)# shutdown
+sh1(config-if-range)#
+----
+. [[step7]從Nexus 9336C-FX2 sh2交換器拔下所有纜線、然後將其連接至Nexus C9336C-FX2 newsh2交換器上的相同連接埠。
+. 在SH1和newsh2交換器之間啟動ISL連接埠1/35和1/36、然後驗證連接埠通道作業狀態。
++
+連接埠通道應指示PO1（SU）、而成員連接埠應指示eth1/35（P）和eth1/36（P）。
+
++
+此範例可啟用ISL連接埠1/35和1/36、並在交換器SH1上顯示連接埠通道摘要。
+
+
+
+[listing]
+----
+sh1# configure
+Enter configuration commands, one per line. End with CNTL/Z.
+sh1 (config)# int e1/35-36
+sh1 (config-if-range)# no shutdown
+sh1 (config-if-range)# show port-channel summary
+Flags:  D - Down        P - Up in port-channel (members)
+        I - Individual  H - Hot-standby (LACP only)
+        s - Suspended   r - Module-removed
+        b - BFD Session Wait
+        S - Switched    R - Routed
+        U - Up (port-channel)
+        p - Up in delay-lacp mode (member)
+        M - Not in use. Min-links not met
+--------------------------------------------------------------------------------
+Group Port-       Type     Protocol  Member       Ports
+      Channel
+--------------------------------------------------------------------------------
+1     Po1(SU)     Eth      LACP      Eth1/35(P)   Eth1/36(P)
+
+sh1 (config-if-range)#
+----
+. [[step9]]確認所有節點上的連接埠e3b都已開啟：「網路連接埠顯示IPSpace叢集」
++
+輸出應如下所示：
+
+
+
+[listing]
+----
+cluster1::*> network port show -ipspace Cluster
+
+Node: node1
+                                                                         Ignore
+                                                   Speed(Mbps)  Health   Health
+Port      IPspace      Broadcast Domain Link MTU   Admin/Oper   Status   Status
+--------- ------------ ---------------- ---- ----- ---------- - - -------- ----
+e3a       Cluster      Cluster          up   9000  auto/100000  healthy  false
+e3b       Cluster      Cluster          up   9000  auto/100000  healthy  false
+
+Node: node2
+                                                                         Ignore
+                                                   Speed(Mbps)  Health   Health
+Port      IPspace      Broadcast Domain Link MTU   Admin/Oper   Status   Status
+--------- ------------ ---------------- ---- ----- ----------- -  -------- ----
+e3a       Cluster      Cluster          up   9000  auto/100000  healthy  false
+e3b       Cluster      Cluster          up   9000  auto/auto    -        false
+4 entries were displayed.
+----
+. [[step10]在上一步所用的同一個節點上、使用network interface revert命令、還原上一步與連接埠相關聯的叢集LIF。
++
+在此範例中、如果Home值為true且連接埠為e3b、則節點1上的LIF node1_clus2會成功還原。
+
++
+下列命令會將節點1上的LIF node1_clus2傳回主連接埠e3a、並顯示兩個節點上的LIF LIF相關資訊。如果兩個叢集介面的「Is Home」欄位都為* true*、而且顯示正確的連接埠指派、則啟動第一個節點會成功、在此範例中、節點1上的「是Home」欄位和「e3b」。
+
+
+
+[listing]
+----
+cluster1::*> network interface show -vserver Cluster
+
+            Logical      Status     Network            Current    Current Is
+Vserver     Interface    Admin/Oper Address/Mask       Node       Port    Home
+----------- ------------ ---------- ------------------ ---------- ------- -----
+Cluster
+            node1_clus1  up/up      169.254.209.69/16  node1      e3a     true
+            node1_clus2  up/up      169.254.49.125/16  node1      e3b     true
+            node2_clus1  up/up      169.254.47.194/16  node2      e3a     true
+            node2_clus2  up/up      169.254.19.183/16  node2      e3a     false
+4 entries were displayed.
+----
+. [[step11]顯示叢集中節點的相關資訊：「叢集顯示」
++
+此範例顯示此叢集中節點1和節點2的節點健全狀況為真：
+
+
+
+[listing]
+----
+cluster1::*> cluster show
+Node          Health  Eligibility
+------------- ------- ------------
+node1         false   true
+node2         true    true
+----
+. [[step12]確認所有實體叢集連接埠都已啟動：「網路連接埠顯示IPSpace叢集」
+
+
+[listing]
+----
+cluster1::*> network port show -ipspace Cluster
+
+Node node1                                                                Ignore
+                                                    Speed(Mbps)  Health   Health
+Port      IPspace     Broadcast Domain  Link  MTU   Admin/Oper   Status   Status
+--------- ----------- ----------------- ----- ----- ------------ -------- ------
+e3a       Cluster     Cluster           up    9000  auto/100000  healthy  false
+e3b       Cluster     Cluster           up    9000  auto/100000  healthy  false
+
+Node: node2
+                                                                          Ignore
+                                                    Speed(Mbps)  Health   Health
+Port      IPspace      Broadcast Domain Link  MTU   Admin/Oper   Status   Status
+--------- ------------ ---------------- ----- ----- ------------ -------- ------
+e3a       Cluster      Cluster          up    9000  auto/100000  healthy  false
+e3b       Cluster      Cluster          up    9000  auto/100000  healthy  false
+4 entries were displayed.
+----
+. [[step13]驗證所有叢集生命體是否都能通訊：「叢集ping叢集」
+
+
+[listing]
+----
+cluster1::*> cluster ping-cluster -node node2
+Host is node2
+Getting addresses from network interface table...
+Cluster node1_clus1 169.254.209.69 node1 e3a
+Cluster node1_clus2 169.254.49.125 node1 e3b
+Cluster node2_clus1 169.254.47.194 node2 e3a
+Cluster node2_clus2 169.254.19.183 node2 e3b
+Local = 169.254.47.194 169.254.19.183
+Remote = 169.254.209.69 169.254.49.125
+Cluster Vserver Id = 4294967293
+Ping status:
+....
+Basic connectivity succeeds on 4 path(s)
+Basic connectivity fails on 0 path(s)
+................
+Detected 9000 byte MTU on 4 path(s):
+Local 169.254.47.194 to Remote 169.254.209.69
+Local 169.254.47.194 to Remote 169.254.49.125
+Local 169.254.19.183 to Remote 169.254.209.69
+Local 169.254.19.183 to Remote 169.254.49.125
+Larger than PMTU communication succeeds on 4 path(s)
+RPC status:
+2 paths up, 0 paths down (tcp check)
+2 paths up, 0 paths down (udp check)
+----
+. [[step14]確認下列叢集網路組態：「network port show」
+
+
+[listing]
+----
+cluster1::*> network port show -ipspace Cluster
+
+Node: node1
+                                                                        Ignore
+                                       Speed(Mbps)             Health   Health
+Port      IPspace     Broadcast Domain Link MTU   Admin/Oper   Status   Status
+--------- ----------- ---------------- ---- ----- ------------ -------- ------
+e3a       Cluster     Cluster          up   9000  auto/100000  healthy  false
+e3b       Cluster     Cluster          up   9000  auto/100000  healthy  false
+
+Node: node2
+                                                                        Ignore
+                                        Speed(Mbps)            Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper   Status   Status
+--------- ------------ ---------------- ---- ---- ------------ -------- ------
+e3a       Cluster      Cluster          up   9000 auto/100000  healthy  false
+e3b       Cluster      Cluster          up   9000 auto/100000  healthy  false
+4 entries were displayed.
+
+cluster1::*> network interface show -vserver Cluster
+            Logical    Status     Network            Current       Current Is
+Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
+----------- ---------- ---------- ------------------ ------------- ------- ----
+Cluster
+            node1_clus1  up/up    169.254.209.69/16  node1         e3a     true
+            node1_clus2  up/up    169.254.49.125/16  node1         e3b     true
+            node2_clus1  up/up    169.254.47.194/16  node2         e3a     true
+            node2_clus2  up/up    169.254.19.183/16  node2         e3b     true
+4 entries were displayed.
+
+cluster1::> network device-discovery show -protocol cdp
+Node/       Local  Discovered
+Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
+----------- ------ ------------------------- ----------------  ----------------
+node2      /cdp
+            e3a    sh1    0/2               N9K-C9336C
+            e3b    newsh2                    0/2               N9K-C9336C
+node1      /cdp
+            e3a    sh1                       0/1               N9K-C9336C
+            e3b    newsh2                    0/1               N9K-C9336C
+4 entries were displayed.
+
+sh1# show cdp neighbors
+Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater,
+                  V - VoIP-Phone, D - Remotely-Managed-Device,
+                  s - Supports-STP-Dispute
+Device-ID            Local Intrfce  Hldtme Capability  Platform      Port ID
+node1                Eth1/1         144    H           FAS2980       e3a
+node2                Eth1/2         145    H           FAS2980       e3a
+newsh2               Eth1/35        176    R S I s     N9K-C9336C    Eth1/35
+newsh2               Eth1/36        176    R S I s     N9K-C9336C    Eth1/36
+Total entries displayed: 4
+
+sh2# show cdp neighbors
+Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater,
+                  V - VoIP-Phone, D - Remotely-Managed-Device,
+                  s - Supports-STP-Dispute
+Device-ID          Local Intrfce  Hldtme Capability  Platform      Port ID
+node1              Eth1/1         139    H           FAS2980       e3b
+node2              Eth1/2         124    H           FAS2980       eb
+sh1                Eth1/35        178    R S I s     N9K-C9336C    Eth1/35
+sh1                Eth1/36        178    R S I s     N9K-C9336C    Eth1/36
+Total entries displayed: 4
+----
+. [[step15]使用下列命令、啟用乙太網路交換器健全狀況監視器記錄收集功能、以收集交換器相關的記錄檔：
++
+** '系統交換器乙太網路記錄設定密碼'
+** 「系統交換器乙太網路記錄啟用收集」
+
+
+
+
+[listing]
+----
+cluster1::*> system switch ethernet log setup-password
+Enter the switch name: <return>
+The switch name entered is not recognized.
+Choose from the following list:
+sh1
+sh2
+cluster1::*> system switch ethernet log setup-password
+Enter the switch name: sh1
+RSA key fingerprint is e5:8b:c6:dc:e2:18:18:09:36:63:d9:63:dd:03:d9:cc
+Do you want to continue? {y|n}::[n] y
+Enter the password: <enter switch password>
+Enter the password again: <enter switch password>
+cluster1::*> system switch ethernet log setup-password
+Enter the switch name: sh2
+RSA key fingerprint is 57:49:86:a1:b9:80:6a:61:9a:86:8e:3c:e3:b7:1f:b1
+Do you want to continue? {y|n}:: [n] y
+Enter the password: <enter switch password>
+Enter the password again: <enter switch password>
+cluster1::*> system  switch ethernet log enable-collection
+Do you want to enable cluster log collection for all nodes in the cluster? y|n}: [n] y
+Enabling cluster switch log collection.
+cluster1::*>
+----
+
+NOTE: 如果這些命令中有任何一個出現錯誤、請聯絡NetApp支援部門。
+
+. [[step16]將儲存連接埠從舊交換器sh2移至新交換器newsh2。
+. 驗證連接至HA配對1的儲存設備、共享交換器newsh2是否正常。
+. 驗證連接至HA配對2的儲存設備、共享交換器newsh2是否正常：「torage port show -port-type ENET」
+
+
+[listing]
+----
+storage::*> storage port show -port-type ENET
+                                   Speed                            VLAN
+Node    Port    Type    Mode       (Gb/s)      State     Status       ID
+------- ------- ------- ---------- ----------- --------- --------- -----
+node1
+        e3a     ENET    storage          100   enabled   online       30
+        e3b     ENET    storage            0   enabled   offline      30
+        e7a     ENET    storage            0   enabled   offline      30
+        e7b     ENET    storage          100   enabled   online       30
+
+node2
+        e3a     ENET    storage          100   enabled   online       30
+        e3b     ENET    storage            0   enabled   offline      30
+        e7a     ENET    storage            0   enabled   offline      30
+        e7b     ENET    storage          100   enabled   online       30
+----
+. [[step19]驗證磁碟櫃是否已正確連接纜線：「torage shelage port show -Fields remie-device-remie-port」（磁碟櫃連接埠顯示-欄位遠端裝置、遠端連接埠）
+
+
+[listing]
+----
+cluster1::*> storage shelf port show -fields remote-device,remote-port
+shelf id remote-port  remote-device
+----- -- ------------ ----------------------------
+3.20  0  Ethernet1/13 sh1
+3.20  1  Ethernet1/13 newsh2
+3.20  2  Ethernet1/14 sh1
+3.20  3  Ethernet1/14 newsh2
+3.30  0  Ethernet1/15 sh1
+3.30  1  Ethernet1/15 newsh2
+3.30  2  Ethernet1/16 sh1
+3.30  3  Ethernet1/16 newsh2
+8 entries were displayed.
+----
+. [[step20]移除舊交換器sh2。
+. 對交換器SH1和新交換器newsh1重複這些步驟。
+. 如果您禁止自動建立個案、請叫用AutoSupport 下列訊息重新啟用此功能：「System Node AutoSupport 現象叫用節點*-type all -most MAn=end」
+

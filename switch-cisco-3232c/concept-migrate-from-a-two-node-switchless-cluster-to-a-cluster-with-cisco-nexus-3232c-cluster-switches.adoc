@@ -1,0 +1,37 @@
+---
+permalink: switch-cisco-3232c/concept-migrate-from-a-two-node-switchless-cluster-to-a-cluster-with-cisco-nexus-3232c-cluster-switches.html 
+sidebar: sidebar 
+keywords: migrate, two-node cluster, switchless, cisco nexus 3232c 
+summary: 將雙節點無交換器叢集移轉至使用Cisco Nexus 3232C叢集交換器的叢集時、您必須瞭解特定的組態資訊、連接埠連線和纜線需求。 
+---
+= 使用Cisco Nexus 3232C叢集交換器、從雙節點無交換器叢集移轉至叢集
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+將雙節點無交換器叢集移轉至使用Cisco Nexus 3232C叢集交換器的叢集時、您必須瞭解特定的組態資訊、連接埠連線和纜線需求。
+
+。 link:http://mysupport.netapp.com/NOW/download/software/cm_switches/.html["Cisco乙太網路交換器頁面"^] 擁有ONTAP 本程序所支援的關於支援的版本的資訊。
+
+在開始移轉程序之前、您必須具備下列條件：
+
+* 用於節點連線的可用連接埠
++
+叢集交換器使用交換器間連結（ISL）連接埠E1/31至32。-
+
+* 適用於叢集連線的纜線：
++
+** 具有10 GbE叢集連線的節點需要QSFP光纖模組搭配中斷光纖纜線、或QSFP至SFP+銅線中斷纜線。
+** 具有40/100 GbE叢集連線的節點需要支援QSFP/QSFP28光纖模組、並使用光纖纜線或QSFP/QSFP28銅線直接連接纜線。
+** 叢集交換器需要適當的ISL纜線：2條QSFP28光纖或銅線直接連接纜線。
+
+
++
+[NOTE]
+====
+請參閱 link:https://hwu.netapp.com/["_SUR__ Hardware Universe"^] 如需更多有關使用Nexus 3232C交換器佈線系統的資訊、
+
+====
+

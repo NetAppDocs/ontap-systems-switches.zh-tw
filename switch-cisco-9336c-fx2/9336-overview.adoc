@@ -1,0 +1,116 @@
+---
+permalink: switch-cisco-9336c-fx2/9336-overview.html 
+sidebar: sidebar 
+keywords: cisco nexus 9336c-fx2 
+summary: 如果您想要建置ONTAP 具有兩個以上節點的叢集、您需要兩個支援的叢集網路交換器。您可以使用額外的管理交換器、這是選用的。 
+---
+= Cisco 9336C-FX2交換器總覽
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果您想要建置ONTAP 具有兩個以上節點的叢集、您需要兩個支援的叢集網路交換器。您可以使用額外的管理交換器、這是選用的。
+
+您可以將Cisco Nexus 9336C-FX2交換器（X190200/X190210）安裝在NetApp系統機櫃或第三方機櫃中、並附有交換器隨附的標準支架。
+
+下表列出9336C-FX2交換器、風扇和電源供應器的零件編號和說明：
+
+[cols="1,2"]
+|===
+| 產品編號 | 說明 
+
+
+ a| 
+X190200-CS-PE
+ a| 
+N9K-9336C-FX2、CS、PTSX、36PT10/25/40/100GQSFP28
+
+
+
+ a| 
+X190200-CS-PI
+ a| 
+N9K-9336C-FX2、CS、PSIN、36PT10/25/40/100GQSFP28
+
+
+
+ a| 
+X190210-FE-PE
+ a| 
+N9K-9336C、FTE、PTSX、36PT10/25/40/100GQSFP28
+
+
+
+ a| 
+X190210-FE-PI
+ a| 
+N9K-9336C、FTE、PSIN、36PT10/25/40/100GQSFP28
+
+
+
+ a| 
+X190002
+ a| 
+配件套件X190001/X190003
+
+
+
+ a| 
+X-NXA-PAC-1100 W-PE2
+ a| 
+N9K-9336C AC 1100 W PSU -連接埠側邊排氣氣流
+
+
+
+ a| 
+X-NXA-PAC-1100 W-Pi2
+ a| 
+N9K-9336C AC 1100 W PSU -連接埠側進氣
+
+
+
+ a| 
+X-NXA-FAN-65CFM-PE
+ a| 
+N9K-9336C 65CFM、連接埠側邊排氣氣流
+
+
+
+ a| 
+X-NXA-FAN-65CFM-PI
+ a| 
+N9K-9336C 65CFM、連接埠側進氣氣流
+
+|===
+
+
+== 其他支援的交換器
+
+* Nexus 3232C
++
+您可以安裝Cisco Nexus 3232C交換器（X190100）NetApp系統機櫃以及交換器隨附的自訂支架、也可以將其安裝在機架中、並附有交換器隨附的標準支架。
+
+* Nexus 3132Q-V
++
+您可以將Cisco Nexus 3132Q-V交換器（X190001）安裝在NetApp系統機櫃或第三方機櫃中、並附有交換器隨附的標準支架。
+
+
+
+NetApp不再提供下列叢集交換器、但Cisco將在有限時間內提供支援：
+
+* Nexus 5596UP/5596T
++
+您可以將Cisco Nexus 5596UP交換器（X1967-R6）或5596T（X1989-R6）安裝在NetApp系統機櫃中、並附有交換器隨附的自訂支架、或是將其安裝在機架中、並附上交換器隨附的標準支架。
+
++
+Nexus 5596UP交換器也支援一或兩個16埠擴充模組（X1988至R6）。
+
++
+Nexus 5596T交換器僅支援做為FAS2520的叢集互連交換器、用於執行不中斷營運的硬體升級。
+
++
+http://support.netapp.com/info/communications/ECMP12454150.html["終止供應"^] 詳細資料。
+
+

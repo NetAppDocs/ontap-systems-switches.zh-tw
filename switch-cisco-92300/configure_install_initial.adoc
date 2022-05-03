@@ -1,0 +1,158 @@
+---
+permalink: switch-cisco-92300/configure-install-initial.html 
+sidebar: sidebar 
+keywords: install cisco 92300YC cluster switch, cisco nx 92300yc 
+summary: 您可以使用此程序來執行Cisco Nexus 2300YC交換器的初始安裝。 
+---
+= Cisco Nexus 92300YC交換器的初始安裝
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用此程序來執行Cisco Nexus 2300YC交換器的初始安裝。
+
+您可以從NetApp支援網站下載適用於交換器的NetApp Cisco NX-OS軟體、網址為： http://mysupport.netapp.com/["mysupport.netapp.com"]
+
+NX-OS是Cisco Systems提供的Nexus系列乙太網路交換器和MDS系列光纖通道（FC）儲存區域網路交換器的網路作業系統。
+
+本程序提供安裝交換器並讓其執行的程序摘要：
+
+.步驟
+. 將序列連接埠連接至您選擇的主機或序列連接埠。
+. 將管理連接埠（位於交換器的非連接埠端）連接至SFTP伺服器所在的相同網路。
+. 在主控台設定主機端序列設定：
++
+** 9600傳輸速率
+** 8個資料位元
+** 1停止位元
+** 同位元檢查：無
+** 流程控制：無
+
+
+. 第一次開機或清除執行組態後重新開機、Nexus 92300YC交換器會在開機週期中循環運作。輸入* yes *中止開機自動資源配置、以中斷此週期。接著您會看到系統管理員帳戶設定：
+
+
+[listing]
+----
+$ VDC-1 %$ %POAP-2-POAP_INFO:   - Abort Power On Auto Provisioning [yes - continue with normal setup, skip - bypass password and basic configuration, no - continue with Power On Auto Provisioning] (yes/skip/no)[no]: *y*
+Disabling POAP.......Disabling POAP
+2019 Apr 10 00:36:17 switch %$ VDC-1 %$ poap: Rolling back, please wait... (This may take 5-15 minutes)
+
+          ---- System Admin Account Setup ----
+
+Do you want to enforce secure password standard (yes/no) [y]:
+----
+. 輸入* y*以強制執行安全密碼標準：
++
+[listing, subs="+quotes"]
+----
+Do you want to enforce secure password standard (yes/no) [y]: *y*
+----
+. 輸入並確認使用者管理的密碼：
++
+[listing]
+----
+Enter the password for "admin":
+Confirm the password for "admin":
+----
+. 進入「基本系統組態」對話方塊：
++
+[listing]
+----
+This setup utility will guide you through the basic configuration of
+the system. Setup configures only enough connectivity for management
+of the system.
+
+Please register Cisco Nexus9000 Family devices promptly with your
+supplier. Failure to register may affect response times for initial
+service calls. Nexus9000 devices must be registered to receive
+entitled support services.
+
+Press Enter at anytime to skip a dialog. Use ctrl-c at anytime
+to skip the remaining dialogs.
+
+Would you like to enter the basic configuration dialog (yes/no):
+----
+. 建立另一個登入帳戶：
++
+[listing]
+----
+Create another login account (yes/no) [n]:
+----
+. 設定唯讀和讀寫SNMP社群字串：
++
+[listing]
+----
+Configure read-only SNMP community string (yes/no) [n]:
+
+Configure read-write SNMP community string (yes/no) [n]:
+----
+. 設定叢集交換器名稱：
++
+[listing, subs="+quotes"]
+----
+Enter the switch name : *cs2*
+----
+. 設定頻外管理介面：
++
+[listing, subs="+quotes"]
+----
+Continue with Out-of-band (mgmt0) management configuration? (yes/no) [y]: *y*
+
+Mgmt0 IPv4 address : 172.22.133.216
+
+Mgmt0 IPv4 netmask : 255.255.224.0
+
+Configure the default gateway? (yes/no) [y]: *y*
+
+IPv4 address of the default gateway : 172.22.128.1
+----
+. 設定進階IP選項：
++
+[listing, subs="+quotes"]
+----
+Configure advanced IP options? (yes/no) [n]: *n*
+----
+. 設定遠端登入服務：
++
+[listing, subs="+quotes"]
+----
+Enable the telnet service? (yes/no) [n]: *n*
+----
+. 設定SSH服務和SSH金鑰：
++
+[listing, subs="+quotes"]
+----
+Enable the ssh service? (yes/no) [y]: *y*
+
+       Type of ssh key you would like to generate (dsa/rsa) [rsa]: *rsa*
+
+       Number of rsa key bits <1024-2048> [1024]: *2048*
+----
+. 設定其他設定：
++
+[listing, subs="+quotes"]
+----
+Configure the ntp server? (yes/no) [n]: *n*
+
+  Configure default interface layer (L3/L2) [L2]: *L2*
+
+  Configure default switchport interface state (shut/noshut) [noshut]: *noshut*
+
+  Configure CoPP system profile (strict/moderate/lenient/dense) [strict]: *strict*
+----
+. 確認交換器資訊並儲存組態：
++
+[listing, subs="+quotes"]
+----
+Would you like to edit the configuration? (yes/no) [n]: *n*
+
+Use this configuration and save it? (yes/no) [y]: *y*
+
+[########################################] 100%
+Copy complete, now saving to disk (please wait)...
+Copy complete.
+----
+

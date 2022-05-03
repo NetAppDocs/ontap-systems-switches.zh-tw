@@ -1,0 +1,132 @@
+---
+permalink: switch-cisco-9336c-fx2/setup-required-information.html 
+sidebar: sidebar 
+keywords: configure, cluster, appropriate, number, cable, connector, switch, type, configuring, configure, console, port, network, information, required cluster configuration information - cisco nexus 9336c-fx2 
+summary: 若要設定叢集、您需要適當數量和類型的纜線、以及交換器的纜線連接器。視您初始設定的交換器類型而定、您需要使用隨附的主控台纜線連接至交換器主控台連接埠；您也需要提供特定的網路資訊。 
+---
+= 必要的叢集組態資訊
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+若要設定叢集、您需要適當數量和類型的纜線、以及交換器的纜線連接器。視您初始設定的交換器類型而定、您需要使用隨附的主控台纜線連接至交換器主控台連接埠；您也需要提供特定的網路資訊。
+
+所有交換器組態都需要下列網路資訊：
+
+* 用於管理網路流量的IP子網路
+* 每個儲存系統控制器和所有適用交換器的主機名稱和IP位址
+* 大部分的儲存系統控制器都是透過e0M介面來管理、方法是連接至乙太網路服務連接埠（扳手圖示）。在ESIA800和ESIEA700系統上AFF 、e0M介面使用專用的乙太網路連接埠。AFF
+
+
+請參閱 https://hwu.netapp.com["Hardware Universe"^] 以取得最新資訊。
+
+
+
+== Cisco Nexus 9336C-FX2、92300YC、3232C、3132Q-V和5596UP/5596T交換器所需的網路資訊
+
+對於Cisco Nexus 9336C-FX2、92300YC、3232C、31382-V和5596UP/5596T交換器、 首次開機交換器時、您必須針對下列初始設定問題提供適當的回應。您站台的安全性原則會定義要啟用的回應和服務。
+
+* 中止自動資源配置並繼續正常設定？（是/否）
++
+回應* yes *。預設值為「否」
+
+* 是否要強制執行安全密碼標準？（是/否）
++
+回應* yes *。預設值為yes。
+
+* 輸入管理員密碼：
++
+預設密碼為「admin」；您必須建立新的強式密碼。弱密碼可能會遭到拒絕。
+
+* 是否要進入基本組態對話方塊？（是/否）
++
+在交換器的初始組態中回應* yes *。
+
+* 建立另一個登入帳戶？（是/否）
++
+您的答案取決於您站台的原則、取決於替代系統管理員。預設值為*否*。
+
+* 設定唯讀SNMP社群字串？（是/否）
++
+回應*否*。預設值為「否」
+
+* 設定讀寫SNMP社群字串？（是/否）
++
+回應*否*。預設值為「否」
+
+* 輸入交換器名稱。
++
+交換器名稱上限為63個英數字元。
+
+* 是否繼續頻外（mgmt0）管理組態？（是/否）
++
+在該提示字元中以* yes *（預設值）回應。在mgmt0 ipv4位址：提示字元中、輸入您的IP位址：ip_address.
+
+* 設定預設閘道？（是/否）
++
+回應* yes *。在「Default-gateway:（預設閘道：）」提示字元的IPV4位址、輸入您的預設閘道。
+
+* 設定進階IP選項？（是/否）
++
+回應*否*。預設值為「否」
+
+* 啟用Telnet服務？（是/否）
++
+回應*否*。預設值為「否」
+
+* 啟用SSH服務？（是/否）
++
+回應* yes *。預設值為yes。
+
++
+
+NOTE: 建議在使用叢集交換器健全狀況監視器（CSHM）進行記錄收集功能時使用SSH。我們也建議使用SSHv2來增強安全性。
+
+* 輸入您要產生的SSH金鑰類型（DSA/RSA/rsa1）。預設值為* RSA*。
+* 輸入金鑰位元數（1024-2048）。
+* 設定NTP伺服器？（是/否）
++
+回應*否*。預設值為「否」
+
+* 設定預設介面層（L3/L2）：
++
+回應* L2*。預設值為L2。
+
+* 設定預設交換器連接埠介面狀態（關機/節點關機）：
++
+使用* noshut*回應。預設值為noshut。
+
+* 設定CoPP系統設定檔（嚴格/中等/輕度/高密度）：
++
+回應*嚴格*。預設為嚴格。
+
+* 是否要編輯組態？（是/否）
++
+此時您應該會看到新的組態。檢閱您剛輸入的組態、並進行必要的變更。如果您對組態感到滿意、請在提示字元中回應*否*。如果您要編輯組態設定、請使用* yes *回應。
+
+* 使用此組態並加以儲存？（是/否）
++
+回應* yes *以儲存組態。這會自動更新Kickstart和系統映像。
+
++
+
+NOTE: 如果您在此階段未儲存組態、下次重新啟動交換器時、將不會有任何變更生效。
+
++
+如需交換器初始組態的詳細資訊、請參閱下列指南：
+
++
+https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#InstallandUpgradeGuides["Cisco Nexus 9336C-FX2安裝與升級指南"^]
+
++
+https://www.cisco.com/c/en/us/support/switches/nexus-92300yc-switch/model.html#InstallandUpgradeGuides["Cisco Nexus 2300YC安裝與升級指南"^]
+
++
+https://www.cisco.com/c/en/us/support/switches/nexus-5000-series-switches/products-installation-guides-list.html["Cisco Nexus 5000系列硬體安裝指南"^]
+
++
+https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000系列硬體安裝指南"^]
+
+

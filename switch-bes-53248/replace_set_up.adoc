@@ -1,0 +1,14 @@
+---
+permalink: switch-bes-53248/replace-set-up.html 
+sidebar: sidebar 
+keywords: setup,install bes-53248,cluster switch 
+summary: 您可以使用設定資訊、讓叢集交換器準備好設定及自訂、以符合您的需求。 
+---
+= 設定Bes至53248叢集交換器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用設定資訊、讓叢集交換器準備好設定及自訂、以符合您的需求。

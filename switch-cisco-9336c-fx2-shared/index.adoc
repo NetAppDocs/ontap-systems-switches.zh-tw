@@ -1,0 +1,17 @@
+---
+sidebar: sidebar 
+permalink: switch-cisco-9336c-fx2-shared/index.html 
+keywords: shared storage cluster switch 
+summary: 從S299.1開始ONTAP 、您可以使用Cisco Nexus 9336C-FX2交換器、將儲存設備和叢集功能結合到共享交換器情境中。 
+---
+= Cisco 9336C-FX2共享交換器總覽
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+從S299.1開始ONTAP 、您可以使用Cisco Nexus 9336C-FX2交換器、將儲存設備和叢集功能結合到共享交換器情境中。

@@ -1,0 +1,129 @@
+---
+permalink: switch-bes-53248/configure-edit-rcf.html 
+sidebar: sidebar 
+keywords: edit rcf bes-53248 
+summary: 若要啟動新授權的連接埠、您必須編輯最新版的RCF、然後取消註釋適用的連接埠詳細資料。預設授權會啟動連接埠0/1到0/16和0/55到0/56、而新授權的連接埠則會在連接埠0/17到0/54之間、視可用授權的類型和數量而定。 
+---
+= 編輯參考組態檔（RCF）- BS-53248交換器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+若要啟動新授權的連接埠、您必須編輯最新版的RCF、然後取消註釋適用的連接埠詳細資料。預設授權會啟動連接埠0/1到0/16和0/55到0/56、而新授權的連接埠則會在連接埠0/17到0/54之間、視可用授權的類型和數量而定。
+
+如需有關用於B3作業 叢集交換器的可用授權類型詳細資料、請參閱 link:configure-licenses.html["安裝B封閉 環境叢集交換器的授權"^]。
+
+例如、若要啟動SW-BES54248-40-100g-LIC授權、您必須取消註解RCF中的下列章節：
+
+[listing]
+----
+.
+.
+!
+! 2-port or 6-port 40/100GbE node port license block
+!
+interface 0/49
+no shutdown
+description "40/100GbE Node Port"
+!speed 100G full-duplex
+speed 40G full-duplex
+service-policy in WRED_100G
+spanning-tree edgeport
+mtu 9216
+switchport mode trunk
+datacenter-bridging
+priority-flow-control mode on
+priority-flow-control priority 5 no-drop
+exit
+exit
+!
+interface 0/50
+no shutdown
+description "40/100GbE Node Port"
+!speed 100G full-duplex
+speed 40G full-duplex
+service-policy in WRED_100G
+spanning-tree edgeport
+mtu 9216
+switchport mode trunk
+datacenter-bridging
+priority-flow-control mode on
+priority-flow-control priority 5 no-drop
+exit
+exit
+!
+interface 0/51
+no shutdown
+description "40/100GbE Node Port"
+speed 100G full-duplex
+!speed 40G full-duplex
+service-policy in WRED_100G
+spanning-tree edgeport
+mtu 9216
+switchport mode trunk
+datacenter-bridging
+priority-flow-control mode on
+priority-flow-control priority 5 no-drop
+exit
+exit
+!
+interface 0/52
+no shutdown
+description "40/100GbE Node Port"
+speed 100G full-duplex
+!speed 40G full-duplex
+service-policy in WRED_100G
+spanning-tree edgeport
+mtu 9216
+switchport mode trunk
+datacenter-bridging
+priority-flow-control mode on
+priority-flow-control priority 5 no-drop
+exit
+exit
+!
+interface 0/53
+no shutdown
+description "40/100GbE Node Port"
+speed 100G full-duplex
+!speed 40G full-duplex
+service-policy in WRED_100G
+spanning-tree edgeport
+mtu 9216
+switchport mode trunk
+datacenter-bridging
+priority-flow-control mode on
+priority-flow-control priority 5 no-drop
+exit
+exit
+!
+interface 0/54
+no shutdown
+description "40/100GbE Node Port"
+speed 100G full-duplex
+!speed 40G full-duplex
+service-policy in WRED_100G
+spanning-tree edgeport
+mtu 9216
+switchport mode trunk
+datacenter-bridging
+priority-flow-control mode on
+priority-flow-control priority 5 no-drop
+exit
+exit
+!
+.
+.
+----
+
+NOTE: 對於0/49到0/54（含）之間的高速連接埠、請針對每個連接埠取消註解、但在RCF中只取消註釋一條*速度*線路、以便針對每個連接埠：
+
+* 速度100公克全雙工
+* 速度40G全雙工
+
+
+如範例所示。
+
+對於0/17到0/48（含）之間的低速度連接埠、請在啟用適當授權後、取消註釋整個8埠區段。

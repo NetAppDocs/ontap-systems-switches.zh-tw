@@ -1,0 +1,16 @@
+---
+permalink: switch-netapp-cn1610/switch-administrator-guide-version-11xx-linkout.html 
+sidebar: sidebar 
+keywords: netapp cn1610, switch administrator guide, version 1.1.x.x 
+summary: 本指南提供如何在一般網路中使用CN1610交換器的範例。 
+---
+= NetApp CN1610交換器管理員指南-版本1.1.x.x
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如何在典型網路中使用CN1610交換器的範例。
+
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2811865["系統管理員指南"^]

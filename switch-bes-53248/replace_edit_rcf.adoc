@@ -1,0 +1,170 @@
+---
+permalink: switch-bes-53248/replace-edit-rcf.html 
+sidebar: sidebar 
+keywords: activating licenses,additional licenses,licenses in the RCF,edit rcf 
+summary: 若要啟動新授權的連接埠、您必須編輯最新版的RCF、然後取消註釋適用的連接埠詳細資料。預設授權會啟動連接埠0/1到0/16和0/55到0/56、而新授權的連接埠則會在連接埠0/17到0/54之間、視可用授權的類型和數量而定。 
+---
+= 編輯參考組態檔案（RCF）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+若要啟動新授權的連接埠、您必須編輯最新版的RCF、然後取消註釋適用的連接埠詳細資料。預設授權會啟動連接埠0/1到0/16和0/55到0/56、而新授權的連接埠則會在連接埠0/17到0/54之間、視可用授權的類型和數量而定。
+
+
+NOTE: 如果您嘗試編輯先前安裝的RCF、程序可能會失敗、因為RCF中有其他區域的現有組態、請參閱 <<Edit a previously installed RCF file>>。
+
+如需有關用於B3作業 叢集交換器的可用授權類型詳細資料、請參閱 link:configure-licenses.html["安裝B封閉 環境叢集交換器的授權"]。
+
+例如、若要啟動SW-BES54248-40-100g-LIC授權、您必須取消註解RCF中的下列章節：
+
+[listing]
+----
+.
+.
+!
+! 2-port or 6-port 40/100GbE node port license block
+!
+interface 0/49
+no shutdown
+description "40/100GbE Node Port"
+!speed 100G full-duplex
+speed 40G full-duplex
+service-policy in WRED_100G
+spanning-tree edgeport
+mtu 9216
+switchport mode trunk
+datacenter-bridging
+priority-flow-control mode on
+priority-flow-control priority 5 no-drop
+exit
+exit
+!
+interface 0/50
+no shutdown
+description "40/100GbE Node Port"
+!speed 100G full-duplex
+speed 40G full-duplex
+service-policy in WRED_100G
+spanning-tree edgeport
+mtu 9216
+switchport mode trunk
+datacenter-bridging
+priority-flow-control mode on
+priority-flow-control priority 5 no-drop
+exit
+exit
+!
+interface 0/51
+no shutdown
+description "40/100GbE Node Port"
+speed 100G full-duplex
+!speed 40G full-duplex
+service-policy in WRED_100G
+spanning-tree edgeport
+mtu 9216
+switchport mode trunk
+datacenter-bridging
+priority-flow-control mode on
+priority-flow-control priority 5 no-drop
+exit
+exit
+!
+interface 0/52
+no shutdown
+description "40/100GbE Node Port"
+speed 100G full-duplex
+!speed 40G full-duplex
+service-policy in WRED_100G
+spanning-tree edgeport
+mtu 9216
+switchport mode trunk
+datacenter-bridging
+priority-flow-control mode on
+priority-flow-control priority 5 no-drop
+exit
+exit
+!
+interface 0/53
+no shutdown
+description "40/100GbE Node Port"
+speed 100G full-duplex
+!speed 40G full-duplex
+service-policy in WRED_100G
+spanning-tree edgeport
+mtu 9216
+switchport mode trunk
+datacenter-bridging
+priority-flow-control mode on
+priority-flow-control priority 5 no-drop
+exit
+exit
+!
+interface 0/54
+no shutdown
+description "40/100GbE Node Port"
+speed 100G full-duplex
+!speed 40G full-duplex
+service-policy in WRED_100G
+spanning-tree edgeport
+mtu 9216
+switchport mode trunk
+datacenter-bridging
+priority-flow-control mode on
+priority-flow-control priority 5 no-drop
+exit
+exit
+!
+.
+.
+----
+
+NOTE: 對於0/49到0/54（含）之間的高速連接埠、請針對每個連接埠取消註解、但在RCF中只取消註釋一條*速度*線路、以便針對每個連接埠：
+
+* 速度100公克全雙工
+* 速度40G全雙工
+
+
+如範例所示。
+
+對於0/17到0/48（含）之間的低速度連接埠、請在啟用適當授權後、取消註釋整個8埠區段。
+
+
+
+== 編輯先前安裝的RCF檔案
+
+編輯之前安裝的RCF檔案並執行「套用指令碼」之後、您可能會收到下列錯誤訊息：
+
+[listing]
+----
+(CS1) #script apply BES-53248_RCF_v1.6-Cluster-HA.scr
+ Are you sure you want to apply the configuration script? (y/n)
+----
+選取「y」之後、您會收到下列錯誤訊息：
+
+[listing]
+----
+config
+ ...
+ match cos 5
+ Unrecognized command : match cos 5
+ Error! in configuration script file at line number 40.
+ CLI Command :: match cos 5.
+ Aborting script.
+----
+若要避免或解決此問題、您可以選擇下列其中一個選項：
+
+* 若要避免錯誤、您可以使用下列程序：
++
+.. 建立第二個僅包含新連接埠組態的RCF檔案。
+.. 將第二個RCF檔案複製到交換器。
+.. 將指令碼套用至交換器：
++
+適用記錄
+
+
+
+* 若要解決此錯誤、請參閱知識庫文章： link:++https://kb.netapp.com/?title=Advice_and_Troubleshooting%2FData_Storage_Systems%2FFabric%252C_Interconnect_and_Management_Switches%2FError%2521_in_configuration_script_file_at_line_number_XX_when_applying_a_new_RCF%20%20%20++["錯誤！套用新的RCF時、設定指令碼檔案中的行號XX"^]
+

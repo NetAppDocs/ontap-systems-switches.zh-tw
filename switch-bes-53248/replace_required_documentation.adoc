@@ -1,0 +1,105 @@
+---
+permalink: switch-bes-53248/replace-required-documentation.html 
+sidebar: sidebar 
+keywords: documentation requirements, BES-53248 switches,cluster switches 
+summary: 您需要特定的交換器與控制器文件、才能設定叢集模式組態。 
+---
+= Bes - 53248叢集交換器所需文件
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您需要特定的交換器與控制器文件、才能設定叢集模式組態。
+
+
+
+== Bes至53248叢集交換器的必要文件
+
+若要設定Bes - 53248叢集交換器、您需要Broadcom支援網站上提供的下列文件： https://www.broadcom.com/support/bes-switch["Broadcom乙太網路交換器產品線"^]
+
+[cols="1,2"]
+|===
+| 文件標題 | 說明 
+
+
+ a| 
+_EFOS系統管理員指南v3.4.3_
+ a| 
+提供範例、說明如何在一般網路中使用B怎麼 使用B怎麼53248交換器。
+
+
+
+ a| 
+_EFOS CLI命令參考v3.4.3_
+ a| 
+說明用於檢視和設定Bs-53248軟體的命令列介面（CLI）命令。
+
+
+
+ a| 
+_EFOS入門指南v3.4.3_
+ a| 
+提供關於B3作業 與53248交換器的詳細資訊。
+
+
+
+ a| 
+_EFOS SNMP參考指南v3.4.3_
+ a| 
+提供範例、說明如何在一般網路中使用B怎麼 使用B怎麼53248交換器。
+
+
+
+ a| 
+_EFOS Scaling參數字與值v3.4.3_
+ a| 
+說明EFOS軟體在支援平台上的交付與驗證預設擴充參數。
+
+
+
+ a| 
+_EFOS功能規格v3.4.3_
+ a| 
+說明EFOS軟體在支援平台上的規格。
+
+
+
+ a| 
+_EFOS發行說明v3.4.3_
+ a| 
+提供關於B3作業 軟體的版本專屬資訊。
+
+|===
+
+
+== 支援ONTAP 的支援的支援的資訊系統所需的文件
+
+若要設定ONTAP 一套支援系統、您需要NetApp支援網站上的下列文件 http://mysupport.netapp.com/["mysupport.netapp.com"^]
+
+[cols="1,2"]
+|===
+| 名稱 | 說明 
+
+
+ a| 
+_SUR__ Hardware Universe
+ a| 
+說明所有NetApp硬體（包括系統機櫃）的電力和站台需求。
+
+
+
+ a| 
+控制器專屬的安裝與設定指示_
+ a| 
+說明如何安裝NetApp硬體。
+
+
+
+ a| 
+功能9. ONTAP
+ a| 
+提供ONTAP 有關支援功能的詳細資訊。
+
+|===
