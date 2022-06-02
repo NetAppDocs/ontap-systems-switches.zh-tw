@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: switches initial setup,initial setup,efos download 
 summary: 您可以使用此程序來執行Bes - 53248叢集交換器的初始安裝。 
 ---
-= 初始安裝B3交互 式叢集交換器- Bes - 53248交換器
+= 初始安裝Bes - 53248叢集交換器
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -33,31 +33,31 @@ EFOS是一組廣泛的軟體、提供必要的進階網路功能和傳輸協定�
 
 . 以admin身分登入交換器、並在提示輸入密碼時按Enter。預設的交換器名稱為ro路 由。在提示符下、「啟用」。這可讓您存取交換器組態的優先執行模式。
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-User: admin
+User: *admin*
 Password:
-(Routing)> enable
+(Routing)> *enable*
 Password:
-(Routing) #
+(Routing)#
 ----
 . 將交換器名稱變更為CS2：
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(Routing) # hostname cs2
-(cs2) #
+(Routing)# *hostname cs2*
+(cs2)#
 ----
 . 若要設定靜態IP位址、請使用範例所示的「服務連接埠傳輸協定」、「網路傳輸協定」和「服務連接埠IP」命令。
 +
 ServicePort預設為使用DHCP。系統會自動指派IP位址、子網路遮罩和預設閘道位址。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # serviceport protocol none
-(cs2) # network protocol none
-(cs2) # serviceport ip ipaddr netmask gateway
+(cs2)# *serviceport protocol none*
+(cs2)# *network protocol none*
+(cs2)# *serviceport ip ipaddr netmask gateway*
 ----
 . 使用命令驗證結果：
 +
@@ -67,9 +67,9 @@ ServicePort預設為使用DHCP。系統會自動指派IP位址、子網路遮罩
 下列範例顯示DHCP伺服器提供的IP資訊。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # show serviceport
+(cs2)# *show serviceport*
 Interface Status............................... Up
 IP Address..................................... 172.19.2.2
 Subnet Mask.................................... 255.255.255.0
@@ -87,12 +87,12 @@ Burned In MAC Address.......................... D8:C4:97:71:12:3C
 設定
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # configure
-(cs2) (Config)#ip domain name company.com
-(cs2) (Config)#ip name server 10.10.99.1 10.10.99.2
-(cs2) (Config)#exit
+(cs2)# *configure*
+(cs2) (Config)# *ip domain name company.com*
+(cs2) (Config)# *ip name server 10.10.99.1 10.10.99.2*
+(cs2) (Config)# *exit*
 (cs2) (Config)#
 ----
 . 設定NTP伺服器。
@@ -102,13 +102,13 @@ Burned In MAC Address.......................... D8:C4:97:71:12:3C
 《NTP》
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) #
-(cs2) (Config)#sntp client mode unicast
-(cs2) (Config)#sntp server 10.99.99.5
-(cs2) (Config)#clock timezone -7
-(cs2) (Config)#exit
+(cs2)#
+(cs2) (Config)# *sntp client mode unicast*
+(cs2) (Config)# *sntp server 10.99.99.5*
+(cs2) (Config)# *clock timezone -7*
+(cs2) (Config)# *exit*
 (cs2) (Config)#
 ----
 .. 手動設定時間：
@@ -116,30 +116,30 @@ Burned In MAC Address.......................... D8:C4:97:71:12:3C
 "時鐘"
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) #config
-(cs2) (Config)#no sntp client mode
-(cs2) (Config)#clock summer-time recurring 1 sun mar 02:00 1 sun nov 02:00 offset 60 zone EST
-(cs2) (Config)#clock timezone -5 zone EST
-(cs2) (Config)#clock set 07:00:00
-(cs2) (Config)#clock set 10/20/2020
+(cs2)# *config*
+(cs2) (Config)# *no sntp client mode*
+(cs2) (Config)# *clock summer-time recurring 1 sun mar 02:00 1 sun nov 02:00 offset 60 zone EST*
+(cs2) (Config)# *clock timezone -5 zone EST*
+(cs2) (Config)# *clock set 07:00:00
+(cs2) (Config)# *clock set 10/20/2020*
 
-(cs2) (Config)#show clock
+(cs2) (Config)# *show clock*
 
 07:00:11 EST(UTC-5:00) Oct 20 2020
 No time source
 
-(cs2) (Config)#exit
+(cs2) (Config)# *exit*
 
-(cs2) #write memory
+(cs2)# *write memory*
 
 This operation may take a few minutes.
 Management interfaces will not be available during this time.
 
-Are you sure you want to save? (y/n) y
+Are you sure you want to save? (y/n) *y*
 
-Config file 'startup-config' created successfully .
+Config file 'startup-config' created successfully.
 
 Configuration Saved!
 ----

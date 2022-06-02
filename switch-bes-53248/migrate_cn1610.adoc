@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: CN1610,CN1610 replacing, migrate from CN1610 
 summary: 若要將叢集中現有的CN1610叢集交換器更換為Broadcom支援的Bes - 53248叢集交換器、您必須執行特定的工作順序。 
 ---
-= 如何將CN1610叢集交換器移轉至B怎麼53248叢集交換器- B怎麼 說
+= 如何將CN1610叢集交換器移轉至B怎麼53248叢集交換器
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -75,9 +75,9 @@ cluster1::*> system node autosupport invoke -node \* -type all -message MAINT=2h
 「網路介面show -vserver叢集-功能 變數自動回復」
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface show -vserver Cluster -fields auto-revert
+cluster1::*> *network interface show -vserver Cluster -fields auto-revert*
 
           Logical
 Vserver   Interface     Auto-revert
@@ -87,8 +87,6 @@ Cluster
           node1_clus2   true
           node2_clus1   true
           node2_clus2   true
-
-4 entries were displayed.
 ----
 . 顯示組態中裝置的相關資訊：
 +
@@ -98,9 +96,9 @@ Cluster
 以下範例顯示每個叢集互連交換器的每個節點已設定多少個叢集互連介面：
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network device-discovery show -protocol cdp
+cluster1::*> *network device-discovery show -protocol cdp*
 Node/       Local  Discovered
 Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
 ----------- ------ ------------------------- ----------------  ----------------
@@ -110,8 +108,6 @@ node2      /cdp
 node1      /cdp
             e0a    CL2                       0/1               CN1610
             e0b    CL1                       0/1               CN1610
-
-4 entries were displayed.
 ----
 . 確定每個叢集介面的管理或作業狀態。
 +
@@ -120,9 +116,9 @@ node1      /cdp
 「網路連接埠show -IPSpace Cluster」
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network port show -ipspace Cluster
+cluster1::*> *network port show -ipspace Cluster*
 
 Node: node1
                                                                        Ignore
@@ -139,17 +135,15 @@ Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
 --------- ------------ ---------------- ---- ---- ----------- -------- ------
 e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
 e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
-
-4 entries were displayed.
 ----
 .. 顯示有關邏輯介面的資訊：
 +
 「網路介面show -vserver叢集」
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface show -vserver Cluster
+cluster1::*> *network interface show -vserver Cluster*
 
             Logical    Status     Network            Current       Current Is
 Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
@@ -159,7 +153,6 @@ Cluster
             node1_clus2  up/up    169.254.49.125/16  node1         e0b     true
             node2_clus1  up/up    169.254.47.194/16  node2         e0a     true
             node2_clus2  up/up    169.254.19.183/16  node2         e0b     true
-4 entries were displayed.
 ----
 
 
@@ -172,9 +165,9 @@ Cluster
 下列範例顯示如何ping遠端叢集介面：
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> cluster ping-cluster -node node2
+cluster1::*> *cluster ping-cluster -node node2*
 
 Host is node2
 Getting addresses from network interface table...
@@ -210,13 +203,13 @@ RPC status:
 以下範例說明如何關閉CN1610交換器CL1上的ISL連接埠13至16：
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(CL1)# configure
-(CL1)(Config)# interface 0/13-0/16
-(CL1)(Interface 0/13-0/16)# shutdown
-(CL1)(Interface 0/13-0/16)# exit
-(CL1)(Config)# exit
+(CL1)# *configure*
+(CL1)(Config)# *interface 0/13-0/16*
+(CL1)(Interface 0/13-0/16)# *shutdown*
+(CL1)(Interface 0/13-0/16)# *exit*
+(CL1)(Config)# *exit*
 (CL1)#
 ----
 . 在CN1610 CL1與新的BS-53248 CS2之間建置暫時ISL。ISL只會在CS2上定義、因為CL1上的現有ISL可以重複使用。
@@ -224,20 +217,20 @@ RPC status:
 下列範例在CS2（連接埠13-16）上建置暫用ISL、以連接至CL1上的現有ISL（連接埠13-16）：
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # configure
-(cs2) (Config)# port-channel name 1/2 temp-isl-cn1610
-(cs2) (Config)# interface 0/13-0/16
-(cs2) (Interface 0/13-0/16)# no spanning-tree edgeport
-(cs2) (Interface 0/13-0/16)# addport 1/2
-(cs2) (Interface 0/13-0/16)# exit
-(cs2) (Config)# interface lag 2
-(cs2) (Interface lag 2)# mtu 9216
-(cs2) (Interface lag 2)# port-channel load-balance 7
-(cs2) (Config)# exit
+(cs2)# *configure*
+(cs2) (Config)# *port-channel name 1/2 temp-isl-cn1610*
+(cs2) (Config)# *interface 0/13-0/16*
+(cs2) (Interface 0/13-0/16)# *no spanning-tree edgeport*
+(cs2) (Interface 0/13-0/16)# *addport 1/2*
+(cs2) (Interface 0/13-0/16)# *exit*
+(cs2) (Config)# *interface lag 2*
+(cs2) (Interface lag 2)# *mtu 9216*
+(cs2) (Interface lag 2)# *port-channel load-balance 7*
+(cs2) (Config)# *exit*
 
-(cs2) # show port-channel 1/2
+(cs2)# *show port-channel 1/2*
 Local Interface................................ 1/2
 Channel Name................................... temp-isl-cn1610
 Link State..................................... Down
@@ -261,7 +254,7 @@ Ports   Timeout        Speed     Active
 ----
 . 在所有節點上、移除連接至CN1610交換器CL2的纜線。
 +
-然後、您必須將所有節點上的中斷連接連接埠重新連接至新的BS-53248交換器CS2。請參閱_SURF_ Hardware Universe 以取得核准的纜線選項。
+然後、您必須將所有節點上的中斷連接連接埠重新連接至新的BS-53248交換器CS2。請參閱 https://hwu.netapp.com/Home/Index["_NetApp Hardware Universe SUR__"^] 以取得核准的纜線選項。
 
 . 從CN1610交換器CL2的連接埠13到16拔下四條ISL纜線。
 +
@@ -272,13 +265,13 @@ Ports   Timeout        Speed     Active
 以下範例說明在CL1上啟動ISL連接埠13到16的程序：
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(CL1)# configure
-(CL1)(Config)# interface 0/13-0/16
-(CL1)(Interface 0/13-0/16,3/1)# no shutdown
-(CL1)(Interface 0/13-0/16,3/1)# exit
-(CL1)(Config)# exit
+(CL1)# *configure*
+(CL1)(Config)# *interface 0/13-0/16*
+(CL1)(Interface 0/13-0/16,3/1)# *no shutdown*
+(CL1)(Interface 0/13-0/16,3/1)# *exit*
+(CL1)(Config)# *exit*
 (CL1)#
 ----
 . 驗證CN1610交換器CL1上的ISL是否為* up *：
@@ -289,9 +282,9 @@ Ports   Timeout        Speed     Active
 「Link State」（連結狀態）應為「up」（正常）、「Type」（類型）應為「tatic」（動態）、而「Port Active」（作用中連接埠）應為「True」（真）、連接埠0/13至0/16：
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(CL2)# show port-channel 3/1
+(CL2)# *show port-channel 3/1*
 Local Interface................................ 3/1
 Channel Name................................... ISL-LAG
 Link State..................................... Up
@@ -318,9 +311,9 @@ Ports    Timeout        Speed       Active
 「How port-channel」
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # show port-channel 1/2
+(cs2)# *show port-channel 1/2*
 
 Local Interface................................ 1/2
 Channel Name................................... temp-isl-cn1610
@@ -349,9 +342,9 @@ Ports   Timeout       Speed     Active
 「網路介面show -vserver叢集」
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface show -vserver Cluster
+cluster1::*> *network interface show -vserver Cluster*
             Logical      Status     Network            Current       Current Is
 Vserver     Interface    Admin/Oper Address/Mask       Node          Port    Home
 ----------- ------------ ---------- ------------------ ------------- ------- ----
@@ -360,7 +353,6 @@ Cluster
             node1_clus2  up/up      169.254.49.125/16  node1         e0b     true
             node2_clus1  up/up      169.254.47.194/16  node2         e0a     true
             node2_clus2  up/up      169.254.19.183/16  node2         e0b     true
-4 entries were displayed.
 ----
 . 確認所有的叢集連接埠均已連接：
 +
@@ -370,9 +362,9 @@ Cluster
 下列範例顯示先前命令的結果、確認所有叢集互連都正常運作：
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network port show -ipspace Cluster
+cluster1::*> *network port show -ipspace Cluster*
 
 Node: node1
                                                                        Ignore
@@ -389,8 +381,6 @@ Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
 --------- ------------ ---------------- ---- ---- ----------- -------- ------
 e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
 e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
-
-4 entries were displayed.
 ----
 . Ping遠端叢集介面：
 +
@@ -400,9 +390,9 @@ e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
 下列範例顯示如何ping遠端叢集介面：
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> cluster ping-cluster -node node2
+cluster1::*> *cluster ping-cluster -node node2*
 Host is node2
 Getting addresses from network interface table...
 Cluster node1_clus1 169.254.209.69  node1     e0a
@@ -429,7 +419,7 @@ RPC status:
 ----
 . 在所有節點上、移除連接至CN1610交換器CL1的纜線。
 +
-然後、您必須將所有節點上的中斷連接連接埠重新連線至新的BS1-53248交換器CS1。請參閱_SURF_ Hardware Universe 以取得核准的纜線選項。
+然後、您必須將所有節點上的中斷連接連接埠重新連線至新的BS1-53248交換器CS1。請參閱 https://hwu.netapp.com/Home/Index["_NetApp Hardware Universe SUR__"^] 以取得核准的纜線選項。
 
 . 從BS-53248交換器CS2的連接埠13至16拔下四條ISL纜線。
 . 移除CS2上的暫用連接埠通道2。
@@ -437,20 +427,20 @@ RPC status:
 下列範例會移除連接埠通道2、並將執行組態檔複製到啟動組態檔：
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # configure
-(cs2) (Config)# deleteport 1/2 all
-(cs2) (Config)# interface 0/13-0/16
-(cs2) (Interface 0/13-0/16)# spanning-tree edgeport
-​​​​​(cs2) (Interface 0/13-0/16)# exit
-(cs2) (Config)# exit
-(cs2) # write memory
+(cs2)# *configure*
+(cs2) (Config)# *deleteport 1/2 all*
+(cs2) (Config)# *interface 0/13-0/16*
+(cs2) (Interface 0/13-0/16)# *spanning-tree edgeport*
+​​​​​(cs2) (Interface 0/13-0/16)# *exit*
+(cs2) (Config)# *exit*
+(cs2)# *write memory*
 
 This operation may take a few minutes.
 Management interfaces will not be available during this time.
 
-Are you sure you want to save? (y/n) y
+Are you sure you want to save? (y/n) *y*
 
 Config file 'startup-config' created successfully .
 ----
@@ -462,9 +452,9 @@ Config file 'startup-config' created successfully .
 以下範例可驗證節點1和節點2上的所有叢集互連連接埠均為「up（正常））：
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network port show -ipspace Cluster
+cluster1::*> *network port show -ipspace Cluster*
 
 Node: node1
                                                                        Ignore
@@ -481,8 +471,6 @@ Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
 --------- ------------ ---------------- ---- ---- ----------- -------- ------
 e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
 e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
-
-4 entries were displayed.
 ----
 . 確認介面現在是主介面：
 +
@@ -492,9 +480,9 @@ e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
 以下範例顯示節點1和節點2的叢集互連介面狀態為「up」和「is home」：
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface show -vserver Cluster
+cluster1::*> *network interface show -vserver Cluster*
             Logical      Status     Network            Current   Current Is
 Vserver     Interface    Admin/Oper Address/Mask       Node      Port    Home
 ----------- ------------ ---------- ------------------ --------- ------- ------
@@ -503,8 +491,6 @@ Cluster
             node1_clus2  up/up      169.254.49.125/16  node1     e0b     true
             node2_clus1  up/up      169.254.47.194/16  node2     e0a     true
             node2_clus2  up/up      169.254.19.183/16  node2     e0b     true
-
-4 entries were displayed.
 ----
 . Ping遠端叢集介面、然後執行遠端程序呼叫伺服器檢查：
 +
@@ -514,9 +500,9 @@ Cluster
 下列範例顯示如何ping遠端叢集介面：
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> cluster ping-cluster -node node2
+cluster1::*> *cluster ping-cluster -node node2*
 Host is node2
 Getting addresses from network interface table...
 Cluster node1_clus1 169.254.209.69  node1     e0a
@@ -549,9 +535,9 @@ RPC status:
 以下範例顯示節點1和節點2已從CN1610 CL2和CL1移轉至BS-53248 CS2和CS1：
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network device-discovery show -protocol cdp
+cluster1::*> *network device-discovery show -protocol cdp*
 Node/       Local  Discovered
 Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
 ----------- ------ ------------------------- ----------------  ----------------
@@ -561,8 +547,6 @@ node1      /cdp
 node2      /cdp
             e0a    cs2                       0/2               BES-53248
             e0b    cs1                       0/2               BES-53248
-
-4 entries were displayed.
 ----
 . 如果更換的CN1610交換器未自動移除、請將其移除：
 +
@@ -572,26 +556,26 @@ node2      /cdp
 以下範例說明如何移除CN1610交換器：
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster::*> system cluster-switch delete –device CL2
-cluster::*> system cluster-switch delete –device CL1
+cluster::*> *system cluster-switch delete –device CL2*
+cluster::*> *system cluster-switch delete –device CL1*
 ----
 . 如果您禁止自動建立個案、請叫用AutoSupport 下列訊息來重新啟用：
 +
 「系統節點AutoSupport 不完整地叫用節點*-type all -most MAn=end」
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster::*> system node autosupport invoke -node \* -type all -message MAINT=END
+cluster::*> *system node autosupport invoke -node \* -type all -message MAINT=END*
 ----
 
 
-請參閱中的_設定叢集交換器記錄收集功能_ http://docs.netapp.com/platstor/topic/com.netapp.doc.hw-sw-ix8-setup/home.html["適用於Broadcom支援的BS-53248交換器的交換器設定與組態指南"] 以瞭解啟用叢集健全狀況交換器記錄收集以收集交換器相關記錄檔所需的步驟。
+請參閱 link:configure-health-monitor.html["安裝叢集交換器健全狀況監視器（CSHM）組態檔"] 和 link:configure-log-collection["設定叢集交換器記錄收集功能"] 以瞭解啟用叢集健全狀況交換器記錄收集以收集交換器相關記錄檔所需的步驟。
 
 *相關資訊*
 
 https://hwu.netapp.com["Hardware Universe"^]
 
-http://docs.netapp.com/platstor/topic/com.netapp.doc.hw-sw-ix8-setup/home.html["適用於Broadcom支援的BS-53248交換器的交換器設定與組態指南"^]
+link:replace-requirements.html["Broadcom支援的Bes - 53248交換器設定與組態"^]

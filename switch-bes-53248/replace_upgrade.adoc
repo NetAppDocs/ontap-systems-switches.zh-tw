@@ -35,10 +35,7 @@ summary: 升級BS-53248叢集交換器時、首先要準備好控制器以進行
 * 「cluster1：>」提示會指出叢集的名稱。
 * 每個節點上的叢集連接埠名稱為「e0a」和「e0b」。
 +
-請參閱_Hardware Universe__以瞭解平台上支援的實際叢集連接埠。
-
-+
-https://hwu.netapp.com/Home/Index["NetApp Hardware Universe"^]
+請參閱 https://hwu.netapp.com/Home/Index["_NetApp Hardware Universe SUR__"^] 以取得平台所支援的實際叢集連接埠。
 
 * NetApp叢集交換器支援的交換器間連結（ISL）為連接埠0/55和0/56。
 * NetApp叢集交換器支援的節點連線是連接埠0/1到0/16、具有預設授權。

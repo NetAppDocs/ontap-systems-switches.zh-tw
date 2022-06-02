@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: problem, arise, install, license, debug, command, copy, restriction, limitation, restrictions and limitations - bes-53248 
 summary: 如果安裝授權時發生問題、請在再次執行copy命令以安裝授權之前、先執行下列偵錯命令。 
 ---
-= 限制與限制- Bes - 53248交換器
+= 限制與限制
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -13,15 +13,13 @@ summary: 如果安裝授權時發生問題、請在再次執行copy命令以安�
 [role="lead"]
 如果安裝授權時發生問題、請先執行下列偵錯命令、再重新執行「copy」命令來安裝授權。
 
-要使用的除錯命令：
+要使用的除錯命令：「Debuger transfer」和「debugs license」
 
-+「debuger transfer DEBUG license」
-
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # debug transfer
+(cs2)# *debug transfer*
 Debug transfer output is enabled.
-(cs2) # debug license
+(cs2)# *debug license*
 Enabled capability licensing debugging.
 ----
 當您在啟用「debug transfer」和「debug license」選項的情況下執行「copy」命令時、會傳回下列記錄輸出：
@@ -60,9 +58,9 @@ CAPABILITY LICENSING : Fri Sep 11 13:41:32 2020: Applying license file 1.
 
 使用「copy」命令將連接埠授權備份到伺服器：
 
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # copy nvram:license-key 1 scp://<UserName>@<IP_address>/saved_license_1.dat
+(cs2)# *copy nvram:license-key 1 scp://<UserName>@<IP_address>/saved_license_1.dat*
 ----
 請參閱 link:configure-licenses.html["安裝B封閉 環境叢集交換器的授權"] 以取得可用授權所支援的韌體版本詳細資料。
 

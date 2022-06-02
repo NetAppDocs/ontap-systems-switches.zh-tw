@@ -23,58 +23,54 @@ summary: 您可以在首次設定BS-53248叢集交換器之後、以及在套用
 此範例可驗證交換器是否連接至IP位址為172.19.2.1的伺服器：
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # ping 172.19.2.1
+(cs2)# *ping 172.19.2.1*
 Pinging 172.19.2.1 with 0 bytes of data:
 
 Reply From 172.19.2.1: icmp_seq = 0. time= 5910 usec.
 ----
 . 使用「copy」命令在BS-53248叢集交換器上安裝RCF。
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # copy http://172.19.2.1/tmp/BES-53248_RCF_v1.6-Cluster-HA.txt nvram:script BES-53248_RCF_v1.6-Cluster-HA.scr
+(cs2)# *copy sftp://172.19.2.1/tmp/BES-53248_RCF_v1.6-Cluster-HA.txt nvram:script BES-53248_RCF_v1.6-Cluster-HA.scr*
 
-Remote Password ********
+Remote Password:********
 
-Mode........................................... HTTP
+Mode........................................... SFTP
 Set Server IP.................................. 172.19.2.1
 Path........................................... //tmp/
 Filename....................................... BES-53248_RCF_v1.6-Cluster-HA.txt
 Data Type...................................... Config Script
 Destination Filename........................... BES-53248_RCF_v1.6-Cluster-HA.scr
 
-File with same name already exists.
-WARNING:Continuing with this command will overwrite the existing file.
-
 Management access will be blocked for the duration of the transfer
-Are you sure you want to start? (y/n) y
+Are you sure you want to start? (y/n) *y*
+SFTP Code transfer starting...
 
-File transfer in progress. Management access will be blocked for the duration of the transfer. Please wait...
-
-Validating configuration script...
-[the script is now displayed line by line]
-
-Configuration script validated.
 File transfer operation completed successfully.
 ----
 +
 
-NOTE: 視您的環境而定、您可能需要在「copy」命令中使用雙斜槓、例如：「+copy」 http://172.19.2.1//tmp/BES-53248_RCF_v1.6-Cluster-HA.txt[] NVRAM：指令碼BS-53248_RCF-v1.6-Cluster-HA.scr+。
+NOTE: 視您的環境而定、您可能需要在「copy」命令中使用雙斜槓、例如：「+copy sftp：//172.19.1.1//tmp/BES-53248_RCF_v1.6-Cluster-HA.txt NVRAM:script bes-53248_RCF-v1.6-Cluster-HA .scr+」。
 
 +
 
-NOTE: 在啟動指令碼之前、必須先將「.scr」副檔名設定為檔案名稱的一部分。此擴充是EFOS作業系統的延伸。當指令碼下載到交換器時、交換器會自動驗證指令碼、並將輸出傳送到主控台。此外、您也可以變更「.scr」的名稱、使其符合主控台螢幕的大小、以便更容易閱讀、例如：「+ copy」 http://172.19.2.1/tmp/BES-53248_RCF_v1.6-Cluster-HA.txt[] NVRAM：指令碼RCF-v1.6-Cluster-HA.scr+。
+NOTE: 在啟動指令碼之前、必須先將「.scr」副檔名設定為檔案名稱的一部分。此擴充是EFOS作業系統的延伸。當指令碼下載到交換器時、交換器會自動驗證指令碼、並將輸出傳送到主控台。此外、您也可以變更「.scr」的名稱、使其符合主控台螢幕的大小、以便更容易閱讀、例如：「+copy sftp：//172.19.2.1/tmp/BES-53248_RCF_v1.6-Cluster-HA.txt NVRAM:script RCF-v1.6-Cluster-HA。scr+」。
+
++
+
+NOTE: 檔案名稱不得包含符號「//:*？」<>|、最大長度為32個字元。
 
 . 確認已下載指令碼並儲存至您指定的檔案名稱：
 +
 《記錄清單》
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # script list
+(cs2)# *script list*
 
 Configuration Script Name                  Size(Bytes)  Date of Modification
 -----------------------------------------  -----------  --------------------
@@ -87,14 +83,14 @@ BES-53248_RCF_v1.6-Cluster-HA.scr        2241         2020 09 30 05:41:00
 適用記錄
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # script apply BES-53248_RCF_v1.6-Cluster-HA.scr
+(cs2)# *script apply BES-53248_RCF_v1.6-Cluster-HA.scr*
 
-Are you sure you want to apply the configuration script? (y/n) y
+Are you sure you want to apply the configuration script? (y/n) *y*
 
 The system has unsaved changes.
-Would you like to save them now? (y/n) y
+Would you like to save them now? (y/n) *y*
 Config file 'startup-config' created successfully .
 Configuration Saved!
 
@@ -105,9 +101,9 @@ Configuration script 'BES-53248_RCF_v1.6-Cluster-HA.scr' applied.
 「How port all | exclude Detach」
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # show port all \| exclude Detach
+(cs2)# *show port all \| exclude Detach*
 
                  Admin     Physical     Physical   Link   Link    LACP   Actor
 Intf      Type   Mode      Mode         Status     Status Trap    Mode   Timeout
@@ -142,22 +138,22 @@ Intf      Type   Mode      Mode         Status     Status Trap    Mode   Timeout
 「如何執行設定」
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # show running-config
+(cs2)# *show running-config*
 ----
 . 儲存執行中的組態、以便在您重新啟動交換器時將其變成啟動組態：
 +
 寫入記憶體
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # write memory
+(cs2)# *write memory*
 This operation may take a few minutes.
 Management interfaces will not be available during this time.
 
-Are you sure you want to save? (y/n) y
+Are you sure you want to save? (y/n) *y*
 
 Config file 'startup-config' created successfully.
 
@@ -168,11 +164,11 @@ Configuration Saved!
 "重裝"
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # reload
+(cs2)# *reload*
 
-Are you sure you would like to reset the system? (y/n)y
+Are you sure you would like to reset the system? (y/n) *y*
 
 System will now restart!
 ----

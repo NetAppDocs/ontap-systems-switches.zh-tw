@@ -23,9 +23,9 @@ summary: 您可以使用此程序來準備控制器以進行BES-53248叢集交�
 此範例可驗證交換器是否連接至IP位址為172.19.2.1的伺服器：
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # ping 172.19.2.1
+(cs2)# *ping 172.19.2.1*
 Pinging 172.19.2.1 with 0 bytes of data:
 
 Reply From 172.19.2.1: icmp_seq = 0. time= 5910 usec.
@@ -38,9 +38,9 @@ Reply From 172.19.2.1: icmp_seq = 0. time= 5910 usec.
 以下範例顯示所有連接埠的輸出類型、其「連結」值為up、「健全狀態」為healthy：
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::> network port show -ipspace Cluster
+cluster1::> *network port show -ipspace Cluster*
 
 Node: node1
                                                                     Ignore
@@ -57,8 +57,6 @@ Port   IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
 -----  ------------ ---------------- ---- ---- ----------- -------- ------
 e0a    Cluster      Cluster          up   9000  auto/10000 healthy  false
 e0b    Cluster      Cluster          up   9000  auto/10000 healthy  false
-
-	4 entries were displayed.
 ----
 . 使用以下命令、確認叢集生命體在管理和操作上均已啟動、並位於其主連接埠上：
 +
@@ -68,9 +66,9 @@ e0b    Cluster      Cluster          up   9000  auto/10000 healthy  false
 在此範例中、「-vserver」參數會顯示與叢集連接埠相關聯的lifs資訊。「狀態管理/操作者」必須為開機、「IS主頁」必須為真：
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::> network interface show -vserver Cluster
+cluster1::> *network interface show -vserver Cluster*
 
           Logical      Status     Network             Current       Current Is
 Vserver   Interface    Admin/Oper Address/Mask        Node          Port    Home
@@ -84,7 +82,5 @@ Cluster
                        up/up      169.254.252.125/16  node2         e0a     true
           node2_clus2
                        up/up      169.254.110.131/16  node2         e0b     true
-
-	4 entries were displayed.
 ----
 

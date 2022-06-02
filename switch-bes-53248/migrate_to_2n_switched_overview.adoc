@@ -28,10 +28,7 @@ Broadcom支援的Bes - 53248叢集交換器組態：
 * 叢集交換器必須有主控台存取權。
 * BES至53248節點對節點交換器和交換器對交換器連線必須使用雙軸纜線或光纖纜線。
 +
-_NetApp_Hardware Universe包含ONTAP 有關下列項目的資訊：支援的EFOS韌體、以及連接至BS-53248交換器的纜線。
-
-+
-https://hwu.netapp.com/Switch/Index["交換器Hardware Universe"^]
+。 https://hwu.netapp.com/Home/Index["_NetApp Hardware Universe SUR__"^] 包含ONTAP 有關支援功能的資訊、支援的EFOS韌體、以及連接至B作業 環境與53248交換器的纜線。
 
 * 交換器間連結（ISL）纜線必須連接至兩個B2-53248交換器上的連接埠0/55和0/56。
 * 兩個B予53248交換器的初始自訂必須完成。因此：
@@ -54,10 +51,7 @@ https://hwu.netapp.com/Switch/Index["交換器Hardware Universe"^]
 * 「cluster1：*：>」提示會指出叢集的名稱。
 * 此程序中使用的叢集連接埠為「e0a」和「e0b」。
 +
-_SUR__ Hardware Universe 包含平台實際叢集連接埠的最新資訊。
-
-+
-https://hwu.netapp.com["Hardware Universe"^]
+。 https://hwu.netapp.com/Home/Index["_NetApp Hardware Universe SUR__"^] 包含平台實際叢集連接埠的最新資訊。
 
 
 
@@ -97,13 +91,13 @@ NOTE: 您不得停用ISL連接埠。
 以下範例顯示、交換器CS1上的節點對向連接埠1至16已停用：
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs1)# configure
-(cs1)(Config)# interface 0/1-0/16
-(cs1)(Interface 0/1-0/16)# shutdown
-(cs1)(Interface 0/1-0/16)# exit
-(cs1)(Config)# exit
+(cs1)# *configure*
+(cs1)(Config)# *interface 0/1-0/16*
+(cs1)(Interface 0/1-0/16)# *shutdown*
+(cs1)(Interface 0/1-0/16)# *exit*
+(cs1)(Config)# *exit*
 ----
 . 驗證兩台BS-53248交換器CS1和CS2之間的ISL和ISL實體連接埠是否為「up（正常）：
 +
@@ -113,9 +107,9 @@ NOTE: 您不得停用ISL連接埠。
 下列範例顯示交換器CS1上的ISL連接埠已開啟：
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs1)# show port-channel 1/1
+(cs1)# *show port-channel 1/1*
 Local Interface................................ 1/1
 Channel Name................................... Cluster-ISL
 Link State..................................... Up
@@ -138,9 +132,9 @@ Ports  Timeout       Speed      Active
 以下範例顯示交換器CS2上的ISL連接埠已開啟：
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2)# show port-channel 1/1
+(cs2)# *show port-channel 1/1*
 Local Interface................................ 1/1
 Channel Name................................... Cluster-ISL
 Link State..................................... Up
@@ -157,7 +151,6 @@ Ports  Timeout       Speed      Active
        partner/long
 0/56   actor/long    100G Full  True
        partner/long
-(cs2) #
 ----
 . 顯示鄰近裝置的清單：
 +
@@ -170,9 +163,9 @@ Ports  Timeout       Speed      Active
 下列範例列出交換器CS1上的鄰近裝置：
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs1)# show isdp neighbors
+(cs1)# *show isdp neighbors*
 
 Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge,
                   S - Switch, H - Host, I - IGMP, r - Repeater
@@ -185,10 +178,9 @@ cs2            0/56     176       R            BES-53248   0/56
 下列範例列出交換器CS2上的鄰近裝置：
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-
-(cs2)# show isdp neighbors
+(cs2)# *show isdp neighbors*
 
 Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge,
                   S - Switch, H - Host, I - IGMP, r - Repeater
@@ -205,9 +197,9 @@ cs2            0/56     176       R            BES-53248   0/56
 每個連接埠應顯示「Link」（連結）和「Healthy」（健康狀態）。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network port show -ipspace Cluster
+cluster1::*> *network port show -ipspace Cluster*
 
 Node: node1
 
@@ -224,18 +216,15 @@ Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status
 --------- ------------ ---------------- ---- ---- ----------- --------
 e0a       Cluster      Cluster          up   9000  auto/10000 healthy
 e0b       Cluster      Cluster          up   9000  auto/10000 healthy
-
-4 entries were displayed.
 ----
 . 驗證所有叢集生命體是否均為「up」（正常運作）：「network interface show -vserver cluster」（網路介面show -vserver叢集）
 +
 每個叢集LIF都應該顯示「true」、表示「is Home」、並顯示「tatus admin/Opper」為「up / up」
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-
-cluster1::*> network interface show -vserver Cluster
+cluster1::*> *network interface show -vserver Cluster*
 
             Logical    Status     Network            Current       Current Is
 Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
@@ -245,13 +234,12 @@ Cluster
             node1_clus2  up/up    169.254.49.125/16  node1         e0b     true
             node2_clus1  up/up    169.254.47.194/16  node2         e0a     true
             node2_clus2  up/up    169.254.19.183/16  node2         e0b     true
-4 entries were displayed.
 ----
 . 驗證是否已在所有叢集生命體上啟用「自動還原」：「網路介面show -vserver叢集-功能 變數自動還原」
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface show -vserver Cluster -fields auto-revert
+cluster1::*> *network interface show -vserver Cluster -fields auto-revert*
 
           Logical
 Vserver   Interface     Auto-revert
@@ -261,15 +249,10 @@ Cluster
           node1_clus2   true
           node2_clus1   true
           node2_clus2   true
-
-4 entries were displayed.
 ----
 . 從節點1上的叢集連接埠e0a拔下纜線、然後使用BES-53248交換器支援的適當纜線、將e0a連接至叢集交換器CS1上的連接埠1。
 +
-_NetApp Hardware Universe SUR__包含更多有關纜線的資訊。
-
-+
-https://hwu.netapp.com/Switch/Index["交換器Hardware Universe"^]
+。 https://hwu.netapp.com/Home/Index["_NetApp Hardware Universe SUR__"^] 包含纜線的詳細資訊。
 
 . 從節點2上的叢集連接埠e0a拔下纜線、然後使用BES-53248交換器支援的適當纜線、將e0a連接至叢集交換器CS1上的連接埠2。
 . 在叢集交換器CS1上啟用所有面向節點的連接埠。
@@ -277,13 +260,13 @@ https://hwu.netapp.com/Switch/Index["交換器Hardware Universe"^]
 下列範例顯示交換器CS1上已啟用連接埠1到16：
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs1)# configure
-(cs1)(Config)# interface 0/1-0/16
-(cs1)(Interface 0/1-0/16)# no shutdown
-(cs1)(Interface 0/1-0/16)# exit
-(cs1)(Config)# exit
+(cs1)# *configure*
+(cs1)(Config)# *interface 0/1-0/16*
+(cs1)(Interface 0/1-0/16)# *no shutdown*
+(cs1)(Interface 0/1-0/16)# *exit*
+(cs1)(Config)# *exit*
 ----
 . 驗證所有叢集生命體是否都正常運作、並顯示為「真實」、表示「是家」：
 +
@@ -293,9 +276,9 @@ https://hwu.netapp.com/Switch/Index["交換器Hardware Universe"^]
 以下範例顯示、節點1和節點2上的所有生命都在運作中、而且「原為主目錄」結果為「真」：
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface show -vserver Cluster
+cluster1::*> *network interface show -vserver Cluster*
 
          Logical      Status     Network            Current     Current Is
 Vserver  Interface    Admin/Oper Address/Mask       Node        Port    Home
@@ -305,8 +288,6 @@ Cluster
          node1_clus2  up/up      169.254.49.125/16  node1       e0b     true
          node2_clus1  up/up      169.254.47.194/16  node2       e0a     true
          node2_clus2  up/up      169.254.19.183/16  node2       e0b     true
-
-4 entries were displayed.
 ----
 . 顯示叢集中節點狀態的相關資訊：
 +
@@ -316,16 +297,14 @@ Cluster
 下列範例顯示叢集中節點的健全狀況和資格資訊：
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> cluster show
+cluster1::*> *cluster show*
 
 Node                 Health  Eligibility   Epsilon
 -------------------- ------- ------------  ------------
 node1                true    true          false
 node2                true    true          false
-
-2 entries were displayed.
 ----
 . 從節點1上的叢集連接埠e0b拔下纜線、然後使用BES-53248交換器支援的適當纜線、將e0b連接至叢集交換器CS2上的連接埠1。
 . 從節點2上的叢集連接埠e0b拔下纜線、然後使用BES-53248交換器支援的適當纜線、將e0b連接至叢集交換器CS2上的連接埠2。
@@ -334,13 +313,13 @@ node2                true    true          false
 下列範例顯示交換器CS2上已啟用連接埠1到16：
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2)# configure
-(cs2)(Config)# interface 0/1-0/16
-(cs2)(Interface 0/1-0/16)# no shutdown
-(cs2)(Interface 0/1-0/16)# exit
-(cs2)(Config)# exit
+(cs2)# *configure*
+(cs2)(Config)# *interface 0/1-0/16*
+(cs2)(Interface 0/1-0/16)# *no shutdown*
+(cs2)(Interface 0/1-0/16)# *exit*
+(cs2)(Config)# *exit*
 ----
 . 確認所有叢集連接埠均為「up（正常））：
 +
@@ -350,9 +329,9 @@ node2                true    true          false
 以下範例顯示節點1和節點2上的所有叢集連接埠都已啟動：
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network port show -ipspace Cluster
+cluster1::*> *network port show -ipspace Cluster*
 
 Node: node1
                                                                        Ignore
@@ -369,8 +348,6 @@ Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
 --------- ------------ ---------------- ---- ---- ----------- -------- ------
 e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
 e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
-
-4 entries were displayed.
 ----
 . 驗證所有介面是否都顯示「true」表示「is Home」：
 +
@@ -384,9 +361,9 @@ NOTE: 這可能需要幾分鐘的時間才能完成。
 以下範例顯示、節點1和節點2上的所有l生命 都已啟動、而且「原為主目錄」結果為「真」：
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface show -vserver Cluster
+cluster1::*> *network interface show -vserver Cluster*
 
           Logical      Status     Network            Current    Current Is
 Vserver   Interface    Admin/Oper Address/Mask       Node       Port    Home
@@ -396,8 +373,6 @@ Cluster
           node1_clus2  up/up      169.254.49.125/16  node1      e0b     true
           node2_clus1  up/up      169.254.47.194/16  node2      e0a     true
           node2_clus2  up/up      169.254.19.183/16  node2      e0b     true
-
-4 entries were displayed.
 ----
 . 驗證兩個節點各自與每個交換器都有一個連線：
 +
@@ -407,9 +382,9 @@ Cluster
 以下範例顯示兩個交換器的適當結果：
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs1)# show isdp neighbors
+(cs1)# *show isdp neighbors*
 
 Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge,
                   S - Switch, H - Host, I - IGMP, r - Repeater
@@ -421,7 +396,7 @@ cs2            0/55         178       R            BES-53248   0/55
 cs2            0/56         178       R            BES-53248   0/56
 
 
-(cs2)# show isdp neighbors
+(cs2)# *show isdp neighbors*
 
 Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge,
                   S - Switch, H - Host, I - IGMP, r - Repeater
@@ -437,9 +412,9 @@ cs1            0/56         175       R            BES-53248   0/56
 「network device-dDiscovery show -protocol cup」
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network device-discovery show -protocol cdp
+cluster1::*> *network device-discovery show -protocol cdp*
 Node/       Local  Discovered
 Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
 ----------- ------ ------------------------- ----------------  ----------------
@@ -449,8 +424,6 @@ node2      /cdp
 node1      /cdp
             e0a    cs1                       0/1               BES-53248
             e0b    cs2                       0/1               BES-53248
-
-4 entries were displayed.
 ----
 . 確認設定已停用：
 +
@@ -464,9 +437,9 @@ NOTE: 命令可能需要幾分鐘的時間才能完成。等待「3分鐘壽命�
 以下範例中的「假」輸出顯示組態設定已停用：
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network options switchless-cluster show
+cluster1::*> *network options switchless-cluster show*
 Enable Switchless Cluster: false
 ----
 . 驗證叢集中節點成員的狀態：
@@ -477,9 +450,9 @@ Enable Switchless Cluster: false
 下列範例顯示叢集中節點的健全狀況和資格資訊：
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> cluster show
+cluster1::*> *cluster show*
 
 Node                 Health  Eligibility   Epsilon
 -------------------- ------- ------------  --------
@@ -491,9 +464,9 @@ node2                true    true          false
 「叢集ping叢集-node-node-name_」
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> cluster ping-cluster -node local
+cluster1::*> *cluster ping-cluster -node local*
 
 Host is node2
 Getting addresses from network interface table...
@@ -534,12 +507,12 @@ cluster1::*> system node autosupport invoke -node \* -type all -message MAINT=EN
 ----
 
 
-請參閱中的_設定叢集交換器記錄收集功能_ http://docs.netapp.com/platstor/topic/com.netapp.doc.hw-sw-ix8-setup/home.html["適用於Broadcom支援的BS-53248交換器的交換器設定與組態指南"^] 以瞭解啟用叢集健全狀況交換器記錄收集以收集交換器相關記錄檔所需的步驟。
+請參閱 link:configure-health-monitor.html["安裝叢集交換器健全狀況監視器（CSHM）組態檔"] 和 link:configure-log-collection["設定叢集交換器記錄收集功能"] 以瞭解啟用叢集健全狀況交換器記錄收集以收集交換器相關記錄檔所需的步驟。
 
 *相關資訊*
 
-https://hwu.netapp.com["Hardware Universe"^]
+https://hwu.netapp.com/Home/Index["NetApp Hardware Universe"^]
 
-http://docs.netapp.com/platstor/topic/com.netapp.doc.hw-sw-ix8-setup/home.html["適用於Broadcom支援的BS-53248交換器的交換器設定與組態指南"^]
+link:replace-requirements.html["Broadcom支援的Bes - 53248交換器設定與組態"^]
 
 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/How_to_suppress_automatic_case_creation_during_scheduled_maintenance_windows["NetApp知識庫文章：如何在排定的維護時間內禁止自動建立案例"^]

@@ -284,7 +284,7 @@ g mode:
 +
 [listing]
 ----
-cs2# copy running-config startup-config \[\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\] 100% Copy complete
+cs2# copy running-config startup-config [########################################] 100% Copy complete
 ----
 . 重新開機交換器CS2。您可以在交換器重新開機時忽略節點上報告的「叢集連接埠當機」事件。
 +

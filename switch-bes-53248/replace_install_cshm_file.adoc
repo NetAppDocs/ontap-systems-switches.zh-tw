@@ -40,23 +40,23 @@ NOTE: 建議啟用SSH、以便使用CSHM中的所有功能。
 ----
 . 使用ONTAP 命令「show -privit advance"（進階設定）：
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::> set -privilege advanced
+cluster1::> *set -privilege advanced*
 ----
 . 執行交換器健全狀況監視器組態命令「系統叢集交換器設定-健全狀況監控-節點*-package-URL \http://server/file-location`:」
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::> system cluster-switch configure-health-monitor -node * -package-url
-http://192.168.2.20/usr/download/Broadcom_BES-53248.zip
+cluster1::> *system cluster-switch configure-health-monitor -node * -package-url
+http://192.168.2.20/usr/download/Broadcom_BES-53248.zip*
 ----
 . 確認命令輸出包含文字字串「已成功處理下載的套件」。如果發生錯誤、請聯絡NetApp支援部門。
 . 在ONTAP 作業系統上執行命令「系統叢集交換器show」、並確保在監控欄位設定為「True」時、發現叢集交換器。
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::> system cluster-switch show
+cluster1::> *system cluster-switch show*
 ----
 +
 

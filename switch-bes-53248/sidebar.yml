@@ -6,37 +6,39 @@ entries:
   url: "/switch-bes-53248/overview-bes53248.html"
 - title: 設定交換器
   entries:
-  - title: 必要文件
-    url: "/switch-bes-53248/replace-required-documentation.html"
   - title: Bes - 53248叢集交換器組態需求
     url: "/switch-bes-53248/replace-requirements.html"
-  - title: 設定新的Bes - 53248交換器
-    url: "/switch-bes-53248/configure-new-switch.html"
-  - title: 初始安裝
-    url: "/switch-bes-53248/configure-install-initial.html"
-  - title: 在BS-53248叢集交換器上啟用SSH
-    url: "/switch-bes-53248/configure-ssh.html"
-  - title: 安裝EFOS軟體
-    url: "/switch-bes-53248/configure-efos-software.html"
-  - title: 安裝授權
+  - title: 必要文件
+    url: "/switch-bes-53248/replace-required-documentation.html"
+  - title: 設定您的Bes - 53248叢集交換器
     entries:
-    - title: 安裝適用於B3作業 叢集交換器的授權
-      url: "/switch-bes-53248/configure-licenses.html"
-    - title: 限制與限制
-      url: "/switch-bes-53248/configure-restrictions.html"
-    - title: 編輯參考組態檔案（RCF）
-      url: "/switch-bes-53248/configure-edit-rcf.html"
-  - title: 安裝參考組態檔（RCF）
-    url: "/switch-bes-53248/configure-install-rcf.html"
-  - title: 設定叢集交換器記錄收集功能
-    url: "/switch-bes-53248/configure-log-collection.html"
-  - title: 安裝叢集交換器健全狀況監視器（CSHM）組態檔
-    url: "/switch-bes-53248/configure-health-monitor.html"
+    - title: 設定新的Bes - 53248交換器
+      url: "/switch-bes-53248/configure-new-switch.html"
+    - title: 初始安裝
+      url: "/switch-bes-53248/configure-install-initial.html"
+    - title: 安裝EFOS軟體
+      url: "/switch-bes-53248/configure-efos-software.html"
+    - title: 安裝授權
+      entries:
+      - title: 安裝適用於B3作業 叢集交換器的授權
+        url: "/switch-bes-53248/configure-licenses.html"
+      - title: 限制與限制
+        url: "/switch-bes-53248/configure-restrictions.html"
+      - title: 編輯RCF以啟動授權連接埠
+        url: "/switch-bes-53248/configure-edit-rcf.html"
+    - title: 安裝參考組態檔（RCF）
+      url: "/switch-bes-53248/configure-install-rcf.html"
+    - title: 安裝叢集交換器健全狀況監視器（CSHM）組態檔
+      url: "/switch-bes-53248/configure-health-monitor.html"
+    - title: 在BS-53248叢集交換器上啟用SSH
+      url: "/switch-bes-53248/configure-ssh.html"
+    - title: 設定叢集交換器記錄收集功能
+      url: "/switch-bes-53248/configure-log-collection.html"
 - title: 從CN1610交換器移轉至Bes 53248交換器
   entries:
-  - title: 開始之前
+  - title: 總覽
     url: "/switch-bes-53248/migrate-cn1610-overview.html"
-  - title: 如何移轉
+  - title: 如何移轉至B怎麼53248交換器
     url: "/switch-bes-53248/migrate-cn1610.html"
 - title: 移轉至雙節點交換叢集
   entries:
@@ -61,10 +63,10 @@ entries:
       url: "/switch-bes-53248/replace-edit-rcf.html"
   - title: 安裝參考組態檔（RCF）
     url: "/switch-bes-53248/replace-install-rcf.html"
-  - title: 設定叢集交換器記錄收集功能
-    url: "/switch-bes-53248/replace-configure-log-collection.html"
   - title: 安裝叢集交換器健全狀況監視器（CSHM）組態檔
     url: "/switch-bes-53248/replace-install-cshm-file.html"
+  - title: 設定叢集交換器記錄收集功能
+    url: "/switch-bes-53248/replace-configure-log-collection.html"
   - title: 驗證組態
     url: "/switch-bes-53248/replace-verify.html"
 - title: 更換Bes - 53248交換器

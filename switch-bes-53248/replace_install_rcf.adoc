@@ -28,10 +28,10 @@ summary: 您可以在首次設定BS-53248叢集交換器之後、以及在套用
 .步驟
 . 變更為提升命令提示字元（`#'）：「enable」
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2)> enable
-(cs2) #
+(cs2)> *enable*
+(cs2)#
 ----
 . 清除啟動組態並移除橫幅
 +
@@ -40,11 +40,11 @@ summary: 您可以在首次設定BS-53248叢集交換器之後、以及在套用
 *「erase啟動組態」*
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) #erase startup-config
-Are you sure you want to clear the configuration? (y/n) y
-(cs2) #
+(cs2)# *erase startup-config*
+Are you sure you want to clear the configuration? (y/n) *y*
+(cs2)#
 ----
 +
 此命令不會清除橫幅。
@@ -54,19 +54,19 @@ Are you sure you want to clear the configuration? (y/n) y
 *「no set clibanner」*
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) #configure
-(cs2)(Config) # no set clibanner
-(cs2)(Config) #
+(cs2)# *configure*
+(cs2)(Config)# *no set clibanner*
+(cs2)(Config)#
 ----
 
 
 . 重新啟動交換器：*（CS2）#relev*
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-Are you sure you would like to reset the system? (y/n) y
+Are you sure you would like to reset the system? (y/n) *y*
 ----
 +
 
@@ -86,22 +86,21 @@ NOTE: 如果系統在重新載入交換器之前詢問是否要儲存未儲存�
 「啟用」
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-Routing)> enable
-(Routing) #
+Routing)> *enable*
+(Routing)#
 ----
 . 將服務連接埠傳輸協定設為「無」：
 +
 '無服務傳輸協定'
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(Routing) #serviceport protocol none
+(Routing)# *serviceport protocol none*
 Changing protocol mode will reset ip configuration.
-Are you sure you want to continue? (y/n) y
-
+Are you sure you want to continue? (y/n) *y*
 (Routing) #
 ----
 . 將IP位址指派給服務連接埠：
@@ -112,9 +111,9 @@ Are you sure you want to continue? (y/n) y
 以下範例顯示指派IP位址「10.10.10.10」的服務連接埠、子網路為「255．255．255．0」、閘道為「10．10．10」：
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(Routing) #serviceport ip 10.10.10.10 255.255.255.0 10.10.10.1
+(Routing)# *serviceport ip 10.10.10.10 255.255.255.0 10.10.10.1*
 ----
 . 確認服務連接埠設定正確：
 +
@@ -124,10 +123,9 @@ Are you sure you want to continue? (y/n) y
 下列範例顯示連接埠已啟動、且已指派正確的位址：
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(Routing) #show serviceport
-
+(Routing)# *show serviceport*
 Interface Status............................... Up
 IP Address..................................... 10.10.10.10
 Subnet Mask.................................... 255.255.255.0
@@ -139,7 +137,6 @@ Configured IPv4 Protocol....................... None
 Configured IPv6 Protocol....................... None
 IPv6 AutoConfig Mode........................... Disabled
 Burned In MAC Address.......................... D8:C4:97:56:87:D7
-
 (Routing) #
 ----
 . 如有需要、請設定SSH伺服器。
@@ -150,34 +147,34 @@ NOTE: RCF檔案會停用Telnet傳輸協定。如果您未設定SSH伺服器、�
 +
 .. 產生RSA金鑰。
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(Routing) #configure
-(Routing) (Config)#crypto key generate rsa
+(Routing)# *configure*
+(Routing) (Config)# *crypto key generate rsa*
 ----
 .. 產生DSA金鑰（選用）
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(Routing) #configure
-(Routing) (Config)#crypto key generate dsa
+(Routing)# *configure*
+(Routing) (Config)# *crypto key generate dsa*
 ----
 .. 如果您使用的是FIPS相容版本的EFOS、請產生ECDSA金鑰。下列範例會建立長度為256的金鑰。有效值為256、384或521。
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(Routing) #configure
-(Routing) (Config)#crypto key generate ecdsa 256
+(Routing)# *configure*
+(Routing) (Config)# *crypto key generate ecdsa 256*
 ----
 .. 啟用SSH伺服器。
 +
 如有必要、請結束組態內容。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(Routing) (Config)#end
-(Routing) #ip ssh server enable
+(Routing) (Config)# *end*
+(Routing)# *ip ssh server enable*
 ----
 +
 
@@ -193,27 +190,25 @@ NOTE: 如果金鑰已經存在、系統可能會要求您覆寫金鑰。
 以下範例顯示「IP網域」和「IP名稱伺服器」命令：
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(Routing) # configure
-(Routing) (Config)#ip domain name lab.netapp.com
-(Routing) (Config)#ip name server 10.99.99.1 10.99.99.2
-(Routing) (Config)#exit
-(Routing) (Config)#
+(Routing)# *configure*
+(Routing) (Config)# *ip domain name lab.netapp.com*
+(Routing) (Config)# *ip name server 10.99.99.1 10.99.99.2*
+(Routing) (Config)# *exit*
 ----
 . 如有需要、請設定時區和時間同步（SNTP）。
 +
 以下範例顯示「shntp」命令、指定SNTP伺服器的IP位址和相對時區。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(Routing) #
-(Routing) (Config)#sntp client mode unicast
-(Routing) (Config)#sntp server 10.99.99.5
-(Routing) (Config)#clock timezone -7
-(Routing) (Config)#exit
-(Routing) (Config)#
+(Routing)# *configure*
+(Routing) (Config)# *sntp client mode unicast*
+(Routing) (Config)# *sntp server 10.99.99.5*
+(Routing) (Config)# *clock timezone -7*
+(Routing) (Config)# *exit*
 ----
 . 設定交換器名稱：
 +
@@ -223,11 +218,9 @@ NOTE: 如果金鑰已經存在、系統可能會要求您覆寫金鑰。
 交換器提示會顯示新名稱：
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(Routing) # hostname cs2
-
-(cs2) #
+(Routing)# *hostname cs2*
 ----
 . 儲存組態：
 +
@@ -237,23 +230,19 @@ NOTE: 如果金鑰已經存在、系統可能會要求您覆寫金鑰。
 您會收到類似下列範例的提示和輸出：
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) #write memory
+(cs2)# *write memory*
 
 This operation may take a few minutes.
 Management interfaces will not be available during this time.
 
-Are you sure you want to save? (y/n) y
+Are you sure you want to save? (y/n) *y*
 
-Config file 'startup-config' created successfully .
-
+Config file 'startup-config' created successfully.
 
 Configuration Saved!
-
-(cs2) #
 ----
-. 在其他叢集交換器上重複上述步驟。
 
 
 
@@ -270,62 +259,58 @@ Configuration Saved!
 此範例可驗證交換器是否連接至IP位址為172.19.2.1的伺服器：
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # ping 172.19.2.1
+(cs2)# *ping 172.19.2.1*
 Pinging 172.19.2.1 with 0 bytes of data:
 
 Reply From 172.19.2.1: icmp_seq = 0. time= 5910 usec.
 ----
 . 使用copy命令在BS-53248叢集交換器上安裝RCF。
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # copy http://172.19.2.1/tmp/BES-53248_RCF_v1.6-Cluster-HA.txt nvram:script BES-53248_RCF_v1.6-Cluster-HA.scr
+(cs2)# *copy sftp://172.19.2.1/tmp/BES-53248_RCF_v1.6-Cluster-HA.txt nvram:script BES-53248_RCF_v1.6-Cluster-HA.scr*
 
-Remote Password ********
+Remote Password:********
 
-Mode........................................... HTTP
+Mode........................................... SFTP
 Set Server IP.................................. 172.19.2.1
 Path........................................... //tmp/
 Filename....................................... BES-53248_RCF_v1.6-Cluster-HA.txt
 Data Type...................................... Config Script
 Destination Filename........................... BES-53248_RCF_v1.6-Cluster-HA.scr
 
-File with same name already exists.
-WARNING:Continuing with this command will overwrite the existing file.
-
 Management access will be blocked for the duration of the transfer
-Are you sure you want to start? (y/n) y
+Are you sure you want to start? (y/n) *y*
+SFTP Code transfer starting...
 
-File transfer in progress. Management access will be blocked for the duration of the transfer. Please wait...
-
-Validating configuration script...
-[the script is now displayed line by line]
-
-Configuration script validated.
 File transfer operation completed successfully.
 ----
 +
 
-NOTE: 視您的環境而定、您可能需要在copy命令中使用雙斜槓、例如：`+copy http://172.19.2.1//tmp/BES-53248_RCF_v1.6-Cluster-HA.txt[] NVRAM：指令碼BS-53248_RCF-v1.6-Cluster-HA.scr+。
+NOTE: 視您的環境而定、您可能需要在copy命令中使用雙槓、例如：`+copy sftp：//172.19.2.1//tmp/BES-53248_RCF_v1.6-Cluster-HA.txt NVRAM:script bs-53241_RCF-v1.6-Cluster-HA .scr+。
 
 +
 
-NOTE: 在啟動指令碼之前、必須先將「.scr」副檔名設定為檔案名稱的一部分。此擴充是EFOS作業系統的延伸。當指令碼下載到交換器時、交換器會自動驗證指令碼、並將輸出傳送到主控台。此外、您也可以變更「.scr」的名稱、使其符合主控台螢幕的大小、以便更容易閱讀、例如：「+ copy」 http://172.19.2.1/tmp/BES-53248_RCF_v1.6-Cluster-HA.txt[] NVRAM：指令碼RCF-v1.6-Cluster-HA.scr+。
+NOTE: 在啟動指令碼之前、必須先將「.scr」副檔名設定為檔案名稱的一部分。此擴充是EFOS作業系統的延伸。當指令碼下載到交換器時、交換器會自動驗證指令碼、並將輸出傳送到主控台。此外、您也可以變更「.scr」的名稱、使其符合主控台螢幕的大小、以便更容易閱讀、例如：「+copy sftp：//172.19.2.1/tmp/BES-53248_RCF_v1.6-Cluster-HA.txt NVRAM:script RCF-v1.6-Cluster-HA。scr+」。
+
++
+
+NOTE: 檔案名稱不得包含符號「//:*？」<>|、最大長度為32個字元。
 
 . 確認已下載指令碼並儲存至您指定的檔案名稱：
 +
 《記錄清單》
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # script list
+(cs2)# *script list*
 
 Configuration Script Name                  Size(Bytes)  Date of Modification
 -----------------------------------------  -----------  --------------------
-BES-53248_RCF_v1.6-Cluster-HA.scr        2241         2020 09 30 05:41:00
+BES-53248_RCF_v1.6-Cluster-HA.scr          2241         2020 09 30 05:41:00
 
 1 configuration script(s) found.
 ----
@@ -334,15 +319,15 @@ BES-53248_RCF_v1.6-Cluster-HA.scr        2241         2020 09 30 05:41:00
 適用記錄
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # script apply BES-53248_RCF_v1.6-Cluster-HA.scr
+(cs2)# *script apply BES-53248_RCF_v1.6-Cluster-HA.scr*
 
-Are you sure you want to apply the configuration script? (y/n) y
+Are you sure you want to apply the configuration script? (y/n) *y*
 
 The system has unsaved changes.
-Would you like to save them now? (y/n) y
-Config file 'startup-config' created successfully .
+Would you like to save them now? (y/n) *y*
+Config file 'startup-config' created successfully.
 Configuration Saved!
 
 Configuration script 'BES-53248_RCF_v1.6-Cluster-HA.scr' applied.
@@ -352,13 +337,13 @@ Configuration script 'BES-53248_RCF_v1.6-Cluster-HA.scr' applied.
 「How port all | exclude Detach」
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # show port all \| exclude Detach
+(cs2)# *show port all \| exclude Detach*
 
                  Admin     Physical     Physical   Link   Link    LACP   Actor
 Intf      Type   Mode      Mode         Status     Status Trap    Mode   Timeout
---------- ------ --------- ---------- ---------- ------ ------- ------ --------
+--------- ------ --------- ------------ ---------- ------ ------- ------ -------
 0/1              Enable    Auto                    Down   Enable  Enable long
 0/2              Enable    Auto                    Down   Enable  Enable long
 0/3              Enable    Auto                    Down   Enable  Enable long
@@ -389,22 +374,22 @@ Intf      Type   Mode      Mode         Status     Status Trap    Mode   Timeout
 「如何執行設定」
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # show running-config
+(cs2)# *show running-config*
 ----
 . 儲存執行中的組態、以便在您重新啟動交換器時將其變成啟動組態：
 +
 寫入記憶體
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # write memory
+(cs2)# *write memory*
 This operation may take a few minutes.
 Management interfaces will not be available during this time.
 
-Are you sure you want to save? (y/n) y
+Are you sure you want to save? (y/n) *y*
 
 Config file 'startup-config' created successfully.
 
@@ -415,12 +400,18 @@ Configuration Saved!
 "重裝"
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # reload
+(cs2)# *reload*
 
-Are you sure you would like to reset the system? (y/n) y
+Are you sure you would like to reset the system? (y/n) *y*
 
 System will now restart!
 ----
 
+
+
+NOTE: 在第一台交換器上安裝RCF之後、請重複這些步驟、在第二台叢集交換器上安裝RCF。
+
+
+CAUTION: 請參閱 link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/MetroCluster/BES-53248_communication_issue_after_firmware%2F%2FRCF_upgrade["KB"^] 如需更多資訊、請參閱安裝RCF以MetroCluster 供參考。

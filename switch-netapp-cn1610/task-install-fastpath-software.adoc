@@ -37,8 +37,8 @@ Password (Enter)
 +
 [listing]
 ----
-cluster::*> network interface migrate -vserver vs1 -lif clus2 -source-node node1 -destnode node1 -dest-port e1a
-cluster::*> network interface migrate -vserver vs2 -lif clus2 -source-node node2 -destnode node2 -dest-port e1a
+cluster::*> network interface migrate -vserver vs1 -lif clus2 -destnode node1 -dest-port e1a
+cluster::*> network interface migrate -vserver vs2 -lif clus2 -destnode node2 -dest-port e1a
 ----
 . 在每個節點的主控台上、確認移轉發生在：「network interface show」（網路介面顯示）
 +

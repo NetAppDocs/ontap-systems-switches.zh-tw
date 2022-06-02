@@ -35,7 +35,7 @@ NOTE: 購買連接埠授權即可啟動其他連接埠。
 ** Bes：53224：連接埠0/55-0/56（100 GbE）
 
 
-* 此功能包含有關下列項目的資訊：Hardware Universe 支援的EEFOS韌體、以及連接至B通信 設備叢集交換器的纜線。ONTAP
+* 。 https://hwu.netapp.com/Home/Index["_NetApp Hardware Universe SUR__"^] 包含ONTAP 有關支援功能的資訊、支援的EFOS韌體、以及連接至BE-53248叢集交換器的纜線。
 * 適當的ISL纜線如下：
 +
 ** *開頭：*適用於CN1610至CN1610（SFP+至SFP+）、四條SFP+光纖或銅線直接連接纜線。
@@ -48,6 +48,4 @@ NOTE: 購買連接埠授權即可啟動其他連接埠。
 
 NOTE: 移轉完成後、您可能需要安裝所需的組態檔、以支援適用於BES-53248叢集交換器的叢集交換器健全狀況監視器（CSHM）。
 
-請參閱 http://docs.netapp.com/platstor/topic/com.netapp.doc.hw-sw-ix8-setup/GUID-211616A4-C962-464A-A70E-5E057D7B13E1.html["安裝叢集交換器健全狀況監視器（CSHM）組態檔"] 《交換機設定與組態指南（適用於Broadcom支援的BS-53248 Switches）》指南。
-
-請參閱中的_設定叢集交換器記錄收集功能_ http://docs.netapp.com/platstor/topic/com.netapp.doc.hw-sw-ix8-setup/home.html["適用於Broadcom支援的BS-53248交換器的交換器設定與組態指南"] 以瞭解啟用叢集健全狀況交換器記錄收集以收集交換器相關記錄檔所需的步驟。
+請參閱 link:configure-health-monitor.html["安裝叢集交換器健全狀況監視器（CSHM）組態檔"] 和 link:configure-log-collection["設定叢集交換器記錄收集功能"] 以瞭解啟用叢集健全狀況交換器記錄收集以收集交換器相關記錄檔所需的步驟。

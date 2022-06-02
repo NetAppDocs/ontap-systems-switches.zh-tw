@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: bes, cluster, switch, base, model, license, 10gbe, 25gbe, 100gbe, port, add, purchasing, purchase, install licenses for bes-53248 cluster switches - bes-53248 switches 
 summary: B16-53248叢集交換器基礎模式已獲得16個10GbE或25GbE連接埠和2個100GbE連接埠的授權。您可以購買更多授權來新增連接埠。 
 ---
-= 安裝適用於B3作業 叢集交換器的使用許可- Bes - 53248交換器
+= 安裝適用於B3作業 叢集交換器的授權
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -101,9 +101,9 @@ EFOS 3.4.4.6及更新版本
 此範例可驗證交換器是否連接至IP位址為172.19.2.1的伺服器：
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # ping 172.19.2.1
+(cs2)# *ping 172.19.2.1*
 Pinging 172.19.2.1 with 0 bytes of data:
 
 Reply From 172.19.2.1: icmp_seq = 0. time= 5910 usec.
@@ -113,9 +113,9 @@ Reply From 172.19.2.1: icmp_seq = 0. time= 5910 usec.
 「如何授權」
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # show license
+(cs2)# *show license*
 Reboot needed.................................. No
 Number of active licenses...................... 0
 
@@ -129,9 +129,9 @@ No license file found.
 重複此步驟以載入更多授權、並使用不同的金鑰索引編號。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) #copy sftp://root@172.19.2.1/var/lib/tftpboot/license.dat nvram:license-key 1
+(cs2)# *copy sftp://root@172.19.2.1/var/lib/tftpboot/license.dat nvram:license-key 1*
 Remote Password:********
 
 Mode........................................... SFTP
@@ -141,7 +141,7 @@ Filename....................................... license.dat
 Data Type...................................... license
 
 Management access will be blocked for the duration of the transfer
-Are you sure you want to start? (y/n) y
+Are you sure you want to start? (y/n) *y*
 
 File transfer in progress. Management access will be blocked for the duration of the transfer. Please wait...
 
@@ -153,9 +153,9 @@ License Key transfer operation completed successfully. System reboot is required
 「如何授權」
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # show license
+(cs2)# *show license*
 
 Reboot needed.................................. Yes
 Number of active licenses...................... 0
@@ -173,9 +173,9 @@ License Index  License Type      Status
 交換器重新開機後、才會顯示其他授權檔的連接埠。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # show port all \| exclude Detach
+(cs2)# *show port all \| exclude Detach*
 
                  Admin     Physical   Physical   Link   Link    LACP   Actor
 Intf      Type   Mode      Mode       Status     Status Trap    Mode   Timeout
@@ -204,26 +204,26 @@ Intf      Type   Mode      Mode       Status     Status Trap    Mode   Timeout
 "重裝"
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # reload
+(cs2)# *reload*
 
 The system has unsaved changes.
-Would you like to save them now? (y/n) y
+Would you like to save them now? (y/n) *y*
 
 Config file 'startup-config' created successfully .
 
 Configuration Saved!
-Are you sure you would like to reset the system? (y/n) y
+Are you sure you would like to reset the system? (y/n) *y*
 ----
 . 請檢查新授權是否已啟用、並注意已套用授權：
 +
 「如何授權」
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # show license
+(cs2)# *show license*
 
 Reboot needed.................................. No
 Number of installed licenses................... 1
@@ -233,16 +233,15 @@ Total Uplink Ports enabled..................... 8
 License Index  License Type              Status
 -------------- ------------------------- -----------------------------------
 1              Port                      License applied
-(cs2) #
 ----
 . 檢查所有新連接埠是否可用：
 +
 「How port all | exclude Detach」
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # show port all \| exclude Detach
+(cs2)# *show port all \| exclude Detach*
 
                  Admin     Physical   Physical   Link   Link    LACP   Actor
 Intf      Type   Mode      Mode       Status     Status Trap    Mode   Timeout
@@ -271,7 +270,8 @@ Intf      Type   Mode      Mode       Status     Status Trap    Mode   Timeout
 0/54             Disable   100G Full             Down   Enable  Enable long
 0/55             Disable   100G Full             Down   Enable  Enable long
 0/56             Disable   100G Full             Down   Enable  Enable long
-
-(cs2) #
 ----
 
+
+
+CAUTION: 安裝額外授權時、您必須手動設定新介面。不建議將RCF重新套用至現有的運作中正式作業交換器。

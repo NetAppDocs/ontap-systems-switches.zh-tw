@@ -19,9 +19,9 @@ summary: 使用叢集交換器健全狀況監視器（CSHM\）和記錄收集功
 *「cr密碼 編譯金鑰產生」*
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(switch) # show ip ssh
+(switch)# *show ip ssh*
 
 SSH Configuration
 
@@ -35,33 +35,44 @@ Keys Present: ................................. DSA(1024) RSA(1024) ECDSA(521)
 Key Generation In Progress: ................... None
 SCP server Administrative Mode: ............... Disabled
 
-(switch) # config
+(switch)# *config*
 
-(switch) (Config)# crypto key generate rsa
+(switch) (Config)# *crypto key generate rsa*
 
-Do you want to overwrite the existing RSA keys? (y/n): y
-
-
-(switch) (Config)# crypto key generate dsa
-
-Do you want to overwrite the existing DSA keys? (y/n): y
+Do you want to overwrite the existing RSA keys? (y/n): *y*
 
 
-(switch) (Config)# crypto key generate ecdsa 521
+(switch) (Config)# *crypto key generate dsa*
 
-Do you want to overwrite the existing ECDSA keys? (y/n): y
+Do you want to overwrite the existing DSA keys? (y/n): *y*
 
 
-(switch) (Config)# exit
+(switch) (Config)# *crypto key generate ecdsa 521*
+
+Do you want to overwrite the existing ECDSA keys? (y/n): *y*
+
+(switch) (Config)# *aaa authorization commands "noCmdAuthList" none*
+(switch) (Config)# *exit*
+(switch)# *ip ssh server enable*
+(switch)# *ip ssh pubkey-auth*
+(switch)# *ip scp server enable*
+(switch)# *write mem*
+This operation may take a few minutes.
+Management interfaces will not be available during this time.
+Are you sure you want to save? (y/n) *y*
+
+Config file 'startup-config' created successfully .
+
+Configuration Saved!
 ----
 . 確認SSH已啟用：
 +
 *「show ip ssh」*
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(switch) # show ip ssh
+(switch)# *show ip ssh*
 
 SSH Configuration
 
@@ -74,7 +85,5 @@ SSH Timeout (mins): ........................... 5
 Keys Present: ................................. DSA(1024) RSA(1024) ECDSA(521)
 Key Generation In Progress: ................... None
 SCP server Administrative Mode: ............... Disabled
-
-(switch) #
 ----
 

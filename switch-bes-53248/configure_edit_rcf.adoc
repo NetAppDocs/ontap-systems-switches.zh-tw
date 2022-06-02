@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: edit rcf bes-53248 
 summary: 若要啟動新授權的連接埠、您必須編輯最新版的RCF、然後取消註釋適用的連接埠詳細資料。預設授權會啟動連接埠0/1到0/16和0/55到0/56、而新授權的連接埠則會在連接埠0/17到0/54之間、視可用授權的類型和數量而定。 
 ---
-= 編輯參考組態檔（RCF）- BS-53248交換器
+= 編輯參考組態檔案（RCF）
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

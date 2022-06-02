@@ -137,12 +137,12 @@ NOTE: 對於0/49到0/54（含）之間的高速連接埠、請針對每個連接
 
 編輯之前安裝的RCF檔案並執行「套用指令碼」之後、您可能會收到下列錯誤訊息：
 
-[listing]
+[listing, subs="+quotes"]
 ----
-(CS1) #script apply BES-53248_RCF_v1.6-Cluster-HA.scr
- Are you sure you want to apply the configuration script? (y/n)
+(CS1)# *script apply BES-53248_RCF_v1.6-Cluster-HA.scr*
+Are you sure you want to apply the configuration script? (y/n) *y*
 ----
-選取「y」之後、您會收到下列錯誤訊息：
+選擇* y*後、您會收到下列錯誤訊息：
 
 [listing]
 ----
@@ -158,12 +158,9 @@ config
 
 * 若要避免錯誤、您可以使用下列程序：
 +
-.. 建立第二個僅包含新連接埠組態的RCF檔案。
-.. 將第二個RCF檔案複製到交換器。
-.. 將指令碼套用至交換器：
-+
-適用記錄
-
+.. 建立僅包含新連接埠組態的第二個RCF。
+.. 將第二個RCF複製到交換器。
+.. 使用命令「cscript apply」將指令碼套用至交換器。
 
 
 * 若要解決此錯誤、請參閱知識庫文章： link:++https://kb.netapp.com/?title=Advice_and_Troubleshooting%2FData_Storage_Systems%2FFabric%252C_Interconnect_and_Management_Switches%2FError%2521_in_configuration_script_file_at_line_number_XX_when_applying_a_new_RCF%20%20%20++["錯誤！套用新的RCF時、設定指令碼檔案中的行號XX"^]

@@ -1916,7 +1916,6 @@
   <block id="c99d140356a40ad59a42b6a0463510af" category="list-text">對交換器SH1和新交換器newsh1重複這些步驟。</block>
   <block id="859cd47ffdd57a07807862622da66710" category="summary">您需要特定的交換器與控制器文件、才能設定叢集模式組態。</block>
   <block id="2fd6ebee7ad03df4ff5c9c2869cb6300" category="doc">Bes - 53248叢集交換器所需文件</block>
-  <block id="433c26abfb0a072db0be425d05f42f6f" category="section-title">Bes至53248叢集交換器的必要文件</block>
   <block id="dd768dc225693713db6288c38b00d358" category="inline-link">Broadcom乙太網路交換器產品線</block>
   <block id="0d52d29194e7d7495637f9464a04170a" category="paragraph">若要設定Bes - 53248叢集交換器、您需要Broadcom支援網站上提供的下列文件：<block ref="833245bb0770126f6b4b9e24cbce52e7" category="inline-link-rx"></block></block>
   <block id="8547dbbef37d2fbce1a869bf2facfe81" category="paragraph">_EFOS系統管理員指南v3.4.3_</block>
@@ -1932,7 +1931,6 @@
   <block id="607ba0a8b77d6054bd291a7b2d9b0d03" category="paragraph">說明EFOS軟體在支援平台上的規格。</block>
   <block id="75c732270f571952c9eff8b261440d5b" category="paragraph">_EFOS發行說明v3.4.3_</block>
   <block id="f56ba4892bcc660f01060d29145aa737" category="paragraph">提供關於B3作業 軟體的版本專屬資訊。</block>
-  <block id="1e6243b161f4d976b3d648715cd4c151" category="section-title">支援ONTAP 的支援的支援的資訊系統所需的文件</block>
   <block id="a2aed9a0d33fcd028043092c8410eaf7" category="paragraph">若要設定ONTAP 一套支援系統、您需要NetApp支援網站上的下列文件<block ref="28649c93049a329043d206ec7fa0c6f8" category="inline-link-rx"></block></block>
   <block id="49ee3087348e8d44e1feda1917443987" category="cell">名稱</block>
   <block id="3f95c74e5d6e040356c8133beaa15991" category="paragraph">說明所有NetApp硬體（包括系統機櫃）的電力和站台需求。</block>
@@ -1999,7 +1997,6 @@
   <block id="e0ca283a8b36ac95efddcc7b414743d4" category="admonition">請注意、將BSP-53248叢集交換器從EFOS 3.3.x.x或3.4.x.x升級至EFOS 3.7.0.4或3.8.0.2之後、交換器間連結（ISL）和連接埠通道會標示為「*向下*」狀態。請參閱<block ref="026c719125b85c631fa6f58c55d341c7" category="inline-link-rx"></block> 以取得更多詳細資料。</block>
   <block id="fe0f67caebe659974057d38e12f61dd0" category="summary">Broadcom支援的Bes-53248叢集交換器</block>
   <block id="88045e5af7830d69afafc3e6e7a9cf86" category="summary">您可以使用此程序來執行Bes - 53248叢集交換器的初始安裝。</block>
-  <block id="360ed91aa877f9c9b7b2a10dc9a0f02e" category="doc">初始安裝B3交互 式叢集交換器- Bes - 53248交換器</block>
   <block id="1d3cd141ad0461cfed0135c1fe1e53ac" category="paragraph">您可以從下載適用於叢集交換器的Broadcom EFOS軟體<block ref="4e779817b5f74625a8640f04596c1b3d" category="inline-link-rx"></block> 網站。</block>
   <block id="e305aa02f6f9fbb9d116e4387c75efa5" category="paragraph">EFOS是一組廣泛的軟體、提供必要的進階網路功能和傳輸協定、可為資料中心應用程式開發各種乙太網路和IP基礎架構系統。EFOS軟體是一種架構、適用於任何使用先進應用程式、需要徹底檢查或分離封包的網路組織裝置。</block>
   <block id="4f94088c73aaa0dc7be5cb969d19b296" category="list-text">將管理連接埠（交換器左側的RJ-45扳手連接埠）連接至您的TFTP伺服器所在的相同網路。</block>
@@ -2038,14 +2035,12 @@
   <block id="85da6ede964fd5d5d73cec7d133f939f" category="list-text">叢集LIF名稱為節點1的「node1_clus1」和「node1_clus2」、節點2的「node2_clus1」和「node2_clus2」。</block>
   <block id="03ae8e5437779f8cf1f746c042ee38be" category="list-text">IPspace名稱為叢集。</block>
   <block id="2e429c1149178858554eb668900cad50" category="list-text">「cluster1：&gt;」提示會指出叢集的名稱。</block>
-  <block id="8730a3d54fd4e7ceb86828e9e582837c" category="paragraph">請參閱_Hardware Universe__以瞭解平台上支援的實際叢集連接埠。</block>
   <block id="e5e09031843479ef9ef8cbbd4c2f404c" category="inline-link">NetApp Hardware Universe</block>
   <block id="28b6f527828834555fd57d7fa75b77dc" category="paragraph"><block ref="28b6f527828834555fd57d7fa75b77dc" category="inline-link-rx"></block></block>
   <block id="ec58ae89fb9c96a68b8627135165b3a7" category="list-text">NetApp叢集交換器支援的交換器間連結（ISL）為連接埠0/55和0/56。</block>
   <block id="8458fc4ac5f1a0fb22d530dd147ed835" category="list-text">NetApp叢集交換器支援的節點連線是連接埠0/1到0/16、具有預設授權。</block>
   <block id="6b8dbb47d9cae27293570b9f489b485c" category="list-text">重複本節中的所有程序、以升級另一部交換器* CS1*上的EFOS軟體和RCF檔案。</block>
   <block id="418e7af0f19846dd2ad5f09dfc7d56a0" category="summary">您可以使用此處提供的命令、驗證在升級B作業 至53268叢集交換器之後、所有的功能都能正常運作。</block>
-  <block id="1ff6cf42f5fc0beb925da9b3e8608c23" category="doc">在叢集交換器升級後驗證組態- Bes - 53248交換器</block>
   <block id="0a75413eb77e6b93cdf29f72fafdcd64" category="list-text">使用命令顯示叢集上網路連接埠的相關資訊：</block>
   <block id="afe95fe1267fcb98a96c300f333cefef" category="paragraph">“Link（鏈接）”的值必須是「UP（向上）」和「Health Status（健康狀態）」、必須是「Healthy（健康）」。</block>
   <block id="7668c4617f543fa5b89a9bee8a3a7a61" category="paragraph">下列範例顯示命令的輸出：</block>
@@ -2056,8 +2051,6 @@
   <block id="c1421c83b1d1a38b2417491ece25b6ef" category="list-text">使用「ping」命令來驗證與裝載EFOS、授權和RCF的伺服器之間的連線。</block>
   <block id="cc902b05dea9b78580c439034d034533" category="paragraph">如果連線有問題、請使用非路由網路、並使用IP位址192.168.x或172.19.x來設定服務連接埠您可以稍後將服務連接埠重新設定為正式作業管理IP位址。</block>
   <block id="f0e95f5c0e8e4943599aed05c5dcaa5c" category="list-text">使用「copy」命令在BS-53248叢集交換器上安裝RCF。</block>
-  <block id="6cf83740c8b51d161ff59a81279663e0" category="admonition">視您的環境而定、您可能需要在「copy」命令中使用雙斜槓、例如：「+copy」<block ref="7af9e97192c199fbcf252b3d88568ba5" category="inline-link-rx"></block> NVRAM：指令碼BS-53248_RCF-v1.6-Cluster-HA.scr+。</block>
-  <block id="435f0714d95b2468457f457efce94c92" category="admonition">在啟動指令碼之前、必須先將「.scr」副檔名設定為檔案名稱的一部分。此擴充是EFOS作業系統的延伸。當指令碼下載到交換器時、交換器會自動驗證指令碼、並將輸出傳送到主控台。此外、您也可以變更「.scr」的名稱、使其符合主控台螢幕的大小、以便更容易閱讀、例如：「+ copy」<block ref="362d09dfa6db738397ef1acb104483f7" category="inline-link-rx"></block> NVRAM：指令碼RCF-v1.6-Cluster-HA.scr+。</block>
   <block id="830bcf54c3049ac10bbbb40fb1258902" category="list-text">確認已下載指令碼並儲存至您指定的檔案名稱：</block>
   <block id="406bb351c55daa6b29920fa6ce644c29" category="paragraph">《記錄清單》</block>
   <block id="c3b43f3c21345191af043e5f0670bf83" category="list-text">將指令碼套用至交換器。</block>
@@ -2108,10 +2101,8 @@
   <block id="13c6cdda41ef7917c3cb0c05a8aa463c" category="paragraph">交換器提示會顯示新名稱：</block>
   <block id="33779c44170cc34cb1bbefd6d30a5208" category="list-text">儲存組態：</block>
   <block id="f1782a056fe3c67c3b672e085d43d4d7" category="paragraph">您會收到類似下列範例的提示和輸出：</block>
-  <block id="89c1d1cf1e23e598f92306efc57e5831" category="list-text">在其他叢集交換器上重複上述步驟。</block>
   <block id="09b8dd35e8fef3e8e5d41f09345fb4d1" category="list-text">使用ping命令來驗證與裝載EFOS、授權和RCF之伺服器的連線。</block>
   <block id="d7ce61df664d3ded5f2e056080bcb28f" category="list-text">使用copy命令在BS-53248叢集交換器上安裝RCF。</block>
-  <block id="05526f19653fe815079af46dbea6ecfb" category="admonition">視您的環境而定、您可能需要在copy命令中使用雙斜槓、例如：`+copy<block ref="7af9e97192c199fbcf252b3d88568ba5" category="inline-link-rx"></block> NVRAM：指令碼BS-53248_RCF-v1.6-Cluster-HA.scr+。</block>
   <block id="419413bbbc07fe9a4b7f8bbe207ce544" category="summary">將CN1610叢集交換器移轉至Broadcom支援的B予53248叢集交換器時、您必須瞭解特定的組態資訊、連接埠連線及纜線需求。</block>
   <block id="8100d805fc971a76fa50da3c02a5d9f9" category="doc">將CN1610叢集交換器移轉至Broadcom支援的Bes - 53248叢集交換器</block>
   <block id="3c45f2f6b490b6057b0b3cee9eab4438" category="list-text">CN1610.</block>
@@ -2119,17 +2110,12 @@
   <block id="660b0f9ffb8f8576ba98663a59024584" category="list-text">B16-53248：連接埠0/1-0/16（10/25 GbE）</block>
   <block id="c8be55cbfb0716be35dee2453296d010" category="admonition">購買連接埠授權即可啟動其他連接埠。</block>
   <block id="7e87662569383e326538e5d26beb6a08" category="list-text">Bes：53224：連接埠0/55-0/56（100 GbE）</block>
-  <block id="23e9ec9c33a4d65dd0a3c8d4bd30c7ee" category="list-text">此功能包含有關下列項目的資訊：Hardware Universe 支援的EEFOS韌體、以及連接至B通信 設備叢集交換器的纜線。ONTAP</block>
   <block id="0770c9d05dca95d3cdebb78f361ae6e8" category="list-text">*開頭：*適用於CN1610至CN1610（SFP+至SFP+）、四條SFP+光纖或銅線直接連接纜線。</block>
   <block id="2a5de425b9976b085fa03aa8c0bb83af" category="list-text">*過渡：*適用於CN1610至BES-53248（SFP+至SFP28）、四條10G SFP+光纖收發器/光纖或銅線直接連接纜線。</block>
   <block id="320ed3c6eb6c5ab11253b5afc742dec7" category="list-text">*最終版本：*適用於BS53248至BS53248（QSFP28至QSFP28）、兩條QSFP28光纖收發器/光纖或銅線直接附加纜線。</block>
   <block id="a5252be9d5dcb8f6fae5748b71db062c" category="admonition">移轉完成後、您可能需要安裝所需的組態檔、以支援適用於BES-53248叢集交換器的叢集交換器健全狀況監視器（CSHM）。</block>
   <block id="621f61cd944c5da82de611c42809c998" category="inline-link">安裝叢集交換器健全狀況監視器（CSHM）組態檔</block>
-  <block id="a97d3b6984b80353b443fc18f8ff1ead" category="paragraph">請參閱<block ref="3751d593300ede5ab1c7f10eea3bbd6d" category="inline-link-rx"></block> 《交換機設定與組態指南（適用於Broadcom支援的BS-53248 Switches）》指南。</block>
-  <block id="68c564968423b8cc070aca7f7d5d5c57" category="inline-link">適用於Broadcom支援的BS-53248交換器的交換器設定與組態指南</block>
-  <block id="2941df98714968f9886436503ffb0248" category="paragraph">請參閱中的_設定叢集交換器記錄收集功能_<block ref="bb1400d73a7afc90cff3ad0f8bff3b2b" category="inline-link-rx"></block> 以瞭解啟用叢集健全狀況交換器記錄收集以收集交換器相關記錄檔所需的步驟。</block>
   <block id="3b58138220787e68fe51e471260a12c2" category="summary">Broadcom支援的Bes - 53248叢集交換器、設計用於ONTAP 大小介於2到24個節點的叢集、範圍涵蓋在《支援更新版本的2到24個節點之間。支援40/100 GbE叢集連接埠、從EFOS韌體版本3.4.4.6及更新版本開始。</block>
-  <block id="43bebb269d26845a73ff233071151706" category="doc">Broadcom支援的Bes - 53248叢集交換器總覽</block>
   <block id="cf55b4c893a35f14004ffac846ed83d8" category="paragraph">Bes - 53248是一款在Broadcom嵌入式作業系統上執行的交換器、稱為乙太網路架構作業系統（EFOS）。</block>
   <block id="ba68f24961899e0f06e4a832aa36ca7e" category="paragraph">下表列出B底座 叢集交換器、機架安裝軌道套件、風扇和電源供應器的零件編號和說明：</block>
   <block id="3a0aeae8d2331aaa16cf8b013ee0195b" category="paragraph">X190005</block>
@@ -2160,9 +2146,7 @@
   <block id="15d9ae7b2e3b424b22e268b245ff088b" category="paragraph">Broadcom支援的Bes - 53248叢集交換器組態：</block>
   <block id="f0d9def09cfa7429c039120be2ab6ed0" category="list-text">B予53248叢集交換器必須在兩個交換器上都能完全正常運作。</block>
   <block id="c25be4170d453825f832fcd83135f6e4" category="list-text">BES至53248節點對節點交換器和交換器對交換器連線必須使用雙軸纜線或光纖纜線。</block>
-  <block id="21c35199e21a6ac2655550b0f24dac7f" category="paragraph">_NetApp_Hardware Universe包含ONTAP 有關下列項目的資訊：支援的EFOS韌體、以及連接至BS-53248交換器的纜線。</block>
   <block id="a6f490a59820ed4289028acdc4d2c508" category="inline-link">交換器Hardware Universe</block>
-  <block id="7d86fc5903d611af4262389d6561e169" category="paragraph"><block ref="7d86fc5903d611af4262389d6561e169" category="inline-link-rx"></block></block>
   <block id="6ff72711e4961050d6903670ac01874e" category="list-text">交換器間連結（ISL）纜線必須連接至兩個B2-53248交換器上的連接埠0/55和0/56。</block>
   <block id="bf8b6b94cd702169c76089ecad62aa9a" category="list-text">兩個B予53248交換器的初始自訂必須完成。因此：</block>
   <block id="0ce7b4e3745fd03a889b60ac9ce2df5b" category="list-text">Bes - 53248交換器正在執行最新版本的軟體</block>
@@ -2171,7 +2155,6 @@
   <block id="c042864f8fce2f00773a1ea24e25a021" category="list-text">叢集SVM的名稱為「node1」和「node2」。</block>
   <block id="3a09e35926de7f838e58b7517c95b5ac" category="list-text">lifs的名稱分別是節點1上的「node1_clus1」和「node1_clus2」、節點2上的「node2_clus1」和「node2_clus2」。</block>
   <block id="8f4b43bd42c42f7f65ed69d5dd930d17" category="list-text">此程序中使用的叢集連接埠為「e0a」和「e0b」。</block>
-  <block id="30a42020757fcffca48cc8ac5a59b666" category="paragraph">_SUR__ Hardware Universe 包含平台實際叢集連接埠的最新資訊。</block>
   <block id="ec4312d0db3bce928129e7e5c3a58d73" category="paragraph"><block ref="ec4312d0db3bce928129e7e5c3a58d73" category="inline-link-rx"></block></block>
   <block id="cbb6cd6e1e897787ef4fb19df093fefe" category="list-text">在新的叢集交換器CS1 *和* CS2上停用所有啟動的面向節點的連接埠（非ISL連接埠）。</block>
   <block id="24a0cf33327e4a62375221300ce4db6c" category="paragraph">以下範例顯示、交換器CS1上的節點對向連接埠1至16已停用：</block>
@@ -2183,7 +2166,6 @@
   <block id="754b4259738a0be6f9c0605d975b2ce1" category="paragraph">每個叢集LIF都應該顯示「true」、表示「is Home」、並顯示「tatus admin/Opper」為「up / up」</block>
   <block id="09b4c6d12807ef628dddcedb95f59fba" category="list-text">驗證是否已在所有叢集生命體上啟用「自動還原」：「網路介面show -vserver叢集-功能 變數自動還原」</block>
   <block id="49de00b8e8c6586fcca9fad09c76b9ed" category="list-text">從節點1上的叢集連接埠e0a拔下纜線、然後使用BES-53248交換器支援的適當纜線、將e0a連接至叢集交換器CS1上的連接埠1。</block>
-  <block id="25847c82ed0be61ed213c41a8aca5401" category="paragraph">_NetApp Hardware Universe SUR__包含更多有關纜線的資訊。</block>
   <block id="4117e035e1d5632e3f6a3311cd104041" category="list-text">從節點2上的叢集連接埠e0a拔下纜線、然後使用BES-53248交換器支援的適當纜線、將e0a連接至叢集交換器CS1上的連接埠2。</block>
   <block id="a2c09169aae3d453a5de75708a6aea92" category="paragraph">下列範例顯示交換器CS1上已啟用連接埠1到16：</block>
   <block id="1cd3efec31f045ffb5449349f414844d" category="list-text">驗證所有叢集生命體是否都正常運作、並顯示為「真實」、表示「是家」：</block>
@@ -2193,8 +2175,6 @@
   <block id="3d7d92fe9fa50ff07a52fda11ae8d646" category="paragraph">下列範例顯示交換器CS2上已啟用連接埠1到16：</block>
   <block id="30530896511238b69b0e6acc7e04d6ce" category="list-text">驗證所有介面是否都顯示「true」表示「is Home」：</block>
   <block id="920dd0f6e71089afe68eba9aa2f22c90" category="paragraph">以下範例顯示、節點1和節點2上的所有l生命 都已啟動、而且「原為主目錄」結果為「真」：</block>
-  <block id="0ab09761c52617cfcca84d23c56a4d22" category="paragraph">請參閱中的_設定叢集交換器記錄收集功能_<block ref="942525bb080f816410d45e1d41665ae4" category="inline-link-rx"></block> 以瞭解啟用叢集健全狀況交換器記錄收集以收集交換器相關記錄檔所需的步驟。</block>
-  <block id="654dcf1e1cf3645da2f4a704294ded32" category="paragraph"><block ref="654dcf1e1cf3645da2f4a704294ded32" category="inline-link-rx"></block></block>
   <block id="470e1e7d03d4911b1e5ad8bf036ca8cb" category="inline-link">NetApp知識庫文章：如何在排定的維護時間內禁止自動建立案例</block>
   <block id="bf9c5bd233edaef0895f72d17e157a81" category="paragraph"><block ref="bf9c5bd233edaef0895f72d17e157a81" category="inline-link-rx"></block></block>
   <block id="48cd97dc0d15293354643e695aa2cd19" category="summary">叢集交換器健全狀況監控記錄收集功能可用於收集ONTAP 資訊中與交換器相關的記錄檔。您必須確定已使用Bs-53248叢集交換器CLI設定環境、如此處所述。</block>
@@ -2204,12 +2184,7 @@
   <block id="83a0e3bf9dd48caad05146cc29f81e6b" category="list-text">確認SSH已啟用：</block>
   <block id="540a20e2665ac3ed52a49ccaee423f13" category="paragraph">*「show ip ssh」*</block>
   <block id="38ce6910fe18f44c09d98d9b3370bd02" category="list-text">對於更新的版本、請使用下列命令啟用叢集交換器健全狀況監視器記錄收集功能、以收集交換器相關的記錄檔：ONTAP</block>
-  <block id="34c0349706c62f7d5996a31dd7f07d26" category="paragraph">「系統交換器乙太網路記錄設定密碼系統交換器乙太網路記錄啟用-收集」</block>
   <block id="338964ca9cac10c74e0452dca73de8bf" category="list-text">如為ONTAP 發行版的更新版本的更新版本、請使用下列命令啟用叢集交換器健全狀況監視器記錄收集功能、以收集交換器相關的記錄檔：</block>
-  <block id="3c5dd3cd8723eb694d161f3ba26db3f7" category="paragraph">「系統叢集交換器記錄設定密碼系統叢集交換器記錄啟用-收集」</block>
-  <block id="35b56d9034c46fb5b85555ddd9716383" category="list-text">從每個交換器開始初始資料收集：</block>
-  <block id="1b83f1628e761d1f2970d518d2a9f9cb" category="list-text">「cluster1：：*&gt;系統叢集交換器記錄收集裝置&lt;CS1&gt;」</block>
-  <block id="6269b2f55862d403287966f1dc4086b7" category="list-text">「cluster1：：*&gt;系統叢集交換器記錄收集裝置&lt;CS2&gt;'</block>
   <block id="c89a1809ae8e1ed3c34df35aee9d3c06" category="summary">您可以使用此程序來安裝適用的組態檔、以監控B交互 式叢集交換器的叢集交換器健全狀況。在版本9.5P7及更早版本、以及9.6P2及更早版本中、您必須分別下載叢集交換器健全狀況監視器組態檔。ONTAP在發行版本9.5P8及更新版本、9.6P3及更新版本、以及9.7及更新版本中、叢集交換器健全狀況監視器組態檔與不含更新版本的不含更新版本的不含更新版本的不含更新版本的不含更新版本的不ONTAP ONTAP</block>
   <block id="82c7b5069d64f95a2a115dff1c9ad171" category="doc">安裝叢集交換器健全狀況監視器（CSHM）組態檔</block>
   <block id="0e35e35ddf0af5b28cc13d2387b02865" category="paragraph">在您設定Bes - 53248叢集交換器的交換器健全狀況監視器之前、您必須確保ONTAP 該叢集已啟動並正在執行。</block>
@@ -2230,14 +2205,12 @@
   <block id="77050d62a86740ca649977f25aae1ddc" category="list-text">在ONTAP 作業系統上執行命令「系統叢集交換器show」、並確保在監控欄位設定為「True」時、發現叢集交換器。</block>
   <block id="3afcbe3a6f926d2f4bc1b2d14c9388d0" category="admonition">如果您在任何時候回復到ONTAP 舊版的支援、則需要再次安裝CSHealth組態檔案、以啟用BS-53248叢集交換器的交換器健全狀況監控功能。</block>
   <block id="56901ba0364771cc3907ec9a30481dd8" category="summary">在叢集網路中更換故障的Broadcom支援的Bes-53248叢集交換器、是不中斷營運的程序（NDU）。</block>
-  <block id="6b6d96f614dceb1b9236676b1b939622" category="doc">更換Broadcom支援的Bes - 53248叢集交換器- Bes - 53248交換器</block>
   <block id="57ce4745993a2cb21c9606f06974d3c9" category="paragraph">在叢集網路中更換有瑕疵的Broadcom支援的B通信-53248叢集交換器、是不中斷營運的程序（NDU）。</block>
   <block id="7771c5a3cae625cfd8d131931075e588" category="list-text">所有叢集邏輯介面（LIF）都必須以管理和操作方式啟動、並位於主連接埠上。</block>
   <block id="6dd1399457a950bae6cd74782d4c44c3" category="list-text">該命令必須指出所有路徑上的「基本連線能力」和「大於PMTU通訊能力」均已成功、才能使用「叢集ping叢集節點節點節點1」命令。ONTAP</block>
   <block id="1f2c88f1fe46045b47e35069e5a8a6c5" category="list-text">Bes - 53248替換叢集交換器：</block>
   <block id="3194b650ad4dc5accb0c1a5ae8050d52" category="list-text">節點連線是連接埠0/1到0/16、具有預設授權。</block>
   <block id="f141ff1f87788fe5850fdb1ff67497e6" category="list-text">所有交換器間連結（ISL）連接埠必須在連接埠0/55和0/56上停用。</block>
-  <block id="c2b3e8605e2ee4d02b86bf82e287ca0a" category="list-text">所需的參考組態檔（「RCF」）和「EFOS」作業系統交換器映像必須載入交換器。</block>
   <block id="e44f4327cda407c4800e60525d03dbef" category="inline-xref-macro">設定新的Broadcom支援的Bes - 53248交換器</block>
   <block id="3431452b39e4f9136247fd95d9a54e20" category="list-text">交換器的初始自訂必須完成、如所述 <block ref="3c45355c10772c3038b602e921660b3c" category="inline-xref-macro-rx"></block>。</block>
   <block id="144c9cc556d237063df17fcbd9c6991c" category="list-text">現有的BS-53248交換器名稱為「CS1」和「CS2」。</block>
@@ -2273,9 +2246,7 @@
   <block id="c206a0c02a46cc78247b990d2ad4bbca" category="list-text">若要設定靜態IP位址、請使用本範例所示的ServicePort傳輸協定、網路傳輸協定和ServicePort IP命令。</block>
   <block id="280c67032f87745f91d13b8aacbfcb29" category="summary">您可以完成本章中詳細說明的步驟、設定新的Bes - 53248叢集交換器。</block>
   <block id="3f96e39c777c3a1a87543fd8ef377d6d" category="doc">設定新的Bes - 53248叢集交換器</block>
-  <block id="901a32f36ef07682e1450311e4a47821" category="paragraph">在執行ONTAP 指示燈介面的系統上安裝Bes - 53248叢集交換器、首先要設定IP位址和組態、讓交換器能夠透過管理介面進行通訊。然後您可以視需要安裝乙太網路架構作業系統（EFOS）軟體、參考組態檔（RCF）及其他授權。此程序旨在在新增控制器之前、先準備B3交互 式交換器。此外、您可能需要安裝所需的組態檔、以支援適用於BS-53248叢集交換器的叢集交換器健全狀況監視器（CSHealth Monitor、CSHM）。請參閱 <block ref="310eb9891feb79990f004f10a981c2c5" category="inline-link-macro-rx"></block> 以取得更多詳細資料。</block>
   <block id="d924016a9085b0353b51c0be5293318d" category="list-text">NetApp交換器名稱為CS1和CS2。</block>
-  <block id="db76e9caf73f4ca5f3562a90e4a41fac" category="paragraph">如Hardware Universe 需平台上支援的實際叢集連接埠、請參閱_SUR__。</block>
   <block id="84e96c95d1b5d476873fb5e4186fdd65" category="list-text">NetApp交換器支援的交換器間連結（ISL）為連接埠0/55和0/56。</block>
   <block id="45cd9f0759a776547c2ee49b3f52d792" category="list-text">NetApp交換器支援的節點連線是連接埠0/1到0/16、並具有預設授權。</block>
   <block id="6a0b8d3071b215255b2ff23b31610fcc" category="summary">您可以使用此程序來準備控制器以進行BES-53248叢集交換器升級。</block>
@@ -2298,18 +2269,12 @@
   <block id="f74d191dae3c2545d34b82a954953835" category="paragraph">對於0/17到0/48（含）之間的低速度連接埠、請在啟用適當授權後、取消註釋整個8埠區段。</block>
   <block id="3a870499c4a2e7f02665b5a0b216fd3d" category="section-title">編輯先前安裝的RCF檔案</block>
   <block id="4543470be6763690cd66909cad9497a9" category="paragraph">編輯之前安裝的RCF檔案並執行「套用指令碼」之後、您可能會收到下列錯誤訊息：</block>
-  <block id="5079018518f45af74b3fb1004e3c3dba" category="paragraph">選取「y」之後、您會收到下列錯誤訊息：</block>
-  <block id="589abf884a159b7d22e58a40efd8e32b" category="paragraph">若要避免或解決此問題、您可以選擇下列其中一個選項：</block>
   <block id="6960bd8cb39904f51457d27cec82ec8b" category="list-text">若要避免錯誤、您可以使用下列程序：</block>
-  <block id="345888a24b8b2c0d2f8829a842ace44f" category="list-text">建立第二個僅包含新連接埠組態的RCF檔案。</block>
-  <block id="ca4449720c71cf9af98bba70c8a31992" category="list-text">將第二個RCF檔案複製到交換器。</block>
-  <block id="b3d2ab282b59bbaad33610c1e37f6f97" category="list-text">將指令碼套用至交換器：</block>
   <block id="0a65946e5f51263da02110062145f17e" category="inline-link-macro">錯誤！套用新的RCF時、設定指令碼檔案中的行號XX</block>
   <block id="d849803ea7ac08671ac6cba3fbd7b4ed" category="list-text">若要解決此錯誤、請參閱知識庫文章： <block ref="780ead0e3e7612ae5ba3c01e4e8d9478" category="inline-link-macro-rx"></block></block>
   <block id="9982e7eb66a9ca00705fed30074e969e" category="paragraph">在執行ONTAP 指示燈介面的系統上安裝Bes - 53248叢集交換器、首先要設定IP位址和組態、讓交換器能夠透過管理介面進行通訊。然後您可以視需要安裝乙太網路架構作業系統（EFOS）軟體、參考組態檔（RCF）及其他授權。此程序旨在在新增控制器之前、先準備B3交互 式交換器。此外、您可能需要安裝所需的組態檔、以支援適用於BS-53248叢集交換器的叢集交換器健全狀況監視器（CSHealth Monitor、CSHM）。請參閱 <block ref="e95ad1bcf854a1ac2ab1a8accf7baa5f" category="inline-link-macro-rx"></block> 以取得更多詳細資料。</block>
   <block id="f93ce62c9967fb926a58eb9e8d1a1a31" category="paragraph">請參閱<block ref="6a8cef5b71adde6301ea0984592ea5c1" category="inline-link-rx"></block> 以取得平台所支援的實際叢集連接埠。</block>
   <block id="68efadf789b6df34a4650ac3b889f341" category="summary">B16-53248叢集交換器基礎模式已獲得16個10GbE或25GbE連接埠和2個100GbE連接埠的授權。您可以購買更多授權來新增連接埠。</block>
-  <block id="169c6b83637eb1256d468bc44aa825e6" category="doc">安裝適用於B3作業 叢集交換器的使用許可- Bes - 53248交換器</block>
   <block id="864fbeb16a7aa4d19b4af1c685979a8c" category="paragraph">下列授權可在B3交互 式叢集交換器上使用：</block>
   <block id="82060d81b7ce43c57280e879899f9a2c" category="cell">授權類型</block>
   <block id="0e4d5254974e20d5120a2fd2c813263f" category="cell">授權詳細資料</block>
@@ -2343,10 +2308,7 @@
   <block id="850f5123d6e90a3f43933cb2bcb88fe1" category="doc">在BS-53248叢集交換器上啟用SSH</block>
   <block id="2cc0a4e03235f6214d4b5fa369958e9f" category="paragraph">使用叢集交換器健全狀況監視器（CSHM）和記錄收集功能時、必須使用SSH。若要在BSe-53248叢集交換器上啟用SSH、您必須先產生SSH金鑰、然後再啟用SSH。</block>
   <block id="0f121288de211ff8f79cb2fa9bc6a461" category="summary">如果安裝授權時發生問題、請在再次執行copy命令以安裝授權之前、先執行下列偵錯命令。</block>
-  <block id="3981f7c7b0219281975020494b743fe3" category="doc">限制與限制- Bes - 53248交換器</block>
   <block id="7a5120c29398abc40f320d774f4075cb" category="paragraph">如果安裝授權時發生問題、請先執行下列偵錯命令、再重新執行「copy」命令來安裝授權。</block>
-  <block id="16f6ad6dbf75d9f97ed56a6ce7ffecab" category="paragraph">要使用的除錯命令：</block>
-  <block id="6435716dad67c6c465b1490ebbae7d05" category="paragraph">「Debuger傳輸除錯授權」</block>
   <block id="615285ea9831aa805cdbbb9e57e5c950" category="paragraph">當您在啟用「debug transfer」和「debug license」選項的情況下執行「copy」命令時、會傳回下列記錄輸出：</block>
   <block id="51a85db8f6aec59d006c765375bbaf00" category="paragraph">在偵錯輸出中檢查下列項目：</block>
   <block id="4f48e724e702608d7b36977924dd560d" category="list-text">請檢查序號是否符合：「序號QTFC38290012相符」</block>
@@ -2359,15 +2321,10 @@
   <block id="aafb1268dadda4c3bd9dd5d8a55b2fa2" category="paragraph">您必須先安裝適當的舊版授權、才能還原至舊版軟體。</block>
   <block id="e97a5456b056d44921050d05d6b2fc1b" category="summary">如果您有雙節點無交換式叢集、則可在不中斷營運的情況下、移轉至雙節點交換式叢集、其中包含Broadcom支援的Bes - 53248叢集交換器。記錄的程序適用於使用光纖或雙軸纜線連接埠的所有叢集節點連接埠、但如果節點使用內建10GBASE-T RJ45連接埠作為叢集網路連接埠、則此交換器不支援此程序。</block>
   <block id="1a04f2f2756bfce9c0d252c70c4f7953" category="doc">使用Broadcom支援的Bes - 53248叢集交換器移轉至雙節點交換式叢集</block>
-  <block id="ffcfb01c49c76548554a9c07d0ba7869" category="paragraph">請確定已依照中所述、設定B3作業 環境叢集交換器<block ref="942525bb080f816410d45e1d41665ae4" category="inline-link-rx"></block> 開始此移轉程序之前、請先參考指南。</block>
   <block id="da89029df4f4f3d5cb89934f58459d5d" category="paragraph">請參閱<block ref="452267e26d0f038af434d2b1530dbe66" category="inline-link-rx"></block> 《交換機設定與組態指南（適用於Broadcom支援的BS-53248 Switches）》指南。</block>
-  <block id="44cb570ef918e2a13d76ac21479275df" category="paragraph">此外、請參閱中的_設定叢集交換器記錄收集功能_<block ref="942525bb080f816410d45e1d41665ae4" category="inline-link-rx"></block> 以瞭解啟用叢集健全狀況交換器記錄收集以收集交換器相關記錄檔所需的步驟。</block>
-  <block id="08a90822c7f442c3fe6e75cb4db28d00" category="doc">在BS-53248叢集交換器上啟用SSH - BS-53248交換器</block>
-  <block id="ac864b1665beff9fa4eccf23b4c7eec9" category="doc">編輯參考組態檔（RCF）- BS-53248交換器</block>
   <block id="a0cf70ca38e1fd0262591cf56e31f46f" category="paragraph">如需有關用於B3作業 叢集交換器的可用授權類型詳細資料、請參閱 <block ref="fa313c84214758de3e89db1ed227f8b1" category="inline-link-macro-rx"></block>。</block>
   <block id="1c0b21766338d196381807883549559b" category="doc">安裝適用於B3作業 叢集交換器的授權</block>
   <block id="c91d3bedd07d88d5a148a4e0c0083a14" category="summary">若要將叢集中現有的CN1610叢集交換器更換為Broadcom支援的Bes - 53248叢集交換器、您必須執行特定的工作順序。</block>
-  <block id="c2779855e4bee41ba29615c66145d5ab" category="doc">如何將CN1610叢集交換器移轉至B怎麼53248叢集交換器- B怎麼 說</block>
   <block id="0143167f7910f9607e938c6ae20aaf15" category="paragraph">本程序的範例使用兩個節點、每個節點都部署兩個10 GbE叢集互連連接埠：「e0a」和「e0b」。</block>
   <block id="29d8e9ef93aeb461609fd7fb164c0943" category="list-text">要更換的CN1610交換器是「CL1」和「CL2」。</block>
   <block id="bbefeef35fd14c1ec62df3ac90d07b38" category="list-text">用於更換CN1610交換器的BS-53248交換器為「CS1」和「CS2」。</block>
@@ -2386,7 +2343,6 @@
   <block id="82214ffaae0abeffe761517344159444" category="list-text">關閉主動式CN1610交換器CL1上的ISL連接埠13至16：</block>
   <block id="a4a74e31e717c4b6fc3b7ad6012d0349" category="list-text">在CN1610 CL1與新的BS-53248 CS2之間建置暫時ISL。ISL只會在CS2上定義、因為CL1上的現有ISL可以重複使用。</block>
   <block id="50b5687867194a2605d8b7fe02b12268" category="paragraph">下列範例在CS2（連接埠13-16）上建置暫用ISL、以連接至CL1上的現有ISL（連接埠13-16）：</block>
-  <block id="1733fcaf28d15f859ed29d0e9ba9b1eb" category="paragraph">然後、您必須將所有節點上的中斷連接連接埠重新連接至新的BS-53248交換器CS2。請參閱_SURF_ Hardware Universe 以取得核准的纜線選項。</block>
   <block id="5d280863fd236cda52f2708226ba8a5e" category="list-text">從CN1610交換器CL2的連接埠13到16拔下四條ISL纜線。</block>
   <block id="38ca1adf59b8ce9e6c4f44159a40f5be" category="paragraph">您必須在新的BS-53248交換器CS2上、將適當核准的纜線連接埠0/13至0/16、連接至現有CN1610交換器CL1上的連接埠13至16。</block>
   <block id="38e3ae6448f367edbd7386f2cb6d360c" category="paragraph">以下範例說明在CL1上啟動ISL連接埠13到16的程序：</block>
@@ -2397,7 +2353,6 @@
   <block id="f9d6a6a75483c0ffe08b0dea9565ef0c" category="list-text">確認所有的叢集連接埠均已連接：</block>
   <block id="271a2364104a3bfd1eed9bb3610457ca" category="paragraph">下列範例顯示先前命令的結果、確認所有叢集互連都正常運作：</block>
   <block id="2eaa23d19c9d0d8b99dd3aebe2821a47" category="list-text">在所有節點上、移除連接至CN1610交換器CL1的纜線。</block>
-  <block id="109227e0aee3c8d7d4305716fa2b9d2d" category="paragraph">然後、您必須將所有節點上的中斷連接連接埠重新連線至新的BS1-53248交換器CS1。請參閱_SURF_ Hardware Universe 以取得核准的纜線選項。</block>
   <block id="cf23dc9a349b2b2b24b965ca1b5ee780" category="list-text">從BS-53248交換器CS2的連接埠13至16拔下四條ISL纜線。</block>
   <block id="7949279a511393a80732a0badf33762b" category="list-text">移除CS2上的暫用連接埠通道2。</block>
   <block id="26bf31952ecce194df04b0049b809e81" category="paragraph">下列範例會移除連接埠通道2、並將執行組態檔複製到啟動組態檔：</block>
@@ -2407,14 +2362,9 @@
   <block id="b7dbe83a33dd014817344e36d5873787" category="paragraph">以下範例顯示節點1和節點2已從CN1610 CL2和CL1移轉至BS-53248 CS2和CS1：</block>
   <block id="7600489ac65e7f2d69df5731f63b9999" category="list-text">如果更換的CN1610交換器未自動移除、請將其移除：</block>
   <block id="10b31128e5e49951f428b70d16fffeef" category="paragraph">「系統叢集交換器刪除-DEVICE _DEVICE名稱_」</block>
-  <block id="1cfee23b613427450a8e00b477a382e5" category="paragraph">*「系統交換器乙太網路記錄設定密碼系統交換器乙太網路記錄啟用-收集」*</block>
-  <block id="bf556a70dc54ae204dfc9819a4268ecc" category="paragraph">*「系統叢集交換器記錄設定密碼系統叢集交換器記錄啟用資料收集」*</block>
-  <block id="bca2cf42563af58003d19b57bdea8a72" category="paragraph">+「debuger transfer DEBUG license」</block>
   <block id="95c75a478efc08202eaa5f61bbf1923a" category="summary">您可以使用設定資訊、讓叢集交換器準備好設定及自訂、以符合您的需求。</block>
   <block id="25d28b75841e9aa3c53e97cc0865e502" category="doc">設定Bes至53248叢集交換器</block>
   <block id="8e4984bab9d1ed958d954b97ee853c52" category="summary">您可以使用「Bes - 53248叢集交換器連接埠指派表」作為設定叢集的指南。</block>
-  <block id="4e929b3825b41a9301e699ee7300c465" category="doc">Bes - 53248叢集交換器連接埠指派- Bes - 53248交換器</block>
-  <block id="3c7b39d4bbb64c80296495284ff793bb" category="section-title">B予53248叢集交換器連接埠指派表</block>
   <block id="dc3310fe82b8aa736508dff9756c1c6a" category="cell">交換器連接埠</block>
   <block id="670c1649b9af213cff68a904e9de20ed" category="cell">連接埠使用量</block>
   <block id="837550bcd3b79db4be76046ab6cd7c99" category="paragraph">01 - 16</block>
@@ -2425,7 +2375,6 @@
   <block id="4e3fd747857e8c4f340b3d4812df84f9" category="paragraph">40/100GbE叢集節點連接埠、含授權、從右至左新增</block>
   <block id="10bed69d2dd112ba24664f343842ca20" category="paragraph">55 - 56</block>
   <block id="7353d71bb489b434e9c00860f53dc245" category="paragraph">100GbE叢集交換器間連結（ISL）連接埠、基礎組態</block>
-  <block id="25ad5dd0170e12e51f3d415d1db041cd" category="section-title">連接埠群組速度限制</block>
   <block id="42897d0aed82fad58a59f5d15fc061f3" category="paragraph">在BES-53248叢集交換器上、48個10/25GbE（SFP28/SFP+）連接埠會結合成12個4埠群組、如下所示：</block>
   <block id="799309d1ed1e05157fd48886e9f37bb7" category="list-text">連接埠1-4、5-8、9-12、13-16、17-20、 21至24、25至28、29至32、33至36、37至40、 41至44及45至48。</block>
   <block id="22ef485216cbed5496c7d8cea313dee0" category="paragraph">在4埠群組的所有連接埠之間、SFP28/SFP+連接埠速度必須相同（10GbE或25GbE）。</block>
@@ -3272,4 +3221,56 @@
   <block id="03477859b5d6af326359360c86fab17e" category="sidebar">NetApp CN1610交換器管理員指南-版本1.2.x.x</block>
   <block id="9aa8a0ae2c0c1e8fae620818f15e5745" category="sidebar">CN1601交換器管理員指南</block>
   <block id="96e98f400012e6584b81d57011c42c45" category="sidebar">NetApp 1G叢集模式交換器安裝指南</block>
+  <block id="8a69d7327337bf7d6152482b16e42f84" category="list-text">清除組態。</block>
+  <block id="88b2ab3c3baa9b0c5faeb2e8a0fec98a" category="admonition">此步驟需要主控台連線至交換器。</block>
+  <block id="9a75d8eb81c880a703c72f7186f35288" category="doc">在升級B交互 式叢集交換器之後驗證組態</block>
+  <block id="148a1525f4c4b2d620941031bf03f670" category="inline-link">_NetApp Hardware Universe SUR__</block>
+  <block id="70015a7ae0fa831f9e32edffe1f4c133" category="paragraph">請參閱<block ref="141c10db18cf1753fa5fc05f553c33ff" category="inline-link-rx"></block> 以取得平台所支援的實際叢集連接埠。</block>
+  <block id="36aa8db87d27da7c369c68550c092132" category="admonition">安裝額外授權時、您必須手動設定新介面。不建議將RCF重新套用至現有的運作中正式作業交換器。</block>
+  <block id="0d0947b8ca7030c9d6330d382412408e" category="doc">Broadcom支援的Bes - 53248叢集交換器總覽</block>
+  <block id="8761a71b0c01f0356000c0994d4fb203" category="paragraph">「系統交換器乙太網路記錄設定密碼」和「系統交換器乙太網路記錄啟用-收集」</block>
+  <block id="c757279318295752ba90c940af04f05e" category="paragraph">接著是：「系統交換器乙太網路記錄啟用-收集」</block>
+  <block id="e9e71e2f88e554c14e51453471eb9563" category="inline-link-macro">錯誤1225042</block>
+  <block id="5a072aaf4668506fc992d2fe4e8eab94" category="admonition">此時無法使用log collect命令。請參閱 <block ref="f0dc05ac25b63ff4a92a1ab0ec233df6" category="inline-link-macro-rx"></block> 以取得更多詳細資料。</block>
+  <block id="a17e9ae8249220bc33707d1a3bcae2c4" category="paragraph">選擇* y*後、您會收到下列錯誤訊息：</block>
+  <block id="de8a3e34b1b4cf3991d23c9358b029f1" category="paragraph">若要避免或解決此問題、您可以選擇下列其中一個選項：</block>
+  <block id="a2e38741dcfa92c771a8356d97dac0de" category="list-text">建立僅包含新連接埠組態的第二個RCF。</block>
+  <block id="40627012b37d851bfbd3583715331ead" category="list-text">將第二個RCF複製到交換器。</block>
+  <block id="6519db04edc8678a6ef7b60eb1731de2" category="list-text">使用命令「cscript apply」將指令碼套用至交換器。</block>
+  <block id="def140a135e96c99279be95e1ef70130" category="doc">更換Broadcom支援的Bes - 53248叢集交換器</block>
+  <block id="27c3c5127aaa573947decd5e0942f251" category="list-text">所需的參考組態檔（RCF）和EFOS作業系統交換器映像必須載入交換器。</block>
+  <block id="d11b37bc5720f40d61e5854eea1a2360" category="inline-link-macro">Broadcom支援的Bes - 53248交換器設定與組態</block>
+  <block id="29f190705d64b052fe2941415d5984d8" category="paragraph"><block ref="29f190705d64b052fe2941415d5984d8" category="inline-link-macro-rx"></block></block>
+  <block id="c538bd274909af8b508e01f0ef04034d" category="doc">如何將CN1610叢集交換器移轉至B怎麼53248叢集交換器</block>
+  <block id="aca231809cb1cd80c1435dd9914b66dd" category="paragraph">然後、您必須將所有節點上的中斷連接連接埠重新連接至新的BS-53248交換器CS2。請參閱<block ref="141c10db18cf1753fa5fc05f553c33ff" category="inline-link-rx"></block> 以取得核准的纜線選項。</block>
+  <block id="cbd2e2da439fbaf2fd95743ddedbb09e" category="paragraph">然後、您必須將所有節點上的中斷連接連接埠重新連線至新的BS1-53248交換器CS1。請參閱<block ref="141c10db18cf1753fa5fc05f553c33ff" category="inline-link-rx"></block> 以取得核准的纜線選項。</block>
+  <block id="2fdf2d2e9946eb8adc48fbf536fd79b1" category="paragraph">請參閱 <block ref="22274518ab78de16bd162dd23a69479d" category="inline-link-macro-rx"></block> 和 <block ref="ad7a44206ec014fec7df9283bb056461" category="inline-link-macro-rx"></block> 以瞭解啟用叢集健全狀況交換器記錄收集以收集交換器相關記錄檔所需的步驟。</block>
+  <block id="1ba5b0ffd5b0d90e8b5fbf1938e87f52" category="section-title">Bes - 53248叢集交換器連接埠指派</block>
+  <block id="16c3e502f28be460a987ad28ccd36874" category="paragraph">您可以使用Broadcom支援的Bes - 53248叢集交換器連接埠指派表、作為設定叢集的指南。</block>
+  <block id="fa4755458f8910a0033438b214e14730" category="paragraph">2016年1月16日</block>
+  <block id="72361095902a3b782c7c383d3a813fcf" category="paragraph">10/25GbE叢集連接埠節點、基礎組態</block>
+  <block id="1f3f639615a80a1684771c8c14152509" category="paragraph">17-48</block>
+  <block id="187c30e211ba48efba7ee0554dccaf17" category="paragraph">10/25GbE叢集連接埠節點、含授權</block>
+  <block id="e911666173c65a9be604d165f8bfca24" category="paragraph">49至54歲</block>
+  <block id="61dd5044a608adf035955ab327098b7f" category="paragraph">100GbE叢集連接埠節點、含授權、從右至左新增</block>
+  <block id="87c5a8a002c26c3c0f3324085542275a" category="paragraph">55-56</block>
+  <block id="b06ab3e1988403e053748a146e7d4ce3" category="admonition">視您的環境而定、您可能需要在copy命令中使用雙槓、例如：`+copy sftp：//172.19.2.1//tmp/BES-53248_RCF_v1.6-Cluster-HA.txt NVRAM:script bs-53241_RCF-v1.6-Cluster-HA .scr+。</block>
+  <block id="cd7d89f0423765df2ea4dd61283f22c1" category="admonition">在啟動指令碼之前、必須先將「.scr」副檔名設定為檔案名稱的一部分。此擴充是EFOS作業系統的延伸。當指令碼下載到交換器時、交換器會自動驗證指令碼、並將輸出傳送到主控台。此外、您也可以變更「.scr」的名稱、使其符合主控台螢幕的大小、以便更容易閱讀、例如：「+copy sftp：//172.19.2.1/tmp/BES-53248_RCF_v1.6-Cluster-HA.txt NVRAM:script RCF-v1.6-Cluster-HA。scr+」。</block>
+  <block id="b96d635b91ed1fd44abcdcd5b109eba6" category="admonition">檔案名稱不得包含符號「//:*？」&lt;&gt;|、最大長度為32個字元。</block>
+  <block id="2f8402ad7be33ec2d65239ac85fb9092" category="admonition">在第一台交換器上安裝RCF之後、請重複這些步驟、在第二台叢集交換器上安裝RCF。</block>
+  <block id="ab57fd0432e25d5b3013133a1c910d56" category="inline-link-macro">KB</block>
+  <block id="0c9b5846c2045ed0a1997293b5a185c2" category="admonition">請參閱 <block ref="93edddbc7654debb4ae0da2599ca02c3" category="inline-link-macro-rx"></block> 如需更多資訊、請參閱安裝RCF以MetroCluster 供參考。</block>
+  <block id="2f5b29dae6c40626ef71ff19914284d2" category="paragraph">要使用的除錯命令：「Debuger transfer」和「debugs license」</block>
+  <block id="4d87d0aacff9e4a95b16be27f0f1e89e" category="admonition">視您的環境而定、您可能需要在「copy」命令中使用雙斜槓、例如：「+copy sftp：//172.19.1.1//tmp/BES-53248_RCF_v1.6-Cluster-HA.txt NVRAM:script bes-53248_RCF-v1.6-Cluster-HA .scr+」。</block>
+  <block id="762a244fe152a19f04047b412d16e8df" category="paragraph">在執行ONTAP 指示燈介面的系統上安裝Bes - 53248叢集交換器、首先要設定IP位址和組態、讓交換器能夠透過管理介面進行通訊。然後您可以視需要安裝乙太網路架構作業系統（EFOS）軟體、參考組態檔（RCF）及其他授權。此程序旨在在新增控制器之前、先準備B3交互 式交換器。此外、您可能需要安裝所需的組態檔、以支援適用於BS-53248叢集交換器的叢集交換器健全狀況監視器（CSHealth Monitor、CSHM）。請參閱 <block ref="22274518ab78de16bd162dd23a69479d" category="inline-link-macro-rx"></block> 以取得更多詳細資料。</block>
+  <block id="23e7cf6793dbbe3c59640d6ebb6cf4fc" category="list-text">。<block ref="141c10db18cf1753fa5fc05f553c33ff" category="inline-link-rx"></block> 包含ONTAP 有關支援功能的資訊、支援的EFOS韌體、以及連接至BE-53248叢集交換器的纜線。</block>
+  <block id="d1e4ca1900305cb93087d6668cebf0f9" category="paragraph">請確定已依照中所述設定Bes至53248叢集交換器 <block ref="29f190705d64b052fe2941415d5984d8" category="inline-link-macro-rx"></block> 開始此移轉程序之前。</block>
+  <block id="d7d3a566381272c7d9d5ad6a790a9a99" category="paragraph">另請參閱 <block ref="22274518ab78de16bd162dd23a69479d" category="inline-link-macro-rx"></block> 和 <block ref="ad7a44206ec014fec7df9283bb056461" category="inline-link-macro-rx"></block> 以瞭解啟用叢集健全狀況交換器記錄收集以收集交換器相關記錄檔所需的步驟。</block>
+  <block id="98b6bf2585261f62aff01449faad7684" category="paragraph">要使用的除錯命令有：「Debuger transfer」和「debugs license」</block>
+  <block id="c0be2d74ddb0ea6b8972b9da2fc2c223" category="paragraph">。<block ref="141c10db18cf1753fa5fc05f553c33ff" category="inline-link-rx"></block> 包含ONTAP 有關支援功能的資訊、支援的EFOS韌體、以及連接至B作業 環境與53248交換器的纜線。</block>
+  <block id="91950abebf25a4752db5969582aa4bb7" category="paragraph">。<block ref="141c10db18cf1753fa5fc05f553c33ff" category="inline-link-rx"></block> 包含平台實際叢集連接埠的最新資訊。</block>
+  <block id="b2ca5d9b00c09954ba621c25b7a4bdbf" category="paragraph">。<block ref="141c10db18cf1753fa5fc05f553c33ff" category="inline-link-rx"></block> 包含纜線的詳細資訊。</block>
+  <block id="cf3535500bcccab825299556e95f0ad5" category="sidebar">設定您的Bes - 53248叢集交換器</block>
+  <block id="bd5be81124f2541ff1af3a04e8cb403d" category="sidebar">編輯RCF以啟動授權連接埠</block>
+  <block id="693a9843040b044d741691bedf1fd616" category="sidebar">如何移轉至B怎麼53248交換器</block>
 </blocks>

@@ -15,11 +15,11 @@ summary: 如果您有雙節點無交換式叢集、則可在不中斷營運的�
 
 大多數系統在每個控制器上都需要兩個專用的叢集網路連接埠。
 
-請確定已依照中所述、設定B3作業 環境叢集交換器 http://docs.netapp.com/platstor/topic/com.netapp.doc.hw-sw-ix8-setup/home.html["適用於Broadcom支援的BS-53248交換器的交換器設定與組態指南"^] 開始此移轉程序之前、請先參考指南。
+請確定已依照中所述設定Bes至53248叢集交換器 link:replace-requirements.html["Broadcom支援的Bes - 53248交換器設定與組態"^] 開始此移轉程序之前。
 
 
 NOTE: 移轉完成後、您可能需要安裝所需的組態檔、以支援適用於BES-53248叢集交換器的叢集交換器健全狀況監視器（CSHM）。
 
 請參閱 http://docs.netapp.com/platstor/topic/com.netapp.doc.hw-sw-ix8-setup/GUID-211616A4-C962-464A-A70E-5E057D7B13E1.html["安裝叢集交換器健全狀況監視器（CSHM）組態檔"^] 《交換機設定與組態指南（適用於Broadcom支援的BS-53248 Switches）》指南。
 
-此外、請參閱中的_設定叢集交換器記錄收集功能_ http://docs.netapp.com/platstor/topic/com.netapp.doc.hw-sw-ix8-setup/home.html["適用於Broadcom支援的BS-53248交換器的交換器設定與組態指南"^] 以瞭解啟用叢集健全狀況交換器記錄收集以收集交換器相關記錄檔所需的步驟。
+另請參閱 link:configure-health-monitor.html["安裝叢集交換器健全狀況監視器（CSHM）組態檔"] 和 link:configure-log-collection["設定叢集交換器記錄收集功能"] 以瞭解啟用叢集健全狀況交換器記錄收集以收集交換器相關記錄檔所需的步驟。

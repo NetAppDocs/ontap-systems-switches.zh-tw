@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: bes, cluster, switch, port, assignment, table, configure, bes-53428 cluster switch port assignments - bes-53428 switches 
 summary: 您可以使用「Bes - 53248叢集交換器連接埠指派表」作為設定叢集的指南。 
 ---
-= Bes - 53248叢集交換器連接埠指派- Bes - 53248交換器
+= Bes - 53248叢集交換器連接埠指派
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -12,10 +12,6 @@ summary: 您可以使用「Bes - 53248叢集交換器連接埠指派表」作為
 
 [role="lead"]
 您可以使用「Bes - 53248叢集交換器連接埠指派表」作為設定叢集的指南。
-
-
-
-== B予53248叢集交換器連接埠指派表
 
 [cols="1,2"]
 |===
@@ -49,10 +45,6 @@ summary: 您可以使用「Bes - 53248叢集交換器連接埠指派表」作為
 100GbE叢集交換器間連結（ISL）連接埠、基礎組態
 
 |===
-
-
-== 連接埠群組速度限制
-
 在BES-53248叢集交換器上、48個10/25GbE（SFP28/SFP+）連接埠會結合成12個4埠群組、如下所示：
 
 * 連接埠1-4、5-8、9-12、13-16、17-20、 21至24、25至28、29至32、33至36、37至40、 41至44及45至48。

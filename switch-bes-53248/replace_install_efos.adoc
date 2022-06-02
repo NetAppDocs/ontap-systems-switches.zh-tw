@@ -15,7 +15,7 @@ summary: 您可以使用此程序、在Bes - 53248叢集交換器上安裝EFOS�
 
 
 
-==== 關於這項工作
+== 關於這項工作
 
 ====
 *請注意下列事項：*
@@ -102,9 +102,9 @@ IMPORTANT: 請注意、將BSP-53248叢集交換器從EFOS 3.3.x.x或3.4.x.x升�
 此範例可驗證交換器是否連接至IP位址為172.19.2.1的伺服器：
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # ping 172.19.2.1
+(cs2)# *ping 172.19.2.1*
 Pinging 172.19.2.1 with 0 bytes of data:
 
 Reply From 172.19.2.1: icmp_seq = 0. time= 5910 usec.
@@ -192,7 +192,7 @@ Additional Packages............................ BGP-4
 +
 [listing]
 ----
-(cs2) # copy sftp://root@172.19.2.1//tmp/EFOS-3.4.4.6.stk active
+(cs2)# *copy sftp://root@172.19.2.1//tmp/EFOS-3.4.4.6.stk active*
 Remote Password:********
 
 Mode........................................... SFTP
@@ -203,7 +203,7 @@ Data Type...................................... Code
 Destination Filename........................... active
 
 Management access will be blocked for the duration of the transfer
-Are you sure you want to start? (y/n) y
+Are you sure you want to start? (y/n) *y*
 SFTP Code transfer starting...
 
 
