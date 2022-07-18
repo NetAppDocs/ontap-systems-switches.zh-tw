@@ -1,0 +1,2951 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+  <head class="at-element-marker">
+  <title>從Cisco叢集交換器移轉至NVIDIA SN2100叢集交換器</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="從Cisco叢集交換器移轉至NVIDIA SN2100叢集交換器" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.netapp.com/zh-tw/ontap-systems-switches/switch-nvidia-sn2100/migrate_cisco_sn2100_cluster_switch.html" />
+	<meta property="og:description" content="您可以將不中斷營運的舊Cisco叢集交換器移轉至ONTAP NVIDIA SN2100叢集網路交換器、以供支援使用。" />
+  <meta property="og:image" content="https://docs.netapp.com/zh-tw/ontap-systems-switches/images/logo-tophat-social.png" />
+  <meta property="og:image:alt" content="NetApp Logo" />
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation"/>
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="您可以將不中斷營運的舊Cisco叢集交換器移轉至ONTAP NVIDIA SN2100叢集網路交換器、以供支援使用。">
+  <meta name="keywords" content=" migrating to a cluster with NVIDIA SN2100 cluster switches, how to migrate"><!-- Icons -->
+  <link rel="icon" href="/zh-tw/ontap-systems-switches/images/favicon.ico" type="image/x-icon">
+
+  <!-- RSS Feed --><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+  <!-- Elastic Search -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/searchkit/0.10.0/theme.css">
+
+  <!-- Controls AsciiDoctor Admonition Blocks -->
+  <link rel="stylesheet" type="text/css" href="/zh-tw/ontap-systems-switches/css/font-awesome.min.css">
+
+  <!-- Controls the shadow effect for search dropdown menu -->
+  <link rel="stylesheet" href="/zh-tw/ontap-systems-switches/css/boxshadowproperties.css">
+
+  <!-- NetApp CSS controls the technical content -->
+  <link rel="stylesheet" type="text/css" href="/zh-tw/ontap-systems-switches/css/netapp.css">
+
+  <!-- WWW CSS Content -->
+  <link rel="stylesheet" type="text/css" href="/zh-tw/ontap-systems-switches/css/www-luci-dotcom.min.css">
+  <link rel="stylesheet" type="text/css" href="/zh-tw/ontap-systems-switches/css/www-netapp-dotcom.css">
+  <link rel="stylesheet" href="/zh-tw/ontap-systems-switches/css/www-netapp-library-critical.min.css" media="all" >
+  <link rel="stylesheet" href="/zh-tw/ontap-systems-switches/css/www-netapp-library-non-critical.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="stylesheet" href="/zh-tw/ontap-systems-switches/css/www-netapp-library-global-header-footer.min.css">
+
+  <!-- NetApp IE Customizations -->
+  <link rel="stylesheet" href='/zh-tw/ontap-systems-switches/css/na-utility.css' type='text/css'>
+  <link rel="stylesheet" href='/zh-tw/ontap-systems-switches/css/na-sidebar.css' type='text/css'>
+  <link rel='stylesheet' href='/zh-tw/ontap-systems-switches/css/clouddocs.css' type='text/css'>
+  <link rel='stylesheet' href='/zh-tw/ontap-systems-switches/css/custom-dropdown.css' type='text/css'>
+  <link rel='stylesheet' href='/zh-tw/ontap-systems-switches/css/na-pagenav.css' type='text/css'>
+
+  
+  <link rel="stylesheet" href="/zh-tw/ontap-systems-switches/css/landing-page.css" type="text/css">
+  <link rel="stylesheet" href="/zh-tw/ontap-systems-switches/css/tabbed-blocks.css" type="text/css">
+  <!-- Canonical url -->
+  <link rel='stylesheet' href='/zh-tw/ontap-systems-switches/css/na-feature.css' type='text/css'><!-- Top level site integrations --><script>
+    if (document.location.hostname === "docs.netapp.com") {
+      var head = document.getElementsByTagName('head')[0];
+      var onetrustConsent = document.createElement("script");
+      onetrustConsent.type = "text/javascript";
+      onetrustConsent.src = "https://cdn.cookielaw.org/consent/72570c5c-fe30-465f-b0e0-b77f7fb4ae34/OtAutoBlock.js";
+      head.appendChild(onetrustConsent);
+
+      var onetrustScript = document.createElement("script");
+      onetrustScript.type = "text/javascript";
+      onetrustScript.src = "https://cdn.cookielaw.org/scripttemplates/otSDKStub.js";
+      onetrustScript.charset = "UTF-8";
+      onetrustScript.dataset.documentLanguage = "true";
+      onetrustScript.dataset.domainScript = "72570c5c-fe30-465f-b0e0-b77f7fb4ae34";
+      head.appendChild(onetrustScript);
+    }
+
+    function OptanonWrapper() { }
+
+    if (document.location.hostname === "docs.netapp.com") {
+      var adobe = document.createElement("script");
+      adobe.type = "text/plain";
+      adobe.className = "optanon-category-C0002";
+      adobe.src = "//assets.adobedtm.com/60287eadf1ee/c284da483c83/launch-e9ff3acac59f.min.js";
+      head.appendChild(adobe);
+
+      var google = document.createElement("script");
+      google.type = "text/plain";
+      google.className = "optanon-category-C0002";
+      google.src = "https://www.googletagmanager.com/gtag/js?id=UA-81697994-3";
+      head.appendChild(google);
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-81697994-3');
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+  <!-- Used for Product Family Page Sidebar Visibility --><!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script><script src='/zh-tw/ontap-systems-switches/js/na-search.js'></script><script src='/zh-tw/ontap-systems-switches/js/na-pagenav.js'></script><link rel='stylesheet' href='/zh-tw/ontap-systems-switches/css/prism.css' type='text/css'>
+  <link rel='stylesheet' href='/zh-tw/ontap-systems-switches/css/prism-netapp.css' type='text/css'>
+
+
+  <script src='/zh-tw/ontap-systems-switches/js/na-utility.js'></script>
+  <script src='/zh-tw/ontap-systems-switches/js/clouddocs.js'></script>
+  <script src='/zh-tw/ontap-systems-switches/js/jquery.navgoco.min.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src='/zh-tw/ontap-systems-switches/js/toc.js'></script>
+  <script src='/zh-tw/ontap-systems-switches/js/customscripts.js'></script><script>
+      $(document).ready(function() {
+          
+          var collapseOnInit = true;
+          
+
+          var navSettings = {
+              "caretHtml": '',
+              "accordion": collapseOnInit,
+              "openClass": 'active', // open
+              "save": false, // leave false or nav highlighting doesn't work right
+              "cookie": {
+                  "name": 'navgoco',
+                  "expires": false,
+                  "path": '/'
+              },
+              "slide": {
+                  "duration": 400,
+                  "easing": 'swing'
+              }
+          };
+
+          // Initialize navgoco with default options
+          $("#mysidebar").navgoco(navSettings);
+          
+
+          $("#collapseAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', false);
+          });
+
+          $("#expandAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', true);
+          });
+
+      });
+
+  </script>
+  <script>
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+  </script>
+  <script src='/zh-tw/ontap-systems-switches/js/custom-dropdown.js'></script>
+  <script src='/zh-tw/ontap-systems-switches/js/FileSaver.min.js'></script>
+  <script src='/zh-tw/ontap-systems-switches/js/jszip-utils.min.js'></script>
+  <script src='/zh-tw/ontap-systems-switches/js/jszip.min.js'></script>
+  <script src='/zh-tw/ontap-systems-switches/js/pdf-ux.js'></script>
+</head>
+
+
+  <body class role="document" data-flavor="">
+    <div id="page" class="n-off-canvas-menu">
+      <div class="n-off-canvas-menu__menu"><!--TODO: Add offcanvas code --></div>
+      <div class="n-off-canvas-menu__content-wrap">
+        <header class="site-header" id="banner">
+  
+  <!-- Start Page Toolbar -->
+  
+  <div class="page-nav-toolbar"><div class="page-nav-contribute"><a target="_blank" href="https://github.com/NetAppDocs/ontap-systems-switches/issues/new?body=Page%3A%20[從Cisco叢集交換器移轉至NVIDIA SN2100叢集交換器](https://docs.netapp.com/zh-tw/ontap-systems-switches/switch-nvidia-sn2100/migrate_cisco_sn2100_cluster_switch.html)" class="page-nav-contribute-link" role="button"><img src="/zh-tw/ontap-systems-switches/images/discuss-sm.svg" alt="" class="github-icon" />要求變更文件</a><a target="_blank" href="https://github.com/NetAppDocs/ontap-systems-switches/blob/main/switch-nvidia-sn2100/migrate_cisco_sn2100_cluster_switch.adoc" class="page-nav-contribute-link" role="button"><img src="/zh-tw/ontap-systems-switches/images/edit-sm.svg" alt="" class="github-icon" />編輯此頁面</a><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/zh-tw/ontap-systems-switches/images/article-sm.svg" alt="" class="github-icon" />瞭解如何作出貢獻</a></div>
+    <div class="page-nav-container">
+      <nav class="page-nav-fixed">
+        <div class="page-nav-title">在此頁面上</div>
+        <div class="page-nav-links">
+          <ul class="page-nav-inner" id="page-menu"></ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+  
+  
+  <!-- Start top_hat -->
+  <div class="n-top-hat">
+    <div class="n-container">
+      <div class="n-top-hat__cross-property-nav">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/products-a-z/" class="n-top-hat__link">產品與解決方案</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/support-and-training/netapp-university/" class="n-top-hat__link">支援與訓練</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://cloud.netapp.com" class="n-top-hat__link">Cloud Central</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://community.netapp.com/" class="n-top-hat__link">社群</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://blog.netapp.com/" class="n-top-hat__link">部落格</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://customers.netapp.com/en/" class="n-top-hat__link">客戶成功案例</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">聯絡人</a>
+          </li>
+        </ul>
+      </div>
+      <div class="n-top-hat__utils">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">聯絡人</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- End top_hat -->
+
+  <!-- Start property bar -->
+  <style>
+    .n-property-navigation-bar__menus--desktop-experience .n-menu--mega__default-content__heading span {
+    color: #34B0FF;
+    }
+  </style>
+  <div class="n-property-bar " data-ntap-ui="sticky-nav">
+    <div class="n-property-bar__inner-wrap">
+      <div class="n-property-bar__menu-toggle">
+        <a href="#" class="n-property-bar__menu-toggle-link">
+          <span class="n-property-bar__menu-toggle-text">Menu</span>
+          <svg class="n-icon-bars n-property-bar__menu-toggle-icon" aria-labelledby="title">
+            <title>bars</title>
+            <use xlink:href="/zh-tw/ontap-systems-switches/common/svg/sprite.svg#bars"></use>
+          </svg>
+        </a>
+      </div>
+      <div class="n-property-bar__property-mark ">
+        <a href="https://www.netapp.com" class="n-property-bar__property-link">
+          <div class="n-property-bar__logo">
+            <svg class="n-icon-netapp-mark n-icon-netapp-mark n-property-bar__netapp-mark-icon" aria-labelledby="title">
+              <title>netapp-mark</title>
+              <use xlink:href="/zh-tw/ontap-systems-switches/common/svg/sprite.svg#netapp-mark"></use>
+            </svg>
+            <svg class="n-icon-netapp-logo n-property-bar__logo-svg" aria-labelledby="title">
+              <title>netapp-logo</title>
+              <use xlink:href="/zh-tw/ontap-systems-switches/common/svg/sprite.svg#netapp-logo"></use>
+            </svg>
+          </div>
+        </a>
+      </div>
+
+      
+      <div class="search-property-bar">
+        <div id="search-demo-container" class="searchbox n-property-bar__search">
+          <div id="react-search" 
+          data-search-html="/zh-tw/ontap-systems-switches/search.html"
+          data-type="widget" 
+          data-placeholder="搜尋文件"
+          data-no-results-found="找不到符合 {query} 的相關結果。"
+          data-did-you-mean="搜尋 {suggestion}。"
+          data-no-results-found-did-you-mean="找不到符合 {query} 的相關結果。您是否要找的是{suggestion}？"
+          data-results-found="找到 {hitCount} 筆結果"
+          data-error-message="We're sorry, an issue occurred when fetching your results. Please try again."
+          data-error-reset="Reset Search"
+          data-sk-es-pf-indexes=""
+          data-flavor=""></div>
+          <button class="n-property-bar__search-toggle-button" type="button">
+            <svg class="n-icon-search n-property-bar__search-toggle-button-icon" aria-labelledby="title">
+              <title>search</title>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/zh-tw/ontap-systems-switches/common/svg/sprite.svg#search"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="n-property-bar__toolbar">
+    <!-- Start Language Selector --><div id="language-dropdown" class="custom-dropdown custom-dropdown-lang">
+      <div class="custom-dropdown-select custom-dropdown-select-lang">
+      <span class="lang-name">繁體中文</span>
+          <svg class="n-globe__icon" aria-labelledby="title">
+            <title>globe</title>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/zh-tw/ontap-systems-switches/common/svg/sprite.svg#globe"></use>
+          </svg>
+        </button>
+      </div>
+
+      <ul class="custom-dropdown-menu"><li>
+          <a href="https://docs.netapp.com/zh-tw/ontap-systems-switches/switch-nvidia-sn2100/migrate_cisco_sn2100_cluster_switch.html" target="_self"><span translate="no" class="notranslate">繁體中文</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/us-en/ontap-systems-switches/switch-nvidia-sn2100/migrate_cisco_sn2100_cluster_switch.html" target="_self"><span translate="no" class="notranslate">English</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/ja-jp/ontap-systems-switches/switch-nvidia-sn2100/migrate_cisco_sn2100_cluster_switch.html" target="_self"><span translate="no" class="notranslate">日本語</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/zh-cn/ontap-systems-switches/switch-nvidia-sn2100/migrate_cisco_sn2100_cluster_switch.html" target="_self"><span translate="no" class="notranslate">简体中文</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/ko-kr/ontap-systems-switches/switch-nvidia-sn2100/migrate_cisco_sn2100_cluster_switch.html" target="_self"><span translate="no" class="notranslate">한국어</span></a>
+        </li></ul>
+    </div><!-- End Language Selector -->
+
+    <div class="n-property-bar__cta"></div>
+  </div>
+  <script>
+    $(function(){
+        var currentLocalization = $('html').attr('lang');
+
+        var localizationsDictionary = {
+            "en-CA" : "https://www.netapp.com/search/index.aspx?for_cr=canada&",
+            "en-IN" : "https://www.netapp.com/search/index.aspx?for_cr=india&",
+            "nl-NL" : "https://www.netapp.com/search/index.aspx?for_cr=netherlands&",
+            "ru-RU" : "https://www.netapp.com/search/index.aspx?for_cr=russia&",
+            "sv-SE" : "https://www.netapp.com/search/index.aspx?for_cr=sweden&",
+            "it-IT" : "https://www.netapp.com/search/index.aspx?for_cr=italy&",
+            "he-IL" : "https://www.netapp.com/search/index.aspx?for_cr=israel&",
+            "ko-KR" : "https://www.netapp.com/search/index.aspx?for_cr=korea&",
+            "zh-TW" : "https://www.netapp.com/search/index.aspx?for_cr=taiwan&",
+            "en-GB" : "https://www.netapp.com/search/index.aspx?for_cr=unitedkingdom&",
+            "en-SG" : "https://www.netapp.com/search/index.aspx?for_cr=asean&",
+            "en-AU" : "https://www.netapp.com/search/index.aspx?for_cr=australia&",
+            "pt-BR" : "https://www.netapp.com/search/index.aspx?for_cr=brasil&",
+            "de-CH" : "https://www.netapp.com/search/index.aspx?for_cr=switzerland&",
+            "es-MX" : "https://www.netapp.com/search/index.aspx?for_cr=mexico&"
+        };
+
+        if($('html').hasClass('ntap-whitelisted') && localizationsDictionary.hasOwnProperty(currentLocalization)) {
+            $('.n-property-bar__property-link').attr('href', '/');
+        }
+    });
+  </script>
+  <!-- End property bar -->
+</header>
+
+
+        <main id="n-main-content" class="n-main-content">
+          <!-- Start Documentation Content -->
+<div class="ie-main">
+  <!-- Sidebar Column -->
+  
+  <div class="col-md-3" id="sidebar-height">
+      <div class="n-pdf-header">
+  <a id="toggleButtonPdf" class="n-pdf-button" type="button">
+    <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>可用的 PDF<span>
+    </span>
+  </a>
+</div>
+<div class="n-pdf-body-container">
+  <ul id="toggleContainerPdf" class="n-pdf-body" style="display:none;"><li class="pdf-ux-container">
+        
+        
+        
+        <a target="_blank" href="/zh-tw/ontap-systems-switches/pdfs/fullsite-sidebar/VMware交換器文件AFF_FAS.pdf" >
+          <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>此文件網站（PDF 格式）</a>
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-systems-switches/pdfs/sidebar/Broadcom支援的Bes___53248交換器.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>
+            Broadcom支援的Bes - 53248交換器
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-systems-switches/pdfs/sidebar/設定交換器.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>
+            設定交換器
+          </a>
+          
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-systems-switches/pdfs/sidebar/設定您的Bes___53248叢集交換器.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>
+            設定您的Bes - 53248叢集交換器
+          </a>
+          
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-systems-switches/pdfs/sidebar/安裝授權.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>
+            安裝授權
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-systems-switches/pdfs/sidebar/從CN1610交換器移轉至Bes_53248交換器.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>
+            從CN1610交換器移轉至Bes 53248交換器
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-systems-switches/pdfs/sidebar/移轉至雙節點交換叢集.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>
+            移轉至雙節點交換叢集
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-systems-switches/pdfs/sidebar/在NDA_NDU環境中升級交換器.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>
+            在NDA/NDU環境中升級交換器
+          </a>
+          
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-systems-switches/pdfs/sidebar/安裝授權.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>
+            安裝授權
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-systems-switches/pdfs/sidebar/Cisco_Nexus_3132Q_V交換器.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>
+            Cisco Nexus 3132Q-V交換器
+          </a>
+          
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-systems-switches/pdfs/sidebar/設定.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>
+            設定
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-systems-switches/pdfs/sidebar/必要的叢集組態資訊.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>
+            必要的叢集組態資訊
+          </a>
+          
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-systems-switches/pdfs/sidebar/佈線工作表範例和空白.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>
+            佈線工作表範例和空白
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-systems-switches/pdfs/sidebar/在Cisco_Nexus_3132Q_V叢集交換器上安裝NX_OS軟體和RCV.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>
+            在Cisco Nexus 3132Q-V叢集交換器上安裝NX-OS軟體和RCV
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-systems-switches/pdfs/sidebar/使用Cisco_Nexus_3132Q_V叢集交換器移轉至雙節點交換叢集.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>
+            使用Cisco Nexus 3132Q-V叢集交換器移轉至雙節點交換叢集
+          </a>
+          
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-systems-switches/pdfs/sidebar/更換Cisco_Nexus_3132Q_V叢集交換器.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>
+            更換Cisco Nexus 3132Q-V叢集交換器
+          </a>
+          
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-systems-switches/pdfs/sidebar/將Cisco_Nexus_5596叢集交換器更換為Cisco_Nexus_3132Q_V叢集交換器.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>
+            將Cisco Nexus 5596叢集交換器更換為Cisco Nexus 3132Q-V叢集交換器
+          </a>
+          
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-systems-switches/pdfs/sidebar/將CN1610叢集交換器更換為Cisco_Nexus_3132Q_V叢集交換器.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>
+            將CN1610叢集交換器更換為Cisco Nexus 3132Q-V叢集交換器
+          </a>
+          
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-systems-switches/pdfs/sidebar/Cisco_Nexus_3232C交換器.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>
+            Cisco Nexus 3232C交換器
+          </a>
+          
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-systems-switches/pdfs/sidebar/設定.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>
+            設定
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-systems-switches/pdfs/sidebar/必要的叢集組態資訊.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>
+            必要的叢集組態資訊
+          </a>
+          
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-systems-switches/pdfs/sidebar/佈線工作表範例和空白.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>
+            佈線工作表範例和空白
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-systems-switches/pdfs/sidebar/在Cisco_Nexus_3232C叢集交換器上安裝NX_OS軟體和RCT.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>
+            在Cisco Nexus 3232C叢集交換器上安裝NX-OS軟體和RCT
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-systems-switches/pdfs/sidebar/將CN1610交換器移轉至Cisco_Nexus_3232C叢集交換器.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>
+            將CN1610交換器移轉至Cisco Nexus 3232C叢集交換器
+          </a>
+          
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-systems-switches/pdfs/sidebar/從Cisco_Nexus_5596交換器移轉至Cisco_Nexus_3232C交換器.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>
+            從Cisco Nexus 5596交換器移轉至Cisco Nexus 3232C交換器
+          </a>
+          
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-systems-switches/pdfs/sidebar/使用Cisco_Nexus_3232C叢集交換器_從雙節點無交換器叢集移轉至叢集.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>
+            使用Cisco Nexus 3232C叢集交換器、從雙節點無交換器叢集移轉至叢集
+          </a>
+          
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-systems-switches/pdfs/sidebar/更換Cisco_Nexus_3232C叢集交換器.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>
+            更換Cisco Nexus 3232C叢集交換器
+          </a>
+          
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-systems-switches/pdfs/sidebar/更換Cisco_Nexus_3232C儲存交換器.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>
+            更換Cisco Nexus 3232C儲存交換器
+          </a>
+          
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-systems-switches/pdfs/sidebar/Cisco_Nexus_9336C_FX2交換器.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>
+            Cisco Nexus 9336C-FX2交換器
+          </a>
+          
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-systems-switches/pdfs/sidebar/設定.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>
+            設定
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-systems-switches/pdfs/sidebar/必要的叢集組態資訊.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>
+            必要的叢集組態資訊
+          </a>
+          
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-systems-switches/pdfs/sidebar/佈線工作表範例和空白.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>
+            佈線工作表範例和空白
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-systems-switches/pdfs/sidebar/在Cisco_Nexus_9336C_FX2叢集交換器上安裝NX_OS軟體和RCF.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>
+            在Cisco Nexus 9336C-FX2叢集交換器上安裝NX-OS軟體和RCF
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-systems-switches/pdfs/sidebar/從Cisco交換器移轉至Cisco_Nexus_9336C_FX2叢集交換器.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>
+            從Cisco交換器移轉至Cisco Nexus 9336C-FX2叢集交換器
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-systems-switches/pdfs/sidebar/使用Cisco_Nexus_9336C_FX2叢集交換器移轉至雙節點交換叢集.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>
+            使用Cisco Nexus 9336C-FX2叢集交換器移轉至雙節點交換叢集
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-systems-switches/pdfs/sidebar/設定Cisco_Nexus_9336C_FX2叢集交換器.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>
+            設定Cisco Nexus 9336C-FX2叢集交換器
+          </a>
+          
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-systems-switches/pdfs/sidebar/Cisco_Nexus_9336C_FX2共享交換器.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>
+            Cisco Nexus 9336C-FX2共享交換器
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-systems-switches/pdfs/sidebar/Cisco_Nexus_2300YC交換器.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>
+            Cisco Nexus 2300YC交換器
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-systems-switches/pdfs/sidebar/設定.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>
+            設定
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-systems-switches/pdfs/sidebar/佈線工作表範例和空白.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>
+            佈線工作表範例和空白
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-systems-switches/pdfs/sidebar/設定新的Cisco_Nexus_2300YC交換器.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>
+            設定新的Cisco Nexus 2300YC交換器
+          </a>
+          
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-systems-switches/pdfs/sidebar/在Cisco_Nexus_2300YC叢集交換器上安裝NX_OS軟體和RCF.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>
+            在Cisco Nexus 2300YC叢集交換器上安裝NX-OS軟體和RCF
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-systems-switches/pdfs/sidebar/使用Cisco_Nexus_2300YC交換器移轉至雙節點交換叢集.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>
+            使用Cisco Nexus 2300YC交換器移轉至雙節點交換叢集
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-systems-switches/pdfs/sidebar/從Cisco交換器移轉至Cisco_Nexus_2300YC交換器.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>
+            從Cisco交換器移轉至Cisco Nexus 2300YC交換器
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-systems-switches/pdfs/sidebar/NVIDIA_SN2100交換器.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>
+            NVIDIA SN2100交換器
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-systems-switches/pdfs/sidebar/設定及設定NVIDIA_SN2100交換器.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>
+            設定及設定NVIDIA SN2100交換器
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+    <ul class="subfolders" id="pdf-remove" style="display:none;"><li class="active"></li></ul>
+  
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-systems-switches/pdfs/sidebar/更換NVIDIA_SN2100交換器.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>
+            更換NVIDIA SN2100交換器
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-systems-switches/pdfs/sidebar/其他交換器機型.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-systems-switches/images/pdf.png" alt="" width="16" height="16"/>
+            其他交換器機型
+          </a>
+          
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+</li></ul>
+  <div class="zip-pdf-link-container" style="display: none;">   
+    <a href="#" id="zipPdf">
+      <img src="/zh-tw/ontap-systems-switches/images/pdf-zip.png" alt="" width="16" height="16"/>
+      <pre>個別 PDF 文件的集合<span class="zip-size"></span></pre>
+    </a><div id="zip-link-popup" class="hide">
+    <div class="inner-modal">
+        <div class="downloading-progress">
+            <div class="spinner"></div>
+            <h1>Creating your file...</h1>
+            <div>This may take a few minutes. Thanks for your patience.</div>
+            <button class="cancel-download-btn" type="button">Cancel</button>
+        </div>
+        <div class="download-complete hide">
+            <div class="done-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>
+            </div>
+            <div>Your file is ready</div>
+            <button class="cancel-download-btn" type="button">OK</button>
+        </div>
+    </div>
+</div>
+<script>
+    $(".cancel-download-btn").click(function(){
+        $("#zip-link-popup").addClass("hide");
+        $("#zip-link-popup .downloading-progress").removeClass("hide");
+        $("#zip-link-popup .download-complete").addClass("hide");
+    });
+</script></div>
+</div>
+<script>
+  $("#toggleContainerPdf li.active:last-child").parents('ul.subfolders').toggle('display');
+  $("#toggleButtonPdf").click(function () {
+    $("#toggleContainerPdf").toggle('display');
+    $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+  });
+</script><div class="sidebar-nav-container" id="mysidebardiv">
+  <ul id="mysidebar" class="nav"><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/index.html">
+        不再需要使用本技術AFF FAS
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Broadcom支援的Bes - 53248交換器</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-bes-53248/overview-bes53248.html">
+        Bes至53248叢集交換器總覽
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 設定交換器</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-bes-53248/replace-requirements.html">
+        Bes - 53248叢集交換器組態需求
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-bes-53248/replace-required-documentation.html">
+        必要文件
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 設定您的Bes - 53248叢集交換器</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-bes-53248/configure-new-switch.html">
+        設定新的Bes - 53248交換器
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-bes-53248/configure-install-initial.html">
+        初始安裝
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-bes-53248/configure-efos-software.html">
+        安裝EFOS軟體
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 安裝授權</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-bes-53248/configure-licenses.html">
+        安裝適用於B3作業 叢集交換器的授權
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-bes-53248/configure-restrictions.html">
+        限制與限制
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-bes-53248/configure-edit-rcf.html">
+        編輯RCF以啟動授權連接埠
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-bes-53248/configure-install-rcf.html">
+        安裝參考組態檔（RCF）
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-bes-53248/configure-health-monitor.html">
+        安裝叢集交換器健全狀況監視器（CSHM）組態檔
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-bes-53248/configure-ssh.html">
+        在BS-53248叢集交換器上啟用SSH
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-bes-53248/configure-log-collection.html">
+        設定叢集交換器記錄收集功能
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 從CN1610交換器移轉至Bes 53248交換器</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-bes-53248/migrate-cn1610-overview.html">
+        總覽
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-bes-53248/migrate-cn1610.html">
+        如何移轉至B怎麼53248交換器
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 移轉至雙節點交換叢集</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-bes-53248/migrate-to-2n-switched.html">
+        準備移轉
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-bes-53248/migrate-to-2n-switched-overview.html">
+        移轉至交換式NetApp叢集環境
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 在NDA/NDU環境中升級交換器</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-bes-53248/replace-upgrade.html">
+        總覽
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-bes-53248/replace-prepare-controller.html">
+        準備控制器
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-bes-53248/replace-install-efos.html">
+        安裝EFOS軟體
+      </a></li><li class="subfolders "><a href="/zh-tw/ontap-systems-switches/switch-bes-53248/replace-install-licenses.html">
+        <div class="na-navbar-padding"> 安裝授權</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-bes-53248/replace-restrictions.html">
+        限制與限制
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-bes-53248/replace-edit-rcf.html">
+        編輯參考組態檔案（RCF）
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-bes-53248/replace-install-rcf.html">
+        安裝參考組態檔（RCF）
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-bes-53248/replace-install-cshm-file.html">
+        安裝叢集交換器健全狀況監視器（CSHM）組態檔
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-bes-53248/replace-configure-log-collection.html">
+        設定叢集交換器記錄收集功能
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-bes-53248/replace-verify.html">
+        驗證組態
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-bes-53248/replace-switch.html">
+        更換Bes - 53248交換器
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Cisco Nexus 3132Q-V交換器</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-3132q-v/index.html">
+        總覽
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-3132q-v/task-install-a-cisco-nexus-3232c-cluster-switch-and-pass-through-panel-in-a-netapp-cabinet.html">
+        在NetApp機櫃中安裝Cisco Nexus 3132Q-V叢集交換器和傳遞面板
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 設定</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/setup-switches.html">
+        設定交換器
+      </a></li><li class="subfolders "><a href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/setup-required-information.html">
+        <div class="na-navbar-padding"> 必要的叢集組態資訊</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/setup-install-cshm-file.html">
+        安裝適用於92300YC交換器的叢集交換器健全狀況監視器（CSHM）組態檔
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/setup-required-documentation.html">
+        必要文件
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/setup-considerations-smart-call.html">
+        使用Smart Call Home的考量事項
+      </a></li><li class="subfolders "><a href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/setup-worksheets-sample-cabling.html">
+        <div class="na-navbar-padding"> 佈線工作表範例和空白</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/setup-worksheet-9336c.html">
+        Cisco Nexus 9336C-FX2纜線工作表
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/setup-worksheet-92300yc.html">
+        Cisco Nexus 2300YC佈線工作表
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/setup-worksheet-3232c.html">
+        Cisco Nexus 3232C佈線工作表
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/setup-worksheet-3132q.html">
+        Cisco Nexus 3132Q-V佈線工作表
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/setup-worksheet-5596.html">
+        Cisco Nexus 5596UP和5596T佈線工作表
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="/zh-tw/ontap-systems-switches/switch-cisco-3132q-v/task-install-nx-os-software-and-rcfs-on-cisco-nexus-3132q-v-cluster-switches.html">
+        <div class="na-navbar-padding"> 在Cisco Nexus 3132Q-V叢集交換器上安裝NX-OS軟體和RCV</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-3132q-v/task-install-the-nx-os-software-3132q-v.html">
+        安裝NX-OS軟體
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-3132q-v/task-install-the-reference-configuration-file-rcf-3132q-v.html">
+        安裝參考組態檔（RCF）
+      </a></li></ul></li><li class="subfolders "><a href="/zh-tw/ontap-systems-switches/switch-cisco-3132q-v/concept-migrate-from-a-two-node-switchless-cluster-to-a-cluster-with-cisco-nexus-3232c-cluster-switches.html">
+        <div class="na-navbar-padding"> 使用Cisco Nexus 3132Q-V叢集交換器移轉至雙節點交換叢集</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-3132q-v/task-how-to-migrate-from-a-two-node-switchless-cluster-to-a-cluster-with-cisco-nexus-3132q-v-cluster-switches.html">
+        如何使用Cisco Nexus 3132Q-V叢集交換器移轉雙節點交換叢集
+      </a></li></ul></li><li class="subfolders "><a href="/zh-tw/ontap-systems-switches/switch-cisco-3132q-v/concept-replace-cisco-nexus-3132q-v-cluster-switches.html">
+        <div class="na-navbar-padding"> 更換Cisco Nexus 3132Q-V叢集交換器</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-3132q-v/task-how-to-replace-cisco-nexus-3132q-v-cluster-switches.html">
+        如何更換Cisco Nexus 3132Q-V叢集交換器
+      </a></li></ul></li><li class="subfolders "><a href="/zh-tw/ontap-systems-switches/switch-cisco-3132q-v/concept-migrate-from-a-cisco-5596-switch-to-a-cisco-nexus-3232c.html">
+        <div class="na-navbar-padding"> 將Cisco Nexus 5596叢集交換器更換為Cisco Nexus 3132Q-V叢集交換器</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-3132q-v/task-how-to-migrate-from-a-cisco-nexus-5596-cluster-switch-to-a-cisco-nexus-3232c-cluster-switch.html">
+        如何使用Cisco Nexus 3132Q-V叢集交換器來取代Cisco Nexus 5596叢集交換器
+      </a></li></ul></li><li class="subfolders "><a href="/zh-tw/ontap-systems-switches/switch-cisco-3132q-v/concept-migrate-a-cn1610-switch-to-a-cisco-nexus-3232c-cluster-switch.html">
+        <div class="na-navbar-padding"> 將CN1610叢集交換器更換為Cisco Nexus 3132Q-V叢集交換器</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-3132q-v/task-how-to-replace-cn1610-cluster-switches-with-cisco-nexus-3232c-cluster-switches.html">
+        如何使用Cisco Nexus 3132Q-V叢集交換器來取代CN1610叢集交換器
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Cisco Nexus 3232C交換器</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-3232c/index.html">
+        總覽
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-3232c/task-install-a-cisco-nexus-3232c-cluster-switch-and-pass-through-panel-in-a-netapp-cabinet.html">
+        在NetApp機櫃中安裝Cisco Nexus 3232C叢集交換器和直通面板
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 設定</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/setup-switches.html">
+        設定交換器
+      </a></li><li class="subfolders "><a href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/setup-required-information.html">
+        <div class="na-navbar-padding"> 必要的叢集組態資訊</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/setup-install-cshm-file.html">
+        安裝適用於92300YC交換器的叢集交換器健全狀況監視器（CSHM）組態檔
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/setup-required-documentation.html">
+        必要文件
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/setup-considerations-smart-call.html">
+        使用Smart Call Home的考量事項
+      </a></li><li class="subfolders "><a href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/setup-worksheets-sample-cabling.html">
+        <div class="na-navbar-padding"> 佈線工作表範例和空白</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/setup-worksheet-9336c.html">
+        Cisco Nexus 9336C-FX2纜線工作表
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/setup-worksheet-92300yc.html">
+        Cisco Nexus 2300YC佈線工作表
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/setup-worksheet-3232c.html">
+        Cisco Nexus 3232C佈線工作表
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/setup-worksheet-3132q.html">
+        Cisco Nexus 3132Q-V佈線工作表
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/setup-worksheet-5596.html">
+        Cisco Nexus 5596UP和5596T佈線工作表
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="/zh-tw/ontap-systems-switches/switch-cisco-3232c/task-install-nx-os-software-and-rcfs-on-cisco-nexus-3232-cluster-switches-running-ontap-9-4-and-later.html">
+        <div class="na-navbar-padding"> 在Cisco Nexus 3232C叢集交換器上安裝NX-OS軟體和RCT</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-3232c/task-install-the-nx-os-software-3232c-cluster-switch.html">
+        安裝NX-OS軟體
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-3232c/task-install-the-reference-configuration-file-rcf-3232c-cluster-switch.html">
+        安裝參考組態檔（RCF）
+      </a></li></ul></li><li class="subfolders "><a href="/zh-tw/ontap-systems-switches/switch-cisco-3232c/concept-migrate-a-cn1610-switch-to-a-cisco-nexus-3232c-cluster-switch.html">
+        <div class="na-navbar-padding"> 將CN1610交換器移轉至Cisco Nexus 3232C叢集交換器</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-3232c/task-how-to-replace-cn1610-cluster-switches-with-cisco-nexus-3232c-cluster-switches.html">
+        如何將CN1610叢集交換器移轉至Cisco Nexus 3232C叢集交換器
+      </a></li></ul></li><li class="subfolders "><a href="/zh-tw/ontap-systems-switches/switch-cisco-3232c/concept-migrate-from-a-cisco-5596-switch-to-a-cisco-nexus-3232c.html">
+        <div class="na-navbar-padding"> 從Cisco Nexus 5596交換器移轉至Cisco Nexus 3232C交換器</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-3232c/task-how-to-migrate-from-a-cisco-nexus-5596-cluster-switch-to-a-cisco-nexus-3232c-cluster-switch.html">
+        如何從Cisco Nexus 5596叢集交換器移轉至Cisco Nexus 3232C叢集交換器
+      </a></li></ul></li><li class="subfolders "><a href="/zh-tw/ontap-systems-switches/switch-cisco-3232c/concept-migrate-from-a-two-node-switchless-cluster-to-a-cluster-with-cisco-nexus-3232c-cluster-switches.html">
+        <div class="na-navbar-padding"> 使用Cisco Nexus 3232C叢集交換器、從雙節點無交換器叢集移轉至叢集</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-3232c/task-how-to-migrate-from-a-two-node-switchless-cluster-to-a-cluster-with-cisco-nexus-3132q-v-cluster-switches.html">
+        如何使用Cisco Nexus 3232C叢集交換器、從雙節點無交換器叢集移轉至叢集
+      </a></li></ul></li><li class="subfolders "><a href="/zh-tw/ontap-systems-switches/switch-cisco-3232c/concept-replace-a-cisco-nexus-3232c-cluster-switch.html">
+        <div class="na-navbar-padding"> 更換Cisco Nexus 3232C叢集交換器</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-3232c/task-how-to-replace-a-cisco-nexus-3232c-cluster-switch.html">
+        如何更換Cisco Nexus 3232C叢集交換器
+      </a></li></ul></li><li class="subfolders "><a href="/zh-tw/ontap-systems-switches/switch-cisco-3232c/concept-replace-a-cisco-nexus-3232c-storage-switch.html">
+        <div class="na-navbar-padding"> 更換Cisco Nexus 3232C儲存交換器</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-3232c/task-steps-to-replace-a-cisco-nexus-3232c-storage-switch.html">
+        更換Cisco Nexus 3232C儲存交換器的步驟
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-3232c/task-upgrade-nx-os-software-and-rcfs-on-cisco-nexus-3232c-storage-switches.html">
+        升級Cisco Nexus 3232C儲存交換器
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Cisco Nexus 9336C-FX2交換器</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/9336-overview.html">
+        總覽
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/install-switch-and-passthrough-panel.html">
+        在NetApp機櫃中安裝Cisco Nexus 9336C-FX2交換器和直通面板
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 設定</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/setup-switches.html">
+        設定交換器
+      </a></li><li class="subfolders "><a href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/setup-required-information.html">
+        <div class="na-navbar-padding"> 必要的叢集組態資訊</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/setup-install-cshm-file.html">
+        安裝適用於92300YC交換器的叢集交換器健全狀況監視器（CSHM）組態檔
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/setup-required-documentation.html">
+        必要文件
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/setup-considerations-smart-call.html">
+        使用Smart Call Home的考量事項
+      </a></li><li class="subfolders "><a href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/setup-worksheets-sample-cabling.html">
+        <div class="na-navbar-padding"> 佈線工作表範例和空白</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/setup-worksheet-9336c.html">
+        Cisco Nexus 9336C-FX2纜線工作表
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/setup-worksheet-92300yc.html">
+        Cisco Nexus 2300YC佈線工作表
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/setup-worksheet-3232c.html">
+        Cisco Nexus 3232C佈線工作表
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/setup-worksheet-3132q.html">
+        Cisco Nexus 3132Q-V佈線工作表
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/setup-worksheet-5596.html">
+        Cisco Nexus 5596UP和5596T佈線工作表
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 在Cisco Nexus 9336C-FX2叢集交換器上安裝NX-OS軟體和RCF</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/install-nxos-overview.html">
+        總覽
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/install-nxos-software.html">
+        安裝NX-OS軟體
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/install-nxos-rcf.html">
+        安裝參考組態檔（RCF）
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 從Cisco交換器移轉至Cisco Nexus 9336C-FX2叢集交換器</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/migrate-to-9336-overview.html">
+        總覽
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/migrate-to-9336.html">
+        如何從Cisco交換器移轉至Cisco Nexus 9336C-FX2叢集交換器
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 使用Cisco Nexus 9336C-FX2叢集交換器移轉至雙節點交換叢集</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/migrate-to-2n-switched-overview.html">
+        總覽
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/migrate-to-2n-switched.html">
+        如何使用Cisco Nexus 9336C-FX2叢集交換器移轉至交換式NetApp叢集環境
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 設定Cisco Nexus 9336C-FX2叢集交換器</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/replace-configure-new-switch.html">
+        總覽
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/replace-install-initial.html">
+        Nexus 9336C-FX2叢集交換器的初始安裝
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/replace-install-nxos.html">
+        安裝NX-OS軟體
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/replace-install-rcf.html">
+        安裝參考組態檔（RCF）
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/replace-9336c.html">
+        更換Cisco Nexus 9336C-FX2叢集交換器
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/replace_9336c_storage_switch.html">
+        更換Cisco Nexus 9336C-FX2儲存交換器
+      </a></li></ul></li><li class="subfolders "><a href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2-shared/index.html">
+        <div class="na-navbar-padding"> Cisco Nexus 9336C-FX2共享交換器</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2-shared/9336c_setup_and_configuration_guide_for_cisco_shared_switches.html">
+        Cisco共享交換器的設定與組態指南
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2-shared/9336c_install_nx-os_software_and_reference_configuration_files_rcfs.html">
+        安裝NX-OS軟體與參考組態檔（RCT）
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2-shared/9336c_migrate_from_a_switchless_cluster_with_dat_storage_by_adding_two_new_shared_switches.html">
+        透過新增兩個共用交換器、從具有直接附加儲存設備的無交換器叢集移轉
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2-shared/9336c_migrate_from_a_switched_configuration_with_dat_storage_by_adding_two_new_shared_switches.html">
+        透過新增兩個共用交換器、從具有直接附加儲存設備的交換式組態進行移轉
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2-shared/9336c_migrate_from_a_switchless_configuration_with_sat_storage_by_reusing_the_storage_switches.html">
+        重複使用儲存交換器、從交換器附加儲存設備的無交換器組態移轉
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2-shared/9336c_migrate_from_a_switched_cluster_with_sat_storage_by_reusing_the_storage_switches.html">
+        重複使用儲存交換器、從交換式叢集與交換式附加儲存設備進行移轉
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2-shared/9336c_replace_a_cisco_nexus_9336c-fx2_shared_switch.html">
+        更換Cisco Nexus 9336C-FX2共享交換器
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Cisco Nexus 2300YC交換器</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-92300/92300-overview.html">
+        總覽
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 設定</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/setup-switches.html">
+        設定交換器
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/setup-required-information.html">
+        必要的叢集組態資訊
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/setup-install-cshm-file.html">
+        安裝適用於92300YC交換器的叢集交換器健全狀況監視器（CSHM）組態檔
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/setup-required-documentation.html">
+        必要文件
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/setup-considerations-smart-call.html">
+        使用Smart Call Home的考量事項
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 佈線工作表範例和空白</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/setup-worksheet-9336c.html">
+        Cisco Nexus 9336C-FX2纜線工作表
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/setup-worksheet-92300yc.html">
+        Cisco Nexus 2300YC佈線工作表
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/setup-worksheet-3232c.html">
+        Cisco Nexus 3232C佈線工作表
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/setup-worksheet-3132q.html">
+        Cisco Nexus 3132Q-V佈線工作表
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/setup-worksheet-5596.html">
+        Cisco Nexus 5596UP和5596T佈線工作表
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-9336c-fx2/setup-worksheets-sample-cabling.html">
+        佈線工作表範例
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 設定新的Cisco Nexus 2300YC交換器</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-92300/configure-overview.html">
+        總覽
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-92300/configure-install-initial.html">
+        Cisco Nexus 92300YC交換器的初始安裝
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-92300/configure-install-nxos.html">
+        安裝NX-OS軟體
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-92300/configure-install-rcf.html">
+        安裝參考組態檔（RCF）
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 在Cisco Nexus 2300YC叢集交換器上安裝NX-OS軟體和RCF</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-92300/install-nxos-overview.html">
+        總覽
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-92300/install-nxos-software.html">
+        安裝NX-OS軟體
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-92300/install-nxos-rcf.html">
+        安裝參考組態檔（RCF）
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 使用Cisco Nexus 2300YC交換器移轉至雙節點交換叢集</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-92300/migrate-to-2n-switched-overview.html">
+        總覽
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-92300/migrate-to-2n-switched.html">
+        如何移轉
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 從Cisco交換器移轉至Cisco Nexus 2300YC交換器</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-92300/migrate-to-92300yc-overview.html">
+        總覽
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-92300/migrate-to-92300yc.html">
+        如何從Cisco交換器移轉至Cisco Nexus 2300YC交換器
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-cisco-92300/replace-92300yc.html">
+        更換Cisco Nexus 2300YC交換器
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> NVIDIA SN2100交換器</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-nvidia-sn2100/sn2100-overview.html">
+        總覽
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 設定及設定NVIDIA SN2100交換器</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-nvidia-sn2100/install_setup_sn2100_switches_overview.html">
+        總覽
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-nvidia-sn2100/install_cabling_config_considerations_sn2100.html">
+        佈線與組態考量
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-nvidia-sn2100/install_cumulus_linux_cumulus_mode.html">
+        在Cummuls模式下安裝Cummulus Linux
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-nvidia-sn2100/install_cumulus_linux_onie_mode.html">
+        以ONIE模式安裝CummulUS Linux
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-nvidia-sn2100/install_sn2100_rcf.html">
+        安裝RCF指令碼
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-nvidia-sn2100/install_cable_shelves_SAT_sn2100.html">
+        將NS224磁碟櫃纜線當作交換器附加儲存設備
+      </a></li></ul></li><li class="  active "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-nvidia-sn2100/migrate_cisco_sn2100_cluster_switch.html">
+        從Cisco叢集交換器移轉至NVIDIA SN2100叢集交換器
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-nvidia-sn2100/migrate_cisco_sn2100_storage_switch.html">
+        從Cisco儲存交換器移轉至NVIDIA SN2100儲存交換器
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-nvidia-sn2100/migrate_2n_switched_sn2100_switches.html">
+        使用NVIDIA SN2100交換器移轉至雙節點交換式叢集
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 更換NVIDIA SN2100交換器</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-nvidia-sn2100/replace_sn2100_switch_cluster.html">
+        更換NVIDIA SN2100叢集交換器
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/switch-nvidia-sn2100/replace_sn2100_switch_storage.html">
+        更換NVIDIA SN2100儲存交換器
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 其他交換器機型</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/other/switch-linkout.html">
+        其他交換器機型
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-systems-switches/legal-notices.html">
+        法律聲明
+      </a></li></ul>
+</div>
+<script>
+  window.onscroll = () => {
+    const value = -40 - (document.body.scrollHeight - (window.innerHeight + document.scrollingElement.scrollTop));
+    
+    document.getElementById("sidebar-height").style.bottom = Math.max(0,value) + "px";
+};
+</script>
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+
+  </div>
+  
+
+  <div class="ie-content-pane n-doc__component-detail-content n-doc__component-detail-content--show-code">
+    <!-- Begin of page container --><article class="page-content">
+      <div class="ie-utility">
+  <div class="ie-menu">
+    <div class="n-breadcrumb">
+      <ul class="n-breadcrumb__list">
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com">docs.netapp.com</a>
+        </li>
+        
+
+        
+
+        <li class="n-breadcrumb__list-item">
+          <a href="/zh-tw/ontap-systems-switches/">ONTAP&nbsp;Systems&nbsp;Switches</a>
+        </li>
+
+      </ul>
+    </div>
+    <div style="clear: both"></div><!-- Main needs to have height -->
+  </div>
+</div>
+
+      <div class="ie-nmt-disclaimer">
+  <span>
+    <div class="ie-nmt-disclaimer-container">
+      <div class="ie-nmt-disclaimer-icon">
+        <svg class="luci-icon" aria-hidden="true">
+          <use xlink:href="/zh-tw/ontap-systems-switches/common/svg/sprite.svg#circle-info">
+        </svg>
+      </div>
+      <div class="ie-nmt-disclaimer-content">
+        <span> 本繁體中文版使用機器翻譯，譯文僅供參考，若與英文版本牴觸，應以英文版本為準。 </span>
+      </div>
+      <div style="clear:both;"></div>
+    </div>
+  </span>
+</div><div class="n-doc__component-detail-heading-wrap">
+  <h1 class="n-doc__component-detail-heading">從Cisco叢集交換器移轉至NVIDIA SN2100叢集交換器</h1>
+</div>
+
+
+<p class="page-details">
+  
+    
+    <time datetime="2022-07-18 15:51:57 +0000">07/18/2022</time>
+    
+  
+
+
+</p>
+
+<div class="paragraph lead">
+<p>您可以將ONTAP 不中斷營運的Cisco叢集交換器移轉至NVIDIA SN2100叢集交換器、以利實現一個不中斷的叢集。當您將部分舊的Cisco叢集交換器更換為NVIDIA SN2100叢集交換器時、必須注意特定的組態資訊、連接埠連線和纜線需求。</p>
+</div>
+<div class="paragraph">
+<p>支援下列Cisco叢集交換器：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Nexus 9336C-FX2</p>
+</li>
+<li>
+<p>Nexus 92300YC</p>
+</li>
+<li>
+<p>Nexus 5596UP</p>
+</li>
+<li>
+<p>Nexus 3232C</p>
+</li>
+<li>
+<p>Nexus 3132Q-V</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>您可以將不中斷營運的舊Cisco叢集交換器移轉至ONTAP NVIDIA SN2100叢集交換器、以供支援使用。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>現有叢集必須正確設定並正常運作。</p>
+</li>
+<li>
+<p>所有叢集連接埠都必須處於「up」狀態、以確保不中斷營運。</p>
+</li>
+<li>
+<p>NVIDIA SN2100叢集交換器必須在適當版本的Cummuls Linux下設定及操作、並套用參考組態檔（RCF）。</p>
+</li>
+<li>
+<p>現有的叢集網路組態必須具備下列項目：</p>
+<div class="ulist">
+<ul>
+<li>
+<p>使用兩個舊Cisco交換器的備援且功能完整的NetApp叢集。</p>
+</li>
+<li>
+<p>管理連線能力、以及對舊Cisco交換器和新交換器的主控台存取。</p>
+</li>
+<li>
+<p>使用叢集生命區的所有叢集生命區都位於主連接埠上。</p>
+</li>
+<li>
+<p>在舊的Cisco交換器之間以及新交換器之間啟用或連接ISL連接埠。</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>請參閱 <a href="https://hwu.netapp.com/" target="_blank" rel="noopener">"Hardware Universe"</a> 以取得支援連接埠及其組態的完整詳細資料。</p>
+</li>
+<li>
+<p>您已將NVIDIA SN2100交換器上的部分連接埠設定為以40 GbE或100 GbE執行。</p>
+</li>
+<li>
+<p>您已規劃、移轉並記錄40 GbE和100 GbE連線、從節點連接至NVIDIA SN2100叢集交換器。</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/ontap-systems-switches/images/note.svg" alt="附註">
+</td>
+<td class="content">
+在本程序中、Cisco Nexus 3232C叢集交換器可用於命令和輸出等用途。
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>本程序中的範例使用下列交換器和節點命名法：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>現有的Cisco Nexus 3232C叢集交換器為_C1_和_C2_。</p>
+</li>
+<li>
+<p>新的NVIDIA SN2100叢集交換器是_sw1_和_SW2_。</p>
+</li>
+<li>
+<p>節點是_node1_和_node2_。</p>
+</li>
+<li>
+<p>叢集生命區分別是節點1上的_node1_clus1_和節點1上的_node1_clus2_、以及節點2上的節點2_node2_clus1_和節點2_clus2_。</p>
+</li>
+<li>
+<p>「cluster1：*：&gt;」提示會指出叢集的名稱。</p>
+</li>
+<li>
+<p>此程序中使用的叢集連接埠為_e3a_和_e3c_。</p>
+</li>
+<li>
+<p>中斷連接埠的格式為：swp[port] s[中斷 連接埠0-3]。例如、swp1上的四個中斷連接埠分別是_swp1s0_、<em>swp1s1</em>、<em>swp1s2_和_swp1s3</em>。</p>
+</li>
+<li>
+<p>交換器C2先由交換器SW2取代、然後由交換器sw1取代交換器C1。</p>
+<div class="ulist">
+<ul>
+<li>
+<p>然後從C2中斷連接節點與C2之間的纜線、並重新連接至SW2。</p>
+</li>
+<li>
+<p>然後、節點與C1之間的纜線會從C1中斷開、並重新連接至sw1。</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">步驟</div>
+<ol class="arabic">
+<li>
+<p>如果AutoSupport 此叢集啟用了「支援功能」、請叫用AutoSupport 「系統節點AutoSupport 支援功能叫用節點*-type all -most MAn=xh」訊息來禁止自動建立案例</p>
+<div class="paragraph">
+<p>其中_x_是維護時段的持續時間（以小時為單位）。</p>
+</div>
+</li>
+<li>
+<p>將權限層級變更為進階、並在系統提示您繼續時輸入* y*：「et -priv家 特權進階」</p>
+<div class="paragraph">
+<p>出現進階提示（*&gt;）。</p>
+</div>
+</li>
+<li>
+<p>停用叢集lifs上的自動還原：「網路介面修改-vserver叢集-lif*-auta-fRevert假」</p>
+<div class="listingblock">
+<div class="content">
+<pre>cluster1::*&gt; <strong>network interface modify -vserver Cluster -lif * -auto-revert false</strong>
+
+Warning: Disabling the auto-revert feature of the cluster logical interface may effect the availability of your cluster network. Are you sure you want to continue? {y|n}: <strong>y</strong>
+
+4 entries were modified.</pre>
+</div>
+</div>
+</li>
+<li>
+<p>判斷每個叢集介面的管理或作業狀態：</p>
+<div class="paragraph">
+<p>每個連接埠應顯示「Link」（連結）、「Health Status」（健全狀況狀態）則顯示為「Healthy」（健全狀況）。</p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>顯示網路連接埠屬性：「network port show -IPSpace Cluster（網路連接埠顯示-IPSpace叢集）」</p>
+<div class="listingblock">
+<div class="content">
+<pre>cluster1::*&gt; <strong>network port show -ipspace Cluster</strong>
+
+Node: node1
+                                                                       Ignore
+                                                 Speed(Mbps)  Health   Health
+Port      IPspace    Broadcast Domain Link MTU   Admin/Oper   Status   Status
+--------- ---------- ---------------- ---- ----- ------------ -------- ------
+e3a       Cluster    Cluster          up   9000  auto/100000  healthy  false
+e3b       Cluster    Cluster          up   9000  auto/100000  healthy  false
+
+Node: node2
+                                                                       Ignore
+                                                 Speed(Mbps)  Health   Health
+Port      IPspace    Broadcast Domain Link MTU   Admin/Oper   Status   Status
+--------- ---------- ---------------- ---- ----- ------------ -------- ------
+e3a       Cluster    Cluster          up   9000  auto/100000  healthy  false
+e3b       Cluster    Cluster          up   9000  auto/100000  healthy  false</pre>
+</div>
+</div>
+</li>
+<li>
+<p>顯示有關邏輯介面及其指定主節點的資訊：「network interface show -vserver Cluster」（網路介面show -vserver叢集）</p>
+<div class="paragraph">
+<p>每個LIF都應顯示為「狀態管理/作業者」、而「IS主頁」則顯示為「真」。</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cluster1::*&gt; <strong>network interface show -vserver Cluster</strong>
+
+            Logical      Status     Network            Current     Current Is
+Vserver     Interface    Admin/Oper Address/Mask       Node        Port    Home
+----------- -----------  ---------- ------------------ ----------- ------- ----
+Cluster
+            node1_clus1  up/up      169.254.209.69/16  node1       e3a     true
+            node1_clus2  up/up      169.254.49.125/16  node1       e3b     true
+            node2_clus1  up/up      169.254.47.194/16  node2       e3a     true
+            node2_clus2  up/up      169.254.19.183/16  node2       e3b     true</pre>
+</div>
+</div>
+</li>
+<li>
+<p>每個節點上的叢集連接埠都會以下列方式（從節點的角度）連接至現有的叢集交換器：「network device-dDiscovery show -protocol LLDP」（網路裝置探索show -protocol LLDP）</p>
+<div class="listingblock">
+<div class="content">
+<pre>cluster1::*&gt; <strong>network device-discovery show -protocol lldp</strong>
+Node/       Local  Discovered
+Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
+----------- ------ ------------------------- ----------------  ----------------
+node1      /lldp
+            e3a    c1 (6a:ad:4f:98:3b:3f)    Eth1/1            -
+            e3b    c2 (6a:ad:4f:98:4c:a4)    Eth1/1            -
+node2      /lldp
+            e3a    c1 (6a:ad:4f:98:3b:3f)    Eth1/2            -
+            e3b    c2 (6a:ad:4f:98:4c:a4)    Eth1/2            -</pre>
+</div>
+</div>
+</li>
+<li>
+<p>叢集連接埠和交換器的連線方式如下（從交換器的觀點來看）：「How cup neighbor」（顯示cup鄰近裝置）</p>
+<div class="listingblock">
+<div class="content">
+<pre>c1# <strong>show cdp neighbors</strong>
+
+Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater,
+                  V - VoIP-Phone, D - Remotely-Managed-Device,
+                  s - Supports-STP-Dispute
+
+Device-ID             Local Intrfce Hldtme Capability  Platform         Port ID
+node1                 Eth1/1         124   H           AFF-A400         e3a
+node2                 Eth1/2         124   H           AFF-A400         e3a
+c2                    Eth1/31        179   S I s       N3K-C3232C       Eth1/31
+c2                    Eth1/32        175   S I s       N3K-C3232C       Eth1/32
+
+c2# <strong>show cdp neighbors</strong>
+
+Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater,
+                  V - VoIP-Phone, D - Remotely-Managed-Device,
+                  s - Supports-STP-Dispute
+
+
+Device-ID             Local Intrfce Hldtme Capability  Platform         Port ID
+node1                 Eth1/1        124    H           AFF-A400         e3b
+node2                 Eth1/2        124    H           AFF-A400         e3b
+c1                    Eth1/31       175    S I s       N3K-C3232C       Eth1/31
+c1                    Eth1/32       175    S I s       N3K-C3232C       Eth1/32</pre>
+</div>
+</div>
+</li>
+<li>
+<p>使用命令「cluster ping cluster -cluster -node-name」確保叢集網路具有完整連線能力</p>
+<div class="listingblock">
+<div class="content">
+<pre>cluster1::*&gt; <strong>cluster ping-cluster -node node2</strong>
+
+Host is node2
+Getting addresses from network interface table...
+Cluster node1_clus1 169.254.209.69 node1     e3a
+Cluster node1_clus2 169.254.49.125 node1     e3b
+Cluster node2_clus1 169.254.47.194 node2     e3a
+Cluster node2_clus2 169.254.19.183 node2     e3b
+Local = 169.254.47.194 169.254.19.183
+Remote = 169.254.209.69 169.254.49.125
+Cluster Vserver Id = 4294967293
+Ping status:
+....
+Basic connectivity succeeds on 4 path(s)
+Basic connectivity fails on 0 path(s)
+................
+Detected 9000 byte MTU on 4 path(s):
+    Local 169.254.19.183 to Remote 169.254.209.69
+    Local 169.254.19.183 to Remote 169.254.49.125
+    Local 169.254.47.194 to Remote 169.254.209.69
+    Local 169.254.47.194 to Remote 169.254.49.125
+Larger than PMTU communication succeeds on 4 path(s)
+RPC status:
+2 paths up, 0 paths down (tcp check)
+2 paths up, 0 paths down (udp check)</pre>
+</div>
+</div>
+</li>
+<li>
+<p>在交換器C2上、關閉連接至節點叢集連接埠的連接埠。</p>
+<div class="listingblock">
+<div class="content">
+<pre>(c2)# <strong>configure</strong>
+Enter configuration commands, one per line. End with CNTL/Z.
+
+(c2)(Config)# <strong>interface</strong>
+(c2)(config-if-range)# <strong>shutdown <em>interface-list</em></strong>
+(c2)(config-if-range)# <strong>exit</strong>
+(c2)(Config)# <strong>exit</strong>
+(c2)#</pre>
+</div>
+</div>
+</li>
+<li>
+<p>使用NVIDIA SN2100支援的適當纜線、將節點叢集連接埠從舊交換器C2移至新交換器SW2。</p>
+</li>
+<li>
+<p>顯示網路連接埠屬性：「network port show -IPSpace Cluster（網路連接埠顯示-IPSpace叢集）」</p>
+<div class="listingblock">
+<div class="content">
+<pre>cluster1::*&gt; <strong>network port show -ipspace Cluster</strong>
+
+Node: node1
+                                                                       Ignore
+                                                 Speed(Mbps)  Health   Health
+Port      IPspace    Broadcast Domain Link MTU   Admin/Oper   Status   Status
+--------- ---------- ---------------- ---- ----- ------------ -------- ------
+e3a       Cluster    Cluster          up   9000  auto/100000  healthy  false
+e3b       Cluster    Cluster          up   9000  auto/100000  healthy  false
+
+Node: node2
+                                                                       Ignore
+                                                 Speed(Mbps)  Health   Health
+Port      IPspace    Broadcast Domain Link MTU   Admin/Oper   Status   Status
+--------- ---------- ---------------- ---- ----- ------------ -------- ------
+e3a       Cluster    Cluster          up   9000  auto/100000  healthy  false
+e3b       Cluster    Cluster          up   9000  auto/100000  healthy  false</pre>
+</div>
+</div>
+</li>
+<li>
+<p>從節點的觀點來看、每個節點上的叢集連接埠現在都以下列方式連接至叢集交換器：</p>
+<div class="listingblock">
+<div class="content">
+<pre>cluster1::*&gt; <strong>network device-discovery show -protocol lldp</strong>
+
+Node/       Local  Discovered
+Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
+----------- ------ ------------------------- ----------------  ----------------
+node1      /lldp
+            e3a    c1  (6a:ad:4f:98:3b:3f)   Eth1/1            -
+            e3b    sw2 (b8:ce:f6:19:1a:7e)   swp3              -
+node2      /lldp
+            e3a    c1  (6a:ad:4f:98:3b:3f)   Eth1/2            -
+            e3b    sw2 (b8:ce:f6:19:1b:96)   swp4              -</pre>
+</div>
+</div>
+</li>
+<li>
+<p>在交換器SW2上、確認所有節點叢集連接埠都已啟動：「net show interface」</p>
+<div class="listingblock">
+<div class="content">
+<pre>cumulus@sw2:~$ <strong>net show interface</strong>
+
+State  Name         Spd   MTU    Mode        LLDP                Summary
+-----  -----------  ----  -----  ----------  ------------------- ----------------------
+...
+...
+UP     swp3         100G  9216   Trunk/L2    e3b                 Master: bridge(UP)
+UP     swp4         100G  9216   Trunk/L2    e3b                 Master: bridge(UP)
+UP     swp15        100G  9216   BondMember  sw1 (swp15)         Master: cluster_isl(UP)
+UP     swp16        100G  9216   BondMember  sw1 (swp16)         Master: cluster_isl(UP)</pre>
+</div>
+</div>
+</li>
+<li>
+<p>在交換器C1上、關閉連接至節點叢集連接埠的連接埠。</p>
+<div class="listingblock">
+<div class="content">
+<pre>(c1)# <strong>configure</strong>
+Enter configuration commands, one per line. End with CNTL/Z.
+
+(c1)(Config)# <strong>interface</strong>
+(c1)(config-if-range)# <strong>shutdown <em>interface-list</em></strong>
+(c1)(config-if-range)# <strong>exit</strong>
+(c1)(Config)# <strong>exit</strong>
+(c1)#</pre>
+</div>
+</div>
+</li>
+<li>
+<p>使用NVIDIA SN2100支援的適當纜線、將節點叢集連接埠從舊交換器C1移至新交換器sw1。</p>
+</li>
+<li>
+<p>驗證叢集的最終組態：「network port show -IPSpace Cluster（網路連接埠show -IPSpace叢集）」</p>
+<div class="paragraph">
+<p>每個連接埠應顯示「Link」（連結）、「Health Status」（健全狀況狀態）則顯示為「Healthy」（健全狀況）。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cluster1::*&gt; <strong>network port show -ipspace Cluster</strong>
+
+Node: node1
+                                                                       Ignore
+                                                 Speed(Mbps)  Health   Health
+Port      IPspace    Broadcast Domain Link MTU   Admin/Oper   Status   Status
+--------- ---------- ---------------- ---- ----- ------------ -------- ------
+e3a       Cluster    Cluster          up   9000  auto/100000  healthy  false
+e3b       Cluster    Cluster          up   9000  auto/100000  healthy  false
+
+Node: node2
+                                                                       Ignore
+                                                 Speed(Mbps)  Health   Health
+Port      IPspace    Broadcast Domain Link MTU   Admin/Oper   Status   Status
+--------- ---------- ---------------- ---- ----- ------------ -------- ------
+e3a       Cluster    Cluster          up   9000  auto/100000  healthy  false
+e3b       Cluster    Cluster          up   9000  auto/100000  healthy  false</pre>
+</div>
+</div>
+</li>
+<li>
+<p>從節點的觀點來看、每個節點上的叢集連接埠現在都以下列方式連接至叢集交換器：</p>
+<div class="listingblock">
+<div class="content">
+<pre>cluster1::*&gt; <strong>network device-discovery show -protocol lldp</strong>
+
+Node/       Local  Discovered
+Protocol    Port   Device (LLDP: ChassisID)  Interface       Platform
+----------- ------ ------------------------- --------------  ----------------
+node1      /lldp
+            e3a    sw1 (b8:ce:f6:19:1a:7e)   swp3            -
+            e3b    sw2 (b8:ce:f6:19:1b:96)   swp3            -
+node2      /lldp
+            e3a    sw1 (b8:ce:f6:19:1a:7e)   swp4            -
+            e3b    sw2 (b8:ce:f6:19:1b:96)   swp4            -</pre>
+</div>
+</div>
+</li>
+<li>
+<p>在交換器sw1和SW2上、確認所有節點叢集連接埠都已啟動：「net show interface」</p>
+<div class="listingblock">
+<div class="content">
+<pre>cumulus@sw1:~$ <strong>net show interface</strong>
+
+State  Name         Spd   MTU    Mode        LLDP                Summary
+-----  -----------  ----  -----  ----------  ------------------- ----------------------
+...
+...
+UP     swp3         100G  9216   Trunk/L2    e3a                 Master: bridge(UP)
+UP     swp4         100G  9216   Trunk/L2    e3a                 Master: bridge(UP)
+UP     swp15        100G  9216   BondMember  sw2 (swp15)         Master: cluster_isl(UP)
+UP     swp16        100G  9216   BondMember  sw2 (swp16)         Master: cluster_isl(UP)
+
+
+cumulus@sw2:~$ <strong>net show interface</strong>
+
+State  Name         Spd   MTU    Mode        LLDP                Summary
+-----  -----------  ----  -----  ----------  ------------------- -----------------------
+...
+...
+UP     swp3         100G  9216   Trunk/L2    e3b                 Master: bridge(UP)
+UP     swp4         100G  9216   Trunk/L2    e3b                 Master: bridge(UP)
+UP     swp15        100G  9216   BondMember  sw1 (swp15)         Master: cluster_isl(UP)
+UP     swp16        100G  9216   BondMember  sw1 (swp16)         Master: cluster_isl(UP)</pre>
+</div>
+</div>
+</li>
+<li>
+<p>確認兩個節點都有一個連線可連線至每個交換器：「net show LLDP」</p>
+<div class="paragraph">
+<p>以下範例顯示兩個交換器的適當結果：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cumulus@sw1:~$ <strong>net show lldp</strong>
+
+LocalPort  Speed  Mode        RemoteHost          RemotePort
+---------  -----  ----------  ------------------  -----------
+swp3       100G   Trunk/L2    node1               e3a
+swp4       100G   Trunk/L2    node2               e3a
+swp15      100G   BondMember  sw2                 swp15
+swp16      100G   BondMember  sw2                 swp16
+
+cumulus@sw2:~$ <strong>net show lldp</strong>
+
+LocalPort  Speed  Mode        RemoteHost          RemotePort
+---------  -----  ----------  ------------------  -----------
+swp3       100G   Trunk/L2    node1               e3b
+swp4       100G   Trunk/L2    node2               e3b
+swp15      100G   BondMember  sw1                 swp15
+swp16      100G   BondMember  sw1                 swp16</pre>
+</div>
+</div>
+</li>
+<li>
+<p>在叢集lifs上啟用自動還原：「cluster1：：<strong>&gt;網路介面修改-vserver叢集-lif</strong>-aut-revert true」</p>
+</li>
+<li>
+<p>驗證所有叢集網路LIF是否都回到其主連接埠：「network interface show」（網路介面顯示）</p>
+<div class="listingblock">
+<div class="content">
+<pre>cluster1::*&gt; <strong>network interface show -vserver Cluster</strong>
+
+            Logical    Status     Network            Current       Current Is
+Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
+----------- ---------- ---------- ------------------ ------------- ------- ----
+Cluster
+            node1_clus1  up/up    169.254.209.69/16  node1         e3a     true
+            node1_clus2  up/up    169.254.49.125/16  node1         e3b     true
+            node2_clus1  up/up    169.254.47.194/16  node2         e3a     true
+            node2_clus2  up/up    169.254.19.183/16  node2         e3b     true</pre>
+</div>
+</div>
+</li>
+<li>
+<p>使用兩個命令：「ystem switchEthernet log setup-password」（系統交換器乙太網路記錄設定密碼）和「系統交換器乙太網路記錄啟用資料收集」、啟用乙太網路交換器健全狀況監視器記錄收集功能來收集交換器相關的記錄檔</p>
+<div class="paragraph">
+<p>輸入：「System交換器乙太網路記錄設定密碼」</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cluster1::*&gt; <strong>system switch ethernet log setup-password</strong>
+Enter the switch name: &lt;return&gt;
+The switch name entered is not recognized.
+Choose from the following list:
+sw1
+sw2
+
+cluster1::*&gt; <strong>system switch ethernet log setup-password</strong>
+
+Enter the switch name: <strong>sw1</strong>
+RSA key fingerprint is e5:8b:c6:dc:e2:18:18:09:36:63:d9:63:dd:03:d9:cc
+Do you want to continue? {y|n}::[n] <strong>y</strong>
+
+Enter the password: &lt;enter switch password&gt;
+Enter the password again: &lt;enter switch password&gt;
+
+cluster1::*&gt; <strong>system switch ethernet log setup-password</strong>
+
+Enter the switch name: <strong>sw2</strong>
+RSA key fingerprint is 57:49:86:a1:b9:80:6a:61:9a:86:8e:3c:e3:b7:1f:b1
+Do you want to continue? {y|n}:: [n] <strong>y</strong>
+
+Enter the password: &lt;enter switch password&gt;
+Enter the password again: &lt;enter switch password&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>接著是：「系統交換器乙太網路記錄啟用-收集」</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cluster1::*&gt; <strong>system  switch ethernet log enable-collection</strong>
+
+Do you want to enable cluster log collection for all nodes in the cluster?
+{y|n}: [n] <strong>y</strong>
+
+Enabling cluster switch log collection.
+
+cluster1::*&gt;</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/ontap-systems-switches/images/note.svg" alt="附註">
+</td>
+<td class="content">
+如果這些命令中有任何一個出現錯誤、請聯絡NetApp支援部門。
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>啟動交換器記錄收集功能：「System交換器乙太網路記錄collect -device *」</p>
+<div class="paragraph">
+<p>請等待10分鐘、然後使用「ystem switchEthernet log show」命令檢查記錄收集是否成功</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cluster1::*&gt; system switch ethernet log show
+Log Collection Enabled: true
+
+Index  Switch                       Log Timestamp        Status
+------ ---------------------------- -------------------  ---------    
+1      sw1 (b8:ce:f6:19:1b:42)      4/29/2022 03:05:25   complete   
+2      sw2 (b8:ce:f6:19:1b:96)      4/29/2022 03:07:42   complete</pre>
+</div>
+</div>
+</li>
+<li>
+<p>將權限等級變更回admin：「et -priv. admin」</p>
+</li>
+<li>
+<p>如果您禁止自動建立個案、請叫用AutoSupport 下列訊息重新啟用此功能：「System Node AutoSupport 現象叫用節點*-type all -most MAn=end」</p>
+</li>
+</ol>
+</div>
+
+    </article>
+    <!-- Page Container -->
+  </div>
+
+  <div style="clear: both"></div><!-- Main needs to have height --></div>
+
+        </main>
+
+        <footer class="n-footer">
+  <div class="n-footer__bottom">
+    <div class="n-container">
+      <div class="n-footer__bottom-left">
+        <div class="n-footer__copyright">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/us/legal/copyright.aspx">© 2022 NetApp, Inc.</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/terms-of-use/">條款與條件</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/privacy-policy/">Privacy Policy</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/cookie-policy/">Cookie Policy</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a class="ot-sdk-show-settings">Cookie 設定</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="n-footer__bottom-right">
+        <div class="n-footer__copyright">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+              <span class="n-footer__fine-print">對我們的網站有任何意見或要求？</span>
+              <a target="_self" href="javascript:netapp_mailto()">請與我們聯絡</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://docs.netapp.com/zh-tw/announcements/">公告</a>
+            </li>
+          </ul>
+        </div>
+        <div class="n-footer__social-links">
+          <ul class="n-footer__social-link-list">
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-blog" href="https://blog.netapp.com"
+                target="_blank" title="blog" alt="blog">
+                <span class="n-footer__social-link-text">blog</span>
+                <svg class="n-icon-blog n-footer__social-link-icon" aria-labelledby="title">
+                  <title>blog@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/zh-tw/ontap-systems-switches/common/svg/sprite.svg#blog"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-community" href="https://community.netapp.com/"
+                target="_blank" title="community" alt="community">
+                <span class="n-footer__social-link-text">community</span>
+                <svg class="n-icon-community n-footer__social-link-icon" aria-labelledby="title">
+                  <title>community@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/zh-tw/ontap-systems-switches/common/svg/sprite.svg#comments"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-twitter" href="https://twitter.com/netapp"
+                target="_blank" title="twitter" alt="twitter">
+                <span class="n-footer__social-link-text">twitter</span>
+                <svg class="n-icon-twitter n-footer__social-link-icon" aria-labelledby="title">
+                  <title>twitter@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/zh-tw/ontap-systems-switches/common/svg/sprite.svg#twitter"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-facebook" href="https://www.facebook.com/NetApp"
+                target="_blank" title="facebook" alt="facebook">
+                <span class="n-footer__social-link-text">facebook</span>
+                <svg class="n-icon-facebook n-footer__social-link-icon" aria-labelledby="title">
+                  <title>facebook@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/zh-tw/ontap-systems-switches/common/svg/sprite.svg#facebook"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-linkedin"
+                href="https://www.linkedin.com/company/netapp" target="_blank" title="linkedin" alt="linkedin">
+                <span class="n-footer__social-link-text">linkedin</span>
+                <svg class="n-icon-linkedin n-footer__social-link-icon" aria-labelledby="title">
+                  <title>linkedin@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/zh-tw/ontap-systems-switches/common/svg/sprite.svg#linkedin"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-youtube"
+                href="https://www.youtube.com/user/NetAppTV" target="_blank" title="youtube" alt="youtube">
+                <span class="n-footer__social-link-text">youtube</span>
+                <svg class="n-icon-youtube n-footer__social-link-icon" aria-labelledby="title">
+                  <title>youtube@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/zh-tw/ontap-systems-switches/common/svg/sprite.svg#youtube"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-slideshare"
+                href="https://www.slideshare.net/NetApp" target="_blank" title="slideshare" alt="slideshare">
+                <span class="n-footer__social-link-text">slideshare</span>
+                <svg class="n-icon-slideshare n-footer__social-link-icon" aria-labelledby="title">
+                  <title>slideshare@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/zh-tw/ontap-systems-switches/common/svg/sprite.svg#slideshare"></use>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+      </div><!-- Elasticsearch JS -->
+      <script type="text/javascript" src='/zh-tw/ontap-systems-switches/js/bundle.js'></script>
+
+      <!-- Syntax Highlighting -->
+      <script type="text/javascript" src='/zh-tw/ontap-systems-switches/js/prism.js'></script>
+      <script type="text/javascript" src='/zh-tw/ontap-systems-switches/js/prism-curl.js'></script>
+    </div>
+    <script>
+      document.body.offsetWidth=1903;
+      cookieLaw = {}
+      cookieLaw.euCountry = "US";
+      cookieLaw.invoke = function(){return false;}
+    </script>
+    <script src='/zh-tw/ontap-systems-switches/js/www-ntap.js'></script>
+    <script src='/zh-tw/ontap-systems-switches/js/tabbed-blocks.js'></script>
+    <script src='/zh-tw/ontap-systems-switches/js/sidebar.js'></script>
+  </body></html>
