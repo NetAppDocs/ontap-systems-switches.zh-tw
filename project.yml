@@ -21,6 +21,7 @@ sidebar:
   - section: switch-cisco-9336c-fx2
   - section: switch-cisco-9336c-fx2-shared
   - section: switch-cisco-92300
+  - section: switch-nvidia-sn2100
   - section: other
   - title: 法律聲明
     url: "/legal-notices.html"

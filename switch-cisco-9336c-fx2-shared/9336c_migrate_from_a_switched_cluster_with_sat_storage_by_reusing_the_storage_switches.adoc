@@ -21,11 +21,10 @@ summary:
 
 .步驟
 . 確認HA配對1（和HA配對2）的儲存組態正確無誤、而且沒有錯誤：「System Switch Ethernet show」（系統交換器乙太網路顯示）
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-storage::*> system switch ethernet show
+storage::*> *system switch ethernet show*
 Switch                    Type               Address          Model
 ------------------------- ------------------ ---------------- ----------
 sh1
@@ -52,11 +51,10 @@ storage::*>
 . 將纜線從HA配對1、節點A、路徑A移至儲存交換器A上的NSM224儲存連接埠
 . 將纜線從HA配對1、節點B、路徑A移至儲存交換器A上的NSM224儲存連接埠、以供HA配對1使用
 . 驗證連接至HA配對1的儲存設備、儲存交換器A是否正常：「torage port show -port-ttype ENET」
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-storage::*> storage port show -port-type ENET
+storage::*> *storage port show -port-type ENET*
                                    Speed                             VLAN
 Node    Port    Type    Mode       (Gb/s)       State     Status       ID
 ------- ------- ------- ---------- ------------ --------- --------- -----
@@ -74,39 +72,37 @@ node2
 ----
 . [[step6]將共享交換器A上的儲存RCF替換為共用RCF檔案。請參閱 link:9336c_install_nx-os_software_and_reference_configuration_files_rcfs.html#install-the-rcf-on-a-cisco-nexus-9336c-fx2-shared-switch["在Cisco Nexus 9336C-FX2共享交換器上安裝RCF"] 以取得更多詳細資料。
 . 驗證連接至HA配對1的儲存設備、儲存交換器A是否正常：「系統健全狀況警示顯示-instance」
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-storage::*> system health alert show -instance
+storage::*> *system health alert show -instance*
 There are no entries matching your query.
 ----
 . [[step8]將HA配對1、NSM224路徑B纜線從儲存交換器B移至HA配對1的共享NS224儲存連接埠、將路徑B移至儲存交換器B
 . 將纜線從HA配對1、節點A、路徑B移至HA配對1、節點A、儲存交換器B上路徑B的共享儲存連接埠
 . 將纜線從HA配對1、節點B、路徑B移至HA配對1、節點B、儲存交換器B路徑B的共享儲存連接埠
 . 驗證連接至HA配對1的儲存設備、儲存交換器B是否正常：「系統健全狀況警示顯示-instance」
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-storage::*> system health alert show -instance
+storage::*> *system health alert show -instance*
 There are no entries matching your query.
 ----
 . [[step12]將共享交換器B上的儲存RCF檔案替換為共用RCF檔案。請參閱 link:9336c_install_nx-os_software_and_reference_configuration_files_rcfs.html#install-the-rcf-on-a-cisco-nexus-9336c-fx2-shared-switch["在Cisco Nexus 9336C-FX2共享交換器上安裝RCF"] 以取得更多詳細資料。
 . 驗證連接至HA配對1的儲存設備、儲存交換器B是否正常：「系統健全狀況警示顯示-instance」
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-storage::*> system health alert show -instance
+storage::*> *system health alert show -instance*
 There are no entries matching your query.
 ----
+
+
 . [[step14]確認HA配對1的儲存組態正確無誤、而且沒有錯誤：「System Switch Ethernet show」（系統交換器乙太網路顯示）
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-storage::*> system switch ethernet show
+storage::*> *system switch ethernet show*
 Switch                    Type                 Address          Model
 ------------------------- -------------------- ---------------- ----------
 sh1
@@ -130,24 +126,23 @@ sh2
 storage::*>
 ----
 . [[step15]在共享交換器A和共享交換器B之間安裝ISL：
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-sh1# configure
+sh1# *configure*
 Enter configuration commands, one per line. End with CNTL/Z.
-sh1 (config)# interface e1/35-36
-sh1 (config-if-range)# no lldp transmit
-sh1 (config-if-range)# no lldp receive
-sh1 (config-if-range)# switchport mode trunk
-sh1 (config-if-range)# no spanning-tree bpduguard enable
-sh1 (config-if-range)# channel-group 101 mode active
-sh1 (config-if-range)# exit
-sh1 (config)# interface port-channel 101
-sh1 (config-if)# switchport mode trunk
-sh1 (config-if)# spanning-tree port type network
-sh1 (config-if)# exit
-sh1 (config)# exit
+sh1 (config)# interface e1/35-36*
+sh1 (config-if-range)# *no lldp transmit*
+sh1 (config-if-range)# *no lldp receive*
+sh1 (config-if-range)# *switchport mode trunk*
+sh1 (config-if-range)# *no spanning-tree bpduguard enable*
+sh1 (config-if-range)# *channel-group 101 mode active*
+sh1 (config-if-range)# *exit*
+sh1 (config)# *interface port-channel 101*
+sh1 (config-if)# *switchport mode trunk*
+sh1 (config-if)# *spanning-tree port type network*
+sh1 (config-if)# *exit*
+sh1 (config)# *exit*
 ----
 . [[step16]使用交換器更換程序和共用RCF、將叢集網路從現有的叢集交換器移轉到共用交換器。新的共享交換器A是「CS1」。新的共享交換器B是「CS2」。請參閱 link:9336c_replace_a_cisco_nexus_9336c-fx2_shared_switch.html["更換Cisco Nexus 9336C-FX2共享交換器"] 和 link:9336c_install_nx-os_software_and_reference_configuration_files_rcfs.html#install-the-rcf-on-a-cisco-nexus-9336c-fx2-shared-switch["在Cisco Nexus 9336C-FX2共享交換器上安裝RCF"] 以取得更多詳細資料。
 . 驗證交換式網路組態是否有效：「network port show」（網路連接埠顯示）

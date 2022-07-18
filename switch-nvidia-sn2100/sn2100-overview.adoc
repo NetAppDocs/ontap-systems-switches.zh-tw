@@ -1,0 +1,118 @@
+---
+permalink: switch-nvidia-sn2100/sn2100-overview.html 
+sidebar: sidebar 
+keywords: nvidia SN2100 switches 
+summary: 如果您想要建置ONTAP 具有兩個以上節點的叢集、您需要兩個支援的叢集網路交換器。您可以使用額外的管理交換器、這是選用的。 
+---
+= NVIDIA SN2100交換器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+從S209.10.1P3、ONTAP 您可以使用NVIDIA SN2100交換器、將儲存設備和叢集功能結合到共享交換器情境中。
+
+如果您想要建置ONTAP 具有兩個以上節點的叢集、您需要兩個支援的叢集網路交換器。您可以使用額外的管理交換器、這是選用的。
+
+您可以在NVIDIA雙/單一交換器機櫃中安裝NVIDIA SN2100交換器（X190006/X190106）、並附有交換器隨附的標準支架。
+
+下表列出MSN2100交換器和軌道套件的零件編號和說明：
+
+[cols="1,2"]
+|===
+| 產品編號 | 說明 
+
+
+ a| 
+X190006-PE
+ a| 
+叢集交換器、NVIDIA SN2100、16PT 100g、PTSX
+
+
+
+ a| 
+X190006-PI
+ a| 
+叢集交換器、NVIDIA SN2100、16PT 100g、PSIN
+
+
+
+ a| 
+X190106-FE-PE
+ a| 
+交換器、NVIDIA SN2100、16PT 100g、PTSX、前端
+
+
+
+ a| 
+X190106-FE-PI
+ a| 
+交換器、NVIDIA SN2100、16PT 100g、PSIN、前端
+
+
+
+ a| 
+X-MTEF套件D
+ a| 
+導軌套件、NVIDIA雙交換器並排
+
+
+
+ a| 
+X-MTEF套件E-E
+ a| 
+導軌套件、NVIDIA單一交換器短深度
+
+|===
+
+IMPORTANT: 如需詳細資訊、請參閱NVIDIA文件 https://docs.nvidia.com/networking/display/sn2000pub/Installation["安裝SN2100交換器與軌道套件"^]。
+
+下表列出NVIDIA SN2100交換器可用的文件。
+
+[cols="1,2"]
+|===
+| 標題 | 說明 
+
+
+ a| 
+link:install_setup_sn2100_switches_overview.html["_設定及設定NVIDIA SN2100交換器_"^]
+ a| 
+說明如何設定及設定NVIDIA SN2100交換器、包括安裝CummUS Linux和適用的RCT。
+
+
+
+ a| 
+link:migrate_cisco_sn2100_cluster_switch.html["_從Cisco叢集交換器移轉至NVIDIA SN2100叢集交換器_"^]
+ a| 
+說明如何從使用Cisco叢集交換器的環境移轉至使用NVIDIA SN2100叢集交換器的環境。
+
+
+
+ a| 
+link:migrate_cisco_sn2100_storage_switch.html["_從Cisco儲存交換器移轉至NVIDIA儲存交換器_"^]
+ a| 
+說明如何從使用Cisco儲存交換器的環境移轉至使用NVIDIA SN2100儲存交換器的環境。
+
+
+
+ a| 
+link:migrate_2n_switched_sn2100_switches.html["_使用NVIDIA SN2100叢集交換器移轉至雙節點交換式叢集_"^]
+ a| 
+說明如何使用NVIDIA SN2100叢集交換器移轉至雙節點交換環境。
+
+
+
+ a| 
+link:replace_sn2100_switch_cluster.html["_更換NVIDIA SN2100叢集交換器_"^]
+ a| 
+說明在叢集中更換有瑕疵的NVIDIA SN2100交換器、以及下載CummUS Linux和參考組態檔案的程序。
+
+
+
+ a| 
+link:replace_sn2100_switch_storage.html["_更換NVIDIA SN2100儲存交換器_"^]
+ a| 
+說明更換有瑕疵的NVIDIA SN2100儲存交換器、以及下載CummUS Linux和參考組態檔案的程序。
+
+|===

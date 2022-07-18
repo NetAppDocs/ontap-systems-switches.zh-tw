@@ -84,11 +84,10 @@ summary:
 
 . 檢查每個叢集連接埠的管理和作業狀態。
 . 驗證所有叢集連接埠是否都正常運作：「network port show–role cluster」（網路連接埠顯示–角色叢集）
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cluster1::*> network port show -role cluster
+cluster1::*> *network port show -role cluster*
 Node: node1
                                                                    Ignore
                                              Speed(Mbps)  Health   Health
@@ -108,11 +107,10 @@ e3b     Cluster   Cluster          up   9000  auto/100000 healthy  false
 cluster1::*>
 ----
 . [[step4]]確認所有叢集介面（lifs）都位於主連接埠：「網路介面show -role cluster」（網路介面show -role cluster）
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface show -role cluster
+cluster1::*> *network interface show -role cluster*
          Logical     Status     Network           Current     Current Is
 Vserver  Interface   Admin/Oper Address/Mask      Node        Port    Home
 -------  ----------- ---------- ----------------- ----------- ------- ----
@@ -125,11 +123,10 @@ Cluster
 cluster1::*>
 ----
 . [[step5]驗證叢集是否顯示兩個叢集交換器的資訊：「系統叢集交換器show -is監控啟用運作的true」
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cluster1::*> system cluster-switch show -is-monitoring-enabled-operational true
+cluster1::*> *system cluster-switch show -is-monitoring-enabled-operational true*
 Switch                    Type               Address          Model
 ------------------------- ------------------ ---------------- ------
 sh1                       cluster-network    10.233.205.90    N9K-C9336C
@@ -149,28 +146,25 @@ sh2                       cluster-network    10.233.205.91    N9K-C9336C
 cluster1::*>
 ----
 . [[step6]]停用叢集生命體上的自動還原功能。
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface modify -vserver Cluster -lif * -auto-revert false
+cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert false*
 ----
 . [[step7]關閉C2交換器：
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-c2# configure terminal
+c2# *configure terminal*
 Enter configuration commands, one per line. End with CNTL/Z.
-c2(config)# interface ethernet <int range>
-c2(config)#shutdown
+c2(config)# *interface ethernet <int range>*
+c2(config)# *shutdown*
 ----
 . [[step8]請確認叢集lifs已移轉至叢集交換器SH1上裝載的連接埠：「網路介面show -role cluster」（網路介面顯示角色叢集）、這可能需要幾秒鐘的時間。
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface show -role cluster
+cluster1::*> *network interface show -role cluster*
           Logical     Status     Network         Current      Current  Is
 Vserver   Interface   Admin/Oper Address/Mask    Node         Port     Home
 --------- ----------- ---------- --------------- ------------ -------- -----
@@ -185,21 +179,19 @@ cluster1::*>
 . [[step9]]將交換器C2更換為新交換器sh2、然後重新連接新交換器。
 . 確認sh2上的連接埠已備份。*注意*生命仍在交換器C1上。
 . 關閉C1交換器：
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-c1# configure terminal
+c1# *configure terminal*
 Enter configuration commands, one per line. End with CNTL/Z.
-c1(config)# interface ethernet <int range>
-c1(config)#shutdown
+c1(config)# *interface ethernet <int range>*
+c1(config)# *shutdown*
 ----
 . [[step12]驗證叢集LIF是否已移轉至叢集交換器sh2上裝載的連接埠。這可能需要幾秒鐘的時間。
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface show -role cluster
+cluster1::*> *network interface show -role cluster*
          Logical        Status     Network         Current   Current Is
 Vserver  Interface      Admin/Oper Address/Mask    Node      Port    Home
 -------- -------------- ---------- --------------- --------- ------- ----
@@ -214,18 +206,16 @@ cluster1::*>
 . [[step13]將交換器C1更換為新的交換器SH1、然後重新連接新的交換器。
 . 確認SH1上的連接埠已備份。*注意*生命仍在交換器C2上。
 . 在叢集生命體上啟用自動還原：
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface modify -vserver Cluster -lif * -auto-revert True
+cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert True*
 ----
 . [[step16]驗證叢集是否正常：「叢集顯示」
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cluster1::*> cluster show
+cluster1::*> *cluster show*
 Node                 Health  Eligibility   Epsilon
 -------------------- ------- ------------- -------
 node1                true    true          false
@@ -233,3 +223,4 @@ node2                true    true          false
 2 entries were displayed.
 cluster1::*>
 ----
+

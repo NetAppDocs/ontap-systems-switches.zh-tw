@@ -44,9 +44,13 @@ NOTE: 命令輸出可能會因ONTAP 不同版本的不相同而有所差異。
 * cluster1：：*>提示會指出叢集的名稱。
 
 
+[NOTE]
+====
+* 此程序需要同時使用ONTAP 支援指令和Cisco Nexus 9000系列交換器的指令；ONTAP 除非另有說明、否則會使用支援指令。
+* 執行此程序之前、請先確定您目前已備份交換器組態。
 
-NOTE: 此程序需要同時使用ONTAP 支援指令和Cisco Nexus 9000系列交換器的指令；ONTAP 除非另有說明、否則會使用支援指令。
 
+====
 .步驟
 . [[step1]]如果AutoSupport 此叢集啟用了Section,則會叫用AutoSupport 下列訊息來抑制自動案例建立:「System nodeeseInvoke AutoSupport -Node *-type all -most mn=x h」
 +
@@ -59,11 +63,10 @@ NOTE: 此程序需要同時使用ONTAP 支援指令和Cisco Nexus 9000系列交�
 出現進階提示（*>）。
 
 . [[step3]]顯示每個叢集互連交換器的每個節點已設定多少個叢集互連介面：「network device-dDiscovery show -protocol cup」
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cluster1:: network device-discovery show -protocol cdp
+cluster1:: *network device-discovery show -protocol cdp*
 Node/       Local  Discovered
 Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
 ----------- ------ ------------------------- ----------------- --------
@@ -78,13 +81,10 @@ cluster1-01/cdp
 . [[step4]]檢查每個叢集介面的管理或作業狀態：
 +
 .. 顯示網路連接埠屬性：「network port show–IPSpace Cluster（網路連接埠顯示–IPSpace叢集）」
-
-
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cluster1::*> network port show -ipspace Cluster
+cluster1::*> *network port show -ipspace Cluster*
 Node: cluster1-02
                                                   Speed(Mbps)  Health
 Port      IPspace      Broadcast Domain Link MTU  Admin/Oper   Status
@@ -99,14 +99,12 @@ Port      IPspace      Broadcast Domain Link MTU  Admin/Oper   Status
 e3a       Cluster      Cluster          up   9000  auto/100000 healthy
 e3b       Cluster      Cluster          up   9000  auto/100000 healthy
 4 entries were displayed.
-
 ----
-. 顯示有關生命的資訊：「網路介面show - vserver叢集」
-
-
-[listing]
+.. 顯示有關生命的資訊：「網路介面show - vserver叢集」
++
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface show -vserver Cluster
+cluster1::*> *network interface show -vserver Cluster*
         Logical            Status     Network            Current    Current Is
 Vserver Interface          Admin/Oper Address/Mask       Node        Port   Home
 ------- ------------------ ---------- ------------------ ----------- ------ ----
@@ -117,12 +115,13 @@ Cluster
         cluster1-02_clus2  up/up      169.254.19.183/16  cluster1-02  e3b   true
 4 entries were displayed.
 ----
+
+
 . [[step5]] Ping遠端叢集lifs：「叢集ping叢集節點節點名稱」
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cluster1::*> cluster ping-cluster -node cluster1-02
+cluster1::*> *cluster ping-cluster -node cluster1-02*
 Host is cluster1-02
 Getting addresses from network interface table...
 Cluster cluster1-01_clus1 169.254.209.69 cluster1-01     e3a
@@ -148,11 +147,10 @@ RPC status:
 2 paths up, 0 paths down (udp check)
 ----
 . [[step6]]確認所有叢集lifs上都已啟用自動還原命令：「network interface show - vserver cluster -Fields autosf還原」（網路介面show - vserver叢集-Fields自動還原）
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface show -vserver Cluster -fields auto-revert
+cluster1::*> *network interface show -vserver Cluster -fields auto-revert*
           Logical
 Vserver   Interface            Auto-revert
 --------- ––––––-------------- ------------
@@ -167,13 +165,10 @@ Cluster
 +
 ** 「系統交換器乙太網路記錄設定密碼」
 ** 「系統交換器乙太網路記錄啟用收集」
-
-
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cluster1::*> system switch ethernet log setup password
+cluster1::*> *system switch ethernet log setup password*
 Enter the switch name: <return>
 The switch name entered is not recognized.
 Choose from the following list:
@@ -197,11 +192,15 @@ Enabling cluster switch log collection.
 cluster1::*>
 ----
 
+
+
+
+
 NOTE: 如果這些命令中有任何一個出現錯誤、請聯絡NetApp支援部門。
 
 
 
-=== 在Cisco Nexus 9336C - FX2叢集交換器上安裝NX-OS軟體
+=== 在Cisco Nexus 9336C-FX2叢集交換器上安裝NX-OS軟體
 
 您可以使用此程序、在Cisco Nexus 9336C-FX2叢集交換器上安裝NX-OS軟體。
 
@@ -211,54 +210,51 @@ NOTE: 如果這些命令中有任何一個出現錯誤、請聯絡NetApp支援�
 +
 此範例可驗證交換器是否能以IP位址「172.19.2.1（IP位址：
 
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cs2# ping 172.19.2.1
+cs2# *ping 172.19.2.1*
 Pinging 172.19.2.1 with 0 bytes of data:
 Reply From 172.19.2.1: icmp_seq = 0. time= 5910 usec.
 ----
 . [[step3]將NX-OS軟體和EPLD映像複製到Nexus 9336C-FX2交換器。
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cs2# copy sftp: bootflash: vrf management
-Enter source filename: /code/nxos.9.3.5.bin
-Enter hostname for the sftp server: 172.19.2.1
-Enter username: user1
+cs2# *copy sftp: bootflash: vrf management*
+Enter source filename: */code/nxos.9.3.5.bin*
+Enter hostname for the sftp server: *172.19.2.1*
+Enter username: *user1*
 Outbound-ReKey for 172.19.2.1:22
 Inbound-ReKey for 172.19.2.1:22
 user1@172.19.2.1's password:
 sftp> progress
 Progress meter enabled
-sftp> get   /code/nxos.9.3.5.bin  /bootflash/nxos.9.3.5.bin
+sftp> get /code/nxos.9.3.5.bin  /bootflash/nxos.9.3.5.bin
 /code/nxos.9.3.5.bin  100% 1261MB   9.3MB/s   02:15
 sftp> exit
 Copy complete, now saving to disk (please wait)...
 Copy complete.
-cs2# copy sftp: bootflash: vrf management
-Enter source filename: /code/n9000-epld.9.3.5.img
-Enter hostname for the sftp server: 172.19.2.1
-Enter username: user1
+cs2# *copy sftp: bootflash: vrf management*
+Enter source filename: */code/n9000-epld.9.3.5.img*
+Enter hostname for the sftp server: *172.19.2.1*
+Enter username: *user1*
 Outbound-ReKey for 172.19.2.1:22
 Inbound-ReKey for 172.19.2.1:22
 user1@172.19.2.1's password:
 sftp> progress
 Progress meter enabled
-sftp> get   /code/n9000-epld.9.3.5.img  /bootflash/n9000-epld.9.3.5.img
+sftp> get /code/n9000-epld.9.3.5.img  /bootflash/n9000-epld.9.3.5.img
 /code/n9000-epld.9.3.5.img  100%  161MB   9.5MB/s   00:16
 sftp> exit
 Copy complete, now saving to disk (please wait)...
 Copy complete.
 ----
 . [[step4]驗證NX-OS軟體的執行版本：「How version」（顯示版本）
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cs2# show version
+cs2# *show version*
 Cisco Nexus Operating System (NX-OS) Software
 TAC support: http://www.cisco.com/tac
 Copyright (C) 2002-2020, Cisco and/or its affiliates.
@@ -302,14 +298,14 @@ Active Package(s):
 cs2#
 ----
 . [[step5]安裝NX-OS映像。
-
-
++
 
 NOTE: 安裝映像檔會在每次重新開機時載入映像檔。
 
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cs2# install all nxos bootflash:nxos.9.3.5.bin
+cs2# *install all nxos bootflash:nxos.9.3.5.bin*
 Installer will perform compatibility check first. Please wait.
 Installer is forced disruptive
 Verifying image bootflash:/nxos.9.3.5.bin for boot variable "nxos".
@@ -349,11 +345,10 @@ Warning: please do not remove or power off the module at this time.
 Finishing the upgrade, switch will reboot in 10 seconds.
 ----
 . [[step6]切換器重新開機後、請驗證新版NX-OS軟體：「How version」（顯示版本）
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cs2# show version
+cs2# *show version*
 Cisco Nexus Operating System (NX-OS) Software
 TAC support: http://www.cisco.com/tac
 Copyright (C) 2002-2020, Cisco and/or its affiliates.
@@ -395,11 +390,10 @@ plugin
 Active Package(s):
 ----
 . [[step7]升級EPLD映像、然後重新啟動交換器。
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cs2# show version module 1 epld
+cs2# *show version module 1 epld*
 EPLD Device                     Version
 ---- -------------------------- -------
 MI   FPGA                        0x7
@@ -409,7 +403,7 @@ GEM  FPGA                        0x2
 GEM  FPGA                        0x2
 GEM  FPGA                        0x2
 GEM  FPGA                        0x2
-cs2# install epld bootflash:n9000-epld.9.3.5.img module 1
+cs2# *install epld bootflash:n9000-epld.9.3.5.img module 1*
 Compatibility check:
 Module      Type        Upgradable  Impact      Reason
 ------  -------------- ------------ ----------- -------
@@ -423,7 +417,7 @@ Module  Type   EPLD              Running-Version   New-Version  Upg-Required
      1  SUP    MI FPGA2          0x02              0x02         No
 The above modules require upgrade.
 The switch will be reloaded at the end of the upgrade
-Do you want to continue (y/n) ?  [n] y
+Do you want to continue (y/n) ?  [n] *y*
 Proceeding to upgrade Modules.
 Starting Module 1 EPLD Upgrade
 Module 1 : IO FPGA [Programming] : 100.00% (     64 of      64 sectors)
@@ -435,11 +429,10 @@ EPLDs upgraded.
 Module 1 EPLD upgrade is successful.
 ----
 . [[step8]交換器重新開機後、請再次登入、並確認新版的EPLD已成功載入。
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cs2# show version module 1 epld
+cs2# *show version module 1 epld*
 EPLD Device                     Version
 ---- -------------------------- --------
 MI   FPGA                        0x7
@@ -452,7 +445,9 @@ GEM  FPGA                        0x2
 ----
 
 
-=== 將RCF安裝在Cisco Nexus 9336C - FX2叢集交換器上
+
+
+=== 在Cisco Nexus 9336C-FX2叢集交換器上安裝RCF
 
 您可以在初次設定Nexus 9336C-FX2叢集交換器之後安裝RCF。您也可以使用此程序來升級叢集交換器上的RCF版本。
 
@@ -464,16 +459,19 @@ GEM  FPGA                        0x2
 * cluster1：：*>提示會指出叢集的名稱。
 
 
+[NOTE]
+====
+* 此程序需要同時使用ONTAP 支援指令和Cisco Nexus 9000系列交換器的指令；ONTAP 除非另有說明、否則會使用支援指令。
+* 執行此程序之前、請先確定您目前已備份交換器組態。
 
-NOTE: 此程序需要同時使用ONTAP 支援指令和Cisco Nexus 9000系列交換器的指令；ONTAP 除非另有說明、否則會使用支援指令。
 
+====
 .步驟
 . [[step1]]顯示連接至叢集交換器的每個節點上的叢集連接埠：「網路裝置探索秀」
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cluster1::*> network device-discovery show
+cluster1::*> *network device-discovery show*
 Node/       Local  Discovered
 Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
 ----------- ------ ------------------------- ----------------  --------
@@ -493,11 +491,10 @@ cluster1::*>
 ----
 . [[step2]]檢查每個叢集連接埠的管理和作業狀態。
 . [[step3]]確認所有叢集連接埠都處於正常狀態：「網路連接埠顯示–角色叢集」
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cluster1::*> network port show -role cluster
+cluster1::*> *network port show -role cluster*
 Node: cluster1-01
                                                                        Ignore
                                                   Speed(Mbps) Health   Health
@@ -531,11 +528,10 @@ e0b       Cluster      Cluster          up   9000  auto/100000 healthy  false
 cluster1::*>
 ----
 . [[step4]]確認所有叢集介面（lifs）都位於主連接埠：「網路介面show -role cluster」（網路介面show -role cluster）
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface show -role cluster
+cluster1::*> *network interface show -role cluster*
         Logical            Status     Network         Current      Current Is
 Vserver Interface          Admin/Oper Address/Mask    Node         Port    Home
 ------- ------------------ ---------- --------------- ------------ ------- ----
@@ -552,11 +548,10 @@ Cluster
 cluster1::*>
 ----
 . [[step5]驗證叢集是否顯示兩個叢集交換器的資訊：「系統叢集交換器show -is監控啟用運作的true」
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cluster1::*> system cluster-switch show -is-monitoring-enabled-operational true
+cluster1::*> *system cluster-switch show -is-monitoring-enabled-operational true*
 Switch                      Type               Address          Model
 --------------------------- ------------------ ---------------- -----
 cs1                         cluster-network    10.233.205.90    N9K-C9336C
@@ -576,26 +571,23 @@ cs2                         cluster-network    10.233.205.91    N9K-C9336C
 cluster1::*>
 ----
 . [[step6]]停用叢集生命體上的自動還原功能。
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface modify -vserver Cluster -lif * -auto-revert false
+cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert false*
 ----
 . [[step7]在叢集交換器CS2上、關閉連接至節點叢集連接埠的連接埠。
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cs2(config)# interface eth1/1/1-2,eth1/7-8
-cs2(config-if-range)# shutdown
+cs2(config)# *interface eth1/1/1-2,eth1/7-8*
+cs2(config-if-range)# *shutdown*
 ----
 . [[step8]]確認叢集LIF已移轉至叢集交換器CS1上裝載的連接埠。這可能需要幾秒鐘的時間：「網路介面show -role cluster」
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface show -role cluster
+cluster1::*> *network interface show -role cluster*
         Logical           Status     Network          Current      Current  Is
 Vserver Interface         Admin/Oper Address/Mask     Node         Port     Home
 ------- ----------------- --------- ---------------- ------------- ------- ----
@@ -612,11 +604,10 @@ Cluster
 cluster1::*>
 ----
 . [[step9]驗證叢集是否正常：「叢集顯示」
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cluster1::*> cluster show
+cluster1::*> *cluster show*
 Node                 Health  Eligibility   Epsilon
 -------------------- ------- ------------  -------
 cluster1-01          true    true          false
@@ -626,53 +617,55 @@ cluster1-04          true    true          false
 4 entries were displayed.
 cluster1::*>
 ----
-. [[step10]清除交換器CS2上的組態並執行基本設定。
+. [[step10]如果您尚未這麼做、請將下列命令的輸出複製到記錄檔、以儲存目前的交換器組態：
 +
-.. 清除組態。此步驟需要主控台連線至交換器。
-
-
-
-
 [listing]
 ----
-cs2# write erase
+show running-config
+----
+. [[step11]清除交換器CS2上的組態、然後執行基本設定。
++
+.. 清除組態。此步驟需要主控台連線至交換器。
++
+[listing, subs="+quotes"]
+----
+cs2# *write erase*
 Warning: This command will erase the startup-configuration.
-Do you wish to proceed anyway? (y/n)  [n] y
-cs2# reload
-This command will reboot the system. (y/n)?  [n] y
+Do you wish to proceed anyway? (y/n)  [n] *y*
+cs2# *reload*
+This command will reboot the system. (y/n)?  [n] *y*
 cs2#
 ----
-. 執行交換器的基本設定。
+.. 執行交換器的基本設定。
 
 
-. [[step11]使用下列傳輸協定之一、將RCF複製到交換器CS2的bootflash：FTP、TFTP、SFTP或scp。如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-command-reference-list.html["Cisco Nexus 9000系列NX-OS命令參考指南"]。
+
+
+. [[step12]使用下列傳輸協定之一、將RCF複製到交換器CS2的bootflash：FTP、TFTP、SFTP或scp。如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-command-reference-list.html["Cisco Nexus 9000系列NX-OS命令參考指南"]。
 +
 此範例顯示使用TFTP將RCF複製到交換器CS2上的bootflash。
 
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cs2# copy tftp: bootflash: vrf management
-Enter source filename: Nexus_9336C_RCF_v1.6-Cluster-HA-Breakout.txt
-Enter hostname for the tftp server: 172.22.201.50
+cs2# *copy tftp: bootflash: vrf management*
+Enter source filename: *Nexus_9336C_RCF_v1.6-Cluster-HA-Breakout.txt*
+Enter hostname for the tftp server: *172.22.201.50*
 Trying to connect to tftp server......Connection to Server Established.
 TFTP get operation was successful
 Copy complete, now saving to disk (please wait)...
 ----
-. [[step12]套用先前下載至bootflash的RCF。如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-command-reference-list.html["Cisco Nexus 9000系列NX-OS命令參考指南"]。
+. [[step13]套用先前下載至bootflash的RCF。如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-command-reference-list.html["Cisco Nexus 9000系列NX-OS命令參考指南"]。
 +
 此範例顯示在交換器CS2上安裝的RCF檔案「Nexus _9336C_RCF-v1.6-Cluster-HA-Breakout.txt"。
 
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cs2# copy Nexus_9336C_RCF_v1.6-Cluster-HA-Breakout.txt running-config echo-commands
+cs2# *copy Nexus_9336C_RCF_v1.6-Cluster-HA-Breakout.txt running-config echo-commands*
 ----
-. [[step13]檢查「show banner motd」命令的橫幅輸出。您必須閱讀並遵循這些指示、以確保交換器的組態和操作正確無誤。
-
-
+. [[step14]檢查「show banner motd」命令的橫幅輸出。您必須閱讀並遵循這些指示、以確保交換器的組態和操作正確無誤。
++
 [listing]
 ----
 cs2# show banner motd
@@ -708,7 +701,7 @@ cs2# show banner motd
 *
 ***************************************************************************
 ----
-. [[step14]確認RCF檔案為正確的更新版本：「How running-config」
+. [[step15]確認RCF檔案為正確的更新版本：「How running-config」
 +
 當您檢查輸出以確認您擁有正確的RCF時、請確定下列資訊正確無誤：
 
@@ -725,38 +718,32 @@ cs2# show banner motd
 +
 如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-command-reference-list.html["Cisco Nexus 9000系列NX-OS命令參考指南"]。
 
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cs2# copy running-config startup-config [########################################] 100% Copy complete
+cs2# *copy running-config startup-config* [########################################] 100% Copy complete
 ----
-. [[step16]重新開機交換器CS2。您可以在交換器重新開機時忽略節點上報告的「叢集連接埠當機」事件。
-
-
-[listing]
+. [[step17]重新開機交換器CS2。您可以在交換器重新開機時忽略節點上報告的「叢集連接埠當機」事件。
++
+[listing, subs="+quotes"]
 ----
-cs2# reload
-This command will reboot the system. (y/n)?  [n] y
+cs2# *reload*
+This command will reboot the system. (y/n)?  [n] *y*
 ----
-. [[step17]套用相同的RCF、並再次儲存執行中的組態。
-
-
-[listing]
+. [[step18]套用相同的RCF、並再次儲存執行中的組態。
++
+[listing, subs="+quotes"]
 ----
-cs2# copy Nexus_9336C_RCF_v1.6-Cluster-HA-Breakout.txt running-config echo-commands
-cs2# copy running-config startup-config [########################################] 100% Copy complete
+cs2# *copy Nexus_9336C_RCF_v1.6-Cluster-HA-Breakout.txt running-config echo-commands*
+cs2# *copy running-config startup-config* [########################################] 100% Copy complete
 ----
-. [[step18]驗證叢集上叢集連接埠的健全狀況。
+. [[step19]驗證叢集上叢集連接埠的健全狀況。
 +
 .. 驗證叢集中所有節點的e0d連接埠是否正常運作：「network port show -role cluster」（網路連接埠show -role叢集）
-
-
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cluster1::*> network port show -role cluster
+cluster1::*> *network port show -role cluster*
 Node: cluster1-01
                                                                    Ignore
                                              Speed(Mbps)  Health   Health
@@ -790,12 +777,11 @@ e3a    Cluster      Cluster        up   9000  auto/100000 healthy  false
 e0d    Cluster      Cluster        up   9000  auto/100000 healthy  false
 8 entries were displayed.
 ----
-. 驗證叢集的交換器健全狀況（這可能不會顯示交換器CS2、因為LIF不是位於e0d上）。
-
-
-[listing]
+.. 驗證叢集的交換器健全狀況（這可能不會顯示交換器CS2、因為LIF不是位於e0d上）。
++
+[listing, subs="+quotes"]
 ----
-cluster1::*> network device-discovery show -protocol cdp
+cluster1::*> *network device-discovery show -protocol cdp*
 Node/       Local  Discovered
 Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
 ----------- ------ ------------------------- ----------------- --------
@@ -811,7 +797,7 @@ cluster01-3/cdp
 cluster1-04/cdp
             e3a    cs1                       Ethernet1/1/2     N9K-C9336C
             e3b    cs2                       Ethernet1/1/2     N9K-C9336C
-cluster1::*> system cluster-switch show -is-monitoring-enabled-operational true
+cluster1::*> *system cluster-switch show -is-monitoring-enabled-operational true*
 Switch                      Type               Address          Model
 --------------------------- ------------------ ---------------- -----
 cs1                         cluster-network    10.233.205.90    NX9-C9336C
@@ -830,29 +816,31 @@ cs2                         cluster-network    10.233.205.91    NX9-C9336C
     Version Source: CDP
 2 entries were displayed.
 ----
++
 
 NOTE: 您可能會在CS1交換器主控台觀察下列輸出、視先前載入交換器的RCF版本而定。
 
++
 [listing]
 ----
 2020 Nov 17 16:07:18 cs1 %$ VDC-1 %$ %STP-2-UNBLOCK_CONSIST_PORT: Unblocking port port-channel1 on VLAN0092. Port consistency restored.
 2020 Nov 17 16:07:23 cs1 %$ VDC-1 %$ %STP-2-BLOCK_PVID_PEER: Blocking port-channel1 on VLAN0001. Inconsistent peer vlan.
 2020 Nov 17 16:07:23 cs1 %$ VDC-1 %$ %STP-2-BLOCK_PVID_LOCAL: Blocking port-channel1 on VLAN0092. Inconsistent local vlan.
 ----
-. [[step19]在叢集交換器CS1上、關閉連接至節點叢集連接埠的連接埠。下列範例使用步驟1的介面輸出範例：
 
 
-[listing]
+. [[step20]在叢集交換器CS1上、關閉連接至節點叢集連接埠的連接埠。下列範例使用步驟1的介面輸出範例：
++
+[listing, subs="+quotes"]
 ----
-cs1(config)# interface eth1/1/1-2,eth1/7-8
-cs1(config-if-range)# shutdown
+cs1(config)# *interface eth1/1/1-2,eth1/7-8*
+cs1(config-if-range)# *shutdown*
 ----
-. [step20]確認叢集LIF已移轉至交換器CS2上裝載的連接埠。這可能需要幾秒鐘的時間：「網路介面show -role cluster」
-
-
-[listing]
+. [[step2a]確認叢集LIF已移轉至交換器CS2上裝載的連接埠。這可能需要幾秒鐘的時間：「網路介面show -role cluster」
++
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface show -role cluster
+cluster1::*> *network interface show -role cluster*
         Logical            Status      Network         Current      Current Is
 Vserver Interface          Admin/Oper  Address/Mask    Node         Port    Home
 ------- ------------------ ----------- --------------- ------------ ------- ----
@@ -868,12 +856,11 @@ Cluster
 8 entries were displayed.
 cluster1::*>
 ----
-. [[step21]驗證叢集是否正常：「叢集顯示」
-
-
-[listing]
+. [[step22]驗證叢集是否正常：「叢集顯示」
++
+[listing, subs="+quotes"]
 ----
-cluster1::*> cluster show
+cluster1::*> *cluster show*
 Node                 Health   Eligibility   Epsilon
 -------------------- -------- ------------- -------
 cluster1-01          true     true          false
@@ -883,28 +870,25 @@ cluster1-04          true     true          false
 4 entries were displayed.
 cluster1::*>
 ----
-. [[step22]重複交換器CS1上的步驟7至14。
+. [[step23]重複交換器CS1上的步驟7至14。
 . 在叢集生命體上啟用自動還原。
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface modify -vserver Cluster -lif * -auto-revert True
+cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert True*
 ----
-. [[step24]重新開機交換器CS1。您可以這樣做、觸發叢集生命期以恢復到其主連接埠。您可以在交換器重新開機時忽略節點上報告的「叢集連接埠當機」事件。
-
-
-[listing]
+. [[step25]重新開機交換器CS1。您可以這樣做、觸發叢集生命期以恢復到其主連接埠。您可以在交換器重新開機時忽略節點上報告的「叢集連接埠當機」事件。
++
+[listing, subs="+quotes"]
 ----
-cs1# reload
-This command will reboot the system. (y/n)?  [n] y
+cs1# *reload*
+This command will reboot the system. (y/n)?  [n] *y*
 ----
-. [[step25]確認連接至叢集連接埠的交換器連接埠是否正常運作。
-
-
-[listing]
+. [[step26]驗證連接至叢集連接埠的交換器連接埠是否正常運作。
++
+[listing, subs="+quotes"]
 ----
-cs1# show interface brief | grep up
+cs1# *show interface brief | grep up*
 .
 .
 Eth1/1/1      1       eth  access up      none                   100G(D) --
@@ -914,12 +898,11 @@ Eth1/8        1       eth  trunk  up      none                   100G(D) --
 .
 .
 ----
-. [[step26]確認CS1與CS2之間的ISL正常運作：「How port-channel Summary」（顯示連接埠通道摘要）
-
-
-[listing]
+. [[step27]確認CS1與CS2之間的ISL是否正常運作：「How port-channel Summary」（顯示連接埠通道摘要）
++
+[listing, subs="+quotes"]
 ----
-cs1# show port-channel summary
+cs1# *show port-channel summary*
 Flags:  D - Down        P - Up in port-channel (members)
         I - Individual  H - Hot-standby (LACP only)
         s - Suspended   r - Module-removed
@@ -934,12 +917,11 @@ Group Port-       Type     Protocol  Member Ports      Channel
 1     Po1(SU)     Eth      LACP      Eth1/35(P)        Eth1/36(P)
 cs1#
 ----
-. [[step27]確認叢集lifs已還原至其主連接埠：「網路介面show -role cluster」
-
-
-[listing]
+. [[step28]驗證叢集lifs是否已還原至其主連接埠：「網路介面show -role cluster」
++
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface show -role cluster
+cluster1::*> *network interface show -role cluster*
         Logical            Status     Network           Current     Current Is
 Vserver Interface          Admin/Oper Address/Mask      Node        Port    Home
 ------- ------------------ ---------- ----------------- ----------- ------- ----
@@ -955,12 +937,11 @@ Cluster
 8 entries were displayed.
 cluster1::*>
 ----
-. [[step28]驗證叢集是否正常：「叢集顯示」
-
-
-[listing]
+. [[step29]驗證叢集是否正常：「叢集顯示」
++
+[listing, subs="+quotes"]
 ----
-cluster1::*> cluster show
+cluster1::*> *cluster show*
 Node                 Health  Eligibility   Epsilon
 -------------------- ------- ------------- -------
 cluster1-01          true    true          false
@@ -970,12 +951,11 @@ cluster1-04          true    true          false
 4 entries were displayed.
 cluster1::*>
 ----
-. [[step29] Ping遠端叢集介面以驗證連線能力：「叢集ping叢集節點local」
-
-
-[listing]
+. [[step30] Ping遠端叢集介面以驗證連線能力：「叢集ping叢集節點local」
++
+[listing, subs="+quotes"]
 ----
-cluster1::*> cluster ping-cluster -node local
+cluster1::*> *cluster ping-cluster -node local*
 Host is cluster1-03
 Getting addresses from network interface table...
 Cluster cluster1-03_clus1 169.254.1.3 cluster1-03 e3a
@@ -1014,6 +994,8 @@ RPC status:
 ----
 
 
+
+
 === 在Cisco Nexus 9336C-FX2儲存交換器上安裝RCF
 
 參考組態檔（RCF）可在Cisco Nexus 9336C-FX2儲存交換器上升級。
@@ -1044,20 +1026,23 @@ NOTE: 命令輸出可能會因ONTAP 不同版本的不相同而有所差異。
 * 節點是_node1_和_node2_。
 
 
+[NOTE]
+====
+* 此程序需要同時使用ONTAP 支援指令和Cisco Nexus 9000系列交換器的指令；ONTAP 除非另有說明、否則會使用支援指令。
+* 執行此程序之前、請先確定您目前已備份交換器組態。
 
-NOTE: 此程序需要同時使用ONTAP 支援指令和Cisco Nexus 9000系列交換器的指令；ONTAP 除非另有說明、否則會使用支援指令。
 
+====
 .步驟
 . 如果AutoSupport 此叢集啟用了「支援功能」、請叫用AutoSupport 下列訊息來抑制自動建立案例：「System Node AutoSupport 支援功能叫用節點*-type all - Message MAn=xh」
 +
 其中x是維護時段的持續時間（以小時為單位）。
 
 . 檢查儲存交換器是否可用：「System switches Ethernet show」
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-storage::*> system switch ethernet show
+storage::*> *system switch ethernet show*
 Switch                    Type               Address          Model
 ------------------------- ------------------ ---------------- ---------------
 st1
@@ -1080,11 +1065,10 @@ st2
 storage::*>
 ----
 . [[step3]驗證節點連接埠是否正常運作：「torage port show -port-type ENET」
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-storage::*> storage port show -port-type ENET
+storage::*> *storage port show -port-type ENET*
                                    Speed                            VLAN
 Node     Port   Type    Mode       (Gb/s)     State     Status        ID
 ------- ------- ------- ---------- ---------- --------- ----------- -----
@@ -1100,20 +1084,18 @@ node2
         e7b     ENET    storage    100        enabled   online         30
 ----
 . [[step4]]檢查叢集是否有儲存交換器或纜線問題：「System health alerting show -instance」（系統健全狀況警示顯示-instance）
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-storage::*> system health alert show -instance
+storage::*> *system health alert show -instance*
 There are no entries matching your query.
 ----
 . [[step5]下載NX-OS映像以切換ST2。
 . 安裝系統映像、以便下次重新啟動交換器ST2時載入新版本。交換器會在10秒內重新開機、並顯示新映像、如下面的輸出所示：
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-st2# install all nxos bootflash:nxos.9.3. 5.bin
+st2# *install all nxos bootflash:nxos.9.3. 5.bin*
 Installer will perform compatibility check first. Please wait.
 Installer is forced disruptive
 Verifying image bootflash:/nxos.9.3.4.bin for boot variable "nxos".
@@ -1139,9 +1121,9 @@ Module Image        Running-Version(pri:alt)               New-Version  Upg
  1     nxos                                     9.3(3)          9.3(4)       yes
  1     bios      v08.37(01/28/2020):v08.23(09/23/2015)   v08.38(05/29/2020)   no
 Switch will be reloaded for disruptive upgrade.
-Do you want to continue with the installation (y/n)? [n] y
+Do you want to continue with the installation (y/n)? [n] *y*
 input string too long
-Do you want to continue with the installation (y/n)? [n] y
+Do you want to continue with the installation (y/n)? [n] *y*
 Install is in progress, please wait.
 Performing runtime checks.
 [####################] 100% -- SUCCESS
@@ -1159,21 +1141,19 @@ st2#
 +
 系統會提示您重新開機、如下例所示：
 
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-st2# copy running-config startup-config
+st2# *copy running-config startup-config*
 [########################################] 100% Copy complete.
-st2# reload
-This command will reboot the system. (y/n)? [n] y
+st2# *reload*
+This command will reboot the system. (y/n)? [n] *y*
 ----
 . [[step8]確認交換器上有新的NX-OS版本號碼。
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-st2# show version
+st2# *show version*
 Cisco Nexus Operating System (NX-OS) Software
 TAC support: http://www.cisco.com/tac
 Upgrading a Cisco Nexus 9336C Storage Switch 6
@@ -1222,11 +1202,10 @@ st2#
 +
 以下範例顯示HTTP用於將RCF複製到交換器ST2上的bootflash：
 
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-st2# copy http://172.16.10.1//cfg/Nexus_9336C_RCF_v1.6-Storage.txt bootflash: vrf management
+st2# *copy http://172.16.10.1//cfg/Nexus_9336C_RCF_v1.6-Storage.txt bootflash: vrf management*
 % Total % Received % Xferd   Average   Speed  Time   Time   Time
 Current
    Dload     Upload  Total Spent   Left
@@ -1241,11 +1220,10 @@ st2#
 +
 以下範例顯示在交換器ST2上安裝的RCF檔案「Nexus _9336C_RCF-v1.6-Storage.txt」：
 
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-st2# copy Nexus_9336C_RCF_v1.6-Storage.txt running-config echo-commands
+st2# *copy Nexus_9336C_RCF_v1.6-Storage.txt running-config echo-commands*
 ----
 . [[step11]確認RCF檔案為正確的更新版本：「How running-config」
 +
@@ -1261,10 +1239,7 @@ st2# copy Nexus_9336C_RCF_v1.6-Storage.txt running-config echo-commands
 +
 *重要事項：*在「show banner motd」命令的橫幅輸出中、您必須閱讀並遵循*重要事項*一節中的指示、以確保交換器的組態和操作正確無誤。
 
-
-
-
-
++
 [listing]
 ----
 st2# show banner motd
@@ -1300,6 +1275,8 @@ st2# show banner motd
 ******************************************************************************
 st2#
 ----
+
+
 . [[step12]驗證軟體版本和交換器設定是否正確之後、請將執行組態檔複製到交換器ST2上的啟動組態檔。
 +
 如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-command-reference-list.html["Cisco Nexus 9000系列NX-OS命令參考指南"]。
@@ -1307,19 +1284,17 @@ st2#
 +
 以下範例顯示「執行組態」檔案已成功複製到「儲存組態」檔案：
 
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-st2# copy running-config startup-config
+st2# *copy running-config startup-config*
 [########################################] 100% Copy complete.
 ----
 . [[step13]重新檢查儲存交換器在重新開機後是否可用：「System switches Ethernet show」
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-storage::*> system switch ethernet show
+storage::*> *system switch ethernet show*
 Switch                       Type               Address          Model
 ---------------------------- ------------------ ---------------- ---------------
 st1
@@ -1342,11 +1317,10 @@ st2
 storage::*
 ----
 . [[step14]重新開機後、請確認交換器連接埠正常運作：「torage port show -port-type ENET」
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-storage::*> storage port show -port-type ENET
+storage::*> *storage port show -port-type ENET*
                                    Speed                            VLAN
 Node    Port    Type    Mode       (Gb/s)      State     Status       ID
 ------- ------- ------- ---------- ----------- --------- --------- -----
@@ -1362,11 +1336,10 @@ node2
         e7b     ENET    storage           100   enabled   online       30
 ----
 . [[step15]]重新檢查叢集沒有儲存交換器或纜線問題：「系統健全狀況警示顯示-instance」
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-storage::*> system health alert show -instance
+storage::*> *system health alert show -instance*
 There are no entries matching your query.
 ----
 . [[step16]重複此程序、即可在交換器ST1上使用RCF。
@@ -1394,11 +1367,10 @@ There are no entries matching your query.
 +
 下列範例顯示HTTP正用於將RCF複製到交換器sh2上的bootflash：
 
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-sh2# copy http://172.16.10.1//cfg/Nexus_9336C_RCF_v1.7-Cluster-Ha-Storage.txt bootflash: vrf management
+sh2# *copy http://172.16.10.1//cfg/Nexus_9336C_RCF_v1.7-Cluster-Ha-Storage.txt bootflash: vrf management*
 % Total % Received % Xferd   Average   Speed  Time   Time   Time
 Current
    Dload     Upload  Total Spent   Left
@@ -1413,11 +1385,10 @@ sh2#
 +
 以下範例顯示在交換器sh2上安裝的RCF檔案「Nexus_9336C_RCF_v1.7-Cluster-HA-Storage.txt」：
 
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-sh2# copy Nexus_9336C_RCF_v1.7-Cluster-HA-Storage.txt running-config echo-commands
+sh2# *copy Nexus_9336C_RCF_v1.7-Cluster-HA-Storage.txt running-config echo-commands*
 ----
 . [[step3]]確認RCF檔案為正確的更新版本：「How running-config」
 +
@@ -1433,10 +1404,7 @@ sh2# copy Nexus_9336C_RCF_v1.7-Cluster-HA-Storage.txt running-config echo-comman
 +
 *重要事項：*在「show banner motd」命令的橫幅輸出中、您必須閱讀並遵循*重要事項*一節中的指示、以確保交換器的組態和操作正確無誤。
 
-
-
-
-
++
 [listing]
 ----
 sh2# show banner motd
@@ -1477,6 +1445,8 @@ sh2# show banner motd
 ******************************************************************************
 sh2#
 ----
+
+
 . [[step4]]驗證軟體版本和交換器設定是否正確之後、請將「執行組態」檔案複製到交換器sh2上的啟動組態檔。
 +
 如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-command-reference-list.html["Cisco Nexus 9000系列NX-OS命令參考指南"]。
@@ -1484,11 +1454,10 @@ sh2#
 +
 以下範例顯示「執行組態」檔案已成功複製到「儲存組態」檔案：
 
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-sh2# copy running-config startup-config
+sh2# *copy running-config startup-config*
 [########################################] 100% Copy complete.
 ----
 . [[step5]]重複此程序、即可在交換器SH1上使用RCF。

@@ -3181,7 +3181,6 @@
   <block id="5aec304982416461faa5bf9b3a0b2cf3" category="sidebar">Cisco Nexus 9336C-FX2</block>
   <block id="f8215ac1ab39569e2ede8f10c0a8405a" category="sidebar">Cisco Nexus 2300YC</block>
   <block id="403284bd44beda112195a484c8a76421" category="sidebar">儲存交換器</block>
-  <block id="bc8a2cd252a5beb1dbf4f209baea67eb" category="sidebar">共享交換器</block>
   <block id="dfcc398099d6a64026e51ab282e16253" category="sidebar">更多資源</block>
   <block id="2b2815ca4a9fd5973ee66317adb580e4" category="sidebar">其他交換器機型</block>
   <block id="ec01d482cf394f212f073921cfd9d5bd" category="sidebar">發行說明ONTAP</block>
@@ -3273,4 +3272,325 @@
   <block id="cf3535500bcccab825299556e95f0ad5" category="sidebar">設定您的Bes - 53248叢集交換器</block>
   <block id="bd5be81124f2541ff1af3a04e8cb403d" category="sidebar">編輯RCF以啟動授權連接埠</block>
   <block id="693a9843040b044d741691bedf1fd616" category="sidebar">如何移轉至B怎麼53248交換器</block>
+  <block id="1d70d7c880f9a4b8e9ccbd4cbaeefcd8" category="list-text">執行此程序之前、請先確定您目前已備份交換器組態。</block>
+  <block id="c291fea66565616d9e881666325c1ee2" category="list-text">如果您尚未擁有交換器的目前備份、您可以將下列命令的輸出複製到記錄檔、以儲存目前的交換器組態：</block>
+  <block id="a795131211df008d0b468a0608997557" category="list-text">執行此程序之前、請先確定您目前已備份交換器組態。</block>
+  <block id="3f8f6d237f18036be3a3fb24642d16ba" category="list-text">如果您尚未這麼做、請將下列命令的輸出複製到記錄檔、以儲存目前的交換器組態：</block>
+  <block id="c0693be270b6d9eda70557c59dfec11c" category="list-text">執行此程序之前、請先確定您目前已備份交換器組態。</block>
+  <block id="1a29ca4be6c9125e8ac9fccfa8df289c" category="summary">在不中斷營運的程序中更換有瑕疵的NVIDIA SN2100儲存交換器（NDU）。</block>
+  <block id="ca56e40e95211438888f7e4c9e051ea5" category="doc">更換NVIDIA SN2100儲存交換器</block>
+  <block id="fceed1976e801d73d13b11405b47a86b" category="paragraph">更換NVIDIA SN2100儲存交換器時、您必須注意特定的組態資訊、連接埠連線和纜線需求。</block>
+  <block id="899d97d3e02cd2b765c3558b86d81068" category="paragraph">在NVIDIA SN2100儲存交換器上安裝Cummulos軟體和RCFs之前、您必須先確認下列情況是否存在：</block>
+  <block id="c6198cbcde2894fb96409239ec92a834" category="list-text">您的系統可支援NVIDIA SN2100儲存交換器。</block>
+  <block id="9a6126268af75b2f859c1a03dc4714c1" category="list-text">。<block ref="b973743bc19e2a373fedee1a51a110cc" category="inline-link-rx"></block> 提供支援連接埠及其組態的完整詳細資料。</block>
+  <block id="dba3be5e6f4f846b2a75667e3ff0477a" category="list-text">請確定已完成所有疑難排解步驟、以確認您的交換器需要更換。</block>
+  <block id="e06dcb466641dd36c53f025080bbb45e" category="paragraph">替換的NVIDIA SN2100交換器必須具備下列特性：</block>
+  <block id="7398a7e3818a30c650d193a2db2016f7" category="list-text">必須將適當的RCF和Cummuls作業系統映像載入交換器。</block>
+  <block id="a622ee7c770c8ba1cbb73f2815e7ae56" category="paragraph">此程序將第二個NVIDIA SN2100儲存交換器SW2取代為新的NVIDIA SN2100交換器nsw2。這兩個節點分別是node1和node2。</block>
+  <block id="cc2313221eef083d36ffb52b29f6f98f" category="list-text">確認要更換的交換器為SW2。</block>
+  <block id="68bdf3a88cf83c1044a28599dd9d552b" category="list-text">從交換器SW2拔下纜線。</block>
+  <block id="801161caa4832eac3a4336de33e12441" category="list-text">將纜線重新連接至交換器nsw2。</block>
+  <block id="856b3f22a7bc84281004d6833f8e5dd4" category="list-text">確認交換器nsw2上的所有裝置組態。</block>
+  <block id="59ca6b134acac6e54edff8bb46ecd484" category="list-text">驗證儲存交換器sw1是否可用：「網路裝置探索秀」</block>
+  <block id="9b24f35607cbd93e203a1229537c7235" category="list-text">在工作交換器上執行「net show介面」命令、確認您可以同時看到節點和所有磁碟櫃：「net show介面」</block>
+  <block id="088f485f3bfad97fa43d043685e12b05" category="list-text">驗證儲存系統中的機櫃連接埠：「torage機櫃連接埠show -Fields reme-Device、reme-port」</block>
+  <block id="d8f5536086bacf684c44e47a90fb5320" category="list-text">拔下連接至儲存交換器SW2的所有纜線。</block>
+  <block id="166bf8fabdaf0d92b7865b37f13efc05" category="list-text">將所有纜線重新連接至更換的交換器nsw2。</block>
+  <block id="7c8a62eb89bcf224c1a631d0b7e4a8f8" category="list-text">確認兩個交換器都可用：「net device-dDiscovery show」</block>
+  <block id="b366aa7d44d5ae24af827fa423f8a2f2" category="list-text">使用兩個命令：「ystem switchEthernet log setup-password」（系統交換器乙太網路記錄設定密碼）和「系統交換器乙太網路記錄啟用資料收集」、啟用乙太網路交換器健全狀況監視器記錄收集功能來收集交換器相關的記錄檔</block>
+  <block id="6d5256d36c2629c07d67ddb2fc78e95c" category="list-text">啟動交換器記錄收集功能：「System交換器乙太網路記錄collect -device *」</block>
+  <block id="676b4f116c6b65afc97655131da52093" category="paragraph">請等待10分鐘、然後使用「ystem switchEthernet log show」命令檢查記錄收集是否成功</block>
+  <block id="af0741a63009a71666c8a00c5279b401" category="summary">如果您有現有的雙節點無交換式叢集環境、可以使用NVIDIA SN2100交換器移轉至雙節點交換式叢集環境、以便擴充至叢集內的兩個節點以外。</block>
+  <block id="47da18a30b9fcd2d1294cf032080276b" category="doc">使用NVIDIA SN2100叢集交換器移轉至雙節點交換叢集</block>
+  <block id="cc3660d80bc2c5730b70b777e1a7f05b" category="paragraph">將雙節點無交換式叢集（不中斷營運）移轉至使用NVIDIA SN2100叢集交換器的叢集時、您必須瞭解特定的組態資訊、連接埠連線和纜線需求。您使用的程序取決於每個控制器上是否有兩個專屬的叢集網路連接埠、或每個控制器上是否有一個叢集連接埠。記錄的程序適用於所有使用光纖或雙軸纜線連接埠的節點、但如果節點使用內建10GBASE-T RJ45連接埠來連接叢集網路連接埠、則此交換器不支援此程序。</block>
+  <block id="f4d3615da83026723a97f90653b00097" category="list-title">雙節點無交換器組態</block>
+  <block id="7f9038e0cb80da2d88c487e9bccca0d1" category="list-text">節點必須執行ONTAP 的是版本不符合更新版本的版本。</block>
+  <block id="4bc0285bd4ff021f690292024f91a657" category="list-title">NVIDIA SN2100叢集交換器組態</block>
+  <block id="6f604266345008efe009e8a2f02e7dc0" category="list-text">NVIDIA SN2100節點對節點交換器和交換器對交換器連線必須使用雙軸纜線或光纖纜線。</block>
+  <block id="1d9152605063cf1b257a36675cece81c" category="inline-link-macro">佈線與組態考量</block>
+  <block id="b8e6dac17b1f60251a359674d65117a9" category="admonition">請參閱 <block ref="58ea2a922914aa470e8c647f2a05d6be" category="inline-link-macro-rx"></block> 以瞭解相關注意事項及進一步的詳細資料。</block>
+  <block id="2ab78bdcb0ea707a89a06e2121680282" category="list-text">交換器間連結（ISL）纜線必須連接至兩個NVIDIA SN2100交換器上的swp15和swp16連接埠。</block>
+  <block id="2b8ba42446639a6c2fe280c152c68d19" category="list-text">必須完成兩個SN2100交換器的初始自訂。因此：</block>
+  <block id="91fff5a6134f2be64c56d1695113e1f9" category="list-text">SN2100交換器正在執行最新版的Cummuls Linux</block>
+  <block id="8e674e3cc0c8b6ecbd4956d1e90317e0" category="list-text">SN2100交換器的名稱為_sw1_和_SW2_。</block>
+  <block id="ee5bb83d3cbaf132eeecb309a393b94c" category="list-text">此程序中使用的叢集連接埠為_e3a_和_e3c_。</block>
+  <block id="852c5f97fc5712493a0f4ae06bc9d050" category="list-text">中斷連接埠的格式為：swp[port] s[中斷 連接埠0-3]。例如、swp1上的四個中斷連接埠分別是_swp1s0_、_swp1s1_、_swp1s2_和_swp1s3_。</block>
+  <block id="c844edac5ec41b6dac1cc863f127ff48" category="list-text">在新的叢集交換器sw1和SW2上停用所有面向節點的連接埠（非ISL連接埠）。</block>
+  <block id="00bb8074e6bd1737f80dabe96f73b517" category="paragraph">下列命令會停用交換器sw1和SW2上的節點對準連接埠：</block>
+  <block id="67931ae596ec519b34f4d63e1772dea2" category="list-text">驗證兩個SN2100交換器sw1和SW2之間ISL和ISL上的實體連接埠是否在swp15和swp16的連接埠「net show interface」上開啟</block>
+  <block id="79db2f8f30aa3d04c6b263659d467402" category="paragraph">下列範例顯示交換器sw1上的ISL連接埠為開啟：</block>
+  <block id="07e4cb210a1196abcb5adb44dde333b4" category="paragraph">下列範例顯示交換器SW2上的ISL連接埠為開啟：</block>
+  <block id="6bb0bcacdec60dbc4e5eff8e7819821c" category="list-text">驗證所有叢集連接埠是否都已啟動：「network port show」（網路連接埠顯示）</block>
+  <block id="c0093a431c96f2dc5a1e13aab041a68e" category="list-text">驗證所有叢集生命體是否正常運作：「網路介面顯示」</block>
+  <block id="e64ef54bc22e89a7865d584c549641bf" category="list-text">停用叢集lifs上的自動還原：「網路介面修改-vserver叢集-lif*-auta-fRevert假」</block>
+  <block id="881b0c6ec04a04c3fcbc1ba781dc7646" category="list-text">從節點1上的叢集連接埠e3a拔下纜線、然後使用SN2100交換器所支援的適當纜線、將e3a連接至叢集交換器sw1上的連接埠3。</block>
+  <block id="89815af81c37a8f9a7a98396057d0bcd" category="list-text">從節點2上的叢集連接埠e3a拔下纜線、然後使用SN2100交換器所支援的適當纜線、將e3a連接至叢集交換器sw1上的連接埠4。</block>
+  <block id="1c0aead7e1e98fe84e1a13e550546826" category="list-text">在交換器sw1上、啟用所有面向節點的連接埠。</block>
+  <block id="e689d496da4acf9b83967f63b30bfff1" category="paragraph">下列命令可啟用交換器sw1上的所有面向節點的連接埠：</block>
+  <block id="aef48d101ce6aeaf1d9e06a4f8133421" category="list-text">在交換器sw1上、確認所有連接埠都已啟動：「net show interface all」</block>
+  <block id="1f365578e399c977a3cb861440635597" category="list-text">從節點1上的叢集連接埠e3b拔下纜線、然後使用SN2100交換器所支援的適當纜線、將e3b連接至叢集交換器SW2上的連接埠3。</block>
+  <block id="2d65594cff5cc6e71db9a1b2fbbe8525" category="list-text">從節點2上的叢集連接埠e3b拔下纜線、然後使用SN2100交換器所支援的適當纜線、將e3b連接至叢集交換器SW2上的連接埠4。</block>
+  <block id="864ef5d9db6d1180631c2ebb8b3bf606" category="list-text">在交換器SW2上、啟用所有面向節點的連接埠。</block>
+  <block id="b9d99f7d075a8daf5ab7e89104f0e843" category="paragraph">下列命令可在交換器SW2上啟用面向節點的連接埠：</block>
+  <block id="a2bff1080bbbe5b4e639dc2fbf988208" category="list-text">在交換器SW2上、確認所有連接埠都已啟動：「net show interface all」</block>
+  <block id="d09534185b2afa2c71d2d73bab9e4ceb" category="list-text">在交換器sw1和SW2上、確認兩個節點都有一個連接到每個交換器的連接：「net show LLDP」</block>
+  <block id="8bd9cf76d8aa16ab6c3c62b74388262d" category="paragraph">下列範例顯示交換器sw1和SW2的適當結果：</block>
+  <block id="c4578e234eef8aa67fea2889f9b72b89" category="list-text">顯示叢集中探索到的網路裝置的相關資訊：「net device-dDiscovery show -protocol LLDP」</block>
+  <block id="a78fbb2a7f637cdf29314befa6e61768" category="list-text">在所有叢集lifs上啟用自動還原：「net介面修改-vserver叢集-lif*-auta-revert true」</block>
+  <block id="096583756a3fa84e84e5f51c149129b2" category="list-text">驗證所有介面是否都顯示為「is Home」（原為主介面）：「net interface show -vserver Cluster」（網路介面show -vserver叢集）</block>
+  <block id="7c1863f1ebbe4335b617904d5c56fbc1" category="admonition">這可能需要一分鐘的時間才能完成。</block>
+  <block id="efe6750a163af17e0e2f647d97ffba88" category="list-text">使用以下命令啟用乙太網路交換器健全狀況監視器記錄收集功能、以收集交換器相關的記錄檔：「System Switch Ethernet log setup-password」（系統交換器乙太網路記錄啟用-收集）和「System Switch Ethernet log enable - collection」（系統交換器乙太網路記錄啟用-收集）</block>
+  <block id="7c18d4b4801585bab9d42a3318b71c29" category="summary">在安裝RCF指令碼之前、請確定交換器上有下列項目可用</block>
+  <block id="3722090c5c0b0496759b23b1db5566cd" category="doc">安裝RCF指令碼</block>
+  <block id="01ed8be95a2e23de884b7ae4035220ed" category="paragraph">在安裝RCF指令碼之前、請確定交換器上有下列項目：</block>
+  <block id="f0628c60efd94ed2822e83944aa83ad5" category="list-text">已安裝Cummulis Linux 4.4.2。</block>
+  <block id="90bd80eefde443be8809a3edf64f7ef2" category="list-text">IP位址、子網路遮罩和預設閘道、是透過DHCP定義或手動設定的。</block>
+  <block id="526990b43ff7cafabc1a3c5dda4e8c9b" category="paragraph">叢集與儲存應用程式可使用兩個RCF指令碼。每個的程序都相同。</block>
+  <block id="d43ffd29b9c1918eacb74ce61ab9c93d" category="list-text">叢集：* MSN2100-RCF-v1.8-叢集*</block>
+  <block id="85948408e24eaebde36ef1a070afa259" category="list-text">儲存設備：* MSN2100-RCF-v1.8-Storage*</block>
+  <block id="6dc14e04a8a9872060eabb70b3146d4f" category="admonition">下列程序範例說明如何下載及套用叢集的RCF指令碼。</block>
+  <block id="cba289d19a283a01be4ec7d5598b25e8" category="list-text">顯示SN2100交換器上的可用介面：</block>
+  <block id="3b5e7c0b44bbb42aa1029b700aab77f6" category="list-text">將RCF指令碼複製到交換器：</block>
+  <block id="5bcea87b922ca81c4fc511e929c08c37" category="list-text">套用RCF指令碼* MSN2100-RCF-v1.8-Cluster*：</block>
+  <block id="04e918e1232eed920664403f155f32ab" category="paragraph">RCF指令碼完成下列步驟：</block>
+  <block id="2256b58fcf58cb3dc806692af4a92886" category="list-text">更新橫幅MOTD</block>
+  <block id="d24cee5d31595748374cfe2b0d8f60e6" category="list-text">停用apt-Get進行OS更新</block>
+  <block id="63d6c0b7f07c6f3189dd21648d0b707b" category="list-text">定義分組討論和非分組討論介面</block>
+  <block id="411060d174ebfad660d876a708c33ffd" category="list-text">設定介面和SNMP</block>
+  <block id="0e095946edae537f1daa4858140e3425" category="list-text">停用CDP</block>
+  <block id="c9f5089d48a4ebb41131b7219479c281" category="list-text">變更LLDP組態</block>
+  <block id="a39c98037d6a87c77e02c368fa9d3609" category="list-text">新增RoCE組態</block>
+  <block id="b80fb4489f390f48d56968db613b82e3" category="list-text">修改HA和叢集RDMA的RoCE組態</block>
+  <block id="49effc2a848dda4523f36af8403e034d" category="list-text">重新啟動交換器</block>
+  <block id="0cf73b1dd1fc2f75b9293a2ee7043140" category="list-text">重新開機後驗證組態：</block>
+  <block id="b9751a8031dd55824b4acd4237c6eb3b" category="list-text">驗證介面中收發器的資訊。「net show介面可插拔」</block>
+  <block id="17eb42e5e21b8a355d025bf8a2ccfb82" category="list-text">確認每個節點都有連線至每個交換器：「net show LLDP」</block>
+  <block id="f94f0c733aca2a6e08b26eff8a1263b4" category="list-text">驗證叢集的交換器健全狀況（這可能不會顯示交換器SW2、因為l生命 週數不在e0d上）。</block>
+  <block id="2e48063923d7005a1d5b4c086c0a902a" category="summary">NVIDIA SN2100交換器是執行Cummulis Linux的10/25/40/100 GbE乙太網路交換器。SN2100交換器可在ONTAP 不同的交換器配對上、以《S209.10.1》提供叢集與儲存應用程式的服務。</block>
+  <block id="736869e2dc47a4e8d50ebe15f7663677" category="doc">設定及設定NVIDIA SN2100交換器</block>
+  <block id="80e45406c521e50547dc90b37e743cb3" category="paragraph">NVIDIA SN2100交換器是執行Cummulis Linux的10/25/40/100 Gb乙太網路交換器。SN2100交換器可在ONTAP 不同的交換器配對上、以S209.10.1P3提供叢集與儲存應用程式服務。</block>
+  <block id="d9ce026d1dc9a271f8978a5496b35800" category="paragraph">在交換器執行Cummulos Linux或ONIE時、可以安裝CummUS Linux（CL）作業系統。在此版本中、支援的最小版本為4.4.2。</block>
+  <block id="d3f340b9ec1ceb3e805d6d66529c1899" category="admonition">此處的程序使用網路命令列公用程式（NCLU）、這是一個命令列介面、可確保所有人都能完全存取CummUS Linux。net命令是用於從終端執行動作的包裝程式公用程式。</block>
+  <block id="5d33e9de1f292100664c873ddbc4d5d2" category="admonition">使用10G和25G的中斷纜線時、請確定自動交涉已關閉、並硬設定交換器的連接埠速度。請參閱 <block ref="58ea2a922914aa470e8c647f2a05d6be" category="inline-link-macro-rx"></block> 以取得更多詳細資料。</block>
+  <block id="4e4a4a02911e122627365a67b690270e" category="summary">在交換器執行Cummulos Linux或ONIE時、可以安裝CummUS Linux（CL）作業系統。</block>
+  <block id="5c336d9150225836a1bf47b21339dedc" category="doc">以ONIE模式安裝CummulUS Linux</block>
+  <block id="4937b958fd592ecf33cfd084ea040c92" category="paragraph">您可以使用開放式網路安裝環境（ONIE）來安裝Cummulus Linux、以便自動探索網路安裝程式映像。這有助於以作業系統選擇（例如Cummulas Linux）來保護交換器的系統模式。使用ONIE安裝Cummulis Linux最簡單的方法、就是使用本機HTTP探索。</block>
+  <block id="fdabb4753161a9b4bd109b3c1128441f" category="admonition">如果您的主機已啟用IPv6、請確定它正在執行Web伺服器。如果您的主機已啟用IPV4、請確定除了Web伺服器、主機還在執行DHCP。</block>
+  <block id="458f980bedd0795625e83f297c0a66fd" category="paragraph">此程序示範如何在系統管理員在ONIE中開機後升級Cummuls Linux。</block>
+  <block id="36f831960326f190db5b27c1556e1475" category="list-text">將Cummuls Linux安裝檔案下載至Web伺服器的根目錄。重新命名此檔案「onie-installer」。</block>
+  <block id="2878ffd45e62a3c24da481616a508352" category="list-text">使用乙太網路纜線將主機連接至交換器的管理乙太網路連接埠。</block>
+  <block id="a83ecacfc8440093b21963c19b9cac25" category="list-text">開啟交換器電源。交換器會下載ONIE映像安裝程式並開機。安裝完成後、會在終端機視窗中顯示CummUS Linux登入提示。</block>
+  <block id="815792b56cadfb802621ba5d3728c768" category="admonition">每次安裝CummUS Linux時、整個檔案系統結構都會被清除並重新建置。</block>
+  <block id="55f75855d3473529a9c81705515c63b5" category="list-text">重新啟動SN2100交換器：</block>
+  <block id="bcf1a8adc78a0a57e9bd29992bcba6ab" category="list-text">在"GNU Grub（管理程序）"屏幕上按* Esc*鍵以中斷正常的引導過程，選擇"*ONIE*（*）"並按Enter鍵。</block>
+  <block id="b76e78139e129fd7b040b8c7c0c2cfe8" category="list-text">在下一個畫面中、選取「* ONIE：install OS*（* ONIE：安裝OS*）」。</block>
+  <block id="20e1a7fe30403f4a66c9409cc2bf3d02" category="list-text">ONIE安裝程式探索程序會執行搜尋自動安裝。按Enter暫時停止程序。</block>
+  <block id="42d9c8af3d281f936f3a1eb9fb48e341" category="list-text">當探索程序停止時：</block>
+  <block id="1e36934707ca773ba62f0533c37dd8ee" category="list-text">如果您的網路上正在執行DHCP服務、請確認已正確指派IP位址、子網路遮罩和預設閘道：</block>
+  <block id="165a7d7a1fcfac867768dfbb458bd9a0" category="list-text">如果手動定義IP定址方案、請執行下列步驟：</block>
+  <block id="148ef6fa9ac908db569ad63c96fb01e8" category="list-text">重複步驟9、確認已正確輸入靜態資訊。</block>
+  <block id="71a98c939bf9fe1ba2c2453cd7777824" category="list-text">安裝CummUS Linux：</block>
+  <block id="5bb8ca227d3f9b0b9fc45003bbe7d06c" category="list-text">安裝完成後、請登入交換器：</block>
+  <block id="098d312f939d7511ad5f9bf80ccaea96" category="list-text">驗證Cummuls Linux版本：</block>
+  <block id="9d36413c7ae238ebf79e37939969b9ee" category="summary">您可以將ONTAP 不中斷營運的舊款Cisco交換器移轉至NVIDIA SN2100儲存交換器、以利實現一個不中斷的叢集。</block>
+  <block id="c0e54fd32010cccd4fea353a8f62265e" category="doc">從Cisco儲存交換器移轉至NVIDIA SN2100儲存交換器</block>
+  <block id="55f16d2d38939d5e5613dcce4660779c" category="paragraph">當您將部分舊款Cisco交換器更換為NVIDIA SN2100儲存交換器時、必須注意特定的組態資訊、連接埠連線和纜線需求。</block>
+  <block id="bdcdaedb42f04c50f04fe5d093e593c6" category="list-text">支援下列儲存交換器：</block>
+  <block id="2685d1886e5c6ce7a602fe324c7fbea8" category="paragraph">您可以將不中斷營運的舊版Cisco儲存交換器、以利ONTAP 將用於某個叢集的儲存交換器移轉至NVIDIA SN2100儲存交換器。</block>
+  <block id="bc6363ffb66952fddf7b24a035852e22" category="list-text">所有儲存連接埠都必須處於「up」狀態、以確保不中斷營運。</block>
+  <block id="28fa2edb91149d5384166eeb2f7688c8" category="list-text">NVIDIA SN2100儲存交換器必須在適當版本的Cummuls Linux下設定及操作、並套用參考組態檔（RCF）。</block>
+  <block id="9708d0a2f674de8d78d458c499b9780c" category="list-text">現有的儲存網路組態必須具備下列項目：</block>
+  <block id="b51910f2be8efa76921ebe6a40149d60" category="list-text">您已將NVIDIA SN2100交換器上的部分連接埠設定為以100 GbE執行。</block>
+  <block id="776ee262c20b0dd2648bccba5b2cc347" category="list-text">您已規劃、移轉並記錄從節點到NVIDIA SN2100儲存交換器的100 GbE連線。</block>
+  <block id="9f4cc971f3ab9fd0958fd265eb306525" category="admonition">在此程序中、Cisco Nexus 9336C-FX2儲存交換器可用於命令和輸出等用途。</block>
+  <block id="dab9b0ece6f1f8f1890127dd86465ac5" category="list-text">現有的Cisco Nexus 9336C-FX2儲存交換器為_S1_和_s2_。</block>
+  <block id="9e868f2bf21bd2cd90fca2dc5bafc948" category="list-text">全新NVIDIA SN2100儲存交換器為_sw1_和_SW2_。</block>
+  <block id="f02bf1e73f684a60f05864e6d5488f35" category="list-text">此程序中使用的網路連接埠為_e5a _和_e5b_。</block>
+  <block id="c0dafa6a26d68c5516d35ddacdc99210" category="list-text">分組連接埠的格式為：swp1s-3。例如、swp1上的四個中斷連接埠分別是_swp1s0_、_swp1s1_、_swp1s2_和_swp1s3_。</block>
+  <block id="241262ab86a3f2909548b2df8d4b4ef3" category="list-text">交換器S2先由交換器SW2取代、然後由交換器sw1取代交換器S1。</block>
+  <block id="9fdbbd8b74f2465ba22ef8f94cc417db" category="list-text">然後、節點與S2之間的纜線會從S2中斷連線、並重新連接至SW2。</block>
+  <block id="4ded409be8e99d0222e6920dab03f559" category="list-text">然後從S1中斷連接節點與S1之間的纜線、並重新連接至sw1。</block>
+  <block id="4e7a83da96739a6c51f20930a3c125eb" category="list-text">如果啟用了此功能、請叫用下列訊息來抑制自動建立案例：「System Node現象叫用節點*-type all -most MAn=xh」AutoSupport AutoSupport AutoSupport</block>
+  <block id="dbcef39ce4cc869cf2edc60abf080ec9" category="list-text">確定每個儲存介面的管理或作業狀態：</block>
+  <block id="9444ed63276c185ae4fc3959a828cfbf" category="paragraph">每個連接埠都應顯示為「狀態」。</block>
+  <block id="09c14abe0805eabd797e1813234da84d" category="paragraph">顯示網路連接埠屬性：「torage port show」</block>
+  <block id="7208d2743e2eb0a664acffbc1d2bed76" category="list-text">每個節點上的儲存連接埠都會以下列方式（從節點的角度）連接至現有的儲存交換器：「network device-dDiscovery show -protocol LLDP」（網路裝置探索show -protocol LLDP）</block>
+  <block id="e7e725db477bdb3d29a07c4150816731" category="list-text">在交換器S1和S2上、儲存連接埠和交換器會以下列方式（從交換器的觀點來看）、使用命令「How LLDP鄰近」來連接</block>
+  <block id="b82d0a886822fefc74546a0db57a5f3f" category="list-text">在交換器SW2上、關閉連接至磁碟櫃儲存連接埠和節點的連接埠。</block>
+  <block id="ea22015d2dbd58bc8c791b53805a2859" category="list-text">使用NVIDIA SN2100支援的適當纜線、將控制器和磁碟櫃的節點儲存連接埠從舊交換器S2移至新交換器SW2。</block>
+  <block id="af57695f7703a9c9e1b729a8d9522e28" category="list-text">在交換器SW2上、開啟連接至節點和磁碟櫃儲存連接埠的連接埠。</block>
+  <block id="ece31ff94247476496637a7601f809ca" category="list-text">從節點的觀點來看、每個節點上的儲存連接埠現在都以下列方式連接至交換器：</block>
+  <block id="479f3a8c088d1257d183873dfde80fd3" category="list-text">驗證網路連接埠屬性：「torage port show」</block>
+  <block id="713a50cb8a7385b4bb65e05c034427cd" category="list-text">在交換器SW2上、確認所有節點儲存連接埠都已開啟：</block>
+  <block id="f2b2a4a72d2a8eed29cbd3b748d725d8" category="list-text">在交換器sw1上、關閉連接至節點和磁碟櫃儲存連接埠的連接埠。</block>
+  <block id="ec0b0e240b5321461bce6981d9989a3e" category="list-text">使用NVIDIA SN2100支援的適當纜線、將控制器的節點儲存連接埠和磁碟櫃從舊交換器S1移至新交換器sw1。</block>
+  <block id="9dbf824bd31cc26010a5afdff9a86832" category="list-text">在交換器sw1上、開啟連接至節點和磁碟櫃儲存連接埠的連接埠。</block>
+  <block id="177b054724009ae5ee691333205a7f85" category="list-text">從節點的觀點來看、每個節點上的儲存連接埠現在都以下列方式連接至交換器：</block>
+  <block id="187000b30b0a352995713820903db6ec" category="list-text">驗證最終組態：「torage port show」</block>
+  <block id="6a4d86e98be7e5b289b38a5117298bfb" category="paragraph">每個連接埠都應顯示為「tate」（已啟用）、並啟用「tatus」（狀態）。</block>
+  <block id="4cde2dc8257c4b4ae4c8d09b8edb9633" category="list-text">確認兩個節點都有一個連線可連線至每個交換器：「net show LLDP」</block>
+  <block id="aaea07599d1157945444c3c301565e94" category="summary">NVIDIA SN2100交換器</block>
+  <block id="d502e4d284e017c272fbc044d1c805ee" category="paragraph">從S209.10.1P3、ONTAP 您可以使用NVIDIA SN2100交換器、將儲存設備和叢集功能結合到共享交換器情境中。</block>
+  <block id="268d7e69c1c7b6a30eee297bf5fab5b9" category="summary">在設定NVIDIA SN2100交換器之前、請先檢閱下列資訊：</block>
+  <block id="e3d3971b51c381172149f6e144f03e90" category="list-text">只有SN2100交換器具備X1151A NIC、X1146A NIC或內建100GbE連接埠、才支援光纖連線。例如：</block>
+  <block id="d35d5ab77a6267b38526b184dcfce0af" category="list-text">連接埠e0a和e0b上的SI-A800 AFF</block>
+  <block id="b9017574c175e97b1d6c5e950a79e4c7" category="list-text">連接埠e0g和e0h上的E320 AFF</block>
+  <block id="137008107cba2aab0763be2879d9da87" category="list-text">當使用QSA介面卡連線到平台上的內建Intel叢集連接埠時、並非所有連結都會出現。</block>
+  <block id="39b92cc163c876722512c8dc4c617b9f" category="paragraph">例如：FAS2750、AFF FASA300和FAS8200（所有10G）和AFF VA250（25G）。</block>
+  <block id="b1e03e9ce1f7041c2da53fa42cd21af3" category="paragraph">若要解決此問題、請執行下列步驟：</block>
+  <block id="1257c60c0e4da71f409960bf9095202c" category="list-text">若為Intel 10G、請手動將swp1s-3連結速度設為10000、並將自動交涉設為偏移</block>
+  <block id="b9f4ea426e4b9a2590c25e8559103a64" category="list-text">若為Chelsio 25G、請手動將swp2s-3連結速度設為25000、並將自動交涉設為關</block>
+  <block id="ee42c1d9d1520c3cdd715411436b7999" category="admonition">使用10G/25G QSA時、請使用不可中斷的40/100G連接埠。請勿將QSA介面卡插入設定為中斷的連接埠。</block>
+  <block id="2fdeef1f910c4fc8f12a5b45d51952bc" category="list-text">視switchport中的收發器而定、您可能需要將switchport上的速度設定為固定速度。如果使用10G和25G離線連接埠、請確定自動交涉已關閉、並硬設定交換器的連接埠速度。例如：</block>
+  <block id="7b3d3dc3c1c084f2a1b3b79612d49fdd" category="doc">在Cummuls模式下安裝Cummulus Linux</block>
+  <block id="b68d7103bcc4e5db1876ba13a6e45bf9" category="paragraph">假設如下：</block>
+  <block id="1e5770738372c5d084640412f3475232" category="list-text">您擁有中級的Linux知識。</block>
+  <block id="d4e1be5631ea2ef9eddf5d1491821590" category="list-text">您熟悉基本的文字編輯、UNIX檔案權限及程序監控。此外還預先安裝了各種文字編輯程式、包括「VI」和「奈米」。</block>
+  <block id="0fd11f677b5f359fd48a5abfac889417" category="list-text">您必須能夠存取Linux或UNIX Shell。如果您執行的是Windows、請使用Linux環境做為命令列工具、與Cummulas Linux互動。</block>
+  <block id="6ae4d8bf3ebde7936b05c2fe894d7ada" category="admonition">累計使用者帳戶的預設密碼為*累計*。第一次登入CummulUS Linux時、您必須變更此預設密碼。安裝新映像之前、請務必更新任何自動化指令碼。CummUS Linux提供命令列選項、可在安裝程序期間自動變更預設密碼。</block>
+  <block id="06c2ede7dabacb6c8f4f628bf6b1de39" category="paragraph">對於NVIDIA SN2100交換器主控台存取、序列主控台交換器上的傳輸速率需求必須設定為115200、如下所示：</block>
+  <block id="b7d317c3216324e11b73a2840fd43e28" category="list-text">登入交換器。第一次登入交換器時、使用者名稱/密碼必須為*累計*/*累計*、並具有「show（執行））權限：</block>
+  <block id="9e6b336700c1d2e767e05525b2b57ef3" category="list-text">請查看Cummuls Linux版本：</block>
+  <block id="2667c65a518ae8fb280dc9f6a61de3c5" category="list-text">設定主機名稱、IP位址、子網路遮罩和預設閘道。只有重新啟動主控台/SSH工作階段之後、新的主機名稱才會生效。</block>
+  <block id="62b623b92c382746efee9767d590d86c" category="admonition">Cummuls Linux交換器至少提供一個稱為「eth0」的專用乙太網路管理連接埠。此介面專供頻外管理使用。根據預設、管理介面會使用DHCP v4進行定址。</block>
+  <block id="91dcca4278a428afbccb2f118d523e13" category="admonition">請勿在主機名稱中使用底線（_）、單引號（'）或非ASCII字元。</block>
+  <block id="5e82a0b4b15e3bfeac2a57b4a294a39c" category="paragraph">此命令會同時修改「/etc/hostname'」和「/etc/hosts」檔案。</block>
+  <block id="13ddc20a0230a7df1f3c90a8ed3da8a5" category="list-text">確認主機名稱、IP位址、子網路遮罩和預設閘道已更新：</block>
+  <block id="6c42fa7e4c3302fb56f4374e70b97fc2" category="list-text">使用NTP互動模式設定時區。</block>
+  <block id="3f13db29081af25b57d3e76ea324a03b" category="list-text">在終端機上執行下列命令：</block>
+  <block id="83d1563d45527134091bdab8d6e5072d" category="list-text">依照畫面上的功能表選項、選取地理區域和區域。</block>
+  <block id="fe0f6a5f9b992c1eea817100a2c1c148" category="list-text">若要設定所有服務和精靈的時區、請重新啟動交換器。</block>
+  <block id="61d6aab01fc093c66c1e769d05c39812" category="list-text">確認交換器上的日期和時間正確無誤、並視需要更新。</block>
+  <block id="f415282bef0374e283b8082be4765eea" category="list-text">安裝Cummulus Linux 4.4.2：</block>
+  <block id="9a828cf107e0b55e82b0e52b871aa982" category="paragraph">安裝程式隨即開始下載。出現提示時鍵入* y*。</block>
+  <block id="b64202cf747d1cf1ed877a2b16051b9b" category="list-text">重新啟動NVIDIA SN2100交換器：</block>
+  <block id="9f4f33c5c40ac522549c3e58d187e0a0" category="list-text">安裝會自動啟動、並顯示下列的Grub畫面。請勿*不*做任何選擇：</block>
+  <block id="0356af5b3daf1c5f334184d547ba7462" category="list-text">Cummule-Linux GNU/Linux</block>
+  <block id="a64ef5ea949c8d49f35a27151295f942" category="list-text">Onie：安裝作業系統</block>
+  <block id="e0fb005ad468c2c6da5d94ae5ee83311" category="list-text">Cummule-install</block>
+  <block id="aaf5ecccbfaebfdecab9b13474cd1016" category="list-text">重複步驟1到4以登入。</block>
+  <block id="c883d7af8e0067ad8d312770086b2d07" category="list-text">驗證是否為4.4.2的Cummulis Linux版本：</block>
+  <block id="ec456cd346911330a2200aa0d18eceaf" category="list-text">建立新使用者、並將此使用者新增至「show」群組。只有在主控台/SSH工作階段重新啟動之後、此使用者才會生效：</block>
+  <block id="6cce5d78fc7baf999a2f91945cec4681" category="doc">NVIDIA SN2100交換器</block>
+  <block id="d7ddb122f5b0d427125ca1728604348a" category="paragraph">您可以在NVIDIA雙/單一交換器機櫃中安裝NVIDIA SN2100交換器（X190006/X190106）、並附有交換器隨附的標準支架。</block>
+  <block id="b0bf0f217cb1d53bd191aca5d6b62108" category="paragraph">下表列出MSN2100交換器和軌道套件的零件編號和說明：</block>
+  <block id="572fe15be859e8e821675b10e630a4ae" category="paragraph">X190006-PE</block>
+  <block id="1545f8e8b25daf1dcedbccfac0ffeb23" category="paragraph">叢集交換器、NVIDIA SN2100、16PT 100g、PTSX</block>
+  <block id="30f7229b421f56d9234c0201f097a8e0" category="paragraph">X190006-PI</block>
+  <block id="50db68e5e1edfdae301d0e13cf36b35c" category="paragraph">叢集交換器、NVIDIA SN2100、16PT 100g、PSIN</block>
+  <block id="11d13ed1e5722e39b9eed159c504b273" category="paragraph">X190106-FE-PE</block>
+  <block id="af3bf35952bf379b9c77580834f0ccea" category="paragraph">交換器、NVIDIA SN2100、16PT 100g、PTSX、前端</block>
+  <block id="6c0dabd674a229e6a71c9efa0506c26c" category="paragraph">X190106-FE-PI</block>
+  <block id="89e63d10029caf2d14bf259863a398e7" category="paragraph">交換器、NVIDIA SN2100、16PT 100g、PSIN、前端</block>
+  <block id="f14cae44efe4b8ece4c67a0bb8c96cf0" category="paragraph">X-MTEF套件D</block>
+  <block id="dd0da9a2cc690d430884295e008a2dab" category="paragraph">導軌套件、NVIDIA雙交換器並排</block>
+  <block id="80ba4b0b3a217933f761ba1440471dee" category="paragraph">X-MTEF套件E-E</block>
+  <block id="65adcaebf2b7d6b4197e6a8aff31717f" category="paragraph">導軌套件、NVIDIA單一交換器短深度</block>
+  <block id="8a6e8b822a02f19c1d150c230a03bf69" category="inline-link">安裝SN2100交換器與軌道套件</block>
+  <block id="865b448eabcf17df6b422f9231393d1a" category="admonition">如需詳細資訊、請參閱NVIDIA文件<block ref="39747b316e7d3df3f73757faf591c2d2" category="inline-link-rx"></block>。</block>
+  <block id="4cbae0b27dc5bb331502b630a138cc4a" category="paragraph">下表列出NVIDIA SN2100交換器可用的文件。</block>
+  <block id="b6b0513dd441d375575669499c028d77" category="inline-link-macro">_設定及設定NVIDIA SN2100交換器_</block>
+  <block id="bc73d70686c873ae5e2f4e513f491722" category="paragraph"><block ref="bc73d70686c873ae5e2f4e513f491722" category="inline-link-macro-rx"></block></block>
+  <block id="77f388375aa4a60bc88c77b1a62210b1" category="paragraph">說明如何設定及設定NVIDIA SN2100交換器、包括安裝CummUS Linux和適用的RCT。</block>
+  <block id="7f3bf3d40898d5f432e8fac499b35019" category="inline-link-macro">_從Cisco叢集交換器移轉至NVIDIA SN2100叢集交換器_</block>
+  <block id="3bbe54c8552e40dc5f89b73892046850" category="paragraph"><block ref="3bbe54c8552e40dc5f89b73892046850" category="inline-link-macro-rx"></block></block>
+  <block id="c215cbb78c56580b18190d97abd7667b" category="paragraph">說明如何從使用Cisco叢集交換器的環境移轉至使用NVIDIA SN2100叢集交換器的環境。</block>
+  <block id="821a2f7945b3464ddee06f602c686f9b" category="inline-link-macro">_從Cisco儲存交換器移轉至NVIDIA儲存交換器_</block>
+  <block id="3fbe15969453ca44c2deb4fdfe8323ee" category="paragraph"><block ref="3fbe15969453ca44c2deb4fdfe8323ee" category="inline-link-macro-rx"></block></block>
+  <block id="26872f7030028e1569f2ce01c9bc352c" category="paragraph">說明如何從使用Cisco儲存交換器的環境移轉至使用NVIDIA SN2100儲存交換器的環境。</block>
+  <block id="6f2cf7b704c57c57ef32132488de219a" category="inline-link-macro">_使用NVIDIA SN2100叢集交換器移轉至雙節點交換式叢集_</block>
+  <block id="a5fe3028e8bedffa1849e536a4538b5b" category="paragraph"><block ref="a5fe3028e8bedffa1849e536a4538b5b" category="inline-link-macro-rx"></block></block>
+  <block id="f47598dac203329e94811e7ca007b4e2" category="paragraph">說明如何使用NVIDIA SN2100叢集交換器移轉至雙節點交換環境。</block>
+  <block id="704deb422a6b7e49bc71f93eb9153e24" category="inline-link-macro">_更換NVIDIA SN2100叢集交換器_</block>
+  <block id="cb35bcc230f43141ffe95979875e1193" category="paragraph"><block ref="cb35bcc230f43141ffe95979875e1193" category="inline-link-macro-rx"></block></block>
+  <block id="04c9967f210e3a292f67ab723d461b51" category="paragraph">說明在叢集中更換有瑕疵的NVIDIA SN2100交換器、以及下載CummUS Linux和參考組態檔案的程序。</block>
+  <block id="44bb54091263606f157bbaad0fdef9c3" category="inline-link-macro">_更換NVIDIA SN2100儲存交換器_</block>
+  <block id="38c797c6506c8619afc1b09c65aa0655" category="paragraph"><block ref="38c797c6506c8619afc1b09c65aa0655" category="inline-link-macro-rx"></block></block>
+  <block id="2875df17f2e2895666eddce90fc6146f" category="paragraph">說明更換有瑕疵的NVIDIA SN2100儲存交換器、以及下載CummUS Linux和參考組態檔案的程序。</block>
+  <block id="3d9882663c241e5e6078e7d90137ebc4" category="doc">將NS224磁碟櫃纜線當作交換器附加儲存設備</block>
+  <block id="b154454eef50aecacf60925ed8851078" category="paragraph">如果您的系統需要將NS224磁碟機櫃纜線作為交換器附加儲存設備（非直接附加儲存設備）、請使用此處提供的資訊。</block>
+  <block id="0ab54354ff641ba8f3492f71c03aa435" category="list-text">透過儲存交換器連接NS224磁碟機櫃：</block>
+  <block id="afb935b1a48a04ad288c97c7899d840d" category="inline-link">交換器連接NS224磁碟機櫃的佈線資訊</block>
+  <block id="9824994e3f8651cf2b6d695555bdc011" category="paragraph"><block ref="9824994e3f8651cf2b6d695555bdc011" category="inline-link-rx"></block></block>
+  <block id="d1f671afbf5d4ca47b95e86f70c6bcc1" category="list-text">安裝儲存交換器：</block>
+  <block id="008b8867712161228bd794977fcd0d4b" category="paragraph"><block ref="008b8867712161228bd794977fcd0d4b" category="inline-link-rx"></block></block>
+  <block id="4aaebba2a5287c74eb41bf080e6d1fe4" category="list-text">確認您的平台機型支援的硬體、例如儲存交換器和纜線：</block>
+  <block id="a1db73a47f571c20627d62d37a2069c2" category="summary">在叢集網路中更換故障的NVIDIA SN2100交換器、是不中斷營運的程序（NDU）。</block>
+  <block id="a3651ea5ff10cfef31750e91f195d5ee" category="doc">更換NVIDIA SN2100叢集交換器</block>
+  <block id="087a0cdfa40d1253f83403998d37833d" category="paragraph">在叢集網路中更換故障的NVIDIA SN2100交換器、是不中斷營運的程序（NDU）。</block>
+  <block id="6aaebc9be5cb9f30472fb63a824c949e" category="list-text">使用指令《叢集ping叢集節點節點1》必須指出、所有路徑上的基本連線能力和大於PMTU的通訊都會成功。ONTAP</block>
+  <block id="3d783a6ce1d3577899a2187587c7adeb" category="list-text">NVIDIA SN2100替換交換器：</block>
+  <block id="7c203e1a3f4b15f49b599181ccad697e" category="list-text">節點連線是連接埠swp1到swp14。</block>
+  <block id="9870eb7c51de1228e9b0b748603b1cc9" category="list-text">所有交換器間連結（ISL）連接埠必須停用swp15和swp16上的連接埠。</block>
+  <block id="1b7189a6869b63c94afb7f51281b21ff" category="list-text">必須將所需的參考組態檔（RCF）和CummUS作業系統映像交換器載入。</block>
+  <block id="a4c878fb98636575acf74bb5da1fe02d" category="list-text">現有NVIDIA SN2100交換器的名稱為_sw1_和_SW2_。</block>
+  <block id="7245dce9803a65915577b9b6c0a8fba4" category="list-text">新NVIDIA SN2100交換器的名稱為_nsw2_。</block>
+  <block id="982217e543f0fa5e9da851302f28d805" category="list-text">叢集LIF名稱為節點1的_node1_clus1_和節點1的_node1_clus2_、節點2的節點2為_node2_clus1_和節點2為_node2_clus2_。</block>
+  <block id="251c6c04656af97cbcbd1aa3eea2bee5" category="list-text">對所有叢集節點進行變更的提示是「cluster1：*&gt;」</block>
+  <block id="2c84a4166919cc5a80a8c0726d1059e6" category="list-text">在交換器nsw2上安裝適當的RCF和映像、並進行必要的站台準備。</block>
+  <block id="1eee77e5510e91c39ad8de358a66db8b" category="paragraph">如有必要、請為新交換器驗證、下載及安裝適當版本的RCF和Cummuls軟體。如果您已確認新交換器已正確設定、而且不需要更新RCF和Cummuls軟體、請繼續執行步驟3。請參閱 <block ref="f205112049fd2d705b8f40351f7959dc" category="inline-link-macro-rx"></block> 以取得更多詳細資料。</block>
+  <block id="1c7edbc9e87d89abba60270ce35ec08a" category="list-text">您可以從_NVIDIA Support_網站下載適用於叢集交換器的Cummulus軟體。請依照下載頁面上的步驟、下載您ONTAP 所安裝之版本的Cummuls Linux。</block>
+  <block id="cb246b83c0c732bd49f45fceb6d1246f" category="inline-link-macro">_NVIDIA叢集與儲存交換器_</block>
+  <block id="7d496a68b55e69a007c148b8b4cf8fbe" category="list-text">您可從取得適當的RCF <block ref="bf48368f6fb605c4425a53dc48551d85" category="inline-link-macro-rx"></block> 頁面。請依照下載頁面上的步驟、針對ONTAP 您要安裝的版本、下載正確的RCF。</block>
+  <block id="f9ffe766b106d2867657d83e79723a59" category="list-text">在新的交換器nsw2上、以admin身分登入、並關閉所有連接至節點叢集介面的連接埠（連接埠swp1至swp14）。</block>
+  <block id="419843a482aac1b6d5c300aad109bf65" category="list-text">關閉SN2100交換器sw1上的ISL連接埠swp15和swp16：</block>
+  <block id="cbcdd16fbdf580bf90f773d5fa321dd0" category="list-text">從SN2100 sw1交換器拔下所有纜線、然後將其連接至SN2100 nsw2交換器上的相同連接埠。</block>
+  <block id="3e1aa25294b9d1912eb351028c0ddab6" category="list-text">在sw1和nsw2交換器之間啟動ISL連接埠swp15和swp16。</block>
+  <block id="f49c15d121cb3262e7dc4648fba76e8d" category="paragraph">下列命令可啟用交換器sw1上的ISL連接埠swp15和swp16：</block>
+  <block id="b64c4a65624312e01d00d227b23dc7bb" category="paragraph">以下範例顯示交換器nsw2上的ISL連接埠為開啟：</block>
+  <block id="897e1548fc4ec5cb743ba59eb85c00b1" category="list-text">驗證所有節點上的連接埠「e3b」是否都已開啟：「network port show -IPSpace Cluster」（網路連接埠顯示-IPSpace叢集）</block>
+  <block id="b277a4be4886a83e4adc96de6cdbe36c" category="list-text">確認所有節點叢集連接埠都已啟動：「net show interface」</block>
+  <block id="141e7533eab03ff727c6bcbd3b10c6b7" category="list-text">在叢集lifs上啟用自動還原：「cluster1：：*&gt;網路介面修改-vserver叢集-lif*-aut-revert true」</block>
+  <block id="4c8512f4b28df0de74c476436e30e971" category="list-text">在交換器nsw2上、開啟連接至節點網路連接埠的連接埠。</block>
+  <block id="0b9620a0fea8fa88010e59eebf7cbf63" category="summary">您可以將不中斷營運的舊Cisco叢集交換器移轉至ONTAP NVIDIA SN2100叢集網路交換器、以供支援使用。</block>
+  <block id="9cb69df206c9ac9ed5e1f4f5f353f643" category="doc">從Cisco叢集交換器移轉至NVIDIA SN2100叢集交換器</block>
+  <block id="7d5958b12629d1a14fcc8aaf271ffebc" category="paragraph">您可以將ONTAP 不中斷營運的Cisco叢集交換器移轉至NVIDIA SN2100叢集交換器、以利實現一個不中斷的叢集。當您將部分舊的Cisco叢集交換器更換為NVIDIA SN2100叢集交換器時、必須注意特定的組態資訊、連接埠連線和纜線需求。</block>
+  <block id="59e1b5d69300b7a66f466e0b62bf4f80" category="paragraph">支援下列Cisco叢集交換器：</block>
+  <block id="3c4c5e6b442060363c10c67d61881b89" category="paragraph">您可以將不中斷營運的舊Cisco叢集交換器移轉至ONTAP NVIDIA SN2100叢集交換器、以供支援使用。</block>
+  <block id="807cbcaff3adfa7ca5f01a1549249db3" category="list-text">NVIDIA SN2100叢集交換器必須在適當版本的Cummuls Linux下設定及操作、並套用參考組態檔（RCF）。</block>
+  <block id="aa3331890b15956f0bf51715ce392770" category="list-text">您已將NVIDIA SN2100交換器上的部分連接埠設定為以40 GbE或100 GbE執行。</block>
+  <block id="8ff8ee6709912b52c1e6b3870b6b7250" category="list-text">您已規劃、移轉並記錄40 GbE和100 GbE連線、從節點連接至NVIDIA SN2100叢集交換器。</block>
+  <block id="55f909861b55f297c21514fdad63abae" category="admonition">在本程序中、Cisco Nexus 3232C叢集交換器可用於命令和輸出等用途。</block>
+  <block id="6407f122215af9069ce04e183a44eaff" category="list-text">新的NVIDIA SN2100叢集交換器是_sw1_和_SW2_。</block>
+  <block id="a628f874b9a2e414a9d3d71d13573dfa" category="list-text">交換器C2先由交換器SW2取代、然後由交換器sw1取代交換器C1。</block>
+  <block id="ac84ae267a95761c56ac989f4e20ca23" category="list-text">然後從C2中斷連接節點與C2之間的纜線、並重新連接至SW2。</block>
+  <block id="8fe643f8e27975633f1ded07424aa6c9" category="list-text">然後、節點與C1之間的纜線會從C1中斷開、並重新連接至sw1。</block>
+  <block id="3dc587636ea58bb39b951053c233b58b" category="list-text">每個節點上的叢集連接埠都會以下列方式（從節點的角度）連接至現有的叢集交換器：「network device-dDiscovery show -protocol LLDP」（網路裝置探索show -protocol LLDP）</block>
+  <block id="9e23ccbda503c8dd0fa60d4057a41702" category="list-text">在交換器C2上、關閉連接至節點叢集連接埠的連接埠。</block>
+  <block id="aba8d89ac417a82d843ceaf3c6ac2faa" category="list-text">使用NVIDIA SN2100支援的適當纜線、將節點叢集連接埠從舊交換器C2移至新交換器SW2。</block>
+  <block id="203a7f618c9b080eaa78a5e38ccd907d" category="list-text">在交換器SW2上、確認所有節點叢集連接埠都已啟動：「net show interface」</block>
+  <block id="fb04bba6a926fcde1b4b8e9928fc6c8c" category="list-text">在交換器C1上、關閉連接至節點叢集連接埠的連接埠。</block>
+  <block id="43f33859444af6796131da2f85045577" category="list-text">使用NVIDIA SN2100支援的適當纜線、將節點叢集連接埠從舊交換器C1移至新交換器sw1。</block>
+  <block id="8c4a30f92fb2c8309be6461a7438998f" category="list-text">在交換器sw1和SW2上、確認所有節點叢集連接埠都已啟動：「net show interface」</block>
+  <block id="43d78ef507715bc4715cbc41d27662ca" category="list-text">驗證所有叢集網路LIF是否都回到其主連接埠：「network interface show」（網路介面顯示）</block>
+  <block id="bc4274a2b29e343ef128738332ca9770" category="section-title">在Cisco Nexus 9336C-FX2叢集交換器上安裝NX-OS軟體</block>
+  <block id="3e454cc37301157c6dcaed10a3b08867" category="section-title">在Cisco Nexus 9336C-FX2叢集交換器上安裝RCF</block>
+  <block id="92d9ae69eba0fa3ac3e966c3c94b564f" category="list-text">[[step10]如果您尚未這麼做、請將下列命令的輸出複製到記錄檔、以儲存目前的交換器組態：</block>
+  <block id="115b3eebd512ee4202039df3f366f2ae" category="list-text">[[step11]清除交換器CS2上的組態、然後執行基本設定。</block>
+  <block id="88e443f4dea0f336ffb2a1e71cadaa9a" category="list-text">[[step12]使用下列傳輸協定之一、將RCF複製到交換器CS2的bootflash：FTP、TFTP、SFTP或scp。如需Cisco命令的詳細資訊、請參閱中的適當指南<block ref="ddab0e4c59f1173186c88b8e6d2844d1" category="inline-link-rx"></block>。</block>
+  <block id="72526445e2be6a9088640582a9f5bdb5" category="list-text">[[step13]套用先前下載至bootflash的RCF。如需Cisco命令的詳細資訊、請參閱中的適當指南<block ref="ddab0e4c59f1173186c88b8e6d2844d1" category="inline-link-rx"></block>。</block>
+  <block id="43cc1a7739266f00d3e17aa68c62b3bd" category="list-text">[[step14]檢查「show banner motd」命令的橫幅輸出。您必須閱讀並遵循這些指示、以確保交換器的組態和操作正確無誤。</block>
+  <block id="e4639ed362366fa603bb051957b3e184" category="list-text">[[step15]確認RCF檔案為正確的更新版本：「How running-config」</block>
+  <block id="4c845124006255569acf9386860c3afe" category="list-text">[[step17]重新開機交換器CS2。您可以在交換器重新開機時忽略節點上報告的「叢集連接埠當機」事件。</block>
+  <block id="d7f8a9e1da7aa2cdb453e4d467f2d669" category="list-text">[[step18]套用相同的RCF、並再次儲存執行中的組態。</block>
+  <block id="2d12222cc8dfef0926f77e34d1dda110" category="list-text">[[step19]驗證叢集上叢集連接埠的健全狀況。</block>
+  <block id="98f27854249be5389c472896da146faf" category="list-text">[[step20]在叢集交換器CS1上、關閉連接至節點叢集連接埠的連接埠。下列範例使用步驟1的介面輸出範例：</block>
+  <block id="2348e2d8b2a73450b31d411de164b6d4" category="list-text">[[step2a]確認叢集LIF已移轉至交換器CS2上裝載的連接埠。這可能需要幾秒鐘的時間：「網路介面show -role cluster」</block>
+  <block id="25c714ecc2d6ce822d54ff16b088b6fb" category="list-text">[[step22]驗證叢集是否正常：「叢集顯示」</block>
+  <block id="f9ff3561b7cddd3d834386d45df14463" category="list-text">[[step23]重複交換器CS1上的步驟7至14。</block>
+  <block id="16c4b8aecf92f25b1a72c0838b3e2e4d" category="list-text">[[step25]重新開機交換器CS1。您可以這樣做、觸發叢集生命期以恢復到其主連接埠。您可以在交換器重新開機時忽略節點上報告的「叢集連接埠當機」事件。</block>
+  <block id="c7b76568d81b3a16e3bef4555e1f1d81" category="list-text">[[step26]驗證連接至叢集連接埠的交換器連接埠是否正常運作。</block>
+  <block id="cc4a1fb10aa0ea3b42a78f3f155d0616" category="list-text">[[step27]確認CS1與CS2之間的ISL是否正常運作：「How port-channel Summary」（顯示連接埠通道摘要）</block>
+  <block id="615554e73817bc858849bc77c308a465" category="list-text">[[step28]驗證叢集lifs是否已還原至其主連接埠：「網路介面show -role cluster」</block>
+  <block id="c1149c08490444b20498c10e50c2a14b" category="list-text">[[step29]驗證叢集是否正常：「叢集顯示」</block>
+  <block id="e5b11cf3c23c3508c3b896786ad6720a" category="list-text">[[step30] Ping遠端叢集介面以驗證連線能力：「叢集ping叢集節點local」</block>
+  <block id="77a2f8547fffecb69f2d5527dcc4cb77" category="list-text">[[step5]顯示鄰近裝置的清單：「How cup neighbor」</block>
+  <block id="104f202730dfa230b37a1822877fcba1" category="sidebar">Cisco Nexus 9336C-FX2、採用共享組態</block>
+  <block id="94f92369bb57ec3cd50af356ac87615d" category="sidebar">NVIDIA SN2100</block>
+  <block id="3ee7af3967e9385ab7a25cd0ac2015ae" category="sidebar">NVIDIA SN2100交換器</block>
+  <block id="5f0a12b5e055df565d02795623cf4bc2" category="sidebar">設定及設定NVIDIA SN2100交換器</block>
+  <block id="2f4146deaddc6e88b575577116cf8ce8" category="sidebar">從Cisco叢集交換器移轉至NVIDIA SN2100叢集交換器</block>
+  <block id="61203301024e828295cf8cd1ef164fc3" category="sidebar">從Cisco儲存交換器移轉至NVIDIA SN2100儲存交換器</block>
+  <block id="fdb05c6a8582161eedd71436841b5d8c" category="sidebar">使用NVIDIA SN2100交換器移轉至雙節點交換式叢集</block>
+  <block id="d758c27204bd1511d766f1b9d917e78a" category="sidebar">更換NVIDIA SN2100交換器</block>
 </blocks>

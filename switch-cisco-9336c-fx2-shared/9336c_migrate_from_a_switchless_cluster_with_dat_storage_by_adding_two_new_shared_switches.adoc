@@ -77,24 +77,22 @@ NOTE: 此資訊可通知技術支援人員執行此維護工作、以便在維�
 +
 以下範例顯示、交換器CS1上的節點對介連接埠1至34已停用：
 
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cs1# config
+cs1# *config*
 Enter configuration commands, one per line. End with CNTL/Z.
-cs1(config)# interface e/1-34
-cs1(config-if-range)# shutdown
+cs1(config)# *interface e/1-34*
+cs1(config-if-range)# *shutdown*
 ----
 . [[step4]驗證兩個9336C-FX2交換器CS1和CS2之間的ISL和實體連接埠是否在連接埠1/35和1/36上為開啟狀態：「顯示連接埠通道摘要」
 +
 下列範例顯示交換器CS1上的ISL連接埠已開啟：
 
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cs1# show port-channel summary
+cs1# *show port-channel summary*
 Flags:  D - Down        P - Up in port-channel (members)
         I - Individual  H - Hot-standby (LACP only)
         s - Suspended   r - Module-removed
@@ -109,11 +107,13 @@ Group Port-       Type     Protocol  Member Ports
 --------------------------------------------------------------------------------
 1     Po1(SU)     Eth      LACP      Eth1/35(P)   Eth1/36(P)
 ----
++
 下列範例顯示交換器CS2上的ISL連接埠已開啟：
 
-[listing]
++
+[listing, subs="+quotes"]
 ----
-       cs2# show port-channel summary
+       cs2# *show port-channel summary*
         Flags:  D - Down        P - Up in port-channel (members)
         I - Individual  H - Hot-standby (LACP only)
         s - Suspended   r - Module-removed
@@ -128,15 +128,14 @@ Group Port-       Type     Protocol  Member Ports
 --------------------------------------------------------------------------------
 1     Po1(SU)     Eth      LACP      Eth1/35(P)   Eth1/36(P)
 ----
-. [[step5]顯示鄰近裝置的清單：「How cup neighbor」。
+. [[step5]顯示鄰近裝置的清單：「How cup neighbor」
 +
 此命令提供有關連線至系統之裝置的資訊。下列範例列出交換器CS1上的鄰近裝置：
 
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cs1# show cdp neighbors
+cs1# *show cdp neighbors*
 Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
                   S - Switch, H - Host, I - IGMP, r - Repeater,
                   V - VoIP-Phone, D - Remotely-Managed-Device,
@@ -146,11 +145,13 @@ cs2                Eth1/35        175    R S I s     N9K-C9336C    Eth1/35
 cs2                Eth1/36        175    R S I s     N9K-C9336C    Eth1/36
 Total entries displayed: 2
 ----
++
 下列範例列出交換器CS2上的鄰近裝置：
 
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cs2# show cdp neighbors
+cs2# *show cdp neighbors*
 Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
                   S - Switch, H - Host, I - IGMP, r - Repeater,
                   V - VoIP-Phone, D - Remotely-Managed-Device,
@@ -165,11 +166,10 @@ Total entries displayed: 2
 +
 每個連接埠應顯示「Link」（連結）和「Healthy for Health」（健全狀況）狀態：
 
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cluster1::*> network port show -ipspace Cluster
+cluster1::*> *network port show -ipspace Cluster*
 
 Node: node1
                                                   Speed(Mbps)  Health
@@ -190,11 +190,10 @@ e3b       Cluster      Cluster          up   9000  auto/100000 healthy
 +
 每個叢集LIF都應該顯示為「原位」、並具有「狀態管理/作業者」的開機/開機狀態。
 
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface show -vserver Cluster
+cluster1::*> *network interface show -vserver Cluster*
             Logical     Status     Network            Current       Current Is
 Vserver     Interface   Admin/Oper Address/Mask       Node          Port    Home
 ----------- ---------- ---------- ------------------ ------------- ------- -----
@@ -206,11 +205,10 @@ Cluster
 4 entries were displayed.
 ----
 . [[step8]確認所有叢集生命體上都已啟用自動還原功能：「network interface show - vserver cluster -Fields autosupgres'（網路介面顯示- Vserver叢集-欄位自動還原）」
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface show -vserver Cluster -fields auto-revert
+cluster1::*> *network interface show -vserver Cluster -fields auto-revert*
        Logical
 Vserver   Interface     Auto-revert
 --------- ------------- ------------
@@ -230,24 +228,22 @@ NetApp https://hwu.netapp.com["Hardware Universe"] 包含纜線的詳細資訊�
 +
 下列範例顯示交換器CS1上已啟用連接埠1/1至1/34：
 
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cs1# config
+cs1# *config*
 Enter configuration commands, one per line. End with CNTL/Z.
-cs1(config)# interface e1/1-34
-cs1(config-if-range)# no shutdown
+cs1(config)# *interface e1/1-34*
+cs1(config-if-range)# *no shutdown*
 ----
 . [[step12]驗證所有叢集生命體是否均為*正常運作*、並顯示為真實的「is Home」：「network interface show - vserver Cluster（網路介面顯示- Vserver叢集）」
 +
 以下範例顯示節點1和節點2上的所有lifs均為* up *、且「is Home」結果為* true*：
 
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface show -vserver Cluster
+cluster1::*> *network interface show -vserver Cluster*
           Logical      Status     Network            Current     Current Is
 Vserver   Interface    Admin/Oper Address/Mask       Node        Port    Home
 --------- ------------ ---------- ------------------ ----------- ------- ----
@@ -262,11 +258,10 @@ Cluster
 +
 下列範例顯示叢集中節點的健全狀況和資格資訊：
 
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cluster1::*> cluster show
+cluster1::*> *cluster show*
 Node                 Health  Eligibility   Epsilon
 -------------------- ------- ------------  ------------
 node1                true    true          false
@@ -279,24 +274,22 @@ node2                true    true          false
 +
 下列範例顯示交換器CS2上已啟用連接埠1/1至1/34：
 
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cs2# config
+cs2# *config*
 Enter configuration commands, one per line. End with CNTL/Z.
-cs2(config)# interface e1/1-34
-cs2(config-if-range)# no shutdown
+cs2(config)# *interface e1/1-34*
+cs2(config-if-range)# *no shutdown*
 ----
 . [[step17]確認所有叢集連接埠都已啟動：「network port show - IPSpace Cluster（網路連接埠顯示- IPSpace叢集）」
 +
 以下範例顯示節點1和節點2上的所有叢集連接埠都已啟動：
 
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cluster1::*> network port show -ipspace Cluster
+cluster1::*> *network port show -ipspace Cluster*
 
 Node: node1
                                                                         Ignore
@@ -316,16 +309,17 @@ e3b       Cluster      Cluster          up   9000  auto/100000 healthy  false
 4 entries were displayed.
 ----
 . [[step18]驗證所有介面是否都顯示為「is Home」（原為首頁）：「network interface show - vserver Cluster（網路介面顯示- Vserver叢集）」
-
-
++
 
 NOTE: 這可能需要幾分鐘的時間才能完成。
 
++
 以下範例顯示節點1和節點2上的所有lifs均為* up *、且「is Home」結果為真：
 
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface show -vserver Cluster
+cluster1::*> *network interface show -vserver Cluster*
           Logical      Status     Network            Current    Current Is
 Vserver   Interface    Admin/Oper Address/Mask       Node       Port    Home
 --------- ------------ ---------- ------------------ ---------- ------- ----
@@ -340,11 +334,10 @@ Cluster
 +
 以下範例顯示兩個交換器的適當結果：
 
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cs1# show cdp neighbors
+cs1# *show cdp neighbors*
 Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
                   S - Switch, H - Host, I - IGMP, r - Repeater,
                   V - VoIP-Phone, D - Remotely-Managed-Device,
@@ -368,11 +361,10 @@ cs1                Eth1/36        175    R S I s     N9K-C9336C    Eth1/36
 Total entries displayed: 4
 ----
 . [[step20]顯示叢集中探索到的網路裝置相關資訊：「network device-dDiscovery show -protocol cup」
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cluster1::*> network device-discovery show -protocol cdp
+cluster1::*> *network device-discovery show -protocol cdp*
 Node/       Local  Discovered
 Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
 ----------- ------ ------------------------- ----------------  ----------------
@@ -386,11 +378,10 @@ node1       /cdp
 4 entries were displayed.
 ----
 . [[step2a]確認HA配對1（和HA配對2）的儲存組態正確無誤、而且沒有錯誤：「System Switch Ethernet show」（系統交換器乙太網路顯示）
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-storage::*> system switch ethernet show
+storage::*> *system switch ethernet show*
 Switch                    Type                   Address         Model
 ------------------------- ---------------------- --------------- ----------
 sh1
@@ -414,38 +405,37 @@ sh2
 storage::*>
 ----
 . [[step22]確認設定已停用：「network options switchless cluster show」
-
-
++
 
 NOTE: 命令可能需要幾分鐘的時間才能完成。等待「3分鐘壽命到期」公告。
 
++
 以下範例中的「假」輸出顯示組態設定已停用：
 
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cluster1::*> network options switchless-cluster show
+cluster1::*> *network options switchless-cluster show*
 Enable Switchless Cluster: false
 ----
 . [[step23]驗證叢集中節點成員的狀態：「cluster show」（叢集顯示）
 +
 下列範例顯示叢集中節點的健全狀況和資格資訊：
 
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cluster1::*> cluster show
+cluster1::*> *cluster show*
 Node                 Health  Eligibility   Epsilon
 -------------------- ------- ------------  --------
 node1                true    true          false
 node2                true    true          false
 ----
 . [[step24]確保叢集網路具備完整連線能力：「叢集ping叢集節點節點名稱」
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cluster1::*> cluster ping-cluster -node node2
+cluster1::*> *cluster ping-cluster -node node2*
 Host is node2
 Getting addresses from network interface table...
 Cluster node1_clus1 169.254.209.69 node1 e3a
@@ -475,36 +465,37 @@ RPC status:
 +
 ** 「系統交換器乙太網路記錄設定密碼」
 ** 「系統交換器乙太網路記錄啟用收集」
-
-
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cluster1::*> system switch ethernet log setup-password
+cluster1::*> *system switch ethernet log setup-password*
 Enter the switch name: <return>
 The switch name entered is not recognized.
 
 Choose from the following list:
-cs1
-cs2
-cluster1::*> system switch ethernet log setup-password
-Enter the switch name: cs1
+*cs1*
+*cs2*
+cluster1::*> *system switch ethernet log setup-password*
+Enter the switch name: *cs1*
 RSA key fingerprint is e5:8b:c6:dc:e2:18:18:09:36:63:d9:63:dd:03:d9:cc
-Do you want to continue? {y|n}::[n] y
+Do you want to continue? {y|n}::[n] *y*
 Enter the password: <enter switch password>
 Enter the password again: <enter switch password>
-cluster1::*> system switch ethernet log setup-password
-Enter the switch name: cs2
+cluster1::*> *system switch ethernet log setup-password*
+Enter the switch name: *cs2*
 RSA key fingerprint is 57:49:86:a1:b9:80:6a:61:9a:86:8e:3c:e3:b7:1f:b1
-Do you want to continue? {y|n}:: [n] y
+Do you want to continue? {y|n}:: [n] *y*
 Enter the password: <enter switch password>
 Enter the password again: <enter switch password>
-cluster1::*> system  switch ethernet log enable-collection
-Do you want to enable cluster log collection for all nodes in the cluster? {y|n}: [n] y
+cluster1::*> *system  switch ethernet log enable-collection*
+Do you want to enable cluster log collection for all nodes in the cluster? {y|n}: [n] *y*
 Enabling cluster switch log collection.
 cluster1::*>
 ----
+
+
+
+
 
 
 ==== 設定共享交換器
@@ -520,11 +511,10 @@ NOTE: 此程序需要同時使用ONTAP 支援指令和Cisco Nexus 9000系列交�
 
 .步驟
 . 確認HA配對1（和HA配對2）的儲存組態正確無誤、而且沒有錯誤：「System Switch Ethernet show」（系統交換器乙太網路顯示）
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-storage::*> system switch ethernet show
+storage::*> *system switch ethernet show*
 Switch                    Type                   Address         Model
 ------------------------- ---------------------  --------------- -------
 sh1
@@ -548,11 +538,10 @@ sh2
 storage::*>
 ----
 . [[step2]確認儲存節點連接埠正常運作：「torage port show -port-type ENET」
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-storage::*> storage port show -port-type ENET
+storage::*> *storage port show -port-type ENET*
                                    Speed                             VLAN
 Node    Port    Type    Mode       (Gb/s)      State      Status       ID
 ------- ------- ------- ---------- ----------- ---------- ---------- -----
@@ -572,11 +561,10 @@ node2
 . 安裝HA配對1、節點1、SH1連接埠範圍11-22路徑A的纜線。例如AFF 、在不經意的情況下、儲存連接埠的路徑是e0c。
 . 安裝從HA配對1、節點2、路徑A到SH1連接埠範圍11-22的纜線。
 . 驗證節點連接埠是否正常運作：「torage port show -port-type ENET」
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-storage::*> storage port show -port-type ENET
+storage::*> *storage port show -port-type ENET*
                                    Speed                             VLAN
 Node    Port    Type    Mode       (Gb/s)      State      Status       ID
 ------- ------- ------- ---------- ----------- ---------- ---------- -----
@@ -593,22 +581,20 @@ node2
         e5b     ENET  storage           100      enabled  online        30
 ----
 . [[step7]檢查叢集是否有儲存交換器或纜線問題：「系統健全狀況警示顯示-instance」
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-storage::*> system health alert show -instance
+storage::*> *system health alert show -instance*
 There are no entries matching your query.
 ----
 . [[step8]將HA配對1、NSM224路徑B連接埠移至sh2連接埠範圍11-22。
 . 安裝從HA配對1、節點1、路徑B到sh2連接埠範圍11-22的纜線。例如AFF 、位於ESIVA400上的路徑B儲存連接埠是e5b。
 . 安裝從HA配對1、節點2、路徑B到sh2連接埠範圍11-22的纜線。
 . 驗證節點連接埠是否正常運作：「torage port show -port-type ENET」
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-storage::*> storage port show -port-type ENET
+storage::*> *storage port show -port-type ENET*
                                    Speed                             VLAN
 Node    Port    Type    Mode       (Gb/s)      State      Status       ID
 ------- ------- ------- ---------- ----------- ---------- ---------- -----
@@ -625,11 +611,10 @@ node2
         e5b     ENET  storage           100      enabled  online        30
 ----
 . [[step12]確認HA配對1的儲存組態正確無誤、而且沒有錯誤：「System Switch Ethernet show」（系統交換器乙太網路顯示）
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-storage::*> system switch ethernet show
+storage::*> *system switch ethernet show*
 Switch                    Type                   Address          Model
 ------------------------- ---------------------- ---------------- ----------
 sh1
@@ -653,16 +638,19 @@ sh2
 storage::*>
 ----
 . [[step13]重新設定HA配對1上未使用的（控制器）二線儲存連接埠、從儲存設備到網路。如果直接連接多個NS224、則應該重新設定連接埠。
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
 storage port modify –node [node name] –port [port name] –mode network
 ----
++
 若要將儲存連接埠放入廣播網域：
 
-* 「網路連接埠廣播網域建立」（如有需要、可建立新網域）
-* 「網路連接埠廣播網域附加連接埠」（將連接埠新增至現有網域）
++
+** 「網路連接埠廣播網域建立」（如有需要、可建立新網域）
+** 「網路連接埠廣播網域附加連接埠」（將連接埠新增至現有網域）
+
+
 
 
 . [[step14]如果您禁止自動建立案例、請叫用AutoSupport 下列訊息來重新啟用：「System nodeeseInvoke AutoSupport -Node *-type all -Message MAn=end」
