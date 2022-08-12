@@ -1,6 +1,6 @@
 ---
 settings:
-  name: ONTAP Systems Switches
+  name: Cluster and storage switches
   search: ontap-systems-switches
   internal:
     pdf_enabled: true
@@ -21,7 +21,9 @@ sidebar:
   - section: switch-cisco-9336c-fx2
   - section: switch-cisco-9336c-fx2-shared
   - section: switch-cisco-92300
-  - section: switch-nvidia-sn2100
   - section: other
   - title: 法律聲明
     url: "/legal-notices.html"
+product-family:
+  name: AFF and FAS Systems
+  repo: ontap-systems-family
