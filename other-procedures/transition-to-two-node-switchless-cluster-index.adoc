@@ -1,0 +1,19 @@
+---
+permalink: other-procedures/transition-to-two-node-switchless-cluster-index.html 
+sidebar: sidebar 
+keywords: transition, two-node, switchless, cluster, two, node 
+summary: 您可以將使用叢集互連交換器的雙節點叢集轉換成兩個節點直接連接的叢集。 
+---
+= 總覽
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+如果您現有的雙節點叢集使用叢集互連交換器、而且執行ONTAP 的是更新版本的版本、您可以使用節點之間的直接後端對後端連線來取代交換器。
+
+您無法將無交換器式叢集互連功能用於兩個以上的節點。
+
+轉換至雙節點無交換式叢集組態是不中斷營運的作業。大多數系統在每個節點上都有兩個專屬的叢集互連連接埠、但您也可以將此程序用於每個節點上具有大量專屬叢集互連連接埠的系統、例如四個、六個或八個。
+
+本程序說明如何將具有交換式叢集網路的叢集、轉換至兩個節點直接連接的叢集、以供ONTAP 使用於更新版本的版本。

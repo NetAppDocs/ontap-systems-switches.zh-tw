@@ -28,6 +28,8 @@ indexpage:
       url: "/switch-cisco-92300/92300-overview.html"
     - title: 其他交換器機型
       url: "/other/switch-linkout.html"
+    - title: 其他交換器程序
+      url: "/other-procedures/transition-to-two-node-switchless-cluster-index.html"
   - title: 更多資源
     links:
     - title: 其他交換器機型

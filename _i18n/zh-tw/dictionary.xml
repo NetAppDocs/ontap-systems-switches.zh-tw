@@ -3307,4 +3307,80 @@
   <block id="91cd808758081ea75f478b14ac3c3471" category="paragraph">「系統叢集交換器記錄設定密碼」和</block>
   <block id="e01441503925272a0ebbfb7fba0455f0" category="list-text">使用下列傳輸協定之一、將NX-OS軟體複製到Nexus 3132Q-V交換器：FTP、TFTP、SFTP或scp。如需Cisco命令的詳細資訊、請參閱中的適當指南<block ref="f93981dab484b88c422e924c27565997" category="inline-link-rx"></block> 指南：</block>
   <block id="8722c59bf526716ce1e70019843b09a5" category="paragraph">本範例顯示使用SFTP將NX-OS軟體複製到Nexus 3132Q-V交換器：</block>
+  <block id="9f5be684442d922984d48ddc3b7aa93f" category="summary">您可以將使用叢集互連交換器的雙節點叢集轉換成兩個節點直接連接的叢集。</block>
+  <block id="ff5ad6d56644222030f6f4bc94bd5506" category="paragraph">如果您現有的雙節點叢集使用叢集互連交換器、而且執行ONTAP 的是更新版本的版本、您可以使用節點之間的直接後端對後端連線來取代交換器。</block>
+  <block id="759516932a18c0379d0054bce4b2e64e" category="paragraph">您無法將無交換器式叢集互連功能用於兩個以上的節點。</block>
+  <block id="a2c17c2ce71b362b920e8850ba8c4dbc" category="paragraph">轉換至雙節點無交換式叢集組態是不中斷營運的作業。大多數系統在每個節點上都有兩個專屬的叢集互連連接埠、但您也可以將此程序用於每個節點上具有大量專屬叢集互連連接埠的系統、例如四個、六個或八個。</block>
+  <block id="4d60464781e02c960e35d4e4cea119aa" category="paragraph">本程序說明如何將具有交換式叢集網路的叢集、轉換至兩個節點直接連接的叢集、以供ONTAP 使用於更新版本的版本。</block>
+  <block id="e92a37c58dda9b6ad3b2129262043d6a" category="summary">您可以使用節點之間的直接後端對後端連線、來取代雙節點叢集中的交換器。</block>
+  <block id="42831c80a579ed060615d4e90f0500cf" category="doc">以直接連線取代交換器</block>
+  <block id="f9ca0dca2bbe2bca99b0ad5e676f7bb6" category="paragraph">如果您有使用叢集互連交換器的雙節點叢集、請使用節點之間的直接後端對後端連線來更換交換器。這是不中斷營運的作業。</block>
+  <block id="085c76ece7f19b4de00a80d42051e8df" category="list-text">叢集必須健全、由兩個節點組成、並由叢集交換器連接、而且節點必須執行相同ONTAP 的版本資訊。</block>
+  <block id="aadaf9415e70bd5bc3b6c11d549fbe14" category="list-text">每個節點都必須具有所需數量的專用叢集連接埠、以提供備援叢集互連連連連線、以支援您的系統組態、例如每個節點上有兩個專用叢集互連連接埠的系統有兩個備援連接埠。</block>
+  <block id="2f5c59a7e0a2102f6d7508bee5ccb15b" category="paragraph">下列程序會移除雙節點叢集中的叢集交換器、並以直接連線至合作夥伴節點的方式取代與交換器的每個連線。</block>
+  <block id="8a2504e6dbf1489f594645cb7c55753d" category="image-alt">叢集交換器已由直接連線取代</block>
+  <block id="2a2f19f24bfba5cc72f797777f88530a" category="paragraph">下列程序中的範例顯示使用「e0a」和「e0b」做為叢集連接埠的節點。您的節點可能使用不同的叢集連接埠、因為它們會因系統而異。</block>
+  <block id="e5dabd8c96e3431757aa87e41f4bedd6" category="paragraph">出現進階提示「*&gt;」。</block>
+  <block id="469c7d60dd90f1a2bb1658da470e8143" category="list-text">支援自動偵測無交換器叢集的功能、預設為啟用。ONTAP</block>
+  <block id="e127f1d4385ec7a8d3e94aacf34721de" category="paragraph">您可以執行進階權限命令、驗證是否已啟用無交換器叢集的偵測：</block>
+  <block id="8b70a23bbedce91a74790296a731d7bb" category="paragraph">「網路選項偵測無交換器叢集顯示」</block>
+  <block id="47b756a48fc6435a553f74738cb41468" category="paragraph">下列輸出範例顯示選項是否已啟用。</block>
+  <block id="9c4d948f63c8c6f48823d7e858286716" category="paragraph">如果「啟用無交換器叢集偵測」為「假」、請聯絡支援部門。</block>
+  <block id="790ec52cbe66e86d508c608424b62c2d" category="paragraph">「系統節點AutoSupport 不完整地叫用節點*-type all -Message MAn=&lt;number_of_hs&gt;h」</block>
+  <block id="de1ef371a5c4d9b1200b8a294381f2c8" category="paragraph">其中「h」是指維護時段的持續時間、以小時為單位。此訊息會通知技術支援人員此維護工作、以便他們在維護期間隱藏自動建立個案。</block>
+  <block id="31aa5da225dda6126c6cbf160562d03b" category="paragraph">在下列範例中、命令會禁止自動建立兩小時的個案：</block>
+  <block id="2e5f20d09e0222d9ff8e734356b6da06" category="list-text">將每個交換器上的叢集連接埠組織成群組、使群組1中的叢集連接埠移至叢集交換器1、而群組2中的叢集連接埠移至叢集交換器2。程序稍後會要求這些群組。</block>
+  <block id="57c684517aec25172f7d07c58ad05de8" category="list-text">識別叢集連接埠、並驗證連結狀態和健全狀況：</block>
+  <block id="b4cb3437a4bd287cc325f112caa8be67" category="paragraph">在以下範例中、對於具有叢集連接埠「e0a」和「e0b」的節點、一個群組會識別為「node1:e0a」和「node2:e0a」、另一個群組則識別為「node1:e0b」和「node2:e0b」。您的節點可能使用不同的叢集連接埠、因為它們會因系統而異。</block>
+  <block id="af10d52efe2cd47b065f90fdd28575f5" category="image-alt">節點1和節點2之間的叢集交換器連線</block>
+  <block id="1742cd0ed0e3d9a5d0c757426e551f53" category="paragraph">驗證連接埠的「Link」欄位值是否為「Up」、「Health Status」欄位值是否為「Healthy」、如下列範例所示：</block>
+  <block id="ff66496bf4e9ec1deed0dc59b97eb6cb" category="list-text">確認所有的叢集生命區都位於其主連接埠上。</block>
+  <block id="455e2d37ef416448b13da810b3bf798a" category="paragraph">驗證每個叢集生命體的「is主目錄」欄位是否為「true」：</block>
+  <block id="4db0b2597279fa6c63908e8a06d54f68" category="paragraph">「網路介面show -vserver叢集-Fields is主場」</block>
+  <block id="fd894a783c8c8400a3021bd2ad147cba" category="paragraph">系統會顯示類似下列範例的輸出：</block>
+  <block id="12769ddb40f8063f816fcbdca9a00d5d" category="paragraph">如果主連接埠上沒有叢集LIF、請將這些LIF還原至主連接埠：</block>
+  <block id="268d66b259b50e25cbef3d39885d450f" category="paragraph">「網路介面回復-vserver叢集-lIF *」</block>
+  <block id="fc7b1f226781bbe058721d0dcebf5133" category="list-text">停用叢集生命體的自動還原：</block>
+  <block id="b1046cdb57cd97fe9c20f711ba08bed8" category="paragraph">「網路介面修改-vserver叢集-lIF *-auta-fRevert假」</block>
+  <block id="5509fa38d3415bf6dfbd28918cf766f3" category="list-text">驗證上一步驟中列出的所有連接埠都已連線至網路交換器：</block>
+  <block id="101ead84905a0da72281347a2d3e5846" category="paragraph">「網路裝置探索show -port _cluster連接埠_」</block>
+  <block id="fe02c7580400b9e0117d9abf6c4cbde1" category="paragraph">「探索到的裝置」欄應為連接埠所連接的叢集交換器名稱。下列範例顯示叢集連接埠「e0a」和「e0b」已正確連接至叢集交換器「CS1」和「CS2」。</block>
+  <block id="fad8bc8bd6f8c2ecbc098cd96431ebde" category="list-text">驗證叢集連線能力：</block>
+  <block id="e477c0774c6014b5173ffa6810d512ab" category="paragraph">「叢集響鈴」</block>
+  <block id="c992f99b79e71a5eb5127e5f190fab4e" category="paragraph">所有裝置必須為主裝置或次裝置。</block>
+  <block id="048592cc00af171e1fa6348b090a6c78" category="list-text">設定群組1中連接埠的無交換器組態。</block>
+  <block id="12bc07b1c4101cd8e151510c4571a54d" category="admonition">為了避免潛在的網路問題、您必須從群組1中斷連接連接連接埠、並儘快將其重新連線至後端、例如*不到20秒*。</block>
+  <block id="dd1a07ba1c68088dd4d2dfd921793a63" category="list-text">同時從群組1的連接埠拔下所有纜線。</block>
+  <block id="da4df375887ff4e2473f47d4c2698b52" category="paragraph">在下列範例中、纜線會從每個節點上的連接埠「e0a」中斷連線、而叢集流量會繼續透過交換器和每個節點上的連接埠「e0b」傳輸：</block>
+  <block id="7e406f2debaed4ad453c52ae7b59f3e5" category="image-alt">ClusterSwitch1已中斷連線</block>
+  <block id="0859a2eee1a4fdcb7d3c0c3f5453a911" category="list-text">將群組1中的連接埠從後端連接至後端。</block>
+  <block id="843716887cbd88ba04652283a40bf49d" category="paragraph">在下列範例中、節點1上的「e0a」已連線至節點2上的「e0a」：</block>
+  <block id="cad47f7ffe7579e68a294494fa25af17" category="image-alt">連接埠「e0a」之間的直接連線</block>
+  <block id="e9ec4835d23694aed9844bcf9e7e87ea" category="list-text">無交換式叢集網路選項從「假」轉換為「真」。這可能需要45秒的時間。確認無交換器選項設定為「true」：</block>
+  <block id="c412aebcb1566f8e5e0323f2afe60d0e" category="paragraph">下列範例顯示無交換器叢集已啟用：</block>
+  <block id="6d1b5eebdb14196ce07c51c623533431" category="list-text">確認叢集網路未中斷：</block>
+  <block id="f643d26da1df28bcffc5c5067726246b" category="list-text">設定群組2中連接埠的無交換器組態。</block>
+  <block id="863e48e1ab590a3004febd635c0c772c" category="admonition">為了避免潛在的網路問題、您必須從群組2中斷連接連接連接埠、並儘快將其重新連線至後端、例如*不到20秒*。</block>
+  <block id="29f9df63556e07a416ddabb7ae9e6ad1" category="list-text">同時從群組2的連接埠拔下所有纜線。</block>
+  <block id="f7107cbf076f0517cc09ef7864ab4721" category="paragraph">在下列範例中、纜線會從每個節點的連接埠「e0b」中斷連線、而叢集流量則會透過「e0a」連接埠之間的直接連線繼續傳輸：</block>
+  <block id="7f811e877a123112a56cd337a96a946a" category="image-alt">ClusterSwitch2已中斷連線</block>
+  <block id="29035200b1c604db07130926a477b161" category="list-text">將群組2中的連接埠從後端連接至後端。</block>
+  <block id="0883e07187c2d888880312f0fa00ed04" category="paragraph">在下列範例中、節點1上的「e0a」連接至節點2上的「e0a」、節點2上的「e0b」連接至節點2上的「e0b」：</block>
+  <block id="fdd6dd4aa052ef34512800aa4ec60d74" category="image-alt">在節點1和節點2上的連接埠之間建立直接連線</block>
+  <block id="fbbe76d16326b63ad1d4f272c5493136" category="list-text">驗證兩個節點上的連接埠是否正確連接：</block>
+  <block id="65abe70d5b91b27886fd257d6422593d" category="paragraph">下列範例顯示叢集連接埠「e0a」和「e0b」已正確連接至叢集合作夥伴上的對應連接埠：</block>
+  <block id="7d828f71c40144b012224932607715ca" category="list-text">重新啟用叢集生命體的自動還原：</block>
+  <block id="2c70d9b6ebd85a5ee2fff0f363a115ac" category="paragraph">「網路介面修改-vserver叢集-lif*-auta-f還原 為真」</block>
+  <block id="5fa7d5204d3d489974fd1ec321213563" category="list-text">確認所有生命都在家裡。這可能需要幾秒鐘的時間：</block>
+  <block id="e602723d0e5f9bdd1222eae8ea457289" category="paragraph">「網路介面show -vserver cluster -lif_lif_name_」</block>
+  <block id="038dfaef435585ad7a241ece49eb90ca" category="paragraph">如果"is Home"（是主目錄）列是"true"（真），則已恢復生命，如以下範例中的"node1_clus2"和"node2_clus2"所示：</block>
+  <block id="ca781b2f6ba431222707604fe0989dc1" category="paragraph">如果有任何叢集LIF尚未返回其主連接埠、請手動還原它們：</block>
+  <block id="31d2e20cefb76721dace23dfd9a35896" category="paragraph">「網路介面回復-vserver叢集-lif_lif_name_'</block>
+  <block id="aeb90980ffc18e4c949766c382d409d4" category="list-text">從任一節點的系統主控台檢查節點的叢集狀態：</block>
+  <block id="90d334e25f499d80506823cb341c39d7" category="paragraph">以下範例顯示兩個節點上的epsilon為「假」：</block>
+  <block id="26ba805ccb9566fb36369f48374b79c8" category="list-text">確認叢集連接埠之間的連線：</block>
+  <block id="a76aa36cc43767185eb24bf3e6381bdb" category="paragraph">「叢集ping叢集本機」</block>
+  <block id="fb49a7219fb53efa33b80ec1a40ab7ce" category="paragraph"><block ref="fb49a7219fb53efa33b80ec1a40ab7ce" category="inline-link-macro-rx"></block></block>
+  <block id="e55e97993d59e593f9db82748c7205cd" category="sidebar">其他交換器程序</block>
+  <block id="66a1a209b630861db25c9013c19efe3b" category="sidebar">移轉至雙節點無交換器叢集</block>
 </blocks>

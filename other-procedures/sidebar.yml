@@ -1,0 +1,10 @@
+---
+section: other-procedures
+title: 其他交換器程序
+entries:
+- title: 移轉至雙節點無交換器叢集
+  entries:
+  - title: 總覽
+    url: "/other-procedures/transition-to-two-node-switchless-cluster-index.html"
+  - title: 以直接連線取代交換器
+    url: "/other-procedures/replace-switches-with-direct-connections.html"
