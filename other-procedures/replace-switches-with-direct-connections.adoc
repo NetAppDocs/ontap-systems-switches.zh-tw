@@ -222,7 +222,7 @@ image::../media/tnsc_clusterswitch2_disconnected.PNG[ClusterSwitch2已中斷連�
 
 .. 將群組2中的連接埠從後端連接至後端。
 +
-在下列範例中、節點1上的「e0a」連接至節點2上的「e0a」、節點2上的「e0b」連接至節點2上的「e0b」：
+在下列範例中、節點1上的「e0a」連接至節點2上的「e0a」、節點1上的「e0b」連接至節點2上的「e0b」：
 
 +
 image::../media/tnsc_node1_and_node2_direct_connection.PNG[在節點1和節點2上的連接埠之間建立直接連線]

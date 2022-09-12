@@ -3365,7 +3365,6 @@
   <block id="f7107cbf076f0517cc09ef7864ab4721" category="paragraph">在下列範例中、纜線會從每個節點的連接埠「e0b」中斷連線、而叢集流量則會透過「e0a」連接埠之間的直接連線繼續傳輸：</block>
   <block id="7f811e877a123112a56cd337a96a946a" category="image-alt">ClusterSwitch2已中斷連線</block>
   <block id="29035200b1c604db07130926a477b161" category="list-text">將群組2中的連接埠從後端連接至後端。</block>
-  <block id="0883e07187c2d888880312f0fa00ed04" category="paragraph">在下列範例中、節點1上的「e0a」連接至節點2上的「e0a」、節點2上的「e0b」連接至節點2上的「e0b」：</block>
   <block id="fdd6dd4aa052ef34512800aa4ec60d74" category="image-alt">在節點1和節點2上的連接埠之間建立直接連線</block>
   <block id="fbbe76d16326b63ad1d4f272c5493136" category="list-text">驗證兩個節點上的連接埠是否正確連接：</block>
   <block id="65abe70d5b91b27886fd257d6422593d" category="paragraph">下列範例顯示叢集連接埠「e0a」和「e0b」已正確連接至叢集合作夥伴上的對應連接埠：</block>
@@ -3383,4 +3382,5 @@
   <block id="fb49a7219fb53efa33b80ec1a40ab7ce" category="paragraph"><block ref="fb49a7219fb53efa33b80ec1a40ab7ce" category="inline-link-macro-rx"></block></block>
   <block id="e55e97993d59e593f9db82748c7205cd" category="sidebar">其他交換器程序</block>
   <block id="66a1a209b630861db25c9013c19efe3b" category="sidebar">移轉至雙節點無交換器叢集</block>
+  <block id="749e4fff30fa6550a6b7216922e76856" category="paragraph">在下列範例中、節點1上的「e0a」連接至節點2上的「e0a」、節點1上的「e0b」連接至節點2上的「e0b」：</block>
 </blocks>
