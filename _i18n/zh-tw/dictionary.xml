@@ -2489,34 +2489,12 @@
   <block id="9a173abe6e75544396c33998c7dd660e" category="paragraph">大多數系統在每個控制器上都需要兩個專用的叢集網路連接埠。請參閱<block ref="f045d8bdfad567300bae12fc35823fa0" category="inline-link-rx"></block></block>
   <block id="ec9e474afc999353343db9439e541082" category="summary">您可以將不中斷營運的舊Cisco叢集交換器移轉至ONTAP Cisco Nexus 9336C-FX2叢集網路交換器、以利進行非中斷的叢集式叢集。</block>
   <block id="49dff5e24eb6716bbdb118f5060c6ee9" category="doc">如何從Cisco交換器移轉至Cisco Nexus 9336C-FX2叢集交換器</block>
-  <block id="4cbca3ab562ce0be7780eefe4a43adad" category="list-text">Nexus 9336C-FX2叢集交換器必須在適當版本的NX-OS安裝和套用參考組態檔（RCF）下進行設定和操作。</block>
-  <block id="22cd64d0bcf2bc77bfb32f0318d14d3c" category="list-text">使用叢集生命區的所有叢集生命區都位於主連接埠上。</block>
-  <block id="5b0559292b43e5022821fd64e9e153d2" category="list-text">新的Nexus 9336C-FX2叢集交換器為CS1和CS2。</block>
-  <block id="173dae780449dce4bb4a30b4f7977279" category="list-text">將C2連接至CS2的CS2上建置了暫時ISL。</block>
-  <block id="91d4e443decf449762f863fd540cc820" category="list-text">接著移除C2與CS2之間的暫用ISL。</block>
   <block id="fbac5eb6c2f302e9f37d2ca0c50c0fd8" category="list-text">如果AutoSupport 此叢集啟用了「支援功能」、請叫用AutoSupport 「系統節點AutoSupport 支援功能叫用節點*-type all -most MAn=xh」訊息來禁止自動建立案例</block>
   <block id="9466a05ff7d84aeea31f27e9129682c8" category="list-text">將權限層級變更為進階、並在系統提示您繼續時輸入* y*：「et -priv家 特權進階」</block>
   <block id="d29b9ac8693b89c3d872bc186706e288" category="list-text">驗證是否已在所有叢集lifs上啟用自動還原：「network interface show -vserver cluster -Fields auto-Revert」</block>
-  <block id="d204eae202d3382d49076db0a6957154" category="list-text">顯示網路連接埠屬性：「network port show -IPSpace Cluster（網路連接埠顯示-IPSpace叢集）」</block>
-  <block id="3c23423d82deff2c49b1f5a675affe46" category="list-text">顯示有關邏輯介面及其指定主節點的資訊：「network interface show -vserver Cluster」（網路介面show -vserver叢集）</block>
-  <block id="eac3e7f3f587be64af9579266f4bb66e" category="list-text">每個節點上的叢集連接埠都會以下列方式（從節點的角度）連接至現有的叢集交換器：「network device-dDiscovery show -protocol cup」（網路裝置探索show -protocol cup）</block>
-  <block id="866e9195c3f1e53c818cc1513b132bbc" category="list-text">叢集連接埠和交換器的連線方式如下（從交換器的觀點來看）：「How cup neighbor」（顯示cup鄰近裝置）</block>
-  <block id="ac121473c5c5a24690b1a30d179ab677" category="list-text">使用命令「cluster ping cluster -cluster -node-name」確保叢集網路具有完整連線能力</block>
-  <block id="a75638c0d1f443fdf3c4471108036c0e" category="list-text">在連接埠E1/33-334（C1與CS1之間）的CS1上設定暫用ISL。</block>
-  <block id="7c144395dc06b2e330a55935a8f036c4" category="list-text">從C2的連接埠E1/33-334拔下ISL纜線、並將纜線連接至CS2的連接埠E1/33-334。</block>
-  <block id="57dbb300401ac1a70f8eee6f777ba384" category="list-text">驗證ISL連接埠和連接埠通道是否可正常運作、以連接C2和CS2：「How port-channel Summary」（顯示連接埠通道摘要）</block>
-  <block id="49257dae1517ce0a266604611f40fe19" category="paragraph">以下範例顯示Cisco show port-channel摘要命令、用於驗證C2和CS2上的ISL連接埠是否正常運作：</block>
-  <block id="14179f633557b53498f01d3e5c4e5bb8" category="list-text">對於節點1、請從C2上的E1/1拔下纜線、然後使用Nexus 9336C-FX2支援的適當纜線、將纜線連接至CS2上的E1/1。</block>
-  <block id="316197794ac20ca2b2b11cb67a072e0f" category="list-text">對於節點2、請從C2上的E1/2拔下纜線、然後使用Nexus 9336C-FX2支援的適當纜線、將纜線連接至CS2上的E1/2。</block>
-  <block id="37ef6f0e7348f33c4de46c37e4fd2e10" category="list-text">從節點的觀點來看、每個節點上的叢集連接埠現在都以下列方式連接至叢集交換器：「network device-dDiscovery show -protocol cup」</block>
-  <block id="50cb1cc2d2bb848fa2b74fbbdb5ac123" category="list-text">對於節點1、請從C1上的E1/1拔下纜線、然後使用Nexus 9336C-FX2支援的適當纜線、將纜線連接至CS1上的E1/1。</block>
-  <block id="2a727a2314a8100587055604ff3e9802" category="list-text">對於節點2、請從C1上的E1/2拔下纜線、然後使用Nexus 9336C-FX2支援的適當纜線、將纜線連接至CS1上的E1/2。</block>
-  <block id="b1bf5b4949e8f0e4eed60de397513799" category="list-text">驗證叢集的最終組態：「network port show -IPSpace Cluster（網路連接埠show -IPSpace叢集）」</block>
   <block id="2c3e18fa32475dc79e0a3af5aba04852" category="list-text">驗證兩個節點是否都與每個交換器有一個連線：「How cup neighbor」</block>
   <block id="6912d2a95e9bf185b086b3f08f7cbc74" category="list-text">確保叢集網路具備完整連線能力：「cluster ping-cluster -node-name」（叢集ping叢集節點節點名稱）</block>
-  <block id="bb1651f45817be29229f70593583bcd6" category="list-text">針對《支援乙太網路》9.8及更新版本、請使用下列兩個命令來啟用乙太網路交換器健全狀況監視器記錄收集功能、以收集交換器相關的記錄檔：「系統交換器乙太網路記錄設定密碼」和「系統交換器乙太網路記錄啟用收集」ONTAP</block>
   <block id="45e50cd7644af8bcb7582afbaff1fd3a" category="paragraph">輸入：「System交換器乙太網路記錄設定密碼」</block>
-  <block id="02365d5fe51965645365010c75105f41" category="paragraph">接著是：「系統交換器乙太網路記錄啟用-收集」</block>
   <block id="f596e32c8f97761d44eedfe73defefd2" category="paragraph">輸入：「ystem叢集交換器記錄設定密碼」</block>
   <block id="87bd9bfab267dc2d9909cf27c375995d" category="paragraph">接著是：「系統叢集交換器記錄啟用-收集」</block>
   <block id="68cefdf66be1d7a7b066be08057d6859" category="list-text">如果您禁止自動建立個案、請叫用AutoSupport 下列訊息重新啟用此功能：「System Node AutoSupport 現象叫用節點*-type all -most MAn=end」</block>
@@ -3180,7 +3158,6 @@
   <block id="403284bd44beda112195a484c8a76421" category="sidebar">儲存交換器</block>
   <block id="dfcc398099d6a64026e51ab282e16253" category="sidebar">更多資源</block>
   <block id="2b2815ca4a9fd5973ee66317adb580e4" category="sidebar">其他交換器機型</block>
-  <block id="ec01d482cf394f212f073921cfd9d5bd" category="sidebar">發行說明ONTAP</block>
   <block id="353534d94bfe5cda4a518ae399d604c2" category="sidebar">不再需要使用本技術AFF FAS</block>
   <block id="86cc6ece4e15efa20636a6f89b7d305f" category="sidebar">升級文件AFF FAS</block>
   <block id="519131237f79eadb2dc6a1e003a087bc" category="sidebar">NetApp Active IQ Config Advisor</block>
@@ -3296,7 +3273,6 @@
   <block id="c1149c08490444b20498c10e50c2a14b" category="list-text">[[step29]驗證叢集是否正常：「叢集顯示」</block>
   <block id="e5b11cf3c23c3508c3b896786ad6720a" category="list-text">[[step30] Ping遠端叢集介面以驗證連線能力：「叢集ping叢集節點local」</block>
   <block id="77a2f8547fffecb69f2d5527dcc4cb77" category="list-text">[[step5]顯示鄰近裝置的清單：「How cup neighbor」</block>
-  <block id="104f202730dfa230b37a1822877fcba1" category="sidebar">Cisco Nexus 9336C-FX2、採用共享組態</block>
   <block id="d4d708e45e34a1416e859c8024a9e7c1" category="admonition">對於更新的版本、請使用命令「系統乙太網路交換器show -is監控-運作正常」ONTAP 。</block>
   <block id="5de00a014ac301d274873568153e5b2e" category="paragraph">請確定執行此命令後已停用自動還原功能。</block>
   <block id="8fdae5a227344a83423005f83a057331" category="list-text">驗證叢集內所有節點的叢集連接埠是否正常運作：</block>
@@ -3383,4 +3359,59 @@
   <block id="e55e97993d59e593f9db82748c7205cd" category="sidebar">其他交換器程序</block>
   <block id="66a1a209b630861db25c9013c19efe3b" category="sidebar">移轉至雙節點無交換器叢集</block>
   <block id="749e4fff30fa6550a6b7216922e76856" category="paragraph">在下列範例中、節點1上的「e0a」連接至節點2上的「e0a」、節點1上的「e0b」連接至節點2上的「e0b」：</block>
+  <block id="f9c5b146fb6da165b4c98f09374af2ac" category="doc">從老舊的Cisco交換器移轉至Cisco Nexus 9336C-FX2叢集交換器</block>
+  <block id="1b8eaf3e7617b6a44d79a24bae0cd120" category="doc">如何從舊的Cisco交換器移轉至Cisco Nexus 9336C-FX2叢集交換器</block>
+  <block id="1cb5aa8f44865f51a2c94321dd8b41db" category="paragraph">使用Cisco Nexus 9336C-FX2叢集交換器更換舊版Cisco Nexus叢集交換器之前、必須符合下列條件：</block>
+  <block id="39ab2dde5b8a156f8283ad9532823433" category="list-text">必須完成Cisco Nexus 9336C-FX2交換器的初始自訂。因此：</block>
+  <block id="15ceb34ee806ca103db662b65be6a105" category="list-text">9336C-FX2交換器正在執行最新建議版本的軟體</block>
+  <block id="898acfce731a270505031c1f99d814b6" category="list-text">參考組態檔（RCT）已套用至交換器</block>
+  <block id="efe23bf358b9145750927cc0f07ea121" category="list-text">任何站台自訂、例如DNS、NTP、SMTP、SNMP、 必須在新交換器上設定SSH。</block>
+  <block id="ec8b4a794ba1d9a3b4e29049a5c80f5a" category="list-text">您必須查閱上的交換器相容性表<block ref="91aaf2f14ce017094691ed108f35b756" category="inline-link-rx"></block> 頁面、以取得支援ONTAP 的功能表、NX-OS和RCF版本。</block>
+  <block id="82aa1ff47d80bf012e412296f6a53469" category="inline-link">Nexus 9000系列交換器</block>
+  <block id="7951817a7bdebe9bf78d64818e47713a" category="list-text">您必須參閱Cisco網站上提供的適當軟體與升級指南、以取得Cisco交換器升級與降級程序的完整文件<block ref="fe4ad365e2858c06eb4fc7c343be69c7" category="inline-link-rx"></block>。</block>
+  <block id="0db1e0bcdfd24db323c5c37def104aff" category="paragraph">本程序中的範例使用兩個節點。這些節點使用兩個10GbE叢集互連連接埠e0a和e0b。請參閱<block ref="a9613e1dbacf145285c45df4264fe797" category="inline-link-rx"></block> 驗證平台上的叢集連接埠是否正確。</block>
+  <block id="4ad14943532a190c518f634a57c3dbc8" category="admonition">命令輸出可能會因ONTAP 不同版本的資訊而有所不同。</block>
+  <block id="ff3339197a97612c0ebbaf2641bdfcfa" category="list-text">現有兩個Cisco交換器的名稱為* CS1*和* CS2*</block>
+  <block id="0152c4d08b7616e344d95f6017c7732e" category="list-text">新的Nexus 9336C-FX2叢集交換器為* CS1-new *和* CS2-new *。</block>
+  <block id="fb8e914ec6dde0cf237e25c77cef2ef2" category="list-text">節點名稱是* node1*和* node2*。</block>
+  <block id="280a3fe80d664dbb11b34f620eaef991" category="list-text">叢集LIF名稱為*節點1_clus1*、節點1為*節點1_clus2*、節點2為*節點2_clus1*、節點2為*節點2_clus2*。</block>
+  <block id="c2bb2ae34a9db0e318c25b32c07dd6d5" category="list-text">* cluster1：：*&gt;*提示會指出叢集的名稱。</block>
+  <block id="f8f21999828992a0d0f5a8789c02dece" category="admonition">此程序需要同時使用ONTAP 支援指令和<block ref="fe4ad365e2858c06eb4fc7c343be69c7" category="inline-link-rx"></block> 命令；ONTAP 除非另有說明、否則會使用指令。</block>
+  <block id="8b393c1cf533ebbb42a0655588c59f16" category="list-text">在新交換器上、確認交換器CS1-new和CS2-new之間的ISL已連線且正常：「How port-channel Summary」（顯示連接埠通道摘要）</block>
+  <block id="79a4f6b2d175ee3474f28b12d058e767" category="list-text">顯示連接至現有叢集交換器的每個節點上的叢集連接埠：「network device-dDiscovery show」</block>
+  <block id="1a0894513362fda649e11ba9de926b82" category="list-text">確定每個叢集連接埠的管理或作業狀態。</block>
+  <block id="84ccc24125cdd2f4d989498223bde79d" category="list-text">驗證所有叢集連接埠是否都正常運作：「network port show -IPSpace Cluster（網路連接埠顯示-IPSpace叢集）」</block>
+  <block id="639eee6825849ecae25422187ed117e1" category="list-text">驗證所有的叢集介面（lifs）是否都在其主連接埠上：「network interface show -vserver Cluster」（網路介面show -vserver叢集）</block>
+  <block id="819ff57f464e039de1c480b406150b87" category="list-text">在叢集交換器CS2上、關閉連接至節點叢集連接埠的連接埠：</block>
+  <block id="78ecf74476ba071060eac27e2d411dbb" category="list-text">驗證叢集LIF是否已移轉至叢集交換器CS1上裝載的連接埠。這可能需要幾秒鐘的時間：「network interface show -vserver cluster」（網路介面show -vserver叢集）</block>
+  <block id="c0aae69da186a464bb2e5ce0a8b32451" category="list-text">將所有叢集節點連線從舊的CS2交換器移至新的CS2交換器。</block>
+  <block id="4d317606ee3937aed888fec43374c887" category="list-text">確認移至CS2-new的網路連線健全狀況：「network port show -IPSpace Cluster（網路連接埠顯示-IPSpace叢集）」</block>
+  <block id="be6163ad0c362d632b28f98dea1fdaaa" category="paragraph">所有移除的叢集連接埠都應為上移。</block>
+  <block id="961e9e68bb33d8ff83286d506c60ca4e" category="list-text">檢查叢集連接埠上的鄰近資訊：「network device-dDiscovery show -protocol cup」</block>
+  <block id="d0141bcaf704f75f043a7384708a3131" category="paragraph">驗證移動的叢集連接埠是否將CS2-new交換器視為鄰近端點。</block>
+  <block id="f53f913adacde30730136e7153afce35" category="list-text">從交換器CS2的觀點確認交換器連接埠連線：</block>
+  <block id="c4fb5fab435d358d1b3a68ec74352416" category="list-text">在叢集交換器CS1上、關閉連接至節點叢集連接埠的連接埠。下列範例使用步驟7的介面輸出範例。</block>
+  <block id="8c61118abc6e9e30fd4469d362e96e00" category="paragraph">所有叢集生命體都會移至CS2新交換器。</block>
+  <block id="bf44f0d62fa291c101c06f24a71b2def" category="list-text">驗證叢集LIF是否已移轉至交換器CS2-new上裝載的連接埠。這可能需要幾秒鐘的時間：「network interface show -vserver cluster」（網路介面show -vserver叢集）</block>
+  <block id="494ad00c3b01ee37729fae8f4d4c52c0" category="list-text">將連線從CS1移至新的CS1交換器。</block>
+  <block id="8883da283484d4130e3cbb72ad1ac23a" category="list-text">確認移至CS1-new的網路連線健全狀況：「network port show -IPSpace Cluster（網路連接埠顯示-IPSpace叢集）」</block>
+  <block id="77d74198b21a299e05d32144302f0f9a" category="list-text">檢查叢集連接埠上的鄰近資訊：「network device-dinDiscovery show」</block>
+  <block id="2a5fc0afbcb2299e24c73a909b297e93" category="paragraph">驗證移動的叢集連接埠是否將CS1-new交換器視為鄰近端點。</block>
+  <block id="35d736ae56a7e094d4d2c2786669f8ca" category="list-text">從交換器CS1-New的觀點來確認交換器連接埠連線：</block>
+  <block id="d4180b23620c4c07998ad2c44ba6239d" category="list-text">確認CS1-new與CS2-new之間的ISL仍可正常運作：「How port-channel Summary」（顯示連接埠通道摘要）</block>
+  <block id="0b602f3edded4e9ea468fe0dd0aed4e3" category="list-text">驗證叢集LIF是否已還原至其主連接埠（這可能需要一分鐘時間）：「network interface show -vserver Cluster（網路介面show -vserver叢集）」</block>
+  <block id="a1ef9f2bd020f62a6d3b932a75ea6b79" category="paragraph">如果叢集l生命 尚未還原至其主連接埠、請手動還原：「網路介面還原-vserver叢集-lIF *」</block>
+  <block id="6e17c5b16e74fa9487ffd1971cf1ffb9" category="list-text">Ping遠端叢集介面以驗證連線能力：「cluster ping cluster -cluster -nodE &lt;name&gt;」</block>
+  <block id="2a42351fd3a2f7fd74a9510816b9125f" category="list-text">啟用乙太網路交換器健全狀況監視器記錄收集功能、以收集交換器相關的記錄檔。</block>
+  <block id="9e25219bfef39dc2d94805b599244f8d" category="open-title">更新版本ONTAP</block>
+  <block id="c341f6ea60d7e8508c7d6cd8d529fd71" category="paragraph">使用下列兩個命令啟用乙太網路交換器健全狀況監視器記錄收集功能、以收集交換器相關的記錄檔：「System Switch Ethernet log setup-password」（系統交換器乙太網路記錄啟用-收集）和「System Switch Ethernet log enable - collection」（系統交換器乙太網路記錄啟用-收集）</block>
+  <block id="372aff3164b35ebb97a99a633d4262a4" category="paragraph">*注意：*您需要交換器上*管理*使用者的密碼。</block>
+  <block id="29da462071497c41049a1b6586d7faad" category="paragraph">*附註：*如果上述任何命令傳回錯誤、請聯絡NetApp支援部門。</block>
+  <block id="265709bb11a2395ee04486f312f63d67" category="open-title">發行9.5P16、9.6P12及9.7P10及更新版本的修補程式ONTAP</block>
+  <block id="97bf148f014d7e2cb04d1c101e0683ee" category="paragraph">使用「系統叢集-交換器記錄設定密碼」和「系統叢集-交換器記錄啟用-收集」命令、啟用乙太網路交換器健全狀況監視器記錄收集功能以收集交換器相關的記錄檔</block>
+  <block id="09c6def1f4b49f6f04b28d41fd5d1662" category="list-text">[[Step27]如果您禁止自動建立案例、請叫用AutoSupport 下列訊息重新啟用此功能：「System Node AutoSupport 現象叫用節點節點*-type all -Message MAn=end」</block>
+  <block id="bc8a2cd252a5beb1dbf4f209baea67eb" category="sidebar">共享交換器</block>
+  <block id="626a7cbe056796bcb1c158b143866230" category="sidebar">發行說明 ONTAP</block>
+  <block id="c09b5be4c2da04f4040eef1878f258aa" category="sidebar">部分9文件ONTAP</block>
+  <block id="4ec6a95192d18718a540794417c8fa63" category="sidebar">NetApp Active IQ Digital Advisor</block>
 </blocks>

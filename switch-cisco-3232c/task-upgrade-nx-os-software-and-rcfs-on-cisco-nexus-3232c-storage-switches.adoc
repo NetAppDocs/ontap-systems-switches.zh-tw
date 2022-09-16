@@ -26,11 +26,11 @@ Cisco NX-OS軟體與參考組態檔（RCT）可在Cisco Nexus 3232C儲存交換�
 
 *程序摘要：*
 
-* 我檢查交換器和連接埠的健全狀況（<<step1_upgrade_3232c,步驟1>>- <<step4_upgrade_3232c,4.>>）*
-* 二將RCF複製到Cisco交換器S2（<<step5_upgrade_3232c,步驟5.>> - <<step8_upgrade_3232c,8.>>）*
-* 三將NX-OS映像下載至Cisco交換器S2並重新開機（<<step9_upgrade_3232c,步驟9.>> - <<step12_upgrade_3232c,12.>>）*
-* 四重新檢查交換器和連接埠的健全狀況（<<step13_upgrade_3232c,步驟13>> - <<step15_upgrade_3232c,15>>）*
-* 五重複 <<step1_upgrade_3232c,步驟1>>- <<step17_upgrade_3232c,17>> 適用於Cisco交換器S1.**
+* 我檢查交換器和連接埠的健全狀況（,步驟1- ,4.）*
+* 二將RCF複製到Cisco交換器S2（,步驟5. - ,8.）*
+* 三將NX-OS映像下載至Cisco交換器S2並重新開機（,步驟9. - ,12.）*
+* 四重新檢查交換器和連接埠的健全狀況（,步驟13 - ,15）*
+* 五重複 ,步驟1- ,17 適用於Cisco交換器S1.**
 
 
 本程序中的範例使用兩個節點：節點1具有兩個儲存連接埠、節點2則有兩個儲存連接埠。請參閱 link:https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^] 驗證平台上的儲存連接埠是否正確。

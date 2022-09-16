@@ -63,7 +63,7 @@ summary:
 * 您必須能在安裝站台存取HTTP、FTP或TFTP伺服器、才能下載適用的NX-OS和參考組態檔（RCF）版本。
 * 您必須擁有所需的共享交換器文件。
 +
-請參閱 <<Required documentation for shared switches>> 以取得更多資訊。
+請參閱  documentation for shared switches 以取得更多資訊。
 
 * 您必須備有必要的控制器文件和ONTAP 參考文件。
 +
@@ -87,11 +87,11 @@ IMPORTANT: 您必須從下載適用的NetApp RCFs https://mysupport.netapp.com["
 
 . 裝入交換器、控制器和NS224 NVMe儲存櫃。請參閱https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-sw-9336c-install-cabinet/GUID-92287262-E7A6-4A62-B159-7F148097B33B.html["在NetApp機櫃中安裝Cisco Nexus 9336C-FX2叢集交換器和傳遞面板"] 指南、以取得在NetApp機櫃中安裝交換器的指示。
 . 開啟交換器、控制器和NS224 NVMe儲存櫃的電源。
-. [[step3]]根據中提供的資訊、執行交換器的初始組態 <<Required configuration information>>。
+. [[step3]]根據中提供的資訊、執行交換器的初始組態  configuration information。
 . 確認您在設定結束時所顯示的顯示器上所做的組態選擇、並確定您已儲存組態。
 . 檢查交換器上的軟體版本、必要時將NetApp支援的軟體版本下載到交換器。
 +
-如果您下載NetApp支援的軟體版本、則必須下載NetApp網路交換器參考組態檔案、並將其與您儲存的組態合併 <<step3,步驟3.>>。您可以從下載檔案和指示 https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器"] 頁面。如果您有自己的交換器、請參閱 http://www.cisco.com["Cisco"] 網站。
+如果您下載NetApp支援的軟體版本、則必須下載NetApp網路交換器參考組態檔案、並將其與您儲存的組態合併 ,步驟3.。您可以從下載檔案和指示 https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器"] 頁面。如果您有自己的交換器、請參閱 http://www.cisco.com["Cisco"] 網站。
 
 
 

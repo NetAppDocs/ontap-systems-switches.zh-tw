@@ -16,34 +16,32 @@ indexpage:
       url: switch-cisco-92300/92300-overview.html
     - title: NetApp CN1610
       url: switch-netapp-cn1610/index.html
-  - title: 儲存交換器
-    links:
-    - title: Broadcom支援的Bes：53248
-      url: "/switch-bes-53248/overview-bes53248.html"
-    - title: Cisco Nexus 9336C-FX2
-      url: "/switch-cisco-9336/9336-overview.html"
-    - title: Cisco Nexus 9336C-FX2、採用共享組態
-      url: "/switch-cisco-9336c-shared/9336c_setup_and_configuration_guide_for_cisco_shared_switches.html"
-    - title: Cisco Nexus 2300YC
-      url: "/switch-cisco-92300/92300-overview.html"
     - title: 其他交換器機型
       url: "/other/switch-linkout.html"
+  - title: 儲存交換器
+    links:
+    - title: Cisco Nexus 3232C
+      url: switch-cisco-3232c/index.html
+    - title: Cisco Nexus 9336C-FX2
+      url: "/switch-cisco-9336c-fx2/9336-overview.html"
+  - title: 共享交換器
+    links:
+    - title: Cisco Nexus 9336C-FX2
+      url: "/switch-cisco-9336c-fx2-shared/9336c_setup_and_configuration_guide_for_cisco_shared_switches.html"
   - title: 更多資源
     links:
-    - title: 其他交換器機型
-      url: other/switch-linkout.html
-    - title: 其他交換器程序
-      url: "/other-procedures/transition-to-two-node-switchless-cluster-index.html"
-    - title: 發行說明ONTAP
-      url: https://library.netapp.com/ecm/ecm_download_file/ECMLP2492508
     - title: 不再需要使用本技術AFF FAS
       url: https://docs.netapp.com/us-en/ontap-systems/index.html
     - title: 升級文件AFF FAS
       url: https://docs.netapp.com/us-en/ontap-systems-upgrade/index.html
-    - title: 本文檔 ONTAP
+    - title: 發行說明 ONTAP
+      url: https://library.netapp.com/ecm/ecm_download_file/ECMLP2492508
+    - title: 部分9文件ONTAP
       url: https://docs.netapp.com/us-en/ontap/index.html
     - title: NetApp Hardware Universe
       url: https://hwu.netapp.com/
+    - title: NetApp Active IQ Digital Advisor
+      url: https://docs.netapp.com/us-en/active-iq/index.html
     - title: NetApp Active IQ Config Advisor
       url: https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor
     - title: NetApp 互通性對照表
