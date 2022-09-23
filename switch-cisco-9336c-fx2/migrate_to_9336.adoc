@@ -44,6 +44,10 @@ NOTE: 命令輸出可能會因ONTAP 不同版本的資訊而有所不同。
 
 NOTE: 此程序需要同時使用ONTAP 支援指令和 https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.htmlCisco["Nexus 9000系列交換器"^] 命令；ONTAP 除非另有說明、否則會使用指令。
 
+*初始交換器設定*
+
+image::../media/Initial_setup.png[初始交換器設定]
+
 .步驟
 . 如果AutoSupport 此叢集啟用了「支援功能」、請叫用AutoSupport 「系統節點AutoSupport 支援功能叫用節點*-type all -most MAn=xh」訊息來禁止自動建立案例
 +
@@ -187,7 +191,7 @@ cs2(config-if-range)# *shutdown*
 +
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network interface show -vserver cluster*
+cluster1::*> *network interface show -vserver Cluster*
             Logical       Status     Network            Current    Current Is
 Vserver     Interface     Admin/Oper Address/Mask       Node       Port    Home
 ----------- ------------- ---------- ------------------ ---------- ------- ----
@@ -208,6 +212,12 @@ node1      true    true          false
 node2      true    true          false
 ----
 . 將所有叢集節點連線從舊的CS2交換器移至新的CS2交換器。
++
+*叢集節點連線已移至CS2-new交換器*
+
++
+image::../media/new_switch_cs1.png[叢集節點連線已移至CS2新交換器]
+
 . 確認移至CS2-new的網路連線健全狀況：「network port show -IPSpace Cluster（網路連接埠顯示-IPSpace叢集）」
 +
 [listing, subs="+quotes"]
@@ -274,7 +284,7 @@ cs1(config-if-range)# *shutdown*
 +
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network interface show -vserver cluster*
+cluster1::*> *network interface show -vserver Cluster*
             Logical      Status     Network            Current     Current Is
 Vserver     Interfac     Admin/Oper Address/Mask       Node        Port    Home
 ----------- ------------ ---------- ------------------ ----------- ------- ----
@@ -295,6 +305,12 @@ node1      true    true          false
 node2      true    true          false
 ----
 . 將連線從CS1移至新的CS1交換器。
++
+*叢集節點連線已移至CS1-new交換器*
+
++
+image::../media/new_switch_cs2.png[叢集節點連線已移至CS1新交換器]
+
 . 確認移至CS1-new的網路連線健全狀況：「network port show -IPSpace Cluster（網路連接埠顯示-IPSpace叢集）」
 +
 [listing, subs="+quotes"]

@@ -3414,4 +3414,10 @@
   <block id="626a7cbe056796bcb1c158b143866230" category="sidebar">發行說明 ONTAP</block>
   <block id="c09b5be4c2da04f4040eef1878f258aa" category="sidebar">部分9文件ONTAP</block>
   <block id="4ec6a95192d18718a540794417c8fa63" category="sidebar">NetApp Active IQ Digital Advisor</block>
+  <block id="f196800c452474506c73b49c3937928d" category="paragraph">*初始交換器設定*</block>
+  <block id="ce4b3e7ecf21d16073d0790ca53a6dd9" category="image-alt">初始交換器設定</block>
+  <block id="ae7b3cb9899d7947e3b5d7996824f062" category="paragraph">*叢集節點連線已移至CS2-new交換器*</block>
+  <block id="1f5e0ea57e0f194957353e2db3df4e2d" category="image-alt">叢集節點連線已移至CS2新交換器</block>
+  <block id="3fb38d5aab534a043c30d7f1a3b0a9dd" category="paragraph">*叢集節點連線已移至CS1-new交換器*</block>
+  <block id="84532259a7d4acf54c61408e0d42d0ce" category="image-alt">叢集節點連線已移至CS1新交換器</block>
 </blocks>
