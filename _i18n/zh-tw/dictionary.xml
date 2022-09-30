@@ -2318,7 +2318,6 @@
   <block id="aafb1268dadda4c3bd9dd5d8a55b2fa2" category="paragraph">您必須先安裝適當的舊版授權、才能還原至舊版軟體。</block>
   <block id="e97a5456b056d44921050d05d6b2fc1b" category="summary">如果您有雙節點無交換式叢集、則可在不中斷營運的情況下、移轉至雙節點交換式叢集、其中包含Broadcom支援的Bes - 53248叢集交換器。記錄的程序適用於使用光纖或雙軸纜線連接埠的所有叢集節點連接埠、但如果節點使用內建10GBASE-T RJ45連接埠作為叢集網路連接埠、則此交換器不支援此程序。</block>
   <block id="1a04f2f2756bfce9c0d252c70c4f7953" category="doc">使用Broadcom支援的Bes - 53248叢集交換器移轉至雙節點交換式叢集</block>
-  <block id="da89029df4f4f3d5cb89934f58459d5d" category="paragraph">請參閱<block ref="452267e26d0f038af434d2b1530dbe66" category="inline-link-rx"></block> 《交換機設定與組態指南（適用於Broadcom支援的BS-53248 Switches）》指南。</block>
   <block id="a0cf70ca38e1fd0262591cf56e31f46f" category="paragraph">如需有關用於B3作業 叢集交換器的可用授權類型詳細資料、請參閱 <block ref="fa313c84214758de3e89db1ed227f8b1" category="inline-link-macro-rx"></block>。</block>
   <block id="1c0b21766338d196381807883549559b" category="doc">安裝適用於B3作業 叢集交換器的授權</block>
   <block id="c91d3bedd07d88d5a148a4e0c0083a14" category="summary">若要將叢集中現有的CN1610叢集交換器更換為Broadcom支援的Bes - 53248叢集交換器、您必須執行特定的工作順序。</block>
@@ -3217,7 +3216,6 @@
   <block id="c538bd274909af8b508e01f0ef04034d" category="doc">如何將CN1610叢集交換器移轉至B怎麼53248叢集交換器</block>
   <block id="aca231809cb1cd80c1435dd9914b66dd" category="paragraph">然後、您必須將所有節點上的中斷連接連接埠重新連接至新的BS-53248交換器CS2。請參閱<block ref="141c10db18cf1753fa5fc05f553c33ff" category="inline-link-rx"></block> 以取得核准的纜線選項。</block>
   <block id="cbd2e2da439fbaf2fd95743ddedbb09e" category="paragraph">然後、您必須將所有節點上的中斷連接連接埠重新連線至新的BS1-53248交換器CS1。請參閱<block ref="141c10db18cf1753fa5fc05f553c33ff" category="inline-link-rx"></block> 以取得核准的纜線選項。</block>
-  <block id="2fdf2d2e9946eb8adc48fbf536fd79b1" category="paragraph">請參閱 <block ref="22274518ab78de16bd162dd23a69479d" category="inline-link-macro-rx"></block> 和 <block ref="ad7a44206ec014fec7df9283bb056461" category="inline-link-macro-rx"></block> 以瞭解啟用叢集健全狀況交換器記錄收集以收集交換器相關記錄檔所需的步驟。</block>
   <block id="1ba5b0ffd5b0d90e8b5fbf1938e87f52" category="section-title">Bes - 53248叢集交換器連接埠指派</block>
   <block id="16c3e502f28be460a987ad28ccd36874" category="paragraph">您可以使用Broadcom支援的Bes - 53248叢集交換器連接埠指派表、作為設定叢集的指南。</block>
   <block id="fa4755458f8910a0033438b214e14730" category="paragraph">2016年1月16日</block>
@@ -3238,7 +3236,6 @@
   <block id="762a244fe152a19f04047b412d16e8df" category="paragraph">在執行ONTAP 指示燈介面的系統上安裝Bes - 53248叢集交換器、首先要設定IP位址和組態、讓交換器能夠透過管理介面進行通訊。然後您可以視需要安裝乙太網路架構作業系統（EFOS）軟體、參考組態檔（RCF）及其他授權。此程序旨在在新增控制器之前、先準備B3交互 式交換器。此外、您可能需要安裝所需的組態檔、以支援適用於BS-53248叢集交換器的叢集交換器健全狀況監視器（CSHealth Monitor、CSHM）。請參閱 <block ref="22274518ab78de16bd162dd23a69479d" category="inline-link-macro-rx"></block> 以取得更多詳細資料。</block>
   <block id="23e7cf6793dbbe3c59640d6ebb6cf4fc" category="list-text">。<block ref="141c10db18cf1753fa5fc05f553c33ff" category="inline-link-rx"></block> 包含ONTAP 有關支援功能的資訊、支援的EFOS韌體、以及連接至BE-53248叢集交換器的纜線。</block>
   <block id="d1e4ca1900305cb93087d6668cebf0f9" category="paragraph">請確定已依照中所述設定Bes至53248叢集交換器 <block ref="29f190705d64b052fe2941415d5984d8" category="inline-link-macro-rx"></block> 開始此移轉程序之前。</block>
-  <block id="d7d3a566381272c7d9d5ad6a790a9a99" category="paragraph">另請參閱 <block ref="22274518ab78de16bd162dd23a69479d" category="inline-link-macro-rx"></block> 和 <block ref="ad7a44206ec014fec7df9283bb056461" category="inline-link-macro-rx"></block> 以瞭解啟用叢集健全狀況交換器記錄收集以收集交換器相關記錄檔所需的步驟。</block>
   <block id="98b6bf2585261f62aff01449faad7684" category="paragraph">要使用的除錯命令有：「Debuger transfer」和「debugs license」</block>
   <block id="c0be2d74ddb0ea6b8972b9da2fc2c223" category="paragraph">。<block ref="141c10db18cf1753fa5fc05f553c33ff" category="inline-link-rx"></block> 包含ONTAP 有關支援功能的資訊、支援的EFOS韌體、以及連接至B作業 環境與53248交換器的纜線。</block>
   <block id="91950abebf25a4752db5969582aa4bb7" category="paragraph">。<block ref="141c10db18cf1753fa5fc05f553c33ff" category="inline-link-rx"></block> 包含平台實際叢集連接埠的最新資訊。</block>
@@ -3420,4 +3417,5 @@
   <block id="1f5e0ea57e0f194957353e2db3df4e2d" category="image-alt">叢集節點連線已移至CS2新交換器</block>
   <block id="3fb38d5aab534a043c30d7f1a3b0a9dd" category="paragraph">*叢集節點連線已移至CS1-new交換器*</block>
   <block id="84532259a7d4acf54c61408e0d42d0ce" category="image-alt">叢集節點連線已移至CS1新交換器</block>
+  <block id="51c9a924c6ea752a49b8df35531a26e7" category="paragraph">請參閱 <block ref="22274518ab78de16bd162dd23a69479d" category="inline-link-macro-rx"></block> 和 <block ref="a2f030b123da393c4875ac0d059237dd" category="inline-link-macro-rx"></block> 以瞭解啟用叢集健全狀況交換器記錄收集以收集交換器相關記錄檔所需的步驟。</block>
 </blocks>
