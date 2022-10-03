@@ -16,6 +16,8 @@ entries:
     url: "/switch-nvidia-sn2100/install_cumulus_linux_onie_mode.html"
   - title: 安裝RCF指令碼
     url: "/switch-nvidia-sn2100/install_sn2100_rcf.html"
+  - title: 設定用於交換器記錄收集的v3
+    url: "/switch-nvidia-sn2100/install_snmpv3_support_for_log_collection.html"
   - title: 將NS224磁碟櫃纜線當作交換器附加儲存設備
     url: "/switch-nvidia-sn2100/install_cable_shelves_SAT_sn2100.html"
 - title: 從Cisco叢集交換器移轉至NVIDIA SN2100叢集交換器
