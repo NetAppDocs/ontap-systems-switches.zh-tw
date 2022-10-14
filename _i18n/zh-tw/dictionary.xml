@@ -3685,7 +3685,6 @@
   <block id="008b8867712161228bd794977fcd0d4b" category="paragraph"><block ref="008b8867712161228bd794977fcd0d4b" category="inline-link-rx"></block></block>
   <block id="4aaebba2a5287c74eb41bf080e6d1fe4" category="list-text">確認您的平台機型支援的硬體、例如儲存交換器和纜線：</block>
   <block id="6cce5d78fc7baf999a2f91945cec4681" category="doc">NVIDIA SN2100交換器</block>
-  <block id="a8a1b8afb1ab0b09f2d34e00280006bb" category="paragraph">從S209.10.1P3、ONTAP 您可以使用NVIDIA SN2100交換器、將儲存設備和叢集功能結合成共享交換器配置。</block>
   <block id="d7ddb122f5b0d427125ca1728604348a" category="paragraph">您可以在NVIDIA雙/單一交換器機櫃中安裝NVIDIA SN2100交換器（X190006/X190106）、並附有交換器隨附的標準支架。</block>
   <block id="b0bf0f217cb1d53bd191aca5d6b62108" category="paragraph">下表列出MSN2100交換器和軌道套件的零件編號和說明：</block>
   <block id="572fe15be859e8e821675b10e630a4ae" category="paragraph">X190006-PE</block>
@@ -3728,9 +3727,11 @@
   <block id="3d78396bc2da5588ddc83088e252b438" category="sidebar">不需要升級文件AFF FAS</block>
   <block id="5358757de9216cc29d688612a3d72fe1" category="sidebar">供應說明文件ONTAP</block>
   <block id="3ee7af3967e9385ab7a25cd0ac2015ae" category="sidebar">NVIDIA SN2100交換器</block>
-  <block id="5f0a12b5e055df565d02795623cf4bc2" category="sidebar">設定及設定NVIDIA SN2100交換器</block>
   <block id="2f4146deaddc6e88b575577116cf8ce8" category="sidebar">從Cisco叢集交換器移轉至NVIDIA SN2100叢集交換器</block>
   <block id="61203301024e828295cf8cd1ef164fc3" category="sidebar">從Cisco儲存交換器移轉至NVIDIA SN2100儲存交換器</block>
   <block id="fdb05c6a8582161eedd71436841b5d8c" category="sidebar">使用NVIDIA SN2100交換器移轉至雙節點交換式叢集</block>
   <block id="d758c27204bd1511d766f1b9d917e78a" category="sidebar">更換NVIDIA SN2100交換器</block>
+  <block id="d645f4ad64c5de549a6e962f1b7e9a5d" category="doc">設定及設定NVIDIA SN2100交換器</block>
+  <block id="0bfa1a1e232ece62b9507c3e20a01280" category="paragraph">從功能更新至功能更新階段開始ONTAP 、您可以使用NVIDIA SN2100交換器、將儲存設備和叢集功能結合到共享交換器組態中。</block>
+  <block id="153a5c90883f7a8479e2748a0919a601" category="sidebar">設定及設定NVIDIA SN2100交換器</block>
 </blocks>
