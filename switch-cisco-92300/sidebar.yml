@@ -38,16 +38,16 @@ entries:
     url: "/switch-cisco-92300/configure-install-initial.html"
   - title: 安裝NX-OS軟體
     url: "/switch-cisco-92300/configure-install-nxos.html"
-  - title: 安裝參考組態檔（RCF）
-    url: "/switch-cisco-92300/configure-install-rcf.html"
+  - title: 安裝參考組態檔案
+    url: "/switch-cisco-92300/install-the-rcf-file.html"
 - title: 在Cisco Nexus 2300YC叢集交換器上安裝NX-OS軟體和RCF
   entries:
   - title: 總覽
     url: "/switch-cisco-92300/install-nxos-overview.html"
   - title: 安裝NX-OS軟體
     url: "/switch-cisco-92300/install-nxos-software.html"
-  - title: 安裝參考組態檔（RCF）
-    url: "/switch-cisco-92300/install-nxos-rcf.html"
+  - title: 安裝參考組態檔案
+    url: "/switch-cisco-92300/install-the-rcf-file.html"
 - title: 使用Cisco Nexus 2300YC交換器移轉至雙節點交換叢集
   entries:
   - title: 總覽
@@ -60,5 +60,5 @@ entries:
     url: "/switch-cisco-92300/migrate-to-92300yc-overview.html"
   - title: 如何從Cisco交換器移轉至Cisco Nexus 2300YC交換器
     url: "/switch-cisco-92300/migrate-to-92300yc.html"
-  - title: 更換Cisco Nexus 2300YC交換器
-    url: "/switch-cisco-92300/replace-92300yc.html"
+- title: 更換Cisco Nexus 2300YC交換器
+  url: "/switch-cisco-92300/replace-92300yc.html"

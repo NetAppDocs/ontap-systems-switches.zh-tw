@@ -803,7 +803,6 @@
   <block id="6eefd9c5472579007029c5e6c1342728" category="inline-link-macro">Cisco乙太網路交換器</block>
   <block id="0490a4dc93fa26f3f62209985ac8ef89" category="list-text">您必須查閱上的交換器相容性表 <block ref="ad06ca9efd8c48f3172ea76c98c07c9d" category="inline-link-macro-rx"></block> 頁面、以取得支援ONTAP 的功能表、NX-OS和RCF版本。</block>
   <block id="08933d864e3d24702e43b0e8a23cb001" category="list-text">您必須參閱Cisco網站上提供的適當軟體與升級指南、以取得Cisco交換器升級與降級程序的完整文件<block ref="b0a587bafe069d42ec5630d136ecb6d0" category="inline-link-rx"></block>。</block>
-  <block id="a7e5cc3b90446f6b486e4393aced65d6" category="paragraph">「系統節點AutoSupport 不完整地叫用節點*-type all -Message MAn=x h」</block>
   <block id="071e695f268cd49293774c00613abb17" category="list-text">顯示每個叢集互連交換器的每個節點已設定多少個叢集互連介面：</block>
   <block id="48e27bd4f05b8928a4da9e94eb1821b7" category="paragraph">「network device-dDiscovery show -protocol cup」</block>
   <block id="a06f69669c864cc0902a5e544ee247bc" category="paragraph">「網路連接埠顯示–IPSpace叢集」</block>
@@ -1151,7 +1150,6 @@
   <block id="7d5e5990cb3bdda7d774b1b9dbba810d" category="paragraph">"重裝"</block>
   <block id="ede2428532eb37220f5b7dc1131ef1f6" category="summary">您可以使用此程序來執行Cisco Nexus 2300YC交換器的初始安裝。</block>
   <block id="6b49fd3b6719b15759b2f0c0c35498b0" category="doc">Cisco Nexus 92300YC交換器的初始安裝</block>
-  <block id="4dad97b74eb8f56ecdedfd5718fe8d6a" category="paragraph">您可以從NetApp支援網站下載適用於交換器的NetApp Cisco NX-OS軟體、網址為：<block ref="7bc6752d2076d2c755eaebbdfeb91d23" category="inline-link-rx"></block></block>
   <block id="dc13ff13441dfc204b36688d5d7342b7" category="paragraph">NX-OS是Cisco Systems提供的Nexus系列乙太網路交換器和MDS系列光纖通道（FC）儲存區域網路交換器的網路作業系統。</block>
   <block id="9913c8df5523d66d8215068b88bfdc5d" category="paragraph">本程序提供安裝交換器並讓其執行的程序摘要：</block>
   <block id="dd85182ec956cca64a8a2a995959918b" category="list-text">將序列連接埠連接至您選擇的主機或序列連接埠。</block>
@@ -1189,8 +1187,6 @@
   <block id="12014b8ecc927f834dff435ab28b8c21" category="list-text">所有交換器間連結（ISL）連接埠必須在連接埠1/65和1/66上停用。</block>
   <block id="8d0dde131d3467b69599db1c22cbb114" category="list-text">所需的參考組態檔（RCF）和NX-OS作業系統映像交換器必須載入交換器。</block>
   <block id="c5cfb6252d7fa22c4b3227c10ae1b995" category="list-text">交換器的初始自訂作業必須完成、如以下所述：</block>
-  <block id="50a23b934f4f37044bdd5eac939b6cd6" category="inline-link-macro">設定新的Cisco Nexus 2300YC交換器</block>
-  <block id="6c9cb5b0a3e8788afc621cc80a43f532" category="paragraph"><block ref="6c9cb5b0a3e8788afc621cc80a43f532" category="inline-link-macro-rx"></block></block>
   <block id="da3d2259355bee77531cdb315e049db9" category="paragraph">任何先前的站台自訂（例如STP、SNMP和SSH）都應該複製到新交換器。</block>
   <block id="54bb024ba08d8f7e48b6be56f6a3301a" category="paragraph">您必須執行命令、從裝載叢集LIF的節點移轉叢集LIF。</block>
   <block id="e6a737d65dbbe364da94490cf2b1e13c" category="list-text">現有Nexus 2300YC交換器的名稱為CS1和CS2。</block>
@@ -1291,8 +1287,6 @@
   <block id="2b37f98166c30979ac9a6361c70e9ddd" category="list-text">叢集LIF名稱為節點1的「node1_clus1」和「node1_clus2」、節點2的「node2_clus1」和「node2_clus2」。</block>
   <block id="aedb89363510ad27a3d565acd684aa56" category="list-text">IPspace名稱為「叢集」。</block>
   <block id="489b3085078c85c715030e310e85ce1b" category="list-text">每個節點上的叢集連接埠名稱為「e0a」和「e0b」。</block>
-  <block id="c2995f917cf848b1a8ad4f123990b08f" category="inline-link-macro">_SUR1__ Hardware Universe</block>
-  <block id="47db2740e391cb9dd7afd4c727db1c28" category="paragraph">請參閱 <block ref="2e30f42bb79c7c9fe477a9d63d7f110d" category="inline-link-macro-rx"></block> 以取得平台所支援的實際叢集連接埠。</block>
   <block id="8c24c8f1f5492e3c2d260cfb0bc25caa" category="list-text">Nexus 2300YC交換器支援的交換器間連結（ISL）為連接埠1/65和1/66。</block>
   <block id="6661eb47e9ec5d9c548abbe3d7e6a8cc" category="list-text">Nexus 2300YC交換器支援的節點連線為連接埠1/1到1/66。</block>
   <block id="8126bda0f3d92f6201fc8ef1dcf9cf40" category="list-text">本程序中的範例使用兩個節點、但叢集中最多可有24個節點。</block>
@@ -1311,10 +1305,8 @@
   <block id="f9aee2e068bb28aa4c5deecd96b8027c" category="list-text">連接埠E1/33-40（10 GbE）：Nexus 5020</block>
   <block id="c0f9b028477a4c90905b2a666cab2349" category="list-text">連接埠E1/13-20（10 GbE）：Nexus 5010</block>
   <block id="4d044e6cf669ad04cc841f7358407e18" category="inline-link">_-交換器_ Hardware Universe</block>
-  <block id="45af8674e7855691a3f6af99bffdc7d8" category="list-text">。<block ref="fc28ececd6878428d18cc5d1e48226af" category="inline-link-rx"></block> 包含所有叢集交換器支援的纜線連接資訊。</block>
   <block id="d306c65b7a5bf89e23b10fd4ed74fdb0" category="list-text">您已將Nexus 2300YC交換器上的部分連接埠設定為以10 GbE或40 GbE執行。</block>
   <block id="a74a9eec314ae8f04ef4a015ed400160" category="list-text">您已規劃、移轉並記錄10 GbE和40 GbE連線、從節點連接至Nexus 2300YC叢集交換器。</block>
-  <block id="46f4e846ca08ef976e5fa57699be7358" category="list-text">本程序所支援的支援的支援版本包括ONTAP<block ref="a29f73ef9de6be7554c49272d8910429" category="inline-link-rx"></block> 頁面。</block>
   <block id="661270741d4b9ee98072782fd9c54b20" category="summary">如果您有現有的雙節點無交換式叢集環境、可以使用Cisco Nexus 2300YC交換器移轉至雙節點交換式叢集環境、使您能夠擴充至叢集中的兩個節點之外。</block>
   <block id="9a5d1484f7be21c8d25cc287d8c8d82b" category="doc">如何使用Cisco Nexus 2300YC交換器移轉至雙節點交換叢集</block>
   <block id="0fd8ea58e8899f870165c3b59ed22856" category="paragraph">雙節點無交換器組態：</block>
@@ -1421,7 +1413,6 @@
   <block id="1f564e4f556cdb31888a8f9f8ba59571" category="summary">Cisco NX-OS軟體和參考組態檔（RCFs）必須安裝在Cisco Nexus 2300YC叢集交換器上。</block>
   <block id="ac9eae64ee229a69bc66ba237489b526" category="doc">在Cisco Nexus 2300YC叢集交換器上安裝NX-OS軟體和RCF</block>
   <block id="bd0c2a5487db101df9e69519dbe7db55" category="paragraph">Cisco NX-OS軟體和參考組態檔（RCT）必須安裝在Cisco Nexus 2300YC叢集交換器上。</block>
-  <block id="d0cbcb031a5b57d5da00e038ff554757" category="list-text">您必須查閱上的交換器相容性表<block ref="eea3e069983adcbba5050ccdef577ded" category="inline-link-rx"></block> 頁面、以取得支援ONTAP 的功能表、NX-OS和RCF版本。</block>
   <block id="454d8bacc17503d670940b88fdf44b2a" category="inline-link">Cisco Nexus 9000系列交換器</block>
   <block id="3f5c9d6967d91a65ea882b77345f4b64" category="list-text">您必須參閱Cisco網站上提供的適當軟體與升級指南、以取得上Cisco交換器升級與降級程序的完整文件<block ref="8cf592c671d256b1fe33924853db0b89" category="inline-link-rx"></block> 頁面。</block>
   <block id="bd377da5df344ea4407f28a5db2a6983" category="paragraph">請參閱<block ref="cd25cbe53f0a314145c84729c6ce2c78" category="inline-link-rx"></block> 驗證平台上的叢集連接埠是否正確。</block>
@@ -1429,7 +1420,6 @@
   <block id="ae51aab75debd2e4f744aa3423ddf6cf" category="list-text">叢集LIF的名稱為節點1的「node1_clus1」和「node1_clus2」、節點2的「node2_clus1」和「node2_clus2」。</block>
   <block id="f0db4a1725ddf2683998fa54fd370447" category="admonition">此程序需要同時使用ONTAP 支援指令和Cisco Nexus 9000系列交換器的指令；ONTAP 除非另有說明、否則會使用支援指令。</block>
   <block id="255e02cb0fbcf856f38cae0c4b19764d" category="list-text">顯示每個叢集互連交換器的每個節點已設定多少個叢集互連介面：「network device-dDiscovery show -protocol cup」</block>
-  <block id="f59d55fc3deab7022d8bbc8911bc97d9" category="list-text">顯示網路連接埠屬性：「network port show–IPSpace Cluster」（網路連接埠顯示–IPSpace叢集）</block>
   <block id="58d8f5733e0a28fbb10c789b8e8b1006" category="list-text">顯示有關生命的資訊：「網路介面show -vserver叢集」</block>
   <block id="f640804165fe8b3014b443db071bd7c2" category="list-text">驗證是否已在所有叢集生命體上啟用自動還原命令：</block>
   <block id="07d9b89ec6258781d7ac664bc095c5af" category="list-text">對於支援支援支援支援更新版本的版本、請啟用叢集交換器健全狀況監控記錄收集功能、以便使用下列命令來收集交換器相關的記錄檔：ONTAP</block>
@@ -3645,7 +3635,6 @@
   <block id="982217e543f0fa5e9da851302f28d805" category="list-text">叢集LIF名稱為節點1的_node1_clus1_和節點1的_node1_clus2_、節點2的節點2為_node2_clus1_和節點2為_node2_clus2_。</block>
   <block id="251c6c04656af97cbcbd1aa3eea2bee5" category="list-text">對所有叢集節點進行變更的提示是「cluster1：*&gt;」</block>
   <block id="2c84a4166919cc5a80a8c0726d1059e6" category="list-text">在交換器nsw2上安裝適當的RCF和映像、並進行必要的站台準備。</block>
-  <block id="1eee77e5510e91c39ad8de358a66db8b" category="paragraph">如有必要、請為新交換器驗證、下載及安裝適當版本的RCF和Cummuls軟體。如果您已確認新交換器已正確設定、而且不需要更新RCF和Cummuls軟體、請繼續執行步驟3。請參閱 <block ref="f205112049fd2d705b8f40351f7959dc" category="inline-link-macro-rx"></block> 以取得更多詳細資料。</block>
   <block id="1c7edbc9e87d89abba60270ce35ec08a" category="list-text">您可以從_NVIDIA Support_網站下載適用於叢集交換器的Cummulus軟體。請依照下載頁面上的步驟、下載您ONTAP 所安裝之版本的Cummuls Linux。</block>
   <block id="cb246b83c0c732bd49f45fceb6d1246f" category="inline-link-macro">_NVIDIA叢集與儲存交換器_</block>
   <block id="7d496a68b55e69a007c148b8b4cf8fbe" category="list-text">您可從取得適當的RCF <block ref="bf48368f6fb605c4425a53dc48551d85" category="inline-link-macro-rx"></block> 頁面。請依照下載頁面上的步驟、針對ONTAP 您要安裝的版本、下載正確的RCF。</block>
@@ -3734,4 +3723,33 @@
   <block id="d645f4ad64c5de549a6e962f1b7e9a5d" category="doc">設定及設定NVIDIA SN2100交換器</block>
   <block id="0bfa1a1e232ece62b9507c3e20a01280" category="paragraph">從功能更新至功能更新階段開始ONTAP 、您可以使用NVIDIA SN2100交換器、將儲存設備和叢集功能結合到共享交換器組態中。</block>
   <block id="153a5c90883f7a8479e2748a0919a601" category="sidebar">設定及設定NVIDIA SN2100交換器</block>
+  <block id="f244d0b9bbad19d8b6169c577369193c" category="paragraph">如有必要、請為新交換器驗證、下載及安裝適當版本的RCF和Cummuls軟體。如果您已確認新交換器已正確設定、而且不需要更新RCF和Cummuls軟體、請繼續執行步驟4。請參閱 <block ref="f205112049fd2d705b8f40351f7959dc" category="inline-link-macro-rx"></block> 以取得更多詳細資料。</block>
+  <block id="29bedbdcff648e4ff4cb387a7587b82b" category="paragraph">如果您要更換的交換器無法正常運作且已關機、請前往步驟5。叢集節點上的LIF應已容錯移轉至每個節點的其他叢集連接埠。</block>
+  <block id="5f165828e6700ebf88d288359161875f" category="list-text">。<block ref="abaf454a950eaeabe7c7af627e77fec0" category="inline-link-rx"></block> 包含所有叢集交換器支援的纜線連接資訊。</block>
+  <block id="3ce37c2e20f62b8f2f558b1dde3f582c" category="paragraph">您可以從下載適用於交換器的NetApp Cisco NX-OS軟體<block ref="1a36b59ecae7684863b79a0f690b6840" category="inline-link-rx"></block> 網站。</block>
+  <block id="423ce536244985b76193e04f1a380a55" category="paragraph"><block ref="423ce536244985b76193e04f1a380a55" category="inline-link-macro-rx"></block></block>
+  <block id="06ca91732493d122c261ce88fd963f4f" category="paragraph">您可以在初次設定Nexus 2300YC交換器之後安裝RCF。您也可以使用此程序來升級RCF版本。</block>
+  <block id="2b85c11758e0aa43ebfe299220ad905f" category="list-text">叢集LIF名稱為<block ref="efdc0a97303fb41897cab634f9381835" prefix=" " category="inline-code"></block>、<block ref="bd152ff09f603987e4c87a156b246966" prefix=" " category="inline-code"></block>、<block ref="a466bba1804a252e783c3e78c73981b0" prefix=" " category="inline-code"></block>和<block ref="e136e422a5bae645f7cdf8ea4cf1a818" prefix=" " category="inline-code"></block>。</block>
+  <block id="4a07f902b1949e45ece7e6201b5ed48a" category="list-text">此程序需要同時使用ONTAP 支援指令和<block ref="8cf592c671d256b1fe33924853db0b89" category="inline-link-rx"></block>；ONTAP 除非另有說明、否則會使用指令。</block>
+  <block id="fb4310212b202ff28abb0d68f283cb8b" category="list-text">確認所有叢集連接埠都正常運作：<block ref="7fcda764b68d3ee8ce2b37f3a72bab05" prefix=" " category="inline-code"></block></block>
+  <block id="bb754a8f2ed54673939ff1c56735741a" category="list-text">確認所有叢集介面（l生命）都位於主連接埠：<block ref="7af866342cc7e87972580d7b709d8820" prefix=" " category="inline-code"></block></block>
+  <block id="d94df61bb97f9ea96d2f4261018924d3" category="list-text">確認叢集連接埠已移轉至叢集交換器CS1上裝載的連接埠。這可能需要幾秒鐘的時間。<block ref="7af866342cc7e87972580d7b709d8820" prefix=" " category="inline-code"></block></block>
+  <block id="ea0682ea1f2ae756bec0f630a5158cc9" category="list-text">使用下列傳輸傳輸協定之一、將RCF複製到交換器CS2的bootflash：FTP、TFTP、SFTP或scp。如需Cisco命令的詳細資訊、請參閱中的適當指南<block ref="8cf592c671d256b1fe33924853db0b89" category="inline-link-rx"></block> 指南：</block>
+  <block id="4808008925bc79a710baa7a191901060" category="paragraph">如需Cisco命令的詳細資訊、請參閱中的適當指南<block ref="8cf592c671d256b1fe33924853db0b89" category="inline-link-rx"></block> 指南：</block>
+  <block id="93bd51f238944c9338cdde2082538910" category="paragraph">此範例顯示RCF檔案<block ref="8749b604b31fccaea2fa775c5ecf4fdc" prefix=" " category="inline-code"></block> 安裝在交換器CS2上：</block>
+  <block id="08aaa260c77b71319efd7f9112354999" category="list-text">[[step12]確認RCF檔案為正確的更新版本：<block ref="d064a73c32d00bf384204782a696a298" prefix=" " category="inline-code"></block></block>
+  <block id="41b08f66ec0303ffe518bbdc4d5527ad" category="list-text">驗證叢集上叢集連接埠的健全狀況。</block>
+  <block id="8939c03fb033b2c9a57e27fdec9078a0" category="list-text">驗證叢集中所有節點的e0d連接埠是否正常運作：<block ref="7fcda764b68d3ee8ce2b37f3a72bab05" prefix=" " category="inline-code"></block></block>
+  <block id="f23c856b4e6549c08ee780dcad3fc85c" category="list-text">驗證叢集LIF是否已移轉至交換器CS2上裝載的連接埠。這可能需要幾秒鐘的時間。<block ref="7af866342cc7e87972580d7b709d8820" prefix=" " category="inline-code"></block></block>
+  <block id="97283617aa91dff9f5c3768547ba0d7c" category="list-text">驗證叢集生命區是否已還原至其主連接埠：<block ref="7af866342cc7e87972580d7b709d8820" prefix=" " category="inline-code"></block></block>
+  <block id="53c5b9bd181f1473f498076dceb33fdd" category="open-title">適用於更新版本的更新版本ONTAP</block>
+  <block id="d9ede0cfb7182a5668cc6e90c80efb6d" category="paragraph">對於更新的版本、請使用下列命令啟用叢集交換器健全狀況監視器記錄收集功能、以收集交換器相關的記錄檔：ONTAP<block ref="36ac3c1f3bae8142b5d110fb906ba03e" prefix=" " category="inline-code"></block> 和<block ref="ff5aaae616b6f326cad680284f32b588" prefix=" " category="inline-code"></block></block>
+  <block id="e430037525fdc395a913568c2bcc487b" category="paragraph">輸入： <block ref="36ac3c1f3bae8142b5d110fb906ba03e" prefix="" category="inline-code"></block></block>
+  <block id="97cb97536848aa999492d6cd929b1702" category="paragraph">接著： <block ref="ff5aaae616b6f326cad680284f32b588" prefix="" category="inline-code"></block></block>
+  <block id="83bd7d6d3bceee06d3d796e3ff2402d4" category="open-title">適用於更新版本的更新版本ONTAP</block>
+  <block id="afa8e0a19468b9b0551aac700a287731" category="paragraph">接著： <block ref="abefab8d02f9c0ef8226a4fcf49448a1" prefix="" category="inline-code"></block></block>
+  <block id="c1b997d8bbe75177eb1d5324cccf7e5f" category="list-text">您必須查閱上的交換器相容性表<block ref="41f6a53a5371a0ad5564ad4009d568bc" category="inline-link-rx"></block> 頁面、以取得支援ONTAP 的功能表、NX-OS和RCF版本。</block>
+  <block id="57bf5d8f5891a8230d2c53c4b728728e" category="list-text">顯示網路連接埠屬性： <block ref="5a2357a985889803fc9ad4bba1f860e2" prefix=" " category="inline-code"></block></block>
+  <block id="3ca5e137a21251c69373aa645cc945d5" category="paragraph">請參閱 <block ref="e90918249884ccf48e81d939a33e43ce" category="inline-link-macro-rx"></block> 以取得平台所支援的實際叢集連接埠。</block>
+  <block id="bb06ef3d1301c60ccc059da2e6365064" category="sidebar">安裝參考組態檔案</block>
 </blocks>

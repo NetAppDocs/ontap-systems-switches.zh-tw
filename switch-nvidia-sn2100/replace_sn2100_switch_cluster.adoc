@@ -133,7 +133,7 @@ swp16      100G   BondMember  sw1                swp16
 
 . 在交換器nsw2上安裝適當的RCF和映像、並進行必要的站台準備。
 +
-如有必要、請為新交換器驗證、下載及安裝適當版本的RCF和Cummuls軟體。如果您已確認新交換器已正確設定、而且不需要更新RCF和Cummuls軟體、請繼續執行步驟3。請參閱 link:install_setup_sn2100_switches_overview.html["設定及設定NVIDIA SN2100交換器"] 以取得更多詳細資料。
+如有必要、請為新交換器驗證、下載及安裝適當版本的RCF和Cummuls軟體。如果您已確認新交換器已正確設定、而且不需要更新RCF和Cummuls軟體、請繼續執行步驟4。請參閱 link:install_setup_sn2100_switches_overview.html["設定及設定NVIDIA SN2100交換器"] 以取得更多詳細資料。
 
 +
 .. 您可以從_NVIDIA Support_網站下載適用於叢集交換器的Cummulus軟體。請依照下載頁面上的步驟、下載您ONTAP 所安裝之版本的Cummuls Linux。
@@ -142,7 +142,7 @@ swp16      100G   BondMember  sw1                swp16
 
 . 在新的交換器nsw2上、以admin身分登入、並關閉所有連接至節點叢集介面的連接埠（連接埠swp1至swp14）。
 +
-如果您要更換的交換器無法正常運作且已關機、請前往步驟4。叢集節點上的LIF應已容錯移轉至每個節點的其他叢集連接埠。
+如果您要更換的交換器無法正常運作且已關機、請前往步驟5。叢集節點上的LIF應已容錯移轉至每個節點的其他叢集連接埠。
 
 +
 [listing, subs="+quotes"]
