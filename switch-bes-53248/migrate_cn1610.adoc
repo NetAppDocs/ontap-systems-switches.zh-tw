@@ -13,6 +13,7 @@ summary: 若要將叢集中現有的CN1610叢集交換器更換為Broadcom支援
 [role="lead"]
 若要將叢集中現有的CN1610叢集交換器更換為Broadcom支援的Bes - 53248叢集交換器、您必須執行特定的工作順序。
 
+.您需要的產品
 本程序的範例使用兩個節點、每個節點都部署兩個10 GbE叢集互連連接埠：「e0a」和「e0b」。
 
 本程序中的範例使用下列交換器和節點命名法：
@@ -26,6 +27,7 @@ summary: 若要將叢集中現有的CN1610叢集交換器更換為Broadcom支援
 * 叢集LIF名稱為節點1的「node1_clus1」和「node1_clus2」、節點2的「node2_clus1」和「node2_clus2」。
 
 
+.關於這項工作
 本程序涵蓋下列案例：
 
 * 叢集從兩個節點開始、連接至兩個CN1610叢集交換器。
@@ -572,6 +574,7 @@ cluster::*> *system node autosupport invoke -node \* -type all -message MAINT=EN
 ----
 
 
+.完成後
 請參閱 link:configure-health-monitor.html["安裝叢集交換器健全狀況監視器（CSHM）組態檔"] 和 link:configure-log-collection.html["設定叢集交換器記錄收集功能"] 以瞭解啟用叢集健全狀況交換器記錄收集以收集交換器相關記錄檔所需的步驟。
 
 *相關資訊*

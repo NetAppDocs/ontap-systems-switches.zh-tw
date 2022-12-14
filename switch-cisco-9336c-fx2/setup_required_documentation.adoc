@@ -13,6 +13,7 @@ summary: 您需要特定的交換器和控制器文件來設定ONTAP 您的叢�
 [role="lead"]
 您需要特定的交換器和控制器文件來設定ONTAP 您的叢集。
 
+.叢集網路交換器的必要文件
 若要設定Cisco Nexus 9336C-FX2和92300YC交換器、您需要取得的下列文件 https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Cisco Nexus 9000系列交換器支援"^] 頁面：
 
 [cols="1,2"]
@@ -192,6 +193,7 @@ _ Cisco Nexus 6000系列、Cisco Nexus 5000系列、Cisco Nexus 3000系列和Cis
 提供Nexus 5000系列交換器的國際機構法規遵循、安全及法規資訊。
 
 |===
+.支援ONTAP 的支援的支援的資訊系統所需的文件
 若要設定ONTAP 一套作業系統、您需要從取得下列作業系統版本的文件 https://docs.netapp.com/ontap-9/index.jsp["供應說明文件中心 ONTAP"^]。
 
 [cols="1,2"]
@@ -219,6 +221,7 @@ https://hwu.netapp.com["Hardware Universe"^]
 提供NetApp硬體組態與相容性資訊。
 
 |===
+.軌道套件與機櫃文件
 若要在NetApp機櫃中安裝Cisco交換器、請參閱下列硬體文件：
 
 [cols="1,2"]

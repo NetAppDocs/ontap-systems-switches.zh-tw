@@ -20,6 +20,7 @@ summary: 移轉至雙節點交換式叢集
 * 您可以使用Cisco Nexus 3132Q-V叢集交換器來取代NetApp CN1610交換器。
 
 
+.可用文件
 下表列出Cisco Nexus 3132Q-V交換器可用的文件。
 
 |===

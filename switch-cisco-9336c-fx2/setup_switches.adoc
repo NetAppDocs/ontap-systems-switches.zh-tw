@@ -97,6 +97,7 @@ NetApp系統機櫃中的Cisco Nexus 5596UP/5596T
 
 
 
+.相關資訊
 xref:setup-required-information.adoc[必要的叢集組態資訊]
 
 xref:setup-required-documentation.adoc[必要文件]

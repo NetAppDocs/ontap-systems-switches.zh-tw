@@ -13,6 +13,7 @@ summary: 在交換器執行Cummulos Linux或ONIE時、可以安裝CummUS Linux�
 [role="lead"]
 在交換器執行Cummulos Linux或ONIE時、可以安裝CummUS Linux（CL）作業系統。
 
+.開始之前
 您可以使用開放式網路安裝環境（ONIE）來安裝Cummulus Linux、以便自動探索網路安裝程式映像。這有助於以作業系統選擇（例如Cummulas Linux）來保護交換器的系統模式。使用ONIE安裝Cummulis Linux最簡單的方法、就是使用本機HTTP探索。
 
 

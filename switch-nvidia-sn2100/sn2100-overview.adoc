@@ -17,6 +17,7 @@ summary: 如果您想要建置ONTAP 具有兩個以上節點的叢集、您需�
 
 您可以在NVIDIA雙/單一交換器機櫃中安裝NVIDIA SN2100交換器（X190006/X190106）、並附有交換器隨附的標準支架。
 
+.SN2100交換器與軌道套件詳細資料
 下表列出MSN2100交換器和軌道套件的零件編號和說明：
 
 [cols="1,2"]
@@ -68,6 +69,7 @@ X-MTEF套件E-E
 
 IMPORTANT: 如需詳細資訊、請參閱NVIDIA文件 https://docs.nvidia.com/networking/display/sn2000pub/Installation["安裝SN2100交換器與軌道套件"^]。
 
+.可用文件
 下表列出NVIDIA SN2100交換器可用的文件。
 
 [cols="1,2"]

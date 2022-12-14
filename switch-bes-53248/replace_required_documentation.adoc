@@ -13,6 +13,7 @@ summary: 您需要特定的交換器與控制器文件、才能設定叢集模�
 [role="lead"]
 您需要特定的交換器與控制器文件、才能設定叢集模式組態。
 
+.Bes至53248叢集交換器的必要文件
 若要設定Bes - 53248叢集交換器、您需要Broadcom支援網站上提供的下列文件： https://www.broadcom.com/support/bes-switch["Broadcom乙太網路交換器產品線"^]
 
 [cols="1,2"]
@@ -68,6 +69,7 @@ _EFOS發行說明v3.4.3_
 提供關於B3作業 軟體的版本專屬資訊。
 
 |===
+.支援ONTAP 的支援的支援的資訊系統所需的文件
 若要設定ONTAP 一套支援系統、您需要NetApp支援網站上的下列文件 http://mysupport.netapp.com/["mysupport.netapp.com"^]
 
 [cols="1,2"]

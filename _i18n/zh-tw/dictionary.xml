@@ -3752,4 +3752,15 @@
   <block id="57bf5d8f5891a8230d2c53c4b728728e" category="list-text">顯示網路連接埠屬性： <block ref="5a2357a985889803fc9ad4bba1f860e2" prefix=" " category="inline-code"></block></block>
   <block id="3ca5e137a21251c69373aa645cc945d5" category="paragraph">請參閱 <block ref="e90918249884ccf48e81d939a33e43ce" category="inline-link-macro-rx"></block> 以取得平台所支援的實際叢集連接埠。</block>
   <block id="bb06ef3d1301c60ccc059da2e6365064" category="sidebar">安裝參考組態檔案</block>
+  <block id="42e6721e3b083e11b448b7e21c1008d0" category="paragraph-title">可用文件</block>
+  <block id="d59db7846bd10b6d60d21543df9faa9e" category="paragraph-title">您需要的產品</block>
+  <block id="bd965e38a0c9cf27aa1bde099308e23f" category="paragraph-title">完成後</block>
+  <block id="25ad5dd0170e12e51f3d415d1db041cd" category="paragraph-title">連接埠群組速度限制</block>
+  <block id="433c26abfb0a072db0be425d05f42f6f" category="paragraph-title">Bes至53248叢集交換器的必要文件</block>
+  <block id="1e6243b161f4d976b3d648715cd4c151" category="paragraph-title">支援ONTAP 的支援的支援的資訊系統所需的文件</block>
+  <block id="30f60d67f457bb040dffde52197a54da" category="paragraph-title">相關資訊</block>
+  <block id="634374fc0854421a288aafc54ea8b1ca" category="paragraph-title">叢集網路交換器的必要文件</block>
+  <block id="82e332ebd432ef2bc388ca4b5f0cfca7" category="paragraph-title">軌道套件與機櫃文件</block>
+  <block id="3dd056f4d7006839605c6bd4a990b087" category="paragraph-title">目前的RCF指令碼版本</block>
+  <block id="5ed2215b4125adf7510390964c100665" category="paragraph-title">SN2100交換器與軌道套件詳細資料</block>
 </blocks>

@@ -13,6 +13,7 @@ summary: 如果您有現有的雙節點無交換式叢集環境、可以使用Br
 [role="lead"]
 如果您有現有的雙節點無交換式叢集環境、可以使用Broadcom支援的Bsc-53248叢集交換器、移轉至雙節點交換式叢集環境、使您能夠擴充至叢集中的兩個節點之外。
 
+.您需要的產品
 雙節點無交換器組態：
 
 * 雙節點無交換器組態必須正確設定並正常運作。
@@ -43,6 +44,7 @@ Broadcom支援的Bes - 53248叢集交換器組態：
 
 
 
+.關於這項工作
 本程序中的範例使用下列叢集交換器和節點命名法：
 
 * BS-53248交換器的名稱為「CS1」和「CS2」。
@@ -507,6 +509,7 @@ cluster1::*> system node autosupport invoke -node \* -type all -message MAINT=EN
 ----
 
 
+.完成後
 請參閱 link:configure-health-monitor.html["安裝叢集交換器健全狀況監視器（CSHM）組態檔"] 和 link:configure-log-collection.html["設定叢集交換器記錄收集功能"] 以瞭解啟用叢集健全狀況交換器記錄收集以收集交換器相關記錄檔所需的步驟。
 
 *相關資訊*

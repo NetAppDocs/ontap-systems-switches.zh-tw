@@ -22,6 +22,7 @@ summary: 您可以將ONTAP 不中斷營運的舊款Cisco交換器移轉至NVIDIA
 * 請參閱 https://hwu.netapp.com/["Hardware Universe"^] 以取得支援連接埠及其組態的完整詳細資料。
 
 
+.開始之前
 您可以將不中斷營運的舊版Cisco儲存交換器、以利ONTAP 將用於某個叢集的儲存交換器移轉至NVIDIA SN2100儲存交換器。
 
 * 現有叢集必須正確設定並正常運作。
@@ -44,6 +45,7 @@ NOTE: 在此程序中、Cisco Nexus 9336C-FX2儲存交換器可用於命令和�
 
 
 
+.關於這項工作
 本程序中的範例使用下列交換器和節點命名法：
 
 * 現有的Cisco Nexus 9336C-FX2儲存交換器為_S1_和_s2_。

@@ -13,6 +13,7 @@ summary: 您可以將Cisco Nexus 9336C-FX2交換器和直通面板安裝在NetAp
 [role="lead"]
 您可以將Cisco Nexus 9336C-FX2交換器和直通面板安裝在NetApp機櫃中、並附有交換器隨附的標準支架。
 
+.關於這項工作
 您必須已檢閱初始準備要求、套件內容及安全預防措施。
 
 https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/hw/aci_9336cfx2_hig/guide/b_n9336cFX2_aci_hardware_installation_guide.html["Cisco Nexus 9000系列硬體安裝指南"^]
@@ -61,9 +62,9 @@ image::../media/cisco_9148_jumper_cords.gif[Cisco 9148跳接線]
 +
 image::../media/3132q_front_bracket.gif[前支架]
 
-.. 重複步驟 ,2A. 在交換器另一側安裝另一個正面機架安裝支架。
+.. 重複步驟 <<SUBSTEP_9F2E2DDAEE084FE5853D1A6C6D945941,2A.>> 在交換器另一側安裝另一個正面機架安裝支架。
 .. 在交換器機箱上安裝後機架安裝支架。
-.. 重複步驟 ,2C 在交換器另一側安裝另一個機架安裝支架。
+.. 重複步驟 <<SUBSTEP_53A502380D6D4F058F62ED5ED5FC2000,2C>> 在交換器另一側安裝另一個機架安裝支架。
 
 
 . 將夾螺帽安裝在四個IEA柱的方孔位置。
@@ -84,8 +85,8 @@ image::../media/3132q_v_slider_rails.gif[3132q v滑軌]
 ... 將滑軌的螺絲鎖緊至機箱柱。
 
 
-.. 重複步驟 ,4a 用於右後側POST。
-.. 重複步驟 ,4a 和 ,4B 位於機櫃上的RU41位置。
+.. 重複步驟 <<SUBSTEP_81651316D3F84964A76BC80A9DE48C0E,4a>> 用於右後側POST。
+.. 重複步驟 <<SUBSTEP_81651316D3F84964A76BC80A9DE48C0E,4a>> 和 <<SUBSTEP_593967A423024594B9A41A04703DC458,4B>> 位於機櫃上的RU41位置。
 
 
 . 將交換器安裝在機櫃中。
@@ -112,7 +113,7 @@ image::../media/3132q_attaching.gif[3132q附加]
 
 
 .. 現在機箱無需協助即可支援、將前螺絲完全鎖緊至機箱柱。
-.. 重複步驟 ,5a. 透過 ,5C 用於RU42位置的第二個交換器。
+.. 重複步驟 <<SUBSTEP_4F538C8C55E34C5FB5D348391088A0FE,5a.>> 透過 <<SUBSTEP_EB8FE2FED2CA4120B709CC753C0F50FC,5C>> 用於RU42位置的第二個交換器。
 +
 
 NOTE: 使用完全安裝的交換器作為支援、在安裝過程中不需要抓住第二個交換器的正面。

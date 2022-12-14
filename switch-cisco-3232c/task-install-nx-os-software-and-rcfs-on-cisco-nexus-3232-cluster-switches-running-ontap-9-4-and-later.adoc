@@ -13,6 +13,7 @@ summary: Cisco NX-OS軟體和參考組態檔（RCT）必須安裝在Cisco Nexus 
 [role="lead"]
 Cisco NX-OS軟體和參考組態檔（RCT）必須安裝在Cisco Nexus 3232C叢集交換器上。
 
+.開始之前
 在叢集交換器上安裝NX-OS軟體和參考組態檔（RCT）之前、必須符合下列條件：
 
 * 叢集必須完全正常運作（記錄或類似的-sues不應有錯誤）。
@@ -25,6 +26,7 @@ Cisco NX-OS軟體和參考組態檔（RCT）必須安裝在Cisco Nexus 3232C叢�
 * 您必須擁有目前的RCF。
 
 
+.關於這項工作
 本程序中的範例使用兩個節點。這些節點使用兩個10GbE叢集互連連接埠「e0a」和「e0b」。
 
 請參閱 link:https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^] 驗證平台上的叢集連接埠是否正確。

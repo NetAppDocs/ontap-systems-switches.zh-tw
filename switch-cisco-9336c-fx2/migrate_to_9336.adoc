@@ -13,6 +13,7 @@ summary: 您可以將不中斷營運的舊Cisco叢集交換器移轉至ONTAP Cis
 [role="lead"]
 您可以將不中斷營運的舊Cisco叢集交換器移轉至ONTAP Cisco Nexus 9336C-FX2叢集網路交換器、以利進行非中斷的叢集式叢集。
 
+.開始之前
 使用Cisco Nexus 9336C-FX2叢集交換器更換舊版Cisco Nexus叢集交換器之前、必須符合下列條件：
 
 * 叢集必須完全正常運作（記錄中不應有錯誤或類似問題）。
@@ -27,6 +28,7 @@ summary: 您可以將不中斷營運的舊Cisco叢集交換器移轉至ONTAP Cis
 * 您必須參閱Cisco網站上提供的適當軟體與升級指南、以取得Cisco交換器升級與降級程序的完整文件 https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.htmlCisco["Nexus 9000系列交換器"^]。
 
 
+.關於這項工作
 本程序中的範例使用兩個節點。這些節點使用兩個10GbE叢集互連連接埠e0a和e0b。請參閱 https://hwu.netapp.com/["Hardware Universe"^] 驗證平台上的叢集連接埠是否正確。
 
 

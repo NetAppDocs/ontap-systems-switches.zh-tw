@@ -13,6 +13,7 @@ summary: 此版本支援使用v3進行記錄監控。
 [role="lead"]
 此版本支援針對交換器健全狀況監控（SHM）收集交換器記錄的v3。
 
+.關於這項工作
 下列命令可在NVIDIA SN2100交換器上設定v3使用者名稱：
 
 * 對於*無驗證*：「net add SNMP伺服器使用者名稱_SNMPv3 _user_ auth-none"

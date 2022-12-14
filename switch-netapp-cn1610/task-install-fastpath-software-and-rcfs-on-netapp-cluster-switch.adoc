@@ -28,6 +28,7 @@ RCF和FastPath版本中的命令語法之間可能存在命令相依性。
 
 NOTE: 在RCF 1.2版中、由於安全考量、已明確停用對Telnet的支援。若要避免安裝RCF 1.2時發生連線問題、您必須確認已啟用Secure Shell（SSH）。。 https://library.netapp.com/ecm/ecm_get_file/ECMP1117874["NetApp®CN1610交換器管理員指南"^] 有更多關於SSH的資訊。
 
+.關於這項工作
 本程序中的範例使用下列交換器和節點命名法：
 
 * 本文件中的程序使用叢集Data ONTAP 式的示例8.2語法。因此、叢集Vserver、LIF名稱和CLI輸出將會不同Data ONTAP 於畫面8.3。

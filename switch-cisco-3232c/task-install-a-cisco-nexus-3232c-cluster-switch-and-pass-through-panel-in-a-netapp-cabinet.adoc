@@ -13,6 +13,7 @@ summary: 您可以將Cisco Nexus 3232C交換器和直通面板安裝在NetApp機
 [role="lead"]
 您可以將Cisco Nexus 3232C交換器和直通面板安裝在NetApp機櫃中、並附有交換器隨附的標準支架。
 
+.開始之前
 您必須檢閱中的初始準備要求、套件內容和安全預防措施 link:http://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus3000/hw/installation/guide/b_n3000_hardware_install_guide.html["Cisco Nexus 3000系列硬體安裝指南"^]。
 
 .關於這項工作

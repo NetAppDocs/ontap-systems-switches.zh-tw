@@ -20,6 +20,7 @@ summary: 在安裝RCF指令碼之前、請確定交換器上有下列項目可�
 
 IMPORTANT: 請參閱 link:install_cabling_config_considerations_sn2100.html["佈線與組態考量"^] 以瞭解相關注意事項及進一步的詳細資料。
 
+.目前的RCF指令碼版本
 叢集與儲存應用程式可使用兩個RCF指令碼。每個的程序都相同。
 
 * 叢集：* MSN2100-RCF-v1.8-叢集*

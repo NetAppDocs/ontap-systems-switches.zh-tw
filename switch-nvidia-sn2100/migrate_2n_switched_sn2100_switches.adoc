@@ -41,6 +41,7 @@ IMPORTANT: 請參閱 link:install_cabling_config_considerations_sn2100.html["佈
 
 
 
+.關於這項工作
 本程序中的範例使用下列叢集交換器和節點命名法：
 
 * SN2100交換器的名稱為_sw1_和_SW2_。
