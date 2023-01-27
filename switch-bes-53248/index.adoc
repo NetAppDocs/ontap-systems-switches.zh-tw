@@ -2,11 +2,243 @@
 permalink: switch-bes-53248/index.html 
 sidebar: sidebar 
 keywords: broadcom, support, bes, cluster, switch, broadcam-supported bes-53248 cluster switches 
-summary: Broadcom支援的Bes-53248叢集交換器 
+summary: 若為BS-53248交換器安裝與維護、請務必檢閱OS支援、零件編號、組態要求及文件要求。 
 ---
-= Broadcom支援的Bes-53248叢集交換器
+= 概述與要求：BS-53248交換器
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
+[role="lead"]
+若為BS-53248交換器安裝與維護、請務必檢閱OS支援、零件編號、組態要求及文件要求。
+
+
+
+== 作業系統（OS）支援
+
+BS-53248交換器支援下列功能：
+
+* * EFOS韌體3.4.4.6及更新版本*。BS-53248交換器可在Broadcom嵌入式作業系統（稱為乙太網路架構作業系統（EFOS））上執行。支援40/100 GbE叢集連接埠、從EFOS韌體版本3.4.4.6及更新版本開始。
+* *《*》（R）9.5P8及更新版本* ONTAP 。Broadcom支援的BS-53248叢集交換器設計用於ONTAP 大小介於2到24個節點的叢集、範圍涵蓋在《The Sun Flash 9：5P8 and更新版本中。
+
+
+
+
+== 切換元件零件編號
+
+下表列出BS-53248叢集交換器元件的零件編號和說明、包括機架安裝軌道套件、風扇和電源供應器。
+
+[cols="1,2"]
+|===
+| 產品編號 | 說明 
+
+
+ a| 
+X190005
+ a| 
+BS-53248、CLSW、16Pt10/25GB、PTSx、BRDCM（PTSx =連接埠側邊排氣）
+
+
+
+ a| 
+X190005R
+ a| 
+BF-53248、CLSW、16Pt10/25GB、PSIN、BRDCM（PSIN =連接埠側邊輸入）
+
+
+
+ a| 
+X-RAIL：4後190005
+ a| 
+機架安裝軌道套件Ozeki 4柱19吋
+
+
+
+ a| 
+X-Fan-190005-R
+ a| 
+風扇、連接埠側進氣X190005
+
+
+
+ a| 
+X-Fan-190005-F
+ a| 
+風扇、連接埠側邊排氣X190005
+
+
+
+ a| 
+X-PSU-190005-R
+ a| 
+電源供應器、連接埠側進氣X190005
+
+連接埠側進氣（反轉氣流）：冷空氣透過冷通道的連接埠端點進入機箱、並透過熱通道中的風扇和電源供應器模組排出。
+
+
+
+ a| 
+X-PSU-190005-F
+ a| 
+電源供應器、連接埠側排風X190005
+
+連接埠側的排氣氣流（標準氣流）：冷空氣透過冷通道中的風扇和電源供應器模組進入機箱、並透過熱通道中的機箱連接埠端口排出。藍色色彩表示連接埠側邊的排氣氣流。這是最常見的選項。
+
+|===
+
+
+== 組態需求
+
+若要設定叢集、您需要適當的叢集交換器纜線和纜線連接器數量和類型。視您初始設定的叢集交換器類型而定、您需要使用隨附的主控台纜線連接至交換器主控台連接埠、而且需要特定的網路資訊。
+
+.叢集交換器連接埠指派
+您可以使用Broadcom支援的Bes - 53248叢集交換器連接埠指派表、作為設定叢集的指南。
+
+[cols="1,2"]
+|===
+| 交換器連接埠 | 連接埠使用量 
+
+
+ a| 
+2016年1月16日
+ a| 
+10/25GbE叢集連接埠節點、基礎組態
+
+
+
+ a| 
+17-48
+ a| 
+10/25GbE叢集連接埠節點、含授權
+
+
+
+ a| 
+49至54歲
+ a| 
+100GbE叢集連接埠節點、含授權、從右至左新增
+
+
+
+ a| 
+55-56
+ a| 
+100GbE叢集交換器間連結（ISL）連接埠、基礎組態
+
+|===
+.連接埠群組速度限制
+在BES-53248叢集交換器上、48個10/25GbE（SFP28/SFP+）連接埠會結合成12個4埠群組、如下所示：連接埠1-4、5-8、9-12、13-16、17-20、21至24、25至28、29至32、33至36、37至40、41至44及45至48。
+
+在4埠群組的所有連接埠之間、SFP28/SFP+連接埠速度必須相同（10GbE或25GbE）。
+
+
+
+== 文件需求
+
+您需要特定的交換器和控制器文件、才能設定BES-53248叢集交換器和ONTAP 叢集。
+
+
+
+=== Broadcom文件
+
+若要設定Bes - 53248叢集交換器、您需要Broadcom支援網站上提供的下列文件： https://www.broadcom.com/support/bes-switch["Broadcom乙太網路交換器產品線"^]
+
+[cols="1,2"]
+|===
+| 文件標題 | 說明 
+
+
+ a| 
+_EFOS系統管理員指南v3.4.3_
+ a| 
+提供範例、說明如何在一般網路中使用B怎麼 使用B怎麼53248交換器。
+
+
+
+ a| 
+_EFOS CLI命令參考v3.4.3_
+ a| 
+說明用於檢視和設定Bs-53248軟體的命令列介面（CLI）命令。
+
+
+
+ a| 
+_EFOS入門指南v3.4.3_
+ a| 
+提供關於B3作業 與53248交換器的詳細資訊。
+
+
+
+ a| 
+_EFOS SNMP參考指南v3.4.3_
+ a| 
+提供範例、說明如何在一般網路中使用B怎麼 使用B怎麼53248交換器。
+
+
+
+ a| 
+_EFOS Scaling參數字與值v3.4.3_
+ a| 
+說明EFOS軟體在支援平台上的交付與驗證預設擴充參數。
+
+
+
+ a| 
+_EFOS功能規格v3.4.3_
+ a| 
+說明EFOS軟體在支援平台上的規格。
+
+
+
+ a| 
+_EFOS發行說明v3.4.3_
+ a| 
+提供關於B3作業 軟體的版本專屬資訊。
+
+
+
+ a| 
+_叢集網路與管理網路相容性對照表_
+ a| 
+提供網路相容性的相關資訊。您可從BS-53248交換器下載網站取得此對照表 https://mysupport.netapp.com/site/products/all/details/broadcom-cluster-switches/downloads-tab["Broadcom叢集交換器"^]。
+
+|===
+
+
+=== 系統文件與知識庫文章ONTAP
+
+若要設定 ONTAP 系統，您需要 NetApp 支援網站上的下列文件： http://mysupport.netapp.com/["mysupport.netapp.com"^] 或是位於的知識庫（KB）網站 https://kb.netapp.com/["kb.netapp.com"^]。
+
+[cols="1,2"]
+|===
+| 名稱 | 說明 
+
+
+ a| 
+https://hwu.netapp.com/Home/Index["NetApp Hardware Universe"^]
+ a| 
+說明所有NetApp硬體（包括系統機櫃）的電源和站台需求、並提供相關連接器和纜線選項的相關資訊及其零件編號。
+
+
+
+ a| 
+控制器專屬的安裝與設定指示_
+ a| 
+說明如何安裝NetApp硬體。
+
+
+
+ a| 
+功能9. ONTAP
+ a| 
+提供ONTAP 有關支援功能的詳細資訊。
+
+
+
+ a| 
+_如何為Broadcom支援的BS-53248交換器新增額外的連接埠授權_
+ a| 
+提供新增連接埠授權的詳細資訊。前往 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/MetroCluster/How_to_add_Additional_Port_Licensing_for_the_Broadcom-Supported_BES-53248_Switch["知識庫文章"^]。
+
+|===

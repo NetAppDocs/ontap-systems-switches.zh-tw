@@ -1,0 +1,26 @@
+---
+permalink: switch-bes-53248/upgrade-switch-overview.html 
+sidebar: sidebar 
+keywords: BES-53248 switches, initial installation, configure new bes-53248 switch 
+summary: 在設定BS-53248叢集交換器之前、請先檢閱程序與命名規則的總覽。 
+---
+= BS-53248交換器升級程序總覽
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在設定BS-53248叢集交換器進行升級之前、請先檢閱組態總覽。
+
+若要升級BS-53248叢集交換器、請遵循下列步驟：
+
+. link:replace-upgrade.html["準備BS-53248叢集交換器進行升級"]。準備好控制器、然後安裝EFOS軟體、授權和參考組態檔（RCF）。最後、請驗證組態。
+. link:configure-efos-software.html["安裝EFOS軟體"]。在BS-53248叢集交換器上下載並安裝乙太網路架構作業系統（EFOS）軟體。
+. link:configure-licenses.html["安裝適用於B3作業 叢集交換器的授權"]。或者、您也可以購買及安裝更多授權來新增連接埠。交換器基礎模式已獲得16個10GbE或25GbE連接埠及2個100GbE連接埠的授權。
+. link:configure-install-rcf.html["安裝參考組態檔（RCF）"]。在BS-53248叢集交換器上安裝或升級RCF、然後在套用RCF之後驗證連接埠是否有額外授權。
+. link:configure-health-monitor.html["安裝叢集交換器健全狀況監視器（CSHM）組態檔"]。安裝適用的組態檔以監控叢集交換器健全狀況。
+. link:configure-ssh.html["在BS-53248叢集交換器上啟用SSH"]。如果您使用叢集交換器健全狀況監視器（CSHM）和記錄收集功能、請在交換器上啟用SSH。
+. link:configure-log-collection.html["啟用記錄收集功能"]。使用此功能可收集ONTAP 有關交換器的記錄檔、以供參考。
+. link:replace-verify.html["驗證組態"]。在升級BS-53248叢集交換器之後、使用建議的命令來驗證作業。
+

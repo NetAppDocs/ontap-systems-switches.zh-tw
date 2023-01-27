@@ -1,0 +1,67 @@
+---
+permalink: switch-cisco-92300/setup-install-cshm-file.html 
+sidebar: sidebar 
+keywords: 'install, applicable, configuration, file, cluster, switch, health, monitor, nexus, ontap, install the cluster switch health monitor (csm) configuration file for 92300yc switches - cisco nexus 9336c-fx2' 
+summary: 您可以使用此程序來安裝適用的組態檔、以監控Nexus 92300YC叢集交換器的叢集交換器健全狀況。 
+---
+= 安裝叢集交換器健全狀況監視器（CSHM）組態檔
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+請依照此程序安裝適用的組態檔、以監控Nexus 92300YC叢集交換器的叢集交換器健全狀況。
+
+在版本9.5P7及更早版本、以及9.6P2及更早版本中、您必須分別下載叢集交換器健全狀況監視器組態檔。ONTAP在發行版本9.5P8及更新版本、9.6P3及更新版本、以及9.7及更新版本中、叢集交換器健全狀況監視器組態檔與不含更新版本的不含更新版本的不含更新版本的不含更新版本的不含更新版本的不ONTAP ONTAP
+
+.您需要的產品
+在您為2300YC叢集交換器設定交換器健全狀況監視器之前、請確定ONTAP 該叢集已啟動並正在執行。
+
+
+NOTE: 您也應該啟用SSH來使用CSHM中的所有功能。
+
+.步驟
+. 根據對應ONTAP 的版本、下載叢集交換器健全狀況監視器組態壓縮檔。此檔案可從取得 https://mysupport.netapp.com/NOW/cgi-bin/software/["NetApp軟體下載"^] 頁面。
++
+.. 在「軟體」下載頁面上、選取*「交換器健全狀況監視器組態檔案」*
+.. 選取「Platform =* ONTAP S供*參考*」、然後按一下「* Go！*」
+.. 在「Switch Health Monitor Configuration Files for ONTAP Sfor the Sfor the」（交換器健全狀況監視器組態檔案以供參考）頁面上、按一下*
+.. 在「交換器健全狀況監視器組態檔案for ONTAP the Sfor the Sfor the Description」（適用於《for Sfor the Sfor the -說明》的「交換器健全狀況監視器組態檔案」頁面上、按一下*下載*以取得適用的叢集交換器模型
+.. 在「終端使用者授權合約」頁面上、按一下「*接受*」
+.. 在「交換器健全狀況監視器組態檔案以ONTAP 供參考-下載」頁面上、選取適用的組態檔、例如* Cisco_Nexus _92300YC.Zip *
+
+
+. 將適用的Zip檔案上傳至內部Web伺服器、其中IP位址為X.X.X.X
++
+如果內部Web伺服器IP位址為192．168．2、假設存在/usr/downloads目錄、您可以使用scp將壓縮檔上傳至Web伺服器：
+
++
+[listing]
+----
+% scp Cisco_Nexus_92300YC.zip admin@192.168.2.20:/usr/download/Cisco_Nexus_92300YC.zip
+----
+. 使用命令Set-priv特權 進階功能、從ONTAP 叢集中的任一個作業系統存取進階模式設定：
++
+[listing]
+----
+cluster1::> set -privilege advanced
+----
+. 執行交換器健全狀況監控設定命令系統叢集交換器設定-健全狀況監控-節點*-package-URL X．x．x．X /位置到下載_zip檔案：
++
+[listing]
+----
+cluster1::> system cluster-switch configure-health-monitor -node * -package-url 192.168.2.20/usr/download/Cisco_Nexus_92300YC.zip
+----
+. 確認命令輸出包含文字字串「已成功處理下載的套件」。如果發生錯誤、請聯絡NetApp支援部門。
+. 在ONTAP 支援的系統上執行命令系統叢集交換器show、並確定在監控欄位設定為「True」時、發現叢集交換器。
++
+[listing]
+----
+cluster1::> system cluster-switch show
+----
++
+
+NOTE: 如果您在任何時候回復到ONTAP 舊版的版本的版本、您都需要重新安裝CSHM組態檔案、才能監控2300YC叢集交換器的交換器健全狀況。
+
+

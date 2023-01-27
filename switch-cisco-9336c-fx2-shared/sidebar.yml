@@ -1,19 +1,48 @@
 ---
 section: switch-cisco-9336c-fx2-shared
-title: Cisco Nexus 9336C-FX2共享交換器
-url: "/switch-cisco-9336c-fx2-shared/index.html"
+title: Cisco Nexus 9336C-FX2
 entries:
-- title: Cisco共享交換器的設定與組態指南
-  url: "/switch-cisco-9336c-fx2-shared/9336c_setup_and_configuration_guide_for_cisco_shared_switches.html"
-- title: 安裝NX-OS軟體與參考組態檔（RCT）
-  url: "/switch-cisco-9336c-fx2-shared/9336c_install_nx-os_software_and_reference_configuration_files_rcfs.html"
-- title: 透過新增兩個共用交換器、從具有直接附加儲存設備的無交換器叢集移轉
-  url: "/switch-cisco-9336c-fx2-shared/9336c_migrate_from_a_switchless_cluster_with_dat_storage_by_adding_two_new_shared_switches.html"
-- title: 透過新增兩個共用交換器、從具有直接附加儲存設備的交換式組態進行移轉
-  url: "/switch-cisco-9336c-fx2-shared/9336c_migrate_from_a_switched_configuration_with_dat_storage_by_adding_two_new_shared_switches.html"
-- title: 重複使用儲存交換器、從交換器附加儲存設備的無交換器組態移轉
-  url: "/switch-cisco-9336c-fx2-shared/9336c_migrate_from_a_switchless_configuration_with_sat_storage_by_reusing_the_storage_switches.html"
-- title: 重複使用儲存交換器、從交換式叢集與交換式附加儲存設備進行移轉
-  url: "/switch-cisco-9336c-fx2-shared/9336c_migrate_from_a_switched_cluster_with_sat_storage_by_reusing_the_storage_switches.html"
-- title: 更換Cisco Nexus 9336C-FX2共享交換器
-  url: "/switch-cisco-9336c-fx2-shared/9336c_replace_a_cisco_nexus_9336c-fx2_shared_switch.html"
+- title: 總覽
+  entries:
+  - title: 組態總覽
+    url: "/switch-cisco-9336c-fx2-shared/configure-switch-overview-9336c-shared.html"
+  - title: 組態需求
+    url: "/switch-cisco-9336c-fx2-shared/configure-reqs-9336c-shared.html"
+  - title: 元件與零件編號
+    url: "/switch-cisco-9336c-fx2-shared/components-9336c-shared.html"
+  - title: 必要文件
+    url: "/switch-cisco-9336c-fx2-shared/required-documentation-9336c-shared.html"
+- title: 安裝硬體
+  entries:
+  - title: 完整的佈線工作表
+    url: "/switch-cisco-9336c-fx2-shared/cable-9336c-shared.html"
+  - title: 安裝交換器
+    url: "/switch-cisco-9336c-fx2-shared/install-9336c-shared.html"
+  - title: 設定交換器
+    url: "/switch-cisco-9336c-fx2-shared/setup-and-configure-9336c-shared.html"
+  - title: 在NetApp機櫃中安裝交換器
+    url: "/switch-cisco-9336c-fx2-shared/install-switch-and-passthrough-panel-9336c-shared.html"
+- title: 設定軟體
+  entries:
+  - title: 軟體安裝工作流程
+    url: "/switch-cisco-9336c-fx2-shared/configure-software-overview-9336c-shared.html"
+  - title: 準備安裝NX-OS軟體和RCF
+    url: "/switch-cisco-9336c-fx2-shared/prepare-nxos-rcf-9336c-shared.html"
+  - title: 安裝NX-OS軟體
+    url: "/switch-cisco-9336c-fx2-shared/install-nxos-software-9336c-shared.html"
+  - title: 安裝RCF組態檔
+    url: "/switch-cisco-9336c-fx2-shared/install-nxos-rcf-9336c-shared.html"
+- title: 移轉交換器
+  entries:
+  - title: 從無交換器DAS叢集移轉
+    url: "/switch-cisco-9336c-fx2-shared/migrate-from-switchless-cluster-dat-storage.html"
+  - title: 從交換式DAS組態移轉
+    url: "/switch-cisco-9336c-fx2-shared/migrate-from-switched-configuration-dat-storage.html"
+  - title: 從無交換器SAT組態移轉
+    url: "/switch-cisco-9336c-fx2-shared/migrate-from-switchless-configuration-sat-storage.html"
+  - title: 從交換式SAT叢集移轉
+    url: "/switch-cisco-9336c-fx2-shared/migrate-from-switched-cluster-sat-storage.html"
+  - title: 移轉至雙節點無交換器叢集
+    url: "/switch-cisco-9336c-fx2-shared/migrate-to-switchless-cluster-interconnect.html"
+- title: 更換交換器
+  url: "/switch-cisco-9336c-fx2-shared/replace-9336c-fx2-shared.html"

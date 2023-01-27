@@ -1,0 +1,69 @@
+---
+sidebar: sidebar 
+permalink: switch-cisco-9336c-fx2-shared/cable-9336c-shared.html 
+keywords: shared storage cluster switch cable 
+summary: 使用佈線映像完成控制器與交換器之間的佈線。 
+---
+= 填寫Cisco Nexus 9336C-FX2纜線工作表
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+請使用下列纜線映像來完成控制器與交換器之間的纜線連接。
+
+
+
+== 連接交換器的NS224儲存設備纜線
+
+如果您想要將NS224儲存設備連接成交換器、請依照交換器附加的圖表進行：
+
+image:9336c_image1.jpg["交換器附加"]
+
+請參閱 https://hwu.netapp.com/Switch/Index["Hardware Universe"] 如需交換器連接埠的詳細資訊、
+
+
+
+== 將NS224儲存設備連接至直接連接的纜線
+
+如果您想要將NS224儲存設備連接成直接附加的連接埠、而非使用共用交換器儲存連接埠、請依照直接附加的圖表進行：
+
+image:9336c_image2.jpg["直接附加"]
+
+請參閱 https://hwu.netapp.com/Switch/Index["Hardware Universe"] 如需交換器連接埠的詳細資訊、
+
+
+
+== Cisco Nexus 9336C-FX2纜線工作表
+
+如果您想要記錄支援的平台、您必須使用完整的佈線工作表範例作為指南來填寫空白的佈線工作表。
+
+每對交換器的連接埠定義範例如下：image:cabling_worksheet.jpg["佈線工作表"]
+
+其中：
+
+* 100G ISL至交換器A連接埠35
+* 100G ISL至交換器A連接埠36
+* 100G ISL至交換器B連接埠35
+* 100G ISL至交換器B連接埠36
+
+
+
+
+== 空白的佈線工作表
+
+您可以使用空白的佈線工作表來記錄叢集中支援作為節點的平台。支援的叢集連線表Hardware Universe 定義平台所使用的叢集連接埠。
+
+image:blank_cabling_worksheet.jpg["空白的佈線工作表"]
+
+其中：
+
+* 100G ISL至交換器A連接埠35
+* 100G ISL至交換器A連接埠36
+* 100G ISL至交換器B連接埠35
+* 100G ISL至交換器B連接埠36
+

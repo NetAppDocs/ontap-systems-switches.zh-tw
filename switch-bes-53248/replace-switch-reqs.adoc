@@ -1,0 +1,50 @@
+---
+permalink: switch-bes-53248/replace-switch-reqs.html 
+sidebar: sidebar 
+keywords: replace, replacing, defective, broadcom-supported, bes, cluster, switch, network, nondisruptive, procedure, ndu, replace a broadcom-supported bes-53428 cluster switch - bes-53428 switches 
+summary: 在叢集網路中更換故障的Broadcom支援的Bes-53248叢集交換器、是不中斷營運的程序（NDU）。 
+---
+= 更換需求
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+更換交換器之前、請先確定在目前環境和更換交換器上符合下列條件。
+
+
+
+== 現有的叢集與網路基礎架構
+
+請確定：
+
+* 現有的叢集已通過驗證、完全正常運作、至少有一個完全連接的叢集交換器。
+* 所有叢集連接埠均為* up*。
+* 所有叢集邏輯介面（LIF）都在管理和操作上* up *及其主連接埠上。
+* The The ONTAP `cluster ping-cluster -node node1` 命令必須指出設定、 `basic connectivity` 和 `larger than PMTU communication`在所有路徑上都成功。
+
+
+
+
+== BS-53248替換叢集交換器
+
+請確定：
+
+* 替換交換器上的管理網路連線功能正常。
+* 更換交換器的主控台存取已就緒。
+* 節點連線是連接埠0/1到0/16、具有預設授權。
+* 所有交換器間連結（ISL）連接埠在0/55和0/56上都會停用。
+* 所需的參考組態檔（RCF）和EFOS作業系統交換器映像會載入交換器。
+* 交換器的初始自訂完成、如所述 link:configure-install-initial.html["設定BS-53248叢集交換器"]。
+
+
+任何先前的站台自訂（例如STP、SNMP和SSH）都會複製到新交換器。
+
+
+
+== 以取得更多資訊
+
+* https://mysupport.netapp.com/["NetApp 支援網站"^]
+* https://hwu.netapp.com/Home/Index["NetApp Hardware Universe"^]
+

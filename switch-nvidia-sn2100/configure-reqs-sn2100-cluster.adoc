@@ -1,0 +1,34 @@
+---
+permalink: switch-nvidia-sn2100/configure-reqs-sn2100-cluster.html 
+sidebar: sidebar 
+keywords: nvidia SN2100 switches 
+summary: 對於NVIDIA SN2100交換器的安裝與維護、請務必檢閱所有要求與建議文件。 
+---
+= NVIDIA SN2100交換器的組態需求
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+對於NVIDIA SN2100交換器的安裝與維護、請務必檢閱所有組態需求。
+
+
+
+== 安裝需求
+
+如果您想要建置ONTAP 具有兩個以上節點的叢集、您需要兩個支援的叢集網路交換器。您可以使用額外的管理交換器、這是選用的。
+
+您可以在NVIDIA雙/單一交換器機櫃中安裝NVIDIA SN2100交換器（X190006/X190106）、並附有交換器隨附的標準支架。
+
+如需纜線佈線準則、請參閱 link:cabling-considerations-sn2100-cluster.html["檢閱纜線佈線和組態考量"]。
+
+
+
+== 支援的支援ONTAP
+
+NVIDIA SN2100交換器是執行Cummulis Linux的10/25/40/100 Gb乙太網路交換器。交換器支援下列項目：
+
+* 零點9.10.1P3 ONTAP 。SN2100交換器可在ONTAP 不同的交換器配對上、以S209.10.1P3提供叢集與儲存應用程式服務。從S209.10.1P3、ONTAP 您可以使用NVIDIA SN2100交換器、將儲存設備和叢集功能結合成共享交換器組態。
+* Cummulos Linux（CL）OS 4.4.2版。可以在交換器執行Cummulis Linux或ONIE時安裝Cummuls Linux。
+

@@ -1,0 +1,36 @@
+---
+permalink: switch-cisco-92300/install-overview-cisco-92300.html 
+sidebar: sidebar 
+keywords: install, cisco nexus 92300 switch, 
+summary: 在設定Cisco Nexus 92300交換器之前、請先檢閱程序與命名規則的總覽。 
+---
+= Cisco Nexus 92300交換器的安裝與組態總覽
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在設定Cisco Nexus 92300交換器之前、請先檢閱程序總覽。
+
+若要在執行ONTAP 支援的系統上初始設定Cisco Nexus 92300交換器、請依照下列步驟操作：
+
+. link:setup-worksheet-92300yc.html["完成Cisco Nexus 2300YC佈線工作表"]。佈線工作表範例提供從交換器到控制器的建議連接埠指派範例。空白工作表提供範本、可用於設定叢集。
+. link:configure-install-initial.html["設定Cisco Nexus 2300YC交換器"]。設定及設定Cisco Nexus 2300YC交換器。
+. link:install-nxos-overview.html["準備安裝NX-OS軟體和參考組態檔（RCF）"]。準備安裝NX-OS軟體和參考組態檔（RCF）。
+. link:install-nxos-software.html["安裝NX-OS軟體"]。在Nexus 2300YC交換器上安裝NX-OS軟體。NX-OS是Cisco Systems提供的Nexus系列乙太網路交換器和MDS系列光纖通道（FC）儲存區域網路交換器的網路作業系統。
+. link:install-the-rcf-file.html["安裝參考組態檔（RCF）"]。初次設定Nexus 2300YC交換器之後、請安裝RCF。您也可以使用此程序來升級RCF版本。
+. link:setup-install-cshm-file.html["安裝叢集交換器健全狀況監視器（CSHM）組態檔"]。安裝適當的組態檔、以監控Nexus 92300YC叢集交換器的叢集交換器健全狀況。
+
+
+
+
+== 其他資訊
+
+開始安裝或維護之前、請務必先檢閱下列內容：
+
+* link:configure-reqs-92300.html["組態需求"]
+* link:components-92300.html["元件與零件編號"]
+* link:required-documentation-92300.html["必要文件"]
+* link:smart-call-home-92300.html["智慧電話住家需求"]
+

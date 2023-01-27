@@ -1,68 +1,50 @@
 ---
 section: switch-cisco-3232c
-title: Cisco Nexus 3232C交換器
+title: Cisco Nexus 3232C
 entries:
 - title: 總覽
-  url: "/switch-cisco-3232c/index.html"
-- title: 在NetApp機櫃中安裝Cisco Nexus 3232C叢集交換器和直通面板
-  url: "/switch-cisco-3232c/task-install-a-cisco-nexus-3232c-cluster-switch-and-pass-through-panel-in-a-netapp-cabinet.html"
-- title: 設定
   entries:
-  - title: 設定交換器
-    url: "/switch-cisco-9336c-fx2/setup-switches.html"
-  - title: 必要的叢集組態資訊
-    url: "/switch-cisco-9336c-fx2/setup-required-information.html"
-    entries:
-    - title: 安裝適用於92300YC交換器的叢集交換器健全狀況監視器（CSHM）組態檔
-      url: "/switch-cisco-9336c-fx2/setup-install-cshm-file.html"
+  - title: 組態總覽
+    url: "/switch-cisco-3232c/install-overview-cisco-3232c.html"
+  - title: 組態需求
+    url: "/switch-cisco-3232c/configure-reqs-3232c.html"
   - title: 必要文件
-    url: "/switch-cisco-9336c-fx2/setup-required-documentation.html"
-  - title: 使用Smart Call Home的考量事項
-    url: "/switch-cisco-9336c-fx2/setup-considerations-smart-call.html"
-  - title: 佈線工作表範例和空白
-    url: "/switch-cisco-9336c-fx2/setup-worksheets-sample-cabling.html"
-    entries:
-    - title: Cisco Nexus 9336C-FX2纜線工作表
-      url: "/switch-cisco-9336c-fx2/setup-worksheet-9336c.html"
-    - title: Cisco Nexus 2300YC佈線工作表
-      url: "/switch-cisco-9336c-fx2/setup-worksheet-92300yc.html"
-    - title: Cisco Nexus 3232C佈線工作表
-      url: "/switch-cisco-9336c-fx2/setup-worksheet-3232c.html"
-    - title: Cisco Nexus 3132Q-V佈線工作表
-      url: "/switch-cisco-9336c-fx2/setup-worksheet-3132q.html"
-    - title: Cisco Nexus 5596UP和5596T佈線工作表
-      url: "/switch-cisco-9336c-fx2/setup-worksheet-5596.html"
-- title: 在Cisco Nexus 3232C叢集交換器上安裝NX-OS軟體和RCT
-  url: "/switch-cisco-3232c/task-install-nx-os-software-and-rcfs-on-cisco-nexus-3232-cluster-switches-running-ontap-9-4-and-later.html"
+    url: "/switch-cisco-3232c/required-documentation-3232c.html"
+  - title: 智慧電話住家需求
+    url: "/switch-cisco-3232c/smart-call-home-3232c.html"
+- title: 安裝硬體
   entries:
+  - title: 完整的佈線工作表
+    url: "/switch-cisco-3232c/setup_worksheet_3232c.html"
+  - title: 設定交換器
+    url: "/switch-cisco-3232c/setup-switch.html"
+  - title: 在NetApp機櫃中安裝交換器
+    url: "/switch-cisco-3232c/install-cisco-nexus-3232c.html"
+- title: 設定軟體
+  entries:
+  - title: 準備安裝NX-OS和RCF
+    url: "/switch-cisco-3232c/prepare-install-cisco-nexus-3232c.html"
   - title: 安裝NX-OS軟體
-    url: "/switch-cisco-3232c/task-install-the-nx-os-software-3232c-cluster-switch.html"
-  - title: 安裝參考組態檔（RCF）
-    url: "/switch-cisco-3232c/task-install-the-reference-configuration-file-rcf-3232c-cluster-switch.html"
-- title: 將CN1610交換器移轉至Cisco Nexus 3232C叢集交換器
-  url: "/switch-cisco-3232c/concept-migrate-a-cn1610-switch-to-a-cisco-nexus-3232c-cluster-switch.html"
+    url: "/switch-cisco-3232c/install-nx-os-software-3232c.html"
+  - title: 安裝RCF組態檔
+    url: "/switch-cisco-3232c/install-rcf-3232c.html"
+- title: 移轉交換器
   entries:
-  - title: 如何將CN1610叢集交換器移轉至Cisco Nexus 3232C叢集交換器
-    url: "/switch-cisco-3232c/task-how-to-replace-cn1610-cluster-switches-with-cisco-nexus-3232c-cluster-switches.html"
-- title: 從Cisco Nexus 5596交換器移轉至Cisco Nexus 3232C交換器
-  url: "/switch-cisco-3232c/concept-migrate-from-a-cisco-5596-switch-to-a-cisco-nexus-3232c.html"
+  - title: 移轉需求
+    url: "/switch-cisco-3232c/migrate-requirements-3232c.html"
+  - title: 從CN1610叢集交換器移轉
+    url: "/switch-cisco-3232c/migrate-cn1610-cluster-switches.html"
+  - title: 從Cisco Nexus 5596叢集交換器移轉
+    url: "/switch-cisco-3232c/migrate-from-cisco-nexus-5596.html"
+  - title: 從雙節點無交換器叢集移轉
+    url: "/switch-cisco-3232c/migrate-from-two-node-switchless-cluster.html"
+  - title: 移轉至雙節點無交換器叢集
+    url: "/switch-cisco-3232c/migrate-to-switchless-cluster-interconnect.html"
+- title: 更換交換器
   entries:
-  - title: 如何從Cisco Nexus 5596叢集交換器移轉至Cisco Nexus 3232C叢集交換器
-    url: "/switch-cisco-3232c/task-how-to-migrate-from-a-cisco-nexus-5596-cluster-switch-to-a-cisco-nexus-3232c-cluster-switch.html"
-- title: 使用Cisco Nexus 3232C叢集交換器、從雙節點無交換器叢集移轉至叢集
-  url: "/switch-cisco-3232c/concept-migrate-from-a-two-node-switchless-cluster-to-a-cluster-with-cisco-nexus-3232c-cluster-switches.html"
-  entries:
-  - title: 如何使用Cisco Nexus 3232C叢集交換器、從雙節點無交換器叢集移轉至叢集
-    url: "/switch-cisco-3232c/task-how-to-migrate-from-a-two-node-switchless-cluster-to-a-cluster-with-cisco-nexus-3132q-v-cluster-switches.html"
-- title: 更換Cisco Nexus 3232C叢集交換器
-  url: "/switch-cisco-3232c/concept-replace-a-cisco-nexus-3232c-cluster-switch.html"
-  entries:
-  - title: 如何更換Cisco Nexus 3232C叢集交換器
-    url: "/switch-cisco-3232c/task-how-to-replace-a-cisco-nexus-3232c-cluster-switch.html"
-- title: 更換Cisco Nexus 3232C儲存交換器
-  url: "/switch-cisco-3232c/concept-replace-a-cisco-nexus-3232c-storage-switch.html"
-  entries:
-  - title: 更換Cisco Nexus 3232C儲存交換器的步驟
-    url: "/switch-cisco-3232c/task-steps-to-replace-a-cisco-nexus-3232c-storage-switch.html"
-- title: 升級Cisco Nexus 3232C儲存交換器
-  url: "/switch-cisco-3232c/task-upgrade-nx-os-software-and-rcfs-on-cisco-nexus-3232c-storage-switches.html"
+  - title: 更換叢集交換器
+    url: "/switch-cisco-3232c/replace-cluster-switch.html"
+  - title: 更換儲存交換器
+    url: "/switch-cisco-3232c/replace-storage-switch.html"
+- title: 升級交換器
+  url: "/switch-cisco-3232c/upgrade-3232c-storage-switches.html"

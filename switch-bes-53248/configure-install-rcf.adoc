@@ -1,0 +1,207 @@
+---
+permalink: switch-bes-53248/configure-install-rcf.html 
+sidebar: sidebar 
+keywords: install rcf,setup rcf 
+summary: 您可以在設定BS-53248叢集交換器之後、以及套用新授權之後、安裝參考組態檔（RCF）。 
+---
+= 安裝參考組態檔（RCF）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以在設定BS-53248叢集交換器之後、以及套用新授權之後、安裝參考組態檔（RCF）。
+
+如果您要從舊版升級RCF、則必須重設Broadcom交換器設定並執行基本組態、才能重新套用RCF。每次您想要升級或變更RCF時、都必須執行此作業。請參閱 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/Fabric%2C_Interconnect_and_Management_Switches/Error!_in_configuration_script_file_at_line_number_XX_when_applying_a_new_RCF["知識庫文章"^] 以取得詳細資料。
+
+.步驟
+. 將叢集交換器連接至管理網路。
+. 使用「ping」命令來驗證與裝載EFOS、授權和RCF的伺服器之間的連線。
++
+如果連線有問題、請使用非路由網路、並使用IP位址192.168.x或172.19.x來設定服務連接埠您可以稍後將服務連接埠重新設定為正式作業管理IP位址。
+
++
+.顯示範例
+[%collapsible]
+====
+此範例可驗證交換器是否連接至IP位址為172.19.2.1的伺服器：
+
+[listing, subs="+quotes"]
+----
+(cs2)# *ping 172.19.2.1*
+Pinging 172.19.2.1 with 0 bytes of data:
+
+Reply From 172.19.2.1: icmp_seq = 0. time= 5910 usec.
+----
+====
+. 使用「copy」命令在BS-53248叢集交換器上安裝RCF。
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(cs2)# *copy sftp://172.19.2.1/tmp/BES-53248_RCF_v1.6-Cluster-HA.txt nvram:script BES-53248_RCF_v1.6-Cluster-HA.scr*
+
+Remote Password:********
+
+Mode........................................... SFTP
+Set Server IP.................................. 172.19.2.1
+Path........................................... //tmp/
+Filename....................................... BES-53248_RCF_v1.6-Cluster-HA.txt
+Data Type...................................... Config Script
+Destination Filename........................... BES-53248_RCF_v1.6-Cluster-HA.scr
+
+Management access will be blocked for the duration of the transfer
+Are you sure you want to start? (y/n) *y*
+SFTP Code transfer starting...
+
+File transfer operation completed successfully.
+----
+====
++
+
+NOTE: 視您的環境而定、您可能需要在「copy」命令中使用雙斜槓、例如：「+copy sftp：//172.19.1.1//tmp/BES-53248_RCF_v1.6-Cluster-HA.txt NVRAM:script bes-53248_RCF-v1.6-Cluster-HA .scr+」。
+
++
+
+NOTE: 在啟動指令碼之前、必須先將「.scr」副檔名設定為檔案名稱的一部分。此擴充是EFOS作業系統的延伸。當指令碼下載到交換器時、交換器會自動驗證指令碼、並將輸出傳送到主控台。此外、您也可以變更「.scr」的名稱、使其符合主控台螢幕的大小、以便更容易閱讀、例如：「+copy sftp：//172.19.2.1/tmp/BES-53248_RCF_v1.6-Cluster-HA.txt NVRAM:script RCF-v1.6-Cluster-HA。scr+」。
+
++
+
+NOTE: 檔案名稱不得包含符號 `\/:*?"<>|` 最大允許長度為32個字元。
+
+. 確認已下載指令碼並儲存至您指定的檔案名稱：
++
+《記錄清單》
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(cs2)# *script list*
+
+Configuration Script Name                  Size(Bytes)  Date of Modification
+-----------------------------------------  -----------  --------------------
+BES-53248_RCF_v1.6-Cluster-HA.scr        2241         2020 09 30 05:41:00
+
+1 configuration script(s) found.
+----
+====
+. 將指令碼套用至交換器：
++
+適用記錄
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(cs2)# *script apply BES-53248_RCF_v1.6-Cluster-HA.scr*
+
+Are you sure you want to apply the configuration script? (y/n) *y*
+
+The system has unsaved changes.
+Would you like to save them now? (y/n) *y*
+Config file 'startup-config' created successfully .
+Configuration Saved!
+
+Configuration script 'BES-53248_RCF_v1.6-Cluster-HA.scr' applied.
+----
+====
+. 在套用RCF之後、驗證連接埠是否有額外授權：
++
+「How port all | exclude Detach」
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(cs2)# *show port all \| exclude Detach*
+
+                 Admin     Physical     Physical   Link   Link    LACP   Actor
+Intf      Type   Mode      Mode         Status     Status Trap    Mode   Timeout
+--------- ------ --------- ---------- ---------- ------ ------- ------ --------
+0/1              Enable    Auto                    Down   Enable  Enable long
+0/2              Enable    Auto                    Down   Enable  Enable long
+0/3              Enable    Auto                    Down   Enable  Enable long
+0/4              Enable    Auto                    Down   Enable  Enable long
+0/5              Enable    Auto                    Down   Enable  Enable long
+0/6              Enable    Auto                    Down   Enable  Enable long
+0/7              Enable    Auto                    Down   Enable  Enable long
+0/8              Enable    Auto                    Down   Enable  Enable long
+0/9              Enable    Auto                    Down   Enable  Enable long
+0/10             Enable    Auto                    Down   Enable  Enable long
+0/11             Enable    Auto                    Down   Enable  Enable long
+0/12             Enable    Auto                    Down   Enable  Enable long
+0/13             Enable    Auto                    Down   Enable  Enable long
+0/14             Enable    Auto                    Down   Enable  Enable long
+0/15             Enable    Auto                    Down   Enable  Enable long
+0/16             Enable    Auto                    Down   Enable  Enable long
+0/49             Enable    40G Full                Down   Enable  Enable long
+0/50             Enable    40G Full                Down   Enable  Enable long
+0/51             Enable    100G Full               Down   Enable  Enable long
+0/52             Enable    100G Full               Down   Enable  Enable long
+0/53             Enable    100G Full               Down   Enable  Enable long
+0/54             Enable    100G Full               Down   Enable  Enable long
+0/55             Enable    100G Full               Down   Enable  Enable long
+0/56             Enable    100G Full               Down   Enable  Enable long
+----
+====
+. 在交換器上確認您已進行變更：
++
+「如何執行設定」
+
++
+[listing, subs="+quotes"]
+----
+(cs2)# *show running-config*
+----
+. 儲存執行中的組態、以便在您重新啟動交換器時將其變成啟動組態：
++
+寫入記憶體
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(cs2)# *write memory*
+This operation may take a few minutes.
+Management interfaces will not be available during this time.
+
+Are you sure you want to save? (y/n) *y*
+
+Config file 'startup-config' created successfully.
+
+Configuration Saved!
+----
+====
+. 重新啟動交換器、並驗證執行中的組態是否正確：
++
+"重裝"
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(cs2)# *reload*
+
+Are you sure you would like to reset the system? (y/n) *y*
+
+System will now restart!
+----
+====
+
+
+.接下來呢？
+link:configure-health-monitor.html["安裝CSHM組態檔案"]。

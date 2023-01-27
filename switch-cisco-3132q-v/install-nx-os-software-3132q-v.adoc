@@ -1,0 +1,274 @@
+---
+permalink: switch-cisco-3132q-v/install-nx-os-software-3132q-v.html 
+sidebar: sidebar 
+keywords: install, nx-os software 
+summary: 您可以使用此程序在Nexus 3132Q-V叢集交換器上安裝NX-OS軟體。 
+---
+= 安裝NX-OS軟體
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+請遵循此程序、在Nexus 3132Q-V叢集交換器上安裝NX-OS軟體。
+
+
+
+== 檢閱要求
+
+.您需要的產品
+* 交換器組態的目前備份。
+* 完全正常運作的叢集（記錄檔中沒有錯誤或類似問題）。
+
+
+.建議的文件
+* link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器"^]。請參閱交換器相容性表、以瞭解支援ONTAP 的功能表和NX-OS版本。
+* https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000系列交換器"^]。如需Cisco交換器升級與降級程序的完整文件、請參閱Cisco網站上提供的適當軟體與升級指南。
+
+
+
+
+== 安裝軟體
+
+.關於這項工作
+此程序需要同時使用ONTAP 支援指令和Cisco Nexus 3000系列交換器的命令；ONTAP 除非另有說明、否則會使用支援指令。
+
+請務必完成中的程序 link:prepare-install-cisco-nexus-3132q.html["準備安裝NX-OS軟體和參考組態檔案"]，然後執行下列步驟。
+
+.步驟
+. 將叢集交換器連接至管理網路。
+. 使用「ping」命令來驗證與裝載NX-OS軟體和RCF之伺服器的連線。
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cs2# *ping 172.19.2.1 vrf management*
+Pinging 172.19.2.1 with 0 bytes of data:
+
+Reply From 172.19.2.1: icmp_seq = 0. time= 5910 usec.
+----
+====
+. 使用下列傳輸協定之一、將NX-OS軟體複製到Nexus 3132Q-V交換器：FTP、TFTP、SFTP或scp。如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000系列NX-OS命令參考指南"^]。
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cs2# *copy sftp: bootflash: vrf management*
+Enter source filename: */code/nxos.9.3.4.bin*
+Enter hostname for the sftp server: *172.19.2.1*
+Enter username: *user1*
+
+Outbound-ReKey for 172.19.2.1:22
+Inbound-ReKey for 172.19.2.1:22
+user1@172.19.2.1's password: *xxxxxxxx*
+sftp> *progress*
+Progress meter enabled
+sftp> *get   /code/nxos.9.3.4.bin  /bootflash/nxos.9.3.4.bin*
+/code/nxos.9.3.4.bin  100% 1261MB   9.3MB/s   02:15
+sftp> *exit*
+Copy complete, now saving to disk (please wait)...
+Copy complete.
+----
+====
+. 驗證NX-OS軟體的執行版本：
++
+《如何版本》
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cs2# *show version*
+Cisco Nexus Operating System (NX-OS) Software
+TAC support: http://www.cisco.com/tac
+Copyright (C) 2002-2020, Cisco and/or its affiliates.
+All rights reserved.
+The copyrights to certain works contained in this software are
+owned by other third parties and used and distributed under their own
+licenses, such as open source.  This software is provided "as is," and unless
+otherwise stated, there is no warranty, express or implied, including but not
+limited to warranties of merchantability and fitness for a particular purpose.
+Certain components of this software are licensed under
+the GNU General Public License (GPL) version 2.0 or
+GNU General Public License (GPL) version 3.0  or the GNU
+Lesser General Public License (LGPL) Version 2.1 or
+Lesser General Public License (LGPL) Version 2.0.
+A copy of each such license is available at
+http://www.opensource.org/licenses/gpl-2.0.php and
+http://opensource.org/licenses/gpl-3.0.html and
+http://www.opensource.org/licenses/lgpl-2.1.php and
+http://www.gnu.org/licenses/old-licenses/library.txt.
+
+Software
+  BIOS: version 04.25
+NXOS: version 9.3(3)
+  BIOS compile time:  01/28/2020
+  NXOS image file is: bootflash:///nxos.9.3.3.bin
+                  NXOS compile time: 12/22/2019 2:00:00 [12/22/2019 14:00:37]
+
+Hardware
+  cisco Nexus 3132QV Chassis (Nexus 9000 Series)
+  Intel(R) Core(TM) i3- CPU @ 2.50GHz with 16399900 kB of memory.
+  Processor Board ID FOxxxxxxx23
+
+  Device name: cs2
+  bootflash:   15137792 kB
+  usb1:               0 kB (expansion flash)
+
+Kernel uptime is 79 day(s), 10 hour(s), 23 minute(s), 53 second(s)
+
+Last reset at 663500 usecs after Mon Nov  2 10:50:33 2020
+  Reason: Reset Requested by CLI command reload
+  System version: 9.3(3)
+  Service:
+
+plugin
+  Core Plugin, Ethernet Plugin
+
+Active Package(s):
+cs2#
+----
+====
+. 安裝NX-OS映像。
++
+安裝映像檔會在每次重新開機時載入映像檔。
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cs2# *install all nxos bootflash:nxos.9.3.4.bin*
+Installer will perform compatibility check first. Please wait.
+Installer is forced disruptive
+
+Verifying image bootflash:/nxos.9.3.4.bin for boot variable "nxos".
+[####################] 100% -- SUCCESS
+
+Verifying image type.
+[####################] 100% -- SUCCESS
+
+Preparing "nxos" version info using image bootflash:/nxos.9.3.4.bin.
+[####################] 100% -- SUCCESS
+
+Preparing "bios" version info using image bootflash:/nxos.9.3.4.bin.
+[####################] 100% -- SUCCESS
+
+Performing module support checks.
+[####################] 100% -- SUCCESS
+
+Notifying services about system upgrade.
+[####################] 100% -- SUCCESS
+
+
+Compatibility check is done:
+Module  bootable          Impact              Install-type  Reason
+------- ----------------- ------------------- ------------- ------
+     1     yes            disruptive          reset         default upgrade is not hitless
+
+
+Images will be upgraded according to following table:
+Module       Image       Running-Version(pri:alt)                New-Version          Upg-Required
+------------ ----------- --------------------------------------- -------------------- ------------
+     1       nxos        9.3(3)                                  9.3(4)               yes
+     1       bios        v04.25(01/28/2020):v04.25(10/18/2016)   v04.25(01/28/2020)   no
+
+
+Switch will be reloaded for disruptive upgrade.
+Do you want to continue with the installation (y/n)?  [n] *y*
+
+Install is in progress, please wait.
+
+Performing runtime checks.
+[####################] 100% -- SUCCESS
+
+Setting boot variables.
+[####################] 100% -- SUCCESS
+
+Performing configuration copy.
+[####################] 100% -- SUCCESS
+
+Module 1: Refreshing compact flash and upgrading bios/loader/bootrom.
+Warning: please do not remove or power off the module at this time.
+[####################] 100% -- SUCCESS
+
+
+Finishing the upgrade, switch will reboot in 10 seconds.
+cs2#
+----
+====
+. 在交換器重新開機後、驗證新版本的NX-OS軟體：
++
+《如何版本》
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cs2# *show version*
+Cisco Nexus Operating System (NX-OS) Software
+TAC support: http://www.cisco.com/tac
+Copyright (C) 2002-2020, Cisco and/or its affiliates.
+All rights reserved.
+The copyrights to certain works contained in this software are
+owned by other third parties and used and distributed under their own
+licenses, such as open source.  This software is provided "as is," and unless
+otherwise stated, there is no warranty, express or implied, including but not
+limited to warranties of merchantability and fitness for a particular purpose.
+Certain components of this software are licensed under
+the GNU General Public License (GPL) version 2.0 or
+GNU General Public License (GPL) version 3.0  or the GNU
+Lesser General Public License (LGPL) Version 2.1 or
+Lesser General Public License (LGPL) Version 2.0.
+A copy of each such license is available at
+http://www.opensource.org/licenses/gpl-2.0.php and
+http://opensource.org/licenses/gpl-3.0.html and
+http://www.opensource.org/licenses/lgpl-2.1.php and
+http://www.gnu.org/licenses/old-licenses/library.txt.
+
+Software
+  BIOS: version 04.25
+NXOS: version 9.3(4)
+  BIOS compile time:  05/22/2019
+  NXOS image file is: bootflash:///nxos.9.3.4.bin
+  NXOS compile time:  4/28/2020 21:00:00 [04/29/2020 06:28:31]
+
+
+Hardware
+  cisco Nexus 3132QV Chassis (Nexus 9000 Series)
+  Intel(R) Core(TM) i3- CPU @ 2.50GHz with 16399900 kB of memory.
+  Processor Board ID FOxxxxxxx23
+
+  Device name: cs2
+  bootflash:   15137792 kB
+  usb1:               0 kB (expansion flash)
+
+Kernel uptime is 79 day(s), 10 hour(s), 23 minute(s), 53 second(s)
+
+Last reset at 663500 usecs after Mon Nov  2 10:50:33 2020
+  Reason: Reset Requested by CLI command reload
+  System version: 9.3(4)
+  Service:
+
+plugin
+  Core Plugin, Ethernet Plugin
+
+Active Package(s):
+
+cs2#
+----
+====
+
+
+.接下來呢？
+link:install-rcf-3132q-v.html["安裝參考組態檔（RCF）"]。

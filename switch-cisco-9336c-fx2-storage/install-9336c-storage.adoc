@@ -1,0 +1,50 @@
+---
+permalink: switch-cisco-9336c-fx2-storage/install-9336c-storage.html 
+sidebar: sidebar 
+keywords: require, configuration, information, documentation, cluster, management, network, switches, set up the switches - cisco nexus 9336c-fx2 
+summary: 如果您還沒有必要的組態資訊和文件、則必須先收集這些資訊、再設定叢集和管理網路交換器。 
+---
+= 安裝9336C-FX2儲存交換器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+請依照此程序安裝Cisco Nexus 9336C-FX2儲存交換器。
+
+.您需要的產品
+* 存取安裝站台的HTTP、FTP或TFTP伺服器、下載適用的NX-OS和參考組態檔（RCF）版本。
+* 適用的授權、網路與組態資訊、以及纜線。
+* 已完成 link:setup-worksheet-9336c-storage.html["佈線工作表"]。
+* 適用的NetApp叢集網路與管理網路RCT、可從NetApp 支援網站 The Sorgat下載 http://mysupport.netapp.com/["mysupport.netapp.com"^]。所有Cisco叢集網路和管理網路交換器都會以標準Cisco原廠預設組態送達。這些交換器也有NX-OS軟體的最新版本、但未載入RCFs。
+* 必要的交換器文件。請參閱 link:required-documentation-9336c-storage.html["必要文件"] 以取得更多資訊。
+
+
+.步驟
+. 將叢集網路和管理網路交換器與控制器架起。
++
+[cols="1,2"]
+|===
+| 如果您要安裝... | 然後... 
+
+
+ a| 
+NetApp系統機櫃中的Cisco Nexus 9336C-FX2
+ a| 
+請參閱 link:install-switch-and-passthrough-panel-9336c-storage.html["在NetApp機櫃中安裝交換器"] 以取得在NetApp機櫃中安裝交換器的指示。
+
+
+
+ a| 
+電信機架中的設備
+ a| 
+請參閱交換器硬體安裝指南中提供的程序、以及NetApp安裝與設定說明。
+
+|===
+. 使用完整的佈線工作表、將叢集網路和管理網路交換器連接至控制器。
+. 開啟叢集網路和管理網路交換器和控制器的電源。
+
+
+.接下來呢？
+前往 link:setup-switch-9336c-storage.html["設定Cisco Nexus 9336C-FX2儲存交換器"]。

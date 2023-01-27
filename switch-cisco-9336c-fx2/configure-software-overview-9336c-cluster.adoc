@@ -1,0 +1,19 @@
+---
+permalink: switch-cisco-9336c-fx2/configure-software-overview-9336c-cluster.html 
+sidebar: sidebar 
+keywords: BES-53248 switches, initial installation, configure switch-cisco-9336c-fx2 switch 
+summary: Cisco Nexus 9336C-FX2叢集交換器軟體組態總覽 
+---
+= Cisco Nexus 9336C-FX2叢集交換器的軟體安裝工作流程
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+若要安裝及設定Cisco Nexus 9336C-FX2交換器的軟體、請依照下列步驟操作：
+
+. link:install-nxos-overview-9336c-cluster.html["準備安裝NX-OS軟體和RCF"]。請依照初始程序、準備安裝Cisco NX-OS軟體和參考組態檔（RCT）。
+. link:install-nxos-software-9336c-cluster.html["安裝NX-OS軟體"]。在Nexus 9336C-FX2叢集交換器上安裝NX-OS軟體。
+. link:install-nxos-rcf-9336c-cluster.html["安裝參考組態檔（RCF）"]。初次設定Nexus 9336C-FX2交換器之後、請安裝RCF。您也可以使用此程序來升級RCF版本。
+

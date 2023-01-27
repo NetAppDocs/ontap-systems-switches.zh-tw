@@ -1,39 +1,30 @@
 ---
 section: switch-netapp-cn1610
-title: NetApp CN1610交換器
+title: NetApp CN1610
 entries:
 - title: 總覽
-  url: "/switch-netapp-cn1610/index.html"
-- title: 在NetApp叢集交換器上安裝FastPath軟體和RCFs
-  url: "/switch-netapp-cn1610/task-install-fastpath-software-and-rcfs-on-netapp-cluster-switch.html"
+  url: "/switch-netapp-cn1610/switch-overview-cn1610.html"
+- title: 安裝及設定工作流程
+  url: "/switch-netapp-cn1610/install-overview-cn1610.html"
+- title: 必要文件
+  url: "/switch-netapp-cn1610/required-documentation-cn1610.html"
+- title: 安裝與設定
   entries:
+  - title: 安裝硬體
+    url: "/switch-netapp-cn1610/install-hardware-cn1610.html"
   - title: 安裝FastPath軟體
-    url: "/switch-netapp-cn1610/task-install-fastpath-software.html"
-  - title: 在CN1610交換器上安裝參考組態檔
-    url: "/switch-netapp-cn1610/task-install-an-rcf-on-a-cn1610-switch.html"
-- title: 在執行ONTAP NetApp的叢集交換器上安裝FastPath軟體和RCV、這些交換器執行的是NetApp 8.3.1及更新版本
-  url: "/switch-netapp-cn1610/task-install-fastpath-software-and-rcf-files-on-netapp-cluster-switches.html"
-- title: 使用NetApp CN1610叢集交換器移轉至雙節點交換叢集
-  url: "/switch-netapp-cn1610/task-migrate-to-a-two-node-switched-cluster-with-netapp-cn1610-cluster-switches.html"
-- title: 從無交換器叢集環境移轉至交換式NetApp CN1610叢集環境
-  url: "/switch-netapp-cn1610/task-migrate-from-a-switchless-cluster-to-a-switched-netapp-cn1610-cluster-environment.html"
-- title: 使用單一叢集網路連線、在FAS22xx系統中移轉至雙節點交換叢集
-  url: "/switch-netapp-cn1610/task-migrate-from-a-switchless-cluster-fas22xx-systems-with-a-single-cluster-network-connection.html"
-- title: CN1601與CN1610交換器設定與組態指南
-  url: "/switch-netapp-cn1610/switch-setup-configuration-guide-linkout.html"
-- title: CN1610 Network Switch CLI命令參考-版本1.1.x.x
-  url: "/switch-netapp-cn1610/switch-cli-command-reference-version-11xx-linkout.html"
-- title: CN1610 Network Switch CLI命令參考-版本1.2.x.x
-  url: "/switch-netapp-cn1610/switch-cli-command-reference-version-12xx-linkout.html"
-- title: NetApp 10G叢集模式交換器安裝指南
-  url: "/switch-netapp-cn1610/netapp-10g-cluster-mode-switch-installation-guide.html"
-- title: NetApp CN1610交換器管理員指南-版本1.1.x.x
-  url: "/switch-netapp-cn1610/switch-administrator-guide-version-11xx-linkout.html"
-- title: NetApp CN1610交換器管理員指南-版本1.2.x.x
-  url: "/switch-netapp-cn1610/switch-administrator-guide-version-12xx-linkout.html"
-- title: CN1601 Network Switch CLI命令參考
-  url: "/switch-netapp-cn1610/switch-cli-command-reference-linkout.html"
-- title: CN1601交換器管理員指南
-  url: "/switch-netapp-cn1610/switch-administrator-guide-linkout.html"
-- title: NetApp 1G叢集模式交換器安裝指南
-  url: "/switch-netapp-cn1610/netapp-1g-cluster-mode-switch-installation-guide-linkout.html"
+    url: "/switch-netapp-cn1610/install-fastpath-software.html"
+  - title: 安裝RCF
+    url: "/switch-netapp-cn1610/install-rcf-file.html"
+  - title: 安裝FastPath和RCF for ONTAP Rf48.3.1及更新版本
+    url: "/switch-netapp-cn1610/install-fastpath-rcf-831.html"
+  - title: 設定交換器
+    url: "/switch-netapp-cn1610/configure-hardware-cn1610.html"
+- title: 移轉交換器
+  entries:
+  - title: 移轉選項
+    url: "/switch-netapp-cn1610/migrate-overview.html"
+  - title: 從無交換器叢集移轉
+    url: "/switch-netapp-cn1610/migrate-switched-netapp-cn1610.html"
+  - title: 移轉至雙節點交換叢集
+    url: "/switch-netapp-cn1610/migrate-fas22xx-systems.html"

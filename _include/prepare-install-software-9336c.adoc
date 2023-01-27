@@ -1,0 +1,270 @@
+= 
+:allow-uri-read: 
+
+
+.關於範例
+本程序中的範例使用下列交換器和節點命名法：
+
+* 兩個Cisco交換器的名稱為CS1和CS2。
+* 節點名稱為cluster1-01和cluster1-02。
+* 叢集LIF名稱為cluster1-01_clus1、cluster1-01_clus2（叢集1-01）和cluster1-02_clus2（叢集1-01）、cluster1-02_clus2（叢集1-02）。
+* 「cluster1：*：>」提示會指出叢集的名稱。
+
+
+.關於這項工作
+此程序需要同時使用ONTAP 支援指令和Cisco Nexus 9000系列交換器的指令；ONTAP 除非另有說明、否則會使用支援指令。
+
+.步驟
+. 如果AutoSupport 此叢集啟用了「支援功能」、請叫用AutoSupport 下列訊息來抑制自動建立案例：「System Node AutoSupport Rsepooke -Node *-type all -most MAn=x h」
++
+其中x是維護時段的持續時間（以小時為單位）。
+
++
+
+NOTE: 此資訊可通知技術支援人員執行此維護工作、以便在維護期間抑制自動建立案例。AutoSupport
+
+. 將權限等級變更為進階、並在系統提示您繼續時輸入* y*：
++
+"進階權限"
+
++
+出現進階提示（「*>」）。
+
+. 顯示每個叢集互連交換器的每個節點已設定多少個叢集互連介面：
++
+「network device-dDiscovery show -protocol cup」
+
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+cluster1::*> network device-discovery show -protocol cdp
+
+Node/       Local  Discovered
+Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
+----------- ------ ------------------------- ----------------- --------
+cluster1-02/cdp
+            e0a    cs1                       Eth1/2            N9K-C9336C
+            e0b    cs2                       Eth1/2            N9K-C9336C
+cluster1-01/cdp
+            e0a    cs1                       Eth1/1            N9K-C9336C
+            e0b    cs2                       Eth1/1            N9K-C9336C
+
+4 entries were displayed.
+----
+====
+. 檢查每個叢集介面的管理或作業狀態。
++
+.. 顯示網路連接埠屬性：
++
+ `network port show –ipspace Cluster`
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+cluster1::*> network port show -ipspace Cluster
+
+Node: cluster1-02
+                                                  Speed(Mbps) Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status
+--------- ------------ ---------------- ---- ---- ----------- ------
+e0a       Cluster      Cluster          up   9000  auto/10000 healthy
+e0b       Cluster      Cluster          up   9000  auto/10000 healthy
+
+Node: cluster1-01
+                                                  Speed(Mbps) Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status
+--------- ------------ ---------------- ---- ---- ----------- ------
+e0a       Cluster      Cluster          up   9000  auto/10000 healthy
+e0b       Cluster      Cluster          up   9000  auto/10000 healthy
+
+4 entries were displayed.
+----
+====
+.. 顯示關於生命的資訊：
++
+「網路介面show -vserver叢集」
+
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+cluster1::*> network interface show -vserver Cluster
+
+            Logical            Status     Network            Current       Current Is
+Vserver     Interface          Admin/Oper Address/Mask       Node          Port    Home
+----------- ------------------ ---------- ------------------ ------------- ------- ----
+Cluster
+            cluster1-01_clus1  up/up      169.254.209.69/16  cluster1-01   e0a     true
+            cluster1-01_clus2  up/up      169.254.49.125/16  cluster1-01   e0b     true
+            cluster1-02_clus1  up/up      169.254.47.194/16  cluster1-02   e0a     true
+            cluster1-02_clus2  up/up      169.254.19.183/16  cluster1-02   e0b     true
+
+4 entries were displayed.
+----
+====
+
+
+. Ping遠端叢集LIF：
++
+「叢集ping叢集節點節點名稱」
+
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+cluster1::*> cluster ping-cluster -node cluster1-02
+Host is cluster1-02
+Getting addresses from network interface table...
+Cluster cluster1-01_clus1 169.254.209.69 cluster1-01     e0a
+Cluster cluster1-01_clus2 169.254.49.125 cluster1-01     e0b
+Cluster cluster1-02_clus1 169.254.47.194 cluster1-02     e0a
+Cluster cluster1-02_clus2 169.254.19.183 cluster1-02     e0b
+Local = 169.254.47.194 169.254.19.183
+Remote = 169.254.209.69 169.254.49.125
+Cluster Vserver Id = 4294967293
+Ping status:
+
+Basic connectivity succeeds on 4 path(s)
+Basic connectivity fails on 0 path(s)
+
+Detected 9000 byte MTU on 4 path(s):
+    Local 169.254.19.183 to Remote 169.254.209.69
+    Local 169.254.19.183 to Remote 169.254.49.125
+    Local 169.254.47.194 to Remote 169.254.209.69
+    Local 169.254.47.194 to Remote 169.254.49.125
+Larger than PMTU communication succeeds on 4 path(s)
+RPC status:
+2 paths up, 0 paths down (tcp check)
+2 paths up, 0 paths down (udp check)
+----
+====
+. 驗證是否已在所有叢集生命體上啟用自動還原命令：
++
+「網路介面show -vserver叢集-功能 變數自動回復」
+
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+cluster1::*> network interface show -vserver Cluster -fields auto-revert
+
+          Logical
+Vserver   Interface           Auto-revert
+--------- ––––––-------------- ------------
+Cluster
+          cluster1-01_clus1   true
+          cluster1-01_clus2   true
+          cluster1-02_clus1   true
+          cluster1-02_clus2   true
+4 entries were displayed.
+----
+====
+. 對於更新版本的支援、請使用下列命令啟用乙太網路交換器健全狀況監視器記錄收集功能、以收集交換器相關的記錄檔ONTAP ：
++
+「系統交換器乙太網路記錄設定密碼」和「系統交換器乙太網路記錄啟用-收集」
+
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+cluster1::*> system switch ethernet log setup-password
+Enter the switch name: <return>
+The switch name entered is not recognized.
+Choose from the following list:
+cs1
+cs2
+
+cluster1::*> system switch ethernet log setup-password
+
+Enter the switch name: cs1
+RSA key fingerprint is e5:8b:c6:dc:e2:18:18:09:36:63:d9:63:dd:03:d9:cc
+Do you want to continue? {y|n}::[n] y
+
+Enter the password: <enter switch password>
+Enter the password again: <enter switch password>
+
+cluster1::*> system switch ethernet log setup-password
+
+Enter the switch name: cs2
+RSA key fingerprint is 57:49:86:a1:b9:80:6a:61:9a:86:8e:3c:e3:b7:1f:b1
+Do you want to continue? {y|n}:: [n] y
+
+Enter the password: <enter switch password>
+Enter the password again: <enter switch password>
+
+cluster1::*> system  switch ethernet log enable-collection
+
+Do you want to enable cluster log collection for all nodes in the cluster?
+{y|n}: [n] y
+
+Enabling cluster switch log collection.
+
+cluster1::*>
+----
+====
++
+
+NOTE: 如果這些命令中有任何一個出現錯誤、請聯絡NetApp支援部門。
+
+. 針對發行9.5P16、9.6P12及9.7P10及更新版本的修補程式、請使用下列命令啟用乙太網路交換器健全狀況監視器記錄收集功能、以收集交換器相關的記錄檔ONTAP ：
++
+「系統叢集交換器記錄設定密碼」和「系統叢集交換器記錄啟用收集」
+
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+cluster1::*> system cluster-switch log setup-password
+Enter the switch name: <return>
+The switch name entered is not recognized.
+Choose from the following list:
+cs1
+cs2
+
+cluster1::*> system cluster-switch log setup-password
+
+Enter the switch name: cs1
+RSA key fingerprint is e5:8b:c6:dc:e2:18:18:09:36:63:d9:63:dd:03:d9:cc
+Do you want to continue? {y|n}::[n] y
+
+Enter the password: <enter switch password>
+Enter the password again: <enter switch password>
+
+cluster1::*> system cluster-switch log setup-password
+
+Enter the switch name: cs2
+RSA key fingerprint is 57:49:86:a1:b9:80:6a:61:9a:86:8e:3c:e3:b7:1f:b1
+Do you want to continue? {y|n}:: [n] y
+
+Enter the password: <enter switch password>
+Enter the password again: <enter switch password>
+
+cluster1::*> system cluster-switch log enable-collection
+
+Do you want to enable cluster log collection for all nodes in the cluster?
+{y|n}: [n] y
+
+Enabling cluster switch log collection.
+
+cluster1::*>
+----
+====
+
+
+
+NOTE: 如果這些命令中有任何一個出現錯誤、請聯絡NetApp支援部門。

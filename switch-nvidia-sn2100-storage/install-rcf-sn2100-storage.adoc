@@ -1,0 +1,295 @@
+---
+permalink: switch-nvidia-sn2100/install-rcf-sn2100-storage.html 
+sidebar: sidebar 
+keywords: install rcf script, python script, sn2100 SN2100 switches, cumulus 
+summary: 請遵循此程序來安裝RCF指令碼。 
+---
+= 安裝RCF指令碼
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+請遵循此程序來安裝RCF指令碼。
+
+.您需要的產品
+安裝RCF指令碼之前、請確定交換器上有下列項目：
+
+* 已安裝Cummulis Linux 4.4.2。
+* IP位址、子網路遮罩和預設閘道、是透過DHCP定義或手動設定的。
+
+
+.目前的RCF指令碼版本
+叢集與儲存應用程式可使用兩個RCF指令碼。每個的程序都相同。
+
+* 叢集：* MSN2100-RCF-v1.8-叢集*
+* 儲存設備：* MSN2100-RCF-v1.8-Storage*
+
+
+
+NOTE: 下列程序範例說明如何下載及套用叢集交換器的RCF指令碼。
+
+
+NOTE: 命令輸出範例使用交換器管理IP位址10.233.204.71、網路遮罩255．255．255．0和預設閘道10．233.204.1。
+
+.步驟
+. 顯示SN2100交換器上的可用介面：
++
+`net show interface all`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cumulus@cumulus:mgmt:~$ *net show interface all*
+
+State  Name   Spd  MTU    Mode         LLDP                Summary
+-----  -----  ---  -----  -----------  ------------------  --------------
+...
+...
+ADMDN  swp1   N/A  9216   NotConfigured
+ADMDN  swp2   N/A  9216   NotConfigured
+ADMDN  swp3   N/A  9216   NotConfigured
+ADMDN  swp4   N/A  9216   NotConfigured
+ADMDN  swp5   N/A  9216   NotConfigured
+ADMDN  swp6   N/A  9216   NotConfigured
+ADMDN  swp7   N/A  9216   NotConfigure
+ADMDN  swp8   N/A  9216   NotConfigured
+ADMDN  swp9   N/A  9216   NotConfigured
+ADMDN  swp10  N/A  9216   NotConfigured
+ADMDN  swp11  N/A  9216   NotConfigured
+ADMDN  swp12  N/A  9216   NotConfigured
+ADMDN  swp13  N/A  9216   NotConfigured
+ADMDN  swp14  N/A  9216   NotConfigured
+ADMDN  swp15  N/A  9216   NotConfigured
+ADMDN  swp16  N/A  9216   NotConfigured
+----
+====
+. 將RCF python指令碼複製到交換器：
++
+[listing, subs="+quotes"]
+----
+cumulus@cumulus:mgmt:~$ *pwd*
+/home/cumulus
+cumulus@cumulus:mgmt: */tmp$ scp _<user>@<host:/<path>_/MSN2100-RCF-v1.8-Cluster*
+ssologin@10.233.204.71's password:
+MSN2100-RCF-v1.8-Cluster                 100% 8607   111.2KB/s         00:00
+----
+. 套用RCF python指令碼* MSN2100-RCF-v1.8-Cluster*：
++
+[listing, subs="+quotes"]
+----
+cumulus@cumulus:mgmt:/tmp$ *sudo python3 MSN2100-RCF-v1.8-Cluster*
+[sudo] password for cumulus:
+...
+Step 1: Creating the banner file
+Step 2: Registering banner message
+Step 3: Updating the MOTD file
+Step 4: Ensuring passwordless use of cl-support command by admin
+Step 5: Disabling apt-get
+Step 6: Creating the interfaces
+Step 7: Adding the interface config
+Step 8: Disabling cdp
+Step 9: Adding the lldp config
+Step 10: Adding the RoCE base config
+Step 11: Modifying RoCE Config
+Step 12: Configure SNMP
+Step 13: Reboot the switch
+----
++
+RCF指令碼會完成上述步驟。
+
++
+
+NOTE: 若有任何無法修正的RCF python指令碼問題、請聯絡 https://mysupport.netapp.com/["NetApp支援"^] 以取得協助。
+
+. 重新開機後驗證組態：
++
+`net show interface all`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cumulus@cumulus:mgmt:~$ *net show interface all*
+
+State  Name      Spd   MTU    Mode       LLDP              Summary
+-----  --------- ----  -----  ---------- ----------------- --------
+...
+...
+DN     swp1s0    N/A   9216   Trunk/L2                     Master: bridge(UP)
+DN     swp1s1    N/A   9216   Trunk/L2                     Master: bridge(UP)
+DN     swp1s2    N/A   9216   Trunk/L2                     Master: bridge(UP)
+DN     swp1s3    N/A   9216   Trunk/L2                     Master: bridge(UP)
+DN     swp2s0    N/A   9216   Trunk/L2                     Master: bridge(UP)
+DN     swp2s1    N/A   9216   Trunk/L2                     Master: bridge(UP)
+DN     swp2s2    N/A   9216   Trunk/L2                     Master: bridge(UP)
+DN     swp2s3    N/A   9216   Trunk/L2                     Master: bridge(UP)
+UP     swp3      100G  9216   Trunk/L2                     Master: bridge(UP)
+UP     swp4      100G  9216   Trunk/L2                     Master: bridge(UP)
+DN     swp5      N/A   9216   Trunk/L2                     Master: bridge(UP)
+DN     swp6      N/A   9216   Trunk/L2                     Master: bridge(UP)
+DN     swp7      N/A   9216   Trunk/L2                     Master: bridge(UP)
+DN     swp8      N/A   9216   Trunk/L2                     Master: bridge(UP)
+DN     swp9      N/A   9216   Trunk/L2                     Master: bridge(UP)
+DN     swp10     N/A   9216   Trunk/L2                     Master: bridge(UP)
+DN     swp11     N/A   9216   Trunk/L2                     Master: bridge(UP)
+DN     swp12     N/A   9216   Trunk/L2                     Master: bridge(UP)
+DN     swp13     N/A   9216   Trunk/L2                     Master: bridge(UP)
+DN     swp14     N/A   9216   Trunk/L2                     Master: bridge(UP)
+UP     swp15     N/A   9216   BondMember                   Master: bond_15_16(UP)
+UP     swp16     N/A   9216   BondMember                   Master: bond_15_16(UP)
+...
+...
+
+cumulus@cumulus:mgmt:~$ *net show roce config*
+RoCE mode.......... lossless
+Congestion Control:
+  Enabled SPs.... 0 2 5
+  Mode........... ECN
+  Min Threshold.. 150 KB
+  Max Threshold.. 1500 KB
+PFC:
+  Status......... enabled
+  Enabled SPs.... 2 5
+  Interfaces......... swp10-16,swp1s0-3,swp2s0-3,swp3-9
+
+DSCP                     802.1p  switch-priority
+-----------------------  ------  ---------------
+0 1 2 3 4 5 6 7               0                0
+8 9 10 11 12 13 14 15         1                1
+16 17 18 19 20 21 22 23       2                2
+24 25 26 27 28 29 30 31       3                3
+32 33 34 35 36 37 38 39       4                4
+40 41 42 43 44 45 46 47       5                5
+48 49 50 51 52 53 54 55       6                6
+56 57 58 59 60 61 62 63       7                7
+
+switch-priority  TC  ETS
+---------------  --  --------
+0 1 3 4 6 7       0  DWRR 28%
+2                 2  DWRR 28%
+5                 5  DWRR 43%
+----
+====
+. 驗證介面中收發器的資訊：
++
+`net show interface pluggables`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cumulus@cumulus:mgmt:~$ *net show interface pluggables*
+Interface  Identifier     Vendor Name  Vendor PN        Vendor SN       Vendor Rev
+---------  -------------  -----------  ---------------  --------------  ----------
+swp3       0x11 (QSFP28)  Amphenol     112-00574        APF20379253516  B0
+swp4       0x11 (QSFP28)  AVAGO        332-00440        AF1815GU05Z     A0
+swp15      0x11 (QSFP28)  Amphenol     112-00573        APF21109348001  B0
+swp16      0x11 (QSFP28)  Amphenol     112-00573        APF21109347895  B0
+----
+====
+. 確認每個節點都有連線至每個交換器：
++
+`net show lldp`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cumulus@cumulus:mgmt:~$ *net show lldp*
+
+LocalPort  Speed  Mode        RemoteHost              RemotePort
+---------  -----  ----------  ----------------------  -----------
+swp3       100G   Trunk/L2    sw1                     e3a
+swp4       100G   Trunk/L2    sw2                     e3b
+swp15      100G   BondMember  sw13                    swp15
+swp16      100G   BondMember  sw14                    swp16
+----
+====
+. 驗證叢集上叢集連接埠的健全狀況。
++
+.. 驗證叢集中所有節點的e0d連接埠是否正常運作：
++
+「網路連接埠show -role cluster」
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network port show -role cluster*
+
+Node: node1
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+e3a       Cluster      Cluster          up   9000  auto/10000 healthy  false
+e3b       Cluster      Cluster          up   9000  auto/10000 healthy  false
+
+Node: node2
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+e3a       Cluster      Cluster          up   9000  auto/10000 healthy  false
+e3b       Cluster      Cluster          up   9000  auto/10000 healthy  false
+----
+====
+.. 驗證叢集的交換器健全狀況（這可能不會顯示交換器SW2、因為l生命 週數不在e0d上）。
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network device-discovery show -protocol lldp*
+Node/       Local  Discovered
+Protocol    Port   Device (LLDP: ChassisID)  Interface Platform
+----------- ------ ------------------------- --------- ----------
+node1/lldp
+            e3a    sw1 (b8:ce:f6:19:1a:7e)   swp3      -
+            e3b    sw2 (b8:ce:f6:19:1b:96)   swp3      -
+
+node2/lldp
+            e3a    sw1 (b8:ce:f6:19:1a:7e)   swp4      -
+            e3b    sw2 (b8:ce:f6:19:1b:96)   swp4      -
+
+
+cluster1::*> *system switch ethernet show -is-monitoring-enabled-operational true*
+Switch                      Type               Address          Model
+--------------------------- ------------------ ---------------- -----
+sw1                         cluster-network    10.233.205.90    MSN2100-CB2RC
+     Serial Number: MNXXXXXXGD
+      Is Monitored: true
+            Reason: None
+  Software Version: Cumulus Linux version 4.4.2 running on Mellanox
+                    Technologies Ltd. MSN2100
+    Version Source: LLDP
+
+sw2                         cluster-network    10.233.205.91    MSN2100-CB2RC
+     Serial Number: MNCXXXXXXGS
+      Is Monitored: true
+            Reason: None
+  Software Version: Cumulus Linux version 4.4.2 running on Mellanox
+                    Technologies Ltd. MSN2100
+    Version Source: LLDP
+----
+====
+
+
+
+
+.接下來呢？
+link:install-snmpv3-sn2100-storage.html["設定交換器記錄收集"]。

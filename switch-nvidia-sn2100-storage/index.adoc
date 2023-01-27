@@ -1,0 +1,14 @@
+---
+permalink: switch-nvidia-sn2100/index.html 
+sidebar: sidebar 
+keywords: nvidia, switch, sn2100, mellanox switch 
+summary: NVIDIA SN2100交換器 
+---
+= NVIDIA SN2100交換器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+從S209.10.1P3、ONTAP 您可以使用NVIDIA SN2100交換器、將儲存設備和叢集功能結合到共享交換器情境中。

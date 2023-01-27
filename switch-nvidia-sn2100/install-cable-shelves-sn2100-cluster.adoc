@@ -1,0 +1,27 @@
+---
+permalink: switch-nvidia-sn2100/install-cable-shelves-sn2100-cluster.html 
+sidebar: sidebar 
+keywords: sn2100 cabling setup, msn2100 sn2100 switches configuration, cumulus linux 
+summary: 如果您的系統需要將NS224磁碟機櫃纜線作為交換器附加儲存設備（非直接附加儲存設備）、請使用此處提供的資訊。 
+---
+= 將NS224磁碟櫃連接為交換器附加儲存設備
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果您的系統需要將NS224磁碟機櫃纜線作為交換器附加儲存設備（非直接附加儲存設備）、請使用此處提供的資訊。
+
+* 透過儲存交換器連接NS224磁碟機櫃：
++
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2876580["連接交換器的NS224磁碟機櫃佈線"^]
+
+* 確認您的平台機型支援的硬體、例如儲存交換器和纜線：
++
+https://hwu.netapp.com/["NetApp Hardware Universe"^]
+
+
+
+.接下來呢？
+link:install-cumulus-mode-sn2100-cluster.html["在Cummuls模式下安裝Cummulus Linux"] 或 link:install-onie-mode-sn2100-cluster.html["以ONIE模式安裝CummulUS Linux"]。

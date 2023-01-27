@@ -1,0 +1,75 @@
+---
+permalink: switch-bes-53248/configure-health-monitor.html 
+sidebar: sidebar 
+keywords: CSHM,initial setup,configuration file,cshm,enable SSH 
+summary: 您可以安裝叢集交換器健全狀況監視器（CSHM）組態檔、以監控BS-53248叢集交換器。 
+---
+= 安裝叢集交換器健全狀況監視器（CSHM）組態檔
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以安裝叢集交換器健全狀況監視器（CSHM）組態檔、以監控BS-53248叢集交換器。
+
+在版本9.5P7及更早版本、以及9.6P2及更早版本中、您必須分別下載CSHM檔案ONTAP 。在發行版本9.5P8及更新版本、9.6P3及更新版本、以及9.7及更新版本中、CSHM檔案與更新版本一起搭售ONTAP ONTAP 。
+
+.您需要的產品
+請確定ONTAP 支援並執行不中斷的叢集。
+
+.步驟
+. 根據對應ONTAP 的更新版本下載CSHM Zip檔案。此檔案可從頁面取得： https://mysupport.netapp.com/NOW/cgi-bin/software/["NetApp軟體下載"^]
++
+.. 在「軟體」下載頁面上、選取*「交換器健全狀況監視器組態檔案」*。
+.. 選取「Platform =* ONTAP S供*參考*」、然後按一下「* Go！*」。
+.. 在「Switch Health Monitor Configuration Files for ONTAP Sfor the Sfor the」（交換器健全狀況監視器組態檔案以供參考）頁面上、按一下*
+.. 在「Switch Health Monitor Configuration Files for ONTAP Sfor the Sfor the Description」（交換器健全狀況監控組態檔案-說明）頁面上、按一下* Download *以取得適用的叢集交換器機型；例如：* Broadcom支援的BS-53245*。
+.. 在「終端使用者授權合約」頁面上、按一下「*接受*」。
+.. 在「交換器健全狀況監視器組態檔案以ONTAP 供參考-下載」頁面上、選取適用的組態檔、例如* Broadcom _BS-53248.壓縮*。
+
+
+. 將適用的Zip檔案上傳至內部Web伺服器、其中IP位址為X.X.X.X
++
+若為內部Web伺服器IP位址192．168．2．20、且假設存在/usr/download目錄、您可以使用將壓縮檔上傳至Web伺服器 `scp`：
+
++
+[listing, subs="+quotes"]
+----
+% *scp Broadcom_BES-53248.zip admin@192.168.2.20:/usr/download/Broadcom_BES-53248.zip*
+----
+. 使用ONTAP 命令「show -privit advance"（進階設定）：
++
+[listing, subs="+quotes"]
+----
+cluster1::> *set -privilege advanced*
+----
+. 執行交換器健全狀況監視器configure命令：
++
+`system cluster-switch configure-health-monitor -node * -package-url \http://server/file-location`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::> *system cluster-switch configure-health-monitor -node * -package-url
+http://192.168.2.20/usr/download/Broadcom_BES-53248.zip*
+----
+====
+. 確認命令輸出包含下列文字字串： `downloaded package processed successfully`。如果發生錯誤、請聯絡NetApp支援部門。
+. 在ONTAP 作業系統上執行命令「系統叢集交換器show」、並確保在監控欄位設定為「True」時、發現叢集交換器。
++
+[listing, subs="+quotes"]
+----
+cluster1::> *system cluster-switch show*
+----
++
+
+NOTE: 如果您在任何時候回復到ONTAP 舊版的版本的版本、則必須再次安裝CSHM組態檔案、才能啟用BS-53248叢集交換器的交換器健全狀況監控。
+
+
+
+.接下來呢？
+若要使用CSHM提供的所有功能、請依所述啟用SSH link:configure-ssh.html["在BS-53248叢集交換器上啟用SSH"]。

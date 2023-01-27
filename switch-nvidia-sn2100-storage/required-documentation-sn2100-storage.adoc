@@ -1,0 +1,63 @@
+---
+permalink: switch-nvidia-sn2100/required-documentation-sn2100-storage.html 
+sidebar: sidebar 
+keywords: nvidia SN2100 switches 
+summary: 對於NVIDIA SN2100交換器的安裝與維護、請務必檢閱所有建議的文件。 
+---
+= NVIDIA SN2100交換器的文件需求
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+對於NVIDIA SN2100交換器的安裝與維護、請務必檢閱所有建議的文件。
+
+下表列出NVIDIA SN2100交換器可用的文件。
+
+[cols="1,2"]
+|===
+| 標題 | 說明 
+
+
+ a| 
+link:install_setup_sn2100_switches_overview.html["_設定及設定NVIDIA SN2100交換器_"^]
+ a| 
+說明如何設定及設定NVIDIA SN2100交換器、包括安裝CummUS Linux和適用的RCT。
+
+
+
+ a| 
+link:migrate_cisco_sn2100_cluster_switch.html["_從Cisco叢集交換器移轉至NVIDIA SN2100叢集交換器_"^]
+ a| 
+說明如何從使用Cisco叢集交換器的環境移轉至使用NVIDIA SN2100叢集交換器的環境。
+
+
+
+ a| 
+link:migrate_cisco_sn2100_storage_switch.html["_從Cisco儲存交換器移轉至NVIDIA儲存交換器_"^]
+ a| 
+說明如何從使用Cisco儲存交換器的環境移轉至使用NVIDIA SN2100儲存交換器的環境。
+
+
+
+ a| 
+link:migrate_2n_switched_sn2100_switches.html["_使用NVIDIA SN2100叢集交換器移轉至雙節點交換式叢集_"^]
+ a| 
+說明如何使用NVIDIA SN2100叢集交換器移轉至雙節點交換環境。
+
+
+
+ a| 
+link:replace_sn2100_switch_cluster.html["_更換NVIDIA SN2100叢集交換器_"^]
+ a| 
+說明在叢集中更換有瑕疵的NVIDIA SN2100交換器、以及下載CummUS Linux和參考組態檔案的程序。
+
+
+
+ a| 
+link:replace_sn2100_switch_storage.html["_更換NVIDIA SN2100儲存交換器_"^]
+ a| 
+說明更換有瑕疵的NVIDIA SN2100儲存交換器、以及下載CummUS Linux和參考組態檔案的程序。
+
+|===

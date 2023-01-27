@@ -1,0 +1,22 @@
+---
+permalink: switch-nvidia-sn2100/configure-sn2100-storage.html 
+sidebar: sidebar 
+keywords: switches hardware installation 
+summary: 若要安裝BS-53248硬體、請參閱NVIDIA文件。 
+---
+= 設定NVIDIA SN2100交換器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+若要設定SN2100交換器、請參閱NVIDIA的文件。
+
+.步驟
+. 檢閱 link:configure-reqs-sn2100-storage.html["組態需求"]。
+. 依照中的指示操作 https://docs.nvidia.com/networking/display/sn2000pub/System+Bring-Up["NVIDIA系統啟動。"^]。
+
+
+.接下來呢？
+link:cabling-considerations-sn2100-storage.html["檢閱纜線佈線和組態考量"]。

@@ -1,0 +1,68 @@
+---
+permalink: switch-cisco-92300/components-92300.html 
+sidebar: sidebar 
+keywords: cisco nexus 92300YC 
+summary: 如果您想要建置ONTAP 具有兩個以上節點的叢集、您需要兩個支援的叢集網路交換器。您可以使用額外的管理交換器、這是選用的。 
+---
+= Cisco Nexus 2300YC交換器的元件
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+對於Cisco Nexus 2300YC交換器的安裝與維護、請務必檢閱所有交換器元件和零件編號。
+
+下表列出92300YC交換器、風扇和電源供應器的零件編號和說明：
+
+[cols="1,2"]
+|===
+| 產品編號 | 說明 
+
+
+ a| 
+190003.
+ a| 
+Cisco 92300YC、CLSW、48Pt10/25GB、18Pt100G、PTSx（PTSx =連接埠側邊排氣）
+
+
+
+ a| 
+190003R
+ a| 
+Cisco 92300YC、CLSW、48Pt10/25GB、18Pt100G、PSIN（PSIN =連接埠側邊輸入）
+
+
+
+ a| 
+X-NXA-FAN-35CFM-B
+ a| 
+風扇、Cisco N9K連接埠側進氣氣流
+
+
+
+ a| 
+X-NXA-FAN-35CFM-F
+ a| 
+風扇、Cisco N9K連接埠側邊排氣氣流
+
+
+
+ a| 
+X-NXA-PAC-650W-B
+ a| 
+電源供應器、Cisco 650W -連接埠側進
+
+
+
+ a| 
+X-NXA-PAC-650W-F
+ a| 
+電源供應器、Cisco 650W -連接埠側邊排氣
+
+|===
+Cisco Nexus 2300YC交換器氣流詳細資料：
+
+* 連接埠側排風（標準氣流）：冷空氣透過冷通道中的風扇和電源供應器模組進入機箱、並透過熱通道中的機箱連接埠端口排出。連接埠側邊的排氣氣流、搭配藍色色彩。
+* 端口端口進氣氣流（反轉氣流）：冷卻氣流通過冷通道的端口端進入機箱，並通過熱通道中的風扇和電源設備模塊排出。連接埠側進氣氣流、搭配酒紅色。
+

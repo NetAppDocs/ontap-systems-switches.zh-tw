@@ -1,0 +1,40 @@
+---
+permalink: switch-nvidia-sn2100/required-documentation-sn2100-cluster.html 
+sidebar: sidebar 
+keywords: nvidia SN2100 switches 
+summary: 對於NVIDIA SN2100交換器的安裝與維護、請務必檢閱所有建議的文件。 
+---
+= NVIDIA SN2100交換器的文件需求
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+對於NVIDIA SN2100交換器的安裝與維護、請務必檢閱所有建議的文件。
+
+[cols="1,2"]
+|===
+| 標題 | 說明 
+
+
+ a| 
+https://docs.nvidia.com/networking/display/sn2000pub/Installation["NVIDIA交換器安裝指南"^]
+ a| 
+說明如何安裝NVIDIA SN2100交換器。
+
+
+
+ a| 
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2876580["NS224 NVMe磁碟機櫃佈線指南"^]
+ a| 
+顯示如何設定磁碟機櫃佈線的概觀與圖例。
+
+
+
+ a| 
+https://hwu.netapp.com/["NetApp Hardware Universe"^]
+ a| 
+可讓您確認平台機型支援的硬體、例如儲存交換器和纜線。
+
+|===

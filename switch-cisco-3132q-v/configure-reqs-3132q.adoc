@@ -1,0 +1,33 @@
+---
+permalink: switch-cisco-3132q-v/configure-reqs-3132q.html 
+sidebar: sidebar 
+keywords: Cisco, 3132Q-V 
+summary: 對於Cisco Nexus 3132Q-V交換器的安裝與維護、請務必檢閱網路與組態需求 
+---
+= Cisco Nexus 3132Q-V交換器的組態需求
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+對於Cisco Nexus 3132Q-V交換器的安裝與維護、請務必檢閱網路與組態需求。
+
+
+
+== 組態需求
+
+若要設定叢集、您需要適當數量和類型的纜線、以及交換器的纜線連接器。視您初始設定的交換器類型而定、您需要使用隨附的主控台纜線連接至交換器主控台連接埠；您也需要提供特定的網路資訊。
+
+
+
+== 網路需求
+
+所有交換器組態都需要下列網路資訊：
+
+* 用於管理網路流量的IP子網路。
+* 每個儲存系統控制器和所有適用交換器的主機名稱和IP位址。
+* 大部分的儲存系統控制器都是透過e0M介面來管理、方法是連接至乙太網路服務連接埠（扳手圖示）。在ESIA800和ESIEA700系統上AFF 、e0M介面使用專用的乙太網路連接埠。AFF
+
+
+請參閱 https://hwu.netapp.com["Hardware Universe"^] 以取得最新資訊。

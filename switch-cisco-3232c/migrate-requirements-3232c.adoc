@@ -1,0 +1,131 @@
+---
+permalink: switch-cisco-3232c/migrate-requirements-3232c.html 
+sidebar: sidebar 
+keywords: migrate, cn1610 switch, cisco nexus 3232c cluster 
+summary: 使用Cisco Nexus 3232C叢集交換器更換CN1610叢集交換器時、您必須注意特定的組態資訊、連接埠連線和纜線需求。 
+---
+= Cisco Nexus 3232C叢集交換器的移轉需求
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+移轉至Cisco Nexus 3232C叢集交換器之前。檢閱組態資訊、連接埠連線和纜線需求。
+
+
+
+== CN1610移轉需求
+
+叢集交換器支援下列節點連線：
+
+* NetApp CN1610：連接埠0/1到0/12（10 GbE）
+* Cisco Nexus 3232C：連接埠E1/1-30（40或100或4x10GbE）
+
+
+叢集交換器使用下列交換器間連結（ISL）連接埠。
+
+* NetApp CN1610：連接埠0/13至0/16（10 GbE）
+* Cisco Nexus 3232C：連接埠1/31-32（100GbE）
+
+
+[NOTE]
+====
+您必須在Cisco Nexus 3232C叢集交換器上使用4x10G中斷連接纜線。
+
+====
+下表顯示從NetApp CN1610交換器移轉至Cisco Nexus 3232C叢集交換器時、每個階段所需的纜線連接：
+
+|===
+| 階段 | 說明 | 必要的纜線 
+
+
+ a| 
+初始
+ a| 
+CN1610至CN1610（SFP+至SFP+）
+ a| 
+4條SFP+光纖或銅線直接連接纜線
+
+
+
+ a| 
+移轉
+ a| 
+CN1610至3232C（QSFP至SFP+）
+ a| 
+1條QSFP和4條SFP+光纖或銅線中斷纜線
+
+
+
+ a| 
+最終版本
+ a| 
+3232C至3232C（QSFP至QSFP）
+ a| 
+2條QSFP光纖或銅線直接連接纜線
+
+|===
+您必須下載適用的參考組態檔（RCT）。10 GbE和40/100 GbE連接埠的數量是在上可用的RCFs中定義 https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco®叢集網路交換器參考組態檔案下載"^] 頁面。
+
+本程序所支援的支援的支援版本包括ONTAP link:https://mysupport.netapp.com/NOW/download/software/cm_switches/.html["Cisco乙太網路交換器頁面"^]。
+
+本程序所支援的支援的版本包括ONTAP link:http://support.netapp.com/NOW/download/software/cm_switches_ntap/.html["NetApp CN1601與CN1610交換器頁面"^]。
+
+
+
+== CN5596要求
+
+叢集交換器使用下列連接埠來連線至節點：
+
+* 連接埠E1/1-40（10 GbE）：Nexus 5596
+* 連接埠E1/1-30（10/40/100 GbE）：Nexus 3232C
++
+** 叢集交換器使用下列交換器間連結（ISL）連接埠：
+
+
+* 連接埠E1/41至48（10 GbE）：Nexus 5596
+* 連接埠E1/31-32（40/100 GbE）：Nexus 3232C
++
+** 。 link:https://hwu.netapp.com/["_SUR__ Hardware Universe"^] 包含有關支援的Nexus 3232C交換器纜線連接資訊：
+
+
+* 具有10 GbE叢集連線的節點需要QSFP至SFP+光纖中斷纜線、或QSFP至SFP+銅線中斷纜線。
+* 具有40/100 GbE叢集連線的節點、需要使用光纖纜線或QSFP/QSFP28銅線直接連接纜線來支援QSFP/QSFP28光纖模組。
++
+** 叢集交換器使用適當的ISL纜線：
+
+
+* 開始：Nexus 5596（SFP+至SFP+）
++
+** 8條SFP+光纖或銅線直接連接纜線
+
+
+* 過渡：Nexus 5596至Nexus 3232C（QSFP至4xSFP+中斷）
++
+** 1條QSFP至SFP+光纖中斷或銅線中斷纜線
+
+
+* 最終版本：Nexus 3232C至Nexus 3232C（QSFP28至QSFP28）
++
+** 2條QSFP28光纖或銅線直接連接纜線
++
+*** 在Nexus 3232C交換器上、您可以使用40/100 Gigabit乙太網路或4 x 10 Gigabit乙太網路模式來操作QSFP/QSFP28連接埠。
++
+依預設、40/100 Gigabit乙太網路模式有32個連接埠。這40個Gigabit乙太網路連接埠均以2元組命名慣例編號。例如、第二個40 Gigabit乙太網路連接埠編號為1/2。將組態從40 Gigabit乙太網路變更為10 Gigabit乙太網路的過程稱為_中斷_、將組態從10 Gigabit乙太網路變更為40 Gigabit乙太網路的過程稱為_breakin _。當您將40/100 Gigabit乙太網路連接埠分成10 Gigabit乙太網路連接埠時、所產生的連接埠會使用3元命名慣例進行編號。例如、第二個40/100 Gigabit乙太網路連接埠的中斷連接埠編號為1/2/1、1/2/2、1/2/3和1/2/4。
+
+*** Nexus 3232C交換器左側有2個SFP+連接埠、稱為1/33和1/34。
+*** 您已將Nexus 3232C交換器上的部分連接埠設定為以10 GbE或40/100 GbE執行。
++
+[NOTE]
+====
+您可以使用「介面中斷模組1連接埠1-6 MAP 10ge-4x」命令、將前六個連接埠分割成4x10 GbE模式。同樣地、您也可以使用「無介面中斷模組1連接埠1-6 MAP 10g-4x」命令、從中斷組態重新分組前六個QSFP+連接埠。
+
+====
+*** 您已完成規劃、移轉、並閱讀10 GbE和40/100 GbE連線所需的文件、從節點連接至Nexus 3232C叢集交換器。
+*** 本程序所支援的支援的支援版本包括ONTAP link:http://support.netapp.com/NOW/download/software/cm_switches/.html["Cisco乙太網路交換器頁面"^]。
+
+
+
+
+

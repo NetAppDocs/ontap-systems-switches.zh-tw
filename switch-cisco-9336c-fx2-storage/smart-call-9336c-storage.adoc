@@ -1,0 +1,27 @@
+---
+permalink: switch-cisco-9336c-fx2-storage/smart-call-9336c-storage.html 
+sidebar: sidebar 
+keywords: cisco smart call,small call home 
+summary: Smart Call Home可監控網路上的硬體和軟體元件、針對關鍵系統狀況產生電子郵件通知。當裝置發生事件時、Smart Call Home會向目的地設定檔中設定的所有收件者發出警示。 
+---
+= 智慧電話住家需求
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+若要使用Smart Call Home功能、請參閱下列準則。
+
+Smart Call Home可監控網路上的硬體和軟體元件。發生關鍵系統組態時、會產生電子郵件通知、並對目的地設定檔中設定的所有收件者發出警示。若要使用Smart Call Home、您必須將叢集網路交換器設定為使用電子郵件與Smart Call Home系統進行通訊。此外、您也可以選擇性地設定叢集網路交換器、以利用Cisco的內嵌式Smart Call Home支援功能。
+
+在使用Smart Call Home之前、請注意下列考量事項：
+
+* 電子郵件伺服器必須就位。
+* 交換器必須具備IP連線至電子郵件伺服器的功能。
+* 必須設定聯絡人名稱（SNMP伺服器聯絡人）、電話號碼和街道地址資訊。這是判斷接收訊息來源所需的條件。
+* 您的公司必須將一個CCO ID與適當的Cisco SMARTnet服務合約建立關聯。
+* Cisco SMARTnet服務必須就位、才能登錄裝置。
+
+
+。 http://www.cisco.com/c/en/us/products/switches/index.html["Cisco支援網站"^] 包含有關設定Smart Call Home的命令資訊。

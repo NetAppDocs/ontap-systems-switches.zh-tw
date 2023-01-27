@@ -1,0 +1,46 @@
+---
+permalink: switch-nvidia-sn2100/configure-overview-sn2100-cluster.html 
+sidebar: sidebar 
+keywords: sn2100 SN2100 switches setup, sn2100 SN2100 switches install, cumulus linux 
+summary: NVIDIA SN2100交換器是執行Cummulis Linux的10/25/40/100 GbE乙太網路交換器。SN2100交換器可在ONTAP 不同的交換器配對上、以《S209.10.1》提供叢集與儲存應用程式的服務。 
+---
+= NVIDIA SN2100交換器的安裝與組態總覽
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+NVIDIA SN2100是一款叢集交換器、可讓您建置ONTAP 包含兩個以上節點的各種叢集。
+
+
+
+== 初始組態總覽
+
+若要在執行ONTAP 指示燈介面的系統上設定NVIDIA SN2100交換器、請依照下列步驟操作：
+
+. link:install-hardware-sn2100-cluster.html["安裝NVIDIA SN2100交換器的硬體"]。如需相關指示、請參閱《NVIDIA交換器安裝指南》_。
+. link:configure-sn2100-cluster.html["設定交換器"]。您可以在NVIDIA的文件中找到相關指示。
+. link:cabling-considerations-sn2100-cluster.html["檢閱纜線佈線和組態考量"]。檢閱光纖連線、QSA介面卡和switchport速度的需求。
+. link:install-cable-shelves-sn2100-cluster.html["將NS224磁碟櫃連接為交換器附加儲存設備"]。如果您的系統需要將NS224磁碟機櫃連接成交換器附加儲存設備（非直接附加儲存設備）、請遵循下列程序。
+. link:install-cumulus-mode-sn2100-cluster.html["在Cummuls模式下安裝Cummulus Linux"] 或 link:install-onie-mode-sn2100-cluster.html["以ONIE模式安裝CummulUS Linux"]。在交換器執行Cummulos Linux或ONIE時、可以安裝CummUS Linux（CL）作業系統。
+. link:install-rcf-sn2100-cluster.html["安裝參考組態檔（RCF）指令碼"]。叢集與儲存應用程式可使用兩個RCF指令碼。每個的程序都相同。
+. link:install-snmpv3-sn2100-cluster.html["設定用於交換器記錄收集的v3"]。此版本支援用於交換器記錄收集和交換器健全狀況監控（SHM）的v3。
+
+
+
+NOTE: 這些程序使用網路命令列公用程式（NCLU）、這是一個命令列介面、可確保所有人都能完全存取CummUS Linux。net命令是用於從終端執行動作的包裝程式公用程式。
+
+
+NOTE: 請參閱 https://hwu.netapp.com["Hardware Universe"^] 適用於所有支援ONTAP 的版本。
+
+
+
+== 其他資訊
+
+開始安裝或維護之前、請務必先檢閱下列內容：
+
+* link:configure-reqs-sn2100-cluster.html["組態需求"]
+* link:components-sn2100-cluster.html["元件與零件編號"]
+* link:required-documentation-sn2100-cluster.html["必要文件"]
+

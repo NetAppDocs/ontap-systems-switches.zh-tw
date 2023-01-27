@@ -1,0 +1,58 @@
+---
+permalink: get-started/learn-switch-concept.html 
+sidebar: sidebar 
+keywords:  
+summary: 瞭解叢集、儲存設備和共享交換器。 
+---
+= 瞭解叢集、儲存設備和共享交換器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetApp提供叢集、儲存設備和共享交換器、可提供內部通訊、並能在叢集內不中斷營運地搬移資料和網路介面。
+
+「前端」交換器可連線至主機儲存設備、而「後端」叢集交換器則可在兩個或多個NetApp控制器之間建立連線。
+
+
+
+== 叢集交換器
+
+叢集交換器可讓您建立ONTAP 具有兩個以上節點的叢集。NetApp支援的叢集交換器包括：
+
+* Broadcom Bes - 53248
+* Cisco Nexus 9336C-FX2
+* NVIDIA SN2100
+
+
+
+
+== 儲存交換器
+
+儲存交換器可讓您在儲存區域網路（SAN）的伺服器與儲存陣列之間路由傳送資料。NetApp支援的叢集交換器包括：
+
+* Cisco Nexus 9336C-FX2
+* NVIDIA SN2100
+
+
+
+
+== 共享交換器
+
+共享交換器可支援使用共享叢集和儲存設備的RCT、將叢集和儲存功能結合成共享交換器組態。NetApp支援的共享交換器包括：
+
+* Cisco Nexus 9336C-FX2
+
+
+
+
+== 終止可用度
+
+下列儲存交換器已不再提供購買、但仍受到支援：
+
+* Cisco Nexus 3232C
+* Cisco Nexus 3132Q-V
+* Cisco Nexus 2300YC
+* NetApp CN1610
+

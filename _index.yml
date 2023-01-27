@@ -1,54 +1,38 @@
 ---
 indexpage:
-  lead: 使用本網站上的文件來安裝、升級及維護叢集與儲存交換器。
+  lead: NetApp提供叢集、儲存設備和共享交換器、可在主機儲存設備和兩個以上的AFF/FAS控制器之間提供連線功能、讓您在儲存基礎架構之間不中斷地移動資料和網路介面。
   tiles:
-  - title: 叢集交換器
+  - title: 開始使用
     links:
-    - title: Broadcom支援的Bes：53248
-      url: switch-bes-53248/overview-bes53248.html
-    - title: Cisco Nexus 3132Q-V
-      url: switch-cisco-3132q-v/index.html
-    - title: Cisco Nexus 3232C
-      url: switch-cisco-3232c/index.html
-    - title: Cisco Nexus 9336C-FX2
-      url: switch-cisco-9336c-fx2/9336-overview.html
-    - title: Cisco Nexus 2300YC
-      url: switch-cisco-92300/92300-overview.html
-    - title: NetApp CN1610
-      url: switch-netapp-cn1610/index.html
-    - title: NVIDIA SN2100
-      url: switch-nvidia-sn2100/sn2100-overview.html
-    - title: 其他交換器機型
-      url: other/switch-linkout.html
-  - title: 儲存交換器
-    links:
-    - title: Cisco Nexus 3232C
-      url: switch-cisco-3232c/index.html
-    - title: Cisco Nexus 9336C-FX2
-      url: switch-cisco-9336c-fx2/9336-overview.html
-    - title: NVIDIA SN2100
-      url: switch-nvidia-sn2100/sn2100-overview.html
-  - title: 共享交換器
-    links:
-    - title: Cisco Nexus 9336C-FX2
-      url: "/switch-cisco-9336c-fx2-shared/9336c_setup_and_configuration_guide_for_cisco_shared_switches.html"
-  - title: 更多資源
-    links:
-    - title: VMware及其技術文件AFF FAS
-      url: https://docs.netapp.com/us-en/ontap-systems/index.html
-    - title: 不需要升級文件AFF FAS
-      url: https://docs.netapp.com/us-en/ontap-systems-upgrade/index.html
+    - title: 新增功能
+      url: whats-new.html
+    - title: 快速入門
+      url: "/get-started/get-up-and-running.html"
     - title: 發行說明 ONTAP
       url: https://library.netapp.com/ecm/ecm_download_file/ECMLP2492508
-    - title: 供應說明文件ONTAP
-      url: https://docs.netapp.com/us-en/ontap/index.html
+  - title: 支援的交換器
+    links:
+    - title: Bes - 53248-
+      url: "/switch-bes-53248/configure-new-switch-overview.html"
+    - title: Cisco Nexus 9336C-FX2
+      url: "/switch-cisco-9336c-fx2/configure-switch-overview-9336c-cluster.html"
+    - title: NVIDIA SN2100
+      url: "/switch-nvidia-sn2100/configure-overview-sn2100-cluster.html"
+    - title: 終止可用度
+      url: "/overview-eod.html"
+  - title: 相關ONTAP 資訊
+    links:
+    - title: AFF/FAS硬體系統
+      url: https://docs.netapp.com/us-en/ontap-systems/index.html
+    - title: 軟件ONTAP
+      url: https://docs.netapp.com/us-en/ontap/index.htmly/
+  - title: 工具支援
+    links:
+    - title: NetApp 互通性對照表
+      url: http://mysupport.netapp.com/matrix/
     - title: NetApp Hardware Universe
       url: https://hwu.netapp.com/
-    - title: NetApp Active IQ Digital Advisor
-      url: https://docs.netapp.com/us-en/active-iq/index.html
-    - title: NetApp Active IQ Config Advisor
-      url: https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor
-    - title: NetApp 互通性對照表
-      url: https://mysupport.netapp.com/matrix/#welcome
-    - title: NetApp社群
-      url: https://community.netapp.com/t5/ONTAP-and-FAS/ct-p/fas-ontap-oncommand-and-related-plug-ins
+    - title: NetApp知識庫
+      url: https://kb.netapp.com/
+    - title: "（需要登入）Active IQ"
+      url: https://activeiq.netapp.com/?source=aiqnsspages

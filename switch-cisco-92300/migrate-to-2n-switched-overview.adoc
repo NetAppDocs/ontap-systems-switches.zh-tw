@@ -1,0 +1,21 @@
+---
+permalink: switch-cisco-92300/migrate-to-2n-switched-overview.html 
+sidebar: sidebar 
+keywords: TNSC,migrate two-node,migrate 2-node 
+summary: 將雙節點無交換式叢集（不中斷營運）移轉至使用Cisco Nexus 2300YC叢集交換器的叢集時、您必須注意特定的組態資訊、連接埠連線和纜線需求。 
+---
+= 使用Cisco Nexus 2300YC交換器移轉至雙節點交換叢集
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+將雙節點無交換式叢集（不中斷營運）移轉至使用Cisco Nexus 2300YC叢集交換器的叢集時、您必須注意特定的組態資訊、連接埠連線和纜線需求。
+
+您使用的程序取決於每個控制器上是否有兩個專屬的叢集網路連接埠、或每個控制器上是否有一個叢集連接埠。記錄的程序適用於所有使用光纖或雙軸纜線連接埠的節點、但如果節點使用內建10Gb Base-T RJ45連接埠作為叢集網路連接埠、則此交換器不支援此程序。
+
+大多數系統在每個控制器上都需要兩個專用的叢集網路連接埠。
+
+
+NOTE: 移轉完成後、您可能需要安裝所需的組態檔、以支援適用於92300YC叢集交換器的叢集交換器健全狀況監視器（CSHM）。請參閱中的<安裝叢集交換器健全狀況監視器（CSHM）組態檔>以瞭解2300YC switch_ link:../com.netapp.doc.hw-sw-cisco-setup/home.html["設定"] 指南。
