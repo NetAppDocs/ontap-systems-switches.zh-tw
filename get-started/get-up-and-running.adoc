@@ -27,8 +27,6 @@ summary: 瞭解叢集、儲存設備和共享交換器。
 
  a| 
 .系統AFF
-[%collapsible]
-====
 * https://docs.netapp.com/us-en/ontap-systems/c190/install-setup.html["C190 AFF"]
 * https://docs.netapp.com/us-en/ontap-systems/a220/install-setup.html["VA220 AFF"]
 * https://docs.netapp.com/us-en/ontap-systems/a250/install-setup.html["VA250 AFF"]
@@ -37,19 +35,15 @@ summary: 瞭解叢集、儲存設備和共享交換器。
 * https://docs.netapp.com/us-en/ontap-systems/a800/install-setup.html["解答800 AFF"]
 * https://docs.netapp.com/us-en/ontap-systems/a900/install_detailed_guide.html["解答900 AFF"]
 
-
-==== a| 
+ a| 
 .系統FAS
-[%collapsible]
-====
 * https://docs.netapp.com/us-en/ontap-systems/fas500f/install-setup.html["FAS500f"]
 * https://docs.netapp.com/us-en/ontap-systems/fas8300/install-setup.html["FAS8300"]
 * https://docs.netapp.com/us-en/ontap-systems/fas8700/install-setup.html["FAS8700"]
 * https://docs.netapp.com/us-en/ontap-systems/fas9000/install-setup.html["FAS9000"]
 * https://docs.netapp.com/us-en/ontap-systems/fas9500/install-setup.html["FAS9500"]
 
-
-==== a| 
+ a| 
 
 |===
 
@@ -64,29 +58,20 @@ summary: 瞭解叢集、儲存設備和共享交換器。
 
  a| 
 .叢集交換器
-[%collapsible]
-====
 * link:../switch-bes-53248/install-hardware-bes53248.html["安裝BS-53248交換器"]
 * link:../switch-cisco-9336c-fx2/install-switch-9336c-cluster.html["安裝Cisco Nexus 9336C-FX2交換器"]
 * link:../switch-nvidia-sn2100/install-hardware-sn2100-cluster.html["安裝NVIDIA SN2100交換器"]
 
-
-==== a| 
+ a| 
 .儲存交換器
-[%collapsible]
-====
 * link:../switch-cisco-9336c-fx2-storage/install-9336c-storage.html["安裝Cisco Nexus 9336C-FX2交換器"]
 * link:../switch-nvidia-sn2100/install-hardware-sn2100-storage.html["安裝NVIDIA SN2100交換器"]
 
-
-==== a| 
+ a| 
 .共享交換器
-[%collapsible]
-====
 * link:../switch-cisco-9336c-fx2-shared/install-9336c-shared.html["安裝Cisco Nexus 9336C-FX2交換器"]
 
 
-====
 |===
 
 
@@ -100,29 +85,20 @@ AFF/FAS安裝與設定說明包括將控制器連接埠連接至交換器的纜�
 
  a| 
 .叢集交換器
-[%collapsible]
-====
 * link:../switch-bes-53248/configure-reqs-bes53248.html#configuration-requirements["連接BS-53248交換器"]
 * link:../switch-cisco-9336c-fx2/setup-worksheet-9336c-cluster.html["Cisco Nexus 9336C-FX2交換器纜線"]
 * link:../switch-nvidia-sn2100/cabling-considerations-sn2100-cluster.html["纜線NVIDIA SN2100交換器"]
 
-
-==== a| 
+ a| 
 .儲存交換器
-[%collapsible]
-====
 * link:../switch-cisco-9336c-fx2-storage/setup-worksheet-9336c-storage.html["Cisco Nexus 9336C-FX2交換器纜線"]
 * link:../switch-nvidia-sn2100/cabling-considerations-sn2100-storage.html["纜線NVIDIA SN2100交換器"]
 
-
-==== a| 
+ a| 
 .共享交換器
-[%collapsible]
-====
 * link:../switch-cisco-9336c-fx2-shared/cable-9336c-shared.html["Cisco Nexus 9336C-FX2交換器纜線"]
 
 
-====
 |===
 
 
@@ -136,29 +112,20 @@ AFF/FAS安裝與設定說明包括將控制器連接埠連接至交換器的纜�
 
  a| 
 .叢集交換器
-[%collapsible]
-====
 * link:../switch-bes-53248/configure-install-initial.html["設定BS-53248交換器"]
 * link:../switch-cisco-9336c-fx2/setup-switch-9336c-cluster.html["設定Cisco Nexus 9336C-FX2交換器"]
 * link:../switch-nvidia-sn2100/configure-sn2100-cluster.html["設定NVIDIA SN2100交換器"]
 
-
-==== a| 
+ a| 
 .儲存交換器
-[%collapsible]
-====
 * link:../switch-cisco-9336c-fx2-storage/setup-switch-9336c-storage.html["設定Cisco Nexus 9336C-FX2交換器"]
 * link:../switch-nvidia-sn2100/configure-sn2100-storage.html["設定NVIDIA SN2100交換器"]
 
-
-==== a| 
+ a| 
 .共享交換器
-[%collapsible]
-====
 * link:../switch-cisco-9336c-fx2-shared/setup-and-configure-9336c-shared.html["設定Cisco Nexus 9336C-FX2交換器"]
 
 
-====
 |===
 
 
@@ -172,29 +139,20 @@ AFF/FAS安裝與設定說明包括將控制器連接埠連接至交換器的纜�
 
  a| 
 .叢集交換器
-[%collapsible]
-====
 * link:../switch-bes-53248/configure-software-overview-bes53248.html["安裝適用於BS-53248交換器的軟體"]
 * link:../switch-cisco-9336c-fx2/configure-software-overview-9336c-cluster.html["安裝Cisco Nexus 9336C-FX2交換器軟體"]
 * link:../switch-nvidia-sn2100/configure-software-overview-sn2100-cluster.html["安裝NVIDIA SN2100交換器的軟體"]
 
-
-==== a| 
+ a| 
 .儲存交換器
-[%collapsible]
-====
 * link:../switch-cisco-9336c-fx2-storage/configure-software-overview-9336c-storage.html["安裝Cisco Nexus 9336C-FX2交換器軟體"]
 * link:../switch-nvidia-sn2100/configure-software-sn2100-storage.html["安裝NVIDIA SN2100交換器的軟體"]
 
-
-==== a| 
+ a| 
 .共享交換器
-[%collapsible]
-====
-* link:../switch-cisco-9336c-fx2-shared/configure-software-overview-9336c-shared.html["安裝Cisco Nexus 9336C-FX2交換器"]
+* link:../switch-cisco-9336c-fx2-shared/configure-software-overview-9336c-shared.html["安裝Cisco Nexus 9336C-FX2交換器軟體"]
 
 
-====
 |===
 
 
@@ -208,8 +166,6 @@ AFF/FAS安裝與設定說明包括將控制器連接埠連接至交換器的纜�
 
  a| 
 .系統AFF
-[%collapsible]
-====
 * https://docs.netapp.com/us-en/ontap-systems/c190/install-setup.html["C190 AFF"]
 * https://docs.netapp.com/us-en/ontap-systems/a220/install-setup.html["VA220 AFF"]
 * https://docs.netapp.com/us-en/ontap-systems/a250/install-setup.html["VA250 AFF"]
@@ -218,19 +174,15 @@ AFF/FAS安裝與設定說明包括將控制器連接埠連接至交換器的纜�
 * https://docs.netapp.com/us-en/ontap-systems/a800/install-setup.html["解答800 AFF"]
 * https://docs.netapp.com/us-en/ontap-systems/a900/install_detailed_guide.html["解答900 AFF"]
 
-
-==== a| 
+ a| 
 .系統FAS
-[%collapsible]
-====
 * https://docs.netapp.com/us-en/ontap-systems/fas500f/install-setup.html["FAS500f"]
 * https://docs.netapp.com/us-en/ontap-systems/fas8300/install-setup.html["FAS8300"]
 * https://docs.netapp.com/us-en/ontap-systems/fas8700/install-setup.html["FAS8700"]
 * https://docs.netapp.com/us-en/ontap-systems/fas9000/install-setup.html["FAS9000"]
 * https://docs.netapp.com/us-en/ontap-systems/fas9500/install-setup.html["FAS9500"]
 
-
-==== a| 
+ a| 
 
 |===
 

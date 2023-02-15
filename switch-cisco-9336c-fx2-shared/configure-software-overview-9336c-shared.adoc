@@ -13,7 +13,10 @@ summary: Cisco Nexus 9336C-FX2共享交換器軟體組態總覽
 [role="lead"]
 若要安裝及設定Cisco Nexus 9336C-FX2交換器的軟體、請依照下列步驟操作：
 
-. link:install-nxos-overview-9336c-shared.html["準備安裝NX-OS和RCF"]。請依照初始程序、準備安裝Cisco NX-OS軟體和參考組態檔（RCT）。
-. link:install-nxos-software-9336c-shared.html["安裝NX-OS軟體"]。在Nexus 9336C-FX2叢集交換器上安裝NX-OS軟體。
-. link:install-nxos-rcf-9336c-shared.html["安裝RCF組態檔"]。初次設定Nexus 9336C-FX2交換器之後、請安裝RCF。您也可以使用此程序來升級RCF版本。
+. link:install-nxos-overview-9336c-shared.html["準備安裝NX-OS和RCF"]參考組態檔（RCT）。
+. link:install-nxos-software-9336c-shared.html["安裝NX-OS軟體"]。
+. link:install-nxos-rcf-9336c-shared.html["安裝RCF組態檔"]。
++
+初次設定Nexus 9336C-FX2交換器之後、請安裝RCF。您也可以使用此程序來升級RCF版本。
+
 

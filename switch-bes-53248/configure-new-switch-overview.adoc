@@ -19,14 +19,38 @@ BS-53248是一款裸機交換器、設計用於ONTAP 2到24個節點的各種叢
 
 若要在執行ONTAP 指示燈的系統上初始設定BS-53248叢集交換器、請遵循下列步驟：
 
-. link:install-hardware-bes53248.html["安裝BS-53248叢集交換器的硬體"]。如需相關指示、請參閱_ Broadcom支援的BS-53248叢集交換器安裝指南_。
-. link:configure-install-initial.html["設定BS-53248叢集交換器"]。執行BS-53248叢集交換器的初始設定。
-. link:configure-efos-software.html["安裝EFOS軟體"]。在BS-53248叢集交換器上下載並安裝乙太網路架構作業系統（EFOS）軟體。
-. link:configure-licenses.html["安裝適用於B3作業 叢集交換器的授權"]。或者、您也可以購買及安裝更多授權來新增連接埠。交換器基礎模式已獲得16個10GbE或25GbE連接埠及2個100GbE連接埠的授權。
-. link:configure-install-rcf.html["安裝參考組態檔（RCF）"]。在BS-53248叢集交換器上安裝或升級RCF、然後在套用RCF之後驗證連接埠是否有額外授權。
-. link:configure-health-monitor.html["安裝叢集交換器健全狀況監視器（CSHM）組態檔"]。安裝適用的組態檔以監控叢集交換器健全狀況。
-. link:configure-ssh.html["在BS-53248叢集交換器上啟用SSH"]。如果您使用叢集交換器健全狀況監視器（CSHM）和記錄收集功能、請在交換器上啟用SSH。
-. link:configure-log-collection.html["啟用記錄收集功能"]。使用此功能可收集ONTAP 有關交換器的記錄檔、以供參考。
+. link:install-hardware-bes53248.html["安裝BS-53248叢集交換器的硬體"]。
++
+如需相關指示、請參閱_ Broadcom支援的BS-53248叢集交換器安裝指南_。
+
+. link:configure-install-initial.html["設定BS-53248叢集交換器"]。
++
+執行BS-53248叢集交換器的初始設定。
+
+. link:configure-efos-software.html["安裝EFOS軟體"]。
++
+在BS-53248叢集交換器上下載並安裝乙太網路架構作業系統（EFOS）軟體。
+
+. link:configure-licenses.html["安裝適用於B3作業 叢集交換器的授權"]。
++
+或者、您也可以購買及安裝更多授權來新增連接埠。交換器基礎模式已獲得16個10GbE或25GbE連接埠及2個100GbE連接埠的授權。
+
+. link:configure-install-rcf.html["安裝參考組態檔（RCF）"]。
++
+在BS-53248叢集交換器上安裝或升級RCF、然後在套用RCF之後驗證連接埠是否有額外授權。
+
+. link:configure-health-monitor.html["安裝叢集交換器健全狀況監視器（CSHM）組態檔"]。
++
+安裝適用的組態檔以監控叢集交換器健全狀況。
+
+. link:configure-ssh.html["在BS-53248叢集交換器上啟用SSH"]。
++
+如果您使用叢集交換器健全狀況監視器（CSHM）和記錄收集功能、請在交換器上啟用SSH。
+
+. link:configure-log-collection.html["啟用記錄收集功能"]。
++
+使用記錄收集功能、在ONTAP 支援資源集中收集交換器相關的記錄檔。
+
 
 
 
