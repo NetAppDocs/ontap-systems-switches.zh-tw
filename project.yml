@@ -10,7 +10,7 @@ settings:
   pdf:
     zip-level: 1
     zip-filename: ontap-systems-switches-pdfs.zip
-  langs: zh-tw,us-en,ja-jp,ko-kr,zh-cn,de-de,fr-fr
+  langs: zh-tw,us-en,ja-jp,ko-kr,zh-cn,de-de,es-es,fr-fr
 sidebar:
   entries:
   - title: 不再需要使用本技術AFF FAS
