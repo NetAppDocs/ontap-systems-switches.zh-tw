@@ -101,9 +101,6 @@ EFOS軟體包含一組進階網路功能和傳輸協定、可用於開發乙太�
 
 |===
 
-IMPORTANT: 請注意、將BSP-53248叢集交換器從EFOS 3.3.x.x或3.4.x.x升級至EFOS 3.7.0.4或3.8.0.2之後、交換器間連結（ISL）和連接埠通道會標示為「*向下*」狀態。請參閱以下知識庫文章： https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/Fabric%2C_Interconnect_and_Management_Switches/BES-53248_Cluster_Switch_NDU_failed_upgrade_to_EFOS_3.7.0.4_and_later["BS-53248叢集交換器NDU無法升級至EFOS 3.7.0.4及更新版本"^] 以取得更多詳細資料。
-
-
 
 == 安裝軟體
 
@@ -118,6 +115,9 @@ IMPORTANT: 請注意、將BSP-53248叢集交換器從EFOS 3.3.x.x或3.4.x.x升�
 === 方法1：安裝EFOS
 
 請執行下列步驟來安裝或升級EFOS軟體。
+
+
+IMPORTANT: 請注意、將BSP-53248叢集交換器從EFOS 3.3.x.x或3.4.x.x升級至EFOS 3.7.0.4或3.8.0.2之後、交換器間連結（ISL）和連接埠通道會標示為「*向下*」狀態。請參閱以下知識庫文章： https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/Fabric%2C_Interconnect_and_Management_Switches/BES-53248_Cluster_Switch_NDU_failed_upgrade_to_EFOS_3.7.0.4_and_later["BS-53248叢集交換器NDU無法升級至EFOS 3.7.0.4及更新版本"^] 以取得更多詳細資料。
 
 .步驟
 . 將B通信 設備叢集交換器連接至管理網路。
