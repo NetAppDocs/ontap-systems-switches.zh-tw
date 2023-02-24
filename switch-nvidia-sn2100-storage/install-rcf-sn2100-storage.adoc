@@ -16,7 +16,7 @@ summary: 請遵循此程序來安裝RCF指令碼。
 .您需要的產品
 安裝RCF指令碼之前、請確定交換器上有下列項目：
 
-* 已安裝Cummulis Linux 4.4.2。
+* 已安裝Cummulis Linux 4.4.3。
 * IP位址、子網路遮罩和預設閘道、是透過DHCP定義或手動設定的。
 
 
@@ -274,7 +274,7 @@ sw1                         cluster-network    10.233.205.90    MSN2100-CB2RC
      Serial Number: MNXXXXXXGD
       Is Monitored: true
             Reason: None
-  Software Version: Cumulus Linux version 4.4.2 running on Mellanox
+  Software Version: Cumulus Linux version 4.4.3 running on Mellanox
                     Technologies Ltd. MSN2100
     Version Source: LLDP
 
@@ -282,7 +282,7 @@ sw2                         cluster-network    10.233.205.91    MSN2100-CB2RC
      Serial Number: MNCXXXXXXGS
       Is Monitored: true
             Reason: None
-  Software Version: Cumulus Linux version 4.4.2 running on Mellanox
+  Software Version: Cumulus Linux version 4.4.3 running on Mellanox
                     Technologies Ltd. MSN2100
     Version Source: LLDP
 ----

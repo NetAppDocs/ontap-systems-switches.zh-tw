@@ -62,6 +62,9 @@ _x_是維護時段的持續時間（以小時為單位）。
 「torage port show -port-type ENET」
 
 +
+.顯示範例
+[%collapsible]
+====
 [listing, subs="+quotes"]
 ----
 cluster1::*> *storage port show -port-type ENET*
@@ -80,8 +83,12 @@ node2
                e7b  ENET  storage 100    enabled  online      30
 cluster1::*>
 ----
+====
 . 驗證儲存交換器sw1是否可用：「網路裝置探索秀」
 +
+.顯示範例
+[%collapsible]
+====
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network device-discovery show protocol lldp*
@@ -94,8 +101,12 @@ node2/lldp
            e3a   sw1 (b8:ce:f6:19:1b:42)   swp4        -
 cluster1::*>
 ----
+====
 . 在工作交換器上執行「net show介面」命令、確認您可以同時看到節點和所有磁碟櫃：「net show介面」
 +
+.顯示範例
+[%collapsible]
+====
 [listing, subs="+quotes"]
 ----
 cumulus@sw1:~$ *net show interface*
@@ -113,8 +124,12 @@ UP     swp6    100G  9216   Trunk/L2   SHFFG1826000102 (e0b)   Master: bridge(UP
 ...
 ...
 ----
+====
 . 驗證儲存系統中的機櫃連接埠：「torage機櫃連接埠show -Fields reme-Device、reme-port」
 +
+.顯示範例
+[%collapsible]
+====
 [listing, subs="+quotes"]
 ----
 cluster1::*> *storage shelf port show -fields remote-device, remote-port*
@@ -130,10 +145,14 @@ shelf   id  remote-port   remote-device
 3.20    3   -             -
 cluster1::*>
 ----
+====
 . 拔下連接至儲存交換器SW2的所有纜線。
 . 將所有纜線重新連接至更換的交換器nsw2。
 . 重新檢查儲存節點連接埠的健全狀況：「torage port show -port-type ENET」
 +
+.顯示範例
+[%collapsible]
+====
 [listing, subs="+quotes"]
 ----
 cluster1::*> *storage port show -port-type ENET*
@@ -152,8 +171,12 @@ node2
                  e7b  ENET  storage 100    enabled  online      30
 cluster1::*>
 ----
+====
 . 確認兩個交換器都可用：「net device-dDiscovery show」
 +
+.顯示範例
+[%collapsible]
+====
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network device-discovery show protocol lldp*
@@ -168,8 +191,12 @@ node2/lldp
           e7b  nsw2 (b8:ce:f6:19:1a:7e)   swp2        -
 cluster1::*>
 ----
+====
 . 驗證儲存系統中的機櫃連接埠：「torage機櫃連接埠show -Fields reme-Device、reme-port」
 +
+.顯示範例
+[%collapsible]
+====
 [listing, subs="+quotes"]
 ----
 cluster1::*> *storage shelf port show -fields remote-device, remote-port*
@@ -185,11 +212,15 @@ shelf   id    remote-port     remote-device
 3.20    3     swp6            nsw2
 cluster1::*>
 ----
+====
 . 使用兩個命令：「ystem switchEthernet log setup-password」（系統交換器乙太網路記錄設定密碼）和「系統交換器乙太網路記錄啟用資料收集」、啟用乙太網路交換器健全狀況監視器記錄收集功能來收集交換器相關的記錄檔
 +
 輸入：「System交換器乙太網路記錄設定密碼」
 
 +
+.顯示範例
+[%collapsible]
+====
 [listing, subs="+quotes"]
 ----
 cluster1::*> *system switch ethernet log setup-password*
@@ -217,10 +248,14 @@ Do you want to continue? {y|n}:: [n] *y*
 Enter the password: <enter switch password>
 Enter the password again: <enter switch password>
 ----
+====
 +
 接著是：「系統交換器乙太網路記錄啟用-收集」
 
 +
+.顯示範例
+[%collapsible]
+====
 [listing, subs="+quotes"]
 ----
 cluster1::*> *system  switch ethernet log enable-collection*
@@ -232,6 +267,7 @@ Enabling cluster switch log collection.
 
 cluster1::*>
 ----
+====
 +
 
 NOTE: 如果這些命令中有任何一個出現錯誤、請聯絡NetApp支援部門。
@@ -241,6 +277,9 @@ NOTE: 如果這些命令中有任何一個出現錯誤、請聯絡NetApp支援�
 請等待10分鐘、然後使用「ystem switchEthernet log show」命令檢查記錄收集是否成功
 
 +
+.顯示範例
+[%collapsible]
+====
 [listing, subs="+quotes"]
 ----
 cluster1::*> *system switch ethernet log show*
@@ -251,6 +290,7 @@ Index  Switch                       Log Timestamp        Status
 1      sw1 (b8:ce:f6:19:1b:42)      4/29/2022 03:05:25   complete   
 2      nsw2 (b8:ce:f6:19:1b:96)     4/29/2022 03:07:42   complete
 ----
+====
 . 將權限等級變更回admin：「et -priv. admin」
 . 如果您禁止自動建立個案、請叫用AutoSupport 下列訊息重新啟用此功能：「System Node AutoSupport 現象叫用節點*-type all -most MAn=end」
 

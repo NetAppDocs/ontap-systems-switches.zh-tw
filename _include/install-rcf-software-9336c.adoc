@@ -40,6 +40,8 @@ NOTE: 命令輸出可能會因ONTAP 不同版本的不相同而有所差異。
 .關於這項工作
 此程序需要同時使用ONTAP 支援指令和Cisco Nexus 9000系列交換器的指令；ONTAP 除非另有說明、否則會使用支援指令。
 
+在此程序期間、不需要運作中的交換器間連結（ISL）。這是因為RCF版本變更可能會暫時影響ISL連線。為確保叢集作業不中斷、下列程序會在目標交換器上執行步驟時、將所有叢集生命體移轉至作業夥伴交換器。
+
 
 CAUTION: 在安裝新的交換器軟體版本和RCFs之前、您必須清除交換器設定並執行基本組態。您必須使用序列主控台連線至交換器。此工作會重設管理網路的組態。
 
@@ -193,7 +195,7 @@ cluster1::*>
 ====
 [listing]
 ----
-cluster1::*> network interface modify -vserver Cluster -lif \* -auto-revert false
+cluster1::*> network interface modify -vserver Cluster -lif * -auto-revert false
 ----
 ====
 
@@ -578,7 +580,7 @@ cluster1::*>
 ====
 [listing]
 ----
-cluster1::*> network interface modify -vserver Cluster -lif \* -auto-revert True
+cluster1::*> network interface modify -vserver Cluster -lif * -auto-revert True
 ----
 ====
 . 重新開機交換器CS1。您可以這樣做、觸發叢集生命期以恢復到其主連接埠。您可以在交換器重新開機時忽略節點上報告的「叢集連接埠當機」事件。
@@ -605,7 +607,7 @@ This command will reboot the system. (y/n)?  [n] y
 ====
 [listing]
 ----
-cs1# show interface brief \| grep up
+cs1# show interface brief | grep up
 .
 .
 Eth1/1/1      1       eth  access up      none                    10G(D) --

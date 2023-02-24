@@ -130,16 +130,7 @@ NOTE: 建議在使用叢集交換器健全狀況監視器（CSHM）進行記錄�
 
 NOTE: 如果您在此階段未儲存組態、下次重新啟動交換器時、將不會有任何變更生效。
 
-. 檢查交換器上的軟體版本、必要時將NetApp支援的軟體版本下載到交換器。
-+
-如果您下載NetApp支援的軟體版本、則必須下載NetApp網路交換器參考組態檔案、並將其與您儲存的組態合併 <<step3,步驟3.>>。
-
-+
-您可以從下載檔案和指示 https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器"] 頁面。
-
-+
-如果您有自己的交換器、請參閱 http://www.cisco.com["Cisco"] 網站。
-
+. 檢查叢集網路交換器的版本、必要時可從將NetApp支援的軟體版本下載至交換器 https://software.cisco.com/download/home["Cisco軟體下載"^] 頁面。
 
 
 .接下來呢？
