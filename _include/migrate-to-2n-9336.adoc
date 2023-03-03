@@ -92,7 +92,7 @@ NOTE: 此資訊可通知技術支援人員執行此維護工作、以便在維�
 ----
 cs1# config
 Enter configuration commands, one per line. End with CNTL/Z.
-cs1(config)# interface e/1-34
+cs1(config)# interface e1/1/1-4, e1/2/1-4, e1/3/1-4, e1/4/1-4, e1/5/1-4, e1/6/1-4, e1/7-34
 cs1(config-if-range)# shutdown
 ----
 ====
@@ -186,7 +186,7 @@ Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
 
 Device-ID          Local Intrfce  Hldtme Capability  Platform      Port ID
 cs1                Eth1/35        177    R S I s     N9K-C9336C    Eth1/35
-cs1           )    Eth1/36        177    R S I s     N9K-C9336C    Eth1/36
+cs1                Eth1/36        177    R S I s     N9K-C9336C    Eth1/36
 
 Total entries displayed: 2
 ----
@@ -291,7 +291,7 @@ Cluster
 ----
 cs1# config
 Enter configuration commands, one per line. End with CNTL/Z.
-cs1(config)# interface e1/1-34
+cs1(config)# interface e1/1/1-4, e1/2/1-4, e1/3/1-4, e1/4/1-4, e1/5/1-4, e1/6/1-4, e1/7-34
 cs1(config-if-range)# no shutdown
 ----
 ====
@@ -356,7 +356,7 @@ node2                true    true          false
 ----
 cs2# config
 Enter configuration commands, one per line. End with CNTL/Z.
-cs2(config)# interface e1/1-34
+cs2(config)# interface e1/1/1-4, e1/2/1-4, e1/3/1-4, e1/4/1-4, e1/5/1-4, e1/6/1-4, e1/7-34
 cs2(config-if-range)# no shutdown
 ----
 ====

@@ -38,6 +38,8 @@ entries:
   entries:
   - title: 從Cisco叢集交換器移轉
     url: "/switch-nvidia-sn2100/migrate-cisco-sn2100-cluster-switch.html"
+  - title: 移轉至雙節點交換叢集
+    url: "/switch-nvidia-sn2100/migrate-2n-switched-sn2100-cluster.html"
   - title: 移轉至雙節點無交換器叢集
     url: "/switch-nvidia-sn2100/migrate-to-switchless-interconnect-sn2100-cluster.html"
 - title: 更換叢集交換器

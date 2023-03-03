@@ -26,13 +26,17 @@ summary: 您可以在初次設定Nexus 2300YC交換器之後安裝RCF。
 ====
 * 此程序需要同時使用ONTAP 支援指令和 https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html#InstallandUpgrade["Cisco Nexus 9000系列交換器"^]；ONTAP 除非另有說明、否則會使用指令。
 * 執行此程序之前、請先確定您目前已備份交換器組態。
+* 在此程序期間、不需要運作中的交換器間連結（ISL）。這是因為RCF版本變更可能會暫時影響ISL連線。為確保叢集作業不中斷、下列程序會在目標交換器上執行步驟時、將所有叢集生命體移轉至作業夥伴交換器。
 
 
 ====
 .步驟
 . 顯示連接至叢集交換器的每個節點上的叢集連接埠：「network device-dDiscovery show」
 +
-[listing, subs="+quotes"]
+.顯示範例
+[%collapsible]
+====
+[listing]
 ----
 cluster1::*> *network device-discovery show*
 Node/       Local  Discovered
@@ -46,12 +50,16 @@ node2/cdp
             e0b    cs2                       Ethernet1/1/2     N9K-C92300YC
 cluster1::*>
 ----
+====
 . 檢查每個叢集連接埠的管理和作業狀態。
 +
 .. 確認所有叢集連接埠都正常運作：
 `network port show -ipspace Cluster`
 +
-[listing, subs="+quotes"]
+.顯示範例
+[%collapsible]
+====
+[listing]
 ----
 cluster1::*> *network port show -ipspace Cluster*
 
@@ -72,10 +80,14 @@ e0c       Cluster      Cluster          up   9000  auto/100000 healthy false
 e0d       Cluster      Cluster          up   9000  auto/100000 healthy false
 cluster1::*>
 ----
+====
 .. 確認所有叢集介面（l生命）都位於主連接埠：
 `network interface show -vserver Cluster`
 +
-[listing, subs="+quotes"]
+.顯示範例
+[%collapsible]
+====
+[listing]
 ----
 cluster1::*> *network interface show -vserver Cluster*
             Logical            Status     Network           Current      Current Is
@@ -88,9 +100,13 @@ Cluster
             node2_clus2        up/up      169.254.3.9/23    node2        e0d     true
 cluster1::*>
 ----
+====
 .. 驗證叢集是否顯示兩個叢集交換器的資訊：「系統叢集交換器show -is監控、啟用作業的true」
 +
-[listing, subs="+quotes"]
+.顯示範例
+[%collapsible]
+====
+[listing]
 ----
 cluster1::*> *system cluster-switch show -is-monitoring-enabled-operational true*
 Switch                      Type               Address          Model
@@ -113,6 +129,7 @@ cs2                         cluster-network    10.233.205.93    N9K-C92300YC
 
 2 entries were displayed.
 ----
+====
 
 
 . 停用叢集生命體上的自動還原。
@@ -131,7 +148,10 @@ cs2(config-if-range)# *shutdown*
 . 確認叢集連接埠已移轉至叢集交換器CS1上裝載的連接埠。這可能需要幾秒鐘的時間。
 `network interface show -vserver Cluster`
 +
-[listing, subs="+quotes"]
+.顯示範例
+[%collapsible]
+====
+[listing]
 ----
 cluster1::*> *network interface show -vserver Cluster*
             Logical           Status     Network            Current       Current Is
@@ -144,9 +164,13 @@ Cluster
             node2_clus2       up/up      169.254.3.9/23     node2         e0c     false
 cluster1::*>
 ----
+====
 . 驗證叢集是否正常：「叢集顯示」
 +
-[listing, subs="+quotes"]
+.顯示範例
+[%collapsible]
+====
+[listing]
 ----
 cluster1::*> *cluster show*
 Node           Health  Eligibility   Epsilon
@@ -155,6 +179,7 @@ node1          true    true          false
 node2          true    true          false
 cluster1::*>
 ----
+====
 . 如果您尚未擁有交換器的目前備份、您可以將下列命令的輸出複製到記錄檔、以儲存目前的交換器組態：
 +
 「如何執行設定」
@@ -311,7 +336,10 @@ This command will reboot the system. (y/n)?  [n] *y*
 .. 驗證叢集中所有節點的e0d連接埠是否正常運作：
 `network port show -ipspace Cluster`
 +
-[listing, subs="+quotes"]
+.顯示範例
+[%collapsible]
+====
+[listing]
 ----
 cluster1::*> *network port show -ipspace Cluster*
 
@@ -331,9 +359,13 @@ Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
 e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
 e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
 ----
+====
 .. 驗證叢集的交換器健全狀況（這可能不會顯示交換器CS2、因為LIF不是位於e0d上）。
 +
-[listing, subs="+quotes"]
+.顯示範例
+[%collapsible]
+====
+[listing]
 ----
 cluster1::*> *network device-discovery show -protocol cdp*
 Node/       Local  Discovered
@@ -367,6 +399,7 @@ cs2                         cluster-network    10.233.205.91    N9K-C92300YC
 
 2 entries were displayed.
 ----
+====
 
 
 +
@@ -392,7 +425,10 @@ cs1(config-if-range)# *shutdown*
 ----
 . 驗證叢集LIF是否已移轉至交換器CS2上裝載的連接埠。這可能需要幾秒鐘的時間。 `network interface show -vserver Cluster`
 +
-[listing, subs="+quotes"]
+.顯示範例
+[%collapsible]
+====
+[listing]
 ----
 cluster1::*> *network interface show -vserver Cluster*
             Logical          Status     Network            Current           Current Is
@@ -405,9 +441,13 @@ Cluster
             node2_clus2      up/up      169.254.3.9/23     node2             e0d     true
 cluster1::*>
 ----
+====
 . 驗證叢集是否正常：「叢集顯示」
 +
-[listing, subs="+quotes"]
+.顯示範例
+[%collapsible]
+====
+[listing]
 ----
 cluster1::*> *cluster show*
 Node           Health   Eligibility   Epsilon
@@ -416,6 +456,7 @@ node1          true     true          false
 node2          true     true          false
 cluster1::*>
 ----
+====
 . 在交換器CS1上重複步驟7至14。
 . 在叢集生命體上啟用自動還原。
 +
@@ -446,7 +487,10 @@ Ethernet1/4      1       eth  trunk  up      none                   100G(D) --
 ----
 . 驗證CS1和CS2之間的ISL是否正常運作：「How port-channel Summary（顯示連接埠通道摘要）」
 +
-[listing, subs="+quotes"]
+.顯示範例
+[%collapsible]
+====
+[listing]
 ----
 cs1# *show port-channel summary*
 Flags:  D - Down        P - Up in port-channel (members)
@@ -464,10 +508,14 @@ Group Port-       Type     Protocol  Member Ports
 1     Po1(SU)     Eth      LACP      Eth1/65(P)   Eth1/66(P)
 cs1#
 ----
+====
 . 驗證叢集生命區是否已還原至其主連接埠：
 `network interface show -vserver Cluster`
 +
-[listing, subs="+quotes"]
+.顯示範例
+[%collapsible]
+====
+[listing]
 ----
 cluster1::*> *network interface show -vserver Cluster*
             Logical       Status     Network            Current       Current Is
@@ -480,9 +528,13 @@ Cluster
             node2_clus2   up/up      169.254.3.9/23     node2         e0d     true
 cluster1::*>
 ----
+====
 . 驗證叢集是否正常：「叢集顯示」
 +
-[listing, subs="+quotes"]
+.顯示範例
+[%collapsible]
+====
+[listing]
 ----
 cluster1::*> *cluster show*
 Node           Health  Eligibility   Epsilon
@@ -490,9 +542,13 @@ Node           Health  Eligibility   Epsilon
 node1          true    true          false
 node2          true    true          false
 ----
+====
 . Ping遠端叢集介面以驗證連線能力：「叢集ping叢集節點local」
 +
-[listing, subs="+quotes"]
+.顯示範例
+[%collapsible]
+====
+[listing]
 ----
 cluster1::*> *cluster ping-cluster -node local*
 Host is node1
@@ -527,6 +583,7 @@ RPC status:
 6 paths up, 0 paths down (tcp check)
 6 paths up, 0 paths down (udp check)
 ----
+====
 
 
 [role="tabbed-block"]

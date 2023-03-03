@@ -38,7 +38,5 @@ entries:
   entries:
   - title: 從Cisco儲存交換器移轉
     url: "/switch-nvidia-sn2100/migrate-cisco-storage-switch-sn2100-storage.html"
-  - title: 移轉至雙節點交換叢集
-    url: "/switch-nvidia-sn2100/migrate-2n-switched-sn2100-storage.html"
 - title: 更換交換器
   url: "/switch-nvidia-sn2100/replace-sn2100-switch-storage.html"

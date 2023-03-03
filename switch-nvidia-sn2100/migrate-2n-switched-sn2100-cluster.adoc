@@ -44,6 +44,9 @@ IMPORTANT: 請參閱 link:cabling-considerations-sn2100-cluster.html["檢閱纜�
 ** SN2100交換器正在執行最新版的Cummuls Linux
 ** 參考組態檔（RCT）會套用至交換器
 ** 任何站台自訂功能（例如、SMTP、SNMP和SSH）都會在新交換器上設定。
++
+。 https://hwu.netapp.com["Hardware Universe"^] 包含平台實際叢集連接埠的最新資訊。
+
 
 
 
