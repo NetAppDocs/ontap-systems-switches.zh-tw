@@ -4285,4 +4285,5 @@
   <block id="03f4e394a093a045e6047871ed96a882" category="list-text">適用的NX-OS版本、可從下載<block ref="5a1c929e557009655aef79d819d791d1" category="inline-link-rx"></block> 頁面。</block>
   <block id="c5490cef816a5fdfd03bfbae460638f5" category="paragraph"><block ref="c5490cef816a5fdfd03bfbae460638f5" category="inline-link-macro-rx"></block></block>
   <block id="674dac01986b07db44266812735775f6" category="paragraph">您也可以選擇 <block ref="2243efeaee625d6b6076bcdcbd40e014" category="inline-link-macro-rx"></block>。否則、請前往 <block ref="16a9a5fa8979bab3106e7aad0dfd20d9" category="inline-link-macro-rx"></block>。</block>
+  <block id="3eb0f8cafe973dd42647b7ade90f7100" category="admonition">在繼續下一步之前、您必須等待至少兩分鐘、以確認群組1的後端對後端連線正常運作。</block>
 </blocks>
