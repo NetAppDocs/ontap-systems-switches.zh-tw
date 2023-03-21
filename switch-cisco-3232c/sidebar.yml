@@ -38,13 +38,13 @@ entries:
     url: "/switch-cisco-3232c/migrate-from-cisco-nexus-5596.html"
   - title: 從雙節點無交換器叢集移轉
     url: "/switch-cisco-3232c/migrate-from-two-node-switchless-cluster.html"
-  - title: 移轉至雙節點無交換器叢集
-    url: "/switch-cisco-3232c/migrate-to-switchless-cluster-interconnect.html"
 - title: 更換交換器
   entries:
   - title: 更換叢集交換器
     url: "/switch-cisco-3232c/replace-cluster-switch.html"
   - title: 更換儲存交換器
     url: "/switch-cisco-3232c/replace-storage-switch.html"
+  - title: 使用無交換器連線取代叢集交換器
+    url: "/switch-cisco-3232c/migrate-to-switchless-cluster-interconnect.html"
 - title: 升級交換器
   url: "/switch-cisco-3232c/upgrade-3232c-storage-switches.html"

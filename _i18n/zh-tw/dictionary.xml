@@ -200,7 +200,6 @@
   <block id="e70a9461d84eea1517aa3881f4d10089" category="paragraph">「系統叢集交換器記錄設定密碼」</block>
   <block id="c13ce4df5a94da696d7e37e246e6fb8a" category="list-text">如果您禁止自動建立個案、請叫用AutoSupport 下列訊息來重新啟用：</block>
   <block id="824a761c1584c25f025a384b7b387c56" category="paragraph">「系統節點AutoSupport 不完整地叫用節點*-type all -most MAn=end」</block>
-  <block id="d33f2a600ba4fe43084a26e95e4908c0" category="paragraph">*相關資訊*</block>
   <block id="f775db4015a6969e3d7826094686747b" category="inline-link">Cisco乙太網路交換器說明頁面</block>
   <block id="fb80612154aea33b3943669136f170ab" category="paragraph"><block ref="fb80612154aea33b3943669136f170ab" category="inline-link-rx"></block></block>
   <block id="c611db29cc6e6a239383ecd8e657d54c" category="paragraph"><block ref="c611db29cc6e6a239383ecd8e657d54c" category="inline-link-rx"></block></block>
@@ -2268,16 +2267,8 @@
   <block id="53a0bfa393247902d9ea8fedde7e8132" category="list-text">重新開機交換器CS1。您可以這樣做、觸發叢集生命期以恢復到其主連接埠。您可以在交換器重新開機時忽略節點上報告的「叢集連接埠當機」事件。</block>
   <block id="a4a59b3c291a83932a23dc7f2e6fce7a" category="paragraph">「系統交換器乙太網路記錄設定密碼」和</block>
   <block id="91cd808758081ea75f478b14ac3c3471" category="paragraph">「系統叢集交換器記錄設定密碼」和</block>
-  <block id="9f5be684442d922984d48ddc3b7aa93f" category="summary">您可以將使用叢集互連交換器的雙節點叢集轉換成兩個節點直接連接的叢集。</block>
   <block id="ff5ad6d56644222030f6f4bc94bd5506" category="paragraph">如果您現有的雙節點叢集使用叢集互連交換器、而且執行ONTAP 的是更新版本的版本、您可以使用節點之間的直接後端對後端連線來取代交換器。</block>
   <block id="759516932a18c0379d0054bce4b2e64e" category="paragraph">您無法將無交換器式叢集互連功能用於兩個以上的節點。</block>
-  <block id="a2c17c2ce71b362b920e8850ba8c4dbc" category="paragraph">轉換至雙節點無交換式叢集組態是不中斷營運的作業。大多數系統在每個節點上都有兩個專屬的叢集互連連接埠、但您也可以將此程序用於每個節點上具有大量專屬叢集互連連接埠的系統、例如四個、六個或八個。</block>
-  <block id="4d60464781e02c960e35d4e4cea119aa" category="paragraph">本程序說明如何將具有交換式叢集網路的叢集、轉換至兩個節點直接連接的叢集、以供ONTAP 使用於更新版本的版本。</block>
-  <block id="e92a37c58dda9b6ad3b2129262043d6a" category="summary">您可以使用節點之間的直接後端對後端連線、來取代雙節點叢集中的交換器。</block>
-  <block id="42831c80a579ed060615d4e90f0500cf" category="doc">以直接連線取代交換器</block>
-  <block id="f9ca0dca2bbe2bca99b0ad5e676f7bb6" category="paragraph">如果您有使用叢集互連交換器的雙節點叢集、請使用節點之間的直接後端對後端連線來更換交換器。這是不中斷營運的作業。</block>
-  <block id="085c76ece7f19b4de00a80d42051e8df" category="list-text">叢集必須健全、由兩個節點組成、並由叢集交換器連接、而且節點必須執行相同ONTAP 的版本資訊。</block>
-  <block id="aadaf9415e70bd5bc3b6c11d549fbe14" category="list-text">每個節點都必須具有所需數量的專用叢集連接埠、以提供備援叢集互連連連連線、以支援您的系統組態、例如每個節點上有兩個專用叢集互連連接埠的系統有兩個備援連接埠。</block>
   <block id="2f5c59a7e0a2102f6d7508bee5ccb15b" category="paragraph">下列程序會移除雙節點叢集中的叢集交換器、並以直接連線至合作夥伴節點的方式取代與交換器的每個連線。</block>
   <block id="8a2504e6dbf1489f594645cb7c55753d" category="image-alt">叢集交換器已由直接連線取代</block>
   <block id="2a2f19f24bfba5cc72f797777f88530a" category="paragraph">下列程序中的範例顯示使用「e0a」和「e0b」做為叢集連接埠的節點。您的節點可能使用不同的叢集連接埠、因為它們會因系統而異。</block>
@@ -2286,7 +2277,6 @@
   <block id="e127f1d4385ec7a8d3e94aacf34721de" category="paragraph">您可以執行進階權限命令、驗證是否已啟用無交換器叢集的偵測：</block>
   <block id="8b70a23bbedce91a74790296a731d7bb" category="paragraph">「網路選項偵測無交換器叢集顯示」</block>
   <block id="47b756a48fc6435a553f74738cb41468" category="paragraph">下列輸出範例顯示選項是否已啟用。</block>
-  <block id="9c4d948f63c8c6f48823d7e858286716" category="paragraph">如果「啟用無交換器叢集偵測」為「假」、請聯絡支援部門。</block>
   <block id="790ec52cbe66e86d508c608424b62c2d" category="paragraph">「系統節點AutoSupport 不完整地叫用節點*-type all -Message MAn=&lt;number_of_hs&gt;h」</block>
   <block id="de1ef371a5c4d9b1200b8a294381f2c8" category="paragraph">其中「h」是指維護時段的持續時間、以小時為單位。此訊息會通知技術支援人員此維護工作、以便他們在維護期間隱藏自動建立個案。</block>
   <block id="31aa5da225dda6126c6cbf160562d03b" category="paragraph">在下列範例中、命令會禁止自動建立兩小時的個案：</block>
@@ -2294,18 +2284,15 @@
   <block id="57c684517aec25172f7d07c58ad05de8" category="list-text">識別叢集連接埠、並驗證連結狀態和健全狀況：</block>
   <block id="b4cb3437a4bd287cc325f112caa8be67" category="paragraph">在以下範例中、對於具有叢集連接埠「e0a」和「e0b」的節點、一個群組會識別為「node1:e0a」和「node2:e0a」、另一個群組則識別為「node1:e0b」和「node2:e0b」。您的節點可能使用不同的叢集連接埠、因為它們會因系統而異。</block>
   <block id="af10d52efe2cd47b065f90fdd28575f5" category="image-alt">節點1和節點2之間的叢集交換器連線</block>
-  <block id="1742cd0ed0e3d9a5d0c757426e551f53" category="paragraph">驗證連接埠的「Link」欄位值是否為「Up」、「Health Status」欄位值是否為「Healthy」、如下列範例所示：</block>
   <block id="ff66496bf4e9ec1deed0dc59b97eb6cb" category="list-text">確認所有的叢集生命區都位於其主連接埠上。</block>
   <block id="455e2d37ef416448b13da810b3bf798a" category="paragraph">驗證每個叢集生命體的「is主目錄」欄位是否為「true」：</block>
   <block id="4db0b2597279fa6c63908e8a06d54f68" category="paragraph">「網路介面show -vserver叢集-Fields is主場」</block>
-  <block id="fd894a783c8c8400a3021bd2ad147cba" category="paragraph">系統會顯示類似下列範例的輸出：</block>
   <block id="12769ddb40f8063f816fcbdca9a00d5d" category="paragraph">如果主連接埠上沒有叢集LIF、請將這些LIF還原至主連接埠：</block>
   <block id="268d66b259b50e25cbef3d39885d450f" category="paragraph">「網路介面回復-vserver叢集-lIF *」</block>
   <block id="fc7b1f226781bbe058721d0dcebf5133" category="list-text">停用叢集生命體的自動還原：</block>
   <block id="b1046cdb57cd97fe9c20f711ba08bed8" category="paragraph">「網路介面修改-vserver叢集-lIF *-auta-fRevert假」</block>
   <block id="5509fa38d3415bf6dfbd28918cf766f3" category="list-text">驗證上一步驟中列出的所有連接埠都已連線至網路交換器：</block>
   <block id="101ead84905a0da72281347a2d3e5846" category="paragraph">「網路裝置探索show -port _cluster連接埠_」</block>
-  <block id="fe02c7580400b9e0117d9abf6c4cbde1" category="paragraph">「探索到的裝置」欄應為連接埠所連接的叢集交換器名稱。下列範例顯示叢集連接埠「e0a」和「e0b」已正確連接至叢集交換器「CS1」和「CS2」。</block>
   <block id="fad8bc8bd6f8c2ecbc098cd96431ebde" category="list-text">驗證叢集連線能力：</block>
   <block id="e477c0774c6014b5173ffa6810d512ab" category="paragraph">「叢集響鈴」</block>
   <block id="c992f99b79e71a5eb5127e5f190fab4e" category="paragraph">所有裝置必須為主裝置或次裝置。</block>
@@ -2329,9 +2316,7 @@
   <block id="fdd6dd4aa052ef34512800aa4ec60d74" category="image-alt">在節點1和節點2上的連接埠之間建立直接連線</block>
   <block id="fbbe76d16326b63ad1d4f272c5493136" category="list-text">驗證兩個節點上的連接埠是否正確連接：</block>
   <block id="65abe70d5b91b27886fd257d6422593d" category="paragraph">下列範例顯示叢集連接埠「e0a」和「e0b」已正確連接至叢集合作夥伴上的對應連接埠：</block>
-  <block id="7d828f71c40144b012224932607715ca" category="list-text">重新啟用叢集生命體的自動還原：</block>
   <block id="2c70d9b6ebd85a5ee2fff0f363a115ac" category="paragraph">「網路介面修改-vserver叢集-lif*-auta-f還原 為真」</block>
-  <block id="5fa7d5204d3d489974fd1ec321213563" category="list-text">確認所有生命都在家裡。這可能需要幾秒鐘的時間：</block>
   <block id="e602723d0e5f9bdd1222eae8ea457289" category="paragraph">「網路介面show -vserver cluster -lif_lif_name_」</block>
   <block id="038dfaef435585ad7a241ece49eb90ca" category="paragraph">如果"is Home"（是主目錄）列是"true"（真），則已恢復生命，如以下範例中的"node1_clus2"和"node2_clus2"所示：</block>
   <block id="ca781b2f6ba431222707604fe0989dc1" category="paragraph">如果有任何叢集LIF尚未返回其主連接埠、請手動還原它們：</block>
@@ -2340,9 +2325,6 @@
   <block id="90d334e25f499d80506823cb341c39d7" category="paragraph">以下範例顯示兩個節點上的epsilon為「假」：</block>
   <block id="26ba805ccb9566fb36369f48374b79c8" category="list-text">確認叢集連接埠之間的連線：</block>
   <block id="a76aa36cc43767185eb24bf3e6381bdb" category="paragraph">「叢集ping叢集本機」</block>
-  <block id="fb49a7219fb53efa33b80ec1a40ab7ce" category="paragraph"><block ref="fb49a7219fb53efa33b80ec1a40ab7ce" category="inline-link-macro-rx"></block></block>
-  <block id="e55e97993d59e593f9db82748c7205cd" category="sidebar">其他交換器程序</block>
-  <block id="66a1a209b630861db25c9013c19efe3b" category="sidebar">移轉至雙節點無交換器叢集</block>
   <block id="749e4fff30fa6550a6b7216922e76856" category="paragraph">在下列範例中、節點1上的「e0a」連接至節點2上的「e0a」、節點1上的「e0b」連接至節點2上的「e0b」：</block>
   <block id="f9c5b146fb6da165b4c98f09374af2ac" category="doc">從老舊的Cisco交換器移轉至Cisco Nexus 9336C-FX2叢集交換器</block>
   <block id="82aa1ff47d80bf012e412296f6a53469" category="inline-link">Nexus 9000系列交換器</block>
@@ -2817,7 +2799,6 @@
   <block id="ec493d1a781282d3b831640adff57617" category="paragraph"><block ref="1be2284fb441d5fc39c1bb2882bcfe33" prefix="" category="inline-code"></block></block>
   <block id="609878b299dde0e13898cea02c9f40e5" category="paragraph"><block ref="780e8a1ebd2c830e4aeaebb59c666b98" prefix="" category="inline-code"></block></block>
   <block id="fa7a3d1e5babb00593a110ab5870ff56" category="summary">您可以從具有交換式叢集網路的叢集移轉至兩個節點直接連線的叢集ONTAP 、以供支援使用於更新版本的版本。</block>
-  <block id="cc0e36a3f48f0af38ed8ceca6914ee74" category="doc">使用NVIDIA SN2100叢集交換器移轉至雙節點無交換器叢集</block>
   <block id="af68aec6a9ff864bb2ea1a13ec1ac66f" category="paragraph-title">準則</block>
   <block id="d2c3016b1c4893861f6df9e9ca35fb38" category="paragraph">請檢閱下列準則：</block>
   <block id="9a784caf906fcaf3bc3613af15e2f622" category="list-text">移轉至雙節點無交換式叢集組態是不中斷營運的作業。大多數系統在每個節點上都有兩個專屬的叢集互連連接埠、但您也可以將此程序用於每個節點上具有大量專屬叢集互連連接埠的系統、例如四個、六個或八個。</block>
@@ -3126,7 +3107,6 @@
   <block id="5ec6a450c60171f21b1076c5993144d4" category="section-title">Cisco Nexus 3132Q-V需求</block>
   <block id="ac3ce89c8c9c9f66bbf4ad6b656b2b3d" category="section-title">Cisco Nexus 5596要求</block>
   <block id="401f989556f238d07b2eafd80fc659ea" category="section-title">NetApp CN1610要求</block>
-  <block id="f04a3d7452808e95f394e61a165ad1fe" category="doc">使用Cisco Nexus 3132Q-V叢集交換器移轉至雙節點無交換器叢集</block>
   <block id="50deaa4511349944fdb3f83e9e71b2ea" category="paragraph">請遵循此程序、在Nexus 3132Q-V叢集交換器上安裝NX-OS軟體。</block>
   <block id="c53a80ec8e0774b5eddfd4e730423c8f" category="list-text"><block ref="ad06ca9efd8c48f3172ea76c98c07c9d" category="inline-link-macro-rx"></block>。請參閱交換器相容性表、以瞭解支援ONTAP 的功能表和NX-OS版本。</block>
   <block id="c19675ad0cf38e4e44e264f2faeabe8e" category="list-text"><block ref="a014456b3700b06b3f3b1342793857e1" category="inline-link-rx"></block>。如需Cisco交換器升級與降級程序的完整文件、請參閱Cisco網站上提供的適當軟體與升級指南。</block>
@@ -3282,7 +3262,6 @@
   <block id="8c07dbda42a02c1008be4ff51c99a589" category="list-text">還原所有節點上所有移轉的叢集互連生命分部：</block>
   <block id="2df774d6207fb031b6abd4d615f47823" category="section-title">步驟4：確認所有連接埠和LIF均已正確移轉</block>
   <block id="8a65c50dffa17d7eca2c3fe845041ce0" category="list-text">輸入下列命令、顯示組態中的裝置相關資訊：</block>
-  <block id="489ffb441a69ef8ab5ae302c7d5a28e3" category="doc">使用Cisco Nexus 3232C叢集交換器移轉至雙節點無交換器叢集</block>
   <block id="0a16e487073b824b443013a4386a6758" category="doc">將CN1610叢集交換器移轉至Cisco Nexus 3232C叢集交換器</block>
   <block id="981f990772f790f1d7f9d3b70afc44a5" category="inline-link-macro">移轉需求</block>
   <block id="0c0fcfb1c62bc821a6649a0cb742f88b" category="paragraph">移轉之前、請務必先檢閱 <block ref="6894d466d0e09d0e91d8f514ea5bb845" category="inline-link-macro-rx"></block>。</block>
@@ -4058,7 +4037,6 @@
   <block id="7d75cce0f07e7a1c58b3241f78030967" category="list-text">在兩個節點上、還原與連接埠E2A相關的clus2：</block>
   <block id="bc180ffe4db9a9890fc4625e4a46260d" category="list-text">檢視節點成員的狀態：</block>
   <block id="0e022017a995285e6b4205898808a5dc" category="list-text">重複上述步驟、在另一台交換器CS1上安裝RCF。</block>
-  <block id="ebc12b227052e3324f3307fa003df8b8" category="doc">使用Cisco Nexus 2300YC叢集交換器移轉至雙節點無交換器叢集</block>
   <block id="af21e8e29322e4f9d397354867978c51" category="doc">設定Cisco Nexus 2300YC交換器</block>
   <block id="5e38bf6c3da8935e2dab0ce962eb8d7a" category="paragraph">請遵循此程序來設定及設定Cisco Nexus 2300YC交換器。</block>
   <block id="b52f4f15c81d9427837c55a98f1f473b" category="list-text">首次開機或清除執行組態後重新開機時、Nexus 92300YC交換器會在開機週期中循環運作。輸入* yes *中止開機自動資源配置、以中斷此週期。</block>
@@ -4184,14 +4162,12 @@
   <block id="46fd2d8570ac9394d60d1c59d30d738d" category="sidebar">更換交換器</block>
   <block id="0b3c99e812c06053658bbb2a0b59fbb8" category="sidebar">連接NS224磁碟櫃</block>
   <block id="ad8c6613a9c5149c2f22f875459b6a06" category="sidebar">從Cisco叢集交換器移轉</block>
-  <block id="ea70cda597fdbaa3684515ff3dec86c9" category="sidebar">移轉至雙節點無交換器叢集</block>
   <block id="194d828d5f6903e0190e08180b8af056" category="sidebar">更換叢集交換器</block>
   <block id="7fda27801f23bbd9656018fa8a6f6af0" category="sidebar">從舊的Cisco交換器移轉</block>
   <block id="512f694616622dd7d0109c65f582ba21" category="sidebar">更換儲存交換器</block>
   <block id="07d35609271d556894601ed6d4518ed5" category="sidebar">從CN5596交換器移轉</block>
   <block id="ce140d6d1921435e3df40a72b6d032f4" category="sidebar">從CN1610交換器移轉</block>
   <block id="ac0586dfb2126d95d9be6378c5f70512" category="sidebar">從無交換器叢集移轉至交換式叢集</block>
-  <block id="6d980346baee6b5e5651aafe9e5bbb87" category="sidebar">從交換式叢集移轉至無交換式叢集</block>
   <block id="703c0fedc12db69e340d7c2f3de0d764" category="sidebar">更換交換器</block>
   <block id="4e8b0737e5a683e7ada812ad2005b768" category="sidebar">更換CN3132Q-V交換器</block>
   <block id="88af8e6a19edbffd16db05ce4d139e3f" category="sidebar">從CN1610叢集交換器移轉</block>
@@ -4286,4 +4262,12 @@
   <block id="c5490cef816a5fdfd03bfbae460638f5" category="paragraph"><block ref="c5490cef816a5fdfd03bfbae460638f5" category="inline-link-macro-rx"></block></block>
   <block id="674dac01986b07db44266812735775f6" category="paragraph">您也可以選擇 <block ref="2243efeaee625d6b6076bcdcbd40e014" category="inline-link-macro-rx"></block>。否則、請前往 <block ref="16a9a5fa8979bab3106e7aad0dfd20d9" category="inline-link-macro-rx"></block>。</block>
   <block id="3eb0f8cafe973dd42647b7ade90f7100" category="admonition">在繼續下一步之前、您必須等待至少兩分鐘、以確認群組1的後端對後端連線正常運作。</block>
+  <block id="2592c17fec9ee0f2f1d872bee517581e" category="doc">使用NVIDIA SN2100叢集交換器、從交換式叢集移轉至無交換式叢集</block>
+  <block id="a7e9b61c9cfaadc2f123f50dfe481898" category="doc">以無交換器連線取代NVIDIA SN2100叢集交換器</block>
+  <block id="a1e3722d1b72e15c4741491bfdfdb45c" category="doc">以無交換器連線取代Cisco Nexus 3132Q-V叢集交換器</block>
+  <block id="6772e4d59dd062c5a9260242b751786f" category="doc">以無交換器連線取代Cisco Nexus 3232C叢集交換器</block>
+  <block id="6dd41d8a8ed57c2ab7e587572c2bf8c5" category="doc">以無交換器連線取代Cisco Nexus 2300YC叢集交換器</block>
+  <block id="5e1805c74a69eb3dca33ebb7e0f38ef6" category="doc">以無交換器連線取代Cisco Nexus 9336C-FX2叢集交換器</block>
+  <block id="1991711774b7f5c3d1ceb09a3f94be78" category="doc">使用Cisco Nexus 9336C-FX2叢集交換器、從交換式叢集移轉至無交換式叢集</block>
+  <block id="0cb146d69d0fe75b8dbae294e40edac5" category="sidebar">使用無交換器連線取代叢集交換器</block>
 </blocks>

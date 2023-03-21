@@ -40,7 +40,5 @@ entries:
     url: "/switch-cisco-9336c-fx2-storage/migrate-to-9336-storage.html"
   - title: 移轉至雙節點交換叢集
     url: "/switch-cisco-9336c-fx2-storage/migrate-to-2n-switched-9336-storage.html"
-  - title: 移轉至雙節點無交換器叢集
-    url: "/switch-cisco-9336c-fx2-storage/migrate-to-switchless-interconnect-9336-storage.html"
 - title: 更換儲存交換器
   url: "/switch-cisco-9336c-fx2-storage/replace-storage-switch-9336c-storage.html"

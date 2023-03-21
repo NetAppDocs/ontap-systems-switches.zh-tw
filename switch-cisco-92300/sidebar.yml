@@ -36,7 +36,9 @@ entries:
     url: "/switch-cisco-92300/migrate-to-2n-switched.html"
   - title: 從舊的Cisco交換器移轉
     url: "/switch-cisco-92300/migrate-to-92300yc.html"
-  - title: 移轉至雙節點無交換器叢集
-    url: "/switch-cisco-92300/migrate-to-switchless-cluster-interconnect.html"
 - title: 更換交換器
-  url: "/switch-cisco-92300/replace-92300yc.html"
+  entries:
+  - title: 更換交換器
+    url: "/switch-cisco-92300/replace-92300yc.html"
+  - title: 使用無交換器連線取代叢集交換器
+    url: "/switch-cisco-92300/migrate-to-switchless-cluster-interconnect.html"

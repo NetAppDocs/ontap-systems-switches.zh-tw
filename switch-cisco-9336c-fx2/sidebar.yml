@@ -40,7 +40,9 @@ entries:
     url: "/switch-cisco-9336c-fx2/migrate-to-9336-cluster.html"
   - title: 移轉至雙節點交換叢集
     url: "/switch-cisco-9336c-fx2/migrate-to-2n-switched-9336-cluster.html"
-  - title: 移轉至雙節點無交換器叢集
+- title: 更換交換器
+  entries:
+  - title: 更換叢集交換器
+    url: "/switch-cisco-9336c-fx2/replace-9336c-cluster.html"
+  - title: 使用無交換器連線取代叢集交換器
     url: "/switch-cisco-9336c-fx2/migrate-to-switchless-interconnect-9336-cluster.html"
-- title: 更換叢集交換器
-  url: "/switch-cisco-9336c-fx2/replace-9336c-cluster.html"

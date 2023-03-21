@@ -1,0 +1,8 @@
+---
+permalink: switch-nvidia-sn2100/migrate-to-switchless-interconnect-sn2100-storage.html 
+redirect: ontap-systems-switches/switch-cisco-9336c-fx2/migrate-to-switchless-interconnect-9336-cluster.html 
+---
+= 
+:allow-uri-read: 
+
+

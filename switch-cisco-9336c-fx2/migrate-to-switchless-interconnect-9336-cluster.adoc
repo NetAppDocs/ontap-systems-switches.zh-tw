@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: migrate, switchless cluster interconnect, cisco nexus switch 9336C-FX2 
 summary: 您可以從具有交換式叢集網路的叢集移轉至兩個節點直接連線的叢集ONTAP 、以供支援使用於更新版本的版本。 
 ---
-= 使用Cisco Nexus 9336C-FX2叢集交換器移轉至雙節點無交換器叢集
+= 以無交換器連線取代Cisco Nexus 9336C-FX2叢集交換器
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -252,6 +252,10 @@ Enable Switchless Cluster: true
 . 確認叢集網路未中斷：
 +
 「叢集ping叢集節點本機」
+
++
+
+IMPORTANT: 在繼續下一步之前、您必須等待至少兩分鐘、以確認群組1的後端對後端連線正常運作。
 
 . 設定群組2中連接埠的無交換器組態。
 +

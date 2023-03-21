@@ -36,11 +36,11 @@ entries:
     url: "/switch-cisco-3132q-v/replace-cn1610-with-cisco-nexus-3232c.html"
   - title: 從無交換器叢集移轉至交換式叢集
     url: "/switch-cisco-3132q-v/migrate-from-switchless-cluster-to-cisco-nexus-3132q-v.html"
-  - title: 從交換式叢集移轉至無交換式叢集
-    url: "/switch-cisco-3132q-v/migrate-to-switchless-cluster-interconnect.html"
 - title: 更換交換器
   entries:
   - title: 更換需求
     url: "/switch-cisco-3132q-v/switch-requirements.html"
   - title: 更換CN3132Q-V交換器
     url: "/switch-cisco-3132q-v/replace-cisco-nexus-3132q-v.html"
+  - title: 使用無交換器連線取代叢集交換器
+    url: "/switch-cisco-3132q-v/migrate-to-switchless-cluster-interconnect.html"
