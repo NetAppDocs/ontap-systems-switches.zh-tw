@@ -15,16 +15,15 @@ summary: 瞭解叢集、儲存設備和共享交換器。
 
 部署交換器涉及下列工作流程。
 
-
-
-== 步驟1：安裝AFF/FAS控制器
-
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一"] 安裝AFF/FAS控制器
+[role="quick-margin-para"]
 在機架或機櫃中安裝AFF/FAS控制器。存取AFF/FAS平台機型的安裝與設定說明。
 
-[cols="9,9,9"]
+[cols="4,9,9,9"]
 |===
 
 
+ a| 
  a| 
 .系統AFF
 * https://docs.netapp.com/us-en/ontap-systems/c190/install-setup.html["C190 AFF"]
@@ -46,16 +45,15 @@ summary: 瞭解叢集、儲存設備和共享交換器。
  a| 
 
 |===
-
-
-== 步驟2：安裝交換器硬體
-
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["二"] 安裝交換器硬體
+[role="quick-margin-para"]
 將交換器安裝在機架或機櫃中。請參閱下列交換器機型的指示。
 
-[cols="9,9,9"]
+[cols="2,9,9,9"]
 |===
 
 
+ a| 
  a| 
 .叢集交換器
 * link:../switch-bes-53248/install-hardware-bes53248.html["安裝BS-53248交換器"]
@@ -73,16 +71,15 @@ summary: 瞭解叢集、儲存設備和共享交換器。
 
 
 |===
-
-
-== 步驟3：將交換器連接至控制器
-
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三"]將交換器連接至控制器
+[role="quick-margin-para"]
 AFF/FAS安裝與設定說明包括將控制器連接埠連接至交換器的纜線。不過、如果您需要支援的纜線和收發器清單、以及交換器主機連接埠的詳細資訊、請針對您的交換器機型存取下列指示。
 
-[cols="9,9,9"]
+[cols="2,9,9,9"]
 |===
 
 
+ a| 
  a| 
 .叢集交換器
 * link:../switch-bes-53248/configure-reqs-bes53248.html#configuration-requirements["連接BS-53248交換器"]
@@ -100,16 +97,15 @@ AFF/FAS安裝與設定說明包括將控制器連接埠連接至交換器的纜�
 
 
 |===
-
-
-== 步驟4：設定交換器
-
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["四"]設定交換器
+[role="quick-margin-para"]
 執行交換器的初始設定。請參閱下列交換器機型的指示。
 
-[cols="9,9,9"]
+[cols="2,9,9,9"]
 |===
 
 
+ a| 
  a| 
 .叢集交換器
 * link:../switch-bes-53248/configure-install-initial.html["設定BS-53248交換器"]
@@ -127,16 +123,15 @@ AFF/FAS安裝與設定說明包括將控制器連接埠連接至交換器的纜�
 
 
 |===
-
-
-== 步驟5：安裝交換器軟體
-
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["五"] 安裝交換器軟體
+[role="quick-margin-para"]
 若要在交換器上安裝及設定軟體、請遵循交換器機型的軟體安裝工作流程。
 
-[cols="9,9,9"]
+[cols="2,9,9,9"]
 |===
 
 
+ a| 
  a| 
 .叢集交換器
 * link:../switch-bes-53248/configure-software-overview-bes53248.html["安裝適用於BS-53248交換器的軟體"]
@@ -154,16 +149,15 @@ AFF/FAS安裝與設定說明包括將控制器連接埠連接至交換器的纜�
 
 
 |===
-
-
-== 步驟6：完成系統設定
-
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["六"] 完成系統設定
+[role="quick-margin-para"]
 設定交換器並安裝所需軟體之後、請存取AFF/FAS平台機型的安裝與設定指示、以完成系統設定。
 
-[cols="9,9,9"]
+[cols="4,9,9,9"]
 |===
 
 
+ a| 
  a| 
 .系統AFF
 * https://docs.netapp.com/us-en/ontap-systems/c190/install-setup.html["C190 AFF"]
@@ -185,12 +179,11 @@ AFF/FAS安裝與設定說明包括將控制器連接埠連接至交換器的纜�
  a| 
 
 |===
-
-
-== 步驟7：完整ONTAP 的VMware組態設定
-
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-7.png["七"] 完整ONTAP 的功能組態
+[role="quick-margin-para"]
 安裝並設定AFF/FAS控制器和交換器之後、您必須完成ONTAP 在VMware中設定儲存設備。根據部署組態存取下列指示。
 
+[role="quick-margin-list"]
 * 如需ONTAP 部署的資訊、請參閱 https://docs.netapp.com/us-en/ontap/task_configure_ontap.html["設定ONTAP 功能"]。
 * 如需ONTAP 使用MetroCluster 支援功能進行的支援、請參閱 https://docs.netapp.com/us-en/ontap-metrocluster/["使用MetroCluster 支援功能進行組態設定ONTAP"]。
 

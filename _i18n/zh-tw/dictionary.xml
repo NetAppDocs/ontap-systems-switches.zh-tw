@@ -3692,7 +3692,6 @@
   <block id="2027518664727205d8bb71d3a3948f25" category="doc">使用叢集、儲存設備和共享交換器來啟動和執行</block>
   <block id="3a9c64dc96f245c802099a9777b1545f" category="paragraph">若要使用叢集、儲存設備和共用交換器來啟動和執行、您需要安裝硬體元件並設定交換器。</block>
   <block id="2c762f57a86f34384ae046788f79bbce" category="paragraph">部署交換器涉及下列工作流程。</block>
-  <block id="974699538922c7561bdfe2c3edf9b481" category="section-title">步驟1：安裝AFF/FAS控制器</block>
   <block id="edc4a76e22711e26f2e103a32108feb0" category="paragraph">在機架或機櫃中安裝AFF/FAS控制器。存取AFF/FAS平台機型的安裝與設定說明。</block>
   <block id="f3585daa539c5917b4fedd0eb7efb3f2" category="example-title">系統AFF</block>
   <block id="b6000f9eed7f8ea9ee4632bd2f77961a" category="inline-link">C190 AFF</block>
@@ -3716,7 +3715,6 @@
   <block id="ec5c696a4bc57321a5a79c91b886d5ff" category="inline-link">FAS9000</block>
   <block id="6cfed826aaeccc59ecbf1bef0c41c6b6" category="list-text"><block ref="6cfed826aaeccc59ecbf1bef0c41c6b6" category="inline-link-rx"></block></block>
   <block id="756d409209ace98589705774b5011aa0" category="inline-link">FAS9500</block>
-  <block id="f3fd85a3ac5b5eb87b15d1c52c1dc13c" category="section-title">步驟2：安裝交換器硬體</block>
   <block id="26d2e0bd267361cc8916e7e16faebcbb" category="paragraph">將交換器安裝在機架或機櫃中。請參閱下列交換器機型的指示。</block>
   <block id="8821c03ea98d1edaf4b4b82c0aaf59dc" category="inline-link-macro">安裝BS-53248交換器</block>
   <block id="d85697c9bca8be1745e81818eef47df6" category="list-text"><block ref="d85697c9bca8be1745e81818eef47df6" category="inline-link-macro-rx"></block></block>
@@ -3727,7 +3725,6 @@
   <block id="4366b3f93a7547f210bc3135e6a37f4d" category="list-text"><block ref="4366b3f93a7547f210bc3135e6a37f4d" category="inline-link-macro-rx"></block></block>
   <block id="b99e44756b04f570f86a9050cdc35340" category="list-text"><block ref="b99e44756b04f570f86a9050cdc35340" category="inline-link-macro-rx"></block></block>
   <block id="7436b337b55a342d63c3c141c8767f95" category="list-text"><block ref="7436b337b55a342d63c3c141c8767f95" category="inline-link-macro-rx"></block></block>
-  <block id="c59a9402e6967194a5d925f91d4cdfde" category="section-title">步驟3：將交換器連接至控制器</block>
   <block id="427748ed6a44d0d6126050507a461881" category="paragraph">AFF/FAS安裝與設定說明包括將控制器連接埠連接至交換器的纜線。不過、如果您需要支援的纜線和收發器清單、以及交換器主機連接埠的詳細資訊、請針對您的交換器機型存取下列指示。</block>
   <block id="497781401f115451ecac27f7f2933cb3" category="inline-link-macro">連接BS-53248交換器</block>
   <block id="9d56a49b99041f6f4671dc40ac94f1f8" category="list-text"><block ref="9d56a49b99041f6f4671dc40ac94f1f8" category="inline-link-macro-rx"></block></block>
@@ -3738,7 +3735,6 @@
   <block id="e2ddd64a6d2b22c319d5b3c756a0f461" category="list-text"><block ref="e2ddd64a6d2b22c319d5b3c756a0f461" category="inline-link-macro-rx"></block></block>
   <block id="f5ede07e12892122f068d8cd7b9bf079" category="list-text"><block ref="f5ede07e12892122f068d8cd7b9bf079" category="inline-link-macro-rx"></block></block>
   <block id="aa9a4b60787c3af9e16088797a91e78c" category="list-text"><block ref="aa9a4b60787c3af9e16088797a91e78c" category="inline-link-macro-rx"></block></block>
-  <block id="13e9027bfcc7dfe20312af84b601c3a7" category="section-title">步驟4：設定交換器</block>
   <block id="ec105a48fce29c3cef5a1857c97bf49f" category="paragraph">執行交換器的初始設定。請參閱下列交換器機型的指示。</block>
   <block id="f5dcfee71330ba72d10a9ef205dd69e5" category="inline-link-macro">設定BS-53248交換器</block>
   <block id="66e7dc389a0257512d0171a95ca66169" category="list-text"><block ref="66e7dc389a0257512d0171a95ca66169" category="inline-link-macro-rx"></block></block>
@@ -3749,7 +3745,6 @@
   <block id="32eee6e549e4f493fc9773e083b2380d" category="list-text"><block ref="32eee6e549e4f493fc9773e083b2380d" category="inline-link-macro-rx"></block></block>
   <block id="65e80b318a152dc28917d50c1ff2ad1f" category="list-text"><block ref="65e80b318a152dc28917d50c1ff2ad1f" category="inline-link-macro-rx"></block></block>
   <block id="fb9447615c522a0b82b9452f60e71bbc" category="list-text"><block ref="fb9447615c522a0b82b9452f60e71bbc" category="inline-link-macro-rx"></block></block>
-  <block id="0995bff0860fe5b0bf233979321a69fe" category="section-title">步驟5：安裝交換器軟體</block>
   <block id="8c5afc8d3c5a4855ac8b127c598aaf6c" category="paragraph">若要在交換器上安裝及設定軟體、請遵循交換器機型的軟體安裝工作流程。</block>
   <block id="be6af2b7851b2766e149e88f47cd231e" category="inline-link-macro">安裝適用於BS-53248交換器的軟體</block>
   <block id="ef978e43e89150620587f52eefe18c08" category="list-text"><block ref="ef978e43e89150620587f52eefe18c08" category="inline-link-macro-rx"></block></block>
@@ -3759,9 +3754,7 @@
   <block id="e146a01f183a5d149c1cbd22bd0299b2" category="list-text"><block ref="e146a01f183a5d149c1cbd22bd0299b2" category="inline-link-macro-rx"></block></block>
   <block id="0cc464fe26f2dccabb9644f27a14d078" category="list-text"><block ref="0cc464fe26f2dccabb9644f27a14d078" category="inline-link-macro-rx"></block></block>
   <block id="00266598571441926f1f10292cbdf9fc" category="list-text"><block ref="00266598571441926f1f10292cbdf9fc" category="inline-link-macro-rx"></block></block>
-  <block id="51a94b8766ae9701011e60140f80ec28" category="section-title">步驟6：完成系統設定</block>
   <block id="8a19d1619bb8803d8a6b5d21556d87ad" category="paragraph">設定交換器並安裝所需軟體之後、請存取AFF/FAS平台機型的安裝與設定指示、以完成系統設定。</block>
-  <block id="042015a72c43c5acf32394204c5b7924" category="section-title">步驟7：完整ONTAP 的VMware組態設定</block>
   <block id="f0a39bebe9f0d59f6fc97c14de8b2a1a" category="paragraph">安裝並設定AFF/FAS控制器和交換器之後、您必須完成ONTAP 在VMware中設定儲存設備。根據部署組態存取下列指示。</block>
   <block id="549f827e07761bafef053e8ca7564a39" category="inline-link">設定ONTAP 功能</block>
   <block id="8849c41092b79554e9b7f3a213d25622" category="list-text">如需ONTAP 部署的資訊、請參閱<block ref="a9c0083f0559526553eb5b29452926d5" category="inline-link-rx"></block>。</block>
@@ -4269,4 +4262,18 @@
   <block id="7f81bc06b8e7a4bfd515767a4b4385fe" category="list-text">[[step6]將共享交換器A上的儲存RCF替換為共用RCF檔案。請參閱 <block ref="2f595b9f03c1eca7e988cc615d685264" category="inline-link-macro-rx"></block> 以取得更多詳細資料。</block>
   <block id="2b888f1fbb1010b5a426f7a2a88e0914" category="list-text">[[step12]將共享交換器B上的儲存RCF檔案替換為共用RCF檔案。請參閱 <block ref="2f595b9f03c1eca7e988cc615d685264" category="inline-link-macro-rx"></block> 以取得更多詳細資料。</block>
   <block id="8ddcfbe457d5db5e61625624a6a20b33" category="list-text">[[step16]使用交換器更換程序和共用RCF、將叢集網路從現有的叢集交換器移轉到共用交換器。新的共享交換器A是「CS1」。新的共享交換器B是「CS2」。請參閱 <block ref="79be7ff3aee9976e13251b5a88fadf5c" category="inline-link-macro-rx"></block> 和 <block ref="2f595b9f03c1eca7e988cc615d685264" category="inline-link-macro-rx"></block> 以取得更多詳細資料。</block>
+  <block id="06c2cea18679d64399783748fa367bdd" category="inline-image-macro">一</block>
+  <block id="1488c7c37653a45223ebecdfabcefa04" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block> 安裝AFF/FAS控制器</block>
+  <block id="aada29daee1d64ed0fe907043855cb7e" category="inline-image-macro">二</block>
+  <block id="d130f1dd19e93aaf9701cc968056061f" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block> 安裝交換器硬體</block>
+  <block id="ca8a2087e5557e317599344687a57391" category="inline-image-macro">三</block>
+  <block id="a4ae5d0bd4e47ba267a8df1ceee51985" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block>將交換器連接至控制器</block>
+  <block id="981b8fcee42e1e726a67a2b9a98ea6e9" category="inline-image-macro">四</block>
+  <block id="2d51a4c0647f6c33eb1618ae2b75bbbf" category="paragraph-title"><block ref="beadfa85a2fdca06b91edc1131c603e6" category="inline-image-macro-rx" type="image"></block>設定交換器</block>
+  <block id="e5d9de39f7ca1ba2637e5640af3ae8aa" category="inline-image-macro">五</block>
+  <block id="64637562d7e27f62620328710451f9ca" category="paragraph-title"><block ref="99e8b2f00e172bfcff96afdce69907bc" category="inline-image-macro-rx" type="image"></block> 安裝交換器軟體</block>
+  <block id="e6fbc0b9673f8c86726688d7607fc8f5" category="inline-image-macro">六</block>
+  <block id="aea7345148c1589735242fc13ad81924" category="paragraph-title"><block ref="ef78558f80439832e0f51cc22cee8b8c" category="inline-image-macro-rx" type="image"></block> 完成系統設定</block>
+  <block id="12e67aac3e7f9227cc35f8f047d7dc74" category="inline-image-macro">七</block>
+  <block id="8f5988d6d5abedb5da92f0fcbc79872d" category="paragraph-title"><block ref="36915574c413876eaa75cbd48f69fd00" category="inline-image-macro-rx" type="image"></block> 完整ONTAP 的功能組態</block>
 </blocks>
