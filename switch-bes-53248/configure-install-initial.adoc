@@ -19,7 +19,7 @@ summary: 您可以使用此程序來執行Bes - 53248叢集交換器的初始安
 +
 ** link:configure-reqs-bes53248.html["組態需求"]
 ** link:components-bes53248.html["元件與零件編號"]
-** link:required-documentation-53248.html["文件需求"]
+** link:required-documentation-bes53248.html["文件需求"]
 
 
 

@@ -75,7 +75,7 @@ summary: 您可以執行特定的工作順序、在不中斷營運的情況下�
 
 10 GbE和40/100 GbE連接埠的數量是在上可用的參考組態檔（RCFs）中定義 https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco®叢集網路交換器參考組態檔案下載"^] 頁面。
 
-此取代程序的範例使用四個節點。其中兩個節點使用四個10 Gb叢集互連連接埠：e0a、e0b、e0c和e0d。其他兩個節點使用兩個40 GB叢集互連連接埠：E4A和e4e。請參閱 link:https://hwu.netapp.com/SWITCH/INDEX.html["Hardware Universe"^] 驗證平台的叢集連接埠是否正確。
+此取代程序的範例使用四個節點。其中兩個節點使用四個10 Gb叢集互連連接埠：e0a、e0b、e0c和e0d。其他兩個節點使用兩個40 GB叢集互連連接埠：E4A和e4e。請參閱 link:https://hwu.netapp.com["Hardware Universe"^] 驗證平台的叢集連接埠是否正確。
 
 
 

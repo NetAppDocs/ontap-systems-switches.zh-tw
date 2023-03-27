@@ -79,7 +79,7 @@ Cisco Nexus 2300YC交換器氣流詳細資料：
 
 
  a| 
-https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-9336c-fx2/setup-switches.html["_設定Cisco®Nexus 2300YC叢集交換器_"^]
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-92300/install-overview-cisco-92300.html["_設定Cisco®Nexus 2300YC叢集交換器_"^]
  a| 
 說明如何設定和設定Cisco Nexus 2300YC叢集交換器。
 
@@ -93,7 +93,7 @@ https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-92300/install-
 
 
  a| 
-https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-92300/configure-overview.html["_設定新的Cisco Nexus 2300YC交換器_"^]
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-92300/configure-install-initial.html["_設定新的Cisco Nexus 2300YC交換器_"^]
  a| 
 說明如何從使用舊版Cisco交換器的環境移轉至使用Cisco 92300YC交換器的環境。
 

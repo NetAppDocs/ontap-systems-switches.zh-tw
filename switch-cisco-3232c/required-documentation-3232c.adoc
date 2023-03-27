@@ -129,7 +129,7 @@ https://library.netapp.com/ecm/ecm_download_file/ECMM1280394["42U系統機櫃、
 
 
  a| 
-link:task-install-a-cisco-nexus-3232c-cluster-switch-and-pass-through-panel-in-a-netapp-cabinet.html["在NetApp機櫃中安裝Cisco Nexus 3232C交換器"^]
+link:install-cisco-nexus-3232c.html["在NetApp機櫃中安裝Cisco Nexus 3232C交換器"^]
  a| 
 說明如何在四柱NetApp機櫃中安裝Cisco Nexus 3232C交換器。
 

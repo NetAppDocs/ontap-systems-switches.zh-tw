@@ -20,7 +20,7 @@ Cisco Nexus 3132Q-V交換器可做AFF 為您的叢集或FAS 叢集內的叢集�
 若要在執行__LW_Y_Y_Y_Y_YV_Y_Y_YV_YV_YRIT_YRIT_YRIT_YRIT_Y ONTAP
 
 . link:setup_worksheet_3132q.html["填寫Cisco Nexus 3132Q-V佈線工作表"]。佈線工作表範例提供從交換器到控制器的建議連接埠指派範例。空白工作表提供範本、可用於設定叢集。
-. link:install-cisco-nexus-3232c.html["在NetApp機櫃中安裝Cisco Nexus 3132Q-V叢集交換器"]。將Cisco Nexus 3132Q-V交換器和直通面板安裝在NetApp機櫃中、並附有交換器隨附的標準支架。
+. link:install-cisco-nexus-3132qv.html["在NetApp機櫃中安裝Cisco Nexus 3132Q-V叢集交換器"]。將Cisco Nexus 3132Q-V交換器和直通面板安裝在NetApp機櫃中、並附有交換器隨附的標準支架。
 . link:setup-switch.html["設定Cisco Nexus 3132Q-V交換器"]。設定及設定Cisco Nexus 3132Q-V交換器。
 . link:prepare-install-cisco-nexus-3132q.html["準備安裝NX-OS軟體和參考組態檔案"]。準備安裝NX-OS軟體和參考組態檔（RCF）。
 . link:install-nx-os-software-3132q-v.html["安裝NX-OS軟體"]。請遵循此程序、在Nexus 3132Q-V叢集交換器上安裝NX-OS軟體。

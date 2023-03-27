@@ -43,6 +43,6 @@ summary: 當您將舊的Cisco Nexus叢集交換器更換為Cisco Nexus 2300YC叢
 * 本程序所支援的支援的支援版本包括ONTAP https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器"^] 頁面。
 +
 
-NOTE: 移轉完成後、您可能需要安裝所需的組態檔、以支援適用於92300YC叢集交換器的叢集交換器健全狀況監視器（CSHM）。請參閱中的<安裝叢集交換器健全狀況監視器（CSHM）組態檔>以瞭解2300YC switch_ link:../com.netapp.doc.hw-sw-cisco-setup/home.html["設定"] 指南。
+NOTE: 移轉完成後、您可能需要安裝所需的組態檔、以支援適用於92300YC叢集交換器的叢集交換器健全狀況監視器（CSHM）。請參閱 link:setup-install-cshm-file.html["安裝叢集交換器健全狀況監視器（CSHM）組態檔"] 以取得詳細資料。
 
 

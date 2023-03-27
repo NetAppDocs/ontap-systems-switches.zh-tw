@@ -134,4 +134,4 @@ NOTE: 如果您在此階段未儲存組態、下次重新啟動交換器時、�
 
 
 .接下來呢？
-視組態而定、您可以 link:install-switch-and-passthrough-panel-9336c-shared.html["在NetApp機櫃中安裝交換器"]。否則、請前往 link:install-nxos-overview-9336c-storage.html["準備安裝NX-OS和RCF"]。
+視組態而定、您可以 link:install-switch-and-passthrough-panel-9336c-shared.html["在NetApp機櫃中安裝交換器"]。否則、請前往 link:prepare-nxos-rcf-9336c-shared.html["準備安裝NX-OS和RCF"]。

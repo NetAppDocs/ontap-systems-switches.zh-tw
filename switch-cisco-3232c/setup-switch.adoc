@@ -18,7 +18,7 @@ summary: 如果您還沒有必要的組態資訊和文件、則必須先收集�
 * 適用的NX-OS版本、可從下載 https://software.cisco.com/download/home["Cisco軟體下載"^] 頁面。
 * 必要的叢集網路和管理網路交換器文件。
 +
-請參閱 xref:setup-required-documentation.adoc[必要文件] 以取得更多資訊。
+請參閱 link:required-documentation-3232c.html["必要文件"] 以取得更多資訊。
 
 * 必要的控制器文件與ONTAP 資訊文件。
 +

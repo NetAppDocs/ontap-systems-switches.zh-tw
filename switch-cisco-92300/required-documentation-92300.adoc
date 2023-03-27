@@ -129,7 +129,7 @@ https://library.netapp.com/ecm/ecm_download_file/ECMM1280394["42U系統機櫃、
 
 
  a| 
-link:install-switch-and-passthrough-panel.html["在NetApp機櫃中安裝Cisco Nexus 2300YC交換器"]
+link:install-cisco-nexus-3132qv.html["[在NetApp機櫃中安裝Cisco Nexus 2300YC交換器"]
  a| 
 說明如何在四柱NetApp機櫃中安裝Cisco Nexus 2300YC交換器。
 

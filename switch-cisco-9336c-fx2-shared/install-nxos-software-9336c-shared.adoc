@@ -13,7 +13,7 @@ summary: 您可以使用此程序、在Nexus 9336C-FX2叢集交換器上安裝NX
 [role="lead"]
 請遵循此程序、在Nexus 9336C-FX2共用交換器上安裝NX-OS軟體。
 
-開始之前、請先完成中的程序 link:install-nxos-overview-9336c-shared.html["準備安裝NX-OS和RCF"]。
+開始之前、請先完成中的程序 link:prepare-nxos-rcf-9336c-shared.html["準備安裝NX-OS和RCF"]。
 
 
 
@@ -369,4 +369,4 @@ GEM  FPGA                        0x2
 
 
 .接下來呢？
-link:install-nxos-rcf-9336c-shared.html["安裝RCF組態檔"]。
+link:install-nxos-rcf-9336c-shared.html["安裝RCF組態檔"]

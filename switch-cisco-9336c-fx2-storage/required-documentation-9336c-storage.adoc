@@ -132,7 +132,7 @@ https://library.netapp.com/ecm/ecm_download_file/ECMM1280394["42U系統機櫃、
 
 
  a| 
-link:install-switch-and-passthrough-panel.html["在NetApp機櫃中安裝Cisco 9336-FX2交換器"^]
+link:install-switch-and-passthrough-panel-9336c-storage.html["在NetApp機櫃中安裝Cisco 9336-FX2交換器"^]
  a| 
 說明如何在四柱NetApp機櫃中安裝Cisco Nexus 9336C-FX2交換器。
 

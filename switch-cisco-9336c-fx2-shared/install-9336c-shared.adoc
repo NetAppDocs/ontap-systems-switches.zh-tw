@@ -31,4 +31,4 @@ summary:
 
 
 .接下來呢？
-前往 link:.setup-and-configure-9336c-shared.html["設定Cisco Nexus 9336C-FX2共用交換器"]。
+前往 https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-9336c-fx2-shared/setup-and-configure-9336c-shared.html["設定Cisco Nexus 9336C-FX2共用交換器"]。

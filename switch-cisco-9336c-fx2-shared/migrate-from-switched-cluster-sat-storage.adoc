@@ -89,7 +89,7 @@ node2
 ====
 
 
-. [[step6]將共享交換器A上的儲存RCF替換為共用RCF檔案。請參閱 link:9336c_install_nx-os_software_and_reference_configuration_files_rcfs.html#install-the-rcf-on-a-cisco-nexus-9336c-fx2-shared-switch["在Cisco Nexus 9336C-FX2共享交換器上安裝RCF"] 以取得更多詳細資料。
+. [[step6]將共享交換器A上的儲存RCF替換為共用RCF檔案。請參閱 link:install-nxos-rcf-9336c-shared.html["在Cisco Nexus 9336C-FX2共享交換器上安裝RCF"] 以取得更多詳細資料。
 . 驗證連接至HA配對1的儲存設備、儲存交換器A是否正常：
 +
 `system health alert show -instance`
@@ -125,7 +125,7 @@ There are no entries matching your query.
 ====
 
 
-. [[step12]將共享交換器B上的儲存RCF檔案替換為共用RCF檔案。請參閱 link:9336c_install_nx-os_software_and_reference_configuration_files_rcfs.html#install-the-rcf-on-a-cisco-nexus-9336c-fx2-shared-switch["在Cisco Nexus 9336C-FX2共享交換器上安裝RCF"] 以取得更多詳細資料。
+. [[step12]將共享交換器B上的儲存RCF檔案替換為共用RCF檔案。請參閱 link:install-nxos-rcf-9336c-shared.html["在Cisco Nexus 9336C-FX2共享交換器上安裝RCF"] 以取得更多詳細資料。
 . 驗證連接至HA配對1的儲存設備、儲存交換器B是否正常：
 +
 `system health alert show -instance`
@@ -203,7 +203,7 @@ sh1 (config)# *exit*
 ====
 
 
-. [[step16]使用交換器更換程序和共用RCF、將叢集網路從現有的叢集交換器移轉到共用交換器。新的共享交換器A是「CS1」。新的共享交換器B是「CS2」。請參閱 link:9336c_replace_a_cisco_nexus_9336c-fx2_shared_switch.html["更換Cisco Nexus 9336C-FX2共享交換器"] 和 link:9336c_install_nx-os_software_and_reference_configuration_files_rcfs.html#install-the-rcf-on-a-cisco-nexus-9336c-fx2-shared-switch["在Cisco Nexus 9336C-FX2共享交換器上安裝RCF"] 以取得更多詳細資料。
+. [[step16]使用交換器更換程序和共用RCF、將叢集網路從現有的叢集交換器移轉到共用交換器。新的共享交換器A是「CS1」。新的共享交換器B是「CS2」。請參閱 link:replace-9336c-fx2-shared.html["更換Cisco Nexus 9336C-FX2共享交換器"] 和 link:install-nxos-rcf-9336c-shared.html["在Cisco Nexus 9336C-FX2共享交換器上安裝RCF"] 以取得更多詳細資料。
 . 驗證交換式網路組態是否有效：
 +
 「網路連接埠展示」
