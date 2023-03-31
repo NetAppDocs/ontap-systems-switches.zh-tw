@@ -2901,7 +2901,6 @@
   <block id="496fe3dd70b4f5816f2c409909812bb5" category="list-text">驗證所有叢集網路lifs是否都回到其主連接埠：</block>
   <block id="829106baec07d32d260194a2527e041b" category="paragraph"><block ref="81e27480a79c2bb77194c038c9737157" category="inline-link-macro-rx"></block>。</block>
   <block id="551d30a8d4eb4a668b69a7293c7a7b96" category="section-title">QSA介面卡</block>
-  <block id="23e40c2eacc1cd3639734b7ae7430b2d" category="paragraph">當使用QSA介面卡連線到平台上的內建Intel叢集連接埠時、並非所有連結都會出現。例如FAS2750、AFF FASA300和FAS8200（所有10G）、AFF 以及VA250（25G）。</block>
   <block id="95014a22727b6c60eefe66a36ce9ded2" category="paragraph"><block ref="520f63525f898e977d91bb94f9da1129" category="inline-link-macro-rx"></block>。</block>
   <block id="b3ab991775278214a4482646f14a4804" category="paragraph">您使用的程序取決於每個控制器上是否有兩個專屬的叢集網路連接埠、或每個控制器上是否有一個叢集連接埠。記錄的程序適用於所有使用光纖或雙軸纜線連接埠的節點、但如果節點使用內建10GBASE-T RJ45連接埠來連接叢集網路連接埠、則此交換器不支援此程序。</block>
   <block id="52c5fb2d511e57cc084140509647dd1e" category="list-text">雙節點無交換器組態已正確設定並正常運作。</block>
@@ -4276,4 +4275,25 @@
   <block id="aea7345148c1589735242fc13ad81924" category="paragraph-title"><block ref="ef78558f80439832e0f51cc22cee8b8c" category="inline-image-macro-rx" type="image"></block> 完成系統設定</block>
   <block id="12e67aac3e7f9227cc35f8f047d7dc74" category="inline-image-macro">七</block>
   <block id="8f5988d6d5abedb5da92f0fcbc79872d" category="paragraph-title"><block ref="36915574c413876eaa75cbd48f69fd00" category="inline-image-macro-rx" type="image"></block> 完整ONTAP 的功能組態</block>
+  <block id="d8c8c02df74538b604d42f3f6d992c40" category="paragraph">4個10GbE中斷叢集連接埠節點</block>
+  <block id="331bcd76038fdc1605be4c587c56294c" category="paragraph">4個25GbE中斷叢集連接埠節點</block>
+  <block id="e451d063f2ca2617078b2305ef087f02" category="paragraph">swp3-14</block>
+  <block id="0d60da82680f3305621fd4472d897e3b" category="paragraph">40/100叢集連接埠節點</block>
+  <block id="044141a7c2076e2a8d84961a043b480a" category="paragraph">swp15-16</block>
+  <block id="cab42d967475ecc877f819cc849c3392" category="paragraph">40/100交換器間連結（ISL）連接埠</block>
+  <block id="c462eb588f6f13a8e04bee80aae30ba8" category="paragraph">請參閱<block ref="c043e01cdc55399f824e6d1e4eb8a5b5" category="inline-link-rx"></block> 如需交換器連接埠的詳細資訊、</block>
+  <block id="e7af52912cd69e9bf38776786cbca8a3" category="paragraph">對於CummUS Linux 4.4.2、只有具有X1151A NIC、X1146A NIC或內建100GbE連接埠的SN2100交換器才支援光纖連線。例如：</block>
+  <block id="85a0e57a29218d20a48e10c13bdf7cb6" category="paragraph">對於CummUS Linux 4.4.3及更新版本、需要進行下列組態變更、才能修正此問題。</block>
+  <block id="f3f1289d53f31212ba6b49b341ffc7e6" category="list-text">將下列兩行新增至<block ref="d4b3c0affe66439bbee012d30e38441b" prefix=" " category="inline-code"></block> 每個&lt;n&gt; 使用40/100GbE銅線的連接埠（swjpg）檔案：</block>
+  <block id="69cf9ddd2a167644a30a59dda49e0f6a" category="list-text"><block ref="0babc1daa70cf30fe3f5ad4e3e07fab2" prefix="" category="inline-code"></block></block>
+  <block id="7ecf603eb76daba643481182546f4e38" category="list-text"><block ref="a0ce25310d7a8e2527bb141f43700add" prefix="" category="inline-code"></block></block>
+  <block id="6ec72ecd2f587c249b56c3e03401ecae" category="list-text">重新啟動switchd精靈：<block ref="2b526042e0b783c1b2eb28b0ef5623de" prefix=" " category="inline-code"></block></block>
+  <block id="ab57fd0432e25d5b3013133a1c910d56" category="inline-link">KB</block>
+  <block id="d1230bc869b84c83439b8c8e7519dde2" category="paragraph">請參閱下列內容<block ref="a885142d9d0638feca0ff8bbde23eb83" category="inline-link-rx"></block> 以取得更多詳細資料。</block>
+  <block id="7fa926cf10e568e38d190fa4bb643575" category="paragraph">當使用QSA介面卡連線至平台上的內建叢集連接埠時、可能不會出現連結。</block>
+  <block id="3ff6d247db095566d17ccb43d3672576" category="list-text">若為10G、請手動將swp1s-3連結速度設為10000、並將自動交涉設為關。</block>
+  <block id="7884c7a18dfb8ee5902cac6f25fd2535" category="list-text">若為25G、請手動將swp2s-3連結速度設為25000、並將自動交涉設為關。</block>
+  <block id="6b7eaec843bb5fcdab1371328ab1e94c" category="admonition">使用10G/25G QSA時、請將其插入不中斷的40/100G連接埠。請勿將QSA介面卡插入設定為中斷的連接埠。</block>
+  <block id="92f8e266fe70da4f6717e931d81faa46" category="section-title">設定中斷連接埠的介面速度</block>
+  <block id="577c386d1bb7bbffa59ac5c15182ada1" category="paragraph">視交換器連接埠中的收發器而定、您可能需要將交換器介面上的速度設定為固定速度。如果使用10G和25G離線連接埠、請確定自動交涉已關閉、並硬設定交換器的介面速度。例如：</block>
 </blocks>
