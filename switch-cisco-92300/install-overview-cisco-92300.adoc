@@ -4,16 +4,16 @@ sidebar: sidebar
 keywords: install, cisco nexus 92300 switch, 
 summary: 在設定Cisco Nexus 92300交換器之前、請先檢閱程序與命名規則的總覽。 
 ---
-= Cisco Nexus 92300交換器的安裝與組態總覽
+= Cisco Nexus 92300YC 交換器的安裝與組態概觀
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-在設定Cisco Nexus 92300交換器之前、請先檢閱程序總覽。
+設定 Cisco Nexus 92300YC 交換器之前、請先檢閱程序概述。
 
-若要在執行ONTAP 支援的系統上初始設定Cisco Nexus 92300交換器、請依照下列步驟操作：
+若要在執行 ONTAP 的系統上初始設定 Cisco Nexus 92300YC 交換器、請遵循下列步驟：
 
 . link:setup-worksheet-92300yc.html["完成Cisco Nexus 2300YC佈線工作表"]。佈線工作表範例提供從交換器到控制器的建議連接埠指派範例。空白工作表提供範本、可用於設定叢集。
 . link:configure-install-initial.html["設定Cisco Nexus 2300YC交換器"]。設定及設定Cisco Nexus 2300YC交換器。

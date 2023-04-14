@@ -4039,9 +4039,6 @@
   <block id="4db4d99be4b5b2288798925cd1faeda3" category="list-text">交換器的初始自訂作業已完成、詳細內容請參閱： <block ref="f0d24ec92e2951fca3ce05ded916eb30" category="inline-link-macro-rx"></block>。</block>
   <block id="2367f63a291e7e1383961daf65d8b44f" category="example-title">顯示拓撲</block>
   <block id="255c4d8b5fe19006ce3e32d6abe4c5dd" category="summary">在設定Cisco Nexus 92300交換器之前、請先檢閱程序與命名規則的總覽。</block>
-  <block id="69614c5d5f9b9621dc6f19eb2e11553a" category="doc">Cisco Nexus 92300交換器的安裝與組態總覽</block>
-  <block id="c5576d656ffb0b43f469f79ee2d05339" category="paragraph">在設定Cisco Nexus 92300交換器之前、請先檢閱程序總覽。</block>
-  <block id="13c3fd465bc0082cbe1310f539553cfc" category="paragraph">若要在執行ONTAP 支援的系統上初始設定Cisco Nexus 92300交換器、請依照下列步驟操作：</block>
   <block id="ffbe1aba3ae8a278e4f28ac52b2be316" category="list-text"><block ref="d38e35e34a06630798f8736804a06d84" category="inline-link-macro-rx"></block>。佈線工作表範例提供從交換器到控制器的建議連接埠指派範例。空白工作表提供範本、可用於設定叢集。</block>
   <block id="71be1affbed75bebb8eb96c3572e9f1b" category="list-text"><block ref="f0d24ec92e2951fca3ce05ded916eb30" category="inline-link-macro-rx"></block>。設定及設定Cisco Nexus 2300YC交換器。</block>
   <block id="1aaeb527f308dd42bbc5d35f0f59358b" category="list-text"><block ref="8b831959a634cc7821f2f066cbf13103" category="inline-link-macro-rx"></block>。準備安裝NX-OS軟體和參考組態檔（RCF）。</block>
@@ -4061,7 +4058,6 @@
   <block id="e617d80a2294adb5c3c62b25af747e57" category="inline-link-macro">安裝叢集交換器健全狀況監視器（CSHM）組態檔</block>
   <block id="a08609130428631761bac82d994b04c7" category="paragraph"><block ref="6f694a83f3a80cbdd0707c7c90c80946" category="inline-link-macro-rx"></block>。</block>
   <block id="06f7473ee7b667cf7e6c7384b4e91957" category="doc">Cisco Nexus 2300YC交換器的元件</block>
-  <block id="cca2cd595451689ee569b5dab14cb718" category="paragraph">對於Cisco Nexus 2300YC交換器的安裝與維護、請務必檢閱所有交換器元件和零件編號。</block>
   <block id="26961e618ecd01e172d0cc2829344d09" category="list-text">連接埠側排風（標準氣流）：冷空氣透過冷通道中的風扇和電源供應器模組進入機箱、並透過熱通道中的機箱連接埠端口排出。連接埠側邊的排氣氣流、搭配藍色色彩。</block>
   <block id="a65de0b2540eeae253ed86b6c80d5cd8" category="list-text">端口端口進氣氣流（反轉氣流）：冷卻氣流通過冷通道的端口端進入機箱，並通過熱通道中的風扇和電源設備模塊排出。連接埠側進氣氣流、搭配酒紅色。</block>
   <block id="c24412eff0fdd364ed38f42c78180f6d" category="list-text">完整功能的現有叢集。</block>
@@ -4296,4 +4292,8 @@
   <block id="6b7eaec843bb5fcdab1371328ab1e94c" category="admonition">使用10G/25G QSA時、請將其插入不中斷的40/100G連接埠。請勿將QSA介面卡插入設定為中斷的連接埠。</block>
   <block id="92f8e266fe70da4f6717e931d81faa46" category="section-title">設定中斷連接埠的介面速度</block>
   <block id="577c386d1bb7bbffa59ac5c15182ada1" category="paragraph">視交換器連接埠中的收發器而定、您可能需要將交換器介面上的速度設定為固定速度。如果使用10G和25G離線連接埠、請確定自動交涉已關閉、並硬設定交換器的介面速度。例如：</block>
+  <block id="5501293605b4b8c8957b68e1854b0f11" category="doc">Cisco Nexus 92300YC 交換器的安裝與組態概觀</block>
+  <block id="c5fed3189b0ec4237029df463c0c1f64" category="paragraph">設定 Cisco Nexus 92300YC 交換器之前、請先檢閱程序概述。</block>
+  <block id="109e216a5aa6e526f504483738dabc7b" category="paragraph">若要在執行 ONTAP 的系統上初始設定 Cisco Nexus 92300YC 交換器、請遵循下列步驟：</block>
+  <block id="ed6ae629414abab8b0e9b2e8deadb8c2" category="paragraph">對於Cisco Nexus 2300YC交換器的安裝與維護、請務必檢閱所有交換器元件和零件編號。請參閱<block ref="cd25cbe53f0a314145c84729c6ce2c78" category="inline-link-rx"></block> 以取得詳細資料。</block>
 </blocks>
