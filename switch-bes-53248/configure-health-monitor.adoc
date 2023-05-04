@@ -45,31 +45,50 @@ summary: 您可以安裝叢集交換器健全狀況監視器（CSHM）組態檔�
 cluster1::> *set -privilege advanced*
 ----
 . 執行交換器健全狀況監視器configure命令：
-+
+
+
+[role="tabbed-block"]
+====
+.適用於更新版本的更新版本ONTAP
+--
+`system switch ethernet configure-health-monitor -node * -package-url \http://server/file-location`
+
+[listing]
+----
+cluster1::> switch ethernet configure-health-monitor -node * -package-url
+http://192.168.2.20/usr/download/Broadcom_BES-53248.zip
+----
+--
+.適用於更新版本的更新版本ONTAP
+--
 `system cluster-switch configure-health-monitor -node * -package-url \http://server/file-location`
 
-+
-.顯示範例
-[%collapsible]
+[listing]
+----
+cluster1::> system cluster-switch configure-health-monitor -node * -package-url
+http://192.168.2.20/usr/download/Broadcom_BES-53248.zip
+----
+--
 ====
-[listing, subs="+quotes"]
-----
-cluster1::> *system cluster-switch configure-health-monitor -node * -package-url
-http://192.168.2.20/usr/download/Broadcom_BES-53248.zip*
-----
+. [[step5]] 確認命令輸出包含文字字串： `downloaded package processed successfully`。如果發生錯誤、請聯絡 NetApp 支援部門。
+. 在 ONTAP 系統上執行命令、並確認已探索叢集交換器、並將監控欄位設為「 True 」：
+
+
+[role="tabbed-block"]
 ====
-. 確認命令輸出包含下列文字字串： `downloaded package processed successfully`。如果發生錯誤、請聯絡NetApp支援部門。
-. 在ONTAP 作業系統上執行命令「系統叢集交換器show」、並確保在監控欄位設定為「True」時、發現叢集交換器。
-+
-[listing, subs="+quotes"]
-----
-cluster1::> *system cluster-switch show*
-----
-+
+.適用於更新版本的更新版本ONTAP
+--
+`system switch ethernet show`
+
+--
+.適用於更新版本的更新版本ONTAP
+--
+「系統叢集交換器顯示」
+
+--
+====
 
 NOTE: 如果您在任何時候回復到ONTAP 舊版的版本的版本、則必須再次安裝CSHM組態檔案、才能啟用BS-53248叢集交換器的交換器健全狀況監控。
-
-
 
 .接下來呢？
 若要使用CSHM提供的所有功能、請依所述啟用SSH link:configure-ssh.html["在BS-53248叢集交換器上啟用SSH"]。

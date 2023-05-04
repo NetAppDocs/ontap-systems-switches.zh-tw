@@ -28,3 +28,7 @@ entries:
     url: "/switch-netapp-cn1610/migrate-switched-netapp-cn1610.html"
   - title: 移轉至雙節點交換叢集
     url: "/switch-netapp-cn1610/migrate-fas22xx-systems.html"
+- title: 更換交換器
+  entries:
+  - title: 使用無交換器連線取代叢集交換器
+    url: "/switch-netapp-cn1610/migrate-to-switchless-cluster-interconnect.html"

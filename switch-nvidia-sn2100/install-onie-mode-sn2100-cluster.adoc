@@ -25,6 +25,10 @@ NOTE: 如果您的主機已啟用IPv6、請確定它正在執行Web伺服器。�
 此程序示範如何在系統管理員在ONIE中開機後升級Cummuls Linux。
 
 .步驟
+[role="tabbed-block"]
+====
+.Cumulus Linux 4.4.3
+--
 . 將Cummuls Linux安裝檔案下載至Web伺服器的根目錄。將此檔案重新命名為： `onie-installer`。
 . 使用乙太網路纜線將主機連接至交換器的管理乙太網路連接埠。
 . 開啟交換器電源。
@@ -58,9 +62,6 @@ No such process done.
 `ifconfig eth0`
 
 +
-.顯示範例
-[%collapsible]
-====
 [listing, subs="+quotes"]
 ----
 ONIE:/ # *ifconfig eth0*
@@ -81,7 +82,6 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 default         10.233.204.1    0.0.0.0         UG    0      0      0   eth0
 10.233.204.0    *               255.255.254.0   U     0      0      0   eth0
 ----
-====
 . 如果手動定義IP定址方案、請執行下列步驟：
 +
 [listing, subs="+quotes"]
@@ -97,9 +97,6 @@ ONIE:/ # *route add default gw 10.233.204.1*
 # onie-nos-install http://<web-server>/<path>/cumulus-linux-4.4.3-mlx-amd64.bin
 ----
 +
-.顯示範例
-[%collapsible]
-====
 [listing, subs="+quotes"]
 ----
 ONIE:/ # *route*
@@ -115,12 +112,8 @@ ONIE:/ # *route*
   ...
   ...
 ----
-====
 . 安裝完成後、請登入交換器。
 +
-.顯示範例
-[%collapsible]
-====
 [listing, subs="+quotes"]
 ----
 cumulus login: *cumulus*
@@ -131,15 +124,8 @@ Current password: *cumulus*
 New password: *<new_password>*
 Retype new password: *<new_password>*
 ----
-====
-. 驗證Cummuls Linux版本：
+. 驗證Cummuls Linux版本： `net show version`
 +
-`net show version`
-
-+
-.顯示範例
-[%collapsible]
-====
 [listing, subs="+quotes"]
 ----
 cumulus@cumulus:mgmt:~$ *net show version*
@@ -148,8 +134,221 @@ DISTRIB_ID="Cumulus Linux"
 DISTRIB_RELEASE=*4.4.3*
 DISTRIB_DESCRIPTION=*"Cumulus Linux 4.4.3”*
 ----
+
+
+--
+.Cumulus Linux 5.x
+--
+. 將Cummuls Linux安裝檔案下載至Web伺服器的根目錄。將此檔案重新命名為： `onie-installer`。
+. 使用乙太網路纜線將主機連接至交換器的管理乙太網路連接埠。
+. 開啟交換器電源。
++
+交換器會下載ONIE映像安裝程式並開機。安裝完成後、會在終端機視窗中顯示CummUS Linux登入提示。
+
++
+
+NOTE: 每次安裝CummUS Linux時、整個檔案系統結構都會被清除並重新建置。
+
+. 重新啟動SN2100交換器：
++
+[listing]
+----
+cumulus@cumulus:mgmt:~$ sudo reboot
+.
+.
+GNU GRUB version 2.06-3
++-------------------------------------------------------------------------+
+| Cumulus-Linux GNU/Linux                                                 |
+| Advanced options for Cumulus-Linux GNU/Linux                            |
+| ONIE                                                                    |
+|                                                                         |
+|                                                                         |
+|                                                                         |
+|                                                                         |
+|                                                                         |
+|                                                                         |
+|                                                                         |
+|                                                                         |
++-------------------------------------------------------------------------+
+----
+. 在 GNU GRUB 畫面上按下 Esc 鍵、即可中斷正常的開機程序、選取 ONIE 、然後按 Enter 鍵。
++
+[listing]
+----
+.
+.
+Loading ONIE ...
+
+GNU GRUB version 2.02
++-------------------------------------------------------------------------+
+| ONIE: Install OS                                                        |
+| ONIE: Rescue                                                            |
+| ONIE: Uninstall OS                                                      |
+| ONIE: Update ONIE                                                       |
+| ONIE: Embed ONIE                                                        |
+|                                                                         |
+|                                                                         |
+|                                                                         |
+|                                                                         |
+|                                                                         |
++-------------------------------------------------------------------------+
+----
++
+選取 ONIE ： * 安裝作業系統 *
+
+. ONIE安裝程式探索程序會執行搜尋自動安裝。按* Enter *可暫時停止此程序。
+. 當探索程序停止時：
++
+[listing, subs="+quotes"]
+----
+ONIE:/ # *onie-stop*
+discover: installer mode detected.
+Stopping: discover...start-stop-daemon: warning: killing process 427:
+No such process done.
+----
+. 設定 IP 位址、子網路遮罩和預設閘道：
++
+`ifconfig eth0`
+
++
+[listing, subs="+quotes"]
+----
+ONIE:/ # *ifconfig eth0*
+eth0   Link encap:Ethernet  HWaddr B8:CE:F6:19:1D:F6
+       inet addr:10.233.204.71  Bcast:10.233.205.255  Mask:255.255.254.0
+       inet6 addr: fe80::bace:f6ff:fe19:1df6/64 Scope:Link
+       UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+       RX packets:21344 errors:0 dropped:2135 overruns:0 frame:0
+       TX packets:3500 errors:0 dropped:0 overruns:0 carrier:0
+       collisions:0 txqueuelen:1000
+       RX bytes:6119398 (5.8 MiB)  TX bytes:472975 (461.8 KiB)
+       Memory:dfc00000-dfc1ffff
+ONIE:/ #
+ONIE:/ # *ifconfig eth0 10.228.140.27 netmask 255.255.248.0*
+ONIE:/ # *ifconfig eth0*
+eth0   Link encap:Ethernet HWaddr B8:CE:F6:5E:05:E6
+       inet addr:10.228.140.27 Bcast:10.228.143.255 Mask:255.255.248.0
+       inet6 addr: fd20:8b1e:b255:822b:bace:f6ff:fe5e:5e6/64 Scope:Global
+       inet6 addr: fe80::bace:f6ff:fe5e:5e6/64 Scope:Link
+       UP BROADCAST RUNNING MULTICAST MTU:1500 Metric:1
+       RX packets:18813 errors:0 dropped:1418 overruns:0 frame:0
+       TX packets:491 errors:0 dropped:0 overruns:0 carrier:0
+       collisions:0 txqueuelen:1000
+       RX bytes:1339596 (1.2 MiB) TX bytes:49379 (48.2 KiB)
+       Memory:dfc00000-dfc1ffff
+ONIE:/ # *route add default gw 10.228.136.1*
+ONIE:/ # *route*
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+
+default         10.228.136.1    0.0.0.0         UG    0      0      0   eth0
+10.228.136.1    *               255.255.248.0   U     0      0      0   eth0
+----
+. 安裝 Cumulus Linux 5.4 ：
++
+`# onie-nos-install http://<web-server>/<path>/cumulus-linux-5.4-mlx-amd64.bin`
+
++
+[listing, subs="+quotes"]
+----
+ONIE:/ # *route*
+
+  Kernel IP routing table
+
+  ONIE:/ # *onie-nos-install http://_<web-server>/<path>_/cumulus-linux-5.4-mlx-amd64.bin*
+
+  Stopping: discover... done.
+  Info: Attempting http://10.60.132.97/x/eng/testbedN,svl/nic/files/cumulus-linux-5.4-mlx-amd64.bin ...
+  Connecting to 10.60.132.97 (10.60.132.97:80)
+  installer            100% |*******************************|   552M  0:00:00 ETA
+  ...
+  ...
+----
+. 安裝完成後、請登入交換器。
++
+[listing, subs="+quotes"]
+----
+cumulus login: *cumulus*
+Password: *cumulus*
+You are required to change your password immediately (administrator enforced)
+Changing password for cumulus.
+Current password: *cumulus*
+New password: *<new_password>*
+Retype new password: *<new_password>*
+----
+. 驗證Cummuls Linux版本： `nv show system`
++
+[listing, subs="+quotes"]
+----
+cumulus@cumulus:mgmt:~$ *nv show system*
+operational         applied              description
+------------------- -------------------- ---------------------
+hostname            cumulus              cumulus
+build               Cumulus Linux 5.4.0  system build version
+uptime              6 days, 13:37:36     system uptime
+timezone            Etc/UTC              system time zone
+----
+. 建立新使用者、並將此使用者新增至 `sudo` 群組：此使用者只有在主控台/SSH工作階段重新啟動後才會生效。
++
+`sudo adduser --ingroup netedit admin`
+
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:mgmt:~$ *sudo adduser --ingroup netedit admin*
+[sudo] password for cumulus:
+Adding user 'admin' ...
+Adding new user 'admin' (1001) with group `netedit' ...
+Creating home directory '/home/admin' ...
+Copying files from '/etc/skel' ...
+New password:
+Retype new password:
+passwd: password updated successfully
+Changing the user information for admin
+Enter the new value, or press ENTER for the default
+Full Name []:
+Room Number []:
+Work Phone []:
+Home Phone []:
+Other []:
+Is the information correct? [Y/n] *y*
+
+cumulus@sw1:mgmt:~$ *sudo adduser admin sudo*
+[sudo] password for cumulus:
+Adding user `admin' to group `sudo' ...
+Adding user admin to group sudo
+Done.
+cumulus@sw1:mgmt:~$ *exit*
+logout
+Connection to 10.233.204.71 closed.
+
+[admin@cycrh6svl01 ~]$ ssh admin@10.233.204.71
+admin@10.233.204.71's password:
+Linux sw1 4.19.0-cl-1-amd64 #1 SMP Cumulus 4.19.206-1+cl4.4.1u1 (2021-09-09) x86_64
+Welcome to NVIDIA Cumulus (R) Linux (R)
+
+For support and online technical documentation, visit
+http://www.cumulusnetworks.com/support
+
+The registered trademark Linux (R) is used pursuant to a sublicense from LMI, the exclusive licensee of Linus Torvalds, owner of the mark on a world-wide basis.
+admin@sw1:mgmt:~$
+----
+. 新增其他使用者群組供管理員使用者存取 `nv` 命令：
++
+[listing, subs="+quotes"]
+----
+cumulus@cumulus:mgmt:~$ *sudo adduser admin nvshow*
+     [sudo] password for cumulus:
+     Adding user `admin' to group `nvshow' ...
+     Adding user admin to group nvshow
+     Done.
+----
++
+請參閱 https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-54/System-Configuration/Authentication-Authorization-and-Accounting/User-Accounts/["NVIDIA 使用者帳戶"^] 以取得更多資訊。
+
+
+
+--
 ====
-
-
 .接下來呢？
 link:install-rcf-sn2100-cluster.html["安裝參考組態檔（RCF）指令碼"]。

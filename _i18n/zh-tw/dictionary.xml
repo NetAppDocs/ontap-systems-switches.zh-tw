@@ -1568,21 +1568,9 @@
   <block id="2a5de425b9976b085fa03aa8c0bb83af" category="list-text">*過渡：*適用於CN1610至BES-53248（SFP+至SFP28）、四條10G SFP+光纖收發器/光纖或銅線直接連接纜線。</block>
   <block id="320ed3c6eb6c5ab11253b5afc742dec7" category="list-text">*最終版本：*適用於BS53248至BS53248（QSFP28至QSFP28）、兩條QSFP28光纖收發器/光纖或銅線直接附加纜線。</block>
   <block id="3a0aeae8d2331aaa16cf8b013ee0195b" category="paragraph">X190005</block>
-  <block id="1d0e61735e0e8e09d095959b09cdfb61" category="paragraph">BS-53248、CLSW、16Pt10/25GB、PTSx、BRDCM（PTSx =連接埠側邊排氣）</block>
   <block id="cedf09ac3086a8a21f249827087f6fad" category="paragraph">X190005R</block>
-  <block id="10423b6134c0596831c1217d026117a7" category="paragraph">BF-53248、CLSW、16Pt10/25GB、PSIN、BRDCM（PSIN =連接埠側邊輸入）</block>
   <block id="58ed1751063f5f79d08b95e0c78237bb" category="paragraph">X-RAIL：4後190005</block>
   <block id="26e197685e29b3f6ea5c61a20464ee66" category="paragraph">機架安裝軌道套件Ozeki 4柱19吋</block>
-  <block id="47aa7e8b4b2b7f2529efa5e4716bbdd8" category="paragraph">X-Fan-190005-R</block>
-  <block id="6340613a1b13022e5f4fed31c639404d" category="paragraph">風扇、連接埠側進氣X190005</block>
-  <block id="ad439ccfbefbdb29a34f19a94da31301" category="paragraph">X-Fan-190005-F</block>
-  <block id="f973643b15965b5150ad07cee65175d8" category="paragraph">風扇、連接埠側邊排氣X190005</block>
-  <block id="b234a10d56bffab6344a3cd1dd181b4e" category="paragraph">X-PSU-190005-R</block>
-  <block id="87e8525c8d2aeafd7648d58f8610f6e2" category="paragraph">電源供應器、連接埠側進氣X190005</block>
-  <block id="8b561f2608f0fdce807d1fcc0e6543af" category="paragraph">X-PSU-190005-F</block>
-  <block id="65e5c871ec7e036e5a539406da60f09e" category="paragraph">電源供應器、連接埠側排風X190005</block>
-  <block id="303593f84fec47f3a4eba6f5b11c2a9c" category="list-text">連接埠側的排氣氣流（標準氣流）：冷空氣透過冷通道中的風扇和電源供應器模組進入機箱、並透過熱通道中的機箱連接埠端口排出。藍色色彩表示連接埠側邊的排氣氣流。這是最常見的選項。</block>
-  <block id="f1de0d38246c0ccc0320480848ef1258" category="list-text">連接埠側進氣（反轉氣流）：冷空氣透過冷通道的連接埠端點進入機箱、並透過熱通道中的風扇和電源供應器模組排出。</block>
   <block id="088d99e43c55d66d91452773ea081e66" category="inline-link">Broadcom叢集交換器</block>
   <block id="a6f490a59820ed4289028acdc4d2c508" category="inline-link">交換器Hardware Universe</block>
   <block id="6f7aa1f993576cd171d9bd0d355026fb" category="list-text">BS-53248交換器的名稱為「CS1」和「CS2」。</block>
@@ -1619,7 +1607,6 @@
   <block id="903944fca05d1da45a504e69ed5609fb" category="paragraph">如果內部Web伺服器IP位址為192．168．2、假設存在/usr/downloads目錄、您可以使用scp將壓縮檔上傳至Web伺服器：</block>
   <block id="ec633497488ed81a95ccbbbb57302ba3" category="list-text">使用ONTAP 命令「show -privit advance"（進階設定）：</block>
   <block id="f4ab3be3915b88f9d23c5faf297e78ff" category="list-text">確認命令輸出包含文字字串「已成功處理下載的套件」。如果發生錯誤、請聯絡NetApp支援部門。</block>
-  <block id="77050d62a86740ca649977f25aae1ddc" category="list-text">在ONTAP 作業系統上執行命令「系統叢集交換器show」、並確保在監控欄位設定為「True」時、發現叢集交換器。</block>
   <block id="56901ba0364771cc3907ec9a30481dd8" category="summary">在叢集網路中更換故障的Broadcom支援的Bes-53248叢集交換器、是不中斷營運的程序（NDU）。</block>
   <block id="3194b650ad4dc5accb0c1a5ae8050d52" category="list-text">節點連線是連接埠0/1到0/16、具有預設授權。</block>
   <block id="144c9cc556d237063df17fcbd9c6991c" category="list-text">現有的BS-53248交換器名稱為「CS1」和「CS2」。</block>
@@ -2240,7 +2227,6 @@
   <block id="1f3f639615a80a1684771c8c14152509" category="paragraph">17-48</block>
   <block id="187c30e211ba48efba7ee0554dccaf17" category="paragraph">10/25GbE叢集連接埠節點、含授權</block>
   <block id="e911666173c65a9be604d165f8bfca24" category="paragraph">49至54歲</block>
-  <block id="61dd5044a608adf035955ab327098b7f" category="paragraph">100GbE叢集連接埠節點、含授權、從右至左新增</block>
   <block id="87c5a8a002c26c3c0f3324085542275a" category="paragraph">55-56</block>
   <block id="cd7d89f0423765df2ea4dd61283f22c1" category="admonition">在啟動指令碼之前、必須先將「.scr」副檔名設定為檔案名稱的一部分。此擴充是EFOS作業系統的延伸。當指令碼下載到交換器時、交換器會自動驗證指令碼、並將輸出傳送到主控台。此外、您也可以變更「.scr」的名稱、使其符合主控台螢幕的大小、以便更容易閱讀、例如：「+copy sftp：//172.19.2.1/tmp/BES-53248_RCF_v1.6-Cluster-HA.txt NVRAM:script RCF-v1.6-Cluster-HA。scr+」。</block>
   <block id="2f5b29dae6c40626ef71ff19914284d2" category="paragraph">要使用的除錯命令：「Debuger transfer」和「debugs license」</block>
@@ -2815,7 +2801,6 @@
   <block id="81155cb9ee8ef1aa07c8376e201715db" category="paragraph">交換器會下載ONIE映像安裝程式並開機。安裝完成後、會在終端機視窗中顯示CummUS Linux登入提示。</block>
   <block id="b53f6b592c12fd5937d7b72a3bcbfcfb" category="list-text">在"GNU Grub（GNU Grub）"屏幕上按* Esc*鍵以中斷正常引導過程，選擇"*ONIE*（* ONIE *）"，然後按* Enter鍵。</block>
   <block id="bb8165c1c0d8416da1e318e1c0f54603" category="list-text">在下一個畫面中、選取「* ONIE：install OS*（* ONIE：安裝OS*）」。</block>
-  <block id="3b007ae6a2ced467726b9f5c7c59ffb0" category="list-text">安裝完成後、請登入交換器。</block>
   <block id="673b183eae1d985d3373995f15978e5b" category="inline-link-macro">安裝參考組態檔（RCF）指令碼</block>
   <block id="8dcb8ce87423e2f4276589483a457d92" category="paragraph"><block ref="464fe9c0adfef54cfb4c6fe21ef12b08" category="inline-link-macro-rx"></block>。</block>
   <block id="2eb103c9e878418bac314f3d0a12d9a6" category="paragraph">下表列出SN2100交換器和軌道套件的零件編號和說明：</block>
@@ -2825,7 +2810,6 @@
   <block id="793086ebaed916943ac8fc5f192a1679" category="paragraph"><block ref="770c77dd441cd3adc4139ccb3c0d491b" category="inline-link-macro-rx"></block> 或 <block ref="28a30a7b340666b28d9a4222e714aaf7" category="inline-link-macro-rx"></block>。</block>
   <block id="e4476de08c6bf6f2b86938c20b3510bf" category="summary">在安裝RCF指令碼之前、請確定交換器上有下列項目可用</block>
   <block id="144a8e89f9c38ca949aede4fe56c2cb7" category="list-text">將RCF python指令碼複製到交換器。</block>
-  <block id="2240e6e4afefbb052da898cb451c9d1e" category="list-text">套用RCF python指令碼* MSN2100-RCF-v1.8-Cluster*。</block>
   <block id="39e77b4f608ccea6c3163df34d07da19" category="paragraph">RCF指令碼會完成上述範例中所列的步驟。</block>
   <block id="58706c101ce23f0143df35c3d5877993" category="paragraph"><block ref="792bc5f76cd953c88762d75870189559" category="inline-link-macro-rx"></block>。</block>
   <block id="1a8981f50831032975e7c7ab919cf671" category="list-text">檢閱 <block ref="d6c0afb29fcb19bc79e093e82e35e6bb" category="inline-link-macro-rx"></block>。</block>
@@ -3543,7 +3527,6 @@
   <block id="c1321e94fa70c8284c7eb8048b1e5076" category="paragraph">請依照下列指示安裝軟體。</block>
   <block id="6e542d7f228623e0d93cb14b578964d6" category="summary">若為BS-53248交換器安裝與維護、請務必檢閱元件清單和零件編號。</block>
   <block id="d243834ab21b34f6cc60b0c0c7b6ef45" category="doc">BS-53248叢集交換器的元件和零件編號</block>
-  <block id="2ba75e7c8c0701784776f8d546f84c5f" category="paragraph">下表列出BS-53248叢集交換器元件的零件編號和說明、包括機架安裝軌道套件、風扇和電源供應器。</block>
   <block id="2e251bbc5cf5abac11349f16ad8e95e7" category="summary">您可以安裝叢集交換器健全狀況監視器（CSHM）組態檔、以監控BS-53248叢集交換器。</block>
   <block id="4db171b1958310050d33a6161ba14156" category="paragraph">在版本9.5P7及更早版本、以及9.6P2及更早版本中、您必須分別下載CSHM檔案ONTAP 。在發行版本9.5P8及更新版本、9.6P3及更新版本、以及9.7及更新版本中、CSHM檔案與更新版本一起搭售ONTAP ONTAP 。</block>
   <block id="294206f940bbd4f3ec7f79996b76c616" category="paragraph">請確定ONTAP 支援並執行不中斷的叢集。</block>
@@ -3557,7 +3540,6 @@
   <block id="108fad13cb4557ce639ff2d509f833b5" category="paragraph">若為內部Web伺服器IP位址192．168．2．20、且假設存在/usr/download目錄、您可以使用將壓縮檔上傳至Web伺服器<block ref="8a444a43bdf534c0c6338bb7809659b3" prefix=" " category="inline-code"></block>：</block>
   <block id="add89e2862924c702a738f3d2a28fa51" category="list-text">執行交換器健全狀況監視器configure命令：</block>
   <block id="57dedb9cbe459a7c90ef4837093192ae" category="paragraph"><block ref="2f9091db6d94c377cc0c7e2fbd67bc1a" prefix="" category="inline-code"></block></block>
-  <block id="4a650fa31d16f24e5851848df6d16828" category="list-text">確認命令輸出包含下列文字字串：<block ref="bb932139b2106289945776f4f81d066a" prefix=" " category="inline-code"></block>。如果發生錯誤、請聯絡NetApp支援部門。</block>
   <block id="edcd33ebd5d3817ccdc17b64134c7ec8" category="admonition">如果您在任何時候回復到ONTAP 舊版的版本的版本、則必須再次安裝CSHM組態檔案、才能啟用BS-53248叢集交換器的交換器健全狀況監控。</block>
   <block id="914288f821c5d88db21f926b4e94b1b3" category="paragraph">若要使用CSHM提供的所有功能、請依所述啟用SSH <block ref="e2b4c4f5313b05dff7c4a02a4e9e0df6" category="inline-link-macro-rx"></block>。</block>
   <block id="4cf79f99b322552a5fe0fadeb4c0ae5b" category="doc">更換需求</block>
@@ -3569,11 +3551,6 @@
   <block id="27baa83a95dd19a6f10228564787bf14" category="list-text">所需的參考組態檔（RCF）和EFOS作業系統交換器映像會載入交換器。</block>
   <block id="5074769eeb418122757e7c8d01cb673f" category="list-text">交換器的初始自訂完成、如所述 <block ref="5d9dfcd78fc81899f18975b4b56b3ae1" category="inline-link-macro-rx"></block>。</block>
   <block id="b5a925fc7db2ad87d052b8e842aaca5c" category="doc">BS-53248叢集交換器的組態需求</block>
-  <block id="b9bbf7b388d20cc7c0c5f0d49ac0837e" category="paragraph">對於BS-53248交換器安裝與維護、請務必檢閱OS支援與組態要求。</block>
-  <block id="c2e8359468a81351d78337f472618a06" category="section-title">作業系統（OS）支援</block>
-  <block id="bdd5d839ce68a4aef1b3862a3a83e388" category="paragraph">BS-53248交換器支援下列功能：</block>
-  <block id="c0f4e19130e2592110e94db5ecec1cf4" category="list-text">* EFOS韌體3.4.4.6及更新版本*。BS-53248交換器可在Broadcom嵌入式作業系統（稱為乙太網路架構作業系統（EFOS））上執行。支援40/100 GbE叢集連接埠、從EFOS韌體版本3.4.4.6及更新版本開始。</block>
-  <block id="e9ba6fb0647a0e3943ac863a298769f5" category="list-text">*《*》（R）9.5P8及更新版本* ONTAP 。Broadcom支援的BS-53248叢集交換器設計用於ONTAP 大小介於2到24個節點的叢集、範圍涵蓋在《The Sun Flash 9：5P8 and更新版本中。</block>
   <block id="794a085de55fb93282159bfe457b5455" category="paragraph">若要設定叢集、您需要叢集交換器適當的纜線數量和類型、以及纜線連接器。視您初始設定的叢集交換器類型而定、您需要使用隨附的主控台纜線連接至交換器主控台連接埠。</block>
   <block id="2bd5eb99d9f67d841743740c2c9e58fc" category="section-title">叢集交換器連接埠指派</block>
   <block id="1e398c47e90911cdd18c0dcb654a78a1" category="paragraph">在BES-53248叢集交換器上、48個10/25GbE（SFP28/SFP+）連接埠會結合成12個4埠群組、如下所示：連接埠1-4、5-8、9-12、13-16、17-20、21至24、25至28、29至32、33至36、37至40、41至44及45至48。</block>
@@ -4274,26 +4251,129 @@
   <block id="d8c8c02df74538b604d42f3f6d992c40" category="paragraph">4個10GbE中斷叢集連接埠節點</block>
   <block id="331bcd76038fdc1605be4c587c56294c" category="paragraph">4個25GbE中斷叢集連接埠節點</block>
   <block id="e451d063f2ca2617078b2305ef087f02" category="paragraph">swp3-14</block>
-  <block id="0d60da82680f3305621fd4472d897e3b" category="paragraph">40/100叢集連接埠節點</block>
   <block id="044141a7c2076e2a8d84961a043b480a" category="paragraph">swp15-16</block>
-  <block id="cab42d967475ecc877f819cc849c3392" category="paragraph">40/100交換器間連結（ISL）連接埠</block>
   <block id="c462eb588f6f13a8e04bee80aae30ba8" category="paragraph">請參閱<block ref="c043e01cdc55399f824e6d1e4eb8a5b5" category="inline-link-rx"></block> 如需交換器連接埠的詳細資訊、</block>
-  <block id="e7af52912cd69e9bf38776786cbca8a3" category="paragraph">對於CummUS Linux 4.4.2、只有具有X1151A NIC、X1146A NIC或內建100GbE連接埠的SN2100交換器才支援光纖連線。例如：</block>
-  <block id="85a0e57a29218d20a48e10c13bdf7cb6" category="paragraph">對於CummUS Linux 4.4.3及更新版本、需要進行下列組態變更、才能修正此問題。</block>
-  <block id="f3f1289d53f31212ba6b49b341ffc7e6" category="list-text">將下列兩行新增至<block ref="d4b3c0affe66439bbee012d30e38441b" prefix=" " category="inline-code"></block> 每個&lt;n&gt; 使用40/100GbE銅線的連接埠（swjpg）檔案：</block>
   <block id="69cf9ddd2a167644a30a59dda49e0f6a" category="list-text"><block ref="0babc1daa70cf30fe3f5ad4e3e07fab2" prefix="" category="inline-code"></block></block>
   <block id="7ecf603eb76daba643481182546f4e38" category="list-text"><block ref="a0ce25310d7a8e2527bb141f43700add" prefix="" category="inline-code"></block></block>
-  <block id="6ec72ecd2f587c249b56c3e03401ecae" category="list-text">重新啟動switchd精靈：<block ref="2b526042e0b783c1b2eb28b0ef5623de" prefix=" " category="inline-code"></block></block>
-  <block id="ab57fd0432e25d5b3013133a1c910d56" category="inline-link">KB</block>
-  <block id="d1230bc869b84c83439b8c8e7519dde2" category="paragraph">請參閱下列內容<block ref="a885142d9d0638feca0ff8bbde23eb83" category="inline-link-rx"></block> 以取得更多詳細資料。</block>
-  <block id="7fa926cf10e568e38d190fa4bb643575" category="paragraph">當使用QSA介面卡連線至平台上的內建叢集連接埠時、可能不會出現連結。</block>
-  <block id="3ff6d247db095566d17ccb43d3672576" category="list-text">若為10G、請手動將swp1s-3連結速度設為10000、並將自動交涉設為關。</block>
-  <block id="7884c7a18dfb8ee5902cac6f25fd2535" category="list-text">若為25G、請手動將swp2s-3連結速度設為25000、並將自動交涉設為關。</block>
-  <block id="6b7eaec843bb5fcdab1371328ab1e94c" category="admonition">使用10G/25G QSA時、請將其插入不中斷的40/100G連接埠。請勿將QSA介面卡插入設定為中斷的連接埠。</block>
   <block id="92f8e266fe70da4f6717e931d81faa46" category="section-title">設定中斷連接埠的介面速度</block>
-  <block id="577c386d1bb7bbffa59ac5c15182ada1" category="paragraph">視交換器連接埠中的收發器而定、您可能需要將交換器介面上的速度設定為固定速度。如果使用10G和25G離線連接埠、請確定自動交涉已關閉、並硬設定交換器的介面速度。例如：</block>
   <block id="5501293605b4b8c8957b68e1854b0f11" category="doc">Cisco Nexus 92300YC 交換器的安裝與組態概觀</block>
   <block id="c5fed3189b0ec4237029df463c0c1f64" category="paragraph">設定 Cisco Nexus 92300YC 交換器之前、請先檢閱程序概述。</block>
   <block id="109e216a5aa6e526f504483738dabc7b" category="paragraph">若要在執行 ONTAP 的系統上初始設定 Cisco Nexus 92300YC 交換器、請遵循下列步驟：</block>
   <block id="ed6ae629414abab8b0e9b2e8deadb8c2" category="paragraph">對於Cisco Nexus 2300YC交換器的安裝與維護、請務必檢閱所有交換器元件和零件編號。請參閱<block ref="cd25cbe53f0a314145c84729c6ce2c78" category="inline-link-rx"></block> 以取得詳細資料。</block>
+  <block id="647742b7ed5a74255a1cd295f9fd2fc9" category="paragraph">若為 BS-53248 交換器安裝與維護、請務必檢閱 EFOS 和 ONTAP 支援與組態需求。</block>
+  <block id="553524d0c0ef22a471e2424d00a09694" category="section-title">EFOS 和 ONTAP 支援</block>
+  <block id="738451c0daa7cff3a610bea3abfefaf0" category="inline-link">Broadcom 交換器相容性對照表</block>
+  <block id="c7c51b6011824439212ed43b1a65c583" category="paragraph">請參閱<block ref="341c1c8afc925d24c41903215e7d4958" category="inline-link-rx"></block> 和<block ref="019bec57a33f30d395c26e4eab684618" category="inline-link-rx"></block> 適用於 EFOS 和 ONTAP 與 BS-53248 交換器的相容性資訊。EFOS 和 ONTAP 支援可能會因特定機器類型的 BS-53248 交換器而異。如需所有 BS-52348 交換器機型的詳細資訊、請參閱 <block ref="18673e02a37b64215efc2503c4149ac9" category="inline-link-macro-rx"></block>。</block>
+  <block id="e23ae5f8811df200956902ae1686a7f0" category="paragraph">40/100GbE 叢集連接埠節點、含授權、由右至左新增</block>
+  <block id="024464eb7b3fd909a9746dff88c6b9c9" category="section-title">其他需求</block>
+  <block id="0367a2a79bd73fd44da88774641890f6" category="inline-link-macro">啟動新授權連接埠</block>
+  <block id="9c561ca9ef6d5814e15c1944c030d12d" category="list-text">如果您購買額外授權、請參閱 <block ref="78172331b9d74469f8abaa21c5813f50" category="inline-link-macro-rx"></block> 如需如何啟動的詳細資訊、請參閱。</block>
+  <block id="1ad4f5dc9889f4859c43a213e21f389c" category="list-text">如果 SSH 是作用中的、則必須在執行命令後手動重新啟用 SSH<block ref="1fb554759d9d32d450daa4da09330114" prefix=" " category="inline-code"></block> 然後重新啟動交換器。</block>
+  <block id="fa29548058837254e54c0910a42e81ed" category="paragraph"><block ref="7d77b5b7ecc6e91232de4d87c6f561de" prefix="" category="inline-code"></block></block>
+  <block id="25e09b4fadd3fa8202fa95ea688667c1" category="list-text">[[step5]] 確認命令輸出包含文字字串：<block ref="bb932139b2106289945776f4f81d066a" prefix=" " category="inline-code"></block>。如果發生錯誤、請聯絡 NetApp 支援部門。</block>
+  <block id="d28bbd717c002acf43e747edb594c750" category="list-text">在 ONTAP 系統上執行命令、並確認已探索叢集交換器、並將監控欄位設為「 True 」：</block>
+  <block id="0b2982341db4239f887933204ca7720d" category="paragraph"><block ref="b4720f8aa09f4e4b3a04e78c558b6c90" prefix="" category="inline-code"></block></block>
+  <block id="4e4f70ba52e8cb595faa069991c5a9f4" category="list-text">[[step5]] 如果您禁止自動建立個案、請叫用 AutoSupport 訊息來重新啟用：</block>
+  <block id="1ad47980611dd1ee749c3478e99b4edd" category="paragraph">下表列出 BS-53248 叢集交換器元件的零件編號、說明及最低 EFOS 和 ONTAP 版本、包括機架安裝軌道套件詳細資料。</block>
+  <block id="4a47a181e94c352883a8741b3ec5e291" category="admonition">零件編號 *X190005-B* 和 *X190005R-B* 需要 * 3.10.0.3* 的 EFOS 最低版本。</block>
+  <block id="c37b8196896554a6da47b74fe6581c98" category="cell">EFOS 最低版本</block>
+  <block id="7fa0305f8af6535ab7e968300969da78" category="cell">最低 ONTAP 版本</block>
+  <block id="1bc55f822ecf1e2d3fb5e4e9edcbbea1" category="paragraph">X190005-B</block>
+  <block id="c38694b655b760c0d1690bd1652f4a6b" category="paragraph">BS-53248-B/IX8 、 CLSW 、 16PT10/25GB 、 PTSX （ PTSX = 連接埠側排氣）</block>
+  <block id="7be91793dbca44b8b32bc51b1fbb6a91" category="paragraph">3.10.0.3</block>
+  <block id="4f7dd0fe0940df4a5fda327a4ee4ddbd" category="paragraph">9.8</block>
+  <block id="36279773f041040d825a3034566a30e6" category="paragraph">X190005R-B</block>
+  <block id="e5a686994274838fad6d941211e8a0c1" category="paragraph">BS-53248-B/IX8 、 CLSW 、 16PT10/25GB 、 PSIN （ PSIN = 連接埠側攝入）</block>
+  <block id="8c398f37fcd837194e4ece5fd5553d32" category="paragraph">BS-53248 、 CLSW 、 16Pt10/25GB 、 PTSX 、 BRDCM 支援</block>
+  <block id="5b3c421126de8f671e6c7e0dd2070405" category="paragraph">3.4.6.4.</block>
+  <block id="7501a55d10f73fc1f4d1a99887dad17c" category="paragraph">9.5 第 8 頁</block>
+  <block id="51911b92d595d53b83df3e0bc419b628" category="paragraph">BS-53248 、 CLSW 、 16Pt10/25GB 、 PSIN 、 BRDCM</block>
+  <block id="382b0f5185773fa0f67a8ed8056c7759" category="paragraph">不適用</block>
+  <block id="4f4750a84cf4db2252cb74295c5da46c" category="admonition">請注意下列關於機器類型的資訊：</block>
+  <block id="3ea4bf9da7622edeeae1bf80e9c5cded" category="cell">機器類型</block>
+  <block id="c98b57720d007eea3bac1ec42393b6b2" category="cell">EFOS版本</block>
+  <block id="0455dc0ebc07890a363b2b109cd487c0" category="paragraph">BS-53248A1</block>
+  <block id="f9f7608c20cdacdffa7dd544e72cdb37" category="paragraph">BS-53248A2</block>
+  <block id="ed69a268691ed57ce7cc6feb524edfde" category="paragraph">BS-53248A3</block>
+  <block id="8e3cd01999a868b5f7d077cc81d41b25" category="paragraph">您可以使用下列命令來判斷您的特定機器類型：<block ref="48f6d03db0af7dafae461857e48942d9" prefix=" " category="inline-code"></block></block>
+  <block id="2498349a1561db3b82a697aa132adac5" category="open-title">Cumulus Linux 4.4.3</block>
+  <block id="481b5c6e7efa133e1b6e24e6aa57e7b9" category="list-text">安裝完成後、請登入交換器。</block>
+  <block id="73256464033866019c0ab71a474924d7" category="list-text">驗證Cummuls Linux版本：<block ref="98f5dff8534e8c39673b544f567273e7" prefix=" " category="inline-code"></block></block>
+  <block id="7eb75e0ba4663fc1aeea935cb2011f2c" category="open-title">Cumulus Linux 5.x</block>
+  <block id="2db9ca8bc5738dadc7b583c360d7d75f" category="list-text">在 GNU GRUB 畫面上按下 Esc 鍵、即可中斷正常的開機程序、選取 ONIE 、然後按 Enter 鍵。</block>
+  <block id="0232feb830d6d5aad9aa07258e622649" category="paragraph">選取 ONIE ： * 安裝作業系統 *</block>
+  <block id="f341013c06c8fd055eeee7b2fb35f9ce" category="list-text">ONIE安裝程式探索程序會執行搜尋自動安裝。按* Enter *可暫時停止此程序。</block>
+  <block id="478fe67982f230b9dd6b03b6118c1014" category="list-text">設定 IP 位址、子網路遮罩和預設閘道：</block>
+  <block id="6fff52725ef1db2558a657c2f9a4a4c8" category="list-text">安裝 Cumulus Linux 5.4 ：</block>
+  <block id="1b5baeeb29c57782394d9d7fe2316752" category="paragraph"><block ref="654e7566133dd316a7bccb8c83aae59b" prefix="" category="inline-code"></block></block>
+  <block id="8b0f0a4cede7fca6e2706f18eebf2e92" category="list-text">驗證Cummuls Linux版本：<block ref="9fcc1ae85aac3dbd490f575cf5eb3d52" prefix=" " category="inline-code"></block></block>
+  <block id="711762c3f710af6cfac64233e6c1db32" category="list-text">建立新使用者、並將此使用者新增至<block ref="d338b3f0f405eb5e51c8cc1e5ca66f02" prefix=" " category="inline-code"></block> 群組：此使用者只有在主控台/SSH工作階段重新啟動後才會生效。</block>
+  <block id="b190a0c0112c1b7ed7c1fe82d8072aa4" category="list-text">新增其他使用者群組供管理員使用者存取<block ref="f9eab7a52fbda6f4788f438ba1a8da94" prefix=" " category="inline-code"></block> 命令：</block>
+  <block id="b2fa408052dc67c0683eaf90858b073f" category="inline-link">NVIDIA 使用者帳戶</block>
+  <block id="9fce5f0b8e1dcabf168f42a400a2d10d" category="paragraph">請參閱<block ref="2d38cb404d4e76c701a1714802ee2c54" category="inline-link-rx"></block> 以取得更多資訊。</block>
+  <block id="be8d2db807f6ccc0599691b80f14b976" category="list-text">已安裝 Cumulus Linux 。請參閱<block ref="c043e01cdc55399f824e6d1e4eb8a5b5" category="inline-link-rx"></block> 適用於支援的版本。</block>
+  <block id="6c92285fa6d3e827b198d120ea3ac674" category="inline-link">請按這裡</block>
+  <block id="b6a9bacb15977dcaaa1e05f20cc4d13b" category="paragraph">叢集和儲存應用程式有兩個 RCF 指令碼可用。請從下載 RCFs<block ref="89efcd657168a1e707caf54da1923871" category="inline-link-rx"></block>。每個的程序都相同。</block>
+  <block id="54d4022f2a747cb4974fcf06961bdb21" category="list-text">叢集： * MSN2100-RCF-v1. _x_ 叢集 - HA-BreakOut-LLDP*</block>
+  <block id="eac7436c884133e6b945a51430510a32" category="list-text">儲存： * MSN2100-RCF-v1. _x_ 儲存 *</block>
+  <block id="196428336c87b3c0c9bf24432335bd6f" category="list-text">套用 RCF python 指令碼 * MSN2100-RCF-v1.x-Cluster-HA-BreakOut-LLDP* 。</block>
+  <block id="b9dfe38b5e91454220a6cd1f3cfb9ac8" category="admonition">在步驟 3 * 更新上述 MOTD 檔案 * 中、命令<block ref="900d965bd90d181d344d976a0e3093d8" prefix=" " category="inline-code"></block> 執行。這可讓您驗證 RCF 檔案名稱、 RCF 版本、要使用的連接埠、以及 RCF 橫幅中的其他重要資訊。</block>
+  <block id="0440c59cc67785ca7939ff4e3eba86ed" category="admonition">在步驟 3 * 更新上述 MOTD 檔案 * 中、命令<block ref="79a5f2bb850da898bd092e3a61bda06c" prefix=" " category="inline-code"></block> 執行。這可讓您驗證 RCF 檔案名稱、 RCF 版本、要使用的連接埠、以及 RCF 橫幅中的其他重要資訊。</block>
+  <block id="506c2c0c7f5b70af3df68c45c46f45a7" category="paragraph">例如：</block>
+  <block id="c8d246332e46cb12e9f724a357ad817f" category="paragraph"><block ref="770c77dd441cd3adc4139ccb3c0d491b" category="inline-link-macro-rx"></block> 或 <block ref="bba3ec5e6ca5e4f48b010488a5229b2c" category="inline-link-macro-rx"></block>。</block>
+  <block id="bd399ae0cf713e575ca26baedc0a896c" category="paragraph">您可以將 NVIDIA SN2100 交換器（ X190006 ）安裝在 NVIDIA 雙 / 單交換器機櫃中、並附有交換器隨附的標準支架。</block>
+  <block id="1e247ada2e98c5879849d746a52a4241" category="paragraph">NVIDIA SN2100 交換器是執行 Cumulus Linux 的 10/25/40/100GbE 交換器。交換器支援下列項目：</block>
+  <block id="f555c61f64386d2582939da4025ebe47" category="list-text">零點9.10.1P3 ONTAP 。SN2100交換器可在ONTAP 不同的交換器配對上、以S209.10.1P3提供叢集與儲存應用程式服務。</block>
+  <block id="d40bf069d92679bf05879cf7f6cbe2cd" category="inline-link">NVIDIA 企業支援入口網站</block>
+  <block id="cb8e85c2970ddd5692a09be2e61dcc13" category="list-text">Cumulus Linux （ CL ）作業系統版本。若要下載 SN2100 Cumulus 軟體、請登入<block ref="778b7445002ab4132f3edc7cada5c78a" category="inline-link-rx"></block>。請注意、您必須擁有登入認證才能存取 Cumulus 軟體。如需目前的相容性資訊、請參閱<block ref="f6aa36fb7711a9179cbd2c4c52b8d6ef" category="inline-link-rx"></block> 資訊頁面。</block>
+  <block id="c19b9518d51b517376f0fe9109f66e90" category="paragraph">40/100GbE 叢集連接埠節點</block>
+  <block id="45a21206fd2396fdd6a59132a2a6d3a7" category="paragraph">40/100GbE 交換器間連結（ ISL ）連接埠</block>
+  <block id="509e4d6df8b93cb5deb86271a6326df2" category="section-title">光纖連線的連結延遲</block>
+  <block id="50137c9f3120823f7ba1d1983c48e011" category="paragraph">如果您遇到超過五秒的連結延遲、 Cumulus Linux 5.4 及更新版本均支援快速連結。您可以使用來設定連結<block ref="0c14f6e7a82b0926c666f7fac383436a" prefix=" " category="inline-code"></block> 命令如下：</block>
+  <block id="68a8de419a9558e300d05a15cc5b2aec" category="section-title">支援銅線連線</block>
+  <block id="5a6f42c8f3d33107177157ef7008dfe2" category="paragraph">若要修正此問題、必須進行下列組態變更。</block>
+  <block id="5dfb78a5909646d153e9d260981232b4" category="list-text">使用 40GbE/100GbE 銅線識別每個介面的名稱：</block>
+  <block id="17f9698fd9a933aea82b9498c3cf5318" category="list-text">將下列兩行新增至<block ref="d4b3c0affe66439bbee012d30e38441b" prefix=" " category="inline-code"></block> 使用 40GbE/100GbE 銅線的每個連接埠（ swjpg &lt;n&gt; ）檔案：</block>
+  <block id="0b17b874fe78bf6ab3bb2937838f8df1" category="list-text">重新啟動<block ref="b0df6da856b1d2d594adfbdfe27a1336" prefix=" " category="inline-code"></block> 服務：</block>
+  <block id="b1d96c90c61dd718b6a805eb818961c4" category="list-text">確認連接埠已啟動：</block>
+  <block id="9d018838c5ab5975b4e472fee2f89455" category="list-text">使用設定連結<block ref="0c14f6e7a82b0926c666f7fac383436a" prefix=" " category="inline-code"></block> 命令如下：</block>
+  <block id="4db57c36adcedbf3d48c546b8a964490" category="list-text"><block ref="4d9dc029304fd2614ef7b9bca43ee36d" prefix="" category="inline-code"></block></block>
+  <block id="6d882d10695e4f3595987a4c3fc3b0d4" category="list-text"><block ref="2aa6f22da2ac5e9b2e1e6d3643ea273e" prefix="" category="inline-code"></block></block>
+  <block id="9c1398e0fe6bc7229e870295da6e50f0" category="list-text">重新載入<block ref="b0df6da856b1d2d594adfbdfe27a1336" prefix=" " category="inline-code"></block> 服務</block>
+  <block id="1892645d2782c9bf9dc34851d08c3fc0" category="inline-link">此KB</block>
+  <block id="3415ad7957144776adc29fe727ecd053" category="paragraph">請參閱<block ref="5f1cba074f9c9f92027bd9e16fc96408" category="inline-link-rx"></block> 以取得更多詳細資料。</block>
+  <block id="45ac1916de26f6f51168dd562a7dfba5" category="paragraph">在 Cumulus Linux 4.4.2 上、採用 X1151A NIC 、 X1146A NIC 或內建 100GbE 連接埠的 SN2100 交換器不支援銅線連線。例如：</block>
+  <block id="4038c0e6561afda23a992fb3c5771bed" category="paragraph">當 QSA 介面卡用於連線至平台上的 10GbE/25GbE 叢集連接埠時、連結可能不會啟動。</block>
+  <block id="65a7722b91e57b456663ad9dfbce3756" category="list-text">對於 10GbE 、請手動將 swp1s-3 連結速度設定為 10000 、並將自動交涉設定為關閉。</block>
+  <block id="db2ee086523acdbe77c0655e5b34e140" category="list-text">若是 25GbE 、請手動將 swp2s-3 連結速度設定為 25000 、並將自動交涉設定為關閉。</block>
+  <block id="a4776f8907c629282806882eea5abb7c" category="admonition">使用 10GbE/25GbE QSA 介面卡時、請將其插入非中斷 40GbE/100GbE 連接埠（ swp3-swp14 ）。請勿將 QSA 介面卡插入設定為中斷連接的連接埠。</block>
+  <block id="e7e44cf1f6086f5ec92a0b659ae4c9a3" category="paragraph">視交換器連接埠中的收發器而定、您可能需要將交換器介面上的速度設定為固定速度。如果使用 10GbE 和 25GbE 中斷連接埠、請確認自動交涉已關閉、並在交換器上設定介面速度。</block>
+  <block id="0f08aaa10ce68f7f905212dc1aab73b3" category="paragraph">檢查介面和連接埠狀態、確認已套用設定：</block>
+  <block id="9742e43179b451c849ed088319254cd9" category="summary">請完成下列步驟以升級您的 Cumulus Linux 版本。</block>
+  <block id="9d021cb22b9c9afdaa65e8cfcee560c5" category="doc">升級 Cumulus Linux 版本</block>
+  <block id="d62448073473e6946178f647bcbfbf0e" category="paragraph">請完成下列程序、視需要升級您的 Cumulus Linux 版本。</block>
+  <block id="0fc8a779fbe2ae3a05240b53435f18cf" category="admonition">每次升級 Cumulus Linux 時、整個檔案系統結構都會被清除並重新建立。您現有的組態將會清除。更新 Cumulus Linux 之前、您必須先儲存並記錄交換器組態。</block>
+  <block id="0d151e82f107d3039ec4952c010d46c4" category="admonition">累計使用者帳戶的預設密碼為*累計*。第一次登入CummulUS Linux時、您必須變更此預設密碼。安裝新映像之前、您必須更新任何自動化指令碼。CummUS Linux提供命令列選項、可在安裝程序期間自動變更預設密碼。</block>
+  <block id="324fe5adbd1d84e1635133b2f3572f6d" category="open-title">從 Cumulus Linux 4.4.x 到 Cumulus Linux 5.x</block>
+  <block id="6e86c333c0b662bb6dee3495ec26ec21" category="list-text">檢查目前的 Cumulus Linux 版本和連線連接埠：</block>
+  <block id="698eeac576f2a03927debdd14725ba5e" category="list-text">下載 Cumulux Linux 5.x 映像：</block>
+  <block id="a034a19ca9c1623f94c8f52b386d5a41" category="list-text">變更密碼：</block>
+  <block id="d853eef2a857cbfcf5b1ef1abe8db17e" category="list-text">請查看Cummuls Linux版本：<block ref="9fcc1ae85aac3dbd490f575cf5eb3d52" prefix=" " category="inline-code"></block></block>
+  <block id="985599684d8f5a06353d35110138f1b2" category="list-text">變更主機名稱：</block>
+  <block id="0e991c1ef237b6e2304639c4e67230ec" category="list-text">登出並再次登入交換器、即可在提示下看到更新的交換器名稱：</block>
+  <block id="9452c986bddec0ffc4c1e4393d954d4a" category="list-text">設定 IP 位址：</block>
+  <block id="b0255cc355effdccf079c37dfed7930c" category="open-title">從 Cumulus Linux 5.x 到 Cumulus Linux 5.x</block>
+  <block id="65a9f174ce483d8b53a1a174dc734625" category="list-text">下載 Cumulux Linux 5.4.0 映像：</block>
+  <block id="ae9c690e9fad2f5c57259599dd4505b1" category="list-text">登出並再次登入交換器、即可在提示下看到更新的交換器名稱：</block>
+  <block id="db20376829e65eac071b27b68736377d" category="paragraph">叢集交換器、 NVIDIA SN2100 、 16pt 100GbE 、 PTSX</block>
+  <block id="d2eaff24ce79ed3c374a5a2090d168b1" category="paragraph">叢集交換器、 NVIDIA SN2100 、 16pt 100GbE 、 PSIN</block>
+  <block id="001d5d8be5c2b491c0e7502d149d957d" category="paragraph">交換器、 NVIDIA SN2100 、 16pt 100GbE 、 PTSX 、前端</block>
+  <block id="e41188b1210c6535f254eaa7b5dbd046" category="paragraph">交換器、 NVIDIA SN2100 、 16pt 100GbE 、 PSIN 、前端</block>
+  <block id="eef96d02de8bddc099677ad1d3ec3385" category="list-text">請查看Cummuls Linux版本：<block ref="518227d11c3d0b4ad2468e4272be661a" prefix=" " category="inline-code"></block></block>
+  <block id="5e7f834bb6ce37fe7786c30951681705" category="list-text">驗證是否為4.4.3版的Cummulis Linux：<block ref="98f5dff8534e8c39673b544f567273e7" prefix=" " category="inline-code"></block></block>
+  <block id="d3197ab8aed6376fa7796149e9bb5d76" category="paragraph">安裝程式隨即開始下載。出現提示時鍵入* y*。</block>
+  <block id="0d5b4669d0f67490dffe38df0a47c207" category="list-text">安裝會自動啟動、並顯示下列的Grub畫面選項。請勿*不要*進行任何選擇。</block>
+  <block id="caf789a40cb327fa8f64258a010c13e0" category="list-text">確認 Cumulus Linux 版本為 5.4 ：<block ref="9fcc1ae85aac3dbd490f575cf5eb3d52" prefix=" " category="inline-code"></block></block>
+  <block id="ebf243f9c791c52799ecfef9dba7e609" category="doc">以無交換器連線取代 NetApp CN1610 叢集交換器</block>
+  <block id="261de3e636d4ab259e73f4993ea87a6a" category="sidebar">升級 Cumulus Linux 版本</block>
 </blocks>

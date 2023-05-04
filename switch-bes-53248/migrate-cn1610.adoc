@@ -681,22 +681,32 @@ node2      /cdp
 ----
 ====
 . 如果更換的CN1610交換器未自動移除、請將其移除：
-+
+
+
+[role="tabbed-block"]
+====
+.適用於更新版本的更新版本ONTAP
+--
+`system switch ethernet delete -device _device-name_`
+
+[listing]
+----
+cluster::*> system switch ethernet delete –device CL2
+cluster::*> system switch ethernet delete –device CL1
+----
+--
+.適用於更新版本的更新版本ONTAP
+--
 「系統叢集交換器刪除-DEVICE _DEVICE名稱_」
 
-+
-.顯示範例
-[%collapsible]
-====
-以下範例說明如何移除CN1610交換器：
-
-[listing, subs="+quotes"]
+[listing]
 ----
-cluster::*> *system cluster-switch delete –device CL2*
-cluster::*> *system cluster-switch delete –device CL1*
+cluster::*> system cluster-switch delete –device CL2
+cluster::*> system cluster-switch delete –device CL1
 ----
+--
 ====
-. 如果您禁止自動建立個案、請叫用AutoSupport 下列訊息來重新啟用：
+. [[step5]] 如果您禁止自動建立個案、請叫用 AutoSupport 訊息來重新啟用：
 +
 「系統節點AutoSupport 不完整地叫用節點*-type all -most MAn=end」
 

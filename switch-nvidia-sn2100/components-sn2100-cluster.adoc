@@ -17,7 +17,7 @@ summary: 如果您想要建置ONTAP 具有兩個以上節點的叢集、您需�
 
 == 機櫃詳細資料
 
-您可以在NVIDIA雙/單一交換器機櫃中安裝NVIDIA SN2100交換器（X190006/X190106）、並附有交換器隨附的標準支架。
+您可以將 NVIDIA SN2100 交換器（ X190006 ）安裝在 NVIDIA 雙 / 單交換器機櫃中、並附有交換器隨附的標準支架。
 
 
 
@@ -33,28 +33,14 @@ summary: 如果您想要建置ONTAP 具有兩個以上節點的叢集、您需�
  a| 
 X190006-PE
  a| 
-叢集交換器、NVIDIA SN2100、16PT 100g、PTSX
+叢集交換器、 NVIDIA SN2100 、 16pt 100GbE 、 PTSX
 
 
 
  a| 
 X190006-PI
  a| 
-叢集交換器、NVIDIA SN2100、16PT 100g、PSIN
-
-
-
- a| 
-X190106-FE-PE
- a| 
-交換器、NVIDIA SN2100、16PT 100g、PTSX、前端
-
-
-
- a| 
-X190106-FE-PI
- a| 
-交換器、NVIDIA SN2100、16PT 100g、PSIN、前端
+叢集交換器、 NVIDIA SN2100 、 16pt 100GbE 、 PSIN
 
 
 
