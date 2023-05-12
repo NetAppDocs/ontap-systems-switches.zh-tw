@@ -17,9 +17,9 @@ summary:
 請依照下列指示設定Cisco Nexus 9336C-FX2共用交換器。
 
 .您需要的產品
-* 必要的共享交換器文件、控制器文件和ONTAP 參考文件。請參閱 link:required-documentation-9336c-shared.html["Cisco Nexus 9336C-FX2共享交換器的文件要求"] 和 https://docs.netapp.com/us-en/ontap/index.html["NetApp ONTAP 產品文件"^]。
+* 必要的共享交換器文件、控制器文件和ONTAP 參考文件。請參閱 link:required-documentation-9336c-shared.html["Cisco Nexus 9336C-FX2共享交換器的文件要求"] 和 https://["NetApp ONTAP 產品文件"^]。
 * 適用的授權、網路與組態資訊、以及纜線。
-* 完成佈線工作表。請參閱 link:cable-9336c-shared.html["填寫Cisco Nexus 9336C-FX2纜線工作表"]。如需纜線的詳細資訊、請參閱 https://hwu.netapp.com["Hardware Universe"]。
+* 完成佈線工作表。請參閱 link:cable-9336c-shared.html["填寫Cisco Nexus 9336C-FX2纜線工作表"]。如需纜線的詳細資訊、請參閱 https://["Hardware Universe"]。
 
 
 .步驟
@@ -130,7 +130,7 @@ NOTE: 建議在使用叢集交換器健全狀況監視器（CSHM）進行記錄�
 
 NOTE: 如果您在此階段未儲存組態、下次重新啟動交換器時、將不會有任何變更生效。
 
-. 檢查叢集網路交換器的版本、必要時可從將NetApp支援的軟體版本下載至交換器 https://software.cisco.com/download/home["Cisco軟體下載"^] 頁面。
+. 檢查叢集網路交換器的版本、必要時可從將NetApp支援的軟體版本下載至交換器 https://["Cisco軟體下載"^] 頁面。
 
 
 .接下來呢？

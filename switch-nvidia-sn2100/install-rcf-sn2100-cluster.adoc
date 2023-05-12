@@ -16,12 +16,12 @@ summary: 在安裝RCF指令碼之前、請確定交換器上有下列項目可�
 .您需要的產品
 安裝RCF指令碼之前、請確定交換器上有下列項目：
 
-* 已安裝 Cumulus Linux 。請參閱 https://hwu.netapp.com/Switch/Index["Hardware Universe"^] 適用於支援的版本。
+* 已安裝 Cumulus Linux 。請參閱 https://["Hardware Universe"^] 適用於支援的版本。
 * IP位址、子網路遮罩和預設閘道、是透過DHCP定義或手動設定的。
 
 
 .目前的RCF指令碼版本
-叢集和儲存應用程式有兩個 RCF 指令碼可用。請從下載 RCFs https://mysupport.netapp.com/site/info/nvidia-cluster-switch["請按這裡"^]。每個的程序都相同。
+叢集和儲存應用程式有兩個 RCF 指令碼可用。請從下載 RCFs https://["請按這裡"^]。每個的程序都相同。
 
 * 叢集： * MSN2100-RCF-v1. _x_ 叢集 - HA-BreakOut-LLDP*
 * 儲存： * MSN2100-RCF-v1. _x_ 儲存 *
@@ -104,7 +104,7 @@ NOTE: 在步驟 3 * 更新上述 MOTD 檔案 * 中、命令 `cat /etc/motd` 執�
 
 +
 
-NOTE: 若有任何無法修正的RCF python指令碼問題、請聯絡 https://mysupport.netapp.com/["NetApp支援"^] 以取得協助。
+NOTE: 若有任何無法修正的RCF python指令碼問題、請聯絡 https://["NetApp支援"^] 以取得協助。
 
 . 重新開機後驗證組態：
 +
@@ -357,7 +357,7 @@ admin@sw1:mgmt:~$ cat /etc/issue
 ----
 +
 
-NOTE: 若有任何無法修正的RCF python指令碼問題、請聯絡 https://mysupport.netapp.com/["NetApp支援"^] 以取得協助。
+NOTE: 若有任何無法修正的RCF python指令碼問題、請聯絡 https://["NetApp支援"^] 以取得協助。
 
 . 重新開機後驗證組態：
 +

@@ -104,13 +104,24 @@ cs1                      0/56      179       R          BES-53248        0/56
 ====
 .步驟
 . 檢閱 link:replace-switch-reqs.html["更換需求"]。
+. 如果AutoSupport 此叢集啟用了「支援」功能、請叫用AutoSupport 下列訊息來禁止自動建立案例：
++
+「系統節點AutoSupport 不完整地叫用節點*-type all -Message MAn=xh」
+
++
+其中_x_是維護時段的持續時間（以小時為單位）。
+
++
+
+NOTE: 此資訊可通知技術支援人員執行此維護工作、以便在維護期間抑制自動建立案例。AutoSupport
+
 . 在交換器newcs2上安裝適當的參考組態檔（RCF）和映像、並進行必要的站台準備。
 +
 如有必要、請為新交換器驗證、下載及安裝適當版本的RCF和EFOS軟體。如果您已確認新交換器已正確設定、而且不需要更新RCF和EFOS軟體、請繼續執行步驟2。
 
 +
-.. 您可以從下載適用於叢集交換器的Broadcom EFOS軟體 https://www.broadcom.com/support/bes-switch["Broadcom乙太網路交換器支援"^] 網站。請依照下載頁面上的步驟、下載您ONTAP 所安裝之版本的EOSOS檔案。
-.. 您可從取得適當的RCF https://mysupport.netapp.com/site/products/all/details/broadcom-cluster-switches/downloads-tab["Broadcom叢集交換器"^] 頁面。請依照下載頁面上的步驟、針對ONTAP 您要安裝的版本、下載正確的RCF。
+.. 您可以從下載適用於叢集交換器的Broadcom EFOS軟體 https://["Broadcom乙太網路交換器支援"^] 網站。請依照下載頁面上的步驟、下載您ONTAP 所安裝之版本的EOSOS檔案。
+.. 您可從取得適當的RCF https://["Broadcom叢集交換器"^] 頁面。請依照下載頁面上的步驟、針對ONTAP 您要安裝的版本、下載正確的RCF。
 
 
 . 在新交換器上、以身分登入 `admin` 並關閉所有連接至節點叢集介面的連接埠（連接埠1至16）。
@@ -410,6 +421,10 @@ cs1          0/55    179         R             BES-53248   0/55
 cs1          0/56    179         R             BES-53248   0/56
 ----
 ====
+. 如果您禁止自動建立個案、請叫用AutoSupport 下列訊息來重新啟用：
++
+「系統節點AutoSupport 不完整地叫用節點*-type all -most MAn=end」
+
 
 
 .接下來呢？

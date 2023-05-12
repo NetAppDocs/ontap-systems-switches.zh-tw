@@ -11,7 +11,7 @@ summary: 如果您想要建置ONTAP 具有兩個以上節點的叢集、您需�
 
 
 [role="lead"]
-對於Cisco Nexus 2300YC交換器的安裝與維護、請務必檢閱所有交換器元件和零件編號。請參閱 https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^] 以取得詳細資料。
+對於Cisco Nexus 2300YC交換器的安裝與維護、請務必檢閱所有交換器元件和零件編號。請參閱 https://["Hardware Universe"^] 以取得詳細資料。
 
 下表列出92300YC交換器、風扇和電源供應器的零件編號和說明：
 

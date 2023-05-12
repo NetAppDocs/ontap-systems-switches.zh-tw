@@ -13,7 +13,7 @@ summary: 您可以使用此程序來執行Bes - 53248叢集交換器的初始安
 [role="lead"]
 請依照下列步驟執行BS-53248叢集交換器的初始設定。
 
-.您需要的產品
+.開始之前
 * 硬體已安裝、如所述 link:install-hardware-bes53248.html["安裝硬體"]。
 * 您已檢閱下列內容：
 +
@@ -31,7 +31,7 @@ summary: 您可以使用此程序來執行Bes - 53248叢集交換器的初始安
 * 叢集LIF名稱為節點1的「node1_clus1」和「node1_clus2」、節點2的「node2_clus1」和「node2_clus2」。
 * IPspace名稱為叢集。
 * 「cluster1：>」提示會指出叢集的名稱。
-* 每個節點上的叢集連接埠都會命名為 `e0a` 和 `e0b`。請參閱 https://hwu.netapp.com/Home/Index["NetApp Hardware Universe"^] 以取得平台所支援的實際叢集連接埠。
+* 每個節點上的叢集連接埠都會命名為 `e0a` 和 `e0b`。請參閱 https://["NetApp Hardware Universe"^] 以取得平台所支援的實際叢集連接埠。
 * NetApp交換器支援的交換器間連結（ISL）為連接埠0/55和0/56。
 * NetApp交換器支援的節點連線是連接埠0/1到0/16、並具有預設授權。
 * 範例使用兩個節點、但叢集中最多可有24個節點。

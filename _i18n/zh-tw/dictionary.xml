@@ -1547,14 +1547,10 @@
   <block id="0a75413eb77e6b93cdf29f72fafdcd64" category="list-text">使用命令顯示叢集上網路連接埠的相關資訊：</block>
   <block id="afe95fe1267fcb98a96c300f333cefef" category="paragraph">“Link（鏈接）”的值必須是「UP（向上）」和「Health Status（健康狀態）」、必須是「Healthy（健康）」。</block>
   <block id="7668c4617f543fa5b89a9bee8a3a7a61" category="paragraph">下列範例顯示命令的輸出：</block>
-  <block id="c1421c83b1d1a38b2417491ece25b6ef" category="list-text">使用「ping」命令來驗證與裝載EFOS、授權和RCF的伺服器之間的連線。</block>
-  <block id="cc902b05dea9b78580c439034d034533" category="paragraph">如果連線有問題、請使用非路由網路、並使用IP位址192.168.x或172.19.x來設定服務連接埠您可以稍後將服務連接埠重新設定為正式作業管理IP位址。</block>
-  <block id="f0e95f5c0e8e4943599aed05c5dcaa5c" category="list-text">使用「copy」命令在BS-53248叢集交換器上安裝RCF。</block>
   <block id="830bcf54c3049ac10bbbb40fb1258902" category="list-text">確認已下載指令碼並儲存至您指定的檔案名稱：</block>
   <block id="406bb351c55daa6b29920fa6ce644c29" category="paragraph">《記錄清單》</block>
   <block id="c3b43f3c21345191af043e5f0670bf83" category="list-text">將指令碼套用至交換器。</block>
   <block id="02afa83850d1a1e555c0bc75967fef66" category="paragraph">適用記錄</block>
-  <block id="c6be61a8840e03c0f7ec854569281fe0" category="list-text">在套用RCF之後、驗證連接埠是否有額外授權：</block>
   <block id="ab8bdb5092606f6767ac804a70c17514" category="paragraph">「How port all | exclude Detach」</block>
   <block id="44204cecc6038ea77eba4b1c7fdb67ca" category="list-text">在交換器上確認您已進行變更：</block>
   <block id="05811097becdf827e7905c7085aac958" category="paragraph">寫入記憶體</block>
@@ -2216,8 +2212,6 @@
   <block id="148a1525f4c4b2d620941031bf03f670" category="inline-link">_NetApp Hardware Universe SUR__</block>
   <block id="8761a71b0c01f0356000c0994d4fb203" category="paragraph">「系統交換器乙太網路記錄設定密碼」和「系統交換器乙太網路記錄啟用-收集」</block>
   <block id="c757279318295752ba90c940af04f05e" category="paragraph">接著是：「系統交換器乙太網路記錄啟用-收集」</block>
-  <block id="e9e71e2f88e554c14e51453471eb9563" category="inline-link-macro">錯誤1225042</block>
-  <block id="5a072aaf4668506fc992d2fe4e8eab94" category="admonition">此時無法使用log collect命令。請參閱 <block ref="f0dc05ac25b63ff4a92a1ab0ec233df6" category="inline-link-macro-rx"></block> 以取得更多詳細資料。</block>
   <block id="def140a135e96c99279be95e1ef70130" category="doc">更換Broadcom支援的Bes - 53248叢集交換器</block>
   <block id="aca231809cb1cd80c1435dd9914b66dd" category="paragraph">然後、您必須將所有節點上的中斷連接連接埠重新連接至新的BS-53248交換器CS2。請參閱<block ref="141c10db18cf1753fa5fc05f553c33ff" category="inline-link-rx"></block> 以取得核准的纜線選項。</block>
   <block id="cbd2e2da439fbaf2fd95743ddedbb09e" category="paragraph">然後、您必須將所有節點上的中斷連接連接埠重新連線至新的BS1-53248交換器CS1。請參閱<block ref="141c10db18cf1753fa5fc05f553c33ff" category="inline-link-rx"></block> 以取得核准的纜線選項。</block>
@@ -2228,9 +2222,7 @@
   <block id="187c30e211ba48efba7ee0554dccaf17" category="paragraph">10/25GbE叢集連接埠節點、含授權</block>
   <block id="e911666173c65a9be604d165f8bfca24" category="paragraph">49至54歲</block>
   <block id="87c5a8a002c26c3c0f3324085542275a" category="paragraph">55-56</block>
-  <block id="cd7d89f0423765df2ea4dd61283f22c1" category="admonition">在啟動指令碼之前、必須先將「.scr」副檔名設定為檔案名稱的一部分。此擴充是EFOS作業系統的延伸。當指令碼下載到交換器時、交換器會自動驗證指令碼、並將輸出傳送到主控台。此外、您也可以變更「.scr」的名稱、使其符合主控台螢幕的大小、以便更容易閱讀、例如：「+copy sftp：//172.19.2.1/tmp/BES-53248_RCF_v1.6-Cluster-HA.txt NVRAM:script RCF-v1.6-Cluster-HA。scr+」。</block>
   <block id="2f5b29dae6c40626ef71ff19914284d2" category="paragraph">要使用的除錯命令：「Debuger transfer」和「debugs license」</block>
-  <block id="4d87d0aacff9e4a95b16be27f0f1e89e" category="admonition">視您的環境而定、您可能需要在「copy」命令中使用雙斜槓、例如：「+copy sftp：//172.19.1.1//tmp/BES-53248_RCF_v1.6-Cluster-HA.txt NVRAM:script bes-53248_RCF-v1.6-Cluster-HA .scr+」。</block>
   <block id="23e7cf6793dbbe3c59640d6ebb6cf4fc" category="list-text">。<block ref="141c10db18cf1753fa5fc05f553c33ff" category="inline-link-rx"></block> 包含ONTAP 有關支援功能的資訊、支援的EFOS韌體、以及連接至BE-53248叢集交換器的纜線。</block>
   <block id="c0be2d74ddb0ea6b8972b9da2fc2c223" category="paragraph">。<block ref="141c10db18cf1753fa5fc05f553c33ff" category="inline-link-rx"></block> 包含ONTAP 有關支援功能的資訊、支援的EFOS韌體、以及連接至B作業 環境與53248交換器的纜線。</block>
   <block id="91950abebf25a4752db5969582aa4bb7" category="paragraph">。<block ref="141c10db18cf1753fa5fc05f553c33ff" category="inline-link-rx"></block> 包含平台實際叢集連接埠的最新資訊。</block>
@@ -2314,13 +2306,11 @@
   <block id="c2bb2ae34a9db0e318c25b32c07dd6d5" category="list-text">* cluster1：：*&gt;*提示會指出叢集的名稱。</block>
   <block id="1a0894513362fda649e11ba9de926b82" category="list-text">確定每個叢集連接埠的管理或作業狀態。</block>
   <block id="819ff57f464e039de1c480b406150b87" category="list-text">在叢集交換器CS2上、關閉連接至節點叢集連接埠的連接埠：</block>
-  <block id="c0aae69da186a464bb2e5ce0a8b32451" category="list-text">將所有叢集節點連線從舊的CS2交換器移至新的CS2交換器。</block>
   <block id="be6163ad0c362d632b28f98dea1fdaaa" category="paragraph">所有移除的叢集連接埠都應為上移。</block>
   <block id="d0141bcaf704f75f043a7384708a3131" category="paragraph">驗證移動的叢集連接埠是否將CS2-new交換器視為鄰近端點。</block>
   <block id="f53f913adacde30730136e7153afce35" category="list-text">從交換器CS2的觀點確認交換器連接埠連線：</block>
   <block id="c4fb5fab435d358d1b3a68ec74352416" category="list-text">在叢集交換器CS1上、關閉連接至節點叢集連接埠的連接埠。下列範例使用步驟7的介面輸出範例。</block>
   <block id="8c61118abc6e9e30fd4469d362e96e00" category="paragraph">所有叢集生命體都會移至CS2新交換器。</block>
-  <block id="494ad00c3b01ee37729fae8f4d4c52c0" category="list-text">將連線從CS1移至新的CS1交換器。</block>
   <block id="2a5fc0afbcb2299e24c73a909b297e93" category="paragraph">驗證移動的叢集連接埠是否將CS1-new交換器視為鄰近端點。</block>
   <block id="35d736ae56a7e094d4d2c2786669f8ca" category="list-text">從交換器CS1-New的觀點來確認交換器連接埠連線：</block>
   <block id="2a42351fd3a2f7fd74a9510816b9125f" category="list-text">啟用乙太網路交換器健全狀況監視器記錄收集功能、以收集交換器相關的記錄檔。</block>
@@ -2333,10 +2323,6 @@
   <block id="bc8a2cd252a5beb1dbf4f209baea67eb" category="sidebar">共享交換器</block>
   <block id="626a7cbe056796bcb1c158b143866230" category="sidebar">發行說明 ONTAP</block>
   <block id="ce4b3e7ecf21d16073d0790ca53a6dd9" category="image-alt">初始交換器設定</block>
-  <block id="ae7b3cb9899d7947e3b5d7996824f062" category="paragraph">*叢集節點連線已移至CS2-new交換器*</block>
-  <block id="1f5e0ea57e0f194957353e2db3df4e2d" category="image-alt">叢集節點連線已移至CS2新交換器</block>
-  <block id="3fb38d5aab534a043c30d7f1a3b0a9dd" category="paragraph">*叢集節點連線已移至CS1-new交換器*</block>
-  <block id="84532259a7d4acf54c61408e0d42d0ce" category="image-alt">叢集節點連線已移至CS1新交換器</block>
   <block id="9d36413c7ae238ebf79e37939969b9ee" category="summary">您可以將ONTAP 不中斷營運的舊款Cisco交換器移轉至NVIDIA SN2100儲存交換器、以利實現一個不中斷的叢集。</block>
   <block id="c0e54fd32010cccd4fea353a8f62265e" category="doc">從Cisco儲存交換器移轉至NVIDIA SN2100儲存交換器</block>
   <block id="bdcdaedb42f04c50f04fe5d093e593c6" category="list-text">支援下列儲存交換器：</block>
@@ -3455,10 +3441,6 @@
   <block id="f249686dfa625a48e16b61cc36dc2543" category="inline-link">Broadcom支援的BS-53248叢集交換器安裝指南</block>
   <block id="9343a353b1f82fabd9ee240e066471c9" category="list-text">請依照中的指示進行<block ref="2499b40383e5eeae4a8e13c0ef2b5e8c" category="inline-link-rx"></block>。</block>
   <block id="2c313ef83d1daadd03ff286fd1bc25ab" category="paragraph"><block ref="b88c299eeb38820fb709454fcd144438" category="inline-link-macro-rx"></block>。</block>
-  <block id="cae419e0f4ccc97a6a12d463f55b5c3b" category="paragraph">您可以啟用記錄收集功能、此功能可用於收集ONTAP 資訊區中與交換器相關的記錄檔。</block>
-  <block id="3cad572dfde5fdce5421e54e89062e7b" category="paragraph">請確定您已使用BS-53248叢集交換器CLI設定環境。</block>
-  <block id="c72a86b35a4617dacc0dd7690691bc10" category="paragraph">使用下列命令啟用記錄收集功能：</block>
-  <block id="2970c748fd66e910b8a8cc8afdfef311" category="section-title">適用於更新版本的修補程式：9.5 P15、9.6P11、9.7P8 ONTAP</block>
   <block id="4a79c6270afcb7ed4e28cd8c98692b07" category="inline-link-macro">驗證升級組態</block>
   <block id="201928a01eb0d8a784dcd677be49e1a6" category="paragraph">如果您要升級交換器、請前往 <block ref="4ea612b493226a65342298638fddee90" category="inline-link-macro-rx"></block>。</block>
   <block id="e8ab0c1581dc0dcc64441ffb1b729ce5" category="summary">如果您有雙節點無交換式叢集、則可在不中斷營運的情況下、移轉至雙節點交換式叢集、其中包含Broadcom支援的BS-53248叢集交換器</block>
@@ -3566,8 +3548,6 @@
   <block id="4ce9c3db8b38bb08700bf7d0c8a896a4" category="list-text">驗證CN1610交換器CL1上的ISL是否「up」：</block>
   <block id="3bc00b87c9d7974628fbaf8aa8779a0c" category="paragraph">。<block ref="2ca384e25ce18ee9f0ef797ddb07553f" prefix=" " category="inline-code"></block> 應為「UP」、<block ref="a1fa27779242b4902f7ae3bdd5c6d508" prefix=" " category="inline-code"></block> 應為「Static」（靜態）、且<block ref="574cf51f989449e27cc737b456360c82" prefix=" " category="inline-code"></block> 連接埠0/13至0/16應為「真」：</block>
   <block id="245b6d4f01047a24b306b9ff15a6f528" category="summary">您可以在設定BS-53248叢集交換器之後、以及套用新授權之後、安裝參考組態檔（RCF）。</block>
-  <block id="71288405dcf65a0c34e5f6f072ddacbf" category="paragraph">如果您要從舊版升級RCF、則必須重設Broadcom交換器設定並執行基本組態、才能重新套用RCF。每次您想要升級或變更RCF時、都必須執行此作業。請參閱<block ref="868fcd63f67a83c695a1a52b76012f85" category="inline-link-rx"></block> 以取得詳細資料。</block>
-  <block id="62f283441d74bc72551cfe8b6031e2e8" category="admonition">檔案名稱不得包含符號<block ref="f7f78177fe7e595a817da2765186a20e" prefix=" " category="inline-code"></block> 最大允許長度為32個字元。</block>
   <block id="b3d2ab282b59bbaad33610c1e37f6f97" category="list-text">將指令碼套用至交換器：</block>
   <block id="4b3087862136b477f2ba4eb874340862" category="inline-link-macro">安裝CSHM組態檔案</block>
   <block id="bf45031df0d96fabfb6aa0760a792168" category="paragraph"><block ref="c0636b750594571560d8b9710bfd1581" category="inline-link-macro-rx"></block>。</block>
@@ -3621,7 +3601,6 @@
   <block id="8df73a90ae64cf4b2dc8e1fb3b3f9c01" category="paragraph">出現以下訊息時、按* Enter *以叫用ONIE主控台：</block>
   <block id="8c4811a2e0b8453368548a91bdf17fc9" category="admonition">ONIE會繼續探索、並將訊息列印至主控台。</block>
   <block id="a16e89a0f24e9a42d02bbe4bb573176b" category="paragraph"><block ref="df911f0151f9ef021d410b4be5060972" prefix="" category="inline-code"></block></block>
-  <block id="830d0d51353cfd443213537734ff2e76" category="paragraph"><block ref="c982fa8ec7bf560015f478ac445de332" prefix="" category="inline-code"></block></block>
   <block id="fead9f0c9e5b3f33cc2bdfbb331d335c" category="paragraph">軟體隨即安裝、然後重新啟動交換器。讓交換器正常重新開機至新的EFOS版本。</block>
   <block id="0deffd557577017ec52052f85fe4ead6" category="list-text">驗證是否安裝了新的交換器軟體：</block>
   <block id="ed0ce277f91d48d895c5e74d2431cf8f" category="summary">深入瞭解FAS 適用於整個系統的全新交換器AFF 。</block>
@@ -4376,4 +4355,78 @@
   <block id="caf789a40cb327fa8f64258a010c13e0" category="list-text">確認 Cumulus Linux 版本為 5.4 ：<block ref="9fcc1ae85aac3dbd490f575cf5eb3d52" prefix=" " category="inline-code"></block></block>
   <block id="ebf243f9c791c52799ecfef9dba7e609" category="doc">以無交換器連線取代 NetApp CN1610 叢集交換器</block>
   <block id="261de3e636d4ab259e73f4993ea87a6a" category="sidebar">升級 Cumulus Linux 版本</block>
+  <block id="f854d13ce34c20dd774e2f26c0bcbec7" category="paragraph">若要檢查您的 EFOS 版本是否符合 FIPS 標準或不符合 FIPS 標準、請使用<block ref="861d2504fbcbe4985de13f1d87bfc483" prefix=" " category="inline-code"></block> 命令。在下列範例中、 *IP_switch_A1* 使用 FIPS 相容的 EFOS 、而 *IP_switch_A2* 則使用非 FIPS 相容的 EFOS 。</block>
+  <block id="155fd6818143cef882d5eb7ac134f393" category="list-text">在交換器 IP_switch_A1 上：</block>
+  <block id="457ab5c73d8f159a9a225c9b9c6605c3" category="list-text">在交換器 IP_switch_A2 上：</block>
+  <block id="49215cf233256204aa5b6259719da694" category="paragraph"><block ref="6db371c6b710567f9ba5b5a3491f792a" prefix="" category="inline-code"></block></block>
+  <block id="830d0a0665249b8b3b3020695c8b5e4b" category="paragraph">SW-BS-53248A2-8P-2P</block>
+  <block id="29246b22307b855ef04699ca8197dbc2" category="paragraph">Broadcom 8Pt - 10G25G + 2pt-40G100G 授權金鑰、 X190005/R</block>
+  <block id="0e361df3624bdebcafc621eb4f0786a6" category="paragraph">SW-BS-53248A2-8P-1025G</block>
+  <block id="289a869a94a6cd9561fc4e79cad65152" category="paragraph">Broadcom 8 連接埠 10G25G 授權金鑰、 X190005/R</block>
+  <block id="1cf9764233d69f1045190b7401cd7289" category="paragraph">SW-BES53248A2-6P-40-100g</block>
+  <block id="6f8d029e2ec4dbf3007f214f6019e2b5" category="paragraph">Broadcom 6 連接埠 40G100G 授權金鑰、 X190005/R</block>
+  <block id="b70d80924ca5c08e45b9b84343687a46" category="section-title">舊版授權</block>
+  <block id="e6459831eff3ab73436a3472b543daed" category="paragraph">下表列出可在 BS-53248 叢集交換器上使用的舊版授權：</block>
+  <block id="5c60227e684a42ed2c4295981335965a" category="list-text">確認 SSH 已停用：</block>
+  <block id="7481f181e296e575db2349974a47cc2c" category="paragraph">請依照下列步驟安裝叢集交換器健全狀況監視器（ CSHM ）組態檔案。</block>
+  <block id="810bc3d02021061ba2b8f87b703a66dd" category="paragraph">您可以使用記錄收集功能、在 ONTAP 中收集交換器相關的記錄檔。</block>
+  <block id="ee3c886759b6a2517a47e20c04320ed6" category="admonition">若要啟用記錄收集功能、您必須執行 ONTAP 9.12.1 版及更新版本、以及 EFOS 3.8.0.2 及更新版本。</block>
+  <block id="ea234103ea5e655162d46327fb979006" category="paragraph">請確定您已使用 BS-53248 叢集交換器 *CL1* 來設定環境。</block>
+  <block id="f7cbc1a4399eb952f71e7f3276fe30cb" category="list-text">使用下列命令、啟用乙太網路交換器健全狀況監視器記錄收集功能、以收集交換器相關的記錄檔：</block>
+  <block id="b8df928a1a67f132ebda54d2c7fee7dc" category="paragraph">如果您要從舊版升級RCF、則必須重設Broadcom交換器設定並執行基本組態、才能重新套用RCF。每次您想要升級或變更RCF時、都必須執行此作業。請參閱<block ref="ca0e22b4f868295e6cf32a824edc5c13" category="inline-link-rx"></block> 以取得詳細資料。</block>
+  <block id="fecbf70623c5c07c3f3c4c8793d5061b" category="list-text">目前的 RCF 檔案、可從取得<block ref="b4c2fb45a290e6214474529bd84dd3bc" category="inline-link-rx"></block> 頁面。</block>
+  <block id="23c89511c80ceef00a8d3343b5f08569" category="list-text">RCF 中的開機組態、可反映所需的開機映像、如果您只安裝 EFOS 並保留目前的 RCF 版本、則需要此組態。如果您需要變更開機組態以反映目前的開機映像、則必須在重新套用RCF之前執行此動作、以便在未來重新開機時產生正確的版本。</block>
+  <block id="3a6a9877fc8c73a9267914b786517ca9" category="inline-link">如何清除 Broadcom 互連交換器上的組態、同時保持遠端連線</block>
+  <block id="d814617aab418a35a7ebbe46f6db2549" category="list-text">從原廠預設狀態安裝 RCF 時、需要主控台連線至交換器。如果您已使用知識庫文件、則此需求為選用項目 <block ref="18b4271d2bf70dbfb01e42cb4850cea6" category="inline-link-rx"></block> 事先清除組態。</block>
+  <block id="7f3040034b245d1b75afb3699c743540" category="inline-link">EFOS 軟體下載</block>
+  <block id="d56ac00853938590c6688c295fc4ecaf" category="list-text">請參閱交換器相容性表、以瞭解支援ONTAP 的功能表和RCF版本。請參閱<block ref="d105630f090d19d3cb8ede812081d134" category="inline-link-rx"></block> 頁面。請注意、 RCF 中的命令語法與 EFOS 版本中的命令語法之間可能存在命令相依性。</block>
+  <block id="93933c6ca68705cf2c6eee19987428b0" category="inline-link">Broadcom</block>
+  <block id="c8225beca732debe3ac01e6db48e30da" category="list-text">請參閱上提供的適當軟體和升級指南<block ref="16e70ad0a745fa89b30fcfd59454547f" category="inline-link-rx"></block> 有關 BS-53248 交換器升級與降級程序的完整文件、請參閱網站。</block>
+  <block id="b3c7299de687b34f57bdbef88331d09b" category="section-title">安裝組態檔</block>
+  <block id="96645db343acbd79a0ce22b9f8615312" category="list-text">兩台 BS-53248 交換器的名稱分別是 CS1 和 CS2 。</block>
+  <block id="020f2efcf6a1d37fe39fcf5ab7cd7681" category="list-text">叢集 LIF 名稱為 cluster1-01_clus1 、 cluster1-01_clus2 、 cluster1-02_clus1 、 cluster1-02_clus2 、 cluster1-03_clus1 、 cluster1-03_clus2 、 cluster1-04_clus1 和 cluster1-04_clus2 。</block>
+  <block id="735f1f81fce19c6dbd9326c356c42794" category="list-text">本程序中的範例使用四個節點。這些節點使用兩個10GbE叢集互連連接埠<block ref="922c556baf6272bffc4fa28b2e9a0bbc" prefix=" " category="inline-code"></block> 和<block ref="22fe67c2e87caff18249cf1804bbeaad" prefix=" " category="inline-code"></block>。請參閱<block ref="e527f95d8e68b368d64d0d2dab643ea1" category="inline-link-rx"></block> 驗證平台上的叢集連接埠是否正確。</block>
+  <block id="ce86a637b15bcd24602c029445c6ecb5" category="paragraph">此程序需要同時使用 ONTAP 命令和 Broadcom 交換器命令、除非另有說明、否則會使用 ONTAP 命令。</block>
+  <block id="5ea8c6e5f4563fff82293f272dc6f6ed" category="paragraph">在此程序期間、不需要運作中的交換器間連結（ISL）。這是因為RCF版本變更可能會暫時影響ISL連線。為了確保叢集作業不中斷、下列程序會在執行目標交換器上的步驟時、將所有叢集生命體移轉至作業夥伴交換器。</block>
+  <block id="331d3619bd86486daa8ae20287b042b0" category="inline-link">KB ：如何清除 Broadcom 互連交換器上的組態、同時保持遠端連線</block>
+  <block id="2ad76ee2dd44393b128aa703e18c0180" category="admonition">在安裝新的交換器軟體版本和 RCFs 之前、請先使用<block ref="0dbbaa06eaeff384c85940b756e5a890" category="inline-link-rx"></block>。如果您必須完全清除交換器設定、則需要再次執行基本組態。您必須使用序列主控台連線至交換器、因為完整的組態刪除會重設管理網路的組態。</block>
+  <block id="655ebdf839055b53c81fe98843842372" category="list-text">顯示連接至叢集交換器之每個節點上的叢集連接埠：<block ref="633709925611b54d23e52bde1cb56811" prefix=" " category="inline-code"></block></block>
+  <block id="9d7316571cefaae2ca32e98fc9e57981" category="list-text">確認所有叢集連接埠都正常運作：<block ref="229e8d1240617e0b97c680c36bbc9564" prefix=" " category="inline-code"></block></block>
+  <block id="404e35375d78f3af8db8d2ab71618ce7" category="list-text">確認所有叢集介面（l生命）都位於主連接埠：<block ref="fb5130635551fff679ab6d902eaff8d9" prefix=" " category="inline-code"></block></block>
+  <block id="40bdb15fb49f18cee766c49c83713e34" category="list-text">驗證叢集是否顯示兩個叢集交換器的資訊。</block>
+  <block id="a76ff2554d27751da451d7ba735995b2" category="paragraph">從 ONTAP 9.8 開始、請使用命令：<block ref="c57378c3b3bb81c6b42a2b31a30ddda7" prefix=" " category="inline-code"></block></block>
+  <block id="5a830b76ff5a71db59759b13f383410c" category="open-title">更新版本ONTAP</block>
+  <block id="8db6b188941318108123dd47b9038cf7" category="paragraph">對於 ONTAP 9.7 及更早版本、請使用命令：<block ref="7ca607e345a217b6fb9148234fe84d0c" prefix=" " category="inline-code"></block></block>
+  <block id="a3b40857ce7fb3046b527517e75db42e" category="list-text">驗證叢集是否正常：<block ref="639161158d7426b3865ce9c5a6f648b3" prefix=" " category="inline-code"></block></block>
+  <block id="7da2d511ceda949386786cd3a9b0904c" category="list-text">如果您尚未這麼做、請將下列命令的輸出複製到記錄檔、以儲存目前的交換器組態：<block ref="d064a73c32d00bf384204782a696a298" prefix=" " category="inline-code"></block></block>
+  <block id="044db7e4b2e2480e0b918af88e09b16c" category="list-text">SSH 進入交換器。</block>
+  <block id="b216a46caec0572ad44c6c3b8b20e09c" category="paragraph">只有當從交換器的連接埠移除所有叢集生命期、且交換器已準備好清除組態時、才能繼續進行。</block>
+  <block id="48ca6f7074b4cd6ad17a0b10e124e059" category="list-text">進入權限模式：</block>
+  <block id="3085a2f68e00244f5ad273171421c4a3" category="list-text">複製並貼上下列命令以移除先前的 RCF 組態（視先前使用的 RCF 版本而定、如果沒有特定設定、某些命令可能會產生錯誤）：</block>
+  <block id="3dcdf9c7761ce642c5fe2fe73d425b75" category="list-text">將執行組態儲存至啟動組態：</block>
+  <block id="b48ffac2fb8952951818ab2ce539c1d3" category="list-text">重新啟動交換器：</block>
+  <block id="d03fee12ab01ee4f556908abcba26347" category="list-text">使用 SSH 再次登入交換器以完成 RCF 安裝。</block>
+  <block id="a8935c8fdc41e9990bb4a300a40c1700" category="list-text">如果交換器上已安裝額外的連接埠授權、您必須修改 RCF 以設定額外的授權連接埠。請參閱 <block ref="4d3fc05ce7b1ba9afd520aecf6c7f3bb" category="inline-link-macro-rx"></block> 以取得詳細資料。</block>
+  <block id="63f7338fc9ee539e34242e8d03110038" category="list-text">使用下列傳輸傳輸協定之一、將RCF複製到交換器CS2的bootflash：FTP、TFTP、SFTP或scp。</block>
+  <block id="b211f67e6e9195c32683368a53542802" category="paragraph">此範例顯示 SFTP 用於將 RCF 複製到交換器 CS2 上的 bootflash ：</block>
+  <block id="c77174e35b7f7fc235a87561809ad614" category="list-text">檢查的橫幅輸出<block ref="db837131dc56fab41bddc52d5aff8865" prefix=" " category="inline-code"></block> 命令。您必須閱讀並遵循這些指示、以確保交換器的組態和操作正確無誤。</block>
+  <block id="420b545896cb1c9b03dbccd44bf33f86" category="list-text">在交換器上、確認附加授權連接埠在應用 RCF 之後出現：</block>
+  <block id="2a886bfc4f98f8b2263d47853859d640" category="list-text">驗證交換器 CS2 上的連接埠：<block ref="3ecfeafb159bbded4fdecd6f5a860f4a" prefix=" " category="inline-code"></block></block>
+  <block id="818dbe7dc43a870c6906959f7d426ba7" category="list-text">驗證叢集中所有節點的 e0b 連接埠是否正常運作：<block ref="856f897c52a15ad9c779d1f7b82c2593" prefix=" " category="inline-code"></block></block>
+  <block id="7780adb3deb169c3e834888c0fec0145" category="list-text">[[step17]] 在叢集交換器 CS1 上、關閉連接至節點叢集連接埠的連接埠。</block>
+  <block id="7fc0653470d537d0d0fc3997f25d581b" category="list-text">驗證叢集LIF是否已移轉至交換器CS2上裝載的連接埠。這可能需要幾秒鐘的時間。<block ref="fb5130635551fff679ab6d902eaff8d9" prefix=" " category="inline-code"></block></block>
+  <block id="b0553791d0540be1d52514a1a47621f6" category="list-text">在交換器 CS1 上重複步驟 4 至 14 。</block>
+  <block id="9cb99e0cdd58aac4297608fa8d8ef89b" category="list-text">在叢集生命體上啟用自動還原：<block ref="478474aa0db28144d5db02c478cd5215" prefix=" " category="inline-code"></block></block>
+  <block id="e23c199f14d9e7bf9dbb9da03bf726a2" category="list-text">重新開機交換器CS1。您可以這樣做、觸發叢集生命期以恢復到其主連接埠。您可以在交換器重新開機時忽略節點上報告的「叢集連接埠當機」事件。</block>
+  <block id="d9c15a3fe5ea0c8a95b7c30c068a97e8" category="list-text">在交換器 CS1 上、確認連接至叢集連接埠的交換器連接埠為 * 開啟 * 。</block>
+  <block id="5f424e43ea12971db12c054ce8992c88" category="list-text">驗證交換器 CS1 和 CS2 之間的 ISL 是否正常運作：<block ref="f366ffdad905090c14aaf5084fbd75f1" prefix=" " category="inline-code"></block></block>
+  <block id="f688ff7107bf9d836f9cd01490f96a85" category="list-text">驗證叢集生命區是否已還原至其主連接埠：<block ref="fb5130635551fff679ab6d902eaff8d9" prefix=" " category="inline-code"></block></block>
+  <block id="c1d6313b7fd8031407df0653209f4d42" category="list-text">Ping遠端叢集介面以驗證連線能力：<block ref="6d931e460f3e419ca5bc874e47132b6d" prefix=" " category="inline-code"></block></block>
+  <block id="6285269d7b8b003aed53cad1f3d13717" category="list-text">將所有叢集節點連線纜線從舊版 CS2 交換器移至新的 CS2-new 交換器。</block>
+  <block id="f8e1e48a80ce2fac4d53a95f1f1ffd18" category="paragraph">* 叢集節點連線纜線移至 CS2 新交換器 *</block>
+  <block id="e07ca5d2322ee212c9dcb668e9db443a" category="image-alt">叢集節點連線纜線移至 CS2 新交換器</block>
+  <block id="604d674dc95a98cb2db636e889289949" category="list-text">將叢集節點連線纜線從 CS1 移至新的 CS1-new 交換器。</block>
+  <block id="2e58f874fe5dd7ef46fee2c92b1e77eb" category="paragraph">* 叢集節點連線纜線移至 CS1-new switch*</block>
+  <block id="7d829570fe05df690649474b2bb97a3b" category="image-alt">叢集節點連線纜線移至 CS1-new 交換器</block>
+  <block id="ec5ea2f0318e4d906c296f5576b9c026" category="list-text">[[step6]] 如果您禁止自動建立個案、請叫用 AutoSupport 訊息來重新啟用：<block ref="9ac424c0d7b432975df36a19daf50c9c" prefix=" " category="inline-code"></block></block>
 </blocks>

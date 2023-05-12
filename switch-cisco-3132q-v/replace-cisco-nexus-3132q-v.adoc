@@ -40,7 +40,7 @@ summary: 在叢集網路中更換故障的Cisco Nexus 3132Q-V交換器是不中�
 ** 交換器的初始自訂已完成。
 
 
-* http://hwu.netapp.com["Hardware Universe"^]
+* http://["Hardware Universe"^]
 
 
 

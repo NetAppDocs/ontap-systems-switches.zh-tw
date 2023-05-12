@@ -26,9 +26,9 @@ Cisco NX-OS軟體與參考組態檔（RCF）必須安裝在Cisco Nexus 9336C-FX2
 * 如果您只安裝NX-OS並保留目前的RCF版本、則必須在RCF中檢查或設定所需的開機組態、以反映所需的開機映像。
 * 如果您需要變更開機組態以反映目前的開機映像、則必須在重新套用RCF之前執行此動作、以便在未來重新開機時產生正確的版本。
 * 安裝RCF時、您必須有與交換器的主控台連線。
-* 您必須查閱Cisco乙太網路交換器頁面上的交換器相容性表、以取得支援ONTAP 的版本、包括支援的版本、作業系統和RCF。請參閱 https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器"] 以取得更多資訊。
+* 您必須查閱Cisco乙太網路交換器頁面上的交換器相容性表、以取得支援ONTAP 的版本、包括支援的版本、作業系統和RCF。請參閱 https://["Cisco乙太網路交換器"] 以取得更多資訊。
 * RCF中的命令語法與NX-OS版本中的命令語法之間可能存在相依性。
-* 您必須參閱Cisco網站上提供的適當軟體與升級指南、以取得Cisco Nexus 9000系列交換器上Cisco交換器升級與降級程序的完整文件。請參閱 https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html["Cisco Nexus 9000系列交換器"] 以取得更多資訊。
+* 您必須參閱Cisco網站上提供的適當軟體與升級指南、以取得Cisco Nexus 9000系列交換器上Cisco交換器升級與降級程序的完整文件。請參閱 https://["Cisco Nexus 9000系列交換器"] 以取得更多資訊。
 * 您必須擁有目前的RCF。
 
 
@@ -36,7 +36,7 @@ Cisco NX-OS軟體與參考組態檔（RCF）必須安裝在Cisco Nexus 9336C-FX2
 
 ===== 初始設定
 
-本程序中的範例使用兩個節點。這些節點使用兩個100GbE叢集互連連接埠e3a和e3b、如同A400控制器。請參閱 https://hwu.netapp.com["Hardware Universe"] 驗證平台上的叢集連接埠是否正確。
+本程序中的範例使用兩個節點。這些節點使用兩個100GbE叢集互連連接埠e3a和e3b、如同A400控制器。請參閱 https://["Hardware Universe"] 驗證平台上的叢集連接埠是否正確。
 
 
 NOTE: 命令輸出可能會因ONTAP 不同版本的不相同而有所差異。
@@ -651,7 +651,7 @@ cs2#
 . 執行交換器的基本設定。
 
 
-. [[step11]使用下列傳輸協定之一、將RCF複製到交換器CS2的bootflash：FTP、TFTP、SFTP或scp。如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-command-reference-list.html["Cisco Nexus 9000系列NX-OS命令參考指南"]。
+. [[step11]使用下列傳輸協定之一、將RCF複製到交換器CS2的bootflash：FTP、TFTP、SFTP或scp。如需Cisco命令的詳細資訊、請參閱中的適當指南 https://["Cisco Nexus 9000系列NX-OS命令參考指南"]。
 +
 此範例顯示使用TFTP將RCF複製到交換器CS2上的bootflash。
 
@@ -666,7 +666,7 @@ Trying to connect to tftp server...Connection to Server Established.
 TFTP get operation was successful
 Copy complete, now saving to disk (please wait)...
 ----
-. [[step12]套用先前下載至bootflash的RCF。如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-command-reference-list.html["Cisco Nexus 9000系列NX-OS命令參考指南"]。
+. [[step12]套用先前下載至bootflash的RCF。如需Cisco命令的詳細資訊、請參閱中的適當指南 https://["Cisco Nexus 9000系列NX-OS命令參考指南"]。
 +
 此範例顯示在交換器CS2上安裝的RCF檔案「Nexus _9336C_RCF-v1.6-Cluster-HA-Breakout.txt"。
 
@@ -729,7 +729,7 @@ cs2# show banner motd
 
 . 驗證RCF版本和交換器設定是否正確之後、請將執行組態檔複製到啟動組態檔。
 +
-如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-command-reference-list.html["Cisco Nexus 9000系列NX-OS命令參考指南"]。
+如需Cisco命令的詳細資訊、請參閱中的適當指南 https://["Cisco Nexus 9000系列NX-OS命令參考指南"]。
 
 
 
@@ -1030,8 +1030,8 @@ RPC status:
 * 交換器必須完全正常運作（記錄中不應有錯誤或類似問題）。
 * 如果您只安裝NX-OS並保留目前的RCF版本、則必須在RCF中檢查或設定所需的開機變數、以反映所需的開機映像。
 * 如果您需要變更開機變數以反映目前的開機映像、則必須在重新套用RCF之前執行此動作、以便在未來重新開機時產生正確的版本。
-* 您必須參閱Cisco網站上提供的適當軟體與升級指南、以取得Cisco儲存設備升級與降級程序的完整文件。請參閱 https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html["Cisco Nexus 9000系列交換器"] 以取得更多資訊。
-* 100個GbE連接埠的數量是在上可用的參考組態檔（RCT）中定義 https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器"] 頁面。
+* 您必須參閱Cisco網站上提供的適當軟體與升級指南、以取得Cisco儲存設備升級與降級程序的完整文件。請參閱 https://["Cisco Nexus 9000系列交換器"] 以取得更多資訊。
+* 100個GbE連接埠的數量是在上可用的參考組態檔（RCT）中定義 https://["Cisco乙太網路交換器"] 頁面。
 
 
 
@@ -1227,7 +1227,7 @@ st2#
 ----
 . [[step9]]使用下列傳輸協定之一、將交換器ST2上的RCF複製到交換器bootflash：FTP、HTTP、TFTP、SFTP或scp。
 +
-如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-command-reference-list.html["Cisco Nexus 9000系列NX-OS命令參考指南"]。
+如需Cisco命令的詳細資訊、請參閱中的適當指南 https://["Cisco Nexus 9000系列NX-OS命令參考指南"]。
 
 +
 以下範例顯示HTTP用於將RCF複製到交換器ST2上的bootflash：
@@ -1312,7 +1312,7 @@ st2#
 ----
 . [[step12]驗證軟體版本和交換器設定是否正確之後、請將執行組態檔複製到交換器ST2上的啟動組態檔。
 +
-如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-command-reference-list.html["Cisco Nexus 9000系列NX-OS命令參考指南"]。
+如需Cisco命令的詳細資訊、請參閱中的適當指南 https://["Cisco Nexus 9000系列NX-OS命令參考指南"]。
 
 +
 以下範例顯示「執行組態」檔案已成功複製到「儲存組態」檔案：
@@ -1399,7 +1399,7 @@ There are no entries matching your query.
 .步驟
 . 使用下列傳輸傳輸協定之一、將交換器sh2上的RCF複製到交換器bootflash：FTP、HTTP、TFTP、SFTP或scp。
 +
-如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-command-reference-list.html["Cisco Nexus 9000系列NX-OS命令參考指南"]。
+如需Cisco命令的詳細資訊、請參閱中的適當指南 https://["Cisco Nexus 9000系列NX-OS命令參考指南"]。
 
 +
 下列範例顯示HTTP正用於將RCF複製到交換器sh2上的bootflash：
@@ -1489,7 +1489,7 @@ sh2#
 ----
 . [[step4]]驗證軟體版本和交換器設定是否正確之後、請將「執行組態」檔案複製到交換器sh2上的啟動組態檔。
 +
-如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-command-reference-list.html["Cisco Nexus 9000系列NX-OS命令參考指南"]。
+如需Cisco命令的詳細資訊、請參閱中的適當指南 https://["Cisco Nexus 9000系列NX-OS命令參考指南"]。
 
 +
 以下範例顯示「執行組態」檔案已成功複製到「儲存組態」檔案：

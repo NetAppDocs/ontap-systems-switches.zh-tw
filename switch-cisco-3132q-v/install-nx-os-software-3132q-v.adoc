@@ -24,7 +24,7 @@ summary: 您可以使用此程序在Nexus 3132Q-V叢集交換器上安裝NX-OS�
 
 .建議的文件
 * link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器"^]。請參閱交換器相容性表、以瞭解支援ONTAP 的功能表和NX-OS版本。
-* https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000系列交換器"^]。如需Cisco交換器升級與降級程序的完整文件、請參閱Cisco網站上提供的適當軟體與升級指南。
+* https://["Cisco Nexus 3000系列交換器"^]。如需Cisco交換器升級與降級程序的完整文件、請參閱Cisco網站上提供的適當軟體與升級指南。
 
 
 
@@ -51,7 +51,7 @@ Pinging 172.19.2.1 with 0 bytes of data:
 Reply From 172.19.2.1: icmp_seq = 0. time= 5910 usec.
 ----
 ====
-. 使用下列傳輸協定之一、將NX-OS軟體複製到Nexus 3132Q-V交換器：FTP、TFTP、SFTP或scp。如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000系列NX-OS命令參考指南"^]。
+. 使用下列傳輸協定之一、將NX-OS軟體複製到Nexus 3132Q-V交換器：FTP、TFTP、SFTP或scp。如需Cisco命令的詳細資訊、請參閱中的適當指南 https://["Cisco Nexus 3000系列NX-OS命令參考指南"^]。
 +
 .顯示範例
 [%collapsible]

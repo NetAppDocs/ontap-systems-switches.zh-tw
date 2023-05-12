@@ -19,14 +19,14 @@ summary: 您必須在NetApp CN1610叢集交換器上安裝FastPath軟體和參�
 * 所有叢集連接埠都必須正常運作。
 * 所有叢集邏輯介面（LIF）都必須正常運作、而且不得移轉。
 * 這個指令（權限：進階）「叢集ping叢集節點節點節點1」必須指出、所有路徑上的「大於PMTU通訊」都會成功。ONTAP
-* 您必須參閱上的交換器相容性表 http://mysupport.netapp.com/NOW/download/software/cm_switches_ntap/["NetApp CN1601與CN1610交換器"^] 頁面、以取得所支援的FastPath、RCF及ONTAP 支援的版本。
+* 您必須參閱上的交換器相容性表 http://["NetApp CN1601與CN1610交換器"^] 頁面、以取得所支援的FastPath、RCF及ONTAP 支援的版本。
 +
 RCF和FastPath版本中的命令語法之間可能存在命令相依性。
 
 
 
 
-NOTE: 在RCF 1.2版中、由於安全考量、已明確停用對Telnet的支援。若要避免安裝RCF 1.2時發生連線問題、您必須確認已啟用Secure Shell（SSH）。。 https://library.netapp.com/ecm/ecm_get_file/ECMP1117874["NetApp®CN1610交換器管理員指南"^] 有更多關於SSH的資訊。
+NOTE: 在RCF 1.2版中、由於安全考量、已明確停用對Telnet的支援。若要避免安裝RCF 1.2時發生連線問題、您必須確認已啟用Secure Shell（SSH）。。 https://["NetApp®CN1610交換器管理員指南"^] 有更多關於SSH的資訊。
 
 .關於這項工作
 本程序中的範例使用下列交換器和節點命名法：
@@ -38,7 +38,7 @@ NOTE: 在RCF 1.2版中、由於安全考量、已明確停用對Telnet的支援�
 * 「cluster：*>」提示會指出叢集的名稱。
 * 每個節點上的叢集連接埠名稱為e1a和E2A。
 +
-。 https://hwu.netapp.com/["Hardware Universe"^] 有更多有關平台所支援的實際叢集連接埠資訊。
+。 https://["Hardware Universe"^] 有更多有關平台所支援的實際叢集連接埠資訊。
 
 * NetApp叢集交換器支援的交換器間連結（ISL）是連接埠0/13到0/16。
 * NetApp叢集交換器支援的節點連線是連接埠0/1到0/12。

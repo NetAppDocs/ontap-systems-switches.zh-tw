@@ -32,4 +32,4 @@ summary: 如果您想要建置ONTAP 具有兩個以上節點的叢集、您需�
 * 大部分的儲存系統控制器都是透過e0M介面來管理、方法是連接至乙太網路服務連接埠（扳手圖示）。在ESIA800和ESIEA700系統上AFF 、e0M介面使用專用的乙太網路連接埠。AFF
 
 
-請參閱 https://hwu.netapp.com["Hardware Universe"^] 以取得最新資訊。
+請參閱 https://["Hardware Universe"^] 以取得最新資訊。

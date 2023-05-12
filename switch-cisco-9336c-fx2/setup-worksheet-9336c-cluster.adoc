@@ -329,7 +329,7 @@ summary: 如果您想要記錄支援的平台、您必須使用完整的佈線�
 
 == 空白的佈線工作表
 
-您可以使用空白的佈線工作表來記錄叢集中支援作為節點的平台。的_支援叢集連線_區段 https://hwu.netapp.com["Hardware Universe"^] 定義平台所使用的叢集連接埠。
+您可以使用空白的佈線工作表來記錄叢集中支援作為節點的平台。的_支援叢集連線_區段 https://["Hardware Universe"^] 定義平台所使用的叢集連接埠。
 
 [cols="1, 1, 1, 1"]
 |===
@@ -584,4 +584,4 @@ summary: 如果您想要記錄支援的平台、您必須使用完整的佈線�
 100G ISL至交換器A連接埠36
 
 |===
-請參閱 https://hwu.netapp.com/Switch/Index["Hardware Universe"] 如需交換器連接埠的詳細資訊、
+請參閱 https://["Hardware Universe"] 如需交換器連接埠的詳細資訊、

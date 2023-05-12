@@ -16,7 +16,7 @@ summary: 對於Cisco Nexus 9336C-FX2交換器的安裝與維護、請務必檢�
 [role="lead"]
 對於Cisco Nexus 9336C-FX2交換器的安裝與維護、請務必檢閱特定的交換器與控制器文件、以設定Cisco 9336-FX2交換器與ONTAP 叢集。
 
-若要設定Cisco Nexus 9336C-FX2共用交換器、請參閱 https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Cisco Nexus 9000系列交換器支援"] 頁面。
+若要設定Cisco Nexus 9336C-FX2共用交換器、請參閱 https://["Cisco Nexus 9000系列交換器支援"] 頁面。
 
 |===
 | 文件標題 | 說明 

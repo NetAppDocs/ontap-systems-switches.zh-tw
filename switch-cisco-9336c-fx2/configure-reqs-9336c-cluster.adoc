@@ -30,7 +30,7 @@ summary: 從S299.1開始ONTAP 、您可以使用Cisco Nexus 9336C-FX2交換器�
 
 請確定：
 
-* 交換器的纜線和纜線連接器數量和類型都適當。請參閱 https://hwu.netapp.com["Hardware Universe"^]。
+* 交換器的纜線和纜線連接器數量和類型都適當。請參閱 https://["Hardware Universe"^]。
 * 視您初始設定的交換器類型而定、您需要使用隨附的主控台纜線連接至交換器主控台連接埠。
 
 
@@ -43,7 +43,7 @@ summary: 從S299.1開始ONTAP 、您可以使用Cisco Nexus 9336C-FX2交換器�
 * 用於管理網路流量的IP子網路
 * 每個儲存系統控制器和所有適用交換器的主機名稱和IP位址
 * 大部分的儲存系統控制器都是透過e0M介面來管理、方法是連接至乙太網路服務連接埠（扳手圖示）。在E0M介面上AFF 、E0M AFF 介面使用專用的乙太網路連接埠、可在ESIA800和ESIEA700s系統上使用。
-* 請參閱 https://hwu.netapp.com["Hardware Universe"^] 以取得最新資訊。
+* 請參閱 https://["Hardware Universe"^] 以取得最新資訊。
 
 
-如需交換器初始組態的詳細資訊、請參閱下列指南： https://www.cisco.com/c/en/us/td/docs/dcn/hw/nx-os/nexus9000/9336c-fx2-e/cisco-nexus-9336c-fx2-e-nx-os-mode-switch-hardware-installation-guide.html["Cisco Nexus 9336C-FX2安裝與升級指南"^]。
+如需交換器初始組態的詳細資訊、請參閱下列指南： https://["Cisco Nexus 9336C-FX2安裝與升級指南"^]。

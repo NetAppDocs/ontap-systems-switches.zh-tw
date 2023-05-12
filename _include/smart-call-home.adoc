@@ -13,4 +13,4 @@ Smart Call Home可監控網路上的硬體和軟體元件。發生關鍵系統�
 * Cisco SMARTnet服務必須就位、才能登錄裝置。
 
 
-。 http://www.cisco.com/c/en/us/products/switches/index.html["Cisco支援網站"^] 包含有關設定Smart Call Home的命令資訊。
+。 http://["Cisco支援網站"^] 包含有關設定Smart Call Home的命令資訊。

@@ -25,6 +25,43 @@ B16-53248叢集交換器基礎模式已獲得16個10GbE或25GbE連接埠和2個1
 
 
  a| 
+SW-BS-53248A2-8P-2P
+ a| 
+Broadcom 8Pt - 10G25G + 2pt-40G100G 授權金鑰、 X190005/R
+ a| 
+EFOS 3.4.4.6及更新版本
+
+
+
+ a| 
+SW-BS-53248A2-8P-1025G
+ a| 
+Broadcom 8 連接埠 10G25G 授權金鑰、 X190005/R
+ a| 
+EFOS 3.4.4.6及更新版本
+
+
+
+ a| 
+SW-BES53248A2-6P-40-100g
+ a| 
+Broadcom 6 連接埠 40G100G 授權金鑰、 X190005/R
+ a| 
+EFOS 3.4.4.6及更新版本
+
+|===
+
+
+== 舊版授權
+
+下表列出可在 BS-53248 叢集交換器上使用的舊版授權：
+
+[cols="1,2,3"]
+|===
+| 授權類型 | 授權詳細資料 | 支援的韌體版本 
+
+
+ a| 
 SW-BE-53248A1-G1-8P-LIC
  a| 
 Broadcom 8P 10-25、2P40至100授權金鑰、X190005/R
@@ -196,7 +233,7 @@ License Index  License Type      Status
 ====
 [listing, subs="+quotes"]
 ----
-(cs2)# *show port all \| exclude Detach*
+(cs2)# *show port all | exclude Detach*
 
                  Admin     Physical   Physical   Link   Link    LACP   Actor
 Intf      Type   Mode      Mode       Status     Status Trap    Mode   Timeout
@@ -274,7 +311,7 @@ License Index  License Type              Status
 ====
 [listing, subs="+quotes"]
 ----
-(cs2)# *show port all \| exclude Detach*
+(cs2)# *show port all | exclude Detach*
 
                  Admin     Physical   Physical   Link   Link    LACP   Actor
 Intf      Type   Mode      Mode       Status     Status Trap    Mode   Timeout

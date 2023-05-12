@@ -40,7 +40,7 @@ summary: 您可以在初次設定Nexus 2300YC交換器之後安裝RCF。
 
 
 .關於這項工作
-此程序需要同時使用ONTAP 支援指令和 https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html#InstallandUpgrade["Cisco Nexus 9000系列交換器"^]；ONTAP 除非另有說明、否則會使用指令。
+此程序需要同時使用ONTAP 支援指令和 https://["Cisco Nexus 9000系列交換器"^]；ONTAP 除非另有說明、否則會使用指令。
 
 .步驟
 . 顯示連接至叢集交換器之每個節點上的叢集連接埠：
@@ -227,7 +227,7 @@ cs2#
 .. 執行交換器的基本設定。
 
 
-. 使用下列傳輸傳輸協定之一、將RCF複製到交換器CS2的bootflash：FTP、TFTP、SFTP或scp。如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html#InstallandUpgrade["Cisco Nexus 9000系列交換器"^] 指南：
+. 使用下列傳輸傳輸協定之一、將RCF複製到交換器CS2的bootflash：FTP、TFTP、SFTP或scp。如需Cisco命令的詳細資訊、請參閱中的適當指南 https://["Cisco Nexus 9000系列交換器"^] 指南：
 +
 .顯示範例
 [%collapsible]
@@ -255,7 +255,7 @@ Copy complete.
 ====
 . 將先前下載的RCF套用至bootFlash。
 +
-如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html#InstallandUpgrade["Cisco Nexus 9000系列交換器"^] 指南：
+如需Cisco命令的詳細資訊、請參閱中的適當指南 https://["Cisco Nexus 9000系列交換器"^] 指南：
 
 +
 .顯示範例
@@ -358,7 +358,7 @@ NOTE: 第一次套用RCF時、預期會出現*錯誤：無法寫入VSH命令*訊
 
 . 驗證RCF版本和交換器設定是否正確之後、請將執行組態檔複製到啟動組態檔。
 +
-如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html#InstallandUpgrade["Cisco Nexus 9000系列交換器"^] 指南：
+如需Cisco命令的詳細資訊、請參閱中的適當指南 https://["Cisco Nexus 9000系列交換器"^] 指南：
 
 +
 [listing, subs="+quotes"]

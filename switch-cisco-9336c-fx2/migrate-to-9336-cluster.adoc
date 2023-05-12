@@ -29,8 +29,8 @@ summary: 您可以將不中斷營運的舊Cisco叢集交換器移轉至ONTAP Cis
 ** 任何站台自訂、例如DNS、NTP、SMTP、SNMP、和SSH、在新交換器上設定。
 
 
-* 您可以存取上的交換器相容性表 https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器"^] 頁面、以取得支援ONTAP 的功能表、NX-OS和RCF版本。
-* 您已檢閱Cisco網站上提供的適當軟體與升級指南、以瞭解Cisco交換器升級與降級程序、網址為 https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Cisco Nexus 9000系列交換器支援"^] 頁面。
+* 您可以存取上的交換器相容性表 https://["Cisco乙太網路交換器"^] 頁面、以取得支援ONTAP 的功能表、NX-OS和RCF版本。
+* 您已檢閱Cisco網站上提供的適當軟體與升級指南、以瞭解Cisco交換器升級與降級程序、網址為 https://["Cisco Nexus 9000系列交換器支援"^] 頁面。
 
 
 
@@ -38,7 +38,7 @@ summary: 您可以將不中斷營運的舊Cisco叢集交換器移轉至ONTAP Cis
 == 移轉交換器
 
 .關於範例
-本程序中的範例使用兩個節點。這些節點使用兩個10GbE叢集互連連接埠e0a和e0b。請參閱 https://hwu.netapp.com/["Hardware Universe"^] 驗證平台上的叢集連接埠是否正確。
+本程序中的範例使用兩個節點。這些節點使用兩個10GbE叢集互連連接埠e0a和e0b。請參閱 https://["Hardware Universe"^] 驗證平台上的叢集連接埠是否正確。
 
 
 NOTE: 命令輸出可能會因ONTAP 不同版本的資訊而有所不同。
@@ -57,7 +57,9 @@ NOTE: 命令輸出可能會因ONTAP 不同版本的資訊而有所不同。
 image::../media/Initial_setup.png[初始交換器設定]
 
 .關於這項工作
-此程序需要同時使用ONTAP 支援指令和 https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Nexus 9000系列交換器"^] 命令；ONTAP 除非另有說明、否則會使用指令。
+此程序需要同時使用ONTAP 支援指令和 https://["Nexus 9000系列交換器"^] 命令；ONTAP 除非另有說明、否則會使用指令。
+
+在此程序期間、不需要運作中的交換器間連結（ISL）。這是因為RCF版本變更可能會暫時影響ISL連線。為確保叢集作業不中斷、下列程序會在目標交換器上執行步驟時、將所有叢集生命體移轉至作業夥伴交換器。
 
 
 
@@ -291,12 +293,12 @@ node1      true    true          false
 node2      true    true          false
 ----
 ====
-. 將所有叢集節點連線從舊的CS2交換器移至新的CS2交換器。
+. 將所有叢集節點連線纜線從舊版 CS2 交換器移至新的 CS2-new 交換器。
 +
-*叢集節點連線已移至CS2-new交換器*
+* 叢集節點連線纜線移至 CS2 新交換器 *
 
 +
-image::../media/new_switch_cs1.png[叢集節點連線已移至CS2新交換器]
+image::../media/new_switch_cs1.png[叢集節點連線纜線移至 CS2 新交換器]
 
 . 確認移至CS2-new的網路連線健全狀況：
 +
@@ -412,12 +414,12 @@ node1      true    true          false
 node2      true    true          false
 ----
 ====
-. 將連線從CS1移至新的CS1交換器。
+. 將叢集節點連線纜線從 CS1 移至新的 CS1-new 交換器。
 +
-*叢集節點連線已移至CS1-new交換器*
+* 叢集節點連線纜線移至 CS1-new switch*
 
 +
-image::../media/new_switch_cs2.png[叢集節點連線已移至CS1新交換器]
+image::../media/new_switch_cs2.png[叢集節點連線纜線移至 CS1-new 交換器]
 
 . 確認移至CS1-new的網路連線健全狀況：
 +
@@ -703,4 +705,5 @@ cluster1::*>
 
 --
 ====
-如果您禁止自動建立個案、請叫用AutoSupport 下列訊息重新啟用此功能：「System Node AutoSupport 現象叫用節點*-type all -most MAn=end」
+. [[step6]] 如果您禁止自動建立個案、請叫用 AutoSupport 訊息來重新啟用： `system node autosupport invoke -node * -type all -message MAINT=END`
+

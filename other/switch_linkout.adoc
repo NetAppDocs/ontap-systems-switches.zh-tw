@@ -12,11 +12,11 @@ summary: 您可以將這些連結用於其他交換器機型。
 
 您可以使用這些連結來尋找舊版叢集和stprage交換器的文件。這些連結會帶您前往不同的文件網站。
 
-* https://mysupport.netapp.com/documentation/docweb/index.html?productID=62376&language=en-US["Cisco Nexus 5596"]
-* https://mysupport.netapp.com/documentation/docweb/index.html?productID=62373&language=en-USNetApp["CN1601"]
+* https://["Cisco Nexus 5596"]
+* https://["CN1601"]
 
 
 
 NOTE: Nexus 5596UP/5596T叢集交換器已不再可從NetApp取得、但Cisco僅支援有限的Tim。
 
-客戶可在中使用截至硬體支援結束的支援範圍內AFF 的支援功能、以供客戶參考FAS https://mysupport.netapp.com/documentation/productsatoz/index.html?archive=true["歸檔"]。
+客戶可在中使用截至硬體支援結束的支援範圍內AFF 的支援功能、以供客戶參考FAS https://["歸檔"]。

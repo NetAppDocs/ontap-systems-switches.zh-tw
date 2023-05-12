@@ -23,7 +23,7 @@ summary: 您可以使用此程序、在Nexus 9336C-FX2叢集交換器上安裝NX
 * 交換器組態的目前備份。
 * 完全正常運作的叢集（記錄檔中沒有錯誤或類似問題）。
 * link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器頁面"^]。請參閱交換器相容性表、以瞭解支援ONTAP 的功能表和NX-OS版本。
-* Cisco網站提供適當的軟體與升級指南、適用於Cisco交換器升級與降級程序。請參閱 https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000系列交換器"^]。
+* Cisco網站提供適當的軟體與升級指南、適用於Cisco交換器升級與降級程序。請參閱 https://["Cisco Nexus 9000系列交換器"^]。
 
 
 .關於範例

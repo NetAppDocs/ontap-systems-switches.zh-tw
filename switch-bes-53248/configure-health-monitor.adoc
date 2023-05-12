@@ -15,11 +15,13 @@ summary: 您可以安裝叢集交換器健全狀況監視器（CSHM）組態檔�
 
 在版本9.5P7及更早版本、以及9.6P2及更早版本中、您必須分別下載CSHM檔案ONTAP 。在發行版本9.5P8及更新版本、9.6P3及更新版本、以及9.7及更新版本中、CSHM檔案與更新版本一起搭售ONTAP ONTAP 。
 
-.您需要的產品
+.開始之前
 請確定ONTAP 支援並執行不中斷的叢集。
 
+請依照下列步驟安裝叢集交換器健全狀況監視器（ CSHM ）組態檔案。
+
 .步驟
-. 根據對應ONTAP 的更新版本下載CSHM Zip檔案。此檔案可從頁面取得： https://mysupport.netapp.com/NOW/cgi-bin/software/["NetApp軟體下載"^]
+. 根據對應ONTAP 的更新版本下載CSHM Zip檔案。此檔案可從頁面取得： https://["NetApp軟體下載"^]
 +
 .. 在「軟體」下載頁面上、選取*「交換器健全狀況監視器組態檔案」*。
 .. 選取「Platform =* ONTAP S供*參考*」、然後按一下「* Go！*」。

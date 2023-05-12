@@ -67,7 +67,7 @@ summary: 如果您有雙節點無交換式叢集、則可在不中斷營運的�
 * N1_clus2是第一個叢集LIF、用於連接至節點n1的叢集交換器C2。
 * n2_clus1是第一個叢集LIF、用於連接至節點n2的叢集交換器C1。
 * n2_clus2是第二個叢集LIF、用於連接至節點n2的叢集交換器C2。
-* 10 GbE和40/100 GbE連接埠的數量是在上可用的參考組態檔（RCFs）中定義 https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco®叢集網路交換器參考組態檔案下載"^] 頁面。
+* 10 GbE和40/100 GbE連接埠的數量是在上可用的參考組態檔（RCFs）中定義 https://["Cisco®叢集網路交換器參考組態檔案下載"^] 頁面。
 
 
 [NOTE]
@@ -172,21 +172,21 @@ Enable Switchless Cluster Detection: true
 +
 .. 請前往NetApp支援網站上的「Cisco乙太網路交換器」頁面。
 +
-http://support.netapp.com/NOW/download/software/cm_switches/["Cisco乙太網路交換器"^]
+http://["Cisco乙太網路交換器"^]
 
 .. 請在該頁的表格中記下您的交換器和所需的軟體版本。
 .. 下載適當版本的RCF。
 .. 按一下「*說明*」頁面上的「*繼續*」、接受授權合約、然後依照「*下載*」頁面上的指示下載RCF。
 .. 下載適當版本的映像軟體。
 +
-https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco叢集與管理網路交換器參考組態檔案下載頁面"^]
+https://["Cisco叢集與管理網路交換器參考組態檔案下載頁面"^]
 
 
 
 . 按一下「*說明*」頁面上的「*繼續*」、接受授權合約、然後依照「*下載*」頁面上的指示下載RCF。
 . 在Nexus 3232C交換器C1和C2上、停用所有面向節點的連接埠C1和C2、但請勿停用ISL連接埠E1/31至32。
 +
-如需Cisco命令的詳細資訊、請參閱中所列的指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
+如需Cisco命令的詳細資訊、請參閱中所列的指南 https://["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
 
 +
 .顯示範例
@@ -218,7 +218,7 @@ C2(config)# exit
 「How port-channel Summary」
 
 +
-如需Cisco命令的詳細資訊、請參閱中所列的指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
+如需Cisco命令的詳細資訊、請參閱中所列的指南 https://["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
 
 +
 .顯示範例
@@ -256,7 +256,7 @@ Group Port-        Type   Protocol  Member Ports
 ====
 . 顯示交換器上的鄰近裝置清單。
 +
-如需Cisco命令的詳細資訊、請參閱中所列的指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
+如需Cisco命令的詳細資訊、請參閱中所列的指南 https://["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
 
 +
 .顯示範例
@@ -424,7 +424,7 @@ Larger than PMTU communication succeeds on 4 path(s) RPC status:
 
 . 啟用C1上的所有面向節點的連接埠。
 +
-如需Cisco命令的詳細資訊、請參閱中所列的指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
+如需Cisco命令的詳細資訊、請參閱中所列的指南 https://["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
 
 +
 .顯示範例

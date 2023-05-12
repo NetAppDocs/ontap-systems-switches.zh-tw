@@ -281,7 +281,7 @@ cs2#
 .. 執行交換器的基本設定。
 
 
-. 使用下列傳輸傳輸協定之一、將RCF複製到交換器CS2的bootflash：FTP、TFTP、SFTP或scp。如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^] 指南：
+. 使用下列傳輸傳輸協定之一、將RCF複製到交換器CS2的bootflash：FTP、TFTP、SFTP或scp。如需Cisco命令的詳細資訊、請參閱中的適當指南 https://["Cisco Nexus 3000系列NX-OS命令參考資料"^] 指南：
 +
 .顯示範例
 [%collapsible]
@@ -300,7 +300,7 @@ Copy complete, now saving to disk (please wait)...
 ====
 . 將先前下載的RCF套用至bootFlash。
 +
-如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^] 指南：
+如需Cisco命令的詳細資訊、請參閱中的適當指南 https://["Cisco Nexus 3000系列NX-OS命令參考資料"^] 指南：
 
 +
 .顯示範例
@@ -384,7 +384,7 @@ NOTE: 第一次套用RCF時、預期會出現*錯誤：無法寫入VSH命令*訊
 
 . 驗證RCF版本和交換器設定是否正確之後、請將執行組態檔複製到啟動組態檔。
 +
-如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^] 指南：
+如需Cisco命令的詳細資訊、請參閱中的適當指南 https://["Cisco Nexus 3000系列NX-OS命令參考資料"^] 指南：
 
 +
 [listing]

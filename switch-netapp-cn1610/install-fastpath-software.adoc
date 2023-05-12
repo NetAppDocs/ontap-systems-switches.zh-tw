@@ -26,7 +26,7 @@ summary: 當您在NetApp交換器上安裝FastPath軟體時、必須先從第二
 * 成功的溝通途徑：ONTAP The es執行（權限：進階） `cluster ping-cluster -node node1` 命令必須指出這一點 `larger than PMTU communication` 在所有路徑上都成功。
 * 受支援版本的FastPath和ONTAP 支援的功能。
 +
-請務必參閱上的交換器相容性表 http://mysupport.netapp.com/NOW/download/software/cm_switches_ntap/["NetApp CN1601與CN1610交換器"^] 頁面、以取得支援的FastPath和ONTAP 支援的版本。
+請務必參閱上的交換器相容性表 http://["NetApp CN1601與CN1610交換器"^] 頁面、以取得支援的FastPath和ONTAP 支援的版本。
 
 
 
@@ -47,7 +47,7 @@ RCF和FastPath版本中的命令語法之間可能存在命令相依性。
 * 「cluster：*>」提示會指出叢集的名稱。
 * 每個節點上的叢集連接埠名稱為e1a和E2A。
 +
-https://hwu.netapp.com/["Hardware Universe"^] 有更多有關平台所支援的實際叢集連接埠資訊。
+https://["Hardware Universe"^] 有更多有關平台所支援的實際叢集連接埠資訊。
 
 * 支援的交換器間連結（ISL）是連接埠0/13到0/16。
 * 支援的節點連線是連接埠0/1到0/12。

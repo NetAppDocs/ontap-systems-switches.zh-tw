@@ -15,10 +15,10 @@ summary: 請遵循此程序來設定及設定Cisco Nexus 9336C-FX2交換器。
 
 .您需要的產品
 * 存取安裝站台的HTTP、FTP或TFTP伺服器、下載適用的NX-OS和參考組態檔（RCF）版本。
-* 適用的NX-OS版本、可從下載 https://software.cisco.com/download/home["Cisco軟體下載"^] 頁面。
+* 適用的NX-OS版本、可從下載 https://["Cisco軟體下載"^] 頁面。
 * 適用的授權、網路與組態資訊、以及纜線。
 * 已完成 link:setup-worksheet-9336c-cluster.html["佈線工作表"]。
-* 適用的NetApp叢集網路與管理網路RCT、可從NetApp 支援網站 The Sorgat下載 http://mysupport.netapp.com/["mysupport.netapp.com"^]。所有Cisco叢集網路和管理網路交換器都會以標準Cisco原廠預設組態送達。這些交換器也有NX-OS軟體的最新版本、但未載入RCFs。
+* 適用的NetApp叢集網路與管理網路RCT、可從NetApp 支援網站 The Sorgat下載 http://["mysupport.netapp.com"^]。所有Cisco叢集網路和管理網路交換器都會以標準Cisco原廠預設組態送達。這些交換器也有NX-OS軟體的最新版本、但未載入RCFs。
 * link:required-documentation-9336c-cluster.html["所需的交換器和ONTAP 功能文件"]。
 
 
@@ -186,7 +186,7 @@ NOTE: 如果您在此階段未儲存組態、下次重新啟動交換器時、�
 
 |===
 . 確認您在設定結束時所顯示的顯示器上所做的組態選擇、並確定您已儲存組態。
-. 檢查叢集網路交換器的版本、必要時可從將NetApp支援的軟體版本下載至交換器 https://software.cisco.com/download/home["Cisco軟體下載"^] 頁面。
+. 檢查叢集網路交換器的版本、必要時可從將NetApp支援的軟體版本下載至交換器 https://["Cisco軟體下載"^] 頁面。
 
 
 .接下來呢？

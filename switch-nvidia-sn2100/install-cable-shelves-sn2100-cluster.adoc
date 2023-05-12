@@ -15,11 +15,11 @@ summary: 如果您的系統需要將NS224磁碟機櫃纜線作為交換器附加
 
 * 透過儲存交換器連接NS224磁碟機櫃：
 +
-https://library.netapp.com/ecm/ecm_download_file/ECMLP2876580["連接交換器的NS224磁碟機櫃佈線"^]
+https://["連接交換器的NS224磁碟機櫃佈線"^]
 
 * 確認您的平台機型支援的硬體、例如儲存交換器和纜線：
 +
-https://hwu.netapp.com/["NetApp Hardware Universe"^]
+https://["NetApp Hardware Universe"^]
 
 
 

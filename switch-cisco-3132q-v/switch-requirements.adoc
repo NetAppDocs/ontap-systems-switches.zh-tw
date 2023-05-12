@@ -58,7 +58,7 @@ summary: 更換Cisco Nexus 3132Q-V叢集交換器時、您必須注意特定的�
 ** Nexus 3132Q-V
 
 
-* 10 GbE和40/100 GbE連接埠的數量是在上可用的參考組態檔（RCFs）中定義 https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco®叢集網路交換器參考組態檔案下載"^] 頁面。
+* 10 GbE和40/100 GbE連接埠的數量是在上可用的參考組態檔（RCFs）中定義 https://["Cisco®叢集網路交換器參考組態檔案下載"^] 頁面。
 * 叢集交換器使用下列連接埠來連線至節點：
 +
 ** 連接埠E1/1-40（10 GbE）：Nexus 5596

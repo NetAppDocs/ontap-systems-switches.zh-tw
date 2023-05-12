@@ -11,4 +11,4 @@ summary: 若要安裝NetApp CN1610硬體、請參閱NetApp文件。
 
 
 [role="lead"]
-若要針對叢集環境設定交換器硬體和軟體、請參閱  https://library.netapp.com/ecm/ecm_download_file/ECMP1118645["CN1601與CN1610交換器設定與組態指南"^]。
+若要針對叢集環境設定交換器硬體和軟體、請參閱  https://["CN1601與CN1610交換器設定與組態指南"^]。

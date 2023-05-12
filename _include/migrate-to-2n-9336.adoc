@@ -21,7 +21,7 @@
 ** 有對叢集交換器的主控台存取權。
 ** Nexus 9336C-FX2節點對節點交換器和交換器對交換器連線使用雙軸纜線或光纖纜線。
 +
-請參閱 https://hwu.netapp.com/SWITCH/INDEX["交換器Hardware Universe"^] 如需纜線的詳細資訊、
+請參閱 https://["交換器Hardware Universe"^] 如需纜線的詳細資訊、
 
 
 
@@ -44,7 +44,7 @@
 * 此程序中使用的叢集連接埠為e0a和e0b。
 
 
-請參閱 https://hwu.netapp.com["Hardware Universe"^] 以取得平台叢集連接埠的相關資訊。
+請參閱 https://["Hardware Universe"^] 以取得平台叢集連接埠的相關資訊。
 
 
 
@@ -277,7 +277,7 @@ Cluster
 ====
 . 從節點1上的叢集連接埠e0a拔下纜線、然後使用9336C-FX2交換器支援的適當纜線、將e0a連接至叢集交換器CS1上的連接埠1。
 +
-。 https://hwu.netapp.com/SWITCH/INDEX["交換器Hardware Universe"^] 包含纜線的詳細資訊。
+。 https://["交換器Hardware Universe"^] 包含纜線的詳細資訊。
 
 . 從節點2上的叢集連接埠e0a拔下纜線、然後使用9336C-FX2交換器支援的適當纜線、將e0a連接至叢集交換器CS1上的連接埠2。
 . 在叢集交換器CS1上啟用所有面向節點的連接埠。

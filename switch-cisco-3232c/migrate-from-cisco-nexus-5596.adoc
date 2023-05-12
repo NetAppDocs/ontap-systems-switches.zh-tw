@@ -26,8 +26,8 @@ summary: 若要使用Nexus 3232C叢集交換器取代叢集中現有的Cisco Nex
 ====
 如需詳細資訊、請參閱：
 
-* http://support.netapp.com/NOW/download/software/cm_switches/["Cisco乙太網路交換器說明頁面"^]
-* http://hwu.netapp.com["Hardware Universe"^]
+* http://["Cisco乙太網路交換器說明頁面"^]
+* http://["Hardware Universe"^]
 
 
 
@@ -46,7 +46,7 @@ summary: 若要使用Nexus 3232C叢集交換器取代叢集中現有的Cisco Nex
 * N1_clus2是第一個叢集LIF、連接至節點n1的叢集交換器2（CL2或C2）。
 * N1_clus3是第二個LIF、連接至節點n1的叢集交換器2（CL2或C2）。
 * N1_clus4是第二個LIF、連接至節點n1的叢集交換器1（CL1或C1）。-
-* 10 GbE和40/100 GbE連接埠的數量是在上可用的參考組態檔（RCFs）中定義 https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco®叢集網路交換器參考組態檔案下載"^] 頁面。
+* 10 GbE和40/100 GbE連接埠的數量是在上可用的參考組態檔（RCFs）中定義 https://["Cisco®叢集網路交換器參考組態檔案下載"^] 頁面。
 * 節點為n1、n2、n3和n4。
 
 
@@ -241,7 +241,7 @@ CL2                           cluster-network    10.10.1.102     NX5596
 +
 .. 請前往NetApp支援網站上的「Cisco乙太網路交換器」頁面。
 +
-http://support.netapp.com/NOW/download/software/cm_switches/["Cisco乙太網路交換器"^]
+http://["Cisco乙太網路交換器"^]
 
 .. 請在該頁的表格中記下您的交換器和所需的軟體版本。
 .. 下載適當版本的RCF。
@@ -388,7 +388,7 @@ RPC status:
 ====
 . 在CL1上關閉ISL 41至48、使用Cisco「shutdown」命令的作用中Nexus 5596交換器。
 +
-如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
+如需Cisco命令的詳細資訊、請參閱中的適當指南 https://["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
 
 +
 .顯示範例
@@ -408,7 +408,7 @@ RPC status:
 ====
 . 使用適當的Cisco命令、在CL1和C2之間建置暫用ISL。
 +
-如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
+如需Cisco命令的詳細資訊、請參閱中的適當指南 https://["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
 
 +
 .顯示範例
@@ -443,7 +443,7 @@ C2(config-if)# exit
 
 . 在活動Nexus 5596交換器CL1上啟動ISL連接埠45至48。
 +
-如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
+如需Cisco命令的詳細資訊、請參閱中的適當指南 https://["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
 
 +
 .顯示範例
@@ -463,7 +463,7 @@ C2(config-if)# exit
 ====
 . 驗證Nexus 5596交換器CL1上的ISL是否為「up」。
 +
-如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
+如需Cisco命令的詳細資訊、請參閱中的適當指南 https://["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
 
 +
 .顯示範例
@@ -722,7 +722,7 @@ cluster::*> network port modify -node n2 -port e0d -up-admin false
 ====
 . 關閉主動式3232C交換器C2上的ISL 24、31和32。
 +
-如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
+如需Cisco命令的詳細資訊、請參閱中的適當指南 https://["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
 
 +
 .顯示範例
@@ -754,7 +754,7 @@ C2#
 
 . 還原連接埠24上的組態、並移除C2上的暫用連接埠通道2。
 +
-如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
+如需Cisco命令的詳細資訊、請參閱中的適當指南 https://["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
 
 +
 .顯示範例
@@ -782,7 +782,7 @@ Copy Complete.
 ====
 . 輸入下列Cisco命令「no shutup」（不關機）、開啟C2（主動式3232C交換器）上的ISL連接埠31和32
 +
-如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
+如需Cisco命令的詳細資訊、請參閱中的適當指南 https://["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
 
 +
 .顯示範例
@@ -800,7 +800,7 @@ C2(config-if-range)# no shutdown
 ====
 . 驗證3232C交換器C2上的ISL連線是否為「up（正常）」。
 +
-如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
+如需Cisco命令的詳細資訊、請參閱中的適當指南 https://["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
 
 +
 連接埠eth1/31和eth1/32應指示（P）、表示兩個ISL連接埠都在連接埠通道中

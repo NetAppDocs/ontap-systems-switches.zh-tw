@@ -24,7 +24,7 @@ summary: 使用佈線映像完成控制器與交換器之間的佈線。
 
 image:9336c_image1.jpg["交換器附加"]
 
-請參閱 https://hwu.netapp.com/Switch/Index["Hardware Universe"] 如需交換器連接埠的詳細資訊、
+請參閱 https://["Hardware Universe"] 如需交換器連接埠的詳細資訊、
 
 
 
@@ -34,7 +34,7 @@ image:9336c_image1.jpg["交換器附加"]
 
 image:9336c_image2.jpg["直接附加"]
 
-請參閱 https://hwu.netapp.com/Switch/Index["Hardware Universe"] 如需交換器連接埠的詳細資訊、
+請參閱 https://["Hardware Universe"] 如需交換器連接埠的詳細資訊、
 
 
 

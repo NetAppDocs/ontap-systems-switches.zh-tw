@@ -49,7 +49,7 @@ NOTE: 購買連接埠授權即可啟動其他連接埠。
 * Bes：53224：連接埠0/55-0/56（100 GbE）
 
 
-。 https://hwu.netapp.com/Home/Index["_NetApp Hardware Universe SUR__"^] 包含ONTAP 有關支援功能的資訊、支援的EFOS韌體、以及連接至BE-53248叢集交換器的纜線。
+。 https://["_NetApp Hardware Universe SUR__"^] 包含ONTAP 有關支援功能的資訊、支援的EFOS韌體、以及連接至BE-53248叢集交換器的纜線。
 
 
 
@@ -343,7 +343,7 @@ Ports   Timeout        Speed     Active
 ====
 . 在所有節點上、移除連接至CN1610交換器CL2的纜線。
 +
-然後、您必須將所有節點上的中斷連接連接埠重新連接至新的BS-53248交換器CS2。請參閱 https://hwu.netapp.com/Home/Index["_NetApp Hardware Universe SUR__"^] 以取得核准的纜線選項。
+然後、您必須將所有節點上的中斷連接連接埠重新連接至新的BS-53248交換器CS2。請參閱 https://["_NetApp Hardware Universe SUR__"^] 以取得核准的纜線選項。
 
 . 從CN1610交換器CL2的連接埠13到16拔下四條ISL纜線。
 +
@@ -529,7 +529,7 @@ RPC status:
 ====
 . 在所有節點上、移除連接至CN1610交換器CL1的纜線。
 +
-然後、您必須將所有節點上的中斷連接連接埠重新連線至新的BS1-53248交換器CS1。請參閱 https://hwu.netapp.com/Home/Index["_NetApp Hardware Universe SUR__"^] 以取得核准的纜線選項。
+然後、您必須將所有節點上的中斷連接連接埠重新連線至新的BS1-53248交換器CS1。請參閱 https://["_NetApp Hardware Universe SUR__"^] 以取得核准的纜線選項。
 
 . 從BS-53248交換器CS2的連接埠13至16拔下四條ISL纜線。
 . 移除CS2上的暫用連接埠通道2。

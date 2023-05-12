@@ -23,7 +23,7 @@ summary:
 * Nexus 3232C
 
 
-本程序所支援的支援的支援版本包括Cisco乙太網路交換器頁面。ONTAP請參閱 https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器"]。
+本程序所支援的支援的支援版本包括Cisco乙太網路交換器頁面。ONTAP請參閱 https://["Cisco乙太網路交換器"]。
 
 .連線連接埠
 交換器使用下列連接埠來連接節點：
@@ -48,7 +48,7 @@ summary:
 
 
 
-。 https://hwu.netapp.com["Hardware Universe"] 包含所有叢集交換器支援的纜線連接資訊。
+。 https://["Hardware Universe"] 包含所有叢集交換器支援的纜線連接資訊。
 
 .您需要的產品
 * 請確定您已完成下列工作：
