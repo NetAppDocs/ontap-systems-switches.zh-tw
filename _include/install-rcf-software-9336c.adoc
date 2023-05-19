@@ -272,25 +272,80 @@ show running-config
 . 清除交換器CS2上的組態、然後執行基本設定。
 +
 
-CAUTION: 更新或套用新的RCF時、您必須清除交換器設定並執行基本組態。您必須使用序列主控台連線至交換器、才能清除交換器設定。
+CAUTION: 更新或套用新的RCF時、您必須清除交換器設定並執行基本組態。如果您可以停用 PowerOn Auto Provisioning （ POAP ）（需要 NX-OS 9.2P1 或更新版本）、 SSH 交換器存取將會保留。為了額外的預防措施、如果在交換器重新開機後無法存取 SSH 、請使用序列主控台連線到交換器。
 
 +
-.. 清除組態。此步驟需要主控台連線至交換器。
+.. SSH 進入交換器。
++
+只有當從交換器的連接埠移除所有叢集生命期、且交換器已準備好清除組態時、才能繼續進行。
+
+.. 進入權限模式：
 +
 .顯示範例
 [%collapsible]
 ====
-[listing]
+[listing, subs="+quotes"]
 ----
-cs2# write erase
-Warning: This command will erase the startup-configuration.
-Do you wish to proceed anyway? (y/n)  [n] y
-cs2# reload
-This command will reboot the system. (y/n)?  [n] y
-cs2#
+(cs2)> *enable*
 ----
 ====
-.. 執行交換器的基本設定。
+.. 清理組態：
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(cs2)# *write erase*
+
+Warning: This command will erase the startup-configuration.
+
+Do you wish to proceed anyway? (y/n)  [n]  *y*
+----
+====
+.. 停用 POAP ：
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(cs2)# *system no poap*
+----
+====
++
+請參閱 https://["使用 PowerOn Auto Provisioning"^] 以取得更多詳細資料。
+
+.. 確認下一次重新載入時 POAP 已停用：
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(cs2)#  *show boot*
+Current Boot Variables:
+ sup-1
+NXOS variable = bootflash:/nxos.9.2.1.125.bin
+Boot POAP Disabled
+
+POAP permanently disabled using 'system no poap'
+----
+====
+.. 重新啟動交換器：
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(cs2)# *reload*
+
+Are you sure you would like to reset the system? (y/n) *y*
+
+----
+====
+.. 使用 SSH 再次登入交換器以完成 RCF 安裝。
 
 
 . 使用下列傳輸傳輸協定之一、將RCF複製到交換器CS2的bootflash：FTP、TFTP、SFTP或scp。如需Cisco命令的詳細資訊、請參閱中的適當指南 https://["Cisco Nexus 9000系列NX-OS命令參考"^] 指南：
@@ -572,7 +627,7 @@ cluster1-04          true     true          false
 cluster1::*>
 ----
 ====
-. 在交換器CS1上重複上述步驟。
+. 在交換器 CS1 上重複步驟 4 至 11 。
 . 在叢集生命體上啟用自動還原。
 +
 .顯示範例

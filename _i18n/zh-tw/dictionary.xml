@@ -43,7 +43,6 @@
   <block id="47c173b91782927bfc36acfeeaec5f9f" category="paragraph">當您檢查輸出以確認您擁有正確的RCF時、請確定下列資訊正確無誤：</block>
   <block id="2a4c49daad6f24fc930342baa230202a" category="list-text">RCF橫幅</block>
   <block id="f867470f4d681a0d1ba65ec5afb71681" category="list-text">節點和連接埠設定</block>
-  <block id="52ffc473f824bd729618f53fb6d14415" category="list-text">自訂輸出會根據您的站台組態而有所不同。請檢查連接埠設定、並參閱版本說明、以瞭解您安裝的RCF的任何特定變更。</block>
   <block id="3571be6c375f40b5b3373a14eaba9055" category="admonition">第一次套用RCF時、預期會出現*錯誤：無法寫入VSH命令*訊息、因此可以忽略。</block>
   <block id="2b5da61174f57535e5ac41ebce733b08" category="paragraph">以下範例顯示「執行組態」檔案已成功複製到「儲存組態」檔案：</block>
   <block id="98c505a2e107ba9ff89b6f7487d2bcbf" category="list-text">安裝系統映像、以便下次重新啟動交換器S2時載入新版本。</block>
@@ -2206,8 +2205,6 @@
   <block id="31714f8663c6dc67f31bca71f386b811" category="sidebar">準備控制器</block>
   <block id="d309c85c035ebe6965714d23ddf04e40" category="sidebar">驗證組態</block>
   <block id="9aa8a0ae2c0c1e8fae620818f15e5745" category="sidebar">CN1601交換器管理員指南</block>
-  <block id="8a69d7327337bf7d6152482b16e42f84" category="list-text">清除組態。</block>
-  <block id="88b2ab3c3baa9b0c5faeb2e8a0fec98a" category="admonition">此步驟需要主控台連線至交換器。</block>
   <block id="9a75d8eb81c880a703c72f7186f35288" category="doc">在升級B交互 式叢集交換器之後驗證組態</block>
   <block id="148a1525f4c4b2d620941031bf03f670" category="inline-link">_NetApp Hardware Universe SUR__</block>
   <block id="8761a71b0c01f0356000c0994d4fb203" category="paragraph">「系統交換器乙太網路記錄設定密碼」和「系統交換器乙太網路記錄啟用-收集」</block>
@@ -2230,7 +2227,6 @@
   <block id="1d70d7c880f9a4b8e9ccbd4cbaeefcd8" category="list-text">執行此程序之前、請先確定您目前已備份交換器組態。</block>
   <block id="c291fea66565616d9e881666325c1ee2" category="list-text">如果您尚未擁有交換器的目前備份、您可以將下列命令的輸出複製到記錄檔、以儲存目前的交換器組態：</block>
   <block id="3f8f6d237f18036be3a3fb24642d16ba" category="list-text">如果您尚未這麼做、請將下列命令的輸出複製到記錄檔、以儲存目前的交換器組態：</block>
-  <block id="d4d708e45e34a1416e859c8024a9e7c1" category="admonition">對於更新的版本、請使用命令「系統乙太網路交換器show -is監控-運作正常」ONTAP 。</block>
   <block id="8fdae5a227344a83423005f83a057331" category="list-text">驗證叢集內所有節點的叢集連接埠是否正常運作：</block>
   <block id="5d1ccfeff69430937e33ed02e46dbd94" category="list-text">驗證叢集的交換器健全狀況。</block>
   <block id="53a0bfa393247902d9ea8fedde7e8132" category="list-text">重新開機交換器CS1。您可以這樣做、觸發叢集生命期以恢復到其主連接埠。您可以在交換器重新開機時忽略節點上報告的「叢集連接埠當機」事件。</block>
@@ -3024,7 +3020,6 @@
   <block id="1238025070f42c2c91970d4a31d2a5c4" category="paragraph"><block ref="229e8d1240617e0b97c680c36bbc9564" prefix="" category="inline-code"></block></block>
   <block id="80ab93e3822e7ed7a0bd76c9ee9103bb" category="section-title">步驟2：設定連接埠</block>
   <block id="ef1ee64e66c476fc0def572853f98a6d" category="paragraph">以下範例使用介面範例輸出：</block>
-  <block id="0d338ee833fbd097dbf87aa3c232f048" category="list-text">在交換器CS1上重複上述步驟。</block>
   <block id="28f363620ef0b78f100aebcc28cca7da" category="list-text">驗證連接至叢集連接埠的交換器連接埠是否為* up*。</block>
   <block id="5a60cb8f615fe52bbea3a0ce20d7cbf3" category="paragraph">若要使用Smart Call Home功能、請參閱下列準則。</block>
   <block id="196735c2e16dea95e9e52940e995e4d3" category="paragraph">Smart Call Home可監控網路上的硬體和軟體元件。發生關鍵系統組態時、會產生電子郵件通知、並對目的地設定檔中設定的所有收件者發出警示。若要使用Smart Call Home、您必須將叢集網路交換器設定為使用電子郵件與Smart Call Home系統進行通訊。此外、您也可以選擇性地設定叢集網路交換器、以利用Cisco的內嵌式Smart Call Home支援功能。</block>
@@ -3134,7 +3129,6 @@
   <block id="f85e9af89252fc6fd85cfbb4e0aa1add" category="section-title">步驟1：檢查連接埠狀態</block>
   <block id="c35204e874fcafc94c7c67e31162e966" category="paragraph">請確定執行此命令後已停用自動還原。</block>
   <block id="d08074ca4afc3cad1b1b41c1134b3f1e" category="section-title">步驟2：設定並驗證設定</block>
-  <block id="0c0b4ff8f510dfc18a7d95bef227ea58" category="paragraph"><block ref="ed3fe2a45ef033acf306fc90fbafdd66" prefix="" category="inline-code"></block></block>
   <block id="b6ec5ccd50e4a92a636c1dc432c89581" category="admonition">叢集節點報告為健全狀態最多可能需要5分鐘。</block>
   <block id="442f3bc68fd4ab1c760b482d02f7ca71" category="list-text">在交換器CS1上重複步驟1到10。</block>
   <block id="06e9c44ff7df8ac56c0fec0f8ded0121" category="section-title">步驟3：重新開機並驗證組態</block>
@@ -4429,4 +4423,13 @@
   <block id="2e58f874fe5dd7ef46fee2c92b1e77eb" category="paragraph">* 叢集節點連線纜線移至 CS1-new switch*</block>
   <block id="7d829570fe05df690649474b2bb97a3b" category="image-alt">叢集節點連線纜線移至 CS1-new 交換器</block>
   <block id="ec5ea2f0318e4d906c296f5576b9c026" category="list-text">[[step6]] 如果您禁止自動建立個案、請叫用 AutoSupport 訊息來重新啟用：<block ref="9ac424c0d7b432975df36a19daf50c9c" prefix=" " category="inline-code"></block></block>
+  <block id="0429fa776d68090e46718ac7e32390ef" category="admonition">對於 EFOS 3.10.0.3 版及更新版本、請使用命令<block ref="c09633a606c51a161b16f8bf38f5ebb1" prefix=" " category="inline-code"></block>。</block>
+  <block id="455129a1d85d80f79e8d763a25910c74" category="admonition">更新或套用新的RCF時、您必須清除交換器設定並執行基本組態。如果您可以停用 PowerOn Auto Provisioning （ POAP ）（需要 NX-OS 9.2P1 或更新版本）、 SSH 交換器存取將會保留。為了額外的預防措施、如果在交換器重新開機後無法存取 SSH 、請使用序列主控台連線到交換器。</block>
+  <block id="2df26e386d021172b261bcb47e157019" category="list-text">清理組態：</block>
+  <block id="a5247127c3e0a3fcdf9f80746c33cb54" category="list-text">停用 POAP ：</block>
+  <block id="b64ae68f672b168b4456ea13b494a759" category="inline-link">使用 PowerOn Auto Provisioning</block>
+  <block id="01197fee3250d671fd8c51972b5f4745" category="paragraph">請參閱<block ref="ff53901c2c0b0d51a17df0925879b1a5" category="inline-link-rx"></block> 以取得更多詳細資料。</block>
+  <block id="b8363a3557b5e1732a20eb45a96853b7" category="list-text">確認下一次重新載入時 POAP 已停用：</block>
+  <block id="f306e2be0abd8aabfa0b014c372bbac8" category="list-text">在交換器 CS1 上重複步驟 4 至 11 。</block>
+  <block id="256be937ef390f7d6dd71ad092869119" category="admonition">對於 ONTAP 9.8 及更新版本、請使用命令<block ref="c57378c3b3bb81c6b42a2b31a30ddda7" prefix=" " category="inline-code"></block>。</block>
 </blocks>
