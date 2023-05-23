@@ -70,8 +70,8 @@ NOTE: 移轉完成後、您可能需要安裝所需的組態檔、以支援適�
 ** 連接埠E1/13-20（10 GbE）：Nexus 5010
 
 
-* https://["交換器Hardware Universe"^] 包含所有叢集交換器支援的纜線連接資訊。
-* 本程序所支援的支援的支援版本包括ONTAP https://["Cisco乙太網路交換器"^] 頁面。
+* https://hwu.netapp.com/SWITCH/INDEX["交換器Hardware Universe"^] 包含所有叢集交換器支援的纜線連接資訊。
+* 本程序所支援的支援的支援版本包括ONTAP https://support.netapp.com/NOW/download/software/cm_switches/["Cisco乙太網路交換器"^] 頁面。
 
 
 

@@ -36,7 +36,7 @@ summary: 您可以將不中斷營運的舊Cisco叢集交換器移轉至ONTAP NVI
 ** 在舊的Cisco交換器之間以及新交換器之間啟用或連接ISL連接埠。
 
 
-* 請參閱 https://["Hardware Universe"^] 以取得支援連接埠及其組態的完整詳細資料。
+* 請參閱 https://hwu.netapp.com/["Hardware Universe"^] 以取得支援連接埠及其組態的完整詳細資料。
 * 您已將NVIDIA SN2100交換器上的部分連接埠設定為以40 GbE或100 GbE執行。
 * 您已規劃、移轉並記錄40 GbE和100 GbE連線、從節點連接至NVIDIA SN2100叢集交換器。
 +

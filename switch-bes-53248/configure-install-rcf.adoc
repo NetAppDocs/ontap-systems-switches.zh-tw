@@ -13,7 +13,7 @@ summary: 您可以在設定BS-53248叢集交換器之後、以及套用新授權
 [role="lead"]
 您可以在設定BS-53248叢集交換器之後、以及套用新授權之後、安裝參考組態檔（RCF）。
 
-如果您要從舊版升級RCF、則必須重設Broadcom交換器設定並執行基本組態、才能重新套用RCF。每次您想要升級或變更RCF時、都必須執行此作業。請參閱 https://["知識庫文章"^] 以取得詳細資料。
+如果您要從舊版升級RCF、則必須重設Broadcom交換器設定並執行基本組態、才能重新套用RCF。每次您想要升級或變更RCF時、都必須執行此作業。請參閱 https://kb.netapp.com/onprem/Switches/Broadcom/How_to_clear_configuration_on_a_Broadcom_interconnect_switch_while_retaining_remote_connectivity["知識庫文章"^] 以取得詳細資料。
 
 
 
@@ -22,14 +22,14 @@ summary: 您可以在設定BS-53248叢集交換器之後、以及套用新授權
 .開始之前
 * 交換器組態的目前備份。
 * 完全正常運作的叢集（記錄檔中沒有錯誤或類似問題）。
-* 目前的 RCF 檔案、可從取得 https://["Broadcom叢集交換器"^] 頁面。
+* 目前的 RCF 檔案、可從取得 https://mysupport.netapp.com/site/products/all/details/broadcom-cluster-switches/downloads-tab["Broadcom叢集交換器"^] 頁面。
 * RCF 中的開機組態、可反映所需的開機映像、如果您只安裝 EFOS 並保留目前的 RCF 版本、則需要此組態。如果您需要變更開機組態以反映目前的開機映像、則必須在重新套用RCF之前執行此動作、以便在未來重新開機時產生正確的版本。
-* 從原廠預設狀態安裝 RCF 時、需要主控台連線至交換器。如果您已使用知識庫文件、則此需求為選用項目  https://["如何清除 Broadcom 互連交換器上的組態、同時保持遠端連線"^] 事先清除組態。
+* 從原廠預設狀態安裝 RCF 時、需要主控台連線至交換器。如果您已使用知識庫文件、則此需求為選用項目  https://kb.netapp.com/onprem/Switches/Broadcom/How_to_clear_configuration_on_a_Broadcom_interconnect_switch_while_retaining_remote_connectivity["如何清除 Broadcom 互連交換器上的組態、同時保持遠端連線"^] 事先清除組態。
 
 
 .建議的文件
-* 請參閱交換器相容性表、以瞭解支援ONTAP 的功能表和RCF版本。請參閱 https://["EFOS 軟體下載"^] 頁面。請注意、 RCF 中的命令語法與 EFOS 版本中的命令語法之間可能存在命令相依性。
-* 請參閱上提供的適當軟體和升級指南 https://["Broadcom"^] 有關 BS-53248 交換器升級與降級程序的完整文件、請參閱網站。
+* 請參閱交換器相容性表、以瞭解支援ONTAP 的功能表和RCF版本。請參閱 https://mysupport.netapp.com/site/info/broadcom-cluster-switch["EFOS 軟體下載"^] 頁面。請注意、 RCF 中的命令語法與 EFOS 版本中的命令語法之間可能存在命令相依性。
+* 請參閱上提供的適當軟體和升級指南 https://www.broadcom.com/support/bes-switch["Broadcom"^] 有關 BS-53248 交換器升級與降級程序的完整文件、請參閱網站。
 
 
 
@@ -43,7 +43,7 @@ summary: 您可以在設定BS-53248叢集交換器之後、以及套用新授權
 * 節點名稱為cluster1-01、cluster1-02、cluster1-03和cluster1-04。
 * 叢集 LIF 名稱為 cluster1-01_clus1 、 cluster1-01_clus2 、 cluster1-02_clus1 、 cluster1-02_clus2 、 cluster1-03_clus1 、 cluster1-03_clus2 、 cluster1-04_clus1 和 cluster1-04_clus2 。
 * 「cluster1：*：>」提示會指出叢集的名稱。
-* 本程序中的範例使用四個節點。這些節點使用兩個10GbE叢集互連連接埠 `e0a` 和 `e0b`。請參閱 https://["Hardware Universe"^] 驗證平台上的叢集連接埠是否正確。
+* 本程序中的範例使用四個節點。這些節點使用兩個10GbE叢集互連連接埠 `e0a` 和 `e0b`。請參閱 https://hwu.netapp.com/Home/Index["Hardware Universe"^] 驗證平台上的叢集連接埠是否正確。
 
 
 
@@ -55,7 +55,7 @@ NOTE: 命令輸出可能會因ONTAP 不同版本的不相同而有所差異。
 在此程序期間、不需要運作中的交換器間連結（ISL）。這是因為RCF版本變更可能會暫時影響ISL連線。為了確保叢集作業不中斷、下列程序會在執行目標交換器上的步驟時、將所有叢集生命體移轉至作業夥伴交換器。
 
 
-CAUTION: 在安裝新的交換器軟體版本和 RCFs 之前、請先使用 https://["KB ：如何清除 Broadcom 互連交換器上的組態、同時保持遠端連線"^]。如果您必須完全清除交換器設定、則需要再次執行基本組態。您必須使用序列主控台連線至交換器、因為完整的組態刪除會重設管理網路的組態。
+CAUTION: 在安裝新的交換器軟體版本和 RCFs 之前、請先使用 https://kb.netapp.com/onprem/Switches/Broadcom/How_to_clear_configuration_on_a_Broadcom_interconnect_switch_while_retaining_remote_connectivity["KB ：如何清除 Broadcom 互連交換器上的組態、同時保持遠端連線"^]。如果您必須完全清除交換器設定、則需要再次執行基本組態。您必須使用序列主控台連線至交換器、因為完整的組態刪除會重設管理網路的組態。
 
 
 

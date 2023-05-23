@@ -60,5 +60,5 @@ NVIDIA SN2100是一款叢集交換器、可讓您建置ONTAP 包含兩個以上�
 * link:configure-reqs-sn2100-cluster.html["組態需求"]
 * link:components-sn2100-cluster.html["元件與零件編號"]
 * link:required-documentation-sn2100-cluster.html["必要文件"]
-* https://["Hardware Universe"^] 適用於所有支援ONTAP 的版本。
+* https://hwu.netapp.com["Hardware Universe"^] 適用於所有支援ONTAP 的版本。
 

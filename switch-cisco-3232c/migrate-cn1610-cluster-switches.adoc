@@ -24,9 +24,9 @@ NOTE: 此程序需要同時使用ONTAP 支援指令和Cisco Nexus 3000系列交�
 
 如有必要、請參閱下列內容以取得更多資訊：
 
-* http://["NetApp CN1601與CN1610說明頁面"^]
-* http://["Cisco乙太網路交換器說明頁面"^]
-* http://["Hardware Universe"^]
+* http://support.netapp.com/NOW/download/software/cm_switches_ntap/["NetApp CN1601與CN1610說明頁面"^]
+* http://support.netapp.com/NOW/download/software/cm_switches/["Cisco乙太網路交換器說明頁面"^]
+* http://hwu.netapp.com["Hardware Universe"^]
 
 
 
@@ -46,7 +46,7 @@ NOTE: 此程序需要同時使用ONTAP 支援指令和Cisco Nexus 3000系列交�
 * N1_clus2是第一個叢集LIF、連接至節點n1的叢集交換器2（CL2或C2）。
 * N1_clus3是第二個LIF、連接至節點n1的叢集交換器2（CL2或C2）。
 * N1_clus4是第二個LIF、連接至節點n1的叢集交換器1（CL1或C1）。
-* 10 GbE和40/100 GbE連接埠的數量是在上可用的參考組態檔（RCFs）中定義 https://["Cisco®叢集網路交換器參考組態檔案下載"^] 頁面。
+* 10 GbE和40/100 GbE連接埠的數量是在上可用的參考組態檔（RCFs）中定義 https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco®叢集網路交換器參考組態檔案下載"^] 頁面。
 
 
 
@@ -332,7 +332,7 @@ RPC status:
 ====
 . 使用適當的命令、關閉作用中CN1610交換器CL1上的ISL連接埠13至16。
 +
-如需Cisco命令的詳細資訊、請參閱中所列的指南 https://["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
+如需Cisco命令的詳細資訊、請參閱中所列的指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
 
 +
 .顯示範例
@@ -351,7 +351,7 @@ RPC status:
 ====
 . 在CL1和C2之間建置暫時ISL：
 +
-如需Cisco命令的詳細資訊、請參閱中所列的指南 https://["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
+如需Cisco命令的詳細資訊、請參閱中所列的指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
 
 +
 .顯示範例
@@ -394,7 +394,7 @@ C2(config-if)# exit
 當在兩個交換器上啟動ISL時、此組態會與3232C交換器C2上的ISL組態相符。
 
 +
-如需Cisco命令的詳細資訊、請參閱中所列的指南 https://["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
+如需Cisco命令的詳細資訊、請參閱中所列的指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
 
 +
 .顯示範例
@@ -414,7 +414,7 @@ C2(config-if)# exit
 ====
 . 在活動的CN1610交換器CL1上啟動ISL 13到16。
 +
-如需Cisco命令的詳細資訊、請參閱中所列的指南 https://["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
+如需Cisco命令的詳細資訊、請參閱中所列的指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
 
 +
 .顯示範例
@@ -470,7 +470,7 @@ Ports  Timeout       Speed       Active
 「How port-channel Summary」
 
 +
-如需Cisco命令的詳細資訊、請參閱中所列的指南 https://["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
+如需Cisco命令的詳細資訊、請參閱中所列的指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
 
 +
 連接埠eth1/24/1至eth1/24/4應顯示為「（P）」、表示連接埠通道中的所有四個ISL連接埠均處於正常狀態。eth1/31和eth1/32應顯示「（D）」、因為它們並未連線。
@@ -733,7 +733,7 @@ cluster::*> network port modify -node n2 -port e0d -up-admin false
 ====
 . 關閉主動式3232C交換器C2上的ISL連接埠24、31和32。
 +
-如需Cisco命令的詳細資訊、請參閱中所列的指南 https://["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
+如需Cisco命令的詳細資訊、請參閱中所列的指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
 
 +
 .顯示範例
@@ -764,7 +764,7 @@ C2#
 
 . 還原連接埠24的組態、並移除C2上的暫用連接埠通道2：
 +
-如需Cisco命令的詳細資訊、請參閱中所列的指南 https://["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
+如需Cisco命令的詳細資訊、請參閱中所列的指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
 
 +
 .顯示範例
@@ -799,7 +799,7 @@ Copy Complete.
 ====
 . 在C2（主動式3232C交換器）上啟動ISL連接埠31和32。
 +
-如需Cisco命令的詳細資訊、請參閱中所列的指南 https://["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
+如需Cisco命令的詳細資訊、請參閱中所列的指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
 
 +
 .顯示範例
@@ -821,7 +821,7 @@ Copy Complete.
 ====
 . 驗證3232C交換器C2上的ISL連線是否為「up（正常）」。
 +
-如需Cisco命令的詳細資訊、請參閱中所列的指南 https://["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
+如需Cisco命令的詳細資訊、請參閱中所列的指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
 
 +
 .顯示範例

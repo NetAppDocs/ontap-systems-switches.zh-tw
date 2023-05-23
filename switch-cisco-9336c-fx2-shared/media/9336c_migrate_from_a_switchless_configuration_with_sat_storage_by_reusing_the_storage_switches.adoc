@@ -80,7 +80,7 @@ node2
 storage::*> system health alert show -instance
 There are no entries matching your query.
 ----
-. [[step7]將共享交換器A上的儲存RCF替換為共用RCF檔案。請參閱 http://["在Cisco Nexus 9336C-FX2共享交換器上安裝RCF"] 以取得更多詳細資料。
+. [[step7]將共享交換器A上的儲存RCF替換為共用RCF檔案。請參閱 http://9336c_install_nx-os_software_and_reference_configuration_files_@rcfs@.html#install-the-rcf-on-a-cisco-nexus-9336c-fx2-shared-switch["在Cisco Nexus 9336C-FX2共享交換器上安裝RCF"] 以取得更多詳細資料。
 . 驗證連接至HA配對1的儲存設備、儲存交換器B是否正常：「系統健全狀況警示顯示-instance」
 
 

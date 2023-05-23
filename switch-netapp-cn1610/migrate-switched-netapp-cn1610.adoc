@@ -33,7 +33,7 @@ summary: 如果您有現有的雙節點無交換式叢集環境、則可使用CN
 * 有對叢集交換器的主控台存取權。
 * CN1610節點對節點交換器和交換器對交換器連線使用雙軸纜線或光纖纜線。
 +
-。 https://["Hardware Universe"^] 包含纜線的詳細資訊。
+。 https://hwu.netapp.com/["Hardware Universe"^] 包含纜線的詳細資訊。
 
 * 交換器間連結（ISL）纜線連接至兩個CN1610交換器上的連接埠13至16。
 * 完成兩個CN1610交換器的初始自訂。
@@ -43,10 +43,10 @@ summary: 如果您有現有的雙節點無交換式叢集環境、則可使用CN
 
 
 .相關資訊
-* http://["Hardware Universe"^]
-* http://["NetApp CN1601與CN1610說明頁面"^]
-* https://["CN1601與CN1610交換器設定與組態指南"^]
-* https://["NetApp知識庫文件編號1010449：如何在排程的維護期間、抑制自動建立案例"^]
+* http://hwu.netapp.com["Hardware Universe"^]
+* http://support.netapp.com/NOW/download/software/cm_switches_ntap/["NetApp CN1601與CN1610說明頁面"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMP1118645["CN1601與CN1610交換器設定與組態指南"^]
+* https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/How_to_suppress_automatic_case_creation_during_scheduled_maintenance_windows["NetApp知識庫文件編號1010449：如何在排程的維護期間、抑制自動建立案例"^]
 
 
 
@@ -62,7 +62,7 @@ summary: 如果您有現有的雙節點無交換式叢集環境、則可使用CN
 * 「cluster：*>」提示會指出叢集的名稱。
 * 此程序中使用的叢集連接埠為e1a和E2A。
 +
-。 https://["Hardware Universe"^] 包含平台實際叢集連接埠的最新資訊。
+。 https://hwu.netapp.com/["Hardware Universe"^] 包含平台實際叢集連接埠的最新資訊。
 
 
 

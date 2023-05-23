@@ -40,8 +40,8 @@ summary: 您可以執行特定的工作順序、在不中斷營運的情況下�
 .以取得更多資訊
 請參閱下列內容：
 
-* http://["Cisco乙太網路交換器說明頁面"^]
-* http://["Hardware Universe"^]
+* http://support.netapp.com/NOW/download/software/cm_switches/["Cisco乙太網路交換器說明頁面"^]
+* http://hwu.netapp.com["Hardware Universe"^]
 
 
 
@@ -73,7 +73,7 @@ summary: 您可以執行特定的工作順序、在不中斷營運的情況下�
 * N1_clus4是連接至叢集交換器CL1的第二個LIF、適用於節點n1。
 
 
-10 GbE和40/100 GbE連接埠的數量是在上可用的參考組態檔（RCFs）中定義 https://["Cisco®叢集網路交換器參考組態檔案下載"^] 頁面。
+10 GbE和40/100 GbE連接埠的數量是在上可用的參考組態檔（RCFs）中定義 https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco®叢集網路交換器參考組態檔案下載"^] 頁面。
 
 此取代程序的範例使用四個節點。其中兩個節點使用四個10 Gb叢集互連連接埠：e0a、e0b、e0c和e0d。其他兩個節點使用兩個40 GB叢集互連連接埠：E4A和e4e。請參閱 link:https://hwu.netapp.com["Hardware Universe"^] 驗證平台的叢集連接埠是否正確。
 
@@ -255,17 +255,17 @@ Version Source: CDP
 +
 .. 前往NetApp支援網站。
 +
-http://["mysupport.netapp.com"^]
+http://mysupport.netapp.com/["mysupport.netapp.com"^]
 
 .. 前往「* Cisco乙太網路交換器*」頁面、並在表格中記下所需的軟體版本。
 +
-https://["Cisco乙太網路交換器"^]
+https://mysupport.netapp.com/NOW/download/software/cm_switches/["Cisco乙太網路交換器"^]
 
 .. 下載適當版本的RCF。
 .. 按一下「*說明*」頁面上的「*繼續*」、接受授權合約、然後瀏覽至「*下載*」頁面。
 .. 從「* Cisco®叢集與管理網路交換器參考組態檔案下載*」頁面下載正確版本的映像軟體。
 +
-http://["Cisco®叢集與管理網路交換器參考組態檔案下載"^]
+http://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco®叢集與管理網路交換器參考組態檔案下載"^]
 
 
 
@@ -424,7 +424,7 @@ Larger than PMTU communication succeeds on 32 path(s) RPC status:
 
 . 關閉叢集交換器CL1上的連接埠1/31和1/32。
 +
-如需Cisco命令的詳細資訊、請參閱中所列的指南 https://["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
+如需Cisco命令的詳細資訊、請參閱中所列的指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
 
 +
 .顯示範例
@@ -443,7 +443,7 @@ Larger than PMTU communication succeeds on 32 path(s) RPC status:
 . 從叢集交換器CL2上的連接埠E1/31和E1/32拔下交換器間連結（ISL）纜線、然後將其重新連接至替換交換器C2上的相同連接埠。
 . 在叢集交換器CL1上啟動ISL連接埠1/31和1/32。
 +
-如需Cisco命令的詳細資訊、請參閱中所列的指南 https://["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
+如需Cisco命令的詳細資訊、請參閱中所列的指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
 
 +
 .顯示範例
@@ -461,7 +461,7 @@ Larger than PMTU communication succeeds on 32 path(s) RPC status:
 ====
 . 確認ISL在CL1上正常運作。
 +
-如需Cisco命令的詳細資訊、請參閱中所列的指南 https://["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
+如需Cisco命令的詳細資訊、請參閱中所列的指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
 
 +
 連接埠eth1/31和eth1/32應顯示「（P）」、這表示ISL連接埠在連接埠通道上：
@@ -488,7 +488,7 @@ Group Port-        Type   Protocol  Member Ports
 ====
 . 驗證ISL是否在叢集交換器C2上啟動。
 +
-如需Cisco命令的詳細資訊、請參閱中所列的指南 https://["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
+如需Cisco命令的詳細資訊、請參閱中所列的指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
 
 +
 .顯示範例

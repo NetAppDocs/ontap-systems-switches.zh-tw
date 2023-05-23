@@ -17,7 +17,7 @@ summary: 您需要特定的交換器與控制器文件、才能設定叢集模�
 
 == Broadcom文件
 
-若要設定Bes - 53248叢集交換器、您需要Broadcom支援網站上提供的下列文件： https://["Broadcom乙太網路交換器產品線"^]
+若要設定Bes - 53248叢集交換器、您需要Broadcom支援網站上提供的下列文件： https://www.broadcom.com/support/bes-switch["Broadcom乙太網路交換器產品線"^]
 
 [cols="1,2"]
 |===
@@ -76,14 +76,14 @@ _EFOS發行說明v3.4.3_
  a| 
 _叢集網路與管理網路相容性對照表_
  a| 
-提供網路相容性的相關資訊。您可從BS-53248交換器下載網站取得此對照表 https://["Broadcom叢集交換器"^]。
+提供網路相容性的相關資訊。您可從BS-53248交換器下載網站取得此對照表 https://mysupport.netapp.com/site/products/all/details/broadcom-cluster-switches/downloads-tab["Broadcom叢集交換器"^]。
 
 |===
 
 
 == 系統文件與知識庫文章ONTAP
 
-若要設定 ONTAP 系統，您需要 NetApp 支援網站上的下列文件： http://["mysupport.netapp.com"^] 或是位於的知識庫（KB）網站 https://["kb.netapp.com"^]。
+若要設定 ONTAP 系統，您需要 NetApp 支援網站上的下列文件： http://mysupport.netapp.com/["mysupport.netapp.com"^] 或是位於的知識庫（KB）網站 https://kb.netapp.com/["kb.netapp.com"^]。
 
 [cols="1,2"]
 |===
@@ -91,7 +91,7 @@ _叢集網路與管理網路相容性對照表_
 
 
  a| 
-https://["NetApp Hardware Universe"^]
+https://hwu.netapp.com/Home/Index["NetApp Hardware Universe"^]
  a| 
 說明所有NetApp硬體（包括系統機櫃）的電源和站台需求、並提供相關連接器和纜線選項的相關資訊及其零件編號。
 
@@ -114,6 +114,6 @@ https://["NetApp Hardware Universe"^]
  a| 
 _如何為Broadcom支援的BS-53248交換器新增額外的連接埠授權_
  a| 
-提供新增連接埠授權的詳細資訊。前往 https://["知識庫文章"^]。
+提供新增連接埠授權的詳細資訊。前往 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/MetroCluster/How_to_add_Additional_Port_Licensing_for_the_Broadcom-Supported_BES-53248_Switch["知識庫文章"^]。
 
 |===

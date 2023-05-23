@@ -29,7 +29,7 @@ summary: 您可以在初次設定Nexus 2300YC交換器之後安裝RCF。
 .支援的連接埠和節點連線
 * Nexus 2300YC交換器支援的交換器間連結（ISL）為連接埠1/65和1/66。
 * Nexus 2300YC交換器支援的節點連線為連接埠1/1到1/66。
-* 本程序中的範例使用兩個節點。這些節點使用兩個10GbE叢集互連連接埠 `e0a` 和 `e0b`。請參閱 https://["Hardware Universe"^] 驗證平台上的叢集連接埠是否正確。
+* 本程序中的範例使用兩個節點。這些節點使用兩個10GbE叢集互連連接埠 `e0a` 和 `e0b`。請參閱 https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^] 驗證平台上的叢集連接埠是否正確。
 
 
 .開始之前
@@ -37,7 +37,7 @@ summary: 您可以在初次設定Nexus 2300YC交換器之後安裝RCF。
 * 叢集必須完全正常運作（記錄中不應有錯誤或類似問題）。
 * 如果您只安裝NX-OS並保留目前的RCF版本、則必須在RCF中檢查或設定所需的開機組態、以反映所需的開機映像。
 * 如果您需要變更開機組態以反映目前的開機映像、則必須在重新套用RCF之前執行此動作、以便在未來重新開機時產生正確的版本。
-* 您必須查閱上的交換器相容性表 https://["Cisco乙太網路交換器"^] 頁面、以取得支援ONTAP 的功能表、NX-OS和RCF版本。
+* 您必須查閱上的交換器相容性表 https://support.netapp.com/NOW/download/software/cm_switches/["Cisco乙太網路交換器"^] 頁面、以取得支援ONTAP 的功能表、NX-OS和RCF版本。
 * RCF中的命令語法與NX-OS版本中的命令語法之間可能存在相依性。
 
 

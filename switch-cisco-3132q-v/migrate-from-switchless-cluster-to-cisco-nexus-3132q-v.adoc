@@ -43,7 +43,7 @@ summary: 如果您有雙節點無交換式叢集、則可在不中斷營運的�
 +
 您可以使用「介面中斷模組1連接埠1-6 MAP 10ge-4x」命令、將前六個連接埠分割成4x10 GbE模式。同樣地、您也可以使用「無介面中斷模組1連接埠1-6 MAP 10g-4x」命令、從中斷組態重新分組前六個QSFP+連接埠。
 
-* 10 GbE和40/100 GbE連接埠的數量是在上可用的參考組態檔（RCFs）中定義 https://["Cisco®叢集網路交換器參考組態檔案下載"^] 頁面。
+* 10 GbE和40/100 GbE連接埠的數量是在上可用的參考組態檔（RCFs）中定義 https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco®叢集網路交換器參考組態檔案下載"^] 頁面。
 
 
 .您需要的產品
@@ -92,7 +92,7 @@ summary: 如果您有雙節點無交換式叢集、則可在不中斷營運的�
 * N1_clus2是第一個叢集LIF、用於連接至節點n1的叢集交換器C2。
 * n2_clus1是第一個叢集LIF、用於連接至節點n2的叢集交換器C1。
 * n2_clus2是第二個叢集LIF、用於連接至節點n2的叢集交換器C2。
-* 10 GbE和40/100 GbE連接埠的數量是在上可用的參考組態檔（RCFs）中定義 https://["Cisco®叢集網路交換器參考組態檔案下載"^] 頁面。
+* 10 GbE和40/100 GbE連接埠的數量是在上可用的參考組態檔（RCFs）中定義 https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco®叢集網路交換器參考組態檔案下載"^] 頁面。
 
 
 [NOTE]

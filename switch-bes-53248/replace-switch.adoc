@@ -120,8 +120,8 @@ NOTE: 此資訊可通知技術支援人員執行此維護工作、以便在維�
 如有必要、請為新交換器驗證、下載及安裝適當版本的RCF和EFOS軟體。如果您已確認新交換器已正確設定、而且不需要更新RCF和EFOS軟體、請繼續執行步驟2。
 
 +
-.. 您可以從下載適用於叢集交換器的Broadcom EFOS軟體 https://["Broadcom乙太網路交換器支援"^] 網站。請依照下載頁面上的步驟、下載您ONTAP 所安裝之版本的EOSOS檔案。
-.. 您可從取得適當的RCF https://["Broadcom叢集交換器"^] 頁面。請依照下載頁面上的步驟、針對ONTAP 您要安裝的版本、下載正確的RCF。
+.. 您可以從下載適用於叢集交換器的Broadcom EFOS軟體 https://www.broadcom.com/support/bes-switch["Broadcom乙太網路交換器支援"^] 網站。請依照下載頁面上的步驟、下載您ONTAP 所安裝之版本的EOSOS檔案。
+.. 您可從取得適當的RCF https://mysupport.netapp.com/site/products/all/details/broadcom-cluster-switches/downloads-tab["Broadcom叢集交換器"^] 頁面。請依照下載頁面上的步驟、針對ONTAP 您要安裝的版本、下載正確的RCF。
 
 
 . 在新交換器上、以身分登入 `admin` 並關閉所有連接至節點叢集介面的連接埠（連接埠1至16）。

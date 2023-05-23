@@ -45,7 +45,7 @@ summary: 您可以在初次設定Nexus 9336C-FX2交換器之後安裝RCF。您�
 * 「cluster1：*：>」提示會指出叢集的名稱。
 
 
-本程序中的範例使用兩個節點。這些節點使用兩個10GbE叢集互連連接埠e0a和e0b。請參閱 https://["Hardware Universe"] 驗證平台上的叢集連接埠是否正確。
+本程序中的範例使用兩個節點。這些節點使用兩個10GbE叢集互連連接埠e0a和e0b。請參閱 https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"] 驗證平台上的叢集連接埠是否正確。
 
 
 NOTE: 命令輸出可能會因ONTAP 不同版本的不相同而有所差異。
@@ -327,7 +327,7 @@ Do you wish to proceed anyway? (y/n)  [n]  *y*
 ----
 ====
 +
-請參閱 https://["使用 PowerOn Auto Provisioning"^] 以取得更多詳細資料。
+請參閱 https://www.cisco.com/c/en/us/td/docs/dcn/nx-os/nexus9000/103x/configuration/fundamentals/cisco-nexus-9000-nx-os-fundamentals-configuration-guide-103x/m-using-poap.html?bookSearch=true#id_85315["使用 PowerOn Auto Provisioning"^] 以取得更多詳細資料。
 
 .. 確認下一次重新載入時 POAP 已停用：
 +
@@ -361,7 +361,7 @@ Are you sure you would like to reset the system? (y/n) *y*
 .. 使用 SSH 再次登入交換器以完成 RCF 安裝。
 
 
-. 使用下列傳輸傳輸協定之一、將RCF複製到交換器CS2的bootflash：FTP、TFTP、SFTP或scp。如需Cisco命令的詳細資訊、請參閱中的適當指南 https://["Cisco Nexus 9000系列NX-OS命令參考"^] 指南：
+. 使用下列傳輸傳輸協定之一、將RCF複製到交換器CS2的bootflash：FTP、TFTP、SFTP或scp。如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000系列NX-OS命令參考"^] 指南：
 +
 .顯示範例
 [%collapsible]
@@ -380,7 +380,7 @@ Copy complete, now saving to disk (please wait)...
 ====
 . 將先前下載的RCF套用至bootFlash。
 +
-如需Cisco命令的詳細資訊、請參閱中的適當指南 https://["Cisco Nexus 9000系列NX-OS命令參考"^] 指南：
+如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000系列NX-OS命令參考"^] 指南：
 
 +
 .顯示範例
@@ -453,7 +453,7 @@ g mode:
 
 . 驗證RCF版本和交換器設定是否正確之後、請將執行組態檔複製到啟動組態檔。
 +
-如需Cisco命令的詳細資訊、請參閱中的適當指南 https://["Cisco Nexus 9000系列NX-OS命令參考"^] 指南：
+如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000系列NX-OS命令參考"^] 指南：
 
 +
 .顯示範例

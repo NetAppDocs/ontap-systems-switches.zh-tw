@@ -79,42 +79,42 @@ Cisco Nexus 2300YC交換器氣流詳細資料：
 
 
  a| 
-https://["_設定Cisco®Nexus 2300YC叢集交換器_"^]
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-92300/install-overview-cisco-92300.html["_設定Cisco®Nexus 2300YC叢集交換器_"^]
  a| 
 說明如何設定和設定Cisco Nexus 2300YC叢集交換器。
 
 
 
  a| 
-https://["_安裝NX-OS與參考組態檔（RCW）_"^]
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-92300/install-nxos-overview.html["_安裝NX-OS與參考組態檔（RCW）_"^]
  a| 
 說明如何在Nexus 2300YC叢集交換器上安裝NX-OS和參考組態檔（RCFs）。
 
 
 
  a| 
-https://["_設定新的Cisco Nexus 2300YC交換器_"^]
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-92300/configure-install-initial.html["_設定新的Cisco Nexus 2300YC交換器_"^]
  a| 
 說明如何從使用舊版Cisco交換器的環境移轉至使用Cisco 92300YC交換器的環境。
 
 
 
  a| 
-https://["_從舊的Cisco交換器移轉至Cisco Nexus 2300YC交換器_"^]
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-92300/migrate-to-92300yc-overview.html["_從舊的Cisco交換器移轉至Cisco Nexus 2300YC交換器_"^]
  a| 
 說明以Cisco Nexus 2300YC叢集交換器取代舊版Cisco交換器的程序。
 
 
 
  a| 
-https://["_從雙節點無交換器叢集移轉_"^]
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-92300/migrate-to-2n-switched.html["_從雙節點無交換器叢集移轉_"^]
  a| 
 說明如何使用Cisco Nexus 2300YC叢集交換器、從雙節點無交換式叢集環境移轉至雙節點交換環境。
 
 
 
  a| 
-https://["_更換Cisco Nexus 2300YC叢集交換器_"^]
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-92300/replace-92300yc.html["_更換Cisco Nexus 2300YC叢集交換器_"^]
  a| 
 說明在叢集中更換故障Cisco Nexus 2300YC交換器、以及下載交換器作業系統和參考組態檔的程序。
 

@@ -15,7 +15,7 @@ summary: 若要安裝BS-53248硬體、請參閱Broadcom的說明文件。
 
 .步驟
 . 檢閱 link:configure-reqs-bes53248.html["組態需求"]。
-. 請依照中的指示進行 https://["Broadcom支援的BS-53248叢集交換器安裝指南"^]。
+. 請依照中的指示進行 https://library.netapp.com/ecm/ecm_download_file/ECMLP2864537["Broadcom支援的BS-53248叢集交換器安裝指南"^]。
 
 
 .接下來呢？

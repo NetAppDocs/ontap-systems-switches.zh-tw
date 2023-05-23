@@ -107,7 +107,7 @@ N9K-9336C 65CFM、連接埠側進氣氣流
 * 大部分的儲存系統控制器都是透過e0M介面來管理、方法是連接至乙太網路服務連接埠（扳手圖示）。在ESIA800和ESIEA700系統上AFF 、e0M介面使用專用的乙太網路連接埠。AFF
 
 
-請參閱 https://["Hardware Universe"^] 以取得最新資訊。
+請參閱 https://hwu.netapp.com["Hardware Universe"^] 以取得最新資訊。
 
 
 
@@ -126,7 +126,7 @@ Smart Call Home可監控網路上的硬體和軟體元件、針對關鍵系統�
 * Cisco SMARTnet服務必須就位、才能登錄裝置。
 
 
-。 http://["Cisco支援網站"^] 包含有關設定Smart Call Home的命令資訊。
+。 http://www.cisco.com/c/en/us/products/switches/index.html["Cisco支援網站"^] 包含有關設定Smart Call Home的命令資訊。
 
 
 
@@ -138,7 +138,7 @@ Smart Call Home可監控網路上的硬體和軟體元件、針對關鍵系統�
 
 === 交換器文件
 
-若要設定Cisco Nexus 9336C-FX2交換器、您需要提供下列文件 https://["Cisco Nexus 9000系列交換器支援"^] 頁面：
+若要設定Cisco Nexus 9336C-FX2交換器、您需要提供下列文件 https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Cisco Nexus 9000系列交換器支援"^] 頁面：
 
 [cols="1,2"]
 |===
@@ -204,7 +204,7 @@ Cisco Nexus 9000系列的法規遵循與安全資訊
 
 === 系統文件ONTAP
 
-若要設定ONTAP 一套作業系統、您需要從取得下列作業系統版本的文件 https://["供應說明文件中心 ONTAP"^]。
+若要設定ONTAP 一套作業系統、您需要從取得下列作業系統版本的文件 https://docs.netapp.com/ontap-9/index.jsp["供應說明文件中心 ONTAP"^]。
 
 [cols="1,2"]
 |===
@@ -226,7 +226,7 @@ Cisco Nexus 9000系列的法規遵循與安全資訊
 
 
  a| 
-https://["Hardware Universe"^]
+https://hwu.netapp.com["Hardware Universe"^]
  a| 
 提供NetApp硬體組態與相容性資訊。
 
@@ -243,7 +243,7 @@ https://["Hardware Universe"^]
 
 
  a| 
-https://["42U系統機櫃、深度指南"^]
+https://library.netapp.com/ecm/ecm_download_file/ECMM1280394["42U系統機櫃、深度指南"^]
  a| 
 說明與42U系統機櫃相關的FRU、並提供維護與FRU更換指示。
 

@@ -66,7 +66,7 @@ CN1610至3232C（QSFP至SFP+）
 2條QSFP光纖或銅線直接連接纜線
 
 |===
-您必須下載適用的參考組態檔（RCT）。10 GbE和40/100 GbE連接埠的數量是在上可用的RCFs中定義 https://["Cisco®叢集網路交換器參考組態檔案下載"^] 頁面。
+您必須下載適用的參考組態檔（RCT）。10 GbE和40/100 GbE連接埠的數量是在上可用的RCFs中定義 https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco®叢集網路交換器參考組態檔案下載"^] 頁面。
 
 本程序所支援的支援的支援版本包括ONTAP link:https://mysupport.netapp.com/NOW/download/software/cm_switches/.html["Cisco乙太網路交換器頁面"^]。
 

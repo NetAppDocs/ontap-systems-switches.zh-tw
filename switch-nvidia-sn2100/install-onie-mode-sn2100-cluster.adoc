@@ -344,7 +344,7 @@ cumulus@cumulus:mgmt:~$ *sudo adduser admin nvshow*
      Done.
 ----
 +
-請參閱 https://["NVIDIA 使用者帳戶"^] 以取得更多資訊。
+請參閱 https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-54/System-Configuration/Authentication-Authorization-and-Accounting/User-Accounts/["NVIDIA 使用者帳戶"^] 以取得更多資訊。
 
 
 

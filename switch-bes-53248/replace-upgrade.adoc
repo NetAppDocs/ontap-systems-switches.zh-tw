@@ -34,7 +34,7 @@ summary: 升級BS-53248叢集交換器時、首先要準備好控制器以進行
 NOTE: RCF和EFOS版本中的命令語法可能會有命令相依性。
 
 
-NOTE: 如需交換器相容性、請參閱上的相容性表 https://["Broadcom叢集交換器"^] 支援的EFOS、RCF和ONTAP 版本的頁面。
+NOTE: 如需交換器相容性、請參閱上的相容性表 https://mysupport.netapp.com/site/products/all/details/broadcom-cluster-switches/downloads-tab["Broadcom叢集交換器"^] 支援的EFOS、RCF和ONTAP 版本的頁面。
 
 
 

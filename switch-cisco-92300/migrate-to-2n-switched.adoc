@@ -39,7 +39,7 @@ Cisco Nexus 2300YC交換器組態：
 * 有對叢集交換器的主控台存取權。
 * Nexus 2300YC節點對節點交換器和交換器對交換器連線使用雙軸纜線或光纖纜線。
 +
-https://["交換器Hardware Universe"^] 包含纜線的詳細資訊。
+https://hwu.netapp.com/SWITCH/INDEX["交換器Hardware Universe"^] 包含纜線的詳細資訊。
 
 * 交換器間連結（ISL）纜線連接至兩個92300YC交換器上的連接埠1/65和1/66。
 * 這兩個92300YC交換器的初始自訂已完成。因此：
@@ -63,7 +63,7 @@ https://["交換器Hardware Universe"^] 包含纜線的詳細資訊。
 * 「cluster1：*：>」提示會指出叢集的名稱。
 * 此程序中使用的叢集連接埠為e0a和e0b。
 +
-https://["Hardware Universe"^] 包含平台實際叢集連接埠的最新資訊。
+https://hwu.netapp.com["Hardware Universe"^] 包含平台實際叢集連接埠的最新資訊。
 
 
 
@@ -309,7 +309,7 @@ Cluster
 ====
 . 從節點1上的叢集連接埠e0a拔下纜線、然後使用2300YC交換器所支援的適當纜線、將e0a連接至叢集交換器CS1上的連接埠1。
 +
-。 https://["_-交換器_ Hardware Universe"^] 包含纜線的詳細資訊。
+。 https://hwu.netapp.com/SWITCH/INDEX["_-交換器_ Hardware Universe"^] 包含纜線的詳細資訊。
 
 . 從節點2上的叢集連接埠e0a拔下纜線、然後使用2300YC交換器所支援的適當纜線、將e0a連接至叢集交換器CS1上的連接埠2。
 . 在叢集交換器CS1上啟用所有面向節點的連接埠。

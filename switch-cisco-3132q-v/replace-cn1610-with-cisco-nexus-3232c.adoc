@@ -21,9 +21,9 @@ summary: 若要使用Cisco Nexus 3132Q-V叢集交換器取代叢集中現有的C
 
 如需詳細資訊、請參閱：
 
-* http://["NetApp CN1601與CN1610說明頁面"^]
-* http://["Cisco乙太網路交換器說明頁面"^]
-* http://["Hardware Universe"^]
+* http://support.netapp.com/NOW/download/software/cm_switches_ntap/["NetApp CN1601與CN1610說明頁面"^]
+* http://support.netapp.com/NOW/download/software/cm_switches/["Cisco乙太網路交換器說明頁面"^]
+* http://hwu.netapp.com["Hardware Universe"^]
 
 
 
@@ -40,7 +40,7 @@ summary: 若要使用Cisco Nexus 3132Q-V叢集交換器取代叢集中現有的C
 * N1_clus2是第一個叢集LIF、連接至節點n1的叢集交換器2（CL2或C2）。
 * N1_clus3是第二個LIF、連接至節點n1的叢集交換器2（CL2或C2）。
 * N1_clus4是第二個LIF、連接至節點n1的叢集交換器1（CL1或C1）。節點為n1、n2、n3和n4。
-* 10 GbE和40/100 GbE連接埠的數量是在上可用的參考組態檔（RCFs）中定義 https://["Cisco®叢集網路交換器參考組態檔案下載"^] 頁面。
+* 10 GbE和40/100 GbE連接埠的數量是在上可用的參考組態檔（RCFs）中定義 https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco®叢集網路交換器參考組態檔案下載"^] 頁面。
 
 
 .關於範例
@@ -252,7 +252,7 @@ cluster::*> network interface modify -vserver node2 -lif clus4 -auto-revert fals
 .. 按一下「*說明*」頁面上的「*繼續*」、接受授權合約、然後依照「*下載*」頁面上的指示下載RCF。
 .. 下載適當版本的映像軟體。
 +
-http://["Cisco®叢集與管理網路交換器參考組態檔案下載"^]
+http://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco®叢集與管理網路交換器參考組態檔案下載"^]
 
 
 

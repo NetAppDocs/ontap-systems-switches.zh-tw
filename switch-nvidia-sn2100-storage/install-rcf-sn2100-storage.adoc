@@ -104,7 +104,7 @@ RCF指令碼會完成上述步驟。
 
 +
 
-NOTE: 若有任何無法修正的RCF python指令碼問題、請聯絡 https://["NetApp支援"^] 以取得協助。
+NOTE: 若有任何無法修正的RCF python指令碼問題、請聯絡 https://mysupport.netapp.com/["NetApp支援"^] 以取得協助。
 
 . 重新開機後驗證組態：
 +

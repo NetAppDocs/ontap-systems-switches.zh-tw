@@ -20,7 +20,7 @@ summary: 在不中斷營運的程序中更換有瑕疵的NVIDIA SN2100儲存交�
 * 您已下載適用的RCT。
 
 
-。 http://["Hardware Universe"^] 提供支援連接埠及其組態的完整詳細資料。
+。 http://hwu.netapp.com["Hardware Universe"^] 提供支援連接埠及其組態的完整詳細資料。
 
 現有的網路組態必須具有下列特性：
 

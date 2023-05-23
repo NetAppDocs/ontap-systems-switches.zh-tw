@@ -31,7 +31,7 @@ NetApp傳遞面板套件包含下列硬體：
 
 NOTE: 跳接線未隨附於傳遞套件中、應隨附於交換器中。如果交換器未隨附、您可以向NetApp訂購（零件編號X1558A-R6）。
 
-* 如需初始準備要求、套件內容及安全預防措施、請參閱 https://["Cisco Nexus 9000系列硬體安裝指南"^]。
+* 如需初始準備要求、套件內容及安全預防措施、請參閱 https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/hw/aci_9336cfx2_hig/guide/b_n9336cFX2_aci_hardware_installation_guide.html["Cisco Nexus 9000系列硬體安裝指南"^]。
 
 
 .步驟

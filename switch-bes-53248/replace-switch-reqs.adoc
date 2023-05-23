@@ -45,6 +45,6 @@ summary: 在叢集網路中更換故障的Broadcom支援的Bes-53248叢集交換
 
 == 以取得更多資訊
 
-* https://["NetApp 支援網站"^]
-* https://["NetApp Hardware Universe"^]
+* https://mysupport.netapp.com/["NetApp 支援網站"^]
+* https://hwu.netapp.com/Home/Index["NetApp Hardware Universe"^]
 

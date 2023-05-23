@@ -29,7 +29,7 @@ summary: 您可以將不中斷營運的舊Cisco叢集交換器移轉至ONTAP NVI
 * Nexus 3132Q-V
 
 
-如需受支援連接埠及其組態的詳細資訊、請參閱 https://["Hardware Universe"^] 。
+如需受支援連接埠及其組態的詳細資訊、請參閱 https://hwu.netapp.com/["Hardware Universe"^] 。
 
 .您需要的產品
 確保：

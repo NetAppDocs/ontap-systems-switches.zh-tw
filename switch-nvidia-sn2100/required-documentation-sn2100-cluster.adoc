@@ -19,21 +19,21 @@ summary: 對於NVIDIA SN2100交換器的安裝與維護、請務必檢閱所有�
 
 
  a| 
-https://["NVIDIA交換器安裝指南"^]
+https://docs.nvidia.com/networking/display/sn2000pub/Installation["NVIDIA交換器安裝指南"^]
  a| 
 說明如何安裝NVIDIA SN2100交換器。
 
 
 
  a| 
-https://["NS224 NVMe磁碟機櫃佈線指南"^]
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2876580["NS224 NVMe磁碟機櫃佈線指南"^]
  a| 
 顯示如何設定磁碟機櫃佈線的概觀與圖例。
 
 
 
  a| 
-https://["NetApp Hardware Universe"^]
+https://hwu.netapp.com/["NetApp Hardware Universe"^]
  a| 
 可讓您確認平台機型支援的硬體、例如儲存交換器和纜線。
 

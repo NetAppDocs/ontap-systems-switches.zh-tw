@@ -38,7 +38,7 @@ summary: 如果您有現有的雙節點無交換式叢集環境、可以使用NV
 NOTE: 請參閱 link:cabling-considerations-sn2100-storage.html["佈線與組態考量"] 以瞭解相關注意事項及進一步的詳細資料。
 
 +
-。 https://["交換器Hardware Universe"^] 包含纜線的詳細資訊。
+。 https://hwu.netapp.com/SWITCH/INDEX["交換器Hardware Universe"^] 包含纜線的詳細資訊。
 
 * 交換器間連結（ISL）纜線連接至兩個NVIDIA SN2100交換器的交換器交換器連接埠swp15和swp16。
 * 完成兩個SN2100交換器的初始自訂、以便：
@@ -64,7 +64,7 @@ NOTE: 請參閱 link:cabling-considerations-sn2100-storage.html["佈線與組態
 * 此程序中使用的叢集連接埠為_e3a_和_e3c_。
 * 中斷連接埠的格式為：swp[port] s[中斷 連接埠0-3]。例如、swp1上的四個中斷連接埠分別是_swp1s0_、_swp1s1_、_swp1s2_和_swp1s3_。
 +
-。 https://["Hardware Universe"^] 包含平台實際叢集連接埠的最新資訊。
+。 https://hwu.netapp.com["Hardware Universe"^] 包含平台實際叢集連接埠的最新資訊。
 
 
 
@@ -235,7 +235,7 @@ Cluster
 ====
 . 從節點1上的叢集連接埠e3a拔下纜線、然後使用SN2100交換器所支援的適當纜線、將e3a連接至叢集交換器sw1上的連接埠3。
 +
-。 https://["交換器Hardware Universe"^] 包含纜線的詳細資訊。
+。 https://hwu.netapp.com/SWITCH/INDEX["交換器Hardware Universe"^] 包含纜線的詳細資訊。
 
 . 從節點2上的叢集連接埠e3a拔下纜線、然後使用SN2100交換器所支援的適當纜線、將e3a連接至叢集交換器sw1上的連接埠4。
 . 在交換器sw1上、啟用所有面向節點的連接埠。
