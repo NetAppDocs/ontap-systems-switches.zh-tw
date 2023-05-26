@@ -2724,7 +2724,6 @@
   <block id="4752e78bc698f54fab2873241037c39c" category="paragraph"><block ref="fcc881d4787d31c185b073346f97b823" prefix="" category="inline-code"></block></block>
   <block id="70b9e8739fd0230a7cd09ad6e9a66421" category="list-text">重新檢查儲存節點連接埠的健全狀況：</block>
   <block id="1baf7c89328f1d71632e29ad4a2dd59d" category="list-text">確認兩個交換器都可用：</block>
-  <block id="b19d86e3bcfd68004760a31aa0fc60dc" category="paragraph"><block ref="fe962342e77ec6978df73d7fb900c057" prefix="" category="inline-code"></block></block>
   <block id="27803f93d64ef714eff37b87b316c9a1" category="paragraph">您使用的程序取決於每個控制器上是否有兩個專屬的叢集網路連接埠、或每個控制器上是否有一個叢集連接埠。記錄的程序適用於所有使用光纖或雙軸纜線連接埠的節點、但如果節點使用內建10GBASE-T RJ45連接埠來連接叢集網路連接埠、則此交換器不支援此程序。</block>
   <block id="4e0b0c304729caba210b437f828a40e7" category="paragraph">對於雙節點無交換器組態、請確定：</block>
   <block id="7933d62e23b62e3165a85bc092d5b0d4" category="list-text">雙節點無交換器組態已正確設定並正常運作。</block>
@@ -4432,4 +4431,64 @@
   <block id="b8363a3557b5e1732a20eb45a96853b7" category="list-text">確認下一次重新載入時 POAP 已停用：</block>
   <block id="f306e2be0abd8aabfa0b014c372bbac8" category="list-text">在交換器 CS1 上重複步驟 4 至 11 。</block>
   <block id="256be937ef390f7d6dd71ad092869119" category="admonition">對於 ONTAP 9.8 及更新版本、請使用命令<block ref="c57378c3b3bb81c6b42a2b31a30ddda7" prefix=" " category="inline-code"></block>。</block>
+  <block id="393a5f0f5f1f070aac964741815cca76" category="doc">使用無切換連線更換 Broadcom BS-53248 叢集交換器</block>
+  <block id="a2ba7bf1b1a10d50fd13725865eabc47" category="list-text">測試交換器記錄收集功能：</block>
+  <block id="10b9ce0440e39e291f451f5b535309cd" category="summary">您可以執行特定的工作順序、以不中斷營運的方式更換有瑕疵的 NetApp CN1610 叢集交換器。</block>
+  <block id="a1e78a31e3c2a02f46648b1bf5b89e82" category="doc">更換 NetApp CN1610 叢集交換器</block>
+  <block id="66683ae2f7c6fa1c2c22df9a8db5475e" category="paragraph">請遵循下列步驟、在叢集網路中更換有瑕疵的 NetApp CN1610 交換器。這是一項不中斷營運的程序（ NDU ）。</block>
+  <block id="1f5b80c6e2ed11c7bd8290ed613ae1a2" category="paragraph">在執行交換器更換之前、在目前環境中以及在現有叢集和網路基礎架構的更換交換器上執行交換器更換之前、必須先存在下列條件：</block>
+  <block id="18277bdc1890285661ff31218ab7b9aa" category="list-text">所有叢集連接埠都必須為 * 上 * 。</block>
+  <block id="f98de8b264564fc8efac53d61616a3a6" category="list-text">所有叢集邏輯介面（生命）都必須啟動、而且不得移轉。</block>
+  <block id="83ef6b033ea6f10bf71f6382d94020d8" category="list-text">ONTAP 叢集<block ref="21228022de91fd069639d941562e2965" prefix=" " category="inline-code"></block> 命令必須指出所有路徑上的基本連線能力和大於 PMTU 的通訊均已成功。</block>
+  <block id="40432eff026ac452f4c464796c22cad2" category="list-text">兩台 CN1610 叢集交換器的名稱為<block ref="b12efe4e2b53de51a261421f77a3cbef" prefix=" " category="inline-code"></block> 和<block ref="43c8ce94d81492e62c60092a3664a65f" prefix=" " category="inline-code"></block>。</block>
+  <block id="a3f821e3cd7f17533bef9e520ea14552" category="list-text">要更換的 CN1610 交換器（故障交換器）名稱為<block ref="a86ae6152b2b202f86bf7a5980821925" prefix=" " category="inline-code"></block>。</block>
+  <block id="70a4fcd6859b5065af184b992f2a90b5" category="list-text">新的 CN1610 交換器（替換交換器）名稱為<block ref="3e9b9ae819a46f5f7f886bfb01bfafc3" prefix=" " category="inline-code"></block>。</block>
+  <block id="42791710cd5232be1ed51712d657545b" category="list-text">未被取代的合作夥伴交換器名稱為<block ref="43c8ce94d81492e62c60092a3664a65f" prefix=" " category="inline-code"></block>。</block>
+  <block id="cd831af3a25c38b31f51ceb27d65111f" category="list-text">確認啟動組態檔案符合執行中組態檔案。您必須將這些檔案儲存在本機、以便在更換期間使用。</block>
+  <block id="c4264c3f14ebe6d8561e3cf5acc1d741" category="paragraph">下列範例中的組態命令適用於 FastPath 1.2.0.7 ：</block>
+  <block id="45826415166a6e211a2acb28e84357a9" category="list-text">建立執行中組態檔案的複本。</block>
+  <block id="c048a33c156955dc46f6908ab7d1b4d8" category="paragraph">下列範例中的命令適用於 FastPath 1.2.0.7 ：</block>
+  <block id="de99beb6ca92a5a94725134af11c8df3" category="admonition">您可以使用任何檔案名稱、但不包括<block ref="269125eef7a6ed8a576f381402d71c00" prefix=" " category="inline-code"></block>。檔案名稱的副檔名必須是 * 。 scr* 。</block>
+  <block id="c3e4e0f5814f326b33a9db1d9a1860c0" category="list-text">[[step3]] 將交換器的執行組態檔案儲存至外部主機、以準備更換。</block>
+  <block id="d8442364ffcbb22977e4d9c52e73b57a" category="list-text">確認交換器和 ONTAP 版本符合相容性對照表。請參閱<block ref="fbc4dc59d397fb80fe60d1631a99b30c" category="inline-link-rx"></block> 頁面以取得詳細資料。</block>
+  <block id="8b0dd634e752838755fd13d129cbf10e" category="inline-link">軟體下載頁面</block>
+  <block id="b597e505404c69895e6ae5d6c947f299" category="list-text">從<block ref="3785e6528c27a2098021814637bc462a" category="inline-link-rx"></block> 在 NetApp 支援網站 上、選取 NetApp 叢集交換器以下載適當的 RCF 和 FastPath 版本。</block>
+  <block id="543af457f6c3336d817218e084e17ad6" category="list-text">使用 FastPath 、 RCF 和儲存的組態設定簡單檔案傳輸協定（ TFTP ）伺服器<block ref="e9f6316b4b0161f7581dee64491a28dd" prefix=" " category="inline-code"></block> 用於新交換器的檔案。</block>
+  <block id="0b370ae1e85c411b2432a8dd68539928" category="list-text">將序列連接埠（交換器右側標示為「 IOIOIOI 」的 RJ-45 連接器）連接至具有終端機模擬的可用主機。</block>
+  <block id="fdc083ea424ff6a805eb16cc6278c425" category="list-text">在主機上、設定序列終端連線設定：</block>
+  <block id="653e244c5d7d92e4099ddeea36e49c83" category="list-text">準備使用 TFTP 伺服器連線至網路。</block>
+  <block id="eced0a01e57d421422879b818ddbc655" category="paragraph">如果您使用動態主機組態傳輸協定（ DHCP ）、此時不需要為交換器設定 IP 位址。預設會將服務連接埠設定為使用 DHCP 。對於 IPv4 和 IPv6 通訊協定設定、網路管理連接埠設為「無」。如果您的扳手連接埠已連線至具有 DHCP 伺服器的網路、則會自動設定伺服器設定。</block>
+  <block id="044ec168f671f2601806847445bfa01f" category="paragraph">若要設定靜態 IP 位址、您應該使用 ServicePort 傳輸協定、網路傳輸協定和 ServicePort IP 命令。</block>
+  <block id="dc293c5866c77ae15aca96b85fcb77e6" category="list-text">或者、如果 TFTP 伺服器位於筆記型電腦上、則使用標準乙太網路纜線將 CN1610 交換器連接至筆記型電腦、然後在同一個網路中以替代 IP 位址設定其網路連接埠。</block>
+  <block id="b89dbda9007c12ba6185e044bc81949f" category="paragraph">您可以使用<block ref="df911f0151f9ef021d410b4be5060972" prefix=" " category="inline-code"></block> 用於驗證位址的命令。如果無法建立連線、則應使用非路由網路、並使用 IP 192.168.8.x 或 172.16.x 設定服務連接埠您可以稍後將服務連接埠重新設定為正式作業管理 IP 位址。</block>
+  <block id="b6254715be58b48ae4db50dd9fc31130" category="list-text">您也可以針對新交換器、驗證並安裝適當版本的 RCF 和 FastPath 軟體。如果您已確認新交換器已正確設定、且不需要更新 RCF 和 FastPath 軟體、請前往步驟 13 。</block>
+  <block id="7a1bfd4690df6818c8dc387281d627ed" category="list-text">驗證新的交換器設定。</block>
+  <block id="3ead3b3c8f520426f6d28b91165e4d04" category="list-text">將 RCF 下載至新的交換器。</block>
+  <block id="72825f9b72f9339979ca72becca7f71a" category="list-text">確認 RCF 已下載至交換器。</block>
+  <block id="999d6ca910b9a02c83e6b39776ceedec" category="list-text">將 RCF 套用至 CN1610 交換器。</block>
+  <block id="026fe9123f8f00bf5dbeb680d5c7798a" category="list-text">儲存執行中的組態檔、以便在重新開機時成為啟動組態檔。</block>
+  <block id="97e20e2f0ef3427615572f54f429eddf" category="list-text">將映像下載到 CN1610 交換器。</block>
+  <block id="3624b5e5cc6ddec75e62434e2a31ad65" category="list-text">重新啟動交換器以執行新的作用中開機映像。</block>
+  <block id="5e5e17a51764aae8ce901f8404dfc149" category="paragraph">必須重新啟動交換器、步驟 6 中的命令才能反映新映像。輸入 reload 命令後可能會看到兩種回應檢視。</block>
+  <block id="62692b2ca653dbb46bb2be739ec25eca" category="list-text">將保存的配置文件從舊交換機複製到新交換機。</block>
+  <block id="de9c3c21ee744efbe0e9dc92d2f3f8fa" category="list-text">將先前儲存的組態套用至新交換器。</block>
+  <block id="19f3f611402ea405c73eff978db54c04" category="list-text">將執行中的組態檔儲存至啟動組態檔。</block>
+  <block id="e34c68a3be46c36d4217182cacd9c5ed" category="list-text">在新的交換器 new_CS1 上、以管理員使用者身分登入、並關閉所有連接至節點叢集介面的連接埠（連接埠 1 到 12 ）。</block>
+  <block id="c941b6ce2e4c24df909851b245a02a61" category="list-text">從連接至 old_CS1 交換器的連接埠移轉叢集生命。</block>
+  <block id="4b1a908211784f472e4bd00126eca670" category="paragraph">您必須從目前節點的管理介面移轉每個叢集 LIF 。</block>
+  <block id="86549eb17e74fde8019bc78ee455f2f9" category="list-text">確認所有叢集生命體已移至每個節點上適當的叢集連接埠。</block>
+  <block id="6699d1ca219ee05fb31767f9ee4390f7" category="list-text">關閉連接至您所更換之交換器的叢集連接埠。</block>
+  <block id="3733adcf3b4da74ba9d591ecbad96807" category="list-text">驗證叢集的健全狀況。</block>
+  <block id="37d0e47b916b9fc27dd90cc97fc17772" category="list-text">確認連接埠已關閉。</block>
+  <block id="bad00619b1d5dd1b493aa019cb159e27" category="list-text">在交換器 CS2 上、關閉 ISL 連接埠 13 到 16 。</block>
+  <block id="15eb5a489e20c8cf8725dc5b810b0c97" category="list-text">驗證儲存管理員是否已準備好更換交換器。</block>
+  <block id="e1d368bc1401944984beccd9e88393a4" category="list-text">從 old_CS1 交換器拔下所有纜線、然後將纜線連接至 new_CS1 交換器上的相同連接埠。</block>
+  <block id="6e37f912363babbe2006b55d57ad6d78" category="list-text">在 CS2 交換器上、開啟 ISL 連接埠 13 到 16 。</block>
+  <block id="6ce486621cb8c46471908d6225196077" category="list-text">打開與叢集節點相關聯的新交換器連接埠。</block>
+  <block id="68399f85a753831d967234dab3cd5b35" category="list-text">在單一節點上、開啟連接至更換交換器的叢集節點連接埠、然後確認連結已開啟。</block>
+  <block id="b19024cd31c9de6e6498dddd23993117" category="list-text">在同一個節點上還原步驟 25 中與連接埠相關聯的叢集生命週期。</block>
+  <block id="1a087f1b105982e5c8b2694ba1b674f3" category="paragraph">在此範例中、如果「是首頁」欄為真、則節點 1 上的生命將成功還原。</block>
+  <block id="b047f062da383f17811a9e72a79d23f4" category="list-text">如果第一個節點的叢集 LIF 已啟動並還原至其主連接埠、請重複步驟 25 和 26 、以啟動叢集連接埠、並在叢集中的其他節點上還原叢集生命週期。</block>
+  <block id="31c3fc1c4fe98b31f2904808ddd9be0b" category="list-text">顯示叢集中節點的相關資訊。</block>
+  <block id="bf1b3c61d401b2f6c4dbbf5853555319" category="list-text">確認更換的交換器上的啟動組態檔和執行組態檔正確無誤。此組態檔應符合步驟 1 中的輸出。</block>
 </blocks>

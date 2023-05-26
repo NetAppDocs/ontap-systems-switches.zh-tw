@@ -54,3 +54,5 @@ entries:
     url: "/switch-bes-53248/replace-switch-reqs.html"
   - title: 更換BS-53248交換器
     url: "/switch-bes-53248/replace-switch.html"
+  - title: 使用無交換器連線取代叢集交換器
+    url: "/switch-bes-53248/migrate-to-switchless-interconnect-bes-53248.html"
