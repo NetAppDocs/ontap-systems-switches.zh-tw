@@ -2226,7 +2226,6 @@
   <block id="b2ca5d9b00c09954ba621c25b7a4bdbf" category="paragraph">。<block ref="141c10db18cf1753fa5fc05f553c33ff" category="inline-link-rx"></block> 包含纜線的詳細資訊。</block>
   <block id="1d70d7c880f9a4b8e9ccbd4cbaeefcd8" category="list-text">執行此程序之前、請先確定您目前已備份交換器組態。</block>
   <block id="c291fea66565616d9e881666325c1ee2" category="list-text">如果您尚未擁有交換器的目前備份、您可以將下列命令的輸出複製到記錄檔、以儲存目前的交換器組態：</block>
-  <block id="3f8f6d237f18036be3a3fb24642d16ba" category="list-text">如果您尚未這麼做、請將下列命令的輸出複製到記錄檔、以儲存目前的交換器組態：</block>
   <block id="8fdae5a227344a83423005f83a057331" category="list-text">驗證叢集內所有節點的叢集連接埠是否正常運作：</block>
   <block id="5d1ccfeff69430937e33ed02e46dbd94" category="list-text">驗證叢集的交換器健全狀況。</block>
   <block id="53a0bfa393247902d9ea8fedde7e8132" category="list-text">重新開機交換器CS1。您可以這樣做、觸發叢集生命期以恢復到其主連接埠。您可以在交換器重新開機時忽略節點上報告的「叢集連接埠當機」事件。</block>
@@ -4423,12 +4422,7 @@
   <block id="7d829570fe05df690649474b2bb97a3b" category="image-alt">叢集節點連線纜線移至 CS1-new 交換器</block>
   <block id="ec5ea2f0318e4d906c296f5576b9c026" category="list-text">[[step6]] 如果您禁止自動建立個案、請叫用 AutoSupport 訊息來重新啟用：<block ref="9ac424c0d7b432975df36a19daf50c9c" prefix=" " category="inline-code"></block></block>
   <block id="0429fa776d68090e46718ac7e32390ef" category="admonition">對於 EFOS 3.10.0.3 版及更新版本、請使用命令<block ref="c09633a606c51a161b16f8bf38f5ebb1" prefix=" " category="inline-code"></block>。</block>
-  <block id="455129a1d85d80f79e8d763a25910c74" category="admonition">更新或套用新的RCF時、您必須清除交換器設定並執行基本組態。如果您可以停用 PowerOn Auto Provisioning （ POAP ）（需要 NX-OS 9.2P1 或更新版本）、 SSH 交換器存取將會保留。為了額外的預防措施、如果在交換器重新開機後無法存取 SSH 、請使用序列主控台連線到交換器。</block>
   <block id="2df26e386d021172b261bcb47e157019" category="list-text">清理組態：</block>
-  <block id="a5247127c3e0a3fcdf9f80746c33cb54" category="list-text">停用 POAP ：</block>
-  <block id="b64ae68f672b168b4456ea13b494a759" category="inline-link">使用 PowerOn Auto Provisioning</block>
-  <block id="01197fee3250d671fd8c51972b5f4745" category="paragraph">請參閱<block ref="ff53901c2c0b0d51a17df0925879b1a5" category="inline-link-rx"></block> 以取得更多詳細資料。</block>
-  <block id="b8363a3557b5e1732a20eb45a96853b7" category="list-text">確認下一次重新載入時 POAP 已停用：</block>
   <block id="f306e2be0abd8aabfa0b014c372bbac8" category="list-text">在交換器 CS1 上重複步驟 4 至 11 。</block>
   <block id="256be937ef390f7d6dd71ad092869119" category="admonition">對於 ONTAP 9.8 及更新版本、請使用命令<block ref="c57378c3b3bb81c6b42a2b31a30ddda7" prefix=" " category="inline-code"></block>。</block>
   <block id="393a5f0f5f1f070aac964741815cca76" category="doc">使用無切換連線更換 Broadcom BS-53248 叢集交換器</block>
@@ -4491,4 +4485,7 @@
   <block id="b047f062da383f17811a9e72a79d23f4" category="list-text">如果第一個節點的叢集 LIF 已啟動並還原至其主連接埠、請重複步驟 25 和 26 、以啟動叢集連接埠、並在叢集中的其他節點上還原叢集生命週期。</block>
   <block id="31c3fc1c4fe98b31f2904808ddd9be0b" category="list-text">顯示叢集中節點的相關資訊。</block>
   <block id="bf1b3c61d401b2f6c4dbbf5853555319" category="list-text">確認更換的交換器上的啟動組態檔和執行組態檔正確無誤。此組態檔應符合步驟 1 中的輸出。</block>
+  <block id="d23e0ef648ea8ae58d49d4170d37c221" category="list-text">如果您尚未這麼做、請將下列命令的輸出複製到文字檔、以儲存目前交換器組態的複本：</block>
+  <block id="0fb51802ddab454289d99db889475b22" category="admonition">更新或套用新的RCF時、您必須清除交換器設定並執行基本組態。您必須連線至交換器序列主控台連接埠、才能再次設定交換器。</block>
+  <block id="a91911d2b8a6bd2699aa77eb38d533f1" category="paragraph">若要安裝 BS-53248 硬體、請參閱 Broadcom 說明文件。</block>
 </blocks>

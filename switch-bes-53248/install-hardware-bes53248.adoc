@@ -11,7 +11,7 @@ summary: 若要安裝BS-53248硬體、請參閱Broadcom的說明文件。
 
 
 [role="lead"]
-若要安裝BS-53248硬體、請參閱Broadcom的說明文件。
+若要安裝 BS-53248 硬體、請參閱 Broadcom 說明文件。
 
 .步驟
 . 檢閱 link:configure-reqs-bes53248.html["組態需求"]。

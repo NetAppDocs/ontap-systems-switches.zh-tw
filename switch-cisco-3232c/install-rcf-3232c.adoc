@@ -257,30 +257,16 @@ cluster1-04          true    true          false
 cluster1::*>
 ----
 ====
-. 如果您尚未擁有交換器的目前備份、您可以將下列命令的輸出複製到記錄檔、以儲存目前的交換器組態：
+. 如果您尚未這麼做、請將下列命令的輸出複製到文字檔、以儲存目前交換器組態的複本：
 +
 「如何執行設定」
 
 . 清除交換器CS2上的組態、然後執行基本設定。
 +
 
-CAUTION: 更新或套用新的RCF時、您必須清除交換器設定並執行基本組態。如果您可以停用 PowerOn Auto Provisioning （ POAP ）（需要 NX-OS 9.2P1 或更新版本）、 SSH 交換器存取將會保留。為了額外的預防措施、如果在交換器重新開機後無法存取 SSH 、請使用序列主控台連線到交換器。
+CAUTION: 更新或套用新的RCF時、您必須清除交換器設定並執行基本組態。您必須連線至交換器序列主控台連接埠、才能再次設定交換器。
 
 +
-.. SSH 進入交換器。
-+
-只有當從交換器的連接埠移除所有叢集生命期、且交換器已準備好清除組態時、才能繼續進行。
-
-.. 進入權限模式：
-+
-.顯示範例
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-(cs2)> *enable*
-----
-====
 .. 清理組態：
 +
 .顯示範例
@@ -293,35 +279,6 @@ CAUTION: 更新或套用新的RCF時、您必須清除交換器設定並執行�
 Warning: This command will erase the startup-configuration.
 
 Do you wish to proceed anyway? (y/n)  [n]  *y*
-----
-====
-.. 停用 POAP ：
-+
-.顯示範例
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-(cs2)# *system no poap*
-----
-====
-+
-請參閱 https://www.cisco.com/c/en/us/td/docs/dcn/nx-os/nexus9000/103x/configuration/fundamentals/cisco-nexus-9000-nx-os-fundamentals-configuration-guide-103x/m-using-poap.html?bookSearch=true#id_85315["使用 PowerOn Auto Provisioning"^] 以取得更多詳細資料。
-
-.. 確認下一次重新載入時 POAP 已停用：
-+
-.顯示範例
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-(cs2)#  *show boot*
-Current Boot Variables:
- sup-1
-NXOS variable = bootflash:/nxos.9.2.1.125.bin
-Boot POAP Disabled
-
-POAP permanently disabled using 'system no poap'
 ----
 ====
 .. 重新啟動交換器：
@@ -337,7 +294,6 @@ Are you sure you would like to reset the system? (y/n) *y*
 
 ----
 ====
-.. 使用 SSH 再次登入交換器以完成 RCF 安裝。
 
 
 . 使用下列傳輸傳輸協定之一、將RCF複製到交換器CS2的bootflash：FTP、TFTP、SFTP或scp。如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^] 指南：

@@ -412,7 +412,7 @@ Are you sure you would like to reset the system? (y/n) *y*
 [listing, subs="+quotes"]
 ----
 (cs2)# *copy sftp://172.19.2.1/tmp/BES-53248_RCF_v1.9-Cluster-HA.txt
-nvram:script BES-53248_RCF_v1.6-Cluster-HA.scr*
+nvram:script BES-53248_RCF_v1.9-Cluster-HA.scr*
 Remote Password:**
 Mode........................................... SFTP
 Set Server IP.................................. 172.19.2.1
