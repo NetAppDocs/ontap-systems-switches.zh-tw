@@ -3645,22 +3645,15 @@
   <block id="8e4eec704f9a8706e1a3cf96accb2c17" category="list-text"><block ref="8e4eec704f9a8706e1a3cf96accb2c17" category="inline-link-rx"></block></block>
   <block id="8fd3ca5f66dff5be16e79560dd28171e" category="inline-link">VA220 AFF</block>
   <block id="68b23d3f7da36f1f08be0727f515bcb1" category="inline-link">VA250 AFF</block>
-  <block id="5173935e91aef44c51b8afd57f32f13f" category="list-text"><block ref="5173935e91aef44c51b8afd57f32f13f" category="inline-link-rx"></block></block>
   <block id="540dacfeb5577ce4282c41e9c7518680" category="inline-link">解答400 AFF</block>
-  <block id="e06ad9290eff5c16396920aafb75091e" category="list-text"><block ref="e06ad9290eff5c16396920aafb75091e" category="inline-link-rx"></block></block>
   <block id="56c7968a1d140906ab8313162854322d" category="inline-link">部分A700 AFF</block>
   <block id="53270fbfda62583949b287e08ae3d063" category="inline-link">解答800 AFF</block>
-  <block id="2f143cdae4fee80d6697460e215b8a02" category="list-text"><block ref="2f143cdae4fee80d6697460e215b8a02" category="inline-link-rx"></block></block>
   <block id="ec5e81cea4c5ee83d635778e86350e80" category="inline-link">解答900 AFF</block>
-  <block id="5ac126eccd9cedace8ba8c1ea4723760" category="list-text"><block ref="5ac126eccd9cedace8ba8c1ea4723760" category="inline-link-rx"></block></block>
   <block id="d5d4923aa83e46af2152de920946ba41" category="example-title">系統FAS</block>
   <block id="9cce52969ddef317310e7d9d1c259895" category="inline-link">FAS500f</block>
-  <block id="266197ce8fb9d3417e159a8b375e04ef" category="list-text"><block ref="266197ce8fb9d3417e159a8b375e04ef" category="inline-link-rx"></block></block>
   <block id="1752b126dd5e4219fbf53c09ee63d51e" category="inline-link">FAS8300</block>
-  <block id="9832cac218f9fee6c6d44a9f9b5e7d76" category="list-text"><block ref="9832cac218f9fee6c6d44a9f9b5e7d76" category="inline-link-rx"></block></block>
   <block id="0588c4f1b58eac9f5062dc1da6e8435a" category="inline-link">FAS8700</block>
   <block id="ec5c696a4bc57321a5a79c91b886d5ff" category="inline-link">FAS9000</block>
-  <block id="6cfed826aaeccc59ecbf1bef0c41c6b6" category="list-text"><block ref="6cfed826aaeccc59ecbf1bef0c41c6b6" category="inline-link-rx"></block></block>
   <block id="756d409209ace98589705774b5011aa0" category="inline-link">FAS9500</block>
   <block id="26d2e0bd267361cc8916e7e16faebcbb" category="paragraph">將交換器安裝在機架或機櫃中。請參閱下列交換器機型的指示。</block>
   <block id="8821c03ea98d1edaf4b4b82c0aaf59dc" category="inline-link-macro">安裝BS-53248交換器</block>
@@ -3704,9 +3697,7 @@
   <block id="8a19d1619bb8803d8a6b5d21556d87ad" category="paragraph">設定交換器並安裝所需軟體之後、請存取AFF/FAS平台機型的安裝與設定指示、以完成系統設定。</block>
   <block id="f0a39bebe9f0d59f6fc97c14de8b2a1a" category="paragraph">安裝並設定AFF/FAS控制器和交換器之後、您必須完成ONTAP 在VMware中設定儲存設備。根據部署組態存取下列指示。</block>
   <block id="549f827e07761bafef053e8ca7564a39" category="inline-link">設定ONTAP 功能</block>
-  <block id="8849c41092b79554e9b7f3a213d25622" category="list-text">如需ONTAP 部署的資訊、請參閱<block ref="a9c0083f0559526553eb5b29452926d5" category="inline-link-rx"></block>。</block>
   <block id="10775dd39d5bac0a859a7c2aa804576e" category="inline-link">使用MetroCluster 支援功能進行組態設定ONTAP</block>
-  <block id="cd0ac8ac6ae100c0f56d712237ad4aea" category="list-text">如需ONTAP 使用MetroCluster 支援功能進行的支援、請參閱<block ref="725c74f5b5396d66bd86e73daf02329b" category="inline-link-rx"></block>。</block>
   <block id="1e672cb0691529b9dab89394f7a5f58c" category="paragraph"><block ref="f9b2ed845567b21857ae5d0479088ab0" category="inline-link-macro-rx"></block>。</block>
   <block id="21f31f792b72c310b4fd5aa9c2e35835" category="paragraph">請遵循此程序、在Nexus 9336C-FX2共用交換器上安裝NX-OS軟體。</block>
   <block id="3353682bf555dc374d0a35c53f69888f" category="paragraph">您可以更換故障的Nexus 9336C-FX2共用交換器。這是不中斷營運的程序（NDU）。</block>
@@ -4191,9 +4182,6 @@
   <block id="a3eb3beddbb43f454ab9432019c1c2ba" category="paragraph"><block ref="a3eb3beddbb43f454ab9432019c1c2ba" category="inline-link-macro-rx"></block></block>
   <block id="9461b7a834c383c5538d97f8a173943a" category="paragraph"><block ref="9461b7a834c383c5538d97f8a173943a" category="inline-link-macro-rx"></block></block>
   <block id="7f8ff44cf8415837b6ddd0f6cfbf3f5a" category="list-text"><block ref="7f8ff44cf8415837b6ddd0f6cfbf3f5a" category="inline-link-macro-rx"></block></block>
-  <block id="564ec135f22614fd51e7ace4addc3c82" category="list-text"><block ref="564ec135f22614fd51e7ace4addc3c82" category="inline-link-rx"></block></block>
-  <block id="5cebcc95a2116e4839d188e34a24089c" category="list-text"><block ref="5cebcc95a2116e4839d188e34a24089c" category="inline-link-rx"></block></block>
-  <block id="4cd32923632a1028f1e64fee85335b39" category="list-text"><block ref="4cd32923632a1028f1e64fee85335b39" category="inline-link-rx"></block></block>
   <block id="2bf999bae7084da5db26c6b483ac44f0" category="list-text"><block ref="2bf999bae7084da5db26c6b483ac44f0" category="inline-link-rx"></block></block>
   <block id="17467de5e625043cda6499d3541a20d4" category="list-text">[[step7]將共享交換器A上的儲存RCF替換為共用RCF檔案。請參閱 <block ref="2f595b9f03c1eca7e988cc615d685264" category="inline-link-macro-rx"></block> 以取得更多詳細資料。</block>
   <block id="636bbeffec3fc87e3384d539d543afee" category="list-text">[[step13]將共享交換器B上的儲存RCF檔案替換為共用RCF檔案。請參閱 <block ref="2f595b9f03c1eca7e988cc615d685264" category="inline-link-macro-rx"></block> 以取得更多詳細資料。</block>
@@ -4488,4 +4476,18 @@
   <block id="d23e0ef648ea8ae58d49d4170d37c221" category="list-text">如果您尚未這麼做、請將下列命令的輸出複製到文字檔、以儲存目前交換器組態的複本：</block>
   <block id="0fb51802ddab454289d99db889475b22" category="admonition">更新或套用新的RCF時、您必須清除交換器設定並執行基本組態。您必須連線至交換器序列主控台連接埠、才能再次設定交換器。</block>
   <block id="a91911d2b8a6bd2699aa77eb38d533f1" category="paragraph">若要安裝 BS-53248 硬體、請參閱 Broadcom 說明文件。</block>
+  <block id="3c8201758b6615445685550102a5ff2e" category="list-text"><block ref="3c8201758b6615445685550102a5ff2e" category="inline-link-rx"></block></block>
+  <block id="0c07f07bcba8b53ce2dde87f64978389" category="list-text"><block ref="0c07f07bcba8b53ce2dde87f64978389" category="inline-link-rx"></block></block>
+  <block id="ea4884694087f97f1414ff33591a92f4" category="list-text"><block ref="ea4884694087f97f1414ff33591a92f4" category="inline-link-rx"></block></block>
+  <block id="70784375dfee5175e8d1aff452c387bb" category="list-text"><block ref="70784375dfee5175e8d1aff452c387bb" category="inline-link-rx"></block></block>
+  <block id="9944f9622785dbcdc4d7ccd16c885446" category="list-text"><block ref="9944f9622785dbcdc4d7ccd16c885446" category="inline-link-rx"></block></block>
+  <block id="fe633e6d1d2b0e6ce4fb655cc1484ce6" category="list-text"><block ref="fe633e6d1d2b0e6ce4fb655cc1484ce6" category="inline-link-rx"></block></block>
+  <block id="53fcc9e92ee66f98454a4faa4f513b0f" category="list-text"><block ref="53fcc9e92ee66f98454a4faa4f513b0f" category="inline-link-rx"></block></block>
+  <block id="78863e0132385416cfd531211fd33ae2" category="list-text"><block ref="78863e0132385416cfd531211fd33ae2" category="inline-link-rx"></block></block>
+  <block id="94c4252b087ab60f8a4a9ffa3f5a1e59" category="list-text"><block ref="94c4252b087ab60f8a4a9ffa3f5a1e59" category="inline-link-rx"></block></block>
+  <block id="98d2b525bd9f4cea6db9ab1194e60210" category="list-text"><block ref="98d2b525bd9f4cea6db9ab1194e60210" category="inline-link-rx"></block></block>
+  <block id="85dbe4f93e89fc6f3ee146ffd5687c67" category="list-text"><block ref="85dbe4f93e89fc6f3ee146ffd5687c67" category="inline-link-rx"></block></block>
+  <block id="85d166e992ca6f11afb6f8661ce70bf4" category="list-text"><block ref="85d166e992ca6f11afb6f8661ce70bf4" category="inline-link-rx"></block></block>
+  <block id="b54483c149c4951b43214e0e419d0882" category="list-text">如需ONTAP 部署的資訊、請參閱<block ref="daad8f612ac7448a64fdb14518a581cb" category="inline-link-rx"></block>。</block>
+  <block id="aeaeb10b6f9fde2ae4de6c336b6e2a09" category="list-text">如需ONTAP 使用MetroCluster 支援功能進行的支援、請參閱<block ref="63d00fc18e84d6621c63394dbe0320b4" category="inline-link-rx"></block>。</block>
 </blocks>
