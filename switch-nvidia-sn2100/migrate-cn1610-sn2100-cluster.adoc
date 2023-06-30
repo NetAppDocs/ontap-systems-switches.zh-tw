@@ -1,0 +1,625 @@
+---
+permalink: switch-nvidia-sn2100/migrate-cn1610-sn2100-cluster-switch.html 
+sidebar: sidebar 
+keywords: migrate cluster NVIDIA SN2100 cluster switches cn1610 
+summary: 您可以不中斷地將 ONTAP 叢集的 NetApp CN1610 叢集交換器移轉至 NVIDIA SN2100 叢集網路交換器。 
+---
+= 將 CN1610 叢集交換器移轉至 NVIDIA SN2100 叢集交換器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以將 ONTAP 叢集的 NetApp CN1610 叢集交換器移轉至 NVIDIA SN2100 叢集交換器。這是不中斷營運的程序。
+
+
+
+== 檢閱要求
+
+當您使用 NVIDIA SN2100 叢集交換器來取代 NetApp CN1610 叢集交換器時、您必須注意某些組態資訊、連接埠連線和纜線需求。請參閱 link:configure-overview-sn2100-cluster.html["NVIDIA SN2100交換器的安裝與組態總覽"]。
+
+.支援的交換器
+支援下列叢集交換器：
+
+* NetApp CN1610
+* NVIDIA SN2100
+
+
+如需受支援連接埠及其組態的詳細資訊、請參閱 https://hwu.netapp.com/["Hardware Universe"^]。
+
+.您需要的產品
+確認您符合下列設定需求：
+
+* 現有叢集已正確設定並正常運作。
+* 所有叢集連接埠都處於「* up*」狀態、以確保不中斷營運。
+* NVIDIA SN2100 叢集交換器是在正確版本的 Cumulus Linux 下進行設定和操作、並套用參考組態檔案（ RCF ）。
+* 現有的叢集網路組態具有下列特性：
++
+** 使用 CN1610 交換器的備援全功能 NetApp 叢集。
+** 可管理 CN1610 交換器和新交換器的連線能力和主控台存取。
+** 所有叢集生命都處於「正常」狀態、叢集生命都在其主連接埠上。
+** 在 CN1610 交換器之間以及在新交換器之間啟用和連接 ISL 連接埠。
+
+
+* 部分連接埠是在 NVIDIA SN2100 交換器上設定、以 40GbE 或 100GbE 執行。
+* 您已規劃、移轉並記錄從節點到 NVIDIA SN2100 叢集交換器的 40GbE 和 100GbE 連線能力。
+
+
+
+
+== 移轉交換器
+
+.關於範例
+本程序中的範例使用下列交換器和節點命名法：
+
+* 現有的 CN1610 叢集交換器為 _C1_ 和 _C2_ 。
+* 新的NVIDIA SN2100叢集交換器是_sw1_和_SW2_。
+* 節點是_node1_和_node2_。
+* 叢集生命區分別是節點1上的_node1_clus1_和節點1上的_node1_clus2_、以及節點2上的節點2_node2_clus1_和節點2_clus2_。
+* 「cluster1：*：>」提示會指出叢集的名稱。
+* 此程序中使用的叢集連接埠為_e3a_和_e3c_。
+* 中斷連接埠的格式為：swp[port] s[中斷 連接埠0-3]。例如、swp1上的四個中斷連接埠分別是_swp1s0_、_swp1s1_、_swp1s2_和_swp1s3_。
+* 交換器C2先由交換器SW2取代、然後由交換器sw1取代交換器C1。
++
+** 然後從C2中斷連接節點與C2之間的纜線、並重新連接至SW2。
+** 然後、節點與C1之間的纜線會從C1中斷開、並重新連接至sw1。
+
+
+
+
+
+
+=== 步驟1：準備移轉
+
+. 如果AutoSupport 此叢集啟用了「支援」功能、請叫用AutoSupport 下列訊息來禁止自動建立案例：
++
+「系統節點AutoSupport 不完整地叫用節點*-type all -Message MAn=xh」
+
++
+其中_x_是維護時段的持續時間（以小時為單位）。
+
+. 將權限等級變更為進階、並在系統提示您繼續時輸入* y*：
++
+"進階權限"
+
++
+出現進階提示（*>）。
+
+. 停用叢集生命體上的自動還原：
++
+「網路介面修改-vserver叢集-lIF *-auta-fRevert假」
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert false*
+
+Warning: Disabling the auto-revert feature of the cluster logical interface may effect the availability of your cluster network. Are you sure you want to continue? {y|n}: *y*
+----
+====
+
+
+
+
+=== 步驟2：設定連接埠和纜線
+
+. 確定每個叢集介面的管理或作業狀態。
++
+每個連接埠都應顯示為 `Link` 和 `healthy` 適用於 `Health Status`。
+
++
+.. 顯示網路連接埠屬性：
++
+「網路連接埠show -IPSpace Cluster」
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network port show -ipspace Cluster*
+
+Node: node1
+                                                                       Ignore
+                                                 Speed(Mbps)  Health   Health
+Port      IPspace    Broadcast Domain Link MTU   Admin/Oper   Status   Status
+--------- ---------- ---------------- ---- ----- ------------ -------- ------
+e3a       Cluster    Cluster          up   9000  auto/100000  healthy  false
+e3b       Cluster    Cluster          up   9000  auto/100000  healthy  false
+
+Node: node2
+                                                                       Ignore
+                                                 Speed(Mbps)  Health   Health
+Port      IPspace    Broadcast Domain Link MTU   Admin/Oper   Status   Status
+--------- ---------- ---------------- ---- ----- ------------ -------- ------
+e3a       Cluster    Cluster          up   9000  auto/100000  healthy  false
+e3b       Cluster    Cluster          up   9000  auto/100000  healthy  false
+----
+====
+.. 顯示有關生命及其指定主節點的資訊：
++
+「網路介面show -vserver叢集」
+
++
+應顯示每個LIF `up/up` 適用於 `Status Admin/Oper` 和 `true` 適用於 `Is Home`。
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface show -vserver Cluster*
+
+            Logical      Status     Network            Current     Current Is
+Vserver     Interface    Admin/Oper Address/Mask       Node        Port    Home
+----------- -----------  ---------- ------------------ ----------- ------- ----
+Cluster
+            node1_clus1  up/up      169.254.209.69/16  node1       e3a     true
+            node1_clus2  up/up      169.254.49.125/16  node1       e3b     true
+            node2_clus1  up/up      169.254.47.194/16  node2       e3a     true
+            node2_clus2  up/up      169.254.19.183/16  node2       e3b     true
+
+----
+====
+
+
+. 每個節點上的叢集連接埠都會以下列方式（從節點的角度）、使用命令連線至現有的叢集交換器：
++
+`network device-discovery show -protocol`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network device-discovery show -protocol cdp*
+Node/       Local  Discovered
+Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
+----------- ------ ------------------------- ----------------  ----------------
+node1      /cdp
+            e3a    c1 (6a:ad:4f:98:3b:3f)    0/1               -
+            e3b    c2 (6a:ad:4f:98:4c:a4)    0/1               -
+node2      /cdp
+            e3a    c1 (6a:ad:4f:98:3b:3f)    0/2               -
+            e3b    c2 (6a:ad:4f:98:4c:a4)    0/2               -
+----
+====
+. 叢集連接埠和交換器的連接方式如下（從交換器的觀點來看）：
++
+「How cup neighbor」
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+c1# *show cdp neighbors*
+
+Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater,
+                  V - VoIP-Phone, D - Remotely-Managed-Device,
+                  s - Supports-STP-Dispute
+
+Device-ID             Local Intrfce Hldtme Capability  Platform         Port ID
+node1                 0/1           124     H          AFF-A400         e3a
+node2                 0/2           124     H          AFF-A400         e3a
+c2                    0/13          179     S I s      CN1610           0/13
+c2                    0/14          175     S I s      CN1610           0/14
+c2                    0/15          179     S I s      CN1610           0/15
+c2                    0/16          175     S I s      CN1610           0/16
+
+c2# *show cdp neighbors*
+
+Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater,
+                  V - VoIP-Phone, D - Remotely-Managed-Device,
+                  s - Supports-STP-Dispute
+
+
+Device-ID             Local Intrfce Hldtme Capability  Platform         Port ID
+node1                 0/1           124    H           AFF-A400         e3b
+node2                 0/2           124    H           AFF-A400         e3b
+c1                    0/13          175    S I s       CN1610           0/13
+c1                    0/14          175    S I s       CN1610           0/14
+c1                    0/15          175    S I s       CN1610           0/15
+c1                    0/16          175    S I s       CN1610           0/16
+----
+====
+. 使用以下命令驗證叢集網路是否具備完整連線能力：
++
+「叢集ping叢集節點節點名稱」
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *cluster ping-cluster -node node2*
+
+Host is node2
+Getting addresses from network interface table...
+Cluster node1_clus1 169.254.209.69 node1     e3a
+Cluster node1_clus2 169.254.49.125 node1     e3b
+Cluster node2_clus1 169.254.47.194 node2     e3a
+Cluster node2_clus2 169.254.19.183 node2     e3b
+Local = 169.254.47.194 169.254.19.183
+Remote = 169.254.209.69 169.254.49.125
+Cluster Vserver Id = 4294967293
+Ping status:
+....
+Basic connectivity succeeds on 4 path(s)
+Basic connectivity fails on 0 path(s)
+................
+Detected 9000 byte MTU on 4 path(s):
+    Local 169.254.19.183 to Remote 169.254.209.69
+    Local 169.254.19.183 to Remote 169.254.49.125
+    Local 169.254.47.194 to Remote 169.254.209.69
+    Local 169.254.47.194 to Remote 169.254.49.125
+Larger than PMTU communication succeeds on 4 path(s)
+RPC status:
+2 paths up, 0 paths down (tcp check)
+2 paths up, 0 paths down (udp check)
+----
+====
+. 在交換器C2上、關閉連接至節點叢集連接埠的連接埠。
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(c2)# *configure*
+(c2)(Config)# *interface 0/1-0/12*
+(c2)(Interface 0/1-0/12)# *shutdown*
+(c2)(Interface 0/1-0/12)# *exit*
+(c2)(Config)# *exit*
+(c2)#
+----
+====
+. 使用NVIDIA SN2100支援的適當纜線、將節點叢集連接埠從舊交換器C2移至新交換器SW2。
+. 顯示網路連接埠屬性：
++
+「網路連接埠show -IPSpace Cluster」
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network port show -ipspace Cluster*
+
+Node: node1
+                                                                       Ignore
+                                                 Speed(Mbps)  Health   Health
+Port      IPspace    Broadcast Domain Link MTU   Admin/Oper   Status   Status
+--------- ---------- ---------------- ---- ----- ------------ -------- ------
+e3a       Cluster    Cluster          up   9000  auto/100000  healthy  false
+e3b       Cluster    Cluster          up   9000  auto/100000  healthy  false
+
+Node: node2
+                                                                       Ignore
+                                                 Speed(Mbps)  Health   Health
+Port      IPspace    Broadcast Domain Link MTU   Admin/Oper   Status   Status
+--------- ---------- ---------------- ---- ----- ------------ -------- ------
+e3a       Cluster    Cluster          up   9000  auto/100000  healthy  false
+e3b       Cluster    Cluster          up   9000  auto/100000  healthy  false
+----
+====
+. 從節點的觀點來看、每個節點上的叢集連接埠現在都以下列方式連接至叢集交換器：
++
+`network device-discovery show -protocol`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network device-discovery show -protocol lldp*
+
+Node/       Local  Discovered
+Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
+----------- ------ ------------------------- ----------------  ----------------
+node1      /lldp
+            e3a    c1  (6a:ad:4f:98:3b:3f)   0/1               -
+            e3b    sw2 (b8:ce:f6:19:1a:7e)   swp3              -
+node2      /lldp
+            e3a    c1  (6a:ad:4f:98:3b:3f)   0/2               -
+            e3b    sw2 (b8:ce:f6:19:1b:96)   swp4              -
+----
+====
+. 在交換器SW2上、確認所有節點叢集連接埠都已啟動：
++
+`net show interface`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cumulus@sw2:~$ *net show interface*
+
+State  Name         Spd   MTU    Mode        LLDP              Summary
+-----  -----------  ----  -----  ----------  ----------------- ----------------------
+...
+...
+UP     swp3         100G  9216   Trunk/L2    e3b               Master: bridge(UP)
+UP     swp4         100G  9216   Trunk/L2    e3b               Master: bridge(UP)
+UP     swp15        100G  9216   BondMember  sw1 (swp15)       Master: cluster_isl(UP)
+UP     swp16        100G  9216   BondMember  sw1 (swp16)       Master: cluster_isl(UP)
+----
+====
+. 在交換器C1上、關閉連接至節點叢集連接埠的連接埠。
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(c1)# *configure*
+(c1)(Config)# *interface 0/1-0/12*
+(c1)(Interface 0/1-0/12)# *shutdown*
+(c1)(Interface 0/1-0/12)# *exit*
+(c1)(Config)# *exit*
+(c1)#
+----
+====
+. 使用NVIDIA SN2100支援的適當纜線、將節點叢集連接埠從舊交換器C1移至新交換器sw1。
+. 驗證叢集的最終組態：
++
+「網路連接埠show -IPSpace Cluster」
+
++
+應顯示每個連接埠 `up` 適用於 `Link` 和 `healthy` 適用於 `Health Status`。
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network port show -ipspace Cluster*
+
+Node: node1
+                                                                       Ignore
+                                                 Speed(Mbps)  Health   Health
+Port      IPspace    Broadcast Domain Link MTU   Admin/Oper   Status   Status
+--------- ---------- ---------------- ---- ----- ------------ -------- ------
+e3a       Cluster    Cluster          up   9000  auto/100000  healthy  false
+e3b       Cluster    Cluster          up   9000  auto/100000  healthy  false
+
+Node: node2
+                                                                       Ignore
+                                                 Speed(Mbps)  Health   Health
+Port      IPspace    Broadcast Domain Link MTU   Admin/Oper   Status   Status
+--------- ---------- ---------------- ---- ----- ------------ -------- ------
+e3a       Cluster    Cluster          up   9000  auto/100000  healthy  false
+e3b       Cluster    Cluster          up   9000  auto/100000  healthy  false
+----
+====
+. 從節點的觀點來看、每個節點上的叢集連接埠現在都以下列方式連接至叢集交換器：
++
+`network device-discovery show -protocol`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network device-discovery show -protocol lldp*
+
+Node/       Local  Discovered
+Protocol    Port   Device (LLDP: ChassisID)  Interface       Platform
+----------- ------ ------------------------- --------------  ----------------
+node1      /lldp
+            e3a    sw1 (b8:ce:f6:19:1a:7e)   swp3            -
+            e3b    sw2 (b8:ce:f6:19:1b:96)   swp3            -
+node2      /lldp
+            e3a    sw1 (b8:ce:f6:19:1a:7e)   swp4            -
+            e3b    sw2 (b8:ce:f6:19:1b:96)   swp4            -
+----
+====
+. 在交換器sw1和SW2上、確認所有節點叢集連接埠都已啟動：
++
+`net show interface`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *net show interface*
+
+State  Name         Spd   MTU    Mode        LLDP              Summary
+-----  -----------  ----  -----  ----------  ----------------- ----------------------
+...
+...
+UP     swp3         100G  9216   Trunk/L2    e3a               Master: bridge(UP)
+UP     swp4         100G  9216   Trunk/L2    e3a               Master: bridge(UP)
+UP     swp15        100G  9216   BondMember  sw2 (swp15)       Master: cluster_isl(UP)
+UP     swp16        100G  9216   BondMember  sw2 (swp16)       Master: cluster_isl(UP)
+
+
+cumulus@sw2:~$ *net show interface*
+
+State  Name         Spd   MTU    Mode        LLDP              Summary
+-----  -----------  ----  -----  ----------  ----------------- -----------------------
+...
+...
+UP     swp3         100G  9216   Trunk/L2    e3b               Master: bridge(UP)
+UP     swp4         100G  9216   Trunk/L2    e3b               Master: bridge(UP)
+UP     swp15        100G  9216   BondMember  sw1 (swp15)       Master: cluster_isl(UP)
+UP     swp16        100G  9216   BondMember  sw1 (swp16)       Master: cluster_isl(UP)
+----
+====
+. 驗證兩個節點各自與每個交換器都有一個連線：
++
+`net show lldp`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示兩個交換器的適當結果：
+
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *net show lldp*
+
+LocalPort  Speed  Mode        RemoteHost          RemotePort
+---------  -----  ----------  ------------------  -----------
+swp3       100G   Trunk/L2    node1               e3a
+swp4       100G   Trunk/L2    node2               e3a
+swp15      100G   BondMember  sw2                 swp15
+swp16      100G   BondMember  sw2                 swp16
+
+cumulus@sw2:~$ *net show lldp*
+
+LocalPort  Speed  Mode        RemoteHost          RemotePort
+---------  -----  ----------  ------------------  -----------
+swp3       100G   Trunk/L2    node1               e3b
+swp4       100G   Trunk/L2    node2               e3b
+swp15      100G   BondMember  sw1                 swp15
+swp16      100G   BondMember  sw1                 swp16
+----
+====
+
+
+
+
+=== 步驟3：完成程序
+
+. 在叢集生命體上啟用自動還原：
++
+`cluster1::*> network interface modify -vserver Cluster -lif * -auto-revert true`
+
+. 驗證所有叢集網路lifs是否都回到其主連接埠：
++
+「網路介面展示」
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface show -vserver Cluster*
+
+            Logical    Status     Network            Current       Current Is
+Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
+----------- ---------- ---------- ------------------ ------------- ------- ----
+Cluster
+            node1_clus1  up/up    169.254.209.69/16  node1         e3a     true
+            node1_clus2  up/up    169.254.49.125/16  node1         e3b     true
+            node2_clus1  up/up    169.254.47.194/16  node2         e3a     true
+            node2_clus2  up/up    169.254.19.183/16  node2         e3b     true
+----
+====
+. 使用下列兩個命令、啟用乙太網路交換器健全狀況監視器記錄收集功能、以收集交換器相關的記錄檔：
++
+「系統交換器乙太網路記錄設定密碼」和「系統交換器乙太網路記錄啟用-收集」
+
++
+.. 輸入：「System交換器乙太網路記錄設定密碼」
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *system switch ethernet log setup-password*
+Enter the switch name: <return>
+The switch name entered is not recognized.
+Choose from the following list:
+*sw1*
+*sw2*
+
+cluster1::*> *system switch ethernet log setup-password*
+
+Enter the switch name: *sw1*
+RSA key fingerprint is e5:8b:c6:dc:e2:18:18:09:36:63:d9:63:dd:03:d9:cc
+Do you want to continue? {y|n}::[n] *y*
+
+Enter the password: <enter switch password>
+Enter the password again: <enter switch password>
+
+cluster1::*> *system switch ethernet log setup-password*
+
+Enter the switch name: *sw2*
+RSA key fingerprint is 57:49:86:a1:b9:80:6a:61:9a:86:8e:3c:e3:b7:1f:b1
+Do you want to continue? {y|n}:: [n] *y*
+
+Enter the password: <enter switch password>
+Enter the password again: <enter switch password>
+----
+====
+.. 接著是：「系統交換器乙太網路記錄啟用-收集」
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *system  switch ethernet log enable-collection*
+
+Do you want to enable cluster log collection for all nodes in the cluster?
+{y|n}: [n] *y*
+
+Enabling cluster switch log collection.
+
+cluster1::*>
+----
+====
++
+
+NOTE: 如果這些命令中有任何一個出現錯誤、請聯絡NetApp支援部門。
+
+
+
+. 啟動交換器記錄收集功能：
++
+`system switch ethernet log collect -device *`
+
++
+等待10分鐘、然後使用以下命令檢查記錄收集是否成功：
+
++
+`system switch ethernet log show`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> system switch ethernet log show
+Log Collection Enabled: true
+
+Index  Switch                       Log Timestamp        Status
+------ ---------------------------- -------------------  ---------    
+1      sw1 (b8:ce:f6:19:1b:42)      4/29/2022 03:05:25   complete   
+2      sw2 (b8:ce:f6:19:1b:96)      4/29/2022 03:07:42   complete
+----
+====
+. 將權限層級變更回管理：
++
+「et -priv. admin」
+
+. 如果您禁止自動建立個案、請叫用AutoSupport 下列訊息來重新啟用：
++
+「系統節點AutoSupport 不完整地叫用節點*-type all -most MAn=end」
+
+

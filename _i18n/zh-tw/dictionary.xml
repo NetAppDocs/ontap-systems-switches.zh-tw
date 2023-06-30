@@ -4490,4 +4490,47 @@
   <block id="85d166e992ca6f11afb6f8661ce70bf4" category="list-text"><block ref="85d166e992ca6f11afb6f8661ce70bf4" category="inline-link-rx"></block></block>
   <block id="b54483c149c4951b43214e0e419d0882" category="list-text">如需ONTAP 部署的資訊、請參閱<block ref="daad8f612ac7448a64fdb14518a581cb" category="inline-link-rx"></block>。</block>
   <block id="aeaeb10b6f9fde2ae4de6c336b6e2a09" category="list-text">如需ONTAP 使用MetroCluster 支援功能進行的支援、請參閱<block ref="63d00fc18e84d6621c63394dbe0320b4" category="inline-link-rx"></block>。</block>
+  <block id="58233cc3bf4f9a457c5037d8366a019f" category="summary">您可以不中斷地將 ONTAP 叢集的 NetApp CN1610 叢集交換器移轉至 NVIDIA SN2100 叢集網路交換器。</block>
+  <block id="0a0432ddd8cc67e6faabbfc7f3b3830a" category="doc">將 CN1610 叢集交換器移轉至 NVIDIA SN2100 叢集交換器</block>
+  <block id="8ea2a6912c6f82674bf8bba7e59595cf" category="paragraph">您可以將 ONTAP 叢集的 NetApp CN1610 叢集交換器移轉至 NVIDIA SN2100 叢集交換器。這是不中斷營運的程序。</block>
+  <block id="395c77a333cd07968a4952d343ed8bc5" category="paragraph">當您使用 NVIDIA SN2100 叢集交換器來取代 NetApp CN1610 叢集交換器時、您必須注意某些組態資訊、連接埠連線和纜線需求。請參閱 <block ref="d007e33ffeb91af7b1ca0d25ce622b32" category="inline-link-macro-rx"></block>。</block>
+  <block id="688329e2d8991daa1267ab5847767b9e" category="paragraph">確認您符合下列設定需求：</block>
+  <block id="815a47d30e15149fc110b6a00eefcfca" category="list-text">現有叢集已正確設定並正常運作。</block>
+  <block id="0818cf807c37bde58d5f3b6c2c6cdaff" category="list-text">NVIDIA SN2100 叢集交換器是在正確版本的 Cumulus Linux 下進行設定和操作、並套用參考組態檔案（ RCF ）。</block>
+  <block id="d80e9af81b3112047acb97f82a585ab4" category="list-text">使用 CN1610 交換器的備援全功能 NetApp 叢集。</block>
+  <block id="62e335f2b7a1fec6337f4500ec85b4a0" category="list-text">可管理 CN1610 交換器和新交換器的連線能力和主控台存取。</block>
+  <block id="172f9b944970489ecdac26061399cf36" category="list-text">所有叢集生命都處於「正常」狀態、叢集生命都在其主連接埠上。</block>
+  <block id="8352596a2dc809409bca6c071df33f7d" category="list-text">在 CN1610 交換器之間以及在新交換器之間啟用和連接 ISL 連接埠。</block>
+  <block id="228c692878c55b6b708452532ab07090" category="list-text">部分連接埠是在 NVIDIA SN2100 交換器上設定、以 40GbE 或 100GbE 執行。</block>
+  <block id="8adef8d2aa43ec468f8916cb4d160300" category="list-text">您已規劃、移轉並記錄從節點到 NVIDIA SN2100 叢集交換器的 40GbE 和 100GbE 連線能力。</block>
+  <block id="520a02b14079c6a46859df2a37c9febb" category="list-text">現有的 CN1610 叢集交換器為 _C1_ 和 _C2_ 。</block>
+  <block id="7b2c7aa281e097d0b9bbd57ac76fb359" category="paragraph">每個連接埠都應顯示為<block ref="97e7c9a7d06eac006a28bf05467fcc8b" prefix=" " category="inline-code"></block> 和<block ref="741839f346d6e8126ae38ee76a96fd12" prefix=" " category="inline-code"></block> 適用於<block ref="fbcf0d1f787c74663ca9dc925ebf5f0c" prefix=" " category="inline-code"></block>。</block>
+  <block id="284cd410e60c4e505551ad2599982d4c" category="list-text">顯示有關生命及其指定主節點的資訊：</block>
+  <block id="d6969185bcc915329c1f2c87b692d720" category="paragraph">應顯示每個LIF<block ref="fc7c1443e5c7b6439706b6132a4c0829" prefix=" " category="inline-code"></block> 適用於<block ref="4f21ee5a18672b60f4c01e94e6be9c79" prefix=" " category="inline-code"></block> 和<block ref="b326b5062b2f0e69046810717534cb09" prefix=" " category="inline-code"></block> 適用於<block ref="53db3ce0fe0e71f06b3beb0b676b806c" prefix=" " category="inline-code"></block>。</block>
+  <block id="13ee56de24afc64015b6d9b81206a3a8" category="paragraph"><block ref="dbda9fa81591dd4f13b3b1e98408c845" prefix="" category="inline-code"></block></block>
+  <block id="db038ea8b37b62294a9f3eebe698b28a" category="paragraph">應顯示每個連接埠<block ref="46c48bec0d282018b9d167eef7711b2c" prefix=" " category="inline-code"></block> 適用於<block ref="97e7c9a7d06eac006a28bf05467fcc8b" prefix=" " category="inline-code"></block> 和<block ref="741839f346d6e8126ae38ee76a96fd12" prefix=" " category="inline-code"></block> 適用於<block ref="fbcf0d1f787c74663ca9dc925ebf5f0c" prefix=" " category="inline-code"></block>。</block>
+  <block id="0f2a4526602865cc9158a56028bf97de" category="summary">您可以不中斷地將 ONTAP 叢集的 NetApp CN1610 叢集交換器移轉至 Cisco Nexus 9336C-FX2 叢集網路交換器。</block>
+  <block id="4732368f30b7afd2065dc4cc0c57584f" category="doc">從 NetApp CN1610 叢集交換器移轉至 Cisco 9336C-FX2 叢集交換器</block>
+  <block id="c8fc8239bd9ec37b7c36847589d5c8a0" category="paragraph">您可以將 ONTAP 叢集的 NetApp CN1610 叢集交換器移轉至 Cisco 9336C-FX2 叢集交換器。這是不中斷營運的程序。</block>
+  <block id="b6bd832f0692f49d1480e52df106a51f" category="paragraph">當您使用 Cisco 9336C-FX2 叢集交換器更換 NetApp CN1610 叢集交換器時、您必須瞭解某些組態資訊、連接埠連線和纜線需求。</block>
+  <block id="059d31543d448499bd1a9c454a8d1ebb" category="list-text">Cisco 9336C-FX2</block>
+  <block id="3cb2d5707cdf5f5290ac6608ce8b5278" category="paragraph">確認您的組態符合下列需求：</block>
+  <block id="6195676dbe2277e0d3edb2d8c3a50b2e" category="list-text">Cisco 9336C-FX2 叢集交換器是在正確版本的 NX-OS 下設定及操作、並套用參考組態檔案（ RCF ）。</block>
+  <block id="f782426a4cdf95a0b55da18e28ebf175" category="list-text">使用 NetApp CN1610 交換器的備援全功能 NetApp 叢集。</block>
+  <block id="b5151f51cad20da0989e60f2f67b1b88" category="list-text">管理 NetApp CN1610 交換器和新交換器的連線能力和主控台存取。</block>
+  <block id="b10363b52a35e01590fe1de363abbec3" category="list-text">NetApp CN1610 交換器之間以及新交換器之間的 ISL 連接埠已啟用並連接纜線。</block>
+  <block id="ef76bcea64dcb3d0ca7a96e4f9da6812" category="list-text">部分連接埠是在 Cisco 9336C-FX2 交換器上設定、以 40GbE 或 100GbE 執行。</block>
+  <block id="d3be97c754d4396e13d0406452fc2fb0" category="list-text">您已規劃、移轉並記錄從節點到 Cisco 9336C-FX2 叢集交換器的 40GbE 和 100GbE 連線。</block>
+  <block id="9d9d3ff89e1f212fa1f66986336ed0c1" category="list-text">現有的 CN1610 叢集交換器為 _C1_ 和 _C2_ 。</block>
+  <block id="584cd7559b010eb68304bdb5ed2c60d2" category="list-text">全新 9336C-FX2 叢集交換器為 _CS1_ 和 _CS2_ 。</block>
+  <block id="bf50ad9c8205601ab87f52d53897d187" category="list-text">交換機 C2 先由交換機 CS2 取代，然後由交換機 CS1 取代交換機 C1 。</block>
+  <block id="336662c525771f82353eb880f4507911" category="list-text">然後、節點與 C2 之間的纜線會從 C2 中斷連線、並重新連接至 CS2</block>
+  <block id="ba8f22a022d24c1e6a519a5e6a867762" category="list-text">然後、節點與 C1 之間的纜線會從 C1 中斷連線、並重新連接至 CS1 。</block>
+  <block id="413712aa4f400acdac067e9bcde8736d" category="list-text">在交換器 C2 上、關閉連接到節點叢集連接埠的連接埠。</block>
+  <block id="d14fe42ffba032ed843b9363b0fb3908" category="list-text">使用 Cisco 9336C-FX2 支援的適當纜線、將節點叢集連接埠從舊的交換器 C2 移至新的交換器 CS2 。</block>
+  <block id="56c5592f9041f8677e5bee9e1ae96f0a" category="list-text">在交換器 CS2 上、確認所有節點叢集連接埠均已啟動：</block>
+  <block id="f2c6d0da02e9db5edf3d6c608d708936" category="list-text">在交換器 C1 上、關閉連接到節點叢集連接埠的連接埠。</block>
+  <block id="cc0c96fa4e2abab8a22a057701a64895" category="list-text">使用 Cisco 9336C-FX2 支援的適當纜線、將節點叢集連接埠從舊的交換器 C1 移至新的交換器 CS1 。</block>
+  <block id="ba04a36ca69927056bab3bba36362e9b" category="list-text">在交換器 CS1 和 CS2 上、確認所有節點叢集連接埠均已啟動：</block>
+  <block id="d9dbaab2b13b33007de8325a401de04b" category="sidebar">從 CN1610 叢集交換器移轉</block>
 </blocks>

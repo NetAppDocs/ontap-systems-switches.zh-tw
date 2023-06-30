@@ -38,6 +38,8 @@ entries:
     url: "/switch-nvidia-sn2100/upgrade-cl-version.html"
 - title: 移轉交換器
   entries:
+  - title: 從 CN1610 叢集交換器移轉
+    url: "/switch-nvidia-sn2100/migrate-cn1610-sn2100-cluster-switch.html"
   - title: 從Cisco叢集交換器移轉
     url: "/switch-nvidia-sn2100/migrate-cisco-sn2100-cluster-switch.html"
   - title: 移轉至雙節點交換叢集
