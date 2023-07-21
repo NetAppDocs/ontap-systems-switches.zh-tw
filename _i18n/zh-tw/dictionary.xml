@@ -1556,11 +1556,8 @@
   <block id="09b8dd35e8fef3e8e5d41f09345fb4d1" category="list-text">使用ping命令來驗證與裝載EFOS、授權和RCF之伺服器的連線。</block>
   <block id="3c45f2f6b490b6057b0b3cee9eab4438" category="list-text">CN1610.</block>
   <block id="6db27f68adde7b6578b513891108402f" category="list-text">Bes - 53248-</block>
-  <block id="660b0f9ffb8f8576ba98663a59024584" category="list-text">B16-53248：連接埠0/1-0/16（10/25 GbE）</block>
   <block id="c8be55cbfb0716be35dee2453296d010" category="admonition">購買連接埠授權即可啟動其他連接埠。</block>
-  <block id="7e87662569383e326538e5d26beb6a08" category="list-text">Bes：53224：連接埠0/55-0/56（100 GbE）</block>
   <block id="0770c9d05dca95d3cdebb78f361ae6e8" category="list-text">*開頭：*適用於CN1610至CN1610（SFP+至SFP+）、四條SFP+光纖或銅線直接連接纜線。</block>
-  <block id="2a5de425b9976b085fa03aa8c0bb83af" category="list-text">*過渡：*適用於CN1610至BES-53248（SFP+至SFP28）、四條10G SFP+光纖收發器/光纖或銅線直接連接纜線。</block>
   <block id="320ed3c6eb6c5ab11253b5afc742dec7" category="list-text">*最終版本：*適用於BS53248至BS53248（QSFP28至QSFP28）、兩條QSFP28光纖收發器/光纖或銅線直接附加纜線。</block>
   <block id="3a0aeae8d2331aaa16cf8b013ee0195b" category="paragraph">X190005</block>
   <block id="cedf09ac3086a8a21f249827087f6fad" category="paragraph">X190005R</block>
@@ -1682,32 +1679,14 @@
   <block id="4b635ddce769f4a22690759878013867" category="list-text">BS-53248交換器預先載入支援版本的參考組態檔（RCF）和乙太網路架構作業系統（EFOS）、並將ISL纜線連接至連接埠55和56。</block>
   <block id="27697f6512c7b96a98d841d32af1d8b1" category="list-text">CN1610交換器CL2由BS-53248交換器CS2取代：</block>
   <block id="7752aa18c591e37c0a0acd3fb6e4a122" category="list-text">從連接至CL2的所有節點上的所有叢集連接埠拔下纜線、然後使用支援的纜線將連接埠重新連接至新叢集交換器CS2。</block>
-  <block id="c012a6d3633646a8c68fc6402458aceb" category="list-text">拔下ISL連接埠CL1和CL2之間的纜線、然後使用支援的纜線將連接埠從CL1重新連接至CS2。</block>
   <block id="834f4154e00d9ca11a81ff42577b0608" category="list-text">CN1610交換器CL1由BY-53248交換器CS1取代：</block>
   <block id="2f90e3f924637cb7efc034159b2c9a25" category="list-text">從連接至CL1的所有節點上的所有叢集連接埠拔下纜線、然後使用支援的纜線將連接埠重新連接至新叢集交換器CS1。</block>
-  <block id="1821b2575dd0c2fdaceab059a46c61d1" category="list-text">拔下ISL連接埠CL1和CS2之間的纜線、然後使用支援的纜線將連接埠從CS1重新連接至CS2。</block>
   <block id="2e729d790188b76f9ff137fba89a9db0" category="list-text">顯示叢集網路連接埠屬性：</block>
-  <block id="00719eb4831e293ceb7b2b270145824c" category="list-text">根據您的需求、確認新的BS-53248交換器上已安裝適當的連接埠授權、RCF和EFOS映像、並進行必要的站台自訂、例如使用者和密碼、網路位址等。</block>
-  <block id="d8ec26620645f03028b1af11475624ff" category="list-text">Ping遠端叢集介面：</block>
   <block id="82214ffaae0abeffe761517344159444" category="list-text">關閉主動式CN1610交換器CL1上的ISL連接埠13至16：</block>
-  <block id="a4a74e31e717c4b6fc3b7ad6012d0349" category="list-text">在CN1610 CL1與新的BS-53248 CS2之間建置暫時ISL。ISL只會在CS2上定義、因為CL1上的現有ISL可以重複使用。</block>
-  <block id="5d280863fd236cda52f2708226ba8a5e" category="list-text">從CN1610交換器CL2的連接埠13到16拔下四條ISL纜線。</block>
-  <block id="38ca1adf59b8ce9e6c4f44159a40f5be" category="paragraph">您必須在新的BS-53248交換器CS2上、將適當核准的纜線連接埠0/13至0/16、連接至現有CN1610交換器CL1上的連接埠13至16。</block>
-  <block id="38e3ae6448f367edbd7386f2cb6d360c" category="paragraph">以下範例說明在CL1上啟動ISL連接埠13到16的程序：</block>
-  <block id="293d91afee246f200d1ae69d1b103a92" category="list-text">驗證B址-53248交換器上的ISL連接埠是否正常運作：</block>
   <block id="210c72bbad8c8bc1c0de6bc95f64dff9" category="list-text">確認所有的叢集互連連接埠都已還原至其主連接埠：</block>
   <block id="f9d6a6a75483c0ffe08b0dea9565ef0c" category="list-text">確認所有的叢集連接埠均已連接：</block>
-  <block id="271a2364104a3bfd1eed9bb3610457ca" category="paragraph">下列範例顯示先前命令的結果、確認所有叢集互連都正常運作：</block>
-  <block id="2eaa23d19c9d0d8b99dd3aebe2821a47" category="list-text">在所有節點上、移除連接至CN1610交換器CL1的纜線。</block>
-  <block id="cf23dc9a349b2b2b24b965ca1b5ee780" category="list-text">從BS-53248交換器CS2的連接埠13至16拔下四條ISL纜線。</block>
-  <block id="7949279a511393a80732a0badf33762b" category="list-text">移除CS2上的暫用連接埠通道2。</block>
-  <block id="26bf31952ecce194df04b0049b809e81" category="paragraph">下列範例會移除連接埠通道2、並將執行組態檔複製到啟動組態檔：</block>
-  <block id="230ee507b1c1c7034ad032da25076f9f" category="paragraph">以下範例可驗證節點1和節點2上的所有叢集互連連接埠均為「up（正常））：</block>
   <block id="48080b25b0f8ce17d4598aea7dbbc6cb" category="list-text">確認介面現在是主介面：</block>
-  <block id="5fd0551e41d9e31f886e46cd4cffc6fa" category="paragraph">以下範例顯示節點1和節點2的叢集互連介面狀態為「up」和「is home」：</block>
-  <block id="b7dbe83a33dd014817344e36d5873787" category="paragraph">以下範例顯示節點1和節點2已從CN1610 CL2和CL1移轉至BS-53248 CS2和CS1：</block>
   <block id="7600489ac65e7f2d69df5731f63b9999" category="list-text">如果更換的CN1610交換器未自動移除、請將其移除：</block>
-  <block id="10b31128e5e49951f428b70d16fffeef" category="paragraph">「系統叢集交換器刪除-DEVICE _DEVICE名稱_」</block>
   <block id="8e4984bab9d1ed958d954b97ee853c52" category="summary">您可以使用「Bes - 53248叢集交換器連接埠指派表」作為設定叢集的指南。</block>
   <block id="dc3310fe82b8aa736508dff9756c1c6a" category="cell">交換器連接埠</block>
   <block id="670c1649b9af213cff68a904e9de20ed" category="cell">連接埠使用量</block>
@@ -2210,8 +2189,6 @@
   <block id="8761a71b0c01f0356000c0994d4fb203" category="paragraph">「系統交換器乙太網路記錄設定密碼」和「系統交換器乙太網路記錄啟用-收集」</block>
   <block id="c757279318295752ba90c940af04f05e" category="paragraph">接著是：「系統交換器乙太網路記錄啟用-收集」</block>
   <block id="def140a135e96c99279be95e1ef70130" category="doc">更換Broadcom支援的Bes - 53248叢集交換器</block>
-  <block id="aca231809cb1cd80c1435dd9914b66dd" category="paragraph">然後、您必須將所有節點上的中斷連接連接埠重新連接至新的BS-53248交換器CS2。請參閱<block ref="141c10db18cf1753fa5fc05f553c33ff" category="inline-link-rx"></block> 以取得核准的纜線選項。</block>
-  <block id="cbd2e2da439fbaf2fd95743ddedbb09e" category="paragraph">然後、您必須將所有節點上的中斷連接連接埠重新連線至新的BS1-53248交換器CS1。請參閱<block ref="141c10db18cf1753fa5fc05f553c33ff" category="inline-link-rx"></block> 以取得核准的纜線選項。</block>
   <block id="16c3e502f28be460a987ad28ccd36874" category="paragraph">您可以使用Broadcom支援的Bes - 53248叢集交換器連接埠指派表、作為設定叢集的指南。</block>
   <block id="fa4755458f8910a0033438b214e14730" category="paragraph">2016年1月16日</block>
   <block id="72361095902a3b782c7c383d3a813fcf" category="paragraph">10/25GbE叢集連接埠節點、基礎組態</block>
@@ -2308,7 +2285,6 @@
   <block id="8c61118abc6e9e30fd4469d362e96e00" category="paragraph">所有叢集生命體都會移至CS2新交換器。</block>
   <block id="2a5fc0afbcb2299e24c73a909b297e93" category="paragraph">驗證移動的叢集連接埠是否將CS1-new交換器視為鄰近端點。</block>
   <block id="35d736ae56a7e094d4d2c2786669f8ca" category="list-text">從交換器CS1-New的觀點來確認交換器連接埠連線：</block>
-  <block id="2a42351fd3a2f7fd74a9510816b9125f" category="list-text">啟用乙太網路交換器健全狀況監視器記錄收集功能、以收集交換器相關的記錄檔。</block>
   <block id="9e25219bfef39dc2d94805b599244f8d" category="open-title">更新版本ONTAP</block>
   <block id="c341f6ea60d7e8508c7d6cd8d529fd71" category="paragraph">使用下列兩個命令啟用乙太網路交換器健全狀況監視器記錄收集功能、以收集交換器相關的記錄檔：「System Switch Ethernet log setup-password」（系統交換器乙太網路記錄啟用-收集）和「System Switch Ethernet log enable - collection」（系統交換器乙太網路記錄啟用-收集）</block>
   <block id="372aff3164b35ebb97a99a633d4262a4" category="paragraph">*注意：*您需要交換器上*管理*使用者的密碼。</block>
@@ -2983,8 +2959,6 @@
   <block id="bc0630b5ddba535ff747f33d931d3694" category="inline-link-macro">設定Cisco Nexus 9336C-FX2儲存交換器</block>
   <block id="72ebeb1eaefeb8dcaddced548aa138a6" category="paragraph">前往 <block ref="dbe1537ab2448f7ffd0bedd5a713fbd6" category="inline-link-macro-rx"></block>。</block>
   <block id="5d9de0e2f02eef0f18faf016853f64f1" category="paragraph">您可以將舊版Cisco叢集交換器移轉至ONTAP Cisco Nexus 9336C-FX2儲存網路交換器。這是不中斷營運的程序。</block>
-  <block id="f9d2ab9ba492f39945871f6a528883ed" category="list-text">Nexus 9336C-FX2交換器上的部分連接埠已設定為以10 GbE或40 GbE執行。</block>
-  <block id="c6449cd5583d11e13492975c270966b3" category="list-text">從節點到Nexus 9336C-FX2叢集交換器的10 GbE和40 GbE連線功能已經過規劃、移轉及記錄。</block>
   <block id="168e6c74ccda1fafcc71e6c7735ab151" category="list-text">叢集運作正常（記錄中不應有錯誤或類似問題）。</block>
   <block id="9a09d8e2d5f6e06a696dfad8eb5b3787" category="list-text">Cisco Nexus 9336C-FX2交換器的初始自訂已完成、因此：</block>
   <block id="df5367038bd60876796bcfd577caafc0" category="list-text">9336C-FX2交換器正在執行最新建議版本的軟體。</block>
@@ -3530,15 +3504,11 @@
   <block id="1e398c47e90911cdd18c0dcb654a78a1" category="paragraph">在BES-53248叢集交換器上、48個10/25GbE（SFP28/SFP+）連接埠會結合成12個4埠群組、如下所示：連接埠1-4、5-8、9-12、13-16、17-20、21至24、25至28、29至32、33至36、37至40、41至44及45至48。</block>
   <block id="e1eb24039435030db0d5dbc4456a9bd9" category="doc">將CN1610叢集交換器移轉至BS-53248叢集交換器</block>
   <block id="88f0acfafa549f0c5c14861dac821fdd" category="paragraph">若要將叢集中的CN1610叢集交換器移轉至Broadcom支援的BS-53248叢集交換器、請檢閱移轉需求、然後遵循移轉程序。</block>
-  <block id="1380e851ffb255b46dfcc6fc2d4a81af" category="paragraph">檢閱組態資訊、連接埠連線和纜線需求。</block>
   <block id="cd6ffc68dd2e79ef0626cbab7223057e" category="section-title">節點連線</block>
   <block id="84a71a9e63ead8784cd365088a3be8c4" category="section-title">ISL連接埠</block>
   <block id="0f92a7d54d19ea727ff8ed91081b5563" category="section-title">ISL纜線</block>
   <block id="3ad14aa63328fe46434a4528efd17f3e" category="paragraph">請遵循此程序、將CN1610叢集交換器移轉至BS-53248叢集交換器。</block>
   <block id="07fee47f3ffbc5ef72724836369779da" category="list-text">這些範例使用兩個節點、每個節點都部署兩個10 GbE叢集互連連接埠：<block ref="922c556baf6272bffc4fa28b2e9a0bbc" prefix=" " category="inline-code"></block> 和<block ref="22fe67c2e87caff18249cf1804bbeaad" prefix=" " category="inline-code"></block>。</block>
-  <block id="ffc84dedc07b568ca791adb72bcc8d61" category="paragraph">下列範例在CS2（連接埠13-16）上建置暫用ISL、以連接至CL1（連接埠13-16）上的現有ISL。</block>
-  <block id="4ce9c3db8b38bb08700bf7d0c8a896a4" category="list-text">驗證CN1610交換器CL1上的ISL是否「up」：</block>
-  <block id="3bc00b87c9d7974628fbaf8aa8779a0c" category="paragraph">。<block ref="2ca384e25ce18ee9f0ef797ddb07553f" prefix=" " category="inline-code"></block> 應為「UP」、<block ref="a1fa27779242b4902f7ae3bdd5c6d508" prefix=" " category="inline-code"></block> 應為「Static」（靜態）、且<block ref="574cf51f989449e27cc737b456360c82" prefix=" " category="inline-code"></block> 連接埠0/13至0/16應為「真」：</block>
   <block id="245b6d4f01047a24b306b9ff15a6f528" category="summary">您可以在設定BS-53248叢集交換器之後、以及套用新授權之後、安裝參考組態檔（RCF）。</block>
   <block id="b3d2ab282b59bbaad33610c1e37f6f97" category="list-text">將指令碼套用至交換器：</block>
   <block id="4b3087862136b477f2ba4eb874340862" category="inline-link-macro">安裝CSHM組態檔案</block>
@@ -4231,8 +4201,6 @@
   <block id="fa29548058837254e54c0910a42e81ed" category="paragraph"><block ref="7d77b5b7ecc6e91232de4d87c6f561de" prefix="" category="inline-code"></block></block>
   <block id="25e09b4fadd3fa8202fa95ea688667c1" category="list-text">[[step5]] 確認命令輸出包含文字字串：<block ref="bb932139b2106289945776f4f81d066a" prefix=" " category="inline-code"></block>。如果發生錯誤、請聯絡 NetApp 支援部門。</block>
   <block id="d28bbd717c002acf43e747edb594c750" category="list-text">在 ONTAP 系統上執行命令、並確認已探索叢集交換器、並將監控欄位設為「 True 」：</block>
-  <block id="0b2982341db4239f887933204ca7720d" category="paragraph"><block ref="b4720f8aa09f4e4b3a04e78c558b6c90" prefix="" category="inline-code"></block></block>
-  <block id="4e4f70ba52e8cb595faa069991c5a9f4" category="list-text">[[step5]] 如果您禁止自動建立個案、請叫用 AutoSupport 訊息來重新啟用：</block>
   <block id="1ad47980611dd1ee749c3478e99b4edd" category="paragraph">下表列出 BS-53248 叢集交換器元件的零件編號、說明及最低 EFOS 和 ONTAP 版本、包括機架安裝軌道套件詳細資料。</block>
   <block id="4a47a181e94c352883a8741b3ec5e291" category="admonition">零件編號 *X190005-B* 和 *X190005R-B* 需要 * 3.10.0.3* 的 EFOS 最低版本。</block>
   <block id="c37b8196896554a6da47b74fe6581c98" category="cell">EFOS 最低版本</block>
@@ -4351,8 +4319,6 @@
   <block id="7481f181e296e575db2349974a47cc2c" category="paragraph">請依照下列步驟安裝叢集交換器健全狀況監視器（ CSHM ）組態檔案。</block>
   <block id="810bc3d02021061ba2b8f87b703a66dd" category="paragraph">您可以使用記錄收集功能、在 ONTAP 中收集交換器相關的記錄檔。</block>
   <block id="ee3c886759b6a2517a47e20c04320ed6" category="admonition">若要啟用記錄收集功能、您必須執行 ONTAP 9.12.1 版及更新版本、以及 EFOS 3.8.0.2 及更新版本。</block>
-  <block id="ea234103ea5e655162d46327fb979006" category="paragraph">請確定您已使用 BS-53248 叢集交換器 *CL1* 來設定環境。</block>
-  <block id="f7cbc1a4399eb952f71e7f3276fe30cb" category="list-text">使用下列命令、啟用乙太網路交換器健全狀況監視器記錄收集功能、以收集交換器相關的記錄檔：</block>
   <block id="b8df928a1a67f132ebda54d2c7fee7dc" category="paragraph">如果您要從舊版升級RCF、則必須重設Broadcom交換器設定並執行基本組態、才能重新套用RCF。每次您想要升級或變更RCF時、都必須執行此作業。請參閱<block ref="ca0e22b4f868295e6cf32a824edc5c13" category="inline-link-rx"></block> 以取得詳細資料。</block>
   <block id="fecbf70623c5c07c3f3c4c8793d5061b" category="list-text">目前的 RCF 檔案、可從取得<block ref="b4c2fb45a290e6214474529bd84dd3bc" category="inline-link-rx"></block> 頁面。</block>
   <block id="23c89511c80ceef00a8d3343b5f08569" category="list-text">RCF 中的開機組態、可反映所需的開機映像、如果您只安裝 EFOS 並保留目前的 RCF 版本、則需要此組態。如果您需要變更開機組態以反映目前的開機映像、則必須在重新套用RCF之前執行此動作、以便在未來重新開機時產生正確的版本。</block>
@@ -4533,4 +4499,55 @@
   <block id="cc0c96fa4e2abab8a22a057701a64895" category="list-text">使用 Cisco 9336C-FX2 支援的適當纜線、將節點叢集連接埠從舊的交換器 C1 移至新的交換器 CS1 。</block>
   <block id="ba04a36ca69927056bab3bba36362e9b" category="list-text">在交換器 CS1 和 CS2 上、確認所有節點叢集連接埠均已啟動：</block>
   <block id="d9dbaab2b13b33007de8325a401de04b" category="sidebar">從 CN1610 叢集交換器移轉</block>
+  <block id="6c174914ef0e9418a778018f9f416565" category="paragraph">使用 BS-53248 叢集交換器 *CL1* 來確認您已設定環境。</block>
+  <block id="f82e463abb944d54e7eb997507aada97" category="list-text">為乙太網路交換器健全狀況監視器記錄收集功能建立密碼：<block ref="36ac3c1f3bae8142b5d110fb906ba03e" prefix=" " category="inline-code"></block></block>
+  <block id="3da8b58ec29508478eb281950ce7a85f" category="list-text">啟用乙太網路交換器健全狀況監視器記錄收集功能。</block>
+  <block id="55c09ca9257750665c75e5b587165519" category="paragraph"><block ref="e802bd77f148cffa22d9aa9e7d79d65d" prefix="" category="inline-code"></block></block>
+  <block id="e1d0dd82b8f2058c2b4c4d59c2f80125" category="paragraph">等待 10 分鐘、然後使用命令檢查記錄收集是否完成：</block>
+  <block id="0eedc6e86bf0684694a5f74d12cd17d7" category="admonition">如果這些命令中有任何一個傳回錯誤、或記錄集合未完成、請聯絡 NetApp 支援部門。</block>
+  <block id="cada8434ff5f9181d7ae07ce2a2c1336" category="list-text">將 BS-53248 交換器上的部分連接埠設定為以 10GbE 或 40GbE 執行。</block>
+  <block id="9b8afb051b3fda2a9f3dcd0edcc95d79" category="list-text">從節點到 BS-53248 叢集交換器的 10GbE 與 40GbE 連線能力已規劃、移轉及記錄。</block>
+  <block id="df3b6dd54dfaeb972568b29147c67103" category="list-text">初始自訂 BS-53248 交換器已完成、因此：</block>
+  <block id="8f7a04d5740dbba56b463f7bc775e27a" category="list-text">BS-53248 交換器正在執行最新建議版本的 EFOS 軟體。</block>
+  <block id="2f16d56c4dbd9373c09b2be5c94c8c4a" category="list-text">NetApp CN1610 ：連接埠 0/1 到 0/12 （ 10GbE ）</block>
+  <block id="6eba55dd02cfc9051346620e14eff928" category="list-text">BS-53248 ：連接埠 0/1-0/16 （ 10GbE/25GbE ）</block>
+  <block id="cf5d4db6cebbe371c7454d022aa56dd3" category="list-text">NetApp CN1610 ：連接埠 0/13 至 0/16 （ 10GbE ）</block>
+  <block id="8f74ad2c7978b9cd5864f853839e8666" category="list-text">BS-53248 ：連接埠 0/55-0/56 （ 100GbE ）</block>
+  <block id="0909c64ff9f7c500cad4de512cc64f31" category="list-text">在新的交換器上、確認 ISL 已連接好纜線、且在交換器 CS1 和 CS2 之間運作正常：</block>
+  <block id="10eb67b70ef8150836466766bdd3f2f8" category="list-text">在連接至現有叢集交換器的每個節點上顯示叢集連接埠：</block>
+  <block id="fc7a60af0bed9304a4ca478877f91450" category="list-text">確認所有叢集連接埠都已存在<block ref="46c48bec0d282018b9d167eef7711b2c" prefix=" " category="inline-code"></block> 使用<block ref="741839f346d6e8126ae38ee76a96fd12" prefix=" " category="inline-code"></block> 狀態：</block>
+  <block id="0be9e89f86499b3770f2ce9bad1ba0eb" category="list-text">[[step5]] 停用叢集生命週轉的自動還原功能。</block>
+  <block id="04b62972586827d401a3dea129d172c9" category="list-text">在叢集交換器 CL1 上、關閉連接至節點叢集連接埠的連接埠：</block>
+  <block id="d9f832c61b11e8d4b59ef0ae25ac9dd6" category="list-text">驗證叢集生命期是否已移轉至叢集交換器 CL1 上託管的連接埠。這可能需要幾秒鐘的時間。</block>
+  <block id="eba3ff5e6602b380a875b5adacf6e6fd" category="list-text">將所有叢集節點連線纜線從舊版 CS2 交換器移至新的 CS2 交換器。</block>
+  <block id="8884e29d4b490f2084dae5227ca847a4" category="list-text">確認移至 CS2 的網路連線健全狀況：</block>
+  <block id="308cecb0e156959b9d08b434ef110588" category="paragraph">所有已移動的叢集連接埠都應該是<block ref="46c48bec0d282018b9d167eef7711b2c" prefix=" " category="inline-code"></block>。</block>
+  <block id="e2a6925a1c6094f573b02dac570783d1" category="list-text">使用命令從交換器 CS2 的角度確認交換器連接埠連線：</block>
+  <block id="ad38a12ff64b2cba000c16daea86aee6" category="list-text">在叢集交換器 CL2 上、關閉連接至節點叢集連接埠的連接埠。</block>
+  <block id="48281ee704bfb0f055c15fe754705f5a" category="paragraph">所有叢集生命都會移至 CS2 交換器。</block>
+  <block id="18a308037b50cae9759f1f49af5aed58" category="list-text">驗證叢集LIF是否已移轉至交換器CS2上裝載的連接埠。這可能需要幾秒鐘的時間：</block>
+  <block id="f20b906cc8acf5d97550e7a24fd7c69b" category="list-text">將叢集節點連線纜線從 CL1 移至新的 CS1 交換器。</block>
+  <block id="b7557e0e7f48313d82756b7481c1b1f6" category="list-text">確認移至 CS1 的網路連線健全狀況：</block>
+  <block id="a19beb91ec2195c2db049b5e003334f4" category="list-text">使用命令從交換器 CS1 的角度確認交換器連接埠連線：</block>
+  <block id="ce16551695d7120d532abead22bee8c2" category="list-text">確認 CS1 和 CS2 之間的 ISL 仍可運作：</block>
+  <block id="b48ac462b57bcb2860eecd434bd2c80f" category="paragraph">從 ONTAP 9.8 開始、請使用命令：<block ref="b4720f8aa09f4e4b3a04e78c558b6c90" prefix=" " category="inline-code"></block></block>
+  <block id="4ae8d24c72dd765a4920ac53c2dafe90" category="open-title">更新版本ONTAP</block>
+  <block id="7c0f7899f6a5609732991b637b6b77d8" category="paragraph">對於 ONTAP 9.4 及更早版本、請使用命令：<block ref="f055904a9fc3a4f0bc33aca13ecd2b2d" prefix=" " category="inline-code"></block></block>
+  <block id="3e1fd1b016d89d236712e513bee2a170" category="list-text">為乙太網路交換器健全狀況監視器記錄收集功能建立密碼。</block>
+  <block id="300c1f24adf38203b39051c2816bed96" category="admonition">若要啟用記錄收集功能、您必須執行 ONTAP 9.12.1 及更新版本、以及 EFOS 3.8.0.2 及更新版本。</block>
+  <block id="079e7a1f80c26ff7b477dcbf014e4e70" category="list-text">啟用乙太網路交換器健全狀況監視器記錄收集功能：</block>
+  <block id="aae263170b5a7f23d3045f8a2b09091f" category="paragraph">等待 10 分鐘、然後檢查記錄收集是否完成：</block>
+  <block id="c9a1a82d3af3d53e5132a5ce6181fc18" category="list-text">Nexus 9336C-FX2 交換器上的部分連接埠已設定為以 10GbE 或 40GbE 執行。</block>
+  <block id="e91ad171943f09dacfa36533932bac00" category="list-text">從節點到 Nexus 9336C-FX2 叢集交換器的 10GbE 與 40GbE 連線能力已規劃、移轉及記錄。</block>
+  <block id="0c0168daa801acef2533722b72cd3dc2" category="list-text">驗證遠端叢集介面的連線能力：</block>
+  <block id="1ff96f961a0386158191fbc0f4fb218b" category="open-title">更新版本ONTAP</block>
+  <block id="1f17d0411deacae1bc52455afcc80c64" category="paragraph">您可以使用<block ref="27ef00bd0eeb78214f4636adfe0cfe59" prefix=" " category="inline-code"></block> 命令以啟動叢集連線的存取檢查、然後顯示詳細資料：</block>
+  <block id="8aaafad190a8d987431739ec77af6bce" category="paragraph"><block ref="79ca324fd00eadc332828cf274c18782" prefix="" category="inline-code"></block> 和<block ref="349936611c6519c48a39cbd40f1f907a" prefix=" " category="inline-code"></block></block>
+  <block id="69989c059c3ab289002892286db94917" category="paragraph">* 注意： * 在執行 show 命令之前、請等待數秒以顯示詳細資料。</block>
+  <block id="03021eec65c2df0065e1ad1083de7525" category="open-title">所有 ONTAP 版本</block>
+  <block id="d576f6342b019a4a22e71708ae81b0d9" category="paragraph">對於所有 ONTAP 版本、您也可以使用<block ref="7eaac8e45910aa8bf3a06f6966ab0656" prefix=" " category="inline-code"></block> 檢查連線能力的命令：</block>
+  <block id="090015dd47b4cd238b646c5f1dbc231d" category="list-text">[[step5]] 啟用乙太網路交換器健全狀況監視器記錄收集功能、以收集交換器相關的記錄檔。</block>
+  <block id="079555d3c02274a2f31c4ed0065d657e" category="doc">設定 SNMPv3</block>
+  <block id="75e0b0aa735bcccb4bf1267f69cc872e" category="paragraph">請遵循此程序來設定支援交換器健全狀況監控（ CSHM ）的 SNMPv3 。</block>
+  <block id="1bd553f48f18f76a761092d0bebbe5a4" category="paragraph">下列命令會使用 CSHM 建立 SNMPv3 使用者名稱：<block ref="bc0f2549b8e026bfa298fbc575ba6020" prefix=" " category="inline-code"></block></block>
 </blocks>

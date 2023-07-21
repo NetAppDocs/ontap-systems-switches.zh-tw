@@ -4,14 +4,14 @@ sidebar: sidebar
 keywords: sn2100 SN2100 cabling setup, sn2100 switches configuration, cumulus linux os 
 summary: 此版本支援使用v3進行記錄監控。 
 ---
-= 設定用於交換器記錄收集的v3
+= 設定 SNMPv3
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-請遵循此程序來設定支援交換器記錄收集和交換器健全狀況監控（SHM）的v3。
+請遵循此程序來設定支援交換器健全狀況監控（ CSHM ）的 SNMPv3 。
 
 .關於這項工作
 下列命令可在NVIDIA SN2100交換器上設定v3使用者名稱：
@@ -23,7 +23,8 @@ summary: 此版本支援使用v3進行記錄監控。
 
 下列命令可在ONTAP Sfeside上設定一個v3使用者名稱：「cluster1：：*>安全登入create -user-or group name _MPv2_user_-applicationSNMP -imize-method USM -reme-switch-ipaddress_address_」
 
-以下命令使用SHM建立了v3使用者名稱：「cluster1：：*>系統交換器乙太網路修改-DEVICE _DEVICE _-SNM-version v3 -community或-username_SNMPv3
+下列命令會使用 CSHM 建立 SNMPv3 使用者名稱：
+`cluster1::*> system switch ethernet modify -device _DEVICE_ -snmp-version SNMPv3 -community-or-username _SNMPv3_USER_`
 
 .步驟
 . 設定交換器上的v3使用者使用驗證和加密：

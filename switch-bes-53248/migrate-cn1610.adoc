@@ -23,7 +23,19 @@ summary: 若要將叢集中現有的CN1610叢集交換器更換為Broadcom支援
 
 == 檢閱要求
 
-檢閱組態資訊、連接埠連線和纜線需求。
+確認您的組態符合下列需求：
+
+* 將 BS-53248 交換器上的部分連接埠設定為以 10GbE 或 40GbE 執行。
+* 從節點到 BS-53248 叢集交換器的 10GbE 與 40GbE 連線能力已規劃、移轉及記錄。
+* 叢集運作正常（記錄中不應有錯誤或類似問題）。
+* 初始自訂 BS-53248 交換器已完成、因此：
++
+** BS-53248 交換器正在執行最新建議版本的 EFOS 軟體。
+** 參考組態檔（RCT）已套用至交換器。
+** 任何站台自訂、例如DNS、NTP、SMTP、SNMP、和SSH、在新交換器上設定。
+
+
+
 
 
 
@@ -31,8 +43,8 @@ summary: 若要將叢集中現有的CN1610叢集交換器更換為Broadcom支援
 
 叢集交換器支援下列節點連線：
 
-* NetApp CN1610：連接埠0/1到0/12（10 GbE）
-* B16-53248：連接埠0/1-0/16（10/25 GbE）
+* NetApp CN1610 ：連接埠 0/1 到 0/12 （ 10GbE ）
+* BS-53248 ：連接埠 0/1-0/16 （ 10GbE/25GbE ）
 +
 
 NOTE: 購買連接埠授權即可啟動其他連接埠。
@@ -45,8 +57,8 @@ NOTE: 購買連接埠授權即可啟動其他連接埠。
 
 叢集交換器使用下列交換器間連結（ISL）連接埠：
 
-* NetApp CN1610：連接埠0/13至0/16（10 GbE）
-* Bes：53224：連接埠0/55-0/56（100 GbE）
+* NetApp CN1610 ：連接埠 0/13 至 0/16 （ 10GbE ）
+* BS-53248 ：連接埠 0/55-0/56 （ 100GbE ）
 
 
 。 https://hwu.netapp.com/Home/Index["_NetApp Hardware Universe SUR__"^] 包含ONTAP 有關支援功能的資訊、支援的EFOS韌體、以及連接至BE-53248叢集交換器的纜線。
@@ -58,7 +70,6 @@ NOTE: 購買連接埠授權即可啟動其他連接埠。
 適當的ISL纜線如下：
 
 * *開頭：*適用於CN1610至CN1610（SFP+至SFP+）、四條SFP+光纖或銅線直接連接纜線。
-* *過渡：*適用於CN1610至BES-53248（SFP+至SFP28）、四條10G SFP+光纖收發器/光纖或銅線直接連接纜線。
 * *最終版本：*適用於BS53248至BS53248（QSFP28至QSFP28）、兩條QSFP28光纖收發器/光纖或銅線直接附加纜線。
 
 
@@ -88,16 +99,17 @@ NOTE: 購買連接埠授權即可啟動其他連接埠。
 * CN1610交換器CL2由BS-53248交換器CS2取代：
 +
 ** 從連接至CL2的所有節點上的所有叢集連接埠拔下纜線、然後使用支援的纜線將連接埠重新連接至新叢集交換器CS2。
-** 拔下ISL連接埠CL1和CL2之間的纜線、然後使用支援的纜線將連接埠從CL1重新連接至CS2。
 
 
 * CN1610交換器CL1由BY-53248交換器CS1取代：
 +
 ** 從連接至CL1的所有節點上的所有叢集連接埠拔下纜線、然後使用支援的纜線將連接埠重新連接至新叢集交換器CS1。
-** 拔下ISL連接埠CL1和CS2之間的纜線、然後使用支援的纜線將連接埠從CS1重新連接至CS2。
 
 
 
+
+
+NOTE: 在此程序期間、不需要運作中的交換器間連結（ISL）。這是因為RCF版本變更可能會暫時影響ISL連線。為確保叢集作業不中斷、下列程序會在目標交換器上執行步驟時、將所有叢集生命體移轉至作業夥伴交換器。
 
 
 
@@ -120,7 +132,7 @@ NOTE: 此資訊可通知技術支援人員執行此維護工作、以便在維�
 +
 [listing]
 ----
-cluster1::*> system node autosupport invoke -node \* -type all -message MAINT=2h
+cluster1::*> system node autosupport invoke -node * -type all -message MAINT=2h
 ----
 . 將權限等級變更為進階、並在系統提示您繼續時輸入* y*：
 +
@@ -129,9 +141,15 @@ cluster1::*> system node autosupport invoke -node \* -type all -message MAINT=2h
 +
 出現進階提示（*>）。
 
-. 驗證是否已在所有叢集生命體上啟用自動還原：
+
+
+
+
+=== 步驟2：設定連接埠和纜線
+
+. 在新的交換器上、確認 ISL 已連接好纜線、且在交換器 CS1 和 CS2 之間運作正常：
 +
-「網路介面show -vserver叢集-功能 變數自動回復」
+「How port-channel Summary」
 
 +
 .顯示範例
@@ -139,19 +157,38 @@ cluster1::*> system node autosupport invoke -node \* -type all -message MAINT=2h
 ====
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network interface show -vserver Cluster -fields auto-revert*
+cs1# *show port-channel summary*
+Flags:  D - Down        P - Up in port-channel (members)
+        I - Individual  H - Hot-standby (LACP only)
+        s - Suspended   r - Module-removed
+        b - BFD Session Wait
+        S - Switched    R - Routed
+        U - Up (port-channel)
+        p - Up in delay-lacp mode (member)
+        M - Not in use. Min-links not met
+--------------------------------------------------------------------------------
+Group Port-       Type     Protocol  Member Ports
+      Channel
+--------------------------------------------------------------------------------
+1     Po1(SU)     Eth      LACP      Eth1/55(P)   Eth1/56(P)
 
-          Logical
-Vserver   Interface     Auto-revert
---------- ------------- ------------
-Cluster
-          node1_clus1   true
-          node1_clus2   true
-          node2_clus1   true
-          node2_clus2   true
+cs2# *show port-channel summary*
+Flags:  D - Down        P - Up in port-channel (members)
+        I - Individual  H - Hot-standby (LACP only)
+        s - Suspended   r - Module-removed
+        b - BFD Session Wait
+        S - Switched    R - Routed
+        U - Up (port-channel)
+        p - Up in delay-lacp mode (member)
+        M - Not in use. Min-links not met
+--------------------------------------------------------------------------------
+Group Port-       Type     Protocol  Member Ports
+      Channel
+--------------------------------------------------------------------------------
+1     Po1(SU)     Eth      LACP      Eth1/55(P)   Eth1/56(P)
 ----
 ====
-. 顯示組態中裝置的相關資訊：
+. 在連接至現有叢集交換器的每個節點上顯示叢集連接埠：
 +
 「network device-dDiscovery show -protocol cup」
 
@@ -177,7 +214,7 @@ node1      /cdp
 ====
 . 確定每個叢集介面的管理或作業狀態。
 +
-.. 顯示叢集網路連接埠屬性：
+.. 確認所有叢集連接埠都已存在 `up` 使用 `healthy` 狀態：
 +
 「網路連接埠show -IPSpace Cluster」
 
@@ -206,7 +243,7 @@ e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
 e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
 ----
 ====
-.. 顯示有關邏輯介面的資訊：
+.. 確認所有叢集介面（l生命）都位於其主連接埠上：
 +
 「網路介面show -vserver叢集」
 
@@ -230,64 +267,73 @@ Cluster
 ====
 
 
-. 根據您的需求、確認新的BS-53248交換器上已安裝適當的連接埠授權、RCF和EFOS映像、並進行必要的站台自訂、例如使用者和密碼、網路位址等。
-. Ping遠端叢集介面：
-+
-「叢集ping叢集節點節點名稱」
+. 驗證叢集是否顯示兩個叢集交換器的資訊：
 
-+
-.顯示範例
-[%collapsible]
+
+[role="tabbed-block"]
 ====
-下列範例顯示如何ping遠端叢集介面：
+.更新版本ONTAP
+--
+從 ONTAP 9.8 開始、請使用命令： `system switch ethernet show -is-monitoring-enabled-operational true`
 
 [listing, subs="+quotes"]
 ----
-cluster1::*> *cluster ping-cluster -node node2*
+cluster1::*> *system switch ethernet show -is-monitoring-enabled-operational true*
+Switch                      Type               Address          Model
+--------------------------- ------------------ ---------------- ---------------
+cs1                         cluster-network    10.228.143.200   BES-53248
+           Serial Number: QTWCU22510008
+            Is Monitored: true
+                  Reason: None
+        Software Version: 3.10.0.3
+          Version Source: CDP/ISDP
 
-Host is node2
-Getting addresses from network interface table...
-Cluster node1_clus1 169.254.209.69  node1     e0a
-Cluster node1_clus2 169.254.49.125  node1     e0b
-Cluster node2_clus1 169.254.47.194  node2     e0a
-Cluster node2_clus2 169.254.19.183  node2     e0b
-
-Local = 169.254.47.194 169.254.19.183
-Remote = 169.254.209.69 169.254.49.125
-Cluster Vserver Id = 4294967293
-Ping status:
-
-Basic connectivity succeeds on 4 path(s)
-Basic connectivity fails on 0 path(s)
-
-Detected 9000 byte MTU on 4 path(s):
-    Local 169.254.47.194 to Remote 169.254.209.69
-    Local 169.254.47.194 to Remote 169.254.49.125
-    Local 169.254.19.183 to Remote 169.254.209.69
-    Local 169.254.19.183 to Remote 169.254.49.125
-Larger than PMTU communication succeeds on 4 path(s)
-
-RPC status:
-2 paths up, 0 paths down (tcp check)
-2 paths up, 0 paths down (udp check)
+cs2                         cluster-network    10.228.143.202   BES-53248
+           Serial Number: QTWCU22510009
+            Is Monitored: true
+                  Reason: None
+        Software Version: 3.10.0.3
+          Version Source: CDP/ISDP
+cluster1::*>
 ----
+--
+.更新版本ONTAP
+--
+對於 ONTAP 9.7 及更早版本、請使用命令： `system cluster-switch show -is-monitoring-enabled-operational true`
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *system cluster-switch show -is-monitoring-enabled-operational true*
+Switch                      Type               Address          Model
+--------------------------- ------------------ ---------------- ---------------
+cs1                         cluster-network    10.228.143.200   BES-53248
+           Serial Number: QTWCU22510008
+            Is Monitored: true
+                  Reason: None
+        Software Version: 3.10.0.3
+          Version Source: CDP/ISDP
+
+cs2                         cluster-network    10.228.143.202   BES-53248
+           Serial Number: QTWCU22510009
+            Is Monitored: true
+                  Reason: None
+        Software Version: 3.10.0.3
+          Version Source: CDP/ISDP
+cluster1::*>
+----
+--
 ====
-
-
-
-
-=== 步驟2：設定連接埠和纜線
-
-. 關閉主動式CN1610交換器CL1上的ISL連接埠13至16：
+. [[step5]] 停用叢集生命週轉的自動還原功能。
 +
-「關機」
-
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert false*
+----
+. 在叢集交換器 CL1 上、關閉連接至節點叢集連接埠的連接埠：
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例說明如何關閉CN1610交換器CL1上的ISL連接埠13至16：
-
 [listing, subs="+quotes"]
 ----
 (CL1)# *configure*
@@ -298,80 +344,9 @@ RPC status:
 (CL1)#
 ----
 ====
-. 在CN1610 CL1與新的BS-53248 CS2之間建置暫時ISL。ISL只會在CS2上定義、因為CL1上的現有ISL可以重複使用。
+. 驗證叢集生命期是否已移轉至叢集交換器 CL1 上託管的連接埠。這可能需要幾秒鐘的時間。
 +
-.顯示範例
-[%collapsible]
-====
-下列範例在CS2（連接埠13-16）上建置暫用ISL、以連接至CL1（連接埠13-16）上的現有ISL。
-
-[listing, subs="+quotes"]
-----
-(cs2)# *configure*
-(cs2) (Config)# *port-channel name 1/2 temp-isl-cn1610*
-(cs2) (Config)# *interface 0/13-0/16*
-(cs2) (Interface 0/13-0/16)# *no spanning-tree edgeport*
-(cs2) (Interface 0/13-0/16)# *addport 1/2*
-(cs2) (Interface 0/13-0/16)# *exit*
-(cs2) (Config)# *interface lag 2*
-(cs2) (Interface lag 2)# *mtu 9216*
-(cs2) (Interface lag 2)# *port-channel load-balance 7*
-(cs2) (Config)# *exit*
-
-(cs2)# *show port-channel 1/2*
-Local Interface................................ 1/2
-Channel Name................................... temp-isl-cn1610
-Link State..................................... Down
-Admin Mode..................................... Enabled
-Type........................................... Static
-Port-channel Min-links......................... 1
-Load Balance Option............................ 7
-(Enhanced hashing mode)
-
-Mbr     Device/        Port      Port
-Ports   Timeout        Speed     Active
-------- -------------- --------- -------
-0/13    actor/long     10G Full  False
-        partner/long
-0/14    actor/long     10G Full  False
-        partner/long
-0/15    actor/long     10G Full  False
-        partner/long
-0/16    actor/long     10G Full  False
-        partner/long
-----
-====
-. 在所有節點上、移除連接至CN1610交換器CL2的纜線。
-+
-然後、您必須將所有節點上的中斷連接連接埠重新連接至新的BS-53248交換器CS2。請參閱 https://hwu.netapp.com/Home/Index["_NetApp Hardware Universe SUR__"^] 以取得核准的纜線選項。
-
-. 從CN1610交換器CL2的連接埠13到16拔下四條ISL纜線。
-+
-您必須在新的BS-53248交換器CS2上、將適當核准的纜線連接埠0/13至0/16、連接至現有CN1610交換器CL1上的連接埠13至16。
-
-. 在活動的CN1610交換器CL1上啟動ISL 13到16。
-+
-.顯示範例
-[%collapsible]
-====
-以下範例說明在CL1上啟動ISL連接埠13到16的程序：
-
-[listing, subs="+quotes"]
-----
-(CL1)# *configure*
-(CL1)(Config)# *interface 0/13-0/16*
-(CL1)(Interface 0/13-0/16,3/1)# *no shutdown*
-(CL1)(Interface 0/13-0/16,3/1)# *exit*
-(CL1)(Config)# *exit*
-(CL1)#
-----
-====
-. 驗證CN1610交換器CL1上的ISL是否「up」：
-+
-「How port-channel」
-
-+
-。 `Link State` 應為「UP」、 `Type` 應為「Static」（靜態）、且 `Port Active` 連接埠0/13至0/16應為「真」：
+「網路介面show -vserver叢集」
 
 +
 .顯示範例
@@ -379,32 +354,20 @@ Ports   Timeout        Speed     Active
 ====
 [listing, subs="+quotes"]
 ----
-(CL2)# *show port-channel 3/1*
-Local Interface................................ 3/1
-Channel Name................................... ISL-LAG
-Link State..................................... Up
-Admin Mode..................................... Enabled
-Type........................................... Static
-Load Balance Option............................ 7
-
-
-(Enhanced hashing mode)
-Mbr      Device/        Port        Port
-Ports    Timeout        Speed       Active
--------- -------------- ----------- --------
-0/13     actor/long     10 Gb Full  True
-         partner/long
-0/14     actor/long     10 Gb Full  True
-         partner/long
-0/15     actor/long     10 Gb Full  True
-         partner/long
-0/16     actor/long     10 Gb Full  True
-         partner/long
+cluster1::*> *network interface show -vserver Cluster*
+            Logical      Status     Network            Current       Current Is
+Vserver     Interface    Admin/Oper Address/Mask       Node          Port    Home
+----------- ------------ ---------- ------------------ ------------- ------- ----
+Cluster
+            node1_clus1  up/up      169.254.209.69/16  node1         e0a     true
+            node1_clus2  up/up      169.254.49.125/16  node1         e0b     false
+            node2_clus1  up/up      169.254.47.194/16  node2         e0a     true
+            node2_clus2  up/up      169.254.19.183/16  node2         e0b     false
 ----
 ====
-. 驗證B址-53248交換器上的ISL連接埠是否正常運作：
+. 驗證叢集是否正常：
 +
-「How port-channel」
+「叢集展示」
 
 +
 .顯示範例
@@ -412,32 +375,90 @@ Ports    Timeout        Speed       Active
 ====
 [listing, subs="+quotes"]
 ----
-(cs2)# *show port-channel 1/2*
-
-Local Interface................................ 1/2
-Channel Name................................... temp-isl-cn1610
-Link State..................................... Up
-Admin Mode..................................... Enabled
-Type........................................... Static
-Port-channel Min-links......................... 1
-Load Balance Option............................ 7
-
-(Src/Dest MAC, VLAN, EType, incoming port)
-
-Mbr     Device/       Port      Port
-Ports   Timeout       Speed     Active
-------- ------------- --------- -------
-0/13    actor/long    10G Full  True
-        partner/long
-0/14    actor/long    10G Full  True
-        partner/long
-0/15    actor/long    10G Full  True
-        partner/long
-0/16    actor/long    10G Full  True
-        partner/long
+cluster1::*> *cluster show*
+Node       Health  Eligibility   Epsilon
+---------- ------- ------------- -------
+node1      true    true          false
+node2      true    true          false
 ----
 ====
-. 確認所有的叢集互連連接埠都已還原至其主連接埠：
+. 將所有叢集節點連線纜線從舊版 CS2 交換器移至新的 CS2 交換器。
+. 確認移至 CS2 的網路連線健全狀況：
++
+「網路連接埠show -IPSpace Cluster」
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network port show -ipspace Cluster*
+
+Node: node1
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
+e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
+
+Node: node2
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
+e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
+----
+====
++
+所有已移動的叢集連接埠都應該是 `up`。
+
+. 檢查叢集連接埠上的鄰近資訊：
++
+「network device-dDiscovery show -protocol cup」
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network device-discovery show -protocol cdp*
+Node/       Local  Discovered
+Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
+----------- ------ ------------------------- ----------------  ----------------
+node2      /cdp
+            e0a    CL1                       0/2               CN1610
+            e0b    cs1                       0/2               BES-53248
+node1      /cdp
+            e0a    CL1                       0/1               CN1610
+            e0b    cs1                       0/1               BES-53248
+----
+====
+. 使用命令從交換器 CS2 的角度確認交換器連接埠連線：
++
+[listing, subs="+quotes"]
+----
+cs2# *show interface brief*
+cs2# *show cdp neighbors*
+----
+. 在叢集交換器 CL2 上、關閉連接至節點叢集連接埠的連接埠。
++
+[listing, subs="+quotes"]
+----
+(CL2)# *configure*
+(CL2)(Config)# *interface 0/1-0/16*
+(CL2)(Interface 0/1-0/16)# *shutdown*
+(CL2)(Interface 0/13-0/16)# *exit*
+(CL2)(Config)# *exit*
+(CL2)#
+----
++
+所有叢集生命都會移至 CS2 交換器。
+
+. 驗證叢集LIF是否已移轉至交換器CS2上裝載的連接埠。這可能需要幾秒鐘的時間：
 +
 「網路介面show -vserver叢集」
 
@@ -458,111 +479,27 @@ Cluster
             node2_clus2  up/up      169.254.19.183/16  node2         e0b     true
 ----
 ====
-. 確認所有的叢集連接埠均已連接：
+. 驗證叢集是否正常：
++
+「叢集展示」
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *cluster show*
+Node       Health  Eligibility   Epsilon
+---------- ------- ------------- -------
+node1      true    true          false
+node2      true    true          false
+----
+====
+. 將叢集節點連線纜線從 CL1 移至新的 CS1 交換器。
+. 確認移至 CS1 的網路連線健全狀況：
 +
 「網路連接埠show -IPSpace Cluster」
-
-+
-.顯示範例
-[%collapsible]
-====
-下列範例顯示先前命令的結果、確認所有叢集互連都正常運作：
-
-[listing, subs="+quotes"]
-----
-cluster1::*> *network port show -ipspace Cluster*
-
-Node: node1
-                                                                       Ignore
-                                                  Speed(Mbps) Health   Health
-Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
---------- ------------ ---------------- ---- ---- ----------- -------- ------
-e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
-e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
-
-Node: node2
-                                                                       Ignore
-                                                  Speed(Mbps) Health   Health
-Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
---------- ------------ ---------------- ---- ---- ----------- -------- ------
-e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
-e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
-----
-====
-. Ping遠端叢集介面：
-+
-「叢集ping叢集-node-node-name_」
-
-+
-.顯示範例
-[%collapsible]
-====
-下列範例顯示如何ping遠端叢集介面：
-
-[listing, subs="+quotes"]
-----
-cluster1::*> *cluster ping-cluster -node node2*
-Host is node2
-Getting addresses from network interface table...
-Cluster node1_clus1 169.254.209.69  node1     e0a
-Cluster node1_clus2 169.254.49.125  node1     e0b
-Cluster node2_clus1 169.254.47.194  node2     e0a
-Cluster node2_clus2 169.254.19.183  node2     eob
-Local = 169.254.47.194 169.254.19.183
-Remote = 169.254.209.69 169.254.49.125
-Cluster Vserver Id = 4294967293
-Ping status:
-....
-Basic connectivity succeeds on 4 path(s)
-Basic connectivity fails on 0 path(s)
-................
-Detected 9000 byte MTU on 4 path(s):
-    Local 169.254.47.194 to Remote 169.254.209.69
-    Local 169.254.47.194 to Remote 169.254.49.125
-    Local 169.254.19.183 to Remote 169.254.209.69
-    Local 169.254.19.183 to Remote 169.254.49.125
-Larger than PMTU communication succeeds on 4 path(s)
-RPC status:
-2 paths up, 0 paths down (tcp check)
-2 paths up, 0 paths down (udp check)
-----
-====
-. 在所有節點上、移除連接至CN1610交換器CL1的纜線。
-+
-然後、您必須將所有節點上的中斷連接連接埠重新連線至新的BS1-53248交換器CS1。請參閱 https://hwu.netapp.com/Home/Index["_NetApp Hardware Universe SUR__"^] 以取得核准的纜線選項。
-
-. 從BS-53248交換器CS2的連接埠13至16拔下四條ISL纜線。
-. 移除CS2上的暫用連接埠通道2。
-+
-.顯示範例
-[%collapsible]
-====
-下列範例會移除連接埠通道2、並將執行組態檔複製到啟動組態檔：
-
-[listing, subs="+quotes"]
-----
-(cs2)# *configure*
-(cs2) (Config)# *deleteport 1/2 all*
-(cs2) (Config)# *interface 0/13-0/16*
-(cs2) (Interface 0/13-0/16)# *spanning-tree edgeport*
-​​​​​(cs2) (Interface 0/13-0/16)# *exit*
-(cs2) (Config)# *exit*
-(cs2)# *write memory*
-
-This operation may take a few minutes.
-Management interfaces will not be available during this time.
-
-Are you sure you want to save? (y/n) *y*
-
-Config file 'startup-config' created successfully .
-----
-====
-. 驗證叢集節點連接埠的狀態：
-+
-「網路連接埠show -IPSpace Cluster」
-
-+
-以下範例可驗證節點1和節點2上的所有叢集互連連接埠均為「up（正常））：
 
 +
 .顯示範例
@@ -589,45 +526,137 @@ e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
 e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
 ----
 ====
++
+所有已移動的叢集連接埠都應該是 `up`。
+
+. 檢查叢集連接埠上的鄰近資訊：
++
+「網路裝置探索秀」
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network device-discovery show -protocol cdp*
+Node/       Local  Discovered
+Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
+----------- ------ ------------------------- ----------------  ----------------
+node1      /cdp
+            e0a    cs2                       0/1               BES-53248
+            e0b    cs1                       0/1               BES-53248
+node2      /cdp
+            e0a    cs2                       0/2               BES-53248
+            e0b    cs1                       0/2               BES-53248
+----
+====
+. 使用命令從交換器 CS1 的角度確認交換器連接埠連線：
++
+[listing, subs="+quotes"]
+----
+cs1# *show interface brief*
+cs1# *show cdp neighbors*
+----
+. 確認 CS1 和 CS2 之間的 ISL 仍可運作：
++
+「How port-channel Summary」
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cs1# *show port-channel summary*
+Flags:  D - Down        P - Up in port-channel (members)
+        I - Individual  H - Hot-standby (LACP only)
+        s - Suspended   r - Module-removed
+        b - BFD Session Wait
+        S - Switched    R - Routed
+        U - Up (port-channel)
+        p - Up in delay-lacp mode (member)
+        M - Not in use. Min-links not met
+--------------------------------------------------------------------------------
+Group Port-       Type     Protocol  Member Ports
+      Channel
+--------------------------------------------------------------------------------
+1     Po1(SU)     Eth      LACP      Eth1/55(P)   Eth1/56(P)
+
+cs2# *show port-channel summary*
+Flags:  D - Down        P - Up in port-channel (members)
+        I - Individual  H - Hot-standby (LACP only)
+        s - Suspended   r - Module-removed
+        b - BFD Session Wait
+        S - Switched    R - Routed
+        U - Up (port-channel)
+        p - Up in delay-lacp mode (member)
+        M - Not in use. Min-links not met
+--------------------------------------------------------------------------------
+Group Port-       Type     Protocol  Member Ports
+      Channel
+--------------------------------------------------------------------------------
+1     Po1(SU)     Eth      LACP      Eth1/55(P)   Eth1/56(P)
+----
+====
+. 如果更換的CN1610交換器未自動移除、請將其移除：
 
 
+[role="tabbed-block"]
+====
+.更新版本ONTAP
+--
+從 ONTAP 9.8 開始、請使用命令： `system switch ethernet delete -device _device-name_`
+
+[listing]
+----
+cluster::*> system switch ethernet delete -device CL2
+cluster::*> system switch ethernet delete -device CL1
+----
+--
+.更新版本ONTAP
+--
+對於 ONTAP 9.4 及更早版本、請使用命令： `system cluster-switch delete -device _device-name_`
+
+[listing]
+----
+cluster::*> system cluster-switch delete -device CL2
+cluster::*> system cluster-switch delete -device CL1
+----
+--
+====
 
 
 === 步驟3：驗證組態
 
-. 確認介面現在是主介面：
+. 在叢集生命體上啟用自動還原。
++
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert true*
+----
+. 驗證叢集生命區是否已還原至其主連接埠（這可能需要一分鐘時間）：
 +
 「網路介面show -vserver叢集」
 
 +
-.顯示範例
-[%collapsible]
-====
-以下範例顯示節點1和節點2的叢集互連介面狀態為「up」和「is home」：
+如果叢集l生命 尚未還原至其主連接埠、請手動還原它們：
 
-[listing, subs="+quotes"]
-----
-cluster1::*> *network interface show -vserver Cluster*
-            Logical      Status     Network            Current   Current Is
-Vserver     Interface    Admin/Oper Address/Mask       Node      Port    Home
------------ ------------ ---------- ------------------ --------- ------- ------
-Cluster
-            node1_clus1  up/up      169.254.209.69/16  node1     e0a     true
-            node1_clus2  up/up      169.254.49.125/16  node1     e0b     true
-            node2_clus1  up/up      169.254.47.194/16  node2     e0a     true
-            node2_clus2  up/up      169.254.19.183/16  node2     e0b     true
-----
-====
-. Ping遠端叢集介面、然後執行遠端程序呼叫伺服器檢查：
 +
-「叢集ping叢集-node-node-name_」
+「網路介面回復-vserver叢集-lIF *」
+
+. 驗證叢集是否正常：
++
+「叢集展示」
+
+. Ping遠端叢集介面以驗證連線能力：
++
+`cluster ping-cluster -node <name>`
 
 +
 .顯示範例
 [%collapsible]
 ====
-下列範例顯示如何ping遠端叢集介面：
-
 [listing, subs="+quotes"]
 ----
 cluster1::*> *cluster ping-cluster -node node2*
@@ -656,64 +685,87 @@ RPC status:
 2 paths up, 0 paths down (udp check)
 ----
 ====
-. 顯示組態中裝置的相關資訊：
+. 為乙太網路交換器健全狀況監視器記錄收集功能建立密碼。
 +
-「network device-dDiscovery show -protocol cup」
+
+IMPORTANT: 若要啟用記錄收集功能、您必須執行 ONTAP 9.12.1 及更新版本、以及 EFOS 3.8.0.2 及更新版本。
+
++
+「系統交換器乙太網路記錄設定密碼」
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示節點1和節點2已從CN1610 CL2和CL1移轉至BS-53248 CS2和CS1：
-
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network device-discovery show -protocol cdp*
-Node/       Local  Discovered
-Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
------------ ------ ------------------------- ----------------  ----------------
-node1      /cdp
-            e0a    cs2                       0/1               BES-53248
-            e0b    cs1                       0/1               BES-53248
-node2      /cdp
-            e0a    cs2                       0/2               BES-53248
-            e0b    cs1                       0/2               BES-53248
+cluster1::*> *system switch ethernet log setup-password*
+Enter the switch name: *<return>*
+The switch name entered is not recognized.
+Choose from the following list:
+*cs1*
+*cs2*
+
+cluster1::*> *system switch ethernet log setup-password*
+
+Enter the switch name: *cs1*
+Would you like to specify a user other than admin for log collection? {y|n}: *n*
+
+Enter the password: *<enter switch password>*
+Enter the password again: *<enter switch password>*
+
+cluster1::*> *system switch ethernet log setup-password*
+
+Enter the switch name: *cs2*
+Would you like to specify a user other than admin for log collection? {y|n}: *n*
+
+Enter the password: *<enter switch password>*
+Enter the password again: *<enter switch password>*
 ----
 ====
-. 如果更換的CN1610交換器未自動移除、請將其移除：
+. 啟用乙太網路交換器健全狀況監視器記錄收集功能：
++
+`system switch ethernet log modify -device _<switch-name>_ -log-request true`
 
-
-[role="tabbed-block"]
++
+.顯示範例
+[%collapsible]
 ====
-.適用於更新版本的更新版本ONTAP
---
-`system switch ethernet delete -device _device-name_`
+[listing, subs="+quotes"]
+----
+cluster1::*> *system switch ethernet log modify -device cs1 -log-request true*
 
-[listing]
-----
-cluster::*> system switch ethernet delete –device CL2
-cluster::*> system switch ethernet delete –device CL1
-----
---
-.適用於更新版本的更新版本ONTAP
---
-「系統叢集交換器刪除-DEVICE _DEVICE名稱_」
+Do you want to modify the cluster switch log collection configuration?
+{y|n}: [n] *y*
 
-[listing]
+Enabling cluster switch log collection.
+
+cluster1::*> *system switch ethernet log modify -device cs2 -log-request true*
+
+Do you want to modify the cluster switch log collection configuration?
+{y|n}: [n] *y*
+
+Enabling cluster switch log collection.
 ----
-cluster::*> system cluster-switch delete –device CL2
-cluster::*> system cluster-switch delete –device CL1
-----
---
 ====
-. [[step5]] 如果您禁止自動建立個案、請叫用 AutoSupport 訊息來重新啟用：
++
+等待 10 分鐘、然後檢查記錄收集是否完成：
+
++
+`system switch ethernet log show`
+
++
+
+CAUTION: 如果這些命令中有任何一個傳回錯誤、或記錄集合未完成、請聯絡 NetApp 支援部門。
+
+. 如果您禁止自動建立個案、請叫用AutoSupport 下列訊息來重新啟用：
 +
 「系統節點AutoSupport 不完整地叫用節點*-type all -most MAn=end」
 
 +
 [listing, subs="+quotes"]
 ----
-cluster::*> *system node autosupport invoke -node \* -type all -message MAINT=END*
+cluster::*> system node autosupport invoke -node * -type all -message MAINT=END
 ----
 
 
