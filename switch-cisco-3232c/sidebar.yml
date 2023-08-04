@@ -3,6 +3,7 @@ section: switch-cisco-3232c
 title: Cisco Nexus 3232C
 entries:
 - title: 總覽
+  pdf-filename: overview_3232c
   entries:
   - title: 組態總覽
     url: "/switch-cisco-3232c/install-overview-cisco-3232c.html"
@@ -13,6 +14,7 @@ entries:
   - title: 智慧電話住家需求
     url: "/switch-cisco-3232c/smart-call-home-3232c.html"
 - title: 安裝硬體
+  pdf-filename: install_hardware _3232c
   entries:
   - title: 完整的佈線工作表
     url: "/switch-cisco-3232c/setup_worksheet_3232c.html"
@@ -21,6 +23,7 @@ entries:
   - title: 在NetApp機櫃中安裝交換器
     url: "/switch-cisco-3232c/install-cisco-nexus-3232c.html"
 - title: 設定軟體
+  pdf-filename: Configure_software_3232c
   entries:
   - title: 準備安裝NX-OS和RCF
     url: "/switch-cisco-3232c/prepare-install-cisco-nexus-3232c.html"
@@ -29,6 +32,7 @@ entries:
   - title: 安裝RCF組態檔
     url: "/switch-cisco-3232c/install-rcf-3232c.html"
 - title: 移轉交換器
+  pdf-filename: migrate_switchs_3232c
   entries:
   - title: 移轉需求
     url: "/switch-cisco-3232c/migrate-requirements-3232c.html"
@@ -39,6 +43,7 @@ entries:
   - title: 從雙節點無交換器叢集移轉
     url: "/switch-cisco-3232c/migrate-from-two-node-switchless-cluster.html"
 - title: 更換交換器
+  pdf-filename: REPLACE 交換器 _3232c
   entries:
   - title: 更換叢集交換器
     url: "/switch-cisco-3232c/replace-cluster-switch.html"
@@ -47,4 +52,5 @@ entries:
   - title: 使用無交換器連線取代叢集交換器
     url: "/switch-cisco-3232c/migrate-to-switchless-cluster-interconnect.html"
 - title: 升級交換器
+  pdf-filename: upgrade 交換器 _3232c
   url: "/switch-cisco-3232c/upgrade-3232c-storage-switches.html"

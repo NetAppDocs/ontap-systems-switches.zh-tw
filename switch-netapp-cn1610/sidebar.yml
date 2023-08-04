@@ -3,12 +3,14 @@ section: switch-netapp-cn1610
 title: NetApp CN1610
 entries:
 - title: 總覽
+  pdf-filename: overview_cn1610.
   url: "/switch-netapp-cn1610/switch-overview-cn1610.html"
 - title: 安裝及設定工作流程
   url: "/switch-netapp-cn1610/install-overview-cn1610.html"
 - title: 必要文件
   url: "/switch-netapp-cn1610/required-documentation-cn1610.html"
 - title: 安裝與設定
+  pdf-filename: install_configure_cn1610
   entries:
   - title: 安裝硬體
     url: "/switch-netapp-cn1610/install-hardware-cn1610.html"
@@ -21,6 +23,7 @@ entries:
   - title: 設定交換器
     url: "/switch-netapp-cn1610/configure-hardware-cn1610.html"
 - title: 移轉交換器
+  pdf-filename: migrate_switchs_cn1610
   entries:
   - title: 移轉選項
     url: "/switch-netapp-cn1610/migrate-overview.html"
@@ -29,6 +32,7 @@ entries:
   - title: 移轉至雙節點交換叢集
     url: "/switch-netapp-cn1610/migrate-fas22xx-systems.html"
 - title: 更換交換器
+  pdf-filename: replace 開關 _cn1610
   entries:
   - title: 更換 NetApp CN1610 叢集交換器
     url: "/switch-netapp-cn1610/replace-cn1610-switch.html"

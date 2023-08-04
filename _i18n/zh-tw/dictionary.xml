@@ -1067,15 +1067,11 @@
   <block id="30d965eef5ba25c6b9998ae38270b43e" category="doc">法律聲明</block>
   <block id="e9c44bbfd795a5d63d74c6a77afee70d" category="paragraph">法律聲明提供版權聲明、商標、專利等存取權限。</block>
   <block id="6016a2b341113bf496b719905398ecd2" category="section-title">版權</block>
-  <block id="09e95b77ffe81fe465a83ba99efad5c8" category="paragraph"><block ref="09e95b77ffe81fe465a83ba99efad5c8" category="inline-link-rx"></block></block>
   <block id="126a02652da6de02962cf1b654fd6376" category="section-title">商標</block>
   <block id="c4ce4761e466527d26b3e3d5ed1006fd" category="paragraph">NetApp 、 NetApp 標誌及 NetApp 商標頁面上列出的標章均為 NetApp 、 Inc. 的商標。其他公司與產品名稱可能為其各自所有者的商標。</block>
-  <block id="7aa531e9acfe2b98e34d2c92fe9846ff" category="paragraph"><block ref="7aa531e9acfe2b98e34d2c92fe9846ff" category="inline-link-rx"></block></block>
   <block id="be89498d2f8a22ce47c02ba9795fe2af" category="section-title">專利</block>
   <block id="d0b19d36be2c5f16e9aef46c8a452d3d" category="paragraph">如需最新的 NetApp 擁有專利清單、請參閱：</block>
-  <block id="d7f1fbcf9ce4e42f705add574d262b2c" category="paragraph"><block ref="d7f1fbcf9ce4e42f705add574d262b2c" category="inline-link-rx"></block></block>
   <block id="56c34c6410dd45c5cec44149ad0ce037" category="section-title">隱私權政策</block>
-  <block id="fc248f74f5e36542f7f5627b8610e9a3" category="paragraph"><block ref="fc248f74f5e36542f7f5627b8610e9a3" category="inline-link-rx"></block></block>
   <block id="c0227cef6f07a8cd2ac72f2945b031aa" category="section-title">開放原始碼</block>
   <block id="9b73989307c1975dfa4d5e1581e4afe8" category="paragraph">通知檔案提供有關 NetApp 軟體所使用之協力廠商版權與授權的資訊。</block>
   <block id="27e4f654e31a54c18c3f94846eb8fcc2" category="inline-link">磁碟櫃注意事項</block>
@@ -4550,4 +4546,64 @@
   <block id="079555d3c02274a2f31c4ed0065d657e" category="doc">設定 SNMPv3</block>
   <block id="75e0b0aa735bcccb4bf1267f69cc872e" category="paragraph">請遵循此程序來設定支援交換器健全狀況監控（ CSHM ）的 SNMPv3 。</block>
   <block id="1bd553f48f18f76a761092d0bebbe5a4" category="paragraph">下列命令會使用 CSHM 建立 SNMPv3 使用者名稱：<block ref="bc0f2549b8e026bfa298fbc575ba6020" prefix=" " category="inline-code"></block></block>
+  <block id="44dd2902e6a8940e811d66f001eb74b8" category="list-text">重複步驟 1 至 8 、在交換器 CS1 上安裝 NX-OS 軟體。</block>
+  <block id="52009bb7ee17227f566cd26a02caee56" category="inline-link-macro"><block ref="52009bb7ee17227f566cd26a02caee56" category="inline-link-rx"></block></block>
+  <block id="a1a9afcf552a769c282769271829889a" category="paragraph"><block ref="a1a9afcf552a769c282769271829889a" category="inline-link-macro-rx"></block></block>
+  <block id="f99aa604031e5049799e73b5c3748a98" category="inline-link-macro"><block ref="f99aa604031e5049799e73b5c3748a98" category="inline-link-rx"></block></block>
+  <block id="5d545fe5152641e2ebe654e336e520e5" category="paragraph"><block ref="5d545fe5152641e2ebe654e336e520e5" category="inline-link-macro-rx"></block></block>
+  <block id="88e5eabd3917048b6927c42496b98f86" category="inline-link-macro"><block ref="88e5eabd3917048b6927c42496b98f86" category="inline-link-rx"></block></block>
+  <block id="dd38f906b37d412de7d1c1dcf4cbf31c" category="paragraph"><block ref="dd38f906b37d412de7d1c1dcf4cbf31c" category="inline-link-macro-rx"></block></block>
+  <block id="8acb58cbd50ef1b468a020ee0bd351d3" category="inline-link-macro"><block ref="8acb58cbd50ef1b468a020ee0bd351d3" category="inline-link-rx"></block></block>
+  <block id="2352c4e1f4d0024ade0869e00e6243f4" category="paragraph"><block ref="2352c4e1f4d0024ade0869e00e6243f4" category="inline-link-macro-rx"></block></block>
+  <block id="10c9aa81a5dbe91a1787e02576ead6f5" category="sidebar">overview_3232c</block>
+  <block id="cb542104d3579a8e9b050b314ef192b3" category="sidebar">install_hardware _3232c</block>
+  <block id="c1a0cb55b7aba9aebfe65ce6308180de" category="sidebar">Configure_software_3232c</block>
+  <block id="02ac833874ff3ce10a84162663d35636" category="sidebar">migrate_switchs_3232c</block>
+  <block id="eff9ecf2154de89152b3ca2137d22407" category="sidebar">REPLACE 交換器 _3232c</block>
+  <block id="638fd229a1060ddf305851b38552031a" category="sidebar">upgrade 交換器 _3232c</block>
+  <block id="066e194669cf03dd5301aeb9f1e6bb60" category="sidebar">overview_9336c-FX2-shared</block>
+  <block id="6921871c4f93f63a6d9508ac0a84f0b1" category="sidebar">install_hardware _ 9336c-FX2 共用</block>
+  <block id="caad5d4f4828bb4387baba34832444d3" category="sidebar">Configure_software_9336c-FX2-shared</block>
+  <block id="3f1dde13cc83eeb1736746f92f6c66dc" category="sidebar">migrate_switchs_9336c-FX2-shared</block>
+  <block id="114d2c51950817a7527428c8d60fc70a" category="sidebar">REPLACE 交換器 _9336c-FX2-shared</block>
+  <block id="2a3abbe67aa7696824671cce5ca281e1" category="sidebar">overview_3132q-v</block>
+  <block id="a39b498c0ad0949d5002ad341502359d" category="sidebar">install_hardware _ 3132q-v</block>
+  <block id="82d8c229c8cbc923347549cf234c45f3" category="sidebar">Configure_software_3132q-v</block>
+  <block id="5cb6e4827abbdff34c1577139d21756f" category="sidebar">migrate_switchs_3132q-v</block>
+  <block id="f6f9cd29c4bb13f6a16119d82ca6fb1f" category="sidebar">REPLACE 交換器 _3132q-v</block>
+  <block id="2e46757c7b729d4910e07654cf41f7b0" category="sidebar">overview_92300yc</block>
+  <block id="ed84fc6478ac0d00e1e78977470c5fd5" category="sidebar">install_hardware _92300yc</block>
+  <block id="b6c306e6e3042fa0d66df82b85cdd615" category="sidebar">Configure_software_92300yc</block>
+  <block id="db006b145b3fbbf5410a350f5edd5d2a" category="sidebar">migrate_switchs_92300yc</block>
+  <block id="1b26a33c8f2840aaa88a3c83445b7162" category="sidebar">REPLACE 交換器 _92300yc</block>
+  <block id="c2fd26becbc7322e73bbbb4a48e0e98a" category="sidebar">overview_sn2100 儲存設備</block>
+  <block id="00ea6483b7e72739b6651ff7dd7713b9" category="sidebar">install_hardware _sn2100 儲存設備</block>
+  <block id="3dcf9cdc76a857a12a6d6fede0e6f0a2" category="sidebar">configure_software_nn2100-storage</block>
+  <block id="d9aada147c373c06e0d976b129c8f3a7" category="sidebar">migrate_switchs_sn2100 儲存設備</block>
+  <block id="5b5eb8c4bef0274e4e1b9402cbc61b6c" category="sidebar">replee_switch_sn2100 儲存設備</block>
+  <block id="e756cb6d7a30c16aaf4b162066c5faaf" category="sidebar">overview_9336c-FX2</block>
+  <block id="ea9347503aa166036bc31e64c9a62221" category="sidebar">install_hardware _ 9336c-FX2</block>
+  <block id="0817f50dda9839238b42b67326847169" category="sidebar">Configure_software_9336c-FX2</block>
+  <block id="09db58fd2d9414146f4e7f1ac19ab09e" category="sidebar">migrate_switchs_9336c-FX2</block>
+  <block id="7bf274d6a8a427ffe81263e20f1f4ec0" category="sidebar">REPLACE 交換器 _9336c-FX2</block>
+  <block id="5fa4d790df53a4c6278c546dd028ec83" category="sidebar">overview_9336c-FX2-storage</block>
+  <block id="0275375be59b49b4671d6f7352eb43f8" category="sidebar">install_hardware _ 9336c-FX2-storage</block>
+  <block id="2ef21067889d74c595764cb0c5f14087" category="sidebar">Configure_software_9336c-FX2-storage</block>
+  <block id="b1c691c0067b2d09bed76ad1a1477b3b" category="sidebar">migrate_switchs_9336c-FX2-storage</block>
+  <block id="a40501f53136e1fad14756d37734123e" category="sidebar">REPLACE _SWITE_9336c-FX2-storage</block>
+  <block id="35a987323fcb5fdbbb175c9114601182" category="sidebar">overview_cn1610.</block>
+  <block id="d736a39071e873d48143d93c0bf1e23d" category="sidebar">install_configure_cn1610</block>
+  <block id="4c4ff6838d067836f2198ca8700d59a8" category="sidebar">migrate_switchs_cn1610</block>
+  <block id="e189ed5bfe48ac8124098ae4639d5ecb" category="sidebar">replace 開關 _cn1610</block>
+  <block id="1235e1b032feb174df4e33d9850608fa" category="sidebar">overview_sn2100</block>
+  <block id="bb9b59de9af3e8302ea125bfa0271db5" category="sidebar">install_hardware _sn2100</block>
+  <block id="45fb160a69acdbfa882abe108b4f7248" category="sidebar">Configure_software_sn2100</block>
+  <block id="73abc22ae9f100c9e4d9d28bc56685aa" category="sidebar">migrate_switchs_sn2100</block>
+  <block id="8cc181df76ed146075a7c0b38525656a" category="sidebar">replace 開關 _sn2100</block>
+  <block id="68ca17cd44d275d22b0f2d0dda57897a" category="sidebar">overview_Bes53248</block>
+  <block id="380eb1e05db1f71a5022bd03843c5aba" category="sidebar">install_hardware _ bes53248</block>
+  <block id="8a3982b437db5ff2a2a68b47d8633581" category="sidebar">Configure_software_bes53248</block>
+  <block id="ae6de81182adfafa064980e2532e7279" category="sidebar">upgrade 開關 _bes53248</block>
+  <block id="267f0a6ee7bf547701400bdefcf3e255" category="sidebar">migrate_switchs_bes53248</block>
+  <block id="368764dd3898433d38cff5ab40e268b0" category="sidebar">replace 交換器 _bes53248</block>
 </blocks>

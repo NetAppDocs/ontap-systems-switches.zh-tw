@@ -3,6 +3,7 @@ section: switch-cisco-9336c-fx2-shared
 title: Cisco Nexus 9336C-FX2
 entries:
 - title: 總覽
+  pdf-filename: overview_9336c-FX2-shared
   entries:
   - title: 組態總覽
     url: "/switch-cisco-9336c-fx2-shared/configure-switch-overview-9336c-shared.html"
@@ -13,6 +14,7 @@ entries:
   - title: 必要文件
     url: "/switch-cisco-9336c-fx2-shared/required-documentation-9336c-shared.html"
 - title: 安裝硬體
+  pdf-filename: install_hardware _ 9336c-FX2 共用
   entries:
   - title: 完整的佈線工作表
     url: "/switch-cisco-9336c-fx2-shared/cable-9336c-shared.html"
@@ -23,6 +25,7 @@ entries:
   - title: 在NetApp機櫃中安裝交換器
     url: "/switch-cisco-9336c-fx2-shared/install-switch-and-passthrough-panel-9336c-shared.html"
 - title: 設定軟體
+  pdf-filename: Configure_software_9336c-FX2-shared
   entries:
   - title: 軟體安裝工作流程
     url: "/switch-cisco-9336c-fx2-shared/configure-software-overview-9336c-shared.html"
@@ -33,6 +36,7 @@ entries:
   - title: 安裝RCF組態檔
     url: "/switch-cisco-9336c-fx2-shared/install-nxos-rcf-9336c-shared.html"
 - title: 移轉交換器
+  pdf-filename: migrate_switchs_9336c-FX2-shared
   entries:
   - title: 從無交換器DAS叢集移轉
     url: "/switch-cisco-9336c-fx2-shared/migrate-from-switchless-cluster-dat-storage.html"
@@ -43,4 +47,5 @@ entries:
   - title: 從交換式SAT叢集移轉
     url: "/switch-cisco-9336c-fx2-shared/migrate-from-switched-cluster-sat-storage.html"
 - title: 更換交換器
+  pdf-filename: REPLACE 交換器 _9336c-FX2-shared
   url: "/switch-cisco-9336c-fx2-shared/replace-9336c-fx2-shared.html"

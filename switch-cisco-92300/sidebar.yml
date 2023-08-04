@@ -3,6 +3,7 @@ section: switch-cisco-92300
 title: Cisco Nexus 2300YC
 entries:
 - title: 總覽
+  pdf-filename: overview_92300yc
   entries:
   - title: 組態總覽
     url: "/switch-cisco-92300/install-overview-cisco-92300.html"
@@ -15,12 +16,14 @@ entries:
   - title: 智慧電話住家需求
     url: "/switch-cisco-92300/smart-call-home-92300.html"
 - title: 安裝硬體
+  pdf-filename: install_hardware _92300yc
   entries:
   - title: 完整的佈線工作表
     url: "/switch-cisco-92300/setup-worksheet-92300yc.html"
   - title: 設定交換器
     url: "/switch-cisco-92300/configure-install-initial.html"
 - title: 設定軟體
+  pdf-filename: Configure_software_92300yc
   entries:
   - title: 準備安裝NX-OS和RCF
     url: "/switch-cisco-92300/install-nxos-overview.html"
@@ -31,12 +34,14 @@ entries:
   - title: 安裝CSHM
     url: "/switch-cisco-92300/setup-install-cshm-file.html"
 - title: 移轉交換器
+  pdf-filename: migrate_switchs_92300yc
   entries:
   - title: 移轉至雙節點交換叢集
     url: "/switch-cisco-92300/migrate-to-2n-switched.html"
   - title: 從舊的Cisco交換器移轉
     url: "/switch-cisco-92300/migrate-to-92300yc.html"
 - title: 更換交換器
+  pdf-filename: REPLACE 交換器 _92300yc
   entries:
   - title: 更換交換器
     url: "/switch-cisco-92300/replace-92300yc.html"

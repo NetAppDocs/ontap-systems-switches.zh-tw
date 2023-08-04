@@ -3,6 +3,7 @@ section: switch-cisco-9336c-fx2-storage
 title: Cisco Nexus 9336C-FX2
 entries:
 - title: 總覽
+  pdf-filename: overview_9336c-FX2-storage
   entries:
   - title: 組態總覽
     url: "/switch-cisco-9336c-fx2-storage/configure-switch-overview-9336c-storage.html"
@@ -15,6 +16,7 @@ entries:
   - title: 智慧電話住家需求
     url: "/switch-cisco-9336c-fx2-storage/smart-call-9336c-storage.html"
 - title: 安裝硬體
+  pdf-filename: install_hardware _ 9336c-FX2-storage
   entries:
   - title: 完整的佈線工作表
     url: "/switch-cisco-9336c-fx2-storage/setup-worksheet-9336c-storage.html"
@@ -25,6 +27,7 @@ entries:
   - title: 在NetApp機櫃中安裝交換器
     url: "/switch-cisco-9336c-fx2-storage/install-switch-and-passthrough-panel-9336c-storage.html"
 - title: 設定軟體
+  pdf-filename: Configure_software_9336c-FX2-storage
   entries:
   - title: 軟體安裝工作流程
     url: "/switch-cisco-9336c-fx2-storage/configure-software-overview-9336c-storage.html"
@@ -35,10 +38,12 @@ entries:
   - title: 安裝RCF組態檔
     url: "/switch-cisco-9336c-fx2-storage/install-nxos-rcf-9336c-storage.html"
 - title: 移轉交換器
+  pdf-filename: migrate_switchs_9336c-FX2-storage
   entries:
   - title: 從舊的Cisco交換器移轉
     url: "/switch-cisco-9336c-fx2-storage/migrate-to-9336-storage.html"
   - title: 移轉至雙節點交換叢集
     url: "/switch-cisco-9336c-fx2-storage/migrate-to-2n-switched-9336-storage.html"
 - title: 更換儲存交換器
+  pdf-filename: REPLACE _SWITE_9336c-FX2-storage
   url: "/switch-cisco-9336c-fx2-storage/replace-storage-switch-9336c-storage.html"

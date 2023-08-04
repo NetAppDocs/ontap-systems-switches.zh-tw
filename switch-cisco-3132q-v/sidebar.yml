@@ -3,6 +3,7 @@ section: switch-cisco-3132q-v
 title: Cisco Nexus 3132Q-V
 entries:
 - title: 總覽
+  pdf-filename: overview_3132q-v
   entries:
   - title: 組態總覽
     url: "/switch-cisco-3132q-v/install-overview-cisco-3132qv.html"
@@ -13,6 +14,7 @@ entries:
   - title: 智慧電話住家需求
     url: "/switch-cisco-3132q-v/smart-call-home-3132q.html"
 - title: 安裝硬體
+  pdf-filename: install_hardware _ 3132q-v
   entries:
   - title: 完整的佈線工作表
     url: "/switch-cisco-3132q-v/setup_worksheet_3132q.html"
@@ -21,6 +23,7 @@ entries:
   - title: 在NetApp機櫃中安裝交換器
     url: "/switch-cisco-3132q-v/install-cisco-nexus-3132qv.html"
 - title: 設定軟體
+  pdf-filename: Configure_software_3132q-v
   entries:
   - title: 準備安裝NX-OS和RCF
     url: "/switch-cisco-3132q-v/prepare-install-cisco-nexus-3132q.html"
@@ -29,6 +32,7 @@ entries:
   - title: 安裝RCF組態檔
     url: "/switch-cisco-3132q-v/install-rcf-3132q-v.html"
 - title: 移轉交換器
+  pdf-filename: migrate_switchs_3132q-v
   entries:
   - title: 從CN5596交換器移轉
     url: "/switch-cisco-3132q-v/migrate-from-cisco-nexus-5596-to-cisco-nexus-3232c.html"
@@ -37,6 +41,7 @@ entries:
   - title: 從無交換器叢集移轉至交換式叢集
     url: "/switch-cisco-3132q-v/migrate-from-switchless-cluster-to-cisco-nexus-3132q-v.html"
 - title: 更換交換器
+  pdf-filename: REPLACE 交換器 _3132q-v
   entries:
   - title: 更換需求
     url: "/switch-cisco-3132q-v/switch-requirements.html"

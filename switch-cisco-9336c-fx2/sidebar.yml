@@ -3,6 +3,7 @@ section: switch-cisco-9336c-fx2
 title: Cisco Nexus 9336C-FX2
 entries:
 - title: 總覽
+  pdf-filename: overview_9336c-FX2
   entries:
   - title: 組態總覽
     url: "/switch-cisco-9336c-fx2/configure-switch-overview-9336c-cluster.html"
@@ -15,6 +16,7 @@ entries:
   - title: 智慧電話住家需求
     url: "/switch-cisco-9336c-fx2/smart-call-9336c-cluster.html"
 - title: 安裝硬體
+  pdf-filename: install_hardware _ 9336c-FX2
   entries:
   - title: 完整的佈線工作表
     url: "/switch-cisco-9336c-fx2/setup-worksheet-9336c-cluster.html"
@@ -25,6 +27,7 @@ entries:
   - title: 在NetApp機櫃中安裝交換器
     url: "/switch-cisco-9336c-fx2/install-switch-and-passthrough-panel-9336c-cluster.html"
 - title: 設定軟體
+  pdf-filename: Configure_software_9336c-FX2
   entries:
   - title: 軟體安裝工作流程
     url: "/switch-cisco-9336c-fx2/configure-software-overview-9336c-cluster.html"
@@ -35,6 +38,7 @@ entries:
   - title: 安裝RCF組態檔
     url: "/switch-cisco-9336c-fx2/install-nxos-rcf-9336c-cluster.html"
 - title: 移轉交換器
+  pdf-filename: migrate_switchs_9336c-FX2
   entries:
   - title: 從 CN1610 叢集交換器移轉
     url: "/switch-cisco-9336c-fx2/migrate-cn1610-9336c-cluster.html"
@@ -43,6 +47,7 @@ entries:
   - title: 移轉至雙節點交換叢集
     url: "/switch-cisco-9336c-fx2/migrate-to-2n-switched-9336-cluster.html"
 - title: 更換交換器
+  pdf-filename: REPLACE 交換器 _9336c-FX2
   entries:
   - title: 更換叢集交換器
     url: "/switch-cisco-9336c-fx2/replace-9336c-cluster.html"
