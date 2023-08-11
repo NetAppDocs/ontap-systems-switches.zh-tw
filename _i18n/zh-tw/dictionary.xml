@@ -4501,8 +4501,6 @@
   <block id="55c09ca9257750665c75e5b587165519" category="paragraph"><block ref="e802bd77f148cffa22d9aa9e7d79d65d" prefix="" category="inline-code"></block></block>
   <block id="e1d0dd82b8f2058c2b4c4d59c2f80125" category="paragraph">等待 10 分鐘、然後使用命令檢查記錄收集是否完成：</block>
   <block id="0eedc6e86bf0684694a5f74d12cd17d7" category="admonition">如果這些命令中有任何一個傳回錯誤、或記錄集合未完成、請聯絡 NetApp 支援部門。</block>
-  <block id="cada8434ff5f9181d7ae07ce2a2c1336" category="list-text">將 BS-53248 交換器上的部分連接埠設定為以 10GbE 或 40GbE 執行。</block>
-  <block id="9b8afb051b3fda2a9f3dcd0edcc95d79" category="list-text">從節點到 BS-53248 叢集交換器的 10GbE 與 40GbE 連線能力已規劃、移轉及記錄。</block>
   <block id="df3b6dd54dfaeb972568b29147c67103" category="list-text">初始自訂 BS-53248 交換器已完成、因此：</block>
   <block id="8f7a04d5740dbba56b463f7bc775e27a" category="list-text">BS-53248 交換器正在執行最新建議版本的 EFOS 軟體。</block>
   <block id="2f16d56c4dbd9373c09b2be5c94c8c4a" category="list-text">NetApp CN1610 ：連接埠 0/1 到 0/12 （ 10GbE ）</block>
@@ -4513,24 +4511,16 @@
   <block id="10eb67b70ef8150836466766bdd3f2f8" category="list-text">在連接至現有叢集交換器的每個節點上顯示叢集連接埠：</block>
   <block id="fc7a60af0bed9304a4ca478877f91450" category="list-text">確認所有叢集連接埠都已存在<block ref="46c48bec0d282018b9d167eef7711b2c" prefix=" " category="inline-code"></block> 使用<block ref="741839f346d6e8126ae38ee76a96fd12" prefix=" " category="inline-code"></block> 狀態：</block>
   <block id="0be9e89f86499b3770f2ce9bad1ba0eb" category="list-text">[[step5]] 停用叢集生命週轉的自動還原功能。</block>
-  <block id="04b62972586827d401a3dea129d172c9" category="list-text">在叢集交換器 CL1 上、關閉連接至節點叢集連接埠的連接埠：</block>
   <block id="d9f832c61b11e8d4b59ef0ae25ac9dd6" category="list-text">驗證叢集生命期是否已移轉至叢集交換器 CL1 上託管的連接埠。這可能需要幾秒鐘的時間。</block>
-  <block id="eba3ff5e6602b380a875b5adacf6e6fd" category="list-text">將所有叢集節點連線纜線從舊版 CS2 交換器移至新的 CS2 交換器。</block>
   <block id="8884e29d4b490f2084dae5227ca847a4" category="list-text">確認移至 CS2 的網路連線健全狀況：</block>
   <block id="308cecb0e156959b9d08b434ef110588" category="paragraph">所有已移動的叢集連接埠都應該是<block ref="46c48bec0d282018b9d167eef7711b2c" prefix=" " category="inline-code"></block>。</block>
-  <block id="e2a6925a1c6094f573b02dac570783d1" category="list-text">使用命令從交換器 CS2 的角度確認交換器連接埠連線：</block>
-  <block id="ad38a12ff64b2cba000c16daea86aee6" category="list-text">在叢集交換器 CL2 上、關閉連接至節點叢集連接埠的連接埠。</block>
   <block id="48281ee704bfb0f055c15fe754705f5a" category="paragraph">所有叢集生命都會移至 CS2 交換器。</block>
   <block id="18a308037b50cae9759f1f49af5aed58" category="list-text">驗證叢集LIF是否已移轉至交換器CS2上裝載的連接埠。這可能需要幾秒鐘的時間：</block>
   <block id="f20b906cc8acf5d97550e7a24fd7c69b" category="list-text">將叢集節點連線纜線從 CL1 移至新的 CS1 交換器。</block>
   <block id="b7557e0e7f48313d82756b7481c1b1f6" category="list-text">確認移至 CS1 的網路連線健全狀況：</block>
-  <block id="a19beb91ec2195c2db049b5e003334f4" category="list-text">使用命令從交換器 CS1 的角度確認交換器連接埠連線：</block>
   <block id="ce16551695d7120d532abead22bee8c2" category="list-text">確認 CS1 和 CS2 之間的 ISL 仍可運作：</block>
   <block id="b48ac462b57bcb2860eecd434bd2c80f" category="paragraph">從 ONTAP 9.8 開始、請使用命令：<block ref="b4720f8aa09f4e4b3a04e78c558b6c90" prefix=" " category="inline-code"></block></block>
-  <block id="4ae8d24c72dd765a4920ac53c2dafe90" category="open-title">更新版本ONTAP</block>
-  <block id="7c0f7899f6a5609732991b637b6b77d8" category="paragraph">對於 ONTAP 9.4 及更早版本、請使用命令：<block ref="f055904a9fc3a4f0bc33aca13ecd2b2d" prefix=" " category="inline-code"></block></block>
   <block id="3e1fd1b016d89d236712e513bee2a170" category="list-text">為乙太網路交換器健全狀況監視器記錄收集功能建立密碼。</block>
-  <block id="300c1f24adf38203b39051c2816bed96" category="admonition">若要啟用記錄收集功能、您必須執行 ONTAP 9.12.1 及更新版本、以及 EFOS 3.8.0.2 及更新版本。</block>
   <block id="079e7a1f80c26ff7b477dcbf014e4e70" category="list-text">啟用乙太網路交換器健全狀況監視器記錄收集功能：</block>
   <block id="aae263170b5a7f23d3045f8a2b09091f" category="paragraph">等待 10 分鐘、然後檢查記錄收集是否完成：</block>
   <block id="c9a1a82d3af3d53e5132a5ce6181fc18" category="list-text">Nexus 9336C-FX2 交換器上的部分連接埠已設定為以 10GbE 或 40GbE 執行。</block>
@@ -4606,4 +4596,20 @@
   <block id="ae6de81182adfafa064980e2532e7279" category="sidebar">upgrade 開關 _bes53248</block>
   <block id="267f0a6ee7bf547701400bdefcf3e255" category="sidebar">migrate_switchs_bes53248</block>
   <block id="368764dd3898433d38cff5ab40e268b0" category="sidebar">replace 交換器 _bes53248</block>
+  <block id="b839c7212b07af22047708d290e9fc06" category="list-text">將 BS-53248 交換器上的部分連接埠設定為在 10GbE 執行。</block>
+  <block id="c4a4e384df3331fa768c173d158b0aa5" category="list-text">從節點到 BS-53248 叢集交換器的 10GbE 連線能力已規劃、移轉及記錄。</block>
+  <block id="67b660e2046176252fca76261bc42667" category="list-text">在叢集交換器 CL2 上、關閉連接至節點叢集連接埠的連接埠：</block>
+  <block id="e6530d0201fae7d6787fd28d58724819" category="list-text">將所有叢集節點連線纜線從舊版 CL2 交換器移至新的 CS2 交換器。</block>
+  <block id="74473ad9515a4da22aa5f01542722c5b" category="list-text">使用下列命令、從交換器 CS2 的觀點來確認交換器連接埠連線狀況良好：</block>
+  <block id="ca6f53e4266e008816889d83576a5877" category="list-text">在叢集交換器 CL1 上、關閉連接至節點叢集連接埠的連接埠。</block>
+  <block id="1dd6b9d779d28215b5d204a1be9c8b6a" category="list-text">使用下列命令、從交換器 CS1 的觀點來確認交換器連接埠連線狀況良好：</block>
+  <block id="dae02701a0a247e1012b9b2832c32464" category="list-text">如果未自動移除已更換的 CN1610 交換器、請將其從叢集的交換器表中刪除：</block>
+  <block id="c8b9229aed88be3704b6c26029b7ae94" category="paragraph">對於 ONTAP 9.7 及更早版本、請使用命令：<block ref="f055904a9fc3a4f0bc33aca13ecd2b2d" prefix=" " category="inline-code"></block></block>
+  <block id="b8590eb7d6b7365e1a0bee47b03d5b4f" category="admonition">若要啟用記錄收集功能、您必須執行 ONTAP 9.10.1P15 、 9.11.1P12 或 9.12.1 及更新版本、以及 EFOS 3.8.0.2 及更新版本。</block>
+  <block id="e88b6a67743cc664a0a237ba8d94eefc" category="sidebar">交換器 - Cisco-9336c-FX2 叢集</block>
+  <block id="517242a1c337699950aef05a38af45a0" category="sidebar">交換器 NVIDIA sn2100 叢集</block>
+  <block id="3ed3b1cc0917edd8fddcdd478bb581fb" category="sidebar">交換器 - Cisco-9336c-FX2 儲存設備</block>
+  <block id="701d9aab459b808d17f39aa5c50f97df" category="sidebar">交換器 NVIDIA sn2100 儲存設備</block>
+  <block id="a5f4f9ed92853ea6128046eb985ff5a7" category="sidebar">Cisco-9336c-FX2 共用</block>
+  <block id="759d203c3eb13a684379c7413a7ea760" category="sidebar">Cisco-9336c-FX2 叢集</block>
 </blocks>
