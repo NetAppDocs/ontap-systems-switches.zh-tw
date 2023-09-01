@@ -4612,4 +4612,5 @@
   <block id="701d9aab459b808d17f39aa5c50f97df" category="sidebar">交換器 NVIDIA sn2100 儲存設備</block>
   <block id="a5f4f9ed92853ea6128046eb985ff5a7" category="sidebar">Cisco-9336c-FX2 共用</block>
   <block id="759d203c3eb13a684379c7413a7ea760" category="sidebar">Cisco-9336c-FX2 叢集</block>
+  <block id="111cada5d22121a7e11aef39f4aca355" category="list-text">在叢集交換器 CS2 上、開啟連接至節點叢集連接埠的連接埠。</block>
 </blocks>

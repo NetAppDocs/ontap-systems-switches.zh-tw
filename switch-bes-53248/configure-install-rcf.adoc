@@ -1,7 +1,7 @@
 ---
 permalink: switch-bes-53248/configure-install-rcf.html 
 sidebar: sidebar 
-keywords: install rcf,setup rcf 
+keywords: install rcf,setup rcf,rcf file 
 summary: 您可以在設定BS-53248叢集交換器之後、以及套用新授權之後、安裝參考組態檔（RCF）。 
 ---
 = 安裝參考組態檔（RCF）
@@ -591,6 +591,13 @@ Are you sure you would like to reset the system? (y/n) *y*
 System will now restart!
 ----
 ====
+. 在叢集交換器 CS2 上、開啟連接至節點叢集連接埠的連接埠。
++
+[listing, subs="+quotes"]
+----
+(cs2)(Config)# *interface 0/1-0/16*
+(cs2)(Interface 0/1-0/16)# *no shutdown*
+----
 . 驗證交換器 CS2 上的連接埠： `show interfaces status all | exclude Detach`
 +
 .顯示範例
