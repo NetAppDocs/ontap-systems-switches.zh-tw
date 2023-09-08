@@ -272,25 +272,12 @@ Cluster
             node2_clus2  up/up    169.254.19.183/16  node2         e0b     true
 ----
 ====
-. 驗證是否已在所有叢集生命體上啟用「自動還原」：「網路介面show -vserver叢集-功能 變數自動還原」
+. 停用叢集生命體上的自動還原。
 +
-.顯示範例
-[%collapsible]
-====
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network interface show -vserver Cluster -fields auto-revert*
-
-          Logical
-Vserver   Interface     Auto-revert
---------- ------------- ------------
-Cluster
-          node1_clus1   true
-          node1_clus2   true
-          node2_clus1   true
-          node2_clus2   true
+cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert false*
 ----
-====
 . 從節點1上的叢集連接埠e0a拔下纜線、然後使用BES-53248交換器支援的適當纜線、將e0a連接至叢集交換器CS1上的連接埠1。
 +
 。 https://hwu.netapp.com/Home/Index["_NetApp Hardware Universe SUR__"^] 包含纜線的詳細資訊。
@@ -410,6 +397,22 @@ e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
 
 
 === 步驟3：驗證組態
+
+. 在叢集生命體上啟用自動還原。
++
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert true*
+----
+. 驗證叢集生命區是否已還原至其主連接埠（這可能需要一分鐘時間）：
++
+「網路介面show -vserver叢集」
+
++
+如果叢集l生命 尚未還原至其主連接埠、請手動還原它們：
+
++
+「網路介面回復-vserver叢集-lIF *」
 
 . 驗證所有介面是否都顯示「true」表示「is Home」：
 +
