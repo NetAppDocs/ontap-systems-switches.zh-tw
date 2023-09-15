@@ -451,7 +451,7 @@ RoCE pool config
 +
 [listing, subs="+quotes"]
 ----
-admin@sw1:mgmt:~$ *nv show interface pluggables*
+admin@sw1:mgmt:~$ *nv show interface --view=pluggables*
 Interface  Identifier     Vendor Name  Vendor PN        Vendor SN       Vendor Rev
 ---------  -------------  -----------  ---------------  --------------  ----------
 swp1s0     0x00 None
@@ -476,7 +476,7 @@ swp16      0x11 (QSFP28)  Amphenol     112-00595        APF2027
 +
 [listing, subs="+quotes"]
 ----
-admin@sw1:mgmt:~$ *nv show lldp*
+admin@sw1:mgmt:~$ *nv show interface --view=lldp*
 
 LocalPort  Speed  Mode        RemoteHost               RemotePort
 ---------  -----  ----------  -----------------------  -----------

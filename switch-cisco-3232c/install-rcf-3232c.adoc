@@ -21,7 +21,6 @@ summary: 您可以在初次設定Nexus 3232C交換器之後安裝RCF。您也可
 * 交換器組態的目前備份。
 * 完全正常運作的叢集（記錄檔中沒有錯誤或類似問題）。
 * 目前參考組態檔（RCF）。
-* RCF中的開機組態、可反映所需的開機映像、如果您只安裝NX-OS、並保留目前的RCF版本、則此為必要的開機組態。如果您需要變更開機組態以反映目前的開機映像、則必須在重新套用RCF之前執行此動作、以便在未來重新開機時產生正確的版本。
 * 安裝RCF時所需的交換器主控台連線。
 * link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器頁面"^] 請參閱交換器相容性表、以瞭解支援ONTAP 的功能表和RCF版本。請注意、RCF中的命令語法與NX-OS版本中的命令語法之間可能存在相依性。
 * link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000系列交換器"^]。如需Cisco交換器升級與降級程序的完整文件、請參閱Cisco網站上提供的適當軟體與升級指南。

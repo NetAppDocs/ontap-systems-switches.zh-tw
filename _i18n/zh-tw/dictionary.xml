@@ -4610,4 +4610,6 @@
   <block id="759d203c3eb13a684379c7413a7ea760" category="sidebar">Cisco-9336c-FX2 叢集</block>
   <block id="111cada5d22121a7e11aef39f4aca355" category="list-text">在叢集交換器 CS2 上、開啟連接至節點叢集連接埠的連接埠。</block>
   <block id="325c324b922ed6e1b216f99766068e43" category="list-text">[[step18]] 在叢集交換器 CS1 上、關閉連接至節點叢集連接埠的連接埠。</block>
+  <block id="427c15bca394e9d3b5f203c35b96c743" category="inline-link">Cisco 3132Q 叢集交換器上的 10GbE 連接埠無法連線</block>
+  <block id="20f0f9c709341c54050214259fc6c790" category="admonition">如需瞭解如何在 RCF 升級後將 10GbE 連接埠上線的步驟、請參閱知識庫文章<block ref="917fe6fdad3ed920883f4190398d0805" category="inline-link-rx"></block>。</block>
 </blocks>
