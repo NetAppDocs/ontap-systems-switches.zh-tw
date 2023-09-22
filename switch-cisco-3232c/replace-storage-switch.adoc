@@ -65,9 +65,9 @@ _x_是維護時段的持續時間（以小時為單位）。
 .顯示範例
 [%collapsible]
 ====
-[listing]
+[listing, subs="+quotes"]
 ----
-storage::*> storage port show -port-type ENET
+storage::*> *storage port show -port-type ENET*
                                       Speed                     VLAN
 Node               Port Type  Mode    (Gb/s) State    Status      ID
 ------------------ ---- ----- ------- ------ -------- --------- ----
@@ -91,9 +91,9 @@ node2
 .顯示範例
 [%collapsible]
 ====
-[listing]
+[listing, subs="+quotes"]
 ----
-storage::*> network device-discovery show
+storage::*> *network device-discovery show*
 Node/       Local  Discovered
 Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
 ----------- ------ ------------------------- ----------------- ----------------
@@ -123,9 +123,9 @@ node2/lldp
 .顯示範例
 [%collapsible]
 ====
-[listing]
+[listing, subs="+quotes"]
 ----
-S1# show lldp neighbors
+S1# *show lldp neighbors*
 Capability codes:
   (R) Router, (B) Bridge, (T) Telephone, (C) DOCSIS Cable Device
   (W) WLAN Access Point, (P) Repeater, (S) Station, (O) Other
@@ -152,9 +152,9 @@ SHFGD2008000022         Eth1/8          120        S           e0a
 .顯示範例
 [%collapsible]
 ====
-[listing]
+[listing, subs="+quotes"]
 ----
-storage::*> storage shelf port show -fields remote-device,remote-port
+storage::*> *storage shelf port show -fields remote-device,remote-port*
 
 shelf  id  remote-port  remote-device
 -----  --  -----------  -------------
@@ -176,7 +176,7 @@ shelf  id  remote-port  remote-device
 
 === 步驟3：檢查交換器NS2上的所有裝置組態
 
-. 重新檢查儲存節點連接埠的健全狀況：
+. 驗證儲存節點連接埠的健全狀況：
 +
 「torage port show -port-type ENET」
 
@@ -184,9 +184,9 @@ shelf  id  remote-port  remote-device
 .顯示範例
 [%collapsible]
 ====
-[listing]
+[listing, subs="+quotes"]
 ----
-storage::*> storage port show -port-type ENET
+storage::*> *storage port show -port-type ENET*
                                       Speed                       VLAN
 Node               Port Type  Mode    (Gb/s) State    Status        ID
 ------------------ ---- ----- ------- ------ -------- ------------ ---
@@ -210,9 +210,9 @@ node2
 .顯示範例
 [%collapsible]
 ====
-[listing]
+[listing, subs="+quotes"]
 ----
-storage::*> network device-discovery show
+storage::*> *network device-discovery show*
 Node/       Local  Discovered
 Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
 ----------- ------ ------------------------- ----------------  --------
@@ -246,9 +246,9 @@ node2/lldp
 .顯示範例
 [%collapsible]
 ====
-[listing]
+[listing, subs="+quotes"]
 ----
-storage::*> storage shelf port show -fields remote-device,remote-port
+storage::*> *storage shelf port show -fields remote-device,remote-port*
 shelf id remote-port remote-device
 ----- -- ----------- -------------
 3.20  0  Ethernet1/5 S1

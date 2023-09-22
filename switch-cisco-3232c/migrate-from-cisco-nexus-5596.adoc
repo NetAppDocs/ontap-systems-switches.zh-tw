@@ -106,9 +106,9 @@ _x_是維護時段的持續時間（以小時為單位）。
 ====
 以下範例顯示每個叢集互連交換器的每個節點已設定多少個叢集互連介面：
 
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster::> network device-discovery show
+cluster::> *network device-discovery show*
             Local  Discovered
 Node        Port   Device              Interface        Platform
 ----------- ------ ------------------- ---------------- ----------------
@@ -137,9 +137,9 @@ n2         /cdp
 ====
 以下範例顯示節點n1和n2上的網路連接埠屬性：
 
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster::*> network port show –role cluster
+cluster::*> *network port show –role cluster*
   (network port show)
 Node: n1
                                                                        Ignore
@@ -173,9 +173,9 @@ e0d       Cluster      Cluster          up   9000  auto/10000 -        -
 ====
 以下範例顯示叢集上所有生命週期的一般資訊、包括目前的連接埠：
 
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster::*> network interface show -role cluster
+cluster::*> *network interface show -role cluster*
  (network interface show)
             Logical    Status     Network            Current       Current Is
 Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
@@ -202,9 +202,9 @@ Cluster
 ====
 以下範例顯示作用中的叢集交換器：
 
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster::*> system cluster-switch show
+cluster::*> *system cluster-switch show*
 
 Switch                        Type               Address         Model
 ----------------------------- ------------------ --------------- ---------------
@@ -257,7 +257,7 @@ http://support.netapp.com/NOW/download/software/cm_switches/["Cisco乙太網路�
 
 . 移轉與第二台要更換的Nexus 5596交換器相關的生命週期：
 +
-「網路介面移轉-vserver叢集-lif_lif-name_-source-node-node-name_–destination-node-node-name_-destination-port _destination-port-name_」
+`network interface migrate -vserver _vserver-name_ -lif _lif-name_ -source-node _source-node-name_ - destination-node _node-name_ -destination-port _destination-port-name_`
 
 +
 .顯示範例
@@ -265,16 +265,16 @@ http://support.netapp.com/NOW/download/software/cm_switches/["Cisco乙太網路�
 ====
 以下範例顯示節點n1和n2正在移轉的LIF；必須在所有節點上執行LIF移轉：
 
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster::*> network interface migrate -vserver Cluster -lif n1_clus2 -source-node n1 –
-destination-node n1 -destination-port e0a
-cluster::*> network interface migrate -vserver Cluster -lif n1_clus3 -source-node n1 –
-destination-node n1 -destination-port e0d
-cluster::*> network interface migrate -vserver Cluster -lif n2_clus2 -source-node n2 –
-destination-node n2 -destination-port e0a
-cluster::*> network interface migrate -vserver Cluster -lif n2_clus3 -source-node n2 –
-destination-node n2 -destination-port e0d
+cluster::*> *network interface migrate -vserver Cluster -lif n1_clus2 -source-node n1 -
+destination-node n1 -destination-port e0a*
+cluster::*> *network interface migrate -vserver Cluster -lif n1_clus3 -source-node n1 -
+destination-node n1 -destination-port e0d*
+cluster::*> *network interface migrate -vserver Cluster -lif n2_clus2 -source-node n2 -
+destination-node n2 -destination-port e0a*
+cluster::*> *network interface migrate -vserver Cluster -lif n2_clus3 -source-node n2 -
+destination-node n2 -destination-port e0d*
 ----
 ====
 . 驗證叢集的健全狀況：
@@ -287,9 +287,9 @@ destination-node n2 -destination-port e0d
 ====
 下列範例顯示每個叢集的目前狀態：
 
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster::*> network interface show -role cluster
+cluster::*> *network interface show -role cluster*
  (network interface show)
             Logical    Status     Network            Current       Current Is
 Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
@@ -322,13 +322,12 @@ Cluster
 ====
 下列命令會關閉n1和n2上的指定連接埠、但必須關閉所有節點上的連接埠：
 
-[listing]
+[listing, subs="+quotes"]
 ----
-
-cluster::*> network port modify -node n1 -port e0b -up-admin false
-cluster::*> network port modify -node n1 -port e0c -up-admin false
-cluster::*> network port modify -node n2 -port e0b -up-admin false
-cluster::*> network port modify -node n2 -port e0c -up-admin false
+cluster::*> *network port modify -node n1 -port e0b -up-admin false*
+cluster::*> *network port modify -node n1 -port e0c -up-admin false*
+cluster::*> *network port modify -node n2 -port e0b -up-admin false*
+cluster::*> *network port modify -node n2 -port e0c -up-admin false*
 ----
 ====
 . Ping遠端叢集介面並執行RPC伺服器檢查：
@@ -341,9 +340,9 @@ cluster::*> network port modify -node n2 -port e0c -up-admin false
 ====
 下列範例顯示正在Ping節點n1、之後指出的RPC狀態：
 
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster::*> cluster ping-cluster -node n1
+cluster::*> *cluster ping-cluster -node n1*
 Host is n1
 Getting addresses from network interface table...
 Cluster n1_clus1 n1		e0a	10.10.0.1
@@ -383,7 +382,7 @@ Detected 1500 byte MTU on 16 path(s):
 Larger than PMTU communication succeeds on 16 path(s)
 RPC status:
 4 paths up, 0 paths down (tcp check)
-4 paths up, 0 paths down (udp check
+4 paths up, 0 paths down (udp check)
 ----
 ====
 . 在CL1上關閉ISL 41至48、使用Cisco「shutdown」命令的作用中Nexus 5596交換器。
@@ -396,13 +395,13 @@ RPC status:
 ====
 下列範例顯示Nexus 5596交換器CL1上的ISL 41至48正在關機：
 
-[listing]
+[listing, subs="+quotes"]
 ----
-(CL1)# configure
-(CL1)(Config)# interface e1/41-48
-(CL1)(config-if-range)# shutdown
-(CL1)(config-if-range)# exit
-(CL1)(Config)# exit
+(CL1)# *configure*
+(CL1)(Config)# *interface e1/41-48*
+(CL1)(config-if-range)# *shutdown*
+(CL1)(config-if-range)# *exit*
+(CL1)(Config)# *exit*
 (CL1)#
 ----
 ====
@@ -416,21 +415,20 @@ RPC status:
 ====
 以下範例顯示CL1和C2之間正在設定的暫用ISL：
 
-[source, nolinebreak]
+[listing, subs="+quotes"]
 ----
-
-C2# configure
-C2(config)# interface port-channel 2
-C2(config-if)# switchport mode trunk
-C2(config-if)# spanning-tree port type network
-C2(config-if)# mtu 9216
-C2(config-if)# interface breakout module 1 port 24 map 10g-4x
-C2(config)# interface e1/24/1-4
-C2(config-if-range)# switchport mode trunk
-C2(config-if-range)# mtu 9216
-C2(config-if-range)# channel-group 2 mode active
-C2(config-if-range)# exit
-C2(config-if)# exit
+C2# *configure*
+C2(config)# *interface port-channel 2*
+C2(config-if)# *switchport mode trunk*
+C2(config-if)# *spanning-tree port type network*
+C2(config-if)# *mtu 9216*
+C2(config-if)# *interface breakout module 1 port 24 map 10g-4x*
+C2(config)# *interface e1/24/1-4*
+C2(config-if-range)# *switchport mode trunk*
+C2(config-if-range)# *mtu 9216*
+C2(config-if-range)# *channel-group 2 mode active*
+C2(config-if-range)# *exit*
+C2(config-if)# *exit*
 ----
 ====
 . 在所有節點上、移除連接至Nexus 5596交換器CL2的所有纜線。
@@ -451,13 +449,13 @@ C2(config-if)# exit
 ====
 下列範例顯示要啟動的ISL連接埠45至48：
 
-[listing]
+[listing, subs="+quotes"]
 ----
-(CL1)# configure
-(CL1)(Config)# interface e1/45-48
-(CL1)(config-if-range)# no shutdown
-(CL1)(config-if-range)# exit
-(CL1)(Config)# exit
+(CL1)# *configure*
+(CL1)(Config)# *interface e1/45-48*
+(CL1)(config-if-range)# *no shutdown*
+(CL1)(config-if-range)# *exit*
+(CL1)(Config)# *exit*
 (CL1)#
 ----
 ====
@@ -471,10 +469,9 @@ C2(config-if)# exit
 ====
 以下範例顯示連接埠eth1/45至eth1/48指示（P）、表示連接埠通道中的ISL連接埠為「up」（正常）。
 
-[listing]
+[listing, subs="+quotes"]
 ----
-
-CL1# show port-channel summary
+CL1# *show port-channel summary*
 Flags: D - Down         P - Up in port-channel (members)
        I - Individual   H - Hot-standby (LACP only)
        s - Suspended    r - Module-removed
@@ -501,12 +498,12 @@ Group Port-        Type   Protocol  Member Ports
 ====
 以下範例顯示節點n1和n2上要啟動的指定連接埠：
 
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster::*> network port modify -node n1 -port e0b -up-admin true
-cluster::*> network port modify -node n1 -port e0c -up-admin true
-cluster::*> network port modify -node n2 -port e0b -up-admin true
-cluster::*> network port modify -node n2 -port e0c -up-admin true
+cluster::*> *network port modify -node n1 -port e0b -up-admin true*
+cluster::*> *network port modify -node n1 -port e0c -up-admin true*
+cluster::*> *network port modify -node n2 -port e0b -up-admin true*
+cluster::*> *network port modify -node n2 -port e0c -up-admin true*
 ----
 ====
 . 在所有節點上、還原連接到C2的所有移轉叢集互連lifs：
@@ -519,12 +516,12 @@ cluster::*> network port modify -node n2 -port e0c -up-admin true
 ====
 以下範例顯示移轉的叢集lifs正還原至其主連接埠：
 
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster::*> network interface revert -vserver Cluster -lif n1_clus2
-cluster::*> network interface revert -vserver Cluster -lif n1_clus3
-cluster::*> network interface revert -vserver Cluster -lif n2_clus2
-cluster::*> network interface revert -vserver Cluster -lif n2_clus3
+cluster::*> *network interface revert -vserver Cluster -lif n1_clus2*
+cluster::*> *network interface revert -vserver Cluster -lif n1_clus3*
+cluster::*> *network interface revert -vserver Cluster -lif n2_clus2*
+cluster::*> *network interface revert -vserver Cluster -lif n2_clus3*
 ----
 ====
 . 驗證所有叢集互連連接埠現在都已還原為其主連接埠：
@@ -539,7 +536,7 @@ cluster::*> network interface revert -vserver Cluster -lif n2_clus3
 
 [listing]
 ----
-cluster::*> network interface show -role cluster
+cluster::*> *network interface show -role cluster*
 (network interface show)
             Logical    Status     Network            Current       Current Is
 Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
@@ -566,9 +563,9 @@ Cluster
 ====
 以下範例顯示先前「網路連接埠修改」命令的結果、驗證所有的叢集互連都是「正常」：
 
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster::*> network port show -role cluster
+cluster::*> *network port show -role cluster*
   (network port show)
 Node: n1
                                                                        Ignore
@@ -602,9 +599,9 @@ e0d       Cluster      Cluster          up   9000  auto/10000 -        -
 ====
 下列範例顯示正在Ping節點n1、之後指出的RPC狀態：
 
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster::*> cluster ping-cluster -node n1
+cluster::*> *cluster ping-cluster -node n1*
 Host is n1
 Getting addresses from network interface table...
 Cluster n1_clus1 n1		e0a	10.10.0.1
@@ -649,7 +646,8 @@ RPC status:
 ====
 . 在叢集中的每個節點上、移轉與第一台Nexus 5596交換器CL1相關的介面、以供替換：
 +
-「網路介面移轉-vserver叢集-lif_lif-name_-source-node-node-name_- destination-node-node-name_-destination-port _destination-port-name_」
+`network interface migrate -vserver _vserver-name_ -lif _lif-name_ -source-node _source-node-name_
+-destination-node _destination-node-name_ -destination-port _destination-port-name_`
 
 +
 .顯示範例
@@ -657,17 +655,16 @@ RPC status:
 ====
 以下範例顯示節點n1和n2上正在移轉的連接埠或LIF：
 
-[listing]
+[listing, subs="+quotes"]
 ----
-
-cluster::*> network interface migrate -vserver Cluster -lif n1_clus1 -source-node n1 -
-destination-node n1 -destination-port e0b
-cluster::*> network interface migrate -vserver Cluster -lif n1_clus4 -source-node n1 -
-destination-node n1 -destination-port e0c
-cluster::*> network interface migrate -vserver Cluster -lif n2_clus1 -source-node n2 -
-destination-node n2 -destination-port e0b
-cluster::*> network interface migrate -vserver Cluster -lif n2_clus4 -source-node n2 -
-destination-node n2 -destination-port e0c
+cluster::*> *network interface migrate -vserver Cluster -lif n1_clus1 -source-node n1 -
+destination-node n1 -destination-port e0b*
+cluster::*> *network interface migrate -vserver Cluster -lif n1_clus4 -source-node n1 -
+destination-node n1 -destination-port e0c*
+cluster::*> *network interface migrate -vserver Cluster -lif n2_clus1 -source-node n2 -
+destination-node n2 -destination-port e0b*
+cluster::*> *network interface migrate -vserver Cluster -lif n2_clus4 -source-node n2 -
+destination-node n2 -destination-port e0c*
 ----
 ====
 . 驗證叢集的狀態：
@@ -680,9 +677,9 @@ destination-node n2 -destination-port e0c
 ====
 下列範例顯示所需的叢集lifs已移轉至叢集交換器C2上裝載的適當叢集連接埠：
 
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster::*> network interface show
+cluster::*> *network interface show*
 
             Logical    Status     Network            Current       Current Is
 Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
@@ -711,13 +708,12 @@ Cluster
 ====
 以下範例顯示節點n1和n2上要關閉的指定連接埠：
 
-[listing]
+[listing, subs="+quotes"]
 ----
-
-cluster::*> network port modify -node n1 -port e0a -up-admin false
-cluster::*> network port modify -node n1 -port e0d -up-admin false
-cluster::*> network port modify -node n2 -port e0a -up-admin false
-cluster::*> network port modify -node n2 -port e0d -up-admin false
+cluster::*> *network port modify -node n1 -port e0a -up-admin false*
+cluster::*> *network port modify -node n1 -port e0d -up-admin false*
+cluster::*> *network port modify -node n2 -port e0a -up-admin false*
+cluster::*> *network port modify -node n2 -port e0d -up-admin false*
 ----
 ====
 . 關閉主動式3232C交換器C2上的ISL 24、31和32。
@@ -730,17 +726,16 @@ cluster::*> network port modify -node n2 -port e0d -up-admin false
 ====
 以下範例顯示ISL正在關機：
 
-[source, noline]
+[listing, subs="+quotes"]
 ----
-
-C2# configure
-C2(Config)# interface e1/24/1-4
-C2(config-if-range)# shutdown
-C2(config-if-range)# exit
-C2(config)# interface 1/31-32
-C2(config-if-range)# shutdown
-C2(config-if-range)# exit
-C2(config-if)# exit
+C2# *configure*
+C2(Config)# *interface e1/24/1-4*
+C2(config-if-range)# *shutdown*
+C2(config-if-range)# *exit*
+C2(config)# *interface 1/31-32*
+C2(config-if-range)# *shutdown*
+C2(config-if-range)# *exit*
+C2(config-if)# *exit*
 C2#
 ----
 ====
@@ -762,19 +757,18 @@ C2#
 ====
 以下範例顯示使用適當Cisco命令還原連接埠M24的組態：
 
-[source, nolinebreak]
+[listing, subs="+quotes"]
 ----
-
 C2# configure
-C2(config)# no interface breakout module 1 port 24 map 10g-4x
-C2(config)# no interface port-channel 2
-C2(config-if)# int e1/24
-C2(config-if)# description 40GbE Node Port
-C2(config-if)# spanning-tree port type edge
-C2(config-if)# spanning-tree bpduguard enable
-C2(config-if)# mtu 9216
-C2(config-if-range)# exit
-C2(config)# exit
+C2(config)# *no interface breakout module 1 port 24 map 10g-4x*
+C2(config)# *no interface port-channel 2*
+C2(config-if)# *int e1/24*
+C2(config-if)# *description 40GbE Node Port*
+C2(config-if)# *spanning-tree port type edge*
+C2(config-if)# *spanning-tree bpduguard enable*
+C2(config-if)# *mtu 9216*
+C2(config-if-range)# *exit*
+C2(config)# *exit*
 C2# copy running-config startup-config
 [########################################] 100%
 Copy Complete.
@@ -790,9 +784,8 @@ Copy Complete.
 ====
 以下範例顯示3232C交換器C2上的Cisco命令「交換器名稱組態」：
 
-[listing]
+[listing, subs="+quotes"]
 ----
-
 C2# configure
 C2(config)# interface ethernet 1/31-32
 C2(config-if-range)# no shutdown

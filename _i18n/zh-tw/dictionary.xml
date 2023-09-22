@@ -129,7 +129,6 @@
   <block id="75f25895ca6e2ae979bdd258523b64d8" category="paragraph">請參閱「_funs8.x ONTAP 或更新版本叢集與管理網路交換器參考組態檔案_下載」頁面、然後按一下適當的版本。</block>
   <block id="3765c5d59205afeccadd8e5bd55e38e9" category="paragraph">若要尋找正確版本、請參閱「叢ONTAP 集網路交換器下載」頁面_。</block>
   <block id="dd3fa644952a65f1f6502b594da8056e" category="list-text">移轉與第二台要更換的Nexus 5596交換器相關的生命週期：</block>
-  <block id="94969cbe0be7342cddbd9e412401c429" category="paragraph">「網路介面移轉-vserver叢集-lif_lif-name_-source-node-node-name_–destination-node-node-name_-destination-port _destination-port-name_」</block>
   <block id="23cd51d657266665ae8f8c9d2a2ae14f" category="paragraph">以下範例顯示節點n1和n2正在移轉的LIF；必須在所有節點上執行LIF移轉：</block>
   <block id="4dcbeb6667fd808ff27ae4150e7a8909" category="list-text">驗證叢集的健全狀況：</block>
   <block id="fb0f753ded9498a080196f8272f79423" category="paragraph">下列範例顯示每個叢集的目前狀態：</block>
@@ -164,7 +163,6 @@
   <block id="14860c40af5b70801e3ca603e17cb1ae" category="paragraph">以下範例顯示先前「網路連接埠修改」命令的結果、驗證所有的叢集互連都是「正常」：</block>
   <block id="35f01ed40b6310feec062211ce126c2d" category="paragraph">「叢集ping叢集節點節點名稱」</block>
   <block id="f4df801f902ead90a2bade04e26cac42" category="list-text">在叢集中的每個節點上、移轉與第一台Nexus 5596交換器CL1相關的介面、以供替換：</block>
-  <block id="4bb0a806c923415aa07fe9a1803d503f" category="paragraph">「網路介面移轉-vserver叢集-lif_lif-name_-source-node-node-name_- destination-node-node-name_-destination-port _destination-port-name_」</block>
   <block id="129a1c42491e08989734008419845f67" category="paragraph">以下範例顯示節點n1和n2上正在移轉的連接埠或LIF：</block>
   <block id="2f7e0ef82095fa5dae5874a5e402a389" category="list-text">驗證叢集的狀態：</block>
   <block id="6485b14c0e329aebda0c4dcd7d09dbd0" category="paragraph">「網路介面展示」</block>
@@ -270,7 +268,6 @@
   <block id="23e1b64b8c8851cef7b50ef569617b78" category="paragraph">以下範例顯示Cisco命令「show cup neighbor」用於顯示交換器上的鄰近裝置：</block>
   <block id="479ed584b396173b350354bf716fddb2" category="list-text">顯示每個節點上的叢集連接埠連線能力：</block>
   <block id="07045e09dc5220012b124c8d76ed9e95" category="paragraph">以下範例顯示雙節點無交換式叢集組態所顯示的叢集連接埠連線能力：</block>
-  <block id="addd737ab6a0a43417b329262c42d3d2" category="paragraph">「網路介面移轉-vserver叢集-lif_lif-name_ source-node-node-name_-destination-port _destination-port-name_」</block>
   <block id="d72fef4ab8d9db529856e27c2fa2cd10" category="paragraph">您必須為每個本機節點執行命令、如下列範例所示：</block>
   <block id="caa91255e9217c5daf23b979a945b884" category="paragraph">下列範例顯示移轉完成後n1_clus1和n2_clus1 lifs的「is Home」狀態會變成「假」：</block>
   <block id="0f717d9f0cdccd54283a68290db5a062" category="list-text">關閉步驟9中移轉的n1_clus1和n2_clus1 l生命 週期的叢集連接埠：</block>
@@ -328,7 +325,6 @@
   <block id="67dbd130b7f97be2f3adeeb97692aa5d" category="list-text">請參閱 <block ref="03c4e3201f2c647c804c56964354a408" category="inline-link-macro-rx"></block> 頁面。</block>
   <block id="3d8dff955662cfeaf1bbd38f49a7762a" category="inline-link-macro">Cisco®叢集與管理網路交換器參考組態檔案下載</block>
   <block id="ef84127d5ef060917ce0f8f8ec03bf82" category="list-text">請至下載適當版本的映像軟體 <block ref="a1b5971027192ba8f103906f3e0c5af3" category="inline-link-macro-rx"></block>。</block>
-  <block id="593eea095fb5f0ea1367821afa7c0fe4" category="list-text">移轉與您計畫取代的第二個CN1610交換器相關聯的生命週期：「網路介面移轉-verser叢集-lif_lif-name_-source-node-node-name_ destination-node-name_-destination-port _destination-port-name_」</block>
   <block id="98eb99fcc0ed94997a2ab2be00fd87f8" category="paragraph">您必須個別移轉每個LIF、如下列範例所示：</block>
   <block id="58e4c812934a7909bf27428e713ee5c1" category="paragraph">以下範例顯示節點n1和節點n2的四個叢集互連連接埠正在關機：</block>
   <block id="1951e47d1525c6b1dfbe9f52df91cc7f" category="list-text">Ping遠端叢集介面、然後執行遠端程序呼叫伺服器檢查：</block>
@@ -406,7 +402,6 @@
   <block id="61bcf7a5eda4d122b02fd04b33e7755b" category="list-text">從「* Cisco®叢集與管理網路交換器參考組態檔案下載*」頁面下載正確版本的映像軟體。</block>
   <block id="32314c4d0766541b8603617d61e16414" category="paragraph"><block ref="32314c4d0766541b8603617d61e16414" category="inline-link-rx"></block></block>
   <block id="3f193f35123de159859633b1b5db0152" category="list-text">將叢集生命體移轉至連接至替換交換器C2的實體節點連接埠：</block>
-  <block id="2735b3724e74edb6ccb4db8e28ba50da" category="paragraph">「網路介面移轉-vserver叢集-lif_lif-name_-source-node-node-name_-destination-node-name_-destination-port _port-name_」</block>
   <block id="f81bd0da785b861ef3aa6aff482966d7" category="paragraph">您必須個別移轉所有叢集lifs、如下列範例所示：</block>
   <block id="ec6c6d07f8637f08eb764567ffc9140b" category="list-text">驗證叢集連接埠的狀態及其主名稱：</block>
   <block id="fc73abe1b93232499d5b58811b19d5bd" category="paragraph">以下範例顯示所有節點上的叢集互連連接埠均已關機：</block>
@@ -455,7 +450,6 @@
   <block id="4ed47e98eb6846af4a7b5f99dc5d30fe" category="paragraph">下列範例使用步驟1的介面輸出範例：</block>
   <block id="682b2767f6c6f1c70e03739d417441e3" category="list-text">在交換器CS1上重複步驟7至14。</block>
   <block id="9baf7dc8ac289c210d4e50f17e9a797c" category="list-text">在叢集生命體上啟用自動還原。</block>
-  <block id="01d6ab89c082cff9a22a80f6236ceceb" category="list-text">重新開機交換器CS1。您可以執行此動作、觸發叢集生命期以恢復到主連接埠。您可以在交換器重新開機時忽略節點上報告的「叢集連接埠當機」事件。</block>
   <block id="9e9f720a4be60634e28d3a445f01d250" category="list-text">驗證連接至叢集連接埠的交換器連接埠是否正常運作。</block>
   <block id="de5961cc4ba4008f669b392dba74a8da" category="list-text">驗證CS1和CS2之間的ISL是否正常運作：「How port-channel Summary（顯示連接埠通道摘要）」</block>
   <block id="0ecc223c2f66f6abde60759dd3185d04" category="list-text">Ping遠端叢集介面以驗證連線能力：「叢集ping叢集節點local」</block>
@@ -4612,4 +4606,15 @@
   <block id="325c324b922ed6e1b216f99766068e43" category="list-text">[[step18]] 在叢集交換器 CS1 上、關閉連接至節點叢集連接埠的連接埠。</block>
   <block id="427c15bca394e9d3b5f203c35b96c743" category="inline-link">Cisco 3132Q 叢集交換器上的 10GbE 連接埠無法連線</block>
   <block id="20f0f9c709341c54050214259fc6c790" category="admonition">如需瞭解如何在 RCF 升級後將 10GbE 連接埠上線的步驟、請參閱知識庫文章<block ref="917fe6fdad3ed920883f4190398d0805" category="inline-link-rx"></block>。</block>
+  <block id="bc2be245d88ec44ff572954ca52f5e47" category="list-text">在交換器 CS1 上重複步驟 7 至 15 。</block>
+  <block id="756f5b45c94a8929404edacf08b1bf8c" category="paragraph">如果有任何叢集LIF尚未返回其主連接埠、請手動還原它們：<block ref="af44897f72b682aae5fc0db1bf98e52d" prefix=" " category="inline-code"></block></block>
+  <block id="e459e50e2d5bebb928139aa0e4ce09ac" category="list-text">驗證儲存節點連接埠的健全狀況：</block>
+  <block id="266daf0ca11ec57d9d3cb7598fd930b3" category="paragraph"><block ref="d14f00174ffa33ec8f559ffde7a52484" prefix="" category="inline-code"></block></block>
+  <block id="cc689ef0feeba424bc4f0e37875d33b3" category="paragraph"><block ref="364a6d106eff03491354bfdab6856a69" prefix="" category="inline-code"></block></block>
+  <block id="a2d242366fa878251941b37993d9c788" category="list-text">移轉與您計畫更換的第二台 CN1610 交換器相關的生命週期：</block>
+  <block id="bac3eff3de1438929f64e35c9c1d753e" category="paragraph"><block ref="44d01163c6b63fd73868a8216bae200c" prefix="" category="inline-code"></block></block>
+  <block id="bc83504dbf5dda25d37f158b52b6802c" category="paragraph"><block ref="1ae08a2455b8010c97a491c02e58e474" prefix="" category="inline-code"></block></block>
+  <block id="d71c484dda1d9ad3392c9e1a47d3f9d8" category="paragraph">連接埠 eth1/31 和 eth1/32 應顯示（ P ）、這表示兩個 ISL 連接埠都在連接埠通道中。</block>
+  <block id="e2163aa514dd6f969019af7f51eb5403" category="paragraph"><block ref="ba8401ca8d9063944fa4c23801539873" prefix="" category="inline-code"></block></block>
+  <block id="2744015fafc5955101dabee4165aca61" category="admonition">僅支援 NetApp 驗證的交換器（從 NetApp 訂購）。</block>
 </blocks>

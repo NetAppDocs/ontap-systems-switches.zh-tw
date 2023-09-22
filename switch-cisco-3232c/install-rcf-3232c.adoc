@@ -55,9 +55,9 @@ summary: 您可以在初次設定Nexus 3232C交換器之後安裝RCF。您也可
 .顯示範例
 [%collapsible]
 ====
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network device-discovery show
+cluster1::*> *network device-discovery show*
 Node/       Local  Discovered
 Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
 ----------- ------ ------------------------- ----------------  --------
@@ -86,9 +86,9 @@ cluster1::*>
 .顯示範例
 [%collapsible]
 ====
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network port show -role cluster
+cluster1::*> *network port show -role cluster*
 
 Node: cluster1-01
                                                                        Ignore
@@ -134,9 +134,9 @@ cluster1::*>
 .顯示範例
 [%collapsible]
 ====
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface show -role cluster
+cluster1::*> *network interface show -role cluster*
             Logical            Status     Network           Current      Current Is
 Vserver     Interface          Admin/Oper Address/Mask      Node         Port    Home
 ----------- ------------------ ---------- ----------------- ------------ ------- ----
@@ -161,9 +161,9 @@ cluster1::*>
 .顯示範例
 [%collapsible]
 ====
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> system cluster-switch show -is-monitoring-enabled-operational true
+cluster1::*> *system cluster-switch show -is-monitoring-enabled-operational true*
 Switch                      Type               Address          Model
 --------------------------- ------------------ ---------------- ---------------
 cs1                         cluster-network    10.233.205.92    NX3232C
@@ -192,9 +192,9 @@ cs2                         cluster-network    10.233.205.93    NX3232C
 .顯示範例
 [%collapsible]
 ====
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface modify -vserver Cluster -lif \* -auto-revert false
+cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert false*
 ----
 ====
 . 在叢集交換器CS2上、關閉連接至節點叢集連接埠的連接埠。
@@ -202,10 +202,10 @@ cluster1::*> network interface modify -vserver Cluster -lif \* -auto-revert fals
 .顯示範例
 [%collapsible]
 ====
-[listing]
+[listing, subs="+quotes"]
 ----
-cs2(config)# interface eth1/1/1-2,eth1/7-8
-cs2(config-if-range)# shutdown
+cs2(config)# *interface eth1/1/1-2,eth1/7-8*
+cs2(config-if-range)# *shutdown*
 ----
 ====
 . 確認叢集連接埠已移轉至叢集交換器CS1上裝載的連接埠。這可能需要幾秒鐘的時間。
@@ -216,9 +216,9 @@ cs2(config-if-range)# shutdown
 .顯示範例
 [%collapsible]
 ====
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface show -role cluster
+cluster1::*> *network interface show -role cluster*
             Logical           Status     Network            Current       Current Is
 Vserver     Interface         Admin/Oper Address/Mask       Node          Port    Home
 ----------- ----------------- ---------- ------------------ ------------- ------- ----
@@ -243,9 +243,9 @@ cluster1::*>
 .顯示範例
 [%collapsible]
 ====
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> cluster show
+cluster1::*> *cluster show*
 Node                 Health  Eligibility   Epsilon
 -------------------- ------- ------------  -------
 cluster1-01          true    true          false
@@ -302,11 +302,11 @@ Are you sure you would like to reset the system? (y/n) *y*
 ====
 本範例顯示使用TFTP將RCF複製到交換器CS2上的bootFlash：
 
-[listing]
+[listing, subs="+quotes"]
 ----
-cs2# copy tftp: bootflash: vrf management
-Enter source filename: Nexus_3232C_RCF_v1.6-Cluster-HA-Breakout.txt
-Enter hostname for the tftp server: 172.22.201.50
+cs2# *copy tftp: bootflash: vrf management*
+Enter source filename: *Nexus_3232C_RCF_v1.6-Cluster-HA-Breakout.txt*
+Enter hostname for the tftp server: *172.22.201.50*
 Trying to connect to tftp server......Connection to Server Established.
 TFTP get operation was successful
 Copy complete, now saving to disk (please wait)...
@@ -322,9 +322,9 @@ Copy complete, now saving to disk (please wait)...
 ====
 此範例顯示在交換器CS2上安裝的RCF檔案「Nexus _3232C_RCF-v1.6-Cluster-HA-Breakout.txt'：
 
-[listing]
+[listing, subs="+quotes"]
 ----
-cs2# copy Nexus_3232C_RCF_v1.6-Cluster-HA-Breakout.txt running-config echo-commands
+cs2# *copy Nexus_3232C_RCF_v1.6-Cluster-HA-Breakout.txt running-config echo-commands*
 ----
 ====
 . 檢查的橫幅輸出 `show banner motd` 命令。您必須閱讀並遵循*重要附註*下的指示、以確保交換器的組態和操作正確。
@@ -407,10 +407,10 @@ cs2# copy running-config startup-config [#######################################
 ----
 . 重新開機交換器CS2。您可以在交換器重新開機時忽略節點上報告的「叢集連接埠當機」事件。
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cs2# reload
-This command will reboot the system. (y/n)?  [n] y
+cs2# *reload*
+This command will reboot the system. (y/n)?  [n] *y*
 ----
 . 套用相同的RCF並再次儲存執行中的組態。
 +
@@ -433,9 +433,9 @@ cs2# copy running-config startup-config [#######################################
 .顯示範例
 [%collapsible]
 ====
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network port show -role cluster
+cluster1::*> *network port show -role cluster*
 
 Node: cluster1-01
                                                                        Ignore
@@ -476,9 +476,9 @@ e0d       Cluster      Cluster          up   9000  auto/100000 healthy false
 .顯示範例
 [%collapsible]
 ====
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network device-discovery show -protocol cdp
+cluster1::*> *network device-discovery show -protocol cdp*
 Node/       Local  Discovered
 Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
 ----------- ------ ------------------------- ----------------- --------
@@ -541,10 +541,10 @@ NOTE: 叢集節點報告為健全狀態最多可能需要5分鐘。
 ====
 下列範例使用步驟1的介面輸出範例：
 
-[listing]
+[listing, subs="+quotes"]
 ----
-cs1(config)# interface eth1/1/1-2,eth1/7-8
-cs1(config-if-range)# shutdown
+cs1(config)# *interface eth1/1/1-2,eth1/7-8*
+cs1(config-if-range)# *shutdown*
 ----
 ====
 . 驗證叢集LIF是否已移轉至交換器CS2上裝載的連接埠。這可能需要幾秒鐘的時間。
@@ -555,9 +555,9 @@ cs1(config-if-range)# shutdown
 .顯示範例
 [%collapsible]
 ====
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface show -role cluster
+cluster1::*> *network interface show -role cluster*
             Logical            Status     Network            Current             Current Is
 Vserver     Interface          Admin/Oper Address/Mask       Node                Port    Home
 ----------- ------------------ ---------- ------------------ ------------------- ------- ----
@@ -582,9 +582,9 @@ cluster1::*>
 .顯示範例
 [%collapsible]
 ====
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> cluster show
+cluster1::*> *cluster show*
 Node                 Health   Eligibility   Epsilon
 -------------------- -------- ------------- -------
 cluster1-01          true     true          false
@@ -595,32 +595,23 @@ cluster1-04          true     true          false
 cluster1::*>
 ----
 ====
-. 在交換器CS1上重複步驟7至14。
+. 在交換器 CS1 上重複步驟 7 至 15 。
 . 在叢集生命體上啟用自動還原。
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface modify -vserver Cluster -lif \* -auto-revert True
+cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert true*
 ----
-. 重新開機交換器CS1。您可以執行此動作、觸發叢集生命期以恢復到主連接埠。您可以在交換器重新開機時忽略節點上報告的「叢集連接埠當機」事件。
-+
-.顯示範例
-[%collapsible]
-====
-[listing]
-----
-cs1# reload
-This command will reboot the system. (y/n)?  [n] y
-----
-====
+
+
 . 驗證連接至叢集連接埠的交換器連接埠是否正常運作。
 +
 .顯示範例
 [%collapsible]
 ====
-[listing]
+[listing, subs="+quotes"]
 ----
-cs1# show interface brief \| grep up
+cs1# *show interface brief | grep up*
 .
 .
 Eth1/1/1      1       eth  access up      none                    10G(D) --
@@ -639,9 +630,9 @@ Eth1/8        1       eth  trunk  up      none                   100G(D) --
 .顯示範例
 [%collapsible]
 ====
-[listing]
+[listing, subs="+quotes"]
 ----
-cs1# show port-channel summary
+cs1# *show port-channel summary*
 Flags:  D - Down        P - Up in port-channel (members)
         I - Individual  H - Hot-standby (LACP only)
         s - Suspended   r - Module-removed
@@ -666,9 +657,9 @@ cs1#
 .顯示範例
 [%collapsible]
 ====
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> **network interface show -role cluster**
+cluster1::*> *network interface show -role cluster*
             Logical            Status     Network            Current             Current Is
 Vserver     Interface          Admin/Oper Address/Mask       Node                Port    Home
 ----------- ------------------ ---------- ------------------ ------------------- ------- ----
@@ -685,6 +676,10 @@ Cluster
 cluster1::*>
 ----
 ====
++
+如果有任何叢集LIF尚未返回其主連接埠、請手動還原它們：
+`network interface revert -vserver _vserver_name_ -lif _lif_name_`
+
 . 驗證叢集是否正常：
 +
 「叢集展示」
@@ -693,9 +688,9 @@ cluster1::*>
 .顯示範例
 [%collapsible]
 ====
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> cluster show
+cluster1::*> *cluster show*
 Node                 Health  Eligibility   Epsilon
 -------------------- ------- ------------- -------
 cluster1-01          true    true          false
@@ -714,9 +709,9 @@ cluster1::*>
 .顯示範例
 [%collapsible]
 ====
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> cluster ping-cluster -node local
+cluster1::*> *cluster ping-cluster -node local*
 Host is cluster1-03
 Getting addresses from network interface table...
 Cluster cluster1-03_clus1 169.254.1.3 cluster1-03 e0a
