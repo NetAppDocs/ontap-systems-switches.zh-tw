@@ -40,11 +40,3 @@ link:https://www.netapp.com/pdf.html?item=/media/11887-patentspage.pdf["https://
 == 隱私權政策
 
 link:https://www.netapp.com/company/legal/privacy-policy/["https://www.netapp.com/company/legal/privacy-policy/"^]
-
-
-
-== 開放原始碼
-
-通知檔案提供有關 NetApp 軟體所使用之協力廠商版權與授權的資訊。
-
-https://library.netapp.com/ecm/ecm_download_file/ECMP12475945["磁碟櫃注意事項"]

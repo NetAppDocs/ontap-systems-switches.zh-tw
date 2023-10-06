@@ -343,7 +343,7 @@ timezone            Etc/UTC              system time zone
 +
 [listing, subs="+quotes"]
 ----
-cumulus@sw1:mgmt:~$ *nv show lldp*
+cumulus@sw1:mgmt:~$ *net show lldp*
 
 LocalPort  Speed  Mode        RemoteHost                          RemotePort
 ---------  -----  ----------  ----------------------------------  -----------

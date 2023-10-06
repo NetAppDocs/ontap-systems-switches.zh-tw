@@ -1066,10 +1066,6 @@
   <block id="be89498d2f8a22ce47c02ba9795fe2af" category="section-title">專利</block>
   <block id="d0b19d36be2c5f16e9aef46c8a452d3d" category="paragraph">如需最新的 NetApp 擁有專利清單、請參閱：</block>
   <block id="56c34c6410dd45c5cec44149ad0ce037" category="section-title">隱私權政策</block>
-  <block id="c0227cef6f07a8cd2ac72f2945b031aa" category="section-title">開放原始碼</block>
-  <block id="9b73989307c1975dfa4d5e1581e4afe8" category="paragraph">通知檔案提供有關 NetApp 軟體所使用之協力廠商版權與授權的資訊。</block>
-  <block id="27e4f654e31a54c18c3f94846eb8fcc2" category="inline-link">磁碟櫃注意事項</block>
-  <block id="0c8d7a4e0e5ab5d34b549a9af84add17" category="paragraph"><block ref="0c8d7a4e0e5ab5d34b549a9af84add17" category="inline-link-rx"></block></block>
   <block id="21ee2e5e51f0485744f531669814fed3" category="summary">您可以將這些連結用於其他交換器機型。</block>
   <block id="9d3ddf8ecb98c38bfdcd1e61cc35f860" category="list-text">Cisco Nexus 5596</block>
   <block id="de0a8871c3bcf443ddffc22efcb2c00f" category="section-title">使用直接附加儲存設備從交換式組態移轉</block>
@@ -4569,7 +4565,6 @@
   <block id="5fa4d790df53a4c6278c546dd028ec83" category="sidebar">overview_9336c-FX2-storage</block>
   <block id="0275375be59b49b4671d6f7352eb43f8" category="sidebar">install_hardware _ 9336c-FX2-storage</block>
   <block id="2ef21067889d74c595764cb0c5f14087" category="sidebar">Configure_software_9336c-FX2-storage</block>
-  <block id="b1c691c0067b2d09bed76ad1a1477b3b" category="sidebar">migrate_switchs_9336c-FX2-storage</block>
   <block id="a40501f53136e1fad14756d37734123e" category="sidebar">REPLACE _SWITE_9336c-FX2-storage</block>
   <block id="35a987323fcb5fdbbb175c9114601182" category="sidebar">overview_cn1610.</block>
   <block id="d736a39071e873d48143d93c0bf1e23d" category="sidebar">install_configure_cn1610</block>
@@ -4616,5 +4611,5 @@
   <block id="bc83504dbf5dda25d37f158b52b6802c" category="paragraph"><block ref="1ae08a2455b8010c97a491c02e58e474" prefix="" category="inline-code"></block></block>
   <block id="d71c484dda1d9ad3392c9e1a47d3f9d8" category="paragraph">連接埠 eth1/31 和 eth1/32 應顯示（ P ）、這表示兩個 ISL 連接埠都在連接埠通道中。</block>
   <block id="e2163aa514dd6f969019af7f51eb5403" category="paragraph"><block ref="ba8401ca8d9063944fa4c23801539873" prefix="" category="inline-code"></block></block>
-  <block id="2744015fafc5955101dabee4165aca61" category="admonition">僅支援 NetApp 驗證的交換器（從 NetApp 訂購）。</block>
+  <block id="2bc32577d8d84ba98d84472c4916dd0f" category="admonition">僅支援 NetApp 驗證的後端交換器（從 NetApp 訂購）。</block>
 </blocks>
