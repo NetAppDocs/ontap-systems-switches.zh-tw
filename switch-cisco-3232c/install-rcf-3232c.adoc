@@ -260,7 +260,7 @@ cluster1::*>
 +
 「如何執行設定」
 
-. 清除交換器CS2上的組態、然後執行基本設定。
+. 清理交換器 CS2 的組態、然後重新啟動交換器。
 +
 
 CAUTION: 更新或套用新的RCF時、您必須清除交換器設定並執行基本組態。您必須連線至交換器序列主控台連接埠、才能再次設定交換器。
@@ -295,6 +295,7 @@ Are you sure you would like to reset the system? (y/n) *y*
 ====
 
 
+. 執行交換器的基本設定。請參閱 link:setup-switch.html["設定3232C叢集交換器"] 以取得詳細資料。
 . 使用下列傳輸傳輸協定之一、將RCF複製到交換器CS2的bootflash：FTP、TFTP、SFTP或scp。如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^] 指南：
 +
 .顯示範例
@@ -602,8 +603,6 @@ cluster1::*>
 ----
 cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert true*
 ----
-
-
 . 驗證連接至叢集連接埠的交換器連接埠是否正常運作。
 +
 .顯示範例

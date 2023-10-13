@@ -4612,4 +4612,7 @@
   <block id="d71c484dda1d9ad3392c9e1a47d3f9d8" category="paragraph">連接埠 eth1/31 和 eth1/32 應顯示（ P ）、這表示兩個 ISL 連接埠都在連接埠通道中。</block>
   <block id="e2163aa514dd6f969019af7f51eb5403" category="paragraph"><block ref="ba8401ca8d9063944fa4c23801539873" prefix="" category="inline-code"></block></block>
   <block id="2bc32577d8d84ba98d84472c4916dd0f" category="admonition">僅支援 NetApp 驗證的後端交換器（從 NetApp 訂購）。</block>
+  <block id="d69d8c23518c3e983c5799321eb27404" category="list-text">清理交換器 CS2 的組態、然後重新啟動交換器。</block>
+  <block id="a3d5cbedb318ff78ae8c3f9bced7661b" category="list-text">執行交換器的基本設定。請參閱 <block ref="ab35665c267fa570f19ad0ebf8386ab4" category="inline-link-macro-rx"></block> 以取得詳細資料。</block>
+  <block id="0c6a7aa3a0bb7908809929a56822600c" category="paragraph"><block ref="c09633a606c51a161b16f8bf38f5ebb1" prefix="" category="inline-code"></block></block>
 </blocks>
