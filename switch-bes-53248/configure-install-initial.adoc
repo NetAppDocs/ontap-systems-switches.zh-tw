@@ -178,7 +178,7 @@ vrf                      Configure the NTP VRF.
 
 ip-address|ipv6-address|hostname  Enter a valid IPv4/IPv6 address or hostname.
 
-(cs2)(Config)# *ntp server*
+(cs2)(Config)# *ntp server 10.99.99.5*
 ----
 ====
 .. 手動設定時間：
