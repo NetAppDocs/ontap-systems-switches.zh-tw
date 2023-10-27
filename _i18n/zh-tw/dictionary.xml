@@ -4615,4 +4615,25 @@
   <block id="d69d8c23518c3e983c5799321eb27404" category="list-text">清理交換器 CS2 的組態、然後重新啟動交換器。</block>
   <block id="a3d5cbedb318ff78ae8c3f9bced7661b" category="list-text">執行交換器的基本設定。請參閱 <block ref="ab35665c267fa570f19ad0ebf8386ab4" category="inline-link-macro-rx"></block> 以取得詳細資料。</block>
   <block id="0c6a7aa3a0bb7908809929a56822600c" category="paragraph"><block ref="c09633a606c51a161b16f8bf38f5ebb1" prefix="" category="inline-code"></block></block>
+  <block id="6ab23d04af2dab64aaf06d089d134151" category="summary">使用叢集交換器健全狀況監視器（CSHM\）和記錄收集功能時、必須使用SSH。若要在 Cisco 9336C-FX2 叢集交換器上啟用 SSH 、請先產生 SSH 金鑰、然後再啟用 SSH 。</block>
+  <block id="f213e7d15465742733b22d11eff1d4ac" category="doc">在 Cisco 9336C-FX2 叢集交換器上啟用 SSH</block>
+  <block id="a8d8d025a84c64f53b535b4e606fd65a" category="summary">您可以使用此程序來安裝適用於 Nexus 92300YC 叢集交換器叢集交換器健全狀況監控的組態檔。</block>
+  <block id="0bf9f283c6d4cf639f7438f8d69e8f4f" category="doc">安裝叢集交換器健全狀況監視器（ SHM ）組態檔案</block>
+  <block id="5a70ef3971f7a5956d9f9f829efc730c" category="paragraph">請遵循此程序、安裝適用於 Nexus 9336C-FX2 叢集交換器叢集交換器健全狀況監控（ SHM ）的組態檔。</block>
+  <block id="f57e4aaddd9c8384a74d025e1d9d52e6" category="paragraph">在設定 9336C-FX2 叢集交換器的 SHM 之前、請確定 ONTAP 叢集已啟動並正在執行。</block>
+  <block id="cd4d857d877848b2146cf2f93a12041d" category="admonition">您也應該啟用 SSH 、以使用 SHM 中的所有可用功能。</block>
+  <block id="a9d9ad7431acc9b1210326b704dc7fb3" category="list-text">根據對應的 ONTAP 版本、下載叢集 SHM 組態 zip 檔案。此檔案可從取得<block ref="cb382f539d8e67a00135c8306b3d74b6" category="inline-link-rx"></block> 頁面。</block>
+  <block id="470c3e165e39b12d964347208e2a16a1" category="list-text">選取平台 = * ONTAP * 、然後選取 * 執行！ *</block>
+  <block id="037e852f07c16de5553f7bccdaa3a63c" category="list-text">在 Switch Health Monitor Configuration Files for ONTAP 頁面上、選取 * 檢視與下載 *</block>
+  <block id="5a5fb2da99c4622e3d8789a3ac1306ad" category="list-text">在 Switch Health Monitor Configuration Files for ONTAP &gt; Description 頁面上、針對適用的叢集交換器機型選取 * Download* 、例如： * Cisco Nexus 9336C-FX2*</block>
+  <block id="561743fab903fb6e0d1c67b5908f3af6" category="list-text">在「終端使用者授權合約」頁面上、選取 * 接受 *</block>
+  <block id="b90cace861b20bc63e4a912115ded04e" category="list-text">在交換器健全狀況監視器的 ONTAP 組態檔案 &gt; 下載頁面上、選取適用的組態檔、例如 * Cisco_Nexus 9336C-FX2.zip*</block>
+  <block id="4f278cd45a027c9d4afd47d2010265aa" category="list-text">從叢集中的其中一個 ONTAP 系統存取進階模式設定：</block>
+  <block id="02e9ffa5a65e7f62f638cd4e28c1dc9f" category="paragraph"><block ref="6b8bc155cdb61a87cc039bea00534962" prefix="" category="inline-code"></block></block>
+  <block id="242513ff76ac739e35a8e7e168d947bd" category="list-text">執行交換器健全狀況監視器組態命令<block ref="0477ef599648fe2dbbf01945805f0e88" prefix=" " category="inline-code"></block>：</block>
+  <block id="174ee6e9c9130ef3e6ceab7f0ab7356c" category="list-text">執行命令<block ref="694b56ad85eb627acc97ea9295f39018" prefix=" " category="inline-code"></block> 在 ONTAP 系統上、請確定叢集交換器是在監控欄位設定為「 True 」的情況下探索到的。</block>
+  <block id="c94eee10204c293e476c9b772d10ddfe" category="admonition">如果您隨時恢復至舊版 ONTAP 、則需要再次安裝 SHM 組態檔、以啟用 9336C-FX2 叢集交換器的 SHM 。</block>
+  <block id="669c1a3fa77bc8a049e5cd4a16e5cff8" category="paragraph">使用 9336C-FX2 叢集交換器 *CL1* 來確認您已設定環境。</block>
+  <block id="680284a2e0d6a86aafc85099ca58d7af" category="list-text">為乙太網路交換器健全狀況監視器記錄收集功能建立密碼：</block>
+  <block id="1f40996ca4617ab17127143171aa4ea4" category="sidebar">安裝 SHM 組態檔</block>
 </blocks>
