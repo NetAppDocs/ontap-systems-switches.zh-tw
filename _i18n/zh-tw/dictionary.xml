@@ -4636,4 +4636,8 @@
   <block id="669c1a3fa77bc8a049e5cd4a16e5cff8" category="paragraph">使用 9336C-FX2 叢集交換器 *CL1* 來確認您已設定環境。</block>
   <block id="680284a2e0d6a86aafc85099ca58d7af" category="list-text">為乙太網路交換器健全狀況監視器記錄收集功能建立密碼：</block>
   <block id="1f40996ca4617ab17127143171aa4ea4" category="sidebar">安裝 SHM 組態檔</block>
+  <block id="3fc74bed2ec666d227e966120d5c4160" category="inline-link">錯誤 1570339</block>
+  <block id="a9881d2bc89c135aee3c1490acc55259" category="inline-link">從 40GbE 轉換為 100GbE 後、 T6 連接埠發生 CRC 錯誤</block>
+  <block id="835174c5c468acf2b423cff0eb23994f" category="admonition">如果您要變更 AFF A800 或 AFF C800 系統上 e0a 和 e1a 叢集連接埠的連接埠速度、您可能會發現速度轉換後收到格式錯誤的封包。請參閱 <block ref="f867b947e44d8d6bccd25f3219f3d6d9" category="inline-link-rx"></block> 以及知識庫文章<block ref="2a93cc61bbc3892324bc1b6369d71212" category="inline-link-rx"></block> 以取得指引。</block>
+  <block id="5958c0f6bda471fafb31ea3acb4b20da" category="admonition">如果您要變更 AFF A800 或 AFF C800 系統上 e0a 和 e1a 叢集連接埠的連接埠速度、您可能會發現速度轉換後收到格式錯誤的封包。請參閱<block ref="f867b947e44d8d6bccd25f3219f3d6d9" category="inline-link-rx"></block> 以及知識庫文章<block ref="2a93cc61bbc3892324bc1b6369d71212" category="inline-link-rx"></block> 以取得指引。</block>
 </blocks>

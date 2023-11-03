@@ -50,6 +50,9 @@ summary: 您可以將不中斷營運的舊Cisco叢集交換器移轉至ONTAP NVI
 
 
 
+NOTE: 如果您要變更 AFF A800 或 AFF C800 系統上 e0a 和 e1a 叢集連接埠的連接埠速度、您可能會發現速度轉換後收到格式錯誤的封包。請參閱 https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1570339["錯誤 1570339"^] 以及知識庫文章 https://kb.netapp.com/onprem/ontap/hardware/CRC_errors_on_T6_ports_after_converting_from_40GbE_to_100GbE["從 40GbE 轉換為 100GbE 後、 T6 連接埠發生 CRC 錯誤"^] 以取得指引。
+
+
 
 == 移轉交換器
 
