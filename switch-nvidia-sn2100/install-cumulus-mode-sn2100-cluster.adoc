@@ -263,8 +263,8 @@ CAUTION: 請勿在主機名稱中使用底線（_）、單引號（'）或非ASC
 cumulus@cumulus:mgmt:~$ *nv set system hostname sw1*
 cumulus@cumulus:mgmt:~$ *nv set interface eth0 ip address 10.233.204.71/24*
 cumulus@cumulus:mgmt:~$ *nv set interface eth0 ip gateway 10.233.204.1*
-cumulus@cumulus:mgmt:~$ *nv pending*
-cumulus@cumulus:mgmt:~$ *nv commit*
+cumulus@cumulus:mgmt:~$ *nv config apply*
+cumulus@cumulus:mgmt:~$ *nv config save*
 ----
 +
 此命令會同時修改「/etc/hostname'」和「/etc/hosts」檔案。

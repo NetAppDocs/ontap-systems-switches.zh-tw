@@ -4233,9 +4233,6 @@
   <block id="c8d246332e46cb12e9f724a357ad817f" category="paragraph"><block ref="770c77dd441cd3adc4139ccb3c0d491b" category="inline-link-macro-rx"></block> 或 <block ref="bba3ec5e6ca5e4f48b010488a5229b2c" category="inline-link-macro-rx"></block>。</block>
   <block id="bd399ae0cf713e575ca26baedc0a896c" category="paragraph">您可以將 NVIDIA SN2100 交換器（ X190006 ）安裝在 NVIDIA 雙 / 單交換器機櫃中、並附有交換器隨附的標準支架。</block>
   <block id="1e247ada2e98c5879849d746a52a4241" category="paragraph">NVIDIA SN2100 交換器是執行 Cumulus Linux 的 10/25/40/100GbE 交換器。交換器支援下列項目：</block>
-  <block id="f555c61f64386d2582939da4025ebe47" category="list-text">零點9.10.1P3 ONTAP 。SN2100交換器可在ONTAP 不同的交換器配對上、以S209.10.1P3提供叢集與儲存應用程式服務。</block>
-  <block id="d40bf069d92679bf05879cf7f6cbe2cd" category="inline-link">NVIDIA 企業支援入口網站</block>
-  <block id="cb8e85c2970ddd5692a09be2e61dcc13" category="list-text">Cumulus Linux （ CL ）作業系統版本。若要下載 SN2100 Cumulus 軟體、請登入<block ref="778b7445002ab4132f3edc7cada5c78a" category="inline-link-rx"></block>。請注意、您必須擁有登入認證才能存取 Cumulus 軟體。如需目前的相容性資訊、請參閱<block ref="f6aa36fb7711a9179cbd2c4c52b8d6ef" category="inline-link-rx"></block> 資訊頁面。</block>
   <block id="c19b9518d51b517376f0fe9109f66e90" category="paragraph">40/100GbE 叢集連接埠節點</block>
   <block id="45a21206fd2396fdd6a59132a2a6d3a7" category="paragraph">40/100GbE 交換器間連結（ ISL ）連接埠</block>
   <block id="509e4d6df8b93cb5deb86271a6326df2" category="section-title">光纖連線的連結延遲</block>
@@ -4640,4 +4637,11 @@
   <block id="a9881d2bc89c135aee3c1490acc55259" category="inline-link">從 40GbE 轉換為 100GbE 後、 T6 連接埠發生 CRC 錯誤</block>
   <block id="835174c5c468acf2b423cff0eb23994f" category="admonition">如果您要變更 AFF A800 或 AFF C800 系統上 e0a 和 e1a 叢集連接埠的連接埠速度、您可能會發現速度轉換後收到格式錯誤的封包。請參閱 <block ref="f867b947e44d8d6bccd25f3219f3d6d9" category="inline-link-rx"></block> 以及知識庫文章<block ref="2a93cc61bbc3892324bc1b6369d71212" category="inline-link-rx"></block> 以取得指引。</block>
   <block id="5958c0f6bda471fafb31ea3acb4b20da" category="admonition">如果您要變更 AFF A800 或 AFF C800 系統上 e0a 和 e1a 叢集連接埠的連接埠速度、您可能會發現速度轉換後收到格式錯誤的封包。請參閱<block ref="f867b947e44d8d6bccd25f3219f3d6d9" category="inline-link-rx"></block> 以及知識庫文章<block ref="2a93cc61bbc3892324bc1b6369d71212" category="inline-link-rx"></block> 以取得指引。</block>
+  <block id="ca995ae3d3a6595199bfe5303faa0e3f" category="admonition">而<block ref="8a444a43bdf534c0c6338bb7809659b3" prefix=" " category="inline-code"></block> 在範例中使用時、您可以使用偏好的檔案傳輸方法。</block>
+  <block id="1c1e9c46d2bfa104a5c2592705b2220b" category="list-text">零點9.10.1P3 ONTAP 。</block>
+  <block id="daef330b681b8e827e3f464410c634c4" category="paragraph">SN2100交換器可在ONTAP 不同的交換器配對上、以S209.10.1P3提供叢集與儲存應用程式服務。</block>
+  <block id="2aaabdd096fa4df43267fa963dadeac8" category="list-text">Cumulus Linux （ CL ）作業系統版本。</block>
+  <block id="fdb970c02e151be8ab0a83ca880cb56a" category="inline-link">如何向 NVIDIA 註冊企業支援入口網站存取</block>
+  <block id="e524be73a3787217a070c244dbdccb8e" category="paragraph">若要從 NVIDIA 下載 SN2100 Cumulus 軟體、您必須擁有登入認證才能存取 NVIDIA 的 Enterprise Support Portal 。請參閱知識庫文章<block ref="d8e3d3a02615584c2a7ac4c59cc440b8" category="inline-link-rx"></block>。
+如需目前的相容性資訊、請參閱<block ref="f6aa36fb7711a9179cbd2c4c52b8d6ef" category="inline-link-rx"></block> 資訊頁面。</block>
 </blocks>
