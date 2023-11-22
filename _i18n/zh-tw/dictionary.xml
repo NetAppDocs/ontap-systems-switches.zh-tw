@@ -4644,4 +4644,28 @@
   <block id="fdb970c02e151be8ab0a83ca880cb56a" category="inline-link">如何向 NVIDIA 註冊企業支援入口網站存取</block>
   <block id="e524be73a3787217a070c244dbdccb8e" category="paragraph">若要從 NVIDIA 下載 SN2100 Cumulus 軟體、您必須擁有登入認證才能存取 NVIDIA 的 Enterprise Support Portal 。請參閱知識庫文章<block ref="d8e3d3a02615584c2a7ac4c59cc440b8" category="inline-link-rx"></block>。
 如需目前的相容性資訊、請參閱<block ref="f6aa36fb7711a9179cbd2c4c52b8d6ef" category="inline-link-rx"></block> 資訊頁面。</block>
+  <block id="db3af2b70c973de4437c254b7d216816" category="paragraph-title">可用的 RCF 組態</block>
+  <block id="befc06ea45891beb4f36157b08754476" category="paragraph">下表說明適用於不同組態的 RCFs 。選擇適用於您組態的 RCF 。</block>
+  <block id="422d547a919ce56042b89a80c5d53dc8" category="paragraph">如需特定連接埠和 VLAN 使用詳細資料、請參閱 RCF 中的橫幅和重要附註一節。</block>
+  <block id="59c42d9289518207f0e6b1663d576298" category="cell">RCF 名稱</block>
+  <block id="737cac36105716296fdb972979a60c19" category="paragraph">2-Cluster-HA-Breakout</block>
+  <block id="fbad7a3e9d1c3be9344866d5d8095541" category="paragraph">支援兩個 ONTAP 叢集、至少有八個節點、包括使用共用叢集 + HA 連接埠的節點。</block>
+  <block id="db759bcb99e3ec070d51357815ec0db6" category="paragraph">4-Cluster-HA-Breakout</block>
+  <block id="df501bed190c2e9d513b2f1fb0598e17" category="paragraph">支援四個 ONTAP 叢集、至少有四個節點、包括使用共享叢集 + HA 連接埠的節點。</block>
+  <block id="15dc418f7827e448caec965c8d6899ee" category="paragraph">1-Cluster-HA</block>
+  <block id="382d5fb25026bcec237a7db7751b765b" category="paragraph">所有連接埠均設定為 40/100GbE 。支援連接埠上的共用叢集 / HA 流量。AFF A320 、 AFF A250 和 FAS500f 系統所需。此外、所有連接埠都可作為專用叢集連接埠使用。</block>
+  <block id="c940238f4423743995b99e3d47cec744" category="paragraph">1-Cluster-HA-Breakout</block>
+  <block id="65ca7d1055bbc5c2afaa8f8db0fbaae3" category="paragraph">連接埠可設定為 4x10GbE 離線、 4x25GbE 離線（ 100GbE 交換器上的 RCF 1.6+ ）和 40/100GbE 。在使用共享叢集 / HA 連接埠的節點上、支援共享叢集 / HA 流量： AFF A320 、 AFF A250 和 FAS500f 系統。此外、所有連接埠都可作為專用叢集連接埠使用。</block>
+  <block id="ef6ec6c3227d99b527b0f12e8d83330e" category="paragraph">叢集式 HA 儲存設備</block>
+  <block id="4538da9d5a0e6ade8902da0c6cb04eaf" category="paragraph">連接埠設定為用於叢集 + HA 的 40/100GbE 、用於叢集的 4x10GbE Breakout 、用於叢集 + HA 的 4x25GbE Breakout 、以及用於每個儲存 HA 配對的 100GbE 。</block>
+  <block id="249694a485fc5d3289c38986b4f8e887" category="paragraph">叢集</block>
+  <block id="b9e95d5844128e0ae9ee0ab6e4e048ec" category="paragraph">兩種 RCF 類型、分別配置 4 個 10GbE 連接埠（中斷）和 40/100GbE 連接埠。除了 AFF A320 、 AFF A250 和 FAS500f 系統之外、所有的 FS/AFF 節點都受到支援。</block>
+  <block id="8c4aa541ee911e8d80451ef8cc304806" category="paragraph">儲存設備</block>
+  <block id="f75b5ab79be24a496ce9f3eb45e23937" category="paragraph">所有連接埠均設定為 100GbE NVMe 儲存連線。</block>
+  <block id="7abab77cb8cac2636cdea1300fe00dc4" category="paragraph">如需可用 RCF 組態的詳細資訊、請參閱 <block ref="eec33f028810711693e15987e41f3b2a" category="inline-link-macro-rx"></block>。</block>
+  <block id="44ff10d140597f1cb51bd7445d226660" category="paragraph"><block ref="9bacb249b0368cefba275373cd07ba98" prefix="" category="inline-code"></block></block>
+  <block id="332a7a8d77748a421e7945cefc8ccf89" category="list-text">確認預期的節點仍已連線：</block>
+  <block id="2672a0c9ba5986c403c26e013c160859" category="list-text">使用下列命令、確認叢集節點位於正確的叢集 VLAN 中：</block>
+  <block id="89706bbdab62cd83048f38305d846f95" category="paragraph"><block ref="7d4adecb4116bbfb7ed1130103f872a7" prefix="" category="inline-code"></block></block>
+  <block id="12bc122b0d9a4c902fdf52bfcc13ddc2" category="paragraph"><block ref="c01eca2c804c6a35b8aa8d87eceefe5d" prefix="" category="inline-code"></block></block>
 </blocks>
