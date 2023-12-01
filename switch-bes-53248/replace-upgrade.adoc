@@ -13,7 +13,7 @@ summary: 升級BS-53248叢集交換器時、首先要準備好控制器以進行
 [role="lead"]
 請依照下列步驟升級BS-53248叢集交換器。
 
-此程序適用於正常運作的叢集、並允許不中斷營運的升級（NDU）和不中斷營運（NDO）環境。
+此程序適用於正常運作的叢集、並允許不中斷營運的升級（NDU）和不中斷營運（NDO）環境。請參閱知識庫文章 https://kb.netapp.com/onprem/ontap/hardware/How_to_prepare_ONTAP_for_a_cluster_switch_upgrade["如何為叢集交換器升級準備 ONTAP"^]。
 
 
 

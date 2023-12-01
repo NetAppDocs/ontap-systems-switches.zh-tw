@@ -649,7 +649,6 @@
   <block id="ab9ad56c2025256691b37f4999bd0be5" category="paragraph">「網路選項無交換式叢集」</block>
   <block id="0097ce0f8a70e3f4836e959cc2aab7af" category="summary">若要使用Cisco Nexus 3132Q-V叢集交換器取代叢集中現有的CN1610叢集交換器、您必須執行特定的工作順序。</block>
   <block id="bc01d49ccd216cbb296208344af71590" category="list-text">用於更換CN1610交換器的Nexus 3132Q-V交換器為C1和C2。</block>
-  <block id="eb29e2026f68e263827bc6648e470d91" category="list-text">N1_clus4是第二個LIF、連接至節點n1的叢集交換器1（CL1或C1）。節點為n1、n2、n3和n4。</block>
   <block id="dc64ad487f5eb147ab891500a865870e" category="paragraph">本程序涵蓋下列案例：</block>
   <block id="fcaf9f39a9df76762021c3d64f44d4fe" category="list-text">叢集從兩個節點開始、連接至兩個CN1610叢集交換器。</block>
   <block id="168843148dff81e8fff6f3bf865c2988" category="list-text">從連接至CL2的所有節點上的所有叢集連接埠拔下纜線、然後使用支援的中斷纜線將連接埠重新連接至新的叢集交換器C2。</block>
@@ -3249,7 +3248,6 @@
   <block id="779fc6b934d55dc10ca87329087b2008" category="list-text">[[五]驗證儲存系統中的機櫃連接埠：</block>
   <block id="d97a5e4575ee30a387104386bf3f240b" category="section-title">步驟3：檢查交換器NS2上的所有裝置組態</block>
   <block id="cb90078e1ca3fab95e047ce21d18bdc0" category="paragraph">每個交換器可設定為單一100GbE、40GbE連接埠或4個10GbE連接埠。</block>
-  <block id="5a5a12d4dbaeac060e4d6b7c5760ca7c" category="paragraph">第一次設定Nexus 3232C交換器之後、請遵循此程序來安裝RCF。您也可以使用此程序來升級RCF版本。</block>
   <block id="319869b1ac41d35b8bb0654bf94a816d" category="list-text">檢查的橫幅輸出<block ref="6d53824b9996e36fd31937e922967215" prefix=" " category="inline-code"></block> 命令。您必須閱讀並遵循*重要附註*下的指示、以確保交換器的組態和操作正確。</block>
   <block id="aaee942f01ab7b858b2f2b63c62fe972" category="paragraph">請依照下列步驟升級Cisco Nexus 3232C交換器上的Cisco NX-OS軟體和參考組態檔（RCF）。</block>
   <block id="ee01b78d6cadb3e6f6a563b8d4eb8dee" category="paragraph">在升級儲存交換器上的NX-OS軟體和RCFs之前、請先確認下列情況：</block>
@@ -3446,7 +3444,6 @@
   <block id="6dd4b5e58bd32b079e19b1dda5c2f1bc" category="paragraph">若要初始安裝及設定BS-53248叢集交換器的軟體、請依照下列步驟操作：</block>
   <block id="9302ce88c481ebfe72d64373c7b0d0e5" category="doc">升級BS-53248叢集交換器</block>
   <block id="db3a43c92e9a5ccc39b5fabb1bd97719" category="paragraph">請依照下列步驟升級BS-53248叢集交換器。</block>
-  <block id="ca46577f8687df3ceb14eb4b66cfa89e" category="paragraph">此程序適用於正常運作的叢集、並允許不中斷營運的升級（NDU）和不中斷營運（NDO）環境。</block>
   <block id="8ac36f1d8b0fc917225a100d2cd4a4c3" category="paragraph">在現有NetApp BS-53248叢集交換器上安裝EFOS軟體、授權和RCF檔案之前、請確定：</block>
   <block id="8e95d65cfa987ac59e9edd2e01c3a5f8" category="list-text">叢集是功能完整的叢集（沒有錯誤記錄訊息或其他問題）。</block>
   <block id="39268a4fe5b4dbf6e58a5a1147276955" category="list-text">叢集不含任何故障的叢集網路介面卡（NIC）。</block>
@@ -4668,4 +4665,9 @@
   <block id="2672a0c9ba5986c403c26e013c160859" category="list-text">使用下列命令、確認叢集節點位於正確的叢集 VLAN 中：</block>
   <block id="89706bbdab62cd83048f38305d846f95" category="paragraph"><block ref="7d4adecb4116bbfb7ed1130103f872a7" prefix="" category="inline-code"></block></block>
   <block id="12bc122b0d9a4c902fdf52bfcc13ddc2" category="paragraph"><block ref="c01eca2c804c6a35b8aa8d87eceefe5d" prefix="" category="inline-code"></block></block>
+  <block id="5cb232b7121572a8cd994eb78f5bf42e" category="inline-link">如何為叢集交換器升級準備 ONTAP</block>
+  <block id="2c6ae2b5ab15a868c020423af475ce29" category="paragraph">此程序適用於正常運作的叢集、並允許不中斷營運的升級（NDU）和不中斷營運（NDO）環境。請參閱知識庫文章<block ref="af19c072276b7cd7ef0c29b032a9fe34" category="inline-link-rx"></block>。</block>
+  <block id="3bf967e4da79afd8ac10997dbbfb40be" category="paragraph">第一次設定 Nexus 3232C 交換器後、請遵循此程序安裝 RCF 。</block>
+  <block id="ce8d24a452c1c94c4680d7ce098325a9" category="inline-link">如何在保留遠端連線的同時清除 Cisco 互連交換器上的組態</block>
+  <block id="e5f3c3d2c754cc48938d50b1782093ac" category="paragraph">您也可以使用此程序來升級RCF版本。請參閱知識庫文章<block ref="c3cf8dee5fd4e009c0e2b38bfb97fe4d" category="inline-link-rx"></block> 以取得升級 RCF 的詳細資訊。</block>
 </blocks>

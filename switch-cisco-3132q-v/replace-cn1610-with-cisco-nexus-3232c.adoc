@@ -39,7 +39,8 @@ summary: 若要使用Cisco Nexus 3132Q-V叢集交換器取代叢集中現有的C
 * N1_clus1是第一個叢集邏輯介面（LIF）、連接至節點n1的叢集交換器1（CL1或C1）。
 * N1_clus2是第一個叢集LIF、連接至節點n1的叢集交換器2（CL2或C2）。
 * N1_clus3是第二個LIF、連接至節點n1的叢集交換器2（CL2或C2）。
-* N1_clus4是第二個LIF、連接至節點n1的叢集交換器1（CL1或C1）。節點為n1、n2、n3和n4。
+* N1_clus4是第二個LIF、連接至節點n1的叢集交換器1（CL1或C1）。
+* 節點為n1、n2、n3和n4。
 * 10 GbE和40/100 GbE連接埠的數量是在上可用的參考組態檔（RCFs）中定義 https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco®叢集網路交換器參考組態檔案下載"^] 頁面。
 
 
@@ -137,7 +138,7 @@ n2     /cdp
 
 [listing]
 ----
-cluster::*> network port show -role cluster
+cluster::*> network port show -role Cluster
        (network port show)
 
 Node: n1
@@ -171,7 +172,7 @@ e0d   cluster   cluster    up    9000  auto/10000     -        -
 
 [listing]
 ----
-cluster::*> network interface show -role cluster
+cluster::*> network interface show -role Cluster
        (network interface show)
 
          Logical    Status      Network        Current  Current  Is
@@ -293,7 +294,7 @@ cluster::*> network interface migrate -vserver Cluster -lif n2_clus3 -destinatio
 
 [listing]
 ----
-cluster::*> network interface show -role cluster
+cluster::*> network interface show -role Cluster
        (network interface show)
 
          Logical    Status      Network         Current  Current  Is
@@ -576,10 +577,10 @@ cluster::*> network port modify -node n2 -port e0c -up-admin true
 ====
 [listing]
 ----
-cluster::*> network interface revert -vserver cluster -lif n1_clus2
-cluster::*> network interface revert -vserver cluster -lif n1_clus3
-cluster::*> network interface revert -vserver cluster -lif n2_clus2
-cluster::*> network interface revert -vserver cluster -lif n2_clus3
+cluster::*> network interface revert -vserver Cluster -lif n1_clus2
+cluster::*> network interface revert -vserver Cluster -lif n1_clus3
+cluster::*> network interface revert -vserver Cluster -lif n2_clus2
+cluster::*> network interface revert -vserver Cluster -lif n2_clus3
 ----
 ====
 . 確認所有的叢集互連連接埠都已還原至其主連接埠：
@@ -625,7 +626,7 @@ Cluster
 
 [listing]
 ----
-cluster::*> network port show -role cluster
+cluster::*> network port show -role Cluster
        (network port show)
 
 Node: n1
@@ -717,14 +718,10 @@ RPC status:
 
 [listing]
 ----
-cluster::*> network interface migrate -vserver cluster -lif n1_clus1 -source-node n1
--destination-node n1 -destination-port e0b
-cluster::*> network interface migrate -vserver cluster -lif n1_clus4 -source-node n1
--destination-node n1 -destination-port e0c
-cluster::*> network interface migrate -vserver cluster -lif n2_clus1 -source-node n2
--destination-node n2 -destination-port e0b
-cluster::*> network interface migrate -vserver cluster -lif n2_clus4 -source-node n2
--destination-node n2 -destination-port e0c
+cluster::*> network interface migrate -vserver Cluster -lif n1_clus1 -destination-node n1 -destination-port e0b
+cluster::*> network interface migrate -vserver Cluster -lif n1_clus4 -destination-node n1 -destination-port e0c
+cluster::*> network interface migrate -vserver Cluster -lif n2_clus1 -destination-node n2 -destination-port e0b
+cluster::*> network interface migrate -vserver Cluster -lif n2_clus4 -destination-node n2 -destination-port e0c
 ----
 ====
 . 驗證叢集狀態：
@@ -739,7 +736,7 @@ cluster::*> network interface migrate -vserver cluster -lif n2_clus4 -source-nod
 
 [listing]
 ----
-cluster::*> network interface show -role cluster
+cluster::*> network interface show -role Cluster
        (network interface show)
 
          Logical    Status      Network        Current  Current  Is
@@ -918,7 +915,7 @@ cluster::*> network port modify -node n2 -port e0d -up-admin true
 
 [listing]
 ----
-cluster::*> network port show -role cluster
+cluster::*> network port show -role Cluster
        (network port show)
 
 Node: n1
@@ -954,10 +951,10 @@ e0d   cluster   cluster    up    9000  auto/10000     -        -
 
 [listing]
 ----
-cluster::*> network interface revert -vserver cluster -lif n1_clus1
-cluster::*> network interface revert -vserver cluster -lif n1_clus4
-cluster::*> network interface revert -vserver cluster -lif n2_clus1
-cluster::*> network interface revert -vserver cluster -lif n2_clus4
+cluster::*> network interface revert -vserver Cluster -lif n1_clus1
+cluster::*> network interface revert -vserver Cluster -lif n1_clus4
+cluster::*> network interface revert -vserver Cluster -lif n2_clus1
+cluster::*> network interface revert -vserver Cluster -lif n2_clus4
 ----
 ====
 . 確認介面現在是主介面：
@@ -972,7 +969,7 @@ cluster::*> network interface revert -vserver cluster -lif n2_clus4
 
 [listing]
 ----
-cluster::*> network interface show -role cluster
+cluster::*> network interface show -role Cluster
        (network interface show)
 
          Logical    Status      Network        Current  Current  Is
@@ -1127,7 +1124,7 @@ e4e   cluster   cluster    up    9000  auto/40000     -        -
 ----
 [listing]
 ----
-cluster::*> network interface show -role cluster
+cluster::*> network interface show -role Cluster
        (network interface show)
 
          Logical    Status      Network        Current  Current  Is
@@ -1203,8 +1200,8 @@ CL2                         cluster-network  10.10.1.102    CN1610
 [listing]
 ----
 
-cluster::> system cluster-switch delete –device CL1
-cluster::> system cluster-switch delete –device CL2
+cluster::> system cluster-switch delete -device CL1
+cluster::> system cluster-switch delete -device CL2
 ----
 ====
 . 將每個節點上的叢集clus1和clus4設定為「-aut-revert」、並確認：

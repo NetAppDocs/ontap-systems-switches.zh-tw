@@ -11,7 +11,9 @@ summary: 您可以在初次設定Nexus 3232C交換器之後安裝RCF。您也可
 
 
 [role="lead"]
-第一次設定Nexus 3232C交換器之後、請遵循此程序來安裝RCF。您也可以使用此程序來升級RCF版本。
+第一次設定 Nexus 3232C 交換器後、請遵循此程序安裝 RCF 。
+
+您也可以使用此程序來升級RCF版本。請參閱知識庫文章 https://kb.netapp.com/onprem/Switches/Cisco/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["如何在保留遠端連線的同時清除 Cisco 互連交換器上的組態"^] 以取得升級 RCF 的詳細資訊。
 
 
 
