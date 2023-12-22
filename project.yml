@@ -27,15 +27,11 @@ sidebar:
     entries:
     - section: switch-bes-53248
     - section: switch-cisco-9336c-fx2
-      pdf-filename: 交換器 - Cisco-9336c-FX2 叢集
     - section: switch-nvidia-sn2100
-      pdf-filename: 交換器 NVIDIA sn2100 叢集
   - title: 儲存交換器
     entries:
     - section: switch-cisco-9336c-fx2-storage
-      pdf-filename: 交換器 - Cisco-9336c-FX2 儲存設備
     - section: switch-nvidia-sn2100-storage
-      pdf-filename: 交換器 NVIDIA sn2100 儲存設備
   - title: 共享交換器
     entries:
     - section: switch-cisco-9336c-fx2-shared
@@ -51,5 +47,5 @@ sidebar:
   - title: 法律聲明
     url: "/legal-notices.html"
 product-family:
-  name: AFF and FAS Systems
+  name: ONTAP hardware systems
   repo: ontap-systems-family
