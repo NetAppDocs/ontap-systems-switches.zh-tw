@@ -1810,19 +1810,7 @@
   <block id="518abc8c44cf185f93fa7670dddfcf31" category="paragraph">25至34</block>
   <block id="942d4e37dd5607ab68e54755540d4a47" category="paragraph">保留</block>
   <block id="645b50612eedcb03bdeff0f4c9f4de12" category="summary">如果您想要記錄支援的平台、您必須使用完整的佈線工作表範例作為指南、填寫空白的佈線工作表。每個交換器可設定為單一100GbE、40GbE連接埠或4個10GbE連接埠。</block>
-  <block id="ed549d19dafed0e7ab290c80a631336d" category="paragraph">4個10G/40G/100G節點</block>
-  <block id="333383cad18ed1288df7f6e7b55bb269" category="paragraph">4個10G/40G/100G節點</block>
-  <block id="1286cbe7601f965189bedc2e531693fe" category="paragraph">40g/100g節點19</block>
-  <block id="3cdb72203b05b99dff9c7e8fe12d3297" category="paragraph">40g/100g節點20</block>
-  <block id="7f63ff950e3e5909f605081e8a040c35" category="paragraph">40g/100g節點21</block>
-  <block id="b031f52ea292595722079873eb50ac47" category="paragraph">40g/100g節點22</block>
-  <block id="fb81c88eb2bc7e3c494e5e649e59bcb0" category="paragraph">40g/100g節點23</block>
-  <block id="a3f6a2babb0d59c8269007c11baa9f0e" category="paragraph">40g/100g節點24</block>
   <block id="f10a54352c5df9c392986952ef09a882" category="paragraph">25至30</block>
-  <block id="55eca0e94ad3924173aada9f3d092018" category="paragraph">100G ISL至交換器B連接埠31</block>
-  <block id="d01adcc41847caac4aa8fdfe85b60992" category="paragraph">100G ISL至交換器A連接埠31</block>
-  <block id="66b48416af1e682679b1391bc16602fd" category="paragraph">100G ISL至交換器B連接埠32</block>
-  <block id="1ffe31824d782f0a845f2d0960162e5c" category="paragraph">100G ISL可交換器A連接埠32</block>
   <block id="474f795914b70c8d0fc4aa239c11011e" category="list-text">根據對應ONTAP 的版本、下載叢集交換器健全狀況監視器組態壓縮檔。此檔案可從取得<block ref="cb382f539d8e67a00135c8306b3d74b6" category="inline-link-rx"></block> 頁面。</block>
   <block id="7b5f1af07f17424faae23117b93de4fb" category="list-text">在「交換器健全狀況監視器組態檔案for ONTAP the Sfor the Sfor the Description」（適用於《for Sfor the Sfor the -說明》的「交換器健全狀況監視器組態檔案」頁面上、按一下*下載*以取得適用的叢集交換器模型</block>
   <block id="d9342955a19c127d0b1dd4e72f3e86b1" category="list-text">在「交換器健全狀況監視器組態檔案以ONTAP 供參考-下載」頁面上、選取適用的組態檔、例如* Cisco_Nexus _92300YC.Zip *</block>
@@ -4585,7 +4573,6 @@
   <block id="dae02701a0a247e1012b9b2832c32464" category="list-text">如果未自動移除已更換的 CN1610 交換器、請將其從叢集的交換器表中刪除：</block>
   <block id="c8b9229aed88be3704b6c26029b7ae94" category="paragraph">對於 ONTAP 9.7 及更早版本、請使用命令：<block ref="f055904a9fc3a4f0bc33aca13ecd2b2d" prefix=" " category="inline-code"></block></block>
   <block id="b8590eb7d6b7365e1a0bee47b03d5b4f" category="admonition">若要啟用記錄收集功能、您必須執行 ONTAP 9.10.1P15 、 9.11.1P12 或 9.12.1 及更新版本、以及 EFOS 3.8.0.2 及更新版本。</block>
-  <block id="e88b6a67743cc664a0a237ba8d94eefc" category="sidebar">交換器 - Cisco-9336c-FX2 叢集</block>
   <block id="517242a1c337699950aef05a38af45a0" category="sidebar">交換器 NVIDIA sn2100 叢集</block>
   <block id="3ed3b1cc0917edd8fddcdd478bb581fb" category="sidebar">交換器 - Cisco-9336c-FX2 儲存設備</block>
   <block id="701d9aab459b808d17f39aa5c50f97df" category="sidebar">交換器 NVIDIA sn2100 儲存設備</block>
@@ -4629,7 +4616,6 @@
   <block id="c94eee10204c293e476c9b772d10ddfe" category="admonition">如果您隨時恢復至舊版 ONTAP 、則需要再次安裝 SHM 組態檔、以啟用 9336C-FX2 叢集交換器的 SHM 。</block>
   <block id="669c1a3fa77bc8a049e5cd4a16e5cff8" category="paragraph">使用 9336C-FX2 叢集交換器 *CL1* 來確認您已設定環境。</block>
   <block id="680284a2e0d6a86aafc85099ca58d7af" category="list-text">為乙太網路交換器健全狀況監視器記錄收集功能建立密碼：</block>
-  <block id="1f40996ca4617ab17127143171aa4ea4" category="sidebar">安裝 SHM 組態檔</block>
   <block id="3fc74bed2ec666d227e966120d5c4160" category="inline-link">錯誤 1570339</block>
   <block id="a9881d2bc89c135aee3c1490acc55259" category="inline-link">從 40GbE 轉換為 100GbE 後、 T6 連接埠發生 CRC 錯誤</block>
   <block id="835174c5c468acf2b423cff0eb23994f" category="admonition">如果您要變更 AFF A800 或 AFF C800 系統上 e0a 和 e1a 叢集連接埠的連接埠速度、您可能會發現速度轉換後收到格式錯誤的封包。請參閱 <block ref="f867b947e44d8d6bccd25f3219f3d6d9" category="inline-link-rx"></block> 以及知識庫文章<block ref="2a93cc61bbc3892324bc1b6369d71212" category="inline-link-rx"></block> 以取得指引。</block>
@@ -4670,4 +4656,37 @@
   <block id="3bf967e4da79afd8ac10997dbbfb40be" category="paragraph">第一次設定 Nexus 3232C 交換器後、請遵循此程序安裝 RCF 。</block>
   <block id="ce8d24a452c1c94c4680d7ce098325a9" category="inline-link">如何在保留遠端連線的同時清除 Cisco 互連交換器上的組態</block>
   <block id="e5f3c3d2c754cc48938d50b1782093ac" category="paragraph">您也可以使用此程序來升級RCF版本。請參閱知識庫文章<block ref="c3cf8dee5fd4e009c0e2b38bfb97fe4d" category="inline-link-rx"></block> 以取得升級 RCF 的詳細資訊。</block>
+  <block id="42f74bee479f7bfeefb9fd7d2c20b356" category="paragraph">4x10GbE/4x25GbE 或 40/100GbE 節點</block>
+  <block id="ee064ffc6832da9230d1d423e3a1c01a" category="paragraph">40g/100GbE 節點 19</block>
+  <block id="30fed60c2f664b1e620b396ee7590025" category="paragraph">40g/100GbE 節點 20</block>
+  <block id="e868dd91c84b5ff315dc3636c26ec593" category="paragraph">40g/100GbE 節點 21</block>
+  <block id="14735a659a0e84d3aeb4a50b5d38fdd8" category="paragraph">40g/100GbE 節點 22</block>
+  <block id="f46e9d50d3e035a2a9cfc49b0d4ff926" category="paragraph">40g/100GbE 節點 23</block>
+  <block id="7d3c40714541505308e8aeda185028a5" category="paragraph">40g/100GbE 節點 24</block>
+  <block id="d92e2d02199d759e2cbe8d9b461557fc" category="paragraph">100GbE ISL 到交換器 B 連接埠 31</block>
+  <block id="202f974033cf1161982db034d23ab80c" category="paragraph">100GbE ISL 以交換連接埠 31</block>
+  <block id="0e799942e6eaaf5fb0e0990b9cff01d0" category="paragraph">100GbE ISL 到交換器 B 連接埠 32</block>
+  <block id="ef3ddd21da594e200a83e463425ee831" category="paragraph">100GbE ISL 到交換器 A 連接埠 32</block>
+  <block id="7da7e93935b02de70a378c0e3bc0915f" category="paragraph">100GbE 節點 7</block>
+  <block id="b06ad32bc262994927467145fa685077" category="paragraph">100GbE 節點 8</block>
+  <block id="bfd0f53dcd1c0732244c879c71816d76" category="paragraph">100GbE 節點 9</block>
+  <block id="bc335a1aa76d7bee7d077931c80ff362" category="paragraph">100GbE 節點 10</block>
+  <block id="8e98a1d2b82cc51b09a6f6f6150e6ea9" category="paragraph">100GbE 節點 11</block>
+  <block id="ca1e7465e63d54d410d96ad74bc6ad9c" category="paragraph">100GbE 節點 12</block>
+  <block id="dc3e73458f3b06d9f45967a4ee2eb062" category="paragraph">100GbE 節點 13.</block>
+  <block id="58a544d323832dc62d0f7dbf25fce76c" category="paragraph">100GbE 節點 14</block>
+  <block id="f91030d6cc1c0d743dd19bdf834808b4" category="paragraph">100GbE 節點 15</block>
+  <block id="429c661f8ba4e683c488a3a16eb65450" category="paragraph">100GbE 節點 16</block>
+  <block id="5ac313785ff16b543307f7a2f0562c65" category="paragraph">100GbE 節點 17</block>
+  <block id="2badabc63a001442bc883dd04d8cd5bd" category="paragraph">100GbE 節點 18</block>
+  <block id="a6812bb55d441274f894ae9d2fc8c853" category="paragraph">100GbE 節點 19</block>
+  <block id="f81493fb0626cf611fb3d0da0abfd2fc" category="paragraph">100GbE 節點 20</block>
+  <block id="8ec0b4b065f720abd158003e297fd666" category="paragraph">100GbE 節點 21</block>
+  <block id="17267202d9429f033060c241eb243b66" category="paragraph">100GbE 節點 22</block>
+  <block id="6566d42cadb266b4dda1e35c1d8431b8" category="paragraph">100GbE 節點 23</block>
+  <block id="b0f08b7da859e9b27be7eba076cbd7c7" category="paragraph">100GbE 節點 24</block>
+  <block id="cfdc5fc6e4f0420a87977f2a10a74eb5" category="paragraph">100GbE ISL 到交換器 B 連接埠 35</block>
+  <block id="88948f2b657a3c9e5eec3736dcca6cdf" category="paragraph">100GbE ISL 到交換器 A 連接埠 35</block>
+  <block id="56299051abd1af0cbe5dbee773fed3d5" category="paragraph">100GbE ISL 到交換器 B 連接埠 36</block>
+  <block id="5e596a6e5f0ffe0604d651cde90e34f0" category="paragraph">100GbE ISL 到交換器 A 連接埠 36</block>
 </blocks>
