@@ -4448,7 +4448,6 @@
   <block id="6195676dbe2277e0d3edb2d8c3a50b2e" category="list-text">Cisco 9336C-FX2 叢集交換器是在正確版本的 NX-OS 下設定及操作、並套用參考組態檔案（ RCF ）。</block>
   <block id="f782426a4cdf95a0b55da18e28ebf175" category="list-text">使用 NetApp CN1610 交換器的備援全功能 NetApp 叢集。</block>
   <block id="b5151f51cad20da0989e60f2f67b1b88" category="list-text">管理 NetApp CN1610 交換器和新交換器的連線能力和主控台存取。</block>
-  <block id="b10363b52a35e01590fe1de363abbec3" category="list-text">NetApp CN1610 交換器之間以及新交換器之間的 ISL 連接埠已啟用並連接纜線。</block>
   <block id="ef76bcea64dcb3d0ca7a96e4f9da6812" category="list-text">部分連接埠是在 Cisco 9336C-FX2 交換器上設定、以 40GbE 或 100GbE 執行。</block>
   <block id="d3be97c754d4396e13d0406452fc2fb0" category="list-text">您已規劃、移轉並記錄從節點到 Cisco 9336C-FX2 叢集交換器的 40GbE 和 100GbE 連線。</block>
   <block id="9d9d3ff89e1f212fa1f66986336ed0c1" category="list-text">現有的 CN1610 叢集交換器為 _C1_ 和 _C2_ 。</block>
@@ -4667,26 +4666,27 @@
   <block id="202f974033cf1161982db034d23ab80c" category="paragraph">100GbE ISL 以交換連接埠 31</block>
   <block id="0e799942e6eaaf5fb0e0990b9cff01d0" category="paragraph">100GbE ISL 到交換器 B 連接埠 32</block>
   <block id="ef3ddd21da594e200a83e463425ee831" category="paragraph">100GbE ISL 到交換器 A 連接埠 32</block>
-  <block id="7da7e93935b02de70a378c0e3bc0915f" category="paragraph">100GbE 節點 7</block>
-  <block id="b06ad32bc262994927467145fa685077" category="paragraph">100GbE 節點 8</block>
-  <block id="bfd0f53dcd1c0732244c879c71816d76" category="paragraph">100GbE 節點 9</block>
-  <block id="bc335a1aa76d7bee7d077931c80ff362" category="paragraph">100GbE 節點 10</block>
-  <block id="8e98a1d2b82cc51b09a6f6f6150e6ea9" category="paragraph">100GbE 節點 11</block>
-  <block id="ca1e7465e63d54d410d96ad74bc6ad9c" category="paragraph">100GbE 節點 12</block>
-  <block id="dc3e73458f3b06d9f45967a4ee2eb062" category="paragraph">100GbE 節點 13.</block>
-  <block id="58a544d323832dc62d0f7dbf25fce76c" category="paragraph">100GbE 節點 14</block>
-  <block id="f91030d6cc1c0d743dd19bdf834808b4" category="paragraph">100GbE 節點 15</block>
-  <block id="429c661f8ba4e683c488a3a16eb65450" category="paragraph">100GbE 節點 16</block>
-  <block id="5ac313785ff16b543307f7a2f0562c65" category="paragraph">100GbE 節點 17</block>
-  <block id="2badabc63a001442bc883dd04d8cd5bd" category="paragraph">100GbE 節點 18</block>
-  <block id="a6812bb55d441274f894ae9d2fc8c853" category="paragraph">100GbE 節點 19</block>
-  <block id="f81493fb0626cf611fb3d0da0abfd2fc" category="paragraph">100GbE 節點 20</block>
-  <block id="8ec0b4b065f720abd158003e297fd666" category="paragraph">100GbE 節點 21</block>
-  <block id="17267202d9429f033060c241eb243b66" category="paragraph">100GbE 節點 22</block>
-  <block id="6566d42cadb266b4dda1e35c1d8431b8" category="paragraph">100GbE 節點 23</block>
-  <block id="b0f08b7da859e9b27be7eba076cbd7c7" category="paragraph">100GbE 節點 24</block>
   <block id="cfdc5fc6e4f0420a87977f2a10a74eb5" category="paragraph">100GbE ISL 到交換器 B 連接埠 35</block>
   <block id="88948f2b657a3c9e5eec3736dcca6cdf" category="paragraph">100GbE ISL 到交換器 A 連接埠 35</block>
   <block id="56299051abd1af0cbe5dbee773fed3d5" category="paragraph">100GbE ISL 到交換器 B 連接埠 36</block>
   <block id="5e596a6e5f0ffe0604d651cde90e34f0" category="paragraph">100GbE ISL 到交換器 A 連接埠 36</block>
+  <block id="b6deba442a3eaadb05f02285eb6e8113" category="admonition">修改金鑰之前、請務必先停用 SSH 、否則交換器上會報告警告。</block>
+  <block id="19d577c8c5ac871bd4528e45b94e3215" category="paragraph">40/100GbE 節點 7</block>
+  <block id="6eabf22260c7ae80ec5e2274e9c4f09e" category="paragraph">40/100GbE 節點 8</block>
+  <block id="bea5a6b9eaf26fd0f9b528724d800b60" category="paragraph">40/100GbE 節點 9</block>
+  <block id="1f680ca1906a2d6f9df0195733273b4f" category="paragraph">40/100GbE 節點 10</block>
+  <block id="8de4deb2da615a4b3c0d9c6ccb66e703" category="paragraph">40/100GbE 節點 11</block>
+  <block id="ab4f6e1b737181ce7dd84548e667bcca" category="paragraph">40/100GbE 節點 12</block>
+  <block id="f942743837c6e95b60899be0833a5290" category="paragraph">40/100GbE 節點 13.</block>
+  <block id="b68a256d3eff94d70f4a7a4259ca755b" category="paragraph">40/100GbE 節點 14</block>
+  <block id="eade29308af68523d8d1d5a27a29a761" category="paragraph">40/100GbE 節點 15</block>
+  <block id="5682b2f8365dd07eba0946e44f02734e" category="paragraph">40/100GbE 節點 16</block>
+  <block id="86f1b9d9271166e96c053f6a4e11d883" category="paragraph">40/100GbE 節點 17</block>
+  <block id="d227adf703f6fe2a032373c491fe0051" category="paragraph">40/100GbE 節點 18</block>
+  <block id="c266cdb29bd7f7b4357623be1143bc71" category="paragraph">40/100GbE 節點 19</block>
+  <block id="1dba0da5deb07a68639239580ebfea24" category="paragraph">40/100GbE 節點 20</block>
+  <block id="4f4dc57cc95ebd278ce3ce689593d2a7" category="paragraph">40/100GbE 節點 21</block>
+  <block id="abcd8d3f588678870638aff6d2b158be" category="paragraph">40/100GbE 節點 22</block>
+  <block id="acd5b19e96fe10bf67f0e3b493444cdb" category="paragraph">40/100GbE 節點 23</block>
+  <block id="a03b317075029ec2eb6886719507222d" category="paragraph">40/100GbE 節點 24</block>
 </blocks>
