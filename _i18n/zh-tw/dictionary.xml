@@ -4689,4 +4689,5 @@
   <block id="abcd8d3f588678870638aff6d2b158be" category="paragraph">40/100GbE 節點 22</block>
   <block id="acd5b19e96fe10bf67f0e3b493444cdb" category="paragraph">40/100GbE 節點 23</block>
   <block id="a03b317075029ec2eb6886719507222d" category="paragraph">40/100GbE 節點 24</block>
+  <block id="6cc558c5fd7b268022c9cd6a5f86134b" category="admonition">列出的例外情況不會影響效能、因此可以安全地忽略。</block>
 </blocks>
