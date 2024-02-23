@@ -20,6 +20,9 @@ summary: 在安裝RCF指令碼之前、請確定交換器上有下列項目可�
 * IP位址、子網路遮罩和預設閘道、是透過DHCP定義或手動設定的。
 
 
+
+NOTE: 您必須在 RCF 中指定一個使用者（管理使用者除外）、以專門用於記錄收集。
+
 .目前的RCF指令碼版本
 叢集和儲存應用程式有兩個 RCF 指令碼可用。請從下載 RCFs https://mysupport.netapp.com/site/info/nvidia-cluster-switch["請按這裡"^]。每個的程序都相同。
 

@@ -1,8 +1,8 @@
 ---
-permalink: switch-nvidia-sn2100/install-snmpv3-sn2100-cluster.html 
+permalink: switch-nvidia-sn2100/CSHM_snmpv3.html 
 sidebar: sidebar 
-keywords: sn2100 SN2100 cabling setup, sn2100 switches configuration, cumulus linux os 
-summary: 此版本支援使用v3進行記錄監控。 
+keywords: SNMP,SNMPv3,SNMPv3 setup,SN2100 cabling setup,sn2100 switches configuration,cumulus linux os 
+summary: SNMPv3 可與乙太網路交換器健全狀況監視器（ CSHM ）搭配使用。 
 ---
 = 設定 SNMPv3
 :allow-uri-read: 
@@ -11,7 +11,7 @@ summary: 此版本支援使用v3進行記錄監控。
 
 
 [role="lead"]
-請遵循此程序來設定支援交換器健全狀況監控（ CSHM ）的 SNMPv3 。
+請遵循此程序來設定支援乙太網路交換器健全狀況監控（ CSHM ）的 SNMPv3 。
 
 .關於這項工作
 下列命令可在NVIDIA SN2100交換器上設定v3使用者名稱：
@@ -88,7 +88,7 @@ net add/del commands since the last "net commit"
 ================================================
 
 User        Timestamp                   Command
-----------  --------------------------  -----------------------------------------------------------------------------
+----------  --------------------------  -------------------------------------------------------------------------
 SNMPv3User  2020-08-11 00:13:51.826987  net add snmp-server username SNMPv3User auth-md5 <password> encrypt-aes <password>
 
 cumulus@sw1:~$
@@ -132,7 +132,7 @@ Enter privacy protocol password (minimum 8 characters long):
 Enter privacy protocol password again:
 ----
 ====
-. 設定SHM以新的v3使用者進行監控：
+. 設定 CSHM 以監控新的 SNMPv3 使用者：
 +
 `system switch ethernet show-all -device "sw1 (b8:59:9f:09:7c:22)" -instance`
 
@@ -162,7 +162,7 @@ cluster1::*>
 cluster1::*> *system switch ethernet modify -device "sw1 (b8:59:9f:09:7c:22)" -snmp-version SNMPv3 -community-or-username SNMPv3User*
 ----
 ====
-. 確認新建立的v3使用者要查詢的序號與SHM輪詢期間完成後、上一步所述的序號相同。
+. 驗證新建立的 SNMPv3 使用者所查詢的序號、是否與 CSHM 輪詢期間結束後上一步所述的序號相同。
 +
 `system switch ethernet polling-interval show`
 

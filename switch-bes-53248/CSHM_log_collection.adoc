@@ -1,0 +1,133 @@
+---
+permalink: switch-bes-53248/CSHM_log_collection.html 
+sidebar: sidebar 
+keywords: log collection feature,collect switch-related log files,SSh key,crypto key generation,BES-53248 Broadcom setup,BES-53248 switches configuration,EFOS 
+summary: 乙太網路交換器健全狀況監視器（ CSHM ）記錄收集功能是用來從 ONTAP 中的叢集或儲存網路交換器收集記錄。 
+---
+= 乙太網路交換器健全狀況監控記錄收集
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+乙太網路交換器健全狀況監視器（ CSHM ）負責確保叢集與儲存網路交換器的作業健全狀況、並收集交換器記錄以供偵錯之用。本程序將引導您完成設定及開始從交換器收集詳細 * 支援 * 記錄的程序、並開始每小時收集 AutoSupport 所收集的 * 定期 * 資料。
+
+.開始之前
+* 若要啟用記錄收集功能、您必須執行 ONTAP 9.12.1 版或更新版本、以及 EFOS 3.8.0.2 或更新版本。
+* 必須為交換器啟用交換器健全狀況監控。請務必確認 `Is Monitored:` 欄位在的輸出中設為 * 真 * `system switch ethernet show` 命令。
+
+
+.步驟
+. 若要設定記錄收集、請針對每個交換器執行下列命令。系統會提示您輸入用於記錄收集的交換器名稱、使用者名稱和密碼。
++
+「系統交換器乙太網路記錄設定密碼」
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *system switch ethernet log setup-password*
+Enter the switch name: *<return>*
+The switch name entered is not recognized.
+Choose from the following list:
+*cs1*
+*cs2*
+
+cluster1::*> *system switch ethernet log setup-password*
+
+Enter the switch name: *cs1*
+Would you like to specify a user other than admin for log collection? {y|n}: *n*
+
+Enter the password: *<enter switch password>*
+Enter the password again: *<enter switch password>*
+
+cluster1::*> *system switch ethernet log setup-password*
+
+Enter the switch name: *cs2*
+Would you like to specify a user other than admin for log collection? {y|n}: *n*
+
+Enter the password: *<enter switch password>*
+Enter the password again: *<enter switch password>*
+----
+====
+. 若要啟動記錄收集、請執行下列命令、以先前命令中使用的切換參數取代裝置。這會同時啟動記錄收集的兩種類型：詳細的 * 支援 * 記錄檔和 * 定期 * 資料的每小時集合。
++
+`system switch ethernet log modify -device _<switch-name>_ -log-request true`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *system switch ethernet log modify -device cs1 -log-request true*
+
+Do you want to modify the cluster switch log collection configuration? {y|n}: [n] *y*
+
+Enabling cluster switch log collection.
+
+cluster1::*> *system switch ethernet log modify -device cs2 -log-request true*
+
+Do you want to modify the cluster switch log collection configuration? {y|n}: [n] *y*
+
+Enabling cluster switch log collection.
+----
+====
++
+等待 10 分鐘、然後檢查記錄收集是否完成：
+
++
+`system switch ethernet log show`
+
++
+
+CAUTION: 如果這些命令中有任何一個傳回錯誤、或記錄集合未完成、請聯絡 NetApp 支援部門。
+
+
+
+.疑難排解
+如果您遇到記錄收集功能報告的下列任何錯誤狀態（可在的輸出中看到 `system switch ethernet log show`）、請嘗試對應的除錯步驟：
+
+|===
+
+
+| * 記錄收集錯誤狀態 * | * 解決方法 * 
+
+
+ a| 
+* 不存在 RSA 金鑰 *
+ a| 
+重新產生 ONTAP SSH 金鑰。請聯絡 NetApp 支援部門。
+
+
+
+ a| 
+* 交換器密碼錯誤 *
+ a| 
+驗證認證、測試 SSH 連線、並重新產生 ONTAP SSH 金鑰。請參閱交換器說明文件、或聯絡 NetApp 支援部門以取得相關指示。
+
+
+
+ a| 
+* FIPS 不存在 ECDSA 金鑰 *
+ a| 
+如果啟用 FIPS 模式、則必須先在交換器上產生 ECDSA 金鑰、然後再重新嘗試。
+
+
+
+ a| 
+* 找到之前存在的記錄 *
+ a| 
+移除交換器上先前的記錄集合檔案。
+
+
+
+ a| 
+* 交換器傾印記錄錯誤 *
+ a| 
+確保交換器使用者擁有記錄收集權限。請參閱上述先決條件。
+
+|===

@@ -213,9 +213,9 @@ shelf   id    remote-port     remote-device
 cluster1::*>
 ----
 ====
-. 使用兩個命令：「ystem switchEthernet log setup-password」（系統交換器乙太網路記錄設定密碼）和「系統交換器乙太網路記錄啟用資料收集」、啟用乙太網路交換器健全狀況監視器記錄收集功能來收集交換器相關的記錄檔
+. 為乙太網路交換器健全狀況監視器記錄收集功能建立密碼：
 +
-輸入：「System交換器乙太網路記錄設定密碼」
+「系統交換器乙太網路記錄設定密碼」
 
 +
 .顯示範例
@@ -224,7 +224,7 @@ cluster1::*>
 [listing, subs="+quotes"]
 ----
 cluster1::*> *system switch ethernet log setup-password*
-Enter the switch name: <return>
+Enter the switch name: *<return>*
 The switch name entered is not recognized.
 Choose from the following list:
 *sw1*
@@ -232,25 +232,24 @@ Choose from the following list:
 
 cluster1::*> *system switch ethernet log setup-password*
 
-Enter the switch name: *sw1*
-RSA key fingerprint is e5:8b:c6:dc:e2:18:18:09:36:63:d9:63:dd:03:d9:cc
-Do you want to continue? {y|n}::[n] *y*
+Enter the switch name: *csw1*
+Would you like to specify a user other than admin for log collection? {y|n}: *n*
 
-Enter the password: <enter switch password>
-Enter the password again: <enter switch password>
+Enter the password: *<enter switch password>*
+Enter the password again: *<enter switch password>*
 
 cluster1::*> *system switch ethernet log setup-password*
 
 Enter the switch name: *nsw2*
-RSA key fingerprint is 57:49:86:a1:b9:80:6a:61:9a:86:8e:3c:e3:b7:1f:b1
-Do you want to continue? {y|n}:: [n] *y*
+Would you like to specify a user other than admin for log collection? {y|n}: *n*
 
-Enter the password: <enter switch password>
-Enter the password again: <enter switch password>
+Enter the password: *<enter switch password>*
+Enter the password again: *<enter switch password>*
 ----
 ====
+. 啟用乙太網路交換器健全狀況監視器記錄收集功能。
 +
-接著是：「系統交換器乙太網路記錄啟用-收集」
+`system switch ethernet log modify -device _<switch-name>_ -log-request true`
 
 +
 .顯示範例
@@ -258,23 +257,24 @@ Enter the password again: <enter switch password>
 ====
 [listing, subs="+quotes"]
 ----
-cluster1::*> *system  switch ethernet log enable-collection*
+cluster1::*> *system switch ethernet log modify -device cs1 -log-request true*
 
-Do you want to enable cluster log collection for all nodes in the cluster?
-{y|n}: [n] *y*
+Do you want to modify the cluster switch log collection configuration? {y|n}: [n] *y*
 
 Enabling cluster switch log collection.
 
-cluster1::*>
+cluster1::*> *system switch ethernet log modify -device cs2 -log-request true*
+
+Do you want to modify the cluster switch log collection configuration? {y|n}: [n] *y*
+
+Enabling cluster switch log collection.
 ----
 ====
 +
+等待 10 分鐘、然後檢查記錄收集是否完成：
 
-NOTE: 如果這些命令中有任何一個出現錯誤、請聯絡NetApp支援部門。
-
-. 啟動交換器記錄收集功能：「System交換器乙太網路記錄collect -device *」
 +
-請等待10分鐘、然後使用「ystem switchEthernet log show」命令檢查記錄收集是否成功
+`system switch ethernet log show`
 
 +
 .顯示範例
@@ -282,15 +282,19 @@ NOTE: 如果這些命令中有任何一個出現錯誤、請聯絡NetApp支援�
 ====
 [listing, subs="+quotes"]
 ----
-cluster1::*> *system switch ethernet log show*
+cluster1::*> system switch ethernet log show
 Log Collection Enabled: true
 
 Index  Switch                       Log Timestamp        Status
 ------ ---------------------------- -------------------  ---------    
-1      sw1 (b8:ce:f6:19:1b:42)      4/29/2022 03:05:25   complete   
+1      sw1  (b8:ce:f6:19:1b:42)     4/29/2022 03:05:25   complete   
 2      nsw2 (b8:ce:f6:19:1b:96)     4/29/2022 03:07:42   complete
 ----
 ====
++
+
+CAUTION: 如果這些命令中有任何一個傳回錯誤、或記錄集合未完成、請聯絡 NetApp 支援部門。
+
 . 將權限等級變更回admin：「et -priv. admin」
 . 如果您禁止自動建立個案、請叫用AutoSupport 下列訊息重新啟用此功能：「System Node AutoSupport 現象叫用節點*-type all -most MAn=end」
 

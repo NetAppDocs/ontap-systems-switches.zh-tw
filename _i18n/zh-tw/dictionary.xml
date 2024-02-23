@@ -1581,7 +1581,6 @@
   <block id="89d871d0880e9496071a54d271f32095" category="list-text">在「終端使用者授權合約」頁面上、按一下「*接受*」</block>
   <block id="3a1759e54cb06a13c2c5b9b85a4c5282" category="list-text">將適用的Zip檔案上傳至內部Web伺服器、其中IP位址為X.X.X.X</block>
   <block id="903944fca05d1da45a504e69ed5609fb" category="paragraph">如果內部Web伺服器IP位址為192．168．2、假設存在/usr/downloads目錄、您可以使用scp將壓縮檔上傳至Web伺服器：</block>
-  <block id="ec633497488ed81a95ccbbbb57302ba3" category="list-text">使用ONTAP 命令「show -privit advance"（進階設定）：</block>
   <block id="f4ab3be3915b88f9d23c5faf297e78ff" category="list-text">確認命令輸出包含文字字串「已成功處理下載的套件」。如果發生錯誤、請聯絡NetApp支援部門。</block>
   <block id="56901ba0364771cc3907ec9a30481dd8" category="summary">在叢集網路中更換故障的Broadcom支援的Bes-53248叢集交換器、是不中斷營運的程序（NDU）。</block>
   <block id="3194b650ad4dc5accb0c1a5ae8050d52" category="list-text">節點連線是連接埠0/1到0/16、具有預設授權。</block>
@@ -3379,7 +3378,6 @@
   <block id="9343a353b1f82fabd9ee240e066471c9" category="list-text">請依照中的指示進行<block ref="2499b40383e5eeae4a8e13c0ef2b5e8c" category="inline-link-rx"></block>。</block>
   <block id="2c313ef83d1daadd03ff286fd1bc25ab" category="paragraph"><block ref="b88c299eeb38820fb709454fcd144438" category="inline-link-macro-rx"></block>。</block>
   <block id="4a79c6270afcb7ed4e28cd8c98692b07" category="inline-link-macro">驗證升級組態</block>
-  <block id="201928a01eb0d8a784dcd677be49e1a6" category="paragraph">如果您要升級交換器、請前往 <block ref="4ea612b493226a65342298638fddee90" category="inline-link-macro-rx"></block>。</block>
   <block id="e8ab0c1581dc0dcc64441ffb1b729ce5" category="summary">如果您有雙節點無交換式叢集、則可在不中斷營運的情況下、移轉至雙節點交換式叢集、其中包含Broadcom支援的BS-53248叢集交換器</block>
   <block id="aa7dd6235ef36f2c7e4cd4edddab41eb" category="paragraph">如果您現有的雙節點_無交換器_叢集環境、則可以使用Broadcom支援的BS-53248叢集交換器、移轉至雙節點_交換式_叢集環境、使您能夠擴充至叢集中的兩個節點之外。</block>
   <block id="784bdcc078009075bac39754a34c1477" category="paragraph">移轉程序適用於使用光纖或雙軸纜線連接埠的所有叢集節點連接埠、但如果節點使用內建10GBASE-T RJ45連接埠作為叢集網路連接埠、則此交換器不支援此程序。</block>
@@ -3445,21 +3443,6 @@
   <block id="c1321e94fa70c8284c7eb8048b1e5076" category="paragraph">請依照下列指示安裝軟體。</block>
   <block id="6e542d7f228623e0d93cb14b578964d6" category="summary">若為BS-53248交換器安裝與維護、請務必檢閱元件清單和零件編號。</block>
   <block id="d243834ab21b34f6cc60b0c0c7b6ef45" category="doc">BS-53248叢集交換器的元件和零件編號</block>
-  <block id="2e251bbc5cf5abac11349f16ad8e95e7" category="summary">您可以安裝叢集交換器健全狀況監視器（CSHM）組態檔、以監控BS-53248叢集交換器。</block>
-  <block id="4db171b1958310050d33a6161ba14156" category="paragraph">在版本9.5P7及更早版本、以及9.6P2及更早版本中、您必須分別下載CSHM檔案ONTAP 。在發行版本9.5P8及更新版本、9.6P3及更新版本、以及9.7及更新版本中、CSHM檔案與更新版本一起搭售ONTAP ONTAP 。</block>
-  <block id="294206f940bbd4f3ec7f79996b76c616" category="paragraph">請確定ONTAP 支援並執行不中斷的叢集。</block>
-  <block id="40994b29c419b8208b2a2299233e65bc" category="list-text">根據對應ONTAP 的更新版本下載CSHM Zip檔案。此檔案可從頁面取得：<block ref="cb382f539d8e67a00135c8306b3d74b6" category="inline-link-rx"></block></block>
-  <block id="180d45d6eb8919b41d1d751b68ec3336" category="list-text">在「軟體」下載頁面上、選取*「交換器健全狀況監視器組態檔案」*。</block>
-  <block id="390cb4e02a776b0ea4f0d39cda973281" category="list-text">選取「Platform =* ONTAP S供*參考*」、然後按一下「* Go！*」。</block>
-  <block id="b968620db21ffac13bf35d77c6fd4614" category="list-text">在「Switch Health Monitor Configuration Files for ONTAP Sfor the Sfor the」（交換器健全狀況監視器組態檔案以供參考）頁面上、按一下*</block>
-  <block id="9d0ff069783ed268f22d4d924d776da5" category="list-text">在「Switch Health Monitor Configuration Files for ONTAP Sfor the Sfor the Description」（交換器健全狀況監控組態檔案-說明）頁面上、按一下* Download *以取得適用的叢集交換器機型；例如：* Broadcom支援的BS-53245*。</block>
-  <block id="f8f1088542203d1665d06d92000f4391" category="list-text">在「終端使用者授權合約」頁面上、按一下「*接受*」。</block>
-  <block id="36ca16251e030a0ff50eeef91c11841c" category="list-text">在「交換器健全狀況監視器組態檔案以ONTAP 供參考-下載」頁面上、選取適用的組態檔、例如* Broadcom _BS-53248.壓縮*。</block>
-  <block id="108fad13cb4557ce639ff2d509f833b5" category="paragraph">若為內部Web伺服器IP位址192．168．2．20、且假設存在/usr/download目錄、您可以使用將壓縮檔上傳至Web伺服器<block ref="8a444a43bdf534c0c6338bb7809659b3" prefix=" " category="inline-code"></block>：</block>
-  <block id="add89e2862924c702a738f3d2a28fa51" category="list-text">執行交換器健全狀況監視器configure命令：</block>
-  <block id="57dedb9cbe459a7c90ef4837093192ae" category="paragraph"><block ref="2f9091db6d94c377cc0c7e2fbd67bc1a" prefix="" category="inline-code"></block></block>
-  <block id="edcd33ebd5d3817ccdc17b64134c7ec8" category="admonition">如果您在任何時候回復到ONTAP 舊版的版本的版本、則必須再次安裝CSHM組態檔案、才能啟用BS-53248叢集交換器的交換器健全狀況監控。</block>
-  <block id="914288f821c5d88db21f926b4e94b1b3" category="paragraph">若要使用CSHM提供的所有功能、請依所述啟用SSH <block ref="e2b4c4f5313b05dff7c4a02a4e9e0df6" category="inline-link-macro-rx"></block>。</block>
   <block id="4cf79f99b322552a5fe0fadeb4c0ae5b" category="doc">更換需求</block>
   <block id="62dbb19af179fc4e75d76db194377a60" category="paragraph">更換交換器之前、請先確定在目前環境和更換交換器上符合下列條件。</block>
   <block id="92dcda45f07d847bb79e184ed7087556" category="list-text">所有叢集邏輯介面（LIF）都在管理和操作上* up *及其主連接埠上。</block>
@@ -4009,7 +3992,6 @@
   <block id="ae5073b7cedbbc7111f9e806343efc7e" category="sidebar">從雙節點無交換器叢集移轉</block>
   <block id="742d7720a6bdc19b4810641f0c74ddd3" category="sidebar">升級交換器</block>
   <block id="5990fb757a59a934aeb2786bac162e97" category="sidebar">安裝EFOS軟體</block>
-  <block id="b954609be582bc6760c67ae6e58cd7a9" category="sidebar">安裝CSHM組態檔案</block>
   <block id="e7d694813a2146a3ab31b4b907988620" category="sidebar">啟用SSH</block>
   <block id="037fd3285f5414c76c57c401fbc5603c" category="sidebar">啟用記錄收集</block>
   <block id="71f5771dab663d80ba4dad1627e3386a" category="sidebar">升級總覽</block>
@@ -4166,9 +4148,6 @@
   <block id="0367a2a79bd73fd44da88774641890f6" category="inline-link-macro">啟動新授權連接埠</block>
   <block id="9c561ca9ef6d5814e15c1944c030d12d" category="list-text">如果您購買額外授權、請參閱 <block ref="78172331b9d74469f8abaa21c5813f50" category="inline-link-macro-rx"></block> 如需如何啟動的詳細資訊、請參閱。</block>
   <block id="1ad4f5dc9889f4859c43a213e21f389c" category="list-text">如果 SSH 是作用中的、則必須在執行命令後手動重新啟用 SSH<block ref="1fb554759d9d32d450daa4da09330114" prefix=" " category="inline-code"></block> 然後重新啟動交換器。</block>
-  <block id="fa29548058837254e54c0910a42e81ed" category="paragraph"><block ref="7d77b5b7ecc6e91232de4d87c6f561de" prefix="" category="inline-code"></block></block>
-  <block id="25e09b4fadd3fa8202fa95ea688667c1" category="list-text">[[step5]] 確認命令輸出包含文字字串：<block ref="bb932139b2106289945776f4f81d066a" prefix=" " category="inline-code"></block>。如果發生錯誤、請聯絡 NetApp 支援部門。</block>
-  <block id="d28bbd717c002acf43e747edb594c750" category="list-text">在 ONTAP 系統上執行命令、並確認已探索叢集交換器、並將監控欄位設為「 True 」：</block>
   <block id="1ad47980611dd1ee749c3478e99b4edd" category="paragraph">下表列出 BS-53248 叢集交換器元件的零件編號、說明及最低 EFOS 和 ONTAP 版本、包括機架安裝軌道套件詳細資料。</block>
   <block id="4a47a181e94c352883a8741b3ec5e291" category="admonition">零件編號 *X190005-B* 和 *X190005R-B* 需要 * 3.10.0.3* 的 EFOS 最低版本。</block>
   <block id="c37b8196896554a6da47b74fe6581c98" category="cell">EFOS 最低版本</block>
@@ -4281,9 +4260,7 @@
   <block id="b70d80924ca5c08e45b9b84343687a46" category="section-title">舊版授權</block>
   <block id="e6459831eff3ab73436a3472b543daed" category="paragraph">下表列出可在 BS-53248 叢集交換器上使用的舊版授權：</block>
   <block id="5c60227e684a42ed2c4295981335965a" category="list-text">確認 SSH 已停用：</block>
-  <block id="7481f181e296e575db2349974a47cc2c" category="paragraph">請依照下列步驟安裝叢集交換器健全狀況監視器（ CSHM ）組態檔案。</block>
   <block id="810bc3d02021061ba2b8f87b703a66dd" category="paragraph">您可以使用記錄收集功能、在 ONTAP 中收集交換器相關的記錄檔。</block>
-  <block id="ee3c886759b6a2517a47e20c04320ed6" category="admonition">若要啟用記錄收集功能、您必須執行 ONTAP 9.12.1 版及更新版本、以及 EFOS 3.8.0.2 及更新版本。</block>
   <block id="b8df928a1a67f132ebda54d2c7fee7dc" category="paragraph">如果您要從舊版升級RCF、則必須重設Broadcom交換器設定並執行基本組態、才能重新套用RCF。每次您想要升級或變更RCF時、都必須執行此作業。請參閱<block ref="ca0e22b4f868295e6cf32a824edc5c13" category="inline-link-rx"></block> 以取得詳細資料。</block>
   <block id="fecbf70623c5c07c3f3c4c8793d5061b" category="list-text">目前的 RCF 檔案、可從取得<block ref="b4c2fb45a290e6214474529bd84dd3bc" category="inline-link-rx"></block> 頁面。</block>
   <block id="23c89511c80ceef00a8d3343b5f08569" category="list-text">RCF 中的開機組態、可反映所需的開機映像、如果您只安裝 EFOS 並保留目前的 RCF 版本、則需要此組態。如果您需要變更開機組態以反映目前的開機映像、則必須在重新套用RCF之前執行此動作、以便在未來重新開機時產生正確的版本。</block>
@@ -4462,11 +4439,9 @@
   <block id="cc0c96fa4e2abab8a22a057701a64895" category="list-text">使用 Cisco 9336C-FX2 支援的適當纜線、將節點叢集連接埠從舊的交換器 C1 移至新的交換器 CS1 。</block>
   <block id="ba04a36ca69927056bab3bba36362e9b" category="list-text">在交換器 CS1 和 CS2 上、確認所有節點叢集連接埠均已啟動：</block>
   <block id="d9dbaab2b13b33007de8325a401de04b" category="sidebar">從 CN1610 叢集交換器移轉</block>
-  <block id="6c174914ef0e9418a778018f9f416565" category="paragraph">使用 BS-53248 叢集交換器 *CL1* 來確認您已設定環境。</block>
   <block id="f82e463abb944d54e7eb997507aada97" category="list-text">為乙太網路交換器健全狀況監視器記錄收集功能建立密碼：<block ref="36ac3c1f3bae8142b5d110fb906ba03e" prefix=" " category="inline-code"></block></block>
   <block id="3da8b58ec29508478eb281950ce7a85f" category="list-text">啟用乙太網路交換器健全狀況監視器記錄收集功能。</block>
   <block id="55c09ca9257750665c75e5b587165519" category="paragraph"><block ref="e802bd77f148cffa22d9aa9e7d79d65d" prefix="" category="inline-code"></block></block>
-  <block id="e1d0dd82b8f2058c2b4c4d59c2f80125" category="paragraph">等待 10 分鐘、然後使用命令檢查記錄收集是否完成：</block>
   <block id="0eedc6e86bf0684694a5f74d12cd17d7" category="admonition">如果這些命令中有任何一個傳回錯誤、或記錄集合未完成、請聯絡 NetApp 支援部門。</block>
   <block id="df3b6dd54dfaeb972568b29147c67103" category="list-text">初始自訂 BS-53248 交換器已完成、因此：</block>
   <block id="8f7a04d5740dbba56b463f7bc775e27a" category="list-text">BS-53248 交換器正在執行最新建議版本的 EFOS 軟體。</block>
@@ -4501,7 +4476,6 @@
   <block id="d576f6342b019a4a22e71708ae81b0d9" category="paragraph">對於所有 ONTAP 版本、您也可以使用<block ref="7eaac8e45910aa8bf3a06f6966ab0656" prefix=" " category="inline-code"></block> 檢查連線能力的命令：</block>
   <block id="090015dd47b4cd238b646c5f1dbc231d" category="list-text">[[step5]] 啟用乙太網路交換器健全狀況監視器記錄收集功能、以收集交換器相關的記錄檔。</block>
   <block id="079555d3c02274a2f31c4ed0065d657e" category="doc">設定 SNMPv3</block>
-  <block id="75e0b0aa735bcccb4bf1267f69cc872e" category="paragraph">請遵循此程序來設定支援交換器健全狀況監控（ CSHM ）的 SNMPv3 。</block>
   <block id="1bd553f48f18f76a761092d0bebbe5a4" category="paragraph">下列命令會使用 CSHM 建立 SNMPv3 使用者名稱：<block ref="bc0f2549b8e026bfa298fbc575ba6020" prefix=" " category="inline-code"></block></block>
   <block id="44dd2902e6a8940e811d66f001eb74b8" category="list-text">重複步驟 1 至 8 、在交換器 CS1 上安裝 NX-OS 軟體。</block>
   <block id="52009bb7ee17227f566cd26a02caee56" category="inline-link-macro"><block ref="52009bb7ee17227f566cd26a02caee56" category="inline-link-rx"></block></block>
@@ -4690,4 +4664,39 @@
   <block id="acd5b19e96fe10bf67f0e3b493444cdb" category="paragraph">40/100GbE 節點 23</block>
   <block id="a03b317075029ec2eb6886719507222d" category="paragraph">40/100GbE 節點 24</block>
   <block id="6cc558c5fd7b268022c9cd6a5f86134b" category="admonition">列出的例外情況不會影響效能、因此可以安全地忽略。</block>
+  <block id="b61075ba30803dc13c18190d95bb660c" category="summary">乙太網路交換器健全狀況監視器（ CSHM ）記錄收集功能是用來從 ONTAP 中的叢集或儲存網路交換器收集記錄。</block>
+  <block id="cc96021e22980976473658b2f1ba6e98" category="doc">乙太網路交換器健全狀況監控記錄收集</block>
+  <block id="bf4e0c74d0d64f033de371084e1f1021" category="paragraph">乙太網路交換器健全狀況監視器（ CSHM ）負責確保叢集與儲存網路交換器的作業健全狀況、並收集交換器記錄以供偵錯之用。本程序將引導您完成設定及開始從交換器收集詳細 * 支援 * 記錄的程序、並開始每小時收集 AutoSupport 所收集的 * 定期 * 資料。</block>
+  <block id="ae4749ec36ab32554e1987f66caacdb7" category="list-text">若要啟用記錄收集功能、您必須執行 ONTAP 9.12.1 版或更新版本、以及 EFOS 3.8.0.2 或更新版本。</block>
+  <block id="8d36506446d5ad8477c75d9150e6528f" category="list-text">必須為交換器啟用交換器健全狀況監控。請務必確認<block ref="83bb5774e6e4dc96959b12bfa4334f18" prefix=" " category="inline-code"></block> 欄位在的輸出中設為 * 真 *<block ref="db3929a8e897b02a87f7f4bc42f38fc1" prefix=" " category="inline-code"></block> 命令。</block>
+  <block id="09a5c8e72e479c23dfcdb0045312203a" category="list-text">若要設定記錄收集、請針對每個交換器執行下列命令。系統會提示您輸入用於記錄收集的交換器名稱、使用者名稱和密碼。</block>
+  <block id="51e57b530a227b04924d2803cdc52930" category="list-text">若要啟動記錄收集、請執行下列命令、以先前命令中使用的切換參數取代裝置。這會同時啟動記錄收集的兩種類型：詳細的 * 支援 * 記錄檔和 * 定期 * 資料的每小時集合。</block>
+  <block id="231cf4c70d866b616c21baddaeed0696" category="paragraph-title">疑難排解</block>
+  <block id="37c0786b751e8b6bed2adbf850ab884e" category="paragraph">如果您遇到記錄收集功能報告的下列任何錯誤狀態（可在的輸出中看到<block ref="88354d538ba5d4e1746193ec5949ab4b" prefix=" " category="inline-code"></block>）、請嘗試對應的除錯步驟：</block>
+  <block id="f766c25c90ea3bb9aa3798d25e0a5087" category="cell">* 記錄收集錯誤狀態 *</block>
+  <block id="2d424e5dd89f6819ff42231c7a18b118" category="cell">* 解決方法 *</block>
+  <block id="018a74682c62c75c7c75d90d5ddf1cbf" category="paragraph">* 不存在 RSA 金鑰 *</block>
+  <block id="6654dac813e45b08b32b58fbbd49eed9" category="paragraph">重新產生 ONTAP SSH 金鑰。請聯絡 NetApp 支援部門。</block>
+  <block id="5b75a2412f91e51d9c828c1eedc4678f" category="paragraph">* 交換器密碼錯誤 *</block>
+  <block id="5bc4d3730ab537bc31f24f538828bcf8" category="paragraph">驗證認證、測試 SSH 連線、並重新產生 ONTAP SSH 金鑰。請參閱交換器說明文件、或聯絡 NetApp 支援部門以取得相關指示。</block>
+  <block id="bd6021089b0b22b779073ce64186e7fd" category="paragraph">* FIPS 不存在 ECDSA 金鑰 *</block>
+  <block id="c75d07c4d4aaf4fdb88aab5f0675be1c" category="paragraph">如果啟用 FIPS 模式、則必須先在交換器上產生 ECDSA 金鑰、然後再重新嘗試。</block>
+  <block id="c66550e1243c24f8c299886b45f636e8" category="paragraph">* 找到之前存在的記錄 *</block>
+  <block id="ad20b6964df2e6ea3df2b394efc811ed" category="paragraph">移除交換器上先前的記錄集合檔案。</block>
+  <block id="20c7a250c756306872ccbb15d529b664" category="paragraph">* 交換器傾印記錄錯誤 *</block>
+  <block id="282efbd3d7380f8a34d8579ad5d9c11f" category="paragraph">確保交換器使用者擁有記錄收集權限。請參閱上述先決條件。</block>
+  <block id="b8731468035c2cab5635961a32d46c38" category="summary">SNMPv3 可與乙太網路交換器健全狀況監視器（ CSHM ）搭配使用。</block>
+  <block id="86da6292895a71bdd61d82bd76a5649d" category="paragraph">請遵循此程序來設定支援乙太網路交換器健全狀況監控（ CSHM ）的 SNMPv3 。</block>
+  <block id="f00216e423dd65c7a8b4a0768c1cf2bc" category="paragraph">以下命令可在 Broadcom BS-53248 交換器上設定 SNMPv3 使用者名稱：</block>
+  <block id="0e428ea0cadb7e39f8fa4eb48dd9ea98" category="paragraph"><block ref="0ae39c023aff4fed8d1a872fd04e3d83" prefix="" category="inline-code"></block></block>
+  <block id="6b9f542dd155c40aa5e4484b5ff61711" category="list-text">設定 CSHM 以監控新的 SNMPv3 使用者：</block>
+  <block id="7645c6b839b29d79d56508ac59b17a0f" category="paragraph"><block ref="e455ca07bfb78eb821e00f72366d7972" prefix="" category="inline-code"></block></block>
+  <block id="d4d693d9dd779d0daf149c2e448b60b2" category="list-text">驗證要與新建立的 SNMPv3 使用者查詢的序號、是否與 CSHM 輪詢期間結束後上一步所述相同。</block>
+  <block id="28444591fb832d5dcae593ad2a8f56da" category="admonition">您必須在 RCF 中指定一個使用者（管理使用者除外）、以專門用於記錄收集。</block>
+  <block id="f2a9c66f4943798b57467021b65ab75a" category="list-text">應用參考組態檔案（ RCF ）時、必須指定記錄集合的使用者。依預設、此使用者設為「 admin 」。如果您想要使用不同的使用者、您必須在 RCF 的 * # SHM User* 區段中指定此項目。</block>
+  <block id="41418696440702a63005a485c96de621" category="list-text">使用者必須能夠存取 *nv show* 命令。這可以透過執行來新增<block ref="d019363df09b88c795c1354553c6fe8f" prefix=" " category="inline-code"></block> 並將使用者取代為記錄收集的使用者。</block>
+  <block id="f9659d3e6fcf03c716c20b733c8e68fc" category="list-text">若要啟動記錄收集、請執行下列命令、以先前命令中使用的切換參數取代裝置。這會同時啟動兩種類型的記錄集合：詳細<block ref="db5eb84117d06047c97c9a0191b5fffe" prefix=" " category="inline-code"></block> 記錄和每小時的集合<block ref="cdcc32a064503184053bd2018d1c0e7e" prefix=" " category="inline-code"></block> 資料。</block>
+  <block id="b9c519617ddb8983725afb0a6830a2f9" category="paragraph">移除上一個記錄集合目錄和位於的 .tar 檔案<block ref="0793027f48f71fa4fc10baf29d75e685" prefix=" " category="inline-code"></block> 在交換器上。</block>
+  <block id="c2d06740bdd189b6a9e5c66037c2fca6" category="list-text">驗證新建立的 SNMPv3 使用者所查詢的序號、是否與 CSHM 輪詢期間結束後上一步所述的序號相同。</block>
+  <block id="d185f7c4f8a7ee7fcc5143d7f639a45b" category="sidebar">設定用於監控的 SNMPv3</block>
 </blocks>
