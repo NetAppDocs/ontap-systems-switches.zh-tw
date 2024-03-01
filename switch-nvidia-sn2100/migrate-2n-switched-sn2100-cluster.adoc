@@ -84,16 +84,18 @@ IMPORTANT: 請參閱 link:cabling-considerations-sn2100-cluster.html["檢閱纜�
 
 === 步驟2：設定連接埠和纜線
 
+[role="tabbed-block"]
+====
+.Cumulus Linux 4.4.x
+--
 . 在新的叢集交換器sw1和SW2上停用所有面向節點的連接埠（非ISL連接埠）。
 +
 您不得停用ISL連接埠。
 
 +
-.顯示範例
-[%collapsible]
-====
 下列命令會停用交換器sw1和SW2上的節點對準連接埠：
 
++
 [listing, subs="+quotes"]
 ----
 cumulus@sw1:~$ *net add interface swp1s0-3, swp2s0-3, swp3-14 link down*
@@ -104,17 +106,14 @@ cumulus@sw2:~$ *net add interface swp1s0-3, swp2s0-3, swp3-14 link down*
 cumulus@sw2:~$ *net pending*
 cumulus@sw2:~$ *net commit*
 ----
-====
 . 驗證兩個SN2100交換器sw1和SW2之間的ISL和ISL實體連接埠是否在交換器swp15和swp16上開啟：
 +
 `net show interface`
 
 +
-.顯示範例
-[%collapsible]
-====
-下列範例顯示交換器sw1上的ISL連接埠為開啟：
+下列命令顯示交換器 sw1 和 SW2 上的 ISL 連接埠為開啟狀態：
 
++
 [listing, subs="+quotes"]
 ----
 cumulus@sw1:~$ *net show interface*
@@ -125,13 +124,7 @@ State  Name       Spd   MTU    Mode        LLDP         Summary
 ...
 UP     swp15      100G  9216   BondMember  sw2 (swp15)  Master: cluster_isl(UP)
 UP     swp16      100G  9216   BondMember  sw2 (swp16)  Master: cluster_isl(UP)
-----
-+以下範例顯示交換器SW2上的ISL連接埠為開啟狀態：
 
-+
-
-[listing, subs="+quotes"]
-----
 cumulus@sw2:~$ *net show interface*
 
 State  Name       Spd   MTU    Mode        LLDP         Summary
@@ -141,8 +134,65 @@ State  Name       Spd   MTU    Mode        LLDP         Summary
 UP     swp15      100G  9216   BondMember  sw1 (swp15)  Master: cluster_isl(UP)
 UP     swp16      100G  9216   BondMember  sw1 (swp16)  Master: cluster_isl(UP)
 ----
+
+
+--
+.Cumulus Linux 5.x
+--
+. 停用新叢集交換器 sw1 和 SW2 上的所有節點對端口（非 ISL 連接埠）。
++
+您不得停用ISL連接埠。
+
++
+下列命令會停用交換器sw1和SW2上的節點對準連接埠：
+
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *nv set interface swp1s0-3,swp2s0-3,swp3-14 link state down*
+cumulus@sw1:~$ *nv config apply*
+cumulus@sw1:~$ *nv save*
+
+cumulus@sw2:~$ *nv set interface swp1s0-3,swp2s0-3,swp3-14 link state down*
+cumulus@sw2:~$ *nv config apply*
+cumulus@sw2:~$ *nv save*
+----
+. 驗證兩個SN2100交換器sw1和SW2之間的ISL和ISL實體連接埠是否在交換器swp15和swp16上開啟：
++
+`nv show interface`
+
++
+下列範例顯示交換器 sw1 和 SW2 上的 ISL 連接埠為開啟狀態：
+
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *nv show interface*
+
+Interface     MTU    Speed  State  Remote Host  Remote Port                          Type    Summary
+------------- ------ -----  ------ ------------ ------------------------------------ ------- -------
+...
+...
++ swp14       9216          down                                                     swp
++ swp15       9216   100G   up     ossg-rcf1    Intra-Cluster Switch ISL Port swp15  swp
++ swp16       9216   100G   up     ossg-rcf2    Intra-Cluster Switch ISL Port swp16  swp
+
+
+cumulus@sw2:~$ *nv show interface*
+
+Interface     MTU    Speed  State  Remote Host  Remote Port                          Type    Summary
+------------- ------ -----  ------ ------------ ------------------------------------ ------- -------
+...
+...
++ swp14       9216          down                                                     swp
++ swp15       9216   100G   up     ossg-rcf1    Intra-Cluster Switch ISL Port swp15  swp
++ swp16       9216   100G   up     ossg-rcf2    Intra-Cluster Switch ISL Port swp16  swp
+----
+
+
+--
 ====
-. 驗證所有叢集連接埠是否正常運作：
+. [[step3]] 確認所有叢集連接埠均已啟動：
 +
 「網路連接埠展示」
 
@@ -230,28 +280,30 @@ Cluster
 。 https://hwu.netapp.com/SWITCH/INDEX["交換器Hardware Universe"^] 包含纜線的詳細資訊。
 
 . 從節點2上的叢集連接埠e3a拔下纜線、然後使用SN2100交換器所支援的適當纜線、將e3a連接至叢集交換器sw1上的連接埠4。
-. 在交換器sw1上、啟用所有面向節點的連接埠。
-+
-.顯示範例
-[%collapsible]
-====
-下列命令可啟用交換器sw1上的所有面向節點的連接埠：
 
+
+[role="tabbed-block"]
+====
+.Cumulus Linux 4.4.x
+--
+. [[step8]] 在交換器 sw1 上、啟用所有節點對準的連接埠。
++
+下列命令可在交換器 sw1 上啟用所有面對節點的連接埠。
+
++
 [listing, subs="+quotes"]
 ----
 cumulus@sw1:~$ *net del interface swp1s0-3, swp2s0-3, swp3-14 link down*
 cumulus@sw1:~$ *net pending*
 cumulus@sw1:~$ *net commit*
 ----
-====
-. 在交換器sw1上、確認所有連接埠都已啟動：
+
+
+. [[STEST] 在交換器 sw1 上、確認所有連接埠均已啟動：
 +
 `net show interface all`
 
 +
-.顯示範例
-[%collapsible]
-====
 [listing, subs="+quotes"]
 ----
 cumulus@sw1:~$ *net show interface all*
@@ -275,8 +327,58 @@ UP     swp15     100G  9216   BondMember  swp15          Master: cluster_isl(UP)
 UP     swp16     100G  9216   BondMember  swp16          Master: cluster_isl(UP)
 ...
 ----
+
+
+--
+.Cumulus Linux 5.x
+--
+. [[step8]] 在交換器 sw1 上、啟用所有節點對準的連接埠。
++
+下列命令可在交換器 sw1 上啟用所有面對節點的連接埠。
+
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *nv unset interface swp1s0-3,swp2s0-3,swp3-14 link state down*
+cumulus@sw1:~$ *nv config apply*
+cumulus@sw1:~$ *nv config save*
+----
+
+
+. [[step9] 在交換器 sw1 上、確認所有連接埠都已啟動：
++
+`nv show interface`
+
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *nv show interface*
+
+Interface    State  Speed  MTU    Type      Remote Host                 Remote Port  Summary
+-----------  -----  -----  -----  --------  --------------------------  -----------  ----------
+...
+...
+swp1s0       up     10G    9216   swp       odq-a300-1a                         e0a
+swp1s1       up     10G    9216   swp       odq-a300-1b                         e0a
+swp1s2       down   10G    9216   swp
+swp1s3       down   10G    9216   swp
+swp2s0       down   25G    9216   swp
+swp2s1       down   25G    9216   swp
+swp2s2       down   25G    9216   swp
+swp2s3       down   25G    9216   swp
+swp3         down          9216   swp
+swp4         down          9216   swp
+...
+...
+swp14        down          9216   swp
+swp15        up     100G   9216   swp       ossg-int-rcf10                    swp15
+swp16        up     100G   9216   swp       ossg-int-rcf10                    swp16
+----
+
+
+--
 ====
-. 驗證所有叢集連接埠是否正常運作：
+. [[step10]] 確認所有叢集連接埠均已啟動：
 +
 「網路連接埠show -IPSpace Cluster」
 
@@ -331,28 +433,28 @@ node2                true    true          false
 ====
 . 從節點1上的叢集連接埠e3b拔下纜線、然後使用SN2100交換器所支援的適當纜線、將e3b連接至叢集交換器SW2上的連接埠3。
 . 從節點2上的叢集連接埠e3b拔下纜線、然後使用SN2100交換器所支援的適當纜線、將e3b連接至叢集交換器SW2上的連接埠4。
-. 在交換器SW2上、啟用所有面向節點的連接埠。
-+
-.顯示範例
-[%collapsible]
+
+
+[role="tabbed-block"]
 ====
+.Cumulus Linux 4.4.x
+--
+. [[step14] 在交換器 SW2 上、啟用所有面對節點的連接埠。
++
 下列命令可在交換器SW2上啟用面向節點的連接埠：
 
++
 [listing, subs="+quotes"]
 ----
 cumulus@sw2:~$ *net del interface swp1s0-3, swp2s0-3, swp3-14 link down*
 cumulus@sw2:~$ *net pending*
 cumulus@sw2:~$ *net commit*
 ----
-====
-. 在交換器SW2上、確認所有連接埠都正常運作：
+. [[step15]] 在交換器 SW2 上、確認所有連接埠都已啟動：
 +
 `net show interface all`
 
 +
-.顯示範例
-[%collapsible]
-====
 [listing, subs="+quotes"]
 ----
 cumulus@sw2:~$ *net show interface all*
@@ -376,16 +478,16 @@ UP     swp15     100G  9216   BondMember  swp15          Master: cluster_isl(UP)
 UP     swp16     100G  9216   BondMember  swp16          Master: cluster_isl(UP)
 ...
 ----
-====
-. 在交換器sw1和SW2上、確認兩個節點都有一個連接到每個交換器的連線：
+
+
+. [[step16]] 在交換器 sw1 和 SW2 上、確認兩個節點都有一個連線到每個交換器：
 +
 `net show lldp`
 
 +
-.顯示範例
-[%collapsible]
-====
 下列範例顯示交換器sw1和SW2的適當結果：
+
+
 
 [listing, subs="+quotes"]
 ----
@@ -407,10 +509,112 @@ swp4       100G   Trunk/L2    node2              e3b
 swp15      100G   BondMember  sw1                swp15
 swp16      100G   BondMember  sw1                swp16
 ----
-====
-. 顯示叢集中探索到的網路裝置相關資訊：
+--
+.Cumulus Linux 5.x
+--
+. [[step14] 在交換器 SW2 上、啟用所有面對節點的連接埠。
 +
-`net device-discovery show -protocol lldp`
+下列命令可在交換器SW2上啟用面向節點的連接埠：
+
++
+[listing, subs="+quotes"]
+----
+cumulus@sw2:~$ *nv unset interface swp1s0-3,swp2s0-3,swp3-14 link state down*
+cumulus@sw2:~$ *nv config apply*
+cumulus@sw2:~$ *nv config save*
+----
+. [[step15]] 在交換器 SW2 上、確認所有連接埠都已啟動：
++
+`nv show interface`
+
++
+[listing, subs="+quotes"]
+----
+cumulus@sw2:~$ *nv show interface*
+
+Interface    State  Speed  MTU    Type      Remote Host                 Remote Port  Summary
+-----------  -----  -----  -----  --------  --------------------------  -----------  ----------
+...
+...
+swp1s0       up     10G    9216   swp       odq-a300-1a                         e0a
+swp1s1       up     10G    9216   swp       odq-a300-1b                         e0a
+swp1s2       down   10G    9216   swp
+swp1s3       down   10G    9216   swp
+swp2s0       down   25G    9216   swp
+swp2s1       down   25G    9216   swp
+swp2s2       down   25G    9216   swp
+swp2s3       down   25G    9216   swp
+swp3         down          9216   swp
+swp4         down          9216   swp
+...
+...
+swp14        down          9216   swp
+swp15        up     100G   9216   swp       ossg-int-rcf10                    swp15
+swp16        up     100G   9216   swp       ossg-int-rcf10                    swp16
+----
+
+
+. [[step16]] 在交換器 sw1 和 SW2 上、確認兩個節點都有一個連線到每個交換器：
++
+`nv show interface --view=lldp`
+
++
+下列範例顯示交換器 sw1 和 SW2 的適當結果：
+
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *nv show interface --view=lldp*
+
+Interface    Speed  Type      Remote Host                         Remote Port
+-----------  -----  --------  ----------------------------------  -----------
+...
+...
+swp1s0       10G    swp       odq-a300-1a                         e0a
+swp1s1       10G    swp       odq-a300-1b                         e0a
+swp1s2       10G    swp
+swp1s3       10G    swp
+swp2s0       25G    swp
+swp2s1       25G    swp
+swp2s2       25G    swp
+swp2s3       25G    swp
+swp3                swp
+swp4                swp
+...
+...
+swp14               swp
+swp15        100G   swp       ossg-int-rcf10                      swp15
+swp16        100G   swp       ossg-int-rcf10                      swp16
+
+cumulus@sw2:~$ *nv show interface --view=lldp*
+
+Interface    Speed  Type      Remote Host                         Remote Port
+-----------  -----  --------  ----------------------------------  -----------
+...
+...
+swp1s0       10G    swp       odq-a300-1a                         e0a
+swp1s1       10G    swp       odq-a300-1b                         e0a
+swp1s2       10G    swp
+swp1s3       10G    swp
+swp2s0       25G    swp
+swp2s1       25G    swp
+swp2s2       25G    swp
+swp2s3       25G    swp
+swp3                swp
+swp4                swp
+...
+...
+swp14               swp
+swp15        100G   swp       ossg-int-rcf10                      swp15
+swp16        100G   swp       ossg-int-rcf10                      swp16
+----
+
+
+--
+====
+. [[step17]] 顯示叢集中探索到的網路裝置相關資訊：
++
+`network device-discovery show -protocol lldp`
 
 +
 .顯示範例
@@ -591,7 +795,7 @@ RPC status:
 2 paths up, 0 paths down (udp check)
 ----
 ====
-. 為乙太網路交換器健全狀況監視器記錄收集功能建立密碼：
+. 若要設定記錄收集、請針對每個交換器執行下列命令。系統會提示您輸入用於記錄收集的交換器名稱、使用者名稱和密碼。
 +
 「系統交換器乙太網路記錄設定密碼」
 
@@ -625,7 +829,7 @@ Enter the password: *<enter switch password>*
 Enter the password again: *<enter switch password>*
 ----
 ====
-. 啟用乙太網路交換器健全狀況監視器記錄收集功能。
+. 若要啟動記錄收集、請執行下列命令、以先前命令中使用的切換參數取代裝置。這會同時啟動記錄收集的兩種類型：詳細的 * 支援 * 記錄檔和 * 定期 * 資料的每小時集合。
 +
 `system switch ethernet log modify -device _<switch-name>_ -log-request true`
 
@@ -635,13 +839,13 @@ Enter the password again: *<enter switch password>*
 ====
 [listing, subs="+quotes"]
 ----
-cluster1::*> *system switch ethernet log modify -device cs1 -log-request true*
+cluster1::*> *system switch ethernet log modify -device sw1 -log-request true*
 
 Do you want to modify the cluster switch log collection configuration? {y|n}: [n] *y*
 
 Enabling cluster switch log collection.
 
-cluster1::*> *system switch ethernet log modify -device cs2 -log-request true*
+cluster1::*> *system switch ethernet log modify -device sw2 -log-request true*
 
 Do you want to modify the cluster switch log collection configuration? {y|n}: [n] *y*
 
@@ -663,15 +867,15 @@ Enabling cluster switch log collection.
 cluster1::*> system switch ethernet log show
 Log Collection Enabled: true
 
-Index  Switch                       Log Timestamp        Status
------- ---------------------------- -------------------  ---------    
-1      cs1 (b8:ce:f6:19:1b:42)      4/29/2022 03:05:25   complete   
-2      cs2 (b8:ce:f6:19:1b:96)      4/29/2022 03:07:42   complete
+Index  Switch                       Log Timestamp        Status
+------ ---------------------------- -------------------- ---------
+1      sw1 (b8:ce:f6:19:1b:42)      4/29/2022 03:05:25   complete
+2      sw2 (b8:ce:f6:19:1b:96)      4/29/2022 03:07:42   complete
 ----
 ====
 +
 
-CAUTION: 如果這些命令中有任何一個傳回錯誤、或記錄集合未完成、請聯絡 NetApp 支援部門。
+CAUTION: 如果這些命令中有任何一個出現錯誤、請聯絡NetApp支援部門。
 
 . 將權限層級變更回管理：
 +
