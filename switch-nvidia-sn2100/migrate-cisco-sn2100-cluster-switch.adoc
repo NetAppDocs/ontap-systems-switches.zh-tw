@@ -68,9 +68,20 @@ NOTE: 如果您要變更 AFF A800 或 AFF C800 系統上 e0a 和 e1a 叢集連�
 * 「cluster1：*：>」提示會指出叢集的名稱。
 * 此程序中使用的叢集連接埠為_e3a_和_e3c_。
 * 中斷連接埠的格式為：swp[port] s[中斷 連接埠0-3]。例如、swp1上的四個中斷連接埠分別是_swp1s0_、_swp1s1_、_swp1s2_和_swp1s3_。
-* 交換器C2先由交換器SW2取代、然後由交換器sw1取代交換器C1。
+
+
+.關於這項工作
+本程序涵蓋下列案例：
+
+* 交換機 C2 首先由交換機 SW2 取代。
 +
+** 關閉連接至叢集節點的連接埠。必須同時關閉所有連接埠、以避免叢集不穩定。
 ** 然後從C2中斷連接節點與C2之間的纜線、並重新連接至SW2。
+
+
+* 交換器 C1 由交換器 sw1 取代。
++
+** 關閉連接至叢集節點的連接埠。必須同時關閉所有連接埠、以避免叢集不穩定。
 ** 然後、節點與C1之間的纜線會從C1中斷開、並重新連接至sw1。
 
 
@@ -98,17 +109,6 @@ NOTE: 如果您要變更 AFF A800 或 AFF C800 系統上 e0a 和 e1a 叢集連�
 +
 「網路介面修改-vserver叢集-lIF *-auta-fRevert假」
 
-+
-.顯示範例
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert false*
-
-Warning: Disabling the auto-revert feature of the cluster logical interface may effect the availability of your cluster network. Are you sure you want to continue? {y|n}: *y*
-----
-====
 
 
 
@@ -177,7 +177,7 @@ Cluster
 ====
 
 
-. 每個節點上的叢集連接埠都會以下列方式（從節點的角度）、使用命令連線至現有的叢集交換器：
+. 每個節點上的叢集連接埠會以下列方式連接至現有的叢集交換器（從節點的角度來看）：
 +
 `network device-discovery show -protocol lldp`
 
@@ -237,7 +237,7 @@ c1                    Eth1/31       175    S I s       N3K-C3232C       Eth1/31
 c1                    Eth1/32       175    S I s       N3K-C3232C       Eth1/32
 ----
 ====
-. 請使用下列命令、確保叢集網路具備完整連線能力：
+. 確保叢集網路具備完整連線能力：
 +
 「叢集ping叢集節點節點名稱」
 
@@ -274,11 +274,8 @@ RPC status:
 2 paths up, 0 paths down (udp check)
 ----
 ====
-. 在交換器C2上、關閉連接至節點叢集連接埠的連接埠。
+. 在交換器 C2 上、關閉連接至節點叢集連接埠的連接埠、以便容錯移轉叢集生命期。
 +
-.顯示範例
-[%collapsible]
-====
 [listing, subs="+quotes"]
 ----
 (c2)# *configure*
@@ -290,7 +287,6 @@ Enter configuration commands, one per line. End with CNTL/Z.
 (c2)(Config)# *exit*
 (c2)#
 ----
-====
 . 使用NVIDIA SN2100支援的適當纜線、將節點叢集連接埠從舊交換器C2移至新交換器SW2。
 . 顯示網路連接埠屬性：
 +
@@ -363,11 +359,8 @@ UP     swp15        100G  9216   BondMember  sw1 (swp15)       Master: cluster_i
 UP     swp16        100G  9216   BondMember  sw1 (swp16)       Master: cluster_isl(UP)
 ----
 ====
-. 在交換器C1上、關閉連接至節點叢集連接埠的連接埠。
+. 在交換器 C1 上、關閉連接到節點叢集連接埠的連接埠、以便容錯移轉叢集生命期。
 +
-.顯示範例
-[%collapsible]
-====
 [listing, subs="+quotes"]
 ----
 (c1)# *configure*
@@ -379,7 +372,6 @@ Enter configuration commands, one per line. End with CNTL/Z.
 (c1)(Config)# *exit*
 (c1)#
 ----
-====
 . 使用NVIDIA SN2100支援的適當纜線、將節點叢集連接埠從舊交換器C1移至新交換器sw1。
 . 驗證叢集的最終組態：
 +
@@ -530,8 +522,10 @@ Cluster
             node2_clus2  up/up    169.254.19.183/16  node2         e3b     true
 ----
 ====
-. 為乙太網路交換器健全狀況監視器記錄收集功能建立密碼：
-`system switch ethernet log setup-password`
+. 若要設定記錄收集、請針對每個交換器執行下列命令。系統會提示您輸入用於記錄收集的交換器名稱、使用者名稱和密碼。
++
+「系統交換器乙太網路記錄設定密碼」
+
 +
 .顯示範例
 [%collapsible]
@@ -542,12 +536,12 @@ cluster1::*> *system switch ethernet log setup-password*
 Enter the switch name: *<return>*
 The switch name entered is not recognized.
 Choose from the following list:
-*cs1*
-*cs2*
+*sw1*
+*sw2*
 
 cluster1::*> *system switch ethernet log setup-password*
 
-Enter the switch name: *cs1*
+Enter the switch name: *sw1*
 Would you like to specify a user other than admin for log collection? {y|n}: *n*
 
 Enter the password: *<enter switch password>*
@@ -555,14 +549,14 @@ Enter the password again: *<enter switch password>*
 
 cluster1::*> *system switch ethernet log setup-password*
 
-Enter the switch name: *cs2*
+Enter the switch name: *sw2*
 Would you like to specify a user other than admin for log collection? {y|n}: *n*
 
 Enter the password: *<enter switch password>*
 Enter the password again: *<enter switch password>*
 ----
 ====
-. 啟用乙太網路交換器健全狀況監視器記錄收集功能。
+. 若要啟動記錄收集、請執行下列命令、以先前命令中使用的切換參數取代裝置。這會同時啟動記錄收集的兩種類型：詳細的 * 支援 * 記錄檔和 * 定期 * 資料的每小時集合。
 +
 `system switch ethernet log modify -device _<switch-name>_ -log-request true`
 
@@ -572,13 +566,13 @@ Enter the password again: *<enter switch password>*
 ====
 [listing, subs="+quotes"]
 ----
-cluster1::*> *system switch ethernet log modify -device cs1 -log-request true*
+cluster1::*> *system switch ethernet log modify -device sw1 -log-request true*
 
 Do you want to modify the cluster switch log collection configuration? {y|n}: [n] *y*
 
 Enabling cluster switch log collection.
 
-cluster1::*> *system switch ethernet log modify -device cs2 -log-request true*
+cluster1::*> *system switch ethernet log modify -device sw2 -log-request true*
 
 Do you want to modify the cluster switch log collection configuration? {y|n}: [n] *y*
 
@@ -602,8 +596,8 @@ Log Collection Enabled: true
 
 Index  Switch                       Log Timestamp        Status
 ------ ---------------------------- -------------------  ---------    
-1      cs1 (b8:ce:f6:19:1b:42)      4/29/2022 03:05:25   complete   
-2      cs2 (b8:ce:f6:19:1b:96)      4/29/2022 03:07:42   complete
+1      sw1 (b8:ce:f6:19:1b:42)      4/29/2022 03:05:25   complete   
+2      sw2 (b8:ce:f6:19:1b:96)      4/29/2022 03:07:42   complete
 ----
 ====
 +

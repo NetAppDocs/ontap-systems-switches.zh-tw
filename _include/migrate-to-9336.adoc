@@ -51,7 +51,24 @@ image::../media/Initial_setup.png[初始交換器設定]
 .關於這項工作
 此程序需要同時使用ONTAP 支援指令和 https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Nexus 9000系列交換器"^] 命令；ONTAP 除非另有說明、否則會使用指令。
 
-在此程序期間、不需要運作中的交換器間連結（ISL）。這是因為RCF版本變更可能會暫時影響ISL連線。為確保叢集作業不中斷、下列程序會在目標交換器上執行步驟時、將所有叢集生命體移轉至作業夥伴交換器。
+本程序涵蓋下列案例：
+
+* 交換器 CS2 會先由交換器 CS2 取代 - 新的。
++
+** 關閉連接至叢集節點的連接埠。必須同時關閉所有連接埠、以避免叢集不穩定。
+** 然後、節點與 CS2 之間的纜線會從 CS2 中斷連線、並重新連線至 CS2-new 。
+
+
+* 交換器 CS1 由交換器 CS1-new 取代。
++
+** 關閉連接至叢集節點的連接埠。必須同時關閉所有連接埠、以避免叢集不穩定。
+** 然後、節點與 CS1 之間的纜線會從 CS1 中斷連線、並重新連線至 CS1-new 。
+
+
+
+
+
+NOTE: 在此程序期間、不需要運作中的交換器間連結（ISL）。這是因為RCF版本變更可能會暫時影響ISL連線。為確保叢集作業不中斷、下列程序會在目標交換器上執行步驟時、將所有叢集生命體移轉至作業夥伴交換器。
 
 
 
@@ -228,26 +245,16 @@ cs2                         cluster-network     10.233.205.93   N5K-C5596UP
 
 . 停用叢集生命體上的自動還原。
 +
-.顯示範例
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert false*
-----
-====
-. 在叢集交換器CS2上、關閉連接至節點叢集連接埠的連接埠：
+「網路介面修改-vserver叢集-lIF *-auta-fRevert假」
+
+. 在叢集交換器 CS2 上、關閉連接至節點叢集連接埠的連接埠、以便容錯移轉叢集生命期：
 +
-.顯示範例
-[%collapsible]
-====
 [listing, subs="+quotes"]
 ----
 cs2(config)# *interface eth1/1-1/2*
 cs2(config-if-range)# *shutdown*
 ----
-====
-. 驗證叢集LIF是否已移轉至叢集交換器CS1上裝載的連接埠。這可能需要幾秒鐘的時間。
+. 驗證叢集生命期是否已容錯移轉至叢集交換器 CS1 上所主控的連接埠。這可能需要幾秒鐘的時間。
 +
 「網路介面show -vserver叢集」
 
@@ -351,14 +358,14 @@ node2      /cdp
 +
 驗證移動的叢集連接埠是否將CS2-new交換器視為鄰近端點。
 
-. 從交換器CS2的觀點確認交換器連接埠連線：
+. 從交換器 CS2-new's 的觀點來確認交換器連接埠連線：
 +
 [listing, subs="+quotes"]
 ----
 cs2-new# *show interface brief*
 cs2-new# *show cdp neighbors*
 ----
-. 在叢集交換器CS1上、關閉連接至節點叢集連接埠的連接埠。下列範例使用步驟7的介面輸出範例。
+. 在叢集交換器 CS1 上、關閉連接至節點叢集連接埠的連接埠、以便容錯移轉叢集生命負載。下列範例使用步驟7的介面輸出範例。
 +
 [listing, subs="+quotes"]
 ----
@@ -368,7 +375,7 @@ cs1(config-if-range)# *shutdown*
 +
 所有叢集生命體都會移至CS2新交換器。
 
-. 驗證叢集LIF是否已移轉至交換器CS2-new上裝載的連接埠。這可能需要幾秒鐘的時間：
+. 確認叢集生命體已容錯移轉至交換器 CS2-new 上的主控連接埠。這可能需要幾秒鐘的時間：
 +
 「網路介面show -vserver叢集」
 
@@ -471,17 +478,13 @@ node2      /cdp
 +
 驗證移動的叢集連接埠是否將CS1-new交換器視為鄰近端點。
 
-. 從交換器CS1-New的觀點來確認交換器連接埠連線：
+. 從交換器 CS1-new's 的觀點來確認交換器連接埠連線：
 +
-.顯示範例
-[%collapsible]
-====
 [listing, subs="+quotes"]
 ----
 cs1-new# *show interface brief*
 cs1-new# *show cdp neighbors*
 ----
-====
 . 確認CS1-new與CS2-new之間的ISL仍可正常運作：
 +
 「How port-channel Summary」
@@ -531,14 +534,8 @@ Group Port-       Type     Protocol  Member Ports
 
 . 在叢集生命體上啟用自動還原。
 +
-.顯示範例
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert true*
-----
-====
+「網路介面修改-vserver叢集-lif*-auta-f還原 為真」
+
 . 驗證叢集生命區是否已還原至其主連接埠（這可能需要一分鐘時間）：
 +
 「網路介面show -vserver叢集」

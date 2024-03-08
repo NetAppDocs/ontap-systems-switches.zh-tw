@@ -1035,7 +1035,6 @@
   <block id="300c4a8af362f43878948de70117255e" category="paragraph">每個LIF都應顯示為「狀態管理/作業者」、而「IS主頁」則顯示為「真」。</block>
   <block id="59116f59872c085262f1a68785328de0" category="list-text">每個節點上的叢集連接埠都會以下列方式（從節點的角度）、使用命令連線至現有的叢集交換器：</block>
   <block id="f957cdd05b2a3efc40f23d576fbf6ff6" category="list-text">叢集連接埠和交換器的連接方式如下（從交換器的觀點來看）：</block>
-  <block id="3513778183f196c22ad19d3ad8153592" category="list-text">請使用下列命令、確保叢集網路具備完整連線能力：</block>
   <block id="990838b9b76e69aee53a16fbaf6802e0" category="list-text">在連接埠E1/41-48（C1與CS1之間）的cs1on上設定暫用ISL。</block>
   <block id="48df2fb4a9556ac37edec166e7e858f9" category="paragraph">下列範例顯示如何在C1和CS1上設定新的ISL：</block>
   <block id="2aa6bce99f388363decd09b81d00eb7d" category="list-text">從C2的連接埠E1/41至48拔下ISL纜線、並將纜線連接至CS1的連接埠E1/41至48。</block>
@@ -1570,7 +1569,6 @@
   <block id="30530896511238b69b0e6acc7e04d6ce" category="list-text">驗證所有介面是否都顯示「true」表示「is Home」：</block>
   <block id="920dd0f6e71089afe68eba9aa2f22c90" category="paragraph">以下範例顯示、節點1和節點2上的所有l生命 都已啟動、而且「原為主目錄」結果為「真」：</block>
   <block id="470e1e7d03d4911b1e5ad8bf036ca8cb" category="inline-link">NetApp知識庫文章：如何在排定的維護時間內禁止自動建立案例</block>
-  <block id="48cd97dc0d15293354643e695aa2cd19" category="summary">叢集交換器健全狀況監控記錄收集功能可用於收集ONTAP 資訊中與交換器相關的記錄檔。您必須確定已使用Bs-53248叢集交換器CLI設定環境、如此處所述。</block>
   <block id="59ed8d797343a87748211be365bd1d90" category="list-text">產生SSH金鑰：</block>
   <block id="83a0e3bf9dd48caad05146cc29f81e6b" category="list-text">確認SSH已啟用：</block>
   <block id="82c7b5069d64f95a2a115dff1c9ad171" category="doc">安裝叢集交換器健全狀況監視器（CSHM）組態檔</block>
@@ -2248,14 +2246,10 @@
   <block id="280a3fe80d664dbb11b34f620eaef991" category="list-text">叢集LIF名稱為*節點1_clus1*、節點1為*節點1_clus2*、節點2為*節點2_clus1*、節點2為*節點2_clus2*。</block>
   <block id="c2bb2ae34a9db0e318c25b32c07dd6d5" category="list-text">* cluster1：：*&gt;*提示會指出叢集的名稱。</block>
   <block id="1a0894513362fda649e11ba9de926b82" category="list-text">確定每個叢集連接埠的管理或作業狀態。</block>
-  <block id="819ff57f464e039de1c480b406150b87" category="list-text">在叢集交換器CS2上、關閉連接至節點叢集連接埠的連接埠：</block>
   <block id="be6163ad0c362d632b28f98dea1fdaaa" category="paragraph">所有移除的叢集連接埠都應為上移。</block>
   <block id="d0141bcaf704f75f043a7384708a3131" category="paragraph">驗證移動的叢集連接埠是否將CS2-new交換器視為鄰近端點。</block>
-  <block id="f53f913adacde30730136e7153afce35" category="list-text">從交換器CS2的觀點確認交換器連接埠連線：</block>
-  <block id="c4fb5fab435d358d1b3a68ec74352416" category="list-text">在叢集交換器CS1上、關閉連接至節點叢集連接埠的連接埠。下列範例使用步驟7的介面輸出範例。</block>
   <block id="8c61118abc6e9e30fd4469d362e96e00" category="paragraph">所有叢集生命體都會移至CS2新交換器。</block>
   <block id="2a5fc0afbcb2299e24c73a909b297e93" category="paragraph">驗證移動的叢集連接埠是否將CS1-new交換器視為鄰近端點。</block>
-  <block id="35d736ae56a7e094d4d2c2786669f8ca" category="list-text">從交換器CS1-New的觀點來確認交換器連接埠連線：</block>
   <block id="9e25219bfef39dc2d94805b599244f8d" category="open-title">更新版本ONTAP</block>
   <block id="c341f6ea60d7e8508c7d6cd8d529fd71" category="paragraph">使用下列兩個命令啟用乙太網路交換器健全狀況監視器記錄收集功能、以收集交換器相關的記錄檔：「System Switch Ethernet log setup-password」（系統交換器乙太網路記錄啟用-收集）和「System Switch Ethernet log enable - collection」（系統交換器乙太網路記錄啟用-收集）</block>
   <block id="372aff3164b35ebb97a99a633d4262a4" category="paragraph">*注意：*您需要交換器上*管理*使用者的密碼。</block>
@@ -2944,7 +2938,6 @@
   <block id="0e6faba2ce2d4a2a73875d111bfcdded" category="list-text">驗證叢集LIF是否已移轉至叢集交換器CS1上裝載的連接埠。這可能需要幾秒鐘的時間。</block>
   <block id="9d86c44ae37d2be813c8c1b5c9454105" category="list-text">確認移至CS2-new的網路連線健全狀況：</block>
   <block id="e0b5dd148b27eba7b37861e24a42cd95" category="list-text">檢查叢集連接埠上的鄰近資訊：</block>
-  <block id="8b7e96c4a6ec3f09a7abd139ff295c0f" category="list-text">驗證叢集LIF是否已移轉至交換器CS2-new上裝載的連接埠。這可能需要幾秒鐘的時間：</block>
   <block id="cddcb87f9d8427437485fbaad0309f0d" category="list-text">確認移至CS1-new的網路連線健全狀況：</block>
   <block id="800c1c0a764eb859a7e53df87ed00481" category="list-text">確認CS1-new與CS2-new之間的ISL仍可正常運作：</block>
   <block id="f8a26b1330fe6b7b741993630dd932e2" category="list-text">驗證叢集生命區是否已還原至其主連接埠（這可能需要一分鐘時間）：</block>
@@ -4428,17 +4421,12 @@
   <block id="d3be97c754d4396e13d0406452fc2fb0" category="list-text">您已規劃、移轉並記錄從節點到 Cisco 9336C-FX2 叢集交換器的 40GbE 和 100GbE 連線。</block>
   <block id="9d9d3ff89e1f212fa1f66986336ed0c1" category="list-text">現有的 CN1610 叢集交換器為 _C1_ 和 _C2_ 。</block>
   <block id="584cd7559b010eb68304bdb5ed2c60d2" category="list-text">全新 9336C-FX2 叢集交換器為 _CS1_ 和 _CS2_ 。</block>
-  <block id="bf50ad9c8205601ab87f52d53897d187" category="list-text">交換機 C2 先由交換機 CS2 取代，然後由交換機 CS1 取代交換機 C1 。</block>
-  <block id="336662c525771f82353eb880f4507911" category="list-text">然後、節點與 C2 之間的纜線會從 C2 中斷連線、並重新連接至 CS2</block>
   <block id="ba8f22a022d24c1e6a519a5e6a867762" category="list-text">然後、節點與 C1 之間的纜線會從 C1 中斷連線、並重新連接至 CS1 。</block>
-  <block id="413712aa4f400acdac067e9bcde8736d" category="list-text">在交換器 C2 上、關閉連接到節點叢集連接埠的連接埠。</block>
   <block id="d14fe42ffba032ed843b9363b0fb3908" category="list-text">使用 Cisco 9336C-FX2 支援的適當纜線、將節點叢集連接埠從舊的交換器 C2 移至新的交換器 CS2 。</block>
   <block id="56c5592f9041f8677e5bee9e1ae96f0a" category="list-text">在交換器 CS2 上、確認所有節點叢集連接埠均已啟動：</block>
-  <block id="f2c6d0da02e9db5edf3d6c608d708936" category="list-text">在交換器 C1 上、關閉連接到節點叢集連接埠的連接埠。</block>
   <block id="cc0c96fa4e2abab8a22a057701a64895" category="list-text">使用 Cisco 9336C-FX2 支援的適當纜線、將節點叢集連接埠從舊的交換器 C1 移至新的交換器 CS1 。</block>
   <block id="ba04a36ca69927056bab3bba36362e9b" category="list-text">在交換器 CS1 和 CS2 上、確認所有節點叢集連接埠均已啟動：</block>
   <block id="d9dbaab2b13b33007de8325a401de04b" category="sidebar">從 CN1610 叢集交換器移轉</block>
-  <block id="f82e463abb944d54e7eb997507aada97" category="list-text">為乙太網路交換器健全狀況監視器記錄收集功能建立密碼：<block ref="36ac3c1f3bae8142b5d110fb906ba03e" prefix=" " category="inline-code"></block></block>
   <block id="3da8b58ec29508478eb281950ce7a85f" category="list-text">啟用乙太網路交換器健全狀況監視器記錄收集功能。</block>
   <block id="55c09ca9257750665c75e5b587165519" category="paragraph"><block ref="e802bd77f148cffa22d9aa9e7d79d65d" prefix="" category="inline-code"></block></block>
   <block id="0eedc6e86bf0684694a5f74d12cd17d7" category="admonition">如果這些命令中有任何一個傳回錯誤、或記錄集合未完成、請聯絡 NetApp 支援部門。</block>
@@ -4452,16 +4440,12 @@
   <block id="10eb67b70ef8150836466766bdd3f2f8" category="list-text">在連接至現有叢集交換器的每個節點上顯示叢集連接埠：</block>
   <block id="fc7a60af0bed9304a4ca478877f91450" category="list-text">確認所有叢集連接埠都已存在<block ref="46c48bec0d282018b9d167eef7711b2c" prefix=" " category="inline-code"></block> 使用<block ref="741839f346d6e8126ae38ee76a96fd12" prefix=" " category="inline-code"></block> 狀態：</block>
   <block id="0be9e89f86499b3770f2ce9bad1ba0eb" category="list-text">[[step5]] 停用叢集生命週轉的自動還原功能。</block>
-  <block id="d9f832c61b11e8d4b59ef0ae25ac9dd6" category="list-text">驗證叢集生命期是否已移轉至叢集交換器 CL1 上託管的連接埠。這可能需要幾秒鐘的時間。</block>
   <block id="8884e29d4b490f2084dae5227ca847a4" category="list-text">確認移至 CS2 的網路連線健全狀況：</block>
   <block id="308cecb0e156959b9d08b434ef110588" category="paragraph">所有已移動的叢集連接埠都應該是<block ref="46c48bec0d282018b9d167eef7711b2c" prefix=" " category="inline-code"></block>。</block>
-  <block id="48281ee704bfb0f055c15fe754705f5a" category="paragraph">所有叢集生命都會移至 CS2 交換器。</block>
-  <block id="18a308037b50cae9759f1f49af5aed58" category="list-text">驗證叢集LIF是否已移轉至交換器CS2上裝載的連接埠。這可能需要幾秒鐘的時間：</block>
   <block id="f20b906cc8acf5d97550e7a24fd7c69b" category="list-text">將叢集節點連線纜線從 CL1 移至新的 CS1 交換器。</block>
   <block id="b7557e0e7f48313d82756b7481c1b1f6" category="list-text">確認移至 CS1 的網路連線健全狀況：</block>
   <block id="ce16551695d7120d532abead22bee8c2" category="list-text">確認 CS1 和 CS2 之間的 ISL 仍可運作：</block>
   <block id="b48ac462b57bcb2860eecd434bd2c80f" category="paragraph">從 ONTAP 9.8 開始、請使用命令：<block ref="b4720f8aa09f4e4b3a04e78c558b6c90" prefix=" " category="inline-code"></block></block>
-  <block id="3e1fd1b016d89d236712e513bee2a170" category="list-text">為乙太網路交換器健全狀況監視器記錄收集功能建立密碼。</block>
   <block id="079e7a1f80c26ff7b477dcbf014e4e70" category="list-text">啟用乙太網路交換器健全狀況監視器記錄收集功能：</block>
   <block id="aae263170b5a7f23d3045f8a2b09091f" category="paragraph">等待 10 分鐘、然後檢查記錄收集是否完成：</block>
   <block id="c9a1a82d3af3d53e5132a5ce6181fc18" category="list-text">Nexus 9336C-FX2 交換器上的部分連接埠已設定為以 10GbE 或 40GbE 執行。</block>
@@ -4537,14 +4521,9 @@
   <block id="368764dd3898433d38cff5ab40e268b0" category="sidebar">replace 交換器 _bes53248</block>
   <block id="b839c7212b07af22047708d290e9fc06" category="list-text">將 BS-53248 交換器上的部分連接埠設定為在 10GbE 執行。</block>
   <block id="c4a4e384df3331fa768c173d158b0aa5" category="list-text">從節點到 BS-53248 叢集交換器的 10GbE 連線能力已規劃、移轉及記錄。</block>
-  <block id="67b660e2046176252fca76261bc42667" category="list-text">在叢集交換器 CL2 上、關閉連接至節點叢集連接埠的連接埠：</block>
   <block id="e6530d0201fae7d6787fd28d58724819" category="list-text">將所有叢集節點連線纜線從舊版 CL2 交換器移至新的 CS2 交換器。</block>
-  <block id="74473ad9515a4da22aa5f01542722c5b" category="list-text">使用下列命令、從交換器 CS2 的觀點來確認交換器連接埠連線狀況良好：</block>
-  <block id="ca6f53e4266e008816889d83576a5877" category="list-text">在叢集交換器 CL1 上、關閉連接至節點叢集連接埠的連接埠。</block>
-  <block id="1dd6b9d779d28215b5d204a1be9c8b6a" category="list-text">使用下列命令、從交換器 CS1 的觀點來確認交換器連接埠連線狀況良好：</block>
   <block id="dae02701a0a247e1012b9b2832c32464" category="list-text">如果未自動移除已更換的 CN1610 交換器、請將其從叢集的交換器表中刪除：</block>
   <block id="c8b9229aed88be3704b6c26029b7ae94" category="paragraph">對於 ONTAP 9.7 及更早版本、請使用命令：<block ref="f055904a9fc3a4f0bc33aca13ecd2b2d" prefix=" " category="inline-code"></block></block>
-  <block id="b8590eb7d6b7365e1a0bee47b03d5b4f" category="admonition">若要啟用記錄收集功能、您必須執行 ONTAP 9.10.1P15 、 9.11.1P12 或 9.12.1 及更新版本、以及 EFOS 3.8.0.2 及更新版本。</block>
   <block id="517242a1c337699950aef05a38af45a0" category="sidebar">交換器 NVIDIA sn2100 叢集</block>
   <block id="3ed3b1cc0917edd8fddcdd478bb581fb" category="sidebar">交換器 - Cisco-9336c-FX2 儲存設備</block>
   <block id="701d9aab459b808d17f39aa5c50f97df" category="sidebar">交換器 NVIDIA sn2100 儲存設備</block>
@@ -4715,4 +4694,49 @@
   <block id="3d49c6a8040af00423280443bbe5d05f" category="paragraph"><block ref="913a5e09220539ba22f04cc8f2d2fe80" prefix="" category="inline-code"></block></block>
   <block id="9d6600c74c6f65eef63f8fe8e301ffef" category="paragraph">下列範例顯示交換器 sw1 和 SW2 的適當結果：</block>
   <block id="3510e8dd2306d7a2623d6253e5ee079b" category="list-text">[[step17]] 顯示叢集中探索到的網路裝置相關資訊：</block>
+  <block id="85ec13bf5591b128daa3a54ae368ba3c" category="paragraph">下列命令可在 Cisco 3232C 交換器上設定 SNMPv3 使用者名稱：</block>
+  <block id="5293a7c2493b5e9fa8261d30e6343464" category="list-text">若為 * 無驗證 * ：<block ref="4de90a5f2562588942e54211db55bbc8" prefix=" " category="inline-code"></block></block>
+  <block id="5ca43733e44b3aa36045aae712118a0c" category="list-text">對於 *MD5/SHA 驗證 * ：<block ref="8de8efe8209f40424b2f8182df3e0711" prefix=" " category="inline-code"></block></block>
+  <block id="5bdf8576a82b897f01268b182b208da7" category="list-text">對於採用 AES/DES 加密的 * MD5/SHA 驗證 * ：<block ref="7021d4581846b898d8f652c016aef25f" prefix=" " category="inline-code"></block></block>
+  <block id="3634ec349fe0ac8ede01e576a2ea0f9c" category="paragraph"><block ref="e13e2f89a8f9ef3b183db91662b40273" prefix="" category="inline-code"></block></block>
+  <block id="627d56d1b7897f4dcfcbb018bce61116" category="summary">叢集交換器健全狀況監控記錄收集功能可用於收集ONTAP 資訊中與交換器相關的記錄檔。您必須確定已使用 9336c-FX2 叢集交換器 CLI 設定環境、詳情請見此處。</block>
+  <block id="33bdcda7e2a546866442177b5bcf615d" category="paragraph">您可以使用記錄收集功能、在 ONTAP 中收集交換器相關的記錄檔。
+乙太網路交換器健全狀況監視器（ CSHM ）負責確保叢集與儲存網路交換器的作業健全狀況、並收集交換器記錄以供偵錯之用。本程序將引導您完成設定及開始從交換器收集詳細 * 支援 * 記錄的程序、並開始每小時收集 AutoSupport 所收集的 * 定期 * 資料。</block>
+  <block id="7e1ba7c75d78333c2b0d49c9ac24ef12" category="list-text">使用 Cisco 3232C 叢集交換器 *CL1* 來確認您已設定環境。</block>
+  <block id="c48ae1736b44dafa44df6c91e234967b" category="paragraph">驗證認證、測試 SSH 連線、並重新產生 ONTAP SSH 金鑰。請參閱交換器說明文件、或聯絡 NetApp 支援部門以取得相關指示。</block>
+  <block id="1837f24cc84dcee4cf147fd1cb89460b" category="list-text">交換機 C2 首先由交換機 SW2 取代。</block>
+  <block id="d74d5bfd992e4f32cce751a7efe7675a" category="list-text">關閉連接至叢集節點的連接埠。必須同時關閉所有連接埠、以避免叢集不穩定。</block>
+  <block id="64ea4acdf8f09e3b62f8764dea1b5bf4" category="list-text">然後、節點與 C2 之間的纜線會從 C2 中斷連線、並重新連接至 SW2 。</block>
+  <block id="5f115706079e667394e9c5fb609142bb" category="list-text">交換器 C1 由交換器 sw1 取代。</block>
+  <block id="1b42870c5bc0619ec4b57583bfec41e7" category="list-text">然後、節點與 C1 之間的纜線會從 C1 中斷連線、並重新連接至 sw1 。</block>
+  <block id="9c4f6f5aa4e55eb8ce92eee32e66b7cd" category="list-text">在交換器 C2 上、關閉連接至節點叢集連接埠的連接埠、以便容錯移轉叢集生命期。</block>
+  <block id="670028f02a4239fb83dfde9087341e1c" category="list-text">在交換器 C1 上、關閉連接到節點叢集連接埠的連接埠、以便容錯移轉叢集生命期。</block>
+  <block id="3e10fab2ffa4ef18685db0df5ee45e84" category="list-text">每個節點上的叢集連接埠會以下列方式連接至現有的叢集交換器（從節點的角度來看）：</block>
+  <block id="c51f636604f29f6f814bde48e4fd4671" category="list-text">叢集連接埠和交換器的連接方式如下（從交換器的觀點來看）：</block>
+  <block id="221baa6d0cf86bbc720aa5304522c941" category="list-text">交換器 CS2 會先由交換器 CS2 取代 - 新的。</block>
+  <block id="415f7d338cb2daf9bc58ecb9861e7a38" category="list-text">然後、節點與 CS2 之間的纜線會從 CS2 中斷連線、並重新連線至 CS2-new 。</block>
+  <block id="4c583a66e2c7985bcc194e39f55ceea5" category="list-text">交換器 CS1 由交換器 CS1-new 取代。</block>
+  <block id="e36cd913095fb9e4f8b81c803f89930b" category="list-text">然後、節點與 CS1 之間的纜線會從 CS1 中斷連線、並重新連線至 CS1-new 。</block>
+  <block id="c541a676ea1012971e3e092cd0c456bb" category="list-text">在叢集交換器 CS2 上、關閉連接至節點叢集連接埠的連接埠、以便容錯移轉叢集生命期：</block>
+  <block id="3e504b88532082c592970766665ca3a1" category="list-text">驗證叢集生命期是否已容錯移轉至叢集交換器 CS1 上所主控的連接埠。這可能需要幾秒鐘的時間。</block>
+  <block id="501db48c47898b7316de60a2bcbe9a16" category="list-text">從交換器 CS2-new's 的觀點來確認交換器連接埠連線：</block>
+  <block id="4b9f132828deb041b404e712b378ac77" category="list-text">在叢集交換器 CS1 上、關閉連接至節點叢集連接埠的連接埠、以便容錯移轉叢集生命負載。下列範例使用步驟7的介面輸出範例。</block>
+  <block id="32172ed3b8d9ced5da325e5230b7981b" category="list-text">確認叢集生命體已容錯移轉至交換器 CS2-new 上的主控連接埠。這可能需要幾秒鐘的時間：</block>
+  <block id="85e04ff5dd770cff5dbbe435ea94a7dd" category="list-text">從交換器 CS1-new's 的觀點來確認交換器連接埠連線：</block>
+  <block id="784542320767d69b7e7fc2bfeb64a5b4" category="list-text">在叢集交換器 CL2 上、關閉連接至節點叢集連接埠的連接埠、以便容錯移轉叢集生命期：</block>
+  <block id="3cea8e0d831f95709ca648551c2d556d" category="list-text">驗證叢集生命期是否已容錯移轉至叢集交換器 CL1 上託管的連接埠。這可能需要幾秒鐘的時間。</block>
+  <block id="f32d9ffca62a64cf613fab14376ea4b6" category="list-text">從交換器 CS2 的觀點來看、確認交換器連接埠連線狀況良好：</block>
+  <block id="d5110a9ac199e8d641d55dc0fc54c741" category="list-text">在叢集交換器 CL1 上、關閉連接至節點叢集連接埠的連接埠、以便容錯移轉叢集生命期：</block>
+  <block id="9d24a408b8a659b2d9a8bb0df05e2629" category="paragraph">所有叢集生命都會容錯移轉至 CS2 交換器。</block>
+  <block id="ca485f2dd68e04b01569b761e6e09728" category="list-text">驗證叢集生命安全移轉到交換器 CS2 上主控的連接埠。這可能需要幾秒鐘的時間：</block>
+  <block id="b724af2fef6af61e0edab3f426d0cddd" category="list-text">從交換器 CS1 的觀點來看、確認交換器連接埠連線狀況良好：</block>
+  <block id="b9ab24854008adedc57cca2a0bf2e4f8" category="paragraph">下列命令可在 Cisco 3132Q-V 交換器上設定 SNMPv3 使用者名稱：</block>
+  <block id="dd6639b00fbb4becd05c71735c5944af" category="list-text">使用 Cisco 3132Q-V 叢集交換器 *CL1* 來驗證您的環境是否已設定。</block>
+  <block id="91863ff015a5297c5c27e15dd6e5e916" category="paragraph">等待 10 分鐘、然後檢查記錄收集是否完成：</block>
+  <block id="03d991029fc10722afd68a8300e08fbf" category="paragraph">下列命令可在 Cisco 9336C-FX2 交換器上設定 SNMPv3 使用者名稱：</block>
+  <block id="e9505b73caa990829220fedbb878ef68" category="list-text">交換機 C2 首先由交換機 CS2 取代。</block>
+  <block id="39bba2bddb2bf527b701828442a18b5e" category="list-text">然後、節點與 C2 之間的纜線會從 C2 中斷連線、並重新連接至 CS2 。</block>
+  <block id="6fa86324fabffaee853e6eeee2824329" category="list-text">交換器 C1 由交換器 CS1 取代。</block>
+  <block id="9f4f9b4efa8b2eb74b227e6e2a18f872" category="list-text">在交換器 C2 上、關閉連接至節點叢集連接埠的連接埠、以便容錯移轉叢集生命期。</block>
+  <block id="54c071b600d8be038e07b18d66329aa7" category="list-text">在交換器 C1 上、關閉連接到節點叢集連接埠的連接埠、以便容錯移轉叢集生命期。</block>
 </blocks>

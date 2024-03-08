@@ -58,9 +58,20 @@ summary: 您可以不中斷地將 ONTAP 叢集的 NetApp CN1610 叢集交換器�
 * 叢集生命區分別是節點1上的_node1_clus1_和節點1上的_node1_clus2_、以及節點2上的節點2_node2_clus1_和節點2_clus2_。
 * 「cluster1：*：>」提示會指出叢集的名稱。
 * 此程序中使用的叢集連接埠為_e3a_和_e3c_。
-* 交換機 C2 先由交換機 CS2 取代，然後由交換機 CS1 取代交換機 C1 。
+
+
+.關於這項工作
+本程序涵蓋下列案例：
+
+* 交換機 C2 首先由交換機 CS2 取代。
 +
-** 然後、節點與 C2 之間的纜線會從 C2 中斷連線、並重新連接至 CS2
+** 關閉連接至叢集節點的連接埠。必須同時關閉所有連接埠、以避免叢集不穩定。
+** 然後、節點與 C2 之間的纜線會從 C2 中斷連線、並重新連接至 CS2 。
+
+
+* 交換器 C1 由交換器 CS1 取代。
++
+** 關閉連接至叢集節點的連接埠。必須同時關閉所有連接埠、以避免叢集不穩定。
 ** 然後、節點與 C1 之間的纜線會從 C1 中斷連線、並重新連接至 CS1 。
 
 
@@ -91,17 +102,6 @@ NOTE: 在此程序期間、不需要運作中的交換器間連結（ISL）。�
 +
 「網路介面修改-vserver叢集-lIF *-auta-fRevert假」
 
-+
-.顯示範例
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert false*
-
-Warning: Disabling the auto-revert feature of the cluster logical interface may effect the availability of your cluster network. Are you sure you want to continue? {y|n}: *y*
-----
-====
 
 
 
@@ -271,11 +271,8 @@ RPC status:
 2 paths up, 0 paths down (udp check)
 ----
 ====
-. 在交換器 C2 上、關閉連接到節點叢集連接埠的連接埠。
+. 在交換器 C2 上、關閉連接至節點叢集連接埠的連接埠、以便容錯移轉叢集生命期。
 +
-.顯示範例
-[%collapsible]
-====
 [listing, subs="+quotes"]
 ----
 (C2)# *configure*
@@ -284,7 +281,6 @@ RPC status:
 (C2)(Interface 0/1-0/12)# *exit*
 (C2)(Config)# *exit*
 ----
-====
 . 使用 Cisco 9336C-FX2 支援的適當纜線、將節點叢集連接埠從舊的交換器 C2 移至新的交換器 CS2 。
 . 顯示網路連接埠屬性：
 +
@@ -359,11 +355,8 @@ Cluster
             node2_clus2  up/up      169.254.3.9/16     node2       e0b     true
 ----
 ====
-. 在交換器 C1 上、關閉連接到節點叢集連接埠的連接埠。
+. 在交換器 C1 上、關閉連接到節點叢集連接埠的連接埠、以便容錯移轉叢集生命期。
 +
-.顯示範例
-[%collapsible]
-====
 [listing, subs="+quotes"]
 ----
 (C1)# *configure*
@@ -372,7 +365,6 @@ Cluster
 (C1)(Interface 0/1-0/12)# *exit*
 (C1)(Config)# *exit*
 ----
-====
 . 使用 Cisco 9336C-FX2 支援的適當纜線、將節點叢集連接埠從舊的交換器 C1 移至新的交換器 CS1 。
 . 驗證叢集的最終組態：
 +
@@ -515,12 +507,10 @@ Cluster
             node2_clus2  up/up    169.254.19.183/16  node2         e3b     true
 ----
 ====
-. 使用下列兩個命令、啟用乙太網路交換器健全狀況監視器記錄收集功能、以收集交換器相關的記錄檔：
+. 若要設定記錄收集、請針對每個交換器執行下列命令。系統會提示您輸入用於記錄收集的交換器名稱、使用者名稱和密碼。
 +
-「系統交換器乙太網路記錄設定密碼」和「系統交換器乙太網路記錄啟用-收集」
+「系統交換器乙太網路記錄設定密碼」
 
-+
-.. 輸入：「System交換器乙太網路記錄設定密碼」
 +
 .顯示範例
 [%collapsible]
@@ -553,33 +543,30 @@ Enter the password: <enter switch password>
 Enter the password again: <enter switch password>
 ----
 ====
-.. 接著是：「系統交換器乙太網路記錄啟用-收集」
+. 若要啟動記錄收集、請執行下列命令、以先前命令中使用的切換參數取代裝置。這會同時啟動記錄收集的兩種類型：詳細的 * 支援 * 記錄檔和 * 定期 * 資料的每小時集合。
++
+`system switch ethernet log modify -device _<switch-name>_ -log-request true`
+
 +
 .顯示範例
 [%collapsible]
 ====
 [listing, subs="+quotes"]
 ----
-cluster1::*> *system  switch ethernet log enable-collection*
+cluster1::*> *system switch ethernet log modify -device cs1 -log-request true*
 
-Do you want to enable cluster log collection for all nodes in the cluster?
-{y|n}: [n] *y*
+Do you want to modify the cluster switch log collection configuration? {y|n}: [n] *y*
 
 Enabling cluster switch log collection.
 
+cluster1::*> *system switch ethernet log modify -device cs2 -log-request true*
+
+Do you want to modify the cluster switch log collection configuration? {y|n}: [n] *y*
+
+Enabling cluster switch log collection.
 cluster1::*>
 ----
 ====
-+
-
-NOTE: 如果這些命令中有任何一個出現錯誤、請聯絡NetApp支援部門。
-
-
-
-. 啟動交換器記錄收集功能：
-+
-`system switch ethernet log collect -device *`
-
 +
 等待10分鐘、然後使用以下命令檢查記錄收集是否成功：
 
@@ -587,20 +574,9 @@ NOTE: 如果這些命令中有任何一個出現錯誤、請聯絡NetApp支援�
 `system switch ethernet log show`
 
 +
-.顯示範例
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-cluster1::*> system switch ethernet log show
-Log Collection Enabled: true
 
-Index  Switch                       Log Timestamp        Status
------- ---------------------------- -------------------  ---------    
-1      cs1 (b8:ce:f6:19:1b:42)      4/29/2022 03:05:25   complete   
-2      cs2 (b8:ce:f6:19:1b:96)      4/29/2022 03:07:42   complete
-----
-====
+NOTE: 如果這些命令中有任何一個出現錯誤、請聯絡NetApp支援部門。
+
 . 將權限層級變更回管理：
 +
 「et -priv. admin」

@@ -31,6 +31,10 @@ entries:
     url: "/switch-cisco-3132q-v/install-nx-os-software-3132q-v.html"
   - title: 安裝RCF組態檔
     url: "/switch-cisco-3132q-v/install-rcf-3132q-v.html"
+  - title: 啟用記錄收集
+    url: "/switch-cisco-3132q-v/CSHM_log_collection.html"
+  - title: 設定用於監控的 SNMPv3
+    url: "/switch-cisco-3132q-v/CSHM_snmpv3.html"
 - title: 移轉交換器
   pdf-filename: migrate_switchs_3132q-v
   entries:

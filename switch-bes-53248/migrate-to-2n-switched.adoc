@@ -112,11 +112,9 @@ cluster1::*> system node autosupport invoke -node \* -type all -message MAINT=2h
 NOTE: 您不得停用ISL連接埠。
 
 +
-.顯示範例
-[%collapsible]
-====
 以下範例顯示、交換器CS1上的節點對向連接埠1至16已停用：
 
++
 [listing, subs="+quotes"]
 ----
 (cs1)# *configure*
@@ -125,7 +123,6 @@ NOTE: 您不得停用ISL連接埠。
 (cs1)(Interface 0/1-0/16)# *exit*
 (cs1)(Config)# *exit*
 ----
-====
 . 驗證兩台BS-53248交換器CS1和CS2之間的ISL和ISL實體連接埠是否為* up *：
 +
 「How port-channel」
@@ -285,11 +282,9 @@ cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert fals
 . 從節點2上的叢集連接埠e0a拔下纜線、然後使用BES-53248交換器支援的適當纜線、將e0a連接至叢集交換器CS1上的連接埠2。
 . 在叢集交換器CS1上啟用所有面向節點的連接埠。
 +
-.顯示範例
-[%collapsible]
-====
 下列範例顯示交換器CS1上已啟用連接埠1到16：
 
++
 [listing, subs="+quotes"]
 ----
 (cs1)# *configure*
@@ -298,7 +293,6 @@ cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert fals
 (cs1)(Interface 0/1-0/16)# *exit*
 (cs1)(Config)# *exit*
 ----
-====
 . 驗證所有叢集生命體是否都正常運作、並顯示為「真實」、表示「是家」：
 +
 「網路介面show -vserver叢集」
@@ -347,11 +341,9 @@ node2                true    true          false
 . 從節點2上的叢集連接埠e0b拔下纜線、然後使用BES-53248交換器支援的適當纜線、將e0b連接至叢集交換器CS2上的連接埠2。
 . 在叢集交換器CS2上啟用所有面向節點的連接埠。
 +
-.顯示範例
-[%collapsible]
-====
 下列範例顯示交換器CS2上已啟用連接埠1到16：
 
++
 [listing, subs="+quotes"]
 ----
 (cs2)# *configure*
@@ -360,7 +352,6 @@ node2                true    true          false
 (cs2)(Interface 0/1-0/16)# *exit*
 (cs2)(Config)# *exit*
 ----
-====
 . 驗證所有的叢集連接埠是否為* up*：
 +
 「網路連接埠show -IPSpace Cluster」
