@@ -10,7 +10,7 @@ summary: 使用佈線映像完成控制器與交換器之間的佈線。
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -42,7 +42,9 @@ image:9336c_image2.jpg["直接附加"]
 
 如果您想要記錄支援的平台、您必須使用完整的佈線工作表範例作為指南來填寫空白的佈線工作表。
 
-每對交換器的連接埠定義範例如下：image:cabling_worksheet.jpg["佈線工作表"]
+每對交換器的連接埠定義範例如下：
+
+image:cabling_worksheet.jpg["佈線工作表"]
 
 其中：
 

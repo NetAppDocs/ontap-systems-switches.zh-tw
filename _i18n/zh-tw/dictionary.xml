@@ -1282,20 +1282,16 @@
   <block id="31a64a44fce8ed03b7b71b06a1ddc567" category="doc">重複使用儲存交換器、從無交換器組態移轉至SAT儲存設備</block>
   <block id="5542e924104d087ae00a02e0143b2f6b" category="section-title">移轉儲存交換器</block>
   <block id="29c04d28b21adc7e1a7b356455c263a4" category="inline-image-macro">交換器附加</block>
-  <block id="7424e91fe1d742657d5ad736cc938704" category="paragraph">透過重複使用儲存交換器、HA配對1的儲存交換器便成為共享交換器。*交換器附加的佈線圖*<block ref="6a2cf54f6a37518ec42d92fd7fd3e59c" category="inline-image-macro-rx" type="image"></block></block>
   <block id="e468dc98f46520dafb81c4a2860e35f5" category="list-text">[[step2]確認節點連接埠正常運作：「torage port show -port-type ENET」</block>
   <block id="a61fb4ee9862ad3ca2ace374860efe47" category="list-text">[[step3]將HA配對1、NSM224路徑A纜線從儲存交換器A移至儲存交換器A上的HA配對1、路徑A的共享NS224儲存連接埠</block>
   <block id="13edd7f420c2674d548b2a52a6da2adb" category="list-text">將纜線從HA配對1、節點A、路徑A移至HA配對1、儲存交換器A上節點A的共用儲存連接埠</block>
   <block id="8fa35651fd65d802f471c470966f21ec" category="list-text">將纜線從HA配對1、節點B、路徑A移至儲存交換器A上的HA配對1、節點B共用儲存連接埠</block>
   <block id="dfaf1e0c7a26db603d75c12484eecbe5" category="list-text">驗證連接至HA配對1的儲存設備、儲存交換器A是否正常：「系統健全狀況警示顯示-instance」</block>
-  <block id="a791669229b197424a1c53af3c935995" category="list-text">[[step7]將共享交換器A上的儲存RCF替換為共用RCF檔案。請參閱<block ref="f6e7f441bcff51ec3d8080f15010fd4c" category="inline-link-rx"></block> 以取得更多詳細資料。</block>
   <block id="ce8c521f1923b2dd332b3fc771e23d2a" category="list-text">驗證連接至HA配對1的儲存設備、儲存交換器B是否正常：「系統健全狀況警示顯示-instance」</block>
   <block id="ea77aeb98674be7fb36ce74bd1108462" category="list-text">[[step9]將HA配對1、NSM224路徑B纜線從儲存交換器B移至HA配對1的共享NS224儲存連接埠、將路徑B移至儲存交換器B</block>
   <block id="5d5108c830c67272c71b7aadba12e4b2" category="list-text">將纜線從HA配對1、節點A、路徑B移至HA配對1、節點A、儲存交換器B上路徑B的共享儲存連接埠</block>
   <block id="53b39cfff16d9870da3ecc23bf2f95ba" category="list-text">將纜線從HA配對1、節點B、路徑B移至HA配對1、節點B、儲存交換器B路徑B的共享儲存連接埠</block>
-  <block id="ded104c4c31658cbea5c009e1de22984" category="list-text">[[step13]將共享交換器B上的儲存RCF檔案替換為共用RCF檔案。請參閱 <block ref="41062cda0a6ae510a0f118eb961870a4" category="inline-link-macro-rx"></block> 以取得更多詳細資料。</block>
   <block id="447638ceee95556dee2fdf9379e52c28" category="list-text">[[step15]在共享交換器A和共享交換器B之間安裝ISL：</block>
-  <block id="533661dac93384c9c5129a0888e57a1d" category="list-text">[[step16]將HA配對1從無交換式叢集轉換成交換式叢集。使用共享RCF定義的叢集連接埠指派。請參閱 <block ref="2cdb0ef9b29e3206865e37e4f43be394" category="inline-link-macro-rx"></block>以取得更多詳細資料。</block>
   <block id="512a76427a65e27ffb75015bb7a6951e" category="list-text">驗證交換式網路組態是否有效：「network port show」（網路連接埠顯示）</block>
   <block id="3ebdfe501befb632f105d0771d49b2ed" category="section-title">使用直接附加儲存設備從無交換器叢集移轉</block>
   <block id="514085dcc3bcd7f871a43182b26fc37f" category="list-text">[[step2]]將HA配對1、NSM224路徑A纜線從儲存交換器A移至儲存交換器A上的HA配對1、路徑A的NSM224儲存連接埠</block>
@@ -1407,7 +1403,6 @@
   <block id="894b4eb288cb9e47b7d37a64253de1ff" category="section-title">Cisco Nexus 9336C-FX2纜線工作表</block>
   <block id="d2aa2982691bcb6b044696b6691d5677" category="paragraph">如果您想要記錄支援的平台、您必須使用完整的佈線工作表範例作為指南來填寫空白的佈線工作表。</block>
   <block id="3d7fd5afdd3e2a9008c8eb6e9d19e41c" category="inline-image-macro">佈線工作表</block>
-  <block id="7bfa22cf35645d8a9b2e335b3ee5f0b0" category="paragraph">每對交換器的連接埠定義範例如下：<block ref="5965a3db7e52c18148f117f0240c1e3f" category="inline-image-macro-rx" type="image"></block></block>
   <block id="4cd361459ea2bb087ed6c989579796c7" category="paragraph">其中：</block>
   <block id="6518b73e43d19c30b6b829ae25fe0227" category="list-text">100G ISL至交換器A連接埠35</block>
   <block id="ad8373aefb70ebebc60fc801181d19ad" category="list-text">100G ISL至交換器A連接埠36</block>
@@ -4739,4 +4734,10 @@
   <block id="6fa86324fabffaee853e6eeee2824329" category="list-text">交換器 C1 由交換器 CS1 取代。</block>
   <block id="9f4f9b4efa8b2eb74b227e6e2a18f872" category="list-text">在交換器 C2 上、關閉連接至節點叢集連接埠的連接埠、以便容錯移轉叢集生命期。</block>
   <block id="54c071b600d8be038e07b18d66329aa7" category="list-text">在交換器 C1 上、關閉連接到節點叢集連接埠的連接埠、以便容錯移轉叢集生命期。</block>
+  <block id="5965a3db7e52c18148f117f0240c1e3f" category="paragraph"><block ref="5965a3db7e52c18148f117f0240c1e3f" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="6a5dd15f930e244dadfd412b53dd1ac0" category="paragraph">透過重複使用儲存交換器、HA配對1的儲存交換器便成為共享交換器。
+*交換器附加的佈線圖*</block>
+  <block id="5851bb17419faa449f719ec90fe12181" category="list-text">[[step7]] 將共用交換器 A 上的儲存 RCF 取代為共用 RCF 檔案。請參閱 <block ref="2e5583639979312d3d691c4092c19d52" category="inline-link-macro-rx"></block> 以取得更多詳細資料。</block>
+  <block id="ea9f3090e45d8199fc92892a96dd0214" category="list-text">[[step13]] 將共用交換器 B 上的儲存 RCF 檔案取代為共用 RCF 檔案。請參閱 <block ref="2e5583639979312d3d691c4092c19d52" category="inline-link-macro-rx"></block> 以取得更多詳細資料。</block>
+  <block id="779f2e1ced3dc42aa441f71771bcb993" category="list-text">[[step16]將HA配對1從無交換式叢集轉換成交換式叢集。使用共享RCF定義的叢集連接埠指派。請參閱 <block ref="2e68fbe1bf6d8e813f758c3b7509ff6f" category="inline-link-macro-rx"></block>以取得更多詳細資料。</block>
 </blocks>

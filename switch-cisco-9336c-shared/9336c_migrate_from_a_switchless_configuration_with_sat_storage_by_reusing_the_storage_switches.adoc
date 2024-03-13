@@ -10,14 +10,17 @@ summary:
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 
 
 == 移轉儲存交換器
 
-透過重複使用儲存交換器、HA配對1的儲存交換器便成為共享交換器。*交換器附加的佈線圖*image:9336c_image1.jpg["交換器附加"]
+透過重複使用儲存交換器、HA配對1的儲存交換器便成為共享交換器。
+*交換器附加的佈線圖*
+
+image:9336c_image1.jpg["交換器附加"]
 
 .步驟
 . 確認HA配對1（和HA配對2）的儲存組態正確無誤、而且沒有錯誤：「System Switch Ethernet show」（系統交換器乙太網路顯示）
@@ -80,7 +83,7 @@ node2
 storage::*> system health alert show -instance
 There are no entries matching your query.
 ----
-. [[step7]將共享交換器A上的儲存RCF替換為共用RCF檔案。請參閱 http://9336c_install_nx-os_software_and_reference_configuration_files_@rcfs@.html#install-the-rcf-on-a-cisco-nexus-9336c-fx2-shared-switch["在Cisco Nexus 9336C-FX2共享交換器上安裝RCF"] 以取得更多詳細資料。
+. [[step7]] 將共用交換器 A 上的儲存 RCF 取代為共用 RCF 檔案。請參閱 link:9336c_install_nx-os_software_and_reference_configuration_files_rcfs.html#install-the-rcf-on-a-cisco-nexus-9336c-fx2-shared-switch["在Cisco Nexus 9336C-FX2共享交換器上安裝RCF"] 以取得更多詳細資料。
 . 驗證連接至HA配對1的儲存設備、儲存交換器B是否正常：「系統健全狀況警示顯示-instance」
 
 
@@ -100,7 +103,7 @@ There are no entries matching your query.
 storage::*> system health alert show -instance
 There are no entries matching your query.
 ----
-. [[step13]將共享交換器B上的儲存RCF檔案替換為共用RCF檔案。請參閱 link:9336c_install_nx-os_software_and_reference_configuration_files_@rcfs@.html#install-the-rcf-on-a-cisco-nexus-9336c-fx2-shared-switch["在Cisco Nexus 9336C-FX2共享交換器上安裝RCF"] 以取得更多詳細資料。
+. [[step13]] 將共用交換器 B 上的儲存 RCF 檔案取代為共用 RCF 檔案。請參閱 link:9336c_install_nx-os_software_and_reference_configuration_files_rcfs.html#install-the-rcf-on-a-cisco-nexus-9336c-fx2-shared-switch["在Cisco Nexus 9336C-FX2共享交換器上安裝RCF"] 以取得更多詳細資料。
 . 驗證連接至HA配對1的儲存設備、儲存交換器B是否正常：「系統健全狀況警示顯示-instance」
 
 
@@ -129,6 +132,6 @@ sh1 (config-if)# spanning-tree port type network
 sh1 (config-if)# exit
 sh1 (config)# exit
 ----
-. [[step16]將HA配對1從無交換式叢集轉換成交換式叢集。使用共享RCF定義的叢集連接埠指派。請參閱 link:9336c_install_nx-os_software_and_reference_configuration_files_@rcfs@.html["安裝NX-OS軟體與參考組態檔（RCT）"]以取得更多詳細資料。
+. [[step16]將HA配對1從無交換式叢集轉換成交換式叢集。使用共享RCF定義的叢集連接埠指派。請參閱 link:9336c_install_nx-os_software_and_reference_configuration_files_rcfs.html["安裝NX-OS軟體與參考組態檔（RCT）"]以取得更多詳細資料。
 . 驗證交換式網路組態是否有效：「network port show」（網路連接埠顯示）
 
