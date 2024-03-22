@@ -38,6 +38,8 @@ entries:
     url: "/switch-cisco-9336c-fx2/install-nxos-software-9336c-cluster.html"
   - title: 安裝RCF組態檔
     url: "/switch-cisco-9336c-fx2/install-nxos-rcf-9336c-cluster.html"
+  - title: 啟用SSH
+    url: "/switch-cisco-9336c-fx2/configure-ssh.html"
   - title: 啟用記錄收集
     url: "/switch-cisco-9336c-fx2/CSHM_log_collection.html"
   - title: 設定用於監控的 SNMPv3

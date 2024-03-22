@@ -1,7 +1,7 @@
 ---
 permalink: switch-bes-53248/configure-ssh.html 
 sidebar: sidebar 
-keywords: ssh, requirement, cluster, switch, health, monitor, chsm, log, collection, feature, bes, enable ssh on bes-53248 cluster switches - bes-53248 switches 
+keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, bes, enable ssh on bes-53248 cluster switches - bes-53248 switches 
 summary: 使用叢集交換器健全狀況監視器（CSHM\）和記錄收集功能時、必須使用SSH。若要在BSe-53248叢集交換器上啟用SSH、您必須先產生SSH金鑰、然後再啟用SSH。 
 ---
 = 在BS-53248叢集交換器上啟用SSH
@@ -119,4 +119,4 @@ SCP server Administrative Mode: ............... Enabled
 
 
 .接下來呢？
-link:configure-log-collection.html["啟用記錄收集功能"]。
+link:CSHM_log_collection.html["啟用記錄收集"]。

@@ -1,7 +1,7 @@
 ---
 permalink: switch-cisco-9336c-fx2/configure-ssh.html 
 sidebar: sidebar 
-keywords: ssh, requirement, cluster, switch, health, monitor, chsm, log, collection, feature, bes, enable ssh on 9336c-fx2 cluster switches - 9336c-fx2 switches 
+keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, bes, enable ssh on 9336c-fx2 cluster switches - 9336c-fx2 switches 
 summary: 使用叢集交換器健全狀況監視器（CSHM\）和記錄收集功能時、必須使用SSH。若要在 Cisco 9336C-FX2 叢集交換器上啟用 SSH 、請先產生 SSH 金鑰、然後再啟用 SSH 。 
 ---
 = 在 Cisco 9336C-FX2 叢集交換器上啟用 SSH
@@ -115,4 +115,4 @@ SCP server Administrative Mode: ............... Enabled
 
 
 .接下來呢？
-link:configure-log-collection.html["啟用記錄收集功能"]。
+link:CSHM_log_collection.html["啟用記錄收集"]。

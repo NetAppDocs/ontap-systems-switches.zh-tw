@@ -1,8 +1,8 @@
 ---
-permalink: switch-cisco-3132q-v/CSHM_log_collection.html 
+permalink: switch-cisco-92300/CSHM_log_collection.html 
 sidebar: sidebar 
-keywords: log collection feature,collect switch-related log files,SSh key,crypto key generation 
-summary: 叢集交換器健全狀況監控記錄收集功能可用於收集ONTAP 資訊中與交換器相關的記錄檔。您必須確定已使用 92300YC 叢集交換器 CLI 設定環境、詳情請見此處。 
+keywords: log collection feature,collect switch-related log files,SSh key,crypto key generation,92300YC Cisco setup,92300YC switches configuration,NX-OS 
+summary: 乙太網路交換器健全狀況監視器（ CSHM ）記錄收集功能是用來從 ONTAP 中的叢集或儲存網路交換器收集記錄。 
 ---
 = 乙太網路交換器健全狀況監控記錄收集
 :allow-uri-read: 
@@ -11,17 +11,10 @@ summary: 叢集交換器健全狀況監控記錄收集功能可用於收集ONTAP
 
 
 [role="lead"]
-您可以使用記錄收集功能、在 ONTAP 中收集交換器相關的記錄檔。
-
 乙太網路交換器健全狀況監視器（ CSHM ）負責確保叢集與儲存網路交換器的作業健全狀況、並收集交換器記錄以供偵錯之用。本程序將引導您完成設定及開始從交換器收集詳細 * 支援 * 記錄的程序、並開始每小時收集 AutoSupport 所收集的 * 定期 * 資料。
 
-.開始之前
-* 使用 Cisco 3132Q-V 叢集交換器 *CL1* 來驗證您的環境是否已設定。
-* 必須為交換器啟用交換器健全狀況監控。請務必確認 `Is Monitored:` 欄位在的輸出中設為 * 真 * `system switch ethernet show` 命令。
-
-
 .步驟
-. 為乙太網路交換器健全狀況監視器記錄收集功能建立密碼：
+. 若要設定記錄收集、請針對每個交換器執行下列命令。系統會提示您輸入用於記錄收集的交換器名稱、使用者名稱和密碼。
 +
 「系統交換器乙太網路記錄設定密碼」
 
