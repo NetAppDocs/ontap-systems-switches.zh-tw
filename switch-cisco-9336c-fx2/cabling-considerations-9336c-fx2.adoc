@@ -1,0 +1,56 @@
+---
+permalink: switch-cisco-9336c-fx2/cabling-considerations-9336c-fx2.html 
+sidebar: sidebar 
+keywords: 9336c-fx2 cabling setup, 9336c-fx2 switches configuration, nx-os 
+summary: 設定 Cisco 9336C-FX2 交換器之前、請先檢閱下列資訊。 
+---
+= 檢閱纜線佈線和組態考量
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+設定 Cisco 9336C-FX2 交換器之前、請先檢閱下列考量事項。
+
+
+
+== 支援 NVIDIA CX6 、 CX6-DX 和 CX7 乙太網路連接埠
+
+如果使用 NVIDIA ConnectX-6 （ CX6 ）、 ConnectX-6 Dx （ CX6-DX ）或 ConnectX-7 （ CX7 ） NIC 連接埠將交換器連接埠連接至 ONTAP 控制器、則必須硬編碼交換器連接埠速度。
+
+[listing, subs="+quotes"]
+----
+(cs1)(config)# interface Ethernet1/19
+*For 100GbE speed:*
+(cs1)(config-if)# *speed 100000*
+*For 40GbE speed:*
+(cs1)(config-if)# *speed 40000*
+(cs1)(config-if)# no negotiate auto
+(cs1)(config-if)# exit
+(cs1)(config)# exit
+*Save the changes:*
+(cs1)# *copy running-config startup-config*
+----
+請參閱 https://hwu.netapp.com/Switch/Index["Hardware Universe"^] 如需交換器連接埠的詳細資訊、
+
+
+
+== 25GbE FEC 需求
+
+
+
+=== FAS2820 e0a/e0b 連接埠
+
+FAS2820 e0a 和 e0b 連接埠需要 FEC 組態變更、才能與 9336C-FX2 交換器連接埠連結。
+對於交換器連接埠 e0a 和 e0b 、 FEC 設定設為 `rs-cons16`。
+
+[listing, subs="+quotes"]
+----
+(cs1)(config)# interface Ethernet1/8-9
+(cs1)(config-if-range)# *fec rs-cons16*
+(cs1)(config-if-range)# exit
+(cs1)(config)# exit
+*Save the changes:*
+(cs1)# *copy running-config startup-config*
+----

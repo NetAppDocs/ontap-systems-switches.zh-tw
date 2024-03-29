@@ -1,0 +1,108 @@
+---
+permalink: switch-bes-53248/cabling-considerations-bes-53248.html 
+sidebar: sidebar 
+keywords: BES-53248 cabling setup, BES-53248 switches configuration, efos 
+summary: 設定 Broadcom BS-53248 交換器之前、請先檢閱下列資訊。 
+---
+= 檢閱纜線佈線和組態考量
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在設定 Broadcom BS-53248 交換器之前、請先檢閱下列考量事項。
+
+
+
+== 叢集連接埠交換器指派
+
+您可以使用 Broadcom 支援的 BS-53248 叢集交換器連接埠指派表、作為設定叢集的指南。
+
+|===
+
+
+| *交換器連接埠* | *連接埠使用率* 
+
+
+ a| 
+0-16
+ a| 
+10/25GbE叢集連接埠節點、基礎組態
+
+
+
+ a| 
+17-48
+ a| 
+10/25GbE叢集連接埠節點、含授權
+
+
+
+ a| 
+49至54歲
+ a| 
+40/100GbE 叢集連接埠節點、含授權、由右至左新增
+
+
+
+ a| 
+55-56
+ a| 
+100GbE叢集交換器間連結（ISL）連接埠、基礎組態
+
+|===
+請參閱 https://hwu.netapp.com/Switch/Index["Hardware Universe"^] 如需交換器連接埠的詳細資訊、
+
+
+
+== 連接埠群組速度限制
+
+* 在BES-53248叢集交換器上、48個10/25GbE（SFP28/SFP+）連接埠會結合成12個4埠群組、如下所示：連接埠1-4、5-8、9-12、13-16、17-20、21至24、25至28、29至32、33至36、37至40、41至44及45至48。
+* 在4埠群組的所有連接埠之間、SFP28/SFP+連接埠速度必須相同（10GbE或25GbE）。
+* 如果 4 埠群組中的速度不同、交換器連接埠將無法正常運作。
+
+
+
+
+== FEC 要求
+
+* 若為含銅線的 25G 連接埠、請參閱下表以取得詳細資料。
+
+
+如果控制器側為 `auto`，交換器側設為 FEC 25G 。
+
++
+影像： ../media/FEC_copper_table.jpg[25G 連接埠、含銅線 ]
+
+* 如需使用光纖 / 光纖纜線的 25G 連接埠、請參閱下表以取得詳細資料：
++
+image::../media/FEC_fiber_table.jpg[25 公克連接埠、含光纖 / 光纖纜線]
+
+
+
+
+
+=== Bootarg 實作
+
+使用下列命令、將 25G 連接埠 FEC 設定為任一端口 `auto` 或 `fc`、視需要：
+
+[listing]
+----
+systemshell -node <node> -command sudo sysctl dev.ice.<X>.requested_fec=<auto/fc>
+----
+* 設定為時 *`auto`* ：
++
+** 。 `auto` 設定會立即將設定傳播到硬體、不需要重新開機。
+** 如果 `bootarg.cpk_fec_fc_eXx already exists`，它將從 bootarg 儲存設備中刪除。
+** 重新開機後 `auto` 自此之後、設定仍保持不變 `auto` 為預設 FEC 設定。
+
+
+* 設定為時 *`fc`* ：
++
+** 。 `FC-FEC` 設定會立即將設定傳播到硬體、不需要重新開機。
+** 全新 `bootarg.cpk_fec_fc_eXx` 會以設定為「 true 」的值建立。
+** 重新開機後、 `FC-FEC` 此設定會保留到位、以供驅動程式碼使用。
+
+
+

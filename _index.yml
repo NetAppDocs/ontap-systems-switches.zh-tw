@@ -1,6 +1,6 @@
 ---
 indexpage:
-  lead: NetApp提供叢集、儲存設備和共享交換器、可在主機儲存設備和兩個以上的AFF/FAS控制器之間提供連線功能、讓您在儲存基礎架構之間不中斷地移動資料和網路介面。
+  lead: NetApp 提供叢集、儲存設備和共用交換器、可在主機儲存設備和兩個或多個 NetApp 控制器之間提供連線、讓您在儲存基礎架構中不中斷地移動資料和網路介面。
   tiles:
   - title: 開始使用
     links:
@@ -22,7 +22,7 @@ indexpage:
       url: "/overview-eod.html"
   - title: 相關ONTAP 資訊
     links:
-    - title: AFF/FAS硬體系統
+    - title: ONTAP 硬體系統
       url: https://docs.netapp.com/us-en/ontap-systems/index.html
     - title: 軟件ONTAP
       url: https://docs.netapp.com/us-en/ontap/index.html

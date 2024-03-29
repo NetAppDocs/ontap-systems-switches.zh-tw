@@ -1557,12 +1557,10 @@
   <block id="4117e035e1d5632e3f6a3311cd104041" category="list-text">從節點2上的叢集連接埠e0a拔下纜線、然後使用BES-53248交換器支援的適當纜線、將e0a連接至叢集交換器CS1上的連接埠2。</block>
   <block id="a2c09169aae3d453a5de75708a6aea92" category="paragraph">下列範例顯示交換器CS1上已啟用連接埠1到16：</block>
   <block id="1cd3efec31f045ffb5449349f414844d" category="list-text">驗證所有叢集生命體是否都正常運作、並顯示為「真實」、表示「是家」：</block>
-  <block id="fcad649cb098b84dccd4a01a3b2eaa7f" category="paragraph">以下範例顯示、節點1和節點2上的所有生命都在運作中、而且「原為主目錄」結果為「真」：</block>
   <block id="c5642fd4b778b82aea74ab00968dce4b" category="list-text">從節點1上的叢集連接埠e0b拔下纜線、然後使用BES-53248交換器支援的適當纜線、將e0b連接至叢集交換器CS2上的連接埠1。</block>
   <block id="44e579a0b4e1ad763dcbac7dd27eb57a" category="list-text">從節點2上的叢集連接埠e0b拔下纜線、然後使用BES-53248交換器支援的適當纜線、將e0b連接至叢集交換器CS2上的連接埠2。</block>
   <block id="3d7d92fe9fa50ff07a52fda11ae8d646" category="paragraph">下列範例顯示交換器CS2上已啟用連接埠1到16：</block>
   <block id="30530896511238b69b0e6acc7e04d6ce" category="list-text">驗證所有介面是否都顯示「true」表示「is Home」：</block>
-  <block id="920dd0f6e71089afe68eba9aa2f22c90" category="paragraph">以下範例顯示、節點1和節點2上的所有l生命 都已啟動、而且「原為主目錄」結果為「真」：</block>
   <block id="470e1e7d03d4911b1e5ad8bf036ca8cb" category="inline-link">NetApp知識庫文章：如何在排定的維護時間內禁止自動建立案例</block>
   <block id="59ed8d797343a87748211be365bd1d90" category="list-text">產生SSH金鑰：</block>
   <block id="83a0e3bf9dd48caad05146cc29f81e6b" category="list-text">確認SSH已啟用：</block>
@@ -2139,7 +2137,6 @@
   <block id="403284bd44beda112195a484c8a76421" category="sidebar">儲存交換器</block>
   <block id="2b2815ca4a9fd5973ee66317adb580e4" category="sidebar">其他交換器機型</block>
   <block id="bc8be72fdc9d6054f356bb2b7f80fd12" category="sidebar">NetApp 互通性對照表</block>
-  <block id="831835779ddae8b680a8580d383f130b" category="sidebar">不再需要使用本技術AFF FAS</block>
   <block id="7bd0358c3b996edfe19bd3da912bde62" category="sidebar">Cisco Nexus 9336C-FX2共享交換器</block>
   <block id="467a501ced0eaaee20142a975e074f95" category="sidebar">透過新增兩個共用交換器、從具有Data儲存設備的交換式組態進行移轉</block>
   <block id="62bb127cfc33134b4b7ba3eb79ae05f3" category="sidebar">重複使用儲存交換器、從具有SAT儲存設備的交換式叢集移轉</block>
@@ -3383,18 +3380,10 @@
   <block id="d1f4afd8356da4e0148299e8020db15b" category="list-text">參考組態檔（RCT）會套用至交換器。</block>
   <block id="3162ac93186b03e54de9e68256dbb924" category="list-text">新交換器上會設定任何站台自訂（SMTP、SNMP和SSH）。</block>
   <block id="f0b02a6a42b62e57a146137078a39635" category="section-title">移轉至叢集環境</block>
-  <block id="af0f02b80aaae2d29a88a56209cd3dd0" category="list-text">驗證兩台BS-53248交換器CS1和CS2之間的ISL和ISL實體連接埠是否為* up *：</block>
   <block id="09a5fb271719ecae04d6c0f573fa3099" category="paragraph">以下範例顯示交換器CS1上的ISL連接埠為* up*：</block>
   <block id="f9431300de8d1a48bf2e554ad1605071" category="paragraph">以下範例顯示交換器CS2上的ISL連接埠為* up*：</block>
-  <block id="96725f7c30dba4b02784c4f6b22b76f2" category="list-text">確認所有叢集連接埠均為「up」（正常）：</block>
-  <block id="711d7f6899df1dfa47e13a5fbedae706" category="paragraph">每個連接埠應顯示「up」<block ref="97e7c9a7d06eac006a28bf05467fcc8b" prefix=" " category="inline-code"></block> 以及「健全」的<block ref="fbcf0d1f787c74663ca9dc925ebf5f0c" prefix=" " category="inline-code"></block>。</block>
-  <block id="b9342006c263bb81a72635a40bccef85" category="list-text">確認所有叢集生命體均「正常運作」：<block ref="7af866342cc7e87972580d7b709d8820" prefix=" " category="inline-code"></block></block>
-  <block id="a5d7c0c5e08447fc2eab20dfb2acee00" category="paragraph">每個叢集LIF都應顯示「true」<block ref="53db3ce0fe0e71f06b3beb0b676b806c" prefix=" " category="inline-code"></block> 並擁有<block ref="4f21ee5a18672b60f4c01e94e6be9c79" prefix=" " category="inline-code"></block> 的「上/上」</block>
-  <block id="cd6df0359bdf1ee77a48901029c8c000" category="list-text">驗證所有的叢集連接埠是否為* up*：</block>
-  <block id="9f7da2912010ab11954f77bf548cc0d8" category="paragraph">以下範例顯示節點1和節點2上的所有叢集連接埠均為* up*：</block>
   <block id="99905a9acf063a85c4bbaa70f4455984" category="list-text">使用以下命令驗證叢集網路是否具備完整連線能力：</block>
   <block id="1e44ccea9f1ae385026deb840bc9b5f4" category="paragraph">如需詳細資訊、請參閱：<block ref="780f810d0519883e7efdd6ef45cf51ed" category="inline-link-rx"></block></block>
-  <block id="291315307e480f559eb88bb2d33ce0be" category="paragraph">移轉完成後、您可能需要安裝所需的組態檔、以支援適用於BES-53248叢集交換器的叢集交換器健全狀況監視器（CSHM）。請參閱 <block ref="22274518ab78de16bd162dd23a69479d" category="inline-link-macro-rx"></block> 和 <block ref="42a9a40a2570039f7bbb890cc28e41e6" category="inline-link-macro-rx"></block>。</block>
   <block id="77d285017f370185656b54b03d5b5a16" category="paragraph">B16-53248叢集交換器基礎模式已獲得16個10GbE或25GbE連接埠和2個100GbE連接埠的授權。您可以購買更多授權來新增連接埠。</block>
   <block id="f95b7ecd3b114623b8699a07a36fd860" category="section-title">檢閱可用的授權</block>
   <block id="d0b4658a7d84a9eac4898488fcaa5c83" category="admonition">基礎組態不需要授權。</block>
@@ -3942,12 +3931,10 @@
   <block id="b41c4700bab043f1f20ef00a3ca30550" category="admonition">Nexus 5596UP/5596T叢集交換器已不再可從NetApp取得、但Cisco僅支援有限的Tim。</block>
   <block id="e727b00944f81e1d0a95c12886ac4641" category="inline-link">歸檔</block>
   <block id="43700a28b6a0a6d22cee566cf110c1ac" category="paragraph">客戶可在中使用截至硬體支援結束的支援範圍內AFF 的支援功能、以供客戶參考FAS<block ref="e7b678559b63d2ae51b0bdc075b51522" category="inline-link-rx"></block>。</block>
-  <block id="3190ff33d621d64996efea42085e5a0e" category="sidebar">NetApp提供叢集、儲存設備和共享交換器、可在主機儲存設備和兩個以上的AFF/FAS控制器之間提供連線功能、讓您在儲存基礎架構之間不中斷地移動資料和網路介面。</block>
   <block id="be11c74c1dd7f307bb80183a90dc2067" category="sidebar">開始使用</block>
   <block id="33871b6190a8d5adbe8b15282054766c" category="sidebar">新增功能</block>
   <block id="06ad314b340900d226b1196e1fe289e9" category="sidebar">快速入門</block>
   <block id="732eab758bc032e5cc4992b97650c69b" category="sidebar">相關ONTAP 資訊</block>
-  <block id="495d87219d733f7402b03ba10a7576fc" category="sidebar">AFF/FAS硬體系統</block>
   <block id="efd44736fee0b29831bc101f834f9425" category="sidebar">軟件ONTAP</block>
   <block id="974ad78dc53c253ebfe5b2b8b376f353" category="sidebar">工具支援</block>
   <block id="668e2078ef1b1722c77cdb5c523a4463" category="sidebar">NetApp知識庫</block>
@@ -3983,7 +3970,6 @@
   <block id="037fd3285f5414c76c57c401fbc5603c" category="sidebar">啟用記錄收集</block>
   <block id="71f5771dab663d80ba4dad1627e3386a" category="sidebar">升級總覽</block>
   <block id="1f23e03e99812c23b47ad60d475647df" category="sidebar">升級交換器</block>
-  <block id="2707e98202897bbf6d508b6f4c5232cc" category="sidebar">移轉至雙節點交換器</block>
   <block id="90f9408edf534ae6691bfa241e3cef32" category="sidebar">更換BS-53248交換器</block>
   <block id="c4767bb3bd142c908fcfd8a9e5fab38c" category="sidebar">從無交換器DAS叢集移轉</block>
   <block id="3c0c4451f5d8950dc9b9a962b87ff4ae" category="sidebar">從交換式DAS組態移轉</block>
@@ -4747,4 +4733,44 @@
   <block id="7733a6a16b4fa24d09c107d2b3eefb78" category="summary">叢集交換器健全狀況監控記錄收集功能可用於收集ONTAP 資訊中與交換器相關的記錄檔。您必須確定已使用 92300YC 叢集交換器 CLI 設定環境、詳情請見此處。</block>
   <block id="e7c823ebcf9c688c2043749093639ce5" category="paragraph">下列命令可在 Cisco 92300YC 交換器上設定 SNMPv3 使用者名稱：</block>
   <block id="d60c463bb4096f3ed4bd1618626dfe10" category="paragraph-title">疑難排解</block>
+  <block id="3e7c0049318f1d54d121bd59293ae3f8" category="summary">設定 Cisco 9336C-FX2 交換器之前、請先檢閱下列資訊。</block>
+  <block id="6f46a467644090d99e7affb0172248d7" category="paragraph">設定 Cisco 9336C-FX2 交換器之前、請先檢閱下列考量事項。</block>
+  <block id="4c53e24e451af6129456f6303c30d40c" category="section-title">支援 NVIDIA CX6 、 CX6-DX 和 CX7 乙太網路連接埠</block>
+  <block id="9631cf0fb6580db66010faf0ddf48e5a" category="paragraph">如果使用 NVIDIA ConnectX-6 （ CX6 ）、 ConnectX-6 Dx （ CX6-DX ）或 ConnectX-7 （ CX7 ） NIC 連接埠將交換器連接埠連接至 ONTAP 控制器、則必須硬編碼交換器連接埠速度。</block>
+  <block id="814d720814ffd5b1d8710ed1cff64233" category="section-title">25GbE FEC 需求</block>
+  <block id="5179acf3e9761e0b0a93230fb2e3563e" category="section-title">FAS2820 e0a/e0b 連接埠</block>
+  <block id="16492a28b092a6c397b2ace11004d3ae" category="paragraph">FAS2820 e0a 和 e0b 連接埠需要 FEC 組態變更、才能與 9336C-FX2 交換器連接埠連結。
+對於交換器連接埠 e0a 和 e0b 、 FEC 設定設為<block ref="49bb002a2d60e4cc69c3dc5b31861c1e" prefix=" " category="inline-code"></block>。</block>
+  <block id="4f87522819ea00e934b0a0922889948b" category="list-title">連接埠群組速度限制</block>
+  <block id="ffb3876ecec1241eb99eed3e2c199c30" category="list-text">48 個 10/25GbE （ SFP28/SFP+ ）連接埠合併為 12 個 4 埠群組、如下所示：連接埠 1-4 、 5-8 、 9-12 、 13-16 、 17-20 、 21-24 、 25-28 、 29-32 、 33-36 、 37-40 、 41-44 和 45-48 。</block>
+  <block id="3262b02fba07b6c88ff94cf729a2d880" category="list-text">如果 4 埠群組中的速度不同、交換器連接埠將無法正常運作。</block>
+  <block id="44419445a2db4f385ef269ec6901c6f0" category="list-text">確認兩台 BS-53248 交換器 CS1 和 CS2 之間的 ISL 和 ISL 上的實體連接埠已啟動：</block>
+  <block id="d3ca9236c4922d1ced4f46317b142939" category="paragraph">移轉完成後、您可能需要安裝必要的組態檔、以支援用於 BES-53248 叢集交換器的乙太網路交換器健全狀況監視器（ CSHM ）。請參閱 <block ref="69a3b5b5b3e87ce1bcae2811d815d9de" category="inline-link-macro-rx"></block>。</block>
+  <block id="884341494cf0683252982193822b1820" category="summary">設定 Broadcom BS-53248 交換器之前、請先檢閱下列資訊。</block>
+  <block id="07da2741be958e9f66a97df92910bd8a" category="paragraph">在設定 Broadcom BS-53248 交換器之前、請先檢閱下列考量事項。</block>
+  <block id="5ff0ed2baf5dbbaa7302070081cdcb21" category="section-title">叢集連接埠交換器指派</block>
+  <block id="6d2daece992ad0842c43707d5f1dd7e0" category="paragraph">您可以使用 Broadcom 支援的 BS-53248 叢集交換器連接埠指派表、作為設定叢集的指南。</block>
+  <block id="8a97863dc2bb67b8312833e0e1177b9a" category="paragraph">0-16</block>
+  <block id="8f165dca42f321f16043254a0b0519b2" category="section-title">FEC 要求</block>
+  <block id="c54cb1d1758401e3642d17bb93a69d93" category="list-text">若為含銅線的 25G 連接埠、請參閱下表以取得詳細資料。</block>
+  <block id="195cd18c7f8998650d35b4c351942586" category="paragraph">如果控制器側為<block ref="9df22f196a33acd0b372fe502de51211" prefix=" " category="inline-code"></block>，交換器側設為 FEC 25G 。</block>
+  <block id="a00291ce16531c65ee398b6881feea1f" category="paragraph">+
+影像： ../media/FEC_copper_table.jpg[25G 連接埠、含銅線 ]</block>
+  <block id="4acde917814132a561bfa4351ff46435" category="list-text">如需使用光纖 / 光纖纜線的 25G 連接埠、請參閱下表以取得詳細資料：</block>
+  <block id="c6539246443696c8a670f430b739b72e" category="image-alt">25 公克連接埠、含光纖 / 光纖纜線</block>
+  <block id="6e780ba970adeac360d7606298c46e9e" category="section-title">Bootarg 實作</block>
+  <block id="128b15f7c069993f4d8608bed503593c" category="paragraph">使用下列命令、將 25G 連接埠 FEC 設定為任一端口<block ref="9df22f196a33acd0b372fe502de51211" prefix=" " category="inline-code"></block> 或<block ref="e05fe30750d3ea262a610d17ebc07019" prefix=" " category="inline-code"></block>、視需要：</block>
+  <block id="82f8a8d293c0abf4e508fba4f90f77de" category="list-text">設定為時 <block ref="9df22f196a33acd0b372fe502de51211" prefix="*" category="inline-code"></block>* ：</block>
+  <block id="a2db881e6e788aef3d98248893ac183d" category="list-text">。<block ref="9df22f196a33acd0b372fe502de51211" prefix=" " category="inline-code"></block> 設定會立即將設定傳播到硬體、不需要重新開機。</block>
+  <block id="69c272de4bab8db62256f54da8bcde70" category="list-text">如果<block ref="ec0f1fb6d4ad0a1c5956dbfae578b508" prefix=" " category="inline-code"></block>，它將從 bootarg 儲存設備中刪除。</block>
+  <block id="e36b105e2f0954e014a0653c4237275f" category="list-text">重新開機後<block ref="9df22f196a33acd0b372fe502de51211" prefix=" " category="inline-code"></block> 自此之後、設定仍保持不變<block ref="9df22f196a33acd0b372fe502de51211" prefix=" " category="inline-code"></block> 為預設 FEC 設定。</block>
+  <block id="4cf5b76257838a13f7eaf6e128780b63" category="list-text">設定為時 <block ref="e05fe30750d3ea262a610d17ebc07019" prefix="*" category="inline-code"></block>* ：</block>
+  <block id="33374324ada2340989bc045d67e0bc1e" category="list-text">。<block ref="e0a64c365feb7b2f913e6a4048472af6" prefix=" " category="inline-code"></block> 設定會立即將設定傳播到硬體、不需要重新開機。</block>
+  <block id="c5a74ce2f4585cd46c311a5822607b9f" category="list-text">全新<block ref="4b077bb4cc781686a7abd72c8354ba70" prefix=" " category="inline-code"></block> 會以設定為「 true 」的值建立。</block>
+  <block id="72477c9fa5c7321db80c98ce8db97acf" category="list-text">重新開機後、<block ref="e0a64c365feb7b2f913e6a4048472af6" prefix=" " category="inline-code"></block> 此設定會保留到位、以供驅動程式碼使用。</block>
+  <block id="6015ba5fcef1f3caa77869608d6c2789" category="doc">ONTAP 硬體系統的交換器文件</block>
+  <block id="25cb4346e07d274b036816fdb6e793af" category="sidebar">NetApp 提供叢集、儲存設備和共用交換器、可在主機儲存設備和兩個或多個 NetApp 控制器之間提供連線、讓您在儲存基礎架構中不中斷地移動資料和網路介面。</block>
+  <block id="e039aa1be61543fd84f1c4eb5d3e9f6b" category="sidebar">ONTAP 硬體系統</block>
+  <block id="9d07d8327ebc12554e974699f677fdb7" category="sidebar">ONTAP 硬體的切換文件</block>
+  <block id="1be807f8d70b208f4d04b385b1c81765" category="sidebar">移轉至雙節點交換式</block>
 </blocks>
