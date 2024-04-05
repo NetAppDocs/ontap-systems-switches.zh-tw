@@ -22,6 +22,8 @@ entries:
     url: "/switch-cisco-3132q-v/setup-switch.html"
   - title: 在NetApp機櫃中安裝交換器
     url: "/switch-cisco-3132q-v/install-cisco-nexus-3132qv.html"
+  - title: 檢視纜線佈線與組態
+    url: "/switch-cisco-3132q-v/cabling-considerations-3132q-v.html"
 - title: 設定軟體
   pdf-filename: Configure_software_3132q-v
   entries:

@@ -22,6 +22,8 @@ entries:
     url: "/switch-cisco-92300/setup-worksheet-92300yc.html"
   - title: 設定交換器
     url: "/switch-cisco-92300/configure-install-initial.html"
+  - title: 檢視纜線佈線與組態
+    url: "/switch-cisco-92300/cabling-considerations-92300.html"
 - title: 設定軟體
   pdf-filename: Configure_software_92300yc
   entries:

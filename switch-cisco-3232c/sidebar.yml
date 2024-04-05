@@ -22,6 +22,8 @@ entries:
     url: "/switch-cisco-3232c/setup-switch.html"
   - title: 在NetApp機櫃中安裝交換器
     url: "/switch-cisco-3232c/install-cisco-nexus-3232c.html"
+  - title: 檢視纜線佈線與組態
+    url: "/switch-cisco-3232c/cabling-considerations-3232c.html"
 - title: 設定軟體
   pdf-filename: Configure_software_3232c
   entries:

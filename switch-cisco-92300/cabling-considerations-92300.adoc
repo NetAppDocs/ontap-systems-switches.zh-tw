@@ -1,0 +1,35 @@
+---
+permalink: switch-cisco-92300/cabling-considerations-92300.html 
+sidebar: sidebar 
+keywords: 92300YC cabling setup, 92300YC switches configuration, nx-os 
+summary: 在設定 Cisco 92300YC 交換器之前、請先檢閱下列資訊。 
+---
+= 檢閱纜線佈線和組態考量
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在設定 Cisco 92300YC 交換器之前、請先檢閱下列考量事項。
+
+
+
+== 支援 NVIDIA CX6 、 CX6-DX 和 CX7 乙太網路連接埠
+
+如果使用 NVIDIA ConnectX-6 （ CX6 ）、 ConnectX-6 Dx （ CX6-DX ）或 ConnectX-7 （ CX7 ） NIC 連接埠將交換器連接埠連接至 ONTAP 控制器、則必須硬編碼交換器連接埠速度。
+
+[listing, subs="+quotes"]
+----
+(cs1)(config)# interface Ethernet1/19
+*For 100GbE speed:*
+(cs1)(config-if)# *speed 100000*
+*For 40GbE speed:*
+(cs1)(config-if)# *speed 40000*
+(cs1)(config-if)# no negotiate auto
+(cs1)(config-if)# exit
+(cs1)(config)# exit
+*Save the changes:*
+(cs1)# *copy running-config startup-config*
+----
+請參閱 https://hwu.netapp.com/Switch/Index["Hardware Universe"^] 如需交換器連接埠的詳細資訊、

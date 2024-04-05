@@ -2221,7 +2221,6 @@
   <block id="2c70d9b6ebd85a5ee2fff0f363a115ac" category="paragraph">「網路介面修改-vserver叢集-lif*-auta-f還原 為真」</block>
   <block id="e602723d0e5f9bdd1222eae8ea457289" category="paragraph">「網路介面show -vserver cluster -lif_lif_name_」</block>
   <block id="038dfaef435585ad7a241ece49eb90ca" category="paragraph">如果"is Home"（是主目錄）列是"true"（真），則已恢復生命，如以下範例中的"node1_clus2"和"node2_clus2"所示：</block>
-  <block id="ca781b2f6ba431222707604fe0989dc1" category="paragraph">如果有任何叢集LIF尚未返回其主連接埠、請手動還原它們：</block>
   <block id="31d2e20cefb76721dace23dfd9a35896" category="paragraph">「網路介面回復-vserver叢集-lif_lif_name_'</block>
   <block id="aeb90980ffc18e4c949766c382d409d4" category="list-text">從任一節點的系統主控台檢查節點的叢集狀態：</block>
   <block id="90d334e25f499d80506823cb341c39d7" category="paragraph">以下範例顯示兩個節點上的epsilon為「假」：</block>
@@ -4773,4 +4772,11 @@
   <block id="e039aa1be61543fd84f1c4eb5d3e9f6b" category="sidebar">ONTAP 硬體系統</block>
   <block id="9d07d8327ebc12554e974699f677fdb7" category="sidebar">ONTAP 硬體的切換文件</block>
   <block id="1be807f8d70b208f4d04b385b1c81765" category="sidebar">移轉至雙節點交換式</block>
+  <block id="baeb2b9edd2060971ec4838ea0641d18" category="paragraph">如果有任何叢集生命期尚未返回其主連接埠、請從本機節點手動還原：</block>
+  <block id="b6dd8221599de3110a6be11272b8d643" category="summary">設定 Cisco 3232C 交換器之前、請先檢閱下列資訊。</block>
+  <block id="855541c4370cb556c283600de9f0d1df" category="paragraph">在設定 Cisco 3232C 交換器之前、請先檢閱下列考量事項。</block>
+  <block id="249c296c1de730eddbe0ead3fe930200" category="summary">在設定 Cisco 92300YC 交換器之前、請先檢閱下列資訊。</block>
+  <block id="709ea8965bb4964023cd6e82df0d3c62" category="paragraph">在設定 Cisco 92300YC 交換器之前、請先檢閱下列考量事項。</block>
+  <block id="ae721238017915904e94acd87eddf78c" category="summary">在設定 Cisco 3132Q-V 交換器之前、請先檢閱下列資訊。</block>
+  <block id="eae32a8cbb7853bbc6b25138f2911afa" category="paragraph">在設定 Cisco 3132Q-V 交換器之前、請先檢閱下列考量事項。</block>
 </blocks>
