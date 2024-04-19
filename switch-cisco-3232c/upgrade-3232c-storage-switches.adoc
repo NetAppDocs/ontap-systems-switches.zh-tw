@@ -49,7 +49,8 @@ NOTE: 此程序需要同時使用ONTAP 支援指令和Cisco Nexus 3000系列交�
 
 === 步驟1：檢查交換器和連接埠的健全狀況
 
-. 如果AutoSupport 此叢集啟用了「支援功能」、請叫用AutoSupport 下列訊息來抑制自動建立案例：「System Node AutoSupport 支援功能叫用節點*-type all - Message MAn=xh」
+. 如果啟用了「支援」功能、請叫用下列消息來禁止自動建立個案AutoSupport AutoSupport ：
+`system node autosupport invoke -node * -type all - message MAINT=xh`
 +
 _x_是維護時段的持續時間（以小時為單位）。
 
@@ -118,7 +119,7 @@ node2
                    e7b  ENET  storage    100 enabled  online        30
 ----
 ====
-. 檢查叢集是否沒有儲存交換器或纜線問題：
+. 檢查是否沒有儲存交換器或纜線問題：
 +
 `system health alert show -instance`
 
@@ -351,9 +352,9 @@ Module       Image                  Running-Version(pri:alt)           New-Versi
 
 
 Switch will be reloaded for disruptive upgrade.
-Do you want to continue with the installation (y/n)?  [n]  y
+Do you want to continue with the installation (y/n)?  [n] *y*
 input string too long
-Do you want to continue with the installation (y/n)?  [n] y
+Do you want to continue with the installation (y/n)?  [n] *y*
 
 Install is in progress, please wait.
 
@@ -481,7 +482,7 @@ S1
     Version Source: CDP
 
 S2
-                            storage-network    172.17.227.6     NX3232C
+                            storage-network    172.17.227.6    NX3232C
      Serial Number: FOC220443LZ
       Is Monitored: true
             Reason: None

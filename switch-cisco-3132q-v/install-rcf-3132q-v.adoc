@@ -621,12 +621,6 @@ cluster1::*>
 ----
 ====
 . 在交換器CS1上重複步驟1到10。
-
-
-
-
-=== 步驟3：重新開機並驗證組態
-
 . 在叢集生命體上啟用自動還原。
 +
 .顯示範例
@@ -639,15 +633,17 @@ cluster1::*> network interface modify -vserver Cluster -lif * -auto-revert True
 ====
 . 重新開機交換器CS1。您可以這樣做、觸發叢集生命期以恢復到其主連接埠。您可以在交換器重新開機時忽略節點上報告的「叢集連接埠當機」事件。
 +
-.顯示範例
-[%collapsible]
-====
 [listing, subs="+quotes"]
 ----
 cs1# *reload*
 This command will reboot the system. (y/n)?  [n] *y*
 ----
-====
+
+
+
+
+=== 步驟3：驗證組態
+
 . 驗證連接至叢集連接埠的交換器連接埠是否正常運作。
 +
 `show interface brief | grep up`

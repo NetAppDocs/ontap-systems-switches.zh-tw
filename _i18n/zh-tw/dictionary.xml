@@ -3057,7 +3057,6 @@
   <block id="d08074ca4afc3cad1b1b41c1134b3f1e" category="section-title">步驟2：設定並驗證設定</block>
   <block id="b6ec5ccd50e4a92a636c1dc432c89581" category="admonition">叢集節點報告為健全狀態最多可能需要5分鐘。</block>
   <block id="442f3bc68fd4ab1c760b482d02f7ca71" category="list-text">在交換器CS1上重複步驟1到10。</block>
-  <block id="06e9c44ff7df8ac56c0fec0f8ded0121" category="section-title">步驟3：重新開機並驗證組態</block>
   <block id="af4d9c4c765c5c1d9c279c35191c82da" category="paragraph"><block ref="e39b44798f52b1532971ab295180e1b0" prefix="" category="inline-code"></block></block>
   <block id="525f3369fb72855c79a534b59acc786f" category="list-text">輸入：<block ref="ff5aaae616b6f326cad680284f32b588" prefix=" " category="inline-code"></block></block>
   <block id="0c2ad6edfd02a5a2a481f1f6e0a45712" category="list-text">輸入：<block ref="abefab8d02f9c0ef8226a4fcf49448a1" prefix=" " category="inline-code"></block></block>
@@ -4779,4 +4778,6 @@
   <block id="709ea8965bb4964023cd6e82df0d3c62" category="paragraph">在設定 Cisco 92300YC 交換器之前、請先檢閱下列考量事項。</block>
   <block id="ae721238017915904e94acd87eddf78c" category="summary">在設定 Cisco 3132Q-V 交換器之前、請先檢閱下列資訊。</block>
   <block id="eae32a8cbb7853bbc6b25138f2911afa" category="paragraph">在設定 Cisco 3132Q-V 交換器之前、請先檢閱下列考量事項。</block>
+  <block id="e3e32349be8562dbe95d6af1fcba4bbe" category="list-text">如果啟用了「支援」功能、請叫用下列消息來禁止自動建立個案AutoSupport AutoSupport ：<block ref="80cae18d0d871afff6b1bcabf727d6da" prefix=" " category="inline-code"></block></block>
+  <block id="abd1e059b59ee3b3be9267c9c1319923" category="list-text">檢查是否沒有儲存交換器或纜線問題：</block>
 </blocks>
