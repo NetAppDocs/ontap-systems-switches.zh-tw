@@ -36,6 +36,10 @@ entries:
     url: "/switch-cisco-9336c-fx2-storage/install-nxos-software-9336c-storage.html"
   - title: 安裝RCF組態檔
     url: "/switch-cisco-9336c-fx2-storage/install-nxos-rcf-9336c-storage.html"
+  - title: 啟用記錄收集
+    url: "/switch-cisco-9336c-fx2-storage/CSHM_log_collection.html"
+  - title: 設定用於監控的 SNMPv3
+    url: "/switch-cisco-9336c-fx2-storage/CSHM_snmpv3.html"
 - title: 更換儲存交換器
   pdf-filename: REPLACE _SWITE_9336c-FX2-storage
   url: "/switch-cisco-9336c-fx2-storage/replace-storage-switch-9336c-storage.html"

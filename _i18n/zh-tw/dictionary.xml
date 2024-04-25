@@ -2239,7 +2239,6 @@
   <block id="1a0894513362fda649e11ba9de926b82" category="list-text">確定每個叢集連接埠的管理或作業狀態。</block>
   <block id="be6163ad0c362d632b28f98dea1fdaaa" category="paragraph">所有移除的叢集連接埠都應為上移。</block>
   <block id="d0141bcaf704f75f043a7384708a3131" category="paragraph">驗證移動的叢集連接埠是否將CS2-new交換器視為鄰近端點。</block>
-  <block id="8c61118abc6e9e30fd4469d362e96e00" category="paragraph">所有叢集生命體都會移至CS2新交換器。</block>
   <block id="2a5fc0afbcb2299e24c73a909b297e93" category="paragraph">驗證移動的叢集連接埠是否將CS1-new交換器視為鄰近端點。</block>
   <block id="9e25219bfef39dc2d94805b599244f8d" category="open-title">更新版本ONTAP</block>
   <block id="c341f6ea60d7e8508c7d6cd8d529fd71" category="paragraph">使用下列兩個命令啟用乙太網路交換器健全狀況監視器記錄收集功能、以收集交換器相關的記錄檔：「System Switch Ethernet log setup-password」（系統交換器乙太網路記錄啟用-收集）和「System Switch Ethernet log enable - collection」（系統交換器乙太網路記錄啟用-收集）</block>
@@ -4695,10 +4694,8 @@
   <block id="415f7d338cb2daf9bc58ecb9861e7a38" category="list-text">然後、節點與 CS2 之間的纜線會從 CS2 中斷連線、並重新連線至 CS2-new 。</block>
   <block id="4c583a66e2c7985bcc194e39f55ceea5" category="list-text">交換器 CS1 由交換器 CS1-new 取代。</block>
   <block id="e36cd913095fb9e4f8b81c803f89930b" category="list-text">然後、節點與 CS1 之間的纜線會從 CS1 中斷連線、並重新連線至 CS1-new 。</block>
-  <block id="c541a676ea1012971e3e092cd0c456bb" category="list-text">在叢集交換器 CS2 上、關閉連接至節點叢集連接埠的連接埠、以便容錯移轉叢集生命期：</block>
   <block id="3e504b88532082c592970766665ca3a1" category="list-text">驗證叢集生命期是否已容錯移轉至叢集交換器 CS1 上所主控的連接埠。這可能需要幾秒鐘的時間。</block>
   <block id="501db48c47898b7316de60a2bcbe9a16" category="list-text">從交換器 CS2-new's 的觀點來確認交換器連接埠連線：</block>
-  <block id="4b9f132828deb041b404e712b378ac77" category="list-text">在叢集交換器 CS1 上、關閉連接至節點叢集連接埠的連接埠、以便容錯移轉叢集生命負載。下列範例使用步驟7的介面輸出範例。</block>
   <block id="32172ed3b8d9ced5da325e5230b7981b" category="list-text">確認叢集生命體已容錯移轉至交換器 CS2-new 上的主控連接埠。這可能需要幾秒鐘的時間：</block>
   <block id="85e04ff5dd770cff5dbbe435ea94a7dd" category="list-text">從交換器 CS1-new's 的觀點來確認交換器連接埠連線：</block>
   <block id="784542320767d69b7e7fc2bfeb64a5b4" category="list-text">在叢集交換器 CL2 上、關閉連接至節點叢集連接埠的連接埠、以便容錯移轉叢集生命期：</block>
@@ -4780,4 +4777,11 @@
   <block id="eae32a8cbb7853bbc6b25138f2911afa" category="paragraph">在設定 Cisco 3132Q-V 交換器之前、請先檢閱下列考量事項。</block>
   <block id="e3e32349be8562dbe95d6af1fcba4bbe" category="list-text">如果啟用了「支援」功能、請叫用下列消息來禁止自動建立個案AutoSupport AutoSupport ：<block ref="80cae18d0d871afff6b1bcabf727d6da" prefix=" " category="inline-code"></block></block>
   <block id="abd1e059b59ee3b3be9267c9c1319923" category="list-text">檢查是否沒有儲存交換器或纜線問題：</block>
+  <block id="54be17cb6ddfe931b6d4ca0454c7bcc8" category="admonition">停用自動還原功能可確保 ONTAP 只在稍後關閉交換器連接埠時容錯移轉叢集生命體。</block>
+  <block id="3947ff32e82f86e7176dc28b3ee33db0" category="list-text">在叢集交換器 CS2 上、關閉連接到 * 所有 * 節點叢集連接埠的連接埠、以便容錯移轉叢集生命期：</block>
+  <block id="022c00ee7f7e6672d82cc079623d6e22" category="list-text">在叢集交換器 CS1 上、關閉連接到 * 所有 * 節點叢集連接埠的連接埠、以便容錯移轉叢集生命期。</block>
+  <block id="e6eb1709bc8131372d63990293ab75f8" category="paragraph">所有叢集生命體移轉至 CS2 新交換器。</block>
+  <block id="af7a19b4dbadf7641102bf88598cfd8b" category="paragraph">+
+乙太網路交換器健全狀況監視器（ CSHM ）負責確保叢集與儲存網路交換器的作業健全狀況、並收集交換器記錄以供偵錯之用。本程序將引導您完成設定及開始從交換器收集詳細 * 支援 * 記錄的程序、並開始每小時收集 AutoSupport 所收集的 * 定期 * 資料。</block>
+  <block id="a13c9d4c750715a8b993a3fec916189f" category="list-text">應用參考組態檔案（ RCF ）時、必須指定記錄集合的使用者。依預設、此使用者設為 _admin_ 。如果您想要使用不同的使用者、您必須在 RCF 的 * # SHM User* 區段中指定此項目。</block>
 </blocks>

@@ -247,7 +247,11 @@ cs2                         cluster-network     10.233.205.93   N5K-C5596UP
 +
 「網路介面修改-vserver叢集-lIF *-auta-fRevert假」
 
-. 在叢集交換器 CS2 上、關閉連接至節點叢集連接埠的連接埠、以便容錯移轉叢集生命期：
++
+
+NOTE: 停用自動還原功能可確保 ONTAP 只在稍後關閉交換器連接埠時容錯移轉叢集生命體。
+
+. 在叢集交換器 CS2 上、關閉連接到 * 所有 * 節點叢集連接埠的連接埠、以便容錯移轉叢集生命期：
 +
 [listing, subs="+quotes"]
 ----
@@ -365,7 +369,7 @@ node2      /cdp
 cs2-new# *show interface brief*
 cs2-new# *show cdp neighbors*
 ----
-. 在叢集交換器 CS1 上、關閉連接至節點叢集連接埠的連接埠、以便容錯移轉叢集生命負載。下列範例使用步驟7的介面輸出範例。
+. 在叢集交換器 CS1 上、關閉連接到 * 所有 * 節點叢集連接埠的連接埠、以便容錯移轉叢集生命期。
 +
 [listing, subs="+quotes"]
 ----
@@ -373,7 +377,7 @@ cs1(config)# *interface eth1/1-1/2*
 cs1(config-if-range)# *shutdown*
 ----
 +
-所有叢集生命體都會移至CS2新交換器。
+所有叢集生命體移轉至 CS2 新交換器。
 
 . 確認叢集生命體已容錯移轉至交換器 CS2-new 上的主控連接埠。這可能需要幾秒鐘的時間：
 +
