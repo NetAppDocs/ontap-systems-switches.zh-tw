@@ -25,7 +25,7 @@ NVIDIA SN2100是一款叢集交換器、可讓您建置ONTAP 包含兩個以上�
 
 . link:configure-sn2100-cluster.html["設定交換器"]。
 +
-您可以在NVIDIA的文件中找到相關指示。
+NVIDIA 文件中提供相關說明。
 
 . link:cabling-considerations-sn2100-cluster.html["檢閱纜線佈線和組態考量"]。
 +
@@ -43,7 +43,11 @@ NVIDIA SN2100是一款叢集交換器、可讓您建置ONTAP 包含兩個以上�
 +
 叢集與儲存應用程式可使用兩個RCF指令碼。每個的程序都相同。
 
-. link:install-snmpv3-sn2100-cluster.html["設定用於交換器記錄收集的v3"]。
+. link:CSHM_log_collection.html["啟用記錄收集"]。
++
+使用此功能可收集ONTAP 有關交換器的記錄檔、以供參考。
+
+. link:CSHM_snmpv3.html["設定用於監控的 SNMPv3"]。
 +
 此版本支援用於交換器記錄收集和交換器健全狀況監控（SHM）的v3。
 

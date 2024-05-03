@@ -1,52 +1,10 @@
-= 檢閱要求
+= 步驟 1 ：準備升級
 :allow-uri-read: 
 
 
 
 
-== 檢閱要求
-
-.您需要的產品
-* 交換器組態的目前備份。
-* 完全正常運作的叢集（記錄檔中沒有錯誤或類似問題）。
-* 目前的RCF檔案。
-* 安裝RCF時所需的交換器主控台連線。
-
-
-.建議的文件
-* link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器頁面"^] 請參閱交換器相容性表、以瞭解支援ONTAP 的功能表和RCF版本。請注意、RCF中的命令語法與NX-OS版本中的命令語法之間可能存在相依性。
-* link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000系列交換器"^]。如需Cisco交換器升級與降級程序的完整文件、請參閱Cisco網站上提供的適當軟體與升級指南。
-
-
-
-
-== 安裝RCF
-
-.關於範例
-本程序中的範例使用下列交換器和節點命名法：
-
-* 兩個Cisco交換器的名稱為CS1和CS2。
-* 節點名稱為cluster1-01、cluster1-02、cluster1-03和cluster1-04。
-* 叢集LIF名稱為cluster1-01_clus1、cluster1-01_clus2、cluster1-02_clus1、cluster1-02_clus2、cluster1-03_clus1、 cluster1-03_clus2、cluster1-04_clus1和cluster1-04_clus2。
-* 「cluster1：*：>」提示會指出叢集的名稱。
-
-
-本程序中的範例使用兩個節點。這些節點使用兩個10GbE叢集互連連接埠e0a和e0b。請參閱 https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"] 驗證平台上的叢集連接埠是否正確。
-
-
-NOTE: 命令輸出可能會因ONTAP 不同版本的不相同而有所差異。
-
-.關於這項工作
-此程序需要同時使用ONTAP 支援指令和Cisco Nexus 9000系列交換器的指令；ONTAP 除非另有說明、否則會使用支援指令。
-
-在此程序期間、不需要運作中的交換器間連結（ISL）。這是因為RCF版本變更可能會暫時影響ISL連線。為確保叢集作業不中斷、下列程序會在目標交換器上執行步驟時、將所有叢集生命體移轉至作業夥伴交換器。
-
-
-CAUTION: 在安裝新的交換器軟體版本和RCFs之前、您必須清除交換器設定並執行基本組態。您必須使用序列主控台連線至交換器。此工作會重設管理網路的組態。
-
-
-
-=== 步驟1：準備安裝
+=== 步驟 1 ：準備升級
 
 . 顯示連接至叢集交換器之每個節點上的叢集連接埠：
 +
@@ -189,32 +147,22 @@ cluster1::*>
 
 . 停用叢集生命體上的自動還原。
 +
-.顯示範例
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert false*
-----
-====
+`cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert false*`
+
 
 
 
 
 === 步驟2：設定連接埠
 
-. 在叢集交換器CS2上、關閉連接至節點叢集連接埠的連接埠。
+. 在叢集交換器CS1上、關閉連接至節點叢集連接埠的連接埠。
 +
-.顯示範例
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-cs2(config)# *interface eth1/1/1-2,eth1/7-8*
-cs2(config-if-range)# *shutdown*
-----
-====
-. 驗證叢集LIF是否已移轉至叢集交換器CS1上裝載的連接埠。這可能需要幾秒鐘的時間。
+`cs1(config)# *interface eth1/1/1-2,eth1/7-8*`
+
++
+`cs1(config-if-range)# *shutdown*`
+
+. 驗證叢集生命期是否已容錯移轉至叢集交換器 CS1 上所主控的連接埠。這可能需要幾秒鐘的時間。
 +
 「網路介面show -role cluster」
 
@@ -264,55 +212,64 @@ cluster1::*>
 ====
 . 如果您尚未這麼做、請將下列命令的輸出複製到文字檔、以儲存目前交換器組態的複本：
 +
-[listing]
-----
-show running-config
-----
-. 清除交換器CS2上的組態、然後執行基本設定。
-+
-
-CAUTION: 更新或套用新的RCF時、您必須清除交換器設定並執行基本組態。您必須連線至交換器序列主控台連接埠、才能再次設定交換器。
+「如何執行設定」
 
 +
-.. 清理組態：
+.. 記錄目前執行組態和使用中 RCF 檔案（例如組織的 SNMP 組態）之間的任何自訂新增項目。
+.. 若為 NX-OS 10.2 及更新版本、請使用 `show diff running-config` 用於比較 bootflash 中儲存的 RCF 檔案的命令。  否則、請使用第三個零件差異 / 比較工具。
+
+
+. 將基本組態詳細資料儲存至 bootflash 上的 write_erase.cfg 檔案。
++
+`switch# show run | i "username admin password" > bootflash:write_erase.cfg`
+
++
+`switch# show run | section "vrf context management" >> bootflash:write_erase.cfg`
+
++
+`switch# show run | section "interface mgmt0" >> bootflash:write_erase.cfg`
+
++
+`switch# show run | section "switchname" >> bootflash:write_erase.cfg`
+
+. 發出寫入清除命令以清除目前儲存的組態：
++
+`switch# write erase`
+
++
+`Warning: This command will erase the startup-configuration.`
+
++
+`Do you wish to proceed anyway? (y/n)  [n] y`
+
+. 將先前儲存的基本組態複製到啟動組態。
++
+`switch# copy write_erase.cfg startup-config`
+
+. 重新啟動交換器：
++
+`switch# reload`
+
++
+`This command will reboot the system. (y/n)?  [n] y`
+
+. 再次到達管理 IP 位址之後、請透過 SSH 登入交換器。
++
+您可能需要更新與 SSH 金鑰相關的主機檔案項目。
+
+. 使用下列傳輸協定之一、將 RCF 複製到交換器 CS1 的 bootflash ： FTP 、 TFTP 、 SFTP 或 SCP 。
++
+如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000系列NX-OS命令參考"^] 指南：
+
 +
 .顯示範例
 [%collapsible]
 ====
-[listing, subs="+quotes"]
-----
-(cs2)# *write erase*
-
-Warning: This command will erase the startup-configuration.
-
-Do you wish to proceed anyway? (y/n)  [n]  *y*
-----
-====
-.. 重新啟動交換器：
-+
-.顯示範例
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-(cs2)# *reload*
-
-Are you sure you would like to reset the system? (y/n) *y*
-
-----
-====
-
-
-. 使用下列傳輸傳輸協定之一、將RCF複製到交換器CS2的bootflash：FTP、TFTP、SFTP或scp。如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000系列NX-OS命令參考"^] 指南：
-+
-.顯示範例
-[%collapsible]
-====
-本範例顯示使用TFTP將RCF複製到交換器CS2上的bootFlash：
+此範例顯示使用 TFTP 將 RCF 複製到交換器 CS1 上的 bootflash ：
 
 [listing, subs="+quotes"]
 ----
-cs2# *copy tftp: bootflash: vrf management*
+cs1# *copy tftp: bootflash: vrf management*
 Enter source filename: *Nexus_9336C_RCF_v1.6-Cluster-HA-Breakout.txt*
 Enter hostname for the tftp server: *172.22.201.50*
 Trying to connect to tftp server......Connection to Server Established.
@@ -328,11 +285,11 @@ Copy complete, now saving to disk (please wait)...
 .顯示範例
 [%collapsible]
 ====
-此範例顯示在交換器CS2上安裝的RCF檔案「Nexus _9336C_RCF-v1.6-Cluster-HA-Breakout.txt'：
+此範例顯示RCF檔案 `Nexus_9336C_RCF_v1.6-Cluster-HA-Breakout.txt` 安裝在交換器 CS1 上：
 
 [listing]
 ----
-cs2# copy Nexus_9336C_RCF_v1.6-Cluster-HA-Breakout.txt running-config echo-commands
+cs1# copy Nexus_9336C_RCF_v1.6-Cluster-HA-Breakout.txt running-config echo-commands
 ----
 ====
 . 檢查「show banner motd」命令的橫幅輸出。您必須閱讀並遵循這些指示、以確保交換器的組態和操作正確無誤。
@@ -342,7 +299,7 @@ cs2# copy Nexus_9336C_RCF_v1.6-Cluster-HA-Breakout.txt running-config echo-comma
 ====
 [listing]
 ----
-cs2# show banner motd
+cs1# show banner motd
 
 ******************************************************************************
 * NetApp Reference Configuration File (RCF)
@@ -393,33 +350,27 @@ g mode:
 
 
 
-. 驗證RCF版本和交換器設定是否正確之後、請將執行組態檔複製到啟動組態檔。
+. 將先前識別的任何自訂新增項目重新套用至交換器組態。
+. 驗證 RCF 版本、自訂新增項目和交換器設定是否正確之後、請將執行組態檔案複製到啟動組態檔案。
 +
 如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000系列NX-OS命令參考"^] 指南：
 
 +
-.顯示範例
-[%collapsible]
-====
-[listing]
-----
-cs2# copy running-config startup-config [########################################] 100% Copy complete
-----
-====
-. 重新開機交換器CS2。您可以在交換器重新開機時忽略節點上報告的「叢集連接埠當機」事件。
+`cs1# copy running-config startup-config`
+
 +
-.顯示範例
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-cs2# *reload*
-This command will reboot the system. (y/n)?  [n] *y*
-----
-====
+`[########################################] 100% Copy complete`
+
+. 重新開機交換器CS1。您可以在交換器重新開機時忽略節點上報告的「叢集交換器健全狀況監視器」警示和「叢集連接埠關閉」事件。
++
+`cs1# *reload*`
+
++
+`This command will reboot the system. (y/n)?  [n] *y*`
+
 . 驗證叢集上叢集連接埠的健全狀況。
 +
-.. 驗證叢集中所有節點的e0d連接埠是否正常運作：
+.. 驗證叢集內所有節點的叢集連接埠是否正常運作：
 +
 「網路連接埠show -role cluster」
 
@@ -465,7 +416,10 @@ e0d       Cluster      Cluster          up   9000  auto/100000 healthy false
 8 entries were displayed.
 ----
 ====
-.. 驗證叢集的交換器健全狀況（這可能不會顯示交換器CS2、因為LIF不是位於e0d上）。
+.. 驗證叢集的交換器健全狀況。
++
+「network device-dDiscovery show -protocol cup」
+
 +
 .顯示範例
 [%collapsible]
@@ -521,46 +475,6 @@ cs2                         cluster-network    10.233.205.91    NX9-C9336C
 ====
 
 
-. 在叢集交換器CS1上、關閉連接至節點叢集連接埠的連接埠。
-+
-.顯示範例
-[%collapsible]
-====
-以下範例使用介面範例輸出：
-
-[listing, subs="+quotes"]
-----
-cs1(config)# *interface eth1/1/1-2,eth1/7-8*
-cs1(config-if-range)# *shutdown*
-----
-====
-. 驗證叢集LIF是否已移轉至交換器CS2上裝載的連接埠。這可能需要幾秒鐘的時間。
-+
-「網路介面show -role cluster」
-
-+
-.顯示範例
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-cluster1::*> *network interface show -role cluster*
-            Logical            Status     Network            Current             Current Is
-Vserver     Interface          Admin/Oper Address/Mask       Node                Port    Home
------------ ------------------ ---------- ------------------ ------------------- ------- ----
-Cluster
-            cluster1-01_clus1  up/up      169.254.3.4/23     cluster1-01         e0d     false
-            cluster1-01_clus2  up/up      169.254.3.5/23     cluster1-01         e0d     true
-            cluster1-02_clus1  up/up      169.254.3.8/23     cluster1-02         e0d     false
-            cluster1-02_clus2  up/up      169.254.3.9/23     cluster1-02         e0d     true
-            cluster1-03_clus1  up/up      169.254.1.3/23     cluster1-03         e0b     false
-            cluster1-03_clus2  up/up      169.254.1.1/23     cluster1-03         e0b     true
-            cluster1-04_clus1  up/up      169.254.1.6/23     cluster1-04         e0b     false
-            cluster1-04_clus2  up/up      169.254.1.7/23     cluster1-04         e0b     true
-8 entries were displayed.
-cluster1::*>
-----
-====
 . 驗證叢集是否正常：
 +
 「叢集展示」
@@ -582,33 +496,16 @@ cluster1-04          true     true          false
 cluster1::*>
 ----
 ====
-. 在交換器 CS1 上重複步驟 4 至 11 。
+. 在交換器 CS2 上重複步驟 1 至 18 。
 . 在叢集生命體上啟用自動還原。
 +
-.顯示範例
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert True*
-----
-====
-. 重新開機交換器CS1。您可以這樣做、觸發叢集生命期以恢復到其主連接埠。您可以在交換器重新開機時忽略節點上報告的「叢集連接埠當機」事件。
-+
-.顯示範例
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-cs1# *reload*
-This command will reboot the system. (y/n)?  [n] *y*
-----
-====
+`cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert True*`
 
 
 
 
-=== 步驟3：驗證組態
+
+=== 步驟 3 ：驗證叢集網路組態和叢集健全狀況
 
 . 驗證連接至叢集連接埠的交換器連接埠是否為* up*。
 +
@@ -651,8 +548,8 @@ Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
 Device-ID          Local Intrfce  Hldtme Capability  Platform      Port ID
 node1              Eth1/1         133    H           FAS2980       e0a
 node2              Eth1/2         133    H           FAS2980       e0a
-cs2                Eth1/35        175    R S I s     N9K-C9336C    Eth1/35
-cs2                Eth1/36        175    R S I s     N9K-C9336C    Eth1/36
+cs1                Eth1/35        175    R S I s     N9K-C9336C    Eth1/35
+cs1                Eth1/36        175    R S I s     N9K-C9336C    Eth1/36
 
 Total entries displayed: 4
 ----
@@ -867,6 +764,12 @@ Cluster
 cluster1::*>
 ----
 ====
++
+如果有任何叢集生命期尚未返回其主連接埠、請從本機節點手動還原：
+
++
+`network interface revert -vserver vserver_name -lif lif_name`
+
 . 驗證叢集是否正常：
 +
 「叢集展示」
