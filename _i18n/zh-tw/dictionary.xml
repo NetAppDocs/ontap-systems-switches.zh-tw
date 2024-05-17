@@ -1498,8 +1498,6 @@
   <block id="d42828872dda41a3b3b8b7c84f30ed58" category="list-text">使用「ifconfigeth0 &lt;ipaddress&gt; netmask&gt; up」和「route add Default GW &lt;gatewayAddress&gt;」來設定乙太網路介面並新增路由</block>
   <block id="8f9711a7318f4700b907c76b986e81c0" category="list-text">確認裝載ONIE安裝檔案的伺服器可連線：</block>
   <block id="939ed640d7e855bf91c94dd159eec9e9" category="list-text">安裝新的交換器軟體：</block>
-  <block id="a84f79c234a674f8c78ce3dcf3107d96" category="list-text">完成安裝。</block>
-  <block id="5e643b8081f2634d16caa993dcd72b96" category="paragraph">交換器將在未套用組態的情況下重新開機、然後重設為原廠預設值。</block>
   <block id="7e4ac3936d6d7e66218f3ec105e59f87" category="inline-link">Broadcom乙太網路交換器支援</block>
   <block id="88045e5af7830d69afafc3e6e7a9cf86" category="summary">您可以使用此程序來執行Bes - 53248叢集交換器的初始安裝。</block>
   <block id="4f94088c73aaa0dc7be5cb969d19b296" category="list-text">將管理連接埠（交換器左側的RJ-45扳手連接埠）連接至您的TFTP伺服器所在的相同網路。</block>
@@ -1512,8 +1510,6 @@
   <block id="46180f667842fa1595248c425401bc35" category="paragraph">設定</block>
   <block id="8c886a759ea380875a589702bd1cdd92" category="list-text">設定NTP伺服器。</block>
   <block id="20456234bfe7cb1be10155bbffc67c27" category="list-text">設定時區與時間同步（SNTP）：</block>
-  <block id="c1153c185fedbfeda743da4308b381a6" category="paragraph">《NTP》</block>
-  <block id="7daa1f3bd2e50f13bfebdb7a7895f251" category="list-text">手動設定時間：</block>
   <block id="049c9cde4c991381b8a286f75afc69c5" category="paragraph">"時鐘"</block>
   <block id="9486f276b196ea9042dc3f0bfb576743" category="summary">升級BS-53248叢集交換器時、首先要準備好控制器以進行升級、安裝EFOS軟體、授權、以及參考組態檔（RCF）。安裝完成後、您可以在不中斷營運的升級（NDU）和不中斷營運環境（NDU）環境中還原控制器組態。</block>
   <block id="35b8787b3c7d1523bc42aa8f180a1ed1" category="list-text">RCF和EFOS版本中的命令語法可能會有命令相依性。</block>
@@ -1678,7 +1674,6 @@
   <block id="0e20b420112310f5c09a775e13d5ec63" category="paragraph">您可以在初次設定Nexus 9336C-FX2交換器之後安裝RCF。您也可以使用此程序來升級RCF版本。</block>
   <block id="065efbcd9d0a8e180fd23e7abf72c407" category="list-text">兩個Cisco交換器的名稱為CS1和CS2。</block>
   <block id="0a7b7f6be6701fe3f4fccf471c185aac" category="list-text">叢集LIF名稱為cluster1-01_clus1、cluster1-01_clus2、cluster1-02_clus1、cluster1-02_clus2、cluster1-03_clus1、 cluster1-03_clus2、cluster1-04_clus1和cluster1-04_clus2。</block>
-  <block id="c32a2c4a7520ad02a1a78600f2a6b3bd" category="admonition">更新或套用新的RCF時、您必須清除交換器設定並執行基本組態。您必須使用序列主控台連線至交換器、才能清除交換器設定。</block>
   <block id="ace72d025aa2c5badb322c055f22cb6b" category="inline-link">Cisco Nexus 9000系列NX-OS命令參考</block>
   <block id="3f6787ea7175edfe255a564e4a1b6b07" category="paragraph">如需Cisco命令的詳細資訊、請參閱中的適當指南<block ref="dba0e49fdfeab9433bb71da6c505aa34" category="inline-link-rx"></block> 指南：</block>
   <block id="1eeb76faaf7865130ddbd3d06c8e02d0" category="list-text">檢查「show banner motd」命令的橫幅輸出。您必須閱讀並遵循這些指示、以確保交換器的組態和操作正確無誤。</block>
@@ -2138,9 +2133,7 @@
   <block id="e12f54ec861369fe9d4230c607023240" category="sidebar">安裝授權</block>
   <block id="446e9d64184ff722494a9a706bbd9d06" category="sidebar">移轉至交換式NetApp叢集環境</block>
   <block id="31714f8663c6dc67f31bca71f386b811" category="sidebar">準備控制器</block>
-  <block id="d309c85c035ebe6965714d23ddf04e40" category="sidebar">驗證組態</block>
   <block id="9aa8a0ae2c0c1e8fae620818f15e5745" category="sidebar">CN1601交換器管理員指南</block>
-  <block id="9a75d8eb81c880a703c72f7186f35288" category="doc">在升級B交互 式叢集交換器之後驗證組態</block>
   <block id="148a1525f4c4b2d620941031bf03f670" category="inline-link">_NetApp Hardware Universe SUR__</block>
   <block id="8761a71b0c01f0356000c0994d4fb203" category="paragraph">「系統交換器乙太網路記錄設定密碼」和「系統交換器乙太網路記錄啟用-收集」</block>
   <block id="c757279318295752ba90c940af04f05e" category="paragraph">接著是：「系統交換器乙太網路記錄啟用-收集」</block>
@@ -3306,7 +3299,6 @@
   <block id="80f16525d7b1d7efe562fab354c53efe" category="paragraph">您也可以選擇 <block ref="a8c82b142f94f7d62d6e984faba746ca" category="inline-link-macro-rx"></block>。否則、請前往 <block ref="7be1885a02922674638042ed6280ba6b" category="inline-link-macro-rx"></block>。</block>
   <block id="e87b8cb8ca5f95ffd4513eaaf405e559" category="list-text">您必須參閱Cisco網站上提供的適當軟體與升級指南。Cisco Nexus 3000系列交換器</block>
   <block id="02f9fa6d27aeaa4b43a0246698a4a478" category="list-text">交換器的初始配置必須完成。</block>
-  <block id="86c895079394cccb544aa969f3eeef5d" category="paragraph">您可以在升級BS-53248叢集交換器之後、使用建議的命令來驗證作業。</block>
   <block id="3c022231e0cbfc41bbc1b30213e131b9" category="list-text">針對每個LIF、請確認<block ref="53db3ce0fe0e71f06b3beb0b676b806c" prefix=" " category="inline-code"></block> 是<block ref="b326b5062b2f0e69046810717534cb09" prefix=" " category="inline-code"></block> 和<block ref="4f21ee5a18672b60f4c01e94e6be9c79" prefix=" " category="inline-code"></block> 是<block ref="46c48bec0d282018b9d167eef7711b2c" prefix=" " category="inline-code"></block> 在兩個節點上、使用命令：</block>
   <block id="8fec23cbf2521bfa83f3bf91968bd207" category="list-text">確認<block ref="fbcf0d1f787c74663ca9dc925ebf5f0c" prefix=" " category="inline-code"></block> 每個節點的<block ref="b326b5062b2f0e69046810717534cb09" prefix=" " category="inline-code"></block> 使用命令：</block>
   <block id="daea8eb1258bdbf2a8abd64259813601" category="paragraph">如果您使用叢集交換器健全狀況監視器（CSHM）和記錄收集功能、則必須產生SSH金鑰、然後在叢集交換器上啟用SSH。</block>
@@ -3315,18 +3307,12 @@
   <block id="d2f12128e27dfad7c1136524f6c54833" category="inline-link-macro">啟用記錄收集功能</block>
   <block id="39f8cf052b0d97632dd50442183acc08" category="paragraph"><block ref="42a9a40a2570039f7bbb890cc28e41e6" category="inline-link-macro-rx"></block>。</block>
   <block id="16d074a2c9c574f7e8d9dbc312b16d88" category="summary">在設定BS-53248叢集交換器之前、請先檢閱程序與命名規則的總覽。</block>
-  <block id="88f691a35f81286a7d66711e46b06131" category="doc">BS-53248交換器升級程序總覽</block>
-  <block id="0867fdc983f276ab739c1a2e0644bf50" category="paragraph">在設定BS-53248叢集交換器進行升級之前、請先檢閱組態總覽。</block>
-  <block id="b06548a0889dce32164f213e9970635b" category="paragraph">若要升級BS-53248叢集交換器、請遵循下列步驟：</block>
-  <block id="13245046fe2d94c1d4961bdcba461d50" category="inline-link-macro">準備BS-53248叢集交換器進行升級</block>
-  <block id="da7beeed4ab89cc55ff6349392f658e3" category="list-text"><block ref="5536623af9419125f786cfdead7f8ae8" category="inline-link-macro-rx"></block>。準備好控制器、然後安裝EFOS軟體、授權和參考組態檔（RCF）。最後、請驗證組態。</block>
   <block id="0ac27d8c913a06ae10bafaf9b4fd01d6" category="list-text"><block ref="1233ecfc62f0bed40d830afa17eec2c7" category="inline-link-macro-rx"></block>。在BS-53248叢集交換器上下載並安裝乙太網路架構作業系統（EFOS）軟體。</block>
   <block id="ddda49e1f4684a46c990b945e884cb51" category="list-text"><block ref="0f9f654882514557e57b19641aa7b563" category="inline-link-macro-rx"></block>。或者、您也可以購買及安裝更多授權來新增連接埠。交換器基礎模式已獲得16個10GbE或25GbE連接埠及2個100GbE連接埠的授權。</block>
   <block id="5d7a0a98b05cfb809893bdd4833d5fbc" category="list-text"><block ref="74dd19c11d43cfa2dd387ecf7d984746" category="inline-link-macro-rx"></block>。在BS-53248叢集交換器上安裝或升級RCF、然後在套用RCF之後驗證連接埠是否有額外授權。</block>
   <block id="229c0857c9446d49c77cc56bc33eaced" category="list-text"><block ref="22274518ab78de16bd162dd23a69479d" category="inline-link-macro-rx"></block>。安裝適用的組態檔以監控叢集交換器健全狀況。</block>
   <block id="85d353ef45b72af4e229ccdf19ef9d0d" category="list-text"><block ref="e2b4c4f5313b05dff7c4a02a4e9e0df6" category="inline-link-macro-rx"></block>。如果您使用叢集交換器健全狀況監視器（CSHM）和記錄收集功能、請在交換器上啟用SSH。</block>
   <block id="0a35a048208806b2de5ad56aa78ce1da" category="list-text"><block ref="42a9a40a2570039f7bbb890cc28e41e6" category="inline-link-macro-rx"></block>。使用此功能可收集ONTAP 有關交換器的記錄檔、以供參考。</block>
-  <block id="0e93fc9c17472331b04bdca0f2249c2f" category="list-text"><block ref="a4b91c11cab7f3883fa50fb982cb12cb" category="inline-link-macro-rx"></block>。在升級BS-53248叢集交換器之後、使用建議的命令來驗證作業。</block>
   <block id="a804fe3633b3e8edd13e681d83563c08" category="doc">設定BS-53248叢集交換器</block>
   <block id="67777be64987c8c0fadb924db93389aa" category="paragraph">請依照下列步驟執行BS-53248叢集交換器的初始設定。</block>
   <block id="923a86c9f908f09f61d33d7831905371" category="inline-link-macro">安裝硬體</block>
@@ -3349,7 +3335,6 @@
   <block id="f249686dfa625a48e16b61cc36dc2543" category="inline-link">Broadcom支援的BS-53248叢集交換器安裝指南</block>
   <block id="9343a353b1f82fabd9ee240e066471c9" category="list-text">請依照中的指示進行<block ref="2499b40383e5eeae4a8e13c0ef2b5e8c" category="inline-link-rx"></block>。</block>
   <block id="2c313ef83d1daadd03ff286fd1bc25ab" category="paragraph"><block ref="b88c299eeb38820fb709454fcd144438" category="inline-link-macro-rx"></block>。</block>
-  <block id="4a79c6270afcb7ed4e28cd8c98692b07" category="inline-link-macro">驗證升級組態</block>
   <block id="e8ab0c1581dc0dcc64441ffb1b729ce5" category="summary">如果您有雙節點無交換式叢集、則可在不中斷營運的情況下、移轉至雙節點交換式叢集、其中包含Broadcom支援的BS-53248叢集交換器</block>
   <block id="aa7dd6235ef36f2c7e4cd4edddab41eb" category="paragraph">如果您現有的雙節點_無交換器_叢集環境、則可以使用Broadcom支援的BS-53248叢集交換器、移轉至雙節點_交換式_叢集環境、使您能夠擴充至叢集中的兩個節點之外。</block>
   <block id="784bdcc078009075bac39754a34c1477" category="paragraph">移轉程序適用於使用光纖或雙軸纜線連接埠的所有叢集節點連接埠、但如果節點使用內建10GBASE-T RJ45連接埠作為叢集網路連接埠、則此交換器不支援此程序。</block>
@@ -3428,8 +3413,6 @@
   <block id="07fee47f3ffbc5ef72724836369779da" category="list-text">這些範例使用兩個節點、每個節點都部署兩個10 GbE叢集互連連接埠：<block ref="922c556baf6272bffc4fa28b2e9a0bbc" prefix=" " category="inline-code"></block> 和<block ref="22fe67c2e87caff18249cf1804bbeaad" prefix=" " category="inline-code"></block>。</block>
   <block id="245b6d4f01047a24b306b9ff15a6f528" category="summary">您可以在設定BS-53248叢集交換器之後、以及套用新授權之後、安裝參考組態檔（RCF）。</block>
   <block id="b3d2ab282b59bbaad33610c1e37f6f97" category="list-text">將指令碼套用至交換器：</block>
-  <block id="4b3087862136b477f2ba4eb874340862" category="inline-link-macro">安裝CSHM組態檔案</block>
-  <block id="bf45031df0d96fabfb6aa0760a792168" category="paragraph"><block ref="c0636b750594571560d8b9710bfd1581" category="inline-link-macro-rx"></block>。</block>
   <block id="f03f913abc40b21bce83c961222fdf58" category="paragraph">請依照下列步驟、在叢集網路中更換Broadcom支援的BS-53248叢集交換器故障。這是不中斷營運的程序（NDU）。</block>
   <block id="d43af6a74c3225c9cc1837e8f4e13362" category="paragraph-title">關於拓撲</block>
   <block id="03bfc974264348b9370a42598456cddc" category="list-text">檢閱 <block ref="00ddcae70671e568c2f7b32bc01166cc" category="inline-link-macro-rx"></block>。</block>
@@ -3460,18 +3443,11 @@
   <block id="2082bf4559e4c1e58d5034b2f11ddebb" category="list-text">從下載適用於叢集交換器的Broadcom EFOS軟體<block ref="4e779817b5f74625a8640f04596c1b3d" category="inline-link-rx"></block> 網站。</block>
   <block id="5e13628627abec712f77b1d757bfe59f" category="list-text">請檢閱下列EFOS版本的相關附註。</block>
   <block id="9b2d3fb1dc09edda79dfe09e637f9716" category="list-text">從EFOS 3.7.x.x或更新版本開始、我們提供不符合FIPS標準的版本、以及符合FIPS標準的版本。從非FIPS相容的版本移至FIPS相容的版本時、適用不同的步驟、反之亦然。將EFOS從非FIPS相容的版本變更為FIPS相容的版本、反之亦然、會將交換器重設為原廠預設值。此程序需要透過序列主控台連接埠存取。</block>
-  <block id="5824a30a230e44f8b3be21a090441338" category="paragraph">使用安裝新的EFOS映像 <block ref="054cf74bb649684ec8445a10762e16dc" category="inline-xref-macro-rx"></block>。系統會保留組態與授權資訊。</block>
-  <block id="cb8136d5c2de953a01444b14faab6427" category="paragraph">使用升級EFOS <block ref="054cf74bb649684ec8445a10762e16dc" category="inline-xref-macro-rx"></block>。將交換器重設為原廠預設值、並套用EFOS 3.7.x.x或更新版本的RCF檔案。</block>
-  <block id="2a5da3dc464dcae3334b4e71e011fe58" category="paragraph">使用降級EFOS <block ref="054cf74bb649684ec8445a10762e16dc" category="inline-xref-macro-rx"></block>。將交換器重設為原廠預設值、並套用EFOS 3.4.x.x的RCF檔案</block>
-  <block id="d2c6831efb28e06a242f5c20fd506290" category="paragraph">使用安裝新的EFOS映像 <block ref="054cf74bb649684ec8445a10762e16dc" category="inline-xref-macro-rx"></block>。系統會保留組態與授權資訊。</block>
-  <block id="e0adb31d2d1cc5200e7116fdbdfab87c" category="paragraph">使用安裝EFOS映像 <block ref="c306cecb30107650b346d91b7d7c74b6" category="inline-xref-macro-rx"></block>。交換器組態和授權資訊將會遺失。</block>
   <block id="7f824481c3b83fffcad8abfa0af8b312" category="inline-link">BS-53248叢集交換器NDU無法升級至EFOS 3.7.0.4及更新版本</block>
   <block id="cec6ec2be042120b7ff4b5d0f1e40dee" category="admonition">請注意、將BSP-53248叢集交換器從EFOS 3.3.x.x或3.4.x.x升級至EFOS 3.7.0.4或3.8.0.2之後、交換器間連結（ISL）和連接埠通道會標示為「*向下*」狀態。請參閱以下知識庫文章：<block ref="eb6085a70a8e8bb2aba905d5e75797ab" category="inline-link-rx"></block> 以取得更多詳細資料。</block>
   <block id="0fa8ca6cfd731f93388f2f318c1fb1d3" category="paragraph">請使用下列其中一種方法：</block>
-  <block id="12194155bd1a6bf8c65d4df180867dc2" category="list-text"><block ref="054cf74bb649684ec8445a10762e16dc" category="inline-xref-macro-rx"></block>。適用於大多數情況（請參閱上表）。</block>
   <block id="420b291d479da153c96fd1143e9d0e2f" category="list-text"><block ref="c306cecb30107650b346d91b7d7c74b6" category="inline-xref-macro-rx"></block>。如果其中一個EFOS版本符合FIPS標準、而另一個EFOS版本不符合FIPS標準、請使用。</block>
   <block id="fa6c2d2a92519a714fe25ca830427ee1" category="section-title">方法1：安裝EFOS</block>
-  <block id="c8f4b1cb79eab369a5f6ce4fa892a0d4" category="paragraph">請執行下列步驟來安裝或升級EFOS軟體。</block>
   <block id="a9ec10177705d18bc441b79924a01204" category="paragraph"><block ref="0f9f654882514557e57b19641aa7b563" category="inline-link-macro-rx"></block>。</block>
   <block id="35f10bdee5903f907ec6a32e4e0f9d7b" category="section-title">方法2：使用ONIE OS安裝來升級EFOS</block>
   <block id="e3070225d2354a09468604c0d1a2ab1a" category="paragraph">在開機期間、當您看到提示時、請選取ONIE。</block>
@@ -3957,7 +3933,6 @@
   <block id="e7d694813a2146a3ab31b4b907988620" category="sidebar">啟用SSH</block>
   <block id="037fd3285f5414c76c57c401fbc5603c" category="sidebar">啟用記錄收集</block>
   <block id="71f5771dab663d80ba4dad1627e3386a" category="sidebar">升級總覽</block>
-  <block id="1f23e03e99812c23b47ad60d475647df" category="sidebar">升級交換器</block>
   <block id="90f9408edf534ae6691bfa241e3cef32" category="sidebar">更換BS-53248交換器</block>
   <block id="c4767bb3bd142c908fcfd8a9e5fab38c" category="sidebar">從無交換器DAS叢集移轉</block>
   <block id="3c0c4451f5d8950dc9b9a962b87ff4ae" category="sidebar">從交換式DAS組態移轉</block>
@@ -3998,9 +3973,6 @@
   <block id="97a8a7ac4811fc17c5e935133726b9b2" category="list-text"><block ref="ac6f2160356afb2413aaa23f35f53bc6" category="inline-link-macro-rx"></block>。</block>
   <block id="fd280d62f276e98d2c1156b6a7cd8932" category="paragraph">在BS-53248叢集交換器上下載並安裝乙太網路架構作業系統（EFOS）軟體。</block>
   <block id="e5e0ceddda654af2c9e3c1386537e4f7" category="paragraph">或者、您也可以購買及安裝更多授權來新增連接埠。交換器基礎模式已獲得16個10GbE或25GbE連接埠及2個100GbE連接埠的授權。</block>
-  <block id="33446f9dc3d57cc65d0607602cea0067" category="paragraph">在BS-53248叢集交換器上安裝或升級RCF、然後在套用RCF之後驗證連接埠是否有額外授權。</block>
-  <block id="4b0084dedd91a320badd9ce702d9bae0" category="list-text"><block ref="22274518ab78de16bd162dd23a69479d" category="inline-link-macro-rx"></block>。</block>
-  <block id="92ea1bc6f68e93d2d5fc9ac24486d4d4" category="paragraph">安裝適用的組態檔以監控叢集交換器健全狀況。</block>
   <block id="b983f14988f359bc65d91f081089597f" category="list-text"><block ref="e2b4c4f5313b05dff7c4a02a4e9e0df6" category="inline-link-macro-rx"></block>。</block>
   <block id="874b218fc41a6956a440db02a0f0cc5a" category="paragraph">如果您使用叢集交換器健全狀況監視器（CSHM）和記錄收集功能、請在交換器上啟用SSH。</block>
   <block id="067297cae08e3bd57831d980bc629dab" category="paragraph">使用此功能可收集ONTAP 有關交換器的記錄檔、以供參考。</block>
@@ -4124,7 +4096,6 @@
   <block id="382b0f5185773fa0f67a8ed8056c7759" category="paragraph">不適用</block>
   <block id="4f4750a84cf4db2252cb74295c5da46c" category="admonition">請注意下列關於機器類型的資訊：</block>
   <block id="3ea4bf9da7622edeeae1bf80e9c5cded" category="cell">機器類型</block>
-  <block id="c98b57720d007eea3bac1ec42393b6b2" category="cell">EFOS版本</block>
   <block id="0455dc0ebc07890a363b2b109cd487c0" category="paragraph">BS-53248A1</block>
   <block id="f9f7608c20cdacdffa7dd544e72cdb37" category="paragraph">BS-53248A2</block>
   <block id="ed69a268691ed57ce7cc6feb524edfde" category="paragraph">BS-53248A3</block>
@@ -4207,8 +4178,6 @@
   <block id="ebf243f9c791c52799ecfef9dba7e609" category="doc">以無交換器連線取代 NetApp CN1610 叢集交換器</block>
   <block id="261de3e636d4ab259e73f4993ea87a6a" category="sidebar">升級 Cumulus Linux 版本</block>
   <block id="f854d13ce34c20dd774e2f26c0bcbec7" category="paragraph">若要檢查您的 EFOS 版本是否符合 FIPS 標準或不符合 FIPS 標準、請使用<block ref="861d2504fbcbe4985de13f1d87bfc483" prefix=" " category="inline-code"></block> 命令。在下列範例中、 *IP_switch_A1* 使用 FIPS 相容的 EFOS 、而 *IP_switch_A2* 則使用非 FIPS 相容的 EFOS 。</block>
-  <block id="155fd6818143cef882d5eb7ac134f393" category="list-text">在交換器 IP_switch_A1 上：</block>
-  <block id="457ab5c73d8f159a9a225c9b9c6605c3" category="list-text">在交換器 IP_switch_A2 上：</block>
   <block id="49215cf233256204aa5b6259719da694" category="paragraph"><block ref="6db371c6b710567f9ba5b5a3491f792a" prefix="" category="inline-code"></block></block>
   <block id="830d0a0665249b8b3b3020695c8b5e4b" category="paragraph">SW-BS-53248A2-8P-2P</block>
   <block id="29246b22307b855ef04699ca8197dbc2" category="paragraph">Broadcom 8Pt - 10G25G + 2pt-40G100G 授權金鑰、 X190005/R</block>
@@ -4220,7 +4189,6 @@
   <block id="e6459831eff3ab73436a3472b543daed" category="paragraph">下表列出可在 BS-53248 叢集交換器上使用的舊版授權：</block>
   <block id="5c60227e684a42ed2c4295981335965a" category="list-text">確認 SSH 已停用：</block>
   <block id="810bc3d02021061ba2b8f87b703a66dd" category="paragraph">您可以使用記錄收集功能、在 ONTAP 中收集交換器相關的記錄檔。</block>
-  <block id="b8df928a1a67f132ebda54d2c7fee7dc" category="paragraph">如果您要從舊版升級RCF、則必須重設Broadcom交換器設定並執行基本組態、才能重新套用RCF。每次您想要升級或變更RCF時、都必須執行此作業。請參閱<block ref="ca0e22b4f868295e6cf32a824edc5c13" category="inline-link-rx"></block> 以取得詳細資料。</block>
   <block id="fecbf70623c5c07c3f3c4c8793d5061b" category="list-text">目前的 RCF 檔案、可從取得<block ref="b4c2fb45a290e6214474529bd84dd3bc" category="inline-link-rx"></block> 頁面。</block>
   <block id="23c89511c80ceef00a8d3343b5f08569" category="list-text">RCF 中的開機組態、可反映所需的開機映像、如果您只安裝 EFOS 並保留目前的 RCF 版本、則需要此組態。如果您需要變更開機組態以反映目前的開機映像、則必須在重新套用RCF之前執行此動作、以便在未來重新開機時產生正確的版本。</block>
   <block id="3a6a9877fc8c73a9267914b786517ca9" category="inline-link">如何清除 Broadcom 互連交換器上的組態、同時保持遠端連線</block>
@@ -4235,17 +4203,10 @@
   <block id="735f1f81fce19c6dbd9326c356c42794" category="list-text">本程序中的範例使用四個節點。這些節點使用兩個10GbE叢集互連連接埠<block ref="922c556baf6272bffc4fa28b2e9a0bbc" prefix=" " category="inline-code"></block> 和<block ref="22fe67c2e87caff18249cf1804bbeaad" prefix=" " category="inline-code"></block>。請參閱<block ref="e527f95d8e68b368d64d0d2dab643ea1" category="inline-link-rx"></block> 驗證平台上的叢集連接埠是否正確。</block>
   <block id="ce86a637b15bcd24602c029445c6ecb5" category="paragraph">此程序需要同時使用 ONTAP 命令和 Broadcom 交換器命令、除非另有說明、否則會使用 ONTAP 命令。</block>
   <block id="5ea8c6e5f4563fff82293f272dc6f6ed" category="paragraph">在此程序期間、不需要運作中的交換器間連結（ISL）。這是因為RCF版本變更可能會暫時影響ISL連線。為了確保叢集作業不中斷、下列程序會在執行目標交換器上的步驟時、將所有叢集生命體移轉至作業夥伴交換器。</block>
-  <block id="331d3619bd86486daa8ae20287b042b0" category="inline-link">KB ：如何清除 Broadcom 互連交換器上的組態、同時保持遠端連線</block>
-  <block id="2ad76ee2dd44393b128aa703e18c0180" category="admonition">在安裝新的交換器軟體版本和 RCFs 之前、請先使用<block ref="0dbbaa06eaeff384c85940b756e5a890" category="inline-link-rx"></block>。如果您必須完全清除交換器設定、則需要再次執行基本組態。您必須使用序列主控台連線至交換器、因為完整的組態刪除會重設管理網路的組態。</block>
-  <block id="655ebdf839055b53c81fe98843842372" category="list-text">顯示連接至叢集交換器之每個節點上的叢集連接埠：<block ref="633709925611b54d23e52bde1cb56811" prefix=" " category="inline-code"></block></block>
-  <block id="9d7316571cefaae2ca32e98fc9e57981" category="list-text">確認所有叢集連接埠都正常運作：<block ref="229e8d1240617e0b97c680c36bbc9564" prefix=" " category="inline-code"></block></block>
-  <block id="404e35375d78f3af8db8d2ab71618ce7" category="list-text">確認所有叢集介面（l生命）都位於主連接埠：<block ref="fb5130635551fff679ab6d902eaff8d9" prefix=" " category="inline-code"></block></block>
   <block id="40bdb15fb49f18cee766c49c83713e34" category="list-text">驗證叢集是否顯示兩個叢集交換器的資訊。</block>
   <block id="a76ff2554d27751da451d7ba735995b2" category="paragraph">從 ONTAP 9.8 開始、請使用命令：<block ref="c57378c3b3bb81c6b42a2b31a30ddda7" prefix=" " category="inline-code"></block></block>
   <block id="5a830b76ff5a71db59759b13f383410c" category="open-title">更新版本ONTAP</block>
   <block id="8db6b188941318108123dd47b9038cf7" category="paragraph">對於 ONTAP 9.7 及更早版本、請使用命令：<block ref="7ca607e345a217b6fb9148234fe84d0c" prefix=" " category="inline-code"></block></block>
-  <block id="a3b40857ce7fb3046b527517e75db42e" category="list-text">驗證叢集是否正常：<block ref="639161158d7426b3865ce9c5a6f648b3" prefix=" " category="inline-code"></block></block>
-  <block id="7da2d511ceda949386786cd3a9b0904c" category="list-text">如果您尚未這麼做、請將下列命令的輸出複製到記錄檔、以儲存目前的交換器組態：<block ref="d064a73c32d00bf384204782a696a298" prefix=" " category="inline-code"></block></block>
   <block id="044db7e4b2e2480e0b918af88e09b16c" category="list-text">SSH 進入交換器。</block>
   <block id="b216a46caec0572ad44c6c3b8b20e09c" category="paragraph">只有當從交換器的連接埠移除所有叢集生命期、且交換器已準備好清除組態時、才能繼續進行。</block>
   <block id="48ca6f7074b4cd6ad17a0b10e124e059" category="list-text">進入權限模式：</block>
@@ -4258,16 +4219,7 @@
   <block id="b211f67e6e9195c32683368a53542802" category="paragraph">此範例顯示 SFTP 用於將 RCF 複製到交換器 CS2 上的 bootflash ：</block>
   <block id="c77174e35b7f7fc235a87561809ad614" category="list-text">檢查的橫幅輸出<block ref="db837131dc56fab41bddc52d5aff8865" prefix=" " category="inline-code"></block> 命令。您必須閱讀並遵循這些指示、以確保交換器的組態和操作正確無誤。</block>
   <block id="420b545896cb1c9b03dbccd44bf33f86" category="list-text">在交換器上、確認附加授權連接埠在應用 RCF 之後出現：</block>
-  <block id="2a886bfc4f98f8b2263d47853859d640" category="list-text">驗證交換器 CS2 上的連接埠：<block ref="3ecfeafb159bbded4fdecd6f5a860f4a" prefix=" " category="inline-code"></block></block>
-  <block id="818dbe7dc43a870c6906959f7d426ba7" category="list-text">驗證叢集中所有節點的 e0b 連接埠是否正常運作：<block ref="856f897c52a15ad9c779d1f7b82c2593" prefix=" " category="inline-code"></block></block>
-  <block id="7fc0653470d537d0d0fc3997f25d581b" category="list-text">驗證叢集LIF是否已移轉至交換器CS2上裝載的連接埠。這可能需要幾秒鐘的時間。<block ref="fb5130635551fff679ab6d902eaff8d9" prefix=" " category="inline-code"></block></block>
-  <block id="b0553791d0540be1d52514a1a47621f6" category="list-text">在交換器 CS1 上重複步驟 4 至 14 。</block>
-  <block id="9cb99e0cdd58aac4297608fa8d8ef89b" category="list-text">在叢集生命體上啟用自動還原：<block ref="478474aa0db28144d5db02c478cd5215" prefix=" " category="inline-code"></block></block>
   <block id="e23c199f14d9e7bf9dbb9da03bf726a2" category="list-text">重新開機交換器CS1。您可以這樣做、觸發叢集生命期以恢復到其主連接埠。您可以在交換器重新開機時忽略節點上報告的「叢集連接埠當機」事件。</block>
-  <block id="d9c15a3fe5ea0c8a95b7c30c068a97e8" category="list-text">在交換器 CS1 上、確認連接至叢集連接埠的交換器連接埠為 * 開啟 * 。</block>
-  <block id="5f424e43ea12971db12c054ce8992c88" category="list-text">驗證交換器 CS1 和 CS2 之間的 ISL 是否正常運作：<block ref="f366ffdad905090c14aaf5084fbd75f1" prefix=" " category="inline-code"></block></block>
-  <block id="f688ff7107bf9d836f9cd01490f96a85" category="list-text">驗證叢集生命區是否已還原至其主連接埠：<block ref="fb5130635551fff679ab6d902eaff8d9" prefix=" " category="inline-code"></block></block>
-  <block id="c1d6313b7fd8031407df0653209f4d42" category="list-text">Ping遠端叢集介面以驗證連線能力：<block ref="6d931e460f3e419ca5bc874e47132b6d" prefix=" " category="inline-code"></block></block>
   <block id="6285269d7b8b003aed53cad1f3d13717" category="list-text">將所有叢集節點連線纜線從舊版 CS2 交換器移至新的 CS2-new 交換器。</block>
   <block id="f8e1e48a80ce2fac4d53a95f1f1ffd18" category="paragraph">* 叢集節點連線纜線移至 CS2 新交換器 *</block>
   <block id="e07ca5d2322ee212c9dcb668e9db443a" category="image-alt">叢集節點連線纜線移至 CS2 新交換器</block>
@@ -4275,7 +4227,6 @@
   <block id="2e58f874fe5dd7ef46fee2c92b1e77eb" category="paragraph">* 叢集節點連線纜線移至 CS1-new switch*</block>
   <block id="7d829570fe05df690649474b2bb97a3b" category="image-alt">叢集節點連線纜線移至 CS1-new 交換器</block>
   <block id="ec5ea2f0318e4d906c296f5576b9c026" category="list-text">[[step6]] 如果您禁止自動建立個案、請叫用 AutoSupport 訊息來重新啟用：<block ref="9ac424c0d7b432975df36a19daf50c9c" prefix=" " category="inline-code"></block></block>
-  <block id="0429fa776d68090e46718ac7e32390ef" category="admonition">對於 EFOS 3.10.0.3 版及更新版本、請使用命令<block ref="c09633a606c51a161b16f8bf38f5ebb1" prefix=" " category="inline-code"></block>。</block>
   <block id="2df26e386d021172b261bcb47e157019" category="list-text">清理組態：</block>
   <block id="256be937ef390f7d6dd71ad092869119" category="admonition">對於 ONTAP 9.8 及更新版本、請使用命令<block ref="c57378c3b3bb81c6b42a2b31a30ddda7" prefix=" " category="inline-code"></block>。</block>
   <block id="393a5f0f5f1f070aac964741815cca76" category="doc">使用無切換連線更換 Broadcom BS-53248 叢集交換器</block>
@@ -4496,7 +4447,6 @@
   <block id="a5f4f9ed92853ea6128046eb985ff5a7" category="sidebar">Cisco-9336c-FX2 共用</block>
   <block id="759d203c3eb13a684379c7413a7ea760" category="sidebar">Cisco-9336c-FX2 叢集</block>
   <block id="111cada5d22121a7e11aef39f4aca355" category="list-text">在叢集交換器 CS2 上、開啟連接至節點叢集連接埠的連接埠。</block>
-  <block id="325c324b922ed6e1b216f99766068e43" category="list-text">[[step18]] 在叢集交換器 CS1 上、關閉連接至節點叢集連接埠的連接埠。</block>
   <block id="427c15bca394e9d3b5f203c35b96c743" category="inline-link">Cisco 3132Q 叢集交換器上的 10GbE 連接埠無法連線</block>
   <block id="20f0f9c709341c54050214259fc6c790" category="admonition">如需瞭解如何在 RCF 升級後將 10GbE 連接埠上線的步驟、請參閱知識庫文章<block ref="917fe6fdad3ed920883f4190398d0805" category="inline-link-rx"></block>。</block>
   <block id="bc2be245d88ec44ff572954ca52f5e47" category="list-text">在交換器 CS1 上重複步驟 7 至 15 。</block>
@@ -4512,7 +4462,6 @@
   <block id="2bc32577d8d84ba98d84472c4916dd0f" category="admonition">僅支援 NetApp 驗證的後端交換器（從 NetApp 訂購）。</block>
   <block id="d69d8c23518c3e983c5799321eb27404" category="list-text">清理交換器 CS2 的組態、然後重新啟動交換器。</block>
   <block id="a3d5cbedb318ff78ae8c3f9bced7661b" category="list-text">執行交換器的基本設定。請參閱 <block ref="ab35665c267fa570f19ad0ebf8386ab4" category="inline-link-macro-rx"></block> 以取得詳細資料。</block>
-  <block id="0c6a7aa3a0bb7908809929a56822600c" category="paragraph"><block ref="c09633a606c51a161b16f8bf38f5ebb1" prefix="" category="inline-code"></block></block>
   <block id="6ab23d04af2dab64aaf06d089d134151" category="summary">使用叢集交換器健全狀況監視器（CSHM\）和記錄收集功能時、必須使用SSH。若要在 Cisco 9336C-FX2 叢集交換器上啟用 SSH 、請先產生 SSH 金鑰、然後再啟用 SSH 。</block>
   <block id="f213e7d15465742733b22d11eff1d4ac" category="doc">在 Cisco 9336C-FX2 叢集交換器上啟用 SSH</block>
   <block id="a8d8d025a84c64f53b535b4e606fd65a" category="summary">您可以使用此程序來安裝適用於 Nexus 92300YC 叢集交換器叢集交換器健全狀況監控的組態檔。</block>
@@ -4611,7 +4560,6 @@
   <block id="b61075ba30803dc13c18190d95bb660c" category="summary">乙太網路交換器健全狀況監視器（ CSHM ）記錄收集功能是用來從 ONTAP 中的叢集或儲存網路交換器收集記錄。</block>
   <block id="cc96021e22980976473658b2f1ba6e98" category="doc">乙太網路交換器健全狀況監控記錄收集</block>
   <block id="bf4e0c74d0d64f033de371084e1f1021" category="paragraph">乙太網路交換器健全狀況監視器（ CSHM ）負責確保叢集與儲存網路交換器的作業健全狀況、並收集交換器記錄以供偵錯之用。本程序將引導您完成設定及開始從交換器收集詳細 * 支援 * 記錄的程序、並開始每小時收集 AutoSupport 所收集的 * 定期 * 資料。</block>
-  <block id="ae4749ec36ab32554e1987f66caacdb7" category="list-text">若要啟用記錄收集功能、您必須執行 ONTAP 9.12.1 版或更新版本、以及 EFOS 3.8.0.2 或更新版本。</block>
   <block id="8d36506446d5ad8477c75d9150e6528f" category="list-text">必須為交換器啟用交換器健全狀況監控。請務必確認<block ref="83bb5774e6e4dc96959b12bfa4334f18" prefix=" " category="inline-code"></block> 欄位在的輸出中設為 * 真 *<block ref="db3929a8e897b02a87f7f4bc42f38fc1" prefix=" " category="inline-code"></block> 命令。</block>
   <block id="09a5c8e72e479c23dfcdb0045312203a" category="list-text">若要設定記錄收集、請針對每個交換器執行下列命令。系統會提示您輸入用於記錄收集的交換器名稱、使用者名稱和密碼。</block>
   <block id="51e57b530a227b04924d2803cdc52930" category="list-text">若要啟動記錄收集、請執行下列命令、以先前命令中使用的切換參數取代裝置。這會同時啟動記錄收集的兩種類型：詳細的 * 支援 * 記錄檔和 * 定期 * 資料的每小時集合。</block>
@@ -4861,4 +4809,136 @@
   <block id="29f6f46414f36869e8e3f9f19d16b6db" category="sidebar">叢集交換器 - Cisco Nexus 92300YC</block>
   <block id="22daf846f579c427af282aa33d7c2a7b" category="sidebar">叢集交換器 - NetApp CN1610</block>
   <block id="c6244de2d0f92f3ce9f4386189743190" category="sidebar">安裝或升級 RCF 組態檔</block>
+  <block id="43822bbc5cba6f539b9e148db3e66253" category="list-text">若要啟用記錄收集功能、您必須執行 ONTAP 9.10.1P15 、 9.11.1P12 或 9.12.1 或更新版本、以及 EFOS 3.8.0.2 或更新版本。</block>
+  <block id="61ea9adabe3d3953231005a1aab3ccec" category="list-text">此程序僅適用於新安裝。</block>
+  <block id="d4c258fac915d5c338b912794cc1c695" category="inline-link-macro">設定了 BS-53248 叢集交換器</block>
+  <block id="6ee97c9329502ce9ff2bde6cc6c19e8b" category="list-text">確保 <block ref="835f4e0c80f21b931f2846012ad4929b" category="inline-link-macro-rx"></block>。</block>
+  <block id="ed39ed87f91510597e18583c6bbad14b" category="paragraph">請使用下列其中一種方法來安裝 EFOS 軟體：</block>
+  <block id="2144846395ec7d6eeab2db818f342900" category="list-text"><block ref="054cf74bb649684ec8445a10762e16dc" category="inline-xref-macro-rx"></block>。適用於大多數情況。</block>
+  <block id="41c3dd16a52577e3671b863ffe4382da" category="list-text"><block ref="de28dd00e65e0f7ced07976f012b8537" category="inline-xref-macro-rx"></block>。如果其中一個EFOS版本符合FIPS標準、而另一個EFOS版本不符合FIPS標準、請使用。</block>
+  <block id="51ced220069348bd0dc7e6c1238c785d" category="paragraph">請執行下列步驟來安裝 EFOS 軟體。</block>
+  <block id="89f45a36ecc7ccb65d0b71d3e6f1ba09" category="list-text">登入交換器序列主控台連接埠或使用 SSH 連線。</block>
+  <block id="41475efa0dfa947b805c666219657c3b" category="paragraph">請查看下表、以取得支援的複製協定資訊：</block>
+  <block id="dce365633ffb688b7532470dfaf4e118" category="cell">*傳輸協定*</block>
+  <block id="38a72c51a3963b28372cd4c0d2414578" category="cell">* 先決條件 *</block>
+  <block id="78575e4cb2b2b81a7d4f14d70b6bbc5f" category="paragraph">簡易檔案傳輸協定（ TFTP ）</block>
+  <block id="6adf97f83acf6453d4a6a4b1070f3754" category="paragraph">無</block>
+  <block id="53a1623539c6c538ab60036036a93076" category="paragraph">SSH 檔案傳輸協定（ SFTP ）</block>
+  <block id="32792c3213d3d286b6aa76d5f482f15c" category="paragraph">您的軟體套件必須支援安全管理</block>
+  <block id="c728a49363c9a93a43a7e7f232b5a54a" category="paragraph">FTP</block>
+  <block id="8ffca1456a2308a5556a750be1ecbac0" category="paragraph">需要密碼</block>
+  <block id="d545db6c43757bcfeea7c7ed920aea68" category="paragraph">Xmodem</block>
+  <block id="119cdbc123568564f622e475ff3f58d1" category="paragraph">Ymodem</block>
+  <block id="576f462ea08a2257512b7ff5c9023048" category="paragraph">ZMODEM-</block>
+  <block id="bbf0c87c662c1a48734c004baa48a867" category="paragraph">安全複製傳輸協定（ SCP ）</block>
+  <block id="293c9ea246ff9985dc6f62a650f78986" category="paragraph">HTTP</block>
+  <block id="024bdcc33ab0c7765e6424ef59d67ded" category="paragraph">當有原生 wGet 公用程式可用時、所選平台支援 CLI 型檔案傳輸</block>
+  <block id="0e8433f9a404f1f3ba601c14b026d321" category="paragraph">HTTPS</block>
+  <block id="22555900248572659217c1157207aa25" category="list-text">完成安裝。
+請依照下列五個步驟重新設定交換器：</block>
+  <block id="cc83c245da410495a294f033719b1669" category="list-text"><block ref="cc83c245da410495a294f033719b1669" category="inline-link-macro-rx"></block></block>
+  <block id="27f5a81d534f36d81d8bfa46ffcc98b6" category="inline-link-macro">安裝 RCF 檔案</block>
+  <block id="63ff5d824660caf9ce09ed598928fe5c" category="list-text"><block ref="63ff5d824660caf9ce09ed598928fe5c" category="inline-link-macro-rx"></block></block>
+  <block id="0ad0656927b565ff563d073b0158ec24" category="list-text"><block ref="0ad0656927b565ff563d073b0158ec24" category="inline-link-macro-rx"></block></block>
+  <block id="c4cd7ec23f215e2259f91b6eb6e7cbc1" category="list-text"><block ref="c4cd7ec23f215e2259f91b6eb6e7cbc1" category="inline-link-macro-rx"></block></block>
+  <block id="c9b585775824e55a30043dda98e9474d" category="list-text">在合作夥伴交換器上重複步驟 1 至 7 。</block>
+  <block id="bf1b66556c566052042b226a812473ef" category="section-title">方法 2 ：在 ONIE 模式下安裝 EFOS</block>
+  <block id="edcd5785dd2625c4e179630f5ad5a2d1" category="list-text">連接至連接至交換器序列連接埠的主控台。</block>
+  <block id="ec51d53028e13521b0bcc87f27df0182" category="list-text">設定交換器管理連接埠的乙太網路介面、並使用新增路由<block ref="83b48af5a7c8e30877952cf47e8b4b86" prefix=" " category="inline-code"></block> 和<block ref="f9064d09db65e8b9ef109bf98ec0a7df" prefix=" " category="inline-code"></block></block>
+  <block id="204b0f515feca07e238d07748be2b4e3" category="list-text">登入並確認已安裝新的交換器軟體：</block>
+  <block id="a207fb9399afa79821bb5dc81994c122" category="list-text">完成安裝。
+交換器會重新啟動、但不會套用任何組態、並會重設為原廠預設值。請依照下列六個步驟重新設定交換器：</block>
+  <block id="163c95e139774086e604f88f7e2f31d3" category="list-text"><block ref="163c95e139774086e604f88f7e2f31d3" category="inline-link-macro-rx"></block></block>
+  <block id="04204be9eff305a81c8050c2ee21ed34" category="list-text">在合作夥伴交換器上重複步驟 1 至 8 。</block>
+  <block id="1495155f2e7e92d92ddf31be3469d984" category="doc">完成 BS-53248 叢集交換器的升級</block>
+  <block id="0ba1ff2c4fedf820129253f3d3d33058" category="paragraph">請依照下列步驟完成 BS-54328 叢集交換器的升級（視情況而定）。</block>
+  <block id="a7c2dadcda7e0fed9bab7be4dbeee8e1" category="paragraph">如果您使用叢集交換器健全狀況監控（ CSHM ）功能、請設定支援乙太網路交換器健全狀況監控（ CSHM ）的 SNMPv3 。</block>
+  <block id="f12b130ec6b41e346b4897399bd58a0a" category="list-text">從原廠預設狀態安裝 RCF 時、需要主控台連線至交換器。如果您已使用知識庫文件、則此需求為選用項目<block ref="18b4271d2bf70dbfb01e42cb4850cea6" category="inline-link-rx"></block> 事先清除組態。</block>
+  <block id="20e5ec5f7186bff24f7aeef0c34a7edc" category="admonition">在安裝新的交換器軟體版本和 RCFs 之前、請先參閱知識庫文章<block ref="18b4271d2bf70dbfb01e42cb4850cea6" category="inline-link-rx"></block>。如果您必須完全清除交換器設定、則需要再次執行基本組態。您必須使用序列主控台連線至交換器、因為完整的組態刪除會重設管理網路的組態。</block>
+  <block id="931f6baff129e20df5671f8bc1d4b734" category="paragraph">從 ONTAP 9.8 開始、請使用命令：</block>
+  <block id="6b2c1c0049f24229e25a98be6fc4cad8" category="paragraph">對於 ONTAP 9.7 及更早版本、請使用命令：</block>
+  <block id="607f5df94d55ac7cd1cf1f272dce228a" category="list-text">在交換器 CS2 上、確認連接到叢集中節點的連接埠清單。</block>
+  <block id="ca7e92a8adf1dd10095b105db166abd5" category="list-text">在叢集交換器CS2上、關閉連接至節點叢集連接埠的連接埠。例如、如果連接埠 0/1 到 0/16 連接到 ONTAP 節點：</block>
+  <block id="3f8f6d237f18036be3a3fb24642d16ba" category="list-text">如果您尚未這麼做、請將下列命令的輸出複製到記錄檔、以儲存目前的交換器組態：</block>
+  <block id="06979c3713aa3aeced436d07f8a7f491" category="inline-link">如何清除 Broadcom 互連交換器上的組態、同時保持遠端連線</block>
+  <block id="95f2309cfe6b7eb97bd6262a781bc35f" category="admonition">更新或套用新的RCF時、您必須清除交換器設定並執行基本組態。您必須使用序列主控台連線至交換器、才能清除交換器設定。如果您已使用知識庫文件、則此需求為選用項目<block ref="2fe5b19007217601835da141e61bc389" category="inline-link-rx"></block> 事先清除組態。</block>
+  <block id="a06f5fd344edc3dfa37e6cd6a9038bea" category="admonition">清除組態不會刪除授權。</block>
+  <block id="6aab0531f59d8d6201be4ff8e2f439e4" category="list-text">在叢集交換器 CS2 上、開啟連接至節點叢集連接埠的連接埠。例如、如果連接埠 0/1 到 0/16 連接到 ONTAP 節點：</block>
+  <block id="2884d0bd5c4a24a14803d348c555239b" category="list-text">驗證交換器 CS2 上的連接埠：</block>
+  <block id="830739b4c4588cbb074488a2da891df6" category="list-text">驗證叢集中所有節點的 e0b 連接埠是否正常運作：</block>
+  <block id="ddf0a90f40df6847590a41aa428624b4" category="list-text">從叢集驗證交換器健全狀況：</block>
+  <block id="9ebce7922b93715c124d60ce7c926372" category="list-text">[[step20]] 在叢集交換器 CS1 上、關閉連接至節點叢集連接埠的連接埠。</block>
+  <block id="fecf525cfc746908a3cff346b0550128" category="list-text">在交換器 CS1 上重複步驟 4 至 19 。</block>
+  <block id="a55c3354b5879046f976811535a4a4f1" category="list-text">在交換器 CS1 上、確認連接至叢集連接埠的交換器連接埠為 * 開啟 * ：</block>
+  <block id="bcd3582716db1fbcec6c5c8132dc4253" category="list-text">驗證交換器 CS1 和 CS2 之間的 ISL 是否正常運作：</block>
+  <block id="322cf54023dcfab56a26576123959d58" category="inline-link-macro">啟用 SSH 進行記錄收集</block>
+  <block id="252e043223f3383251c64110f5cb451c" category="paragraph"><block ref="bbee108d14640a71df38e987fd21df1f" category="inline-link-macro-rx"></block>。</block>
+  <block id="7b0ac22c525a61eb6a12e2267bf6ddea" category="doc">在 EFOS 軟體或 RCF 升級 BS-53248 叢集交換器之後、驗證 ONTAP 叢集網路</block>
+  <block id="45f43daecf76cec34b1fa9cb5925aa48" category="paragraph">升級 EFOS 軟體後、您可以使用下列命令來驗證 ONTAP 叢集網路的健全狀況、或是升級為 BS-53248 叢集交換器的 RCF 。</block>
+  <block id="d5c56d6c3abbb7dd20246c17ec16d101" category="inline-link-macro">升級 RCF</block>
+  <block id="3ff8146e3852dfcba1cfd255ac4f5576" category="paragraph"><block ref="74dd19c11d43cfa2dd387ecf7d984746" category="inline-link-macro-rx"></block> 或 <block ref="885efaf124d7da00a7a60364582f6275" category="inline-link-macro-rx"></block>。</block>
+  <block id="73df015a045bb065c0d7de000247497b" category="paragraph">在 BS-53248 叢集交換器上安裝 RCF 、然後在套用 RCF 之後驗證連接埠是否有額外授權。</block>
+  <block id="5466a6c78d1b1065210a875746df2c05" category="list-text"><block ref="e1494265509459a484f1e852428137bf" category="inline-link-macro-rx"></block>。</block>
+  <block id="18e822da210e93da8992e6b3c462671f" category="open-title">EFOS 3.10.0.3 及更新版本</block>
+  <block id="85e9fe702698c7a1eb1de4500bc3fca4" category="paragraph">設定時區與時間同步（ NTP ）：</block>
+  <block id="3cc87411e9c51d2b281718c8673c3219" category="open-title">EFOS 3.9.0.2 及更早版本</block>
+  <block id="331ed1afdbcefe4f9a3a6e853403e180" category="list-text">[[step10]] 如果您未在上一個步驟中設定 NTP 伺服器、請手動設定時間。</block>
+  <block id="f3a1b5499cd7f03f4eab2cdd770b6593" category="paragraph">手動設定時間。</block>
+  <block id="dc4251add178848c0334d3df799034e7" category="list-text">[[step11]] 將執行組態儲存至啟動組態：</block>
+  <block id="1233ecfc62f0bed40d830afa17eec2c7" category="paragraph"><block ref="1233ecfc62f0bed40d830afa17eec2c7" category="inline-link-macro-rx"></block></block>
+  <block id="83125f7f126ff0a8e1d1c0a2e18662a8" category="summary">請依照下列步驟升級 BS-53248 叢集交換器上的乙太網路光纖 OS （ EFOS ）軟體。</block>
+  <block id="8693d3f8c9b18790ed498b6f024a5669" category="doc">升級 EFOS 軟體</block>
+  <block id="9aae29728e49aa150331311d8f2d4df9" category="paragraph">請依照下列步驟升級 BS-53248 叢集交換器上的 EFOS 軟體。</block>
+  <block id="81f6f81478c921fde89ee0a4441fbf63" category="section-title">準備升級</block>
+  <block id="b77bb747835895c243c9fc71c68a5e83" category="paragraph">使用升級新的 EFOS 映像 <block ref="ef39ef0db8f90225e050a355164f1d24" category="inline-xref-macro-rx"></block>。
+系統會保留組態與授權資訊。</block>
+  <block id="04a6b97bd94d4e52a9f639f5a0960a69" category="paragraph">使用升級EFOS <block ref="ef39ef0db8f90225e050a355164f1d24" category="inline-xref-macro-rx"></block>。
+將交換器重設為原廠預設值、並套用EFOS 3.7.x.x或更新版本的RCF檔案。</block>
+  <block id="edde443605ffbf95902d76dfbe93b870" category="paragraph">使用降級EFOS <block ref="ef39ef0db8f90225e050a355164f1d24" category="inline-xref-macro-rx"></block>。
+將交換器重設為原廠預設值、並套用EFOS 3.4.x.x的RCF檔案</block>
+  <block id="baf326335bf06b9a6e6b6839779e2b1e" category="paragraph">使用升級新的 EFOS 映像 <block ref="ef39ef0db8f90225e050a355164f1d24" category="inline-xref-macro-rx"></block>。系統會保留組態與授權資訊。</block>
+  <block id="aa235a8446ff4b510ab9a5855f98d6d9" category="paragraph">使用升級 EFOS 映像 <block ref="c306cecb30107650b346d91b7d7c74b6" category="inline-xref-macro-rx"></block>。交換器組態和授權資訊將會遺失。</block>
+  <block id="42ffe10b64b5b0da385108e29b8144d6" category="list-text">在交換器 IP_switch_A1 （符合 FIPS 標準的 EFOS ）上：</block>
+  <block id="de24d11a8cef99f43f0c509c78fc93d5" category="list-text">在交換器 IP_switch_A2 上（不符合 FIPS 標準的 EFOS ）：</block>
+  <block id="d8cdb5f817637d602a7c3e58e1ebf00f" category="section-title">升級軟體</block>
+  <block id="8028d9081a7d3d098ccc71d8b54cfbce" category="list-text"><block ref="ef39ef0db8f90225e050a355164f1d24" category="inline-xref-macro-rx"></block>。適用於大多數情況（請參閱上表）。</block>
+  <block id="56e7024dc2e812be7449228dc66597d9" category="admonition">一次在一台交換器上升級 EFOS 、以確保叢集網路持續運作。</block>
+  <block id="c3e2e765c3744c1b19452b2f233fdd15" category="section-title">方法 1 ：升級 EFOS</block>
+  <block id="c117ec58c236a456904edaa76f1cc5a9" category="paragraph">執行下列步驟以升級 EFOS 軟體。</block>
+  <block id="061be1b61be0d3e5b21e6a5912639344" category="admonition">如果您已安裝任何授權、請檢閱其狀態。</block>
+  <block id="84d3d1386241334d40a809878bbb05d9" category="list-text">在交換器 CS1 上重複步驟 5 到 10 。</block>
+  <block id="83b8a0042e3650c5af884c9601f53043" category="inline-link-macro">將LIF還原至其主連接埠</block>
+  <block id="870c6c263570c51afc056f510d552e1f" category="paragraph">如需詳細資料、請參閱 <block ref="b9ea844d3dd5520c7767de46f1c99a2b" category="inline-link-macro-rx"></block>。</block>
+  <block id="d0dc5dfd4c3b3be079653b7f0ac8d844" category="paragraph">如果其中一個EFOS版本符合FIPS標準、而另一個EFOS版本不符合FIPS標準、您可以執行下列步驟。如果交換器無法開機、這些步驟可用於從 ONIE 升級非 FIPS 或 FIPS 相容的 EFOS 3.7.x.x 映像。</block>
+  <block id="a08c787811582244c8a31fa9f2a81a73" category="admonition">如果您使用 ONIE OS 安裝來升級 EFOS 、組態會重設為原廠預設值、並刪除授權。您必須設定交換器並安裝授權和支援的 RCF 、才能讓交換器恢復正常運作。</block>
+  <block id="e0f231e3aef671569a97ee03f6d28992" category="paragraph">在開機期間、當您看到提示時、請選取 ONIE ：</block>
+  <block id="e8896ba5c856367d7f285702fa9161e6" category="list-text">完成安裝。交換器會重新啟動、但不會套用任何組態、並會重設為原廠預設值。完成下列步驟以重新設定交換器：</block>
+  <block id="11c8d833dc677f2da3e3a05f17e029da" category="list-text"><block ref="11c8d833dc677f2da3e3a05f17e029da" category="inline-link-macro-rx"></block></block>
+  <block id="b75ec32f89267a27b5a0e0b014097f77" category="list-text">在交換器 CS1 上重複步驟 2 到 8 。</block>
+  <block id="3c3cc1e0aab8ce76690b98739e732e64" category="doc">BS-53248 叢集交換器升級程序總覽</block>
+  <block id="95731780fd3171c29b73f348e1722fda" category="paragraph">請依照下列步驟、視情況升級 Broadcom BS-54328 叢集交換器上的 EFOS 軟體和參考組態檔案（ RCFs ）。</block>
+  <block id="80327dfe904174acefb3b256fa29ed5a" category="inline-link-macro">升級您的 EFOS 版本</block>
+  <block id="fea95d28df6c953ffdb2096099ec83e5" category="list-text"><block ref="fea95d28df6c953ffdb2096099ec83e5" category="inline-link-macro-rx"></block></block>
+  <block id="b5a0d9a2c85a70413f40021328666fac" category="inline-link-macro">升級 RCF 版本</block>
+  <block id="b0d7a2164137f2036f3af1efcfb1968f" category="list-text"><block ref="b0d7a2164137f2036f3af1efcfb1968f" category="inline-link-macro-rx"></block></block>
+  <block id="63fb347e8fe40dad0a57cfdb5a947748" category="paragraph">在 BS-53248 叢集交換器上升級 RCF 、然後在套用 RCF 之後驗證連接埠是否有額外授權。</block>
+  <block id="9f2e5f2b82e93a9ed81759ba8e3c2f05" category="inline-link-macro">升級後驗證 ONTAP 叢集網路</block>
+  <block id="ee9cd451d5dc1debab0286f89e5c8301" category="list-text"><block ref="ee9cd451d5dc1debab0286f89e5c8301" category="inline-link-macro-rx"></block></block>
+  <block id="4034571f0d4fb637512f42a4b084fea4" category="paragraph">在升級 EFOS 軟體或用於 BS-53248 叢集交換器的 RCF 之後、驗證 ONTAP 叢集網路的健全狀況。</block>
+  <block id="cb44b77c34c82f85b755698a3c58dcba" category="summary">您可以在設定 BS-53248 叢集交換器之後、以及套用任何新授權之後、升級參考組態檔案（ RCF ）。</block>
+  <block id="f14d39745f2925af01d4497aa53d6677" category="doc">升級參考組態檔案（ RCF ）</block>
+  <block id="b3cf863b5b827b3b617adf0a1317606a" category="paragraph">您可以在升級 BS-53248 叢集交換器 EFOS 之後、以及套用任何新授權之後、升級參考組態檔案（ RCF ）。</block>
+  <block id="833aa928a446532020e8ea26e29a32b7" category="section-title">步驟 1 ：準備升級</block>
+  <block id="31e544384f3325abd25b797e025ef614" category="list-text">在交換器 CS2 上、關閉連接至節點叢集連接埠的連接埠。例如、如果連接埠 0/1 到 0/16 連接到 ONTAP 節點：</block>
+  <block id="05299bd158481c8acf552dc1d004ab41" category="paragraph"><block ref="db837131dc56fab41bddc52d5aff8865" prefix="" category="inline-code"></block></block>
+  <block id="4a00b51f01daee860d41dd95bb500266" category="list-text">在交換器上確認您已進行變更。</block>
+  <block id="f35806549fff4250f43cb0acde28b920" category="list-text">重新啟動交換器、並確認執行組態正確。</block>
+  <block id="7271f66e0cb527adb71302d7377910b7" category="list-text">[[step21] 重複交換器 CS1 上的步驟 1 至 20 。</block>
+  <block id="9b241cba96d2cafd3c0f5c9f7bf12560" category="list-text">。驗證叢集生命區是否已還原至其主連接埠：</block>
+  <block id="de4042aa676f131e04bcf7d15edc5af9" category="list-text">安裝RCF時所需的交換器主控台連線。如果您已使用知識庫文件、則此需求為選用項目<block ref="f179a3654c26841201eb04f568431742" category="inline-link-rx"></block> 事先清除組態。</block>
+  <block id="ced0e2e58f0a61a7676c9c092295acb0" category="admonition">更新或套用新的RCF時、您必須清除交換器設定並執行基本組態。您必須連線至交換器序列主控台連接埠、才能再次設定交換器。如果您已使用知識庫文件、則此需求為選用項目<block ref="f179a3654c26841201eb04f568431742" category="inline-link-rx"></block> 事先清除組態。</block>
+  <block id="ae0a7918183889538c2a432f5a54afa6" category="sidebar">升級交換器</block>
+  <block id="6bdce5afe823363897535ce22aa832a0" category="sidebar">升級 EFOS 版本</block>
+  <block id="4dc6f468164162b89152d6960a79b9d0" category="sidebar">升級 RCF 版本</block>
+  <block id="24778145f75ec14966b06f3682e616c4" category="sidebar">升級後驗證叢集</block>
 </blocks>

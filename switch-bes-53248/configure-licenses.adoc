@@ -531,4 +531,4 @@ exit
 NOTE: 對於0/49到0/54（含）之間的高速連接埠、請針對每個連接埠取消註解、但在RCF中只取消註釋一條*速度*線路、例如*速度100g全雙工*或*速度40G全雙工*、如範例所示。對於0/17到0/48（含）之間的低速度連接埠、請在啟用適當授權後、取消註釋整個8埠區段。
 
 .接下來呢？
-link:configure-install-rcf.html["安裝參考組態檔（RCF）"]。
+link:configure-install-rcf.html["安裝參考組態檔（RCF）"] 或 link:upgrade-rcf.html["升級 RCF"]。

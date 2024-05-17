@@ -21,7 +21,7 @@ summary: 您可以在初次設定Nexus 3132Q-V交換器之後安裝RCF。您也�
 * 交換器組態的目前備份。
 * 完全正常運作的叢集（記錄檔中沒有錯誤或類似問題）。
 * 目前參考組態檔（RCF）。
-* 安裝RCF時所需的交換器主控台連線。
+* 安裝RCF時所需的交換器主控台連線。如果您已使用知識庫文件、則此需求為選用項目 https://kb.netapp.com/on-prem/Switches/Broadcom-KBs/How_to_clear_configuration_on_a_Broadcom_interconnect_switch_while_retaining_remote_connectivity["如何清除 Broadcom 互連交換器上的組態、同時保持遠端連線"] 事先清除組態。
 * link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器"^]。請參閱交換器相容性表、以瞭解支援ONTAP 的功能表和RCF版本。請注意、RCF中的命令語法與NX-OS版本中的命令語法之間可能存在相依性。
 * https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000系列交換器"^]。如需Cisco交換器升級與降級程序的完整文件、請參閱Cisco網站上提供的適當軟體與升級指南。
 
@@ -268,7 +268,7 @@ cluster1::*>
 . 清除交換器CS2上的組態、然後執行基本設定。
 +
 
-CAUTION: 更新或套用新的RCF時、您必須清除交換器設定並執行基本組態。您必須連線至交換器序列主控台連接埠、才能再次設定交換器。
+CAUTION: 更新或套用新的RCF時、您必須清除交換器設定並執行基本組態。您必須連線至交換器序列主控台連接埠、才能再次設定交換器。如果您已使用知識庫文件、則此需求為選用項目 https://kb.netapp.com/on-prem/Switches/Broadcom-KBs/How_to_clear_configuration_on_a_Broadcom_interconnect_switch_while_retaining_remote_connectivity["如何清除 Broadcom 互連交換器上的組態、同時保持遠端連線"] 事先清除組態。
 
 +
 .. 清理組態：

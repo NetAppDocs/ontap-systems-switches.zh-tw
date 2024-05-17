@@ -1,36 +1,30 @@
 ---
-permalink: switch-bes-53248/configure-install-rcf.html 
+permalink: switch-bes-53248/upgrade-rcf.html 
 sidebar: sidebar 
-keywords: install rcf,setup rcf,rcf file 
-summary: 您可以在設定BS-53248叢集交換器之後、以及套用新授權之後、安裝參考組態檔（RCF）。 
+keywords: upgrade rcf,setup rcf,rcf file 
+summary: 您可以在設定 BS-53248 叢集交換器之後、以及套用任何新授權之後、升級參考組態檔案（ RCF ）。 
 ---
-= 安裝參考組態檔（RCF）
+= 升級參考組態檔案（ RCF ）
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-您可以在設定BS-53248叢集交換器之後、以及套用新授權之後、安裝參考組態檔（RCF）。
+您可以在升級 BS-53248 叢集交換器 EFOS 之後、以及套用任何新授權之後、升級參考組態檔案（ RCF ）。
 
-
-
-== 檢閱要求
-
-.開始之前
+.您需要的產品
 * 交換器組態的目前備份。
 * 完全正常運作的叢集（記錄檔中沒有錯誤或類似問題）。
 * 目前的 RCF 檔案、可從取得 https://mysupport.netapp.com/site/products/all/details/broadcom-cluster-switches/downloads-tab["Broadcom叢集交換器"^] 頁面。
 * RCF 中的開機組態、可反映所需的開機映像、如果您只安裝 EFOS 並保留目前的 RCF 版本、則需要此組態。如果您需要變更開機組態以反映目前的開機映像、則必須在重新套用RCF之前執行此動作、以便在未來重新開機時產生正確的版本。
-* 從原廠預設狀態安裝 RCF 時、需要主控台連線至交換器。如果您已使用知識庫文件、則此需求為選用項目 https://kb.netapp.com/onprem/Switches/Broadcom/How_to_clear_configuration_on_a_Broadcom_interconnect_switch_while_retaining_remote_connectivity["如何清除 Broadcom 互連交換器上的組態、同時保持遠端連線"^] 事先清除組態。
+* 從原廠預設狀態安裝 RCF 時、需要主控台連線至交換器。如果您已使用知識庫文件、則此需求為選用項目  https://kb.netapp.com/onprem/Switches/Broadcom/How_to_clear_configuration_on_a_Broadcom_interconnect_switch_while_retaining_remote_connectivity["如何清除 Broadcom 互連交換器上的組態、同時保持遠端連線"^] 事先清除組態。
 
 
 .建議的文件
-請參閱交換器相容性表、以瞭解支援ONTAP 的功能表和RCF版本。請參閱 https://mysupport.netapp.com/site/info/broadcom-cluster-switch["EFOS 軟體下載"^] 頁面。請注意、 RCF 中的命令語法與 EFOS 版本中的命令語法之間可能存在命令相依性。
+* 請參閱交換器相容性表、以瞭解支援ONTAP 的功能表和RCF版本。請參閱 https://mysupport.netapp.com/site/info/broadcom-cluster-switch["EFOS 軟體下載"^] 頁面。請注意、 RCF 中的命令語法與 EFOS 版本中的命令語法之間可能存在命令相依性。
+* 請參閱上提供的適當軟體和升級指南 https://www.broadcom.com/support/bes-switch["Broadcom"^] 有關 BS-53248 交換器升級與降級程序的完整文件、請參閱網站。
 
-
-
-== 安裝組態檔
 
 .關於範例
 本程序中的範例使用下列交換器和節點命名法：
@@ -55,14 +49,12 @@ CAUTION: 在安裝新的交換器軟體版本和 RCFs 之前、請先參閱知�
 
 
 
-== 步驟1：準備安裝
+== 步驟 1 ：準備升級
 
 . 如果AutoSupport 此叢集啟用了「支援」功能、請叫用AutoSupport 下列訊息來禁止自動建立案例：
 +
-[source, cli]
-----
-system node autosupport invoke -node * -type all -message MAINT=xh
-----
+「系統節點AutoSupport 不完整地叫用節點*-type all -Message MAn=xh」
+
 +
 其中_x_是維護時段的持續時間（以小時為單位）。
 
@@ -74,9 +66,9 @@ NOTE: 此資訊可通知技術支援人員執行此維護工作、以便在維�
 下列命令會禁止自動建立兩小時的個案：
 
 +
-[listing]
+[source, cli]
 ----
-cluster1::*> system node autosupport invoke -node \* -type all -message MAINT=2h
+system node autosupport invoke -node * -type all -message MAINT=2h
 ----
 . 將權限等級變更為進階、並在系統提示您繼續時輸入* y*：
 +
@@ -281,7 +273,7 @@ network interface modify -vserver Cluster -lif * -auto-revert false
 ----
 show isdp neighbor
 ----
-. 在叢集交換器CS2上、關閉連接至節點叢集連接埠的連接埠。例如、如果連接埠 0/1 到 0/16 連接到 ONTAP 節點：
+. 在交換器 CS2 上、關閉連接至節點叢集連接埠的連接埠。例如、如果連接埠 0/1 到 0/16 連接到 ONTAP 節點：
 +
 [listing, subs="+quotes"]
 ----
@@ -408,6 +400,9 @@ exit
 ----
 .. 將執行組態儲存至啟動組態：
 +
+寫入記憶體
+
++
 [listing, subs="+quotes"]
 ----
 (cs2)# *write memory*
@@ -418,18 +413,18 @@ Management interfaces will not be available during this time.
 Are you sure you want to save? (y/n) *y*
 
 Config file 'startup-config' created successfully.
-
 Configuration Saved!
 ----
 .. 重新啟動交換器：
 +
+"重裝"
+
++
 [listing, subs="+quotes"]
 ----
 (cs2)# *reload*
-
 Are you sure you would like to reset the system? (y/n) *y*
 ----
-.. 使用 SSH 再次登入交換器以完成 RCF 安裝。
 
 
 . 如果交換器上已安裝額外的連接埠授權、您必須修改 RCF 以設定額外的授權連接埠。請參閱 link:configure-licenses.html#activate-newly-licensed-ports["啟動新授權的連接埠"^] 以取得詳細資料。
@@ -438,9 +433,6 @@ Are you sure you would like to reset the system? (y/n) *y*
 此範例顯示 SFTP 用於將 RCF 複製到交換器 CS2 上的 bootflash ：
 
 +
-.顯示範例
-[%collapsible]
-====
 [listing, subs="+quotes"]
 ----
 (cs2)# *copy sftp://172.19.2.1/tmp/BES-53248_RCF_v1.9-Cluster-HA.txt
@@ -457,12 +449,14 @@ Are you sure you want to start? (y/n) *y*
 SFTP Code transfer starting...
 File transfer operation completed successfully.
 ----
-====
 . 確認已下載指令碼並儲存至您指定的檔案名稱：
 +
 《記錄清單》
 
 +
+.顯示範例
+[%collapsible]
+====
 [listing, subs="+quotes"]
 ----
 (cs2)# *script list*
@@ -473,11 +467,15 @@ BES-53248_RCF_v1.9-Cluster-HA.scr          2241         2020 09 30 05:41:00
 
 1 configuration script(s) found.
 ----
+====
 . 將指令碼套用至交換器：
 +
 適用記錄
 
 +
+.顯示範例
+[%collapsible]
+====
 [listing, subs="+quotes"]
 ----
 (cs2)# *script apply BES-53248_RCF_v1.9-Cluster-HA.scr*
@@ -491,7 +489,11 @@ Configuration Saved!
 
 Configuration script 'BES-53248_RCF_v1.9-Cluster-HA.scr' applied.
 ----
+====
 . 檢查的橫幅輸出 `show clibanner` 命令。您必須閱讀並遵循這些指示、以確保交換器的組態和操作正確無誤。
++
+`show clibanner`
+
 +
 .顯示範例
 [%collapsible]
@@ -570,22 +572,20 @@ Intf      Type   Mode      Mode         Status     Status Trap    Mode   Timeout
 0/56             Enable    100G Full               Down   Enable  Enable long
 ----
 ====
-. 在交換器上確認您已進行變更：
+. 在交換器上確認您已進行變更。
 +
 [source, cli]
 ----
-show running-config
-----
-+
-[listing, subs="+quotes"]
-----
-(cs2)# *show running-config*
+show running config
 ----
 . 儲存執行中的組態、以便在您重新啟動交換器時將其變成啟動組態：
 +
 寫入記憶體
 
 +
+.顯示範例
+[%collapsible]
+====
 [listing, subs="+quotes"]
 ----
 (cs2)# *write memory*
@@ -595,10 +595,10 @@ Management interfaces will not be available during this time.
 Are you sure you want to save? (y/n) *y*
 
 Config file 'startup-config' created successfully.
-
 Configuration Saved!
 ----
-. 重新啟動交換器、並驗證執行中的組態是否正確：
+====
+. 重新啟動交換器、並確認執行組態正確。
 +
 "重裝"
 
@@ -606,12 +606,10 @@ Configuration Saved!
 [listing, subs="+quotes"]
 ----
 (cs2)# *reload*
-
 Are you sure you would like to reset the system? (y/n) *y*
-
 System will now restart!
 ----
-. 在叢集交換器 CS2 上、開啟連接至節點叢集連接埠的連接埠。例如、如果連接埠 0/1 到 0/16 連接到 ONTAP 節點：
+. 在叢集交換器 CS2 上、開啟連接至節點叢集連接埠的連接埠。
 +
 [listing, subs="+quotes"]
 ----
@@ -619,9 +617,29 @@ System will now restart!
 (cs2)# *configure*
 (cs2)(Config)# *interface 0/1-0/16*
 (cs2)(Interface 0/1-0/16)# *no shutdown*
-(cs2)(Interface 0/1-0/16)# *exit*
-(cs2)(Config)#
+(cs2)(Config)# *exit*
 ----
+. 將執行組態儲存至啟動組態：
++
+寫入記憶體
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(cs2)# *write memory*
+
+This operation may take a few minutes.
+Management interfaces will not be available during this time.
+
+Are you sure you want to save? (y/n) *y*
+
+Config file 'startup-config' created successfully.
+Configuration Saved!
+----
+====
 . 驗證交換器 CS2 上的連接埠：
 +
 [source, cli]
@@ -634,7 +652,7 @@ show interfaces status all | exclude Detach
 ====
 [listing, subs="+quotes"]
 ----
-(cs1)# show interfaces status all | exclude Detach
+(cs1)# *show interfaces status all | exclude Detach*
 
                                 Link    Physical    Physical    Media       Flow
 Port       Name                 State   Mode        Status      Type        Control     VLAN
@@ -712,7 +730,7 @@ e0b       Cluster      Cluster          up   9000  auto/100000 healthy false
 +
 [source, cli]
 ----
-network device-discovery show -protocol cdp
+network device-discovery show
 ----
 +
 .顯示範例
@@ -804,82 +822,22 @@ cluster1::*>
 ----
 --
 ====
-. [[step20]] 在叢集交換器 CS1 上、關閉連接至節點叢集連接埠的連接埠。
-+
-以下範例使用介面範例輸出：
-
-+
-[listing, subs="+quotes"]
-----
-(cs1)> *enable*
-(cs1)# *configure*
-(cs1)(Config)# *interface 0/1-0/16*
-(cs1)(Interface 0/1-0/16)# *shutdown*
-----
-. 驗證叢集LIF是否已移轉至交換器CS2上裝載的連接埠。這可能需要幾秒鐘的時間。
-+
-[source, cli]
-----
-network interface show -role cluster
-----
-+
-.顯示範例
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-cluster1::*> *network interface show -role cluster*
-            Logical            Status     Network            Current            Current  Is
-Vserver     Interface          Admin/Oper Address/Mask       Node               Port     Home
------------ ------------------ ---------- ------------------ ------------------ -------- ----
-Cluster
-            cluster1-01_clus1  up/up      169.254.3.4/23     cluster1-01        e0a      false
-            cluster1-01_clus2  up/up      169.254.3.5/23     cluster1-01        e0b      true
-            cluster1-02_clus1  up/up      169.254.3.8/23     cluster1-02        e0a      false
-            cluster1-02_clus2  up/up      169.254.3.9/23     cluster1-02        e0b      true
-            cluster1-03_clus1  up/up      169.254.1.3/23     cluster1-03        e0a      false
-            cluster1-03_clus2  up/up      169.254.1.1/23     cluster1-03        e0b      true
-            cluster1-04_clus1  up/up      169.254.1.6/23     cluster1-04        e0a      false
-            cluster1-04_clus2  up/up      169.254.1.7/23     cluster1-04        e0b      true
-cluster1::*>
-----
-====
-. 驗證叢集是否正常：
-+
-「叢集展示」
-
-+
-.顯示範例
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-cluster1::*> *cluster show*
-Node                 Health   Eligibility   Epsilon
--------------------- -------- ------------- -------
-cluster1-01          true     true          false
-cluster1-02          true     true          false
-cluster1-03          true     true          true
-cluster1-04          true     true          false
-----
-====
-. 在交換器 CS1 上重複步驟 4 至 19 。
+. [[step21] 重複交換器 CS1 上的步驟 1 至 20 。
 . 在叢集生命體上啟用自動還原：
 +
 [source, cli]
 ----
 network interface modify -vserver Cluster -lif * -auto-revert true
 ----
-. 重新開機交換器CS1。您可以這樣做、觸發叢集生命期以恢復到其主連接埠。您可以在交換器重新開機時忽略節點上報告的「叢集連接埠當機」事件。
+. 。驗證叢集生命區是否已還原至其主連接埠：
 +
-[listing, subs="+quotes"]
+[source, cli]
 ----
-(cs1)# *reload*
-The system has unsaved changes.
-Would you like to save them now? (y/n) *y*
-Config file 'startup-config' created successfully.
-Configuration Saved! System will now restart!
+network interface show -role Cluster
 ----
++
+如需詳細資料、請參閱 link:https://docs.netapp.com/us-en/ontap/networking/revert_a_lif_to_its_home_port.html["將LIF還原至其主連接埠"]。
+
 
 
 
@@ -890,7 +848,7 @@ Configuration Saved! System will now restart!
 +
 [source, cli]
 ----
-show interfaces status all | exclude Detach
+show interfaces status all
 ----
 +
 .顯示範例
@@ -1061,6 +1019,3 @@ set -privilege admin
 system node autosupport invoke -node * -type all -message MAINT=END
 ----
 
-
-.接下來呢？
-link:configure-ssh.html["啟用 SSH 進行記錄收集"]。

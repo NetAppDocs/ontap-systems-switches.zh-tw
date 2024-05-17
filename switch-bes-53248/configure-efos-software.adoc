@@ -20,130 +20,29 @@ EFOS軟體包含一組進階網路功能和傳輸協定、可用於開發乙太�
 == 準備安裝
 
 .開始之前
+* 此程序僅適用於新安裝。
 * 從下載適用於叢集交換器的Broadcom EFOS軟體 https://www.broadcom.com/support/bes-switch["Broadcom乙太網路交換器支援"^] 網站。
-* 請檢閱下列EFOS版本的相關附註。
+* 確保 link:configure-install-initial.html["設定了 BS-53248 叢集交換器"]。
 
 
-[]
-====
-*請注意下列事項：*
-
-* 從EFOS 3.4.x.x升級至EFOS 3.7.x.x或更新版本時、交換器必須執行EFOS 3.4.4.6（或更新版本3.4.x.x）。如果您執行之前的版本、請先將交換器升級至EFOS 3.4.4.6（或更新版本3.4.x.x）、然後將交換器升級至EFOS 3.7.x.x或更新版本。
-* EFOS 3.4.x.x和3.7.x.x或更新版本的組態不同。若要將EFOS版本從3.4.x.x變更為3.7.x.x或更新版本、或將其變更為3.7.x.x或更新版本、必須將交換器重設為原廠預設值、並套用對應EFOS版本的RCF檔案（重新）。此程序需要透過序列主控台連接埠存取。
-* 從EFOS 3.7.x.x或更新版本開始、我們提供不符合FIPS標準的版本、以及符合FIPS標準的版本。從非FIPS相容的版本移至FIPS相容的版本時、適用不同的步驟、反之亦然。將EFOS從非FIPS相容的版本變更為FIPS相容的版本、反之亦然、會將交換器重設為原廠預設值。此程序需要透過序列主控台連接埠存取。
-
-
-====
-|===
-
-
-| *程序* | *目前的EFOS版本* | *全新EFOS版本* | *高階步驟* 
-
-
- a| 
-在兩個（非）FIPS相容版本之間升級EFOS的步驟
- a| 
-3.4.x.x
- a| 
-3.4.x.x
- a| 
-使用安裝新的EFOS映像 <<方法1：安裝EFOS>>。系統會保留組態與授權資訊。
-
-
-
- a| 
-3.4.4.6（或更新版本3.4.x.x）
- a| 
-3.7.x.x或更新版本不符合FIPS標準
- a| 
-使用升級EFOS <<方法1：安裝EFOS>>。將交換器重設為原廠預設值、並套用EFOS 3.7.x.x或更新版本的RCF檔案。
-
-
-
-.2+| 3.7.x.x或更新版本不符合FIPS標準  a| 
-3.4.4.6（或更新版本3.4.x.x）
- a| 
-使用降級EFOS <<方法1：安裝EFOS>>。將交換器重設為原廠預設值、並套用EFOS 3.4.x.x的RCF檔案
-
-
-
- a| 
-3.7.x.x或更新版本不符合FIPS標準
- a| 
-使用安裝新的EFOS映像 <<方法1：安裝EFOS>>。系統會保留組態與授權資訊。
-
-
-
- a| 
-3.7.x.x或更新版本符合FIPS標準
- a| 
-3.7.x.x或更新版本符合FIPS標準
- a| 
-使用安裝新的EFOS映像 <<方法1：安裝EFOS>>。系統會保留組態與授權資訊。
-
-
-
- a| 
-從FIPS相容EFOS版本升級至/升級的步驟
- a| 
-不符合FIPS標準
- a| 
-符合FIPS標準
- a| 
-使用安裝EFOS映像 <<方法2：使用ONIE OS安裝來升級EFOS>>。交換器組態和授權資訊將會遺失。
-
-
-
- a| 
-符合FIPS標準
- a| 
-不符合FIPS標準
-
-|===
-[IMPORTANT]
-====
-若要檢查您的 EFOS 版本是否符合 FIPS 標準或不符合 FIPS 標準、請使用 `show fips status` 命令。在下列範例中、 *IP_switch_A1* 使用 FIPS 相容的 EFOS 、而 *IP_switch_A2* 則使用非 FIPS 相容的 EFOS 。
-
-* 在交換器 IP_switch_A1 上：
-
-
-[listing]
-----
-IP_switch_a1 # *show fips status*
-
-System running in FIPS mode
-----
-* 在交換器 IP_switch_A2 上：
-
-
-[listing]
-----
-IP_switch_a2 # *show fips status*
-                     ^
-% Invalid input detected at `^` marker.
-----
-====
 
 
 == 安裝軟體
 
-請使用下列其中一種方法：
+請使用下列其中一種方法來安裝 EFOS 軟體：
 
-* <<方法1：安裝EFOS>>。適用於大多數情況（請參閱上表）。
-* <<方法2：使用ONIE OS安裝來升級EFOS>>。如果其中一個EFOS版本符合FIPS標準、而另一個EFOS版本不符合FIPS標準、請使用。
+* <<方法1：安裝EFOS>>。適用於大多數情況。
+* <<方法 2 ：在 ONIE 模式下安裝 EFOS>>。如果其中一個EFOS版本符合FIPS標準、而另一個EFOS版本不符合FIPS標準、請使用。
 
 
 
 
 === 方法1：安裝EFOS
 
-請執行下列步驟來安裝或升級EFOS軟體。
-
-
-IMPORTANT: 請注意、將BSP-53248叢集交換器從EFOS 3.3.x.x或3.4.x.x升級至EFOS 3.7.0.4或3.8.0.2之後、交換器間連結（ISL）和連接埠通道會標示為「*向下*」狀態。請參閱以下知識庫文章： https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/Fabric%2C_Interconnect_and_Management_Switches/BES-53248_Cluster_Switch_NDU_failed_upgrade_to_EFOS_3.7.0.4_and_later["BS-53248叢集交換器NDU無法升級至EFOS 3.7.0.4及更新版本"^] 以取得更多詳細資料。
+請執行下列步驟來安裝 EFOS 軟體。
 
 .步驟
-. 將B通信 設備叢集交換器連接至管理網路。
+. 登入交換器序列主控台連接埠或使用 SSH 連線。
 . 使用「ping」命令來驗證與裝載EFOS、授權和RCF檔案的伺服器之間的連線。
 +
 .顯示範例
@@ -159,85 +58,79 @@ Pinging 172.19.2.1 with 0 bytes of data:
 Reply From 172.19.2.1: icmp_seq = 0. time= 5910 usec.
 ----
 ====
-. 在CS2上備份目前使用中的映像：
-+
-「如何啟動bootvar
-
-+
-.顯示範例
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-(cs2)# *show bootvar*
-
- Image Descriptions
-
- active :
- backup :
-
- Images currently available on Flash
---------------------------------------------------------------------
- unit      active      backup        current-active    next-active
---------------------------------------------------------------------
-    1      3.4.3.3     Q.10.22.1     3.4.3.3           3.4.3.3
-
-(cs2)# *copy active backup*
-Copying active to backup
-Management access will be blocked for the duration of the operation
-Copy operation successful
-
-(cs2)# *show bootvar*
-
-Image Descriptions
-
- active :
- backup :
- Images currently available on Flash
---------------------------------------------------------------------
- unit      active      backup      current-active    next-active
---------------------------------------------------------------------
-    1      3.4.3.3     3.4.3.3     3.4.3.3           3.4.3.3
-(cs2)#
-----
-====
-. 驗證EFOS軟體的執行版本：
-+
-《如何版本》
-
-+
-.顯示範例
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-(cs2)# *show version*
-
-Switch: 1
-
-System Description............................. BES-53248A1, 3.4.3.3, Linux 4.4.117-ceeeb99d, 2016.05.00.05
-Machine Type................................... BES-53248A1
-Machine Model.................................. BES-53248
-Serial Number.................................. QTFCU38260014
-Maintenance Level.............................. A
-Manufacturer................................... 0xbc00
-Burned In MAC Address.......................... D8:C4:97:71:12:3D
-Software Version............................... 3.4.3.3
-Operating System............................... Linux 4.4.117-ceeeb99d
-Network Processing Device...................... BCM56873_A0
-CPLD Version................................... 0xff040c03
-
-Additional Packages............................ BGP-4
-...............................................	QOS
-...............................................	Multicast
-............................................... IPv6
-............................................... Routing
-............................................... Data Center
-............................................... OpEN API
-............................................... Prototype Open API
-----
-====
 . 將映像檔下載到交換器。
++
+請查看下表、以取得支援的複製協定資訊：
+
++
+|===
+
+
+| *傳輸協定* | * 先決條件 * 
+
+
+ a| 
+簡易檔案傳輸協定（ TFTP ）
+ a| 
+無
+
+
+
+ a| 
+SSH 檔案傳輸協定（ SFTP ）
+ a| 
+您的軟體套件必須支援安全管理
+
+
+
+ a| 
+FTP
+ a| 
+需要密碼
+
+
+
+ a| 
+Xmodem
+ a| 
+無
+
+
+
+ a| 
+Ymodem
+ a| 
+無
+
+
+
+ a| 
+ZMODEM-
+ a| 
+無
+
+
+
+ a| 
+安全複製傳輸協定（ SCP ）
+ a| 
+您的軟體套件必須支援安全管理
+
+
+
+ a| 
+HTTP
+ a| 
+當有原生 wGet 公用程式可用時、所選平台支援 CLI 型檔案傳輸
+
+
+
+ a| 
+HTTPS
+ a| 
+當有原生 wGet 公用程式可用時、所選平台支援 CLI 型檔案傳輸
+
+|===
 +
 將映像檔複製到作用中映像、表示當您重新開機時、該映像會建立執行中的EFOS版本。上一個映像仍可作為備份使用。
 
@@ -247,13 +140,13 @@ Additional Packages............................ BGP-4
 ====
 [listing, subs="+quotes"]
 ----
-(cs2)# *copy sftp://root@172.19.2.1//tmp/EFOS-3.4.4.6.stk active*
+(cs2)# *copy sftp://root@172.19.2.1//tmp/EFOS-3.10.0.3.stk active*
 Remote Password:********
 
 Mode........................................... SFTP
 Set Server IP.................................. 172.19.2.1
 Path........................................... //tmp/
-Filename....................................... EFOS-3.4.4.6.stk
+Filename....................................... EFOS-3.10.0.3.stk
 Data Type...................................... Code
 Destination Filename........................... active
 
@@ -284,9 +177,9 @@ Image Descriptions
 
  Images currently available on Flash
 --------------------------------------------------------------------
- unit     active      backup       current-active        next-active
+ unit      active      backup      current-active    next-active
 --------------------------------------------------------------------
-    1     3.4.3.3     3.4.3.3       3.4.3.3              3.4.4.6
+    1      3.7.0.4     3.7.0.4     3.7.0.4           3.10.0.3
 ----
 ====
 . 重新啟動交換器：
@@ -323,14 +216,14 @@ System will now restart!
 
 Switch: 1
 
-System Description............................. BES-53248A1, 3.4.4.6, Linux 4.4.211-28a6fe76, 2016.05.00.04
+System Description............................. BES-53248A1, 3.10.0.3, Linux 4.4.211-28a6fe76, 2016.05.00.04
 Machine Type................................... BES-53248A1,
 Machine Model.................................. BES-53248
 Serial Number.................................. QTFCU38260023
 Maintenance Level.............................. A
 Manufacturer................................... 0xbc00
 Burned In MAC Address.......................... D8:C4:97:71:0F:40
-Software Version............................... 3.4.4.6
+Software Version............................... 3.10.0.3
 Operating System............................... Linux 4.4.211-28a6fe76
 Network Processing Device...................... BCM56873_A0
 CPLD Version................................... 0xff040c03
@@ -345,21 +238,27 @@ Additional Packages............................ BGP-4
 ............................................... Prototype Open API
 ----
 ====
+. 完成安裝。
+請依照下列五個步驟重新設定交換器：
++
+.. link:configure-licenses.html["安裝授權"]
+.. link:configure-install-rcf.html["安裝 RCF 檔案"]
+.. link:configure-ssh.html["啟用SSH"]
+.. link:CSHM_log_collection.html["啟用記錄收集"]
+.. link:CSHM_snmpv3.html["設定用於監控的 SNMPv3"]
 
 
-.接下來呢？
-link:configure-licenses.html["安裝適用於B3作業 叢集交換器的授權"]。
+. 在合作夥伴交換器上重複步驟 1 至 7 。
 
 
 
-=== 方法2：使用ONIE OS安裝來升級EFOS
+
+=== 方法 2 ：在 ONIE 模式下安裝 EFOS
 
 如果其中一個EFOS版本符合FIPS標準、而另一個EFOS版本不符合FIPS標準、您可以執行下列步驟。這些步驟可用於在交換器無法開機時、從ONIE安裝非FIPS或FIPS相容的EFOS 3.7.x.x映像。
 
-
-NOTE: 此功能僅適用於不符合FIPS標準的EFOS 3.7.x.x或更新版本。
-
 .步驟
+. 連接至連接至交換器序列連接埠的主控台。
 . 將交換器開機至ONIE安裝模式。
 +
 在開機期間、當您看到提示時、請選取ONIE。
@@ -437,7 +336,7 @@ discover: installer mode detected.
 Stopping: discover... done.
 ONIE:/ #
 ----
-. 使用「ifconfigeth0 <ipaddress> netmask> up」和「route add Default GW <gatewayAddress>」來設定乙太網路介面並新增路由
+. 設定交換器管理連接埠的乙太網路介面、並使用新增路由 `ifconfig eth0 <ipAddress> netmask <netmask> up` 和 `route add default gw <gatewayAddress>`
 +
 [listing]
 ----
@@ -490,7 +389,7 @@ Preparing image archive ... OK.
 +
 軟體隨即安裝、然後重新啟動交換器。讓交換器正常重新開機至新的EFOS版本。
 
-. 驗證是否安裝了新的交換器軟體：
+. 登入並確認已安裝新的交換器軟體：
 +
 「如何啟動bootvar
 
@@ -508,15 +407,20 @@ Images currently available on Flash
 ---- 	----------- -------- --------------- ------------
 unit 	active 	    backup   current-active  next-active
 ---- 	----------- -------- --------------- ------------
-1 	    3.7.0.4     3.7.0.4  3.7.0.4         3.7.0.4
+ 1      3.7.0.4     3.7.0.4    3.7.0.4        3.10.0.3
 (cs2) #
 ----
 ====
 . 完成安裝。
+交換器會重新啟動、但不會套用任何組態、並會重設為原廠預設值。請依照下列六個步驟重新設定交換器：
 +
-交換器將在未套用組態的情況下重新開機、然後重設為原廠預設值。
+.. link:configure-install-initial.html["設定交換器"]
+.. link:configure-licenses.html["安裝授權"]
+.. link:configure-install-rcf.html["安裝 RCF 檔案"]
+.. link:configure-ssh.html["啟用SSH"]
+.. link:CSHM_log_collection.html["啟用記錄收集"]
+.. link:CSHM_snmpv3.html["設定用於監控的 SNMPv3"]
 
 
+. 在合作夥伴交換器上重複步驟 1 至 8 。
 
-.接下來呢？
-link:configure-licenses.html["安裝適用於B3作業 叢集交換器的授權"]。

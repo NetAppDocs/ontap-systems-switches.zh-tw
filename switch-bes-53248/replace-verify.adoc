@@ -4,20 +4,22 @@ sidebar: sidebar
 keywords: command, verify, operational, bes, cluster, switch, upgrade, verify the configuration after a cluster switch upgrade - bes-53428 switches 
 summary: 您可以使用此處提供的命令、驗證在升級B作業 至53268叢集交換器之後、所有的功能都能正常運作。 
 ---
-= 在升級B交互 式叢集交換器之後驗證組態
+= 在 EFOS 軟體或 RCF 升級 BS-53248 叢集交換器之後、驗證 ONTAP 叢集網路
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-您可以在升級BS-53248叢集交換器之後、使用建議的命令來驗證作業。
+升級 EFOS 軟體後、您可以使用下列命令來驗證 ONTAP 叢集網路的健全狀況、或是升級為 BS-53248 叢集交換器的 RCF 。
 
 .步驟
 . 使用命令顯示叢集上網路連接埠的相關資訊：
 +
-「網路連接埠show -IPSpace Cluster」
-
+[source, cli]
+----
+network port show -ipspace Cluster
+----
 +
 “Link（鏈接）”的值必須是「UP（向上）」和「Health Status（健康狀態）」、必須是「Healthy（健康）」。
 
@@ -50,8 +52,10 @@ e0b    Cluster      Cluster          up   9000  auto/10000 healthy  false
 ====
 . 針對每個LIF、請確認 `Is Home` 是 `true` 和 `Status Admin/Oper` 是 `up` 在兩個節點上、使用命令：
 +
-「網路介面show -vserver叢集」
-
+[source, cli]
+----
+network interface show -vserver Cluster
+----
 +
 .顯示範例
 [%collapsible]
