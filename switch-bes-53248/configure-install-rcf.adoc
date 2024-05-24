@@ -432,7 +432,12 @@ Are you sure you would like to reset the system? (y/n) *y*
 .. 使用 SSH 再次登入交換器以完成 RCF 安裝。
 
 
-. 如果交換器上已安裝額外的連接埠授權、您必須修改 RCF 以設定額外的授權連接埠。請參閱 link:configure-licenses.html#activate-newly-licensed-ports["啟動新授權的連接埠"^] 以取得詳細資料。
+. 請注意下列事項：
++
+.. 如果交換器上已安裝額外的連接埠授權、您必須修改 RCF 以設定額外的授權連接埠。請參閱 link:configure-licenses.html#activate-newly-licensed-ports["啟動新授權的連接埠"] 以取得詳細資料。
+.. 記錄在先前 RCF 中所做的任何自訂項目、並將這些項目套用至新的 RCF 。例如、設定連接埠速度或硬編碼 FEC 模式。
+
+
 . 使用下列傳輸傳輸協定之一、將RCF複製到交換器CS2的bootflash：FTP、TFTP、SFTP或scp。
 +
 此範例顯示 SFTP 用於將 RCF 複製到交換器 CS2 上的 bootflash ：
