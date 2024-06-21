@@ -799,7 +799,6 @@
   <block id="494cb4f7976c64f111b74e9089d5bbd5" category="paragraph">「叢集展示」</block>
   <block id="0bdc52e912f1ecc312522eb07e5f2cbb" category="list-text">確認RCF檔案為正確的更新版本：</block>
   <block id="2c4752308de3d9f3db61274d3c1d0e24" category="paragraph">「如何執行設定」</block>
-  <block id="f1e487b54b162363f351d5d209fc59ac" category="paragraph">如需Cisco命令的詳細資訊、請參閱中的適當指南<block ref="a793a8dbe6bab2f66743aaacba3b8ce6" category="inline-link-rx"></block> 指南：</block>
   <block id="5fce64183093b6e715f9c2c0872112ef" category="paragraph">您可能會在CS1交換器主控台觀察到下列輸出、視先前載入交換器的RCF版本而定：</block>
   <block id="50f3bfc2fb822fc9657969a594a33322" category="list-text">驗證叢集LIF是否已移轉至交換器CS2上裝載的連接埠。這可能需要幾秒鐘的時間。</block>
   <block id="ed34b4f07dbb9044c4aec48959bb5c98" category="list-text">確認CS1與CS2之間的ISL正常運作：</block>
@@ -4325,7 +4324,6 @@
   <block id="0f2a4526602865cc9158a56028bf97de" category="summary">您可以不中斷地將 ONTAP 叢集的 NetApp CN1610 叢集交換器移轉至 Cisco Nexus 9336C-FX2 叢集網路交換器。</block>
   <block id="4732368f30b7afd2065dc4cc0c57584f" category="doc">從 NetApp CN1610 叢集交換器移轉至 Cisco 9336C-FX2 叢集交換器</block>
   <block id="c8fc8239bd9ec37b7c36847589d5c8a0" category="paragraph">您可以將 ONTAP 叢集的 NetApp CN1610 叢集交換器移轉至 Cisco 9336C-FX2 叢集交換器。這是不中斷營運的程序。</block>
-  <block id="b6bd832f0692f49d1480e52df106a51f" category="paragraph">當您使用 Cisco 9336C-FX2 叢集交換器更換 NetApp CN1610 叢集交換器時、您必須瞭解某些組態資訊、連接埠連線和纜線需求。</block>
   <block id="059d31543d448499bd1a9c454a8d1ebb" category="list-text">Cisco 9336C-FX2</block>
   <block id="3cb2d5707cdf5f5290ac6608ce8b5278" category="paragraph">確認您的組態符合下列需求：</block>
   <block id="6195676dbe2277e0d3edb2d8c3a50b2e" category="list-text">Cisco 9336C-FX2 叢集交換器是在正確版本的 NX-OS 下設定及操作、並套用參考組態檔案（ RCF ）。</block>
@@ -4931,8 +4929,6 @@
   <block id="f35806549fff4250f43cb0acde28b920" category="list-text">重新啟動交換器、並確認執行組態正確。</block>
   <block id="7271f66e0cb527adb71302d7377910b7" category="list-text">[[step21] 重複交換器 CS1 上的步驟 1 至 20 。</block>
   <block id="9b241cba96d2cafd3c0f5c9f7bf12560" category="list-text">。驗證叢集生命區是否已還原至其主連接埠：</block>
-  <block id="de4042aa676f131e04bcf7d15edc5af9" category="list-text">安裝RCF時所需的交換器主控台連線。如果您已使用知識庫文件、則此需求為選用項目<block ref="f179a3654c26841201eb04f568431742" category="inline-link-rx"></block> 事先清除組態。</block>
-  <block id="ced0e2e58f0a61a7676c9c092295acb0" category="admonition">更新或套用新的RCF時、您必須清除交換器設定並執行基本組態。您必須連線至交換器序列主控台連接埠、才能再次設定交換器。如果您已使用知識庫文件、則此需求為選用項目<block ref="f179a3654c26841201eb04f568431742" category="inline-link-rx"></block> 事先清除組態。</block>
   <block id="ae0a7918183889538c2a432f5a54afa6" category="sidebar">升級交換器</block>
   <block id="6bdce5afe823363897535ce22aa832a0" category="sidebar">升級 EFOS 版本</block>
   <block id="4dc6f468164162b89152d6960a79b9d0" category="sidebar">升級 RCF 版本</block>
@@ -4955,4 +4951,10 @@
   <block id="3ee80345befd8ba67ee5e3200beb2fd8" category="list-text">如果交換器上已安裝額外的連接埠授權、您必須修改 RCF 以設定額外的授權連接埠。請參閱 <block ref="029ce138066352981401c2da3f4be7ea" category="inline-link-macro-rx"></block> 以取得詳細資料。</block>
   <block id="febb316f33bb4f57154038c792c90fc0" category="list-text">記錄在先前 RCF 中所做的任何自訂項目、並將這些項目套用至新的 RCF 。例如、設定連接埠速度或硬編碼 FEC 模式。</block>
   <block id="888174b5389281588448ee75f7ac8835" category="sidebar">安裝或升級 NX-OS 軟體</block>
+  <block id="a8294f2ff72d57253432505426ab555f" category="list-text">您已驗證交換器序號、以確保移轉正確的交換器。</block>
+  <block id="f4212fffa5e0c42b93f12013fbeaaa93" category="paragraph">當您使用 Cisco 9336C-FX2 叢集交換器更換 NetApp CN1610 叢集交換器時、您必須瞭解某些組態資訊、連接埠連線和纜線需求。此外、請確認交換器序號、以確保移轉正確的交換器。</block>
+  <block id="87a5e94476d6bdcbe9c972165d34090a" category="list-text">您已驗證交換器序號、以確保更換正確的交換器。</block>
+  <block id="2d6eb81058fa2415eb5247e2c14c5452" category="inline-link">如何在保留遠端連線的同時清除 Cisco 互連交換器上的組態</block>
+  <block id="9fa76c217cee95f26808d0c64f43dcda" category="list-text">安裝 RCF 時、需要與交換器建立主控台連線。如果您已使用知識庫文件、則此需求為選用項目<block ref="3e8c2406d6e0211f305d1081c755846f" category="inline-link-rx"></block> 事先清除組態。</block>
+  <block id="83ad3b6efa173a2560e396a36d6ac2f0" category="admonition">更新或套用新的RCF時、您必須清除交換器設定並執行基本組態。您 * 必須 * 連線至交換器序列主控台連接埠、才能再次設定交換器。不過、如果您已使用知識庫文件、則此需求為選用項目<block ref="3e8c2406d6e0211f305d1081c755846f" category="inline-link-rx"></block> 事先清除組態。</block>
 </blocks>
