@@ -3921,7 +3921,6 @@
   <block id="ce140d6d1921435e3df40a72b6d032f4" category="sidebar">從CN1610交換器移轉</block>
   <block id="ac0586dfb2126d95d9be6378c5f70512" category="sidebar">從無交換器叢集移轉至交換式叢集</block>
   <block id="703c0fedc12db69e340d7c2f3de0d764" category="sidebar">更換交換器</block>
-  <block id="4e8b0737e5a683e7ada812ad2005b768" category="sidebar">更換CN3132Q-V交換器</block>
   <block id="88af8e6a19edbffd16db05ce4d139e3f" category="sidebar">從CN1610叢集交換器移轉</block>
   <block id="c40e2faa3e9cd894cbecfcf038ffe999" category="sidebar">從Cisco Nexus 5596叢集交換器移轉</block>
   <block id="ae5073b7cedbbc7111f9e806343efc7e" category="sidebar">從雙節點無交換器叢集移轉</block>
@@ -4957,4 +4956,16 @@
   <block id="2d6eb81058fa2415eb5247e2c14c5452" category="inline-link">如何在保留遠端連線的同時清除 Cisco 互連交換器上的組態</block>
   <block id="9fa76c217cee95f26808d0c64f43dcda" category="list-text">安裝 RCF 時、需要與交換器建立主控台連線。如果您已使用知識庫文件、則此需求為選用項目<block ref="3e8c2406d6e0211f305d1081c755846f" category="inline-link-rx"></block> 事先清除組態。</block>
   <block id="83ad3b6efa173a2560e396a36d6ac2f0" category="admonition">更新或套用新的RCF時、您必須清除交換器設定並執行基本組態。您 * 必須 * 連線至交換器序列主控台連接埠、才能再次設定交換器。不過、如果您已使用知識庫文件、則此需求為選用項目<block ref="3e8c2406d6e0211f305d1081c755846f" category="inline-link-rx"></block> 事先清除組態。</block>
+  <block id="bf2e41df1fe93346157f93aa59a48dd6" category="section-title">啟用主控台記錄</block>
+  <block id="a1f2e4cbaec8fa16860e427a059b89aa" category="paragraph">NetApp 強烈建議您在使用的裝置上啟用主控台記錄功能、並在更換交換器時採取下列動作：</block>
+  <block id="7a15fb36e18a42514f358533c9af4dae" category="list-text">在維護期間保持啟用 AutoSupport 。</block>
+  <block id="c0aa3599fdcfc9e5e35fab592ea612f0" category="inline-link">SU92 ：如何在排程的維護期間內、禁止自動建立案例</block>
+  <block id="5c0d62310efa13f4e4c4ae41a7330f95" category="list-text">在維護前後觸發維護 AutoSupport 、以在維護期間停用案例建立。請參閱本知識庫文件<block ref="9889375293ffeecac54c58b8cad125b2" category="inline-link-rx"></block> 以取得更多詳細資料。</block>
+  <block id="fb42fce84a1f5a648367e2e027a6c941" category="inline-link">如何設定 Putty 以最佳化連線至 ONTAP 系統</block>
+  <block id="1d01c6e5d28fb955441f4f9d1b4678b7" category="list-text">啟用任何 CLI 工作階段的工作階段記錄。如需如何啟用工作階段記錄的說明、請參閱本知識庫文件中的「記錄工作階段輸出」一節<block ref="969f6e4e41456399a13556dea44fc607" category="inline-link-rx"></block>。</block>
+  <block id="05e512c6037fe1bb54e099238cc8ce62" category="section-title">由於 TCAM 資源、連接埠無法連結</block>
+  <block id="f45e0e2e020e174164fe5413760ef4e4" category="paragraph">在 9336C-FX2 交換器上、交換器使用的組態中所設定的 Ternary Content Addressable Memory （ TCAM ）資源將會耗盡。</block>
+  <block id="50c3c6ae36d53e402b88d9a6222029a0" category="inline-link">由於 TCAM 資源的緣故、 Cisco Nexus 9336C-FX2 上的連接埠無法連結</block>
+  <block id="293da448e2520766812e980a00821699" category="paragraph">請參閱知識庫文章<block ref="882efca0483fcef9d53236590b1d74e9" category="inline-link-rx"></block> 如需如何解決此問題的詳細資訊。</block>
+  <block id="73f7e96895a0ddf72a3e199ac5ae2247" category="sidebar">更換 3132Q-V 交換器</block>
 </blocks>

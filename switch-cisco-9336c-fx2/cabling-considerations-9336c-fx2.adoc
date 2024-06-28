@@ -54,3 +54,10 @@ FAS2820 e0a 和 e0b 連接埠需要 FEC 組態變更、才能與 9336C-FX2 交�
 *Save the changes:*
 (cs1)# *copy running-config startup-config*
 ----
+
+
+== 由於 TCAM 資源、連接埠無法連結
+
+在 9336C-FX2 交換器上、交換器使用的組態中所設定的 Ternary Content Addressable Memory （ TCAM ）資源將會耗盡。
+
+請參閱知識庫文章 https://kb.netapp.com/on-prem/Switches/Cisco-KBs/Ports_do_not_link_up_on_Cisco_Nexus_9336C-FX2_due_to_TCAM_resources["由於 TCAM 資源的緣故、 Cisco Nexus 9336C-FX2 上的連接埠無法連結"^] 如需如何解決此問題的詳細資訊。

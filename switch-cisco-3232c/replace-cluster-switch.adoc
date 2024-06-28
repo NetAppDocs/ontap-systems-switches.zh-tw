@@ -46,6 +46,17 @@ summary: 您可以執行特定的工作順序、在不中斷營運的情況下�
 
 
 
+== 啟用主控台記錄
+
+NetApp 強烈建議您在使用的裝置上啟用主控台記錄功能、並在更換交換器時採取下列動作：
+
+* 在維護期間保持啟用 AutoSupport 。
+* 在維護前後觸發維護 AutoSupport 、以在維護期間停用案例建立。請參閱本知識庫文件 https://kb.netapp.com/Support_Bulletins/Customer_Bulletins/SU92["SU92 ：如何在排程的維護期間內、禁止自動建立案例"^] 以取得更多詳細資料。
+* 啟用任何 CLI 工作階段的工作階段記錄。如需如何啟用工作階段記錄的說明、請參閱本知識庫文件中的「記錄工作階段輸出」一節 https://kb.netapp.com/on-prem/ontap/Ontap_OS/OS-KBs/How_to_configure_PuTTY_for_optimal_connectivity_to_ONTAP_systems["如何設定 Putty 以最佳化連線至 ONTAP 系統"^]。
+
+
+
+
 == 更換交換器
 
 .關於這項工作
