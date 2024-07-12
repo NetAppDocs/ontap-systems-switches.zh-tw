@@ -4124,7 +4124,6 @@
   <block id="bd399ae0cf713e575ca26baedc0a896c" category="paragraph">您可以將 NVIDIA SN2100 交換器（ X190006 ）安裝在 NVIDIA 雙 / 單交換器機櫃中、並附有交換器隨附的標準支架。</block>
   <block id="1e247ada2e98c5879849d746a52a4241" category="paragraph">NVIDIA SN2100 交換器是執行 Cumulus Linux 的 10/25/40/100GbE 交換器。交換器支援下列項目：</block>
   <block id="c19b9518d51b517376f0fe9109f66e90" category="paragraph">40/100GbE 叢集連接埠節點</block>
-  <block id="45a21206fd2396fdd6a59132a2a6d3a7" category="paragraph">40/100GbE 交換器間連結（ ISL ）連接埠</block>
   <block id="509e4d6df8b93cb5deb86271a6326df2" category="section-title">光纖連線的連結延遲</block>
   <block id="50137c9f3120823f7ba1d1983c48e011" category="paragraph">如果您遇到超過五秒的連結延遲、 Cumulus Linux 5.4 及更新版本均支援快速連結。您可以使用來設定連結<block ref="0c14f6e7a82b0926c666f7fac383436a" prefix=" " category="inline-code"></block> 命令如下：</block>
   <block id="68a8de419a9558e300d05a15cc5b2aec" category="section-title">支援銅線連線</block>
@@ -4968,4 +4967,37 @@
   <block id="50c3c6ae36d53e402b88d9a6222029a0" category="inline-link">由於 TCAM 資源的緣故、 Cisco Nexus 9336C-FX2 上的連接埠無法連結</block>
   <block id="293da448e2520766812e980a00821699" category="paragraph">請參閱知識庫文章<block ref="882efca0483fcef9d53236590b1d74e9" category="inline-link-rx"></block> 如需如何解決此問題的詳細資訊。</block>
   <block id="73f7e96895a0ddf72a3e199ac5ae2247" category="sidebar">更換 3132Q-V 交換器</block>
+  <block id="dd821578b18dec3b3c49fbc2a36950e0" category="paragraph">100GbE 交換器間連結（ ISL ）連接埠</block>
+  <block id="c2f363b557f11042735dbadbfbd534d3" category="summary">您可以使用此程序來安裝適用的組態檔、以監控 NVIDIA SN2100 叢集交換器的叢集交換器健全狀況。</block>
+  <block id="1972298f5ec1d5e6b5fe96dd4ba6f4d3" category="doc">安裝乙太網路交換器健全狀況監視器組態檔案</block>
+  <block id="65c65b976cfab8bcc3a5fa282181ca5b" category="paragraph">請依照此程序安裝適用於 NVIDIA 叢集交換器之乙太網路交換器健全狀況監控的組態檔。支援的機型包括：</block>
+  <block id="164a0cea1831b06a7fa67aab2e9a5d98" category="admonition">此安裝程序適用於 ONTAP 9.10.1 及更新版本。</block>
+  <block id="dd7fa1380804217cf2f3af00bb585752" category="list-text">執行並檢查是否顯示您的模型 * 其他 * 、以確認您需要下載組態檔案<block ref="db3929a8e897b02a87f7f4bc42f38fc1" prefix=" " category="inline-code"></block> 。</block>
+  <block id="3953f2c946249817a198b9dd2d604aa4" category="paragraph">如果套用組態檔案後、您的機型仍顯示 * 其他 * 、請聯絡 NetApp 支援部門。</block>
+  <block id="294206f940bbd4f3ec7f79996b76c616" category="list-text">請確定ONTAP 支援並執行不中斷的叢集。</block>
+  <block id="c2c0a6bc429d35a2d508307c899f4398" category="list-text">啟用 SSH 以使用 CSHM 中所有可用的功能。</block>
+  <block id="0cfea6e2910f570cd17c24fb74c90378" category="inline-link">NVIDIA 乙太網路交換器</block>
+  <block id="363c0c7cf08dfd2752b66f1fc2506a0a" category="list-text">根據對應的 ONTAP 版本、下載乙太網路交換器健全狀況監視器組態 zip 檔案。此檔案可從<block ref="308b26f7678235b6ac179b42eaa22162" category="inline-link-rx"></block> 頁面取得。</block>
+  <block id="68de66680b1bf357acb893d8dfe0f0bc" category="list-text">在 NVIDIA SN2100 軟體下載頁面上、選取 * Nvidia CSHM 檔案 * 。</block>
+  <block id="6b98b47c20b7ca9e9919fa3a77bf7814" category="list-text">在「注意 / 必須閱讀」頁面上、勾選核取方塊以同意。</block>
+  <block id="c36caaf00f9a67804cb39871b93b4fb1" category="list-text">在「終端使用者授權合約」頁面上、勾選核取方塊以同意、然後按一下 * 接受並繼續 * 。</block>
+  <block id="e5e0b87b73538c14eb1223ba2685b479" category="list-text">在 Nvidia CSHM File - Download 頁面上、選取適用的組態檔案。以下檔案可供使用：</block>
+  <block id="4b96de8aec25594d2021f91d86aa38cb" category="open-title">ONTAP 9.15.1 及更新版本</block>
+  <block id="b834fb250d0f1e06556ff2af9ce370ff" category="list-text">X190006-PE.zip</block>
+  <block id="33ab7322815a985fdb6cbba64b9ffda9" category="list-text">X190006-PI.zip</block>
+  <block id="9fc9e8ea7a5cdfe68b4528fb16936bf1" category="open-title">ONTAP 9.11.1 至 9.14.1</block>
+  <block id="00032ac6acd20eb8310604aa0ac6a200" category="list-text">X190006-PE_PRIOR_9.15.1.zip</block>
+  <block id="6a9e7f50780a2f2b4e2b5999c1b1ae2b" category="list-text">X190006-PI_PRIOR_9.15.1.zip</block>
+  <block id="3e5315d19591c6790a6c062127cf9a8e" category="list-text">[[step2]] 將適用的 zip 檔案上傳至內部 Web 伺服器。</block>
+  <block id="e319ecf1cb942a0710da7d0d525af1db" category="list-text">從叢集中的其中一個 ONTAP 系統存取進階模式設定。</block>
+  <block id="4072831dc74599297a173c0e1d86b538" category="list-text">執行交換器健全狀況監視器組態命令。</block>
+  <block id="bdfd509ce621aa984c1f0a9cdf92ae88" category="list-text">確認 ONTAP 版本的命令輸出結尾為下列文字：</block>
+  <block id="ff62e28086747c31b6e4bbd897aaaf54" category="paragraph">乙太網路交換器健全狀況監控已安裝組態檔。</block>
+  <block id="3f54ec95c3fc7563a38988f9c2a7a823" category="paragraph">shm 已安裝組態檔案。</block>
+  <block id="ab8296c5ef7a7b056b384680f89a9379" category="open-title">ONTAP 9.10.1.</block>
+  <block id="74d14036e96594d67869316b84c6d566" category="paragraph">CSHM 下載套件已成功處理。</block>
+  <block id="89c6b3e5f896b8d329ae4e4fe91cc812" category="paragraph">如果發生錯誤、請聯絡NetApp支援部門。</block>
+  <block id="a6fd16052b19595c024aa4e5bcb0b366" category="list-text">[[step6]] 在完成下一個步驟之前、請等待最多兩倍的乙太網路交換器健全狀況監視器輪詢時間間隔（透過執行找到<block ref="c9e6cd6140c9d8677df821c7cce2aac1" prefix=" " category="inline-code"></block>）。</block>
+  <block id="c947c5faccdddd0a9a87be7895f50511" category="list-text">在 ONTAP 系統上執行命令<block ref="db3929a8e897b02a87f7f4bc42f38fc1" prefix=" " category="inline-code"></block> 、並確定探索到叢集交換器時、監控欄位設定為 * 真 * 、序號欄位未顯示 * 未知 * 。</block>
+  <block id="b954609be582bc6760c67ae6e58cd7a9" category="sidebar">安裝 CSHM 組態檔</block>
 </blocks>

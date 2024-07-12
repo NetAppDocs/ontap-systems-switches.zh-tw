@@ -47,7 +47,7 @@ swp3-14
  a| 
 swp15-16
  a| 
-40/100GbE 交換器間連結（ ISL ）連接埠
+100GbE 交換器間連結（ ISL ）連接埠
 
 |===
 請參閱 https://hwu.netapp.com/Switch/Index["Hardware Universe"^] 如需交換器連接埠的詳細資訊、
