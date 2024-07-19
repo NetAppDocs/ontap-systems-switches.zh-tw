@@ -5000,4 +5000,6 @@
   <block id="a6fd16052b19595c024aa4e5bcb0b366" category="list-text">[[step6]] 在完成下一個步驟之前、請等待最多兩倍的乙太網路交換器健全狀況監視器輪詢時間間隔（透過執行找到<block ref="c9e6cd6140c9d8677df821c7cce2aac1" prefix=" " category="inline-code"></block>）。</block>
   <block id="c947c5faccdddd0a9a87be7895f50511" category="list-text">在 ONTAP 系統上執行命令<block ref="db3929a8e897b02a87f7f4bc42f38fc1" prefix=" " category="inline-code"></block> 、並確定探索到叢集交換器時、監控欄位設定為 * 真 * 、序號欄位未顯示 * 未知 * 。</block>
   <block id="b954609be582bc6760c67ae6e58cd7a9" category="sidebar">安裝 CSHM 組態檔</block>
+  <block id="31c020d11cc321faf9c0793a662d1e53" category="list-text">重新開機交換器CS2。您可以忽略交換器重新開機時、節點上報告的「叢集連接埠關閉」事件和錯誤<block ref="a9e34a08c2be7359540cbf7337dc5ce9" prefix=" " category="inline-code"></block> 輸出。</block>
+  <block id="db82c22b5434946b4bc226a3b9b7888a" category="list-text">套用相同的RCF並再次儲存執行中的組態。這是必要的、因為 RCF 使用 QoS 並需要重新設定 TCAM 、這需要在交換器之間重新啟動時、載入 RCF 兩次。</block>
 </blocks>

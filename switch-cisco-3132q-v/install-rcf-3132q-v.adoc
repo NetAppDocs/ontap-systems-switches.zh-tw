@@ -422,7 +422,7 @@ NOTE: 如需瞭解如何在 RCF 升級後將 10GbE 連接埠上線的步驟、�
 cs2# copy running-config startup-config [########################################] 100% Copy complete
 ----
 ====
-. 重新開機交換器CS2。您可以在交換器重新開機時忽略節點上報告的「叢集連接埠當機」事件。
+. 重新開機交換器CS2。您可以忽略交換器重新開機時、節點上報告的「叢集連接埠關閉」事件和錯誤 `% Invalid command at '^' marker` 輸出。
 +
 .顯示範例
 [%collapsible]
@@ -433,7 +433,7 @@ cs2# *reload*
 This command will reboot the system. (y/n)?  [n] *y*
 ----
 ====
-. 套用相同的RCF並再次儲存執行中的組態。
+. 套用相同的RCF並再次儲存執行中的組態。這是必要的、因為 RCF 使用 QoS 並需要重新設定 TCAM 、這需要在交換器之間重新啟動時、載入 RCF 兩次。
 +
 .顯示範例
 [%collapsible]
