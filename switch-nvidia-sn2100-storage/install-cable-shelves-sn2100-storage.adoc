@@ -1,5 +1,5 @@
 ---
-permalink: switch-nvidia-sn2100/install-cable-shelves-sn2100-storage.html 
+permalink: switch-nvidia-sn2100-storage/install-cable-shelves-sn2100-storage.html 
 sidebar: sidebar 
 keywords: sn2100 cabling setup, msn2100 sn2100 switches configuration, cumulus linux 
 summary: 如果您的系統需要將NS224磁碟機櫃纜線作為交換器附加儲存設備（非直接附加儲存設備）、請使用此處提供的資訊。 

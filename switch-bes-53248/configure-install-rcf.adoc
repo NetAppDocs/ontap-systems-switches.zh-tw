@@ -1068,4 +1068,4 @@ system node autosupport invoke -node * -type all -message MAINT=END
 
 
 .接下來呢？
-link:configure-ssh.html["啟用 SSH 進行記錄收集"]。
+link:configure-ssh.html["啟用SSH"]。

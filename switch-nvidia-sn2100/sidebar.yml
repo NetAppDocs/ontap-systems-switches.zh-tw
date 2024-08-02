@@ -34,16 +34,10 @@ entries:
     url: "/switch-nvidia-sn2100/install-cumulus-mode-sn2100-cluster.html"
   - title: 以ONIE模式安裝CummulUS Linux
     url: "/switch-nvidia-sn2100/install-onie-mode-sn2100-cluster.html"
-  - title: 安裝RCF指令碼
-    url: "/switch-nvidia-sn2100/install-rcf-sn2100-cluster.html"
-  - title: 安裝 CSHM 組態檔
-    url: "/switch-nvidia-sn2100/setup-install-cshm-file.html"
-  - title: 啟用記錄收集
-    url: "/switch-nvidia-sn2100/CSHM_log_collection.html"
-  - title: 設定用於監控的 SNMPv3
-    url: "/switch-nvidia-sn2100/CSHM_snmpv3.html"
   - title: 升級 Cumulus Linux 版本
     url: "/switch-nvidia-sn2100/upgrade-cl-version.html"
+  - title: 安裝RCF指令碼
+    url: "/switch-nvidia-sn2100/install-rcf-sn2100-cluster.html"
 - title: 移轉交換器
   pdf-filename: migrate_switchs_sn2100
   entries:

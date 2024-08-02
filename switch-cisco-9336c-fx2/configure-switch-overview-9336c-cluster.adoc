@@ -19,13 +19,38 @@ Cisco Nexus 9336C-FX2叢集交換器是Cisco Nexus 9000平台的一部分、可�
 
 若要在執行ONTAP 故障切換的系統上初始設定Cisco Nexus 9336C-FX2交換器、請依照下列步驟操作：
 
-. link:setup-worksheet-9336c-cluster.html["填寫Cisco Nexus 9336C-FX2纜線工作表"]。佈線工作表範例提供從交換器到控制器的建議連接埠指派範例。空白工作表提供範本、可用於設定叢集。
-. link:install-switch-9336c-cluster.html["安裝交換器"]。設定交換器硬體。
-. link:setup-switch-9336c-cluster.html["設定9336C-FX2叢集交換器"]。設定Cisco Nexus 9336C-FX2交換器。
-. link:install-switch-and-passthrough-panel-9336c-cluster.html["在NetApp機櫃中安裝Cisco Nexus 9336C-FX2交換器"]。視組態而定、您可以將Cisco Nexus 9336C-FX2交換器和直通面板安裝在NetApp機櫃中、並附有交換器隨附的標準支架。
-. link:install-nxos-overview-9336c-cluster.html["準備安裝NX-OS軟體和RCF"]。請依照初始程序、準備安裝Cisco NX-OS軟體和參考組態檔（RCT）。
-. link:install-nxos-software-9336c-cluster.html["安裝NX-OS軟體"]。在Nexus 9336C-FX2叢集交換器上安裝NX-OS軟體。
-. link:install-nxos-rcf-9336c-cluster.html["安裝參考組態檔（RCF）"]。初次設定Nexus 9336C-FX2交換器之後、請安裝RCF。您也可以使用此程序來升級RCF版本。
+. link:setup-worksheet-9336c-cluster.html["填寫Cisco Nexus 9336C-FX2纜線工作表"]。
++
+佈線工作表範例提供從交換器到控制器的建議連接埠指派範例。空白工作表提供範本、可用於設定叢集。
+
+. link:install-switch-9336c-cluster.html["安裝交換器"]。
++
+設定交換器硬體。
+
+. link:setup-switch-9336c-cluster.html["設定9336C-FX2叢集交換器"]。
++
+設定Cisco Nexus 9336C-FX2交換器。
+
+. link:install-switch-and-passthrough-panel-9336c-cluster.html["在NetApp機櫃中安裝Cisco Nexus 9336C-FX2交換器"]。
++
+視組態而定、您可以將Cisco Nexus 9336C-FX2交換器和直通面板安裝在NetApp機櫃中、並附有交換器隨附的標準支架。
+
+. link:install-nxos-overview-9336c-cluster.html["準備安裝 NX-OS 軟體和 RCF"]。
++
+請依照初始程序、準備安裝Cisco NX-OS軟體和參考組態檔（RCT）。
+
+. link:install-nxos-software-9336c-cluster.html["安裝或升級 NX-OS 軟體"]。
++
+在 Nexus 9336C-FX2 叢集交換器上安裝或升級 NX-OS 軟體。
+
+. link:install-nxos-rcf-9336c-cluster.html["安裝或升級 RCF"]。
++
+首次設定 Nexus 9336C-FX2 交換器之後、請安裝或升級 RCF 。您也可以使用此程序來升級RCF版本。
+
+. link:configure-ssh.html["在 Nexus 9336C-FX2 叢集交換器上啟用 SSH"]。
++
+如果您使用乙太網路交換器健全狀況監視器（ CSHM ）和記錄收集功能、請在交換器上啟用 SSH 。
+
 
 
 

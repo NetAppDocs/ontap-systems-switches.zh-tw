@@ -479,7 +479,7 @@ node2      /cdp
 
 
 
-=== 步驟3：完成程序
+=== 步驟3：驗證組態
 
 . 在叢集生命體上啟用自動還原：
 +
@@ -507,76 +507,6 @@ Cluster
             node2_clus2  up/up    169.254.19.183/16  node2         e3b     true
 ----
 ====
-. 若要設定記錄收集、請針對每個交換器執行下列命令。系統會提示您輸入用於記錄收集的交換器名稱、使用者名稱和密碼。
-+
-「系統交換器乙太網路記錄設定密碼」
-
-+
-.顯示範例
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-cluster1::*> *system switch ethernet log setup-password*
-Enter the switch name: <return>
-The switch name entered is not recognized.
-Choose from the following list:
-*cs1*
-*cs2*
-
-cluster1::*> *system switch ethernet log setup-password*
-
-Enter the switch name: *cs1*
-RSA key fingerprint is e5:8b:c6:dc:e2:18:18:09:36:63:d9:63:dd:03:d9:cc
-Do you want to continue? {y|n}::[n] *y*
-
-Enter the password: <enter switch password>
-Enter the password again: <enter switch password>
-
-cluster1::*> *system switch ethernet log setup-password*
-
-Enter the switch name: *cs2*
-RSA key fingerprint is 57:49:86:a1:b9:80:6a:61:9a:86:8e:3c:e3:b7:1f:b1
-Do you want to continue? {y|n}:: [n] *y*
-
-Enter the password: <enter switch password>
-Enter the password again: <enter switch password>
-----
-====
-. 若要啟動記錄收集、請執行下列命令、以先前命令中使用的切換參數取代裝置。這會同時啟動記錄收集的兩種類型：詳細的 * 支援 * 記錄檔和 * 定期 * 資料的每小時集合。
-+
-`system switch ethernet log modify -device _<switch-name>_ -log-request true`
-
-+
-.顯示範例
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-cluster1::*> *system switch ethernet log modify -device cs1 -log-request true*
-
-Do you want to modify the cluster switch log collection configuration? {y|n}: [n] *y*
-
-Enabling cluster switch log collection.
-
-cluster1::*> *system switch ethernet log modify -device cs2 -log-request true*
-
-Do you want to modify the cluster switch log collection configuration? {y|n}: [n] *y*
-
-Enabling cluster switch log collection.
-cluster1::*>
-----
-====
-+
-等待10分鐘、然後使用以下命令檢查記錄收集是否成功：
-
-+
-`system switch ethernet log show`
-
-+
-
-NOTE: 如果這些命令中有任何一個出現錯誤、請聯絡NetApp支援部門。
-
 . 將權限層級變更回管理：
 +
 「et -priv. admin」
@@ -586,3 +516,6 @@ NOTE: 如果這些命令中有任何一個出現錯誤、請聯絡NetApp支援�
 「系統節點AutoSupport 不完整地叫用節點*-type all -most MAn=end」
 
 
+
+.接下來呢？
+link:../switch-cshm/config-overview.html["設定交換器健全狀況監控"]。

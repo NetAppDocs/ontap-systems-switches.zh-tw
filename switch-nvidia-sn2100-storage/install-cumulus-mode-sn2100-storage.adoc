@@ -1,5 +1,5 @@
 ---
-permalink: switch-nvidia-sn2100/install-cumulus-mode-sn2100-storage.html 
+permalink: switch-nvidia-sn2100-storage/install-cumulus-mode-sn2100-storage.html 
 sidebar: sidebar 
 keywords: install cumulus mode, sn2100 SN2100 switches setup, cumulus linux, cumulus mode 
 summary: 在交換器執行Cummulos Linux或ONIE時、可以安裝CummUS Linux（CL）作業系統。 

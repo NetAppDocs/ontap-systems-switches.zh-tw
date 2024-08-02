@@ -33,10 +33,6 @@ entries:
     url: "/switch-cisco-92300/install-nxos-software.html"
   - title: 安裝RCF組態檔
     url: "/switch-cisco-92300/install-the-rcf-file.html"
-  - title: 啟用記錄收集
-    url: "/switch-cisco-92300/CSHM_log_collection.html"
-  - title: 設定用於監控的 SNMPv3
-    url: "/switch-cisco-92300/CSHM_snmpv3.html"
 - title: 移轉交換器
   pdf-filename: migrate_switchs_92300yc
   entries:

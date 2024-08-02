@@ -11,7 +11,7 @@ summary: 使用叢集交換器健全狀況監視器（CSHM\）和記錄收集功
 
 
 [role="lead"]
-如果您使用叢集交換器健全狀況監視器（CSHM）和記錄收集功能、則必須產生SSH金鑰、然後在叢集交換器上啟用SSH。
+如果您使用乙太網路交換器健全狀況監視器（ CSHM ）和記錄收集功能、則必須產生 SSH 金鑰、然後在叢集交換器上啟用 SSH 。
 
 .步驟
 . 確認 SSH 已停用：
@@ -119,4 +119,4 @@ SCP server Administrative Mode: ............... Enabled
 
 
 .接下來呢？
-link:CSHM_log_collection.html["啟用記錄收集"]。
+link:../switch-cshm/config-overview.html["設定交換器健全狀況監控"]。

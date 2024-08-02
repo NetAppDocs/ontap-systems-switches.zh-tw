@@ -1,5 +1,5 @@
 ---
-permalink: switch-nvidia-sn2100/replace-sn2100-switch-storage.html 
+permalink: switch-nvidia-sn2100-storage/replace-sn2100-switch-storage.html 
 sidebar: sidebar 
 keywords: replacing, replace, defective, nvidia, switch, cluster, network, nondisruptive, procedure, ndu, replace a nvidia sn2100 cluster switch - nvidia SN2100 
 summary: 在不中斷營運的程序中更換有瑕疵的NVIDIA SN2100儲存交換器（NDU）。 
@@ -257,93 +257,6 @@ shelf   id    remote-port     remote-device
 cluster1::*>
 ----
 ====
-. 使用下列兩個命令、啟用乙太網路交換器健全狀況監視器記錄收集功能、以收集交換器相關的記錄檔：
-+
-「系統交換器乙太網路記錄設定密碼」和「系統交換器乙太網路記錄啟用-收集」
-
-+
-輸入：「System交換器乙太網路記錄設定密碼」
-
-+
-.顯示範例
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-cluster1::*> *system switch ethernet log setup-password*
-Enter the switch name: <return>
-The switch name entered is not recognized.
-Choose from the following list:
-*sw1*
-*nsw2*
-
-cluster1::*> *system switch ethernet log setup-password*
-
-Enter the switch name: *sw1*
-RSA key fingerprint is e5:8b:c6:dc:e2:18:18:09:36:63:d9:63:dd:03:d9:cc
-Do you want to continue? {y|n}::[n] *y*
-
-Enter the password: <enter switch password>
-Enter the password again: <enter switch password>
-
-cluster1::*> *system switch ethernet log setup-password*
-
-Enter the switch name: *nsw2*
-RSA key fingerprint is 57:49:86:a1:b9:80:6a:61:9a:86:8e:3c:e3:b7:1f:b1
-Do you want to continue? {y|n}:: [n] *y*
-
-Enter the password: <enter switch password>
-Enter the password again: <enter switch password>
-----
-====
-+
-接著：
-
-+
-「系統交換器乙太網路記錄啟用收集」
-
-+
-.顯示範例
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-cluster1::*> *system  switch ethernet log enable-collection*
-
-Do you want to enable cluster log collection for all nodes in the cluster?
-{y|n}: [n] *y*
-
-Enabling cluster switch log collection.
-
-cluster1::*>
-----
-====
-+
-
-NOTE: 如果這些命令中有任何一個出現錯誤、請聯絡NetApp支援部門。
-
-. 測試交換器記錄收集功能：
-+
-`system switch ethernet log collect -device *`
-
-+
-請等待10分鐘、然後使用「ystem switchEthernet log show」命令檢查記錄收集是否成功
-
-+
-.顯示範例
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-cluster1::*> *system switch ethernet log show*
-Log Collection Enabled: true
-
-Index  Switch                       Log Timestamp        Status
------- ---------------------------- -------------------  ---------    
-1      sw1 (b8:ce:f6:19:1b:42)      4/29/2022 03:05:25   complete   
-2      nsw2 (b8:ce:f6:19:1b:96)     4/29/2022 03:07:42   complete
-----
-====
 . 將權限層級變更回管理：
 +
 「et -priv. admin」
@@ -353,3 +266,6 @@ Index  Switch                       Log Timestamp        Status
 「系統節點AutoSupport 不完整地叫用節點*-type all -most MAn=end」
 
 
+
+.接下來呢？
+link:../switch-cshm/config-overview.html["設定交換器健全狀況監控"]。

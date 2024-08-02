@@ -356,3 +356,6 @@ NetApp 建議您使用系統管理員來設定新叢集。
 System Manager 為叢集設定和組態提供簡單易用的工作流程、包括指派節點管理 IP 位址、初始化叢集、建立本機層、設定通訊協定和配置初始儲存設備。
 
 前往 https://docs.netapp.com/us-en/ontap/task_configure_ontap.html["使用系統管理員在新叢集上設定 ONTAP"] 以取得設定指示。
+
+.接下來呢？
+link:../switch-cisco-9336c-fx2-storage/configure-ssh.html["啟用SSH"]。

@@ -614,4 +614,4 @@ cluster1::*> system node autosupport invoke -node \* -type all -message MAINT=EN
 
 
 .接下來呢？
-移轉完成後、您可能需要安裝必要的組態檔、以支援用於 BES-53248 叢集交換器的乙太網路交換器健全狀況監視器（ CSHM ）。請參閱 link:CSHM_log_collection.html["啟用記錄收集"]。
+link:../switch-cshm/config-overview.html["設定交換器健全狀況監控"]。

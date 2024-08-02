@@ -1,5 +1,5 @@
 ---
-permalink: switch-nvidia-sn2100/install-rcf-sn2100-storage.html 
+permalink: switch-nvidia-sn2100-storage/install-rcf-sn2100-storage.html 
 sidebar: sidebar 
 keywords: install rcf script, python script, sn2100 SN2100 switches, cumulus 
 summary: 請遵循此程序來安裝RCF指令碼。 
@@ -292,4 +292,4 @@ sw2                         cluster-network    10.233.205.91    MSN2100-CB2RC
 
 
 .接下來呢？
-link:install-snmpv3-sn2100-storage.html["設定交換器記錄收集"]。
+link:../switch-cshm/config-overview.html["設定交換器健全狀況監控"]

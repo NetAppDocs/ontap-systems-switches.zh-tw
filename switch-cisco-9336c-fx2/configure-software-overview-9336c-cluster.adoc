@@ -13,71 +13,20 @@ summary: Cisco Nexus 9336C-FX2叢集交換器軟體組態總覽
 [role="lead"]
 若要安裝及設定 Cisco Nexus 9336C-FX2 交換器的軟體、以及安裝或升級參考組態檔案（ RCF ）、請遵循下列步驟：
 
-. link:install-nxos-overview-9336c-cluster.html["準備安裝NX-OS軟體和RCF"]。
-. link:install-nxos-software-9336c-cluster.html["安裝NX-OS軟體"]。
-. link:install-nxos-rcf-9336c-cluster.html["安裝或升級參考組態檔案（ RCF ）"]。
+. link:install-nxos-overview-9336c-cluster.html["準備安裝 NX-OS 軟體和 RCF"]。
 +
-初次設定Nexus 9336C-FX2交換器之後、請安裝RCF。您也可以使用此程序來升級RCF版本。
+Cisco NX-OS軟體和參考組態檔（RCT）必須安裝在Cisco Nexus 9336C-FX2叢集交換器上。
 
+. link:install-nxos-software-9336c-cluster.html["安裝或升級 NX-OS 軟體"]。
 +
-.可用的 RCF 組態
-下表說明適用於不同組態的 RCFs 。選擇適用於您組態的 RCF 。
+下載並安裝或升級 Cisco Nexus 9336C-FX2 叢集交換器上的 NX-OS 軟體。
 
+. link:install-nxos-rcf-9336c-cluster.html["安裝或升級 RCF"]。
 +
-如需特定連接埠和 VLAN 使用詳細資料、請參閱 RCF 中的橫幅和重要附註一節。
+首次安裝 Cisco Nexus 9336C-FX2 交換器後、請安裝或升級 RCF 。您也可以使用此程序來升級RCF版本。
 
+. link:configure-ssh.html["啟用SSH"]。
 +
-[cols="1,2"]
-|===
-| RCF 名稱 | 說明 
+如果您使用乙太網路交換器健全狀況監視器（ CSHM ）和記錄收集功能、請在交換器上啟用 SSH 。
 
-
- a| 
-2-Cluster-HA-Breakout
- a| 
-支援兩個 ONTAP 叢集、至少有八個節點、包括使用共用叢集 + HA 連接埠的節點。
-
-
-
- a| 
-4-Cluster-HA-Breakout
- a| 
-支援四個 ONTAP 叢集、至少有四個節點、包括使用共享叢集 + HA 連接埠的節點。
-
-
-
- a| 
-1-Cluster-HA
- a| 
-所有連接埠均設定為 40/100GbE 。支援連接埠上的共用叢集 / HA 流量。AFF A320 、 AFF A250 和 FAS500f 系統所需。此外、所有連接埠都可作為專用叢集連接埠使用。
-
-
-
- a| 
-1-Cluster-HA-Breakout
- a| 
-連接埠可設定為 4x10GbE 離線、 4x25GbE 離線（ 100GbE 交換器上的 RCF 1.6+ ）和 40/100GbE 。在使用共享叢集 / HA 連接埠的節點上、支援共享叢集 / HA 流量： AFF A320 、 AFF A250 和 FAS500f 系統。此外、所有連接埠都可作為專用叢集連接埠使用。
-
-
-
- a| 
-叢集式 HA 儲存設備
- a| 
-連接埠設定為用於叢集 + HA 的 40/100GbE 、用於叢集的 4x10GbE Breakout 、用於叢集 + HA 的 4x25GbE Breakout 、以及用於每個儲存 HA 配對的 100GbE 。
-
-
-
- a| 
-叢集
- a| 
-兩種 RCF 類型、分別配置 4 個 10GbE 連接埠（中斷）和 40/100GbE 連接埠。除了 AFF A320 、 AFF A250 和 FAS500f 系統之外、所有的 FS/AFF 節點都受到支援。
-
-
-
- a| 
-儲存設備
- a| 
-所有連接埠均設定為 100GbE NVMe 儲存連線。
-
-|===
 

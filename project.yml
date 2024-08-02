@@ -35,6 +35,7 @@ sidebar:
     entries:
     - section: switch-cisco-9336c-fx2-shared
       pdf-filename: 交換器 - Cisco-9336c-FX2 儲存設備
+  - section: switch-cshm
   - title: 終止可用度交換器
     entries:
     - title: 總覽

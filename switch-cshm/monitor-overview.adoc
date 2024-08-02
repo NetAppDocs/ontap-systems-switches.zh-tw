@@ -1,0 +1,18 @@
+---
+permalink: switch-cshm/monitor-overview.html 
+sidebar: sidebar 
+keywords: cshm, cluster, storage, switch logs, debugging, collection 
+summary: 您可以使用下列命令 ... 
+---
+= 健全狀況檢查總覽
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+健全狀況監視器會主動監控叢集中的特定關鍵情況、並在偵測到故障或風險時發出警示。
+
+若要檢視目前提出的乙太網路交換器健全狀況監視器警示、請執行命令： `system health alert show -monitor ethernet-switch`
+
+若要檢視可用的乙太網路交換器健全狀況監視器警示、請執行命令： `system health alert definition show -monitor ethernet-switch`

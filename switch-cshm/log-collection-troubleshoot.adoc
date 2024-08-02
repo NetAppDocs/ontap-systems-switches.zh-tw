@@ -1,0 +1,57 @@
+---
+permalink: switch-cshm/log-collection-troubleshoot.html 
+sidebar: sidebar 
+keywords: cshm, cluster, storage, switch logs, debugging, collection 
+summary: 您可以使用此處提供的命令來 ... 
+---
+= 疑難排解記錄收集
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果您遇到記錄收集功能報告的下列任何錯誤狀態（在命令輸出中可見 `system switch ethernet log show` ）、請嘗試對應的偵錯步驟：
+
+|===
+
+
+| * 記錄收集錯誤狀態 * | * 解決方法 * 
+
+
+ a| 
+* 不存在 RSA 金鑰 *
+ a| 
+重新產生 ONTAP SSH 金鑰。
+
+
+
+ a| 
+* 切換密碼錯誤 *
+ a| 
+驗證認證、測試 SSH 連線、並重新產生 ONTAP SSH 金鑰。請參閱交換器說明文件、或聯絡 NetApp 支援部門以取得相關指示。
+
+
+
+ a| 
+* FIPS 不存在 ECDSA 金鑰 *
+ a| 
+如果啟用 FIPS 模式、則必須先在交換器上產生 ECDSA 金鑰、然後再重新嘗試。
+
+
+
+ a| 
+* 找到預先存在的記錄 *
+ a| 
+移除交換器上先前的記錄集合檔案。
+
+
+
+ a| 
+* 交換器傾印記錄錯誤 *
+ a| 
+確保交換器使用者擁有記錄收集權限。請參閱上述先決條件。
+
+|===
+
+NOTE: 如果解決方案詳細資料無法運作、請聯絡 NetApp 支援部門。

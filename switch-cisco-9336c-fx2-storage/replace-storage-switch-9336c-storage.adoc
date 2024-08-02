@@ -265,3 +265,6 @@ storage::*>
 「系統節點AutoSupport 不完整地叫用節點*-type all -most MAn=end」
 
 
+
+.接下來呢？
+link:../switch-cshm/config-overview.html["設定交換器健全狀況監控"]。

@@ -23,18 +23,10 @@ summary: 檢閱軟體總覽。
 
 . link:configure-install-rcf.html["安裝參考組態檔（RCF）"]。
 +
-在 BS-53248 叢集交換器上安裝 RCF 、然後在套用 RCF 之後驗證連接埠是否有額外授權。
+在BS-53248叢集交換器上安裝或升級RCF、然後在套用RCF之後驗證連接埠是否有額外授權。
 
 . link:configure-ssh.html["在BS-53248叢集交換器上啟用SSH"]。
 +
-如果您使用叢集交換器健全狀況監視器（CSHM）和記錄收集功能、請在交換器上啟用SSH。
-
-. link:CSHM_log_collection.html["啟用記錄收集功能"]。
-+
-使用記錄收集功能、在ONTAP 支援資源集中收集交換器相關的記錄檔。
-
-. link:CSHM_snmpv3.html["設定用於監控的 SNMPv3"]。
-+
-如果您使用叢集交換器健全狀況監控（ CSHM ）功能、請設定支援乙太網路交換器健全狀況監控（ CSHM ）的 SNMPv3 。
+如果您使用乙太網路交換器健全狀況監視器（ CSHM ）和記錄收集功能、請在交換器上啟用 SSH 。
 
 

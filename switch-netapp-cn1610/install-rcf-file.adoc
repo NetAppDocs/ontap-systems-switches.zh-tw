@@ -472,3 +472,6 @@ Configuration Saved!
 ====
 . 重複上述步驟、在另一台交換器CS1上安裝RCF。
 
+
+.接下來呢？
+link:../switch-cshm/config-overview.html["設定交換器健全狀況監控"]

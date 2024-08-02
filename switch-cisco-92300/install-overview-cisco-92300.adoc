@@ -20,7 +20,6 @@ summary: 在設定Cisco Nexus 92300交換器之前、請先檢閱程序與命名
 . link:install-nxos-overview.html["準備安裝NX-OS軟體和參考組態檔（RCF）"]。準備安裝NX-OS軟體和參考組態檔（RCF）。
 . link:install-nxos-software.html["安裝NX-OS軟體"]。在Nexus 2300YC交換器上安裝NX-OS軟體。NX-OS是Cisco Systems提供的Nexus系列乙太網路交換器和MDS系列光纖通道（FC）儲存區域網路交換器的網路作業系統。
 . link:install-the-rcf-file.html["安裝參考組態檔（RCF）"]。初次設定Nexus 2300YC交換器之後、請安裝RCF。您也可以使用此程序來升級RCF版本。
-. link:setup-install-cshm-file.html["安裝叢集交換器健全狀況監視器（CSHM）組態檔"]。安裝適當的組態檔、以監控Nexus 92300YC叢集交換器的叢集交換器健全狀況。
 
 
 

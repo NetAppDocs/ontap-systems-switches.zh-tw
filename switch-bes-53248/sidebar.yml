@@ -33,10 +33,6 @@ entries:
     url: "/switch-bes-53248/configure-install-rcf.html"
   - title: 啟用 SSH 進行記錄收集
     url: "/switch-bes-53248/configure-ssh.html"
-  - title: 啟用記錄收集
-    url: "/switch-bes-53248/CSHM_log_collection.html"
-  - title: 設定用於監控的 SNMPv3
-    url: "/switch-bes-53248/CSHM_snmpv3.html"
 - title: 升級交換器
   pdf-filename: upgrade 開關 _bes53248
   entries:

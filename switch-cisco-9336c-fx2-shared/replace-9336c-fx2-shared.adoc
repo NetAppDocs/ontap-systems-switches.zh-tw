@@ -506,48 +506,7 @@ Total entries displayed: 4
 ====
 
 
-. [[step15]使用下列命令、啟用乙太網路交換器健全狀況監視器記錄收集功能、以收集交換器相關的記錄檔：
-+
-** '系統交換器乙太網路記錄設定密碼'
-** 「系統交換器乙太網路記錄啟用收集」
-+
-.顯示範例
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-cluster1::*> *system switch ethernet log setup-password*
-Enter the switch name: <return>
-The switch name entered is not recognized.
-Choose from the following list:
-*sh1*
-*sh2*
-cluster1::*> *system switch ethernet log setup-password*
-Enter the switch name: *sh1*
-RSA key fingerprint is e5:8b:c6:dc:e2:18:18:09:36:63:d9:63:dd:03:d9:cc
-Do you want to continue? {y|n}::[n] *y*
-Enter the password: <enter switch password>
-Enter the password again: <enter switch password>
-cluster1::*> *system switch ethernet log setup-password*
-Enter the switch name: *sh2*
-RSA key fingerprint is 57:49:86:a1:b9:80:6a:61:9a:86:8e:3c:e3:b7:1f:b1
-Do you want to continue? {y|n}:: [n] *y*
-Enter the password: <enter switch password>
-Enter the password again: <enter switch password>
-cluster1::*> system  switch ethernet log enable-collection
-Do you want to enable cluster log collection for all nodes in the cluster? y|n}: [n] *y*
-Enabling cluster switch log collection.
-cluster1::*>
-----
-====
-
-
-
-
-
-NOTE: 如果這些命令中有任何一個出現錯誤、請聯絡NetApp支援部門。
-
-. [[step16]將儲存連接埠從舊交換器sh2移至新交換器newsh2。
+. [[step15]將儲存連接埠從舊交換器sh2移至新交換器newsh2。
 . 驗證連接至HA配對1的儲存設備、共享交換器newsh2是否正常。
 . 驗證連接至HA配對2的儲存設備、共享交換器newsh2是否正常：
 +
@@ -578,7 +537,7 @@ node2
 ====
 
 
-. [[step19]確認磁碟櫃的纜線是否正確：
+. [[step18]確認磁碟櫃的纜線是否正確：
 +
 `storage shelf port show -fields remote- device,remote-port`
 
@@ -604,10 +563,13 @@ shelf id remote-port  remote-device
 ====
 
 
-. [[step20]移除舊交換器sh2。
+. [[step19]移除舊交換器sh2。
 . 對交換器SH1和新交換器newsh1重複這些步驟。
 . 如果您禁止自動建立個案、請叫用AutoSupport 下列消息來重新啟用此功能：
 +
 「系統節點AutoSupport 不完整地叫用節點*-type all -most MAn=end」
 
 
+
+.接下來呢？
+link:../switch-cshm/config-overview.html["設定交換器健全狀況監控"]。

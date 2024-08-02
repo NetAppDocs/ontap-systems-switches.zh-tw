@@ -16,7 +16,7 @@ indexpage:
       url: "/switch-bes-53248/configure-new-switch-overview.html"
     - title: 叢集交換器 - Cisco Nexus 9336C-FX2
       url: "/switch-cisco-9336c-fx2/configure-switch-overview-9336c-cluster.html"
-    - title: 叢集交換器 - NVIDIA SN2100 叢集交換器
+    - title: 叢集交換器 - NVIDIA SN2100
       url: "/switch-nvidia-sn2100/configure-overview-sn2100-cluster.html"
     - title: 儲存交換器 - Cisco Nexus 9336C-FX2
       url: "/switch-cisco-9336c-fx2-storage/configure-switch-overview-9336c-storage.html"
@@ -34,6 +34,14 @@ indexpage:
       url: "/switch-cisco-92300/install-overview-cisco-92300.html"
     - title: 叢集交換器 - NetApp CN1610
       url: "/switch-netapp-cn1610/switch-overview-cn1610.html"
+  - title: 乙太網路交換器健全狀況監控
+    links:
+    - title: 設定交換器健全狀況監控
+      url: "/switch-cshm/config-overview.html"
+    - title: 檢查交換器健全狀況監控
+      url: "/switch-cshm/monitor-overview.html"
+    - title: 收集記錄以進行交換器健全狀況監控
+      url: "/switch-cshm/log-collection-overview.html"
   - title: 相關ONTAP 資訊
     links:
     - title: ONTAP 硬體系統

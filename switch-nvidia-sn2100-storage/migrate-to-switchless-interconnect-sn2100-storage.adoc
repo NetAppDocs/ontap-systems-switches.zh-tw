@@ -1,5 +1,5 @@
 ---
-permalink: switch-nvidia-sn2100/migrate-to-switchless-interconnect-sn2100-storage.html 
+permalink: switch-nvidia-sn2100-storage/migrate-to-switchless-interconnect-sn2100-storage.html 
 sidebar: sidebar 
 keywords: migrate, switchless cluster interconnect, NVIDIA SN2100 
 summary: 您可以從具有交換式叢集網路的叢集移轉至兩個節點直接連線的叢集ONTAP 、以供支援使用於更新版本的版本。 
