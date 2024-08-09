@@ -234,5 +234,5 @@ cluster1::*> *system switch ethernet log show -instance*
 
 CAUTION: 如果記錄收集功能報告任何錯誤狀態（在的輸出中可見 `system switch ethernet log show`）、請參閱 link:log-collection-troubleshoot.html["疑難排解記錄收集"] 以取得進一步詳細資料。
 
-|===
-|===
+.接下來呢？
+link:config-snmpv3.html["設定 SNMPv3 （選用）"]。

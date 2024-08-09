@@ -292,4 +292,4 @@ sw2                         cluster-network    10.233.205.91    MSN2100-CB2RC
 
 
 .接下來呢？
-link:../switch-cshm/config-overview.html["設定交換器健全狀況監控"]
+link:setup-install-cshm-file.html["安裝 CSHM 檔案"]。

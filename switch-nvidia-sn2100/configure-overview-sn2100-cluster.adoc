@@ -43,6 +43,10 @@ NVIDIA 文件中提供相關說明。
 +
 叢集與儲存應用程式可使用兩個RCF指令碼。每個的程序都相同。
 
+. link:setup-install-cshm-file.html["安裝 CSHM 檔案"]。
++
+您可以安裝適用於 NVIDIA 叢集交換器之乙太網路交換器健全狀況監控的組態檔。
+
 
 
 

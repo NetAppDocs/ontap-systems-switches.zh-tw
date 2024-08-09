@@ -93,3 +93,6 @@ node2                true    true          false
 ----
 ====
 
+
+.接下來呢？
+link:../switch-cshm/config-overview.html["設定交換器健全狀況監控"]。

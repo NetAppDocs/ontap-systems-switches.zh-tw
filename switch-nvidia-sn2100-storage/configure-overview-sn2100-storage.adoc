@@ -43,6 +43,10 @@ NVIDIA SN2100是一款儲存交換器、可讓您在儲存區域網路（SAN）�
 +
 叢集與儲存應用程式可使用兩個RCF指令碼。
 
+. link:setup-install-cshm-file.html["安裝 CSHM 檔案"]。
++
+您可以安裝適用於 NVIDIA 叢集交換器之乙太網路交換器健全狀況監控的組態檔。
+
 
 
 

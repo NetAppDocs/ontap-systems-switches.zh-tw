@@ -5053,4 +5053,12 @@
   <block id="114c27cb863250ce041d62daae03a69e" category="sidebar">Monitor_switch_health</block>
   <block id="d4a8473f83e1246e0b3ab08e2034db7c" category="sidebar">記錄收集</block>
   <block id="75d763e21c6a88838d01217650c14bcb" category="sidebar">log_collection_switch_health</block>
+  <block id="d9566e63378c0ff8504c903128e5c6f6" category="inline-link-macro">設定 SNMPv3 （選用）</block>
+  <block id="e2101619626dc7b8ea25749787797515" category="paragraph"><block ref="a294afff18b68f8c1e4f78aeef5ef294" category="inline-link-macro-rx"></block>。</block>
+  <block id="96a5ba855b4ee3dba60ecf722a706b29" category="inline-link-macro">安裝 CSHM 檔案</block>
+  <block id="54f593b53357d530cce6870c293a0379" category="list-text"><block ref="bc8e6b3d8a605e692bda90d2d873314b" category="inline-link-macro-rx"></block>。</block>
+  <block id="446a9723b131c4606a1b6d581fef9f10" category="paragraph">您可以安裝適用於 NVIDIA 叢集交換器之乙太網路交換器健全狀況監控的組態檔。</block>
+  <block id="2cd1b70f79d5acd7ffb2c204f4069175" category="summary">您可以使用此程序來安裝適用於 NVIDIA SN2100 儲存交換器叢集交換器健全狀況監控的組態檔。</block>
+  <block id="d57382f230671f8cd52f47dc80838934" category="paragraph">如果套用組態檔案後、您的機型仍顯示 * 其他 * 、請聯絡 NetApp 支援部門。</block>
+  <block id="762421c7b0a81d02d689a9f2e22ee18d" category="sidebar">安裝 CSHM 檔案</block>
 </blocks>
