@@ -106,6 +106,7 @@ RCF指令碼會完成上述步驟。
 
 NOTE: 若有任何無法修正的RCF python指令碼問題、請聯絡 https://mysupport.netapp.com/["NetApp支援"^] 以取得協助。
 
+. 重新套用任何先前的自訂項目至交換器組態。如link:cabling-considerations-sn2100-storage.html["檢閱纜線佈線和組態考量"]需進一步變更的詳細資料、請參閱。
 . 重新開機後驗證組態：
 +
 `net show interface all`

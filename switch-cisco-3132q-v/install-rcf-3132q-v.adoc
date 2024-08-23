@@ -409,6 +409,7 @@ NOTE: 如需瞭解如何在 RCF 升級後將 10GbE 連接埠上線的步驟、�
 
 
 
+. 重新套用任何先前的自訂項目至交換器組態。如link:cabling-considerations-3132q-v.html["檢閱纜線佈線和組態考量"]需進一步變更的詳細資料、請參閱。
 . 驗證RCF版本和交換器設定是否正確之後、請將執行組態檔複製到啟動組態檔。
 +
 如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^] 指南：

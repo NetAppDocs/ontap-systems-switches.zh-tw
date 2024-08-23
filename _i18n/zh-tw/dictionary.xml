@@ -2282,7 +2282,6 @@
   <block id="d35d5ab77a6267b38526b184dcfce0af" category="list-text">連接埠e0a和e0b上的SI-A800 AFF</block>
   <block id="b9017574c175e97b1d6c5e950a79e4c7" category="list-text">連接埠e0g和e0h上的E320 AFF</block>
   <block id="b1e03e9ce1f7041c2da53fa42cd21af3" category="paragraph">若要解決此問題、請執行下列步驟：</block>
-  <block id="ee42c1d9d1520c3cdd715411436b7999" category="admonition">使用10G/25G QSA時、請使用不可中斷的40/100G連接埠。請勿將QSA介面卡插入設定為中斷的連接埠。</block>
   <block id="2e48063923d7005a1d5b4c086c0a902a" category="summary">NVIDIA SN2100交換器是執行Cummulis Linux的10/25/40/100 GbE乙太網路交換器。SN2100交換器可在ONTAP 不同的交換器配對上、以《S209.10.1》提供叢集與儲存應用程式的服務。</block>
   <block id="736869e2dc47a4e8d50ebe15f7663677" category="doc">設定及設定NVIDIA SN2100交換器</block>
   <block id="1a29ca4be6c9125e8ac9fccfa8df289c" category="summary">在不中斷營運的程序中更換有瑕疵的NVIDIA SN2100儲存交換器（NDU）。</block>
@@ -2568,20 +2567,8 @@
   <block id="c564f12ef0efbf127f3858fd51aa1bfb" category="cell">*交換器連接埠*</block>
   <block id="3b5190029401dfe23a0a72a90e01a255" category="cell">*連接埠使用率*</block>
   <block id="5fd6f50ffed943141f031543ab15c5c3" category="paragraph">swp1s-3</block>
-  <block id="38c08a7df2ddfcda1cd914c471b45a0d" category="paragraph">10/40叢集連接埠節點</block>
   <block id="3226294083a7703912d2bb83f5ed65bd" category="paragraph">swp2s-3</block>
-  <block id="39924b64204be181666ab697dc299202" category="paragraph">25/100個叢集連接埠節點</block>
-  <block id="6877c07b3e2d6db48f28f32420bc2010" category="paragraph">swp3-14 40/100叢集連接埠節點</block>
-  <block id="92a2157c968b6a4a7631b737b57c1d35" category="paragraph">swp15-16 40/100交換器間連結（ISL）連接埠</block>
   <block id="a8b3385461e026cd59cbc121f290ce13" category="paragraph">請參閱<block ref="ba81a2074219dbc1e842c96a03d02ea8" category="inline-link-rx"></block> 如需交換器連接埠的詳細資訊、</block>
-  <block id="431e14f4180345b196683a41e85d8768" category="section-title">光纖連線</block>
-  <block id="ca7682f7c04d00e4194019da895757c8" category="paragraph">只有SN2100交換器具備X1151A NIC、X1146A NIC或內建100GbE連接埠、才支援光纖連線。例如：</block>
-  <block id="d8143a2f74ed0aaddb9c42f8329343b5" category="section-title">QSA Adpater</block>
-  <block id="9800eac46011eb652a03229615cb7394" category="paragraph">當使用QSA介面卡連線到平台上的內建Intel叢集連接埠時、並非所有連結都會出現。例如：FAS2750、AFF FASA300和FAS8200（所有10G）和AFF VA250（25G）。</block>
-  <block id="96860f68dd00843c4cb56864a29f5c87" category="list-text">若為Intel 10G、請手動將swp1s-3連結速度設為10000、並將自動交涉設為關。</block>
-  <block id="12a7ab6e6b950f63d80a4a310e02bd1e" category="list-text">對於Chelsio 25G、請手動將swp2s-3連結速度設為25000、並將自動交涉設為關。</block>
-  <block id="88bef4a61889e60ab41863d981d73b86" category="section-title">交換機連接埠速度</block>
-  <block id="e137cd6adbf4837405bfdfa337a0793f" category="paragraph">視switchport中的收發器而定、您可能需要將switchport上的速度設定為固定速度。如果使用10G和25G離線連接埠、請確定自動交涉已關閉、並硬設定交換器的連接埠速度。例如：</block>
   <block id="106f56409094e8675dc6d648c4e5ab5d" category="paragraph"><block ref="9a00636def01671b999a7c1df59762ff" category="inline-link-macro-rx"></block>。</block>
   <block id="efeb406865c5500553bf0ee6711eb714" category="summary">對於NVIDIA SN2100交換器的安裝與維護、請務必檢閱所有要求與建議文件。</block>
   <block id="b6b0d0194b5b5cf69cccbe4389837b3e" category="doc">NVIDIA SN2100交換器的概觀與需求</block>
@@ -3451,7 +3438,6 @@
   <block id="14c23670b212054fdcfb3f366efd9cbb" category="paragraph">「前端」交換器可連線至主機儲存設備、而「後端」叢集交換器則可在兩個或多個NetApp控制器之間建立連線。</block>
   <block id="ac8e8cb9a1b4a8efd50c977ead82d20b" category="paragraph">叢集交換器可讓您建立ONTAP 具有兩個以上節點的叢集。NetApp支援的叢集交換器包括：</block>
   <block id="4dd13a124f96d89e0fd6c36f6d82e131" category="list-text">Broadcom Bes - 53248</block>
-  <block id="b7d78f68022187a2bd65e5a79d764891" category="paragraph">儲存交換器可讓您在儲存區域網路（SAN）的伺服器與儲存陣列之間路由傳送資料。NetApp支援的叢集交換器包括：</block>
   <block id="e5de2aac752edf0c07f6f662681a46cf" category="paragraph">共享交換器可支援使用共享叢集和儲存設備的RCT、將叢集和儲存功能結合成共享交換器組態。NetApp支援的共享交換器包括：</block>
   <block id="453eb2af9200692fdb39bb88f6f41545" category="paragraph">下列儲存交換器已不再提供購買、但仍受到支援：</block>
   <block id="2027518664727205d8bb71d3a3948f25" category="doc">使用叢集、儲存設備和共享交換器來啟動和執行</block>
@@ -4083,8 +4069,6 @@
   <block id="4db57c36adcedbf3d48c546b8a964490" category="list-text"><block ref="4d9dc029304fd2614ef7b9bca43ee36d" prefix="" category="inline-code"></block></block>
   <block id="6d882d10695e4f3595987a4c3fc3b0d4" category="list-text"><block ref="2aa6f22da2ac5e9b2e1e6d3643ea273e" prefix="" category="inline-code"></block></block>
   <block id="9c1398e0fe6bc7229e870295da6e50f0" category="list-text">重新載入<block ref="b0df6da856b1d2d594adfbdfe27a1336" prefix=" " category="inline-code"></block> 服務</block>
-  <block id="1892645d2782c9bf9dc34851d08c3fc0" category="inline-link">此KB</block>
-  <block id="3415ad7957144776adc29fe727ecd053" category="paragraph">請參閱<block ref="5f1cba074f9c9f92027bd9e16fc96408" category="inline-link-rx"></block> 以取得更多詳細資料。</block>
   <block id="45ac1916de26f6f51168dd562a7dfba5" category="paragraph">在 Cumulus Linux 4.4.2 上、採用 X1151A NIC 、 X1146A NIC 或內建 100GbE 連接埠的 SN2100 交換器不支援銅線連線。例如：</block>
   <block id="4038c0e6561afda23a992fb3c5771bed" category="paragraph">當 QSA 介面卡用於連線至平台上的 10GbE/25GbE 叢集連接埠時、連結可能不會啟動。</block>
   <block id="65a7722b91e57b456663ad9dfbce3756" category="list-text">對於 10GbE 、請手動將 swp1s-3 連結速度設定為 10000 、並將自動交涉設定為關閉。</block>
@@ -4130,7 +4114,6 @@
   <block id="b70d80924ca5c08e45b9b84343687a46" category="section-title">舊版授權</block>
   <block id="e6459831eff3ab73436a3472b543daed" category="paragraph">下表列出可在 BS-53248 叢集交換器上使用的舊版授權：</block>
   <block id="5c60227e684a42ed2c4295981335965a" category="list-text">確認 SSH 已停用：</block>
-  <block id="810bc3d02021061ba2b8f87b703a66dd" category="paragraph">您可以使用記錄收集功能、在 ONTAP 中收集交換器相關的記錄檔。</block>
   <block id="fecbf70623c5c07c3f3c4c8793d5061b" category="list-text">目前的 RCF 檔案、可從取得<block ref="b4c2fb45a290e6214474529bd84dd3bc" category="inline-link-rx"></block> 頁面。</block>
   <block id="23c89511c80ceef00a8d3343b5f08569" category="list-text">RCF 中的開機組態、可反映所需的開機映像、如果您只安裝 EFOS 並保留目前的 RCF 版本、則需要此組態。如果您需要變更開機組態以反映目前的開機映像、則必須在重新套用RCF之前執行此動作、以便在未來重新開機時產生正確的版本。</block>
   <block id="3a6a9877fc8c73a9267914b786517ca9" category="inline-link">如何清除 Broadcom 互連交換器上的組態、同時保持遠端連線</block>
@@ -4416,7 +4399,6 @@
   <block id="242513ff76ac739e35a8e7e168d947bd" category="list-text">執行交換器健全狀況監視器組態命令<block ref="0477ef599648fe2dbbf01945805f0e88" prefix=" " category="inline-code"></block>：</block>
   <block id="174ee6e9c9130ef3e6ceab7f0ab7356c" category="list-text">執行命令<block ref="694b56ad85eb627acc97ea9295f39018" prefix=" " category="inline-code"></block> 在 ONTAP 系統上、請確定叢集交換器是在監控欄位設定為「 True 」的情況下探索到的。</block>
   <block id="c94eee10204c293e476c9b772d10ddfe" category="admonition">如果您隨時恢復至舊版 ONTAP 、則需要再次安裝 SHM 組態檔、以啟用 9336C-FX2 叢集交換器的 SHM 。</block>
-  <block id="669c1a3fa77bc8a049e5cd4a16e5cff8" category="paragraph">使用 9336C-FX2 叢集交換器 *CL1* 來確認您已設定環境。</block>
   <block id="680284a2e0d6a86aafc85099ca58d7af" category="list-text">為乙太網路交換器健全狀況監視器記錄收集功能建立密碼：</block>
   <block id="3fc74bed2ec666d227e966120d5c4160" category="inline-link">錯誤 1570339</block>
   <block id="a9881d2bc89c135aee3c1490acc55259" category="inline-link">從 40GbE 轉換為 100GbE 後、 T6 連接埠發生 CRC 錯誤</block>
@@ -4498,7 +4480,6 @@
   <block id="8d36506446d5ad8477c75d9150e6528f" category="list-text">必須為交換器啟用交換器健全狀況監控。請務必確認<block ref="83bb5774e6e4dc96959b12bfa4334f18" prefix=" " category="inline-code"></block> 欄位在的輸出中設為 * 真 *<block ref="db3929a8e897b02a87f7f4bc42f38fc1" prefix=" " category="inline-code"></block> 命令。</block>
   <block id="09a5c8e72e479c23dfcdb0045312203a" category="list-text">若要設定記錄收集、請針對每個交換器執行下列命令。系統會提示您輸入用於記錄收集的交換器名稱、使用者名稱和密碼。</block>
   <block id="51e57b530a227b04924d2803cdc52930" category="list-text">若要啟動記錄收集、請執行下列命令、以先前命令中使用的切換參數取代裝置。這會同時啟動記錄收集的兩種類型：詳細的 * 支援 * 記錄檔和 * 定期 * 資料的每小時集合。</block>
-  <block id="231cf4c70d866b616c21baddaeed0696" category="paragraph-title">疑難排解</block>
   <block id="37c0786b751e8b6bed2adbf850ab884e" category="paragraph">如果您遇到記錄收集功能報告的下列任何錯誤狀態（可在的輸出中看到<block ref="88354d538ba5d4e1746193ec5949ab4b" prefix=" " category="inline-code"></block>）、請嘗試對應的除錯步驟：</block>
   <block id="f766c25c90ea3bb9aa3798d25e0a5087" category="cell">* 記錄收集錯誤狀態 *</block>
   <block id="2d424e5dd89f6819ff42231c7a18b118" category="cell">* 解決方法 *</block>
@@ -4520,11 +4501,6 @@
   <block id="7645c6b839b29d79d56508ac59b17a0f" category="paragraph"><block ref="e455ca07bfb78eb821e00f72366d7972" prefix="" category="inline-code"></block></block>
   <block id="d4d693d9dd779d0daf149c2e448b60b2" category="list-text">驗證要與新建立的 SNMPv3 使用者查詢的序號、是否與 CSHM 輪詢期間結束後上一步所述相同。</block>
   <block id="28444591fb832d5dcae593ad2a8f56da" category="admonition">您必須在 RCF 中指定一個使用者（管理使用者除外）、以專門用於記錄收集。</block>
-  <block id="f2a9c66f4943798b57467021b65ab75a" category="list-text">應用參考組態檔案（ RCF ）時、必須指定記錄集合的使用者。依預設、此使用者設為「 admin 」。如果您想要使用不同的使用者、您必須在 RCF 的 * # SHM User* 區段中指定此項目。</block>
-  <block id="41418696440702a63005a485c96de621" category="list-text">使用者必須能夠存取 *nv show* 命令。這可以透過執行來新增<block ref="d019363df09b88c795c1354553c6fe8f" prefix=" " category="inline-code"></block> 並將使用者取代為記錄收集的使用者。</block>
-  <block id="f9659d3e6fcf03c716c20b733c8e68fc" category="list-text">若要啟動記錄收集、請執行下列命令、以先前命令中使用的切換參數取代裝置。這會同時啟動兩種類型的記錄集合：詳細<block ref="db5eb84117d06047c97c9a0191b5fffe" prefix=" " category="inline-code"></block> 記錄和每小時的集合<block ref="cdcc32a064503184053bd2018d1c0e7e" prefix=" " category="inline-code"></block> 資料。</block>
-  <block id="b9c519617ddb8983725afb0a6830a2f9" category="paragraph">移除上一個記錄集合目錄和位於的 .tar 檔案<block ref="0793027f48f71fa4fc10baf29d75e685" prefix=" " category="inline-code"></block> 在交換器上。</block>
-  <block id="c2d06740bdd189b6a9e5c66037c2fca6" category="list-text">驗證新建立的 SNMPv3 使用者所查詢的序號、是否與 CSHM 輪詢期間結束後上一步所述的序號相同。</block>
   <block id="d185f7c4f8a7ee7fcc5143d7f639a45b" category="sidebar">設定用於監控的 SNMPv3</block>
   <block id="c7afd9396f393d27ad260ca9f7d80ada" category="open-title">Cumulus Linux 4.4.x</block>
   <block id="bac0749492396eefc62e79ed342a7d3e" category="paragraph">下列命令顯示交換器 sw1 和 SW2 上的 ISL 連接埠為開啟狀態：</block>
@@ -4543,15 +4519,6 @@
   <block id="3d49c6a8040af00423280443bbe5d05f" category="paragraph"><block ref="913a5e09220539ba22f04cc8f2d2fe80" prefix="" category="inline-code"></block></block>
   <block id="9d6600c74c6f65eef63f8fe8e301ffef" category="paragraph">下列範例顯示交換器 sw1 和 SW2 的適當結果：</block>
   <block id="3510e8dd2306d7a2623d6253e5ee079b" category="list-text">[[step17]] 顯示叢集中探索到的網路裝置相關資訊：</block>
-  <block id="85ec13bf5591b128daa3a54ae368ba3c" category="paragraph">下列命令可在 Cisco 3232C 交換器上設定 SNMPv3 使用者名稱：</block>
-  <block id="5293a7c2493b5e9fa8261d30e6343464" category="list-text">若為 * 無驗證 * ：<block ref="4de90a5f2562588942e54211db55bbc8" prefix=" " category="inline-code"></block></block>
-  <block id="5ca43733e44b3aa36045aae712118a0c" category="list-text">對於 *MD5/SHA 驗證 * ：<block ref="8de8efe8209f40424b2f8182df3e0711" prefix=" " category="inline-code"></block></block>
-  <block id="5bdf8576a82b897f01268b182b208da7" category="list-text">對於採用 AES/DES 加密的 * MD5/SHA 驗證 * ：<block ref="7021d4581846b898d8f652c016aef25f" prefix=" " category="inline-code"></block></block>
-  <block id="3634ec349fe0ac8ede01e576a2ea0f9c" category="paragraph"><block ref="e13e2f89a8f9ef3b183db91662b40273" prefix="" category="inline-code"></block></block>
-  <block id="627d56d1b7897f4dcfcbb018bce61116" category="summary">叢集交換器健全狀況監控記錄收集功能可用於收集ONTAP 資訊中與交換器相關的記錄檔。您必須確定已使用 9336c-FX2 叢集交換器 CLI 設定環境、詳情請見此處。</block>
-  <block id="33bdcda7e2a546866442177b5bcf615d" category="paragraph">您可以使用記錄收集功能、在 ONTAP 中收集交換器相關的記錄檔。
-乙太網路交換器健全狀況監視器（ CSHM ）負責確保叢集與儲存網路交換器的作業健全狀況、並收集交換器記錄以供偵錯之用。本程序將引導您完成設定及開始從交換器收集詳細 * 支援 * 記錄的程序、並開始每小時收集 AutoSupport 所收集的 * 定期 * 資料。</block>
-  <block id="7e1ba7c75d78333c2b0d49c9ac24ef12" category="list-text">使用 Cisco 3232C 叢集交換器 *CL1* 來確認您已設定環境。</block>
   <block id="c48ae1736b44dafa44df6c91e234967b" category="paragraph">驗證認證、測試 SSH 連線、並重新產生 ONTAP SSH 金鑰。請參閱交換器說明文件、或聯絡 NetApp 支援部門以取得相關指示。</block>
   <block id="1837f24cc84dcee4cf147fd1cb89460b" category="list-text">交換機 C2 首先由交換機 SW2 取代。</block>
   <block id="d74d5bfd992e4f32cce751a7efe7675a" category="list-text">關閉連接至叢集節點的連接埠。必須同時關閉所有連接埠、以避免叢集不穩定。</block>
@@ -4577,10 +4544,6 @@
   <block id="9d24a408b8a659b2d9a8bb0df05e2629" category="paragraph">所有叢集生命都會容錯移轉至 CS2 交換器。</block>
   <block id="ca485f2dd68e04b01569b761e6e09728" category="list-text">驗證叢集生命安全移轉到交換器 CS2 上主控的連接埠。這可能需要幾秒鐘的時間：</block>
   <block id="b724af2fef6af61e0edab3f426d0cddd" category="list-text">從交換器 CS1 的觀點來看、確認交換器連接埠連線狀況良好：</block>
-  <block id="b9ab24854008adedc57cca2a0bf2e4f8" category="paragraph">下列命令可在 Cisco 3132Q-V 交換器上設定 SNMPv3 使用者名稱：</block>
-  <block id="dd6639b00fbb4becd05c71735c5944af" category="list-text">使用 Cisco 3132Q-V 叢集交換器 *CL1* 來驗證您的環境是否已設定。</block>
-  <block id="91863ff015a5297c5c27e15dd6e5e916" category="paragraph">等待 10 分鐘、然後檢查記錄收集是否完成：</block>
-  <block id="03d991029fc10722afd68a8300e08fbf" category="paragraph">下列命令可在 Cisco 9336C-FX2 交換器上設定 SNMPv3 使用者名稱：</block>
   <block id="e9505b73caa990829220fedbb878ef68" category="list-text">交換機 C2 首先由交換機 CS2 取代。</block>
   <block id="39bba2bddb2bf527b701828442a18b5e" category="list-text">然後、節點與 C2 之間的纜線會從 C2 中斷連線、並重新連接至 CS2 。</block>
   <block id="6fa86324fabffaee853e6eeee2824329" category="list-text">交換器 C1 由交換器 CS1 取代。</block>
@@ -4596,8 +4559,6 @@
   <block id="00a862cbf647531bcc4b5bf9faba74e4" category="list-text">對於 *MD5/SHA 驗證 * ：<block ref="31b98def7e9f7bb02cdfd9ac87afcda4" prefix=" " category="inline-code"></block></block>
   <block id="7286c151c11606a97b24bba616cce292" category="list-text">對於採用 AES/DES 加密的 * MD5/SHA 驗證 * ：<block ref="6a48e8cc740517cd540e6de4c0a5585b" prefix=" " category="inline-code"></block></block>
   <block id="e7d18f4dea6cb0b4877fd6a9e25a2411" category="paragraph"><block ref="e3949fbf38af37f5381ecfa4e157ffa8" prefix="" category="inline-code"></block></block>
-  <block id="7733a6a16b4fa24d09c107d2b3eefb78" category="summary">叢集交換器健全狀況監控記錄收集功能可用於收集ONTAP 資訊中與交換器相關的記錄檔。您必須確定已使用 92300YC 叢集交換器 CLI 設定環境、詳情請見此處。</block>
-  <block id="e7c823ebcf9c688c2043749093639ce5" category="paragraph">下列命令可在 Cisco 92300YC 交換器上設定 SNMPv3 使用者名稱：</block>
   <block id="d60c463bb4096f3ed4bd1618626dfe10" category="paragraph-title">疑難排解</block>
   <block id="3e7c0049318f1d54d121bd59293ae3f8" category="summary">設定 Cisco 9336C-FX2 交換器之前、請先檢閱下列資訊。</block>
   <block id="6f46a467644090d99e7affb0172248d7" category="paragraph">設定 Cisco 9336C-FX2 交換器之前、請先檢閱下列考量事項。</block>
@@ -4651,9 +4612,6 @@
   <block id="3947ff32e82f86e7176dc28b3ee33db0" category="list-text">在叢集交換器 CS2 上、關閉連接到 * 所有 * 節點叢集連接埠的連接埠、以便容錯移轉叢集生命期：</block>
   <block id="022c00ee7f7e6672d82cc079623d6e22" category="list-text">在叢集交換器 CS1 上、關閉連接到 * 所有 * 節點叢集連接埠的連接埠、以便容錯移轉叢集生命期。</block>
   <block id="e6eb1709bc8131372d63990293ab75f8" category="paragraph">所有叢集生命體移轉至 CS2 新交換器。</block>
-  <block id="af7a19b4dbadf7641102bf88598cfd8b" category="paragraph">+
-乙太網路交換器健全狀況監視器（ CSHM ）負責確保叢集與儲存網路交換器的作業健全狀況、並收集交換器記錄以供偵錯之用。本程序將引導您完成設定及開始從交換器收集詳細 * 支援 * 記錄的程序、並開始每小時收集 AutoSupport 所收集的 * 定期 * 資料。</block>
-  <block id="a13c9d4c750715a8b993a3fec916189f" category="list-text">應用參考組態檔案（ RCF ）時、必須指定記錄集合的使用者。依預設、此使用者設為 _admin_ 。如果您想要使用不同的使用者、您必須在 RCF 的 * # SHM User* 區段中指定此項目。</block>
   <block id="69a3b5b5b3e87ce1bcae2811d815d9de" category="paragraph"><block ref="69a3b5b5b3e87ce1bcae2811d815d9de" category="inline-link-macro-rx"></block></block>
   <block id="7091e2c750a185300a6b16e37ae123f6" category="paragraph">NVIDIA 文件中提供相關說明。</block>
   <block id="894989f86e54fb4105389f59b2f248db" category="list-text"><block ref="c4cd7ec23f215e2259f91b6eb6e7cbc1" category="inline-link-macro-rx"></block>。</block>
@@ -4702,7 +4660,6 @@
   <block id="cd05c6b0946147cbb3f39299b8dcdeed" category="paragraph"><block ref="320348c7039a92322f8ae8aa6b9548b3" prefix="" category="inline-code"></block></block>
   <block id="e90414dab5eca6b338b4136c697db6b5" category="list-text">再次到達管理 IP 位址之後、請透過 SSH 登入交換器。</block>
   <block id="c91e8b7706844bcabdc205a7e43be636" category="paragraph">您可能需要更新與 SSH 金鑰相關的主機檔案項目。</block>
-  <block id="22ce77808f11e6ab0287a2c388f17c20" category="list-text">將先前識別的任何自訂新增項目重新套用至交換器組態。</block>
   <block id="75d60e24abda3d2be5719b222283e4ab" category="list-text">驗證 RCF 版本、自訂新增項目和交換器設定是否正確之後、請將執行組態檔案複製到啟動組態檔案。</block>
   <block id="59a8406e97bc3122bcc4f9fec1cab7c9" category="paragraph"><block ref="e1e291973b667f98a077e4eb6f5aa9ac" prefix="" category="inline-code"></block></block>
   <block id="a899bc4bde195885d1d8f64046805509" category="paragraph"><block ref="f09b6decdfbfa4d8cb5b241722b9a9e6" prefix="" category="inline-code"></block></block>
@@ -5061,4 +5018,14 @@
   <block id="2cd1b70f79d5acd7ffb2c204f4069175" category="summary">您可以使用此程序來安裝適用於 NVIDIA SN2100 儲存交換器叢集交換器健全狀況監控的組態檔。</block>
   <block id="d57382f230671f8cd52f47dc80838934" category="paragraph">如果套用組態檔案後、您的機型仍顯示 * 其他 * 、請聯絡 NetApp 支援部門。</block>
   <block id="762421c7b0a81d02d689a9f2e22ee18d" category="sidebar">安裝 CSHM 檔案</block>
+  <block id="e019eb42e4f42756266b23abef92e1dd" category="list-text">重新套用任何先前的自訂項目至交換器組態。如<block ref="45429bb8a97f1efddbc53c789578d613" category="inline-link-macro-rx"></block>需進一步變更的詳細資料、請參閱。</block>
+  <block id="dd59ffc29dc202728192a95abe6178f9" category="paragraph">儲存交換器可讓您在儲存區域網路（SAN）的伺服器與儲存陣列之間路由傳送資料。NetApp 支援的儲存交換器包括：</block>
+  <block id="57b022aa023a23cddb03c6191daffa4f" category="list-text">重新套用任何先前的自訂項目至交換器組態。如<block ref="1d9551648f2ada4f38f23191d61ca885" category="inline-link-macro-rx"></block>需進一步變更的詳細資料、請參閱。</block>
+  <block id="5a389651a2b073f3c60a3a61d9470776" category="list-text">重新套用任何先前的自訂項目至交換器組態。如<block ref="80cb17023e08ea29d449df7367413559" category="inline-link-macro-rx"></block>需進一步變更的詳細資料、請參閱。</block>
+  <block id="7a6b9b7eb5a2b3055f09f44911fb2bc5" category="list-text">重新套用任何先前的自訂項目至交換器組態。如<block ref="a181f167f0e6d024e95ed78a8f44bff6" category="inline-link-macro-rx"></block>需進一步變更的詳細資料、請參閱。</block>
+  <block id="b1a89b5446a31892e94db79afbb0de42" category="inline-link">SN2100 交換器無法使用 40/100GbE 銅線連接</block>
+  <block id="bea2f90298678b2195d0c6fdc1b17566" category="paragraph">如<block ref="8462b48cb4d4d2778ecd09578b163838" category="inline-link-rx"></block>需詳細資訊、請參閱知識庫文章。</block>
+  <block id="4af7c647d1c04eb805c9ecbc772595d1" category="list-text">重新套用任何先前的自訂項目至交換器組態。如<block ref="81e27480a79c2bb77194c038c9737157" category="inline-link-macro-rx"></block>需進一步變更的詳細資料、請參閱。</block>
+  <block id="e51054318a8dcf9b707bc011338e9665" category="section-title">設定中斷連接埠的介面速度</block>
+  <block id="e4da4813fef5b96a216a043d594bf245" category="list-text">重新套用任何先前的自訂項目至交換器組態。如<block ref="75ce5666fba6992a0719935651dd5b1b" category="inline-link-macro-rx"></block>需進一步變更的詳細資料、請參閱。</block>
 </blocks>

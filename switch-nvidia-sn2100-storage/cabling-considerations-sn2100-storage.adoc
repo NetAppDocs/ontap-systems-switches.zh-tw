@@ -26,30 +26,173 @@ summary: 在設定NVIDIA SN2100交換器之前、請先檢閱下列資訊。
  a| 
 swp1s-3
  a| 
-10/40叢集連接埠節點
+4個10GbE中斷叢集連接埠節點
 
 
 
  a| 
 swp2s-3
  a| 
-25/100個叢集連接埠節點
+4個25GbE中斷叢集連接埠節點
 
 
 
  a| 
-swp3-14 40/100叢集連接埠節點
+swp3-14
  a| 
-swp15-16 40/100交換器間連結（ISL）連接埠
+40/100GbE 叢集連接埠節點
+
+
+
+ a| 
+swp15-16
+ a| 
+100GbE 交換器間連結（ ISL ）連接埠
 
 |===
-請參閱 https://hwu.netapp.com/Switch/Index["Hardware Universe"] 如需交換器連接埠的詳細資訊、
+請參閱 https://hwu.netapp.com/Switch/Index["Hardware Universe"^] 如需交換器連接埠的詳細資訊、
 
 
 
-== 光纖連線
+== 光纖連線的連結延遲
 
-只有SN2100交換器具備X1151A NIC、X1146A NIC或內建100GbE連接埠、才支援光纖連線。例如：
+如果您遇到超過五秒的連結延遲、 Cumulus Linux 5.4 及更新版本均支援快速連結。您可以使用來設定連結 `nv set` 命令如下：
+
+[listing, subs="+quotes"]
+----
+*nv set interface <interface-id> link fast-linkup on*
+*nv config apply*
+*reload the switchd*
+----
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cumulus@cumulus-cs13:mgmt:~$ *nv set interface swp5 link fast-linkup on*
+cumulus@cumulus-cs13:mgmt:~$ *nv config apply*
+*switchd need to reload on this config change*
+
+Are you sure? [y/N] *y*
+applied [rev_id: 22]
+
+Only switchd reload required
+----
+====
+
+
+== 支援銅線連線
+
+若要修正此問題、必須進行下列組態變更。
+
+[role="tabbed-block"]
+====
+.Cumulus Linux 4.4.3
+--
+. 使用 40GbE/100GbE 銅線識別每個介面的名稱：
++
+[listing, subs="+quotes"]
+----
+cumulus@cumulus:mgmt:~$ *net show interface pluggables*
+
+Interface  Identifier     Vendor Name     Vendor PN    Vendor SN      Vendor Rev
+---------  -------------  --------------  -----------  -------------  ----------
+swp3       0x11 (QSFP28)  Molex           112-00576    93A2229911111  B0
+swp4       0x11 (QSFP28)  Molex           112-00576    93A2229922222  B0
+----
+. 將下列兩行新增至 `/etc/cumulus/switchd.conf` 使用 40GbE/100GbE 銅線的每個連接埠（ swjpg <n> ）檔案：
++
+** `interface.swp<n>.enable_media_depended_linkup_flow=TRUE`
+** `interface.swp<n>.enable_short_tuning=TRUE`
++
+例如：
+
++
+[listing, subs="+quotes"]
+----
+cumulus@cumulus:mgmt:~$ *sudo nano /etc/cumulus/switchd.conf*
+.
+.
+interface.swp3.enable_media_depended_linkup_flow=TRUE
+interface.swp3.enable_short_tuning=TRUE
+interface.swp4.enable_media_depended_linkup_flow=TRUE
+interface.swp4.enable_short_tuning=TRUE
+----
+
+
+. 重新啟動 `switchd` 服務：
++
+[listing, subs="+quotes"]
+----
+cumulus@cumulus:mgmt:~$ *sudo systemctl restart switchd.service*
+----
+. 確認連接埠已啟動：
++
+[listing, subs="+quotes"]
+----
+cumulus@cumulus:mgmt:~$ *net show interface all*
+
+State  Name      Spd   MTU    Mode       LLDP              Summary
+-----  --------- ----  -----  ---------- ----------------- --------
+UP     swp3      100G  9216   Trunk/L2                     Master: bridge(UP)
+UP     swp4      100G  9216   Trunk/L2                     Master: bridge(UP)
+----
+
+
+--
+.Cumulus Linux 5.x
+--
+. 使用 40GbE/100GbE 銅線識別每個介面的名稱：
++
+[listing, subs="+quotes"]
+----
+cumulus@cumulus:mgmt:~$ *nv show interface pluggables*
+
+Interface  Identifier     Vendor Name     Vendor PN    Vendor SN      Vendor Rev
+---------  -------------  --------------  -----------  -------------  ----------
+swp3       0x11 (QSFP28)  Molex           112-00576    93A2229911111  B0
+swp4       0x11 (QSFP28)  Molex           112-00576    93A2229922222  B0
+----
+. 使用設定連結 `nv set` 命令如下：
++
+** `nv set interface <interface-id> link fast-linkup on`
+** `nv config apply`
+** 重新載入 `switchd` 服務
++
+例如：
+
++
+[listing, subs="+quotes"]
+----
+cumulus@cumulus:mgmt:~$ *nv set interface swp5 link fast-linkup on*
+cumulus@cumulus:mgmt:~$ *nv config apply*
+switchd need to reload on this config change
+
+Are you sure? [y/N] *y*
+applied [rev_id: 22]
+
+Only switchd reload required
+----
+
+
+. 確認連接埠已啟動：
++
+[listing, subs="+quotes"]
+----
+cumulus@cumulus:mgmt:~$ *net show interface all*
+
+State  Name      Spd   MTU    Mode       LLDP              Summary
+-----  --------- ----  -----  ---------- ----------------- --------
+UP     swp3      100G  9216   Trunk/L2                     Master: bridge(UP)
+UP     swp4      100G  9216   Trunk/L2                     Master: bridge(UP)
+----
+
+
+--
+====
+如 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/Fabric_Interconnect_and_Management_Switches/NVIDIA_SN2100_switch_fails_to_connect_using_40_100GbE_copper_cable["SN2100 交換器無法使用 40/100GbE 銅線連接"^]需詳細資訊、請參閱知識庫文章。
+
+在 Cumulus Linux 4.4.2 上、採用 X1151A NIC 、 X1146A NIC 或內建 100GbE 連接埠的 SN2100 交換器不支援銅線連線。例如：
 
 * 連接埠e0a和e0b上的SI-A800 AFF
 * 連接埠e0g和e0h上的E320 AFF
@@ -57,28 +200,34 @@ swp15-16 40/100交換器間連結（ISL）連接埠
 
 
 
-== QSA Adpater
+== QSA介面卡
 
-當使用QSA介面卡連線到平台上的內建Intel叢集連接埠時、並非所有連結都會出現。例如：FAS2750、AFF FASA300和FAS8200（所有10G）和AFF VA250（25G）。
+當 QSA 介面卡用於連線至平台上的 10GbE/25GbE 叢集連接埠時、連結可能不會啟動。
 
 若要解決此問題、請執行下列步驟：
 
-. 若為Intel 10G、請手動將swp1s-3連結速度設為10000、並將自動交涉設為關。
-. 對於Chelsio 25G、請手動將swp2s-3連結速度設為25000、並將自動交涉設為關。
+* 對於 10GbE 、請手動將 swp1s-3 連結速度設定為 10000 、並將自動交涉設定為關閉。
+* 若是 25GbE 、請手動將 swp2s-3 連結速度設定為 25000 、並將自動交涉設定為關閉。
 
 
 
-NOTE: 使用10G/25G QSA時、請使用不可中斷的40/100G連接埠。請勿將QSA介面卡插入設定為中斷的連接埠。
+NOTE: 使用 10GbE/25GbE QSA 介面卡時、請將其插入非中斷 40GbE/100GbE 連接埠（ swp3-swp14 ）。請勿將 QSA 介面卡插入設定為中斷連接的連接埠。
 
 
 
-== 交換機連接埠速度
+== 設定中斷連接埠的介面速度
 
-視switchport中的收發器而定、您可能需要將switchport上的速度設定為固定速度。如果使用10G和25G離線連接埠、請確定自動交涉已關閉、並硬設定交換器的連接埠速度。例如：
+視交換器連接埠中的收發器而定、您可能需要將交換器介面上的速度設定為固定速度。如果使用 10GbE 和 25GbE 中斷連接埠、請確認自動交涉已關閉、並在交換器上設定介面速度。
+
+[role="tabbed-block"]
+====
+.Cumulus Linux 4.4.3
+--
+例如：
 
 [listing, subs="+quotes"]
 ----
-cumulus@cumulus:mgmt:~$ net add int swp1s3 link autoneg off && net com
+cumulus@cumulus:mgmt:~$ *net add int swp1s3 link autoneg off && net com*
 --- /etc/network/interfaces     2019-11-17 00:17:13.470687027 +0000
 +++ /run/nclu/ifupdown2/interfaces.tmp  2019-11-24 00:09:19.435226258 +0000
 @@ -37,21 +37,21 @@
@@ -105,5 +254,83 @@ iface swp2s0
      link-autoneg off
      link-speed 25000 *<---- port speed set*
 ----
+檢查介面和連接埠狀態、確認已套用設定：
+
+[listing, subs="+quotes"]
+----
+cumulus@cumulus:mgmt:~$ *net show interface*
+
+State  Name      Spd    MTU    Mode        LLDP             Summary
+-----  --------  -----  -----  ----------  ---------------  --------------------------------------
+.
+.
+UP     swp1s0     10G   9216   Trunk/L2    cs07 (e4c)       Master: br_default(UP)
+UP     swp1s1     10G   9216   Trunk/L2    cs07 (e4d)       Master: br_default(UP)
+UP     swp1s2     10G   9216   Trunk/L2    cs08 (e4c)       Master: br_default(UP)
+UP     swp1s3     10G   9216   Trunk/L2    cs08 (e4d)       Master: br_default(UP)
+.
+.
+UP     swp3       40G   9216   Trunk/L2    cs03 (e4e)       Master: br_default(UP)
+UP     swp4       40G   9216   Trunk/L2    cs04 (e4e)       Master: br_default(UP)
+DN     swp5       N/A   9216   Trunk/L2                     Master: br_default(UP)
+DN     swp6       N/A   9216   Trunk/L2                     Master: br_default(UP)
+DN     swp7       N/A   9216   Trunk/L2                     Master: br_default(UP)
+.
+.
+UP     swp15      100G  9216   BondMember  cs01 (swp15)     Master: cluster_isl(UP)
+UP     swp16      100G  9216   BondMember  cs01 (swp16)     Master: cluster_isl(UP)
+.
+.
+----
+--
+.Cumulus Linux 5.x
+--
+例如：
+
+[listing, subs="+quotes"]
+----
+cumulus@cumulus:mgmt:~$ *nv set interface swp1s3 link auto-negotiate off*
+cumulus@cumulus:mgmt:~$ *nv set interface swp1s3 link speed 10G*
+cumulus@cumulus:mgmt:~$ *nv show interface swp1s3*
+
+link                                                                                            
+  auto-negotiate        off                     off                     off                   
+  duplex                full                    full                    full                  
+  speed                 10G                     10G                     10G                   
+  fec                   auto                    auto                    auto                  
+  mtu                   9216                    9216                    9216                  
+[breakout]                                                                                    
+  state                 up                      up                      up
+----
+檢查介面和連接埠狀態、確認已套用設定：
+
+[listing, subs="+quotes"]
+----
+cumulus@cumulus:mgmt:~$ *nv show interface*
+
+State  Name      Spd    MTU    Mode        LLDP             Summary
+-----  --------  -----  -----  ----------  ---------------  --------------------------------------
+.
+.
+UP     swp1s0     10G   9216   Trunk/L2    cs07 (e4c)       Master: br_default(UP)
+UP     swp1s1     10G   9216   Trunk/L2    cs07 (e4d)       Master: br_default(UP)
+UP     swp1s2     10G   9216   Trunk/L2    cs08 (e4c)       Master: br_default(UP)
+UP     swp1s3     10G   9216   Trunk/L2    cs08 (e4d)       Master: br_default(UP)
+.
+.
+UP     swp3       40G   9216   Trunk/L2    cs03 (e4e)       Master: br_default(UP)
+UP     swp4       40G   9216   Trunk/L2    cs04 (e4e)       Master: br_default(UP)
+DN     swp5       N/A   9216   Trunk/L2                     Master: br_default(UP)
+DN     swp6       N/A   9216   Trunk/L2                     Master: br_default(UP)
+DN     swp7       N/A   9216   Trunk/L2                     Master: br_default(UP)
+.
+.
+UP     swp15      100G  9216   BondMember  cs01 (swp15)     Master: cluster_isl(UP)
+UP     swp16      100G  9216   BondMember  cs01 (swp16)     Master: cluster_isl(UP)
+.
+.
+----
+--
+====
 .接下來呢？
 link:install-cable-shelves-sn2100-storage.html["將NS224磁碟櫃纜線當作交換器附加儲存設備"]。

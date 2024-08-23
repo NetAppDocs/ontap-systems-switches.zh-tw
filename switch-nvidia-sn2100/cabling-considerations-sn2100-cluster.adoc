@@ -190,7 +190,7 @@ UP     swp4      100G  9216   Trunk/L2                     Master: bridge(UP)
 
 --
 ====
-請參閱 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/Fabric_Interconnect_and_Management_Switches/NVIDIA_SN2100_switch_fails_to_connect_using_40_100GbE_copper_cable["此KB"^] 以取得更多詳細資料。
+如 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/Fabric_Interconnect_and_Management_Switches/NVIDIA_SN2100_switch_fails_to_connect_using_40_100GbE_copper_cable["SN2100 交換器無法使用 40/100GbE 銅線連接"^]需詳細資訊、請參閱知識庫文章。
 
 在 Cumulus Linux 4.4.2 上、採用 X1151A NIC 、 X1146A NIC 或內建 100GbE 連接埠的 SN2100 交換器不支援銅線連線。例如：
 
