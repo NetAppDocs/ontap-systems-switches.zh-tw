@@ -162,6 +162,10 @@ cluster1::*>
 +
 `cs1(config-if-range)# *shutdown*`
 
++
+
+CAUTION: 請務必關閉 * 所有 * 連線的叢集連接埠、以避免任何網路連線問題。如 https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/Node_out_of_quorum_when_migrating_cluster_lif_during_switch_OS_upgrade["在交換器作業系統升級期間移轉叢集 LIF 時、節點超出仲裁範圍"^]需詳細資訊、請參閱知識庫文章。
+
 . 驗證叢集生命期是否已容錯移轉至叢集交換器 CS1 上所主控的連接埠。這可能需要幾秒鐘的時間。
 +
 「網路介面show -role cluster」
@@ -842,4 +846,4 @@ RPC status:
 
 
 .接下來呢？
-link:../switch-cisco-9336c-fx2-storage/configure-ssh.html["啟用SSH"]。
+link:../switch-cshm/config-overview.html["設定交換器健全狀況監控"]。

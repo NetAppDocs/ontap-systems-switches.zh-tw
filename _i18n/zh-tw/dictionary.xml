@@ -4381,8 +4381,6 @@
   <block id="2bc32577d8d84ba98d84472c4916dd0f" category="admonition">僅支援 NetApp 驗證的後端交換器（從 NetApp 訂購）。</block>
   <block id="d69d8c23518c3e983c5799321eb27404" category="list-text">清理交換器 CS2 的組態、然後重新啟動交換器。</block>
   <block id="a3d5cbedb318ff78ae8c3f9bced7661b" category="list-text">執行交換器的基本設定。請參閱 <block ref="ab35665c267fa570f19ad0ebf8386ab4" category="inline-link-macro-rx"></block> 以取得詳細資料。</block>
-  <block id="6ab23d04af2dab64aaf06d089d134151" category="summary">使用叢集交換器健全狀況監視器（CSHM\）和記錄收集功能時、必須使用SSH。若要在 Cisco 9336C-FX2 叢集交換器上啟用 SSH 、請先產生 SSH 金鑰、然後再啟用 SSH 。</block>
-  <block id="f213e7d15465742733b22d11eff1d4ac" category="doc">在 Cisco 9336C-FX2 叢集交換器上啟用 SSH</block>
   <block id="a8d8d025a84c64f53b535b4e606fd65a" category="summary">您可以使用此程序來安裝適用於 Nexus 92300YC 叢集交換器叢集交換器健全狀況監控的組態檔。</block>
   <block id="0bf9f283c6d4cf639f7438f8d69e8f4f" category="doc">安裝叢集交換器健全狀況監視器（ SHM ）組態檔案</block>
   <block id="5a70ef3971f7a5956d9f9f829efc730c" category="paragraph">請遵循此程序、安裝適用於 Nexus 9336C-FX2 叢集交換器叢集交換器健全狀況監控（ SHM ）的組態檔。</block>
@@ -4675,7 +4673,6 @@
   <block id="7e857aa8a0b068cc27d4b48a1e11e878" category="list-text"><block ref="7e857aa8a0b068cc27d4b48a1e11e878" category="inline-link-macro-rx"></block></block>
   <block id="32559ee483b61b36141f9b9e0f4bbfff" category="paragraph">請參閱交換器相容性表、瞭解 NetApp 支援網站 上支援的 ONTAP 和 RCF 版本。請注意、 RCF 中的命令語法與特定版本 NX-OS 中的語法之間可能存在命令相依性。</block>
   <block id="ad0d19783ccfa19f931108b838e4b7e4" category="list-text"><block ref="ad0d19783ccfa19f931108b838e4b7e4" category="inline-link-macro-rx"></block></block>
-  <block id="8fa9b99093c5cdfb4cebad0008ba3e8d" category="paragraph">本程序中的範例使用四個節點。這些節點使用兩個10GbE叢集互連連接埠e0a和e0b。請參閱<block ref="e98f5e4074ae8b028a5791870586403d" category="inline-link-rx"></block> 驗證平台上的叢集連接埠是否正確。</block>
   <block id="79509ba15c2970f327dd8610e3b4628c" category="paragraph-title">使用的命令</block>
   <block id="1ad593dd61af4356ce9ba12d276c4336" category="section-title">選項 1 ：在新交換器上安裝 RCF 檔案</block>
   <block id="d061b4842fee7f503446ba29253d182f" category="paragraph">首次設定 Nexus 9336C-FX2 交換器後、請安裝參考組態檔案（ RCF ）。</block>
@@ -4890,7 +4887,6 @@
   <block id="c947c5faccdddd0a9a87be7895f50511" category="list-text">在 ONTAP 系統上執行命令<block ref="db3929a8e897b02a87f7f4bc42f38fc1" prefix=" " category="inline-code"></block> 、並確定探索到叢集交換器時、監控欄位設定為 * 真 * 、序號欄位未顯示 * 未知 * 。</block>
   <block id="31c020d11cc321faf9c0793a662d1e53" category="list-text">重新開機交換器CS2。您可以忽略交換器重新開機時、節點上報告的「叢集連接埠關閉」事件和錯誤<block ref="a9e34a08c2be7359540cbf7337dc5ce9" prefix=" " category="inline-code"></block> 輸出。</block>
   <block id="db82c22b5434946b4bc226a3b9b7888a" category="list-text">套用相同的RCF並再次儲存執行中的組態。這是必要的、因為 RCF 使用 QoS 並需要重新設定 TCAM 、這需要在交換器之間重新啟動時、載入 RCF 兩次。</block>
-  <block id="5fdb34220ba0015ed7039c3f92044588" category="paragraph"><block ref="e28073c74a510a495bd318aad6ec05d2" category="inline-link-macro-rx"></block>。</block>
   <block id="c7ca49e9f550dc9b18f2402f13ad9430" category="list-text">[[step5]] 如果您禁止自動建立個案、請叫用 AutoSupport 訊息來重新啟用：<block ref="9ac424c0d7b432975df36a19daf50c9c" prefix=" " category="inline-code"></block></block>
   <block id="58a19c530e54f6364edd838f35b1830e" category="inline-link-macro">設定交換器健全狀況監控</block>
   <block id="d21243682bbd31fa9c0d32d291135394" category="paragraph"><block ref="5b8b393a675dcaaee97c02828356657c" category="inline-link-macro-rx"></block>。</block>
@@ -4923,7 +4919,6 @@
   <block id="ec348def7634a5754cf9d62e8bca7f24" category="list-text"><block ref="853bcb6b647712eac9646e8ede049d7b" category="inline-link-macro-rx"></block>。</block>
   <block id="5f7b61b5cf8ee335e4fdf4eb2e2191b2" category="paragraph">連接埠可設定為用於叢集 + HA 的 40/100GbE 、用於叢集的 4x10GbE 中斷連接、用於叢集 + HA 的 4x25GbE 中斷連接、以及用於每個儲存 HA 配對的 100GbE 連接埠。</block>
   <block id="d30ea82d7096609f0aea87ef848f7ebd" category="paragraph">若要安裝及設定 Cisco Nexus 9336C-FX2 共用交換器的軟體、請遵循下列步驟：</block>
-  <block id="332339bcd9f462ab40cbf756a81eb021" category="doc">在 Cisco 9336C-FX2 共享交換器上啟用 SSH</block>
   <block id="e495f3ec8dabfce7925d7c5053f55cbb" category="inline-link-macro">將交換器安裝在 NetApp 機櫃中</block>
   <block id="343d8858c5eef7adcd6fc983a90c4848" category="list-text"><block ref="cad0a32a1376b86b466dd6cf29c7e620" category="inline-link-macro-rx"></block>。</block>
   <block id="d136348fb812c17c0d3c68bd85d3987f" category="inline-link-macro">準備安裝 NX-OS 和 RCF</block>
@@ -4932,7 +4927,6 @@
   <block id="bc2fac09fdd528e5067568b7be4074db" category="list-text">[[step18]確認磁碟櫃的纜線是否正確：</block>
   <block id="783733d2f76fb1513a44bb7144679e76" category="list-text">[[step19]移除舊交換器sh2。</block>
   <block id="3e6dc141a56ffa03ce5afc78a5bbbef1" category="paragraph">若要安裝及設定 Cisco Nexus 9336C-FX2 儲存交換器的軟體、請遵循下列步驟：</block>
-  <block id="d60d1714728d79a415d0da5a4975ae8f" category="doc">在 Cisco 9336C-FX2 儲存交換器上啟用 SSH</block>
   <block id="e9c6db9ee4edb08184a082916cf1f56f" category="list-text"><block ref="c49772a60328b39d671da109a076acd4" category="inline-link-macro-rx"></block>。</block>
   <block id="5537a63af1d3d4f5a6ffcc2a8619a2f8" category="list-text"><block ref="d43bf43861b014b2f70de1c12cff1c76" category="inline-link-macro-rx"></block>。</block>
   <block id="cb037476ec4486d51b86d5dbeede8008" category="doc">設定記錄收集</block>
@@ -5028,4 +5022,7 @@
   <block id="4af7c647d1c04eb805c9ecbc772595d1" category="list-text">重新套用任何先前的自訂項目至交換器組態。如<block ref="81e27480a79c2bb77194c038c9737157" category="inline-link-macro-rx"></block>需進一步變更的詳細資料、請參閱。</block>
   <block id="e51054318a8dcf9b707bc011338e9665" category="section-title">設定中斷連接埠的介面速度</block>
   <block id="e4da4813fef5b96a216a043d594bf245" category="list-text">重新套用任何先前的自訂項目至交換器組態。如<block ref="75ce5666fba6992a0719935651dd5b1b" category="inline-link-macro-rx"></block>需進一步變更的詳細資料、請參閱。</block>
+  <block id="bdbcf1c0d7f9cba19eb12819b953fbf1" category="inline-link">在交換器作業系統升級期間移轉叢集 LIF 時、節點超出仲裁範圍</block>
+  <block id="e6ab3c0f7886a69b4cd4dc70d1d4afa9" category="admonition">請務必關閉 * 所有 * 連線的叢集連接埠、以避免任何網路連線問題。如<block ref="c9b140831402716d03d51afcd09ff177" category="inline-link-rx"></block>需詳細資訊、請參閱知識庫文章。</block>
+  <block id="263b9f10fe7e073e656b08a5b6da7e5a" category="paragraph">本程序中的範例使用四個節點。這些節點使用兩個10GbE叢集互連連接埠e0a和e0b。請參閱<block ref="cd25cbe53f0a314145c84729c6ce2c78" category="inline-link-rx"></block>以驗證平台上正確的叢集連接埠。</block>
 </blocks>

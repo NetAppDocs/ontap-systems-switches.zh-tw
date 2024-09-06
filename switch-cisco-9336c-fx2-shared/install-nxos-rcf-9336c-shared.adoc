@@ -372,4 +372,4 @@ System Manager 為叢集設定和組態提供簡單易用的工作流程、包�
 前往 https://docs.netapp.com/us-en/ontap/task_configure_ontap.html["使用系統管理員在新叢集上設定 ONTAP"] 以取得設定指示。
 
 .接下來呢？
-link:configure-ssh.html["啟用SSH"]。
+link:../switch-cshm/config-overview.html["設定交換器健全狀況監控"]。
