@@ -846,4 +846,4 @@ RPC status:
 
 
 .接下來呢？
-link:../switch-cshm/config-overview.html["設定交換器健全狀況監控"]。
+link:configure-ssh-keys.html["驗證SSH組態"]。

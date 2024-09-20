@@ -33,6 +33,8 @@ entries:
     url: "/switch-cisco-3232c/install-nx-os-software-3232c.html"
   - title: 安裝RCF組態檔
     url: "/switch-cisco-3232c/install-rcf-3232c.html"
+  - title: 驗證SSH組態
+    url: "/switch-cisco-3232c/configure-ssh-keys.html"
 - title: 移轉交換器
   pdf-filename: migrate_switchs_3232c
   entries:

@@ -25,8 +25,8 @@ Cisco NX-OS軟體和參考組態檔（RCT）必須安裝在Cisco Nexus 9336C-FX2
 +
 首次安裝 Cisco Nexus 9336C-FX2 交換器後、請安裝或升級 RCF 。您也可以使用此程序來升級RCF版本。
 
-. link:configure-ssh.html["啟用SSH"]。
+. link:configure-ssh-keys.html["產生 SSH 金鑰"]。
 +
-如果您使用乙太網路交換器健全狀況監視器（ CSHM ）和記錄收集功能、請在交換器上啟用 SSH 。
+如果您使用乙太網路交換器健全狀況監視器（ CSHM ）和記錄收集功能、請在交換器上產生 SSH 金鑰。
 
 

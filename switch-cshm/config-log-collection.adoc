@@ -17,9 +17,9 @@ summary: 乙太網路交換器健全狀況監視器（ CSHM ）記錄收集功�
 
 [NOTE]
 ====
-. 根據廠商指示、在交換器上重新產生 ssh 金鑰。
-. 使用在 ONTAP 端重新產生 ssh 金鑰 `debug system regenerate-systemshell-key-pair`
-. 使用重新執行記錄收集設定例行程序 `system switch ethernet log setup-password`
+. 使用廠商指示在交換器上重新產生 SSH 金鑰。
+. 使用在 ONTAP 中重新產生 SSH 金鑰 `debug system regenerate-systemshell-key-pair`
+. 使用 `system switch ethernet log setup-password`命令重新執行記錄收集設定例行程序
 
 
 ====
@@ -29,8 +29,10 @@ summary: 乙太網路交換器健全狀況監視器（ CSHM ）記錄收集功�
 
 * 使用者必須能夠存取交換器 `show` 命令。如果這些權限不可用、請建立新使用者、並將必要的權限授予使用者。
 * 必須為交換器啟用交換器健全狀況監控。請務必確認 `Is Monitored:` 欄位在的輸出中設為 * 真 * `system switch ethernet show` 命令。
-* 對於 NVIDIA 交換器、必須允許記錄收集的使用者執行記錄收集命令、而不顯示密碼提示。若要允許這種使用方式、請執行命令：
-`echo '<username> ALL = NOPASSWD: /usr/cumulus/bin/cl-support, /usr/sbin/csmgrctl' | sudo EDITOR='tee -a' visudo -f /etc/sudoers.d/cumulus`
+* 若要使用 NVIDIA 交換器來支援記錄收集、必須允許記錄收集的 _user_ 執行 `cl-support`命令、而無需提供密碼。若要允許這種使用方式、請執行命令：
++
+`echo '_<user>_ ALL = NOPASSWD: /usr/cumulus/bin/cl-support' | sudo EDITOR='tee -a' visudo -f /etc/sudoers.d/cumulus`
+
 
 
 

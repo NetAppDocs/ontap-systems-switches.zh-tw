@@ -86,6 +86,54 @@ Configuration Saved!
 
 WARNING: 修改金鑰之前、請務必先停用 SSH 、否則交換器上會報告警告。
 
+. 加密 SSH 金鑰（僅適用於 * FIPS 模式 * ）：
++
+
+CAUTION: 在 FIPS 模式中、金鑰必須使用密碼來加密、以確保安全。如果沒有加密金鑰、應用程式就無法啟動。使用下列命令建立和加密金鑰：
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(switch) *configure*
+(switch) (Config)# *crypto key encrypt write rsa passphrase _<passphase>_*
+
+The key will be encrypted and saved on NVRAM.
+This will result in saving all existing configuration also.
+Do you want to continue? (y/n): *y*
+
+Config file 'startup-config' created successfully.
+
+(switch) (Config)# *crypto key encrypt write dsa passphrase _<passphase>_*
+
+The key will be encrypted and saved on NVRAM.
+This will result in saving all existing configuration also.
+Do you want to continue? (y/n): *y*
+
+Config file 'startup-config' created successfully.
+
+(switch)(Config)# *crypto key encrypt write ecdsa passphrase _<passphase>_*
+
+The key will be encrypted and saved on NVRAM.
+This will result in saving all existing configuration also.
+Do you want to continue? (y/n): *y*
+
+Config file 'startup-config' created successfully.
+
+(switch) (Config)# end
+(switch)# write memory
+
+This operation may take a few minutes.
+Management interfaces will not be available during this time.
+Are you sure you want to save? (y/n) *y*
+
+Config file 'startup-config' created successfully.
+
+Configuration Saved!
+----
+====
 . 重新啟動交換器：
 +
 "重裝"

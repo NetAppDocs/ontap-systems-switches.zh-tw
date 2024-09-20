@@ -33,6 +33,8 @@ entries:
     url: "/switch-cisco-92300/install-nxos-software.html"
   - title: 安裝RCF組態檔
     url: "/switch-cisco-92300/install-the-rcf-file.html"
+  - title: 驗證SSH組態
+    url: "/switch-cisco-92300/configure-ssh-keys.html"
 - title: 移轉交換器
   pdf-filename: migrate_switchs_92300yc
   entries:

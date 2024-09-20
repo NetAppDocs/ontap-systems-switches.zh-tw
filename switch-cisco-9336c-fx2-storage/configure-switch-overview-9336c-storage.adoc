@@ -11,7 +11,7 @@ summary: Cisco Nexus 9336C-FX2儲存交換器的安裝與組態總覽
 
 
 [role="lead"]
-Cisco Nexus 9336C-FX2儲存交換器是Cisco Nexus 9000平台的一部分、可安裝在NetApp系統機櫃中。儲存交換器可讓您在儲存區域網路（SAN）的伺服器與儲存陣列之間路由傳送資料。
+Cisco Nexus 9336C-FX2 交換器是 Cisco Nexus 9000 平台的一部分、可安裝在 NetApp 系統機櫃中。Nexus 9336C-FX2 是乙太網路交換器、可讓您在控制器和磁碟櫃之間切換資料。
 
 
 

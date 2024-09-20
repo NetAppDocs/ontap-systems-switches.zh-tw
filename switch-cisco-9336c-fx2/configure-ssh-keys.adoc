@@ -1,0 +1,64 @@
+---
+permalink: switch-cisco-9336c-fx2/configure-ssh-keys.html 
+sidebar: sidebar 
+keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, cisco 9336c-fx2 
+summary: 使用叢集交換器健全狀況監視器（CSHM\）和記錄收集功能時、必須使用SSH。若要在 Cisco 9336c-FX2 叢集交換器上啟用 SSH 、請先產生 SSH 金鑰、然後再啟用 SSH 。 
+---
+= 驗證SSH組態
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果您使用的是乙太網路交換器健全狀況監視器（ CSHM ）和記錄收集功能、請確認叢集交換器上已啟用 SSH 和 SSH 金鑰。
+
+.步驟
+. 確認SSH已啟用：
++
+[listing, subs="+quotes"]
+----
+(switch) *show ssh server*
+ssh version 2 is enabled
+----
+. 確認 SSH 金鑰已啟用：
++
+`show ssh key`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(switch)# *show ssh key*
+
+rsa Keys generated:Fri Jun 28 02:16:00 2024
+
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQDiNrD52Q586wTGJjFAbjBlFaA23EpDrZ2sDCewl7nwlioC6HBejxluIObAH8hrW8kR+gj0ZAfPpNeLGTg3APj/yiPTBoIZZxbWRShywAM5PqyxWwRb7kp9Zt1YHzVuHYpSO82KUDowKrL6lox/YtpKoZUDZjrZjAp8hTv3JZsPgQ==
+
+bitcount:1024
+fingerprint:
+SHA256:aHwhpzo7+YCDSrp3isJv2uVGz+mjMMokqdMeXVVXfdo
+
+could not retrieve dsa key information
+
+ecdsa Keys generated:Fri Jun 28 02:30:56 2024
+
+ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBABJ+ZX5SFKhS57evkE273e0VoqZi4/32dt+f14fBuKv80MjMsmLfjKtCWy1wgVt1Zi+C5TIBbugpzez529zkFSF0ADb8JaGCoaAYe2HvWR/f6QLbKbqVIewCdqWgxzrIY5BPP5GBdxQJMBiOwEdnHg1u/9Pzh/Vz9cHDcCW9qGE780QHA==
+
+bitcount:521
+fingerprint:
+SHA256:TFGe2hXn6QIpcs/vyHzftHJ7Dceg0vQaULYRAlZeHwQ
+
+(switch)# *show feature | include scpServer*
+scpServer              1          enabled
+(switch)# *show feature | include ssh*
+sshServer              1          enabled
+(switch)#
+----
+====
+
+
+.接下來呢？
+link:../switch-cshm/config-overview.html["設定交換器健全狀況監控"]。

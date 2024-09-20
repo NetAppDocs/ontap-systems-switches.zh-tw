@@ -2489,7 +2489,6 @@
   <block id="26579e78de73f5546f69f3f79a7b8f48" category="paragraph"><block ref="d639995fde516a3ba2e60963b02aecc1" category="inline-link-macro-rx"></block>。</block>
   <block id="005ec29dde0262dd01b006d4e9c03abf" category="summary">在設定NVIDIA SN2100交換器之前、請先檢閱程序總覽。</block>
   <block id="9aec7a1df32bc7a3da0beba803646322" category="doc">NVIDIA SN2100儲存交換器組態程序總覽</block>
-  <block id="12e75289f74531c2e9239c05b88eb32e" category="paragraph">NVIDIA SN2100是一款儲存交換器、可讓您在儲存區域網路（SAN）的伺服器與儲存陣列之間路由傳送資料。</block>
   <block id="aac9f267bacea6f425f8665241d6901e" category="section-title">初始組態總覽</block>
   <block id="2ef7b00479266befed2783905ed9725e" category="paragraph">若要在執行ONTAP 指示燈介面的系統上設定NVIDIA SN2100交換器、請依照下列步驟操作：</block>
   <block id="a194a4ea8dc4dc236627221cad9344d4" category="inline-link-macro">檢閱纜線佈線和組態考量</block>
@@ -2751,7 +2750,6 @@
   <block id="d334b073010dc4ca86957c663631fa0b" category="paragraph">每個叢集LIF都應顯示為true<block ref="53db3ce0fe0e71f06b3beb0b676b806c" prefix=" " category="inline-code"></block> 並擁有<block ref="4f21ee5a18672b60f4c01e94e6be9c79" prefix=" " category="inline-code"></block> 的<block ref="fc7c1443e5c7b6439706b6132a4c0829" prefix=" " category="inline-code"></block>。</block>
   <block id="9a82d0edb58bbaaf806da2f174490820" category="list-text">驗證叢集網路是否具備完整連線能力：</block>
   <block id="e64b06ebdf8146ea2bc17ff7d5457eef" category="summary">Cisco Nexus 9336C-FX2儲存交換器的安裝與組態總覽</block>
-  <block id="9907ba6708c9ebadda3cca4eb234f091" category="paragraph">Cisco Nexus 9336C-FX2儲存交換器是Cisco Nexus 9000平台的一部分、可安裝在NetApp系統機櫃中。儲存交換器可讓您在儲存區域網路（SAN）的伺服器與儲存陣列之間路由傳送資料。</block>
   <block id="be4cd7f1969695f8e6e1f2c8040abcd4" category="paragraph">若要在執行ONTAP 故障切換的系統上初始設定Cisco Nexus 9336C-FX2交換器、請依照下列步驟操作：</block>
   <block id="5ac09e984471f320b2e8920ece32b03d" category="inline-link-macro">完整的佈線工作表</block>
   <block id="ef44963f41cab6cd9db7a1c9e6197076" category="inline-link-macro">安裝交換器</block>
@@ -4932,11 +4930,7 @@
   <block id="cb037476ec4486d51b86d5dbeede8008" category="doc">設定記錄收集</block>
   <block id="8ac20e3719b6b58e94e5a4385e87b52e" category="paragraph">乙太網路交換器健全狀況監視器（ CSHM ）負責確保叢集與儲存網路交換器的作業健全狀況、並收集交換器記錄以供偵錯之用。本程序將引導您完成設定收集、要求詳細的 * 支援 * 記錄、以及啟用 AutoSupport 所收集 * 定期 * 資料的每小時收集。</block>
   <block id="2ded3ff3862adfc6f54d2a2f3ebf1147" category="paragraph">* 注意： * 如果您啟用 FIPS 模式、則必須完成下列步驟：</block>
-  <block id="4d3c86b44351ffae1eca9baf52af2d5a" category="list-text">根據廠商指示、在交換器上重新產生 ssh 金鑰。</block>
-  <block id="64e9182ec64ec70301b0218941a9ebd8" category="list-text">使用在 ONTAP 端重新產生 ssh 金鑰<block ref="c079360670e0f4f9441a54ac1d262788" prefix=" " category="inline-code"></block></block>
-  <block id="6cf5d6e9f6afd78a09fd1d4215def7c4" category="list-text">使用重新執行記錄收集設定例行程序<block ref="36ac3c1f3bae8142b5d110fb906ba03e" prefix=" " category="inline-code"></block></block>
   <block id="ca243f374acfb56a77236e0d30935f7f" category="list-text">使用者必須能夠存取交換器<block ref="a7dd12b1dab17d25467b0b0a4c8d4a92" prefix=" " category="inline-code"></block> 命令。如果這些權限不可用、請建立新使用者、並將必要的權限授予使用者。</block>
-  <block id="428fd3f400671ac494fc78009abe0ff1" category="list-text">對於 NVIDIA 交換器、必須允許記錄收集的使用者執行記錄收集命令、而不顯示密碼提示。若要允許這種使用方式、請執行命令：<block ref="35faf9d034bd3280f6d0a63cbb93f5e1" prefix=" " category="inline-code"></block></block>
   <block id="098a6be90d7d0f41999537981c29585d" category="open-title">ONTAP 9.14.1 及更早版本</block>
   <block id="bec82052a92013a93a38547be5743fc2" category="list-text">若要要求支援記錄收集並啟用定期收集、請執行下列命令。這會同時啟動記錄收集的兩種類型：詳細<block ref="db5eb84117d06047c97c9a0191b5fffe" prefix=" " category="inline-code"></block> 記錄和每小時收集<block ref="cdcc32a064503184053bd2018d1c0e7e" prefix=" " category="inline-code"></block> 的資料。</block>
   <block id="d35634a11eab667045ca1f93a9aae3e4" category="list-text">啟用定期記錄收集：</block>
@@ -5025,4 +5019,26 @@
   <block id="bdbcf1c0d7f9cba19eb12819b953fbf1" category="inline-link">在交換器作業系統升級期間移轉叢集 LIF 時、節點超出仲裁範圍</block>
   <block id="e6ab3c0f7886a69b4cd4dc70d1d4afa9" category="admonition">請務必關閉 * 所有 * 連線的叢集連接埠、以避免任何網路連線問題。如<block ref="c9b140831402716d03d51afcd09ff177" category="inline-link-rx"></block>需詳細資訊、請參閱知識庫文章。</block>
   <block id="263b9f10fe7e073e656b08a5b6da7e5a" category="paragraph">本程序中的範例使用四個節點。這些節點使用兩個10GbE叢集互連連接埠e0a和e0b。請參閱<block ref="cd25cbe53f0a314145c84729c6ce2c78" category="inline-link-rx"></block>以驗證平台上正確的叢集連接埠。</block>
+  <block id="fc9b57bfb616bf5697d55f4dc656cead" category="inline-link-macro">驗證SSH組態</block>
+  <block id="1046b0a81eea5dae9091290036b99362" category="paragraph"><block ref="4767a0bcf3ab94aeda87c79dd4096ef4" category="inline-link-macro-rx"></block>。</block>
+  <block id="95baf91c437105360687405b916b57fa" category="list-text">加密 SSH 金鑰（僅適用於 * FIPS 模式 * ）：</block>
+  <block id="50a89ea25c124abad381209f29dd1817" category="admonition">在 FIPS 模式中、金鑰必須使用密碼來加密、以確保安全。如果沒有加密金鑰、應用程式就無法啟動。使用下列命令建立和加密金鑰：</block>
+  <block id="f68db63213e90f13582fcc01c68930b3" category="summary">使用叢集交換器健全狀況監視器（CSHM\）和記錄收集功能時、必須使用SSH。若要在 Cisco 3132Q-V 叢集交換器上啟用 SSH 、請先產生 SSH 金鑰、然後再啟用 SSH 。</block>
+  <block id="48c63e1d1783b7749854be6c0e2a3b98" category="doc">驗證SSH組態</block>
+  <block id="a75620832d0a69ff51b8f472fb723fc0" category="paragraph">如果您使用的是乙太網路交換器健全狀況監視器（ CSHM ）和記錄收集功能、請確認叢集交換器上已啟用 SSH 和 SSH 金鑰。</block>
+  <block id="8b5fc97efb2c8cf5fdcb75b300be917a" category="list-text">確認 SSH 金鑰已啟用：</block>
+  <block id="720c3ddeb84772ef2bbfeba7b1d17a28" category="paragraph"><block ref="df8bbc4b7a2a07f02d567d56129471ab" prefix="" category="inline-code"></block></block>
+  <block id="3a88a5741f799dc33a61b15c6f06ef77" category="summary">使用叢集交換器健全狀況監視器（CSHM\）和記錄收集功能時、必須使用SSH。若要在 Cisco 3232C 叢集交換器上啟用 SSH 、請先產生 SSH 金鑰、然後再啟用 SSH 。</block>
+  <block id="1ea468ba4330d1b99a20149c0e78b4ed" category="summary">使用叢集交換器健全狀況監視器（CSHM\）和記錄收集功能時、必須使用SSH。若要在 Cisco 92300YC 叢集交換器上啟用 SSH 、請先產生 SSH 金鑰、然後再啟用 SSH 。</block>
+  <block id="6740010e0f06e1b4faea70ce1b3a4a76" category="inline-link-macro">產生 SSH 金鑰</block>
+  <block id="c49d0af5a081eb64111a489cb2120d97" category="list-text"><block ref="52338aab140ac2dbc56c2c83d6349939" category="inline-link-macro-rx"></block>。</block>
+  <block id="f12f5027a3dbb2bbb22c5b1ca34d79d7" category="paragraph">如果您使用乙太網路交換器健全狀況監視器（ CSHM ）和記錄收集功能、請在交換器上產生 SSH 金鑰。</block>
+  <block id="2e3301a364286013b9b29237fa347bb1" category="summary">使用叢集交換器健全狀況監視器（CSHM\）和記錄收集功能時、必須使用SSH。若要在 Cisco 9336c-FX2 叢集交換器上啟用 SSH 、請先產生 SSH 金鑰、然後再啟用 SSH 。</block>
+  <block id="243847a87ff7e0cb67ee578c74d8ad1c" category="paragraph">Cisco Nexus 9336C-FX2 交換器是 Cisco Nexus 9000 平台的一部分、可安裝在 NetApp 系統機櫃中。Nexus 9336C-FX2 是乙太網路交換器、可讓您在控制器和磁碟櫃之間切換資料。</block>
+  <block id="81f0d5b127adfd87f50ce10bc85e1e65" category="list-text">使用廠商指示在交換器上重新產生 SSH 金鑰。</block>
+  <block id="a60a00967db7342947b326a8f7618f52" category="list-text">使用在 ONTAP 中重新產生 SSH 金鑰<block ref="c079360670e0f4f9441a54ac1d262788" prefix=" " category="inline-code"></block></block>
+  <block id="fe85427bc017f31f0f2b913e65e8d888" category="list-text">使用<block ref="36ac3c1f3bae8142b5d110fb906ba03e" prefix=" " category="inline-code"></block>命令重新執行記錄收集設定例行程序</block>
+  <block id="c1433b541d8d99faed86a93460cb0bad" category="list-text">若要使用 NVIDIA 交換器來支援記錄收集、必須允許記錄收集的 _user_ 執行<block ref="c85737d6a0d20328583b59ea7320a5ef" prefix=" " category="inline-code"></block>命令、而無需提供密碼。若要允許這種使用方式、請執行命令：</block>
+  <block id="a0379ee208b1ca86b0ce11e60c0e73eb" category="paragraph"><block ref="83e3f80a08612b0113ac48e3b9a3432e" prefix="" category="inline-code"></block></block>
+  <block id="d97cf4e1b3c59ab22fc281643864890d" category="paragraph">NVIDIA SN2100 是乙太網路交換器、可讓您在控制器和磁碟櫃之間切換資料。</block>
 </blocks>
