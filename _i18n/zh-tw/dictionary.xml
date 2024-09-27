@@ -5041,4 +5041,6 @@
   <block id="c1433b541d8d99faed86a93460cb0bad" category="list-text">若要使用 NVIDIA 交換器來支援記錄收集、必須允許記錄收集的 _user_ 執行<block ref="c85737d6a0d20328583b59ea7320a5ef" prefix=" " category="inline-code"></block>命令、而無需提供密碼。若要允許這種使用方式、請執行命令：</block>
   <block id="a0379ee208b1ca86b0ce11e60c0e73eb" category="paragraph"><block ref="83e3f80a08612b0113ac48e3b9a3432e" prefix="" category="inline-code"></block></block>
   <block id="d97cf4e1b3c59ab22fc281643864890d" category="paragraph">NVIDIA SN2100 是乙太網路交換器、可讓您在控制器和磁碟櫃之間切換資料。</block>
+  <block id="68cbc1ccd652f8f281a11d07040f5054" category="inline-link">使用FIPS設定網路安全性</block>
+  <block id="ee73a5b7bde1ac3826492824ed56415e" category="admonition">啟用 FIPS 時、您必須使用命令將交換器上的位元數變更為 256<block ref="e945b32dfeddd45c02f47f82f234232f" prefix=" " category="inline-code"></block> 。如需詳細資訊、請參閱<block ref="4ed77aafc2157fac88ce3125b253884f" category="inline-link-rx"></block>。</block>
 </blocks>

@@ -60,5 +60,8 @@ sshServer              1          enabled
 ====
 
 
+
+IMPORTANT: 啟用 FIPS 時、您必須使用命令將交換器上的位元數變更為 256 `ssh key ecdsa 256 force` 。如需詳細資訊、請參閱 https://docs.netapp.com/us-en/ontap/networking/configure_network_security_using_federal_information_processing_standards_@fips@.html#enable-fips["使用FIPS設定網路安全性"^]。
+
 .接下來呢？
 link:../switch-cshm/config-overview.html["設定交換器健全狀況監控"]。
