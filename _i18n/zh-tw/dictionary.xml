@@ -5043,4 +5043,10 @@
   <block id="d97cf4e1b3c59ab22fc281643864890d" category="paragraph">NVIDIA SN2100 是乙太網路交換器、可讓您在控制器和磁碟櫃之間切換資料。</block>
   <block id="68cbc1ccd652f8f281a11d07040f5054" category="inline-link">使用FIPS設定網路安全性</block>
   <block id="ee73a5b7bde1ac3826492824ed56415e" category="admonition">啟用 FIPS 時、您必須使用命令將交換器上的位元數變更為 256<block ref="e945b32dfeddd45c02f47f82f234232f" prefix=" " category="inline-code"></block> 。如需詳細資訊、請參閱<block ref="4ed77aafc2157fac88ce3125b253884f" category="inline-link-rx"></block>。</block>
+  <block id="7a43f267b45d16f3e9b7113b1665a8ef" category="list-text">所有叢集生命體都會容錯移轉至新的交換器 CS2-new 。</block>
+  <block id="a200958f285bc9634331308217aef6e8" category="list-text">所有叢集生命體都會容錯移轉至新的交換器 CS1-new 。</block>
+  <block id="866e23be3750652ebc7235f85b035f6b" category="admonition">在此程序期間、不需要運作中的交換器間連結（ISL）。這是因為RCF版本變更可能會暫時影響ISL連線。為了確保叢集作業不中斷、下列程序會在執行目標交換器上的步驟時、容錯移轉所有叢集生命體到作業夥伴交換器。</block>
+  <block id="936b3180f1af844d99a2935c0f8f1407" category="paragraph">停用此程序的自動還原功能、叢集生命將不會自動移回其主連接埠。它們會保留在目前的連接埠上、同時仍保持正常運作。</block>
+  <block id="8cfe0e3d8ad280ac0655595fef97d183" category="list-text">所有叢集生命都會容錯移轉至新的交換器 CS2 。</block>
+  <block id="7f59c84a99e8340f8584b604b173e044" category="list-text">所有叢集生命都會容錯移轉至新的交換器 CS1 。</block>
 </blocks>
