@@ -377,17 +377,47 @@ Cluster
 cluster::*> network port modify -node n1 -port e4a -up-admin false
 cluster::*> network port modify -node n2 -port e4a -up-admin false
 ----
-. Ping遠端叢集介面並執行RPC伺服器檢查：
-+
-「叢集ping叢集」
+. 驗證遠端叢集介面的連線能力：
 
-+
-.顯示範例
-[%collapsible]
+
+[role="tabbed-block"]
 ====
-[listing]
+.更新版本ONTAP
+--
+您可以使用 `network interface check cluster-connectivity` 命令以啟動叢集連線的存取檢查、然後顯示詳細資料：
+
+`network interface check cluster-connectivity start` 和 `network interface check cluster-connectivity show`
+
+[listing, subs="+quotes"]
 ----
-cluster::*> cluster ping-cluster -node n1
+cluster1::*> *network interface check cluster-connectivity start*
+----
+* 注意： * 在執行 show 命令之前、請等待數秒以顯示詳細資料。
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity show*
+                                  Source          Destination       Packet
+Node   Date                       LIF             LIF               Loss
+------ -------------------------- --------------- ----------------- -----------
+n1
+       3/5/2022 19:21:18 -06:00   n1_clus2        n2_clus1      none
+       3/5/2022 19:21:20 -06:00   n1_clus2        n2_clus2      none
+
+n2
+       3/5/2022 19:21:18 -06:00   n2_clus2        n1_clus1      none
+       3/5/2022 19:21:20 -06:00   n2_clus2        n1_clus2      none
+----
+--
+.所有 ONTAP 版本
+--
+對於所有 ONTAP 版本、您也可以使用 `cluster ping-cluster -node <name>` 檢查連線能力的命令：
+
+`cluster ping-cluster -node <name>`
+
+[listing, subs="+quotes"]
+----
+cluster::*> *cluster ping-cluster -node n1*
 Host is n1
 Getting addresses from network interface table...
 Cluster n1_clus1 n1		e4a	10.10.0.1
@@ -413,8 +443,9 @@ RPC status:
 1 paths up, 0 paths down (tcp check)
 1 paths up, 0 paths down (ucp check)
 ----
+--
 ====
-. 從節點n1上的E4A拔下纜線。
+. [[step10]] 從節點 n1 上的 E4A 拔下纜線。
 +
 您可以參考執行中的組態、並使用Nexus 3132Q-V上支援的纜線、將交換器C1（本範例中為連接埠1/7）上的前40 GbE連接埠連接至n1上的E4A
 
@@ -796,17 +827,47 @@ network options switchless-cluster show
 
 === 步驟5：驗證組態
 
-. Ping遠端叢集介面並執行RPC伺服器檢查：
-+
-「叢集ping叢集」
+. 驗證遠端叢集介面的連線能力：
 
-+
-.顯示範例
-[%collapsible]
+
+[role="tabbed-block"]
 ====
-[listing]
+.更新版本ONTAP
+--
+您可以使用 `network interface check cluster-connectivity` 命令以啟動叢集連線的存取檢查、然後顯示詳細資料：
+
+`network interface check cluster-connectivity start` 和 `network interface check cluster-connectivity show`
+
+[listing, subs="+quotes"]
 ----
-cluster::*> cluster ping-cluster -node n1
+cluster1::*> *network interface check cluster-connectivity start*
+----
+* 注意： * 在執行 show 命令之前、請等待數秒以顯示詳細資料。
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity show*
+                                  Source          Destination       Packet
+Node   Date                       LIF             LIF               Loss
+------ -------------------------- --------------- ----------------- -----------
+n1
+       3/5/2022 19:21:18 -06:00   n1_clus2        n2_clus1      none
+       3/5/2022 19:21:20 -06:00   n1_clus2        n2_clus2      none
+
+n2
+       3/5/2022 19:21:18 -06:00   n2_clus2        n1_clus1      none
+       3/5/2022 19:21:20 -06:00   n2_clus2        n1_clus2      none
+----
+--
+.所有 ONTAP 版本
+--
+對於所有 ONTAP 版本、您也可以使用 `cluster ping-cluster -node <name>` 檢查連線能力的命令：
+
+`cluster ping-cluster -node <name>`
+
+[listing, subs="+quotes"]
+----
+cluster::*> *cluster ping-cluster -node n1*
 Host is n1
 Getting addresses from network interface table...
 Cluster n1_clus1 n1		e4a	10.10.0.1
@@ -832,12 +893,13 @@ RPC status:
 1 paths up, 0 paths down (tcp check)
 1 paths up, 0 paths down (ucp check)
 ----
+--
 ====
-. 如果您禁止自動建立個案、請叫用AutoSupport 下列訊息來重新啟用：
+. [[step2]] 如果您禁止自動建立個案、請叫用 AutoSupport 訊息來重新啟用：
 +
 「系統節點AutoSupport 不完整地叫用節點*-type all -most MAn=end」
 
 
 
 .接下來呢？
-link:../switch-cshm/config-overview.html["設定交換器健全狀況監控"]
+link:../switch-cshm/config-overview.html["設定交換器健全狀況監控"]。

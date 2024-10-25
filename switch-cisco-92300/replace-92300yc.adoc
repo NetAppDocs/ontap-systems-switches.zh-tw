@@ -214,18 +214,46 @@ Cluster      node2_clus2   true
 4 entries were displayed.
 ----
 ====
-. 驗證所有叢集lifs是否都能通訊：
-+
-「叢集ping叢集」
+. 驗證遠端叢集介面的連線能力：
 
-+
-.顯示範例
-[%collapsible]
+
+[role="tabbed-block"]
 ====
+.更新版本ONTAP
+--
+您可以使用 `network interface check cluster-connectivity` 命令以啟動叢集連線的存取檢查、然後顯示詳細資料：
+
+`network interface check cluster-connectivity start` 和 `network interface check cluster-connectivity show`
+
 [listing, subs="+quotes"]
 ----
-cluster1::*> *cluster ping-cluster node1*
+cluster1::*> *network interface check cluster-connectivity start*
+----
+* 注意： * 請等待數秒後再執行 `show`命令以顯示詳細資料。
 
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity show*
+                                  Source           Destination      Packet
+Node   Date                       LIF              LIF              Loss
+------ -------------------------- ---------------- ---------------- -----------
+node1
+       3/5/2022 19:21:18 -06:00   node1_clus2      node2-clus1      none
+       3/5/2022 19:21:20 -06:00   node1_clus2      node2_clus2      none
+node2
+       3/5/2022 19:21:18 -06:00   node2_clus2      node1_clus1      none
+       3/5/2022 19:21:20 -06:00   node2_clus2      node1_clus2      none
+----
+--
+.所有 ONTAP 版本
+--
+對於所有 ONTAP 版本、您也可以使用 `cluster ping-cluster -node <name>` 檢查連線能力的命令：
+
+`cluster ping-cluster -node <name>`
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *cluster ping-cluster -node local*
 Host is node2
 Getting addresses from network interface table...
 Cluster node1_clus1 169.254.209.69 node1 e0a
@@ -250,9 +278,8 @@ RPC status:
 2 paths up, 0 paths down (tcp check)
 2 paths up, 0 paths down (udp check)
 ----
+--
 ====
-
-
 
 
 === 步驟2：設定纜線和連接埠
@@ -422,17 +449,46 @@ e0b       Cluster      Cluster          up    9000  auto/10000  healthy  false
 
 === 步驟3：完成程序
 
-. 驗證所有叢集lifs是否都能通訊：
-+
-「叢集ping叢集」
+. 驗證遠端叢集介面的連線能力：
 
-+
-.顯示範例
-[%collapsible]
+
+[role="tabbed-block"]
 ====
+.更新版本ONTAP
+--
+您可以使用 `network interface check cluster-connectivity` 命令以啟動叢集連線的存取檢查、然後顯示詳細資料：
+
+`network interface check cluster-connectivity start` 和 `network interface check cluster-connectivity show`
+
 [listing, subs="+quotes"]
 ----
-cluster1::*> *cluster ping-cluster -node node2*
+cluster1::*> *network interface check cluster-connectivity start*
+----
+* 注意： * 請等待數秒後再執行 `show`命令以顯示詳細資料。
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity show*
+                                  Source           Destination      Packet
+Node   Date                       LIF              LIF              Loss
+------ -------------------------- ---------------- ---------------- -----------
+node1
+       3/5/2022 19:21:18 -06:00   node1_clus2      node2-clus1      none
+       3/5/2022 19:21:20 -06:00   node1_clus2      node2_clus2      none
+node2
+       3/5/2022 19:21:18 -06:00   node2_clus2      node1_clus1      none
+       3/5/2022 19:21:20 -06:00   node2_clus2      node1_clus2      none
+----
+--
+.所有 ONTAP 版本
+--
+對於所有 ONTAP 版本、您也可以使用 `cluster ping-cluster -node <name>` 檢查連線能力的命令：
+
+`cluster ping-cluster -node <name>`
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *cluster ping-cluster -node local*
 Host is node2
 Getting addresses from network interface table...
 Cluster node1_clus1 169.254.209.69 node1 e0a
@@ -457,8 +513,9 @@ RPC status:
 2 paths up, 0 paths down (tcp check)
 2 paths up, 0 paths down (udp check)
 ----
+--
 ====
-. 確認下列叢集網路組態：
+. [[step2]] 確認下列叢集網路組態：
 +
 「網路連接埠展示」
 
@@ -552,4 +609,4 @@ Total entries displayed: 4
 
 
 .接下來呢？
-link:../switch-cshm/config-overview.html["設定交換器健全狀況監控"]
+link:../switch-cshm/config-overview.html["設定交換器健全狀況監控"]。

@@ -51,8 +51,6 @@ entries:
   entries:
   - title: 更換叢集交換器
     url: "/switch-cisco-3232c/replace-cluster-switch.html"
-  - title: 更換儲存交換器
-    url: "/switch-cisco-3232c/replace-storage-switch.html"
   - title: 使用無交換器連線取代叢集交換器
     url: "/switch-cisco-3232c/migrate-to-switchless-cluster-interconnect.html"
 - title: 升級交換器

@@ -331,19 +331,47 @@ cluster::*> network port modify -node n2 -port e0b -up-admin false
 cluster::*> network port modify -node n2 -port e0c -up-admin false
 ----
 ====
-. Ping遠端叢集介面、然後執行遠端程序呼叫伺服器檢查：
-+
-「叢集ping叢集」
+. 驗證遠端叢集介面的連線能力：
 
-+
-.顯示範例
-[%collapsible]
+
+[role="tabbed-block"]
 ====
-下列範例顯示如何ping遠端叢集介面：
+.更新版本ONTAP
+--
+您可以使用 `network interface check cluster-connectivity` 命令以啟動叢集連線的存取檢查、然後顯示詳細資料：
 
-[listing]
+`network interface check cluster-connectivity start` 和 `network interface check cluster-connectivity show`
+
+[listing, subs="+quotes"]
 ----
-cluster::*> cluster ping-cluster -node n1
+cluster1::*> *network interface check cluster-connectivity start*
+----
+* 注意： * 在執行 show 命令之前、請等待數秒以顯示詳細資料。
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity show*
+                                  Source      Destination   Packet
+Node   Date                       LIF         LIF           Loss
+------ -------------------------- ---------- -------------- -----------
+n1
+       3/5/2022 19:21:18 -06:00   n1_clus2   n1_clus1       none
+       3/5/2022 19:21:20 -06:00   n1_clus2   n2_clus2       none
+
+n2
+       3/5/2022 19:21:18 -06:00   n2_clus2   n1_clus1       none
+       3/5/2022 19:21:20 -06:00   n2_clus2   n1_clus2       none
+----
+--
+.所有 ONTAP 版本
+--
+對於所有 ONTAP 版本、您也可以使用 `cluster ping-cluster -node <name>` 檢查連線能力的命令：
+
+`cluster ping-cluster -node <name>`
+
+[listing, subs="+quotes"]
+----
+cluster::*> *cluster ping-cluster -node n1*
 Host is n1
 Getting addresses from network interface table...
 Cluster n1_clus1 n1       e0a    10.10.0.1
@@ -386,8 +414,9 @@ RPC status:
 4 paths up, 0 paths down (tcp check)
 4 paths up, 0 paths down (udp check)
 ----
+--
 ====
-. 關閉主動式CN1610交換器CL1上的ISL連接埠13至16：
+. [[step10]] 關閉使用中 CN1610 交換器 CL1 上的 ISL 連接埠 13 到 16 ：
 +
 「關機」
 
@@ -650,19 +679,47 @@ e0d   cluster   cluster     up    9000  auto/10000     -        -
 8 entries were displayed.
 ----
 ====
-. Ping遠端叢集介面、然後執行遠端程序呼叫伺服器檢查：
-+
-「叢集ping叢集」
+. 驗證遠端叢集介面的連線能力：
 
-+
-.顯示範例
-[%collapsible]
+
+[role="tabbed-block"]
 ====
-下列範例顯示如何ping遠端叢集介面：
+.更新版本ONTAP
+--
+您可以使用 `network interface check cluster-connectivity` 命令以啟動叢集連線的存取檢查、然後顯示詳細資料：
 
-[listing]
+`network interface check cluster-connectivity start` 和 `network interface check cluster-connectivity show`
+
+[listing, subs="+quotes"]
 ----
-cluster::*> cluster ping-cluster -node n1
+cluster1::*> *network interface check cluster-connectivity start*
+----
+* 注意： * 在執行 show 命令之前、請等待數秒以顯示詳細資料。
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity show*
+                                  Source      Destination   Packet
+Node   Date                       LIF         LIF           Loss
+------ -------------------------- ---------- -------------- -----------
+n1
+       3/5/2022 19:21:18 -06:00   n1_clus2   n1_clus1       none
+       3/5/2022 19:21:20 -06:00   n1_clus2   n2_clus2       none
+
+n2
+       3/5/2022 19:21:18 -06:00   n2_clus2   n1_clus1       none
+       3/5/2022 19:21:20 -06:00   n2_clus2   n1_clus2       none
+----
+--
+.所有 ONTAP 版本
+--
+對於所有 ONTAP 版本、您也可以使用 `cluster ping-cluster -node <name>` 檢查連線能力的命令：
+
+`cluster ping-cluster -node <name>`
+
+[listing, subs="+quotes"]
+----
+cluster::*> *cluster ping-cluster -node n1*
 Host is n1
 Getting addresses from network interface table...
 Cluster n1_clus1 n1       e0a    10.10.0.1
@@ -705,8 +762,9 @@ RPC status:
 4 paths up, 0 paths down (tcp check)
 4 paths up, 0 paths down (udp check)
 ----
+--
 ====
-. 在叢集中的每個節點上、移轉與第一個CN1610交換器CL1相關聯的介面、以取代這些介面：
+. [[step12]] 在叢集中的每個節點上、移轉與要取代的第一個 CN1610 交換器 CL1 相關的介面：
 +
 網路介面移轉
 
@@ -988,19 +1046,47 @@ Cluster
 8 entries were displayed.
 ----
 ====
-. Ping遠端叢集介面、然後執行遠端程序呼叫伺服器檢查：
-+
-「叢集ping叢集」
+. 驗證遠端叢集介面的連線能力：
 
-+
-.顯示範例
-[%collapsible]
+
+[role="tabbed-block"]
 ====
-下列範例顯示如何ping遠端叢集介面：
+.更新版本ONTAP
+--
+您可以使用 `network interface check cluster-connectivity` 命令以啟動叢集連線的存取檢查、然後顯示詳細資料：
 
-[listing]
+`network interface check cluster-connectivity start` 和 `network interface check cluster-connectivity show`
+
+[listing, subs="+quotes"]
 ----
-cluster::*> cluster ping-cluster -node n1
+cluster1::*> *network interface check cluster-connectivity start*
+----
+* 注意： * 在執行 show 命令之前、請等待數秒以顯示詳細資料。
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity show*
+                                  Source      Destination   Packet
+Node   Date                       LIF         LIF           Loss
+------ -------------------------- ---------- -------------- -----------
+n1
+       3/5/2022 19:21:18 -06:00   n1_clus2   n1_clus1       none
+       3/5/2022 19:21:20 -06:00   n1_clus2   n2_clus2       none
+
+n2
+       3/5/2022 19:21:18 -06:00   n2_clus2   n1_clus1       none
+       3/5/2022 19:21:20 -06:00   n2_clus2   n1_clus2       none
+----
+--
+.所有 ONTAP 版本
+--
+對於所有 ONTAP 版本、您也可以使用 `cluster ping-cluster -node <name>` 檢查連線能力的命令：
+
+`cluster ping-cluster -node <name>`
+
+[listing, subs="+quotes"]
+----
+cluster::*> *cluster ping-cluster -node n1*
 Host is n1
 Getting addresses from network interface table...
 Cluster n1_clus1 n1       e0a    10.10.0.1
@@ -1043,8 +1129,9 @@ RPC status:
 4 paths up, 0 paths down (tcp check)
 4 paths up, 0 paths down (udp check)
 ----
+--
 ====
-. 將節點新增至Nexus 3132Q-V叢集交換器、以擴充叢集。
+. [step7]將節點新增至Nexus 3132Q-V叢集交換器、以擴充叢集。
 . 顯示組態中裝置的相關資訊：
 +
 ** 「網路裝置探索秀」
@@ -1257,4 +1344,4 @@ C2                          cluster-network    10.10.1.104      NX3132V
 
 
 .接下來呢？
-link:../switch-cshm/config-overview.html["設定交換器健全狀況監控"]
+link:../switch-cshm/config-overview.html["設定交換器健全狀況監控"]。

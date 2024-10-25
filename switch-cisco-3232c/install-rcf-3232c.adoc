@@ -599,7 +599,7 @@ cluster1-04          true     true          false
 cluster1::*>
 ----
 ====
-. 在交換器 CS1 上重複步驟 7 至 15 。
+. 在交換器 CS1 上重複步驟 7 至 17 。
 . 在叢集生命體上啟用自動還原。
 +
 [listing, subs="+quotes"]
@@ -710,14 +710,57 @@ cluster1-04          true    true          false
 cluster1::*>
 ----
 ====
-. Ping遠端叢集介面以驗證連線能力：
-+
-「叢集ping叢集節點本機」
+. 驗證遠端叢集介面的連線能力：
 
-+
-.顯示範例
-[%collapsible]
+
+[role="tabbed-block"]
 ====
+.更新版本ONTAP
+--
+您可以使用 `network interface check cluster-connectivity` 命令以啟動叢集連線的存取檢查、然後顯示詳細資料：
+
+`network interface check cluster-connectivity start` 和 `network interface check cluster-connectivity show`
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity start*
+----
+* 注意： * 請等待數秒後再執行 `show`命令以顯示詳細資料。
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity show*
+                                  Source              Destination         Packet
+Node   Date                       LIF                 LIF                 Loss
+------ -------------------------- ------------------- ------------------- -----------
+cluster1-01
+       3/5/2022 19:21:18 -06:00   cluster1-01_clus2   cluster1-02_clus1   none
+       3/5/2022 19:21:20 -06:00   cluster1-01_clus2   cluster1-02_clus2   none
+.
+.
+cluster1-02
+       3/5/2022 19:21:18 -06:00   cluster1-02_clus2   cluster1-01_clus1   none
+       3/5/2022 19:21:20 -06:00   cluster1-02_clus2   cluster1-01_clus2   none
+.
+.
+cluster1-03
+.
+.
+.
+.
+cluster1-04
+.
+.
+.
+.
+----
+--
+.所有 ONTAP 版本
+--
+對於所有 ONTAP 版本、您也可以使用 `cluster ping-cluster -node <name>` 檢查連線能力的命令：
+
+`cluster ping-cluster -node <name>`
+
 [listing, subs="+quotes"]
 ----
 cluster1::*> *cluster ping-cluster -node local*
@@ -757,8 +800,7 @@ RPC status:
 6 paths up, 0 paths down (tcp check)
 6 paths up, 0 paths down (udp check)
 ----
+--
 ====
-
-
 .接下來呢？
 link:configure-ssh-keys.html["驗證SSH組態"]。

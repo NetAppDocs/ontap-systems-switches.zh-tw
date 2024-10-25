@@ -316,19 +316,47 @@ cluster::*> network port modify -node n2 -port e0b -up-admin false
 cluster::*> network port modify -node n2 -port e0c -up-admin false
 ----
 ====
-. Ping遠端叢集介面並執行RPC伺服器檢查：
-+
-「叢集ping叢集」
+. 驗證遠端叢集介面的連線能力：
 
-+
-.顯示範例
-[%collapsible]
+
+[role="tabbed-block"]
 ====
-下列範例顯示如何ping遠端叢集介面：
+.更新版本ONTAP
+--
+您可以使用 `network interface check cluster-connectivity` 命令以啟動叢集連線的存取檢查、然後顯示詳細資料：
 
-[listing]
+`network interface check cluster-connectivity start` 和 `network interface check cluster-connectivity show`
+
+[listing, subs="+quotes"]
 ----
-cluster::*> cluster ping-cluster -node n1
+cluster1::*> *network interface check cluster-connectivity start*
+----
+* 注意： * 在執行 show 命令之前、請等待數秒以顯示詳細資料。
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity show*
+                                  Source          Destination       Packet
+Node   Date                       LIF             LIF               Loss
+------ -------------------------- --------------- ----------------- -----------
+n1
+       3/5/2022 19:21:18 -06:00   n1_clus2        n2_clus1      none
+       3/5/2022 19:21:20 -06:00   n1_clus2        n2_clus2      none
+
+n2
+       3/5/2022 19:21:18 -06:00   n2_clus2        n1_clus1      none
+       3/5/2022 19:21:20 -06:00   n2_clus2        n1_clus2      none
+----
+--
+.所有 ONTAP 版本
+--
+對於所有 ONTAP 版本、您也可以使用 `cluster ping-cluster -node <name>` 檢查連線能力的命令：
+
+`cluster ping-cluster -node <name>`
+
+[listing, subs="+quotes"]
+----
+cluster::*> *cluster ping-cluster -node n1*
 Host is n1
 Getting addresses from network interface table...
 Cluster n1_clus1 n1		e0a	10.10.0.1
@@ -368,10 +396,11 @@ Detected 1500 byte MTU on 16 path(s):
 Larger than PMTU communication succeeds on 16 path(s)
 RPC status:
 4 paths up, 0 paths down (tcp check)
-4 paths up, 0 paths down (udp check
+4 paths up, 0 paths down (udp check)
 ----
+--
 ====
-. 關閉活動Nexus 5596交換器CL1上的ISL連接埠41至48：
+. [[step10]] 關閉作用中 Nexus 5596 交換器 CL1 上的 ISL 連接埠 41 到 48 ：
 +
 .顯示範例
 [%collapsible]
@@ -604,19 +633,47 @@ e0d       Cluster      Cluster          up   9000  auto/10000 -        -
 8 entries were displayed.
 ----
 ====
-. Ping遠端叢集介面並執行RPC伺服器檢查：
-+
-「叢集ping叢集」
+. 驗證遠端叢集介面的連線能力：
 
-+
-.顯示範例
-[%collapsible]
+
+[role="tabbed-block"]
 ====
-下列範例顯示如何ping遠端叢集介面：
+.更新版本ONTAP
+--
+您可以使用 `network interface check cluster-connectivity` 命令以啟動叢集連線的存取檢查、然後顯示詳細資料：
 
-[listing]
+`network interface check cluster-connectivity start` 和 `network interface check cluster-connectivity show`
+
+[listing, subs="+quotes"]
 ----
-cluster::*> cluster ping-cluster -node n1
+cluster1::*> *network interface check cluster-connectivity start*
+----
+* 注意： * 在執行 show 命令之前、請等待數秒以顯示詳細資料。
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity show*
+                                  Source          Destination       Packet
+Node   Date                       LIF             LIF               Loss
+------ -------------------------- --------------- ----------------- -----------
+n1
+       3/5/2022 19:21:18 -06:00   n1_clus2        n2_clus1      none
+       3/5/2022 19:21:20 -06:00   n1_clus2        n2_clus2      none
+
+n2
+       3/5/2022 19:21:18 -06:00   n2_clus2        n1_clus1      none
+       3/5/2022 19:21:20 -06:00   n2_clus2        n1_clus2      none
+----
+--
+.所有 ONTAP 版本
+--
+對於所有 ONTAP 版本、您也可以使用 `cluster ping-cluster -node <name>` 檢查連線能力的命令：
+
+`cluster ping-cluster -node <name>`
+
+[listing, subs="+quotes"]
+----
+cluster::*> *cluster ping-cluster -node n1*
 Host is n1
 Getting addresses from network interface table...
 Cluster n1_clus1 n1		e0a	10.10.0.1
@@ -658,8 +715,9 @@ RPC status:
 4 paths up, 0 paths down (tcp check)
 4 paths up, 0 paths down (udp check)
 ----
+--
 ====
-. 在叢集中的每個節點上、移轉與第一台Nexus 5596交換器CL1相關的介面、以供替換：
+. [[step12]] 在叢集中的每個節點上、移轉與第一個要取代的 Nexus 5596 交換器 CL1 相關的介面：
 +
 網路介面移轉
 
@@ -859,7 +917,7 @@ cluster::*> network port modify -node n2 -port e0d -up-admin true
 
 [listing]
 ----
-cluster::*> network port show –role cluster
+cluster::*> network port show -role cluster
   (network port show)
 Node: n1
                                                                        Ignore
@@ -930,19 +988,47 @@ Cluster
 8 entries were displayed.
 ----
 ====
-. Ping遠端叢集介面、然後執行遠端程序呼叫伺服器檢查：
-+
-「叢集ping叢集」
+. 驗證遠端叢集介面的連線能力：
 
-+
-.顯示範例
-[%collapsible]
+
+[role="tabbed-block"]
 ====
-下列範例顯示如何ping遠端叢集介面：
+.更新版本ONTAP
+--
+您可以使用 `network interface check cluster-connectivity` 命令以啟動叢集連線的存取檢查、然後顯示詳細資料：
 
-[listing]
+`network interface check cluster-connectivity start` 和 `network interface check cluster-connectivity show`
+
+[listing, subs="+quotes"]
 ----
-cluster::*> cluster ping-cluster -node n1
+cluster1::*> *network interface check cluster-connectivity start*
+----
+* 注意： * 在執行 show 命令之前、請等待數秒以顯示詳細資料。
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity show*
+                                  Source          Destination       Packet
+Node   Date                       LIF             LIF               Loss
+------ -------------------------- --------------- ----------------- -----------
+n1
+       3/5/2022 19:21:18 -06:00   n1_clus2        n2_clus1      none
+       3/5/2022 19:21:20 -06:00   n1_clus2        n2_clus2      none
+
+n2
+       3/5/2022 19:21:18 -06:00   n2_clus2        n1_clus1      none
+       3/5/2022 19:21:20 -06:00   n2_clus2        n1_clus2      none
+----
+--
+.所有 ONTAP 版本
+--
+對於所有 ONTAP 版本、您也可以使用 `cluster ping-cluster -node <name>` 檢查連線能力的命令：
+
+`cluster ping-cluster -node <name>`
+
+[listing, subs="+quotes"]
+----
+cluster::*> *cluster ping-cluster -node n1*
 Host is n1
 Getting addresses from network interface table...
 Cluster n1_clus1 n1		e0a	10.10.0.1
@@ -984,8 +1070,9 @@ RPC status:
 4 paths up, 0 paths down (tcp check)
 4 paths up, 0 paths down (udp check)
 ----
+--
 ====
-. 將節點新增至Nexus 3132Q-V叢集交換器、以擴充叢集。
+. [step7]將節點新增至Nexus 3132Q-V叢集交換器、以擴充叢集。
 . 顯示組態中裝置的相關資訊：
 +
 ** 「網路裝置探索秀」
@@ -1024,7 +1111,7 @@ n4         /cdp
 ----
 [listing]
 ----
-cluster::*> network port show –role cluster
+cluster::*> network port show -role cluster
   (network port show)
 Node: n1
                                                                        Ignore
@@ -1140,8 +1227,8 @@ CL2                           cluster-network    10.10.1.102     NX5596
 
 [listing]
 ----
-cluster::> system cluster-switch delete –device CL1
-cluster::> system cluster-switch delete –device CL2
+cluster::> system cluster-switch delete -device CL1
+cluster::> system cluster-switch delete -device CL2
 ----
 ====
 . 將叢集clus1和clus2設定為在每個節點上自動還原並確認。

@@ -341,15 +341,51 @@ cluster::*> network port modify -node n3 -port e4e -up-admin false
 cluster::*> network port modify -node n4 -port e4e -up-admin false
 ----
 ====
-. Ping遠端叢集介面並執行RPC伺服器檢查：
-+
-「叢集ping叢集」
+. 驗證遠端叢集介面的連線能力：
 
-+
-.顯示範例
-[%collapsible]
+
+[role="tabbed-block"]
 ====
-[listing]
+.更新版本ONTAP
+--
+您可以使用 `network interface check cluster-connectivity` 命令以啟動叢集連線的存取檢查、然後顯示詳細資料：
+
+`network interface check cluster-connectivity start` 和 `network interface check cluster-connectivity show`
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity start*
+----
+* 注意： * 在執行 show 命令之前、請等待數秒以顯示詳細資料。
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity show*
+                                  Source     Destination   Packet
+Node   Date                       LIF        LIF           Loss
+------ -------------------------- ---------- ------------- -----------
+n1
+       3/5/2022 19:21:18 -06:00   n1_clus2   n2_clus1      none
+       3/5/2022 19:21:20 -06:00   n1_clus2   n2_clus2      none
+
+n2
+       3/5/2022 19:21:18 -06:00   n2_clus2   n1_clus1      none
+       3/5/2022 19:21:20 -06:00   n2_clus2   n1_clus2      none
+n3
+...
+...
+n4
+...
+...
+----
+--
+.所有 ONTAP 版本
+--
+對於所有 ONTAP 版本、您也可以使用 `cluster ping-cluster -node <name>` 檢查連線能力的命令：
+
+`cluster ping-cluster -node <name>`
+
+[listing, subs="+quotes"]
 ----
 cluster::*> cluster ping-cluster -node n1
 Host is n1
@@ -414,8 +450,9 @@ RPC status:
 8 paths up, 0 paths down (tcp check)
 8 paths up, 0 paths down (udp check)
 ----
+--
 ====
-. 關閉CL1上的連接埠1/31和1/32、以及作用中的Nexus 3132Q-V交換器：
+. [[step9]] 關閉 CL1 上的連接埠 1/31 和 1/32 、以及作用中的 Nexus 3132Q-V 交換器：
 +
 「關機」
 
@@ -429,8 +466,8 @@ RPC status:
 ----
 (CL1)# configure
 (CL1)(Config)# interface e1/31-32
-(CL1(config-if-range)# shutdown
-(CL1(config-if-range)# exit
+(CL1)(config-if-range)# shutdown
+(CL1)(config-if-range)# exit
 (CL1)(Config)# exit
 (CL1)#
 ----
@@ -449,8 +486,8 @@ RPC status:
 ----
 (CL1)# configure
 (CL1)(Config)# interface e1/31-32
-(CL1(config-if-range)# no shutdown
-(CL1(config-if-range)# exit
+(CL1)(config-if-range)# no shutdown
+(CL1)(config-if-range)# exit
 (CL1)(Config)# exit
 (CL1)#
 ----
@@ -627,23 +664,57 @@ e4e       Cluster      Cluster          up   9000 auto/40000  -        -
 12 entries were displayed.
 ----
 ====
-. Ping遠端叢集介面並執行RPC伺服器檢查：
-+
-「叢集ping叢集」
+. 驗證遠端叢集介面的連線能力：
 
-+
-.顯示範例
-[%collapsible]
+
+[role="tabbed-block"]
 ====
-[listing]
+.更新版本ONTAP
+--
+您可以使用 `network interface check cluster-connectivity` 命令以啟動叢集連線的存取檢查、然後顯示詳細資料：
+
+`network interface check cluster-connectivity start` 和 `network interface check cluster-connectivity show`
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity start*
+----
+* 注意： * 在執行 show 命令之前、請等待數秒以顯示詳細資料。
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity show*
+                                  Source     Destination   Packet
+Node   Date                       LIF        LIF           Loss
+------ -------------------------- ---------- ------------- -----------
+n1
+       3/5/2022 19:21:18 -06:00   n1_clus2   n2_clus1      none
+       3/5/2022 19:21:20 -06:00   n1_clus2   n2_clus2      none
+
+n2
+       3/5/2022 19:21:18 -06:00   n2_clus2   n1_clus1      none
+       3/5/2022 19:21:20 -06:00   n2_clus2   n1_clus2      none
+n3
+...
+...
+n4
+...
+...
+----
+--
+.所有 ONTAP 版本
+--
+對於所有 ONTAP 版本、您也可以使用 `cluster ping-cluster -node <name>` 檢查連線能力的命令：
+
+`cluster ping-cluster -node <name>`
+
+[listing, subs="+quotes"]
 ----
 cluster::*> cluster ping-cluster -node n1
 Host is n1
 Getting addresses from network interface table...
 Cluster n1_clus1 n1		e0a	10.10.0.1
 Cluster n1_clus2 n1		e0b	10.10.0.2
-Cluster n1_clus3 n1		e0c	10.10.0.3
-Cluster n1_clus4 n1		e0d	10.10.0.4
 Cluster n2_clus1 n2		e0a	10.10.0.5
 Cluster n2_clus2 n2		e0b	10.10.0.6
 Cluster n2_clus3 n2		e0c	10.10.0.7
@@ -700,9 +771,8 @@ RPC status:
 8 paths up, 0 paths down (tcp check)
 8 paths up, 0 paths down (udp check)
 ----
+--
 ====
-
-
 
 
 === 步驟3：驗證組態

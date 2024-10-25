@@ -1,7 +1,7 @@
 ---
 permalink: switch-cisco-9336c-fx2/configure-software-overview-9336c-cluster.html 
 sidebar: sidebar 
-keywords: BES-53248 switches, initial installation, configure switch-cisco-9336c-fx2 switch 
+keywords: switches, initial installation, configure switch-cisco-9336c-fx2 switch 
 summary: Cisco Nexus 9336C-FX2叢集交換器軟體組態總覽 
 ---
 = Cisco Nexus 9336C-FX2叢集交換器的軟體安裝工作流程
@@ -25,8 +25,8 @@ Cisco NX-OS軟體和參考組態檔（RCT）必須安裝在Cisco Nexus 9336C-FX2
 +
 首次安裝 Cisco Nexus 9336C-FX2 交換器後、請安裝或升級 RCF 。您也可以使用此程序來升級RCF版本。
 
-. link:configure-ssh-keys.html["產生 SSH 金鑰"]。
+. link:configure-ssh-keys.html["驗證 Nexus 9336C-FX2 叢集交換器上的 SSH 組態"]。
 +
-如果您使用乙太網路交換器健全狀況監視器（ CSHM ）和記錄收集功能、請在交換器上產生 SSH 金鑰。
+如果您使用乙太網路交換器健全狀況監視器（ CSHM ）和記錄收集功能、請確認交換器上已啟用 SSH 。
 
 

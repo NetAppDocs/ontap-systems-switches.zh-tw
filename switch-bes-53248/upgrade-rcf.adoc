@@ -961,16 +961,44 @@ cluster1-03          true    true          true
 cluster1-04          true    true          false
 ----
 ====
-. Ping遠端叢集介面以驗證連線能力：
-+
-[source, cli]
-----
-cluster ping-cluster -node local
-----
-+
-.顯示範例
-[%collapsible]
+. 驗證遠端叢集介面的連線能力：
+
+
+[role="tabbed-block"]
 ====
+.更新版本ONTAP
+--
+您可以使用 `network interface check cluster-connectivity` 命令以啟動叢集連線的存取檢查、然後顯示詳細資料：
+
+`network interface check cluster-connectivity start` 和 `network interface check cluster-connectivity show`
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity start*
+----
+* 注意： * 請等待數秒後再執行 `show`命令以顯示詳細資料。
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity show*
+                                  Source              Destination         Packet
+Node   Date                       LIF                 LIF                 Loss
+------ -------------------------- ------------------- ------------------- -------
+cluster1-01
+       3/5/2022 19:21:18 -06:00   cluster1-01_clus2   cluster01-02_clus1  none
+       3/5/2022 19:21:20 -06:00   cluster1-01_clus2   cluster01-02_clus2  none
+
+cluster1-02
+       3/5/2022 19:21:18 -06:00   cluster1-02_clus2   cluster1-02_clus1   none
+       3/5/2022 19:21:20 -06:00   cluster1-02_clus2   cluster1-02_clus2   none
+----
+--
+.所有 ONTAP 版本
+--
+對於所有 ONTAP 版本、您也可以使用 `cluster ping-cluster -node <name>` 檢查連線能力的命令：
+
+`cluster ping-cluster -node <name>`
+
 [listing, subs="+quotes"]
 ----
 cluster1::*> *cluster ping-cluster -node local*
@@ -985,7 +1013,8 @@ Cluster cluster1-01_clus2 169.254.3.5 cluster1-01 e0b
 Cluster cluster1-02_clus1 169.254.3.8 cluster1-02 e0a
 Cluster cluster1-02_clus2 169.254.3.9 cluster1-02 e0b
 Local = 169.254.1.3 169.254.1.1
-Remote = 169.254.1.6 169.254.1.7 169.254.3.4 169.254.3.5 169.254.3.8 169.254.3.9
+Remote = 169.254.1.6 169.254.1.7 169.254.3.4 169.254.3.5 169.254.3.8
+169.254.3.9
 Cluster Vserver Id = 4294967293
 Ping status:
 ............
@@ -993,25 +1022,26 @@ Basic connectivity succeeds on 12 path(s)
 Basic connectivity fails on 0 path(s)
 ................................................
 Detected 9000 byte MTU on 12 path(s):
-    Local 169.254.1.3 to Remote 169.254.1.6
-    Local 169.254.1.3 to Remote 169.254.1.7
-    Local 169.254.1.3 to Remote 169.254.3.4
-    Local 169.254.1.3 to Remote 169.254.3.5
-    Local 169.254.1.3 to Remote 169.254.3.8
-    Local 169.254.1.3 to Remote 169.254.3.9
-    Local 169.254.1.1 to Remote 169.254.1.6
-    Local 169.254.1.1 to Remote 169.254.1.7
-    Local 169.254.1.1 to Remote 169.254.3.4
-    Local 169.254.1.1 to Remote 169.254.3.5
-    Local 169.254.1.1 to Remote 169.254.3.8
-    Local 169.254.1.1 to Remote 169.254.3.9
+  Local 169.254.1.3 to Remote 169.254.1.6
+  Local 169.254.1.3 to Remote 169.254.1.7
+  Local 169.254.1.3 to Remote 169.254.3.4
+  Local 169.254.1.3 to Remote 169.254.3.5
+  Local 169.254.1.3 to Remote 169.254.3.8
+  Local 169.254.1.3 to Remote 169.254.3.9
+  Local 169.254.1.1 to Remote 169.254.1.6
+  Local 169.254.1.1 to Remote 169.254.1.7
+  Local 169.254.1.1 to Remote 169.254.3.4
+  Local 169.254.1.1 to Remote 169.254.3.5
+  Local 169.254.1.1 to Remote 169.254.3.8
+  Local 169.254.1.1 to Remote 169.254.3.9
 Larger than PMTU communication succeeds on 12 path(s)
 RPC status:
 6 paths up, 0 paths down (tcp check)
 6 paths up, 0 paths down (udp check)
 ----
+--
 ====
-. 將權限層級變更回管理：
+. [[step6]將權限層級改回管理：
 +
 [source, cli]
 ----
