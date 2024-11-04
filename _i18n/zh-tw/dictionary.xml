@@ -525,9 +525,7 @@
   <block id="59693bf0bd2f42d98f39b34f98f7bc92" category="list-text">驗證NX-OS軟體的執行版本：</block>
   <block id="6e94a06e077dea1ac4e343f25fa03a4e" category="list-text">安裝NX-OS映像。</block>
   <block id="fae0bfa2a533f948ea8bab875acb2ef9" category="paragraph">安裝映像檔會在每次重新開機時載入映像檔。</block>
-  <block id="270d9f5c816d086b9c8e95d65a866883" category="list-text">在交換器重新開機後驗證新版本的NX-OS軟體：「How version（顯示版本）」</block>
   <block id="3e59b0e11242ccaa0aa06829a5a285e1" category="list-text">升級EPLD映像、然後重新啟動交換器。</block>
-  <block id="f9a089a8b7bd6f9eda6a30bb504dd013" category="list-text">交換器重新開機後、再次登入、升級EPLD黃金映像、然後重新啟動交換器。</block>
   <block id="3f5e00dc10415204c495781f25039129" category="list-text">交換器重新開機後、請登入以確認新版的EPLD已成功載入。</block>
   <block id="296d00e3f1c056ceb3df91d743049f0c" category="summary">請使用本網站上的文件來安裝、升級及維護叢集、共享儲存設備和MetroCluster 交換器。</block>
   <block id="97a30f090fd38397124788f1f0376eda" category="doc">VMware交換器文件AFF FAS</block>
@@ -3361,26 +3359,14 @@
   <block id="925214212b01eccbe569020ac0ec7569" category="section-title">新交換器支援</block>
   <block id="0052efad5d260a806d52bfcfe640936f" category="cell">交換器</block>
   <block id="198fc1af468509094e8d40e07916c836" category="cell">可用的開始</block>
-  <block id="d580be6c6f7c3c0fa749d81a5cd7cd95" category="inline-link">36埠100 GbE Cisco交換器（X190200）</block>
-  <block id="deb0a21917c7eb0c3c9938d678ab438a" category="paragraph"><block ref="deb0a21917c7eb0c3c9938d678ab438a" category="inline-link-rx"></block></block>
   <block id="123e4b878b0b13297b19666d44ad9918" category="paragraph">在同一組Cisco Nexus 9336C-FX2交換器上支援共享基礎架構（叢集、HA和交換器附加儲存設備）、包括支援MetroCluster 不支援任何IP組態。</block>
   <block id="74eb178224c5fa701fbcd96998feaafe" category="paragraph">部分9.9.1 ONTAP</block>
-  <block id="b35c80b21274714ff3bddbab4058ca2d" category="inline-link">36埠100 GbE Cisco交換器（X190200和X190210）</block>
-  <block id="f8fcbafd01f8949c32d6eda760c789d1" category="paragraph"><block ref="f8fcbafd01f8949c32d6eda760c789d1" category="inline-link-rx"></block></block>
-  <block id="89d274f5355a3e0e5f362e8cbb94f354" category="paragraph">Cisco Nexus 9336C-FX2叢集互連交換器與儲存交換器支援AFF/FAS控制器、以及前端資料連線。</block>
   <block id="2abfff2974f589f7a217325f304e0ec5" category="paragraph">部分9.8 ONTAP</block>
   <block id="deba35864593b3bc749c649b8ffc8b8a" category="inline-link">Broadcom BCS-53248交換器（X190005和X190005R）</block>
-  <block id="acee3e35fac9100c5030755c314eab73" category="paragraph"><block ref="acee3e35fac9100c5030755c314eab73" category="inline-link-rx"></block></block>
-  <block id="3e3c90d3e7cba2e9c472cc6c982b426c" category="paragraph">Broadcom BS-53248叢集互連交換器支援AFF/FAS控制器、具有40/100GbE連接埠。</block>
-  <block id="76b8d0202e0ebac8536bfbb927cb77cf" category="inline-link">32埠100 GbE Cisco交換器（X190100和X190100R）</block>
-  <block id="289176b1f2563464b0dfb798658c0152" category="paragraph"><block ref="deb0a21917c7eb0c3c9938d678ab438a" category="inline-link-rx"></block><block ref="18e71ce452675f527b9e6ee74d504889" category="inline-link-rx"></block></block>
-  <block id="856f27e361c1b2c9da2793619e1bea84" category="paragraph">Cisco Nexus 100 GbE交換器可作為專用儲存交換器、將NS224 NVMe磁碟機櫃連接至下列平台：</block>
   <block id="fe3922b3af83dfb6ba506bb4b7969408" category="list-text">介紹A800/AFF的A800 AFF ASA</block>
   <block id="040a43f160d19358d6aaa58c129061c6" category="list-text">介紹A700/AFF的功能AFF ASA</block>
   <block id="a2830a8a6b7415efd3d60ab3af3c1b02" category="list-text">介紹A400/AFF的功能AFF ASA</block>
   <block id="73ab298c8e00d66d28156892903a39ce" category="list-text">解答320 AFF</block>
-  <block id="fc2c2083a19a418b8843fac67146e44d" category="paragraph">Broadcom BS-53248叢集互連交換器支援AFF/FAS控制器、具備10/25GbE連接埠。</block>
-  <block id="afa798215d91c0ee616815befa600f66" category="paragraph">零點9.5P8 ONTAP</block>
   <block id="54519321875ddf488fc5718c21b9ac82" category="summary">EOD交換器適用於FAS Efd和AFF Efesd系統。</block>
   <block id="d3f0947d0a91424d3423125ef86f501f" category="doc">終止可用度</block>
   <block id="ce635353f76cce14fcf36429dff9e01d" category="paragraph">下列交換器已不再提供購買、但仍受到支援。</block>
@@ -3902,7 +3888,6 @@
   <block id="febc0aefd48524c17323ea62f494c0a3" category="paragraph">請參閱 <block ref="1dbca34b24162eb59cc33616a1549705" category="inline-link-macro-rx"></block> 以取得更多資訊。</block>
   <block id="fc03792e787f91930c4afa79aa28d773" category="paragraph"><block ref="fc03792e787f91930c4afa79aa28d773" category="inline-link-macro-rx"></block></block>
   <block id="10fd49cfa6f861021f96ea607a4f1301" category="paragraph">此取代程序的範例使用四個節點。其中兩個節點使用四個10 Gb叢集互連連接埠：e0a、e0b、e0c和e0d。其他兩個節點使用兩個40 GB叢集互連連接埠：E4A和e4e。請參閱 <block ref="9c839fcdfb8699a63c787254d7b1ae03" category="inline-link-macro-rx"></block> 驗證平台的叢集連接埠是否正確。</block>
-  <block id="7b1f8572a598b67cece8c82d64948766" category="paragraph"><block ref="7b1f8572a598b67cece8c82d64948766" category="inline-link-macro-rx"></block></block>
   <block id="a4546ad702e5e121d27f5d4775aafe40" category="paragraph"><block ref="a4546ad702e5e121d27f5d4775aafe40" category="inline-link-rx"></block></block>
   <block id="5e39f518f379edf87fbd37cab3947422" category="paragraph"><block ref="5e39f518f379edf87fbd37cab3947422" category="inline-link-rx"></block></block>
   <block id="df45f84b5087e66d03f27b014107fca6" category="admonition">移轉完成後、您可能需要安裝所需的組態檔、以支援適用於92300YC叢集交換器的叢集交換器健全狀況監視器（CSHM）。請參閱 <block ref="7548ef470ae7a4b5446d2e75f973e9c7" category="inline-link-macro-rx"></block> 以取得詳細資料。</block>
@@ -4244,7 +4229,6 @@
   <block id="d576f6342b019a4a22e71708ae81b0d9" category="paragraph">對於所有 ONTAP 版本、您也可以使用<block ref="7eaac8e45910aa8bf3a06f6966ab0656" prefix=" " category="inline-code"></block> 檢查連線能力的命令：</block>
   <block id="079555d3c02274a2f31c4ed0065d657e" category="doc">設定 SNMPv3</block>
   <block id="1bd553f48f18f76a761092d0bebbe5a4" category="paragraph">下列命令會使用 CSHM 建立 SNMPv3 使用者名稱：<block ref="bc0f2549b8e026bfa298fbc575ba6020" prefix=" " category="inline-code"></block></block>
-  <block id="44dd2902e6a8940e811d66f001eb74b8" category="list-text">重複步驟 1 至 8 、在交換器 CS1 上安裝 NX-OS 軟體。</block>
   <block id="52009bb7ee17227f566cd26a02caee56" category="inline-link-macro"><block ref="52009bb7ee17227f566cd26a02caee56" category="inline-link-rx"></block></block>
   <block id="a1a9afcf552a769c282769271829889a" category="paragraph"><block ref="a1a9afcf552a769c282769271829889a" category="inline-link-macro-rx"></block></block>
   <block id="f99aa604031e5049799e73b5c3748a98" category="inline-link-macro"><block ref="f99aa604031e5049799e73b5c3748a98" category="inline-link-rx"></block></block>
@@ -5038,4 +5022,41 @@
   <block id="ff518749d3663227de48008bfca511bb" category="list-text">[[step5]] 在交換器 C2 上、關閉連接至節點叢集連接埠的連接埠、以便容錯移轉叢集生命週期。</block>
   <block id="c47f8dc188da37844fcf13bca92e64bd" category="list-text">[[step8]] 使用下列命令、啟用乙太網路交換器健全狀況監視器記錄收集功能來收集交換器相關的記錄檔：</block>
   <block id="d2370f0d6957d5e8b2747d5a02f35221" category="list-text">[[step8]] 在交換器 C2 上、關閉連接至節點叢集連接埠的連接埠。</block>
+  <block id="aa831e5ed3cf3569aacf417dc10d9847" category="list-text">停用叢集生命體上的自動還原。叢集生命體將容錯移轉至合作夥伴叢集交換器、並在目標交換器上執行升級程序時保留在那裡：</block>
+  <block id="aa63446a40dd376200a3a73560757d27" category="list-text">重複步驟 6 至 13 、在交換器 CS1 上安裝 NX-OS 軟體。</block>
+  <block id="963ab35877bd19d496030356c61b1b19" category="paragraph"><block ref="7e5d5f666d8b34453c237cc352a9c503" prefix="" category="inline-code"></block></block>
+  <block id="05bb6ef3e2c06f73934efc48137c162b" category="paragraph">16 埠 100GbE NVIDIA 交換器（ X190006-PE 和 X190006-PI ）</block>
+  <block id="397bd69d3afa84776e6692d4f26e2a0e" category="paragraph">NVIDIA SN2100 叢集互連交換器與儲存交換器支援、包括支援 MetroCluster IP 組態。</block>
+  <block id="ed1ecba6f44fa7687919f5f5a307e935" category="paragraph">36 埠 100GbE Cisco 交換器（ X190200-CS-PE 和 X190200-CS-PI ）</block>
+  <block id="e9a66ffb0e3c0bad6cf6c904a86f31c9" category="paragraph">36 埠 100GbE Cisco 交換器（ X190200-CS-PE 和 X190200-CS-PI ）、（ X190210-FE-PE 和 X190210-FE-PI ）</block>
+  <block id="6b5cc0ac44e39f8cfe3a6dc3d48b0474" category="paragraph">Cisco Nexus 9336C-FX2 叢集互連交換器和儲存交換器支援 AFF 和 ASA 儲存系統、也支援前端資料連線。</block>
+  <block id="c4da6f8530fbc654aa08dd52e5a99d6e" category="paragraph">Broadcom BS-53248 叢集互連交換器支援配備 10/25GbE 和 40/100GbE 連接埠的 AFF / FAS 控制器。</block>
+  <block id="453008c048efb5abaa0f870ff90ec06c" category="paragraph">36 埠 100GbE Cisco 交換器（ X190200 ）和 32 埠 100GbE Cisco 交換器（ X190100 和 X190100R ）</block>
+  <block id="c96a54a5cd974eb7bce094557b242499" category="paragraph">Cisco Nexus 3232C 儲存交換器支援連接 NS224 NVMe 磁碟櫃 AFF 與 ASA 儲存系統：</block>
+  <block id="716c0f8abe31b5f13bfd7bd43eb22133" category="paragraph"><block ref="39471232415c92480914fc76a83483d5" prefix="" category="inline-code"></block></block>
+  <block id="cf9a2fc59b627c808dba1bdf68eecdd2" category="list-text">在交換器 CS1 上重複步驟 6 至 11 。</block>
+  <block id="5ea1c753a2f7b1ad712e6e80173d371b" category="list-text">如果您要升級至 NX-OS 版本 9.3(11) 、您必須升級 EPLD<block ref="c773fdef3889bdadbe809f1e8aaeea46" prefix=" " category="inline-code"></block> 映像、然後再次重新啟動交換器。否則、請跳至步驟 12 。</block>
+  <block id="28caefed3a29faf45a4d032d5b1006b4" category="inline-link">EPLD 升級版本資訊、版本 9.3 （ 11 ）</block>
+  <block id="46ddffef0745adf199d35e9bbe4eec40" category="paragraph">如需詳細資訊、請參閱<block ref="a4e876354b2a6a79541beefead7e3974" category="inline-link-rx"></block>。</block>
+  <block id="476acca7b2d84d147895203411c05eee" category="list-text">在交換器 CS1 上重複步驟 6 至 14 。</block>
+  <block id="11e210472a35f336b513b2c57b8cffab" category="paragraph"><block ref="7b1f8572a598b67cece8c82d64948766" category="inline-link-macro-rx"></block>。</block>
+  <block id="d80fed14d08f5cc94b5972605f7b1264" category="paragraph">4x100GbE 節點 1</block>
+  <block id="f92dbce301746858220367bd16fe3670" category="paragraph">4x100GbE 節點 2</block>
+  <block id="b360b026e43659aaec27da3653619648" category="paragraph">4x100GbE 節點 3</block>
+  <block id="266d2d353a3daec78bf2e7d143456e44" category="paragraph">4x100GbE 節點 4</block>
+  <block id="760f51d18df9099a0f0fe83e3abb7faf" category="paragraph">4x100GbE 節點 5</block>
+  <block id="b168a292126af3713fcd57f554534fd6" category="paragraph">4x100GbE 節點 6</block>
+  <block id="815287549036f1b9783ed83f49d18ad8" category="paragraph">4x100GbE 節點 25</block>
+  <block id="a6543ce9d981a8762d3f93b912a1513b" category="paragraph">4x100GbE 節點 26</block>
+  <block id="bda4efa27ca22157a1124a1811bb0fde" category="paragraph">4x100GbE 節點 27</block>
+  <block id="d96fb8ec55a6e1a3d9dc7b983a7db52a" category="paragraph">4x100GbE 節點 28</block>
+  <block id="115ad3a955478088a1ea07504f6b2100" category="paragraph">4x100GbE 節點 29</block>
+  <block id="d756601dbc88cef368b2fa44b4a6a1c5" category="paragraph">4x100GbE 節點 30</block>
+  <block id="4f370b0b5d39f8e59c998ad2ca78f8e0" category="paragraph">4x100GbE 節點 31</block>
+  <block id="b13fbfadd2367eaa29c4f08ea92d4d50" category="paragraph">4x100GbE 節點 32</block>
+  <block id="9ceb13bbaf3370be40502b834610747b" category="paragraph">4x100GbE 節點 33</block>
+  <block id="caaf1cd1838e5d2b66c67c3a5a467340" category="paragraph">4x100GbE 節點 34</block>
+  <block id="c509ae209503be0a774ac204f0f2dc91" category="paragraph">4x100GbE 節點 35</block>
+  <block id="f992d2e7f110147780c9ce8e305e4981" category="paragraph">4x100GbE 節點 36</block>
+  <block id="cb02ea2e8f595e77e5e6585ac0421c1a" category="paragraph">深入瞭解FAS 適用於整個系統的全新交換器AFF 。如需交換器的其他資訊，請參閱<block ref="341c1c8afc925d24c41903215e7d4958" category="inline-link-rx"></block>。</block>
 </blocks>
