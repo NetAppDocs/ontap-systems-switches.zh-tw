@@ -27,6 +27,8 @@ entries:
     url: "/switch-bes-53248/configure-software-overview-bes53248.html"
   - title: 安裝EFOS軟體
     url: "/switch-bes-53248/configure-efos-software.html"
+  - title: 安裝適用於 EFOS 3.12 及更新版本的 RCF 和授權檔案
+    url: "/switch-bes-53248/efos-install-rcf-license-file.html"
   - title: 安裝授權
     url: "/switch-bes-53248/configure-licenses.html"
   - title: 安裝RCF組態檔

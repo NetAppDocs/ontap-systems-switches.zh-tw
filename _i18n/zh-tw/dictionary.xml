@@ -4076,7 +4076,6 @@
   <block id="b211f67e6e9195c32683368a53542802" category="paragraph">此範例顯示 SFTP 用於將 RCF 複製到交換器 CS2 上的 bootflash ：</block>
   <block id="c77174e35b7f7fc235a87561809ad614" category="list-text">檢查的橫幅輸出<block ref="db837131dc56fab41bddc52d5aff8865" prefix=" " category="inline-code"></block> 命令。您必須閱讀並遵循這些指示、以確保交換器的組態和操作正確無誤。</block>
   <block id="420b545896cb1c9b03dbccd44bf33f86" category="list-text">在交換器上、確認附加授權連接埠在應用 RCF 之後出現：</block>
-  <block id="e23c199f14d9e7bf9dbb9da03bf726a2" category="list-text">重新開機交換器CS1。您可以這樣做、觸發叢集生命期以恢復到其主連接埠。您可以在交換器重新開機時忽略節點上報告的「叢集連接埠當機」事件。</block>
   <block id="6285269d7b8b003aed53cad1f3d13717" category="list-text">將所有叢集節點連線纜線從舊版 CS2 交換器移至新的 CS2-new 交換器。</block>
   <block id="f8e1e48a80ce2fac4d53a95f1f1ffd18" category="paragraph">* 叢集節點連線纜線移至 CS2 新交換器 *</block>
   <block id="e07ca5d2322ee212c9dcb668e9db443a" category="image-alt">叢集節點連線纜線移至 CS2 新交換器</block>
@@ -5059,4 +5058,21 @@
   <block id="c509ae209503be0a774ac204f0f2dc91" category="paragraph">4x100GbE 節點 35</block>
   <block id="f992d2e7f110147780c9ce8e305e4981" category="paragraph">4x100GbE 節點 36</block>
   <block id="cb02ea2e8f595e77e5e6585ac0421c1a" category="paragraph">深入瞭解FAS 適用於整個系統的全新交換器AFF 。如需交換器的其他資訊，請參閱<block ref="341c1c8afc925d24c41903215e7d4958" category="inline-link-rx"></block>。</block>
+  <block id="d217db6e5c9fe01778df762ef953150e" category="inline-link-macro">安裝參考組態檔案（ RCF ）和授權檔案</block>
+  <block id="6503ea0189c5cfc2f7fbdef509813892" category="admonition">對於 EFOS 3.12 及更新版本、請遵循中的安裝步驟<block ref="2875012234c5bc616da894d0cc04d2b5" category="inline-link-macro-rx"></block>。</block>
+  <block id="138707357e50e83ca9a6f1bf487a4c4b" category="paragraph">請確認下列各項已就緒：</block>
+  <block id="f3f5793bcca1ebb5ebbd53986eeb7aa2" category="admonition">在安裝新的交換器軟體版本和 RCFs 之前，請先參閱知識庫文章<block ref="18b4271d2bf70dbfb01e42cb4850cea6" category="inline-link-rx"></block>。如果您必須完全清除交換器設定、則需要再次執行基本組態。您必須使用序列主控台連線至交換器、因為完整的組態刪除會重設管理網路的組態。</block>
+  <block id="760a43dbe67e92dafc9be460c7ec7a71" category="open-title">EFOS 版本 3.2.x 及更新版本</block>
+  <block id="b901c25333441ff036da53fab081d9f0" category="list-text">確認指令碼已下載並儲存在您指定的檔案名稱下：</block>
+  <block id="c996550fa25e7bc14821abd9c8d23ed7" category="open-title">所有其他EFOS 版本</block>
+  <block id="cbaf87b69b101c8da09eb66a7e118196" category="list-text">檢查命令的橫幅輸出<block ref="db837131dc56fab41bddc52d5aff8865" prefix=" " category="inline-code"></block>。您必須閱讀並遵循這些指示、以驗證交換器的正確組態和操作。</block>
+  <block id="d8b62ff42020df981e759bfaae3ea683" category="list-text">重新開機交換器CS1。這會觸發叢集生命體還原至其主連接埠。您可以在交換器重新開機時忽略節點上報告的「叢集連接埠當機」事件。</block>
+  <block id="44b28482ab8476e86718a1ca5ff60e37" category="paragraph">從 EFOS 3.12.0.1 開始、您可以在設定 BS-53248 叢集交換器之後、安裝參考組態檔案（ RCF ）和授權檔案。</block>
+  <block id="9a155684dd1562ffdaa25731d825bbe9" category="admonition">Sall 連接埠是在您安裝 RCF 時設定的、但您需要安裝授權才能啟動設定的連接埠。</block>
+  <block id="fbec2ebb075cb19757cff7017cb93af5" category="list-text">目前的 RCF 、可從<block ref="b4c2fb45a290e6214474529bd84dd3bc" category="inline-link-rx"></block>頁面取得。</block>
+  <block id="4456b97c43334b2054b59141ede95e7a" category="list-text">使用下列傳輸協定之一、將 RCF 複製到交換器 CS2 的 bootflash ： FTP 、 HTTP 、 TFTP 、 SFTP 或 SCP 。</block>
+  <block id="f33dd0ad3ffde0d7eeaba1d3a85f7205" category="paragraph">本範例顯示使用HTTP將RCF複製到交換器CS2上的bootFlash：</block>
+  <block id="7bbcf8e324817b180739b7f7d821945a" category="list-text">在交換器上、確認您的變更已完成：</block>
+  <block id="a84263d893b250f940f2cfa8e599b7e2" category="list-text">[[step21]] 在叢集交換器 CS1 上、關閉連接至節點叢集連接埠的連接埠。</block>
+  <block id="5bd6c874b20210387cbc3fd552b0e8bc" category="sidebar">安裝適用於 EFOS 3.12 及更新版本的 RCF 和授權檔案</block>
 </blocks>
