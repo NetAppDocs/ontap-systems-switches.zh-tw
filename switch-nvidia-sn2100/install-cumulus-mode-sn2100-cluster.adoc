@@ -124,17 +124,67 @@ unreachable default metric 4278198272
 10.233.204.0/23 dev eth0 proto kernel scope link src 10.233.204.71
 127.0.0.0/8 dev mgmt proto kernel scope link src 127.0.0.1
 ----
-. 使用NTP互動模式設定時區。
+. 設定交換器上的日期，時間，時區和 NTP 伺服器。
 +
-.. 在終端機上執行下列命令：
+.. 驗證目前時區：
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *cat /etc/timezone*
+----
+.. 更新至新時區：
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *sudo dpkg-reconfigure --frontend noninteractive tzdata*
+----
+.. 驗證您目前的時區：
++
+[listing, subs="+quotes"]
+----
+cumulus@switch:~$ *date +%Z*
+----
+.. 若要使用引導式精靈設定時區，請執行下列命令：
 +
 [listing, subs="+quotes"]
 ----
 cumulus@sw1:~$ *sudo dpkg-reconfigure tzdata*
 ----
-.. 依照畫面上的功能表選項、選取地理區域和區域。
-.. 若要設定所有服務和精靈的時區、請重新啟動交換器。
-.. 確認交換器上的日期和時間正確無誤、並視需要更新。
+.. 根據設定的時區設定軟體時鐘：
++
+[listing, subs="+quotes"]
+----
+cumulus@switch:~$ *sudo date -s "Tue Oct 28 00:37:13 2023"*
+----
+.. 將軟體時鐘的目前值設為硬體時鐘：
++
+[listing, subs="+quotes"]
+----
+cumulus@switch:~$ *sudo hwclock -w*
+----
+.. 視需要新增 NTP 伺服器：
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *net add time ntp server _<cumulus.network.ntp.org>_ iburst*
+cumulus@sw1:~$ *net pending*
+cumulus@sw1:~$ *net commit*
+----
+.. 驗證系統上是否 `ntpd`正在執行：
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *ps -ef | grep ntp*
+ntp       4074     1  0 Jun20 ?        00:00:33 /usr/sbin/ntpd -p /var/run/ntpd.pid -g -u 101:102
+----
+.. 指定 NTP 來源介面。根據預設， NTP 使用的來源介面為 `eth0`。您可以依照下列方式設定不同的 NTP 來源介面：
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *net add time ntp source _<src_int>_*
+cumulus@sw1:~$ *net pending*
+cumulus@sw1:~$ *net commit*
+----
 
 
 . 安裝CummUS Linux 4.4.3：
@@ -290,17 +340,61 @@ unreachable default metric 4278198272
 10.233.204.0/23 dev eth0 proto kernel scope link src 10.233.204.71
 127.0.0.0/8 dev mgmt proto kernel scope link src 127.0.0.1
 ----
-. 使用NTP互動模式設定時區。
+. 在交換器上設定時區，日期，時間和 NTP 伺服器。
 +
-.. 在終端機上執行下列命令：
+.. 設定時區：
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *nv set system timezone US/Eastern*
+cumulus@sw1:~$ *nv config apply*
+----
+.. 驗證您目前的時區：
++
+[listing, subs="+quotes"]
+----
+cumulus@switch:~$ *date +%Z*
+----
+.. 若要使用引導式精靈設定時區，請執行下列命令：
 +
 [listing, subs="+quotes"]
 ----
 cumulus@sw1:~$ *sudo dpkg-reconfigure tzdata*
 ----
-.. 依照畫面上的功能表選項、選取地理區域和區域。
-.. 若要設定所有服務和精靈的時區、請重新啟動交換器。
-.. 確認交換器上的日期和時間正確無誤、並視需要更新。
+.. 根據設定的時區設定軟體時鐘：
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *sudo date -s "Tue Oct 28 00:37:13 2023"*
+----
+.. 將軟體時鐘的目前值設為硬體時鐘：
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *sudo hwclock -w*
+----
+.. 視需要新增 NTP 伺服器：
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *nv set service ntp default server _<cumulus.network.ntp.org>_ iburst on*
+cumulus@sw1:~$ *nv config apply*
+cumulus@sw1:~$ *nv config save*
+----
+.. 驗證系統上是否 `ntpd`正在執行：
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *ps -ef | grep ntp*
+ntp       4074     1  0 Jun20 ?        00:00:33 /usr/sbin/ntpd -p /var/run/ntpd.pid -g -u 101:102
+----
+.. 指定 NTP 來源介面。根據預設， NTP 使用的來源介面為 `eth0`。您可以依照下列方式設定不同的 NTP 來源介面：
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *nv set service ntp default listen _<src_int>_*
+cumulus@sw1:~$ *nv config apply*
+----
 
 
 . 安裝 Cumulus Linux 5.4 ：

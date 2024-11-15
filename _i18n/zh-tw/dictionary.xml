@@ -3982,7 +3982,6 @@
   <block id="b6a9bacb15977dcaaa1e05f20cc4d13b" category="paragraph">叢集和儲存應用程式有兩個 RCF 指令碼可用。請從下載 RCFs<block ref="89efcd657168a1e707caf54da1923871" category="inline-link-rx"></block>。每個的程序都相同。</block>
   <block id="54d4022f2a747cb4974fcf06961bdb21" category="list-text">叢集： * MSN2100-RCF-v1. _x_ 叢集 - HA-BreakOut-LLDP*</block>
   <block id="eac7436c884133e6b945a51430510a32" category="list-text">儲存： * MSN2100-RCF-v1. _x_ 儲存 *</block>
-  <block id="196428336c87b3c0c9bf24432335bd6f" category="list-text">套用 RCF python 指令碼 * MSN2100-RCF-v1.x-Cluster-HA-BreakOut-LLDP* 。</block>
   <block id="b9dfe38b5e91454220a6cd1f3cfb9ac8" category="admonition">在步驟 3 * 更新上述 MOTD 檔案 * 中、命令<block ref="900d965bd90d181d344d976a0e3093d8" prefix=" " category="inline-code"></block> 執行。這可讓您驗證 RCF 檔案名稱、 RCF 版本、要使用的連接埠、以及 RCF 橫幅中的其他重要資訊。</block>
   <block id="0440c59cc67785ca7939ff4e3eba86ed" category="admonition">在步驟 3 * 更新上述 MOTD 檔案 * 中、命令<block ref="79a5f2bb850da898bd092e3a61bda06c" prefix=" " category="inline-code"></block> 執行。這可讓您驗證 RCF 檔案名稱、 RCF 版本、要使用的連接埠、以及 RCF 橫幅中的其他重要資訊。</block>
   <block id="506c2c0c7f5b70af3df68c45c46f45a7" category="paragraph">例如：</block>
@@ -4016,7 +4015,6 @@
   <block id="0d151e82f107d3039ec4952c010d46c4" category="admonition">累計使用者帳戶的預設密碼為*累計*。第一次登入CummulUS Linux時、您必須變更此預設密碼。安裝新映像之前、您必須更新任何自動化指令碼。CummUS Linux提供命令列選項、可在安裝程序期間自動變更預設密碼。</block>
   <block id="324fe5adbd1d84e1635133b2f3572f6d" category="open-title">從 Cumulus Linux 4.4.x 到 Cumulus Linux 5.x</block>
   <block id="6e86c333c0b662bb6dee3495ec26ec21" category="list-text">檢查目前的 Cumulus Linux 版本和連線連接埠：</block>
-  <block id="698eeac576f2a03927debdd14725ba5e" category="list-text">下載 Cumulux Linux 5.x 映像：</block>
   <block id="a034a19ca9c1623f94c8f52b386d5a41" category="list-text">變更密碼：</block>
   <block id="d853eef2a857cbfcf5b1ef1abe8db17e" category="list-text">請查看Cummuls Linux版本：<block ref="9fcc1ae85aac3dbd490f575cf5eb3d52" prefix=" " category="inline-code"></block></block>
   <block id="985599684d8f5a06353d35110138f1b2" category="list-text">變更主機名稱：</block>
@@ -5068,11 +5066,27 @@
   <block id="cbaf87b69b101c8da09eb66a7e118196" category="list-text">檢查命令的橫幅輸出<block ref="db837131dc56fab41bddc52d5aff8865" prefix=" " category="inline-code"></block>。您必須閱讀並遵循這些指示、以驗證交換器的正確組態和操作。</block>
   <block id="d8b62ff42020df981e759bfaae3ea683" category="list-text">重新開機交換器CS1。這會觸發叢集生命體還原至其主連接埠。您可以在交換器重新開機時忽略節點上報告的「叢集連接埠當機」事件。</block>
   <block id="44b28482ab8476e86718a1ca5ff60e37" category="paragraph">從 EFOS 3.12.0.1 開始、您可以在設定 BS-53248 叢集交換器之後、安裝參考組態檔案（ RCF ）和授權檔案。</block>
-  <block id="9a155684dd1562ffdaa25731d825bbe9" category="admonition">Sall 連接埠是在您安裝 RCF 時設定的、但您需要安裝授權才能啟動設定的連接埠。</block>
   <block id="fbec2ebb075cb19757cff7017cb93af5" category="list-text">目前的 RCF 、可從<block ref="b4c2fb45a290e6214474529bd84dd3bc" category="inline-link-rx"></block>頁面取得。</block>
   <block id="4456b97c43334b2054b59141ede95e7a" category="list-text">使用下列傳輸協定之一、將 RCF 複製到交換器 CS2 的 bootflash ： FTP 、 HTTP 、 TFTP 、 SFTP 或 SCP 。</block>
   <block id="f33dd0ad3ffde0d7eeaba1d3a85f7205" category="paragraph">本範例顯示使用HTTP將RCF複製到交換器CS2上的bootFlash：</block>
   <block id="7bbcf8e324817b180739b7f7d821945a" category="list-text">在交換器上、確認您的變更已完成：</block>
   <block id="a84263d893b250f940f2cfa8e599b7e2" category="list-text">[[step21]] 在叢集交換器 CS1 上、關閉連接至節點叢集連接埠的連接埠。</block>
   <block id="5bd6c874b20210387cbc3fd552b0e8bc" category="sidebar">安裝適用於 EFOS 3.12 及更新版本的 RCF 和授權檔案</block>
+  <block id="939b4bb2ac041f54295eebf712381c6e" category="admonition">安裝 RCF 時會設定所有連接埠，但您必須安裝授權才能啟動設定的連接埠。</block>
+  <block id="95a409c28581e60b63d6744a63cec56e" category="list-text">設定交換器上的日期，時間，時區和 NTP 伺服器。</block>
+  <block id="506fa9ce3fedb50c852bedfbf3a7cdd3" category="list-text">驗證目前時區：</block>
+  <block id="a50a0e5cb483409f1fab325fb98837b7" category="list-text">更新至新時區：</block>
+  <block id="6da016a8d1ac9135eb58f58229421640" category="list-text">驗證您目前的時區：</block>
+  <block id="f7831e2ba83d46ea1e5fff4e74fc5fa7" category="list-text">若要使用引導式精靈設定時區，請執行下列命令：</block>
+  <block id="73780f50cf375867a0588e7492720e92" category="list-text">根據設定的時區設定軟體時鐘：</block>
+  <block id="79f42127edb075c94bf534a70bd9670a" category="list-text">將軟體時鐘的目前值設為硬體時鐘：</block>
+  <block id="cc4d69e34240960e74993e23c384c9dd" category="list-text">視需要新增 NTP 伺服器：</block>
+  <block id="f24cc7b4e9b9029f28ce1ca2f70cdf80" category="list-text">驗證系統上是否<block ref="0453ce67cb028d800c9476a4d09364c9" prefix=" " category="inline-code"></block>正在執行：</block>
+  <block id="5f71b9c43a90b0d5c1da4caaf97582b9" category="list-text">指定 NTP 來源介面。根據預設， NTP 使用的來源介面為<block ref="a1a5b3d22e82bbd6f878d26feacc2c7d" prefix=" " category="inline-code"></block>。您可以依照下列方式設定不同的 NTP 來源介面：</block>
+  <block id="49a81a8314008caafc812f9c76617125" category="list-text">在交換器上設定時區，日期，時間和 NTP 伺服器。</block>
+  <block id="2747cbba0e5a031af50361e087bd59bb" category="list-text">設定時區：</block>
+  <block id="7db58b1ced05f0a1e8e0257017cd6c5b" category="list-text">套用 RCF python 指令碼 * MSN2100-RCF-v1. _x_ 叢集 -HA-BreakOut-LLDP* 。</block>
+  <block id="11b037d97237564e7d301df86420a468" category="inline-link">安裝新的 Cumulus Linux 映像</block>
+  <block id="ab12f4d1e56479a81a361f6109b978de" category="paragraph">如需詳細資訊，請參閱<block ref="63da15f7ab7ce2a7550fdbf1e5e5d879" category="inline-link-rx"></block>。</block>
+  <block id="43622a7160f0cabed379e73776c14454" category="list-text">下載 Cumulux Linux 5.x 映像： tmp</block>
 </blocks>
