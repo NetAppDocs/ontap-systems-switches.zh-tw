@@ -146,7 +146,7 @@ UP     swp4      100G  9216   Trunk/L2                     Master: bridge(UP)
 +
 [listing, subs="+quotes"]
 ----
-cumulus@cumulus:mgmt:~$ *nv show interface pluggables*
+cumulus@cumulus:mgmt:~$ *nv show interface --view=pluggables*
 
 Interface  Identifier     Vendor Name     Vendor PN    Vendor SN      Vendor Rev
 ---------  -------------  --------------  -----------  -------------  ----------
