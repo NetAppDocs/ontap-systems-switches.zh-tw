@@ -67,7 +67,7 @@ NetApp 強烈建議您在使用的裝置上啟用主控台記錄功能、並在�
 * N1_clus2是第一個連接至叢集交換器CL2或C2的叢集LIF、適用於節點n1。
 * N1_clus3是連接至叢集交換器C2的第二個LIF、適用於節點n1。
 * N1_clus4是連接至叢集交換器CL1的第二個LIF、適用於節點n1。
-* 10 GbE和40/100 GbE連接埠的數量是在上可用的參考組態檔（RCFs）中定義 link:https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco®叢集網路交換器參考組態檔案下載"^] 頁面。
+* 10 GbE 和 40 GbE 連接埠的數量定義於頁面上可用的參考組態檔案（ RCFs ）link:https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco®叢集網路交換器參考組態檔案下載"^]。
 * 節點為n1、n2、n3和n4。本程序中的範例使用四個節點：兩個節點使用四個10 Gb叢集互連連接埠：e0a、e0b、e0c和e0d。其他兩個節點使用兩個40 GB叢集互連連接埠：E4A和e4e。請參閱 link:https://hwu.netapp.com/["Hardware Universe"^] 適用於您平台上的實際叢集連接埠。
 
 

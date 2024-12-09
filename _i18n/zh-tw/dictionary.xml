@@ -532,20 +532,14 @@
   <block id="2857ff7a9c9a45ee36f0e4dc38b4d3a4" category="summary">更換Cisco Nexus 3132Q-V叢集交換器時、您必須注意特定的組態資訊、連接埠連線和纜線需求。</block>
   <block id="f50bf609e9ecf04112d0a60d1efc13c9" category="doc">更換Cisco Nexus 3132Q-V叢集交換器</block>
   <block id="0c2f6edcf40092d5fe0e8ad541affcf0" category="list-text">Cisco Nexus 3132Q-V叢集交換器受到支援。</block>
-  <block id="615f0ddf4939c2d755829bfd3d0dc075" category="list-text">10 GbE和40/100 GbE連接埠的數量是在上可用的參考組態檔（RCFs）中定義 <block ref="fbe8362ccb2da62f365822f496fddba9" category="inline-link-macro-rx"></block> 頁面。</block>
   <block id="dd21090e5d1cd428ffa6730ee85b51b9" category="list-text">叢集交換器使用交換器間連結（ISL）連接埠E1/31至32。</block>
   <block id="20c20e24dfa0ee82d11432c0c1d13fa6" category="list-text">。 <block ref="9c839fcdfb8699a63c787254d7b1ae03" category="inline-link-macro-rx"></block> 包含有關支援的Nexus 3132Q-V交換器纜線連接資訊：</block>
   <block id="0e170ece3637f1f6dfe129d6cce580e6" category="list-text">具有10 GbE叢集連線的節點需要QSFP光纖模組搭配中斷光纖纜線、或QSFP至SFP+銅線中斷纜線。</block>
-  <block id="f37b6623746594c6564087d8bf2a354e" category="list-text">具有40/100 GbE叢集連線的節點需要支援的QSFP/QSFP28光纖模組（含光纖纜線）或QSFP/QSFP28銅線直接連接纜線。</block>
   <block id="cc577eea5612ed5d434ed2aed6a86680" category="list-text">叢集交換器使用適當的ISL纜線：2條QSFP28光纖或銅線直接連接纜線。</block>
-  <block id="e9674399843595f1253f9d09c103dc33" category="list-text">在Nexus 3132Q-V上、您可以以40/100 Gb乙太網路或4 x 10 Gb乙太網路模式來操作QSFP連接埠。</block>
-  <block id="2c75f2d9aba6763d779b9037d7bbb84e" category="paragraph">依預設、40/100 Gb乙太網路模式有32個連接埠。這些40 Gb乙太網路連接埠的編號為2元組命名慣例。例如、第二個40 Gb乙太網路連接埠編號為1/2。將組態從40 Gb乙太網路變更為10 Gb乙太網路的過程稱為_中斷_、將組態從10 Gb乙太網路變更為40 Gb乙太網路的過程稱為_breakin _。當您將40/100 Gb乙太網路連接埠分成10 Gb乙太網路連接埠時、所產生的連接埠會使用3元命名慣例進行編號。例如、第二個40/100 Gb乙太網路連接埠的中斷連接埠編號為1/2/1、1/2/2、1/2/3、1/2/4。</block>
   <block id="1d6565e31007c3df75b7f570d335cc62" category="list-text">Nexus 3132Q-V左側是四個SFP+連接埠、可多工複用至第一個QSFP連接埠。</block>
   <block id="5434677a69f7a86fa7d41a0731389cc7" category="paragraph">根據預設、RCF結構為使用第一個QSFP連接埠。</block>
   <block id="ed5676888d1e4bdc96d6718b15a728bd" category="paragraph">您可以使用「硬體設定檔前端連接埠模式SFP-PLUS」命令、使Nexus 3138S-V的四個SFP+連接埠變成作用中狀態、而非QSFP連接埠。同樣地、您也可以使用「硬體設定檔前端連接埠模式qsfp'命令、將Nexus 3138S-V重設為使用QSFP連接埠、而非使用四個SFP+連接埠。</block>
-  <block id="d749dda1ba6b167863e217ed8100c048" category="list-text">您必須在Nexus 3132Q-V上設定一些連接埠、才能在10 GbE或40/100 GbE上執行。</block>
   <block id="436a67b06e6704883d8320cda2928548" category="paragraph">您可以使用「介面中斷模組1連接埠1-6 MAP 10ge-4x」命令、將前六個連接埠分割成4x10 GbE模式。同樣地、您也可以使用「無介面中斷模組1連接埠1-6 MAP 10g-4x」命令、從中斷組態重新分組前六個QSFP+連接埠。</block>
-  <block id="7369c77472e2b3190b3567e209220672" category="list-text">您必須完成規劃、移轉、並閱讀10 GbE和40/100 GbE連線的必要文件、從節點連接至Nexus 3132Q-V叢集交換器。</block>
   <block id="2b6f3ab875b845c218e00770e3512d7b" category="paragraph">。 <block ref="bd4121ea0586524602af8d06c17dcfca" category="inline-link-macro-rx"></block> 頁面提供ONTAP 本程序所支援的有關支援的版本資訊。</block>
   <block id="dd7ac721959b4aaa170786e82881ae7b" category="summary">Cisco NX-OS軟體和參考組態檔（RCV）必須安裝在Cisco Nexus 3132Q-V叢集交換器上。</block>
   <block id="c9f785db14b6fdfb7deea12d689be994" category="list-text">叢集必須完全正常運作（記錄中不應有錯誤或類似問題）。</block>
@@ -560,26 +554,19 @@
   <block id="44bbc7313b726fa9ff83dced227fe211" category="list-text">支援下列叢集交換器：</block>
   <block id="280107a5f53cc09efecfd6d30a3b7ebc" category="list-text">NetApp CN1610</block>
   <block id="1d8bdbbecd2a7992d9b2c5314cbc8da8" category="list-text">Cisco Nexus 3132Q-V</block>
-  <block id="246b4f4943a9ef7d81b1ecb7d14db012" category="list-text">Cisco Nexus 3132Q-V：連接埠E1/1-30（40/100 GbE）</block>
   <block id="c7dda80893d9ac37909769fa7d2fe963" category="list-text">叢集交換器使用下列交換器間連結（ISL）連接埠：</block>
-  <block id="57d3034f2867f54843c59eacb52d62bf" category="list-text">Cisco Nexus 3132Q-V：連接埠E1/31-32（40/100 GbE）</block>
   <block id="dd91c3681cdde4bc7616a4b3ec5f7e72" category="list-text">。 <block ref="cbfe825e8e02458e2eef3cd048612d7d" category="inline-link-macro-rx"></block> 包含有關支援的Nexus 3132Q-V交換器纜線連接資訊：</block>
   <block id="472bbef967b4ae7a0b29aff643bee169" category="list-text">具有10 GbE叢集連線的節點需要QSFP至SFP+光纖中斷纜線、或QSFP至SFP+銅線中斷纜線</block>
-  <block id="409f985ef1bffdcbe3bc46fc059d909f" category="list-text">具有40/100 GbE叢集連線的節點、需要使用光纖纜線或QSFP/QSFP28銅線直接連接纜線來支援QSFP/QSFP28光纖模組</block>
   <block id="1dd482f318ebf3baf239afefb0c0756b" category="list-text">適當的ISL纜線如下：</block>
   <block id="7b5781881fa8326227e58e694e97198c" category="list-text">開始：CN1610至CN1610（SFP+至SFP+）、四條SFP+光纖或銅線直接連接纜線</block>
   <block id="277ee11ec93d0d5d7bb265959cfadb18" category="list-text">過渡：適用於CN1610至Nexus 3132Q-V（QSFP至四個SFP+中斷）、一條QSFP至SFP+光纖或銅線中斷纜線</block>
   <block id="21e8ded62a39d44e1afa6aaee348bd88" category="list-text">最終版本：適用於Nexus 3138S-V至Nexus 3138S-V（QSFP28至QSFP28）、兩條QSFP28光纖或銅線直接連接纜線</block>
   <block id="d129b7927c768a17882184f936cb7a36" category="list-text">NetApp雙軸纜線與Cisco Nexus 3132Q-V交換器不相容。</block>
   <block id="9781497a027920a312b9c4cd217b3956" category="paragraph">如果您目前的CN1610組態使用NetApp雙軸纜線進行叢集節點對交換器連線或ISL連線、而您想要在環境中繼續使用雙軸纜線、則需要購買Cisco雙軸纜線。或者、您也可以使用光纖纜線進行ISL連線和叢集節點對交換器連線。</block>
-  <block id="3d8baabccb49d3044f14c0f5b022686f" category="list-text">在Nexus 3132Q-V交換器上、您可以將QSFP/QSFP28連接埠操作為40/100 Gb乙太網路或4x 10 Gb乙太網路模式。</block>
-  <block id="d443959501e56c10729109864777b8bb" category="paragraph">依預設、40/100 Gb乙太網路模式有32個連接埠。這些40 Gb乙太網路連接埠的編號為2元組命名慣例。例如、第二個40 Gb乙太網路連接埠編號為1/2。將組態從40 Gb乙太網路變更為10 Gb乙太網路的過程稱為_中斷_、將組態從10 Gb乙太網路變更為40 Gb乙太網路的過程稱為_breakin _。當您將40/100 Gb乙太網路連接埠分成10 Gb乙太網路連接埠時、所產生的連接埠會使用3元命名慣例進行編號。例如、第二個40 Gb乙太網路連接埠的中斷連接埠編號為1/2/1、1/2/2、1/2/3和1/2/4。</block>
   <block id="96c63e9512f3230bf1f86bdd048e8470" category="list-text">Nexus 3132Q-V交換器左側是四個SFP+連接埠、可多工複用至第一個QSFP連接埠。</block>
   <block id="68f609cf0d26657ca331984cb655e187" category="paragraph">根據預設、參考組態檔（RCF）的結構是使用第一個QSFP連接埠。</block>
   <block id="93b0e80a036070a07fd0baf72e679cd3" category="paragraph">您可以使用「硬體設定檔前端連接埠模式SFP-PLUS」命令、將四個SFP+連接埠改為使用Nexus 3132Q-V交換器的QSFP連接埠。同樣地、您也可以使用「硬體設定檔前端連接埠模式qsfp'命令、將Nexus 3138S-V交換器重設為使用QSFP連接埠、而非使用四個SFP+連接埠。</block>
   <block id="62773ff807cea7c5201a77e34fd71617" category="admonition">使用前四個SFP+連接埠時、會停用第一個40GbE QSFP連接埠。</block>
-  <block id="f03907e32ba4bc1e0430f00b6e896a20" category="list-text">您必須設定Nexus 3132Q-V交換器上的部分連接埠、以10 GbE或40/100 GbE執行。</block>
-  <block id="4769f2909f072141c447ee3c862e9f8d" category="paragraph">您可以使用「介面中斷模組1連接埠1-6 MAP 10ge-4x」命令、將前六個連接埠分割成4個10 GbE模式。同樣地、您也可以使用「無介面中斷模組1連接埠1-6 MAP 10g-4x」命令、從_中斷 組態重新分組前六個QSFP+連接埠。</block>
   <block id="82638f9455b90aac4ecd3473c4abd282" category="list-text">本程序所支援的支援的支援版本包括ONTAP <block ref="bea6a113c7846200412c9ca0694f7009" category="inline-link-macro-rx"></block> 頁面。</block>
   <block id="caa7a1b509ffae6e49682160486b956b" category="inline-link-macro">NetApp CN1601與CN1610交換器</block>
   <block id="a002527eadfaaff725e2967fe87378fd" category="list-text">本程序所支援的支援的版本包括ONTAP <block ref="02204714444b8dc050a0e8cdbf247292" category="inline-link-macro-rx"></block> 頁面。</block>
@@ -592,9 +579,7 @@
   <block id="9201e1be8dcda4a11592a3761353053b" category="list-text">初始自訂交換器。</block>
   <block id="89210ead089ab2e7a8a7c0f8ae8d8860" category="list-text">所有ISL連接埠均已啟用及連線。</block>
   <block id="06d56c2c8177288d289e0bb92614febd" category="list-text">Nexus 3132Q-V叢集交換器、C1和C2。</block>
-  <block id="10a697cf363bb941514e8b7cd31c91c7" category="paragraph">本程序的範例使用兩個節點、每個節點使用兩個40/100 GbE叢集互連連接埠E4A和e4e。。 <block ref="cbfe825e8e02458e2eef3cd048612d7d" category="inline-link-macro-rx"></block> 詳細瞭解您平台上的叢集連接埠。</block>
   <block id="c69cfd9e3ba37b533e64498443964744" category="inline-link">Cisco®叢集網路交換器參考組態檔案下載</block>
-  <block id="797c65f427eb3fe0e8ba459583050be1" category="list-text">10 GbE和40/100 GbE連接埠的數量是在上可用的參考組態檔（RCFs）中定義<block ref="9bcfbf4ecbfa5f01b0fe987094e3d8a3" category="inline-link-rx"></block> 頁面。</block>
   <block id="7664236fe12ec0638eff103041560e12" category="list-text">叢集一開始會連接兩個節點、並在無交換器的雙節點叢集設定中運作。</block>
   <block id="6364d3f0f495b6ab9dcf8d3b5c6e0b01" category="inline-xref">32</block>
   <block id="1c383cd30b7c298ab50293adfecb7b18" category="inline-xref">35</block>
@@ -676,7 +661,6 @@
   <block id="6de42699e499fd1e22f3dba2b9245b8b" category="summary">若要以Nexus 3132Q-V叢集交換器取代現有的Nexus 5596叢集交換器、您必須執行特定的工作順序。</block>
   <block id="756e6368314b2aa356f2a920d85b43b2" category="list-text">用於更換Nexus 5596交換器的Nexus 3132Q-V交換器為C1和C2。</block>
   <block id="7e9c976d51f9e7d03f54a6d8a50f63fa" category="list-text">N1_clus4是第二個LIF、連接至節點n1的叢集交換器1（CL1或C1）。</block>
-  <block id="3085acabfffd08789d3274c0ba8c2a88" category="list-text">本程序的範例使用四個節點：兩個節點使用四個10 GbE叢集互連連接埠：e0a、e0b、e0c和e0d。其他兩個節點使用兩個40/100 GbE叢集互連連接埠：E4A、e4e。。 <block ref="cbfe825e8e02458e2eef3cd048612d7d" category="inline-link-macro-rx"></block> 列出您平台上的實際叢集連接埠。</block>
   <block id="0dbe0249901477061ecd83c20ecd0e9c" category="list-text">叢集一開始會連接兩個節點、並在2個Nexus 5596叢集交換器中運作。</block>
   <block id="e86ea01e700780ea92b3789d44f4c23c" category="list-text">將由C2（<block ref="55f08534725327744dab814bb2ce3ba4" category="inline-xref-macro-rx"></block> - <block ref="758db5a2604e6f852c33eb0fa872c37e" category="inline-xref-macro-rx"></block>）</block>
   <block id="a5bfc9e07964f8dddeb95fc584cd965d" category="inline-xref">37</block>
@@ -744,19 +728,12 @@
   <block id="9ef8bc24ada1a94fde4c058d1c913413" category="paragraph">「系統叢集交換器刪除」</block>
   <block id="ea07c00f9576f4476947cdd532e4de56" category="list-text">確認已監控適當的叢集交換器：</block>
   <block id="43f44eb6eab88bd3dd44d614bab79684" category="list-text">Nexus 3132Q-V</block>
-  <block id="bb6ae6b16e1b6cf9dee571c6b226e823" category="list-text">連接埠E1/1-30（40/100 GbE）：Nexus 3132Q-V</block>
-  <block id="85fd74fc8657ee1a6bc8030bab203ea4" category="list-text">連接埠E1/31-32（40/100 GbE）：Nexus 3132Q-V</block>
-  <block id="b9ca3537419b43c4c252e96426d68d33" category="list-text">具有40/100 GbE叢集連線的節點、需要使用光纖纜線或QSFP/QSFP28銅線直接連接纜線來支援QSFP/QSFP28光纖模組。</block>
   <block id="f684f26bc5b9998c8f656cc25dc42d81" category="list-text">開始：Nexus 5596至Nexus 5596（SFP+至SFP+）</block>
   <block id="2c109a2713845ba60a2c59a69ec4b5fa" category="list-text">過渡：Nexus 5596至Nexus 3132Q-V（QSFP至4xSFP+中斷）</block>
   <block id="50f94cbc4cf0a33ff4f99b9553620925" category="list-text">最終版本：Nexus 3132Q-V至Nexus 3132Q-V（QSFP28至QSFP28）</block>
-  <block id="400199f305ffb36a587767aa7ea9bd26" category="list-text">在Nexus 3132Q-V交換器上、您可以將QSFP/QSFP28連接埠作為40/100 Gigabit乙太網路或4 x 10 Gigabit乙太網路模式來操作。</block>
-  <block id="de179381d5dfc05e0a80e7052f0f7086" category="paragraph">依預設、40/100 Gigabit乙太網路模式有32個連接埠。這40個Gigabit乙太網路連接埠均以2元組命名慣例編號。例如、第二個40 Gigabit乙太網路連接埠編號為1/2。將組態從40 Gigabit乙太網路變更為10 Gigabit乙太網路的過程稱為_中斷_、將組態從10 Gigabit乙太網路變更為40 Gigabit乙太網路的過程稱為_breakin _。當您將40/100 Gigabit乙太網路連接埠分成10 Gigabit乙太網路連接埠時、所產生的連接埠會使用3元命名慣例進行編號。例如、第二個40 Gigabit乙太網路連接埠的中斷連接埠編號為1/2/1、1/2/2、1/2/3和1/2/4。</block>
   <block id="4506e9d2fdc343c121f39bdf66de09fd" category="list-text">Nexus 3132Q-V交換器左側是一組4個SFP+連接埠、可多工複用至該QSFP28連接埠。</block>
   <block id="6c28101de4bc69c38814cc5f0a5cdcb4" category="paragraph">根據預設、RCF結構化為使用QSFP28連接埠。</block>
   <block id="5e51bdc54f5dd33d30418aa5b91af8ad" category="admonition">您可以使用「硬體設定檔前端連接埠模式SFP-PLUS」命令、讓4個SFP+連接埠變成作用中狀態、而非Nexus 3132Q-V交換器的QSFP連接埠。同樣地、您也可以使用「硬體設定檔前端連接埠模式qsfp'命令、將Nexus 3138S-V交換器重設為使用QSFP連接埠、而非4個SFP+連接埠。</block>
-  <block id="361c24584ea413c01856408e97a40411" category="list-text">您已將Nexus 3132Q-V交換器上的部分連接埠設定為以10 GbE或40/100 GbE執行。</block>
-  <block id="b56d0aacb2956c32c453bd556e641731" category="list-text">您已完成規劃、移轉、並閱讀10 GbE和40/100 GbE連線的必要文件、從節點連接至Nexus 3132Q-V叢集交換器。</block>
   <block id="f31feccfa3205f46547d83274bdfbcbd" category="list-text">本程序所支援的支援的支援版本包括ONTAP <block ref="bea6a113c7846200412c9ca0694f7009" category="inline-link-macro-rx"></block> 頁面。</block>
   <block id="0097132bac5d6c6b5abee712913401fa" category="paragraph">您可以在初次設定Nexus 3132Q-V交換器之後安裝RCF。您也可以使用此程序來升級RCF版本。</block>
   <block id="22f2fcbbff69a797e222d54f9d16c383" category="list-text">顯示連接至叢集交換器之每個節點上的叢集連接埠：</block>
@@ -2893,12 +2870,10 @@
   <block id="d77976c37f0905ead2cec6b14a961b3d" category="paragraph">如果您有雙節點無交換式叢集、請依照此程序移轉至包含Cisco Nexus 3132Q-V叢集網路交換器的雙節點交換式叢集。更換程序是不中斷營運的程序（NDO）。</block>
   <block id="d864686a9a8c19574f54bab270afc92e" category="paragraph-title">連接埠和節點連線</block>
   <block id="1e7adbcd77a17bde5f2f970332192c58" category="paragraph">使用Cisco Nexus 3132Q-V叢集交換器移轉至雙節點交換式叢集時、請務必瞭解連接埠、節點連線及纜線需求。</block>
-  <block id="0470593181facbe8abb9e3758645ad23" category="list-text">請確定您已將Nexus 3132Q-V上的部分連接埠設定為以10 GbE或40/100 GbE執行。</block>
   <block id="2127399e74c64848c33d8818562b72ca" category="list-text">組態設定正確且正常運作。</block>
   <block id="8c3cbbc54611a910c53d17d08355f3e0" category="list-text">執行ONTAP 版本為4、4或更新版本的節點。</block>
   <block id="c39d86e7c435537e2a5a4864517893b6" category="list-text">中的所有叢集連接埠<block ref="46c48bec0d282018b9d167eef7711b2c" prefix=" " category="inline-code"></block> 州/省。</block>
   <block id="8bd7a2e2adba3a2891e30cfe6cd673be" category="list-text">現有的叢集網路組態具有：</block>
-  <block id="d83854356a024169fc6ac96627d8763c" category="paragraph">此外、您還必須規劃、移轉及閱讀10 GbE和40/100 GbE連線的必要文件、從節點連接至Nexus 3132Q-V叢集交換器。</block>
   <block id="63eab37cfcf6a2b62e0f76932eb79809" category="list-text">第一個叢集連接埠會移至C1。</block>
   <block id="dd353d2ba6b926b08835d3c60dd7ce88" category="list-text">第二個叢集連接埠會移至C2。</block>
   <block id="55b7e748bf261410178deee3a2012270" category="list-text">停用雙節點無交換器叢集選項。</block>
@@ -2979,7 +2954,6 @@
   <block id="c6adba6217951ed0e1a8ae3a9a50e632" category="paragraph">如需詳細資訊、請參閱：</block>
   <block id="599e429de04ef19f05e05c80158f2130" category="paragraph">本程序中的範例使用四個節點：</block>
   <block id="2e5f4bd73780ee0d4f1673a1a4718af2" category="list-text">兩個節點使用四個10 GbE叢集互連連接埠：e0a、e0b、e0c和e0d。</block>
-  <block id="d07ea0336757dc6c738f1426bdf8deba" category="list-text">其他兩個節點使用兩條40/100 GbE叢集互連光纖纜線：E4A和e4e。</block>
   <block id="c5996a9ce6852df92e273664ad819c84" category="paragraph">。 <block ref="cbfe825e8e02458e2eef3cd048612d7d" category="inline-link-macro-rx"></block> 擁有平台上叢集光纖纜線的相關資訊。</block>
   <block id="149b4d7bd84f0ce5c4d69945fa307e44" category="list-text">將由C2取代叢集交換器CL2</block>
   <block id="2c0d653bc3a1aa00fd3687625ec3bd27" category="list-text">叢集交換器CL1將由C1取代</block>
@@ -5089,4 +5063,33 @@
   <block id="11b037d97237564e7d301df86420a468" category="inline-link">安裝新的 Cumulus Linux 映像</block>
   <block id="ab12f4d1e56479a81a361f6109b978de" category="paragraph">如需詳細資訊，請參閱<block ref="63da15f7ab7ce2a7550fdbf1e5e5d879" category="inline-link-rx"></block>。</block>
   <block id="43622a7160f0cabed379e73776c14454" category="list-text">下載 Cumulux Linux 5.x 映像： tmp</block>
+  <block id="855b205ca9b9bd2b02453dbd19fc65b7" category="list-text">本程序的範例使用四個節點：兩個節點使用四個10 GbE叢集互連連接埠：e0a、e0b、e0c和e0d。其他兩個節點使用兩個40 GbE叢集互連連接埠：E4A、e4e。<block ref="cbfe825e8e02458e2eef3cd048612d7d" category="inline-link-macro-rx"></block>列出平台上的實際叢集連接埠。</block>
+  <block id="66f3f703ef307f85603b46a4acbb712b" category="list-text">10 GbE 和 40 GbE 連接埠的數量定義於頁面上可用的參考組態檔案（ RCFs ）<block ref="cce23acfce4c9bc9bb74fd35873aedf2" category="inline-link-rx"></block>。</block>
+  <block id="9f71b0536f9236a6977f9a70d6395a33" category="list-text">具有 40 GbE 叢集連線的節點需要支援的 QSFP/QSFP28 光纖模組，以及光纖纜線或 QSFP/QSFP28 銅線直接附加纜線。</block>
+  <block id="61f02de546275159b6eba3b5376756d8" category="list-text">在 Nexus 3132Q-V 上，您可以將 QSFP 連接埠以 40 Gb 乙太網路或 4 x10 Gb 乙太網路模式運作。</block>
+  <block id="e29b2f868e1044896b5cc6d476634b57" category="paragraph">依預設， 40 Gb 乙太網路模式有 32 個連接埠。這些40 Gb乙太網路連接埠的編號為2元組命名慣例。例如、第二個40 Gb乙太網路連接埠編號為1/2。將組態從40 Gb乙太網路變更為10 Gb乙太網路的過程稱為_中斷_、將組態從10 Gb乙太網路變更為40 Gb乙太網路的過程稱為_breakin _。當您將 40 Gb 乙太網路連接埠分成 10 Gb 乙太網路連接埠時，產生的連接埠會使用三個端點命名慣例進行編號。例如、第二個40 Gb乙太網路連接埠的中斷連接埠編號為1/2/1、1/2/2、1/2/3和1/2/4。</block>
+  <block id="ce8d64c62fe7d0d80ad6a4b2e1744516" category="list-text">請務必將 Nexus 3132Q-V 上的部分連接埠設定為以 10 GbE 或 40 GbE 執行。</block>
+  <block id="24b704dc9930f98145e6a041e122d90b" category="list-text">10 GbE 和 40 GbE 連接埠的數量定義於頁面上可用的參考組態檔案（ RCFs ）<block ref="9bcfbf4ecbfa5f01b0fe987094e3d8a3" category="inline-link-rx"></block>。</block>
+  <block id="64e3923ed88357b9e310c9d354f23200" category="paragraph">此外，您還必須規劃，移轉及閱讀 10 GbE 和 40 GbE 連線的必要文件，從節點連線至 Nexus 3132Q-V 叢集交換器。</block>
+  <block id="16f501807c40fcc074813b8de98881be" category="paragraph">本程序的範例使用兩個節點，每個節點使用兩個 40 GbE 叢集互連連接埠 E4A 和 e4e 。<block ref="cbfe825e8e02458e2eef3cd048612d7d" category="inline-link-macro-rx"></block>提供平台上叢集連接埠的詳細資料。</block>
+  <block id="e1ef80ee500d089193b647b456525328" category="list-text">10 GbE 和 40 GbE 連接埠的數量定義於頁面上可用的參考組態檔案（ RCFs ）<block ref="fbe8362ccb2da62f365822f496fddba9" category="inline-link-macro-rx"></block>。</block>
+  <block id="adb2312231ae10781221ca6f85f1468b" category="list-text">其他兩個節點使用兩條40 GbE叢集互連光纖纜線：E4A和e4e。</block>
+  <block id="4a1ae240823f0b9cf20cc4dcd3987a7d" category="list-text">在 Nexus 3132Q-V 上，您可以將 QSFP 連接埠以 40 Gb 乙太網路或 4x10 Gb 乙太網路模式運作。</block>
+  <block id="ecfce3e51258080e9887731dcb939198" category="list-text">您必須在 Nexus 3132Q-V 上設定部分連接埠，才能以 10 GbE 或 40 GbE 執行。</block>
+  <block id="8121786d2f761f3520658cbd44c0086b" category="list-text">您必須完成規劃，移轉，並閱讀 10 GbE 和 40 GbE 連線的必要文件，從節點連線至 Nexus 3132Q-V 叢集交換器。</block>
+  <block id="9e85131d818cad8d6273559977450f37" category="list-text">連接埠E1/1至30（40 GbE）：Nexus 3132Q-V</block>
+  <block id="6d979896855cb90ebff1fc64d16543df" category="list-text">連接埠E1/31至32（40 GbE）：Nexus 3132Q-V</block>
+  <block id="154b6c893ed6c16744f390b9180e6725" category="list-text">具有 40 GbE 叢集連線的節點需要支援的 QSFP/QSFP28 光纖模組，以及光纖纜線或 QSFP/QSFP28 銅線直接附加纜線。</block>
+  <block id="5f6325e48e650901740731047024b139" category="list-text">在 Nexus 3132Q-V 交換器上，您可以將 QSFP/QSFP28 連接埠作為 40 Gigabit 乙太網路或 4 x10 Gigabit 乙太網路模式來操作。</block>
+  <block id="f348114fb6d1345ea6d8a657d9c00763" category="paragraph">依預設， 40 Gigabit 乙太網路模式有 32 個連接埠。這40個Gigabit乙太網路連接埠均以2元組命名慣例編號。例如、第二個40 Gigabit乙太網路連接埠編號為1/2。將組態從40 Gigabit乙太網路變更為10 Gigabit乙太網路的過程稱為_中斷_、將組態從10 Gigabit乙太網路變更為40 Gigabit乙太網路的過程稱為_breakin _。當您將 40 Gb 乙太網路連接埠分成 10 Gb 乙太網路連接埠時，所產生的連接埠會使用三個端點命名慣例進行編號。例如、第二個40 Gigabit乙太網路連接埠的中斷連接埠編號為1/2/1、1/2/2、1/2/3和1/2/4。</block>
+  <block id="0440c6eaf862ee4cfd547f551d9a0cb9" category="list-text">您已將 Nexus 3132Q-V 交換器上的部分連接埠設定為以 10 GbE 或 40 GbE 執行。</block>
+  <block id="f202ba5b511e5de6a9e03a15d32b3543" category="list-text">您已完成規劃，移轉，並閱讀 10 GbE 和 40 GbE 連線的必要文件，從節點連線至 Nexus 3132Q-V 叢集交換器。</block>
+  <block id="ea6a4753b32f7dc99b61788ca92c3192" category="list-text">Cisco Nexus 3132Q-V ：連接埠 E1/1-30 （ 40 GbE ）</block>
+  <block id="41d2c2931dc62eed6aecb954de74c42c" category="list-text">Cisco Nexus 3132Q-V ：連接埠 E1/31-32 （ 40 GbE ）</block>
+  <block id="902ca5e80a753adb8c809d46ffd2a177" category="list-text">具有 40 GbE 叢集連線的節點需要支援的 QSFP/QSFP28 光纖模組，以及光纖纜線或 QSFP/QSFP28 銅線直接附加纜線</block>
+  <block id="a79e81ac0a0322d06f217ec1313f9c2b" category="list-text">在 Nexus 3132Q-V 交換器上，您可以將 QSFP/QSFP28 連接埠以 40 Gb 乙太網路或 4 x 10 Gb 乙太網路模式運作。</block>
+  <block id="427172b130a849e724ec686d49e97727" category="list-text">您必須將 Nexus 3132Q-V 交換器上的部分連接埠設定為以 10 GbE 或 40 GbE 執行。</block>
+  <block id="57d432809175e2b2a95b3c3c1aeaabb9" category="paragraph">您可以使用命令將前六個連接埠分成 4x10 GbE 模式<block ref="08aac397a11274cd898dfbb3a635cf19" prefix=" " category="inline-code"></block>。同樣地，您也可以使用命令，從 _ 中斷 _ 組態重新分組前六個 QSFP+ 連接埠<block ref="9437e02f9ec4a8d602d396abd2c360b4" prefix=" " category="inline-code"></block>。</block>
+  <block id="c66ba47352d59b54f3a4b52ed5c4acb4" category="paragraph">* 注意： * 如果回答<block ref="415290769594460e2e485922904f345d" prefix=" " category="inline-code"></block>使用者規格提示，請確定使用者擁有中所述的必要權限<block ref="c36e4b8d8c2789dd7986c4af4bd3d942" category="inline-xref-macro-rx"></block>。</block>
+  <block id="921a23933bb7a508423ca6a0ad00bfd3" category="paragraph">* 注意： * 如果回答<block ref="415290769594460e2e485922904f345d" prefix=" " category="inline-code"></block>使用者規格提示，請確定使用者擁有中所述的必要權限<block ref="c36e4b8d8c2789dd7986c4af4bd3d942" category="inline-xref-macro-rx"></block>。</block>
 </blocks>

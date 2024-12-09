@@ -41,14 +41,14 @@ summary: 若要使用Cisco Nexus 3132Q-V叢集交換器取代叢集中現有的C
 * N1_clus3是第二個LIF、連接至節點n1的叢集交換器2（CL2或C2）。
 * N1_clus4是第二個LIF、連接至節點n1的叢集交換器1（CL1或C1）。
 * 節點為n1、n2、n3和n4。
-* 10 GbE和40/100 GbE連接埠的數量是在上可用的參考組態檔（RCFs）中定義 https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco®叢集網路交換器參考組態檔案下載"^] 頁面。
+* 10 GbE 和 40 GbE 連接埠的數量定義於頁面上可用的參考組態檔案（ RCFs ） https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco®叢集網路交換器參考組態檔案下載"^]。
 
 
 .關於範例
 本程序中的範例使用四個節點：
 
 * 兩個節點使用四個10 GbE叢集互連連接埠：e0a、e0b、e0c和e0d。
-* 其他兩個節點使用兩條40/100 GbE叢集互連光纖纜線：E4A和e4e。
+* 其他兩個節點使用兩條40 GbE叢集互連光纖纜線：E4A和e4e。
 
 
 。 link:https://hwu.netapp.com/["Hardware Universe"^] 擁有平台上叢集光纖纜線的相關資訊。
