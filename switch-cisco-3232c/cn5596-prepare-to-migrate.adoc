@@ -1,0 +1,243 @@
+---
+permalink: switch-cisco-3232c/cn5596-prepare-to-migrate.html 
+sidebar: sidebar 
+keywords: cisco 3232c, cluster switches 
+summary: 您可以將Cisco Nexus 3232C交換器當作AFF 叢集交換器、放在您的叢FAS 集或叢集內。 
+---
+= 準備從 Nexus 5596 交換器移轉至 Nexus 3232C 交換器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+請依照下列步驟準備 Cisco Nexus 5596 交換器，以便移轉至 Cisco Nexus 3232C 交換器。
+
+.步驟
+. 如果AutoSupport 此叢集啟用了「支援」功能、請叫用AutoSupport 下列訊息來禁止自動建立案例：
++
+「系統節點AutoSupport 不完整地叫用節點*-type all -訊息MAn=xh」
+
++
+_x_是維護時段的持續時間（以小時為單位）。
+
++
+[NOTE]
+====
+此資訊可通知技術支援人員執行此維護工作、以便在維護期間抑制自動建立案例。AutoSupport
+
+====
+. 顯示組態中裝置的相關資訊：
++
+「網路裝置探索秀」
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示每個叢集互連交換器的每個節點已設定多少個叢集互連介面：
+
+[listing, subs="+quotes"]
+----
+cluster::> *network device-discovery show*
+            Local  Discovered
+Node        Port   Device              Interface        Platform
+----------- ------ ------------------- ---------------- ----------------
+n1         /cdp
+            e0a    CL1                 Ethernet1/1      N5K-C5596UP
+            e0b    CL2                 Ethernet1/1      N5K-C5596UP
+            e0c    CL2                 Ethernet1/2      N5K-C5596UP
+            e0d    CL1                 Ethernet1/2      N5K-C5596UP
+n2         /cdp
+            e0a    CL1                 Ethernet1/3      N5K-C5596UP
+            e0b    CL2                 Ethernet1/3      N5K-C5596UP
+            e0c    CL2                 Ethernet1/4      N5K-C5596UP
+            e0d    CL1                 Ethernet1/4      N5K-C5596UP
+8 entries were displayed.
+----
+====
+. 確定每個叢集介面的管理或作業狀態。
++
+.. 顯示網路連接埠屬性：
++
+「網路連接埠show -role cluster」
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示節點n1和n2上的網路連接埠屬性：
+
+[listing, subs="+quotes"]
+----
+cluster::*> *network port show –role cluster*
+  (network port show)
+Node: n1
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+e0a       Cluster      Cluster          up   9000 auto/10000  -        -
+e0b       Cluster      Cluster          up   9000 auto/10000  -        -
+e0c       Cluster      Cluster          up   9000 auto/10000  -        -
+e0d       Cluster      Cluster          up   9000 auto/10000  -        -
+
+Node: n2
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+e0a       Cluster      Cluster          up   9000  auto/10000 -        -
+e0b       Cluster      Cluster          up   9000  auto/10000 -        -
+e0c       Cluster      Cluster          up   9000  auto/10000 -        -
+e0d       Cluster      Cluster          up   9000  auto/10000 -        -
+8 entries were displayed.
+----
+====
+.. 顯示有關邏輯介面的資訊：
++
+「網路介面show -role cluster」
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示叢集上所有生命週期的一般資訊、包括目前的連接埠：
+
+[listing, subs="+quotes"]
+----
+cluster::*> *network interface show -role cluster*
+ (network interface show)
+            Logical    Status     Network            Current       Current Is
+Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
+----------- ---------- ---------- ------------------ ------------- ------- ----
+Cluster
+            n1_clus1   up/up      10.10.0.1/24       n1            e0a     true
+            n1_clus2   up/up      10.10.0.2/24       n1            e0b     true
+            n1_clus3   up/up      10.10.0.3/24       n1            e0c     true
+            n1_clus4   up/up      10.10.0.4/24       n1            e0d     true
+            n2_clus1   up/up      10.10.0.5/24       n2            e0a     true
+            n2_clus2   up/up      10.10.0.6/24       n2            e0b     true
+            n2_clus3   up/up      10.10.0.7/24       n2            e0c     true
+            n2_clus4   up/up      10.10.0.8/24       n2            e0d     true
+8 entries were displayed.
+----
+====
+.. 顯示探索到的叢集交換器相關資訊：
++
+「系統叢集交換器顯示」
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示作用中的叢集交換器：
+
+[listing, subs="+quotes"]
+----
+cluster::*> *system cluster-switch show*
+
+Switch                        Type               Address         Model
+----------------------------- ------------------ --------------- ---------------
+CL1                           cluster-network    10.10.1.101     NX5596
+     Serial Number: 01234567
+      Is Monitored: true
+            Reason:
+  Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
+                    7.1(1)N1(1)
+    Version Source: CDP
+CL2                           cluster-network    10.10.1.102     NX5596
+     Serial Number: 01234568
+      Is Monitored: true
+            Reason:
+  Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
+                    7.1(1)N1(1)
+    Version Source: CDP
+
+2 entries were displayed.
+----
+====
+
+
+. 根據您的需求、確認新的3232C交換器上已安裝適當的RCF和映像、並進行必要的站台自訂、例如使用者和密碼、網路位址及其他自訂。
++
+[NOTE]
+====
+此時您必須準備兩個交換器。
+
+====
++
+如果您需要升級RCF和映像、必須完成下列步驟：
+
++
+.. 請前往NetApp支援網站上的「Cisco乙太網路交換器」頁面。
++
+http://support.netapp.com/NOW/download/software/cm_switches/["Cisco乙太網路交換器"^]
+
+.. 請在該頁的表格中記下您的交換器和所需的軟體版本。
+.. 下載適當版本的RCF。
+.. 在 * 說明 * 頁面上選取 * 繼續 * ，接受授權合約，然後依照 * 下載 * 頁面上的指示下載 RCF 。
+.. 下載適當版本的映像軟體。
++
+請參閱 ONTAP 8.x 或更新版本的叢集與管理網路交換器參考組態檔案 __ 下載頁面，然後選取適當的版本。
+
++
+若要尋找正確版本、請參閱「叢ONTAP 集網路交換器下載」頁面_。
+
+
+
+. 移轉與第二台要更換的Nexus 5596交換器相關的生命週期：
++
+`network interface migrate -vserver _vserver-name_ -lif _lif-name_ -source-node _source-node-name_ - destination-node _node-name_ -destination-port _destination-port-name_`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示節點n1和n2正在移轉的LIF；必須在所有節點上執行LIF移轉：
+
+[listing, subs="+quotes"]
+----
+cluster::*> *network interface migrate -vserver Cluster -lif n1_clus2 -source-node n1 -
+destination-node n1 -destination-port e0a*
+cluster::*> *network interface migrate -vserver Cluster -lif n1_clus3 -source-node n1 -
+destination-node n1 -destination-port e0d*
+cluster::*> *network interface migrate -vserver Cluster -lif n2_clus2 -source-node n2 -
+destination-node n2 -destination-port e0a*
+cluster::*> *network interface migrate -vserver Cluster -lif n2_clus3 -source-node n2 -
+destination-node n2 -destination-port e0d*
+----
+====
+. 驗證叢集的健全狀況：
++
+「網路介面show -role cluster」
+
++
+.顯示範例
+[%collapsible]
+====
+下列範例顯示每個叢集的目前狀態：
+
+[listing, subs="+quotes"]
+----
+cluster::*> *network interface show -role cluster*
+ (network interface show)
+            Logical    Status     Network            Current       Current Is
+Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
+----------- ---------- ---------- ------------------ ------------- ------- ----
+Cluster
+            n1_clus1   up/up      10.10.0.1/24       n1            e0a     true
+            n1_clus2   up/up      10.10.0.2/24       n1            e0a     false
+            n1_clus3   up/up      10.10.0.3/24       n1            e0d     false
+            n1_clus4   up/up      10.10.0.4/24       n1            e0d     true
+            n2_clus1   up/up      10.10.0.5/24       n2            e0a     true
+            n2_clus2   up/up      10.10.0.6/24       n2            e0a     false
+            n2_clus3   up/up      10.10.0.7/24       n2            e0d     false
+            n2_clus4   up/up      10.10.0.8/24       n2            e0d     true
+8 entries were displayed.
+----
+====
+
+
+.接下來呢？
+link:cn5596-configure-ports.html["設定連接埠"]。

@@ -1,0 +1,392 @@
+---
+permalink: switch-cisco-3232c/migrate-from-switchless-configure-ports.html 
+sidebar: sidebar 
+keywords: cisco 3232c, cluster switches 
+summary: 您可以將Cisco Nexus 3232C交換器當作AFF 叢集交換器、放在您的叢FAS 集或叢集內。 
+---
+= 設定連接埠，以便從雙節點無交換器叢集移轉至雙節點交換式叢集
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+請依照下列步驟設定連接埠，以便從 Nexus 3232C 交換器上的雙節點無交換器叢集移轉至雙節點交換叢集。
+
+.步驟
+. 將n1_clus1和n2_clus1 lifs移轉到目的地節點的實體連接埠：
++
+`network interface migrate -vserver _vserver-name_ -lif _lif-name_ source-node _source-node-name_ -destination-port _destination-port-name_`
+
++
+.顯示範例
+[%collapsible]
+====
+您必須為每個本機節點執行命令、如下列範例所示：
+
+[listing, subs="+quotes"]
+----
+cluster::*> *network interface migrate -vserver cluster -lif n1_clus1 -source-node n1
+-destination-node n1 -destination-port e4e*
+cluster::*> *network interface migrate -vserver cluster -lif n2_clus1 -source-node n2
+-destination-node n2 -destination-port e4e*
+----
+====
+. 確認叢集介面已成功移轉：
++
+「網路介面show -role cluster」
+
++
+.顯示範例
+[%collapsible]
+====
+下列範例顯示移轉完成後n1_clus1和n2_clus1 lifs的「is Home」狀態會變成「假」：
+
+[listing, subs="+quotes"]
+----
+cluster::*> *network interface show -role cluster*
+ (network interface show)
+            Logical    Status     Network            Current       Current Is
+Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
+----------- ---------- ---------- ------------------ ------------- ------- ----
+Cluster
+            n1_clus1   up/up      10.10.0.1/24       n1            e4e     false
+            n1_clus2   up/up      10.10.0.2/24       n1            e4e     true
+            n2_clus1   up/up      10.10.0.3/24       n2            e4e     false
+            n2_clus2   up/up      10.10.0.4/24       n2            e4e     true
+ 4 entries were displayed.
+----
+====
+. 關閉步驟9中移轉的n1_clus1和n2_clus1 l生命 週期的叢集連接埠：
++
+「網路連接埠修改-node-name_-port _port-name_-up、admin假」
+
++
+.顯示範例
+[%collapsible]
+====
+您必須為每個連接埠執行命令、如下列範例所示：
+
+[listing, subs="+quotes"]
+----
+cluster::*> *network port modify -node n1 -port e4a -up-admin false*
+cluster::*> *network port modify -node n2 -port e4a -up-admin false*
+----
+====
+. 驗證遠端叢集介面的連線能力：
+
+
+[role="tabbed-block"]
+====
+.更新版本ONTAP
+--
+您可以使用 `network interface check cluster-connectivity` 命令以啟動叢集連線的存取檢查、然後顯示詳細資料：
+
+`network interface check cluster-connectivity start` 和 `network interface check cluster-connectivity show`
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity start*
+----
+* 注意： * 請等待數秒後再執行 `show`命令以顯示詳細資料。
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity show*
+                                  Source           Destination      Packet
+Node   Date                       LIF              LIF              Loss
+------ -------------------------- ---------------- ---------------- -----------
+n1
+       3/5/2022 19:21:18 -06:00   n1_clus2         n2-clus1         none
+       3/5/2022 19:21:20 -06:00   n1_clus2         n2_clus2         none
+
+n2
+       3/5/2022 19:21:18 -06:00   n2_clus2         n1_clus1         none
+       3/5/2022 19:21:20 -06:00   n2_clus2         n1_clus2         none
+----
+--
+.所有 ONTAP 版本
+--
+對於所有 ONTAP 版本、您也可以使用 `cluster ping-cluster -node <name>` 檢查連線能力的命令：
+
+`cluster ping-cluster -node <name>`
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *cluster ping-cluster -node local*
+Host is n1
+Getting addresses from network interface table...
+Cluster n1_clus1 n1        e4a    10.10.0.1
+Cluster n1_clus2 n1        e4e    10.10.0.2
+Cluster n2_clus1 n2        e4a    10.10.0.3
+Cluster n2_clus2 n2        e4e    10.10.0.4
+Local = 10.10.0.1 10.10.0.2
+Remote = 10.10.0.3 10.10.0.4
+Cluster Vserver Id = 4294967293 Ping status:
+....
+Basic connectivity succeeds on 4 path(s)
+Basic connectivity fails on 0 path(s) ................
+Detected 9000 byte MTU on 32 path(s):
+    Local 10.10.0.1 to Remote 10.10.0.3
+    Local 10.10.0.1 to Remote 10.10.0.4
+    Local 10.10.0.2 to Remote 10.10.0.3
+    Local 10.10.0.2 to Remote 10.10.0.4
+Larger than PMTU communication succeeds on 4 path(s) RPC status:
+1 paths up, 0 paths down (tcp check)
+1 paths up, 0 paths down (ucp check)
+----
+--
+====
+. [[step5]] 從節點 n1 上的 E4A 拔下纜線。
++
+您可以參考執行中的組態、並使用Nexus 3232C交換器支援的纜線、將交換器C1（本範例中為連接埠1/7）上的前40 GbE連接埠連接至n1上的E4A。
+
+. 從節點n2上的E4A拔下纜線。
++
+您可以參考執行中的組態、並使用支援的纜線、將E4A連接至C1連接埠1/8上的下一個可用40 GbE連接埠。
+
+. 啟用C1上的所有面向節點的連接埠。
++
+如需Cisco命令的詳細資訊、請參閱中所列的指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示Nexus 3232C叢集交換器C1和C2上的連接埠1至30已啟用、使用RCF「NX323232_RCP_v1.0_24p10g_26p100g.txt'所支援的組態：
+
+[listing, subs="+quotes"]
+----
+C1# *configure*
+C1(config)# *int e1/1/1-4,e1/2/1-4,e1/3/1-4,e1/4/1-4,e1/5/1-4,e1/6/1-4,e1/7-30*
+C1(config-if-range)# *no shutdown*
+C1(config-if-range)# *exit*
+C1(config)# *exit*
+----
+====
+. 在每個節點上啟用第一個叢集連接埠E4A：
++
+「網路連接埠修改-node-name_-port _port-name_-up管理true」
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster::*> *network port modify -node n1 -port e4a -up-admin true*
+cluster::*> *network port modify -node n2 -port e4a -up-admin true*
+----
+====
+. 驗證兩個節點上的叢集是否均已啟動：
++
+「網路連接埠show -role cluster」
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster::*> *network port show -role cluster*
+  (network port show)
+Node: n1
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- -----
+e4a       Cluster      Cluster          up   9000 auto/40000  -
+e4e       Cluster      Cluster          up   9000 auto/40000  -        -
+
+Node: n2
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- -----
+e4a       Cluster      Cluster          up   9000 auto/40000  -
+e4e       Cluster      Cluster          up   9000 auto/40000  -
+
+4 entries were displayed.
+----
+====
+. 針對每個節點、還原所有移轉的叢集互連生命生命、如下所示：
++
+「網路介面還原-vserver叢集-lif_lif-name_」
+
++
+.顯示範例
+[%collapsible]
+====
+您必須個別將每個LIF還原至其主連接埠、如下列範例所示：
+
+[listing, subs="+quotes"]
+----
+cluster::*> *network interface revert -vserver cluster -lif n1_clus1*
+cluster::*> *network interface revert -vserver cluster -lif n2_clus1*
+----
+====
+. 驗證所有生命期現在都已恢復到其主端口：
++
+「網路介面show -role cluster」
+
++
+對於「目前連接埠」欄中所列的所有連接埠、「is Home」欄位應顯示「true」。如果顯示的值為「假」、表示連接埠尚未還原。
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster::*> *network interface show -role cluster*
+ (network interface show)
+            Logical    Status     Network            Current       Current Is
+Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
+----------- ---------- ---------- ------------------ ------------- ------- ----
+Cluster
+            n1_clus1   up/up      10.10.0.1/24       n1            e4a     true
+            n1_clus2   up/up      10.10.0.2/24       n1            e4e     true
+            n2_clus1   up/up      10.10.0.3/24       n2            e4a     true
+            n2_clus2   up/up      10.10.0.4/24       n2            e4e     true
+4 entries were displayed.
+----
+====
+. 顯示每個節點上的叢集連接埠連線能力：
++
+「網路裝置探索秀」
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster::*> *network device-discovery show*
+            Local  Discovered
+Node        Port   Device              Interface        Platform
+----------- ------ ------------------- ---------------- ----------------
+n1         /cdp
+            e4a    C1                  Ethernet1/7      N3K-C3232C
+            e4e    n2                  e4e              FAS9000
+n2         /cdp
+            e4a    C1                  Ethernet1/8      N3K-C3232C
+            e4e    n1                  e4e              FAS9000
+----
+====
+. 將clus2移轉至每個節點主控台的連接埠E4A：
++
+「網路介面移轉叢集-lif_lif-name_-source-node-node-name_-destination-node-node-name_-destination-port _destination-port-name_」
+
++
+.顯示範例
+[%collapsible]
+====
+您必須個別將每個LIF移轉至其主連接埠、如下列範例所示：
+
+[listing, subs="+quotes"]
+----
+cluster::*> *network interface migrate -vserver cluster -lif n1_clus2 -source-node n1
+-destination-node n1 -destination-port e4a*
+cluster::*> *network interface migrate -vserver cluster -lif n2_clus2 -source-node n2
+-destination-node n2 -destination-port e4a*
+----
+====
+. 關閉兩個節點上的叢集連接埠clus2 LIF：
++
+網路連接埠修改
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示指定的連接埠設定為「假」、將兩個節點上的連接埠關機：
+
+[listing, subs="+quotes"]
+----
+cluster::*> *network port modify -node n1 -port e4e -up-admin false*
+cluster::*> *network port modify -node n2 -port e4e -up-admin false*
+----
+====
+. 驗證叢集LIF狀態：
++
+「網路介面展示」
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster::*> *network interface show -role cluster*
+ (network interface show)
+            Logical    Status     Network            Current       Current Is
+Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
+----------- ---------- ---------- ------------------ ------------- ------- ----
+Cluster
+            n1_clus1   up/up      10.10.0.1/24       n1            e4a     true
+            n1_clus2   up/up      10.10.0.2/24       n1            e4a     false
+            n2_clus1   up/up      10.10.0.3/24       n2            e4a     true
+            n2_clus2   up/up      10.10.0.4/24       n2            e4a     false
+4 entries were displayed.
+----
+====
+. 從節點n1上的e4e拔下纜線。
++
+您可以參考執行中的組態、並使用Nexus 3232C交換器機型適用的纜線、將交換器C2（本範例中為連接埠1/7）上的前40 GbE連接埠連接至節點n1上的e4e。
+
+. 從節點n2上的e4e拔下纜線。
++
+您可以參考執行中的組態、並使用Nexus 3232C交換器機型適用的纜線、將e4e連接至C2連接埠1/8上的下一個可用40 GbE連接埠。
+
+. 在C2上啟用所有面向節點的連接埠。
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示使用RCF「NX3232C_RCP_V1.0_24p10g_26p100g.txt'支援的組態、在Nexus 3132Q-V叢集交換器C1和C2上啟用連接埠1到30：
+
+[listing, subs="+quotes"]
+----
+C2# *configure*
+C2(config)# *int e1/1/1-4,e1/2/1-4,e1/3/1-4,e1/4/1-4,e1/5/1-4,e1/6/1-4,e1/7-30*
+C2(config-if-range)# *no shutdown*
+C2(config-if-range)# *exit*
+C2(config)# *exit*
+----
+====
+. 在每個節點上啟用第二個叢集連接埠e4e：
++
+網路連接埠修改
+
++
+.顯示範例
+[%collapsible]
+====
+下列範例顯示每個節點上所啟動的第二個叢集連接埠e4e：
+
+[listing, subs="+quotes"]
+----
+cluster::*> *network port modify -node n1 -port e4e -up-admin true*
+cluster::*> *network port modify -node n2 -port e4e -up-admin true*s
+----
+====
+. 針對每個節點、還原所有移轉的叢集互連生命生命、如下所示：
++
+網路介面回復
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示移轉的LIF正還原至其主連接埠。
+
+[listing, subs="+quotes"]
+----
+cluster::*> *network interface revert -vserver Cluster -lif n1_clus2*
+cluster::*> *network interface revert -vserver Cluster -lif n2_clus2*
+----
+====
+
+
+.接下來呢？
+link:migrate-from-switchless-complete-migration.html["完成移轉"]。

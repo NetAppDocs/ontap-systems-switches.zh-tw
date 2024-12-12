@@ -1,0 +1,249 @@
+---
+permalink: switch-cisco-3232c/migrate-from-switchless-prepare-to-migrate.html 
+sidebar: sidebar 
+keywords: cisco 3232c, cluster switches 
+summary: 您可以將Cisco Nexus 3232C交換器當作AFF 叢集交換器、放在您的叢FAS 集或叢集內。 
+---
+= 準備從雙節點無交換器叢集移轉至雙節點交換式叢集
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+請依照下列步驟，準備好雙節點無交換器叢集，以移轉至包含 Cisco Nexus 3232C 叢集網路交換器的雙節點交換叢集。
+
+.步驟
+. 如果AutoSupport 此叢集啟用了「支援」功能、請叫用AutoSupport 下列訊息來禁止自動建立案例：
++
+「系統節點AutoSupport 不完整地叫用節點*-type all -訊息MAn=xh」
+
++
+_x_是維護時段的持續時間（以小時為單位）。
+
++
+[NOTE]
+====
+此資訊可通知技術支援人員執行此維護工作、以便在維護期間抑制自動建立案例。AutoSupport
+
+====
+. 判斷每個叢集介面的管理或作業狀態：
++
+.. 顯示網路連接埠屬性：
++
+「網路連接埠show -role cluster」
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster::*> *network port show -role cluster*
+  (network port show)
+Node: n1
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- -----
+e4a       Cluster      Cluster          up   9000 auto/40000  -
+e4e       Cluster      Cluster          up   9000 auto/40000  -        -
+Node: n2
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- -----
+e4a       Cluster      Cluster          up   9000 auto/40000  -
+e4e       Cluster      Cluster          up   9000 auto/40000  -
+4 entries were displayed.
+----
+====
+.. 顯示有關邏輯介面及其指定主節點的資訊：
++
+「網路介面show -role cluster」
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster::*> *network interface show -role cluster*
+ (network interface show)
+            Logical    Status     Network            Current       Current Is
+Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
+----------- ---------- ---------- ------------------ ------------- ------- ---
+Cluster
+            n1_clus1   up/up      10.10.0.1/24       n1            e4a     true
+            n1_clus2   up/up      10.10.0.2/24       n1            e4e     true
+            n2_clus1   up/up      10.10.0.3/24       n2            e4a     true
+            n2_clus2   up/up      10.10.0.4/24       n2            e4e     true
+
+4 entries were displayed.
+----
+====
+.. 使用進階權限命令驗證是否已啟用無交換器叢集偵測：
++
+「網路選項偵測無交換器叢集顯示」
+
++
+.顯示範例
+[%collapsible]
+====
+下列範例的輸出顯示已啟用無交換器叢集偵測：
+
+[listing, subs="+quotes"]
+----
+cluster::*> *network options detect-switchless-cluster show*
+Enable Switchless Cluster Detection: true
+----
+====
+
+
+. 確認新的3232C交換器上已安裝適當的RCT和映像、並進行任何必要的站台自訂、例如新增使用者、密碼和網路位址。
++
+此時您必須準備兩個交換器。如果您需要升級RCF和映像軟體、則必須執行下列步驟：
+
++
+.. 請前往NetApp支援網站上的「Cisco乙太網路交換器」頁面。
++
+http://support.netapp.com/NOW/download/software/cm_switches/["Cisco乙太網路交換器"^]
+
+.. 請在該頁的表格中記下您的交換器和所需的軟體版本。
+.. 下載適當版本的RCF。
+.. 在 * 說明 * 頁面上選取 * 繼續 * ，接受授權合約，然後依照 * 下載 * 頁面上的指示下載 RCF 。
+.. 下載適當版本的映像軟體。
++
+https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco叢集與管理網路交換器參考組態檔案下載頁面"^]
+
+
+
+. 在 * 說明 * 頁面上選取 * 繼續 * ，接受授權合約，然後依照 * 下載 * 頁面上的指示下載 RCF 。
+. 在Nexus 3232C交換器C1和C2上、停用所有面向節點的連接埠C1和C2、但請勿停用ISL連接埠E1/31至32。
++
+如需 Cisco 命令的詳細資訊，請參閱中的下列清單 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示Nexus 3232C叢集交換器C1和C2上的連接埠1至30已停用、使用RCF「NX323232_RCP_v1_24p10g_24p100g.txt'所支援的組態：
+
+[listing, subs="+quotes"]
+----
+C1# copy running-config startup-config
+[########################################] 100% Copy complete.
+C1# configure
+C1(config)# int e1/1/1-4,e1/2/1-4,e1/3/1-4,e1/4/1-4,e1/5/1-4,e1/6/1-4,e1/7-30
+C1(config-if-range)# shutdown
+C1(config-if-range)# exit
+C1(config)# exit
+C2# copy running-config startup-config
+[########################################] 100% Copy complete.
+C2# configure
+C2(config)# int e1/1/1-4,e1/2/1-4,e1/3/1-4,e1/4/1-4,e1/5/1-4,e1/6/1-4,e1/7-30
+C2(config-if-range)# shutdown
+C2(config-if-range)# exit
+C2(config)# exit
+----
+====
+. 使用支援的纜線、將C1上的連接埠1/31和1/32連接至C2上的相同連接埠。
+. 確認ISL連接埠在C1和C2上正常運作：
++
+「How port-channel Summary」
+
++
+如需 Cisco 命令的詳細資訊，請參閱中的下列清單 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示Cisco「show port-channel Summary」命令、用於驗證C1和C2上的ISL連接埠是否正常運作：
+
+[listing, subs="+quotes"]
+----
+C1# *show port-channel summary*
+Flags: D - Down         P - Up in port-channel (members)
+       I - Individual   H - Hot-standby (LACP only)        s - Suspended    r - Module-removed
+       S - Switched     R - Routed
+       U - Up (port-channel)
+       M - Not in use. Min-links not met
+--------------------------------------------------------------------------------
+      Port-
+Group Channel      Type   Protocol  Member Ports
+-------------------------------------------------------------------------------
+1     Po1(SU)      Eth    LACP      Eth1/31(P)   Eth1/32(P)
+
+C2# show port-channel summary
+Flags: D - Down         P - Up in port-channel (members)
+       I - Individual   H - Hot-standby (LACP only)        s - Suspended    r - Module-removed
+       S - Switched     R - Routed
+       U - Up (port-channel)
+       M - Not in use. Min-links not met
+--------------------------------------------------------------------------------
+
+Group Port-        Type   Protocol  Member Ports
+      Channel
+--------------------------------------------------------------------------------
+1     Po1(SU)      Eth    LACP      Eth1/31(P)   Eth1/32(P)
+----
+====
+. 顯示交換器上的鄰近裝置清單。
++
+如需 Cisco 命令的詳細資訊，請參閱中的下列清單 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示Cisco命令「show cup neighbor」用於顯示交換器上的鄰近裝置：
+
+[listing, subs="+quotes"]
+----
+C1# *show cdp neighbors*
+Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater,
+                  V - VoIP-Phone, D - Remotely-Managed-Device,                   s - Supports-STP-Dispute
+Device-ID          Local Intrfce  Hldtme Capability  Platform      Port ID
+C2                 Eth1/31        174    R S I s     N3K-C3232C  Eth1/31
+C2                 Eth1/32        174    R S I s     N3K-C3232C  Eth1/32
+Total entries displayed: 2
+C2# show cdp neighbors
+Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater,
+                  V - VoIP-Phone, D - Remotely-Managed-Device,                   s - Supports-STP-Dispute
+Device-ID          Local Intrfce  Hldtme Capability  Platform      Port ID
+C1                 Eth1/31        178    R S I s     N3K-C3232C  Eth1/31
+C1                 Eth1/32        178    R S I s     N3K-C3232C  Eth1/32
+Total entries displayed: 2
+----
+====
+. 顯示每個節點上的叢集連接埠連線能力：
++
+「網路裝置探索秀」
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示雙節點無交換式叢集組態所顯示的叢集連接埠連線能力：
+
+[listing, subs="+quotes"]
+----
+cluster::*> *network device-discovery show*
+            Local  Discovered
+Node        Port   Device              Interface        Platform
+----------- ------ ------------------- ---------------- ----------------
+n1         /cdp
+            e4a    n2                  e4a              FAS9000
+            e4e    n2                  e4e              FAS9000
+n2         /cdp
+            e4a    n1                  e4a              FAS9000
+            e4e    n1                  e4e              FAS9000
+----
+====
+
+
+.接下來呢？
+link:migrate-from-switchless-configure-ports.html["設定連接埠"]。

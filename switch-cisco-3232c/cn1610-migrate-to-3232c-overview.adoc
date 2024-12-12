@@ -1,0 +1,108 @@
+---
+permalink: switch-cisco-3232c/cn1610-migrate-to-3232c-overview.html 
+sidebar: sidebar 
+keywords: install, cisco nexus 3232c switch, 
+summary: 在設定Cisco Nexus 3232c交換器之前、請先檢閱程序與命名規則的總覽。 
+---
+= 移轉需求
+:allow-uri-read: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cisco Nexus 3232C交換器可做AFF 為您的叢集或FAS 叢集內的叢集交換器。叢集交換器可讓您建立ONTAP 具有兩個以上節點的叢集。
+
+
+NOTE: 此程序需要同時使用ONTAP 支援指令和Cisco Nexus 3000系列交換器的命令；ONTAP 除非另有說明、否則會使用支援指令。
+
+如有必要、請參閱下列內容以取得更多資訊：
+
+* http://support.netapp.com/NOW/download/software/cm_switches_ntap/["NetApp CN1601與CN1610說明頁面"^]
+* http://support.netapp.com/NOW/download/software/cm_switches/["Cisco乙太網路交換器說明頁面"^]
+* http://hwu.netapp.com["Hardware Universe"^]
+
+
+
+
+== CN1610移轉需求
+
+叢集交換器支援下列節點連線：
+
+* NetApp CN1610：連接埠0/1到0/12（10 GbE）
+* Cisco Nexus 3232C：連接埠E1/1-30（40或100或4x10GbE）
+
+
+叢集交換器使用下列交換器間連結（ISL）連接埠。
+
+* NetApp CN1610：連接埠0/13至0/16（10 GbE）
+* Cisco Nexus 3232C：連接埠1/31-32（100GbE）
+
+
+[NOTE]
+====
+您必須在Cisco Nexus 3232C叢集交換器上使用4x10G中斷連接纜線。
+
+====
+下表顯示從NetApp CN1610交換器移轉至Cisco Nexus 3232C叢集交換器時、每個階段所需的纜線連接：
+
+|===
+| 階段 | 說明 | 必要的纜線 
+
+
+ a| 
+初始
+ a| 
+CN1610至CN1610（SFP+至SFP+）
+ a| 
+4條SFP+光纖或銅線直接連接纜線
+
+
+
+ a| 
+移轉
+ a| 
+CN1610至3232C（QSFP至SFP+）
+ a| 
+1條QSFP和4條SFP+光纖或銅線中斷纜線
+
+
+
+ a| 
+最終版本
+ a| 
+3232C至3232C（QSFP至QSFP）
+ a| 
+2條QSFP光纖或銅線直接連接纜線
+
+|===
+您必須下載適用的參考組態檔（RCT）。10 GbE和40/100 GbE連接埠的數量是在上可用的RCFs中定義 https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco®叢集網路交換器參考組態檔案下載"^] 頁面。
+
+本程序所支援的支援的支援版本包括ONTAP link:https://mysupport.netapp.com/NOW/download/software/cm_switches/.html["Cisco乙太網路交換器頁面"^]。
+
+本程序所支援的支援的版本包括ONTAP link:http://support.netapp.com/NOW/download/software/cm_switches_ntap/.html["NetApp CN1601與CN1610交換器頁面"^]。
+
+.關於所使用的範例
+移轉程序中的範例使用四個節點：
+
+* 兩個節點使用四個 10 GbE 叢集互連連接埠： * e0A* ， * e0b* ， * e0c* 和 * e0d* 。
+* 其他兩個節點使用兩條 40 GbE 叢集互連光纖纜線： * E4A* 和 * e4e* 。
++
+link:https://hwu.netapp.com/["_SUR__ Hardware Universe"^]具有適用於您平台的叢集光纖纜線相關資訊。
+
+
+
+本程序中的範例使用下列交換器和節點命名法：
+
+* 節點包括 *n1* ， *n2* ， *n3* 和 *n4* 。
+* 命令輸出可能會因ONTAP 各種版本的不相同的更新而有所不同。
+* 要更換的 CN1610 交換器為 * CL1* 和 * CL2* 。
+* 用於更換 CN1610 交換器的 Nexus 3232C 交換器為 *C1* 和 *C2* 。
+* *n1_clus1* 是第一個連接到節點 *n1* 的叢集交換器 1 （ CL1 或 C1 ）的叢集邏輯介面（ LIF ）。
+* *n1_clus2* 是第一個連接至叢集交換器 2 （ CL2 或 C2 ）的叢集 LIF ，用於節點 *n1* 。
+* *n1_clus3* 是第二個連接到節點 *n1* 的叢集交換器 2 （ CL2 或 C2 ）的 LIF 。
+* *n1_clus4* 是第二個連接到節點 *n1* 的叢集交換器 1 （ CL1 或 C1 ）的 LIF 。
+* 10 GbE和40/100 GbE連接埠的數量是在上可用的參考組態檔（RCFs）中定義 https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco®叢集網路交換器參考組態檔案下載"^] 頁面。
+
+
+.接下來呢？
+link:cn1610-prepare-to-migrate.html["準備移轉"]。

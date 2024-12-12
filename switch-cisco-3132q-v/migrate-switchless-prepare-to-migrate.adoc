@@ -1,0 +1,103 @@
+---
+permalink: switch-cisco-3132q-v/migrate-switchless-prepare-to-migrate.html 
+sidebar: sidebar 
+keywords: cisco 3132q-v, cluster switches 
+summary: 您可以在 AFF 或 FAS 叢集中使用 Cisco Nexus 3132q-v 交換器作為叢集交換器。 
+---
+= 準備從無交換器叢集移轉至交換式叢集
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+請依照下列步驟準備無交換器叢集，以便移轉至雙節點交換式叢集。
+
+.步驟
+. 如果AutoSupport 此叢集啟用了「支援」功能、請叫用AutoSupport 下列訊息來禁止自動建立案例：
++
+「系統節點AutoSupport 不完整地叫用節點*-type all -訊息MAn=xh」
+
++
+_x_是維護時段的持續時間（以小時為單位）。
+
++
+[NOTE]
+====
+此資訊可通知技術支援人員執行此維護工作、以便在維護期間抑制自動建立案例。AutoSupport
+
+====
+. 判斷每個叢集介面的管理或作業狀態：
++
+.. 顯示網路連接埠屬性：
++
+「網路連接埠展示」
+
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+cluster::*> network port show -role cluster
+  (network port show)
+Node: n1
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+e4a       Cluster      Cluster          up   9000 auto/40000  -        -
+e4e       Cluster      Cluster          up   9000 auto/40000  -        -
+
+Node: n2
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+e4a       Cluster      Cluster          up   9000 auto/40000  -        -
+e4e       Cluster      Cluster          up   9000 auto/40000  -        -
+4 entries were displayed.
+----
+====
+.. 顯示有關邏輯介面的資訊：
++
+「網路介面展示」
+
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+cluster::*> network interface show -role cluster
+ (network interface show)
+            Logical    Status     Network            Current       Current Is
+Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
+----------- ---------- ---------- ------------------ ------------- ------- ----
+Cluster
+            n1_clus1   up/up      10.10.0.1/24       n1            e4a     true
+            n1_clus2   up/up      10.10.0.2/24       n1            e4e     true
+            n2_clus1   up/up      10.10.0.3/24       n2            e4a     true
+            n2_clus2   up/up      10.10.0.4/24       n2            e4e     true
+4 entries were displayed.
+----
+====
+
+
+. 根據您的需求、確認新的31382Q-V交換器上已安裝適當的RCV和映像、並進行必要的站台自訂、例如使用者和密碼、網路位址等。
++
+此時您必須準備兩個交換器。如果您需要升級RCF和映像軟體、則必須執行下列步驟：
+
++
+.. 前往 link:http://support.netapp.com/NOW/download/software/cm_switches/["Cisco乙太網路交換器"^] 頁面。
+.. 請在該頁的表格中記下您的交換器和所需的軟體版本。
+.. 下載適當版本的RCF。
+.. 在 * 說明 * 頁面上選取 * 繼續 * ，接受授權合約，然後依照 * 下載 * 頁面上的指示下載 RCF 。
+.. 下載適當版本的映像軟體。
+
+
+. 在 * 說明 * 頁面上選取 * 繼續 * ，接受授權合約，然後依照 * 下載 * 頁面上的指示下載 RCF 。
+
+
+.接下來呢？
+link:migrate-switchless-configure-ports.html["設定連接埠"]。

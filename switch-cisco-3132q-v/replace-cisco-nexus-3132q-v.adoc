@@ -20,7 +20,7 @@ summary: 在叢集網路中更換故障的Cisco Nexus 3132Q-V交換器是不中�
 .交換器需求
 檢閱 link:switch-requirements.html["更換Cisco Nexus 3132Q-V叢集交換器的需求"]。
 
-.您需要的產品
+.開始之前
 * 現有的叢集和網路組態具有：
 +
 ** Nexus 3132Q-V叢集基礎架構是備援的、而且在兩個交換器上都能完全正常運作。

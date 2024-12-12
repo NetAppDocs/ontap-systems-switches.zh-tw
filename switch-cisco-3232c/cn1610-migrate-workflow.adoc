@@ -1,0 +1,34 @@
+---
+permalink: switch-cisco-3232c/cn1610-migrate-workflow.html 
+sidebar: sidebar 
+keywords: 3232c cabling setup, 3232c switches configuration, nx-os 
+summary: 設定 Cisco 3232C 交換器之前、請先檢閱下列資訊。 
+---
+= 從 CN1610 交換器移轉至 Nexus 3232C 交換器工作流程
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+請遵循下列工作流程步驟，將您的 CN1610 交換器移轉至 Cisco Nexus 3232C 交換器。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一"]link:cn1610-migrate-to-3232c-overview.html["移轉需求"]
+[role="quick-margin-para"]
+檢閱移轉程序的交換器範例資訊。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["二"]link:cn1610-prepare-to-migrate.html["準備移轉"]
+[role="quick-margin-para"]
+準備好您的 CN1610 交換器以移轉至 Nexus 3232C 交換器。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三"]link:cn1610-replace-CL2.html["更換叢集交換器 CL2"]
+[role="quick-margin-para"]
+使用新的 Nexus 3232C 交換器 C2 取代叢集交換器 CL2 。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["四"]link:cn1610-replace-CL1.html["更換叢集交換器 CL1"]
+[role="quick-margin-para"]
+將叢集交換器 CL1 更換為新的 Nexus 3232C 交換器 C1 。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["五"]link:cn1610-complete-migration.html["完成移轉"]
+[role="quick-margin-para"]
+完成新 Nexus 3232C 交換器的移轉。

@@ -38,8 +38,15 @@ entries:
     url: "/switch-cisco-9336c-fx2/install-nxos-overview-9336c-cluster.html"
   - title: 安裝或升級 NX-OS 軟體
     url: "/switch-cisco-9336c-fx2/install-nxos-software-9336c-cluster.html"
-  - title: 安裝或升級 RCF 組態檔
-    url: "/switch-cisco-9336c-fx2/install-nxos-rcf-9336c-cluster.html"
+  - title: 安裝或升級 RCF
+    pdf-filename: install_upgrade _RCF
+    entries:
+    - title: 安裝或升級 RCF 總覽
+      url: "/switch-cisco-9336c-fx2/install-upgrade-rcf-overview-cluster.html"
+    - title: 安裝RCF
+      url: "/switch-cisco-9336c-fx2/install-rcf-software-9336c-cluster.html"
+    - title: 升級 RCF 版本
+      url: "/switch-cisco-9336c-fx2/upgrade-rcf-software-9336c-cluster.html"
   - title: 驗證SSH組態
     url: "/switch-cisco-9336c-fx2/configure-ssh-keys.html"
 - title: 移轉交換器

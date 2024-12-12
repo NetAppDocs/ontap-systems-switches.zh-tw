@@ -3,7 +3,7 @@ section: switch-cisco-3232c
 title: Cisco Nexus 3232C
 entries:
 - title: 總覽
-  pdf-filename: overview_3232c
+  pdf-filename: Overview_3232C
   entries:
   - title: 組態總覽
     url: "/switch-cisco-3232c/install-overview-cisco-3232c.html"
@@ -14,7 +14,7 @@ entries:
   - title: 智慧電話住家需求
     url: "/switch-cisco-3232c/smart-call-home-3232c.html"
 - title: 安裝硬體
-  pdf-filename: install_hardware _3232c
+  pdf-filename: Install_hardware_3232C
   entries:
   - title: 完整的佈線工作表
     url: "/switch-cisco-3232c/setup_worksheet_3232c.html"
@@ -25,7 +25,7 @@ entries:
   - title: 檢視纜線佈線與組態
     url: "/switch-cisco-3232c/cabling-considerations-3232c.html"
 - title: 設定軟體
-  pdf-filename: Configure_software_3232c
+  pdf-filename: Configure_software_3232C
   entries:
   - title: 準備安裝NX-OS和RCF
     url: "/switch-cisco-3232c/prepare-install-cisco-nexus-3232c.html"
@@ -36,23 +36,56 @@ entries:
   - title: 驗證SSH組態
     url: "/switch-cisco-3232c/configure-ssh-keys.html"
 - title: 移轉交換器
-  pdf-filename: migrate_switchs_3232c
+  pdf-filename: Migrate_switches_3232C
   entries:
-  - title: 移轉需求
-    url: "/switch-cisco-3232c/migrate-requirements-3232c.html"
-  - title: 從CN1610叢集交換器移轉
-    url: "/switch-cisco-3232c/migrate-cn1610-cluster-switches.html"
-  - title: 從Cisco Nexus 5596叢集交換器移轉
-    url: "/switch-cisco-3232c/migrate-from-cisco-nexus-5596.html"
+  - title: CN1610 交換器移轉
+    pdf-filename: CN1610_switch_migration
+    entries:
+    - title: 從 CN1610 交換器工作流程移轉
+      url: "/switch-cisco-3232c/cn1610-migrate-workflow.html"
+    - title: 移轉需求
+      url: "/switch-cisco-3232c/cn1610-migrate-to-3232c-overview.html"
+    - title: 準備移轉
+      url: "/switch-cisco-3232c/cn1610-prepare-to-migrate.html"
+    - title: 更換叢集交換器 CL2
+      url: "/switch-cisco-3232c/cn1610-replace-CL2.html"
+    - title: 更換叢集交換器 CL1
+      url: "/switch-cisco-3232c/cn1610-replace-CL1.html"
+    - title: 完成移轉
+      url: "/switch-cisco-3232c/cn1610-complete-migration.html"
+  - title: Nexus 5596 交換器移轉
+    pdf-filename: CN5596_switch_migration
+    entries:
+    - title: 從 Cisco Nexus 5596 交換器工作流程移轉
+      url: "/switch-cisco-3232c/cn5596-migrate-workflow.html"
+    - title: 移轉需求
+      url: "/switch-cisco-3232c/cn5596-migrate-requirements.html"
+    - title: 準備移轉
+      url: "/switch-cisco-3232c/cn5596-prepare-to-migrate.html"
+    - title: 設定連接埠
+      url: "/switch-cisco-3232c/cn5596-configure-ports.html"
+    - title: 完成移轉
+      url: "/switch-cisco-3232c/cn5596-complete-migration.html"
   - title: 從雙節點無交換器叢集移轉
-    url: "/switch-cisco-3232c/migrate-from-two-node-switchless-cluster.html"
+    pdf-filename: migrate_for_switchless 叢集
+    entries:
+    - title: 從雙節點無交換器叢集工作流程進行移轉
+      url: "/switch-cisco-3232c/migrate-from-switchless-workflow.html"
+    - title: 移轉需求
+      url: "/switch-cisco-3232c/migrate-from-switchless-migrate-requirements.html"
+    - title: 準備移轉
+      url: "/switch-cisco-3232c/migrate-from-switchless-prepare-to-migrate.html"
+    - title: 設定連接埠
+      url: "/switch-cisco-3232c/migrate-from-switchless-configure-ports.html"
+    - title: 完成移轉
+      url: "/switch-cisco-3232c/migrate-from-switchless-complete-migration.html"
 - title: 更換交換器
-  pdf-filename: REPLACE 交換器 _3232c
+  pdf-filename: Replace_switches_3232C
   entries:
   - title: 更換叢集交換器
     url: "/switch-cisco-3232c/replace-cluster-switch.html"
   - title: 使用無交換器連線取代叢集交換器
     url: "/switch-cisco-3232c/migrate-to-switchless-cluster-interconnect.html"
 - title: 升級交換器
-  pdf-filename: upgrade 交換器 _3232c
+  pdf-filename: Upgrade_switches_3232C
   url: "/switch-cisco-3232c/upgrade-3232c-storage-switches.html"

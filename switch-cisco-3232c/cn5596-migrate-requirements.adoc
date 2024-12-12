@@ -1,0 +1,136 @@
+---
+permalink: switch-cisco-3232c/cn5596-migrate-requirements.html 
+sidebar: sidebar 
+keywords: install, cisco nexus 3232c switch, 
+summary: 在設定Cisco Nexus 3232c交換器之前、請先檢閱程序與命名規則的總覽。 
+---
+= 移轉需求
+:allow-uri-read: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cisco Nexus 3232C交換器可做AFF 為您的叢集或FAS 叢集內的叢集交換器。叢集交換器可讓您建立ONTAP 具有兩個以上節點的叢集。
+
+[NOTE]
+====
+此程序需要同時使用ONTAP 支援指令和Cisco Nexus 3000系列交換器的命令；ONTAP 除非另有說明、否則會使用支援指令。
+
+====
+如需詳細資訊、請參閱：
+
+* http://support.netapp.com/NOW/download/software/cm_switches/["Cisco乙太網路交換器說明頁面"^]
+* http://hwu.netapp.com["Hardware Universe"^]
+
+
+
+
+== Cisco Nexus 5596要求
+
+叢集交換器使用下列連接埠來連線至節點：
+
+* Nexus 5596 ：連接埠 E1/1-40 （ 10 GbE ）
+* Nexus 3232C ：連接埠 E1/1-30 （ 10/40/100 GbE ）
+
+
+叢集交換器使用下列交換器間連結（ISL）連接埠：
+
+* Nexus 5596 ：連接埠 E1/41-48 （ 10 GbE ）
+* Nexus 3232C ：連接埠 E1/31-32 （ 40/100 GbE ）
+
+
+。 link:https://hwu.netapp.com/["_SUR__ Hardware Universe"^] 包含有關支援的Nexus 3232C交換器纜線連接資訊：
+
+* 具有10 GbE叢集連線的節點需要QSFP至SFP+光纖中斷纜線、或QSFP至SFP+銅線中斷纜線。
+* 具有40/100 GbE叢集連線的節點、需要使用光纖纜線或QSFP/QSFP28銅線直接連接纜線來支援QSFP/QSFP28光纖模組。
+
+
+叢集交換器使用適當的ISL纜線：
+
+* 開始：Nexus 5596（SFP+至SFP+）
++
+** 8條SFP+光纖或銅線直接連接纜線
+
+
+* 過渡：Nexus 5596至Nexus 3232C（QSFP至4xSFP+中斷）
++
+** 1條QSFP至SFP+光纖中斷或銅線中斷纜線
+
+
+* 最終版本：Nexus 3232C至Nexus 3232C（QSFP28至QSFP28）
++
+** 2條QSFP28光纖或銅線直接連接纜線
+
+
+* 在Nexus 3232C交換器上、您可以使用40/100 Gigabit乙太網路或4 x 10 Gigabit乙太網路模式來操作QSFP/QSFP28連接埠。
++
+依預設、40/100 Gigabit乙太網路模式有32個連接埠。這40個Gigabit乙太網路連接埠均以2元組命名慣例編號。例如、第二個40 Gigabit乙太網路連接埠編號為1/2。
+
++
+將組態從40 Gigabit乙太網路變更為10 Gigabit乙太網路的過程稱為_中斷_、將組態從10 Gigabit乙太網路變更為40 Gigabit乙太網路的過程稱為_breakin _。
+
++
+當您將40/100 Gigabit乙太網路連接埠分成10 Gigabit乙太網路連接埠時、所產生的連接埠會使用3元命名慣例進行編號。例如、第二個40/100 Gigabit乙太網路連接埠的中斷連接埠編號為1/2/1、1/2/2、1/2/3和1/2/4。
+
+* Nexus 3232C交換器左側有2個SFP+連接埠、稱為1/33和1/34。
+* 您已將Nexus 3232C交換器上的部分連接埠設定為以10 GbE或40/100 GbE執行。
++
+[NOTE]
+====
+您可以使用「介面中斷模組1連接埠1-6 MAP 10ge-4x」命令、將前六個連接埠分割成4x10 GbE模式。同樣地、您也可以使用「無介面中斷模組1連接埠1-6 MAP 10g-4x」命令、從中斷組態重新分組前六個QSFP+連接埠。
+
+====
+* 您已完成規劃、移轉、並閱讀10 GbE和40/100 GbE連線所需的文件、從節點連接至Nexus 3232C叢集交換器。
+* 本程序所支援的支援的支援版本包括ONTAP link:http://support.netapp.com/NOW/download/software/cm_switches/.html["Cisco乙太網路交換器頁面"^]。
+
+
+.關於所使用的範例
+本程序的範例說明如何將Cisco Nexus 5596交換器更換為Cisco Nexus 3232C交換器。您可以針對其他舊版Cisco交換器（例如、31382Q-V）使用這些步驟（進行修改）。
+
+此程序也使用下列交換器和節點命名法：
+
+* 命令輸出可能會因ONTAP 不同版本的不相同而有所差異。
+* 要更換的 Nexus 5596 交換器為 * CL1* 和 * CL2* 。
+* 用於更換 Nexus 5596 交換器的 Nexus 3232C 交換器為 *C1* 和 *C2* 。
+* *n1_clus1* 是第一個連接至叢集交換器 1 （ CL1 或 C1 ）的叢集邏輯介面（ LIF ），用於節點 *n1* 。
+* *n1_clus2* 是第一個連接至叢集交換器 2 （ CL2 或 C2 ）的叢集 LIF ，用於節點 *n1* 。
+* *n1_clus3* 是第二個連接至叢集交換器 2 （ CL2 或 C2 ）的 LIF 節點 *n1* 。
+* *n1_clus4* 是第二個連接至叢集交換器 1 （ CL1 或 C1 ）的 LIF 節點 *n1* 。
+* 10 GbE和40/100 GbE連接埠的數量是在上可用的參考組態檔（RCFs）中定義 https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco®叢集網路交換器參考組態檔案下載"^] 頁面。
+* 節點包括 *n1* ， *n2* ， *n3* 和 *n4* 。
+
+
+本程序中的範例使用四個節點：
+
+* 兩個節點使用四個 10 GbE 叢集互連連接埠： * e0A* ， * e0b* ， * e0c* 和 * e0d* 。
+* 其他兩個節點使用兩個 40 GbE 叢集互連連接埠： * E4A* 和 * e4e* 。
++
+link:https://hwu.netapp.com/["_SUR__ Hardware Universe"^]列出平台上的實際叢集連接埠。
+
+
+
+.涵蓋的案例
+本程序涵蓋下列案例：
+
+* 叢集一開始會連接兩個節點、並在兩個Nexus 5596叢集交換器中運作。
+* 要由C2取代的叢集交換器CL2（步驟1至19）：
++
+** 連接至CL2的所有節點上所有叢集連接埠和LIF上的流量、都會移轉至第一個連接至CL1的叢集連接埠和LIF。
+** 從連接至CL2的所有節點上的所有叢集連接埠拔下纜線、然後使用支援的中斷纜線將連接埠重新連接至新的叢集交換器C2。
+** 拔下CL1和CL2之間ISL連接埠之間的纜線、然後使用支援的中斷纜線、將連接埠從CL1重新連接至C2。
+** 所有節點上連線至C2的所有叢集連接埠和lifs上的流量都會還原。
+
+
+* 將由C2取代的叢集交換器CL2。
++
+** 連接至CL1的所有節點上所有叢集連接埠或生命週期上的流量、都會移轉到連接至C2的第二個叢集連接埠或生命週期。
+** 從連接至CL1的所有節點上的所有叢集連接埠拔下纜線、然後使用支援的中斷纜線重新連接至新的叢集交換器C1。
+** 中斷CL1和C2之間ISL連接埠之間的纜線連接、然後使用支援的纜線、從C1連接至C2。
+** 所有節點上連接至C1的所有叢集連接埠或生命期上的流量都會還原。
+
+
+* 叢集已新增兩個FAS9000節點、其中的範例顯示叢集詳細資料。
+
+
+.接下來呢？
+link:cn5596-prepare-to-migrate.html["準備移轉"]。

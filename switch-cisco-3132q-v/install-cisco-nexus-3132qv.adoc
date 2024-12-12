@@ -13,7 +13,7 @@ summary: 您可以將Cisco Nexus 3132Q-V交換器和傳遞面板安裝在NetApp�
 [role="lead"]
 視組態而定、您可能需要將Cisco Nexus 3132Q-V交換器和直通面板安裝在NetApp機櫃中、並附上交換器隨附的標準支架。
 
-.您需要的產品
+.開始之前
 * 中的初始準備要求、套件內容及安全預防措施 http://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus3000/hw/installation/guide/b_n3000_hardware_install_guide.html["Cisco Nexus 3000系列硬體安裝指南"^]。請先檢閱這些文件、再開始執行程序。
 * NetApp提供的傳遞面板套件（零件編號X8784-R6）。NetApp傳遞面板套件包含下列硬體：
 +

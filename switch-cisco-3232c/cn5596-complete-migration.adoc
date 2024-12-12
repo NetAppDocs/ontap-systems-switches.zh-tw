@@ -1,0 +1,57 @@
+---
+permalink: switch-cisco-3232c/cn5596-complete-migration.html 
+sidebar: sidebar 
+keywords: cisco 3232c, cluster switches 
+summary: 您可以將Cisco Nexus 3232C交換器當作AFF 叢集交換器、放在您的叢FAS 集或叢集內。 
+---
+= 完成從 5596 台交換器移轉至 3232C 交換器的作業
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+完成下列步驟以完成 Nexus 5596 交換器移轉至 Nexus 3232C 交換器的作業。
+
+.步驟
+. 確認已監控適當的叢集交換器：
++
+「系統叢集交換器顯示」
+
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+cluster::> system cluster-switch show
+
+Switch                      Type               Address          Model
+--------------------------- ------------------ ---------------- ---------------
+C1                          cluster-network    10.10.1.103      NX3232C
+     Serial Number: FOX000001
+      Is Monitored: true
+            Reason:
+  Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
+                    7.0(3)I4(1)
+    Version Source: CDP
+
+C2                          cluster-network    10.10.1.104      NX3232C
+     Serial Number: FOX000002
+      Is Monitored: true
+            Reason:
+  Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
+                    7.0(3)I4(1)
+    Version Source: CDP
+
+2 entries were displayed.
+----
+====
+. 如果您禁止自動建立個案、請叫用AutoSupport 下列訊息來重新啟用：
++
+「系統節點AutoSupport 不完整地叫用節點*-type all -most MAn=end」
+
+
+
+.接下來呢？
+link:../switch-cshm/config-overview.html["設定交換器健全狀況監控"]。

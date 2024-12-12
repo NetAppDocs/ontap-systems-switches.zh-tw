@@ -1,12 +1,23 @@
-= 步驟 1 ：在交換器上安裝 RCF
+---
+permalink: switch-cisco-9336c-fx2/install-rcf-software-9336c-cluster.html 
+sidebar: sidebar 
+keywords: install rcf, cisco switches 
+summary: 您可以在初次設定Nexus 9336C-FX2交換器之後安裝RCF。您也可以使用此程序來升級RCF版本。 
+---
+= 安裝參考組態檔（RCF）
 :allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
 
+
+[role="lead"]
+首次設定 Nexus 9336C-FX2 交換器後、請安裝參考組態檔案（ RCF ）。
 
 .開始之前
-請確認下列事項：
+驗證下列安裝和連線：
 
 * 與交換器的主控台連線。如果您可以遠端存取交換器、則可選用主控台連線。
-* 交換器 CS1 和交換器 CS2 已開機、交換器初始設定已完成（管理 IP 位址和 SSH 已設定）
+* 交換器 CS1 和交換器 CS2 已開機，並完成初始交換器設定（管理 IP 位址和 SSH 已設定）。
 * 已安裝所需的 NX-OS 版本。
 * 交換器之間的 ISL 連線已連線。
 * ONTAP 節點叢集連接埠未連線。
@@ -14,7 +25,7 @@
 
 
 
-=== 步驟 1 ：在交換器上安裝 RCF
+== 步驟 1 ：在交換器上安裝 RCF
 
 . 使用 SSH 或序列主控台登入交換器 CS1 。
 . 使用下列傳輸協定之一、將 RCF 複製到交換器 CS1 的 bootflash ： FTP 、 TFTP 、 SFTP 或 SCP 。
@@ -140,7 +151,7 @@ cs1# copy running-config startup-config [#######################################
 
 
 
-=== 步驟 2 ：驗證交換器連線
+== 步驟 2 ：驗證交換器連線
 
 . 驗證連接至叢集連接埠的交換器連接埠是否為* up*。
 +
@@ -350,7 +361,7 @@ cs1#
 
 
 
-=== 步驟 3 ：設定 ONTAP 叢集
+== 步驟 3 ：設定 ONTAP 叢集
 
 NetApp 建議您使用系統管理員來設定新叢集。
 

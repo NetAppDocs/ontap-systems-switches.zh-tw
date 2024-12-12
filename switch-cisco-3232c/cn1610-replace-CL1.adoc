@@ -1,0 +1,249 @@
+---
+permalink: switch-cisco-3232c/cn1610-replace-CL1.html 
+sidebar: sidebar 
+keywords: cisco 3232c, cluster switches 
+summary: 您可以將Cisco Nexus 3232C交換器當作AFF 叢集交換器、放在您的叢FAS 集或叢集內。 
+---
+= 將 CN1610 交換器 CL1 更換為 3232C 交換器 C1
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+請依照下列步驟，將 CN1610 （ CL1 ）交換器更換為 Nexus 3232C （ C1 ）交換器。
+
+.步驟
+. 驗證叢集的狀態：
++
+「網路介面show -role cluster」
+
++
+.顯示範例
+[%collapsible]
+====
+下列範例顯示所需的叢集l生命 已移轉至叢集交換器C2上裝載的適當叢集連接埠：
+
+[listing, subs="+quotes"]
+----
+cluster::*> *network interface show -role cluster*
+(network interface show)
+         Logical    Status      Network        Current  Current  Is
+Vserver  Interface  Admin/Oper  Address/Mask   Node     Port     Home
+-------- ---------- ----------- -------------- -------- -------- -----
+Cluster
+         n1_clus1   up/up       10.10.0.1/24   n1       e0b      false
+         n1_clus2   up/up       10.10.0.2/24   n1       e0b      true
+         n1_clus3   up/up       10.10.0.3/24   n1       e0c      true
+         n1_clus4   up/up       10.10.0.4/24   n1       e0c      false
+         n2_clus1   up/up       10.10.0.5/24   n2       e0b      false
+         n2_clus2   up/up       10.10.0.6/24   n2       e0b      true
+         n2_clus3   up/up       10.10.0.7/24   n2       e0c      true
+         n2_clus4   up/up       10.10.0.8/24   n2       e0c      false
+
+8 entries were displayed.
+----
+====
+. 關閉所有節點上連接至CL1的節點連接埠：
++
+「網路連接埠修改-node-name_-port _port-name_-up、admin假」
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示節點n1和n2上的特定連接埠正在關機：
+
+[listing, subs="+quotes"]
+----
+cluster::*> *network port modify -node n1 -port e0a -up-admin false*
+cluster::*> *network port modify -node n1 -port e0d -up-admin false*
+cluster::*> *network port modify -node n2 -port e0a -up-admin false*
+cluster::*> *network port modify -node n2 -port e0d -up-admin false*
+----
+====
+. 關閉主動式3232C交換器C2上的ISL連接埠24、31和32。
++
+如需Cisco命令的詳細資訊、請參閱中所列的指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
+
++
+.顯示範例
+[%collapsible]
+====
+下列範例顯示使用中3232C交換器C2上的ISL 24、31和32正在關機：
+
+[listing, subs="+quotes"]
+----
+C2# *configure*
+C2(config)# *interface ethernet 1/24/1-4*
+C2(config-if-range)# *shutdown*
+C2(config-if-range)# *exit*
+C2(config)# *interface ethernet 1/31-32*
+C2(config-if-range)# *shutdown*
+C2(config-if-range)# *exit*
+C2(config)# *exit*
+C2#
+----
+====
+. 拔下所有節點上連接至CN1610交換器CL1的纜線。
++
+使用適當的纜線、您必須將所有節點上的中斷連接連接埠重新連接至Nexus 3232C交換器C1。
+
+. 從Nexus 3232C C2連接埠E1/24拔下QSFP28纜線。
++
+您必須使用支援的Cisco QSFP28光纖或直接連接纜線、將C1上的E1/31和E1/32連接埠連接至C2上的E1/31和E1/32連接埠。
+
+. 還原連接埠24的組態、並移除C2上的暫用連接埠通道2：
++
+如需Cisco命令的詳細資訊、請參閱中所列的指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示正在複製到「startup組態」檔案的「執行組態」檔案：
+
+[listing, subs="+quotes"]
+----
+C2# configure
+C2(config)# *no interface breakout module 1 port 24 map 10g-4x*
+C2(config)# *no interface port-channel 2*
+C2(config-if)# *interface e1/24*
+C2(config-if)# *description 100GbE/40GbE Node Port*
+C2(config-if)# *spanning-tree port type edge*
+Edge port type (portfast) should only be enabled on ports connected to a single
+host. Connecting hubs, concentrators, switches, bridges, etc...  to this
+interface when edge port type (portfast) is enabled, can cause temporary bridging loops.
+Use with CAUTION
+
+Edge Port Type (Portfast) has been configured on Ethernet 1/24 but will only
+have effect when the interface is in a non-trunking mode.
+
+C2(config-if)# *spanning-tree bpduguard enable*
+C2(config-if)# *mtu 9216*
+C2(config-if-range)# *exit*
+C2(config)# *exit*
+C2# copy running-config startup-config
+[########################################] 100%
+Copy Complete.
+----
+====
+. 在C2（主動式3232C交換器）上啟動ISL連接埠31和32。
++
+如需Cisco命令的詳細資訊、請參閱中所列的指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
+
++
+.顯示範例
+[%collapsible]
+====
+下列範例顯示3232C交換器C2上的ISL 31和32：
+
+[listing, subs="+quotes"]
+----
+C2# *configure*
+C2(config)# *interface ethernet 1/31-32*
+C2(config-if-range)# *no shutdown*
+C2(config-if-range)# *exit*
+C2(config)# *exit*
+C2# copy running-config startup-config
+[########################################] 100%
+Copy Complete.
+----
+====
+. 驗證3232C交換器C2上的ISL連線是否為「up（正常）」。
++
+如需Cisco命令的詳細資訊、請參閱中所列的指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
+
++
+.顯示範例
+[%collapsible]
+====
+下列範例顯示正在驗證的ISL連線。連接埠eth1/31和eth1/32表示「（P）」、表示連接埠通道中的兩個ISL連接埠均為「up」（正常）：
+
+[listing, subs="+quotes"]
+----
+C1# *show port-channel summary*
+Flags:  D - Down        P - Up in port-channel (members)
+        I - Individual  H - Hot-standby (LACP only)
+        s - Suspended   r - Module-removed
+        S - Switched    R - Routed
+        U - Up (port-channel)
+        M - Not in use. Min-links not met
+------------------------------------------------------------------------------
+Group Port-       Type     Protocol  Member Ports
+      Channel
+-----------------------------------------------------------------------------
+1     Po1(SU)     Eth      LACP      Eth1/31(P)   Eth1/32(P)
+
+C2# *show port-channel summary*
+Flags:  D - Down        P - Up in port-channel (members)
+        I - Individual  H - Hot-standby (LACP only)
+        s - Suspended   r - Module-removed
+        S - Switched    R - Routed
+        U - Up (port-channel)
+        M - Not in use. Min-links not met
+------------------------------------------------------------------------------
+Group Port-       Type     Protocol  Member Ports
+      Channel
+------------------------------------------------------------------------------
+1     Po1(SU)     Eth      LACP      Eth1/31(P)   Eth1/32(P)
+----
+====
+. 開啟所有連接至所有節點上新3232C交換器C1的所有叢集互連連接埠：
++
+「網路連接埠修改-node-name_-port _port-name_-up管理true」
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示連接至新的3232C交換器C1的所有叢集互連連接埠：
+
+[listing, subs="+quotes"]
+----
+cluster::*> *network port modify -node n1 -port e0a -up-admin true*
+cluster::*> *network port modify -node n1 -port e0d -up-admin true*
+cluster::*> *network port modify -node n2 -port e0a -up-admin true*
+cluster::*> *network port modify -node n2 -port e0d -up-admin true*
+----
+====
+. 驗證叢集節點連接埠的狀態：
++
+「網路連接埠show -role cluster」
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示的輸出可驗證新3232C交換器C1上節點n1和n2上的叢集互連連接埠是否為「up」（正常）：
+
+[listing, subs="+quotes"]
+----
+cluster::*> *network port show -role cluster*
+       (network port show)
+
+Node: n1
+                Broadcast              Speed (Mbps) Health   Ignore
+Port  IPspace   Domain     Link  MTU   Admin/Open   Status   Health Status
+----- --------- ---------- ----- ----- ------------ -------- -------------
+e0a   cluster   cluster    up    9000  auto/10000     -
+e0b   cluster   cluster    up    9000  auto/10000     -
+e0c   cluster   cluster    up    9000  auto/10000     -        -
+e0d   cluster   cluster    up    9000  auto/10000     -        -
+
+Node: n2
+                Broadcast              Speed (Mbps) Health   Ignore
+Port  IPspace   Domain     Link  MTU   Admin/Open   Status   Health Status
+----- --------- ---------- ----- ----- ------------ -------- -------------
+e0a   cluster   cluster    up    9000  auto/10000     -
+e0b   cluster   cluster    up    9000  auto/10000     -
+e0c   cluster   cluster    up    9000  auto/10000     -
+e0d   cluster   cluster    up    9000  auto/10000     -
+
+8 entries were displayed.
+----
+====
+
+
+.接下來呢？
+link:cn1610-complete-migration.html["完成移轉"]。
