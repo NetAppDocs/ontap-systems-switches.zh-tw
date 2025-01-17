@@ -2631,7 +2631,6 @@
   <block id="feb8e402dbfa149a080f8f87ee22069f" category="list-text">節點名稱為cluster1-01、cluster1-02、cluster1-03和cluster1-04。</block>
   <block id="1a4c52cc090c463e0a3949fd93af9ca2" category="section-title">安裝軟體</block>
   <block id="ec8855627efbb26afaa912164ff82dbd" category="inline-link-macro">安裝RCF組態檔</block>
-  <block id="afe6bd84cf9f314186e891843eba49cc" category="paragraph"><block ref="41aae7f405e62aa01d791efeede3f9c2" category="inline-link-macro-rx"></block>。</block>
   <block id="2563a96fdb66dda5382058af89e8a58c" category="paragraph-title">交換器和節點命名法</block>
   <block id="a2d07f4e7a36ed872e60c08cdcc73771" category="doc">移轉至雙節點交換叢集</block>
   <block id="5b1bedb3dd2208af0449bbbfcc022136" category="paragraph">如果您現有的雙節點_無交換器_叢集環境、則可使用Cisco Nexus 9336C-FX2交換器移轉至雙節點_交換_叢集環境、以便擴充至叢集中的兩個節點以外。</block>
@@ -2818,7 +2817,6 @@
   <block id="c35204e874fcafc94c7c67e31162e966" category="paragraph">請確定執行此命令後已停用自動還原。</block>
   <block id="d08074ca4afc3cad1b1b41c1134b3f1e" category="section-title">步驟2：設定並驗證設定</block>
   <block id="b6ec5ccd50e4a92a636c1dc432c89581" category="admonition">叢集節點報告為健全狀態最多可能需要5分鐘。</block>
-  <block id="442f3bc68fd4ab1c760b482d02f7ca71" category="list-text">在交換器CS1上重複步驟1到10。</block>
   <block id="af4d9c4c765c5c1d9c279c35191c82da" category="paragraph"><block ref="e39b44798f52b1532971ab295180e1b0" prefix="" category="inline-code"></block></block>
   <block id="a96967612c6864aa22be45f265f4c533" category="paragraph">請遵循此程序、在叢集網路中更換故障的Cisco Nexus 3132Q-V交換器。更換程序是不中斷營運的程序（NDO）。</block>
   <block id="f3f6fdd1ea886344c6b4f8b4ee91d661" category="paragraph-title">交換器需求</block>
@@ -5185,4 +5183,15 @@
   <block id="6697bf1c75a0d4d8868afeab04858bc3" category="sidebar">Upgrade_switches_3232C</block>
   <block id="253d101ba7a8a0f1e24c1a3b13a1b5b5" category="sidebar">install_upgrade _RCF</block>
   <block id="2b8efdb0e77054ffe22b4bfb75564155" category="sidebar">安裝或升級 RCF 總覽</block>
+  <block id="b6503bc6a2e6ede86368a60473711626" category="list-text">在交換器 CS1 上重複步驟 1 至 11 。</block>
+  <block id="604f0b8e46b056f4f2f05bb3ea87a5a7" category="inline-link-macro">安裝 RCF</block>
+  <block id="f398a91a8a2500b4ebd90095482c2638" category="paragraph"><block ref="032b77b792344ea711cbb6f8f0bfe3cc" category="inline-link-macro-rx"></block>。</block>
+  <block id="ea6719e8ba4a5a7aea0b4185afc5408b" category="summary">首次設定 Nexus 9336C-FX2 儲存交換器後，即可安裝 RCF 。您也可以使用此程序來升級RCF版本。</block>
+  <block id="fc3ebe0c41be566a2062e99eee81c6ba" category="paragraph">首次設定 Nexus 9336C-FX2 儲存交換器之後，請安裝參考組態檔案（ RCF ）。</block>
+  <block id="0d54a8a99337a48199414ba38d122135" category="list-text">交換器 CS1 和交換器 CS2 已開機，並完成初始交換器設定（管理 IP 位址和 SSH 已設定）。</block>
+  <block id="f1de50ac922202c9581e806906499ae8" category="paragraph">此範例顯示正在交換器 CS1 上安裝的 RCF<block ref="fcd688c0fb8c0256c7fc0b5ca2fd673d" prefix=" " category="inline-code"></block> ：</block>
+  <block id="a697c9a980376d3a62210b2b53d5b0b8" category="list-text">檢查命令的橫幅輸出<block ref="6d53824b9996e36fd31937e922967215" prefix=" " category="inline-code"></block>。您必須閱讀並遵循這些指示，以確保交換器的組態和操作正確。</block>
+  <block id="b0d1465a243b273a8f71d6084fd2c12c" category="list-text">確認 RCF 是正確的較新版本：</block>
+  <block id="7fd5f97719ed93b62ce57a2401ebb179" category="list-text">驗證 RCF 版本和交換器設定正確之後，請將執行組態檔複製到啟動組態檔：</block>
+  <block id="f7b017d791fb57f4bbb1b2ce01659ed8" category="paragraph">System Manager 為叢集設定和組態提供簡單易用的工作流程，包括指派節點管理 IP 位址，初始化叢集，建立本機層，設定通訊協定和配置初始儲存設備。</block>
 </blocks>

@@ -330,19 +330,19 @@ cluster1::*>
 +
 [source, cli]
 ----
-net add snmp-server username SNMPv3_USER auth-none
+nv set service snmp-server username SNMPv3_USER auth-none
 ----
 * 對於 *MD5/SHA 驗證 * ：
 +
 [source, cli]
 ----
-net add snmp-server username SNMPv3_USER [auth-md5|auth-sha] AUTH-PASSWORD
+nv set service snmp-server username SNMPv3_USER [auth-md5|auth-sha] AUTH-PASSWORD
 ----
 * 對於採用 AES/DES 加密的 * MD5/SHA 驗證 * ：
 +
 [source, cli]
 ----
-net add snmp-server username SNMPv3_USER [auth-md5|auth-sha] AUTH-PASSWORD [encrypt-aes|encrypt-des] PRIV-PASSWORD
+nv set service snmp-server username SNMPv3_USER [auth-md5|auth-sha] AUTH-PASSWORD [encrypt-aes|encrypt-des] PRIV-PASSWORD
 ----
 
 

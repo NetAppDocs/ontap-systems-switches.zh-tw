@@ -45,7 +45,7 @@ set -privilege advanced
 +
 [source, cli]
 ----
-network device-discovery show -protocol cdp
+network device-discovery show -protocol lldp
 ----
 +
 .顯示範例
@@ -53,15 +53,15 @@ network device-discovery show -protocol cdp
 ====
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network device-discovery show -protocol cdp*
+cluster1::*> *network device-discovery show -protocol lldp*
 
 Node/       Local  Discovered
 Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
 ----------- ------ ------------------------- ----------------- --------
-cluster1-02/cdp
+cluster1-02/lldp
             e0a    cs1                       Eth1/2            N9K-C9336C
             e0b    cs2                       Eth1/2            N9K-C9336C
-cluster1-01/cdp
+cluster1-01/lldp
             e0a    cs1                       Eth1/1            N9K-C9336C
             e0b    cs2                       Eth1/1            N9K-C9336C
 
@@ -85,18 +85,20 @@ network port show -ipspace Cluster
 cluster1::*> *network port show -ipspace Cluster*
 
 Node: cluster1-02
-                                                  Speed(Mbps) Health
-Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status
---------- ------------ ---------------- ---- ---- ----------- ------
-e0a       Cluster      Cluster          up   9000  auto/10000 healthy
-e0b       Cluster      Cluster          up   9000  auto/10000 healthy
+                                                                       Ignore
+                                                  Speed(Mbps)  Health  Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper   Status  Status
+--------- ------------ ---------------- ---- ---- ------------ ------- ------
+e0a       Cluster      Cluster          up   9000  auto/100000 healthy false
+e0b       Cluster      Cluster          up   9000  auto/100000 healthy false
 
 Node: cluster1-01
-                                                  Speed(Mbps) Health
-Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status
---------- ------------ ---------------- ---- ---- ----------- ------
-e0a       Cluster      Cluster          up   9000  auto/10000 healthy
-e0b       Cluster      Cluster          up   9000  auto/10000 healthy
+                                                                       Ignore
+                                                  Speed(Mbps)  Health  Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper   Status  Status
+--------- ------------ ---------------- ---- ---- ------------ ------- ------
+e0a       Cluster      Cluster          up   9000  auto/100000 healthy false
+e0b       Cluster      Cluster          up   9000  auto/100000 healthy false
 
 4 entries were displayed.
 ----
@@ -153,11 +155,11 @@ cluster1::*> *network interface check cluster-connectivity show*
 Node   Date                       LIF                  LIF                 Loss
 ------ -------------------------- -------------------- ------------------- -----------
 node1
-       3/5/2022 19:21:18 -06:00   cluster1-01_clus2    cluster1-02-clus1   none
-       3/5/2022 19:21:20 -06:00   cluster1-01_clus2    cluster1-02_clus2   none
+       3/5/2024 19:21:18 -06:00   cluster1-01_clus2    cluster1-02-clus1   none
+       3/5/2024 19:21:20 -06:00   cluster1-01_clus2    cluster1-02_clus2   none
 node2
-       3/5/2022 19:21:18 -06:00   cluster1-02_clus2    cluster1-01_clus1   none
-       3/5/2022 19:21:20 -06:00   cluster1-02_clus2    cluster1-01_clus2   none
+       3/5/2024 19:21:18 -06:00   cluster1-02_clus2    cluster1-01_clus1   none
+       3/5/2024 19:21:20 -06:00   cluster1-02_clus2    cluster1-01_clus2   none
 ----
 --
 .所有 ONTAP 版本
@@ -211,7 +213,7 @@ cluster1::*> *network interface show -vserver Cluster -fields auto-revert*
 
           Logical
 Vserver   Interface           Auto-revert
---------- ––––––-------------- ------------
+--------- ------------------- ------------
 Cluster
           cluster1-01_clus1   true
           cluster1-01_clus2   true
