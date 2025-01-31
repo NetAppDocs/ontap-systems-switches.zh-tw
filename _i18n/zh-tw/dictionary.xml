@@ -1308,9 +1308,7 @@
   <block id="ba9e418ff064efca86945643e9b87680" category="list-text">將B通信 設備叢集交換器連接至管理網路。</block>
   <block id="674d78e1dac3bea340dfeacf46be187b" category="list-text">使用「ping」命令來驗證與裝載EFOS、授權和RCF檔案的伺服器之間的連線。</block>
   <block id="32c19f9978a98cf0e1ff20e5177a69e0" category="paragraph">此範例可驗證交換器是否連接至IP位址為172.19.2.1的伺服器：</block>
-  <block id="c95aaaacb482fe42dce56ee7cd8615a6" category="list-text">在CS2上備份目前使用中的映像：</block>
   <block id="2ab6a6c6e3efa9ded96d007db3c8ddd6" category="paragraph">「如何啟動bootvar</block>
-  <block id="19cb75d1f662e01942f8d897534baeb7" category="list-text">驗證EFOS軟體的執行版本：</block>
   <block id="6c3f6a049adc76db29ca1df525b7c235" category="list-text">將映像檔下載到交換器。</block>
   <block id="9f5a2906a0e63ca6b46604a272791779" category="paragraph">將映像檔複製到作用中映像、表示當您重新開機時、該映像會建立執行中的EFOS版本。上一個映像仍可作為備份使用。</block>
   <block id="f471b461fb47a6debd83122cd8a01983" category="list-text">顯示使用中和備份組態的開機映像：</block>
@@ -2698,7 +2696,6 @@
   <block id="f8a26b1330fe6b7b741993630dd932e2" category="list-text">驗證叢集生命區是否已還原至其主連接埠（這可能需要一分鐘時間）：</block>
   <block id="65201dcfc7c620613613b15eb161d307" category="paragraph">如果叢集l生命 尚未還原至其主連接埠、請手動還原它們：</block>
   <block id="88fb2189d22d2886ab33f16fdca0bb5b" category="paragraph"><block ref="7eaac8e45910aa8bf3a06f6966ab0656" prefix="" category="inline-code"></block></block>
-  <block id="ea4cd01e183524e8bbb487095fe3c5d9" category="list-text">目前的RCF檔案。</block>
   <block id="03c93e08ed4f9a68f6b404202d454262" category="list-text">RCF中的開機組態、可反映所需的開機映像、如果您只安裝NX-OS、並保留目前的RCF版本、則此為必要的開機組態。如果您需要變更開機組態以反映目前的開機映像、則必須在重新套用RCF之前執行此動作、以便在未來重新開機時產生正確的版本。</block>
   <block id="a0f6e8eb6b5f6a47b9079727da7ff23a" category="list-text">安裝RCF時所需的交換器主控台連線。</block>
   <block id="adbc02a7e46081db3727786cb62cdc0f" category="list-title">建議的文件</block>
@@ -3200,7 +3197,6 @@
   <block id="5e13628627abec712f77b1d757bfe59f" category="list-text">請檢閱下列EFOS版本的相關附註。</block>
   <block id="9b2d3fb1dc09edda79dfe09e637f9716" category="list-text">從EFOS 3.7.x.x或更新版本開始、我們提供不符合FIPS標準的版本、以及符合FIPS標準的版本。從非FIPS相容的版本移至FIPS相容的版本時、適用不同的步驟、反之亦然。將EFOS從非FIPS相容的版本變更為FIPS相容的版本、反之亦然、會將交換器重設為原廠預設值。此程序需要透過序列主控台連接埠存取。</block>
   <block id="7f824481c3b83fffcad8abfa0af8b312" category="inline-link">BS-53248叢集交換器NDU無法升級至EFOS 3.7.0.4及更新版本</block>
-  <block id="cec6ec2be042120b7ff4b5d0f1e40dee" category="admonition">請注意、將BSP-53248叢集交換器從EFOS 3.3.x.x或3.4.x.x升級至EFOS 3.7.0.4或3.8.0.2之後、交換器間連結（ISL）和連接埠通道會標示為「*向下*」狀態。請參閱以下知識庫文章：<block ref="eb6085a70a8e8bb2aba905d5e75797ab" category="inline-link-rx"></block> 以取得更多詳細資料。</block>
   <block id="0fa8ca6cfd731f93388f2f318c1fb1d3" category="paragraph">請使用下列其中一種方法：</block>
   <block id="420b291d479da153c96fd1143e9d0e2f" category="list-text"><block ref="c306cecb30107650b346d91b7d7c74b6" category="inline-xref-macro-rx"></block>。如果其中一個EFOS版本符合FIPS標準、而另一個EFOS版本不符合FIPS標準、請使用。</block>
   <block id="fa6c2d2a92519a714fe25ca830427ee1" category="section-title">方法1：安裝EFOS</block>
@@ -3757,7 +3753,6 @@
   <block id="73cb4c03f2757beb35ad69fd322003be" category="list-text">[[step16]將HA配對1從無交換式叢集轉換成交換式叢集。使用共享RCF定義的叢集連接埠指派。請參閱 <block ref="e0b55f136d815f7a36c41fd7fe28e0fd" category="inline-link-macro-rx"></block>以取得更多詳細資料。</block>
   <block id="12bc639206c2ca12e8a65041a697e4fc" category="paragraph">前往<block ref="c686ee523547302c3fa5199eafd95753" category="inline-link-rx"></block>。</block>
   <block id="6446fc62a2115815d4bdbe55f18815c1" category="list-text"><block ref="47109c7943148b2a9617cfcb4b49a79f" category="inline-link-macro-rx"></block>。</block>
-  <block id="22eb01d1e7d6584a0da20f490dc5af77" category="paragraph"><block ref="22eb01d1e7d6584a0da20f490dc5af77" category="inline-link-macro-rx"></block></block>
   <block id="6f773061a9b11739f4b04a8b170f8f8e" category="paragraph">視組態而定、您可以 <block ref="bd7e5f56c6474a1d0a59eeac0ce681d7" category="inline-link-macro-rx"></block>。否則、請前往 <block ref="cd3d2c6d0c8a0c43f0a0e10375ad6bbc" category="inline-link-macro-rx"></block>。</block>
   <block id="7f81bc06b8e7a4bfd515767a4b4385fe" category="list-text">[[step6]將共享交換器A上的儲存RCF替換為共用RCF檔案。請參閱 <block ref="2f595b9f03c1eca7e988cc615d685264" category="inline-link-macro-rx"></block> 以取得更多詳細資料。</block>
   <block id="2b888f1fbb1010b5a426f7a2a88e0914" category="list-text">[[step12]將共享交換器B上的儲存RCF檔案替換為共用RCF檔案。請參閱 <block ref="2f595b9f03c1eca7e988cc615d685264" category="inline-link-macro-rx"></block> 以取得更多詳細資料。</block>
@@ -4441,9 +4436,7 @@
   <block id="32559ee483b61b36141f9b9e0f4bbfff" category="paragraph">請參閱交換器相容性表、瞭解 NetApp 支援網站 上支援的 ONTAP 和 RCF 版本。請注意、 RCF 中的命令語法與特定版本 NX-OS 中的語法之間可能存在命令相依性。</block>
   <block id="ad0d19783ccfa19f931108b838e4b7e4" category="list-text"><block ref="ad0d19783ccfa19f931108b838e4b7e4" category="inline-link-macro-rx"></block></block>
   <block id="79509ba15c2970f327dd8610e3b4628c" category="paragraph-title">使用的命令</block>
-  <block id="1ad593dd61af4356ce9ba12d276c4336" category="section-title">選項 1 ：在新交換器上安裝 RCF 檔案</block>
   <block id="d061b4842fee7f503446ba29253d182f" category="paragraph">首次設定 Nexus 9336C-FX2 交換器後、請安裝參考組態檔案（ RCF ）。</block>
-  <block id="121f18688d36f2438eb17eb52e61e7e8" category="section-title">選項 2 ：使用新的 RCF 版本升級現有交換器</block>
   <block id="eba0713505eba2aab08d4d6fa9ca2cf7" category="paragraph">當您的作業交換器上已安裝 RCF 檔案的現有版本時、即可升級 RCF 版本。</block>
   <block id="ddd0020a0684c14dbd50622f84d8917a" category="paragraph">請確定您擁有下列項目：</block>
   <block id="28dbd722b252673fdce3f809670e34b8" category="list-text">如果您要更新 RCF 版本、則需要 RCF 中的開機組態、以反映所需的開機映像。</block>
@@ -4549,8 +4542,6 @@
   <block id="56e7024dc2e812be7449228dc66597d9" category="admonition">一次在一台交換器上升級 EFOS 、以確保叢集網路持續運作。</block>
   <block id="c3e2e765c3744c1b19452b2f233fdd15" category="section-title">方法 1 ：升級 EFOS</block>
   <block id="c117ec58c236a456904edaa76f1cc5a9" category="paragraph">執行下列步驟以升級 EFOS 軟體。</block>
-  <block id="061be1b61be0d3e5b21e6a5912639344" category="admonition">如果您已安裝任何授權、請檢閱其狀態。</block>
-  <block id="84d3d1386241334d40a809878bbb05d9" category="list-text">在交換器 CS1 上重複步驟 5 到 10 。</block>
   <block id="83b8a0042e3650c5af884c9601f53043" category="inline-link-macro">將LIF還原至其主連接埠</block>
   <block id="870c6c263570c51afc056f510d552e1f" category="paragraph">如需詳細資料、請參閱 <block ref="b9ea844d3dd5520c7767de46f1c99a2b" category="inline-link-macro-rx"></block>。</block>
   <block id="d0dc5dfd4c3b3be079653b7f0ac8d844" category="paragraph">如果其中一個EFOS版本符合FIPS標準、而另一個EFOS版本不符合FIPS標準、您可以執行下列步驟。如果交換器無法開機、這些步驟可用於從 ONIE 升級非 FIPS 或 FIPS 相容的 EFOS 3.7.x.x 映像。</block>
@@ -4784,7 +4775,6 @@
   <block id="e4da4813fef5b96a216a043d594bf245" category="list-text">重新套用任何先前的自訂項目至交換器組態。如<block ref="75ce5666fba6992a0719935651dd5b1b" category="inline-link-macro-rx"></block>需進一步變更的詳細資料、請參閱。</block>
   <block id="bdbcf1c0d7f9cba19eb12819b953fbf1" category="inline-link">在交換器作業系統升級期間移轉叢集 LIF 時、節點超出仲裁範圍</block>
   <block id="e6ab3c0f7886a69b4cd4dc70d1d4afa9" category="admonition">請務必關閉 * 所有 * 連線的叢集連接埠、以避免任何網路連線問題。如<block ref="c9b140831402716d03d51afcd09ff177" category="inline-link-rx"></block>需詳細資訊、請參閱知識庫文章。</block>
-  <block id="263b9f10fe7e073e656b08a5b6da7e5a" category="paragraph">本程序中的範例使用四個節點。這些節點使用兩個10GbE叢集互連連接埠e0a和e0b。請參閱<block ref="cd25cbe53f0a314145c84729c6ce2c78" category="inline-link-rx"></block>以驗證平台上正確的叢集連接埠。</block>
   <block id="fc9b57bfb616bf5697d55f4dc656cead" category="inline-link-macro">驗證SSH組態</block>
   <block id="1046b0a81eea5dae9091290036b99362" category="paragraph"><block ref="4767a0bcf3ab94aeda87c79dd4096ef4" category="inline-link-macro-rx"></block>。</block>
   <block id="95baf91c437105360687405b916b57fa" category="list-text">加密 SSH 金鑰（僅適用於 * FIPS 模式 * ）：</block>
@@ -5142,7 +5132,6 @@
   <block id="5f9610f3409d9abe96cc344156486c5e" category="paragraph-title"><block ref="beadfa85a2fdca06b91edc1131c603e6" category="inline-image-macro-rx" type="image"></block><block ref="4c0a19683ab4dd37cd0517d25639fa78" category="inline-link-macro-rx"></block></block>
   <block id="e796841df950e342f76a5b538574f5f6" category="paragraph">完成移轉至雙節點交換式叢集。</block>
   <block id="e4ff582cba38e556dc88b3e74baf1ec1" category="paragraph">&lt;stdin&gt; 中未解決的指令 - 包括： ..//_include/install-RCF-software-9336c-CLUSE.adoc []</block>
-  <block id="688523fe289426758745102b5d3ea37f" category="paragraph">&lt;stdin&gt; 中未解決的指令 - 包括： ..//_INCLUDE / 升級 -RCF-software-9336c-CLUSE.adoc []</block>
   <block id="1ececed2a569720ced41e9cd50d7b238" category="list-text">交換器 CS1 和交換器 CS2 已開機，並完成初始交換器設定（管理 IP 位址和 SSH 已設定）。</block>
   <block id="c3109b36f2c8edda93835ccefa0e4dc3" category="doc">安裝或升級參考組態檔案（ RCF ）總覽</block>
   <block id="6d7b8066e6c7166408cb61e68a705e7f" category="list-text">兩個 Cisco 交換器的名稱分別是 *CS1* 和 *CS2* 。</block>
@@ -5151,7 +5140,6 @@
   <block id="1c319a6cce094508e045c5bb62d6664e" category="paragraph">本程序中的範例使用四個節點。這些節點使用兩個 10GbE 叢集互連連接埠 *e0A* 和 *e0b* 。請參閱<block ref="cd25cbe53f0a314145c84729c6ce2c78" category="inline-link-rx"></block>以驗證平台上正確的叢集連接埠。</block>
   <block id="88870df2dabeaf8bc50daf8d504498e0" category="inline-link-macro">升級您的 RCF</block>
   <block id="d1d882c0929e664f5d3052ad227ecec9" category="paragraph"><block ref="51640e6af8359470cbd047034716b7ac" category="inline-link-macro-rx"></block> 或 <block ref="d9cc2c4eec198e8f90466b5b89bfc33e" category="inline-link-macro-rx"></block>。</block>
-  <block id="fd7fe8bcb397a94d6c1c59e351072eac" category="doc">升級您的參考組態檔案（ RCF ）</block>
   <block id="df73b0f89510f793b71a90bf50d82c10" category="list-text">目前的 RCF 。</block>
   <block id="85e086d364dc39fb9a01f1b57e7afc52" category="list-text">ONTAP 9.10.1P3 及更新版本</block>
   <block id="e6645191453a89d37ca94dbd791a1499" category="paragraph">SN2100 交換器可透過不同的交換器配對，在 ONTAP 9.10.1P3 及更新版本中為叢集與儲存應用程式提供服務。</block>
@@ -5194,4 +5182,15 @@
   <block id="b0d1465a243b273a8f71d6084fd2c12c" category="list-text">確認 RCF 是正確的較新版本：</block>
   <block id="7fd5f97719ed93b62ce57a2401ebb179" category="list-text">驗證 RCF 版本和交換器設定正確之後，請將執行組態檔複製到啟動組態檔：</block>
   <block id="f7b017d791fb57f4bbb1b2ce01659ed8" category="paragraph">System Manager 為叢集設定和組態提供簡單易用的工作流程，包括指派節點管理 IP 位址，初始化叢集，建立本機層，設定通訊協定和配置初始儲存設備。</block>
+  <block id="7ff4d12d3e81fb159ea571275dbbb3fd" category="admonition">請注意、將BSP-53248叢集交換器從EFOS 3.3.x.x或3.4.x.x升級至EFOS 3.7.0.4或3.8.0.2之後、交換器間連結（ISL）和連接埠通道會標示為「*向下*」狀態。這是預期的行為，除非您對自動還原的舉升有任何問題，否則繼續升級是安全的。如需詳細資訊，請參閱知識庫文件：<block ref="eb6085a70a8e8bb2aba905d5e75797ab" category="inline-link-rx"></block>。</block>
+  <block id="4624388fca013386d1c7314566aa1510" category="list-text">從備份組態啟動系統：</block>
+  <block id="ae791522c9f7834f0edc56277ffe2340" category="paragraph"><block ref="f2210f21804aee53def01718125f3f18" prefix="" category="inline-code"></block></block>
+  <block id="892854a85c10d8b7b832a094d0b2b95e" category="list-text">在交換器 CS1 上重複步驟 5 到 11 。</block>
+  <block id="b0411eb90c7d5ca211940fcb5d8f219a" category="doc">升級參考組態檔案（ RCF ）</block>
+  <block id="657454366cb4a451c5905310b7f4d2cc" category="paragraph">首次設定 Nexus 9336C-FX2 交換器之後，您可以安裝參考組態檔（ RCF ）。</block>
+  <block id="34b61fdbe20d7b5fdf2f4d5655d2dc71" category="list-text">交換器之間的交換器間連結（ ISL ）連線已連線。</block>
+  <block id="5e9fc634461251750aac2012c638665a" category="doc">升級參考組態檔案（ RCF ）</block>
+  <block id="9129459f5b5477d59e1fbb13abc9bbd4" category="admonition">在安裝新的交換器軟體版本和RCFs之前、您必須清除交換器設定並執行基本組態。在清除交換器設定之前，您必須使用序列主控台連線至交換器，或保留基本組態資訊。</block>
+  <block id="4c4876d5d981da2e6943a052d93bb189" category="list-text">若為 NX-OS 10.2 及更新版本，請使用<block ref="9c370f72db0e0d920841657ac5268365" prefix=" " category="inline-code"></block>命令與 bootflash 中儲存的 RCF 檔案進行比較。否則，請使用第三方差異或比較工具。</block>
+  <block id="0a306731a6993e7a08026ab2d7ca2d97" category="paragraph">您可能需要更新與 SSH 金鑰相關的主機檔案項目。</block>
 </blocks>

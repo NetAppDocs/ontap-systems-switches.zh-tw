@@ -147,7 +147,7 @@ NOTE: 一次在一台交換器上升級 EFOS 、以確保叢集網路持續運�
 執行下列步驟以升級 EFOS 軟體。
 
 
-IMPORTANT: 請注意、將BSP-53248叢集交換器從EFOS 3.3.x.x或3.4.x.x升級至EFOS 3.7.0.4或3.8.0.2之後、交換器間連結（ISL）和連接埠通道會標示為「*向下*」狀態。請參閱以下知識庫文章： https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/Fabric%2C_Interconnect_and_Management_Switches/BES-53248_Cluster_Switch_NDU_failed_upgrade_to_EFOS_3.7.0.4_and_later["BS-53248叢集交換器NDU無法升級至EFOS 3.7.0.4及更新版本"^] 以取得更多詳細資料。
+IMPORTANT: 請注意、將BSP-53248叢集交換器從EFOS 3.3.x.x或3.4.x.x升級至EFOS 3.7.0.4或3.8.0.2之後、交換器間連結（ISL）和連接埠通道會標示為「*向下*」狀態。這是預期的行為，除非您對自動還原的舉升有任何問題，否則繼續升級是安全的。如需詳細資訊，請參閱知識庫文件： https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/Fabric%2C_Interconnect_and_Management_Switches/BES-53248_Cluster_Switch_NDU_failed_upgrade_to_EFOS_3.7.0.4_and_later["BS-53248叢集交換器NDU無法升級至EFOS 3.7.0.4及更新版本"^]。
 
 .步驟
 . 將B通信 設備叢集交換器連接至管理網路。
@@ -190,81 +190,10 @@ network interface modify -vserver Cluster -lif * -auto-revert false
 --------------------------------------------------------------------
  unit      active      backup        current-active    next-active
 --------------------------------------------------------------------
-    1      3.7.0.4     3.4.4.6       3.7.0.4           3.7.0.4
+    1      3.7.0.4     3.4.4.6              3.7.0.4        3.7.0.4
 
 ----
 ====
-. 在CS2上備份目前使用中的映像：
-+
-[source, cli]
-----
-copy active backup
-----
-+
-.顯示範例
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-(cs2)# *copy active backup*
-Copying active to backup
-Management access will be blocked for the duration of the operation
-Copy operation successful
-
-(cs2)# *show bootvar*
-
-Image Descriptions
-
- active :
- backup :
- Images currently available on Flash
---------------------------------------------------------------------
- unit      active      backup      current-active    next-active
-------------------------------------------------------------------
-    1      3.7.0.4     3.4.4.6       3.7.0.4           3.7.0.4
-(cs2)#
-----
-====
-. 驗證EFOS軟體的執行版本：
-+
-《如何版本》
-
-+
-.顯示範例
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-(cs2)# *show version*
-
-Switch: 1
-
-System Description............................. BES-53248A1, 3.7.0.4, Linux 4.4.117-ceeeb99d, 2016.05.00.05
-Machine Type................................... BES-53248A1
-Machine Model.................................. BES-53248
-Serial Number.................................. QTFCU38260014
-Maintenance Level.............................. A
-Manufacturer................................... 0xbc00
-Burned In MAC Address.......................... D8:C4:97:71:12:3D
-Software Version............................... 3.7.0.4
-Operating System............................... Linux 4.4.117-ceeeb99d
-Network Processing Device...................... BCM56873_A0
-CPLD Version................................... 0xff040c03
-
-Additional Packages............................ BGP-4
-...............................................	QOS
-...............................................	Multicast
-............................................... IPv6
-............................................... Routing
-............................................... Data Center
-............................................... OpEN API
-............................................... Prototype Open API
-----
-====
-+
-
-NOTE: 如果您已安裝任何授權、請檢閱其狀態。
-
 . 將映像檔下載到交換器。
 +
 將映像檔複製到作用中映像、表示當您重新開機時、該映像會建立執行中的EFOS版本。上一個映像仍可作為備份使用。
@@ -272,7 +201,7 @@ NOTE: 如果您已安裝任何授權、請檢閱其狀態。
 +
 [listing, subs="+quotes"]
 ----
-(cs2)# *copy sftp://root@172.19.2.1//tmp/EFOS-3.10.0.3.stk active*
+(cs2)# *copy sftp://root@172.19.2.1//tmp/EFOS-3.10.0.3.stk backup*
 Remote Password:********
 
 Mode........................................... SFTP
@@ -280,7 +209,7 @@ Set Server IP.................................. 172.19.2.1
 Path........................................... //tmp/
 Filename....................................... EFOS-3.10.0.3.stk
 Data Type...................................... Code
-Destination Filename........................... active
+Destination Filename........................... backup
 
 Management access will be blocked for the duration of the transfer
 Are you sure you want to start? (y/n) *y*
@@ -307,10 +236,65 @@ Image Descriptions
  backup :
 
  Images currently available on Flash
---------------------------------------------------------------------
+------------------------------------------------------------------
  unit      active      backup      current-active    next-active
---------------------------------------------------------------------
-    1      3.7.0.4     3.7.0.4     3.7.0.4           3.10.0.3
+------------------------------------------------------------------
+    1      3.7.0.4    3.7.0.4             3.7.0.4       3.10.0.3
+----
+====
+. 從備份組態啟動系統：
++
+`boot system backup`
+
++
+[listing, subs="+quotes"]
+----
+(cs2)# *boot system backup*
+Activating image backup ..
+----
+. 顯示使用中和備份組態的開機映像：
++
+「如何啟動bootvar
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(cs2)# *show bootvar*
+
+Image Descriptions
+
+ active :
+ backup :
+
+ Images currently available on Flash
+------------------------------------------------------------------
+ unit      active      backup      current-active    next-active
+------------------------------------------------------------------
+    1    3.10.0.3    3.10.0.3            3.10.0.3       3.11.0.2
+----
+====
+. 將執行組態儲存至啟動組態：
++
+寫入記憶體
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(cs2)# *write memory*
+This operation may take a few minutes.
+
+Management interfaces will not be available during this time.
+
+Are you sure you want to save? (y/n) *y*
+
+Config file 'startup-config' created successfully.
+Configuration Saved!
 ----
 ====
 . 重新啟動交換器：
@@ -369,7 +353,7 @@ Additional Packages............................ BGP-4
 ............................................... Prototype Open API
 ----
 ====
-. 在交換器 CS1 上重複步驟 5 到 10 。
+. 在交換器 CS1 上重複步驟 5 到 11 。
 . 在叢集生命體上啟用自動還原。
 +
 [source, cli]

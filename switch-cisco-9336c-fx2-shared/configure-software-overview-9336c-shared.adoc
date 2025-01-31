@@ -16,5 +16,4 @@ summary: Cisco Nexus 9336C-FX2共享交換器軟體組態總覽
 . link:prepare-nxos-rcf-9336c-shared.html["準備安裝NX-OS和RCF"]。
 . link:install-nxos-software-9336c-shared.html["安裝NX-OS軟體"]。
 . link:install-nxos-rcf-9336c-shared.html["安裝RCF"]。
-. link:configure-ssh.html["啟用SSH"]。
 

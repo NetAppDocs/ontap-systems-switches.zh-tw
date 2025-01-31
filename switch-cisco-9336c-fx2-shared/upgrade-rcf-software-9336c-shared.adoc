@@ -1,5 +1,5 @@
 ---
-permalink: switch-cisco-9336c-fx2/upgrade-rcf-software-9336c-cluster.html 
+permalink: switch-cisco-9336c-fx2-shared/upgrade-rcf-software-9336c-shared.html 
 sidebar: sidebar 
 keywords: install rcf, cisco switches 
 summary: 您可以在初次設定Nexus 9336C-FX2交換器之後安裝RCF。您也可以使用此程序來升級RCF版本。 
@@ -29,7 +29,7 @@ summary: 您可以在初次設定Nexus 9336C-FX2交換器之後安裝RCF。您�
 NOTE: 在此程序期間、不需要運作中的交換器間連結（ISL）。這是因為RCF版本變更可能會暫時影響ISL連線。為確保叢集作業不中斷、下列程序會在目標交換器上執行步驟時、將所有叢集生命體移轉至作業夥伴交換器。
 
 
-CAUTION: 在安裝新的交換器軟體版本和RCFs之前、您必須清除交換器設定並執行基本組態。在清除交換器設定之前、您必須使用序列主控台連線至交換器、或保留基本組態資訊。
+CAUTION: 在安裝新的交換器軟體版本和RCFs之前、您必須清除交換器設定並執行基本組態。在清除交換器設定之前，您必須使用序列主控台連線至交換器，或保留基本組態資訊。
 
 
 
@@ -249,7 +249,7 @@ cluster1::*>
 
 +
 .. 記錄目前執行組態和使用中 RCF 檔案（例如組織的 SNMP 組態）之間的任何自訂新增項目。
-.. 若為 NX-OS 10.2 及更新版本、請使用 `show diff running-config` 用於比較 bootflash 中儲存的 RCF 檔案的命令。  否則、請使用第三個零件差異 / 比較工具。
+.. 若為 NX-OS 10.2 及更新版本，請使用 `show diff running-config`命令與 bootflash 中儲存的 RCF 檔案進行比較。否則，請使用第三方差異或比較工具。
 
 
 . 將基本組態詳細資料儲存至 bootflash 上的 write_erase.cfg 檔案。
@@ -903,4 +903,4 @@ RPC status:
 --
 ====
 .接下來呢？
-link:configure-ssh-keys.html["驗證SSH組態"]。
+link:../switch-cshm/config-overview.html["設定交換器健全狀況監控"]。
