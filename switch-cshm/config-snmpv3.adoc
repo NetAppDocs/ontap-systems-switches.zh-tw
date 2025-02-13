@@ -27,25 +27,25 @@ NOTE: 僅 ONTAP 9.12.1 及更新版本支援 SNMPv3 。
 ====
 .Broadcom 交換器
 --
-在 Broadcom BS-53248 交換器上設定 SNMPv3 使用者名稱網路操作員。
+在 Broadcom BS-53248 交換器上設定 SNMPv3 使用者名稱 SNMPv3 使用者。
 
 * 若為 * 無驗證 * ：
 +
 [source, cli]
 ----
-snmp-server user SNMPv3UserNoAuth NETWORK-OPERATOR noauth
+snmp-server user SNMPv3UserNoAuth SNMPv3_USER noauth
 ----
 * 對於 *MD5/SHA 驗證 * ：
 +
 [source, cli]
 ----
-snmp-server user SNMPv3UserAuth NETWORK-OPERATOR [auth-md5|auth-sha]
+snmp-server user SNMPv3UserAuth SNMPv3_USER [auth-md5|auth-sha]
 ----
 * 對於採用 AES/DES 加密的 * MD5/SHA 驗證 * ：
 +
 [source, cli]
 ----
-snmp-server user SNMPv3UserAuthEncrypt NETWORK-OPERATOR [auth-md5|auth-sha] [priv-aes128|priv-des]
+snmp-server user SNMPv3UserAuthEncrypt SNMPv3_USER [auth-md5|auth-sha] [priv-aes128|priv-des]
 ----
 
 

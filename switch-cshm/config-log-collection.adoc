@@ -29,6 +29,7 @@ summary: 乙太網路交換器健全狀況監視器（ CSHM ）記錄收集功�
 
 * 使用者必須能夠存取交換器 `show` 命令。如果這些權限不可用、請建立新使用者、並將必要的權限授予使用者。
 * 必須為交換器啟用交換器健全狀況監控。請務必確認 `Is Monitored:` 欄位在的輸出中設為 * 真 * `system switch ethernet show` 命令。
+* 對於 Broadcom 和 Cisco 交換器的記錄收集，應在交換器上為啟用記錄收集的每個設定建立新的使用者。這些交換器不支援同一位使用者的多個 SSH 金鑰。執行的任何其他記錄集合設定都會覆寫使用者先前存在的任何 SSH 金鑰。
 * 若要使用 NVIDIA 交換器來支援記錄收集、必須允許記錄收集的 _user_ 執行 `cl-support`命令、而無需提供密碼。若要允許這種使用方式、請執行命令：
 +
 `echo '_<user>_ ALL = NOPASSWD: /usr/cumulus/bin/cl-support' | sudo EDITOR='tee -a' visudo -f /etc/sudoers.d/cumulus`

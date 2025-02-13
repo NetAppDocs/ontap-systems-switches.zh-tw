@@ -4707,7 +4707,6 @@
   <block id="c76d1ab1bab3f2bc0c89856d8d6e3d40" category="paragraph">請遵循此程序、為支援 CSHM 的特定交換器設定 SNMPv3 。</block>
   <block id="5fb3828593766d454e79a0dcf52fed9d" category="paragraph">以下命令用於在 *Broadcom* 、 *Cisco* 和 *NVidia 交換機上配置 SNMPv3 用戶名：</block>
   <block id="77f3beca20fcd78f77236507e8d9b4af" category="open-title">Broadcom 交換器</block>
-  <block id="89fe808c6ef5fe301085b5abe4406d35" category="paragraph">在 Broadcom BS-53248 交換器上設定 SNMPv3 使用者名稱網路操作員。</block>
   <block id="c59df2c71925eefec8dc03aa685125c8" category="list-text">若為 * 無驗證 * ：</block>
   <block id="4c58055d9b16c25c354c591188cb27ae" category="list-text">對於 *MD5/SHA 驗證 * ：</block>
   <block id="b00500f501ccb5c8ab2313d810b6ff29" category="list-text">對於採用 AES/DES 加密的 * MD5/SHA 驗證 * ：</block>
@@ -5193,4 +5192,6 @@
   <block id="9129459f5b5477d59e1fbb13abc9bbd4" category="admonition">在安裝新的交換器軟體版本和RCFs之前、您必須清除交換器設定並執行基本組態。在清除交換器設定之前，您必須使用序列主控台連線至交換器，或保留基本組態資訊。</block>
   <block id="4c4876d5d981da2e6943a052d93bb189" category="list-text">若為 NX-OS 10.2 及更新版本，請使用<block ref="9c370f72db0e0d920841657ac5268365" prefix=" " category="inline-code"></block>命令與 bootflash 中儲存的 RCF 檔案進行比較。否則，請使用第三方差異或比較工具。</block>
   <block id="0a306731a6993e7a08026ab2d7ca2d97" category="paragraph">您可能需要更新與 SSH 金鑰相關的主機檔案項目。</block>
+  <block id="8b4a2ab0394283209f67c0b0e8ca9f94" category="list-text">對於 Broadcom 和 Cisco 交換器的記錄收集，應在交換器上為啟用記錄收集的每個設定建立新的使用者。這些交換器不支援同一位使用者的多個 SSH 金鑰。執行的任何其他記錄集合設定都會覆寫使用者先前存在的任何 SSH 金鑰。</block>
+  <block id="1d768064a88b1cd8a98efaa14d7f9949" category="paragraph">在 Broadcom BS-53248 交換器上設定 SNMPv3 使用者名稱 SNMPv3 使用者。</block>
 </blocks>
