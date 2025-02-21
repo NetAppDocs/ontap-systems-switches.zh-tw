@@ -25,8 +25,7 @@ Cisco Nexus 9336C-FX2 交換器是 Cisco Nexus 9000 平台的一部分、可安�
 . link:install-switch-and-passthrough-panel-9336c-storage.html["將交換器安裝在 NetApp 機櫃中"]。
 . link:install-nxos-overview-9336c-storage.html["準備安裝NX-OS和RCF"]。
 . link:install-nxos-software-9336c-storage.html["安裝NX-OS軟體"]。
-. link:install-nxos-rcf-9336c-storage.html["安裝RCF組態檔"]。
-. link:configure-ssh.html["啟用SSH"]。
+. link:install-rcf-software-9336c-storage.html["安裝RCF組態檔"]。
 
 
 

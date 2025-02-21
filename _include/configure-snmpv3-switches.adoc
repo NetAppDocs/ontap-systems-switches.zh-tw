@@ -1,17 +1,6 @@
----
-permalink: switch-cshm/config-snmpv3.html 
-sidebar: sidebar 
-keywords: cshm, configure, snmpv3, switch logs, debugging, collection 
-summary: 您可以使用此程序來設定特定交換器的 SNMPv3 、以支援乙太網路交換器健全狀況監控（ CSHM ）。 
----
-= 選用：為交換器設定 SNMPv3
+= 
 :allow-uri-read: 
-:icons: font
-:imagesdir: ../media/
 
-
-[role="lead"]
-SNMP 用於監控交換器。乙太網路交換器健全狀況監視器（ CSHM ）使用 SNMP 來監控叢集和儲存交換器的健全狀況和效能。根據預設、 SNMPv2c 會透過參考組態檔案（ RCF ）自動設定。
 
 SNMPv3 比 SNMPv2 更安全、因為它引進強大的安全功能、例如驗證、加密和訊息完整性、可防止未經授權的存取、並確保傳輸期間資料的機密性和完整性。
 

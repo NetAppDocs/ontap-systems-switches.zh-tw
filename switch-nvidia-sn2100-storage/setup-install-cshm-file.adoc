@@ -13,6 +13,8 @@ summary: 您可以使用此程序來安裝適用於 NVIDIA SN2100 儲存交換�
 [role="lead"]
 請依照此程序安裝適用於 NVIDIA 叢集交換器之乙太網路交換器健全狀況監控的組態檔。支援的機型包括：
 
+* MSN2100-CB2FC
+* MSN2100-CB2RC
 * X190006-PE
 * X190006-PI
 
@@ -27,6 +29,33 @@ NOTE: 此安裝程序適用於 ONTAP 9.10.1 及更新版本。
 
 * 請確定ONTAP 支援並執行不中斷的叢集。
 * 啟用 SSH 以使用 CSHM 中所有可用的功能。
+* 清除 `/mroot/etc/cshm_nod/nod_sign/`所有節點上的目錄：
++
+.. 輸入節點：
++
+`system node run -node <name>`
+
+.. 變更為進階權限：
++
+`priv set advanced`
+
+.. 列出目錄中的組態檔案 `/etc/cshm_nod/nod_sign`。如果目錄存在且包含組態檔案，則會列出檔案名稱。
++
+`ls /etc/cshm_nod/nod_sign`
+
+.. 刪除所有對應於您所連接交換器機型的 NOD 檔案。
++
+如果您不確定，請移除上述所列支援機型的所有 NOD 檔案，然後下載並安裝相同機型的最新 NOD 檔案。
+
++
+`rm /etc/cshm_nod/nod_sign/<filename>`
+
+.. 確認刪除的 NOD 檔案不再位於目錄中：
++
+`ls /etc/cshm_nod/nod_sign`
+
+
+
 
 
 .步驟
@@ -44,15 +73,19 @@ NOTE: 此安裝程序適用於 ONTAP 9.10.1 及更新版本。
 ====
 .ONTAP 9.15.1 及更新版本
 --
-* X190006-PE.zip
-* X190006-PI.zip
+* MSN2100-CB2FC-v1.4.zip
+* MSN2100-CB2RC-v1.4.zip
+* X190006-PE-v1.4.zip
+* X190006-PI-v1.4.zip
 
 
 --
 .ONTAP 9.11.1 至 9.14.1
 --
-* X190006-PE_PRIOR_9.15.1.zip
-* X190006-PI_PRIOR_9.15.1.zip
+* MSN2100-CB2FC_PRIOR_R9.15.1-v1.4.zip
+* MSN2100-CB2RC_PRIOR_R9.15.1-v1.4.zip
+* X190006-PE_PRIOR_9.15.1-v1.4.zip
+* X190006-PI_PRIOR_9.15.1-v1.4.zip
 
 
 --
@@ -66,7 +99,7 @@ NOTE: 此安裝程序適用於 ONTAP 9.10.1 及更新版本。
 +
 [listing, subs="+quotes"]
 ----
-cluster1::> *system cluster-switch configure-health-monitor -node * -package-url 192.168.2.20/usr/download/_[filename.zip]_*
+cluster1::> *system cluster-switch configure-health-monitor -node * -package-url http://192.168.2.20/usr/download/_[filename.zip]_*
 ----
 . 確認 ONTAP 版本的命令輸出結尾為下列文字：
 

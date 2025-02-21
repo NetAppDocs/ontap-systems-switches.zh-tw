@@ -1386,9 +1386,6 @@
   <block id="82c7b5069d64f95a2a115dff1c9ad171" category="doc">安裝叢集交換器健全狀況監視器（CSHM）組態檔</block>
   <block id="f4041989c699a535116c689437df5c7f" category="inline-link">NetApp軟體下載</block>
   <block id="87a71c7310f603842228cb9ab1b19ec2" category="list-text">在「軟體」下載頁面上、選取*「交換器健全狀況監視器組態檔案」*</block>
-  <block id="71e7226148073765129cd7907345e8d0" category="list-text">選取「Platform =* ONTAP S供*參考*」、然後按一下「* Go！*」</block>
-  <block id="10ecf803d0b4415af42ea78c998ea4d0" category="list-text">在「Switch Health Monitor Configuration Files for ONTAP Sfor the Sfor the」（交換器健全狀況監視器組態檔案以供參考）頁面上、按一下*</block>
-  <block id="89d871d0880e9496071a54d271f32095" category="list-text">在「終端使用者授權合約」頁面上、按一下「*接受*」</block>
   <block id="3a1759e54cb06a13c2c5b9b85a4c5282" category="list-text">將適用的Zip檔案上傳至內部Web伺服器、其中IP位址為X.X.X.X</block>
   <block id="903944fca05d1da45a504e69ed5609fb" category="paragraph">如果內部Web伺服器IP位址為192．168．2、假設存在/usr/downloads目錄、您可以使用scp將壓縮檔上傳至Web伺服器：</block>
   <block id="f4ab3be3915b88f9d23c5faf297e78ff" category="list-text">確認命令輸出包含文字字串「已成功處理下載的套件」。如果發生錯誤、請聯絡NetApp支援部門。</block>
@@ -1613,12 +1610,6 @@
   <block id="942d4e37dd5607ab68e54755540d4a47" category="paragraph">保留</block>
   <block id="645b50612eedcb03bdeff0f4c9f4de12" category="summary">如果您想要記錄支援的平台、您必須使用完整的佈線工作表範例作為指南、填寫空白的佈線工作表。每個交換器可設定為單一100GbE、40GbE連接埠或4個10GbE連接埠。</block>
   <block id="f10a54352c5df9c392986952ef09a882" category="paragraph">25至30</block>
-  <block id="474f795914b70c8d0fc4aa239c11011e" category="list-text">根據對應ONTAP 的版本、下載叢集交換器健全狀況監視器組態壓縮檔。此檔案可從取得<block ref="cb382f539d8e67a00135c8306b3d74b6" category="inline-link-rx"></block> 頁面。</block>
-  <block id="7b5f1af07f17424faae23117b93de4fb" category="list-text">在「交換器健全狀況監視器組態檔案for ONTAP the Sfor the Sfor the Description」（適用於《for Sfor the Sfor the -說明》的「交換器健全狀況監視器組態檔案」頁面上、按一下*下載*以取得適用的叢集交換器模型</block>
-  <block id="d9342955a19c127d0b1dd4e72f3e86b1" category="list-text">在「交換器健全狀況監視器組態檔案以ONTAP 供參考-下載」頁面上、選取適用的組態檔、例如* Cisco_Nexus _92300YC.Zip *</block>
-  <block id="eacf976afedcff2a1b48626c95df5ae6" category="list-text">使用命令Set-priv特權 進階功能、從ONTAP 叢集中的任一個作業系統存取進階模式設定：</block>
-  <block id="5b1c58aff8e7e4b9950fac4fb9b4f420" category="list-text">執行交換器健全狀況監控設定命令系統叢集交換器設定-健全狀況監控-節點*-package-URL X．x．x．X /位置到下載_zip檔案：</block>
-  <block id="56900e070e593f86cfcbc92add3c9eda" category="admonition">如果您在任何時候回復到ONTAP 舊版的版本的版本、您都需要重新安裝CSHM組態檔案、才能監控2300YC叢集交換器的交換器健全狀況。</block>
   <block id="fa21628888ded01ed57a85731476a1fb" category="summary">如果您想要記錄支援的平台、您必須使用完整的佈線工作表範例作為指南、填寫空白的佈線工作表。每個交換器可設定為單一40GbE連接埠或4個10GbE連接埠。</block>
   <block id="2fab7c7cfe6456a33108d2cdd5b1004a" category="paragraph">4個10G/40G節點</block>
   <block id="6c883a2be7d00b56143cc6e13b856d26" category="paragraph">40g節點19</block>
@@ -3553,12 +3544,6 @@
   <block id="b37ec6b5e583c4d4165c4f6468ff4c8d" category="paragraph"><block ref="ec4312d0db3bce928129e7e5c3a58d73" category="inline-link-rx"></block> 包含平台實際叢集連接埠的最新資訊。</block>
   <block id="932e02f4dd5ce2afc5f1d337171bbe3b" category="paragraph">+以下範例顯示交換器CS2上的ISL連接埠為開啟狀態：</block>
   <block id="a0913b1d0ca305ccc8a7cd70035752bf" category="paragraph">+下列範例列出交換器CS2上的鄰近裝置：</block>
-  <block id="e14d75f19493380754a91f619e066d40" category="summary">您可以使用此程序來安裝適用的組態檔、以監控Nexus 92300YC叢集交換器的叢集交換器健全狀況。</block>
-  <block id="1ff6e6ca835c55f7604fe145c9b7b1a0" category="paragraph">請依照此程序安裝適用的組態檔、以監控Nexus 92300YC叢集交換器的叢集交換器健全狀況。</block>
-  <block id="a83f4b45204cd2c802ce925a2c2acf4e" category="paragraph">在版本9.5P7及更早版本、以及9.6P2及更早版本中、您必須分別下載叢集交換器健全狀況監視器組態檔。ONTAP在發行版本9.5P8及更新版本、9.6P3及更新版本、以及9.7及更新版本中、叢集交換器健全狀況監視器組態檔與不含更新版本的不含更新版本的不含更新版本的不含更新版本的不含更新版本的不ONTAP ONTAP</block>
-  <block id="742faf5d1d23380cf8bd803a6d0e5587" category="paragraph">在您為2300YC叢集交換器設定交換器健全狀況監視器之前、請確定ONTAP 該叢集已啟動並正在執行。</block>
-  <block id="5b9e24c0df9b0a3c36ea2bc4f8f5689d" category="admonition">您也應該啟用SSH來使用CSHM中的所有功能。</block>
-  <block id="9c25093bf19e7e3701836da707bde234" category="list-text">在ONTAP 支援的系統上執行命令系統叢集交換器show、並確定在監控欄位設定為「True」時、發現叢集交換器。</block>
   <block id="a0a9cbf20cafab0efc048f27174d4b6b" category="paragraph">請遵循此程序、在Nexus 2300YC交換器上安裝NX-OS軟體。</block>
   <block id="4467c0e8315716749952b403b5a34f1e" category="list-title">支援的連接埠和節點連線</block>
   <block id="4f1029afef8c698983cd55b4b7196076" category="list-text">適用於您交換器NetApp 支援網站 的NetApp Cisco NX-OS軟體、可從下列網站取得：<block ref="7bc6752d2076d2c755eaebbdfeb91d23" category="inline-link-rx"></block></block>
@@ -3687,7 +3672,6 @@
   <block id="be822dc3c2f09a2076f72c87018d7d7b" category="list-text"><block ref="8e341dc1e80127ca0dc2c12db6d0237a" category="inline-link-macro-rx"></block>。</block>
   <block id="279268b426208b389290aef165bbd309" category="paragraph">視組態而定、您可以將Cisco Nexus 9336C-FX2交換器和直通面板安裝在NetApp機櫃中、並附有交換器隨附的標準支架。</block>
   <block id="04d079026b4a7b63a084b7ab24426723" category="list-text"><block ref="16a9a5fa8979bab3106e7aad0dfd20d9" category="inline-link-macro-rx"></block>。</block>
-  <block id="b7f670881100cb5015f24ab017668ff1" category="list-text"><block ref="1310b35f96fb7b8136de7cec708b0834" category="inline-link-macro-rx"></block>。</block>
   <block id="fd280d62f276e98d2c1156b6a7cd8932" category="paragraph">在BS-53248叢集交換器上下載並安裝乙太網路架構作業系統（EFOS）軟體。</block>
   <block id="e5e0ceddda654af2c9e3c1386537e4f7" category="paragraph">或者、您也可以購買及安裝更多授權來新增連接埠。交換器基礎模式已獲得16個10GbE或25GbE連接埠及2個100GbE連接埠的授權。</block>
   <block id="b983f14988f359bc65d91f081089597f" category="list-text"><block ref="e2b4c4f5313b05dff7c4a02a4e9e0df6" category="inline-link-macro-rx"></block>。</block>
@@ -3829,8 +3813,6 @@
   <block id="b2fa408052dc67c0683eaf90858b073f" category="inline-link">NVIDIA 使用者帳戶</block>
   <block id="9fce5f0b8e1dcabf168f42a400a2d10d" category="paragraph">請參閱<block ref="2d38cb404d4e76c701a1714802ee2c54" category="inline-link-rx"></block> 以取得更多資訊。</block>
   <block id="be8d2db807f6ccc0599691b80f14b976" category="list-text">已安裝 Cumulus Linux 。請參閱<block ref="c043e01cdc55399f824e6d1e4eb8a5b5" category="inline-link-rx"></block> 適用於支援的版本。</block>
-  <block id="6c92285fa6d3e827b198d120ea3ac674" category="inline-link">請按這裡</block>
-  <block id="b6a9bacb15977dcaaa1e05f20cc4d13b" category="paragraph">叢集和儲存應用程式有兩個 RCF 指令碼可用。請從下載 RCFs<block ref="89efcd657168a1e707caf54da1923871" category="inline-link-rx"></block>。每個的程序都相同。</block>
   <block id="54d4022f2a747cb4974fcf06961bdb21" category="list-text">叢集： * MSN2100-RCF-v1. _x_ 叢集 - HA-BreakOut-LLDP*</block>
   <block id="eac7436c884133e6b945a51430510a32" category="list-text">儲存： * MSN2100-RCF-v1. _x_ 儲存 *</block>
   <block id="b9dfe38b5e91454220a6cd1f3cfb9ac8" category="admonition">在步驟 3 * 更新上述 MOTD 檔案 * 中、命令<block ref="900d965bd90d181d344d976a0e3093d8" prefix=" " category="inline-code"></block> 執行。這可讓您驗證 RCF 檔案名稱、 RCF 版本、要使用的連接埠、以及 RCF 橫幅中的其他重要資訊。</block>
@@ -3923,7 +3905,6 @@
   <block id="b211f67e6e9195c32683368a53542802" category="paragraph">此範例顯示 SFTP 用於將 RCF 複製到交換器 CS2 上的 bootflash ：</block>
   <block id="c77174e35b7f7fc235a87561809ad614" category="list-text">檢查的橫幅輸出<block ref="db837131dc56fab41bddc52d5aff8865" prefix=" " category="inline-code"></block> 命令。您必須閱讀並遵循這些指示、以確保交換器的組態和操作正確無誤。</block>
   <block id="420b545896cb1c9b03dbccd44bf33f86" category="list-text">在交換器上、確認附加授權連接埠在應用 RCF 之後出現：</block>
-  <block id="6285269d7b8b003aed53cad1f3d13717" category="list-text">將所有叢集節點連線纜線從舊版 CS2 交換器移至新的 CS2-new 交換器。</block>
   <block id="f8e1e48a80ce2fac4d53a95f1f1ffd18" category="paragraph">* 叢集節點連線纜線移至 CS2 新交換器 *</block>
   <block id="e07ca5d2322ee212c9dcb668e9db443a" category="image-alt">叢集節點連線纜線移至 CS2 新交換器</block>
   <block id="604d674dc95a98cb2db636e889289949" category="list-text">將叢集節點連線纜線從 CS1 移至新的 CS1-new 交換器。</block>
@@ -4587,7 +4568,6 @@
   <block id="7d48e882dc8cfcd3a44f3f59ba949595" category="paragraph">提供 Nexus 9000 系列交換器上 Cisco NX-OS 軟體的中斷升級 / 降級相關資訊
 根據您目前的版本和目標版本。</block>
   <block id="d6221baaf45cc1f4ed9ce13f32541fa8" category="paragraph">在頁面上、選取 * 顛覆性升級 * 、然後從下拉式清單中選取您目前的版本和目標版本。</block>
-  <block id="103347887335950e25df4c7b93bdd950" category="paragraph"><block ref="103347887335950e25df4c7b93bdd950" category="inline-link-macro-rx"></block></block>
   <block id="cf3a2d2c139bf5c9cc87fe714bfff3b1" category="list-text">請注意下列事項：</block>
   <block id="3ee80345befd8ba67ee5e3200beb2fd8" category="list-text">如果交換器上已安裝額外的連接埠授權、您必須修改 RCF 以設定額外的授權連接埠。請參閱 <block ref="029ce138066352981401c2da3f4be7ea" category="inline-link-macro-rx"></block> 以取得詳細資料。</block>
   <block id="febb316f33bb4f57154038c792c90fc0" category="list-text">記錄在先前 RCF 中所做的任何自訂項目、並將這些項目套用至新的 RCF 。例如、設定連接埠速度或硬編碼 FEC 模式。</block>
@@ -4626,11 +4606,7 @@
   <block id="c36caaf00f9a67804cb39871b93b4fb1" category="list-text">在「終端使用者授權合約」頁面上、勾選核取方塊以同意、然後按一下 * 接受並繼續 * 。</block>
   <block id="e5e0b87b73538c14eb1223ba2685b479" category="list-text">在 Nvidia CSHM File - Download 頁面上、選取適用的組態檔案。以下檔案可供使用：</block>
   <block id="4b96de8aec25594d2021f91d86aa38cb" category="open-title">ONTAP 9.15.1 及更新版本</block>
-  <block id="b834fb250d0f1e06556ff2af9ce370ff" category="list-text">X190006-PE.zip</block>
-  <block id="33ab7322815a985fdb6cbba64b9ffda9" category="list-text">X190006-PI.zip</block>
   <block id="9fc9e8ea7a5cdfe68b4528fb16936bf1" category="open-title">ONTAP 9.11.1 至 9.14.1</block>
-  <block id="00032ac6acd20eb8310604aa0ac6a200" category="list-text">X190006-PE_PRIOR_9.15.1.zip</block>
-  <block id="6a9e7f50780a2f2b4e2b5999c1b1ae2b" category="list-text">X190006-PI_PRIOR_9.15.1.zip</block>
   <block id="3e5315d19591c6790a6c062127cf9a8e" category="list-text">[[step2]] 將適用的 zip 檔案上傳至內部 Web 伺服器。</block>
   <block id="e319ecf1cb942a0710da7d0d525af1db" category="list-text">從叢集中的其中一個 ONTAP 系統存取進階模式設定。</block>
   <block id="4072831dc74599297a173c0e1d86b538" category="list-text">執行交換器健全狀況監視器組態命令。</block>
@@ -5193,5 +5169,46 @@
   <block id="4c4876d5d981da2e6943a052d93bb189" category="list-text">若為 NX-OS 10.2 及更新版本，請使用<block ref="9c370f72db0e0d920841657ac5268365" prefix=" " category="inline-code"></block>命令與 bootflash 中儲存的 RCF 檔案進行比較。否則，請使用第三方差異或比較工具。</block>
   <block id="0a306731a6993e7a08026ab2d7ca2d97" category="paragraph">您可能需要更新與 SSH 金鑰相關的主機檔案項目。</block>
   <block id="8b4a2ab0394283209f67c0b0e8ca9f94" category="list-text">對於 Broadcom 和 Cisco 交換器的記錄收集，應在交換器上為啟用記錄收集的每個設定建立新的使用者。這些交換器不支援同一位使用者的多個 SSH 金鑰。執行的任何其他記錄集合設定都會覆寫使用者先前存在的任何 SSH 金鑰。</block>
-  <block id="1d768064a88b1cd8a98efaa14d7f9949" category="paragraph">在 Broadcom BS-53248 交換器上設定 SNMPv3 使用者名稱 SNMPv3 使用者。</block>
+  <block id="89fe808c6ef5fe301085b5abe4406d35" category="paragraph">在 Broadcom BS-53248 交換器上設定 SNMPv3 使用者名稱網路操作員。</block>
+  <block id="97e3bfa41185c29b8e204545b638d532" category="open-title">NVIDIA - CLI 5.11</block>
+  <block id="3a5cc736f1918e798338d9e890393631" category="paragraph">在執行 CLI 5.11 的 NVIDIA SN2100 交換器上設定 SNMPv3 使用者名稱 SNMPv3 使用者：</block>
+  <block id="01fabc1436d158d1079e5aac28e9fdc4" category="list-text">[[step_4]] 停用叢集生命週轉的自動還原功能。</block>
+  <block id="5b7bd3025678f1b622b4cfd0f4313991" category="inline-xref">步驟。10</block>
+  <block id="4ea7139be4dc5337c4d5a24c536b310e" category="list-text">如果叢集生命體已容錯移轉至交換器 CS1 <block ref="1d8bc3843ab5c78170d8cf97ded2a73f" category="inline-xref-macro-rx"></block>，且叢集運作正常，請前往。如果某些叢集生命體不健全或叢集不健全，您可以將連線回復至交換器 CS2 ，如下所示：</block>
+  <block id="b52df29b27288e7509af85c891cfa88b" category="list-text">打開連接到 * 所有 * 節點的叢集連接埠的連接埠：</block>
+  <block id="ca0787e835ac5a719db1548573613d0f" category="inline-xref">步驟。4</block>
+  <block id="bee24c21734f4c3230186de99029991e" category="list-text">還原 LIF 與叢集健全狀況後，請從重新啟動程序<block ref="6f1447d50cf784e5bfe7d2099a4e4237" category="inline-xref-macro-rx"></block>。</block>
+  <block id="701f1b96f3c7f1e9d631ebd244cb5751" category="list-text">[[STER_10]] 將所有叢集節點連線纜線從舊版 CS2 交換器移至新的 CS2-new 交換器。</block>
+  <block id="e443d0981e8ed96d62afd1a1990bd924" category="list-text"><block ref="e1c53d78ceb09f1d765f98cd902707bb" category="inline-link-macro-rx"></block>。</block>
+  <block id="dbe9b3c650ae4dca2117921c884a54d2" category="paragraph"><block ref="dbe9b3c650ae4dca2117921c884a54d2" category="inline-link-macro-rx"></block></block>
+  <block id="04809177ba282c138a7aa6bfb72e2303" category="list-text"><block ref="a01edf94205db0a19942e0d6099d8722" category="inline-link-macro-rx"></block>。</block>
+  <block id="4e83c3d43e8660c85f2e2b6e1374c91c" category="inline-link">NVIDIA SN2100 軟體下載</block>
+  <block id="618905d758007147320232ab81a98bf3" category="paragraph">叢集和儲存應用程式有兩個 RCF 指令碼可用。請從頁面下載 RCFs<block ref="5baf2e10c7d5342617f6966efa0bb2fe" category="inline-link-rx"></block> 。每個的程序都相同。</block>
+  <block id="ad1d45bcb656bf91a079869a2361d735" category="open-title">Cumulus Linux 5.4.</block>
+  <block id="ccd8680433ee6ee996cb1f0a2ae6fb85" category="admonition">列出的例外情況不會影響效能，因此可以安全地忽略。</block>
+  <block id="a8b6e34450406e412ecb8d40596d9a8d" category="open-title">Cumulus Linux 5.11.</block>
+  <block id="554b50c45dae7ea0e30a60829694ee3a" category="admonition">雖然在範例中使用，但<block ref="8a444a43bdf534c0c6338bb7809659b3" prefix=" " category="inline-code"></block>您可以使用偏好的檔案傳輸方法。</block>
+  <block id="9cb95d38203cf6445dec8201a9a5b8df" category="paragraph">請依照此程序安裝適用於 NVIDIA 叢集交換器之乙太網路交換器健全狀況監控的組態檔。</block>
+  <block id="118235a8412030b4348eaf7beb295e9a" category="paragraph">支援的機型包括：</block>
+  <block id="4439fd91d84b3562f1b65b6624b8e4af" category="list-text">MSN2100-CB2FC</block>
+  <block id="95457e019d4e34bf1527cfc720276bde" category="list-text">MSN2100-CB2RC</block>
+  <block id="0a7c753e8699d579b1dd4105b9e6b566" category="list-text">清除<block ref="8be5dd683a73b3d7c1a85aa778b3c099" prefix=" " category="inline-code"></block>所有節點上的目錄：</block>
+  <block id="ccbc1b6fe0fb2c14a182936d44b7998a" category="list-text">輸入節點：</block>
+  <block id="fbae52a4debd6c92af11b0063f9a23d8" category="paragraph"><block ref="ce0584b63a66ddeac8919682fc93ce1a" prefix="" category="inline-code"></block></block>
+  <block id="efe7a477280f5bfdffb85faa6e94d148" category="list-text">變更為進階權限：</block>
+  <block id="04f8c8c881d9c66c4b51ab93a42ab746" category="paragraph"><block ref="37c965129cc09840500d7671b0accef3" prefix="" category="inline-code"></block></block>
+  <block id="771d6c6c56d83746eaa82bd62e11363c" category="list-text">列出目錄中的組態檔案<block ref="e4b3e6938bc5f3e3c811cf46ae8b7d53" prefix=" " category="inline-code"></block>。如果目錄存在且包含組態檔案，則會列出檔案名稱。</block>
+  <block id="6e89d35fb8a737baae7064c5ba2d6485" category="paragraph"><block ref="47f0187f585158fcdf3257a96c5d4bab" prefix="" category="inline-code"></block></block>
+  <block id="804c8f34f92745eacda3674d93c6ede1" category="list-text">刪除所有對應於您所連接交換器機型的 NOD 檔案。</block>
+  <block id="f938cfce39fe890a9f9b521c87a02106" category="paragraph">如果您不確定，請移除上述所列支援機型的所有 NOD 檔案，然後下載並安裝相同機型的最新 NOD 檔案。</block>
+  <block id="ff9495347e1ccb9f937f04b4bbdd58bb" category="paragraph"><block ref="529be1cf6940ca38f1fda287a22c9fda" prefix="" category="inline-code"></block></block>
+  <block id="410e37690b6661c1eaeb818d9bed27c0" category="list-text">確認刪除的 NOD 檔案不再位於目錄中：</block>
+  <block id="76bde9294ef84452f21b2745228ae290" category="list-text">MSN2100-CB2FC-v1.4.zip</block>
+  <block id="85c07a49f236d7b33a2e8b48d076ed48" category="list-text">MSN2100-CB2RC-v1.4.zip</block>
+  <block id="ae5e87300b042b85bdd2853f386265e7" category="list-text">X190006-PE-v1.4.zip</block>
+  <block id="ab58ebe2dd50e3692c204585184a34f7" category="list-text">X190006-PI-v1.4.zip</block>
+  <block id="c3a1ef8a44fcace6af948f51ef4d8258" category="list-text">MSN2100-CB2FC_PRIOR_R9.15.1-v1.4.zip</block>
+  <block id="11ef8d241b319efa4a76430a0c6a78dd" category="list-text">MSN2100-CB2RC_PRIOR_R9.15.1-v1.4.zip</block>
+  <block id="0179c8f8dd0b9cba4199d46bd95ddd3b" category="list-text">X190006-PE_PRIOR_9.15.1-v1.4.zip</block>
+  <block id="3dd005cf004a39e1cb3e400094afa4c6" category="list-text">X190006-PI_PRIOR_9.15.1-v1.4.zip</block>
 </blocks>

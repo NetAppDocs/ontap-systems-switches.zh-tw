@@ -15,5 +15,5 @@ summary: Cisco Nexus 9336C-FX2儲存交換器軟體組態總覽
 
 . link:install-nxos-overview-9336c-storage.html["準備安裝NX-OS和RCF"]。
 . link:install-nxos-software-9336c-storage.html["安裝NX-OS軟體"]。
-. link:install-nxos-rcf-9336c-storage.html["安裝RCF組態檔"]。
+. link:install-rcf-software-9336c-storage.html["安裝RCF組態檔"]。
 

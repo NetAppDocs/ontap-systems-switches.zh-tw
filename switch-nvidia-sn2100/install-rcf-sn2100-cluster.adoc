@@ -24,7 +24,7 @@ summary: 在安裝RCF指令碼之前、請確定交換器上有下列項目可�
 NOTE: 您必須在 RCF 中指定一個使用者（管理使用者除外）、以專門用於記錄收集。
 
 .目前的RCF指令碼版本
-叢集和儲存應用程式有兩個 RCF 指令碼可用。請從下載 RCFs https://mysupport.netapp.com/site/info/nvidia-cluster-switch["請按這裡"^]。每個的程序都相同。
+叢集和儲存應用程式有兩個 RCF 指令碼可用。請從頁面下載 RCFs https://mysupport.netapp.com/site/info/nvidia-cluster-switch["NVIDIA SN2100 軟體下載"^] 。每個的程序都相同。
 
 * 叢集： * MSN2100-RCF-v1. _x_ 叢集 - HA-BreakOut-LLDP*
 * 儲存： * MSN2100-RCF-v1. _x_ 儲存 *
@@ -267,7 +267,7 @@ sw2                         cluster-network    10.233.205.91    MSN2100-CB2RC
 
 
 --
-.Cumulus Linux 5.x
+.Cumulus Linux 5.4.
 --
 . 顯示SN2100交換器上的可用介面：
 +
@@ -375,19 +375,327 @@ NOTE: 若有任何無法修正的RCF python指令碼問題、請聯絡 https://m
 [listing, subs="+quotes"]
 ----
 admin@sw1:mgmt:~$ *nv show interface*
-Interface   MTU   Speed State Remote Host Remote Port Type Summary
------------ ----- ----- ----- ----------- ----------- ---- -------------
-+ cluster_isl 9216 200G up bond
-+ eth0 1500 100M up RTP-LF01-410G38.rtp.eng.netapp.com Eth105/1/14 eth IP Address: 10.231.80.206/22
-eth0 IP Address: fd20:8b1e:b255:85a0:bace:f6ff:fe31:4a0e/64
-+ lo 65536 up loopback IP Address: 127.0.0.1/8
-lo IP Address: ::1/128
-+ swp1s0 9216 10G up cumulus1 e0b swp
+Interface     MTU   Speed State Remote Host         Remote Port- Type      Summary
+------------- ----- ----- ----- ------------------- ------------ --------- -------------
++ cluster_isl 9216  200G  up                                      bond
++ eth0        1500  100M  up    mgmt-sw1            Eth105/1/14   eth       IP Address: 10.231.80 206/22
+  eth0                                                                      IP Address: fd20:8b1e:f6ff:fe31:4a0e/64
++ lo          65536       up                                      loopback  IP Address: 127.0.0.1/8
+  lo                                                                        IP Address: ::1/128
++ swp1s0      9216 10G    up cluster01                e0b         swp
 .
 .
 .
-+ swp15 9216 100G up cumulus swp15 swp
++ swp15      9216 100G    up sw2                      swp15       swp
++ swp16      9216 100G    up sw2                      swp16       swp
 
+admin@sw1:mgmt:~$ *nv show qos roce*
+                   operational  applied   description
+-----------------  -----------  --------- ----------------------------------------
+enable             on                     Turn feature 'on' or 'off'. This feature is disabled by default.
+mode               lossless     lossless  Roce Mode
+congestion-control
+  congestion-mode   ECN,RED                Congestion config mode
+  enabled-tc        0,2,5                  Congestion config enabled Traffic Class
+  max-threshold     195.31 KB              Congestion config max-threshold
+  min-threshold     39.06 KB               Congestion config min-threshold
+  probability       100
+lldp-app-tlv
+  priority          3                      switch-priority of roce
+  protocol-id       4791                   L4 port number
+  selector          UDP                    L4 protocol
+pfc
+  pfc-priority      2, 5                   switch-prio on which PFC is enabled
+  rx-enabled        enabled                PFC Rx Enabled status
+  tx-enabled        enabled                PFC Tx Enabled status
+trust
+  trust-mode        pcp,dscp               Trust Setting on the port for packet classification
+
+RoCE PCP/DSCP->SP mapping configurations
+===========================================
+        pcp  dscp                     switch-prio
+    --  ---  -----------------------  -----------
+    0   0    0,1,2,3,4,5,6,7          0
+    1   1    8,9,10,11,12,13,14,15    1
+    2   2    16,17,18,19,20,21,22,23  2
+    3   3    24,25,26,27,28,29,30,31  3
+    4   4    32,33,34,35,36,37,38,39  4
+    5   5    40,41,42,43,44,45,46,47  5
+    6   6    48,49,50,51,52,53,54,55  6
+    7   7    56,57,58,59,60,61,62,63  7
+
+RoCE SP->TC mapping and ETS configurations
+=============================================
+        switch-prio  traffic-class  scheduler-weight
+    --  -----------  -------------  ----------------
+    0   0            0              DWRR-28%
+    1   1            0              DWRR-28%
+    2   2            2              DWRR-28%
+    3   3            0              DWRR-28%
+    4   4            0              DWRR-28%
+    5   5            5              DWRR-43%
+    6   6            0              DWRR-28%
+    7   7            0              DWRR-28%
+
+RoCE pool config
+===================
+        name                   mode     size  switch-priorities  traffic-class
+    --  ---------------------  -------  ----  -----------------  -------------
+    0   lossy-default-ingress  Dynamic  50%   0,1,3,4,6,7        -
+    1   roce-reserved-ingress  Dynamic  50%   2,5                -
+    2   lossy-default-egress   Dynamic  50%   -                  0
+    3   roce-reserved-egress   Dynamic  inf   -                  2,5
+
+Exception List
+=================
+        description
+    --  -----------------------------------------------------------------------…
+    1   RoCE PFC Priority Mismatch.Expected pfc-priority: 3.
+    2   Congestion Config TC Mismatch.Expected enabled-tc: 0,3.
+    3   Congestion Config mode Mismatch.Expected congestion-mode: ECN.
+    4   Congestion Config min-threshold Mismatch.Expected min-threshold: 150000.
+    5   Congestion Config max-threshold Mismatch.Expected max-threshold:
+        1500000.
+    6   Scheduler config mismatch for traffic-class mapped to switch-prio0.
+        Expected scheduler-weight: DWRR-50%.
+    7   Scheduler config mismatch for traffic-class mapped to switch-prio1.
+        Expected scheduler-weight: DWRR-50%.
+    8   Scheduler config mismatch for traffic-class mapped to switch-prio2.
+        Expected scheduler-weight: DWRR-50%.
+    9   Scheduler config mismatch for traffic-class mapped to switch-prio3.
+        Expected scheduler-weight: DWRR-50%.
+    10  Scheduler config mismatch for traffic-class mapped to switch-prio4.
+        Expected scheduler-weight: DWRR-50%.
+    11  Scheduler config mismatch for traffic-class mapped to switch-prio5.
+        Expected scheduler-weight: DWRR-50%.
+    12  Scheduler config mismatch for traffic-class mapped to switch-prio6.
+        Expected scheduler-weight: strict-priority.
+    13  Scheduler config mismatch for traffic-class mapped to switch-prio7.
+        Expected scheduler-weight: DWRR-50%.
+    14  Invalid reserved config for ePort.TC[2].Expected 0 Got 1024
+    15  Invalid reserved config for ePort.TC[5].Expected 0 Got 1024
+    16  Invalid traffic-class mapping for switch-priority 2.Expected 0 Got 2
+    17  Invalid traffic-class mapping for switch-priority 3.Expected 3 Got 0
+    18  Invalid traffic-class mapping for switch-priority 5.Expected 0 Got 5
+    19  Invalid traffic-class mapping for switch-priority 6.Expected 6 Got 0
+Incomplete Command: set interface swp3-16 link fast-linkupp3-16 link fast-linkup
+Incomplete Command: set interface swp3-16 link fast-linkupp3-16 link fast-linkup
+Incomplete Command: set interface swp3-16 link fast-linkupp3-16 link fast-linkup
+----
++
+
+NOTE: 列出的例外情況不會影響效能，因此可以安全地忽略。
+
+. 驗證介面中收發器的資訊：
++
+[listing, subs="+quotes"]
+----
+admin@sw1:mgmt:~$ *nv show interface --view=pluggables*
+Interface  Identifier     Vendor Name  Vendor PN        Vendor SN       Vendor Rev
+---------  -------------  -----------  ---------------  --------------  ----------
+swp1s0     0x00 None
+swp1s1     0x00 None
+swp1s2     0x00 None
+swp1s3     0x00 None
+swp2s0     0x11 (QSFP28)  CISCO-LEONI  L45593-D278-D20  LCC2321GTTJ     00
+swp2s1     0x11 (QSFP28)  CISCO-LEONI  L45593-D278-D20  LCC2321GTTJ     00
+swp2s2     0x11 (QSFP28)  CISCO-LEONI  L45593-D278-D20  LCC2321GTTJ     00
+swp2s3     0x11 (QSFP28)  CISCO-LEONI  L45593-D278-D20  LCC2321GTTJ     00
+swp3       0x00 None
+swp4       0x00 None
+swp5       0x00 None
+swp6       0x00 None
+.
+.
+.
+swp15      0x11 (QSFP28)  Amphenol     112-00595        APF20279210117  B0
+swp16      0x11 (QSFP28)  Amphenol     112-00595        APF20279210166  B0
+----
+. 確認每個節點都有連線至每個交換器：
++
+[listing, subs="+quotes"]
+----
+admin@sw1:mgmt:~$ *nv show interface --view=lldp*
+
+LocalPort  Speed  Mode        RemoteHost               RemotePort
+---------  -----  ----------  -----------------------  -----------
+eth0       100M   Mgmt        mgmt-sw1                 Eth110/1/29
+swp2s1     25G    Trunk/L2    node1                    e0a
+swp15      100G   BondMember  sw2                      swp15
+swp16      100G   BondMember  sw2                      swp16
+----
+. 驗證叢集上叢集連接埠的健全狀況。
++
+.. 驗證叢集內所有節點的叢集連接埠是否正常運作：
++
+[listing, subs="+quotes"]
+----
+cluster1::*> *network port show -role cluster*
+
+Node: node1
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+e3a       Cluster      Cluster          up   9000  auto/10000 healthy  false
+e3b       Cluster      Cluster          up   9000  auto/10000 healthy  false
+
+Node: node2
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+e3a       Cluster      Cluster          up   9000  auto/10000 healthy  false
+e3b       Cluster      Cluster          up   9000  auto/10000 healthy  false
+----
+.. 驗證叢集的交換器健全狀況（這可能不會顯示交換器SW2、因為l生命 週數不在e0d上）。
++
+[listing, subs="+quotes"]
+----
+cluster1::*> *network device-discovery show -protocol lldp*
+Node/       Local  Discovered
+Protocol    Port   Device (LLDP: ChassisID)  Interface Platform
+----------- ------ ------------------------- --------- ----------
+node1/lldp
+            e3a    sw1 (b8:ce:f6:19:1a:7e)   swp3      -
+            e3b    sw2 (b8:ce:f6:19:1b:96)   swp3      -
+
+node2/lldp
+            e3a    sw1 (b8:ce:f6:19:1a:7e)   swp4      -
+            e3b    sw2 (b8:ce:f6:19:1b:96)   swp4      -
+
+
+cluster1::*> *system switch ethernet show -is-monitoring-enabled-operational true*
+Switch                      Type               Address          Model
+--------------------------- ------------------ ---------------- -----
+sw1                         cluster-network    10.233.205.90    MSN2100-CB2RC
+     Serial Number: MNXXXXXXGD
+      Is Monitored: true
+            Reason: None
+  Software Version: Cumulus Linux version 5.4.0 running on Mellanox
+                    Technologies Ltd. MSN2100
+    Version Source: LLDP
+
+sw2                         cluster-network    10.233.205.91    MSN2100-CB2RC
+     Serial Number: MNCXXXXXXGS
+      Is Monitored: true
+            Reason: None
+  Software Version: Cumulus Linux version 5.4.0 running on Mellanox
+                    Technologies Ltd. MSN2100
+    Version Source: LLDP
+----
+
+
+
+
+--
+.Cumulus Linux 5.11.
+--
+. 顯示SN2100交換器上的可用介面：
++
+[listing, subs="+quotes"]
+----
+admin@sw1:mgmt:~$ *nv show interface*
+Interface     MTU   Speed State Remote Host         Remote Port- Type      Summary
+------------- ----- ----- ----- ------------------- ------------ --------- -------------
++ cluster_isl 9216  200G  up                                      bond
++ eth0        1500  100M  up    mgmt-sw1            Eth105/1/14   eth       IP Address: 10.231.80 206/22
+  eth0                                                                      IP Address: fd20:8b1e:f6ff:fe31:4a0e/64
++ lo          65536       up                                      loopback  IP Address: 127.0.0.1/8
+  lo                                                                        IP Address: ::1/128
++ swp1s0      9216 10G    up cluster01                e0b         swp
+.
+.
+.
++ swp15      9216 100G    up sw2                      swp15       swp
++ swp16      9216 100G    up sw2                      swp16       swp
+----
+. 將RCF python指令碼複製到交換器。
++
+[listing, subs="+quotes"]
+----
+cumulus@cumulus:mgmt:~$ *cd /tmp*
+cumulus@cumulus:mgmt:/tmp$ *scp _<user>@<host:/<path>_/MSN2100-RCF-v1._x_-Cluster-HA-Breakout-LLDP .*
+ssologin@10.233.204.71's password:
+MSN2100-RCF-v1.x-Cluster-HA-Breakout-LLDP          100% 8607   111.2KB/s         00:00
+----
++
+
+NOTE: 雖然在範例中使用，但 `scp`您可以使用偏好的檔案傳輸方法。
+
+. 套用 RCF python 指令碼 * MSN2100-RCF-v1. _x_ 叢集 -HA-BreakOut-LLDP* 。
++
+[listing, subs="+quotes"]
+----
+cumulus@cumulus:mgmt:/tmp$ *sudo python3 MSN2100-RCF-v1._x_-Cluster-HA-Breakout-LLDP*
+[sudo] password for cumulus:
+.
+.
+Step 1: Creating the banner file
+Step 2: Registering banner message
+Step 3: Updating the MOTD file
+Step 4: Ensuring passwordless use of cl-support command by admin
+Step 5: Disabling apt-get
+Step 6: Creating the interfaces
+Step 7: Adding the interface config
+Step 8: Disabling cdp
+Step 9: Adding the lldp config
+Step 10: Adding the RoCE base config
+Step 11: Modifying RoCE Config
+Step 12: Configure SNMP
+Step 13: Reboot the switch
+----
++
+RCF指令碼會完成上述範例中所列的步驟。
+
++
+
+NOTE: 在步驟 3 * 更新上述 MOTD 檔案 * 中、命令 `cat /etc/issue` 執行。這可讓您驗證 RCF 檔案名稱、 RCF 版本、要使用的連接埠、以及 RCF 橫幅中的其他重要資訊。
+
++
+例如：
+
++
+[listing]
+----
+admin@sw1:mgmt:~$ cat /etc/issue
+******************************************************************************
+*
+* NetApp Reference Configuration File (RCF)
+* Switch       : Mellanox MSN2100
+* Filename     : MSN2100-RCF-1._x_-Cluster-HA-Breakout-LLDP
+* Release Date : 13-02-2023
+* Version      : 1._x_-Cluster-HA-Breakout-LLDP
+*
+* Port Usage:
+* Port 1      : 4x10G Breakout mode for Cluster+HA Ports, swp1s0-3
+* Port 2      : 4x25G Breakout mode for Cluster+HA Ports, swp2s0-3
+* Ports 3-14  : 40/100G for Cluster+HA Ports, swp3-14
+* Ports 15-16 : 100G Cluster ISL Ports, swp15-16
+*
+* NOTE:
+*   RCF manually sets swp1s0-3 link speed to 10000 and
+*   auto-negotiation to off for Intel 10G
+*   RCF manually sets swp2s0-3 link speed to 25000 and
+*   auto-negotiation to off for Chelsio 25G
+*
+*
+* IMPORTANT: Perform the following steps to ensure proper RCF installation:
+* - Copy the RCF file to /tmp
+* - Ensure the file has execute permission
+* - From /tmp run the file as sudo python3 <filename>
+*
+******************************************************************************
+----
++
+
+NOTE: 若有任何無法修正的RCF python指令碼問題、請聯絡 https://mysupport.netapp.com/["NetApp支援"^] 以取得協助。
+
+. 重新套用任何先前的自訂項目至交換器組態。如link:cabling-considerations-sn2100-cluster.html["檢閱纜線佈線和組態考量"]需進一步變更的詳細資料、請參閱。
+. 重新開機後驗證組態：
++
+[listing, subs="+quotes"]
+----
 admin@sw1:mgmt:~$ *nv show interface*
 Interface     MTU   Speed State Remote Host         Remote Port- Type      Summary
 ------------- ----- ----- ----- ------------------- ------------ --------- -------------
@@ -504,7 +812,7 @@ NOTE: 列出的例外情況不會影響效能、因此可以安全地忽略。
 +
 [listing, subs="+quotes"]
 ----
-admin@sw1:mgmt:~$ *nv show interface --view=pluggables*
+admin@sw1:mgmt:~$ *nv show platform transceiver*
 Interface  Identifier     Vendor Name  Vendor PN        Vendor SN       Vendor Rev
 ---------  -------------  -----------  ---------------  --------------  ----------
 swp1s0     0x00 None
@@ -529,7 +837,7 @@ swp16      0x11 (QSFP28)  Amphenol     112-00595        APF2027
 +
 [listing, subs="+quotes"]
 ----
-admin@sw1:mgmt:~$ *nv show interface --view=lldp*
+admin@sw1:mgmt:~$ *nv show interface lldp*
 
 LocalPort  Speed  Mode        RemoteHost               RemotePort
 ---------  -----  ----------  -----------------------  -----------

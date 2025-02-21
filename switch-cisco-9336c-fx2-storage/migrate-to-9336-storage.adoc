@@ -263,7 +263,7 @@ cs2                         cluster-network     10.233.205.93   N5K-C5596UP
 ====
 
 
-. 停用叢集生命體上的自動還原。
+. [[step_4]] 停用叢集生命週轉的自動還原功能。
 +
 停用此程序的自動還原功能、叢集生命將不會自動移回其主連接埠。它們會保留在目前的連接埠上、同時仍保持正常運作。
 
@@ -278,8 +278,12 @@ NOTE: 停用自動還原功能可確保 ONTAP 只在稍後關閉交換器連接�
 +
 [listing, subs="+quotes"]
 ----
+cs2# *configure*
 cs2(config)# *interface eth1/1-1/2*
 cs2(config-if-range)# *shutdown*
+cs2(config-if-range)# *exit*
+cs2(config)# *exit*
+cs2#
 ----
 . 驗證叢集生命期是否已容錯移轉至叢集交換器 CS1 上所主控的連接埠。這可能需要幾秒鐘的時間。
 +
@@ -319,7 +323,61 @@ node1      true    true          false
 node2      true    true          false
 ----
 ====
-. 將所有叢集節點連線纜線從舊版 CS2 交換器移至新的 CS2-new 交換器。
+. 如果叢集生命體已容錯移轉至交換器 CS1 <<step_10,步驟。10>>，且叢集運作正常，請前往。如果某些叢集生命體不健全或叢集不健全，您可以將連線回復至交換器 CS2 ，如下所示：
++
+.. 打開連接到 * 所有 * 節點的叢集連接埠的連接埠：
++
+[listing, subs="+quotes"]
+----
+cs2# *configure*
+cs2(config)# *interface eth1/1-1/2*
+cs2(config-if-range)# *no shutdown*
+cs2(config-if-range)# *exit*
+cs2(config)# *exit*
+cs2#
+----
+.. 驗證叢集生命期是否已容錯移轉至叢集交換器 CS1 上所主控的連接埠。這可能需要幾秒鐘的時間。
++
+「網路介面show -vserver叢集」
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface show -vserver Cluster*
+            Logical       Status     Network            Current    Current Is
+Vserver     Interface     Admin/Oper Address/Mask       Node       Port    Home
+----------- ------------- ---------- ------------------ ---------- ------- ----
+Cluster
+            node1_clus1   up/up      169.254.3.4/16     node1      e0a     true
+            node1_clus2   up/up      169.254.3.5/16     node1      e0a     false
+            node2_clus1   up/up      169.254.3.8/16     node2      e0a     true
+            node2_clus2   up/up      169.254.3.9/16     node2      e0a     false
+----
+====
+.. 驗證叢集是否正常：
++
+「叢集展示」
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> cluster show
+Node       Health  Eligibility   Epsilon
+---------- ------- ------------- -------
+node1      true    true          false
+node2      true    true          false
+----
+====
+
+
+. 還原 LIF 與叢集健全狀況後，請從重新啟動程序<<step_4,步驟。4>>。
+. [[STER_10]] 將所有叢集節點連線纜線從舊版 CS2 交換器移至新的 CS2-new 交換器。
 +
 * 叢集節點連線纜線移至 CS2 新交換器 *
 
@@ -396,8 +454,12 @@ cs2-new# *show cdp neighbors*
 +
 [listing, subs="+quotes"]
 ----
+cs1# *configure*
 cs1(config)# *interface eth1/1-1/2*
 cs1(config-if-range)# *shutdown*
+cs1(config-if-range)# *exit*
+cs1(config)# *exit*
+cs1#
 ----
 +
 所有叢集生命體移轉至 CS2 新交換器。
