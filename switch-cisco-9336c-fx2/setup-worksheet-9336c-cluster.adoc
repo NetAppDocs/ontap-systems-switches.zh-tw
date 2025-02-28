@@ -1,10 +1,10 @@
 ---
 permalink: switch-cisco-9336c-fx2/setup-worksheet-9336c-cluster.html 
 sidebar: sidebar 
-keywords: document, support, platform, complete, blank, cabling, worksheet, guide, cisco, nexus, cisco nexus 9336c-fx2 cabling worksheet - cisco nexus 9336-fx2 
+keywords: document, support, platform, complete, blank, cabling, worksheet, guide, cisco, nexus, cisco nexus 9336c-fx2 cabling worksheet - cisco nexus 9336-fx2-t 
 summary: 如果您想要記錄支援的平台、您必須使用完整的佈線工作表範例作為指南、填寫空白的佈線工作表。 
 ---
-= 填寫Cisco Nexus 9336C-FX2纜線工作表
+= 完成 Cisco Nexus 9336C-FX2 或 9336C-FX2-T 纜線工作表
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -15,9 +15,15 @@ summary: 如果您想要記錄支援的平台、您必須使用完整的佈線�
 
 佈線工作表範例提供從交換器到控制器的建議連接埠指派範例。空白工作表提供範本、可用於設定叢集。
 
+* <<9336C-FX2 纜線範例工作表>>
+* <<9336C-FX2 空白纜線工作表單>>
+* <<9336C-FX2-T 纜線範例表（ 12 埠）>>
+* <<9336C-FX2-T 空白纜線工作表（ 12 連接埠）>>
 
 
-== 佈線工作表範例
+
+
+== 9336C-FX2 纜線範例工作表
 
 每對交換器的連接埠定義範例如下：
 
@@ -327,7 +333,7 @@ summary: 如果您想要記錄支援的平台、您必須使用完整的佈線�
 |===
 
 
-== 空白的佈線工作表
+== 9336C-FX2 空白纜線工作表單
 
 您可以使用空白的佈線工作表來記錄叢集中支援作為節點的平台。的_支援叢集連線_區段 https://hwu.netapp.com["Hardware Universe"^] 定義平台所使用的叢集連接埠。
 
@@ -560,6 +566,295 @@ summary: 如果您想要記錄支援的平台、您必須使用完整的佈線�
 25至34
  a| 
 保留
+
+
+
+ a| 
+35
+ a| 
+100GbE ISL 到交換器 B 連接埠 35
+ a| 
+35
+ a| 
+100GbE ISL 到交換器 A 連接埠 35
+
+
+
+ a| 
+36
+ a| 
+100GbE ISL 到交換器 B 連接埠 36
+ a| 
+36
+ a| 
+100GbE ISL 到交換器 A 連接埠 36
+
+|===
+
+
+== 9336C-FX2-T 纜線範例表（ 12 埠）
+
+每對交換器的連接埠定義範例如下：
+
+[cols="1, 1, 1, 1"]
+|===
+2+| 叢集交換器A 2+| 叢集交換器B 
+
+
+| 交換器連接埠 | 節點與連接埠使用量 | 交換器連接埠 | 節點與連接埠使用量 
+
+
+ a| 
+1.
+ a| 
+4個10GbE節點1
+ a| 
+1.
+ a| 
+4個10GbE節點1
+
+
+
+ a| 
+2.
+ a| 
+4個10GbE節點2.
+ a| 
+2.
+ a| 
+4個10GbE節點2.
+
+
+
+ a| 
+3.
+ a| 
+4個10GbE節點3.
+ a| 
+3.
+ a| 
+4個10GbE節點3.
+
+
+
+ a| 
+4.
+ a| 
+4個25GbE節點4.
+ a| 
+4.
+ a| 
+4個25GbE節點4.
+
+
+
+ a| 
+5.
+ a| 
+4個25GbE節點5
+ a| 
+5.
+ a| 
+4個25GbE節點5
+
+
+
+ a| 
+6.
+ a| 
+4個25GbE節點6
+ a| 
+6.
+ a| 
+4個25GbE節點6
+
+
+
+ a| 
+7.
+ a| 
+40/100GbE 節點 7
+ a| 
+7.
+ a| 
+40/100GbE 節點 7
+
+
+
+ a| 
+8.
+ a| 
+40/100GbE 節點 8
+ a| 
+8.
+ a| 
+40/100GbE 節點 8
+
+
+
+ a| 
+9.
+ a| 
+40/100GbE 節點 9
+ a| 
+9.
+ a| 
+40/100GbE 節點 9
+
+
+
+ a| 
+10.
+ a| 
+40/100GbE 節點 10
+ a| 
+10.
+ a| 
+40/100GbE 節點 10
+
+
+
+ a| 
+11 至 34
+ a| 
+需要授權
+ a| 
+11 至 34
+ a| 
+需要授權
+
+
+
+ a| 
+35
+ a| 
+100GbE ISL 到交換器 B 連接埠 35
+ a| 
+35
+ a| 
+100GbE ISL 到交換器 A 連接埠 35
+
+
+
+ a| 
+36
+ a| 
+100GbE ISL 到交換器 B 連接埠 36
+ a| 
+36
+ a| 
+100GbE ISL 到交換器 A 連接埠 36
+
+|===
+
+
+== 9336C-FX2-T 空白纜線工作表（ 12 連接埠）
+
+您可以使用空白的佈線工作表來記錄叢集中支援作為節點的平台。的_支援叢集連線_區段 https://hwu.netapp.com["Hardware Universe"^] 定義平台所使用的叢集連接埠。
+
+[cols="1, 1, 1, 1"]
+|===
+2+| 叢集交換器A 2+| 叢集交換器B 
+
+
+ a| 
+1.
+ a| 
+ a| 
+1.
+ a| 
+
+
+
+ a| 
+2.
+ a| 
+ a| 
+2.
+ a| 
+
+
+
+ a| 
+3.
+ a| 
+ a| 
+3.
+ a| 
+
+
+
+ a| 
+4.
+ a| 
+ a| 
+4.
+ a| 
+
+
+
+ a| 
+5.
+ a| 
+ a| 
+5.
+ a| 
+
+
+
+ a| 
+6.
+ a| 
+ a| 
+6.
+ a| 
+
+
+
+ a| 
+7.
+ a| 
+ a| 
+7.
+ a| 
+
+
+
+ a| 
+8.
+ a| 
+ a| 
+8.
+ a| 
+
+
+
+ a| 
+9.
+ a| 
+ a| 
+9.
+ a| 
+
+
+
+ a| 
+10.
+ a| 
+ a| 
+10.
+ a| 
+
+
+
+ a| 
+11 至 34
+ a| 
+需要授權
+ a| 
+11 至 34
+ a| 
+需要授權
 
 
 

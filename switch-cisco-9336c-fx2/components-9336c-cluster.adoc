@@ -4,7 +4,7 @@ permalink: switch-cisco-9336c-fx2/components-9336c-cluster.html
 keywords: shared storage cluster switch 
 summary: 從S299.1開始ONTAP 、您可以使用Cisco Nexus 9336C-FX2交換器、將儲存設備和叢集功能結合到共享交換器情境中。 
 ---
-= Cisco Nexus 9336C-FX2叢集交換器的元件與零件編號
+= Cisco Nexus 9336C-FX2 和 9336C-FX2-T 叢集交換器的元件和零件編號
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,9 +14,13 @@ summary: 從S299.1開始ONTAP 、您可以使用Cisco Nexus 9336C-FX2交換器�
 
 
 [role="lead"]
-對於Cisco Nexus 9336C-FX2交換器的安裝與維護、請務必檢閱元件清單和零件編號。
+對於 Cisco Nexus 9336C-FX2 和 9336C-FX2-T 交換器的安裝與維護，請務必檢閱元件清單和零件編號。
 
-下表列出9336C-FX2交換器、風扇和電源供應器的零件編號和說明：
+
+
+== 零件編號詳細資料
+
+下表列出 9336C-FX2 和 9336C-FX2-T 交換器，風扇和電源供應器的零件編號和說明：
 
 [cols="1,2"]
 |===
@@ -26,28 +30,49 @@ summary: 從S299.1開始ONTAP 、您可以使用Cisco Nexus 9336C-FX2交換器�
  a| 
 X190200-CS-PE
  a| 
-N9K-9336C-FX2、CS、PTSX、36PT10/25/40/100GQSFP28
+叢集交換器， N9336C 36Pt PTSX 10/25/40/100g
 
 
 
  a| 
 X190200-CS-PI
  a| 
-N9K-9336C-FX2、CS、PSIN、36PT10/25/40/100GQSFP28
+叢集交換器， N9336C 36Pt PSIN 10/25/40/100g
+
+
+
+ a| 
+X190212-CS-PE
+ a| 
+叢集交換器， N9336C 12pt （ 9336C-FX2-T ） PTSX 10/25/40/100g
+
+
+
+ a| 
+X190212-CS-PI
+ a| 
+叢集交換器， N9336C 12pt （ 9336C-FX2-T ） PSIN 10/25/40/100g
+
+
+
+ a| 
+SW-N9K-FX2-24P-UPG
+ a| 
+軟體， Cisco 9336CFX2 24 埠 Pod 授權
 
 
 
  a| 
 X190210-FE-PE
  a| 
-N9K-9336C、FTE、PTSX、36PT10/25/40/100GQSFP28
+N9K-9336C ， FTE ， PTSX ， 36PT 10/25/40/100GQSFP28
 
 
 
  a| 
 X190210-FE-PI
  a| 
-N9K-9336C、FTE、PSIN、36PT10/25/40/100GQSFP28
+N9K-9336C ， FTE ， PSIN ， 36PT 10/25/40/100GQSFP28
 
 
 
@@ -85,3 +110,15 @@ X-NXA-FAN-65CFM-PI
 N9K-9336C 65CFM、連接埠側進氣氣流
 
 |===
+
+
+== Cisco 智慧型授權
+
+若要在 Cisco Nexus 9336C-FX-T 叢集交換器上啟動超過 12 個連接埠，您必須購買 Cisco 智慧型授權。Cisco 智慧型授權是透過 Cisco 智慧型帳戶進行管理。
+
+. 視需要建立新的 Smart 帳戶。如需詳細資訊、請參閱 https://id.cisco.com/signin/register["建立新的 Smart 帳戶"^]。
+. 要求存取現有的 Smart 帳戶。如需詳細資訊、請參閱 https://id.cisco.com/oauth2/default/v1/authorize?response_type=code&scope=openid%20profile%20address%20offline_access%20cci_coimemberOf%20email&client_id=cae-okta-web-gslb-01&state=s2wvKDiBja__7ylXonWrq8w-FAA&redirect_uri=https%3A%2F%2Frpfa.cloudapps.cisco.com%2Fcb%2Fsso&nonce=qO6s3cZE5ZdhC8UKMEfgE6fbu3mvDJ8PTw5jYOp6z30["要求存取現有的 Smart 帳戶"^]。
+
+
+
+NOTE: 購買智慧型授權後，請安裝適當的 RCF ，以啟用並設定所有 36 個可用連接埠以供使用。

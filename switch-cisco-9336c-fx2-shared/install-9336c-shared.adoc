@@ -25,7 +25,7 @@ summary:
 .步驟
 . 裝入交換器、控制器和NS224 NVMe儲存櫃。
 +
-請參閱 https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-sw-9336c-install-cabinet/GUID-92287262-E7A6-4A62-B159-7F148097B33B.html["機架安裝說明"] 瞭解如何在NetApp機櫃中架起交換器。
+請參閱link:../switch-cisco-9336c-fx2/install-switch-and-passthrough-panel-9336c-cluster.html["機架安裝說明"]以瞭解如何在 NetApp 機櫃中架裝交換器。
 
 . 開啟交換器、控制器和NS224 NVMe儲存櫃的電源。
 
