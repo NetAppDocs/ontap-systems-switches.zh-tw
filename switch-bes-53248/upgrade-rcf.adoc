@@ -426,6 +426,7 @@ Configuration Saved!
 (cs2)# *reload*
 Are you sure you would like to reset the system? (y/n) *y*
 ----
+.. 使用 SSH 再次登入交換器以完成 RCF 安裝。
 
 
 . 請注意下列事項：
@@ -434,11 +435,78 @@ Are you sure you would like to reset the system? (y/n) *y*
 .. 記錄在先前 RCF 中所做的任何自訂項目、並將這些項目套用至新的 RCF 。例如、設定連接埠速度或硬編碼 FEC 模式。
 
 
+
+
+[role="tabbed-block"]
+====
+.EFOS 版本 3.2.x 及更新版本
+--
 . 使用下列傳輸傳輸協定之一、將RCF複製到交換器CS2的bootflash：FTP、TFTP、SFTP或scp。
 +
 此範例顯示 SFTP 用於將 RCF 複製到交換器 CS2 上的 bootflash ：
 
+
+
+[listing, subs="+quotes"]
+----
+(cs2)# *copy sftp://172.19.2.1/BES-53248-RCF-v1.9-Cluster-HA.txt
+nvram:reference-config*
+Remote Password:**
+Mode........................................... TFTP
+Set Server IP.................................. 172.19.2.1
+Path........................................... //tmp/
+Filename....................................... BES-53248_RCF_v1.9-Cluster-HA.txt
+Data Type...................................... Config Script
+Destination Filename........................... BES-53248_RCF_v1.9-Cluster-HA.scr
+Management access will be blocked for the duration of the transfer
+Are you sure you want to start? (y/n) *y*
+TFTP Code transfer starting...
+File transfer operation completed successfully.
+----
+. 確認指令碼已下載並儲存在您指定的檔案名稱下：
 +
+《記錄清單》
+
++
+[listing, subs="+quotes"]
+----
+(cs2)# *script list*
+
+Configuration Script Name                  Size(Bytes)  Date of Modification
+-----------------------------------------  -----------  --------------------
+Reference-config.scr                       2680         2024 05 31 21:54:22
+2 configuration script(s) found.
+2042 Kbytes free.
+----
+. 將指令碼套用至交換器：
++
+適用記錄
+
++
+[listing, subs="+quotes"]
+----
+(cs2)# *script apply reference-config.scr*
+
+Are you sure you want to apply the configuration script? (y/n) *y*
+
+The system has unsaved changes.
+Would you like to save them now? (y/n) *y*
+Config file 'startup-config' created successfully.
+Configuration Saved!
+
+Configuration script 'BES-53248_RCF_v1.9-Cluster-HA.scr' applied.
+----
+
+
+--
+.所有其他EFOS 版本
+--
+. 使用下列傳輸傳輸協定之一、將RCF複製到交換器CS2的bootflash：FTP、TFTP、SFTP或scp。
++
+此範例顯示 SFTP 用於將 RCF 複製到交換器 CS2 上的 bootflash ：
+
+
+
 [listing, subs="+quotes"]
 ----
 (cs2)# *copy sftp://172.19.2.1/tmp/BES-53248_RCF_v1.9-Cluster-HA.txt
@@ -460,9 +528,6 @@ File transfer operation completed successfully.
 《記錄清單》
 
 +
-.顯示範例
-[%collapsible]
-====
 [listing, subs="+quotes"]
 ----
 (cs2)# *script list*
@@ -473,15 +538,11 @@ BES-53248_RCF_v1.9-Cluster-HA.scr          2241         2020 09 30 05:41:00
 
 1 configuration script(s) found.
 ----
-====
 . 將指令碼套用至交換器：
 +
 適用記錄
 
 +
-.顯示範例
-[%collapsible]
-====
 [listing, subs="+quotes"]
 ----
 (cs2)# *script apply BES-53248_RCF_v1.9-Cluster-HA.scr*
@@ -495,8 +556,11 @@ Configuration Saved!
 
 Configuration script 'BES-53248_RCF_v1.9-Cluster-HA.scr' applied.
 ----
+
+
+--
 ====
-. 檢查的橫幅輸出 `show clibanner` 命令。您必須閱讀並遵循這些指示、以確保交換器的組態和操作正確無誤。
+. [[step11]] 檢查命令的橫幅輸出 `show clibanner`。您必須閱讀並遵循這些指示、以確保交換器的組態和操作正確無誤。
 +
 `show clibanner`
 
@@ -1042,7 +1106,7 @@ RPC status:
 ----
 --
 ====
-. [[step6]將權限層級改回管理：
+. 將權限層級變更回管理：
 +
 [source, cli]
 ----

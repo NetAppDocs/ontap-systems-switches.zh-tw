@@ -19,7 +19,7 @@ Cisco Nexus 9336C-FX2叢集交換器是Cisco Nexus 9000平台的一部分、可�
 
 若要在執行ONTAP 故障切換的系統上初始設定Cisco Nexus 9336C-FX2交換器、請依照下列步驟操作：
 
-. link:setup-worksheet-9336c-cluster.html["填寫Cisco Nexus 9336C-FX2纜線工作表"]。
+. link:setup-worksheet-9336c-cluster.html["完成 Cisco Nexus 9336C-FX2 或 9336C-FX2-T 纜線工作表"]。
 +
 佈線工作表範例提供從交換器到控制器的建議連接埠指派範例。空白工作表提供範本、可用於設定叢集。
 
@@ -43,7 +43,7 @@ Cisco Nexus 9336C-FX2叢集交換器是Cisco Nexus 9000平台的一部分、可�
 +
 在 Nexus 9336C-FX2 叢集交換器上安裝或升級 NX-OS 軟體。
 
-. link:install-nxos-rcf-9336c-cluster.html["安裝或升級 RCF"]。
+. link:install-upgrade-rcf-overview-cluster.html["安裝或升級 RCF"]。
 +
 首次設定 Nexus 9336C-FX2 交換器之後、請安裝或升級 RCF 。您也可以使用此程序來升級RCF版本。
 

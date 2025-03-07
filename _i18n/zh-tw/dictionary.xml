@@ -3635,7 +3635,6 @@
   <block id="ce140d6d1921435e3df40a72b6d032f4" category="sidebar">從CN1610交換器移轉</block>
   <block id="ac0586dfb2126d95d9be6378c5f70512" category="sidebar">從無交換器叢集移轉至交換式叢集</block>
   <block id="703c0fedc12db69e340d7c2f3de0d764" category="sidebar">更換交換器</block>
-  <block id="742d7720a6bdc19b4810641f0c74ddd3" category="sidebar">升級交換器</block>
   <block id="5990fb757a59a934aeb2786bac162e97" category="sidebar">安裝EFOS軟體</block>
   <block id="e7d694813a2146a3ab31b4b907988620" category="sidebar">啟用SSH</block>
   <block id="037fd3285f5414c76c57c401fbc5603c" category="sidebar">啟用記錄收集</block>
@@ -3901,7 +3900,6 @@
   <block id="d03fee12ab01ee4f556908abcba26347" category="list-text">使用 SSH 再次登入交換器以完成 RCF 安裝。</block>
   <block id="63f7338fc9ee539e34242e8d03110038" category="list-text">使用下列傳輸傳輸協定之一、將RCF複製到交換器CS2的bootflash：FTP、TFTP、SFTP或scp。</block>
   <block id="b211f67e6e9195c32683368a53542802" category="paragraph">此範例顯示 SFTP 用於將 RCF 複製到交換器 CS2 上的 bootflash ：</block>
-  <block id="c77174e35b7f7fc235a87561809ad614" category="list-text">檢查的橫幅輸出<block ref="db837131dc56fab41bddc52d5aff8865" prefix=" " category="inline-code"></block> 命令。您必須閱讀並遵循這些指示、以確保交換器的組態和操作正確無誤。</block>
   <block id="420b545896cb1c9b03dbccd44bf33f86" category="list-text">在交換器上、確認附加授權連接埠在應用 RCF 之後出現：</block>
   <block id="f8e1e48a80ce2fac4d53a95f1f1ffd18" category="paragraph">* 叢集節點連線纜線移至 CS2 新交換器 *</block>
   <block id="e07ca5d2322ee212c9dcb668e9db443a" category="image-alt">叢集節點連線纜線移至 CS2 新交換器</block>
@@ -4634,9 +4632,7 @@
   <block id="e1ef2bf589b36ef4fe890c1ce3f4414e" category="list-text"><block ref="0a41823d2a109b5dbd6f2fa1f8fe6689" category="inline-link-macro-rx"></block>。</block>
   <block id="629075dbdb9eff0fb95f99ab0fcd1967" category="paragraph">下載並安裝或升級 Cisco Nexus 9336C-FX2 叢集交換器上的 NX-OS 軟體。</block>
   <block id="11106314fe1d4dd5bee639afb348b915" category="inline-link-macro">安裝或升級 RCF</block>
-  <block id="c04285e0007809b2644676a723882b00" category="list-text"><block ref="1fe309bd8e626375dc4971f4edf77d2d" category="inline-link-macro-rx"></block>。</block>
   <block id="01a618717f01c55d9b54bedd7307a43f" category="paragraph">首次安裝 Cisco Nexus 9336C-FX2 交換器後、請安裝或升級 RCF 。您也可以使用此程序來升級RCF版本。</block>
-  <block id="b002a5cd7db32a3dea22b0992712b264" category="list-text"><block ref="56a03b023ba50fb49738eaf20203f57a" category="inline-link-macro-rx"></block>。</block>
   <block id="959598166d06ebc7f87da7525f293a91" category="list-text"><block ref="0bc8e83d3cd2eebf0c2c5d2a7b54cc6c" category="inline-link-macro-rx"></block>。</block>
   <block id="df7bc1c04ccb094d3b474fc08a97d272" category="paragraph">設定交換器硬體。</block>
   <block id="a7682f7ee72405f79f40850a1dea900c" category="list-text"><block ref="93d08ab8d6c80a25299648349a7a616c" category="inline-link-macro-rx"></block>。</block>
@@ -4779,7 +4775,6 @@
   <block id="2d7cd36455daea92f172ede16d765aae" category="list-text">[[step7]] 驗證叢集是否正常：</block>
   <block id="acdfe379cf0ed5868b119418e7d41b82" category="list-text">[[step11]] 為群組 2 中的連接埠設定無交換器組態。</block>
   <block id="a2f7ec2dd8feebc2c1e30e5f859d4497" category="list-text">[[step6]] 如果您禁止自動建立個案、請叫用 AutoSupport 訊息來重新啟用：</block>
-  <block id="2f3040f570b3d77425ad0bf50fc7985c" category="list-text">[[step6]將權限層級改回管理：</block>
   <block id="4e4f70ba52e8cb595faa069991c5a9f4" category="list-text">[[step5]] 如果您禁止自動建立個案、請叫用 AutoSupport 訊息來重新啟用：</block>
   <block id="c97fddef37af781b99f2bb564a90861d" category="list-text">[[step9]將權限層級改回管理：</block>
   <block id="991d705309210a9623a3f1d994c15150" category="list-text">[[step10]] 關閉作用中 Nexus 5596 交換器 CL1 上的 ISL 連接埠 41 到 48 ：</block>
@@ -5139,7 +5134,6 @@
   <block id="f36aa89aee5a55633ce25b54c9a779d3" category="sidebar">migrate_for_switchless 叢集</block>
   <block id="c32aa48aa3b92b64c3a5ea6a1b2e9a1f" category="sidebar">從雙節點無交換器叢集工作流程進行移轉</block>
   <block id="df8a9198280d88db538535b2609f0f83" category="sidebar">Replace_switches_3232C</block>
-  <block id="6697bf1c75a0d4d8868afeab04858bc3" category="sidebar">Upgrade_switches_3232C</block>
   <block id="253d101ba7a8a0f1e24c1a3b13a1b5b5" category="sidebar">install_upgrade _RCF</block>
   <block id="2b8efdb0e77054ffe22b4bfb75564155" category="sidebar">安裝或升級 RCF 總覽</block>
   <block id="b6503bc6a2e6ede86368a60473711626" category="list-text">在交換器 CS1 上重複步驟 1 至 11 。</block>
@@ -5256,4 +5250,6 @@
   <block id="a9fc37ffea4ac5fbd75f369d96c903f6" category="sidebar">叢集交換器 - Cisco Nexus 9336C-FX2 或 9336C-FX2-T</block>
   <block id="ed3dd7f516f69cf573ae79a1781bbcbf" category="sidebar">叢集交換器 - NVIDIA SN2100 叢集交換器</block>
   <block id="49e57b2c31c8feba776b7a2916673678" category="sidebar">Cisco Nexus 9336C-FX2 或 9336C-FX2-T</block>
+  <block id="c66ea64be71d87967746ef74fac6ec75" category="list-text">[[step11]] 檢查命令的橫幅輸出<block ref="db837131dc56fab41bddc52d5aff8865" prefix=" " category="inline-code"></block>。您必須閱讀並遵循這些指示、以確保交換器的組態和操作正確無誤。</block>
+  <block id="8b084baecf96a692280d1a024d86081d" category="list-text"><block ref="cf3a409f8782a7944244632e6a1adb8e" category="inline-link-macro-rx"></block>。</block>
 </blocks>
