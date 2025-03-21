@@ -68,12 +68,11 @@ summary: 設定 Broadcom BS-53248 交換器之前、請先檢閱下列資訊。
 == FEC 要求
 
 * 若為含銅線的 25G 連接埠、請參閱下表以取得詳細資料。
-
-
++
 如果控制器側為 `auto`，交換器側設為 FEC 25G 。
 
 +
-影像： ../media/FEC_copper_table.jpg[25G 連接埠、含銅線 ]
+image::../media/FEC_copper_table.jpg[25 公克連接埠，含銅線]
 
 * 如需使用光纖 / 光纖纜線的 25G 連接埠、請參閱下表以取得詳細資料：
 +

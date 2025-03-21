@@ -457,15 +457,14 @@ Are you sure you would like to reset the system? (y/n) *y*
 
 [listing, subs="+quotes"]
 ----
-(cs2)# *copy sftp://172.19.2.1/BES-53248-RCF-v1.9-Cluster-HA.txt
-nvram:reference-config*
+(cs2)# *copy sftp://172.19.2.1/BES-53248-RCF-v1.9-Cluster-HA.txt nvram:reference-config.scr*
 Remote Password:**
 Mode........................................... TFTP
 Set Server IP.................................. 172.19.2.1
-Path........................................... //tmp/
+Path........................................... /
 Filename....................................... BES-53248_RCF_v1.9-Cluster-HA.txt
 Data Type...................................... Config Script
-Destination Filename........................... BES-53248_RCF_v1.9-Cluster-HA.scr
+Destination Filename........................... reference-config.scr
 Management access will be blocked for the duration of the transfer
 Are you sure you want to start? (y/n) *y*
 TFTP Code transfer starting...
@@ -482,7 +481,7 @@ File transfer operation completed successfully.
 
 Configuration Script Name                  Size(Bytes)  Date of Modification
 -----------------------------------------  -----------  --------------------
-Reference-config.scr                       2680         2024 05 31 21:54:22
+reference-config.scr                       2680         2024 05 31 21:54:22
 2 configuration script(s) found.
 2042 Kbytes free.
 ----
@@ -502,7 +501,7 @@ Would you like to save them now? (y/n) *y*
 Config file 'startup-config' created successfully.
 Configuration Saved!
 
-Configuration script 'BES-53248_RCF_v1.9-Cluster-HA.scr' applied.
+Configuration script 'reference-config.scr' applied.
 ----
 
 

@@ -1,16 +1,7 @@
----
-permalink: switch-cshm/config-log-collection.html 
-sidebar: sidebar 
-keywords: log collection feature,collect switch-related log files,SSh key,crypto key generation 
-summary: 乙太網路交換器健全狀況監視器（ CSHM ）記錄收集功能是用來從 ONTAP 中的叢集或儲存網路交換器收集記錄。 
----
-= 設定記錄收集
+= 開始之前
 :allow-uri-read: 
-:icons: font
-:imagesdir: ../media/
 
 
-[role="lead"]
 乙太網路交換器健全狀況監視器（ CSHM ）負責確保叢集與儲存網路交換器的作業健全狀況、並收集交換器記錄以供偵錯之用。本程序將引導您完成設定收集、要求詳細的 * 支援 * 記錄、以及啟用 AutoSupport 所收集 * 定期 * 資料的每小時收集。
 
 * 注意： * 如果您啟用 FIPS 模式、則必須完成下列步驟：
@@ -240,8 +231,3 @@ cluster1::*> *system switch ethernet log show -instance*
 
 --
 ====
-
-CAUTION: 如果記錄收集功能報告任何錯誤狀態（在的輸出中可見 `system switch ethernet log show`）、請參閱 link:log-collection-troubleshoot.html["疑難排解記錄收集"] 以取得進一步詳細資料。
-
-.接下來呢？
-link:config-snmpv3.html["設定 SNMPv3 （選用）"]。
