@@ -2061,12 +2061,9 @@
   <block id="b366aa7d44d5ae24af827fa423f8a2f2" category="list-text">使用兩個命令：「ystem switchEthernet log setup-password」（系統交換器乙太網路記錄設定密碼）和「系統交換器乙太網路記錄啟用資料收集」、啟用乙太網路交換器健全狀況監視器記錄收集功能來收集交換器相關的記錄檔</block>
   <block id="6d5256d36c2629c07d67ddb2fc78e95c" category="list-text">啟動交換器記錄收集功能：「System交換器乙太網路記錄collect -device *」</block>
   <block id="676b4f116c6b65afc97655131da52093" category="paragraph">請等待10分鐘、然後使用「ystem switchEthernet log show」命令檢查記錄收集是否成功</block>
-  <block id="3722090c5c0b0496759b23b1db5566cd" category="doc">安裝RCF指令碼</block>
   <block id="90bd80eefde443be8809a3edf64f7ef2" category="list-text">IP位址、子網路遮罩和預設閘道、是透過DHCP定義或手動設定的。</block>
   <block id="1d9152605063cf1b257a36675cece81c" category="inline-link-macro">佈線與組態考量</block>
   <block id="526990b43ff7cafabc1a3c5dda4e8c9b" category="paragraph">叢集與儲存應用程式可使用兩個RCF指令碼。每個的程序都相同。</block>
-  <block id="d43ffd29b9c1918eacb74ce61ab9c93d" category="list-text">叢集：* MSN2100-RCF-v1.8-叢集*</block>
-  <block id="85948408e24eaebde36ef1a070afa259" category="list-text">儲存設備：* MSN2100-RCF-v1.8-Storage*</block>
   <block id="47a90a8bc6531c96684b95f438b570ff" category="admonition">下列程序範例說明如何下載及套用叢集交換器的RCF指令碼。</block>
   <block id="8e7538255f1b89e8cb901d939793795e" category="admonition">命令輸出範例使用交換器管理IP位址10.233.204.71、網路遮罩255．255．255．0和預設閘道10．233.204.1。</block>
   <block id="cba289d19a283a01be4ec7d5598b25e8" category="list-text">顯示SN2100交換器上的可用介面：</block>
@@ -2370,7 +2367,6 @@
   <block id="e0ab29823a477894018f5c53cfabeece" category="summary">對於NVIDIA SN2100交換器的安裝與維護、請務必檢閱所有建議的文件。</block>
   <block id="7ec5693d2c180df872f5e23364ecd351" category="doc">NVIDIA SN2100交換器的文件需求</block>
   <block id="5a5096484954db754c9fdc1d20f50720" category="summary">請遵循此程序來安裝RCF指令碼。</block>
-  <block id="2123b47f46a6b2a44de513e0c343098f" category="paragraph">安裝RCF指令碼之前、請確定交換器上有下列項目：</block>
   <block id="6b05439cc5176e82c5cfdc0d918624ea" category="paragraph"><block ref="e82a1249d31ab6e6d4064390013e6c55" prefix="" category="inline-code"></block></block>
   <block id="458ab89f862895d8f5ce855c654868d6" category="paragraph">RCF指令碼會完成上述步驟。</block>
   <block id="8d64daaea35553b232a39d8de9b07201" category="list-text">驗證介面中收發器的資訊：</block>
@@ -5231,4 +5227,15 @@
   <block id="1422bf436bfd810c807aacf3aab99615" category="paragraph">設定交換器並安裝必要軟體之後，請存取 ONTAP 系統平台機型的安裝與設定指示，以完成系統設定。</block>
   <block id="ce85a54726781b89fe08c28de38285c0" category="paragraph">安裝並設定 ONTAP 系統控制器和交換器之後，您必須在 ONTAP 中完成儲存設備的設定。根據部署組態存取下列指示。</block>
   <block id="674426100287eb3a5e16cf5705c524ea" category="image-alt">25 公克連接埠，含銅線</block>
+  <block id="ec65012ad6ac37ed9d5b425acfa4cdea" category="doc">安裝或升級參考組態檔案（ RCF ）指令碼</block>
+  <block id="60db3c5b6db09c40831f96fad7f5b5c4" category="paragraph">請遵循此程序來安裝或升級 RCF 指令碼。</block>
+  <block id="a26beebaedce14e4e55b90d7a8d895f4" category="paragraph">在安裝或升級 RCF 指令碼之前，請確定交換器上有下列可用項目：</block>
+  <block id="3a0aebe04bfa1f6aaf965b9c027512bc" category="open-title">Cumulus Linux 5.4.0</block>
+  <block id="9ec751f6f6fe23e217638410987b5aab" category="open-title">Cumulus Linux 5.11.0</block>
+  <block id="2340bc2649383727b40f4420d1b47844" category="doc">升級參考組態檔案（ RCF ）指令碼</block>
+  <block id="8ab41648ed191efe1d9524e2535c7f4d" category="paragraph">請遵循此程序升級 RCF 指令碼。</block>
+  <block id="b3be7362d2d8f250dc5fcbfaf784efd0" category="paragraph">在升級 RCF 指令碼之前，請確定交換器上有下列可用項目：</block>
+  <block id="997f5023d76908d72d993d6b09390a5e" category="doc">安裝或升級 RCF 指令碼</block>
+  <block id="7baa7758ed49797651dc1e276762ae15" category="list-text">叢集： * MSN2100-RCF-v1. _x_ 叢集 *</block>
+  <block id="dd584ffba0b7534139645967bf24df84" category="sidebar">安裝或升級 RCF 指令碼</block>
 </blocks>

@@ -4,17 +4,17 @@ sidebar: sidebar
 keywords: install rcf script, python script, sn2100 SN2100 switches, cumulus 
 summary: 請遵循此程序來安裝RCF指令碼。 
 ---
-= 安裝RCF指令碼
+= 安裝或升級 RCF 指令碼
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-請遵循此程序來安裝RCF指令碼。
+請遵循此程序來安裝或升級 RCF 指令碼。
 
 .您需要的產品
-安裝RCF指令碼之前、請確定交換器上有下列項目：
+在安裝或升級 RCF 指令碼之前，請確定交換器上有下列可用項目：
 
 * 已安裝Cummulis Linux 4.4.3。
 * IP位址、子網路遮罩和預設閘道、是透過DHCP定義或手動設定的。
@@ -23,8 +23,8 @@ summary: 請遵循此程序來安裝RCF指令碼。
 .目前的RCF指令碼版本
 叢集與儲存應用程式可使用兩個RCF指令碼。每個的程序都相同。
 
-* 叢集：* MSN2100-RCF-v1.8-叢集*
-* 儲存設備：* MSN2100-RCF-v1.8-Storage*
+* 叢集： * MSN2100-RCF-v1. _x_ 叢集 *
+* 儲存： * MSN2100-RCF-v1. _x_ 儲存 *
 
 
 

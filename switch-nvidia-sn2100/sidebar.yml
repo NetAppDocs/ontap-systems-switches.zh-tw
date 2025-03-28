@@ -36,7 +36,7 @@ entries:
     url: "/switch-nvidia-sn2100/install-onie-mode-sn2100-cluster.html"
   - title: 升級 Cumulus Linux 版本
     url: "/switch-nvidia-sn2100/upgrade-cl-version.html"
-  - title: 安裝RCF指令碼
+  - title: 安裝或升級 RCF 指令碼
     url: "/switch-nvidia-sn2100/install-rcf-sn2100-cluster.html"
   - title: 安裝 CSHM 檔案
     url: "/switch-nvidia-sn2100/setup-install-cshm-file.html"

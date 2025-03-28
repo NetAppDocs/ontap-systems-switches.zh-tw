@@ -34,7 +34,7 @@ entries:
     url: "/switch-nvidia-sn2100-storage/install-cumulus-mode-sn2100-storage.html"
   - title: 以ONIE模式安裝CummulUS Linux
     url: "/switch-nvidia-sn2100-storage/install-onie-mode-sn2100-storage.html"
-  - title: 安裝RCF指令碼
+  - title: 安裝或升級 RCF 指令碼
     url: "/switch-nvidia-sn2100-storage/install-rcf-sn2100-storage.html"
   - title: 安裝 CSHM 檔案
     url: "/switch-nvidia-sn2100-storage/setup-install-cshm-file.html"
