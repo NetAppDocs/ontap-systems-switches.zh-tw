@@ -5213,7 +5213,6 @@
   <block id="49e57b2c31c8feba776b7a2916673678" category="sidebar">Cisco Nexus 9336C-FX2 或 9336C-FX2-T</block>
   <block id="c66ea64be71d87967746ef74fac6ec75" category="list-text">[[step11]] 檢查命令的橫幅輸出<block ref="db837131dc56fab41bddc52d5aff8865" prefix=" " category="inline-code"></block>。您必須閱讀並遵循這些指示、以確保交換器的組態和操作正確無誤。</block>
   <block id="8b084baecf96a692280d1a024d86081d" category="list-text"><block ref="cf3a409f8782a7944244632e6a1adb8e" category="inline-link-macro-rx"></block>。</block>
-  <block id="a0483532706ba341300191e20cafc42e" category="list-text">對於 Broadcom 和 Cisco 交換器的記錄收集，應在交換器上為啟用記錄收集的每個叢集設定建立新的使用者。這些交換器不支援同一位使用者的多個 SSH 金鑰。執行的任何其他記錄集合設定都會覆寫使用者先前存在的任何 SSH 金鑰。</block>
   <block id="1fcbc8802637b04b8fe9a86ac3d545c9" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block>安裝交換器硬體</block>
   <block id="b11226c776ec1b74f6a42f871e3194c9" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block>安裝儲存系統和儲存櫃</block>
   <block id="130792cb3edc8d0afffb557e50b218c3" category="paragraph">在機櫃或機架中安裝儲存系統和儲存櫃。存取您平台機型的安裝與設定指示。</block>
@@ -5238,4 +5237,9 @@
   <block id="997f5023d76908d72d993d6b09390a5e" category="doc">安裝或升級 RCF 指令碼</block>
   <block id="7baa7758ed49797651dc1e276762ae15" category="list-text">叢集： * MSN2100-RCF-v1. _x_ 叢集 *</block>
   <block id="dd584ffba0b7534139645967bf24df84" category="sidebar">安裝或升級 RCF 指令碼</block>
+  <block id="40b03f9635c63b20aade0ff8145eafb8" category="list-text">對於 Broadcom 和 Cisco 交換器的記錄收集：</block>
+  <block id="89f1dd995a5c07ea1e13abc5993d9d59" category="list-text">使用者必須擁有網路管理員 Privileges 。</block>
+  <block id="60f743043272b873831b17c5e7290445" category="list-text">應在交換器上為啟用記錄收集的每個叢集設定建立新使用者。這些交換器不支援同一位使用者的多個 SSH 金鑰。執行的任何其他記錄集合設定都會覆寫使用者先前存在的任何 SSH 金鑰。</block>
+  <block id="63229fc9218a5e1a57243ce033e91a3b" category="paragraph">如需安裝或升級 RCF 的詳細資訊，請參閱知識庫<block ref="862bab57a4acfb616afcae48c16f2cfe" category="inline-link-macro-rx"></block>文件。</block>
+  <block id="26552c2532e5b34c96d8cef5f736c6ff" category="paragraph">如需安裝 RCF 的詳細資訊，請參閱知識庫<block ref="862bab57a4acfb616afcae48c16f2cfe" category="inline-link-macro-rx"></block>文件。</block>
 </blocks>

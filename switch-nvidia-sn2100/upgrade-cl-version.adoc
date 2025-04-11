@@ -377,6 +377,7 @@ cumulus@sw1:mgmt:~$
 +
 [listing, subs="+quotes"]
 ----
+cumulus@sw1:mgmt:~$ *nv unset interface eth0 ip address dhcp*
 cumulus@sw1:mgmt:~$ *nv set interface eth0 ip address 10.231.80.206/22*
 cumulus@sw1:mgmt:~$ *nv set interface eth0 ip gateway 10.231.80.1*
 cumulus@sw1:mgmt:~$ *nv config apply*

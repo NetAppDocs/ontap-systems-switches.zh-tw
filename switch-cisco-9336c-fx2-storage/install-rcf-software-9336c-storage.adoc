@@ -13,6 +13,8 @@ summary: 首次設定 Nexus 9336C-FX2 儲存交換器後，即可安裝 RCF 。�
 [role="lead"]
 首次設定 Nexus 9336C-FX2 儲存交換器之後，請安裝參考組態檔案（ RCF ）。
 
+如需安裝 RCF 的詳細資訊，請參閱知識庫link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["如何在保留遠端連線的同時清除 Cisco 互連交換器上的組態"^]文件。
+
 .開始之前
 驗證下列安裝和連線：
 

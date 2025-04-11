@@ -13,6 +13,8 @@ summary: 您可以在初次設定Nexus 2300YC交換器之後安裝RCF。
 [role="lead"]
 您可以在初次設定Nexus 2300YC交換器之後安裝RCF。您也可以使用此程序來升級RCF版本。
 
+如需安裝或升級 RCF 的詳細資訊，請參閱知識庫link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["如何在保留遠端連線的同時清除 Cisco 互連交換器上的組態"^]文件。
+
 .關於這項工作
 本程序中的範例使用下列交換器和節點命名法：
 

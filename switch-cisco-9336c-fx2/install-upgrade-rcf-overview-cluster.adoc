@@ -13,6 +13,8 @@ summary: 使用叢集交換器健全狀況監視器（CSHM\）和記錄收集功
 [role="lead"]
 首次設定 Nexus 9336C-FX2 交換器後、請安裝參考組態檔案（ RCF ）。當您的交換器上安裝了 RCF 檔案的現有版本時、即可升級 RCF 版本。
 
+如需安裝或升級 RCF 的詳細資訊，請參閱知識庫link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["如何在保留遠端連線的同時清除 Cisco 互連交換器上的組態"^]文件。
+
 .可用的 RCF 組態
 下表說明適用於不同組態的 RCFs 。選擇適用於您組態的 RCF 。
 
