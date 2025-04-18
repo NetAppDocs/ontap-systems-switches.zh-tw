@@ -313,6 +313,10 @@ RPC status:
 ====
 . [[step5]] 在交換器 C2 上、關閉連接至節點叢集連接埠的連接埠、以便容錯移轉叢集生命週期。
 +
+
+CAUTION: 請勿嘗試手動移轉叢集生命期。
+
++
 [listing, subs="+quotes"]
 ----
 (C2)# *configure*

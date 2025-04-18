@@ -19,6 +19,10 @@ entries:
   entries:
   - title: 健全狀況檢查總覽
     url: "/switch-cshm/monitor-overview.html"
+  - title: 管理交換器監控
+    url: "/switch-cshm/monitor-manage.html"
+  - title: 驗證交換器監控
+    url: "/switch-cshm/monitor-verify.html"
   - title: 疑難排解警示
     url: "/switch-cshm/monitor-troubleshoot.html"
 - title: 記錄收集

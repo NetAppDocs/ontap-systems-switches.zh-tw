@@ -5242,4 +5242,37 @@
   <block id="60f743043272b873831b17c5e7290445" category="list-text">應在交換器上為啟用記錄收集的每個叢集設定建立新使用者。這些交換器不支援同一位使用者的多個 SSH 金鑰。執行的任何其他記錄集合設定都會覆寫使用者先前存在的任何 SSH 金鑰。</block>
   <block id="63229fc9218a5e1a57243ce033e91a3b" category="paragraph">如需安裝或升級 RCF 的詳細資訊，請參閱知識庫<block ref="862bab57a4acfb616afcae48c16f2cfe" category="inline-link-macro-rx"></block>文件。</block>
   <block id="26552c2532e5b34c96d8cef5f736c6ff" category="paragraph">如需安裝 RCF 的詳細資訊，請參閱知識庫<block ref="862bab57a4acfb616afcae48c16f2cfe" category="inline-link-macro-rx"></block>文件。</block>
+  <block id="2b77bb88cf2794536ac9c658ce053c6b" category="doc">建立交換器項目，讓 ONTAP 能夠監控</block>
+  <block id="4aa02798c2feea1f87e6fb5301e10d30" category="paragraph">使用<block ref="e59cde6e921a1b23eb9bf8c1c9068aca" prefix=" " category="inline-code"></block>命令手動設定及啟用指定乙太網路交換器的監控。如果 ONTAP 未自動新增交換器，或您先前已移除交換器並想要重新新增交換器，這項功能就很實用。</block>
+  <block id="82b694a75e07a035b8cd3b7aae86fdb8" category="paragraph">典型的例子是新增一個名為 [DeviceName] 的交換器， IP 位址為 1.2.3.4 ，而 SNMPv2c 認證設定為 *cshm1!* 。如果您正在設定儲存交換器，請改<block ref="0f3e90baa25250f9896e5ad67dd9d1f6" prefix=" " category="inline-code"></block>用<block ref="0fa5a8d20ad4f199ce4bb17e333f0a4a" prefix=" " category="inline-code"></block>。</block>
+  <block id="9e2f728fd093bf40641895bd7ab81ffc" category="section-title">停用監控，但不刪除交換器</block>
+  <block id="71ea82a6a71bd6b5e0857ef4469e6824" category="paragraph">如果您想要暫停或停止監控某個交換器，但仍保留它以供未來監控，請修改其<block ref="a95032ab49a61ccce65cbef4bf991ebd" prefix=" " category="inline-code"></block>參數而非刪除它。</block>
+  <block id="254dbd09c58880fcc321f2394e42803d" category="paragraph">這可讓您保留交換器的詳細資料和組態，而無需產生新警示或重新探索。</block>
+  <block id="5c87ebc68b8545e621c4293650f66e8e" category="section-title">移除不再需要的交換器</block>
+  <block id="c68359f3f21922e686e683f2b1fb2d69" category="paragraph">用於<block ref="72fd318795f4bf274ff150d0a09106e1" prefix=" " category="inline-code"></block>刪除已中斷連線或不再需要的交換器：</block>
+  <block id="0dcda35c85e27aa3498fa4ab30cb7dae" category="paragraph">根據預設，只有在 ONTAP 目前未透過 CDP 或 LLDP 偵測到交換器時，此命令才會成功。若要移除探索到的交換器，請使用<block ref="02e554f8f135bc49b80e8fc45a341757" prefix=" " category="inline-code"></block>參數：</block>
+  <block id="6625e054d05a0ea2ca1ae3049f75717e" category="paragraph"><block ref="02e554f8f135bc49b80e8fc45a341757" prefix=" " category="inline-code"></block>使用時，如果 ONTAP 再次偵測到交換器，可能會自動重新新增交換器。</block>
+  <block id="25784bbce13fd0c509a0fd1c5f248f3d" category="doc">確認監控連接的乙太網路交換器</block>
+  <block id="570122e6553f3a17e7188a6ca23d70d9" category="paragraph">若要確認正在監控連接的乙太網路交換器，請執行：</block>
+  <block id="7eaabdc7d2364e9a43feeb5cf07593dc" category="paragraph">如果<block ref="a559b87068921eec05086ce5485e9784" prefix=" " category="inline-code"></block>欄顯示 * 其他 * ，或欄位顯示 * 錯誤 *<block ref="7a19db03ac26c54be196969b77d657a6" prefix=" " category="inline-code"></block> ，則 ONTAP 無法監控交換器。值 * 其他 * 通常表示 ONTAP 不支援該交換器進行健全狀況監控。</block>
+  <block id="8d86e89da688f620dafbc70269059388" category="paragraph">此<block ref="7a19db03ac26c54be196969b77d657a6" prefix=" " category="inline-code"></block>欄位會因欄位中指定的理由而設為 * 錯誤 *<block ref="fffcb4d1e12c96b2f571f77ad25878b8" prefix=" " category="inline-code"></block> 。</block>
+  <block id="f9f5c952edf43434e02a625f00102b19" category="inline-link-macro">管理乙太網路交換器的監控</block>
+  <block id="f6ec6bfa57123a9616038a55e7f332a5" category="paragraph">如果命令輸出中未列出交換器，則 ONTAP 可能尚未發現它。確認交換器纜線正確。如有必要，您可以手動新增交換器。如需詳細資訊、請參閱 <block ref="ee7db2a0a5f0654c3c81941bc38adb11" category="inline-link-macro-rx"></block> 。</block>
+  <block id="ed7061b9b8f8c50684797c64a5576941" category="section-title">確認韌體和 RCF 版本為最新版本</block>
+  <block id="43558d02214bf83729998ce237b6cdea" category="inline-link">NetApp支援下載頁面</block>
+  <block id="9be0ccf5f4aae992d69ea7f079f6d048" category="paragraph">請確定交換器執行的是最新支援的韌體，而且已套用相容的參考組態檔案（ RCF ）。如需詳細資訊<block ref="49046ae6b122d9765935bb9b378618a5" category="inline-link-rx"></block>、請參閱。</block>
+  <block id="14bb00b56dfdaad98ccaf9d2ff1c1eb5" category="paragraph">根據預設，健全狀況監視器會使用 SNMPv2c 搭配社群字串 *cshm1!* 進行監控，但也可以設定 SNMPv3 。</block>
+  <block id="35011d870229aa144aa6a66350d2279e" category="paragraph">如果您需要變更預設的 SNMPv2c 社群字串，請確定交換器上已設定所需的 SNMPv2c 社群字串。</block>
+  <block id="3d8bd273ce46782520a3a188e037f316" category="admonition">如需設定要使用的 SNMPv3 的詳細資訊，請參閱<block ref="ec5440e4cc2d261dc76dac84e641c0ab" category="inline-link-macro-rx"></block>。</block>
+  <block id="f97512ee27e4fc37982423d301b8b2cd" category="section-title">確認管理網路連線</block>
+  <block id="4c3dc933dd2f14499a5b966f0d0f1242" category="paragraph">確認交換器的管理連接埠已連線至管理網路。</block>
+  <block id="7be780b96e93a50316d019e9c7358c89" category="paragraph">ONTAP 執行 SNMP 查詢和記錄收集時，需要正確的管理連接埠連線。</block>
+  <block id="6022c2f82411bbd57493d91e903ce8aa" category="admonition">請勿嘗試手動移轉叢集生命期。</block>
+  <block id="a9b506398d4ccf6e53d71af16370c8e6" category="summary">瞭解如何手動建立，變更預設監控設定，以及從監控中刪除乙太網路交換器。</block>
+  <block id="a1c2fc220383716c158399e227f0b34f" category="paragraph">在大多數情況下， ONTAP 會自動探索乙太網路交換器，並由 CSHM 監控。套用至交換器的參考組態檔（ RCF ），除其他外，可啟用 Cisco 探索傳輸協定（ CDP ）和 / 或連結層探索傳輸協定（ LLDP ）。不過，您可能需要手動新增未發現的交換器，或移除不再使用的交換器。您也可以停止主動監控，同時將交換器保留在組態中，例如在維護期間。</block>
+  <block id="586ef722188ebd1147c5005705cba276" category="summary">瞭解如何驗證乙太網路交換器的監控是否正常運作。</block>
+  <block id="73938029de1874ad71500c396fa836b1" category="doc">驗證以太網交換機的監控</block>
+  <block id="7d446387be9f1d7a1583327a693c81a1" category="paragraph">乙太網路交換器健全狀況監視器（ CSHM ）會自動嘗試監控其探索到的交換器；不過，如果交換器未正確設定，則可能不會自動進行監控。您應該確認健全狀況監視器已正確設定、以監控交換器。</block>
+  <block id="a6227aae637a0baad0de1335f2d71396" category="sidebar">管理交換器監控</block>
+  <block id="5c46a4758dcc5f666eee202daef67af4" category="sidebar">驗證交換器監控</block>
 </blocks>

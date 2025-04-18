@@ -1,0 +1,47 @@
+= 確認監控連接的乙太網路交換器
+:allow-uri-read: 
+
+
+
+
+== 確認監控連接的乙太網路交換器
+
+若要確認正在監控連接的乙太網路交換器，請執行：
+
+[source, cli]
+----
+system switch ethernet show
+----
+如果 `Model`欄顯示 * 其他 * ，或欄位顯示 * 錯誤 * `IS Monitored` ，則 ONTAP 無法監控交換器。值 * 其他 * 通常表示 ONTAP 不支援該交換器進行健全狀況監控。
+
+此 `IS Monitored`欄位會因欄位中指定的理由而設為 * 錯誤 * `Reason` 。
+
+[NOTE]
+====
+如果命令輸出中未列出交換器，則 ONTAP 可能尚未發現它。確認交換器纜線正確。如有必要，您可以手動新增交換器。如需詳細資訊、請參閱 link:manage-monitor.html["管理乙太網路交換器的監控"] 。
+
+====
+
+
+== 確認韌體和 RCF 版本為最新版本
+
+請確定交換器執行的是最新支援的韌體，而且已套用相容的參考組態檔案（ RCF ）。如需詳細資訊https://mysupport.netapp.com/site/downloads["NetApp支援下載頁面"^]、請參閱。
+
+根據預設，健全狀況監視器會使用 SNMPv2c 搭配社群字串 *cshm1!* 進行監控，但也可以設定 SNMPv3 。
+
+如果您需要變更預設的 SNMPv2c 社群字串，請確定交換器上已設定所需的 SNMPv2c 社群字串。
+
+[source, cli]
+----
+system switch ethernet modify -device SwitchA -snmp-version SNMPv2c -community-or-username newCommunity!
+----
+
+NOTE: 如需設定要使用的 SNMPv3 的詳細資訊，請參閱link:config-snmpv3.html["選用：設定 SNMPv3"]。
+
+
+
+== 確認管理網路連線
+
+確認交換器的管理連接埠已連線至管理網路。
+
+ONTAP 執行 SNMP 查詢和記錄收集時，需要正確的管理連接埠連線。
