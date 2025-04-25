@@ -3835,7 +3835,6 @@
   <block id="5e7f834bb6ce37fe7786c30951681705" category="list-text">驗證是否為4.4.3版的Cummulis Linux：<block ref="98f5dff8534e8c39673b544f567273e7" prefix=" " category="inline-code"></block></block>
   <block id="d3197ab8aed6376fa7796149e9bb5d76" category="paragraph">安裝程式隨即開始下載。出現提示時鍵入* y*。</block>
   <block id="0d5b4669d0f67490dffe38df0a47c207" category="list-text">安裝會自動啟動、並顯示下列的Grub畫面選項。請勿*不要*進行任何選擇。</block>
-  <block id="caf789a40cb327fa8f64258a010c13e0" category="list-text">確認 Cumulus Linux 版本為 5.4 ：<block ref="9fcc1ae85aac3dbd490f575cf5eb3d52" prefix=" " category="inline-code"></block></block>
   <block id="ebf243f9c791c52799ecfef9dba7e609" category="doc">以無交換器連線取代 NetApp CN1610 叢集交換器</block>
   <block id="261de3e636d4ab259e73f4993ea87a6a" category="sidebar">升級 Cumulus Linux 版本</block>
   <block id="f854d13ce34c20dd774e2f26c0bcbec7" category="paragraph">若要檢查您的 EFOS 版本是否符合 FIPS 標準或不符合 FIPS 標準、請使用<block ref="861d2504fbcbe4985de13f1d87bfc483" prefix=" " category="inline-code"></block> 命令。在下列範例中、 *IP_switch_A1* 使用 FIPS 相容的 EFOS 、而 *IP_switch_A2* 則使用非 FIPS 相容的 EFOS 。</block>
@@ -5275,4 +5274,12 @@
   <block id="7d446387be9f1d7a1583327a693c81a1" category="paragraph">乙太網路交換器健全狀況監視器（ CSHM ）會自動嘗試監控其探索到的交換器；不過，如果交換器未正確設定，則可能不會自動進行監控。您應該確認健全狀況監視器已正確設定、以監控交換器。</block>
   <block id="a6227aae637a0baad0de1335f2d71396" category="sidebar">管理交換器監控</block>
   <block id="5c46a4758dcc5f666eee202daef67af4" category="sidebar">驗證交換器監控</block>
+  <block id="41cda86775eebf53199061928eb39a74" category="list-text">安裝CummUS Linux 5.4.0：</block>
+  <block id="a731c9953cb3178b61fd688f2c10ea64" category="list-text">驗證 Cumulus Linux 版本是否為 5.0.0 ：<block ref="9fcc1ae85aac3dbd490f575cf5eb3d52" prefix=" " category="inline-code"></block></block>
+  <block id="7fe163201519200ade1c23cd052b6611" category="paragraph">第一次登入交換器時，需要使用 Privileges 的 * 累計 * / * 累計 * 使用者名稱 / 密碼<block ref="d338b3f0f405eb5e51c8cc1e5ca66f02" prefix=" " category="inline-code"></block>。</block>
+  <block id="b133f5ec9f6f691880079c684d878177" category="list-text">安裝CummUS Linux 5.11.0：</block>
+  <block id="528379fa0d040e8e6455094df07828d8" category="list-text">驗證是否為5.11.0版的Cummulis Linux：</block>
+  <block id="f90f747e373fe6ad78e15dd0d320ce66" category="paragraph"><block ref="9fcc1ae85aac3dbd490f575cf5eb3d52" prefix="" category="inline-code"></block></block>
+  <block id="fd5f0f669932a550ea7400efc749cfc5" category="list-text">確認每個節點都有連線至每個交換器：</block>
+  <block id="2d3e15002e9f668635d184afe49a634e" category="paragraph">如需詳細資訊、請參閱<block ref="9fa647797c0e0305f4f3b2116b6db003" category="inline-link-rx"></block> 。</block>
 </blocks>
