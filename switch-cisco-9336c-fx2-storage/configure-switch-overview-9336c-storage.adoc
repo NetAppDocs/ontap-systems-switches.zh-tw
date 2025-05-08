@@ -20,12 +20,33 @@ Cisco Nexus 9336C-FX2 交換器是 Cisco Nexus 9000 平台的一部分、可安�
 若要在執行ONTAP 故障切換的系統上初始設定Cisco Nexus 9336C-FX2交換器、請依照下列步驟操作：
 
 . link:setup-worksheet-9336c-storage.html["完整的佈線工作表"]。
++
+佈線工作表範例提供從交換器到控制器的建議連接埠指派範例。空白工作表提供範本、可用於設定叢集。
+
 . link:install-9336c-storage.html["安裝交換器"]。
++
+設定交換器硬體。
+
 . link:setup-switch-9336c-storage.html["設定交換器"]。
++
+設定 Cisco Nexus 9336C-FX2 儲存交換器。
+
 . link:install-switch-and-passthrough-panel-9336c-storage.html["將交換器安裝在 NetApp 機櫃中"]。
-. link:install-nxos-overview-9336c-storage.html["準備安裝NX-OS和RCF"]。
-. link:install-nxos-software-9336c-storage.html["安裝NX-OS軟體"]。
-. link:install-rcf-software-9336c-storage.html["安裝RCF組態檔"]。
++
+視組態而定、您可以將Cisco Nexus 9336C-FX2交換器和直通面板安裝在NetApp機櫃中、並附有交換器隨附的標準支架。
+
+. link:install-nxos-overview-9336c-storage.html["準備安裝或升級 NX-OS 和 RCF"]。
++
+請依照初始程序、準備安裝Cisco NX-OS軟體和參考組態檔（RCT）。
+
+. link:install-nxos-software-9336c-storage.html["安裝或升級 NX-OS 軟體"]。
++
+在 Nexus 9336C-FX2 儲存交換器上安裝或升級 NX-OS 軟體。
+
+. link:install-rcf-software-9336c-storage.html["安裝或升級 RCF 組態檔"]。
++
+首次設定 Nexus 9336C-FX2 交換器之後、請安裝或升級 RCF 。您也可以使用此程序來升級RCF版本。
+
 
 
 

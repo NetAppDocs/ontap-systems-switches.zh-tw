@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: install rcf, cisco switches, storage 
 summary: 首次設定 Nexus 9336C-FX2 儲存交換器後，即可安裝 RCF 。您也可以使用此程序來升級RCF版本。 
 ---
-= 安裝參考組態檔案
+= 安裝或升級參考組態檔案
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

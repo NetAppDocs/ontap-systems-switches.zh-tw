@@ -18,7 +18,7 @@ indexpage:
       url: "/switch-cisco-9336c-fx2/configure-switch-overview-9336c-cluster.html"
     - title: 叢集交換器 - NVIDIA SN2100 叢集交換器
       url: "/switch-nvidia-sn2100/configure-overview-sn2100-cluster.html"
-    - title: 儲存交換器 - Cisco Nexus 9336C-FX2
+    - title: 儲存交換器 - Cisco Nexus 9336C-FX2 或 9336C-FX2-T
       url: "/switch-cisco-9336c-fx2-storage/configure-switch-overview-9336c-storage.html"
     - title: 儲存交換器 - NVIDIA SN2100
       url: "/switch-nvidia-sn2100/configure-overview-sn2100-storage.html"
