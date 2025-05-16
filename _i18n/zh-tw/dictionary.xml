@@ -4581,7 +4581,6 @@
   <block id="ace8956d8976d528bf22aab3553d5953" category="paragraph">如果您使用乙太網路交換器健全狀況監視器（ CSHM ）和記錄收集功能、則必須產生 SSH 金鑰、然後在叢集交換器上啟用 SSH 。</block>
   <block id="5b8b393a675dcaaee97c02828356657c" category="paragraph"><block ref="5b8b393a675dcaaee97c02828356657c" category="inline-link-macro-rx"></block></block>
   <block id="bc0d8d4243074a46cad51594b5a0fd0f" category="admonition">使用乙太網路交換器健全狀況監視器（ CSHM ）進行記錄收集功能時、建議使用 SSH 。我們也建議使用SSHv2來增強安全性。</block>
-  <block id="af586f672614707ef07031398b17fe29" category="paragraph"><block ref="af586f672614707ef07031398b17fe29" category="inline-link-macro-rx"></block></block>
   <block id="63a3f29d798fa577b051e98c5ffbca0c" category="admonition">乙太網路交換器健全狀況監視器不支援 ONTAP 9.13.1P8 及更早版本、以及 9.14.1P3 及更早版本或 NX-OS 版本 10.3(4a)(M) 。</block>
   <block id="10bd81ac212ccc1de8787d82e4582e46" category="inline-link-macro">準備安裝 NX-OS 軟體和 RCF</block>
   <block id="5100b6db0c93d9851fab3b0b6ed72166" category="list-text"><block ref="0f24d169a2f575f17ba79644c46d3a03" category="inline-link-macro-rx"></block>。</block>
@@ -5297,4 +5296,5 @@
   <block id="20eed5f0dc87e5058308718e45381220" category="paragraph">11 至 36</block>
   <block id="000bf48a29e422b515b1396c1aac3f2c" category="paragraph">您可以使用空白的佈線工作表來記錄叢集中支援作為節點的平台。</block>
   <block id="af9181560cc346780cf6974ca9209401" category="sidebar">儲存交換器 - Cisco Nexus 9336C-FX2 或 9336C-FX2-T</block>
+  <block id="d35b203e8fe0144f812f95e477dfc8ac" category="paragraph"><block ref="d35b203e8fe0144f812f95e477dfc8ac" category="inline-link-macro-rx"></block></block>
 </blocks>
