@@ -83,7 +83,7 @@ Cisco Nexus 9000系列的法規遵循與安全資訊
 
 == 系統文件ONTAP
 
-若要設定ONTAP 一套作業系統、您需要從取得下列作業系統版本的文件 https://docs.netapp.com/ontap-9/index.jsp["供應說明文件中心 ONTAP"^]。
+要設定 ONTAP 系統，您需要以下適用於您的作業系統版本的文檔 https://docs.netapp.com/ontap-9/index.jsp["功能9. ONTAP"^] 。
 
 [cols="1,2"]
 |===

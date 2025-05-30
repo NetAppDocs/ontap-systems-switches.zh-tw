@@ -452,7 +452,7 @@ node1      /cdp
 +
 [listing, subs="+quotes"]
 ----
-cs2# *show port all*
+cs2# *show interface all*
 cs2# *show isdp neighbors*
 ----
 . 在叢集交換器 CL1 上、關閉連接至節點叢集連接埠的連接埠、以便容錯移轉叢集生命期：
@@ -566,7 +566,7 @@ node2      /cdp
 +
 [listing, subs="+quotes"]
 ----
-cs1# *show port all*
+cs1# *show interface all*
 cs1# *show isdp neighbors*
 ----
 . 確認 CS1 和 CS2 之間的 ISL 仍可運作：

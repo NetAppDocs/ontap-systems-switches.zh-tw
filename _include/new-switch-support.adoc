@@ -8,6 +8,15 @@
 
 
  a| 
+12 連接埠 10/25/40/100GbE Cisco Nexus 9336C-FX2-T 叢集和儲存交換器（X190212-CS-PE 和 X190212-CS-PI）
+ a| 
+支援 10/25/40/100GbE 叢集配置和 100GbE 儲存（交換器連接儲存）配置。
+ a| 
+ONTAP 9.10.1.
+
+
+
+ a| 
 16 埠 100GbE NVIDIA 交換器（ X190006-PE 和 X190006-PI ）
  a| 
 NVIDIA SN2100 叢集互連交換器與儲存交換器支援、包括支援 MetroCluster IP 組態。

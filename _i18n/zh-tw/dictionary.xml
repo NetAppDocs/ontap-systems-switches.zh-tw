@@ -2510,7 +2510,6 @@
   <block id="ed312396f5e29fbaef2e7ca8c0d4ba24" category="paragraph">叢集節點上的LIF應已容錯移轉至每個節點的其他叢集連接埠。</block>
   <block id="dc7cbbd12569ee34a303efcc2144c3cd" category="paragraph"><block ref="76c2debb2eab1cd32b18bd3cb1e927ba" prefix="" category="inline-code"></block></block>
   <block id="4aaaac13f30d8fbefcfbb3e31606aa24" category="list-text">關閉SN2100交換器sw1上的ISL連接埠swp15和swp16。</block>
-  <block id="1e3aa7ec0312557863e948b7ed8ae901" category="paragraph">+以下範例顯示交換器nsw2上的ISL連接埠為開啟狀態：</block>
   <block id="edbff14541725a88fdfe9357e39df1e9" category="list-text">驗證該連接埠<block ref="969d430598a257671bdf944480e4d46b" prefix=" " category="inline-code"></block> 在所有節點上都啟動：</block>
   <block id="017b98ea9ee2c66de5b1317a31211689" category="list-text">驗證所有節點叢集連接埠是否正常運作：</block>
   <block id="366abeaa2bac7598f17d029db42f0407" category="paragraph"><block ref="478474aa0db28144d5db02c478cd5215" prefix="" category="inline-code"></block></block>
@@ -3816,14 +3815,12 @@
   <block id="d62448073473e6946178f647bcbfbf0e" category="paragraph">請完成下列程序、視需要升級您的 Cumulus Linux 版本。</block>
   <block id="0fc8a779fbe2ae3a05240b53435f18cf" category="admonition">每次升級 Cumulus Linux 時、整個檔案系統結構都會被清除並重新建立。您現有的組態將會清除。更新 Cumulus Linux 之前、您必須先儲存並記錄交換器組態。</block>
   <block id="0d151e82f107d3039ec4952c010d46c4" category="admonition">累計使用者帳戶的預設密碼為*累計*。第一次登入CummulUS Linux時、您必須變更此預設密碼。安裝新映像之前、您必須更新任何自動化指令碼。CummUS Linux提供命令列選項、可在安裝程序期間自動變更預設密碼。</block>
-  <block id="324fe5adbd1d84e1635133b2f3572f6d" category="open-title">從 Cumulus Linux 4.4.x 到 Cumulus Linux 5.x</block>
   <block id="6e86c333c0b662bb6dee3495ec26ec21" category="list-text">檢查目前的 Cumulus Linux 版本和連線連接埠：</block>
   <block id="a034a19ca9c1623f94c8f52b386d5a41" category="list-text">變更密碼：</block>
   <block id="d853eef2a857cbfcf5b1ef1abe8db17e" category="list-text">請查看Cummuls Linux版本：<block ref="9fcc1ae85aac3dbd490f575cf5eb3d52" prefix=" " category="inline-code"></block></block>
   <block id="985599684d8f5a06353d35110138f1b2" category="list-text">變更主機名稱：</block>
   <block id="0e991c1ef237b6e2304639c4e67230ec" category="list-text">登出並再次登入交換器、即可在提示下看到更新的交換器名稱：</block>
   <block id="9452c986bddec0ffc4c1e4393d954d4a" category="list-text">設定 IP 位址：</block>
-  <block id="b0255cc355effdccf079c37dfed7930c" category="open-title">從 Cumulus Linux 5.x 到 Cumulus Linux 5.x</block>
   <block id="65a9f174ce483d8b53a1a174dc734625" category="list-text">下載 Cumulux Linux 5.4.0 映像：</block>
   <block id="ae9c690e9fad2f5c57259599dd4505b1" category="list-text">登出並再次登入交換器、即可在提示下看到更新的交換器名稱：</block>
   <block id="db20376829e65eac071b27b68736377d" category="paragraph">叢集交換器、 NVIDIA SN2100 、 16pt 100GbE 、 PTSX</block>
@@ -4548,7 +4545,6 @@
   <block id="65c65b976cfab8bcc3a5fa282181ca5b" category="paragraph">請依照此程序安裝適用於 NVIDIA 叢集交換器之乙太網路交換器健全狀況監控的組態檔。支援的機型包括：</block>
   <block id="164a0cea1831b06a7fa67aab2e9a5d98" category="admonition">此安裝程序適用於 ONTAP 9.10.1 及更新版本。</block>
   <block id="dd7fa1380804217cf2f3af00bb585752" category="list-text">執行並檢查是否顯示您的模型 * 其他 * 、以確認您需要下載組態檔案<block ref="db3929a8e897b02a87f7f4bc42f38fc1" prefix=" " category="inline-code"></block> 。</block>
-  <block id="3953f2c946249817a198b9dd2d604aa4" category="paragraph">如果套用組態檔案後、您的機型仍顯示 * 其他 * 、請聯絡 NetApp 支援部門。</block>
   <block id="294206f940bbd4f3ec7f79996b76c616" category="list-text">請確定ONTAP 支援並執行不中斷的叢集。</block>
   <block id="c2c0a6bc429d35a2d508307c899f4398" category="list-text">啟用 SSH 以使用 CSHM 中所有可用的功能。</block>
   <block id="0cfea6e2910f570cd17c24fb74c90378" category="inline-link">NVIDIA 乙太網路交換器</block>
@@ -4614,8 +4610,6 @@
   <block id="2ded3ff3862adfc6f54d2a2f3ebf1147" category="paragraph">* 注意： * 如果您啟用 FIPS 模式、則必須完成下列步驟：</block>
   <block id="ca243f374acfb56a77236e0d30935f7f" category="list-text">使用者必須能夠存取交換器<block ref="a7dd12b1dab17d25467b0b0a4c8d4a92" prefix=" " category="inline-code"></block> 命令。如果這些權限不可用、請建立新使用者、並將必要的權限授予使用者。</block>
   <block id="098a6be90d7d0f41999537981c29585d" category="open-title">ONTAP 9.14.1 及更早版本</block>
-  <block id="bec82052a92013a93a38547be5743fc2" category="list-text">若要要求支援記錄收集並啟用定期收集、請執行下列命令。這會同時啟動記錄收集的兩種類型：詳細<block ref="db5eb84117d06047c97c9a0191b5fffe" prefix=" " category="inline-code"></block> 記錄和每小時收集<block ref="cdcc32a064503184053bd2018d1c0e7e" prefix=" " category="inline-code"></block> 的資料。</block>
-  <block id="d35634a11eab667045ca1f93a9aae3e4" category="list-text">啟用定期記錄收集：</block>
   <block id="679c69dadfb9ebf6a73c6cb1e48f610e" category="list-text">要求支援記錄收集：</block>
   <block id="9c7ca9d82e20f27a701fcb23071651ef" category="list-text">若要檢視記錄收集的所有詳細資料、包括啟用、狀態訊息、定期收集的先前時間戳記和檔名、要求狀態、狀態訊息、以及支援集合的先前時間戳記和檔名、請使用下列項目：</block>
   <block id="da28641e557d1527788801659dc81fd5" category="inline-link-macro">疑難排解記錄收集</block>
@@ -4626,10 +4620,7 @@
   <block id="ec5440e4cc2d261dc76dac84e641c0ab" category="list-text"><block ref="ec5440e4cc2d261dc76dac84e641c0ab" category="inline-link-macro-rx"></block></block>
   <block id="5b62a4b03175f138ff64effec2560ed7" category="summary">您可以使用此程序來設定特定交換器的 SNMPv3 、以支援乙太網路交換器健全狀況監控（ CSHM ）。</block>
   <block id="7e26b49f49bdf462799729889a55fd9a" category="doc">選用：為交換器設定 SNMPv3</block>
-  <block id="476d803e2d152b994f42b3899dd8b1eb" category="paragraph">SNMP 用於監控交換器。乙太網路交換器健全狀況監視器（ CSHM ）使用 SNMP 來監控叢集和儲存交換器的健全狀況和效能。根據預設、 SNMPv2c 會透過參考組態檔案（ RCF ）自動設定。</block>
-  <block id="8e55417d823d2c594db1981ae6621e55" category="paragraph">SNMPv3 比 SNMPv2 更安全、因為它引進強大的安全功能、例如驗證、加密和訊息完整性、可防止未經授權的存取、並確保傳輸期間資料的機密性和完整性。</block>
   <block id="1451684986f1c945fdb4e4f2a8b904be" category="admonition">僅 ONTAP 9.12.1 及更新版本支援 SNMPv3 。</block>
-  <block id="c76d1ab1bab3f2bc0c89856d8d6e3d40" category="paragraph">請遵循此程序、為支援 CSHM 的特定交換器設定 SNMPv3 。</block>
   <block id="5fb3828593766d454e79a0dcf52fed9d" category="paragraph">以下命令用於在 *Broadcom* 、 *Cisco* 和 *NVidia 交換機上配置 SNMPv3 用戶名：</block>
   <block id="77f3beca20fcd78f77236507e8d9b4af" category="open-title">Broadcom 交換器</block>
   <block id="c59df2c71925eefec8dc03aa685125c8" category="list-text">若為 * 無驗證 * ：</block>
@@ -4639,8 +4630,6 @@
   <block id="760c6e9b6b587e6f977e0e7116b69f45" category="paragraph">下列命令會使用 CSHM 建立 SNMPv3 使用者名稱：</block>
   <block id="250f3098aa37d3a08b48b8157db8a62e" category="open-title">Cisco交換器</block>
   <block id="0fdfed50bdfb7a964741d7f6016dd332" category="paragraph">在 Cisco 9336C-FX2 交換器上設定 SNMPv3 使用者名稱 SNMPv3 使用者：</block>
-  <block id="e1df47a492be7a2e244ccb9b079d5cf3" category="open-title">NVIDIA - CLI 5.4</block>
-  <block id="108965fef02b86b124e7f3d9a56db931" category="paragraph">在執行 CLI 5.4 的 NVIDIA SN2100 交換器上設定 SNMPv3 使用者名稱 SNMPv3 使用者：</block>
   <block id="1c76d98a8c6bdaf19a0c6e69ecd5d74b" category="doc">交換器健全狀況監視器總覽</block>
   <block id="5c1a7fd59da01d98a9fa4672044477e2" category="summary">您可以使用提供的命令 ...</block>
   <block id="28498a71a5aca6b62e077f2dc8cf0ccb" category="doc">記錄集合總覽</block>
@@ -4840,7 +4829,6 @@
   <block id="7db58b1ced05f0a1e8e0257017cd6c5b" category="list-text">套用 RCF python 指令碼 * MSN2100-RCF-v1. _x_ 叢集 -HA-BreakOut-LLDP* 。</block>
   <block id="11b037d97237564e7d301df86420a468" category="inline-link">安裝新的 Cumulus Linux 映像</block>
   <block id="ab12f4d1e56479a81a361f6109b978de" category="paragraph">如需詳細資訊，請參閱<block ref="63da15f7ab7ce2a7550fdbf1e5e5d879" category="inline-link-rx"></block>。</block>
-  <block id="43622a7160f0cabed379e73776c14454" category="list-text">下載 Cumulux Linux 5.x 映像： tmp</block>
   <block id="855b205ca9b9bd2b02453dbd19fc65b7" category="list-text">本程序的範例使用四個節點：兩個節點使用四個10 GbE叢集互連連接埠：e0a、e0b、e0c和e0d。其他兩個節點使用兩個40 GbE叢集互連連接埠：E4A、e4e。<block ref="cbfe825e8e02458e2eef3cd048612d7d" category="inline-link-macro-rx"></block>列出平台上的實際叢集連接埠。</block>
   <block id="66f3f703ef307f85603b46a4acbb712b" category="list-text">10 GbE 和 40 GbE 連接埠的數量定義於頁面上可用的參考組態檔案（ RCFs ）<block ref="cce23acfce4c9bc9bb74fd35873aedf2" category="inline-link-rx"></block>。</block>
   <block id="9f71b0536f9236a6977f9a70d6395a33" category="list-text">具有 40 GbE 叢集連線的節點需要支援的 QSFP/QSFP28 光纖模組，以及光纖纜線或 QSFP/QSFP28 銅線直接附加纜線。</block>
@@ -4868,7 +4856,6 @@
   <block id="a79e81ac0a0322d06f217ec1313f9c2b" category="list-text">在 Nexus 3132Q-V 交換器上，您可以將 QSFP/QSFP28 連接埠以 40 Gb 乙太網路或 4 x 10 Gb 乙太網路模式運作。</block>
   <block id="427172b130a849e724ec686d49e97727" category="list-text">您必須將 Nexus 3132Q-V 交換器上的部分連接埠設定為以 10 GbE 或 40 GbE 執行。</block>
   <block id="57d432809175e2b2a95b3c3c1aeaabb9" category="paragraph">您可以使用命令將前六個連接埠分成 4x10 GbE 模式<block ref="08aac397a11274cd898dfbb3a635cf19" prefix=" " category="inline-code"></block>。同樣地，您也可以使用命令，從 _ 中斷 _ 組態重新分組前六個 QSFP+ 連接埠<block ref="9437e02f9ec4a8d602d396abd2c360b4" prefix=" " category="inline-code"></block>。</block>
-  <block id="c66ba47352d59b54f3a4b52ed5c4acb4" category="paragraph">* 注意： * 如果回答<block ref="415290769594460e2e485922904f345d" prefix=" " category="inline-code"></block>使用者規格提示，請確定使用者擁有中所述的必要權限<block ref="c36e4b8d8c2789dd7986c4af4bd3d942" category="inline-xref-macro-rx"></block>。</block>
   <block id="921a23933bb7a508423ca6a0ad00bfd3" category="paragraph">* 注意： * 如果回答<block ref="415290769594460e2e485922904f345d" prefix=" " category="inline-code"></block>使用者規格提示，請確定使用者擁有中所述的必要權限<block ref="c36e4b8d8c2789dd7986c4af4bd3d942" category="inline-xref-macro-rx"></block>。</block>
   <block id="4071b2d290eb3b1857c92068de31aa78" category="summary">您可以在 AFF 或 FAS 叢集中使用 Cisco Nexus 3132q-v 交換器作為叢集交換器。</block>
   <block id="b62fecd2daa19a4b26cb97fb72713787" category="doc">完成從 CN1610 交換器移轉至 Nexus 3132Q-V 交換器的作業</block>
@@ -5113,8 +5100,6 @@
   <block id="4c4876d5d981da2e6943a052d93bb189" category="list-text">若為 NX-OS 10.2 及更新版本，請使用<block ref="9c370f72db0e0d920841657ac5268365" prefix=" " category="inline-code"></block>命令與 bootflash 中儲存的 RCF 檔案進行比較。否則，請使用第三方差異或比較工具。</block>
   <block id="0a306731a6993e7a08026ab2d7ca2d97" category="paragraph">您可能需要更新與 SSH 金鑰相關的主機檔案項目。</block>
   <block id="89fe808c6ef5fe301085b5abe4406d35" category="paragraph">在 Broadcom BS-53248 交換器上設定 SNMPv3 使用者名稱網路操作員。</block>
-  <block id="97e3bfa41185c29b8e204545b638d532" category="open-title">NVIDIA - CLI 5.11</block>
-  <block id="3a5cc736f1918e798338d9e890393631" category="paragraph">在執行 CLI 5.11 的 NVIDIA SN2100 交換器上設定 SNMPv3 使用者名稱 SNMPv3 使用者：</block>
   <block id="01fabc1436d158d1079e5aac28e9fdc4" category="list-text">[[step_4]] 停用叢集生命週轉的自動還原功能。</block>
   <block id="5b7bd3025678f1b622b4cfd0f4313991" category="inline-xref">步驟。10</block>
   <block id="4ea7139be4dc5337c4d5a24c536b310e" category="list-text">如果叢集生命體已容錯移轉至交換器 CS1 <block ref="1d8bc3843ab5c78170d8cf97ded2a73f" category="inline-xref-macro-rx"></block>，且叢集運作正常，請前往。如果某些叢集生命體不健全或叢集不健全，您可以將連線回復至交換器 CS2 ，如下所示：</block>
@@ -5130,8 +5115,6 @@
   <block id="ccd8680433ee6ee996cb1f0a2ae6fb85" category="admonition">列出的例外情況不會影響效能，因此可以安全地忽略。</block>
   <block id="a8b6e34450406e412ecb8d40596d9a8d" category="open-title">Cumulus Linux 5.11.</block>
   <block id="554b50c45dae7ea0e30a60829694ee3a" category="admonition">雖然在範例中使用，但<block ref="8a444a43bdf534c0c6338bb7809659b3" prefix=" " category="inline-code"></block>您可以使用偏好的檔案傳輸方法。</block>
-  <block id="9cb95d38203cf6445dec8201a9a5b8df" category="paragraph">請依照此程序安裝適用於 NVIDIA 叢集交換器之乙太網路交換器健全狀況監控的組態檔。</block>
-  <block id="118235a8412030b4348eaf7beb295e9a" category="paragraph">支援的機型包括：</block>
   <block id="4439fd91d84b3562f1b65b6624b8e4af" category="list-text">MSN2100-CB2FC</block>
   <block id="95457e019d4e34bf1527cfc720276bde" category="list-text">MSN2100-CB2RC</block>
   <block id="0a7c753e8699d579b1dd4105b9e6b566" category="list-text">清除<block ref="8be5dd683a73b3d7c1a85aa778b3c099" prefix=" " category="inline-code"></block>所有節點上的目錄：</block>
@@ -5297,4 +5280,43 @@
   <block id="000bf48a29e422b515b1396c1aac3f2c" category="paragraph">您可以使用空白的佈線工作表來記錄叢集中支援作為節點的平台。</block>
   <block id="af9181560cc346780cf6974ca9209401" category="sidebar">儲存交換器 - Cisco Nexus 9336C-FX2 或 9336C-FX2-T</block>
   <block id="d35b203e8fe0144f812f95e477dfc8ac" category="paragraph"><block ref="d35b203e8fe0144f812f95e477dfc8ac" category="inline-link-macro-rx"></block></block>
+  <block id="8922abf783ebcd2485e871d83f810001" category="paragraph">*注意：*如果對使用者規範提示回答 *y*，請確保使用者俱有必要的權限，如<block ref="c36e4b8d8c2789dd7986c4af4bd3d942" category="inline-xref-macro-rx"></block> 。</block>
+  <block id="0af41f793380f36203c150e88680ae0d" category="admonition">對於 CL 5.11.1，建立使用者 *cumulus* 並對以下提示回答 *y*：您要指定管理員以外的使用者進行日誌收集嗎？{y|n}：*y*</block>
+  <block id="9516895d06a737348108b47f990aebff" category="list-text">[[step2]]啟用定期日誌收集：</block>
+  <block id="86433b1c6cd2dfe18ff408f3c045d2d1" category="list-text">[[step2]] 若要要求支援日誌收集並啟用定期收集，請執行下列命令。這會同時啟動記錄收集的兩種類型：詳細<block ref="db5eb84117d06047c97c9a0191b5fffe" prefix=" " category="inline-code"></block> 記錄和每小時收集<block ref="cdcc32a064503184053bd2018d1c0e7e" prefix=" " category="inline-code"></block> 的資料。</block>
+  <block id="e43f0bacec59589637fec825db76ae04" category="list-text">ONTAP 9.13.1P12、9.14.1P9、9.15.1P5、9.16.1 及更高版本修正了以下兩個問題：</block>
+  <block id="b0dd8ee150ec6ec9cbd4e76f7441983f" category="inline-link-macro">對於 Cisco 交換器的 ONTAP 運作狀況監控，切換到 SNMPv3 進行監控後仍可能看到 SNMPv2 流量</block>
+  <block id="f51d6ba5c14f0f9f7e1e94040870b36a" category="list-text"><block ref="f51d6ba5c14f0f9f7e1e94040870b36a" category="inline-link-macro-rx"></block></block>
+  <block id="703ad3e359e69f75421f8e8fdf1c4374" category="inline-link-macro">SNMP 故障發生時誤報交換器風扇及電源警報</block>
+  <block id="972989a7e914db02b9462470b520ed9e" category="list-text"><block ref="972989a7e914db02b9462470b520ed9e" category="inline-link-macro-rx"></block></block>
+  <block id="f1d85c8d2abe8fba947527035ed0f381" category="list-text">等待 CSHM 輪詢期後，驗證乙太網路交換器的序號是否已填入。</block>
+  <block id="05918726f836c344025fecbcf0275f1b" category="open-title">NVIDIA-CL 5.4.0</block>
+  <block id="c19095c0c8945d1d4e4e73ec7a11354c" category="paragraph">在執行 CLI 5.4.0 的 NVIDIA SN2100 交換器上設定 SNMPv3 使用者名稱 SNMPv3_USER：</block>
+  <block id="cd12738ab621b27db86ca1b02e9d118c" category="open-title">NVIDIA-CL 5.11.0</block>
+  <block id="1d478fc1ce1613a790d5d77707c188f6" category="paragraph">在執行 CLI 5.11.0 的 NVIDIA SN2100 交換器上設定 SNMPv3 使用者名稱 SNMPv3_USER：</block>
+  <block id="7d479c867c18b975b78a81ba6c500ec3" category="paragraph">12 連接埠 10/25/40/100GbE Cisco Nexus 9336C-FX2-T 叢集和儲存交換器（X190212-CS-PE 和 X190212-CS-PI）</block>
+  <block id="89e4c9dc7a888c7298069f7a0907a0ae" category="paragraph">支援 10/25/40/100GbE 叢集配置和 100GbE 儲存（交換器連接儲存）配置。</block>
+  <block id="5e702c967ba07c588e80787874b7d19d" category="paragraph">若要在 NVIDIA 乙太網路交換器上設定乙太網路交換器健康監控，請依照下列步驟操作。</block>
+  <block id="4d6e856387f9dc1d4c04534d7e8abc6b" category="paragraph">如果 NVIDIA X190006-PE 和 X190006-PI 交換器無法正確偵測，則適用這些說明，可以透過執行<block ref="db3929a8e897b02a87f7f4bc42f38fc1" prefix=" " category="inline-code"></block>並檢查您的型號是否顯示*OTHER*。若要辨識您的 NVIDIA 交換器型號，請使用以下指令尋找零件編號<block ref="eca133854d2cdb8697246596d25a5eb3" prefix=" " category="inline-code"></block>對於 NVIDIA CL 5.8 及更早版本或<block ref="28b95eb6cef78e03af3129f8108edf3e" prefix=" " category="inline-code"></block>適用於後續版本。</block>
+  <block id="d63c11f73a289e709f02f89a7fd9bc50" category="paragraph">如果您希望在使用 NVIDIA CL 5.11.x 和以下 ONTAP 版本時，健康監控和日誌收集能夠如預期運作，也建議您執行這些步驟。雖然沒有這些步驟，健康監測和日誌收集可能仍會起作用，但遵循這些步驟可以確保一切正常運作。</block>
+  <block id="22ade9a0f286817cb6e7960fb4e222fa" category="list-text">9.10.1P20、9.11.1P18、9.12.1P16、9.13.1P8、9.14.1、9.15.1 及更高補丁版本</block>
+  <block id="486e5bfc1a37635afcdd9af389c406cc" category="list-text">在交換器上啟用 SSH 以使用 CSHM 中可用的所有功能。</block>
+  <block id="beecd060af34d32d93c47b39c7723bb9" category="paragraph">根據您目前和目標版本提供有關 Nexus 9000 系列交換器上的 Cisco NX-OS 軟體的中斷升級/降級的資訊。</block>
+  <block id="0f81363c5be126efb261f8dcd99f371f" category="paragraph">要設定 ONTAP 系統，您需要以下適用於您的作業系統版本的文檔<block ref="6f42080c8f875d77e25baa15189a0ef0" category="inline-link-rx"></block> 。</block>
+  <block id="1c10f160ae9b8c4d78cec8e05f3c3a4e" category="paragraph">SNMP 用於監控交換器。請依照以下步驟設定 SNMPv3 的監控。</block>
+  <block id="b243d3b653e3e0bac6ab3be1bf2318bf" category="paragraph">乙太網路交換器健全狀況監視器（ CSHM ）使用 SNMP 來監控叢集和儲存交換器的健全狀況和效能。根據預設、 SNMPv2c 會透過參考組態檔案（ RCF ）自動設定。SNMPv3 比 SNMPv2 更安全、因為它引進強大的安全功能、例如驗證、加密和訊息完整性、可防止未經授權的存取、並確保傳輸期間資料的機密性和完整性。</block>
+  <block id="539f41729af62dae66a48e9619426286" category="list-text">使用<block ref="df911f0151f9ef021d410b4be5060972" prefix=" " category="inline-code"></block>命令來驗證與託管 Cumulus Linux 和 RCF 的伺服器的連線。</block>
+  <block id="0fbbad4e5350fbac341a075f41a5c28a" category="list-text">如果您正在升級 RCF，則必須停用此步驟的自動復原。</block>
+  <block id="1bdb02bb5a3beb73663730bb20fc1c76" category="list-text">如果您剛剛升級了 Cumulus Linux 版本，則無需停用此步驟的自動復原功能，因為它已停用。</block>
+  <block id="2768f3b6b437ed39538e52b6e83f011b" category="list-text">在第二個交換器上重複步驟 1 至 14。</block>
+  <block id="c9968f92aa55be49e85602936643e367" category="list-text">驗證所有叢集 LIF 是否都已停用自動復原：</block>
+  <block id="946e7e341f9fdba2f077d93298bb5db9" category="paragraph"><block ref="e2bf42f02b2b81e10f05db8c043a2a89" prefix="" category="inline-code"></block></block>
+  <block id="e35e1d0babb539d1b337602fdcf898ce" category="list-text">[[step2]] 將權限等級變更回 admin ：</block>
+  <block id="9a06646ee494bf67708a4bc06e71dbeb" category="open-title">Cumulus Linux 4.4.x 至 Cumulus Linux 5.4.0</block>
+  <block id="5dcfe2540f77c16760c1eaf0b8d7567a" category="list-text">使用 ping 指令驗證與託管 Cumulus Linux 和 RCF 的伺服器的連線。</block>
+  <block id="b71e5782145577531702a84f68699019" category="open-title">Cumulus Linux 5.x 至 Cumulus Linux 5.4.0</block>
+  <block id="607ce262227aceccd2c5daca045a80dc" category="open-title">Cumulus Linux 5.4.0 至 Cumulus Linux 5.11.0</block>
+  <block id="1793733c3fd6ed243dfcb1cd45582f6e" category="list-text">下載 Cumulux Linux 5.11.0 映像：</block>
+  <block id="3b17e95301e3d2dffb102ceff49ecd86" category="list-text">登出並再次登入交換機，即可在提示下看到更新後的交換器名稱：</block>
+  <block id="7c7a0b76c488baaa82c48a846faa8727" category="paragraph"><block ref="0d353ea2e4037b21b3bb06f2b69f1c6c" category="inline-link-macro-rx"></block>。</block>
 </blocks>

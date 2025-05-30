@@ -47,81 +47,11 @@ summary: 乙太網路交換器健全狀況監視器（ CSHM ）記錄收集功�
 
 [role="tabbed-block"]
 ====
-.ONTAP 9.14.1 及更早版本
---
-. 若要設定記錄收集、請針對每個交換器執行下列命令。系統會提示您輸入用於記錄收集的交換器名稱、使用者名稱和密碼。
-+
-* 注意： * 如果回答 `y`使用者規格提示，請確定使用者擁有中所述的必要權限<<開始之前>>。
-
-+
-[source, cli]
-----
-system switch ethernet log setup-password
-----
-+
-[listing, subs="+quotes"]
-----
-cluster1::*> *system switch ethernet log setup-password*
-Enter the switch name: <return>
-The switch name entered is not recognized.
-Choose from the following list:
-*cs1*
-*cs2*
-
-cluster1::*> *system switch ethernet log setup-password*
-
-Enter the switch name: *cs1*
-Would you like to specify a user other than admin for log collection? {y|n}: *n*
-
-Enter the password: *<enter switch password>*
-Enter the password again: *<enter switch password>*
-
-cluster1::*> *system switch ethernet log setup-password*
-
-Enter the switch name: *cs2*
-
-Would you like to specify a user other than admin for log collection? {y|n}: *n*
-
-Enter the password: *<enter switch password>*
-Enter the password again: *<enter switch password>*
-----
-. 若要要求支援記錄收集並啟用定期收集、請執行下列命令。這會同時啟動記錄收集的兩種類型：詳細 `Support` 記錄和每小時收集 `Periodic` 的資料。
-+
-[source, cli]
-----
-system switch ethernet log modify -device <switch-name> -log-request true
-----
-+
-[listing, subs="+quotes"]
-----
-cluster1::*> *system switch ethernet log modify -device cs1 -log-request true*
-
-Do you want to modify the cluster switch log collection configuration? {y|n}: [n] *y*
-
-Enabling cluster switch log collection.
-
-cluster1::*> *system switch ethernet log modify -device cs2 -log-request true*
-
-Do you want to modify the cluster switch log collection configuration? {y|n}: [n] *y*
-
-Enabling cluster switch log collection.
-----
-+
-等待 10 分鐘、然後檢查記錄收集是否完成：
-
-+
-[source, cli]
-----
-system switch ethernet log show
-----
-
-
---
 .ONTAP 9.15.1 及更新版本
 --
 . 若要設定記錄收集、請針對每個交換器執行下列命令。系統會提示您輸入用於記錄收集的交換器名稱、使用者名稱和密碼。
 +
-* 注意： * 如果回答 `y`使用者規格提示，請確定使用者擁有中所述的必要權限<<開始之前>>。
+*注意：*如果對使用者規範提示回答 *y*，請確保使用者俱有必要的權限，如<<開始之前>> 。
 
 +
 [source, cli]
@@ -155,7 +85,12 @@ Would you like to specify a user other than admin for log collection? {y|n}: *n*
 Enter the password: *<enter switch password>*
 Enter the password again: *<enter switch password>*
 ----
-. 啟用定期記錄收集：
+
+
+
+NOTE: 對於 CL 5.11.1，建立使用者 *cumulus* 並對以下提示回答 *y*：您要指定管理員以外的使用者進行日誌收集嗎？{y|n}：*y*
+
+. [[step2]]啟用定期日誌收集：
 +
 [source, cli]
 ----
@@ -240,6 +175,81 @@ cluster1::*> *system switch ethernet log show -instance*
      Last Support Log Timestamp: 3/11/2024 11:18:54
            Support Log Filename: cluster1:/mroot/etc/log/shm-cluster-log.tgz
 2 entries were displayed.
+----
+
+
+--
+.ONTAP 9.14.1 及更早版本
+--
+. 若要設定記錄收集、請針對每個交換器執行下列命令。系統會提示您輸入用於記錄收集的交換器名稱、使用者名稱和密碼。
++
+* 注意： * 如果回答 `y`使用者規格提示，請確定使用者擁有中所述的必要權限<<開始之前>>。
+
++
+[source, cli]
+----
+system switch ethernet log setup-password
+----
++
+[listing, subs="+quotes"]
+----
+cluster1::*> *system switch ethernet log setup-password*
+Enter the switch name: <return>
+The switch name entered is not recognized.
+Choose from the following list:
+*cs1*
+*cs2*
+
+cluster1::*> *system switch ethernet log setup-password*
+
+Enter the switch name: *cs1*
+Would you like to specify a user other than admin for log collection? {y|n}: *n*
+
+Enter the password: *<enter switch password>*
+Enter the password again: *<enter switch password>*
+
+cluster1::*> *system switch ethernet log setup-password*
+
+Enter the switch name: *cs2*
+
+Would you like to specify a user other than admin for log collection? {y|n}: *n*
+
+Enter the password: *<enter switch password>*
+Enter the password again: *<enter switch password>*
+----
+
+
+
+NOTE: 對於 CL 5.11.1，建立使用者 *cumulus* 並對以下提示回答 *y*：您要指定管理員以外的使用者進行日誌收集嗎？{y|n}：*y*
+
+. [[step2]] 若要要求支援日誌收集並啟用定期收集，請執行下列命令。這會同時啟動記錄收集的兩種類型：詳細 `Support` 記錄和每小時收集 `Periodic` 的資料。
++
+[source, cli]
+----
+system switch ethernet log modify -device <switch-name> -log-request true
+----
++
+[listing, subs="+quotes"]
+----
+cluster1::*> *system switch ethernet log modify -device cs1 -log-request true*
+
+Do you want to modify the cluster switch log collection configuration? {y|n}: [n] *y*
+
+Enabling cluster switch log collection.
+
+cluster1::*> *system switch ethernet log modify -device cs2 -log-request true*
+
+Do you want to modify the cluster switch log collection configuration? {y|n}: [n] *y*
+
+Enabling cluster switch log collection.
+----
++
+等待 10 分鐘、然後檢查記錄收集是否完成：
+
++
+[source, cli]
+----
+system switch ethernet log show
 ----
 
 

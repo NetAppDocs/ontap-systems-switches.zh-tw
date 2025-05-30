@@ -42,8 +42,34 @@ CAUTION: 累計使用者帳戶的預設密碼為*累計*。第一次登入Cummul
 .步驟
 [role="tabbed-block"]
 ====
-.從 Cumulus Linux 4.4.x 到 Cumulus Linux 5.x
+.Cumulus Linux 4.4.x 至 Cumulus Linux 5.4.0
 --
+. 將叢集交換器連接至管理網路。
+. 使用 ping 指令驗證與託管 Cumulus Linux 和 RCF 的伺服器的連線。
+. 顯示連接至叢集交換器之每個節點上的叢集連接埠：
++
+「網路裝置探索秀」
+
+. 檢查每個叢集連接埠的管理和作業狀態。
++
+.. 確認所有叢集連接埠都正常運作：
++
+「網路連接埠show -role cluster」
+
+.. 確認所有叢集介面（l生命）都位於主連接埠：
++
+「網路介面show -role cluster」
+
+.. 驗證叢集是否顯示兩個叢集交換器的資訊：
++
+「系統叢集交換器show -is監控、可運作的true」
+
+
+
+. 停用叢集生命體上的自動還原。叢集生命體將容錯移轉至合作夥伴叢集交換器、並在目標交換器上執行升級程序時保留在那裡：
++
+「網路介面修改-vserver叢集-lIF *-auta-fRevert假」
+
 . 檢查目前的 Cumulus Linux 版本和連線連接埠：
 +
 [listing, subs="+quotes"]
@@ -81,7 +107,7 @@ UP     swp6    100G  9216   Trunk/L2    SHFFG1826000102 (e0b)   Master: bridge(U
 .
 .
 ----
-. 下載 Cumulux Linux 5.x 映像： tmp
+. 下載 Cumulux Linux 5.4.0 映像：
 +
 [listing, subs="+quotes"]
 ----
@@ -250,8 +276,34 @@ cumulus@sw1:mgmt:~$ *sudo adduser admin nvshow*
 
 
 --
-.從 Cumulus Linux 5.x 到 Cumulus Linux 5.x
+.Cumulus Linux 5.x 至 Cumulus Linux 5.4.0
 --
+. 將叢集交換器連接至管理網路。
+. 使用 ping 指令驗證與託管 Cumulus Linux 和 RCF 的伺服器的連線。
+. 顯示連接至叢集交換器之每個節點上的叢集連接埠：
++
+「網路裝置探索秀」
+
+. 檢查每個叢集連接埠的管理和作業狀態。
++
+.. 確認所有叢集連接埠都正常運作：
++
+「網路連接埠show -role cluster」
+
+.. 確認所有叢集介面（l生命）都位於主連接埠：
++
+「網路介面show -role cluster」
+
+.. 驗證叢集是否顯示兩個叢集交換器的資訊：
++
+「系統叢集交換器show -is監控、可運作的true」
+
+
+
+. 停用叢集生命體上的自動還原。叢集生命體將容錯移轉至合作夥伴叢集交換器、並在目標交換器上執行升級程序時保留在那裡：
++
+「網路介面修改-vserver叢集-lIF *-auta-fRevert假」
+
 . 檢查目前的 Cumulus Linux 版本和連線連接埠：
 +
 [listing, subs="+quotes"]
@@ -449,6 +501,173 @@ cumulus@sw1:mgmt:~$ *sudo adduser admin nvshow*
 
 
 --
+.Cumulus Linux 5.4.0 至 Cumulus Linux 5.11.0
+--
+. 將叢集交換器連接至管理網路。
+. 使用 ping 指令驗證與託管 Cumulus Linux 和 RCF 的伺服器的連線。
+. 顯示連接至叢集交換器之每個節點上的叢集連接埠：
++
+「網路裝置探索秀」
+
+. 檢查每個叢集連接埠的管理和作業狀態。
++
+.. 確認所有叢集連接埠都正常運作：
++
+「網路連接埠show -role cluster」
+
+.. 確認所有叢集介面（l生命）都位於主連接埠：
++
+「網路介面show -role cluster」
+
+.. 驗證叢集是否顯示兩個叢集交換器的資訊：
++
+「系統叢集交換器show -is監控、可運作的true」
+
+
+
+. 停用叢集生命體上的自動還原。叢集生命體將容錯移轉至合作夥伴叢集交換器、並在目標交換器上執行升級程序時保留在那裡：
++
+「網路介面修改-vserver叢集-lIF *-auta-fRevert假」
+
+. 檢查目前的 Cumulus Linux 版本和連線連接埠：
++
+[listing, subs="+quotes"]
+----
+admin@sw1:mgmt:~$ *nv show system*
+                    operational          applied
+------------------- -------------------- -----------------
+hostname            cumulus              cumulus
+build               Cumulus Linux 5.4.0
+uptime              6 days, 8:37:36
+timezone            Etc/UTC
+
+admin@sw1:mgmt:~$ *nv show interface*
+Interface     MTU   Speed State Remote Host         Remote Port- Type      Summary
+------------- ----- ----- ----- ------------------- ------------ --------- -------------
++ cluster_isl 9216  200G  up                                      bond
++ eth0        1500  100M  up    mgmt-sw1            Eth105/1/14   eth       IP Address: 10.231.80 206/22
+  eth0                                                                      IP Address: fd20:8b1e:f6ff:fe31:4a0e/64
++ lo          65536       up                                      loopback  IP Address: 127.0.0.1/8
+  lo                                                                        IP Address: ::1/128
++ swp1s0      9216 10G    up cluster01                e0b         swp
+.
+.
+.
++ swp15      9216 100G    up sw2                      swp15       swp
++ swp16      9216 100G    up sw2                      swp16       swp
+----
+. 下載 Cumulux Linux 5.11.0 映像：
++
+[listing, subs="+quotes"]
+----
+admin@sw1:mgmt:~$ *sudo onie-install -a -i http://_<ip-to-webserver>_/path/to/cumulus-linux-5.11.0-mlx-amd64.bin*
+[sudo] password for cumulus:
+Fetching installer: http://_<ip-to-webserver>_/path/to/cumulus-linux-5.11.0-mlx-amd64.bin
+Downloading URL: http://_<ip-to-webserver>_/path/to/cumulus-linux-5.11.0-mlx-amd64.bin
+######################################################################### 100.0%
+Success: HTTP download complete.
+EFI variables are not supported on this system
+Warning: SecureBoot is not available.
+Image is signed.
+.
+.
+.
+Staging installer image...done.
+WARNING:
+WARNING: Activating staged installer requested.
+WARNING: This action will wipe out all system data.
+WARNING: Make sure to back up your data.
+WARNING:
+Are you sure (y/N)? *y*
+Activating staged installer...done.
+Reboot required to take effect.
+----
+. 重新啟動交換器：
++
+[listing, subs="+quotes"]
+----
+admin@sw1:mgmt:~$ *sudo reboot*
+----
+. 變更密碼：
++
+[listing, subs="+quotes"]
+----
+cumulus login: *cumulus*
+Password:
+You are required to change your password immediately (administrator enforced)
+Changing password for cumulus.
+Current password: *cumulus*
+New password: *<new_password>*
+Retype new password: *<new_password>*
+Linux cumulus 5.11.0-cl-1-amd64 #1 SMP Debian 5.10.162-1+cl5.4.0u1 (2023-01-20) x86_64
+
+Welcome to NVIDIA Cumulus (R) Linux (R)
+
+ZTP in progress. To disable, do 'ztp -d'
+----
+. 請查看Cummuls Linux版本： `nv show system`
++
+[listing, subs="+quotes"]
+----
+cumulus@cumulus:mgmt:~$ *nv show system*
+operational    applied
+-------------- ----------------
+hostname       cumulus cumulus
+build          Cumulus Linux 5.11.0
+uptime         14:07:08
+timezone       Etc/UTC
+----
+. 變更主機名稱：
++
+[listing, subs="+quotes"]
+----
+cumulus@cumulus:mgmt:~$ *nv set system hostname sw1*
+cumulus@cumulus:mgmt:~$ *nv config apply*
+Warning: The following files have been changed since the last save, and they WILL be overwritten.
+- /etc/nsswitch.conf
+- /etc/synced/synced.conf
+.
+.
+----
+. 登出並再次登入交換機，即可在提示下看到更新後的交換器名稱：
++
+[listing, subs="+quotes"]
+----
+cumulus@cumulus:mgmt:~$ *exit*
+logout
+
+Debian GNU/Linux 10 cumulus ttyS0
+
+cumulus login: *cumulus*
+Password:
+Last login: Tue Dec 15 21:43:13 UTC 2020 on ttyS0
+Linux cumulus 5.11.0-cl-1-amd64 #1 SMP Debian 5.10.162-1+cl5.4.0u1 (2023-01-20) x86_64
+
+Welcome to NVIDIA Cumulus (R) Linux (R)
+
+
+ZTP in progress. To disable, do 'ztp -d'
+
+cumulus@sw1:mgmt:~$
+----
+. 設定 IP 位址：
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:mgmt:~$ *nv unset interface eth0 ip address dhcp*
+cumulus@sw1:mgmt:~$ *nv set interface eth0 ip address 10.231.80.206/22*
+cumulus@sw1:mgmt:~$ *nv set interface eth0 ip gateway 10.231.80.1*
+cumulus@sw1:mgmt:~$ *nv config apply*
+applied [rev_id: 2]
+cumulus@sw1:mgmt:~$ *ip route show vrf mgmt*
+default via 10.231.80.1 dev eth0 proto kernel
+unreachable default metric 4278198272
+10.231.80.0/22 dev eth0 proto kernel scope link src 10.231.80.206
+127.0.0.0/8 dev mgmt proto kernel scope link src 127.0.0.1
+----
+
+
+--
 ====
 .接下來呢？
-link:install-rcf-sn2100-cluster.html["安裝參考組態檔（RCF）指令碼"]。
+link:install-rcf-sn2100-cluster.html["安裝或升級 RCF 指令碼"]。

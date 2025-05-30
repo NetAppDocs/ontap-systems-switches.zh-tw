@@ -11,15 +11,22 @@ summary: 您可以使用此程序來設定特定交換器的 SNMPv3 、以支援
 
 
 [role="lead"]
-SNMP 用於監控交換器。乙太網路交換器健全狀況監視器（ CSHM ）使用 SNMP 來監控叢集和儲存交換器的健全狀況和效能。根據預設、 SNMPv2c 會透過參考組態檔案（ RCF ）自動設定。
+SNMP 用於監控交換器。請依照以下步驟設定 SNMPv3 的監控。
 
-SNMPv3 比 SNMPv2 更安全、因為它引進強大的安全功能、例如驗證、加密和訊息完整性、可防止未經授權的存取、並確保傳輸期間資料的機密性和完整性。
+乙太網路交換器健全狀況監視器（ CSHM ）使用 SNMP 來監控叢集和儲存交換器的健全狀況和效能。根據預設、 SNMPv2c 會透過參考組態檔案（ RCF ）自動設定。SNMPv3 比 SNMPv2 更安全、因為它引進強大的安全功能、例如驗證、加密和訊息完整性、可防止未經授權的存取、並確保傳輸期間資料的機密性和完整性。
+
+[NOTE]
+====
+* 僅 ONTAP 9.12.1 及更新版本支援 SNMPv3 。
+* ONTAP 9.13.1P12、9.14.1P9、9.15.1P5、9.16.1 及更高版本修正了以下兩個問題：
++
+** link:https://kb.netapp.com/on-prem/ontap/OHW/OHW-Issues/CONTAP-82891["對於 Cisco 交換器的 ONTAP 運作狀況監控，切換到 SNMPv3 進行監控後仍可能看到 SNMPv2 流量"^]
+** link:https://kb.netapp.com/on-prem/ontap/OHW/OHW-Issues/CONTAP-119131["SNMP 故障發生時誤報交換器風扇及電源警報"^]
 
 
-NOTE: 僅 ONTAP 9.12.1 及更新版本支援 SNMPv3 。
 
-請遵循此程序、為支援 CSHM 的特定交換器設定 SNMPv3 。
 
+====
 .關於這項工作
 以下命令用於在 *Broadcom* 、 *Cisco* 和 *NVidia 交換機上配置 SNMPv3 用戶名：
 
@@ -134,7 +141,7 @@ DEPRECATED-Community String or SNMPv3 Username: -
 cluster1::*>
 cluster1::*> *system switch ethernet modify -device "sw1" -snmp-version SNMPv3 -community-or-username <username>*
 ----
-. 驗證要與新建立的 SNMPv3 使用者查詢的序號、是否與 CSHM 輪詢期間結束後上一步所述相同。
+. 等待 CSHM 輪詢期後，驗證乙太網路交換器的序號是否已填入。
 +
 [source, cli]
 ----
@@ -322,9 +329,9 @@ cluster1::*>
 
 
 --
-.NVIDIA - CLI 5.4
+.NVIDIA-CL 5.4.0
 --
-在執行 CLI 5.4 的 NVIDIA SN2100 交換器上設定 SNMPv3 使用者名稱 SNMPv3 使用者：
+在執行 CLI 5.4.0 的 NVIDIA SN2100 交換器上設定 SNMPv3 使用者名稱 SNMPv3_USER：
 
 * 若為 * 無驗證 * ：
 +
@@ -518,9 +525,9 @@ DEPRECATED-Community String or SNMPv3 Username: -
 
 
 --
-.NVIDIA - CLI 5.11
+.NVIDIA-CL 5.11.0
 --
-在執行 CLI 5.11 的 NVIDIA SN2100 交換器上設定 SNMPv3 使用者名稱 SNMPv3 使用者：
+在執行 CLI 5.11.0 的 NVIDIA SN2100 交換器上設定 SNMPv3 使用者名稱 SNMPv3_USER：
 
 * 若為 * 無驗證 * ：
 +

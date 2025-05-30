@@ -2,6 +2,24 @@
 :allow-uri-read: 
 
 
+.建議的文件
+* link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器頁面"^]
++
+請參閱交換器相容性表、以瞭解支援ONTAP 的功能表和NX-OS版本。
+
+* link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-installation-guides-list.html["軟體升級與降級指南"^]
++
+如需 Cisco 交換器升級與降級程序的完整文件、請參閱 Cisco 網站上提供的適當軟體與升級指南。
+
+* link:https://www.cisco.com/c/dam/en/us/td/docs/dcn/tools/nexus-9k3k-issu-matrix/index.html["Cisco Nexus 9000 與 3000 升級與 ISSU 對照表"^]
++
+根據您目前和目標版本提供有關 Nexus 9000 系列交換器上的 Cisco NX-OS 軟體的中斷升級/降級的資訊。
+
++
+在頁面上、選取 * 顛覆性升級 * 、然後從下拉式清單中選取您目前的版本和目標版本。
+
+
+
 .關於範例
 本程序中的範例使用下列交換器和節點命名法：
 
@@ -202,7 +220,7 @@ cluster1::*> *network interface show -vserver Cluster -fields auto-revert*
 
           Logical
 Vserver   Interface           Auto-revert
---------- ––––––-------------- ------------
+--------- ------------------- ------------
 Cluster
           cluster1-01_clus1   true
           cluster1-01_clus2   true

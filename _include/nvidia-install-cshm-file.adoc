@@ -2,26 +2,21 @@
 :allow-uri-read: 
 
 
-請依照此程序安裝適用於 NVIDIA 叢集交換器之乙太網路交換器健全狀況監控的組態檔。
+若要在 NVIDIA 乙太網路交換器上設定乙太網路交換器健康監控，請依照下列步驟操作。
 
-支援的機型包括：
+如果 NVIDIA X190006-PE 和 X190006-PI 交換器無法正確偵測，則適用這些說明，可以透過執行 `system switch ethernet show`並檢查您的型號是否顯示*OTHER*。若要辨識您的 NVIDIA 交換器型號，請使用以下指令尋找零件編號 `nv show platform hardware`對於 NVIDIA CL 5.8 及更早版本或 `nv show platform`適用於後續版本。
 
-* MSN2100-CB2FC
-* MSN2100-CB2RC
-* X190006-PE
-* X190006-PI
+[NOTE]
+====
+如果您希望在使用 NVIDIA CL 5.11.x 和以下 ONTAP 版本時，健康監控和日誌收集能夠如預期運作，也建議您執行這些步驟。雖然沒有這些步驟，健康監測和日誌收集可能仍會起作用，但遵循這些步驟可以確保一切正常運作。
+
+* 9.10.1P20、9.11.1P18、9.12.1P16、9.13.1P8、9.14.1、9.15.1 及更高補丁版本
 
 
-
-NOTE: 此安裝程序適用於 ONTAP 9.10.1 及更新版本。
-
+====
 .開始之前
-* 執行並檢查是否顯示您的模型 * 其他 * 、以確認您需要下載組態檔案 `system switch ethernet show` 。
-+
-如果套用組態檔案後、您的機型仍顯示 * 其他 * 、請聯絡 NetApp 支援部門。
-
 * 請確定ONTAP 支援並執行不中斷的叢集。
-* 啟用 SSH 以使用 CSHM 中所有可用的功能。
+* 在交換器上啟用 SSH 以使用 CSHM 中可用的所有功能。
 * 清除 `/mroot/etc/cshm_nod/nod_sign/`所有節點上的目錄：
 +
 .. 輸入節點：
@@ -92,7 +87,7 @@ NOTE: 此安裝程序適用於 ONTAP 9.10.1 及更新版本。
 +
 [listing, subs="+quotes"]
 ----
-cluster1::> *system cluster-switch configure-health-monitor -node * -package-url http://192.168.2.20/usr/download/_[filename.zip]_*
+cluster1::> *system switch ethernet*
 ----
 . 確認 ONTAP 版本的命令輸出結尾為下列文字：
 
@@ -125,3 +120,6 @@ CSHM 下載套件已成功處理。
 cluster1::> *system switch ethernet show*
 ----
 
+
+
+NOTE: 如果套用組態檔案後、您的機型仍顯示 * 其他 * 、請聯絡 NetApp 支援部門。
