@@ -206,9 +206,17 @@ cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert fals
 +
 [listing, subs="+quotes"]
 ----
+cs2> *enable*
+cs2# *configure*
 cs2(config)# *interface eth1/1/1-2,eth1/7-8*
 cs2(config-if-range)# *shutdown*
+cs2(config-if-range)# *exit*
+cs2# *exit*
 ----
++
+
+NOTE: 顯示的連接埠數量會根據叢集中的節點數量而變化。
+
 . 確認叢集連接埠已移轉至叢集交換器CS1上裝載的連接埠。這可能需要幾秒鐘的時間。
 +
 「網路介面show -vserver叢集」
@@ -570,10 +578,18 @@ NOTE: 叢集節點報告為健全狀態最多可能需要5分鐘。
 ====
 [listing, subs="+quotes"]
 ----
+cs1> *enable*
+cs1# *configure*
 cs1(config)# *interface eth1/1/1-2,eth1/7-8*
 cs1(config-if-range)# *shutdown*
+cs1(config-if-range)# *exit*
+cs1# *exit*
 ----
 ====
++
+
+NOTE: 顯示的連接埠數量會根據叢集中的節點數量而變化。
+
 . 驗證叢集LIF是否已移轉至交換器CS2上裝載的連接埠。這可能需要幾秒鐘的時間。
 +
 「網路介面show -vserver叢集」

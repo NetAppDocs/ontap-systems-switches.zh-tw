@@ -1325,9 +1325,7 @@
   <block id="88045e5af7830d69afafc3e6e7a9cf86" category="summary">您可以使用此程序來執行Bes - 53248叢集交換器的初始安裝。</block>
   <block id="4f94088c73aaa0dc7be5cb969d19b296" category="list-text">將管理連接埠（交換器左側的RJ-45扳手連接埠）連接至您的TFTP伺服器所在的相同網路。</block>
   <block id="762035f239a190e974a8bc4f793f5eee" category="list-text">115200傳輸率</block>
-  <block id="c04ce9c1c44c5e07bf7a73e79811a429" category="list-text">若要設定靜態IP位址、請使用範例所示的「服務連接埠傳輸協定」、「網路傳輸協定」和「服務連接埠IP」命令。</block>
   <block id="ed37a6a8028dc06785735d8c0a7178b4" category="paragraph">ServicePort預設為使用DHCP。系統會自動指派IP位址、子網路遮罩和預設閘道位址。</block>
-  <block id="433c21332379db77320fe7a821073bdc" category="list-text">使用命令驗證結果：</block>
   <block id="054f736f28a6918e0571caad3b5d1440" category="paragraph">「How ServicePort」</block>
   <block id="afac0a52c83984bf1020f56dd9df720f" category="list-text">設定網域和名稱伺服器：</block>
   <block id="46180f667842fa1595248c425401bc35" category="paragraph">設定</block>
@@ -1490,7 +1488,6 @@
   <block id="06bdfa4eeb4673a88109b189e8032086" category="paragraph">X190210-FE-PI</block>
   <block id="9067c6465253e023e1e8646348d031f3" category="paragraph">N9K-9336C、FTE、PSIN、36PT10/25/40/100GQSFP28</block>
   <block id="d002eea8f83f99bafbbc5f36440edd41" category="summary">您可以在初次設定Nexus 9336C-FX2交換器之後安裝RCF。您也可以使用此程序來升級RCF版本。</block>
-  <block id="0e20b420112310f5c09a775e13d5ec63" category="paragraph">您可以在初次設定Nexus 9336C-FX2交換器之後安裝RCF。您也可以使用此程序來升級RCF版本。</block>
   <block id="065efbcd9d0a8e180fd23e7abf72c407" category="list-text">兩個Cisco交換器的名稱為CS1和CS2。</block>
   <block id="0a7b7f6be6701fe3f4fccf471c185aac" category="list-text">叢集LIF名稱為cluster1-01_clus1、cluster1-01_clus2、cluster1-02_clus1、cluster1-02_clus2、cluster1-03_clus1、 cluster1-03_clus2、cluster1-04_clus1和cluster1-04_clus2。</block>
   <block id="ace72d025aa2c5badb322c055f22cb6b" category="inline-link">Cisco Nexus 9000系列NX-OS命令參考</block>
@@ -5040,7 +5037,6 @@
   <block id="a631ed2f01f0a384874d92ecdaee2d1c" category="paragraph">設定雙節點無交換器叢集以移轉至雙節點交換式叢集。</block>
   <block id="5f9610f3409d9abe96cc344156486c5e" category="paragraph-title"><block ref="beadfa85a2fdca06b91edc1131c603e6" category="inline-image-macro-rx" type="image"></block><block ref="4c0a19683ab4dd37cd0517d25639fa78" category="inline-link-macro-rx"></block></block>
   <block id="e796841df950e342f76a5b538574f5f6" category="paragraph">完成移轉至雙節點交換式叢集。</block>
-  <block id="e4ff582cba38e556dc88b3e74baf1ec1" category="paragraph">&lt;stdin&gt; 中未解決的指令 - 包括： ..//_include/install-RCF-software-9336c-CLUSE.adoc []</block>
   <block id="1ececed2a569720ced41e9cd50d7b238" category="list-text">交換器 CS1 和交換器 CS2 已開機，並完成初始交換器設定（管理 IP 位址和 SSH 已設定）。</block>
   <block id="c3109b36f2c8edda93835ccefa0e4dc3" category="doc">安裝或升級參考組態檔案（ RCF ）總覽</block>
   <block id="6d7b8066e6c7166408cb61e68a705e7f" category="list-text">兩個 Cisco 交換器的名稱分別是 *CS1* 和 *CS2* 。</block>
@@ -5319,4 +5315,9 @@
   <block id="1793733c3fd6ed243dfcb1cd45582f6e" category="list-text">下載 Cumulux Linux 5.11.0 映像：</block>
   <block id="3b17e95301e3d2dffb102ceff49ecd86" category="list-text">登出並再次登入交換機，即可在提示下看到更新後的交換器名稱：</block>
   <block id="7c7a0b76c488baaa82c48a846faa8727" category="paragraph"><block ref="0d353ea2e4037b21b3bb06f2b69f1c6c" category="inline-link-macro-rx"></block>。</block>
+  <block id="fc6063e37d3407a7d76fabb59f7a96a3" category="list-text">若要為交換器的服務連接埠設定靜態 IPv4 或 IPv6 管理位址：</block>
+  <block id="42a9137a05a60eb752dcdf982e717626" category="open-title">IPv4</block>
+  <block id="fdb7cb8f657426e7c409bfd6d1a36ce4" category="open-title">IPv6</block>
+  <block id="eac292441a720b0a0f4b67dcb9db6398" category="list-text">[[step7]]使用指令驗證結果：</block>
+  <block id="c946088bdd01d4ceb54099911c69adbe" category="admonition">顯示的連接埠數量會根據叢集中的節點數量而變化。</block>
 </blocks>
