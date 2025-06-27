@@ -409,7 +409,7 @@ vlan database
 no vlan 17
 no vlan 18
 exit
-show-running-config
+show running-config
 ----
 .. 將執行組態儲存至啟動組態：
 +
@@ -657,7 +657,7 @@ Intf      Type   Mode      Mode         Status     Status Trap    Mode   Timeout
 +
 [source, cli]
 ----
-show running config
+show running-config
 ----
 . 儲存執行中的組態、以便在您重新啟動交換器時將其變成啟動組態：
 +

@@ -4149,7 +4149,6 @@
   <block id="88948f2b657a3c9e5eec3736dcca6cdf" category="paragraph">100GbE ISL 到交換器 A 連接埠 35</block>
   <block id="56299051abd1af0cbe5dbee773fed3d5" category="paragraph">100GbE ISL 到交換器 B 連接埠 36</block>
   <block id="5e596a6e5f0ffe0604d651cde90e34f0" category="paragraph">100GbE ISL 到交換器 A 連接埠 36</block>
-  <block id="b6deba442a3eaadb05f02285eb6e8113" category="admonition">修改金鑰之前、請務必先停用 SSH 、否則交換器上會報告警告。</block>
   <block id="19d577c8c5ac871bd4528e45b94e3215" category="paragraph">40/100GbE 節點 7</block>
   <block id="6eabf22260c7ae80ec5e2274e9c4f09e" category="paragraph">40/100GbE 節點 8</block>
   <block id="bea5a6b9eaf26fd0f9b528724d800b60" category="paragraph">40/100GbE 節點 9</block>
@@ -5327,4 +5326,8 @@
   <block id="de7ffa00f75520afd4312c03db0da03c" category="list-text"><block ref="de7ffa00f75520afd4312c03db0da03c" category="inline-link-macro-rx"></block></block>
   <block id="c409f8a3c1a31991297c71a6ef92dff2" category="inline-link-macro">從交換叢集遷移到無交換叢集後節點崩潰</block>
   <block id="55f49c71e99a86d3514c015252eee468" category="list-text"><block ref="55f49c71e99a86d3514c015252eee468" category="inline-link-macro-rx"></block></block>
+  <block id="a9a5bde505ea573688279b9aed85b83d" category="paragraph">如果 SSH 未停用，請按如下方式停用它：</block>
+  <block id="1991f73b95765ab4d1861d2717ed45f2" category="admonition">修改金鑰之前請確保已停用 SSH，否則交換器上會報告警告。</block>
+  <block id="5046b85a70c9d571be19e2a0283d236b" category="admonition">在上面的步驟 3 *更新 MOTD 檔案* 中，指令<block ref="633fe61df4a2e20028fd063d6108557f" prefix=" " category="inline-code"></block>正在運行。這可讓您驗證 RCF 檔案名稱、 RCF 版本、要使用的連接埠、以及 RCF 橫幅中的其他重要資訊。</block>
+  <block id="1767f5d7b100e3d4d6c5fea66216a39c" category="admonition">在上面的步驟 3 *更新 MOTD 檔案*中，執行指令「cat /etc/issue.net」。這可讓您驗證 RCF 檔案名稱、 RCF 版本、要使用的連接埠、以及 RCF 橫幅中的其他重要資訊。</block>
 </blocks>

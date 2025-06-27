@@ -407,7 +407,7 @@ RCF指令碼會完成上述範例中所列的步驟。
 
 +
 
-NOTE: 在步驟 3 * 更新上述 MOTD 檔案 * 中、命令 `cat /etc/issue` 執行。這可讓您驗證 RCF 檔案名稱、 RCF 版本、要使用的連接埠、以及 RCF 橫幅中的其他重要資訊。
+NOTE: 在上面的步驟 3 *更新 MOTD 檔案* 中，指令 `cat /etc/issue.net`正在運行。這可讓您驗證 RCF 檔案名稱、 RCF 版本、要使用的連接埠、以及 RCF 橫幅中的其他重要資訊。
 
 +
 例如：
@@ -415,7 +415,7 @@ NOTE: 在步驟 3 * 更新上述 MOTD 檔案 * 中、命令 `cat /etc/issue` 執
 +
 [listing]
 ----
-admin@sw1:mgmt:~$ cat /etc/issue
+admin@sw1:mgmt:~$ cat /etc/issue.net
 ******************************************************************************
 *
 * NetApp Reference Configuration File (RCF)
@@ -773,7 +773,7 @@ RCF指令碼會完成上述範例中所列的步驟。
 
 +
 
-NOTE: 在步驟 3 * 更新上述 MOTD 檔案 * 中、命令 `cat /etc/issue` 執行。這可讓您驗證 RCF 檔案名稱、 RCF 版本、要使用的連接埠、以及 RCF 橫幅中的其他重要資訊。
+NOTE: 在上面的步驟 3 *更新 MOTD 檔案*中，執行指令「cat /etc/issue.net」。這可讓您驗證 RCF 檔案名稱、 RCF 版本、要使用的連接埠、以及 RCF 橫幅中的其他重要資訊。
 
 +
 例如：
@@ -781,7 +781,7 @@ NOTE: 在步驟 3 * 更新上述 MOTD 檔案 * 中、命令 `cat /etc/issue` 執
 +
 [listing]
 ----
-admin@sw1:mgmt:~$ cat /etc/issue
+admin@sw1:mgmt:~$ cat /etc/issue.net
 ******************************************************************************
 *
 * NetApp Reference Configuration File (RCF)

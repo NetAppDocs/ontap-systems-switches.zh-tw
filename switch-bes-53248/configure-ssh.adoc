@@ -40,6 +40,23 @@ SSH Public Key Authentication Mode: ........... Disabled
 SCP server Administrative Mode: ............... Disabled
 ----
 ====
++
+如果 SSH 未停用，請按如下方式停用它：
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(switch)# *ip ssh server disable*
+(switch)# *ip scp server disable*
+----
+====
++
+
+WARNING: 修改金鑰之前請確保已停用 SSH，否則交換器上會報告警告。
+
 . 產生SSH金鑰：
 +
 `crypto key generate`
@@ -82,10 +99,6 @@ Config file 'startup-config' created successfully.
 Configuration Saved!
 ----
 ====
-+
-
-WARNING: 修改金鑰之前、請務必先停用 SSH 、否則交換器上會報告警告。
-
 . 加密 SSH 金鑰（僅適用於 * FIPS 模式 * ）：
 +
 
@@ -167,4 +180,4 @@ SCP server Administrative Mode: ............... Enabled
 
 
 .接下來呢？
-link:../switch-cshm/config-overview.html["設定交換器健全狀況監控"]。
+link:../switch-cshm/config-overview.html["設定交換器健全狀況監控"]
