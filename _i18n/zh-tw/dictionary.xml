@@ -5330,4 +5330,6 @@
   <block id="1991f73b95765ab4d1861d2717ed45f2" category="admonition">修改金鑰之前請確保已停用 SSH，否則交換器上會報告警告。</block>
   <block id="5046b85a70c9d571be19e2a0283d236b" category="admonition">在上面的步驟 3 *更新 MOTD 檔案* 中，指令<block ref="633fe61df4a2e20028fd063d6108557f" prefix=" " category="inline-code"></block>正在運行。這可讓您驗證 RCF 檔案名稱、 RCF 版本、要使用的連接埠、以及 RCF 橫幅中的其他重要資訊。</block>
   <block id="1767f5d7b100e3d4d6c5fea66216a39c" category="admonition">在上面的步驟 3 *更新 MOTD 檔案*中，執行指令「cat /etc/issue.net」。這可讓您驗證 RCF 檔案名稱、 RCF 版本、要使用的連接埠、以及 RCF 橫幅中的其他重要資訊。</block>
+  <block id="86f7f66cb381cc46fe300e0c2c8f0499" category="inline-link-macro">NTP 伺服器設定不適用於 NVIDIA SN2100 交換機</block>
+  <block id="c77e68e056a1f231532a65076ed213f7" category="paragraph">請參閱知識庫文章<block ref="54a4a8d8880601232d1c62bd5f55e05a" category="inline-link-macro-rx"></block>了解更多詳情。</block>
 </blocks>
