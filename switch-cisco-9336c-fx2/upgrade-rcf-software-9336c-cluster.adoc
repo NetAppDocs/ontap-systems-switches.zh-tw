@@ -265,6 +265,20 @@ cluster1::*>
 +
 `switch# show run | section "switchname" >> bootflash:write_erase.cfg`
 
+. 對於 RCF 版本 1.12 及更高版本，執行以下命令：
++
+`switch# echo "hardware access-list tcam region ing-racl 1024" >> bootflash:write_erase.cfg`
+
++
+`switch# echo "hardware access-list tcam region egr-racl 1024" >> bootflash:write_erase.cfg`
+
++
+`switch# echo "hardware access-list tcam region ing-l2-qos 1280" >> bootflash:write_erase.cfg`
+
+. 驗證 write_erase.cfg 檔案是否如預期填入：
++
+`show file bootflash:write_erase.cfg`
+
 . 發出寫入清除命令以清除目前儲存的組態：
 +
 `switch# write erase`
@@ -529,7 +543,7 @@ cluster1-04          true     true          false
 cluster1::*>
 ----
 ====
-. 在交換器 CS2 上重複步驟 1 至 18 。
+. 在交換器 CS2 上重複步驟 1 至 20 。
 . 在叢集生命體上啟用自動還原。
 +
 `cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert True*`

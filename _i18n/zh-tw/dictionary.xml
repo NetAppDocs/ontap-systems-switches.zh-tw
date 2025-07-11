@@ -5332,4 +5332,11 @@
   <block id="1767f5d7b100e3d4d6c5fea66216a39c" category="admonition">在上面的步驟 3 *更新 MOTD 檔案*中，執行指令「cat /etc/issue.net」。這可讓您驗證 RCF 檔案名稱、 RCF 版本、要使用的連接埠、以及 RCF 橫幅中的其他重要資訊。</block>
   <block id="86f7f66cb381cc46fe300e0c2c8f0499" category="inline-link-macro">NTP 伺服器設定不適用於 NVIDIA SN2100 交換機</block>
   <block id="c77e68e056a1f231532a65076ed213f7" category="paragraph">請參閱知識庫文章<block ref="54a4a8d8880601232d1c62bd5f55e05a" category="inline-link-macro-rx"></block>了解更多詳情。</block>
+  <block id="18e6dddff6b5dbe3698443f6bf547259" category="list-text">對於 RCF 版本 1.12 及更高版本，執行以下命令：</block>
+  <block id="b9290d13c5441920a725478322d847bc" category="paragraph"><block ref="fd00e81f5f0cef46bffcdca10e8bb0be" prefix="" category="inline-code"></block></block>
+  <block id="34425e3277b6cd10529c78a1067175a7" category="paragraph"><block ref="56f6c12b458176a1c5a0b7f219fc582f" prefix="" category="inline-code"></block></block>
+  <block id="36e8b4b3d01f5fa01bc38b742b7adae1" category="paragraph"><block ref="ceccb5672696bf7833b4da32e595b96e" prefix="" category="inline-code"></block></block>
+  <block id="255946ce0bdffe025ba4bdaa710146e6" category="list-text">驗證 write_erase.cfg 檔案是否如預期填入：</block>
+  <block id="c8608e8042094ff03aff5d73acbce651" category="paragraph"><block ref="aa69f627a489063557f4707be7ba43f0" prefix="" category="inline-code"></block></block>
+  <block id="90b56b330f7736518fea2723b6853482" category="list-text">在交換器 CS2 上重複步驟 1 至 20 。</block>
 </blocks>
