@@ -3110,7 +3110,6 @@
   <block id="ce4c0c35cac0cafac061a49da52f93cd" category="paragraph"><block ref="74dd19c11d43cfa2dd387ecf7d984746" category="inline-link-macro-rx"></block>。</block>
   <block id="d007743863da413e0445811c05d574db" category="summary">檢閱軟體總覽。</block>
   <block id="93d9f7b647768c2633a5b9f8a68e2b52" category="doc">適用於BS-53248交換器的軟體安裝工作流程</block>
-  <block id="6dd4b5e58bd32b079e19b1dda5c2f1bc" category="paragraph">若要初始安裝及設定BS-53248叢集交換器的軟體、請依照下列步驟操作：</block>
   <block id="9302ce88c481ebfe72d64373c7b0d0e5" category="doc">升級BS-53248叢集交換器</block>
   <block id="db3a43c92e9a5ccc39b5fabb1bd97719" category="paragraph">請依照下列步驟升級BS-53248叢集交換器。</block>
   <block id="8ac36f1d8b0fc917225a100d2cd4a4c3" category="paragraph">在現有NetApp BS-53248叢集交換器上安裝EFOS軟體、授權和RCF檔案之前、請確定：</block>
@@ -5207,7 +5206,6 @@
   <block id="7baa7758ed49797651dc1e276762ae15" category="list-text">叢集： * MSN2100-RCF-v1. _x_ 叢集 *</block>
   <block id="dd584ffba0b7534139645967bf24df84" category="sidebar">安裝或升級 RCF 指令碼</block>
   <block id="40b03f9635c63b20aade0ff8145eafb8" category="list-text">對於 Broadcom 和 Cisco 交換器的記錄收集：</block>
-  <block id="89f1dd995a5c07ea1e13abc5993d9d59" category="list-text">使用者必須擁有網路管理員 Privileges 。</block>
   <block id="60f743043272b873831b17c5e7290445" category="list-text">應在交換器上為啟用記錄收集的每個叢集設定建立新使用者。這些交換器不支援同一位使用者的多個 SSH 金鑰。執行的任何其他記錄集合設定都會覆寫使用者先前存在的任何 SSH 金鑰。</block>
   <block id="63229fc9218a5e1a57243ce033e91a3b" category="paragraph">如需安裝或升級 RCF 的詳細資訊，請參閱知識庫<block ref="862bab57a4acfb616afcae48c16f2cfe" category="inline-link-macro-rx"></block>文件。</block>
   <block id="26552c2532e5b34c96d8cef5f736c6ff" category="paragraph">如需安裝 RCF 的詳細資訊，請參閱知識庫<block ref="862bab57a4acfb616afcae48c16f2cfe" category="inline-link-macro-rx"></block>文件。</block>
@@ -5339,4 +5337,19 @@
   <block id="255946ce0bdffe025ba4bdaa710146e6" category="list-text">驗證 write_erase.cfg 檔案是否如預期填入：</block>
   <block id="c8608e8042094ff03aff5d73acbce651" category="paragraph"><block ref="aa69f627a489063557f4707be7ba43f0" prefix="" category="inline-code"></block></block>
   <block id="90b56b330f7736518fea2723b6853482" category="list-text">在交換器 CS2 上重複步驟 1 至 20 。</block>
+  <block id="fb945b959f6754639fad6c6e9e9469b9" category="list-text">本機使用者必須具有網路管理員權限。</block>
+  <block id="47547bd96a2d76e2174e671baccc263a" category="paragraph">若要安裝和設定 BES-53248 叢集交換器的軟體，請依照下列步驟操作：</block>
+  <block id="7a81f2c0648b303fec3fe1081158d0e3" category="inline-link-macro">將交換器重設為出廠預設值</block>
+  <block id="842f57c662529f95b306feb653984af0" category="list-text"><block ref="6356dc79de453379cf58db845e7c3b08" category="inline-link-macro-rx"></block>。</block>
+  <block id="585a6fd0f28eaade2a16ccaba1bb9b0d" category="paragraph">清除 BES-53248 群集交換器設定。</block>
+  <block id="b879f523acbbe3c8d6ea83060443367e" category="doc">將 BES-53248 集群交換器重設為出廠預設值</block>
+  <block id="7515349dce34258a6f65c5f9b6b0bc58" category="paragraph">若要將 BES-53248 叢集交換器重設為出廠預設設置，必須清除 BES-53248 交換器設定。</block>
+  <block id="cf8c4cbc63a2e42b70c4b4beddd2e366" category="list-text">您必須使用序列主控台連線至交換器。</block>
+  <block id="55b0c310e4703cc82f05f8c44c9d0d39" category="list-text">此工作會重設管理網路的組態。</block>
+  <block id="eceb40fbe3a93ae0c766b186cce3cba4" category="list-text">變更為提升的命令提示字元。</block>
+  <block id="8045e733034738065ca77d531de9666f" category="list-text">清除啟動配置。</block>
+  <block id="91f81f9cd1a23a248e317b6b22a84ce3" category="paragraph"><block ref="1fb554759d9d32d450daa4da09330114" prefix="" category="inline-code"></block></block>
+  <block id="671537f32d06de75a977dc3008daeff5" category="admonition">如果系統在重新載入交換器之前詢問是否要儲存未儲存或變更的組態、請選取*否*。</block>
+  <block id="01abea5f71122f7491f5d67a54692187" category="list-text">[[step4]] 等待交換器重新加載，然後登入交換器。</block>
+  <block id="3298c6d813bb0262584ca3882273ff2a" category="paragraph">預設使用者為“admin”，未設定密碼。畫面會顯示類似下列的提示：</block>
 </blocks>

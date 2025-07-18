@@ -11,7 +11,7 @@ summary: 檢閱軟體總覽。
 
 
 [role="lead"]
-若要初始安裝及設定BS-53248叢集交換器的軟體、請依照下列步驟操作：
+若要安裝和設定 BES-53248 叢集交換器的軟體，請依照下列步驟操作：
 
 . link:configure-efos-software.html["安裝EFOS軟體"]。
 +
@@ -28,5 +28,9 @@ summary: 檢閱軟體總覽。
 . link:configure-ssh.html["在BS-53248叢集交換器上啟用SSH"]。
 +
 如果您使用乙太網路交換器健全狀況監視器（ CSHM ）和記錄收集功能、請在交換器上啟用 SSH 。
+
+. link:reset-switch-bes-53248.html["將交換器重設為出廠預設值"]。
++
+清除 BES-53248 群集交換器設定。
 
 

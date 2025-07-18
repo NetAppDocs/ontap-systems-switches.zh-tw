@@ -37,6 +37,8 @@ entries:
     url: "/switch-bes-53248/configure-install-rcf.html"
   - title: 啟用 SSH 進行記錄收集
     url: "/switch-bes-53248/configure-ssh.html"
+  - title: 將交換器重設為出廠預設值
+    url: "/switch-bes-53248/reset-switch-bes-53248.html"
 - title: 升級交換器
   pdf-filename: upgrade 開關 _bes53248
   entries:
