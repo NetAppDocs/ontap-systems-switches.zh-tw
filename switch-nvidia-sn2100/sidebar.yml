@@ -6,7 +6,7 @@ entries:
 - title: 總覽
   pdf-filename: overview_sn2100
   entries:
-  - title: 組態總覽
+  - title: 快速入門
     url: "/switch-nvidia-sn2100/configure-overview-sn2100-cluster.html"
   - title: 組態需求
     url: "/switch-nvidia-sn2100/configure-reqs-sn2100-cluster.html"
@@ -17,10 +17,10 @@ entries:
 - title: 安裝硬體
   pdf-filename: install_hardware _sn2100
   entries:
+  - title: 硬體安裝工作流程
+    url: "/switch-nvidia-sn2100/install-hardware-workflow.html"
   - title: 安裝交換器
     url: "/switch-nvidia-sn2100/install-hardware-sn2100-cluster.html"
-  - title: 設定交換器
-    url: "/switch-nvidia-sn2100/configure-sn2100-cluster.html"
   - title: 檢視纜線佈線與組態
     url: "/switch-nvidia-sn2100/cabling-considerations-sn2100-cluster.html"
   - title: 連接NS224磁碟櫃
@@ -30,6 +30,8 @@ entries:
   entries:
   - title: 軟體安裝工作流程
     url: "/switch-nvidia-sn2100/configure-software-overview-sn2100-cluster.html"
+  - title: 設定交換器
+    url: "/switch-nvidia-sn2100/configure-sn2100-cluster.html"
   - title: 在Cummuls模式下安裝Cummulus Linux
     url: "/switch-nvidia-sn2100/install-cumulus-mode-sn2100-cluster.html"
   - title: 以ONIE模式安裝CummulUS Linux
@@ -49,7 +51,7 @@ entries:
     url: "/switch-nvidia-sn2100/migrate-cisco-sn2100-cluster-switch.html"
   - title: 移轉至雙節點交換叢集
     url: "/switch-nvidia-sn2100/migrate-2n-switched-sn2100-cluster.html"
-- title: 更換交換器
+- title: 更換開關
   pdf-filename: replace 開關 _sn2100
   entries:
   - title: 更換叢集交換器

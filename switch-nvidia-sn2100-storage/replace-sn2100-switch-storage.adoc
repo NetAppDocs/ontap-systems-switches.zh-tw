@@ -13,7 +13,7 @@ summary: 在不中斷營運的程序中更換有瑕疵的NVIDIA SN2100儲存交�
 [role="lead"]
 您可以更換有瑕疵的NVIDIA SN2100儲存交換器。這是不中斷營運的程序。
 
-.您需要的產品
+.開始之前
 在NVIDIA SN2100儲存交換器上安裝Cummulos軟體和RCFs之前、請確保：
 
 * 您的系統可支援NVIDIA SN2100儲存交換器。

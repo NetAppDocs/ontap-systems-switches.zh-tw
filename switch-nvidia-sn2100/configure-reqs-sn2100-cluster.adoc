@@ -43,3 +43,6 @@ SN2100 交換器可透過不同的交換器配對，在 ONTAP 9.10.1P3 及更新
 
 * 您可以在交換器執行Cummulis Linux或ONIE時安裝Cumm截止Linux。
 
+
+.接下來呢？
+link:components-sn2100-cluster.html["元件與零件編號"] 。

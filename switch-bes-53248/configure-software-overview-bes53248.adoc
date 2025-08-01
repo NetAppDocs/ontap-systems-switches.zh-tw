@@ -13,24 +13,26 @@ summary: 檢閱軟體總覽。
 [role="lead"]
 若要安裝和設定 BES-53248 叢集交換器的軟體，請依照下列步驟操作：
 
-. link:configure-efos-software.html["安裝EFOS軟體"]。
-+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一"]link:configure-install-initial.html["設定交換器"]
+[role="quick-margin-para"]
+配置BES-53248集群交換器。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["二"]link:configure-efos-software.html["安裝EFOS軟體"]
+[role="quick-margin-para"]
 在BS-53248叢集交換器上下載並安裝乙太網路架構作業系統（EFOS）軟體。
 
-. link:configure-licenses.html["安裝適用於B3作業 叢集交換器的授權"]。
-+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三"]link:configure-licenses.html["安裝適用於B3作業 叢集交換器的授權"]
+[role="quick-margin-para"]
 或者、您也可以購買及安裝更多授權來新增連接埠。交換器基礎模式已獲得16個10GbE或25GbE連接埠及2個100GbE連接埠的授權。
 
-. link:configure-install-rcf.html["安裝參考組態檔（RCF）"]。
-+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["四"]link:configure-install-rcf.html["安裝參考組態檔（RCF）"]
+[role="quick-margin-para"]
 在BS-53248叢集交換器上安裝或升級RCF、然後在套用RCF之後驗證連接埠是否有額外授權。
 
-. link:configure-ssh.html["在BS-53248叢集交換器上啟用SSH"]。
-+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["五"]link:configure-ssh.html["在BS-53248叢集交換器上啟用SSH"]
+[role="quick-margin-para"]
 如果您使用乙太網路交換器健全狀況監視器（ CSHM ）和記錄收集功能、請在交換器上啟用 SSH 。
 
-. link:reset-switch-bes-53248.html["將交換器重設為出廠預設值"]。
-+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["六"]link:reset-switch-bes-53248.html["將交換器重設為出廠預設值"]
+[role="quick-margin-para"]
 清除 BES-53248 群集交換器設定。
-
-

@@ -13,7 +13,9 @@ summary: 您可以在設定 BS-53248 叢集交換器之後、以及套用任何�
 [role="lead"]
 您可以在升級 BS-53248 叢集交換器 EFOS 之後、以及套用任何新授權之後、升級參考組態檔案（ RCF ）。
 
-.您需要的產品
+.開始之前
+請確定您擁有下列項目：
+
 * 交換器組態的目前備份。
 * 完全正常運作的叢集（記錄檔中沒有錯誤或類似問題）。
 * 目前的 RCF 檔案、可從取得 https://mysupport.netapp.com/site/products/all/details/broadcom-cluster-switches/downloads-tab["Broadcom叢集交換器"^] 頁面。

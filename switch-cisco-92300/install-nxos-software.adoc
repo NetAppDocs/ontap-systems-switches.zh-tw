@@ -24,7 +24,9 @@ NX-OS是Cisco Systems提供的Nexus系列乙太網路交換器和MDS系列光纖
 * Nexus 2300YC交換器支援的節點連線為連接埠1/1到1/66。
 
 
-.您需要的產品
+.開始之前
+請確定您擁有下列項目：
+
 * 適用於您交換器NetApp 支援網站 的NetApp Cisco NX-OS軟體、可從下列網站取得： http://mysupport.netapp.com/["mysupport.netapp.com"]
 * 完全正常運作的叢集（記錄檔中沒有錯誤或類似問題）。
 * link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器頁面"^]。請參閱交換器相容性表、以瞭解支援ONTAP 的功能表和NX-OS版本。

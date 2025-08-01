@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: switches, initial installation, configure switch-cisco-9336c-fx2 switch 
 summary: Cisco Nexus 9336C-FX2叢集交換器的安裝與組態總覽 
 ---
-= Cisco Nexus 9336C-FX2叢集交換器的安裝與組態總覽
+= Cisco Nexus 9336C-FX2 叢集交換器的安裝與設定工作流程
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -13,54 +13,28 @@ summary: Cisco Nexus 9336C-FX2叢集交換器的安裝與組態總覽
 [role="lead"]
 Cisco Nexus 9336C-FX2叢集交換器是Cisco Nexus 9000平台的一部分、可安裝在NetApp系統機櫃中。叢集交換器可讓您建立ONTAP 具有兩個以上節點的叢集。
 
+請依照這些工作流程步驟安裝並設定您的Cisco 9336C-FX2 交換器。
 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一"]link:configure-reqs-9336c-cluster.html["查看配置要求"]
+[role="quick-margin-para"]
+查看 9336C-FX2 叢集交換器的設定需求。
 
-== 初始組態總覽
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["二"]link:components-9336c-cluster.html["查看組件和零件編號"]
+[role="quick-margin-para"]
+查看 9336C-FX2 叢集交換器的組件和零件號碼。
 
-若要在執行ONTAP 故障切換的系統上初始設定Cisco Nexus 9336C-FX2交換器、請依照下列步驟操作：
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三"]link:required-documentation-9336c-cluster.html["審查所需文件"]
+[role="quick-margin-para"]
+查看特定的交換器和控制器文件以設定您的 9336C-FX2 交換器和ONTAP叢集。
 
-. link:setup-worksheet-9336c-cluster.html["完成 Cisco Nexus 9336C-FX2 或 9336C-FX2-T 纜線工作表"]。
-+
-佈線工作表範例提供從交換器到控制器的建議連接埠指派範例。空白工作表提供範本、可用於設定叢集。
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["四"]link:smart-call-9336c-cluster.html["查看 Smart Call Home 要求"]
+[role="quick-margin-para"]
+查看Cisco Smart Call Home 功能的要求，該功能用於監控網路上的硬體和軟體元件。
 
-. link:install-switch-9336c-cluster.html["安裝交換器"]。
-+
-設定交換器硬體。
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["五"]link:install-hardware-workflow.html["安裝硬體"]
+[role="quick-margin-para"]
+安裝交換器硬體。
 
-. link:setup-switch-9336c-cluster.html["設定9336C-FX2叢集交換器"]。
-+
-設定Cisco Nexus 9336C-FX2交換器。
-
-. link:install-switch-and-passthrough-panel-9336c-cluster.html["在NetApp機櫃中安裝Cisco Nexus 9336C-FX2交換器"]。
-+
-視組態而定、您可以將Cisco Nexus 9336C-FX2交換器和直通面板安裝在NetApp機櫃中、並附有交換器隨附的標準支架。
-
-. link:install-nxos-overview-9336c-cluster.html["準備安裝 NX-OS 軟體和 RCF"]。
-+
-請依照初始程序、準備安裝Cisco NX-OS軟體和參考組態檔（RCT）。
-
-. link:install-nxos-software-9336c-cluster.html["安裝或升級 NX-OS 軟體"]。
-+
-在 Nexus 9336C-FX2 叢集交換器上安裝或升級 NX-OS 軟體。
-
-. link:install-upgrade-rcf-overview-cluster.html["安裝或升級 RCF"]。
-+
-首次設定 Nexus 9336C-FX2 交換器之後、請安裝或升級 RCF 。您也可以使用此程序來升級RCF版本。
-
-. link:configure-ssh-keys.html["驗證 Nexus 9336C-FX2 叢集交換器上的 SSH 組態"]。
-+
-如果您使用乙太網路交換器健全狀況監視器（ CSHM ）和記錄收集功能、請確認交換器上已啟用 SSH 。
-
-
-
-
-
-== 其他資訊
-
-開始安裝或維護之前、請務必先檢閱下列內容：
-
-* link:configure-reqs-9336c-cluster.html["組態需求"]
-* link:components-9336c-cluster.html["元件與零件編號"]
-* link:required-documentation-9336c-cluster.html["必要文件"]
-* link:smart-call-9336c-cluster.html["智慧電話住家需求"]
-
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["六"]link:configure-software-overview-9336c-cluster.html["設定軟體"]
+[role="quick-margin-para"]
+配置交換器軟體。

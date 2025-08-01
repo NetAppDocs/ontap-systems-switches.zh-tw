@@ -1,0 +1,26 @@
+---
+permalink: switch-nvidia-sn2100-storage/install-hardware-workflow.html 
+sidebar: sidebar 
+keywords: switches, initial installation, configure switch-nvidia-sn2100 switch 
+summary: 在設定NVIDIA SN2100 叢集交換器之前，請先查看設定概述。 
+---
+= NVIDIA SN2100 儲存交換器的硬體安裝工作流程
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+若要安裝和設定 SN2100 儲存交換器的硬件，請依照下列步驟操作：
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一"]link:install-hardware-sn2100-storage.html["安裝硬體"]
+[role="quick-margin-para"]
+安裝交換器硬體。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["二"]link:cabling-considerations-sn2100-storage.html["檢閱纜線佈線和組態考量"]
+[role="quick-margin-para"]
+檢閱光纖連線、QSA介面卡和switchport速度的需求。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三"]link:install-cable-shelves-sn2100-storage.html["連接NS224磁碟櫃"]
+[role="quick-margin-para"]
+如果您的系統需要將NS224磁碟機櫃纜線作為交換器附加儲存設備（非直接附加儲存設備）、請遵循纜線程序。

@@ -6,7 +6,7 @@ entries:
 - title: 總覽
   pdf-filename: overview_sn2100 儲存設備
   entries:
-  - title: 組態總覽
+  - title: 快速入門
     url: "/switch-nvidia-sn2100-storage/configure-overview-sn2100-storage.html"
   - title: 組態需求
     url: "/switch-nvidia-sn2100-storage/configure-reqs-sn2100-storage.html"
@@ -17,10 +17,10 @@ entries:
 - title: 安裝硬體
   pdf-filename: install_hardware _sn2100 儲存設備
   entries:
+  - title: 硬體安裝工作流程
+    url: "/switch-nvidia-sn2100-storage/install-hardware-workflow.html"
   - title: 安裝交換器
     url: "/switch-nvidia-sn2100-storage/install-hardware-sn2100-storage.html"
-  - title: 設定交換器
-    url: "/switch-nvidia-sn2100-storage/configure-sn2100-storage.html"
   - title: 檢視纜線佈線與組態
     url: "/switch-nvidia-sn2100-storage/cabling-considerations-sn2100-storage.html"
   - title: NS224磁碟櫃纜線
@@ -30,6 +30,8 @@ entries:
   entries:
   - title: 軟體安裝工作流程
     url: "/switch-nvidia-sn2100-storage/configure-software-sn2100-storage.html"
+  - title: 設定交換器
+    url: "/switch-nvidia-sn2100-storage/configure-sn2100-storage.html"
   - title: 在Cummuls模式下安裝Cummulus Linux
     url: "/switch-nvidia-sn2100-storage/install-cumulus-mode-sn2100-storage.html"
   - title: 以ONIE模式安裝CummulUS Linux

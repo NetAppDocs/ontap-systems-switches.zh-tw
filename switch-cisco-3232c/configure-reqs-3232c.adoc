@@ -31,3 +31,6 @@ summary: 您可以將Cisco Nexus 3232C交換器當作AFF 叢集交換器、放�
 
 
 請參閱 https://hwu.netapp.com["Hardware Universe"^] 以取得最新資訊。
+
+.下一步
+link:required-documentation-3232c.html["必要文件"] 。

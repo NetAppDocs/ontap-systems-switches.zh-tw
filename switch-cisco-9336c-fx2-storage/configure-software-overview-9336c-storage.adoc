@@ -13,16 +13,18 @@ summary: Cisco Nexus 9336C-FX2儲存交換器軟體組態總覽
 [role="lead"]
 若要安裝及設定 Cisco Nexus 9336C-FX2 儲存交換器的軟體、請遵循下列步驟：
 
-. link:install-nxos-overview-9336c-storage.html["準備安裝或升級 NX-OS 和 RCF"]。
-+
-Cisco NX-OS 軟體和參考組態檔案（ RCFs ）必須安裝在 Cisco Nexus 9336C-FX2 儲存交換器上。
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一"]link:setup-switch-9336c-storage.html["設定交換器"]
+[role="quick-margin-para"]
+配置9336C-FX2儲存交換器。
 
-. link:install-nxos-software-9336c-storage.html["安裝或升級 NX-OS 軟體"]。
-+
-在 Cisco Nexus 9336C-FX2 儲存交換器上下載並安裝或升級 NX-OS 軟體。
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["二"]link:install-nxos-overview-9336c-storage.html["準備安裝 NX-OS 軟體和 RCF"]
+[role="quick-margin-para"]
+必須在Cisco 9336C-FX2 儲存交換器上安裝Cisco NX-OS 軟體和參考設定檔 (RCF)。
 
-. link:install-rcf-software-9336c-storage.html["安裝或升級 RCF 組態檔"]。
-+
-首次安裝 Cisco Nexus 9336C-FX2 儲存交換器之後，請安裝或升級 RCF 。您也可以使用此程序來升級RCF版本。
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三"]link:install-nxos-software-9336c-storage.html["安裝或升級 NX-OS 軟體"]
+[role="quick-margin-para"]
+下載並安裝或升級Cisco 9336C-FX2 儲存交換器上的 NX-OS 軟體。
 
-
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["四"]link:install-rcf-software-9336c-storage.html["安裝或升級 RCF"]
+[role="quick-margin-para"]
+首次設定Cisco 9336C-FX2 交換器後安裝或升級 RCF。您也可以使用此程序升級您的 RCF 版本。

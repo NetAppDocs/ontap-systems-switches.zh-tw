@@ -424,3 +424,6 @@ unit 	active 	    backup   current-active  next-active
 
 . 在合作夥伴交換器上重複步驟 1 至 8 。
 
+
+.下一步
+link:configure-licenses.html["安裝授權"] 。

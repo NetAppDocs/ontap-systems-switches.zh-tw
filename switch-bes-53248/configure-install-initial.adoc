@@ -249,4 +249,4 @@ Configuration Saved!
 
 
 .接下來呢？
-link:configure-efos-software.html["安裝EFOS軟體"]
+link:configure-efos-software.html["安裝EFOS軟體"]。

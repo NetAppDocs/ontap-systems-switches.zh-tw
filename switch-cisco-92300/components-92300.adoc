@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: cisco nexus 92300YC 
 summary: 如果您想要建置ONTAP 具有兩個以上節點的叢集、您需要兩個支援的叢集網路交換器。您可以使用額外的管理交換器、這是選用的。 
 ---
-= Cisco Nexus 2300YC交換器的元件
+= Cisco Nexus 92300YC 交換器的組件和零件編號
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -66,3 +66,6 @@ Cisco Nexus 2300YC交換器氣流詳細資料：
 * 連接埠側排風（標準氣流）：冷空氣透過冷通道中的風扇和電源供應器模組進入機箱、並透過熱通道中的機箱連接埠端口排出。連接埠側邊的排氣氣流、搭配藍色色彩。
 * 端口端口進氣氣流（反轉氣流）：冷卻氣流通過冷通道的端口端進入機箱，並通過熱通道中的風扇和電源設備模塊排出。連接埠側進氣氣流、搭配酒紅色。
 
+
+.下一步
+link:required-documentation-92300.html["必要文件"] 。

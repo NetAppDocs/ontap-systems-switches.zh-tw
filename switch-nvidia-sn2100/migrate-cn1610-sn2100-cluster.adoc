@@ -28,7 +28,7 @@ summary: 您可以不中斷地將 ONTAP 叢集的 NetApp CN1610 叢集交換器�
 
 如需受支援連接埠及其組態的詳細資訊、請參閱 https://hwu.netapp.com/["Hardware Universe"^]。
 
-.您需要的產品
+.開始之前
 確認您符合下列設定需求：
 
 * 現有叢集已正確設定並正常運作。

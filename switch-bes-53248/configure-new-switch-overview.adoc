@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: BES-53248 switches, initial installation, configure new bes-53248 switch 
 summary: 在設定BS-53248叢集交換器之前、請先檢閱組態總覽。 
 ---
-= BS-53248交換器的安裝與組態總覽
+= BES-53248 交換器的安裝與設定工作流程
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -13,45 +13,24 @@ summary: 在設定BS-53248叢集交換器之前、請先檢閱組態總覽。
 [role="lead"]
 BS-53248是一款裸機交換器、設計用於ONTAP 2到24個節點的各種叢集。
 
+請依照這些工作流程步驟安裝並設定您的 BES-53248 交換器。
 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一"]link:configure-reqs-bes53248.html["查看配置要求"]
+[role="quick-margin-para"]
+查看 BES-53248 叢集交換器的設定需求。
 
-== 初始組態總覽
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["二"]link:components-bes53248.html["查看組件和零件編號"]
+[role="quick-margin-para"]
+查看 BES-53248 群集交換器的組件和零件號碼。
 
-若要在執行ONTAP 指示燈的系統上初始設定BS-53248叢集交換器、請遵循下列步驟：
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三"]link:required-documentation-bes53248.html["審查所需文件"]
+[role="quick-margin-para"]
+查看特定的交換器和控制器文件以設定您的 BES-53248 交換器和ONTAP叢集。
 
-. link:install-hardware-bes53248.html["安裝BS-53248叢集交換器的硬體"]。
-+
-如需相關指示、請參閱_ Broadcom支援的BS-53248叢集交換器安裝指南_。
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["四"]link:install-hardware-workflow.html["安裝硬體"]
+[role="quick-margin-para"]
+安裝交換器硬體。
 
-. link:configure-install-initial.html["設定BS-53248叢集交換器"]。
-+
-執行BS-53248叢集交換器的初始設定。
-
-. link:configure-efos-software.html["安裝EFOS軟體"]。
-+
-在BS-53248叢集交換器上下載並安裝乙太網路架構作業系統（EFOS）軟體。
-
-. link:configure-licenses.html["安裝適用於B3作業 叢集交換器的授權"]。
-+
-或者、您也可以購買及安裝更多授權來新增連接埠。交換器基礎模式已獲得16個10GbE或25GbE連接埠及2個100GbE連接埠的授權。
-
-. link:configure-install-rcf.html["安裝參考組態檔（RCF）"]。
-+
-在BS-53248叢集交換器上安裝或升級RCF、然後在套用RCF之後驗證連接埠是否有額外授權。
-
-. link:configure-ssh.html["在BS-53248叢集交換器上啟用SSH"]。
-+
-如果您使用乙太網路交換器健全狀況監視器（ CSHM ）和記錄收集功能、請在交換器上啟用 SSH 。
-
-
-
-
-
-== 其他資訊
-
-開始安裝或維護之前、請務必先檢閱下列內容：
-
-* link:configure-reqs-bes53248.html["組態需求"]
-* link:components-bes53248.html["元件與零件編號"]
-* link:required-documentation-bes53248.html["必要文件"]
-
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["五"]link:configure-software-overview-bes53248.html["設定軟體"]
+[role="quick-margin-para"]
+配置交換器軟體。

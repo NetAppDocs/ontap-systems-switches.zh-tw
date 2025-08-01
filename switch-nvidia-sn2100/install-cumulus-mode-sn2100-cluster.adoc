@@ -16,7 +16,9 @@ summary: 在交換器執行Cummulos Linux或ONIE時、可以安裝CummUS Linux�
 
 NOTE: 可以在交換器執行Cummulos Linux或ONIE時安裝Cummulos Linux（CL）作業系統（請參閱 link:install-onie-mode-sn2100-cluster.html["以ONIE模式安裝"]）。
 
-.您需要的產品
+.開始之前
+請確定您擁有下列項目：
+
 * 中級Linux知識。
 * 熟悉基本文字編輯、UNIX檔案權限及程序監控。已預先安裝多種文字編輯器、包括 `vi` 和 `nano`。
 * 存取Linux或UNIX Shell。如果您執行的是Windows、請使用Linux環境做為命令列工具、與Cummulas Linux互動。

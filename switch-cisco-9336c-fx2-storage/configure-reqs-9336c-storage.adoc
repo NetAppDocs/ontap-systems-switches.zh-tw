@@ -45,3 +45,6 @@ summary: 從S299.1開始ONTAP 、您可以使用Cisco Nexus 9336C-FX2交換器�
 
 
 如需交換器初始組態的詳細資訊、請參閱下列指南： https://www.cisco.com/c/en/us/td/docs/dcn/hw/nx-os/nexus9000/9336c-fx2-e/cisco-nexus-9336c-fx2-e-nx-os-mode-switch-hardware-installation-guide.html["Cisco Nexus 9336C-FX2安裝與升級指南"]。
+
+.下一步
+link:components-9336c-storage.html["元件與零件編號"] 。

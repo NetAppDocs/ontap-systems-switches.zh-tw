@@ -69,3 +69,6 @@ image:blank_cabling_worksheet.jpg["空白的佈線工作表"]
 * 100G ISL至交換器B連接埠35
 * 100G ISL至交換器B連接埠36
 
+
+.下一步
+link:install-9336c-shared.html["安裝交換器"]。

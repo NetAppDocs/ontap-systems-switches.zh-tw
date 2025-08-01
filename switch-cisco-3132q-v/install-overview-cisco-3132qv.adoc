@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: install, Cisco Nexus 3132Q-V 
 summary: 在設定Cisco Nexus 3132Q-V交換器之前、請先檢閱程序與命名規則的總覽。 
 ---
-= Cisco Nexus 3132Q-V交換器的安裝與組態總覽
+= Cisco Nexus 3132Q-V 交換器的安裝與設定工作流程
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -13,27 +13,24 @@ summary: 在設定Cisco Nexus 3132Q-V交換器之前、請先檢閱程序與命�
 [role="lead"]
 Cisco Nexus 3132Q-V交換器可做AFF 為您的叢集或FAS 叢集內的叢集交換器。叢集交換器可讓您建立ONTAP 具有兩個以上節點的叢集。
 
+請依照這些工作流程步驟安裝並設定您的Cisco Nexus 3132Q-V 交換器。
 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一"]link:configure-reqs-3132q.html["組態需求"]
+[role="quick-margin-para"]
+查看 3132Q-V 群集交換器的設定需求。
 
-== 初始組態總覽
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["二"]link:required-documentation-3132q.html["必要文件"]
+[role="quick-margin-para"]
+查看特定的交換器和控制器文件以設定您的 3132Q-V 交換器和ONTAP叢集。
 
-若要在執行__LW_Y_Y_Y_Y_YV_Y_Y_YV_YV_YRIT_YRIT_YRIT_YRIT_Y ONTAP
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三"]link:smart-call-home-3132q.html["智慧電話住家需求"]
+[role="quick-margin-para"]
+查看Cisco Smart Call Home 功能的要求，該功能用於監控網路上的硬體和軟體元件。
 
-. link:setup_worksheet_3132q.html["填寫Cisco Nexus 3132Q-V佈線工作表"]。佈線工作表範例提供從交換器到控制器的建議連接埠指派範例。空白工作表提供範本、可用於設定叢集。
-. link:install-cisco-nexus-3132qv.html["在NetApp機櫃中安裝Cisco Nexus 3132Q-V叢集交換器"]。將Cisco Nexus 3132Q-V交換器和直通面板安裝在NetApp機櫃中、並附有交換器隨附的標準支架。
-. link:setup-switch.html["設定Cisco Nexus 3132Q-V交換器"]。設定及設定Cisco Nexus 3132Q-V交換器。
-. link:prepare-install-cisco-nexus-3132q.html["準備安裝NX-OS軟體和參考組態檔案"]。準備安裝NX-OS軟體和參考組態檔（RCF）。
-. link:install-nx-os-software-3132q-v.html["安裝NX-OS軟體"]。請遵循此程序、在Nexus 3132Q-V叢集交換器上安裝NX-OS軟體。
-. link:install-rcf-3132q-v.html["安裝參考組態檔（RCF）"]。第一次設定Nexus 3132Q-V交換器之後、請遵循此程序來安裝RCF。您也可以使用此程序來升級RCF版本。
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["四"]link:install-hardware-workflow.html["安裝硬體"]
+[role="quick-margin-para"]
+安裝交換器硬體。
 
-
-
-
-== 其他資訊
-
-開始安裝或維護之前、請務必先檢閱下列內容：
-
-* link:configure-reqs-3132q.html["組態需求"]
-* link:required-documentation-3132q.html["必要文件"]
-* link:smart-call-home-3132q.html["智慧電話住家需求"]
-
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["五"]link:configure-software-overview-3132q-v-cluster.html["設定軟體"]
+[role="quick-margin-para"]
+配置交換器軟體。

@@ -33,3 +33,6 @@ NVIDIA SN2100交換器是執行Cummulis Linux的10/25/40/100 Gb乙太網路交�
 * Cummulos Linux（CL）OS 4.4.3版。如需目前的相容性資訊、請參閱 https://mysupport.netapp.com/site/info/nvidia-cluster-switch["NVIDIA乙太網路交換器"^] 資訊頁面。
 * 您可以在交換器執行Cummulis Linux或ONIE時安裝Cumm截止Linux。
 
+
+.下一步
+link:components-sn2100-storage.html["元件與零件編號"] 。

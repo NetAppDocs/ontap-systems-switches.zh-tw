@@ -2297,20 +2297,10 @@
   <block id="0a24c8e3b4ea2ca8a30ceee3856e7638" category="list-text">依照中的指示操作<block ref="f3871f65af7ce4ce4161567e6adce2a8" category="inline-link-rx"></block>。</block>
   <block id="58eaebf972358f1cf03d386a4ade1a0f" category="paragraph-title">接下來呢？</block>
   <block id="f4959eb49cd0d468fb22d0fde13f93d1" category="inline-link-macro">設定交換器</block>
-  <block id="26579e78de73f5546f69f3f79a7b8f48" category="paragraph"><block ref="d639995fde516a3ba2e60963b02aecc1" category="inline-link-macro-rx"></block>。</block>
   <block id="005ec29dde0262dd01b006d4e9c03abf" category="summary">在設定NVIDIA SN2100交換器之前、請先檢閱程序總覽。</block>
-  <block id="9aec7a1df32bc7a3da0beba803646322" category="doc">NVIDIA SN2100儲存交換器組態程序總覽</block>
-  <block id="aac9f267bacea6f425f8665241d6901e" category="section-title">初始組態總覽</block>
-  <block id="2ef7b00479266befed2783905ed9725e" category="paragraph">若要在執行ONTAP 指示燈介面的系統上設定NVIDIA SN2100交換器、請依照下列步驟操作：</block>
   <block id="a194a4ea8dc4dc236627221cad9344d4" category="inline-link-macro">檢閱纜線佈線和組態考量</block>
-  <block id="8043ee61c7f7379917235c3269fed7c9" category="inline-link-macro">以ONIE模式安裝CummulUS Linux</block>
-  <block id="516d8e9da45554d526faa978810dc178" category="inline-link-macro">安裝參考組態檔案指令碼</block>
-  <block id="0f68b904e33d9ac04605aecc958bcf52" category="section-title">其他資訊</block>
-  <block id="16bd9f785cf803befb40588a09dc4b7f" category="paragraph">開始安裝或維護之前、請務必先檢閱下列內容：</block>
   <block id="c8fe594dab6cb1395df34d73b005c900" category="inline-link-macro">組態需求</block>
-  <block id="360d0c63a0ad1a96000d716977ec9b5a" category="list-text"><block ref="360d0c63a0ad1a96000d716977ec9b5a" category="inline-link-macro-rx"></block></block>
   <block id="386e6c0aca592d479a2754395b6831c5" category="inline-link-macro">元件與零件編號</block>
-  <block id="6f29ea203d7917d9d35a7a8e4664773a" category="list-text"><block ref="6f29ea203d7917d9d35a7a8e4664773a" category="inline-link-macro-rx"></block></block>
   <block id="b4874fc318a2d2906865491ec45c2419" category="list-text"><block ref="b4874fc318a2d2906865491ec45c2419" category="inline-link-macro-rx"></block></block>
   <block id="bf63d3f8bf5a7e7582dbb5b1a6cb7d1a" category="summary">NVIDIA SN2100儲存交換器軟體組態程序總覽。</block>
   <block id="6be05eca98b6a5d5dc537ad3a294fee0" category="doc">NVIDIA SN2100儲存交換器的軟體安裝工作流程</block>
@@ -2329,8 +2319,6 @@
   <block id="42902954b00eb0aeef87421f3792560e" category="list-text">ONIE安裝程式探索程序會執行搜尋自動安裝。按* Enter *可暫時停止此程序。</block>
   <block id="a555c4fbbf23efb923a688b268875c6a" category="paragraph"><block ref="1f132bfdfd30d406cd495a088d830fd8" prefix="" category="inline-code"></block></block>
   <block id="738a5885a3f1e978619a10d76a3f0d58" category="paragraph"><block ref="98f5dff8534e8c39673b544f567273e7" prefix="" category="inline-code"></block></block>
-  <block id="3b80c5e6692ed1f78b0c7bf3e17d188a" category="inline-link-macro">安裝RCF指令碼</block>
-  <block id="91d50e6f1ffd307a9108d54a247f7d55" category="paragraph"><block ref="763f0b96028529aeaf5b60372a2f7565" category="inline-link-macro-rx"></block>。</block>
   <block id="311103ba8a3a6ddd19fc0a1c5dae4a53" category="paragraph">您可以將ONTAP 舊版Cisco交換器（用於支援某個叢集）移轉至NVIDIA SN2100儲存交換器。這是不中斷營運的程序。</block>
   <block id="2d0e9a7694bf5bc701c3af145a6bba71" category="section-title">檢閱要求</block>
   <block id="35579d2b7a8495c27a300ee6bbf2b876" category="paragraph">確保：</block>
@@ -2453,7 +2441,6 @@
   <block id="4040afeac483867248436c3258ab0ac5" category="paragraph">若要設定SN2100交換器、請參閱NVIDIA的文件。</block>
   <block id="8531c13492d4ecd58c32e409e344feb5" category="inline-link">NVIDIA系統啟動。</block>
   <block id="f84c52922c5c9122927a420f7d3831cb" category="list-text">依照中的指示操作<block ref="85c2f785018b73541170694ba4650039" category="inline-link-rx"></block>。</block>
-  <block id="a73237369b19930fe70e6df63872cf5c" category="paragraph"><block ref="75ce5666fba6992a0719935651dd5b1b" category="inline-link-macro-rx"></block>。</block>
   <block id="1fec389edf7d6a599779f9d24434c21c" category="summary">對於NVIDIA SN2100交換器的安裝與維護、請務必檢閱機櫃與軌道套件的元件清單與零件編號。</block>
   <block id="4d76f023f4fff5f776ba26426c03d7a6" category="doc">NVIDIA SN2100交換器的元件和零件編號</block>
   <block id="3f9c12e1d0acbeca7bc410db81110a76" category="section-title">機櫃詳細資料</block>
@@ -2471,7 +2458,6 @@
   <block id="67dfd4b7e3a80a311bee6d3c67d73ba2" category="doc">將NS224磁碟櫃連接為交換器附加儲存設備</block>
   <block id="69fe2bd920008d1b6c35f9baad74d4f1" category="inline-link">連接交換器的NS224磁碟機櫃佈線</block>
   <block id="1d60ae449462450e67f46eb89e1c693c" category="paragraph"><block ref="1d60ae449462450e67f46eb89e1c693c" category="inline-link-rx"></block></block>
-  <block id="793086ebaed916943ac8fc5f192a1679" category="paragraph"><block ref="770c77dd441cd3adc4139ccb3c0d491b" category="inline-link-macro-rx"></block> 或 <block ref="28a30a7b340666b28d9a4222e714aaf7" category="inline-link-macro-rx"></block>。</block>
   <block id="e4476de08c6bf6f2b86938c20b3510bf" category="summary">在安裝RCF指令碼之前、請確定交換器上有下列項目可用</block>
   <block id="144a8e89f9c38ca949aede4fe56c2cb7" category="list-text">將RCF python指令碼複製到交換器。</block>
   <block id="39e77b4f608ccea6c3163df34d07da19" category="paragraph">RCF指令碼會完成上述範例中所列的步驟。</block>
@@ -2514,9 +2500,6 @@
   <block id="e868bded76541295e018b74bb15a7920" category="doc">NVIDIA SN2100交換器的安裝與組態總覽</block>
   <block id="17bac2b43f841c260ed0b0ae5bac894f" category="paragraph">NVIDIA SN2100是一款叢集交換器、可讓您建置ONTAP 包含兩個以上節點的各種叢集。</block>
   <block id="2e95d6c246df629a6432f312c5db273b" category="admonition">請參閱<block ref="16a6d09025d51cb8dd3516798b3fee8a" category="inline-link-rx"></block> 適用於所有支援ONTAP 的版本。</block>
-  <block id="1b634b8feab38e3bbd4e434301816457" category="list-text"><block ref="1b634b8feab38e3bbd4e434301816457" category="inline-link-macro-rx"></block></block>
-  <block id="e831ca446f09bd354bf76a86391af038" category="list-text"><block ref="e831ca446f09bd354bf76a86391af038" category="inline-link-macro-rx"></block></block>
-  <block id="fc89f8ef8daa08e9ffc121c5d5609d54" category="list-text"><block ref="fc89f8ef8daa08e9ffc121c5d5609d54" category="inline-link-macro-rx"></block></block>
   <block id="000b6bb5cbb57345f81524ec8fea7ef3" category="paragraph">對於NVIDIA SN2100交換器的安裝與維護、請務必檢閱所有組態需求。</block>
   <block id="234133fd4f1ed6a8d213d73b1ffcbefe" category="paragraph">如需纜線佈線準則、請參閱 <block ref="81e27480a79c2bb77194c038c9737157" category="inline-link-macro-rx"></block>。</block>
   <block id="22ea3b2c4427ea1c139766bf62e1885a" category="admonition">可以在交換器執行Cummulos Linux或ONIE時安裝Cummulos Linux（CL）作業系統（請參閱 <block ref="de0ca50ac0e3b49c8119663a32409a25" category="inline-link-macro-rx"></block>）。</block>
@@ -2544,7 +2527,6 @@
   <block id="5d7d3fec6981ada6aaadeb26a2e456d1" category="paragraph">應顯示每個連接埠<block ref="46c48bec0d282018b9d167eef7711b2c" prefix=" " category="inline-code"></block> 適用於<block ref="97e7c9a7d06eac006a28bf05467fcc8b" prefix=" " category="inline-code"></block> 而且健康<block ref="fbcf0d1f787c74663ca9dc925ebf5f0c" prefix=" " category="inline-code"></block>。</block>
   <block id="2e7c59cc96135fe229b2eef0001efa1a" category="list-text">在交換器sw1和SW2上、確認所有節點叢集連接埠都已啟動：</block>
   <block id="496fe3dd70b4f5816f2c409909812bb5" category="list-text">驗證所有叢集網路lifs是否都回到其主連接埠：</block>
-  <block id="829106baec07d32d260194a2527e041b" category="paragraph"><block ref="81e27480a79c2bb77194c038c9737157" category="inline-link-macro-rx"></block>。</block>
   <block id="551d30a8d4eb4a668b69a7293c7a7b96" category="section-title">QSA介面卡</block>
   <block id="95014a22727b6c60eefe66a36ce9ded2" category="paragraph"><block ref="520f63525f898e977d91bb94f9da1129" category="inline-link-macro-rx"></block>。</block>
   <block id="b3ab991775278214a4482646f14a4804" category="paragraph">您使用的程序取決於每個控制器上是否有兩個專屬的叢集網路連接埠、或每個控制器上是否有一個叢集連接埠。記錄的程序適用於所有使用光纖或雙軸纜線連接埠的節點、但如果節點使用內建10GBASE-T RJ45連接埠來連接叢集網路連接埠、則此交換器不支援此程序。</block>
@@ -2556,18 +2538,12 @@
   <block id="73150a01363aed5257939f818ac56b3b" category="list-text">參考組態檔（RCT）會套用至交換器</block>
   <block id="d334b073010dc4ca86957c663631fa0b" category="paragraph">每個叢集LIF都應顯示為true<block ref="53db3ce0fe0e71f06b3beb0b676b806c" prefix=" " category="inline-code"></block> 並擁有<block ref="4f21ee5a18672b60f4c01e94e6be9c79" prefix=" " category="inline-code"></block> 的<block ref="fc7c1443e5c7b6439706b6132a4c0829" prefix=" " category="inline-code"></block>。</block>
   <block id="e64b06ebdf8146ea2bc17ff7d5457eef" category="summary">Cisco Nexus 9336C-FX2儲存交換器的安裝與組態總覽</block>
-  <block id="be4cd7f1969695f8e6e1f2c8040abcd4" category="paragraph">若要在執行ONTAP 故障切換的系統上初始設定Cisco Nexus 9336C-FX2交換器、請依照下列步驟操作：</block>
   <block id="5ac09e984471f320b2e8920ece32b03d" category="inline-link-macro">完整的佈線工作表</block>
   <block id="ef44963f41cab6cd9db7a1c9e6197076" category="inline-link-macro">安裝交換器</block>
   <block id="1fc245f373dd47304db35c4ef2df408e" category="inline-link-macro">設定交換器</block>
   <block id="d33665f1bbad937646d20fe1a9b8ace8" category="inline-link-macro">在NetApp機櫃中安裝交換器</block>
   <block id="0d5a52d62bb26b9e7ae6a509e4469dc1" category="inline-link-macro">準備安裝NX-OS和RCF</block>
-  <block id="45082651a479febeab25b63e58d36d5e" category="inline-link-macro">安裝RCF組態檔</block>
-  <block id="963382b42eb000171ee5f8379237c25e" category="list-text"><block ref="963382b42eb000171ee5f8379237c25e" category="inline-link-macro-rx"></block></block>
-  <block id="88abf51732f30f17b65def4d1747e28f" category="list-text"><block ref="88abf51732f30f17b65def4d1747e28f" category="inline-link-macro-rx"></block></block>
-  <block id="08712014b627ff0e1c01c2b7e6c49149" category="list-text"><block ref="08712014b627ff0e1c01c2b7e6c49149" category="inline-link-macro-rx"></block></block>
   <block id="b33d390dde96efa203125553c0106997" category="inline-link-macro">智慧電話住家需求</block>
-  <block id="e8481427ca620a3937c98f902278bb34" category="list-text"><block ref="e8481427ca620a3937c98f902278bb34" category="inline-link-macro-rx"></block></block>
   <block id="a525a0a5bd0337e90ed0f23d435c2ab0" category="doc">填寫Cisco Nexus 9336C-FX2纜線工作表</block>
   <block id="51f11fea5721fbfd7a878e47f5486426" category="paragraph">如果您想要記錄支援的平台、請下載本頁的PDF檔案、並填寫佈線工作表。</block>
   <block id="b53e6697df38b328f2cdc4d3cea1fcf8" category="paragraph">佈線工作表範例提供從交換器到控制器的建議連接埠指派範例。空白工作表提供範本、可用於設定叢集。</block>
@@ -2654,8 +2630,6 @@
   <block id="00e409477db1ee56d9fea495b752156f" category="list-text">適用的NetApp叢集網路與管理網路RCT、可從NetApp 支援網站 The Sorgat下載<block ref="28649c93049a329043d206ec7fa0c6f8" category="inline-link-rx"></block>。所有Cisco叢集網路和管理網路交換器都會以標準Cisco原廠預設組態送達。這些交換器也有NX-OS軟體的最新版本、但未載入RCFs。</block>
   <block id="bc6d2bd4e8f6199ec8866997a5f53523" category="list-text">必要的交換器文件。請參閱 <block ref="08712014b627ff0e1c01c2b7e6c49149" category="inline-link-macro-rx"></block> 以取得更多資訊。</block>
   <block id="ce95af11062cb078ba299f574f2eb115" category="paragraph">請參閱 <block ref="e635379a5d7f0e2ce1a042bff79838b6" category="inline-link-macro-rx"></block> 以取得在NetApp機櫃中安裝交換器的指示。</block>
-  <block id="bc0630b5ddba535ff747f33d931d3694" category="inline-link-macro">設定Cisco Nexus 9336C-FX2儲存交換器</block>
-  <block id="72ebeb1eaefeb8dcaddced548aa138a6" category="paragraph">前往 <block ref="dbe1537ab2448f7ffd0bedd5a713fbd6" category="inline-link-macro-rx"></block>。</block>
   <block id="5d9de0e2f02eef0f18faf016853f64f1" category="paragraph">您可以將舊版Cisco叢集交換器移轉至ONTAP Cisco Nexus 9336C-FX2儲存網路交換器。這是不中斷營運的程序。</block>
   <block id="168e6c74ccda1fafcc71e6c7735ab151" category="list-text">叢集運作正常（記錄中不應有錯誤或類似問題）。</block>
   <block id="9a09d8e2d5f6e06a696dfad8eb5b3787" category="list-text">Cisco Nexus 9336C-FX2交換器的初始自訂已完成、因此：</block>
@@ -2705,7 +2679,6 @@
   <block id="5e771b5b909032a79810f03b4d3094cd" category="paragraph">設定預設介面層（L3/L2）</block>
   <block id="e6119e5e7b756f5ac645bab3bd6b7cf5" category="paragraph">設定預設交換器連接埠介面狀態（關機/節點關機）</block>
   <block id="ddcc83d63cc173465ab257f25d480cfc" category="paragraph">設定CoPP系統設定檔（嚴格/中等/輕度/高密度）</block>
-  <block id="91e900250e74122a13484678f32eb0d2" category="inline-link-macro">在NetApp機櫃中安裝交換器</block>
   <block id="470cefaa9702bc5da534dfcfab6d903d" category="doc">概述與要求：Cisco Nexus 9336C-FX2交換器</block>
   <block id="c7bc672c5005e17eaf6387fbc19b5add" category="paragraph">對於Cisco Nexus 9336C-FX2交換器的安裝與維護、請務必檢閱組態要求與文件要求。</block>
   <block id="c7c3b8d53ffb83548ff8a021ca0fa284" category="section-title">交換器元件</block>
@@ -2758,19 +2731,9 @@
   <block id="928578e16a90196fc9a03ee550b28e6a" category="list-text">用於管理網路流量的IP子網路。</block>
   <block id="becb2a794e73682397182ea70e8c3723" category="list-text">每個儲存系統控制器和所有適用交換器的主機名稱和IP位址。</block>
   <block id="76db3740211118dc35fb0fd88cf80881" category="summary">在設定Cisco Nexus 3132Q-V交換器之前、請先檢閱程序與命名規則的總覽。</block>
-  <block id="51948fff96d39879d6003ec3a473111b" category="doc">Cisco Nexus 3132Q-V交換器的安裝與組態總覽</block>
   <block id="fc9286ab35f04cf48b4c402b64077bfe" category="paragraph">Cisco Nexus 3132Q-V交換器可做AFF 為您的叢集或FAS 叢集內的叢集交換器。叢集交換器可讓您建立ONTAP 具有兩個以上節點的叢集。</block>
-  <block id="85ed1ee9f4201a216125c557ae3a7f55" category="paragraph">若要在執行__LW_Y_Y_Y_Y_YV_Y_Y_YV_YV_YRIT_YRIT_YRIT_YRIT_Y ONTAP</block>
-  <block id="2b4b02e189294d861923b97358dd2f5a" category="list-text"><block ref="23d1fa41a61ba507d26b61266d9bc561" category="inline-link-macro-rx"></block>。佈線工作表範例提供從交換器到控制器的建議連接埠指派範例。空白工作表提供範本、可用於設定叢集。</block>
   <block id="4e9e2beeb3b73a531c47ec929bbfd872" category="inline-link-macro">在NetApp機櫃中安裝Cisco Nexus 3132Q-V叢集交換器</block>
   <block id="d33a1a3c4cea4496ac1583d929f95c2b" category="inline-link-macro">設定Cisco Nexus 3132Q-V交換器</block>
-  <block id="ab65b98e8410ac425fabe5d73b5e3eed" category="list-text"><block ref="6e21de03ac85481d2e774cd373205342" category="inline-link-macro-rx"></block>。設定及設定Cisco Nexus 3132Q-V交換器。</block>
-  <block id="d6a0822a7c97bddf0c6c35c07c36f7b0" category="list-text"><block ref="c7d9f92acf90399e5467216f763af38e" category="inline-link-macro-rx"></block>。準備安裝NX-OS軟體和參考組態檔（RCF）。</block>
-  <block id="6a4f98e05faf849092c98d5cf51294cb" category="list-text"><block ref="b41a039366e359642e7be006f7a5851f" category="inline-link-macro-rx"></block>。請遵循此程序、在Nexus 3132Q-V叢集交換器上安裝NX-OS軟體。</block>
-  <block id="e8e760c3679b559cdfdc166a92b33a36" category="list-text"><block ref="a230254c929e1946d5af4ce09f0d3fb2" category="inline-link-macro-rx"></block>。第一次設定Nexus 3132Q-V交換器之後、請遵循此程序來安裝RCF。您也可以使用此程序來升級RCF版本。</block>
-  <block id="b7849b8fb2657e254b2634895b6d222a" category="list-text"><block ref="b7849b8fb2657e254b2634895b6d222a" category="inline-link-macro-rx"></block></block>
-  <block id="3733ea959ea350d46ba403dfe4087bb4" category="list-text"><block ref="3733ea959ea350d46ba403dfe4087bb4" category="inline-link-macro-rx"></block></block>
-  <block id="e25a52f8aae59a2992e22d409c64553b" category="list-text"><block ref="e25a52f8aae59a2992e22d409c64553b" category="inline-link-macro-rx"></block></block>
   <block id="ef6eaa4c7752485e23a87c77670b7a91" category="paragraph">請遵循此程序來設定Cisco Nexus 3132Q-V交換器。</block>
   <block id="f4a9a8106beb280dd190115e400fe07d" category="list-text">所需的網路交換器文件、控制器文件和ONTAP 資訊檔。如需詳細資訊、請參閱 <block ref="3733ea959ea350d46ba403dfe4087bb4" category="inline-link-macro-rx"></block>。</block>
   <block id="2f27611f222a457ac43a3288b715e56e" category="list-text">完成佈線工作表。請參閱 <block ref="23d1fa41a61ba507d26b61266d9bc561" category="inline-link-macro-rx"></block>。</block>
@@ -2895,21 +2858,10 @@
   <block id="deb85e114cff5e43827659943f46cc9c" category="list-text">驗證所有生命期現在都已恢復到其主端口：</block>
   <block id="8f8d033bf51be9de75ca2b6fc1e404ff" category="section-title">步驟4：啟用重新指派的LIF</block>
   <block id="4a91febaa4c24955d4b5a205fc4846e7" category="summary">在設定Cisco Nexus 3232c交換器之前、請先檢閱程序與命名規則的總覽。</block>
-  <block id="3d8c0d3afd6618c62321bcaf19ae1a50" category="doc">Cisco Nexus 3232c交換器的安裝與組態總覽</block>
   <block id="d4d8b9ec23fdb4722400f56c58539809" category="paragraph">Cisco Nexus 3232C交換器可做AFF 為您的叢集或FAS 叢集內的叢集交換器。叢集交換器可讓您建立ONTAP 具有兩個以上節點的叢集。</block>
-  <block id="2ae936b48ca62e7eabcf5f17a1bdf469" category="paragraph">若要在執行ONTAP 指示燈的系統上初始設定Cisco Nexus 3232c交換器、請遵循下列步驟：</block>
   <block id="3d4991c772277ad3b0de4a5a176285e3" category="inline-link-macro">填寫Cisco Nexus 3232C佈線工作表</block>
-  <block id="b15888e648a7a332b3c006c14909b9d4" category="list-text"><block ref="dfe65a54ddd9ca33e5e24e9ec5f1ebb5" category="inline-link-macro-rx"></block>。佈線工作表範例提供從交換器到控制器的建議連接埠指派範例。空白工作表提供範本、可用於設定叢集。</block>
   <block id="1fa4ad4927c73726da929663892a7705" category="inline-link-macro">在NetApp機櫃中安裝Cisco Nexus 3232C叢集交換器</block>
-  <block id="d712f78e9b2a27a45fb9481e6b6db030" category="list-text"><block ref="cd071e749c265e9f4b3af48e625906ca" category="inline-link-macro-rx"></block>。將Cisco Nexus 3232C叢集交換器和直通面板安裝在NetApp機櫃中、並附有交換器隨附的標準支架。</block>
   <block id="5b2f13a0b30c9b49749eb02428be7342" category="inline-link-macro">設定3232C叢集交換器</block>
-  <block id="7b69dbde6b0ecf1ef5d7b953825afb65" category="list-text"><block ref="ab35665c267fa570f19ad0ebf8386ab4" category="inline-link-macro-rx"></block>。設定及設定Cisco Nexus 3232C交換器。</block>
-  <block id="36df0ecc992fe3683c201377fe700562" category="list-text"><block ref="1328cd9b336996848f07ffe4022b2fbf" category="inline-link-macro-rx"></block>。準備安裝NX-OS軟體和參考組態檔（RCF）。</block>
-  <block id="aee20cf721b92e708e75b0acb153d341" category="list-text"><block ref="314dd1d996fbb9aca1be9c197bfb078b" category="inline-link-macro-rx"></block>。在Nexus 3232C叢集交換器上安裝NX-OS軟體。</block>
-  <block id="4cb8a807b0f5d8a210334907d852e11b" category="list-text"><block ref="b7bad585691991d28d9b701a0039267f" category="inline-link-macro-rx"></block>。初次設定Nexus 3232C交換器之後、請安裝RCF。您也可以使用此程序來升級RCF版本。</block>
-  <block id="f98da02f0354b9650f021d5be0d693ee" category="list-text"><block ref="f98da02f0354b9650f021d5be0d693ee" category="inline-link-macro-rx"></block></block>
-  <block id="1dbca34b24162eb59cc33616a1549705" category="list-text"><block ref="1dbca34b24162eb59cc33616a1549705" category="inline-link-macro-rx"></block></block>
-  <block id="fab4f252f5f3f34c327db7336393d285" category="list-text"><block ref="fab4f252f5f3f34c327db7336393d285" category="inline-link-macro-rx"></block></block>
   <block id="3a8f0842d5dca1fcfc9d1e9427a71597" category="doc">從Cisco Nexus 5596叢集交換器移轉至Cisco Nexus 3232C叢集交換器</block>
   <block id="b523a20aa4705a68ac3b89e4fbae1f04" category="paragraph">請遵循此程序、在採用Nexus 3232C叢集交換器的叢集中移轉現有的Cisco Nexus 5596叢集交換器。</block>
   <block id="57e344d2e173d59c7b6b7398fb41ff4d" category="section-title">移轉交換器</block>
@@ -2985,10 +2937,6 @@
   <block id="b456d34c399e9d9889e4c0ac830ecb7a" category="summary">Cisco Nexus 9336C-FX2叢集交換器的安裝與組態總覽</block>
   <block id="a48d2f73b54f1c12d4039724748b5d7a" category="paragraph">Cisco Nexus 9336C-FX2叢集交換器是Cisco Nexus 9000平台的一部分、可安裝在NetApp系統機櫃中。叢集交換器可讓您建立ONTAP 具有兩個以上節點的叢集。</block>
   <block id="cde616a63686a24e0a12d2bf772daea1" category="inline-link-macro">設定9336C-FX2叢集交換器</block>
-  <block id="a41964b84efbb7866cc12a9e798a3453" category="list-text"><block ref="a41964b84efbb7866cc12a9e798a3453" category="inline-link-macro-rx"></block></block>
-  <block id="169e5eca6121ce7f69a705f99619e75c" category="list-text"><block ref="169e5eca6121ce7f69a705f99619e75c" category="inline-link-macro-rx"></block></block>
-  <block id="19183173bd336c4a7349920f4bc23f03" category="list-text"><block ref="19183173bd336c4a7349920f4bc23f03" category="inline-link-macro-rx"></block></block>
-  <block id="7845322ccf047d30291b050b118b43f2" category="list-text"><block ref="7845322ccf047d30291b050b118b43f2" category="inline-link-macro-rx"></block></block>
   <block id="696ff70e4b2816b3772c8643552d89de" category="paragraph">若要使用「智慧電話主選項」功能、請參閱下列準則。</block>
   <block id="fc8b273ce2a3b27b90b600bb90d3f6a1" category="paragraph">請依照下列步驟、在叢集網路中更換故障的Nexus 9336C-FX2交換器。這是不中斷營運的程序（NDU）。</block>
   <block id="e1d51624c9462dce3c8cb21ee2541c35" category="paragraph">更換交換器之前、請確定：</block>
@@ -3020,7 +2968,6 @@
   <block id="d6cac7bfdbc134d71eb6bb1bcf21401e" category="list-text"><block ref="6cd5f48152f1b7d1d000447807211e56" category="inline-link-macro-rx"></block>。</block>
   <block id="bf4aef298c742af331d17ef105c45f0c" category="cell">如果您要安裝...</block>
   <block id="88d4e4922c29eff797c809112d3dce0e" category="inline-link-macro">設定Cisco Nexus 9336C-FX2交換器</block>
-  <block id="cec817ac128eb56a5786f0db80349903" category="paragraph">前往 <block ref="ab999189278342fe22cdb57d13e768ab" category="inline-link-macro-rx"></block>。</block>
   <block id="aad9591a84e2ca7153e50ff2fc45bc5c" category="paragraph">您可以從舊的Cisco叢集交換器執行不中斷營運的移轉、移轉至Cisco Nexus 9336C-FX2叢集網路交換器。</block>
   <block id="7a298dae32d29d6d4880c0d03618ae87" category="list-text">可從NetApp取得的傳遞面板套件（零件編號X8784-R6）。</block>
   <block id="828eeccf398aa5a5516c86cf77b98e41" category="list-text">對於每個交換器、有八個10-32或12-24個螺絲和固定螺帽可將托架和滑軌安裝到機箱前後的支柱上。</block>
@@ -3032,7 +2979,6 @@
   <block id="64e83e4557dbf8dfd8cb98fc07acc1b4" category="paragraph"><block ref="ab999189278342fe22cdb57d13e768ab" category="inline-link-macro-rx"></block>。</block>
   <block id="71f5a93eca776f3223a87d3523ce52d8" category="paragraph">輸入交換器名稱、最多可輸入63個英數字元。</block>
   <block id="95f749c32572d23c36c0f33b9f48fa88" category="inline-link-macro">在NetApp機櫃中安裝Cisco Nexus 9336C-FX2交換器</block>
-  <block id="80f16525d7b1d7efe562fab354c53efe" category="paragraph">您也可以選擇 <block ref="a8c82b142f94f7d62d6e984faba746ca" category="inline-link-macro-rx"></block>。否則、請前往 <block ref="7be1885a02922674638042ed6280ba6b" category="inline-link-macro-rx"></block>。</block>
   <block id="e87b8cb8ca5f95ffd4513eaaf405e559" category="list-text">您必須參閱Cisco網站上提供的適當軟體與升級指南。Cisco Nexus 3000系列交換器</block>
   <block id="02f9fa6d27aeaa4b43a0246698a4a478" category="list-text">交換器的初始配置必須完成。</block>
   <block id="3c022231e0cbfc41bbc1b30213e131b9" category="list-text">針對每個LIF、請確認<block ref="53db3ce0fe0e71f06b3beb0b676b806c" prefix=" " category="inline-code"></block> 是<block ref="b326b5062b2f0e69046810717534cb09" prefix=" " category="inline-code"></block> 和<block ref="4f21ee5a18672b60f4c01e94e6be9c79" prefix=" " category="inline-code"></block> 是<block ref="46c48bec0d282018b9d167eef7711b2c" prefix=" " category="inline-code"></block> 在兩個節點上、使用命令：</block>
@@ -3069,7 +3015,6 @@
   <block id="ffe7a2cdbe818a87c6dc07fcabe21b8d" category="list-text">檢閱 <block ref="aefa00c6161012d4695cd8109566fb4d" category="inline-link-macro-rx"></block>。</block>
   <block id="f249686dfa625a48e16b61cc36dc2543" category="inline-link">Broadcom支援的BS-53248叢集交換器安裝指南</block>
   <block id="9343a353b1f82fabd9ee240e066471c9" category="list-text">請依照中的指示進行<block ref="2499b40383e5eeae4a8e13c0ef2b5e8c" category="inline-link-rx"></block>。</block>
-  <block id="2c313ef83d1daadd03ff286fd1bc25ab" category="paragraph"><block ref="b88c299eeb38820fb709454fcd144438" category="inline-link-macro-rx"></block>。</block>
   <block id="e8ab0c1581dc0dcc64441ffb1b729ce5" category="summary">如果您有雙節點無交換式叢集、則可在不中斷營運的情況下、移轉至雙節點交換式叢集、其中包含Broadcom支援的BS-53248叢集交換器</block>
   <block id="aa7dd6235ef36f2c7e4cd4edddab41eb" category="paragraph">如果您現有的雙節點_無交換器_叢集環境、則可以使用Broadcom支援的BS-53248叢集交換器、移轉至雙節點_交換式_叢集環境、使您能夠擴充至叢集中的兩個節點之外。</block>
   <block id="784bdcc078009075bac39754a34c1477" category="paragraph">移轉程序適用於使用光纖或雙軸纜線連接埠的所有叢集節點連接埠、但如果節點使用內建10GBASE-T RJ45連接埠作為叢集網路連接埠、則此交換器不支援此程序。</block>
@@ -3107,7 +3052,6 @@
   <block id="6083315b474d2e25f9bdf511dc54ea67" category="paragraph">若要啟動新授權的連接埠、您必須編輯最新版的RCF、然後取消註釋適用的連接埠詳細資料。</block>
   <block id="17eefc6b67d3cb347ca774524ca5904f" category="paragraph">預設授權會啟動連接埠0/1到0/16和0/55到0/56、而新授權的連接埠則會在連接埠0/17到0/54之間、視可用授權的類型和數量而定。例如、若要啟動SW-BES54248-40-100g-LIC授權、您必須取消註解RCF中的下列章節：</block>
   <block id="dcb1f1163fb7f798a9948353092b6313" category="admonition">對於0/49到0/54（含）之間的高速連接埠、請針對每個連接埠取消註解、但在RCF中只取消註釋一條*速度*線路、例如*速度100g全雙工*或*速度40G全雙工*、如範例所示。對於0/17到0/48（含）之間的低速度連接埠、請在啟用適當授權後、取消註釋整個8埠區段。</block>
-  <block id="ce4c0c35cac0cafac061a49da52f93cd" category="paragraph"><block ref="74dd19c11d43cfa2dd387ecf7d984746" category="inline-link-macro-rx"></block>。</block>
   <block id="d007743863da413e0445811c05d574db" category="summary">檢閱軟體總覽。</block>
   <block id="93d9f7b647768c2633a5b9f8a68e2b52" category="doc">適用於BS-53248交換器的軟體安裝工作流程</block>
   <block id="9302ce88c481ebfe72d64373c7b0d0e5" category="doc">升級BS-53248叢集交換器</block>
@@ -3154,10 +3098,7 @@
   <block id="2d4ad0c0621b585dc2cfad2f57d9f53b" category="paragraph">連接埠通道1/1的連結狀態應為*上線*、且連接埠作用中標題下的所有成員連接埠均應為真。</block>
   <block id="392acfac07477c629ee4bb830ba5f279" category="list-text">驗證連接埠e0b是否為* up*：</block>
   <block id="bb59d83c000dfcf9402cc7fe83382189" category="summary">在設定BS-53248叢集交換器之前、請先檢閱組態總覽。</block>
-  <block id="5397dcc92d377f4ebfbca5756b92d81f" category="doc">BS-53248交換器的安裝與組態總覽</block>
   <block id="84247410f9abb8ef1b7e190d6a0a0b48" category="paragraph">BS-53248是一款裸機交換器、設計用於ONTAP 2到24個節點的各種叢集。</block>
-  <block id="d26749e6607016e99f01bc39d1671b57" category="paragraph">若要在執行ONTAP 指示燈的系統上初始設定BS-53248叢集交換器、請遵循下列步驟：</block>
-  <block id="30bc59659410cfda61387b34e1612b7c" category="list-text"><block ref="30bc59659410cfda61387b34e1612b7c" category="inline-link-macro-rx"></block></block>
   <block id="9b98f71b4f8966672466da09f0a3d382" category="doc">BS-53248叢集交換器的文件需求</block>
   <block id="4c80b08bbc6e6756fd49dea97199c7f2" category="paragraph">對於BES-53248交換器的安裝與維護、請務必檢閱特定的交換器與控制器文件。</block>
   <block id="5c2b05c0d3f7ed92ed9b258aa12e94d1" category="section-title">Broadcom文件</block>
@@ -3179,7 +3120,6 @@
   <block id="0fa8ca6cfd731f93388f2f318c1fb1d3" category="paragraph">請使用下列其中一種方法：</block>
   <block id="420b291d479da153c96fd1143e9d0e2f" category="list-text"><block ref="c306cecb30107650b346d91b7d7c74b6" category="inline-xref-macro-rx"></block>。如果其中一個EFOS版本符合FIPS標準、而另一個EFOS版本不符合FIPS標準、請使用。</block>
   <block id="fa6c2d2a92519a714fe25ca830427ee1" category="section-title">方法1：安裝EFOS</block>
-  <block id="a9ec10177705d18bc441b79924a01204" category="paragraph"><block ref="0f9f654882514557e57b19641aa7b563" category="inline-link-macro-rx"></block>。</block>
   <block id="35f10bdee5903f907ec6a32e4e0f9d7b" category="section-title">方法2：使用ONIE OS安裝來升級EFOS</block>
   <block id="e3070225d2354a09468604c0d1a2ab1a" category="paragraph">在開機期間、當您看到提示時、請選取ONIE。</block>
   <block id="e50efaccc60835803853783064a18e58" category="paragraph">選擇* ONIE*之後、交換器會載入並顯示多個選項。選擇*安裝OS*。</block>
@@ -3301,7 +3241,6 @@
   <block id="e7019c875b1e7fa7851e5b2570ff1637" category="list-text">完成佈線工作表。請參閱 <block ref="8e79e8ba8c95547bae4fb86f4526b4fe" category="inline-link-macro-rx"></block>。如需纜線的詳細資訊、請參閱<block ref="e8018b6e740a667345f4bcc94e4023fc" category="inline-link-rx"></block>。</block>
   <block id="94f31b898786bbf285eb3f1766d2b846" category="list-text">裝入交換器、控制器和NS224 NVMe儲存櫃。</block>
   <block id="f1d2082f6b7e2fe0bd21c264b34b1db0" category="inline-link">機架安裝說明</block>
-  <block id="d2fa93779a0f6b07d1717e02308c2fa6" category="inline-link-macro">設定Cisco Nexus 9336C-FX2共用交換器</block>
   <block id="c5ad5ecc479e35c7979fd57a0ebbe702" category="doc">設定Cisco Nexus 9336C-FX2共用交換器</block>
   <block id="a241f03e92a7f9be7881ccbebc3c49c1" category="list-text">[[step3]]執行交換器的初始組態。</block>
   <block id="f1763dacc91922ffa978d054dfd1f86a" category="list-text">啟動交換器。</block>
@@ -3309,9 +3248,6 @@
   <block id="aae42f96c85f765e2daf91cfda78fbed" category="paragraph">您站台的安全性原則會定義要啟用的回應和服務。</block>
   <block id="e0f95538095f3006db4ec3d4d022f616" category="summary">Cisco Nexus 9336C-FX2共享交換器的安裝與組態總覽</block>
   <block id="c4081cf1ddd1a31c8c993d369968dbdb" category="paragraph">Cisco Nexus 9336C-FX2共享交換器是Cisco Nexus 9000平台的一部分、可安裝在NetApp系統機櫃中。共享交換器可支援使用共享叢集和儲存參考組態檔、將叢集與儲存功能結合成共享交換器組態。</block>
-  <block id="6b60b7ab5a3f661e97c0ea00594d9f2a" category="list-text"><block ref="6b60b7ab5a3f661e97c0ea00594d9f2a" category="inline-link-macro-rx"></block></block>
-  <block id="ce2926213e4f5e76e8b29ae87f344220" category="list-text"><block ref="ce2926213e4f5e76e8b29ae87f344220" category="inline-link-macro-rx"></block></block>
-  <block id="c05d7708e583b7d4b251d68f1130d2c6" category="list-text"><block ref="c05d7708e583b7d4b251d68f1130d2c6" category="inline-link-macro-rx"></block></block>
   <block id="a321cd8baf442bb2bd9aee451d86f068" category="paragraph">開始之前、請先完成中的程序 <block ref="cd3d2c6d0c8a0c43f0a0e10375ad6bbc" category="inline-link-macro-rx"></block>。</block>
   <block id="a1b08e56cfc0b548b26111cb901dd959" category="doc">Cisco Nexus 9336C-FX2共享交換器的組態需求</block>
   <block id="2ac9f40bb0d0883c7db89ef5c430d1d5" category="paragraph">您可以新增兩個新的共用交換器、從具有直接附加儲存設備的交換式組態進行移轉。</block>
@@ -3526,15 +3462,6 @@
   <block id="4db4d99be4b5b2288798925cd1faeda3" category="list-text">交換器的初始自訂作業已完成、詳細內容請參閱： <block ref="f0d24ec92e2951fca3ce05ded916eb30" category="inline-link-macro-rx"></block>。</block>
   <block id="2367f63a291e7e1383961daf65d8b44f" category="example-title">顯示拓撲</block>
   <block id="255c4d8b5fe19006ce3e32d6abe4c5dd" category="summary">在設定Cisco Nexus 92300交換器之前、請先檢閱程序與命名規則的總覽。</block>
-  <block id="ffbe1aba3ae8a278e4f28ac52b2be316" category="list-text"><block ref="d38e35e34a06630798f8736804a06d84" category="inline-link-macro-rx"></block>。佈線工作表範例提供從交換器到控制器的建議連接埠指派範例。空白工作表提供範本、可用於設定叢集。</block>
-  <block id="71be1affbed75bebb8eb96c3572e9f1b" category="list-text"><block ref="f0d24ec92e2951fca3ce05ded916eb30" category="inline-link-macro-rx"></block>。設定及設定Cisco Nexus 2300YC交換器。</block>
-  <block id="1aaeb527f308dd42bbc5d35f0f59358b" category="list-text"><block ref="8b831959a634cc7821f2f066cbf13103" category="inline-link-macro-rx"></block>。準備安裝NX-OS軟體和參考組態檔（RCF）。</block>
-  <block id="b5b10cb0dbd484e42a569d248c83e32e" category="list-text"><block ref="e98d73ae63150166bf4e60effb4ddb59" category="inline-link-macro-rx"></block>。在Nexus 2300YC交換器上安裝NX-OS軟體。NX-OS是Cisco Systems提供的Nexus系列乙太網路交換器和MDS系列光纖通道（FC）儲存區域網路交換器的網路作業系統。</block>
-  <block id="ce68eaea6d3aebc9dac3b36567521e43" category="list-text"><block ref="e53cf8a4f7691294ee3c87b6f9b478ef" category="inline-link-macro-rx"></block>。初次設定Nexus 2300YC交換器之後、請安裝RCF。您也可以使用此程序來升級RCF版本。</block>
-  <block id="38fea660043776dff31d488d6f77d9bd" category="list-text"><block ref="38fea660043776dff31d488d6f77d9bd" category="inline-link-macro-rx"></block></block>
-  <block id="94f89641c24a2c5acf155cedb6b917d3" category="list-text"><block ref="94f89641c24a2c5acf155cedb6b917d3" category="inline-link-macro-rx"></block></block>
-  <block id="953b08a76549ddb5339056aaf68e6af4" category="list-text"><block ref="953b08a76549ddb5339056aaf68e6af4" category="inline-link-macro-rx"></block></block>
-  <block id="a2a393519d6030a855c14ef4686abf73" category="list-text"><block ref="a2a393519d6030a855c14ef4686abf73" category="inline-link-macro-rx"></block></block>
   <block id="b009bbd7f0cb4fd23e9e4309ea2fa6dd" category="paragraph">第一次設定Nexus 2300YC交換器之後、請遵循此程序來安裝RCF。您也可以使用此程序來升級RCF版本。</block>
   <block id="ff610701b925f91aacd004675b32b04c" category="list-text">確認所有叢集介面（l生命）都位於主連接埠：+<block ref="7af866342cc7e87972580d7b709d8820" prefix=" " category="inline-code"></block></block>
   <block id="1e687701660dbf5ad2b4f4bc764cf870" category="list-text">驗證叢集是否顯示兩個叢集交換器的資訊：+<block ref="7ca607e345a217b6fb9148234fe84d0c" prefix=" " category="inline-code"></block></block>
@@ -3543,7 +3470,6 @@
   <block id="2c4c153a7b33232a2908fa789336a2ee" category="paragraph"><block ref="abefab8d02f9c0ef8226a4fcf49448a1" prefix="" category="inline-code"></block></block>
   <block id="e617d80a2294adb5c3c62b25af747e57" category="inline-link-macro">安裝叢集交換器健全狀況監視器（CSHM）組態檔</block>
   <block id="a08609130428631761bac82d994b04c7" category="paragraph"><block ref="6f694a83f3a80cbdd0707c7c90c80946" category="inline-link-macro-rx"></block>。</block>
-  <block id="06f7473ee7b667cf7e6c7384b4e91957" category="doc">Cisco Nexus 2300YC交換器的元件</block>
   <block id="26961e618ecd01e172d0cc2829344d09" category="list-text">連接埠側排風（標準氣流）：冷空氣透過冷通道中的風扇和電源供應器模組進入機箱、並透過熱通道中的機箱連接埠端口排出。連接埠側邊的排氣氣流、搭配藍色色彩。</block>
   <block id="a65de0b2540eeae253ed86b6c80d5cd8" category="list-text">端口端口進氣氣流（反轉氣流）：冷卻氣流通過冷通道的端口端進入機箱，並通過熱通道中的風扇和電源設備模塊排出。連接埠側進氣氣流、搭配酒紅色。</block>
   <block id="c24412eff0fdd364ed38f42c78180f6d" category="list-text">完整功能的現有叢集。</block>
@@ -3591,7 +3517,6 @@
   <block id="b5bfe3d61bf9be292418cb9d21eec19c" category="sidebar">開始運作</block>
   <block id="6e637bf90c8e52e1b5b8fa7b076594de" category="sidebar">終止可用度交換器</block>
   <block id="282155126a94a0702cfd80daf38d4362" category="sidebar">組態總覽</block>
-  <block id="7f8f9fd297c670e19fcb103b3ff3693a" category="sidebar">安裝交換器</block>
   <block id="255792643a308380582db36f95d3ebdc" category="sidebar">檢視纜線佈線與組態</block>
   <block id="e64318af86778ae16b9f5a4d5187bc61" category="sidebar">NS224磁碟櫃纜線</block>
   <block id="fda45ed29ff5c085175df6a3a370ee1e" category="sidebar">設定軟體</block>
@@ -3603,14 +3528,11 @@
   <block id="ad8c6613a9c5149c2f22f875459b6a06" category="sidebar">從Cisco叢集交換器移轉</block>
   <block id="194d828d5f6903e0190e08180b8af056" category="sidebar">更換叢集交換器</block>
   <block id="7fda27801f23bbd9656018fa8a6f6af0" category="sidebar">從舊的Cisco交換器移轉</block>
-  <block id="512f694616622dd7d0109c65f582ba21" category="sidebar">更換儲存交換器</block>
   <block id="ce140d6d1921435e3df40a72b6d032f4" category="sidebar">從CN1610交換器移轉</block>
   <block id="ac0586dfb2126d95d9be6378c5f70512" category="sidebar">從無交換器叢集移轉至交換式叢集</block>
   <block id="703c0fedc12db69e340d7c2f3de0d764" category="sidebar">更換交換器</block>
-  <block id="5990fb757a59a934aeb2786bac162e97" category="sidebar">安裝EFOS軟體</block>
   <block id="e7d694813a2146a3ab31b4b907988620" category="sidebar">啟用SSH</block>
   <block id="037fd3285f5414c76c57c401fbc5603c" category="sidebar">啟用記錄收集</block>
-  <block id="71f5771dab663d80ba4dad1627e3386a" category="sidebar">升級總覽</block>
   <block id="90f9408edf534ae6691bfa241e3cef32" category="sidebar">更換BS-53248交換器</block>
   <block id="c4767bb3bd142c908fcfd8a9e5fab38c" category="sidebar">從無交換器DAS叢集移轉</block>
   <block id="3c0c4451f5d8950dc9b9a962b87ff4ae" category="sidebar">從交換式DAS組態移轉</block>
@@ -3624,36 +3546,16 @@
   <block id="9c065304d8a82e97da8536d4c7484ee2" category="sidebar">從舊的Cisco交換器移轉</block>
   <block id="c95ced7468e70606897322014b89e5b3" category="section-title">步驟3：將NX-OS映像複製到Cisco交換器S2並重新開機</block>
   <block id="04677d95852adc11088eca251913d172" category="list-text">將NX-OS映像複製到交換器S2。</block>
-  <block id="d04983d9bd489fd4f53e439238800094" category="list-text"><block ref="5f708dbff4511d944b6c35289a542f62" category="inline-link-macro-rx"></block>。</block>
-  <block id="ddee9ddda45482f8b50a8ca3d914d59a" category="paragraph">如需相關指示、請參閱《NVIDIA交換器安裝指南》_。</block>
-  <block id="5845d3fca01cce4672ef2b7e32409ff8" category="paragraph">您可以在NVIDIA文件中找到相關指示。</block>
   <block id="b5cafb18c89d57d8df7255c9f420d2ca" category="paragraph">檢閱光纖連線、QSA介面卡和switchport速度的需求。</block>
-  <block id="dc2bbc38ec9887a7f4fa50b23f2c0a3d" category="paragraph">如果您的系統需要將NS224磁碟機櫃連接成交換器附加儲存設備（非直接附加儲存設備）、請遵循下列程序。</block>
-  <block id="cee17d3de1bd4e10ffb4f75ffbd430da" category="list-text"><block ref="3041b5118a03f510955dbbcc0f577290" category="inline-link-macro-rx"></block> 或 <block ref="ac50052da6099ecd2d2a2ee1cd713de9" category="inline-link-macro-rx"></block>。</block>
-  <block id="c9c417af7a858dfc220fb9facdaa5893" category="paragraph">當交換器執行的是Cummulos Linux或ONIE時、您可以安裝Cummulos Linux（CL）OS。</block>
-  <block id="02c867e49effa332687b835abcbc2abe" category="list-text"><block ref="ef1c46298c43687118873cf83b7acf6b" category="inline-link-macro-rx"></block>。</block>
-  <block id="c945ea7b3efde1e618122f92507cc502" category="paragraph">叢集與儲存應用程式可使用兩個RCF指令碼。</block>
-  <block id="78a3145f7f81ea095cdce342b0eeb83a" category="list-text"><block ref="d4a90f7cd2b65eac1430336cfe2ee64b" category="inline-link-macro-rx"></block>。</block>
-  <block id="280f95118eded8b0219c276178c30e97" category="list-text"><block ref="5e0473d3f7899dd064d2b0943ad87ca5" category="inline-link-macro-rx"></block>。</block>
   <block id="b8cd88654eafece50754fca964cba8a1" category="paragraph">如果您的系統需要將NS224磁碟機櫃纜線作為交換器附加儲存設備（非直接附加儲存設備）、請遵循纜線程序。</block>
-  <block id="f652bccf577477735d669989c28905ac" category="list-text"><block ref="ec4312d0db3bce928129e7e5c3a58d73" category="inline-link-rx"></block> 適用於所有支援ONTAP 的版本。</block>
-  <block id="8d9b5d4f25fe1897c088fde7c5ba650b" category="list-text"><block ref="cef14d0feb244958ea603547d0bd8a6e" category="inline-link-macro-rx"></block>。</block>
   <block id="be822dc3c2f09a2076f72c87018d7d7b" category="list-text"><block ref="8e341dc1e80127ca0dc2c12db6d0237a" category="inline-link-macro-rx"></block>。</block>
-  <block id="279268b426208b389290aef165bbd309" category="paragraph">視組態而定、您可以將Cisco Nexus 9336C-FX2交換器和直通面板安裝在NetApp機櫃中、並附有交換器隨附的標準支架。</block>
   <block id="fd280d62f276e98d2c1156b6a7cd8932" category="paragraph">在BS-53248叢集交換器上下載並安裝乙太網路架構作業系統（EFOS）軟體。</block>
   <block id="e5e0ceddda654af2c9e3c1386537e4f7" category="paragraph">或者、您也可以購買及安裝更多授權來新增連接埠。交換器基礎模式已獲得16個10GbE或25GbE連接埠及2個100GbE連接埠的授權。</block>
   <block id="b983f14988f359bc65d91f081089597f" category="list-text"><block ref="e2b4c4f5313b05dff7c4a02a4e9e0df6" category="inline-link-macro-rx"></block>。</block>
   <block id="874b218fc41a6956a440db02a0f0cc5a" category="paragraph">如果您使用叢集交換器健全狀況監視器（CSHM）和記錄收集功能、請在交換器上啟用SSH。</block>
   <block id="067297cae08e3bd57831d980bc629dab" category="paragraph">使用此功能可收集ONTAP 有關交換器的記錄檔、以供參考。</block>
-  <block id="cacc96166a33cf689a2b3e556a37bf40" category="list-text"><block ref="949c7bd82934f57f3d06056d5065442f" category="inline-link-macro-rx"></block>。</block>
-  <block id="0d43ac9863e3c78b4df62b7cf3843813" category="paragraph">如需相關指示、請參閱_ Broadcom支援的BS-53248叢集交換器安裝指南_。</block>
-  <block id="921a3f90728cb9d30beb8ec9a74ab1f2" category="list-text"><block ref="5d9dfcd78fc81899f18975b4b56b3ae1" category="inline-link-macro-rx"></block>。</block>
-  <block id="bddd350f57f122b08e2cb443bea291f8" category="paragraph">執行BS-53248叢集交換器的初始設定。</block>
   <block id="89176363c7d28c567fb702f95f7eee23" category="list-text"><block ref="89176363c7d28c567fb702f95f7eee23" category="inline-link-macro-rx"></block></block>
-  <block id="2aff03c3dbc05dcd1a7473fdae46a518" category="list-text"><block ref="ac0177a37e0d6a9d48948f0f0ce18138" category="inline-link-macro-rx"></block>。</block>
-  <block id="77e50b9c28c254a30c6532cef05d409b" category="list-text"><block ref="791d44ab04841c1e3ddab1f7a28b754b" category="inline-link-macro-rx"></block>。</block>
   <block id="fd5531349e673e037070aacc3a802f37" category="list-text"><block ref="2d5ab056fce0957a1995d7dbefe2460c" category="inline-link-macro-rx"></block>。</block>
-  <block id="95d266841a36bd621358bb2987e0ecdd" category="list-text"><block ref="068ae9dc6825f9dcbe393c782d23d120" category="inline-link-macro-rx"></block>。</block>
   <block id="cdb75160db01dcaff8578367832cc1a8" category="list-text"><block ref="cd3d2c6d0c8a0c43f0a0e10375ad6bbc" category="inline-link-macro-rx"></block>。</block>
   <block id="f179eebc625c94b5b94fc136b78506e5" category="inline-link-macro">安裝參考組態檔案</block>
   <block id="67bea00aeda47411a539357c5eea36bd" category="list-text"><block ref="67bea00aeda47411a539357c5eea36bd" category="inline-link-macro-rx"></block></block>
@@ -3671,7 +3573,6 @@
   <block id="c00379eb260028495e53ff62fa9b3a5a" category="inline-link">Cisco軟體下載</block>
   <block id="03f4e394a093a045e6047871ed96a882" category="list-text">適用的NX-OS版本、可從下載<block ref="5a1c929e557009655aef79d819d791d1" category="inline-link-rx"></block> 頁面。</block>
   <block id="c5490cef816a5fdfd03bfbae460638f5" category="paragraph"><block ref="c5490cef816a5fdfd03bfbae460638f5" category="inline-link-macro-rx"></block></block>
-  <block id="674dac01986b07db44266812735775f6" category="paragraph">您也可以選擇 <block ref="2243efeaee625d6b6076bcdcbd40e014" category="inline-link-macro-rx"></block>。否則、請前往 <block ref="16a9a5fa8979bab3106e7aad0dfd20d9" category="inline-link-macro-rx"></block>。</block>
   <block id="3eb0f8cafe973dd42647b7ade90f7100" category="admonition">在繼續下一步之前、您必須等待至少兩分鐘、以確認群組1的後端對後端連線正常運作。</block>
   <block id="2592c17fec9ee0f2f1d872bee517581e" category="doc">使用NVIDIA SN2100叢集交換器、從交換式叢集移轉至無交換式叢集</block>
   <block id="a7e9b61c9cfaadc2f123f50dfe481898" category="doc">以無交換器連線取代NVIDIA SN2100叢集交換器</block>
@@ -3687,7 +3588,6 @@
   <block id="52411f7e6913940f22e4643fd665796b" category="paragraph"><block ref="52411f7e6913940f22e4643fd665796b" category="inline-link-rx"></block></block>
   <block id="a780e0abe892abffee72be061886b35a" category="paragraph"><block ref="a780e0abe892abffee72be061886b35a" category="inline-link-rx"></block></block>
   <block id="f88ff492d9ac2b71b83a8f1cf903002f" category="paragraph"><block ref="f88ff492d9ac2b71b83a8f1cf903002f" category="inline-link-macro-rx"></block></block>
-  <block id="3de316d04f9ddd9e9153f3bf9d611beb" category="list-text"><block ref="0f34072d0ab1c4a9db39b14366a38c31" category="inline-link-macro-rx"></block>。將Cisco Nexus 3132Q-V交換器和直通面板安裝在NetApp機櫃中、並附有交換器隨附的標準支架。</block>
   <block id="51f182c7d57e93ac41dc191ea3467c70" category="paragraph"><block ref="51f182c7d57e93ac41dc191ea3467c70" category="inline-link-macro-rx"></block></block>
   <block id="febc0aefd48524c17323ea62f494c0a3" category="paragraph">請參閱 <block ref="1dbca34b24162eb59cc33616a1549705" category="inline-link-macro-rx"></block> 以取得更多資訊。</block>
   <block id="fc03792e787f91930c4afa79aa28d773" category="paragraph"><block ref="fc03792e787f91930c4afa79aa28d773" category="inline-link-macro-rx"></block></block>
@@ -3702,9 +3602,7 @@
   <block id="17467de5e625043cda6499d3541a20d4" category="list-text">[[step7]將共享交換器A上的儲存RCF替換為共用RCF檔案。請參閱 <block ref="2f595b9f03c1eca7e988cc615d685264" category="inline-link-macro-rx"></block> 以取得更多詳細資料。</block>
   <block id="636bbeffec3fc87e3384d539d543afee" category="list-text">[[step13]將共享交換器B上的儲存RCF檔案替換為共用RCF檔案。請參閱 <block ref="2f595b9f03c1eca7e988cc615d685264" category="inline-link-macro-rx"></block> 以取得更多詳細資料。</block>
   <block id="73cb4c03f2757beb35ad69fd322003be" category="list-text">[[step16]將HA配對1從無交換式叢集轉換成交換式叢集。使用共享RCF定義的叢集連接埠指派。請參閱 <block ref="e0b55f136d815f7a36c41fd7fe28e0fd" category="inline-link-macro-rx"></block>以取得更多詳細資料。</block>
-  <block id="12bc639206c2ca12e8a65041a697e4fc" category="paragraph">前往<block ref="c686ee523547302c3fa5199eafd95753" category="inline-link-rx"></block>。</block>
   <block id="6446fc62a2115815d4bdbe55f18815c1" category="list-text"><block ref="47109c7943148b2a9617cfcb4b49a79f" category="inline-link-macro-rx"></block>。</block>
-  <block id="6f773061a9b11739f4b04a8b170f8f8e" category="paragraph">視組態而定、您可以 <block ref="bd7e5f56c6474a1d0a59eeac0ce681d7" category="inline-link-macro-rx"></block>。否則、請前往 <block ref="cd3d2c6d0c8a0c43f0a0e10375ad6bbc" category="inline-link-macro-rx"></block>。</block>
   <block id="7f81bc06b8e7a4bfd515767a4b4385fe" category="list-text">[[step6]將共享交換器A上的儲存RCF替換為共用RCF檔案。請參閱 <block ref="2f595b9f03c1eca7e988cc615d685264" category="inline-link-macro-rx"></block> 以取得更多詳細資料。</block>
   <block id="2b888f1fbb1010b5a426f7a2a88e0914" category="list-text">[[step12]將共享交換器B上的儲存RCF檔案替換為共用RCF檔案。請參閱 <block ref="2f595b9f03c1eca7e988cc615d685264" category="inline-link-macro-rx"></block> 以取得更多詳細資料。</block>
   <block id="8ddcfbe457d5db5e61625624a6a20b33" category="list-text">[[step16]使用交換器更換程序和共用RCF、將叢集網路從現有的叢集交換器移轉到共用交換器。新的共享交換器A是「CS1」。新的共享交換器B是「CS2」。請參閱 <block ref="79be7ff3aee9976e13251b5a88fadf5c" category="inline-link-macro-rx"></block> 和 <block ref="2f595b9f03c1eca7e988cc615d685264" category="inline-link-macro-rx"></block> 以取得更多詳細資料。</block>
@@ -3728,9 +3626,6 @@
   <block id="69cf9ddd2a167644a30a59dda49e0f6a" category="list-text"><block ref="0babc1daa70cf30fe3f5ad4e3e07fab2" prefix="" category="inline-code"></block></block>
   <block id="7ecf603eb76daba643481182546f4e38" category="list-text"><block ref="a0ce25310d7a8e2527bb141f43700add" prefix="" category="inline-code"></block></block>
   <block id="92f8e266fe70da4f6717e931d81faa46" category="section-title">設定中斷連接埠的介面速度</block>
-  <block id="5501293605b4b8c8957b68e1854b0f11" category="doc">Cisco Nexus 92300YC 交換器的安裝與組態概觀</block>
-  <block id="c5fed3189b0ec4237029df463c0c1f64" category="paragraph">設定 Cisco Nexus 92300YC 交換器之前、請先檢閱程序概述。</block>
-  <block id="109e216a5aa6e526f504483738dabc7b" category="paragraph">若要在執行 ONTAP 的系統上初始設定 Cisco Nexus 92300YC 交換器、請遵循下列步驟：</block>
   <block id="ed6ae629414abab8b0e9b2e8deadb8c2" category="paragraph">對於Cisco Nexus 2300YC交換器的安裝與維護、請務必檢閱所有交換器元件和零件編號。請參閱<block ref="cd25cbe53f0a314145c84729c6ce2c78" category="inline-link-rx"></block> 以取得詳細資料。</block>
   <block id="647742b7ed5a74255a1cd295f9fd2fc9" category="paragraph">若為 BS-53248 交換器安裝與維護、請務必檢閱 EFOS 和 ONTAP 支援與組態需求。</block>
   <block id="553524d0c0ef22a471e2424d00a09694" category="section-title">EFOS 和 ONTAP 支援</block>
@@ -3783,7 +3678,6 @@
   <block id="b9dfe38b5e91454220a6cd1f3cfb9ac8" category="admonition">在步驟 3 * 更新上述 MOTD 檔案 * 中、命令<block ref="900d965bd90d181d344d976a0e3093d8" prefix=" " category="inline-code"></block> 執行。這可讓您驗證 RCF 檔案名稱、 RCF 版本、要使用的連接埠、以及 RCF 橫幅中的其他重要資訊。</block>
   <block id="0440c59cc67785ca7939ff4e3eba86ed" category="admonition">在步驟 3 * 更新上述 MOTD 檔案 * 中、命令<block ref="79a5f2bb850da898bd092e3a61bda06c" prefix=" " category="inline-code"></block> 執行。這可讓您驗證 RCF 檔案名稱、 RCF 版本、要使用的連接埠、以及 RCF 橫幅中的其他重要資訊。</block>
   <block id="506c2c0c7f5b70af3df68c45c46f45a7" category="paragraph">例如：</block>
-  <block id="c8d246332e46cb12e9f724a357ad817f" category="paragraph"><block ref="770c77dd441cd3adc4139ccb3c0d491b" category="inline-link-macro-rx"></block> 或 <block ref="bba3ec5e6ca5e4f48b010488a5229b2c" category="inline-link-macro-rx"></block>。</block>
   <block id="bd399ae0cf713e575ca26baedc0a896c" category="paragraph">您可以將 NVIDIA SN2100 交換器（ X190006 ）安裝在 NVIDIA 雙 / 單交換器機櫃中、並附有交換器隨附的標準支架。</block>
   <block id="1e247ada2e98c5879849d746a52a4241" category="paragraph">NVIDIA SN2100 交換器是執行 Cumulus Linux 的 10/25/40/100GbE 交換器。交換器支援下列項目：</block>
   <block id="c19b9518d51b517376f0fe9109f66e90" category="paragraph">40/100GbE 叢集連接埠節點</block>
@@ -4302,7 +4196,6 @@
   <block id="022c00ee7f7e6672d82cc079623d6e22" category="list-text">在叢集交換器 CS1 上、關閉連接到 * 所有 * 節點叢集連接埠的連接埠、以便容錯移轉叢集生命期。</block>
   <block id="e6eb1709bc8131372d63990293ab75f8" category="paragraph">所有叢集生命體移轉至 CS2 新交換器。</block>
   <block id="69a3b5b5b3e87ce1bcae2811d815d9de" category="paragraph"><block ref="69a3b5b5b3e87ce1bcae2811d815d9de" category="inline-link-macro-rx"></block></block>
-  <block id="7091e2c750a185300a6b16e37ae123f6" category="paragraph">NVIDIA 文件中提供相關說明。</block>
   <block id="894989f86e54fb4105389f59b2f248db" category="list-text"><block ref="c4cd7ec23f215e2259f91b6eb6e7cbc1" category="inline-link-macro-rx"></block>。</block>
   <block id="537e4a57b26f325406ead3c055f368d4" category="doc">步驟 1 ：在交換器上安裝 RCF</block>
   <block id="88c6fb51a79a63370991d585551ed93a" category="list-text">與交換器的主控台連線。如果您可以遠端存取交換器、則可選用主控台連線。</block>
@@ -4447,7 +4340,6 @@
   <block id="331ed1afdbcefe4f9a3a6e853403e180" category="list-text">[[step10]] 如果您未在上一個步驟中設定 NTP 伺服器、請手動設定時間。</block>
   <block id="f3a1b5499cd7f03f4eab2cdd770b6593" category="paragraph">手動設定時間。</block>
   <block id="dc4251add178848c0334d3df799034e7" category="list-text">[[step11]] 將執行組態儲存至啟動組態：</block>
-  <block id="1233ecfc62f0bed40d830afa17eec2c7" category="paragraph"><block ref="1233ecfc62f0bed40d830afa17eec2c7" category="inline-link-macro-rx"></block></block>
   <block id="83125f7f126ff0a8e1d1c0a2e18662a8" category="summary">請依照下列步驟升級 BS-53248 叢集交換器上的乙太網路光纖 OS （ EFOS ）軟體。</block>
   <block id="8693d3f8c9b18790ed498b6f024a5669" category="doc">升級 EFOS 軟體</block>
   <block id="9aae29728e49aa150331311d8f2d4df9" category="paragraph">請依照下列步驟升級 BS-53248 叢集交換器上的 EFOS 軟體。</block>
@@ -4475,15 +4367,11 @@
   <block id="e8896ba5c856367d7f285702fa9161e6" category="list-text">完成安裝。交換器會重新啟動、但不會套用任何組態、並會重設為原廠預設值。完成下列步驟以重新設定交換器：</block>
   <block id="11c8d833dc677f2da3e3a05f17e029da" category="list-text"><block ref="11c8d833dc677f2da3e3a05f17e029da" category="inline-link-macro-rx"></block></block>
   <block id="b75ec32f89267a27b5a0e0b014097f77" category="list-text">在交換器 CS1 上重複步驟 2 到 8 。</block>
-  <block id="3c3cc1e0aab8ce76690b98739e732e64" category="doc">BS-53248 叢集交換器升級程序總覽</block>
   <block id="95731780fd3171c29b73f348e1722fda" category="paragraph">請依照下列步驟、視情況升級 Broadcom BS-54328 叢集交換器上的 EFOS 軟體和參考組態檔案（ RCFs ）。</block>
   <block id="80327dfe904174acefb3b256fa29ed5a" category="inline-link-macro">升級您的 EFOS 版本</block>
-  <block id="fea95d28df6c953ffdb2096099ec83e5" category="list-text"><block ref="fea95d28df6c953ffdb2096099ec83e5" category="inline-link-macro-rx"></block></block>
   <block id="b5a0d9a2c85a70413f40021328666fac" category="inline-link-macro">升級 RCF 版本</block>
-  <block id="b0d7a2164137f2036f3af1efcfb1968f" category="list-text"><block ref="b0d7a2164137f2036f3af1efcfb1968f" category="inline-link-macro-rx"></block></block>
   <block id="63fb347e8fe40dad0a57cfdb5a947748" category="paragraph">在 BS-53248 叢集交換器上升級 RCF 、然後在套用 RCF 之後驗證連接埠是否有額外授權。</block>
   <block id="9f2e5f2b82e93a9ed81759ba8e3c2f05" category="inline-link-macro">升級後驗證 ONTAP 叢集網路</block>
-  <block id="ee9cd451d5dc1debab0286f89e5c8301" category="list-text"><block ref="ee9cd451d5dc1debab0286f89e5c8301" category="inline-link-macro-rx"></block></block>
   <block id="4034571f0d4fb637512f42a4b084fea4" category="paragraph">在升級 EFOS 軟體或用於 BS-53248 叢集交換器的 RCF 之後、驗證 ONTAP 叢集網路的健全狀況。</block>
   <block id="cb44b77c34c82f85b755698a3c58dcba" category="summary">您可以在設定 BS-53248 叢集交換器之後、以及套用任何新授權之後、升級參考組態檔案（ RCF ）。</block>
   <block id="f14d39745f2925af01d4497aa53d6677" category="doc">升級參考組態檔案（ RCF ）</block>
@@ -4495,12 +4383,10 @@
   <block id="f35806549fff4250f43cb0acde28b920" category="list-text">重新啟動交換器、並確認執行組態正確。</block>
   <block id="7271f66e0cb527adb71302d7377910b7" category="list-text">[[step21] 重複交換器 CS1 上的步驟 1 至 20 。</block>
   <block id="9b241cba96d2cafd3c0f5c9f7bf12560" category="list-text">。驗證叢集生命區是否已還原至其主連接埠：</block>
-  <block id="ae0a7918183889538c2a432f5a54afa6" category="sidebar">升級交換器</block>
   <block id="6bdce5afe823363897535ce22aa832a0" category="sidebar">升級 EFOS 版本</block>
   <block id="4dc6f468164162b89152d6960a79b9d0" category="sidebar">升級 RCF 版本</block>
   <block id="24778145f75ec14966b06f3682e616c4" category="sidebar">升級後驗證叢集</block>
   <block id="77486b34dc8c8bacbe90fd1ff1bd8f61" category="inline-link-macro">安裝或升級 NX-OS 軟體</block>
-  <block id="0a41823d2a109b5dbd6f2fa1f8fe6689" category="paragraph"><block ref="0a41823d2a109b5dbd6f2fa1f8fe6689" category="inline-link-macro-rx"></block></block>
   <block id="6b10db39cfed2551fdc8db011f0b1110" category="paragraph">如需 Cisco 交換器升級與降級程序的完整文件、請參閱 Cisco 網站上提供的適當軟體與升級指南。</block>
   <block id="893355f35b6d198e6a02f43764951a73" category="paragraph">請遵循此程序、在 Nexus 9336C-FX2 叢集交換器上安裝或升級 NX-OS 軟體。</block>
   <block id="f29158c7335be7b7fe0a46dd82de6ed4" category="list-text"><block ref="f29158c7335be7b7fe0a46dd82de6ed4" category="inline-link-macro-rx"></block></block>
@@ -4574,32 +4460,16 @@
   <block id="bc0d8d4243074a46cad51594b5a0fd0f" category="admonition">使用乙太網路交換器健全狀況監視器（ CSHM ）進行記錄收集功能時、建議使用 SSH 。我們也建議使用SSHv2來增強安全性。</block>
   <block id="63a3f29d798fa577b051e98c5ffbca0c" category="admonition">乙太網路交換器健全狀況監視器不支援 ONTAP 9.13.1P8 及更早版本、以及 9.14.1P3 及更早版本或 NX-OS 版本 10.3(4a)(M) 。</block>
   <block id="10bd81ac212ccc1de8787d82e4582e46" category="inline-link-macro">準備安裝 NX-OS 軟體和 RCF</block>
-  <block id="5100b6db0c93d9851fab3b0b6ed72166" category="list-text"><block ref="0f24d169a2f575f17ba79644c46d3a03" category="inline-link-macro-rx"></block>。</block>
-  <block id="9b32aa934f364be9aa6cdf3bf05d15ee" category="paragraph">Cisco NX-OS軟體和參考組態檔（RCT）必須安裝在Cisco Nexus 9336C-FX2叢集交換器上。</block>
   <block id="e1ef2bf589b36ef4fe890c1ce3f4414e" category="list-text"><block ref="0a41823d2a109b5dbd6f2fa1f8fe6689" category="inline-link-macro-rx"></block>。</block>
-  <block id="629075dbdb9eff0fb95f99ab0fcd1967" category="paragraph">下載並安裝或升級 Cisco Nexus 9336C-FX2 叢集交換器上的 NX-OS 軟體。</block>
   <block id="11106314fe1d4dd5bee639afb348b915" category="inline-link-macro">安裝或升級 RCF</block>
-  <block id="01a618717f01c55d9b54bedd7307a43f" category="paragraph">首次安裝 Cisco Nexus 9336C-FX2 交換器後、請安裝或升級 RCF 。您也可以使用此程序來升級RCF版本。</block>
   <block id="959598166d06ebc7f87da7525f293a91" category="list-text"><block ref="0bc8e83d3cd2eebf0c2c5d2a7b54cc6c" category="inline-link-macro-rx"></block>。</block>
-  <block id="df7bc1c04ccb094d3b474fc08a97d272" category="paragraph">設定交換器硬體。</block>
-  <block id="a7682f7ee72405f79f40850a1dea900c" category="list-text"><block ref="93d08ab8d6c80a25299648349a7a616c" category="inline-link-macro-rx"></block>。</block>
-  <block id="a126004fd7782c98059de2e560db6f95" category="paragraph">設定Cisco Nexus 9336C-FX2交換器。</block>
-  <block id="150103ea90f7632427a62d1282b69ab2" category="list-text"><block ref="8aff4253487da8e8b254faac9934a250" category="inline-link-macro-rx"></block>。</block>
-  <block id="0ca3ca41c2905b8f6347613ad99abeda" category="paragraph">請依照初始程序、準備安裝Cisco NX-OS軟體和參考組態檔（RCT）。</block>
-  <block id="146fe7ba55f154a00f7fdd5bc0bc3b7f" category="paragraph">在 Nexus 9336C-FX2 叢集交換器上安裝或升級 NX-OS 軟體。</block>
-  <block id="c2682a02fa235bb20233662aeba236ad" category="paragraph">首次設定 Nexus 9336C-FX2 交換器之後、請安裝或升級 RCF 。您也可以使用此程序來升級RCF版本。</block>
   <block id="5f7b61b5cf8ee335e4fdf4eb2e2191b2" category="paragraph">連接埠可設定為用於叢集 + HA 的 40/100GbE 、用於叢集的 4x10GbE 中斷連接、用於叢集 + HA 的 4x25GbE 中斷連接、以及用於每個儲存 HA 配對的 100GbE 連接埠。</block>
   <block id="d30ea82d7096609f0aea87ef848f7ebd" category="paragraph">若要安裝及設定 Cisco Nexus 9336C-FX2 共用交換器的軟體、請遵循下列步驟：</block>
   <block id="e495f3ec8dabfce7925d7c5053f55cbb" category="inline-link-macro">將交換器安裝在 NetApp 機櫃中</block>
-  <block id="343d8858c5eef7adcd6fc983a90c4848" category="list-text"><block ref="cad0a32a1376b86b466dd6cf29c7e620" category="inline-link-macro-rx"></block>。</block>
-  <block id="d136348fb812c17c0d3c68bd85d3987f" category="inline-link-macro">準備安裝 NX-OS 和 RCF</block>
-  <block id="cb097b1a250075c6d723557ad68fbeaf" category="list-text"><block ref="6c9c04e734b9c8edcddd8e6886267ef5" category="inline-link-macro-rx"></block>。</block>
   <block id="f7e7d6376d3c621fe55f8db68a669d03" category="list-text">[[step15]將儲存連接埠從舊交換器sh2移至新交換器newsh2。</block>
   <block id="bc2fac09fdd528e5067568b7be4074db" category="list-text">[[step18]確認磁碟櫃的纜線是否正確：</block>
   <block id="783733d2f76fb1513a44bb7144679e76" category="list-text">[[step19]移除舊交換器sh2。</block>
   <block id="3e6dc141a56ffa03ce5afc78a5bbbef1" category="paragraph">若要安裝及設定 Cisco Nexus 9336C-FX2 儲存交換器的軟體、請遵循下列步驟：</block>
-  <block id="e9c6db9ee4edb08184a082916cf1f56f" category="list-text"><block ref="c49772a60328b39d671da109a076acd4" category="inline-link-macro-rx"></block>。</block>
-  <block id="5537a63af1d3d4f5a6ffcc2a8619a2f8" category="list-text"><block ref="d43bf43861b014b2f70de1c12cff1c76" category="inline-link-macro-rx"></block>。</block>
   <block id="cb037476ec4486d51b86d5dbeede8008" category="doc">設定記錄收集</block>
   <block id="8ac20e3719b6b58e94e5a4385e87b52e" category="paragraph">乙太網路交換器健全狀況監視器（ CSHM ）負責確保叢集與儲存網路交換器的作業健全狀況、並收集交換器記錄以供偵錯之用。本程序將引導您完成設定收集、要求詳細的 * 支援 * 記錄、以及啟用 AutoSupport 所收集 * 定期 * 資料的每小時收集。</block>
   <block id="2ded3ff3862adfc6f54d2a2f3ebf1147" category="paragraph">* 注意： * 如果您啟用 FIPS 模式、則必須完成下列步驟：</block>
@@ -4739,9 +4609,6 @@
   <block id="2ddf49eb6c3fafb7644444a8f6985876" category="list-text">[[step8]] 如果您禁止自動建立個案、請叫用 AutoSupport 訊息來重新啟用：</block>
   <block id="22265ef643cb758bbeafeae6b9005960" category="list-text">[[step3]] 如果您禁止自動建立個案、請叫用 AutoSupport 訊息來重新啟用：</block>
   <block id="f7e86b0278da2d0f23dfd04e64f68478" category="list-text">[[step2]] 確認下列叢集網路組態：</block>
-  <block id="cb9e3eca5ee8f7c34a9beb30eb78e80e" category="inline-link-macro">驗證 Nexus 9336C-FX2 叢集交換器上的 SSH 組態</block>
-  <block id="9d35e90712940df4e7dd724e3a99eb05" category="list-text"><block ref="174530f10d1b6584efbd4bb64a5325d0" category="inline-link-macro-rx"></block>。</block>
-  <block id="1de33421daf77940fdd8929e277ba937" category="paragraph">如果您使用乙太網路交換器健全狀況監視器（ CSHM ）和記錄收集功能、請確認交換器上已啟用 SSH 。</block>
   <block id="51ad33f87e9af3baac880cb70771fe46" category="list-text">[[step5]] 在交換器 C2 上、關閉連接至節點叢集連接埠的連接埠、以便容錯移轉叢集生命週期。</block>
   <block id="09b863ebe2485d0260db2694f545c132" category="doc">從較舊的 Cisco 交換器移轉至 Cisco Nexus 9336C-FX2 交換器</block>
   <block id="52f52fe5595841a94d975238199fecfa" category="list-text">[[step25]] 將權限等級變更回 admin ：</block>
@@ -5101,8 +4968,6 @@
   <block id="ca0787e835ac5a719db1548573613d0f" category="inline-xref">步驟。4</block>
   <block id="bee24c21734f4c3230186de99029991e" category="list-text">還原 LIF 與叢集健全狀況後，請從重新啟動程序<block ref="6f1447d50cf784e5bfe7d2099a4e4237" category="inline-xref-macro-rx"></block>。</block>
   <block id="701f1b96f3c7f1e9d631ebd244cb5751" category="list-text">[[STER_10]] 將所有叢集節點連線纜線從舊版 CS2 交換器移至新的 CS2-new 交換器。</block>
-  <block id="e443d0981e8ed96d62afd1a1990bd924" category="list-text"><block ref="e1c53d78ceb09f1d765f98cd902707bb" category="inline-link-macro-rx"></block>。</block>
-  <block id="dbe9b3c650ae4dca2117921c884a54d2" category="paragraph"><block ref="dbe9b3c650ae4dca2117921c884a54d2" category="inline-link-macro-rx"></block></block>
   <block id="4e83c3d43e8660c85f2e2b6e1374c91c" category="inline-link">NVIDIA SN2100 軟體下載</block>
   <block id="618905d758007147320232ab81a98bf3" category="paragraph">叢集和儲存應用程式有兩個 RCF 指令碼可用。請從頁面下載 RCFs<block ref="5baf2e10c7d5342617f6966efa0bb2fe" category="inline-link-rx"></block> 。每個的程序都相同。</block>
   <block id="ad1d45bcb656bf91a079869a2361d735" category="open-title">Cumulus Linux 5.4.</block>
@@ -5180,7 +5045,6 @@
   <block id="ed3dd7f516f69cf573ae79a1781bbcbf" category="sidebar">叢集交換器 - NVIDIA SN2100 叢集交換器</block>
   <block id="49e57b2c31c8feba776b7a2916673678" category="sidebar">Cisco Nexus 9336C-FX2 或 9336C-FX2-T</block>
   <block id="c66ea64be71d87967746ef74fac6ec75" category="list-text">[[step11]] 檢查命令的橫幅輸出<block ref="db837131dc56fab41bddc52d5aff8865" prefix=" " category="inline-code"></block>。您必須閱讀並遵循這些指示、以確保交換器的組態和操作正確無誤。</block>
-  <block id="8b084baecf96a692280d1a024d86081d" category="list-text"><block ref="cf3a409f8782a7944244632e6a1adb8e" category="inline-link-macro-rx"></block>。</block>
   <block id="1fcbc8802637b04b8fe9a86ac3d545c9" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block>安裝交換器硬體</block>
   <block id="b11226c776ec1b74f6a42f871e3194c9" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block>安裝儲存系統和儲存櫃</block>
   <block id="130792cb3edc8d0afffb557e50b218c3" category="paragraph">在機櫃或機架中安裝儲存系統和儲存櫃。存取您平台機型的安裝與設定指示。</block>
@@ -5254,16 +5118,7 @@
   <block id="666618fc10fce8f3b4f820a79b261925" category="paragraph">對於 Cisco Nexus 9336C-FX2 和 9336C-FX2-T 儲存交換器的安裝與維護，請務必檢閱元件清單和零件編號。</block>
   <block id="bcf1c9a6a953488392920f911a4c6e27" category="paragraph">下表列出 9336C-FX2 和 9336C-FX2-T 儲存交換器，風扇和電源供應器的零件編號和說明：</block>
   <block id="6aea76bb63b89b76edb29df0b9ec6a5c" category="paragraph">若要啟動 Cisco Nexus 9336C-FX-T 儲存交換器上的 12 個以上連接埠，您必須購買 Cisco 智慧型授權。Cisco 智慧型授權是透過 Cisco 智慧型帳戶進行管理。</block>
-  <block id="486f6cef9658a94ea0e8481d338c8731" category="inline-link-macro">準備安裝或升級 NX-OS 和 RCF</block>
-  <block id="cf4832dd28d118309d2f6c0876305046" category="list-text"><block ref="e5f492b430e8de7875c503f2b852cd3a" category="inline-link-macro-rx"></block>。</block>
-  <block id="705b6850dddbfe6b367ca004cdb81e84" category="paragraph">Cisco NX-OS 軟體和參考組態檔案（ RCFs ）必須安裝在 Cisco Nexus 9336C-FX2 儲存交換器上。</block>
   <block id="a6a461c906e8688722889f2c90a05dc6" category="list-text"><block ref="6dc839faa17719bf6b40745660551f1b" category="inline-link-macro-rx"></block>。</block>
-  <block id="70063dc155fa44f702c217b40ef8728d" category="paragraph">在 Cisco Nexus 9336C-FX2 儲存交換器上下載並安裝或升級 NX-OS 軟體。</block>
-  <block id="8a02ca115681b126dca577f1f6f131d2" category="inline-link-macro">安裝或升級 RCF 組態檔</block>
-  <block id="fa9c04836ba5db2ddb9b054eaadde9fb" category="list-text"><block ref="57ef8950ea8b8ce917fe71b18539d249" category="inline-link-macro-rx"></block>。</block>
-  <block id="acad94fe6722949aaca018960b96e0c5" category="paragraph">首次安裝 Cisco Nexus 9336C-FX2 儲存交換器之後，請安裝或升級 RCF 。您也可以使用此程序來升級RCF版本。</block>
-  <block id="a143b24cc23f6618527f9d83f617bfbb" category="paragraph">設定 Cisco Nexus 9336C-FX2 儲存交換器。</block>
-  <block id="438daf8c6636a41fd3ae27035a449b5e" category="paragraph">在 Nexus 9336C-FX2 儲存交換器上安裝或升級 NX-OS 軟體。</block>
   <block id="0da3cc28f42ccf09143f2cd285547a2a" category="doc">準備安裝或升級 NX-OS 軟體和 RCF</block>
   <block id="7246a16d8a655c05a2c1f478efbf9e66" category="inline-link-macro">安裝或升級 RCF</block>
   <block id="223e0b1e9b4b36b5a5ac5856c9d2b263" category="paragraph"><block ref="54d6784a897a7a3dfd3c9197dcd4475c" category="inline-link-macro-rx"></block>。</block>
@@ -5272,7 +5127,6 @@
   <block id="20eed5f0dc87e5058308718e45381220" category="paragraph">11 至 36</block>
   <block id="000bf48a29e422b515b1396c1aac3f2c" category="paragraph">您可以使用空白的佈線工作表來記錄叢集中支援作為節點的平台。</block>
   <block id="af9181560cc346780cf6974ca9209401" category="sidebar">儲存交換器 - Cisco Nexus 9336C-FX2 或 9336C-FX2-T</block>
-  <block id="d35b203e8fe0144f812f95e477dfc8ac" category="paragraph"><block ref="d35b203e8fe0144f812f95e477dfc8ac" category="inline-link-macro-rx"></block></block>
   <block id="8922abf783ebcd2485e871d83f810001" category="paragraph">*注意：*如果對使用者規範提示回答 *y*，請確保使用者俱有必要的權限，如<block ref="c36e4b8d8c2789dd7986c4af4bd3d942" category="inline-xref-macro-rx"></block> 。</block>
   <block id="0af41f793380f36203c150e88680ae0d" category="admonition">對於 CL 5.11.1，建立使用者 *cumulus* 並對以下提示回答 *y*：您要指定管理員以外的使用者進行日誌收集嗎？{y|n}：*y*</block>
   <block id="9516895d06a737348108b47f990aebff" category="list-text">[[step2]]啟用定期日誌收集：</block>
@@ -5340,7 +5194,6 @@
   <block id="fb945b959f6754639fad6c6e9e9469b9" category="list-text">本機使用者必須具有網路管理員權限。</block>
   <block id="47547bd96a2d76e2174e671baccc263a" category="paragraph">若要安裝和設定 BES-53248 叢集交換器的軟體，請依照下列步驟操作：</block>
   <block id="7a81f2c0648b303fec3fe1081158d0e3" category="inline-link-macro">將交換器重設為出廠預設值</block>
-  <block id="842f57c662529f95b306feb653984af0" category="list-text"><block ref="6356dc79de453379cf58db845e7c3b08" category="inline-link-macro-rx"></block>。</block>
   <block id="585a6fd0f28eaade2a16ccaba1bb9b0d" category="paragraph">清除 BES-53248 群集交換器設定。</block>
   <block id="b879f523acbbe3c8d6ea83060443367e" category="doc">將 BES-53248 集群交換器重設為出廠預設值</block>
   <block id="7515349dce34258a6f65c5f9b6b0bc58" category="paragraph">若要將 BES-53248 叢集交換器重設為出廠預設設置，必須清除 BES-53248 交換器設定。</block>
@@ -5352,4 +5205,314 @@
   <block id="671537f32d06de75a977dc3008daeff5" category="admonition">如果系統在重新載入交換器之前詢問是否要儲存未儲存或變更的組態、請選取*否*。</block>
   <block id="01abea5f71122f7491f5d67a54692187" category="list-text">[[step4]] 等待交換器重新加載，然後登入交換器。</block>
   <block id="3298c6d813bb0262584ca3882273ff2a" category="paragraph">預設使用者為“admin”，未設定密碼。畫面會顯示類似下列的提示：</block>
+  <block id="01e12de62fa77fda2815719aed8ff892" category="paragraph-title">下一步</block>
+  <block id="d29ee2143986e1790a9cd170344db5a2" category="paragraph"><block ref="30bc59659410cfda61387b34e1612b7c" category="inline-link-macro-rx"></block> 。</block>
+  <block id="d7644dedcbfb5c562e4684e77d00a009" category="paragraph"><block ref="cc83c245da410495a294f033719b1669" category="inline-link-macro-rx"></block> 。</block>
+  <block id="30f6afd41919b41a456c94f0f66fa5d3" category="doc">BES-53248 交換器的安裝與設定工作流程</block>
+  <block id="a8707fcc977da1a092531cdd197f8ba9" category="paragraph">請依照這些工作流程步驟安裝並設定您的 BES-53248 交換器。</block>
+  <block id="a83565177e04591255a835fde719da37" category="inline-link-macro">查看配置要求</block>
+  <block id="429388d6c44b7afc7d120f3bfe282564" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block><block ref="0451d81c5b818520197dbb9120895fc0" category="inline-link-macro-rx"></block></block>
+  <block id="218fbb7219f762cbdbb831038fd38540" category="paragraph">查看 BES-53248 叢集交換器的設定需求。</block>
+  <block id="20c231267822b8a8692827ee2e171610" category="inline-link-macro">查看組件和零件編號</block>
+  <block id="a9475a16ba06b4219d57eddd883dd07f" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block><block ref="8d964d6ba392382de979d8f2722972ba" category="inline-link-macro-rx"></block></block>
+  <block id="7ffa7cc3f7bcaaf809ca8770c5abe16f" category="paragraph">查看 BES-53248 群集交換器的組件和零件號碼。</block>
+  <block id="7e52bd0b19f223e57d4d585b11f1ccaf" category="inline-link-macro">審查所需文件</block>
+  <block id="1845fdbe98420bdb3455ca1fc8f74d30" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block><block ref="1feee20e6e623a2e4804c38792804c17" category="inline-link-macro-rx"></block></block>
+  <block id="8835d8419d7cf09508aaffec9ad03cb4" category="paragraph">查看特定的交換器和控制器文件以設定您的 BES-53248 交換器和ONTAP叢集。</block>
+  <block id="b05122283953ee861f964e6f4b8180ac" category="paragraph-title"><block ref="beadfa85a2fdca06b91edc1131c603e6" category="inline-image-macro-rx" type="image"></block><block ref="76d32253af9ac9d977c88af48dee7d29" category="inline-link-macro-rx"></block></block>
+  <block id="7b0ce00f5b71d5c2542d6d5c4fb0b5d7" category="paragraph">安裝交換器硬體。</block>
+  <block id="cc6a7a00f2331df56d127235ab712a53" category="inline-link-macro">設定軟體</block>
+  <block id="09e3ea1c9ed929b9d5ba65aa0e1a2e57" category="paragraph-title"><block ref="99e8b2f00e172bfcff96afdce69907bc" category="inline-image-macro-rx" type="image"></block><block ref="cc407d015acb61c0e32d43737b9a7b52" category="inline-link-macro-rx"></block></block>
+  <block id="50684e38d3c3e950bc58738bb16d0843" category="paragraph">配置交換器軟體。</block>
+  <block id="e17e6fce1c9267a06663c214d3364910" category="paragraph"><block ref="8b21286de1f0b27e78e54a55a69f517f" category="inline-link-macro-rx"></block> 。</block>
+  <block id="a37cc2eef24d556279f24156644d2f76" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block><block ref="b88c299eeb38820fb709454fcd144438" category="inline-link-macro-rx"></block></block>
+  <block id="17fc3f3ff88ac99f3928ed20888ee5ad" category="paragraph">配置BES-53248集群交換器。</block>
+  <block id="2fdc035f31f6f8e5dc2cc860f7ac2b5e" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block><block ref="1233ecfc62f0bed40d830afa17eec2c7" category="inline-link-macro-rx"></block></block>
+  <block id="d2fbaa7f212d11bb223bcb79e99d25a5" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block><block ref="0f9f654882514557e57b19641aa7b563" category="inline-link-macro-rx"></block></block>
+  <block id="039ac036dd5126741513b6ff02740aa3" category="paragraph-title"><block ref="beadfa85a2fdca06b91edc1131c603e6" category="inline-image-macro-rx" type="image"></block><block ref="74dd19c11d43cfa2dd387ecf7d984746" category="inline-link-macro-rx"></block></block>
+  <block id="ba4ab00920641dfd5423a47fe9d7f3c9" category="paragraph-title"><block ref="99e8b2f00e172bfcff96afdce69907bc" category="inline-image-macro-rx" type="image"></block><block ref="e2b4c4f5313b05dff7c4a02a4e9e0df6" category="inline-link-macro-rx"></block></block>
+  <block id="e0c4a4604e9c598a73beb01178396611" category="inline-link-macro">將交換器重設為出廠預設值</block>
+  <block id="ae2325ba8e46103566cfcf760e724aea" category="paragraph-title"><block ref="ef78558f80439832e0f51cc22cee8b8c" category="inline-image-macro-rx" type="image"></block><block ref="6c812119d579c9718456d0d0cb09a418" category="inline-link-macro-rx"></block></block>
+  <block id="b072aeefadd5f4debb10448ed0f78d3d" category="paragraph"><block ref="6750c4dc9d2505a8ea19f483ac83a6d9" category="inline-link-macro-rx"></block> 。</block>
+  <block id="df262d72a3f24d806e5173e9cf649e77" category="doc">BES-53248 交換器的硬體安裝工作流程</block>
+  <block id="28a0c60fdf5ca57b39720c3a8d882046" category="paragraph">若要安裝和設定 BES-53248 叢集交換器的硬件，請依照下列步驟操作：</block>
+  <block id="cf1d9d7a26637db18765ddf010f65be6" category="inline-link-macro">安裝交換器硬體</block>
+  <block id="0b8a27d3a1c0a5dd1272b8c9805cbaf1" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block><block ref="a3a8ecb086e70a616c3aea22be18ca2e" category="inline-link-macro-rx"></block></block>
+  <block id="b2413040143a77d07ccac6969201380a" category="paragraph">安裝並配置 BES-53248 交換器硬體。</block>
+  <block id="5ce319fd5475b6c82c032009a68c584c" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block><block ref="6750c4dc9d2505a8ea19f483ac83a6d9" category="inline-link-macro-rx"></block></block>
+  <block id="1105e42e259e21fce073c8424bb1d1c3" category="paragraph">查看 BES-53248 叢集交換器的佈線和設定注意事項。</block>
+  <block id="510290e42c307729b66d338637599287" category="doc">BES-53248 叢集交換器的升級工作流程</block>
+  <block id="e0a521d00ae74b0c84db0c847fddb6ad" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block><block ref="fea95d28df6c953ffdb2096099ec83e5" category="inline-link-macro-rx"></block></block>
+  <block id="96fb740240c8f1bf5739883588c34128" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block><block ref="b0d7a2164137f2036f3af1efcfb1968f" category="inline-link-macro-rx"></block></block>
+  <block id="0c6171d657f447db9f7b65ec421619f2" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block><block ref="ee9cd451d5dc1debab0286f89e5c8301" category="inline-link-macro-rx"></block></block>
+  <block id="4deb9a9ff2057f7c893692587e556260" category="paragraph"><block ref="3733ea959ea350d46ba403dfe4087bb4" category="inline-link-macro-rx"></block> 。</block>
+  <block id="926ea8223c35e0974ecfabb2c02ad4ff" category="summary">Cisco Nexus 3132Q-V 叢集交換器軟體設定概述</block>
+  <block id="fddd0032cd4149fb7bfea4114a217072" category="doc">Cisco Nexus 3132Q-V 叢集交換器的軟體安裝工作流程</block>
+  <block id="e87559d7fe5ea552cfe4b62d24bc8ae6" category="paragraph">若要安裝和設定Cisco Nexus 3132Q-V 交換器的軟體並安裝或升級參考設定檔 (RCF)，請依照下列步驟操作：</block>
+  <block id="0e192221b589d529dcb6c24018c169db" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block><block ref="5904774d404af34d4c98f27112d7e996" category="inline-link-macro-rx"></block></block>
+  <block id="6fd83e5aa94c307f52c8355354d6ff96" category="paragraph">配置 3132Q-V 群集交換器。</block>
+  <block id="72b3f7cbb15c0abaaa6a37694bba082b" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block><block ref="2602d37bf83d9d8f0155e42f9d92c2aa" category="inline-link-macro-rx"></block></block>
+  <block id="e4594685a63305c9410a714bce12965d" category="paragraph">必須在Cisco 3132Q-V 叢集交換器上安裝Cisco NX-OS 軟體和 RCF。</block>
+  <block id="dfcf2a586320c174c0f0f72098c1ed2a" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block><block ref="0c1c3c2834af58f16c322794f361a5d3" category="inline-link-macro-rx"></block></block>
+  <block id="5e4bd304ccd5d3dec08fc2c5ecaecfa8" category="paragraph">下載並安裝或升級Cisco 3132Q-V 叢集交換器上的 NX-OS 軟體。</block>
+  <block id="6975b7df6e1f7b5b06f111de80008d57" category="paragraph-title"><block ref="beadfa85a2fdca06b91edc1131c603e6" category="inline-image-macro-rx" type="image"></block><block ref="fbbb5b6e99c6bc99f3e5627f226b3afd" category="inline-link-macro-rx"></block></block>
+  <block id="1da50282246b244ed4ad2b87ca491bec" category="paragraph">首次設定Cisco 3132Q-V 交換器後安裝 RCF。</block>
+  <block id="98e2c8057648b4deb6fd5ef4edfc71b6" category="paragraph-title"><block ref="99e8b2f00e172bfcff96afdce69907bc" category="inline-image-macro-rx" type="image"></block><block ref="4767a0bcf3ab94aeda87c79dd4096ef4" category="inline-link-macro-rx"></block></block>
+  <block id="0cdecee05dd24db66522b190c7038cbc" category="paragraph">驗證交換器上是否啟用了 SSH 以使用乙太網路交換器健康監視器 (CSHM) 和日誌收集功能。</block>
+  <block id="5d3a5b482bfff31585b306d482bcf3bd" category="summary">在設定Cisco Nexus 3132Q-V 叢集交換器之前，請先查看設定概述。</block>
+  <block id="d4efb0e9c28005734b2cd25f396c4a48" category="doc">Cisco Nexus 3132Q-V 交換器的硬體安裝工作流程</block>
+  <block id="5f8a048748aa7a1283276d1b0da8b301" category="paragraph">若要安裝和設定 3132Q-V 叢集交換器的硬件，請依照下列步驟操作：</block>
+  <block id="4c915003076a6d86a9620d6756fba2c2" category="inline-link-macro">完成佈線工作表</block>
+  <block id="670b8bcb0f55091123c6ed29714c3705" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block><block ref="53357c7c5c3be35085bc708441ee4e98" category="inline-link-macro-rx"></block></block>
+  <block id="1678bed7696215f8954f4b86a7e8545c" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block><block ref="207ad0352300a36b0c0e92c58f1c94c7" category="inline-link-macro-rx"></block></block>
+  <block id="383ec28e4a088a104d47579bdb8c4764" category="paragraph">安裝 3132Q-V 交換器。</block>
+  <block id="9da628940cacc721b9a48c0819528e51" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block><block ref="1f00ece542bc54197fbab1596f438e3d" category="inline-link-macro-rx"></block></block>
+  <block id="03933a7ae278f1eee06cb9ca0ea9a092" category="paragraph">依需求在NetApp機櫃中安裝 3132Q-V 交換器和直通面板。</block>
+  <block id="9a6628d1cf1dda04a0c091e3a8b6d60d" category="paragraph-title"><block ref="beadfa85a2fdca06b91edc1131c603e6" category="inline-image-macro-rx" type="image"></block><block ref="d0781e7a35581c9e242db456a8edbe98" category="inline-link-macro-rx"></block></block>
+  <block id="10c6e4e5f7edc054393b1cc7cf2c7648" category="paragraph">審查對NVIDIA乙太網路連接埠的支援。</block>
+  <block id="bbb9385b96ce8e8f60920fb86dbb9223" category="doc">Cisco Nexus 3132Q-V 交換器的安裝與設定工作流程</block>
+  <block id="bc2feeecfd3ca8367736e36203e22e39" category="paragraph">請依照這些工作流程步驟安裝並設定您的Cisco Nexus 3132Q-V 交換器。</block>
+  <block id="1555d645754cb1bffb1bd71540b40f10" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block><block ref="b7849b8fb2657e254b2634895b6d222a" category="inline-link-macro-rx"></block></block>
+  <block id="7d09c01b1fc943996b0c181c124ba53f" category="paragraph">查看 3132Q-V 群集交換器的設定需求。</block>
+  <block id="879159fbe2c6233aac60828a5df56657" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block><block ref="3733ea959ea350d46ba403dfe4087bb4" category="inline-link-macro-rx"></block></block>
+  <block id="e75aa8c760076a741c3918f29c98159b" category="paragraph">查看特定的交換器和控制器文件以設定您的 3132Q-V 交換器和ONTAP叢集。</block>
+  <block id="fc75d35af4aab364734bb7907f9e6f47" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block><block ref="e25a52f8aae59a2992e22d409c64553b" category="inline-link-macro-rx"></block></block>
+  <block id="4e812a10246df32dd66fe0611501f478" category="paragraph">查看Cisco Smart Call Home 功能的要求，該功能用於監控網路上的硬體和軟體元件。</block>
+  <block id="c92898e16387125646f364c22fd10ae2" category="paragraph-title"><block ref="99e8b2f00e172bfcff96afdce69907bc" category="inline-image-macro-rx" type="image"></block><block ref="c89123a4361d25247adbe917d9d89fa4" category="inline-link-macro-rx"></block></block>
+  <block id="5cdb75f0116a2d09e557844a8a270750" category="summary">請依照下列步驟安裝Cisco Nexus 3132Q-V 交換器。</block>
+  <block id="3a910787d96ae9dd87fecd28ac8f7d6e" category="doc">安裝 3132Q-V 叢集交換機</block>
+  <block id="0a28c93dfa9e5b233131e15f712622c9" category="paragraph">請依照下列步驟設定和設定Cisco Nexus 3132Q-V 交換器。</block>
+  <block id="59f8816adc68d17a564a2adcb32f6df2" category="list-text">完全的<block ref="e253afe6db79a1011e9ed137315b003b" category="inline-link-macro-rx"></block>。</block>
+  <block id="0941c5c2195dd31d0727420366f92c3a" category="list-text"><block ref="eb114e7f9419da2ed2795f56bdba3e97" category="inline-link-macro-rx"></block> 。</block>
+  <block id="0f4ae3cf88771c7467206da3010f8d36" category="inline-link-macro">在NetApp機櫃中安裝Cisco Nexus 3132Q-V 交換機</block>
+  <block id="e20ca246755989fe82bdc30b472d4045" category="paragraph">或者，您可以<block ref="18420978bb95dbc58537866fa2d7958a" category="inline-link-macro-rx"></block>。否則，轉到<block ref="d0781e7a35581c9e242db456a8edbe98" category="inline-link-macro-rx"></block>。</block>
+  <block id="6f2cc65e666a9e05689591993e20b041" category="paragraph"><block ref="207ad0352300a36b0c0e92c58f1c94c7" category="inline-link-macro-rx"></block> 。</block>
+  <block id="f84a74725677310e72a17907322dd85b" category="paragraph"><block ref="1dbca34b24162eb59cc33616a1549705" category="inline-link-macro-rx"></block> 。</block>
+  <block id="8a621cac0318aad5331388c261fff40d" category="summary">Cisco Nexus 3232C 叢集交換器軟體設定概述</block>
+  <block id="d0e2537bdd90951e7c488815de10574a" category="doc">Cisco Nexus 3232C 叢集交換器的軟體安裝工作流程</block>
+  <block id="7b97f12b51fcbcc014add4de101dcc01" category="paragraph">若要安裝和設定Cisco Nexus 3232C 交換器的軟體並安裝或升級參考設定檔 (RCF)，請依照下列步驟操作：</block>
+  <block id="79a68bf5a31c184aa519c12e6bbfe361" category="paragraph">配置3232C集群交換器。</block>
+  <block id="86fd63631522ff11a4c24046d70f1ad2" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block><block ref="4e2168d12a767e7a5d0be7402bc34f9c" category="inline-link-macro-rx"></block></block>
+  <block id="02395d11e984d3a9d7041811721a6d54" category="paragraph">必須在Cisco 3232C 叢集交換器上安裝Cisco NX-OS 軟體和參考設定檔 (RCF)。</block>
+  <block id="56f2ef5ffb432ee44c98a0218e222f47" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block><block ref="8334ca90d87d9ff936e99fb272bf75c8" category="inline-link-macro-rx"></block></block>
+  <block id="c889c735571a7832007a4ea663bbbb54" category="paragraph">下載並安裝或升級Cisco 3232C 叢集交換器上的 NX-OS 軟體。</block>
+  <block id="e77ca82337609b67c379c3f9592b0987" category="paragraph-title"><block ref="beadfa85a2fdca06b91edc1131c603e6" category="inline-image-macro-rx" type="image"></block><block ref="23b3385327d0e192a837e8de4bc1cc0a" category="inline-link-macro-rx"></block></block>
+  <block id="09bfbd56c3552e97c604a7997c5b2b58" category="paragraph">首次設定Cisco 3232C 交換器後安裝 RCF。</block>
+  <block id="375c5712b837a848448c3beebb3d3b2c" category="summary">在設定Cisco Nexus 3232C 叢集交換器之前，請先查看設定概述。</block>
+  <block id="c324ecc5767379ec38a0b98ea84a392c" category="doc">Cisco Nexus 3232C 交換器的硬體安裝工作流程</block>
+  <block id="c83956f2835dd21c634e3ea9cb076cc8" category="paragraph">若要安裝和設定 3232C 叢集交換器的硬件，請依照下列步驟操作：</block>
+  <block id="488d52fd4e67e3658a2736f4f5baf6a5" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block><block ref="36c81454c79fb4662d46898f96d8ab42" category="inline-link-macro-rx"></block></block>
+  <block id="4762efa89f72255be51c1d0825e428be" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block><block ref="6fb43cd5c831afd08ed62ea7c301589a" category="inline-link-macro-rx"></block></block>
+  <block id="fc3c6bd26fef194ce2f36e76eb0b1ac7" category="paragraph">安裝3232C開關。</block>
+  <block id="ca14e5a44465dc77868bc93c772326ee" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block><block ref="fb5dab0336d3cae367cb88d5b65bebf3" category="inline-link-macro-rx"></block></block>
+  <block id="ec6f6c215f040a396fd973e7136a812c" category="paragraph">依需求在NetApp機櫃中安裝 3232C 交換器和直通面板。</block>
+  <block id="ae93ed58d7575c5c70b27cf4137f8eea" category="paragraph-title"><block ref="beadfa85a2fdca06b91edc1131c603e6" category="inline-image-macro-rx" type="image"></block><block ref="76b532b4ae4cf629b8e1a3ede08fd7ff" category="inline-link-macro-rx"></block></block>
+  <block id="a4ab042b047af1032e8f32eb55798abb" category="doc">Cisco Nexus 3232C 交換器的安裝與設定工作流程</block>
+  <block id="8434a6261c6e2022e9770fa7d8138c16" category="paragraph">請依照這些工作流程步驟安裝並設定您的Cisco Nexus 3232C 交換器。</block>
+  <block id="1a5f7fd8e8d78a257cac8d35257ebfb4" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block><block ref="f98da02f0354b9650f021d5be0d693ee" category="inline-link-macro-rx"></block></block>
+  <block id="5a498fe944cd4d31b9bf98a35aab8b85" category="paragraph">查看 3232C 叢集交換器的設定需求。</block>
+  <block id="bd426f3692822767dd8d75e5925d12dc" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block><block ref="1dbca34b24162eb59cc33616a1549705" category="inline-link-macro-rx"></block></block>
+  <block id="05c7dfbf89de92ac0ba731fe57579e26" category="paragraph">查看特定的交換器和控制器文件以設定您的 3232C 交換器和ONTAP叢集。</block>
+  <block id="1308bf8650051a06854397380c43b8d1" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block><block ref="fab4f252f5f3f34c327db7336393d285" category="inline-link-macro-rx"></block></block>
+  <block id="efe94d139a813461a20f2ba77272f193" category="paragraph-title"><block ref="99e8b2f00e172bfcff96afdce69907bc" category="inline-image-macro-rx" type="image"></block><block ref="90090934dcdd9f90bf31e3e10dd5083d" category="inline-link-macro-rx"></block></block>
+  <block id="a466e3d58704dbe45d127330f13a5f83" category="summary">請依照下列步驟安裝Cisco Nexus 3232C 交換器。</block>
+  <block id="f66b7080792725ee57ea7f7b02c7d38b" category="doc">安裝3232C集群交換機</block>
+  <block id="0080e9b38d76082768d1a676b91f697b" category="list-text">完全的<block ref="6d626c9a6b498f94526e14b544d04817" category="inline-link-macro-rx"></block>。</block>
+  <block id="422598dd3d31832bfe941edd56d7d1bd" category="list-text"><block ref="405e8e3e93d725761176a326f99e4751" category="inline-link-macro-rx"></block> 。</block>
+  <block id="abdf142c465e75d188665a07134160d1" category="inline-link-macro">在NetApp機櫃中安裝Cisco Nexus 3223C 交換機</block>
+  <block id="1e6e456a14b9d3e18e246a85940b6a59" category="paragraph">或者，您可以<block ref="2cea7f88b524cc550d065cf33c8d1c58" category="inline-link-macro-rx"></block>。否則，轉到<block ref="76b532b4ae4cf629b8e1a3ede08fd7ff" category="inline-link-macro-rx"></block>。</block>
+  <block id="9dc1ae98b1a9d05149e769f392412112" category="paragraph"><block ref="d35b203e8fe0144f812f95e477dfc8ac" category="inline-link-macro-rx"></block> 。</block>
+  <block id="dddd09d86cdbd9ad27e95c11d655ffd2" category="paragraph"><block ref="6fb43cd5c831afd08ed62ea7c301589a" category="inline-link-macro-rx"></block> 。</block>
+  <block id="ce6bf7cd47eb09b6a69cb1199b0e124b" category="doc">Cisco Nexus 92300YC 交換器的組件和零件編號</block>
+  <block id="374e26b57d48a3f53edf0eed7b8b9a0a" category="paragraph"><block ref="953b08a76549ddb5339056aaf68e6af4" category="inline-link-macro-rx"></block> 。</block>
+  <block id="6518e087ea131b7bbb106dea2f0c4eaf" category="paragraph"><block ref="94f89641c24a2c5acf155cedb6b917d3" category="inline-link-macro-rx"></block> 。</block>
+  <block id="76528b3388026fec8ee0da8f409827b8" category="summary">Cisco Nexus 92300YC 叢集交換器軟體設定概述</block>
+  <block id="6d667de9d7fb01a21a6dead01c80f651" category="doc">Cisco Nexus 92300YC 叢集交換器的軟體安裝工作流程</block>
+  <block id="bea3ba57a9f680b5a5369f4a4684f874" category="paragraph">若要安裝和設定Cisco Nexus 92300YC 交換器的軟體以及安裝或升級參考設定檔 (RCF)，請依照下列步驟操作：</block>
+  <block id="5543d6e76f263bdbd671a4d1fbaa49f6" category="paragraph">配置92300YC集群交換器。</block>
+  <block id="b1de4923af2356e23f4c8c2c65a008da" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block><block ref="50c428dcd6e7c20cdbb48b3d50c2a9da" category="inline-link-macro-rx"></block></block>
+  <block id="0d5ca88db3a1f30b7d37dadb8fd01d41" category="paragraph">必須在Cisco 92300YC 叢集交換器上安裝Cisco NX-OS 軟體和參考設定檔 (RCF)。</block>
+  <block id="793471b2fed49043c06f1a087870f6d2" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block><block ref="22465f28856801a04c09bd50ffee7d62" category="inline-link-macro-rx"></block></block>
+  <block id="583331a6c28ce2778c6146a59452a345" category="paragraph">下載並安裝或升級Cisco 392300YC 叢集交換器上的 NX-OS 軟體。</block>
+  <block id="fae4c180e898c8a439235a5e778d2549" category="paragraph-title"><block ref="beadfa85a2fdca06b91edc1131c603e6" category="inline-image-macro-rx" type="image"></block><block ref="246418de61c3ec41b5c3a3cca9731fd8" category="inline-link-macro-rx"></block></block>
+  <block id="c1369f0644c2b0550f6997021719c459" category="paragraph">首次設定Cisco 92300YC 交換器後安裝 RCF。</block>
+  <block id="34cd90939ddc2d9ad86fb102a2041314" category="summary">在設定Cisco Nexus 92300YC 叢集交換器之前，請先查看設定概述。</block>
+  <block id="95396888979c65e602f693334da7e07d" category="doc">Cisco Nexus 92300YC 交換器的硬體安裝工作流程</block>
+  <block id="6afc705e1b933b4766d87b856c3221cf" category="paragraph">若要安裝和設定 92300YC 叢集交換器的硬件，請依照下列步驟操作：</block>
+  <block id="4047a5ff7001d81b6431b807127ad12c" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block><block ref="b0854dd71ac1563be2bdb3fe5ff122e4" category="inline-link-macro-rx"></block></block>
+  <block id="f94424d6c3c912027184843b039a6d8c" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block><block ref="4a918828ff9ec1128ca567fb62079d76" category="inline-link-macro-rx"></block></block>
+  <block id="95c11aa280b3a4af2d6796be0cc6e2bc" category="paragraph">安裝92300YC開關。</block>
+  <block id="9bc4448eb31aa993c138c699e2f63e4f" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block><block ref="f395413a0179bce929cdb94ae83dcac4" category="inline-link-macro-rx"></block></block>
+  <block id="f8e39c49855138fc925b248dd42b44d2" category="paragraph">依需求在NetApp機櫃中安裝 92300YC 交換器和直通面板。</block>
+  <block id="3a3eef3e2d1c73e82a0a67e125e3f967" category="paragraph-title"><block ref="beadfa85a2fdca06b91edc1131c603e6" category="inline-image-macro-rx" type="image"></block><block ref="25a280eed05d50e4a92942cf78681f99" category="inline-link-macro-rx"></block></block>
+  <block id="9bd04d9eb8fe7af3717bd79fdc4dd16f" category="doc">Cisco Nexus 92300YC 交換器的安裝與設定工作流程</block>
+  <block id="312162ac34f340f4565474922d210693" category="paragraph">Cisco Nexus 92300YC 交換器可作為AFF或FAS叢集中的叢集交換器。叢集交換器可讓您建立具有兩個以上節點的ONTAP叢集。</block>
+  <block id="22870eb17147f96ef50b234ba22925d5" category="paragraph">請依照這些工作流程步驟安裝並設定您的Cisco Nexus 92300YC 交換器。</block>
+  <block id="62d45927f68981009a6d2265c3072e6d" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block><block ref="38fea660043776dff31d488d6f77d9bd" category="inline-link-macro-rx"></block></block>
+  <block id="626eb1a41f73801dcb6cc01d9eda756f" category="paragraph">查看 92300YC 叢集交換器的設定需求。</block>
+  <block id="0a72e8de625b21478fed93aac691d8fd" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block><block ref="953b08a76549ddb5339056aaf68e6af4" category="inline-link-macro-rx"></block></block>
+  <block id="ba784914a11fd4eae829cff16f7c39ac" category="paragraph">查看特定的交換器和控制器文件以設定您的 92300YC 交換器和ONTAP叢集。</block>
+  <block id="1b112832cbe8543bcf6820ae229956b6" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block><block ref="a2a393519d6030a855c14ef4686abf73" category="inline-link-macro-rx"></block></block>
+  <block id="e567e2e12139ab76efc3df6a83cd8d37" category="paragraph-title"><block ref="99e8b2f00e172bfcff96afdce69907bc" category="inline-image-macro-rx" type="image"></block><block ref="f179278a727b470dd5b08cfb9269de5d" category="inline-link-macro-rx"></block></block>
+  <block id="3c93c69a9702046763f5f373b37e891b" category="summary">請依照下列步驟安裝Cisco Nexus 92300YC 交換器。</block>
+  <block id="04eabb1c52dfa47f6aac94cae4e12b16" category="doc">安裝92300YC集群交換機</block>
+  <block id="b53d417c5b5c05099e7a4a83ac804e87" category="list-text">完全的<block ref="6fdaefcdc18bef0b06f1504ab9c9f258" category="inline-link-macro-rx"></block>。</block>
+  <block id="40bd63330d20c0b3cd3a02b0a6968178" category="list-text"><block ref="77aa1caeab88b7d73105c89a830c0132" category="inline-link-macro-rx"></block> 。</block>
+  <block id="28a6bdac5b3883f8e5487f5f3aeac8d2" category="paragraph">NetApp系統機櫃中的Cisco Nexus 92300YC</block>
+  <block id="aff406b983c2d35ad821428e64d8299a" category="paragraph">有關在NetApp機櫃中安裝交換器的說明，請參閱《在NetApp機櫃中安裝Cisco Nexus 92300YC 叢集交換器和直通面板》指南。</block>
+  <block id="7c9fbe03753f30b452627fae46b1bfd4" category="paragraph">或者，您可以<block ref="af6aa036b5bd64b8fef5c4838ed93b5f" category="inline-link-macro-rx"></block>。否則，轉到<block ref="25a280eed05d50e4a92942cf78681f99" category="inline-link-macro-rx"></block>。</block>
+  <block id="03d9c70dc4ad4079fc03423950b4c07c" category="summary">您可以使用交換器隨附的標準支架將Cisco Nexus 92300YC 交換器和直通面板安裝在NetApp機櫃中。</block>
+  <block id="518325300d482a782e3b6ee658fbd046" category="doc">在NetApp機櫃中安裝Cisco Nexus 92300YC 叢集交換機</block>
+  <block id="55f6483502ca85b4411fe62f1f73d031" category="paragraph">根據您的配置，您可能需要使用交換器隨附的標準支架在NetApp機櫃中安裝Cisco Nexus 92300YC 叢集交換器和直通面板。</block>
+  <block id="4550b8f1110dd92221b72ceee5f2776b" category="list-text">初始準備要求、工具包內容和安全預防措施<block ref="26b60d0a74ebc6e34e2fc4c021cb1968" category="inline-link-macro-rx"></block>。</block>
+  <block id="f4c3dc1d71b75c5d9dc1cbaa9e918427" category="list-text">在 Nexus 92300YC 交換器機箱上安裝機架安裝支架。</block>
+  <block id="e59b5480af0f23e17cb6ad95f898309a" category="paragraph">兩台 92300YC 交換器將始終安裝在機櫃 RU41 和 42 的頂部 2U 中。</block>
+  <block id="5a51de7a8bd29e14350d005020bdb5de" category="image-alt">92300YC 定位於 U39-40</block>
+  <block id="8d44600231ff60a86380b8c1228e5f6c" category="list-text">將每個 92300YC 交換器上的管理連接埠連接到任一管理交換器（如果訂購）或將其直接連接到管理網路。</block>
+  <block id="57b82df28fc00080790149c86d895c6b" category="paragraph"><block ref="4a918828ff9ec1128ca567fb62079d76" category="inline-link-macro-rx"></block> 。</block>
+  <block id="140be3eb4b08ba5b7033057d8fddcd9a" category="paragraph"><block ref="19183173bd336c4a7349920f4bc23f03" category="inline-link-macro-rx"></block> 。</block>
+  <block id="15a40d3f35d3512d3c97521e2c1f5b0b" category="paragraph"><block ref="169e5eca6121ce7f69a705f99619e75c" category="inline-link-macro-rx"></block> 。</block>
+  <block id="65e3a9c19dd89d3a7115a3ba02c522b3" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block><block ref="72451cd49e503d9ae924f8d1ab1ef595" category="inline-link-macro-rx"></block></block>
+  <block id="714034d2b8f5ebe644155de85884bbca" category="paragraph">配置 9336C-FX2 叢集交換器。</block>
+  <block id="b5fe56b5ff32cd8130c6ef4f84c1e62d" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block><block ref="0f24d169a2f575f17ba79644c46d3a03" category="inline-link-macro-rx"></block></block>
+  <block id="83aa01662b8f0e70e050f34d0a2b112e" category="paragraph">必須在Cisco 9336C-FX2 叢集交換器上安裝Cisco NX-OS 軟體和參考設定檔 (RCF)。</block>
+  <block id="14b3b17f755689e5a5fab89b6ae63211" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block><block ref="0a41823d2a109b5dbd6f2fa1f8fe6689" category="inline-link-macro-rx"></block></block>
+  <block id="d35302c6c324ed27400a5e058dffad94" category="paragraph">下載並安裝或升級Cisco 9336C-FX2 叢集交換器上的 NX-OS 軟體。</block>
+  <block id="422c274743fd52a13b84466925d9ae14" category="paragraph-title"><block ref="beadfa85a2fdca06b91edc1131c603e6" category="inline-image-macro-rx" type="image"></block><block ref="e1c53d78ceb09f1d765f98cd902707bb" category="inline-link-macro-rx"></block></block>
+  <block id="2bf3a21c18727d14d13236cbe24f6d43" category="paragraph">首次設定Cisco 9336C-FX2 交換器後安裝或升級 RCF。您也可以使用此程序升級您的 RCF 版本。</block>
+  <block id="002bff3b4f7078117e350533031df203" category="doc">Cisco Nexus 9336C-FX2 叢集交換器的安裝與設定工作流程</block>
+  <block id="bbdce1985f06c788c19e6e5d3566bb0f" category="paragraph">請依照這些工作流程步驟安裝並設定您的Cisco 9336C-FX2 交換器。</block>
+  <block id="5e614d5b678df1fbbb94c348b708979f" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block><block ref="2fca12e846c6ba3593809ac51401fa0b" category="inline-link-macro-rx"></block></block>
+  <block id="2e6a7a855e2ff2a1220730eae748ad87" category="paragraph">查看 9336C-FX2 叢集交換器的設定需求。</block>
+  <block id="be6f9e475f9adc72ec6526d5adc70b26" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block><block ref="a722a5598ccd16c1bff100542b2e44aa" category="inline-link-macro-rx"></block></block>
+  <block id="cfa7ea6652b44d2de47b01b454c44812" category="paragraph">查看 9336C-FX2 叢集交換器的組件和零件號碼。</block>
+  <block id="c89d2b1be1c059d7732385c7f48d8f19" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block><block ref="5fc1ad7e6f051f8474e7a142c51a615c" category="inline-link-macro-rx"></block></block>
+  <block id="08150807a0da3147bf1651a1c37ec583" category="paragraph">查看特定的交換器和控制器文件以設定您的 9336C-FX2 交換器和ONTAP叢集。</block>
+  <block id="d30328a6d5e1df1f7adce35c405878cc" category="inline-link-macro">查看 Smart Call Home 要求</block>
+  <block id="d46ea71679057077dc352afdf51795fc" category="paragraph-title"><block ref="beadfa85a2fdca06b91edc1131c603e6" category="inline-image-macro-rx" type="image"></block><block ref="6927e852c82055842728774484f4f269" category="inline-link-macro-rx"></block></block>
+  <block id="a97ad1ae552ab2e354f5e67d916ccaf2" category="paragraph-title"><block ref="99e8b2f00e172bfcff96afdce69907bc" category="inline-image-macro-rx" type="image"></block><block ref="76d32253af9ac9d977c88af48dee7d29" category="inline-link-macro-rx"></block></block>
+  <block id="a7bb68ddac6d399034ea468debf7fab7" category="paragraph-title"><block ref="ef78558f80439832e0f51cc22cee8b8c" category="inline-image-macro-rx" type="image"></block><block ref="38c1f149ff23c79ed448add9563e5d5b" category="inline-link-macro-rx"></block></block>
+  <block id="f9509470d72439cbfa8243fa94c09f2f" category="summary">在設定Cisco Nexus 9336C-FX2 叢集交換器之前，請先查看設定概述。</block>
+  <block id="6a8d17d47732d0a86c81e84f3572622d" category="doc">Cisco Nexus 9336C-FX2 交換器的硬體安裝工作流程</block>
+  <block id="ded6c98ad9f7b4bfae9804f20f7e2767" category="paragraph">若要安裝和設定 9336C-FX2 叢集交換器的硬件，請依照下列步驟操作：</block>
+  <block id="8f94ffb31a7b1c0eb7ef89c26c20fdbc" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block><block ref="995440708d7ef2f5dc1b0fa1faef9d09" category="inline-link-macro-rx"></block></block>
+  <block id="3aa51d17c39fbe6617a960cd893c9147" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block><block ref="0bc8e83d3cd2eebf0c2c5d2a7b54cc6c" category="inline-link-macro-rx"></block></block>
+  <block id="ab3371c33572fbb955f1dd5b9b37cf9b" category="paragraph">安裝 9336C-FX2 交換器。</block>
+  <block id="5420b49f6bb2b4c6cd29f1d04f886142" category="paragraph">根據需要在NetApp機櫃中安裝 9336C-FX2 交換器和直通面板。</block>
+  <block id="1a93d578061f1724e84a74106f164f03" category="paragraph-title"><block ref="beadfa85a2fdca06b91edc1131c603e6" category="inline-image-macro-rx" type="image"></block><block ref="f31e2218f7cf08b190abb8563911bffd" category="inline-link-macro-rx"></block></block>
+  <block id="8608163382dad3a40accd48496936aa9" category="paragraph">查看對NVIDIA乙太網路連接埠、25GbE FEC 要求的支援以及有關 TCAM 資源的資訊。</block>
+  <block id="710e5bf52faa736ff3e38fd233e59618" category="paragraph"><block ref="dbe9b3c650ae4dca2117921c884a54d2" category="inline-link-macro-rx"></block> 。</block>
+  <block id="f9c15e83a38fe90272c22c0bd257b581" category="paragraph">或者，您可以<block ref="a8c82b142f94f7d62d6e984faba746ca" category="inline-link-macro-rx"></block>。否則，轉到<block ref="756775b1ef62b4e4ac6c4df72f0cf918" category="inline-link-macro-rx"></block>。</block>
+  <block id="7be1885a02922674638042ed6280ba6b" category="paragraph"><block ref="7be1885a02922674638042ed6280ba6b" category="inline-link-macro-rx"></block></block>
+  <block id="be706a7a12c76624a9ad7568f3b79f1f" category="paragraph"><block ref="c05d7708e583b7d4b251d68f1130d2c6" category="inline-link-macro-rx"></block> 。</block>
+  <block id="d91ea354659a63a988e9a43bfe660ac0" category="paragraph"><block ref="ce2926213e4f5e76e8b29ae87f344220" category="inline-link-macro-rx"></block> 。</block>
+  <block id="e2715c3387d9508dc033488d6e43c425" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block><block ref="068ae9dc6825f9dcbe393c782d23d120" category="inline-link-macro-rx"></block></block>
+  <block id="532d48076326d08b06c875806937e7fd" category="paragraph">配置 9336C-FX2 共享交換器。</block>
+  <block id="876fcd8ffe61bb8affbdbb68b1e10baf" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block><block ref="a56c4df2c3d1cf8a69dff5f1adb2c643" category="inline-link-macro-rx"></block></block>
+  <block id="1c3991e906e3518bc7f4634d3c581e25" category="paragraph">必須在Cisco 9336C-FX2 共用交換器上安裝Cisco NX-OS 軟體和參考設定檔 (RCF)。</block>
+  <block id="5ade5096d23063966630221580a6cc38" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block><block ref="4cb2f34e71258a797d79030b4c4ec41e" category="inline-link-macro-rx"></block></block>
+  <block id="a2402c235c59a3a17c337288e6659de1" category="paragraph">下載並安裝或升級Cisco 9336C-FX2 共用交換器上的 NX-OS 軟體。</block>
+  <block id="4b7edc68e20fba5cfd2b6f8bfc99d9ef" category="paragraph-title"><block ref="beadfa85a2fdca06b91edc1131c603e6" category="inline-image-macro-rx" type="image"></block><block ref="47109c7943148b2a9617cfcb4b49a79f" category="inline-link-macro-rx"></block></block>
+  <block id="bbd3308be5def70ece27aceced0a2e1e" category="paragraph">首次設定Cisco 9336C-FX2 共用交換器後安裝 RCF。</block>
+  <block id="cbbdea3331f10374f61c84357a44c1ee" category="paragraph-title"><block ref="99e8b2f00e172bfcff96afdce69907bc" category="inline-image-macro-rx" type="image"></block><block ref="0f9cb6d39d312b3019fa328b8711b803" category="inline-link-macro-rx"></block></block>
+  <block id="b3d78cbd39aa8a48f684a072276fafaf" category="paragraph">當您的操作交換器上安裝了現有版本的 RCF 檔案時，請升級您的 RCF 版本。</block>
+  <block id="8da3411bb1ff261be5f286a3dc9eb98e" category="doc">Cisco Nexus 9336C-FX2 共用交換器的安裝與設定工作流程</block>
+  <block id="b6ab47306ee386f13460325ec248b939" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block><block ref="995dc0b4b3db395b1cdffbcd63b7e068" category="inline-link-macro-rx"></block></block>
+  <block id="ee4f53cee164a2a4adbc95c707f09c0d" category="paragraph">查看 9336C-FX2 共享交換器的設定需求。</block>
+  <block id="be463e5884b9bccdd0ec548486ad492c" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block><block ref="623ea5a7c9216ace3194f7932615e231" category="inline-link-macro-rx"></block></block>
+  <block id="4bc51c9336ea3c0df7dcbfbb00c87a7c" category="paragraph">查看 9336C-FX2 共用交換器的組件和零件編號。</block>
+  <block id="6c459c762f5c42994b19594b6f666c3d" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block><block ref="a0bdf7d987e6898c86fc98570a0109d9" category="inline-link-macro-rx"></block></block>
+  <block id="b27818907748c2b9848411018ec5376e" category="paragraph">或者，您可以<block ref="79869856cf39344d5034cad3eccc5e36" category="inline-link-macro-rx"></block>。否則，轉到<block ref="068ae9dc6825f9dcbe393c782d23d120" category="inline-link-macro-rx"></block>。</block>
+  <block id="ea638d2c350905a9e9de65f5eb65b878" category="summary">在設定Cisco Nexus 9336C-FX2 交換器之前，請先查看設定概述。</block>
+  <block id="3bd99b5e505a2e577b8eea02fc512fd5" category="doc">Cisco Nexus 9336C-FX2 共享交換器的硬體安裝工作流程</block>
+  <block id="208039781cc1c999add6d93badc0bd8c" category="paragraph">若要安裝和設定 9336C-FX2 共用交換器的硬件，請依照下列步驟操作：</block>
+  <block id="86584e4af92c1ecd7bcb5c967ce4d039" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block><block ref="b1dd11b8c652a20dabb45a8711624a03" category="inline-link-macro-rx"></block></block>
+  <block id="03721c018f3b57daf8190e64a5816d8c" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block><block ref="2d5ab056fce0957a1995d7dbefe2460c" category="inline-link-macro-rx"></block></block>
+  <block id="b1b40e86080e8933ddf9741d5a54d4c1" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block><block ref="cad0a32a1376b86b466dd6cf29c7e620" category="inline-link-macro-rx"></block></block>
+  <block id="65f37da1c9f83bc599bdd37869996437" category="paragraph"><block ref="08712014b627ff0e1c01c2b7e6c49149" category="inline-link-macro-rx"></block> 。</block>
+  <block id="e5e4c33167ef65ecfcf3ddcdc83d7f53" category="paragraph"><block ref="88abf51732f30f17b65def4d1747e28f" category="inline-link-macro-rx"></block> 。</block>
+  <block id="1130d64161a0e7dd5dc134ca8eeed3bc" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block><block ref="c49772a60328b39d671da109a076acd4" category="inline-link-macro-rx"></block></block>
+  <block id="409451caa6f3704a685f20d68c99aca5" category="paragraph">配置9336C-FX2儲存交換器。</block>
+  <block id="2cb440b90b3a2604826ca6513ffc0e42" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block><block ref="cc92556d54e7bbc14c83aad61946e82d" category="inline-link-macro-rx"></block></block>
+  <block id="cb3b28101a5ee802ee9339ebb8595afa" category="paragraph">必須在Cisco 9336C-FX2 儲存交換器上安裝Cisco NX-OS 軟體和參考設定檔 (RCF)。</block>
+  <block id="96c0f9b9f35ec112769fb42b69304b92" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block><block ref="6dc839faa17719bf6b40745660551f1b" category="inline-link-macro-rx"></block></block>
+  <block id="2c56d0852bbb1c59cd064306c261c65c" category="paragraph">下載並安裝或升級Cisco 9336C-FX2 儲存交換器上的 NX-OS 軟體。</block>
+  <block id="102c54c666c08f4173fa519e6ff129bc" category="paragraph-title"><block ref="beadfa85a2fdca06b91edc1131c603e6" category="inline-image-macro-rx" type="image"></block><block ref="7c940c5373653de732f444e5b7d2c3dd" category="inline-link-macro-rx"></block></block>
+  <block id="f49fe2ad250c9850f946f4a76e70f6ee" category="doc">Cisco Nexus 9336C-FX2 儲存交換器的安裝與設定工作流程</block>
+  <block id="1b3b19f43be6e28ee8c396fbe7b03fbc" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block><block ref="aaff47cc4c157f05f1c45463332a8bad" category="inline-link-macro-rx"></block></block>
+  <block id="1ff3ca27c084b3d98dd546bd6424b82f" category="paragraph">查看 9336C-FX2 儲存交換器的設定需求。</block>
+  <block id="afa756f05eda52021550fbc6716553fa" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block><block ref="77ca0bf349d1638c9c1dd8a9b3a241bc" category="inline-link-macro-rx"></block></block>
+  <block id="6271aa8c6c06ded4463e51995158862e" category="paragraph">查看 9336C-FX2 儲存交換器的組件和零件號碼。</block>
+  <block id="d815e2d84c80deace1c71e359ea4539c" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block><block ref="892235a4ff1b7daae2f665bdf48836dc" category="inline-link-macro-rx"></block></block>
+  <block id="2fd9e620c63ad097fef0f86dc0431f01" category="paragraph-title"><block ref="beadfa85a2fdca06b91edc1131c603e6" category="inline-image-macro-rx" type="image"></block><block ref="a370603fc77b0cda75c52a1c0cd9ca04" category="inline-link-macro-rx"></block></block>
+  <block id="e93d94e53563c8aa9753cd21058b0e16" category="paragraph-title"><block ref="99e8b2f00e172bfcff96afdce69907bc" category="inline-image-macro-rx" type="image"></block><block ref="17b105a40f24618917c9d67c7deca182" category="inline-link-macro-rx"></block></block>
+  <block id="c4334426d3952d12cd31cf51ea4bc4e9" category="paragraph-title"><block ref="ef78558f80439832e0f51cc22cee8b8c" category="inline-image-macro-rx" type="image"></block><block ref="6513be43714f8e4178a60e8447e307b1" category="inline-link-macro-rx"></block></block>
+  <block id="2506c3178340c6f497905a5c7374857c" category="paragraph">或者，您可以<block ref="2243efeaee625d6b6076bcdcbd40e014" category="inline-link-macro-rx"></block>。否則，轉到<block ref="c49772a60328b39d671da109a076acd4" category="inline-link-macro-rx"></block>。</block>
+  <block id="b5df828135197ab853d0a801d8eb009b" category="doc">Cisco Nexus 9336C-FX2 儲存交換器的硬體安裝工作流程</block>
+  <block id="14babb76f4d9c746d4dfc66f424b6b9a" category="paragraph">若要安裝和設定 9336C-FX2 儲存交換器的硬件，請依照下列步驟操作：</block>
+  <block id="e89feb45a019aae43e7072a7606f97d8" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block><block ref="35e16e47f4129ca15f5a4cfe7b290909" category="inline-link-macro-rx"></block></block>
+  <block id="0f2fc5abf269bcd430c8f35e0203b2bd" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block><block ref="8e341dc1e80127ca0dc2c12db6d0237a" category="inline-link-macro-rx"></block></block>
+  <block id="6d5d1abae5e843681d56ffe17b1d5796" category="paragraph">安裝 9336C-FX2 儲存交換器。</block>
+  <block id="986b831325814d3f0225e51df098b72b" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block><block ref="d43bf43861b014b2f70de1c12cff1c76" category="inline-link-macro-rx"></block></block>
+  <block id="4767a0bcf3ab94aeda87c79dd4096ef4" category="paragraph"><block ref="4767a0bcf3ab94aeda87c79dd4096ef4" category="inline-link-macro-rx"></block></block>
+  <block id="04d079026b4a7b63a084b7ab24426723" category="paragraph"><block ref="16a9a5fa8979bab3106e7aad0dfd20d9" category="inline-link-macro-rx"></block> 。</block>
+  <block id="a7ba132631b64c7d74d24b772aacd919" category="paragraph"><block ref="fc89f8ef8daa08e9ffc121c5d5609d54" category="inline-link-macro-rx"></block> 。</block>
+  <block id="4e66bc15577ca34b137ec086186da6aa" category="doc">NVIDIA SN2100 交換器的安裝與設定工作流程</block>
+  <block id="84a9509b45afdd4f172c9e97fb33aeae" category="paragraph">請依照下列工作流程步驟安裝並設定NVIDIA SN2100 交換器。</block>
+  <block id="5f8f57ce76aa4b127e0ea13abdf1345e" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block><block ref="1d6fb5d005264e31a2bce3661d73104a" category="inline-link-macro-rx"></block></block>
+  <block id="f4f81157fc6fac337f09bd9d4dedf3e4" category="paragraph">查看 SN2100 群集交換器的設定需求。</block>
+  <block id="101b1ef92ed878ba9dd2661cea7ae2d4" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block><block ref="1f38da81fb5d0c94c5e8f8b6ccb01b64" category="inline-link-macro-rx"></block></block>
+  <block id="1e43785dc8650999c99981b0cc8ce52c" category="paragraph">查看 SN2100 集群交換器的組件和零件編號。</block>
+  <block id="22b898a802e6ecf1efe4fd8447155ff8" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block><block ref="02de3235c7d60510b0e45690ce72f0ca" category="inline-link-macro-rx"></block></block>
+  <block id="de38f5bc18224a904a9da613e9e951b0" category="paragraph">查看特定的交換器和控制器文件以設定您的 SN2100 交換器和ONTAP叢集。</block>
+  <block id="386ced704d131539551d82f287c24e19" category="paragraph-title"><block ref="99e8b2f00e172bfcff96afdce69907bc" category="inline-image-macro-rx" type="image"></block><block ref="f1c1619f8b1ed1d1d5c236b6f88e9555" category="inline-link-macro-rx"></block></block>
+  <block id="0b31070981ebc881be6e243852a30cab" category="paragraph"><block ref="e831ca446f09bd354bf76a86391af038" category="inline-link-macro-rx"></block> 。</block>
+  <block id="db0d76db0abfe2ece0fea7cc312897cd" category="paragraph"><block ref="770c77dd441cd3adc4139ccb3c0d491b" category="inline-link-macro-rx"></block>或者<block ref="bba3ec5e6ca5e4f48b010488a5229b2c" category="inline-link-macro-rx"></block>。</block>
+  <block id="713d4f97a0409024a758cf7996d847d7" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block><block ref="00e0372232f46e972c663d4404b271c3" category="inline-link-macro-rx"></block></block>
+  <block id="476f34e9325d1f5ca4e7f6764f1c37c4" category="paragraph">配置NVIDIA SN2100交換器。</block>
+  <block id="51f9c4931826853711f81f0086b1be28" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block><block ref="770c77dd441cd3adc4139ccb3c0d491b" category="inline-link-macro-rx"></block></block>
+  <block id="3b9f73c0730af398d911853b213bfb36" category="paragraph">當交換器執行 Cumulus Linux 時，您可以安裝 Cumulus Linux (CL) 作業系統。</block>
+  <block id="7f00e51a54f545ab163f2e82653bbf13" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block><block ref="bba3ec5e6ca5e4f48b010488a5229b2c" category="inline-link-macro-rx"></block></block>
+  <block id="f682fdce414d2ddd65d60d8d505e17ec" category="paragraph">或者，您可以在交換器以 ONIE 模式執行 Cumulus Linux 時安裝 Cumulus Linux (CL) 作業系統。</block>
+  <block id="f3773be3f537ec7e9445b37809101da2" category="inline-link-macro">根據需要升級您的 Cumulus Linux 版本</block>
+  <block id="cb5e063f4e304ba43b8ba58685bd1322" category="paragraph-title"><block ref="beadfa85a2fdca06b91edc1131c603e6" category="inline-image-macro-rx" type="image"></block><block ref="a3cdbbe9606c8c77342c08905091d58a" category="inline-link-macro-rx"></block></block>
+  <block id="4f5cad90763c2ce535c7e96c7cccdc28" category="paragraph">您可以根據需要升級您的 Cumulus Linux (CL) 作業系統。</block>
+  <block id="6644a96995b52c5a8f8a5e5ce0f802e0" category="paragraph-title"><block ref="99e8b2f00e172bfcff96afdce69907bc" category="inline-image-macro-rx" type="image"></block><block ref="3d9967042c3cdfc5d68365a8b89192b1" category="inline-link-macro-rx"></block></block>
+  <block id="a87966bc5780610e7f2d0b7124159db7" category="paragraph-title"><block ref="ef78558f80439832e0f51cc22cee8b8c" category="inline-image-macro-rx" type="image"></block><block ref="bc8e6b3d8a605e692bda90d2d873314b" category="inline-link-macro-rx"></block></block>
+  <block id="a30be21f198530b5b6b8978b4ae21e1f" category="paragraph"><block ref="586358657da9582be98d1a15e5fd7854" category="inline-link-macro-rx"></block> 。</block>
+  <block id="c7a001e5237d88fee0ed6a186bf5042e" category="summary">在設定NVIDIA SN2100 叢集交換器之前，請先查看設定概述。</block>
+  <block id="19613dba5f729ac14e1b40a3e61a1ab9" category="doc">NVIDIA SN2100 交換器的硬體安裝工作流程</block>
+  <block id="aa93083325d3660d1aed75b314e1270e" category="paragraph">若要安裝和設定 SN2100 叢集交換器的硬件，請依照下列步驟操作：</block>
+  <block id="daec56e72d461515558a3d935c95a4fe" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block><block ref="aa45643ca8651ba3a9c3767013bc801d" category="inline-link-macro-rx"></block></block>
+  <block id="2ee11f51bd36f5e7428d6b2344092e58" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block><block ref="81e27480a79c2bb77194c038c9737157" category="inline-link-macro-rx"></block></block>
+  <block id="5683254bc2bec77f9a85300f204c6bbd" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block><block ref="80fb20cce25ca0da251a9120933c758d" category="inline-link-macro-rx"></block></block>
+  <block id="ef13a953c3ab129dcc576e769c122f80" category="paragraph">請依照這些工作流程步驟安裝並設定您的 SN2100 交換器。</block>
+  <block id="0d508cad56c14d168b856e4c53ac2007" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block><block ref="6370bb97bd6b7b10cfdf3c98b908d48b" category="inline-link-macro-rx"></block></block>
+  <block id="30d492d34db3234f2c3610b47ee1a45f" category="paragraph">查看 SN2100 儲存交換器的設定需求。</block>
+  <block id="383e295296a8a839fca94152a8e44e78" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block><block ref="3b0ecc255c9296121fc728f8efacb726" category="inline-link-macro-rx"></block></block>
+  <block id="9fe54b1584b269535a10ca9757e0d633" category="paragraph">查看 SN2100 儲存交換器的組件和零件編號。</block>
+  <block id="5c48143a21829dd93210328cf347b174" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block><block ref="13fcbddd528de4209e7d23a68d1b9854" category="inline-link-macro-rx"></block></block>
+  <block id="cf432b832643aab203cf324c0cdd3d2a" category="paragraph-title"><block ref="99e8b2f00e172bfcff96afdce69907bc" category="inline-image-macro-rx" type="image"></block><block ref="262cec1150ef38c9ea7540d7ae3a4889" category="inline-link-macro-rx"></block></block>
+  <block id="ed769f33f5e6396a5350c26d00e10952" category="paragraph"><block ref="6f29ea203d7917d9d35a7a8e4664773a" category="inline-link-macro-rx"></block> 。</block>
+  <block id="0f017a1e017594e935437ab5c77ea9cf" category="paragraph"><block ref="3041b5118a03f510955dbbcc0f577290" category="inline-link-macro-rx"></block>或者<block ref="a2ff852c84f89fa9e1b524e12735250e" category="inline-link-macro-rx"></block>。</block>
+  <block id="fcdc3fbb546ffe8444175e226eb7d6d8" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block><block ref="d639995fde516a3ba2e60963b02aecc1" category="inline-link-macro-rx"></block></block>
+  <block id="625b196242864fb625e827a05ba0ca8b" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block><block ref="3041b5118a03f510955dbbcc0f577290" category="inline-link-macro-rx"></block></block>
+  <block id="9d9be89e305913aa4f5fc1db511581ef" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block><block ref="a2ff852c84f89fa9e1b524e12735250e" category="inline-link-macro-rx"></block></block>
+  <block id="a29cf60e6a27ba607f38c03d72584ed6" category="paragraph-title"><block ref="beadfa85a2fdca06b91edc1131c603e6" category="inline-image-macro-rx" type="image"></block><block ref="042936408f11a0ab2085068400be81ab" category="inline-link-macro-rx"></block></block>
+  <block id="5ec621045cf8b59339b967f20e718f17" category="paragraph-title"><block ref="99e8b2f00e172bfcff96afdce69907bc" category="inline-image-macro-rx" type="image"></block><block ref="bc8e6b3d8a605e692bda90d2d873314b" category="inline-link-macro-rx"></block></block>
+  <block id="dc6a92646e360d6aebcb4ffde88fdaa1" category="paragraph">確保以下各項可用：</block>
+  <block id="d59b6c21553d166822815063268759a9" category="paragraph"><block ref="02bab6a93984b80dbf6d1f4b3c04e68a" category="inline-link-macro-rx"></block> 。</block>
+  <block id="0e245f17e1a2edaaad55998a79c7ba51" category="paragraph"><block ref="ec7a39e14153ae248be0af2fdfe579b9" category="inline-link-macro-rx"></block> 。</block>
+  <block id="9becc6b0b1c7536b40d8c1cc61107fca" category="doc">NVIDIA SN2100 儲存交換器的硬體安裝工作流程</block>
+  <block id="aca9675b14d96b37e8250c7e8e7ee607" category="paragraph">若要安裝和設定 SN2100 儲存交換器的硬件，請依照下列步驟操作：</block>
+  <block id="928d9ac7d5d1c965d93fe4d3435b9692" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block><block ref="1fbc6a97823ab47111a560b4ffbc73ac" category="inline-link-macro-rx"></block></block>
+  <block id="2ddbe786fed78c8ba3477ee17347bafb" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block><block ref="75ce5666fba6992a0719935651dd5b1b" category="inline-link-macro-rx"></block></block>
+  <block id="c2f5a89812531f706189afb1d2d88afc" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block><block ref="6c129e88cb5cbf6304a97d9174a6a7c1" category="inline-link-macro-rx"></block></block>
+  <block id="1f0ea2e5572ed3e4e3172467e737eda1" category="paragraph">確保您具有以下各項：</block>
+  <block id="9e7cb6d6260b45f39a322192786be675" category="sidebar">硬體安裝工作流程</block>
+  <block id="1f23e03e99812c23b47ad60d475647df" category="sidebar">升級交換機</block>
+  <block id="5b416e1633d16aad217a2e0fc2d097f8" category="sidebar">升級工作流程</block>
+  <block id="b774573b632fe390095c073d1383dbd2" category="sidebar">更換開關</block>
+  <block id="e791d1fac76c3ff6efed9115a50da70d" category="sidebar">在NetApp機櫃中安裝交換機</block>
+  <block id="69d7fe49f7c3685a4d25747f5ee8b18b" category="sidebar">更換儲存開關</block>
 </blocks>

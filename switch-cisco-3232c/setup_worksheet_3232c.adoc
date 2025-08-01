@@ -589,3 +589,5 @@ summary: 如果您想要記錄支援的平台、您必須使用完整的佈線�
 100GbE ISL 到交換器 A 連接埠 32
 
 |===
+.下一步
+link:install-switch-3232c.html["安裝交換器"] 。

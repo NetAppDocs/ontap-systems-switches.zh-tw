@@ -1,0 +1,34 @@
+---
+permalink: switch-cisco-92300/configure-software-overview-92300-cluster.html 
+sidebar: sidebar 
+keywords: switches, initial installation, configure switch-92300 switch 
+summary: Cisco Nexus 92300YC 叢集交換器軟體設定概述 
+---
+= Cisco Nexus 92300YC 叢集交換器的軟體安裝工作流程
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+若要安裝和設定Cisco Nexus 92300YC 交換器的軟體以及安裝或升級參考設定檔 (RCF)，請依照下列步驟操作：
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一"]link:configure-install-initial.html["設定交換器"]
+[role="quick-margin-para"]
+配置92300YC集群交換器。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["二"]link:install-nxos-overview.html["準備安裝 NX-OS 軟體和 RCF"]
+[role="quick-margin-para"]
+必須在Cisco 92300YC 叢集交換器上安裝Cisco NX-OS 軟體和參考設定檔 (RCF)。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三"]link:install-nxos-software.html["安裝或升級 NX-OS 軟體"]
+[role="quick-margin-para"]
+下載並安裝或升級Cisco 392300YC 叢集交換器上的 NX-OS 軟體。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["四"]link:install-the-rcf-file.html["安裝RCF"]
+[role="quick-margin-para"]
+首次設定Cisco 92300YC 交換器後安裝 RCF。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["五"]link:configure-ssh-keys.html["驗證SSH組態"]
+[role="quick-margin-para"]
+驗證交換器上是否啟用了 SSH 以使用乙太網路交換器健康監視器 (CSHM) 和日誌收集功能。

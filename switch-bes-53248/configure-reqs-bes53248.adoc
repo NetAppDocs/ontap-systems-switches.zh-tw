@@ -80,3 +80,6 @@ summary: 您可以使用「Bes - 53248叢集交換器連接埠指派表」作為
 * 如果您購買額外授權、請參閱 link:configure-licenses.html["啟動新授權連接埠"] 如需如何啟動的詳細資訊、請參閱。
 * 如果 SSH 是作用中的、則必須在執行命令後手動重新啟用 SSH `erase startup-config` 然後重新啟動交換器。
 
+
+.下一步
+link:components-bes53248.html["元件與零件編號"] 。

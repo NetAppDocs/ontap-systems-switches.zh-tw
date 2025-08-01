@@ -19,4 +19,4 @@ summary: 若要安裝BS-53248硬體、請參閱NVIDIA文件。
 
 
 .接下來呢？
-link:configure-sn2100-storage.html["設定交換器"]。
+link:cabling-considerations-sn2100-storage.html["檢視纜線佈線與組態"] 。

@@ -1365,3 +1365,5 @@ ISL至交換器B連接埠66
 ISL至交換器A連接埠66
 
 |===
+.下一步
+link:install-switch-92300yc.html["安裝交換器"] 。

@@ -880,3 +880,6 @@ summary: 如果您想要記錄支援的平台、您必須使用完整的佈線�
 
 |===
 請參閱 https://hwu.netapp.com/Switch/Index["Hardware Universe"] 如需交換器連接埠的詳細資訊、
+
+.下一步
+link:install-switch-9336c-cluster.html["安裝交換器"]。

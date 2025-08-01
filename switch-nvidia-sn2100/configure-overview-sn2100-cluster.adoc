@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: sn2100 SN2100 switches setup, sn2100 SN2100 switches install, cumulus linux 
 summary: NVIDIA SN2100交換器是執行Cummulis Linux的10/25/40/100 GbE乙太網路交換器。SN2100交換器可在ONTAP 不同的交換器配對上、以《S209.10.1》提供叢集與儲存應用程式的服務。 
 ---
-= NVIDIA SN2100交換器的安裝與組態總覽
+= NVIDIA SN2100 交換器的安裝與設定工作流程
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -13,50 +13,24 @@ summary: NVIDIA SN2100交換器是執行Cummulis Linux的10/25/40/100 GbE乙太�
 [role="lead"]
 NVIDIA SN2100是一款叢集交換器、可讓您建置ONTAP 包含兩個以上節點的各種叢集。
 
+請依照下列工作流程步驟安裝並設定NVIDIA SN2100 交換器。
 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一"]link:configure-reqs-sn2100-cluster.html["查看配置要求"]
+[role="quick-margin-para"]
+查看 SN2100 群集交換器的設定需求。
 
-== 初始組態總覽
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["二"]link:components-sn2100-cluster.html["查看組件和零件編號"]
+[role="quick-margin-para"]
+查看 SN2100 集群交換器的組件和零件編號。
 
-若要在執行ONTAP 指示燈介面的系統上設定NVIDIA SN2100交換器、請依照下列步驟操作：
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三"]link:required-documentation-sn2100-cluster.html["審查所需文件"]
+[role="quick-margin-para"]
+查看特定的交換器和控制器文件以設定您的 SN2100 交換器和ONTAP叢集。
 
-. link:install-hardware-sn2100-cluster.html["安裝NVIDIA SN2100交換器的硬體"]。
-+
-如需相關指示、請參閱《NVIDIA交換器安裝指南》_。
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["四"]link:install-hardware-workflow.html["安裝硬體"]
+[role="quick-margin-para"]
+安裝交換器硬體。
 
-. link:configure-sn2100-cluster.html["設定交換器"]。
-+
-NVIDIA 文件中提供相關說明。
-
-. link:cabling-considerations-sn2100-cluster.html["檢閱纜線佈線和組態考量"]。
-+
-檢閱光纖連線、QSA介面卡和switchport速度的需求。
-
-. link:install-cable-shelves-sn2100-cluster.html["將NS224磁碟櫃連接為交換器附加儲存設備"]。
-+
-如果您的系統需要將NS224磁碟機櫃纜線作為交換器附加儲存設備（非直接附加儲存設備）、請遵循纜線程序。
-
-. link:install-cumulus-mode-sn2100-cluster.html["在Cummuls模式下安裝Cummulus Linux"] 或 link:install-onie-mode-sn2100-cluster.html["以ONIE模式安裝CummulUS Linux"]。
-+
-當交換器執行的是Cummulos Linux或ONIE時、您可以安裝Cummulos Linux（CL）OS。
-
-. link:install-rcf-sn2100-cluster.html["安裝參考組態檔（RCF）指令碼"]。
-+
-叢集與儲存應用程式可使用兩個RCF指令碼。每個的程序都相同。
-
-. link:setup-install-cshm-file.html["安裝 CSHM 檔案"]。
-+
-您可以安裝適用於 NVIDIA 叢集交換器之乙太網路交換器健全狀況監控的組態檔。
-
-
-
-
-
-== 其他資訊
-
-開始安裝或維護之前、請務必先檢閱下列內容：
-
-* link:configure-reqs-sn2100-cluster.html["組態需求"]
-* link:components-sn2100-cluster.html["元件與零件編號"]
-* link:required-documentation-sn2100-cluster.html["必要文件"]
-* https://hwu.netapp.com["Hardware Universe"^] 適用於所有支援ONTAP 的版本。
-
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["五"]link:configure-software-overview-sn2100-cluster.html["設定軟體"]
+[role="quick-margin-para"]
+配置交換器軟體。

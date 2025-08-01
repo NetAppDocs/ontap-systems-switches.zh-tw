@@ -13,7 +13,9 @@ summary: 請完成下列步驟以升級您的 Cumulus Linux 版本。
 [role="lead"]
 請完成下列程序、視需要升級您的 Cumulus Linux 版本。
 
-.您需要的產品
+.開始之前
+請確定您擁有下列項目：
+
 * 中級Linux知識。
 * 熟悉基本文字編輯、UNIX檔案權限及程序監控。已預先安裝多種文字編輯器、包括 `vi` 和 `nano`。
 * 存取Linux或UNIX Shell。如果您執行的是Windows、請使用Linux環境做為命令列工具、與Cummulas Linux互動。

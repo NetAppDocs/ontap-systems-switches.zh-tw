@@ -1,0 +1,53 @@
+---
+permalink: switch-cisco-92300/install-switch-92300yc.html 
+sidebar: sidebar 
+keywords: require, configuration, information, documentation, cluster, management, network, switches, set up the switches - cisco nexus 92300YC 
+summary: 請依照下列步驟安裝Cisco Nexus 92300YC 交換器。 
+---
+= 安裝92300YC集群交換機
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+請遵循此程序來設定及設定Cisco Nexus 2300YC交換器。
+
+.開始之前
+請確定您擁有下列項目：
+
+* 存取安裝站台的HTTP、FTP或TFTP伺服器、下載適用的NX-OS和參考組態檔（RCF）版本。
+* 適用的NX-OS版本、可從下載 https://software.cisco.com/download/home["Cisco軟體下載"^] 頁面。
+* 適用的授權、網路與組態資訊、以及纜線。
+* 完全的link:setup-worksheet-92300yc.html["佈線工作表"]。
+* 適用的NetApp叢集網路與管理網路RCT、可從NetApp 支援網站 The Sorgat下載 http://mysupport.netapp.com/["mysupport.netapp.com"^]。所有Cisco叢集網路和管理網路交換器都會以標準Cisco原廠預設組態送達。這些交換器也有NX-OS軟體的最新版本、但未載入RCFs。
+* link:required-documentation-92300.html["所需的交換器和ONTAP 功能文件"] 。
+
+
+.步驟
+. 將叢集網路和管理網路交換器與控制器架起。
++
+[cols="1,2"]
+|===
+| 如果您要安裝... | 然後... 
+
+
+ a| 
+NetApp系統機櫃中的Cisco Nexus 92300YC
+ a| 
+有關在NetApp機櫃中安裝交換器的說明，請參閱《在NetApp機櫃中安裝Cisco Nexus 92300YC 叢集交換器和直通面板》指南。
+
+
+
+ a| 
+電信機架中的設備
+ a| 
+請參閱交換器硬體安裝指南中提供的程序、以及NetApp安裝與設定說明。
+
+|===
+. 使用完整的佈線工作表、將叢集網路和管理網路交換器連接至控制器。
+. 開啟叢集網路和管理網路交換器和控制器的電源。
+
+
+.接下來呢？
+或者，您可以link:install-switch-netapp-cabinet-92300yc.html["在NetApp機櫃中安裝Cisco Nexus 3223C 交換機"]。否則，轉到link:cabling-considerations-92300.html["檢視纜線佈線與組態"]。
