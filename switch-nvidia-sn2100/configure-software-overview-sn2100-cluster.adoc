@@ -36,3 +36,7 @@ summary: 軟體組態或NVIDIA SN2100交換器總覽。
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["六"]link:setup-install-cshm-file.html["安裝 CSHM 檔案"]
 [role="quick-margin-para"]
 您可以安裝適用於 NVIDIA 叢集交換器之乙太網路交換器健全狀況監控的組態檔。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-7.png["七"]link:reset-switch-sn2100.html["將交換器重設為出廠預設值"]
+[role="quick-margin-para"]
+清除 SN2100 群集交換器設定。

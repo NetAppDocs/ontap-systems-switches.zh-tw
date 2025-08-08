@@ -1,0 +1,46 @@
+---
+permalink: switch-cisco-9336c-fx2-storage/reset-switch-9336c-storage.html 
+sidebar: sidebar 
+keywords: 9336C-FX2 reset switch to factory defaults, 9336C-FX2 switches configuration, efos 
+summary: 在設定Cisco Nexus 9336C-FX2 交換器之前，請先查看以下資訊。 
+---
+= 將 9336C-FX2 儲存交換器重設為出廠預設值
+:allow-uri-read: 
+
+
+[role="lead"]
+若要將 9336C-FX2 儲存交換器重設為原廠預設設置，必須清除 9336C-FX2 交換器設定。
+
+.關於這項工作
+* 您必須使用序列主控台連線至交換器。
+* 此工作會重設管理網路的組態。
+
+
+.步驟
+. 清除現有配置：
++
+`write erase`
+
++
+[listing, subs="+quotes"]
+----
+(cs2)# *write erase*
+
+Warning: This command will erase the startup-configuration.
+Do you wish to proceed anyway? (y/n) [n] *y*
+----
+. 重新載入交換器軟體：
++
+"重裝"
+
++
+[listing, subs="+quotes"]
+----
+(cs2)# *reload*
+
+This command will reboot the system. (y/n)? [n] *y*
+----
++
+系統重新啟動並進入設定精靈。在啟動過程中，如果收到提示“中止自動配置並繼續正常設定？”  (yes/no)[n]”，您應該回答*yes*才能繼續。
+
+

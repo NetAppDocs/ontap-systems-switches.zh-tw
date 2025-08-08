@@ -32,3 +32,7 @@ summary: Cisco Nexus 3232C 叢集交換器軟體設定概述
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["五"]link:configure-ssh-keys.html["驗證SSH組態"]
 [role="quick-margin-para"]
 驗證交換器上是否啟用了 SSH 以使用乙太網路交換器健康監視器 (CSHM) 和日誌收集功能。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["六"]link:reset-switch-3232c.html["將交換器重設為出廠預設值"]
+[role="quick-margin-para"]
+清除 3232C 集群交換器設定。

@@ -23,6 +23,22 @@ summary: 在安裝RCF指令碼之前、請確定交換器上有下列項目可�
 
 NOTE: 您必須在 RCF 中指定一個使用者（管理使用者除外）、以專門用於記錄收集。
 
+.客戶配置
+可用的參考配置類別如下：
+
+[cols="1,2"]
+|===
+
+
+| 叢集 | 在配置為 4x10GbE 分支的連接埠上，一個連接埠配置為 4x25GbE 分支，其他連接埠配置為 40/100GbE。對於使用共享叢集/HA 連接埠的節點，支援連接埠上的共用叢集/HA 流量。請參閱知識庫文章中的平台表 https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/What_AFF_ASA_and_FAS_platforms_use_shared_Cluster_and_HA_Ethernet_ports["哪些AFF、 ASA和FAS平台使用共用叢集和 HA 乙太網路連接埠？"^]。所有連接埠也可以用作專用集群連接埠。 
+
+
+ a| 
+儲存設備
+ a| 
+所有連接埠均配置為 100GbE NVMe 儲存連線。
+
+|===
 .目前的RCF指令碼版本
 叢集和儲存應用程式有兩個 RCF 指令碼可用。請從頁面下載 RCFs https://mysupport.netapp.com/site/info/nvidia-cluster-switch["NVIDIA SN2100 軟體下載"^] 。每個的程序都相同。
 

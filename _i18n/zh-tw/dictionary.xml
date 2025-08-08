@@ -5231,8 +5231,6 @@
   <block id="d2fbaa7f212d11bb223bcb79e99d25a5" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block><block ref="0f9f654882514557e57b19641aa7b563" category="inline-link-macro-rx"></block></block>
   <block id="039ac036dd5126741513b6ff02740aa3" category="paragraph-title"><block ref="beadfa85a2fdca06b91edc1131c603e6" category="inline-image-macro-rx" type="image"></block><block ref="74dd19c11d43cfa2dd387ecf7d984746" category="inline-link-macro-rx"></block></block>
   <block id="ba4ab00920641dfd5423a47fe9d7f3c9" category="paragraph-title"><block ref="99e8b2f00e172bfcff96afdce69907bc" category="inline-image-macro-rx" type="image"></block><block ref="e2b4c4f5313b05dff7c4a02a4e9e0df6" category="inline-link-macro-rx"></block></block>
-  <block id="e0c4a4604e9c598a73beb01178396611" category="inline-link-macro">將交換器重設為出廠預設值</block>
-  <block id="ae2325ba8e46103566cfcf760e724aea" category="paragraph-title"><block ref="ef78558f80439832e0f51cc22cee8b8c" category="inline-image-macro-rx" type="image"></block><block ref="6c812119d579c9718456d0d0cb09a418" category="inline-link-macro-rx"></block></block>
   <block id="b072aeefadd5f4debb10448ed0f78d3d" category="paragraph"><block ref="6750c4dc9d2505a8ea19f483ac83a6d9" category="inline-link-macro-rx"></block> 。</block>
   <block id="df262d72a3f24d806e5173e9cf649e77" category="doc">BES-53248 交換器的硬體安裝工作流程</block>
   <block id="28a0c60fdf5ca57b39720c3a8d882046" category="paragraph">若要安裝和設定 BES-53248 叢集交換器的硬件，請依照下列步驟操作：</block>
@@ -5515,4 +5513,64 @@
   <block id="b774573b632fe390095c073d1383dbd2" category="sidebar">更換開關</block>
   <block id="e791d1fac76c3ff6efed9115a50da70d" category="sidebar">在NetApp機櫃中安裝交換機</block>
   <block id="69d7fe49f7c3685a4d25747f5ee8b18b" category="sidebar">更換儲存開關</block>
+  <block id="8d34b4267d2886cdba19cbddeba8d3ad" category="list-text">清除現有配置：</block>
+  <block id="0c0b4ff8f510dfc18a7d95bef227ea58" category="paragraph"><block ref="ed3fe2a45ef033acf306fc90fbafdd66" prefix="" category="inline-code"></block></block>
+  <block id="cfd72c932abb8432b8e6b711659ed1d7" category="list-text">重新載入交換器軟體：</block>
+  <block id="16c58ccf76815dff733ad93901f5bcf9" category="paragraph">系統重新啟動並進入設定精靈。在啟動過程中，如果收到提示“中止自動配置並繼續正常設定？”  (yes/no)[n]”，您應該回答*yes*才能繼續。</block>
+  <block id="17dba0058ebd784fda9d578add5ffc7b" category="paragraph-title"><block ref="ef78558f80439832e0f51cc22cee8b8c" category="inline-image-macro-rx" type="image"></block><block ref="6356dc79de453379cf58db845e7c3b08" category="inline-link-macro-rx"></block></block>
+  <block id="68ce37c19a0251e140bbe451994a0a87" category="paragraph">將映像檔複製到備份映像意味著當您重新啟動時，該映像將建立正在執行的 EFOS 版本，從而完成更新。</block>
+  <block id="5e3fca47bf540ed2f8359fed3ba3d933" category="paragraph">驗證交換器上是否啟用了 SSH 以使用乙太網路交換器健康監視器 (CSHM) 和日誌收集功能。</block>
+  <block id="a547590797f0e140e151132add043200" category="paragraph-title"><block ref="ef78558f80439832e0f51cc22cee8b8c" category="inline-image-macro-rx" type="image"></block><block ref="7a5d5b6dab724354c2680af53e8b70be" category="inline-link-macro-rx"></block></block>
+  <block id="662cd3147992ca2ec38bb777afcdd25d" category="paragraph">清除 3132Q-V 群集交換器設定。</block>
+  <block id="d6c161306625fdcefd6cea690f38a072" category="summary">在設定Cisco Nexus 3132Q-V 交換器之前，請先查看以下資訊。</block>
+  <block id="2fa8b033272c47872f0d609fca6f5884" category="doc">將 3132Q-V 群集交換器重設為出廠預設值</block>
+  <block id="4b9af8b9c7bc31af6b8339313f54610c" category="paragraph">若要將 3132Q-V 群集交換器重設為出廠預設設置，必須清除 3132Q-V 交換器設定。</block>
+  <block id="199183c8c92b86fba116f2f574537c15" category="paragraph">驗證交換器上是否啟用了 SSH 以使用乙太網路交換器健康監視器 (CSHM) 和日誌收集功能。</block>
+  <block id="b12f3306887c043b4b04e0231794e654" category="paragraph-title"><block ref="ef78558f80439832e0f51cc22cee8b8c" category="inline-image-macro-rx" type="image"></block><block ref="7eaf0872ed692ccf6191d458f1933d14" category="inline-link-macro-rx"></block></block>
+  <block id="36c161bbe0dfa54483d24d7acddf5ef5" category="paragraph">清除 3232C 集群交換器設定。</block>
+  <block id="1b96fd6651bb63bdced981b68a28fa86" category="summary">在設定Cisco Nexus 3232C 交換器之前，請先查看以下資訊。</block>
+  <block id="0b0af207ec2c8f6abb54dbb6d25d1e08" category="doc">將 3232C 集群交換器重設為出廠預設值</block>
+  <block id="c46b238bb6344a302fea52020396d5fd" category="paragraph">若要將 3232C 叢集交換器重設為出廠預設設置，必須清除 3232C 交換器設定。</block>
+  <block id="9a8cb8528dcf1f4cef02d9d651c97762" category="paragraph-title"><block ref="ef78558f80439832e0f51cc22cee8b8c" category="inline-image-macro-rx" type="image"></block><block ref="80f53a242ec42c69f56bef6ea5280d79" category="inline-link-macro-rx"></block></block>
+  <block id="3836409394069aad1c0d177508a0b8fa" category="paragraph">清除 9336C-FX2 集群交換器設定。</block>
+  <block id="3dd12c3aa965e3c3f02c45cf194e70e1" category="summary">在設定Cisco Nexus 9336C-FX2 交換器之前，請先查看以下資訊。</block>
+  <block id="1879b1806f544489aa735d6c96451c26" category="doc">將 9336C-FX2 集群交換器重設為出廠預設值</block>
+  <block id="86febed737991dc630c80bed09f6522a" category="paragraph">若要將 9336C-FX2 叢集交換器重設為原廠預設設置，必須清除 9336C-FX2 交換器設定。</block>
+  <block id="b61314793698be7c8efe61054a047971" category="paragraph-title"><block ref="ef78558f80439832e0f51cc22cee8b8c" category="inline-image-macro-rx" type="image"></block><block ref="f2f3ab011041e0ba671f012e12a109d6" category="inline-link-macro-rx"></block></block>
+  <block id="be18d3d03cb823f2241c70c8d8f962f1" category="paragraph">清除 9336C-FX2 共享交換器設定。</block>
+  <block id="7cf9e584319467844132fe2ec5366e46" category="doc">將 9336C-FX2 共享交換器重設為出廠預設值</block>
+  <block id="f15f694cd959fee42f68622ed93703ec" category="paragraph">若要將 9336C-FX2 共享交換器重設為原廠預設設置，必須清除 9336C-FX2 交換器設定。</block>
+  <block id="6d7847194618d7f43d5ef4802d5b7bf5" category="paragraph-title"><block ref="ef78558f80439832e0f51cc22cee8b8c" category="inline-image-macro-rx" type="image"></block><block ref="6490da53052fc089e10d4c5945e4165d" category="inline-link-macro-rx"></block></block>
+  <block id="327d54052f8df54815eb6a91b7d0408d" category="paragraph">清除 9336C-FX2 儲存開關設定。</block>
+  <block id="25620b70ab19361e1b5271b949eadacd" category="doc">將 9336C-FX2 儲存交換器重設為出廠預設值</block>
+  <block id="dc0d7be930f1390289c8d4fff1abdca8" category="paragraph">若要將 9336C-FX2 儲存交換器重設為原廠預設設置，必須清除 9336C-FX2 交換器設定。</block>
+  <block id="e1fbd6e94e8ae2122c5dff5616d455bd" category="paragraph-title"><block ref="36915574c413876eaa75cbd48f69fd00" category="inline-image-macro-rx" type="image"></block><block ref="2e7babb183a220127f4abd1b2ba289d4" category="inline-link-macro-rx"></block></block>
+  <block id="c759c9ef805c613327b992d273776e80" category="paragraph">清除 SN2100 群集交換器設定。</block>
+  <block id="f6d2183127ed7dc4775726598f011d45" category="paragraph-title">客戶配置</block>
+  <block id="863024ad8692815d1fe846dcdce5ca57" category="paragraph">可用的參考配置類別如下：</block>
+  <block id="50bce5200369ea41a0ea4f79becac9bf" category="inline-link">哪些AFF、 ASA和FAS平台使用共用叢集和 HA 乙太網路連接埠？</block>
+  <block id="0bc90e0a3948b6e0e48ce586bfa7e98c" category="cell">在配置為 4x10GbE 分支的連接埠上，一個連接埠配置為 4x25GbE 分支，其他連接埠配置為 40/100GbE。對於使用共享叢集/HA 連接埠的節點，支援連接埠上的共用叢集/HA 流量。請參閱知識庫文章中的平台表<block ref="fdae406771bb41a610c6be60e7ce62fc" category="inline-link-rx"></block>。所有連接埠也可以用作專用集群連接埠。</block>
+  <block id="6a00bf647cce537322b223f8ee60a62b" category="paragraph">所有連接埠均配置為 100GbE NVMe 儲存連線。</block>
+  <block id="0286b66414c639f8590a9806eeb04262" category="summary">在設定Cisco Nexus SN2100 交換器之前，請先查看以下資訊。</block>
+  <block id="f84f19e1f5a15cd381ab5410db9d3c99" category="doc">將 SN2100 集群交換器重設為出廠預設值</block>
+  <block id="5f73db9b65f92882a3efdfeced5e6eeb" category="paragraph">若要將 SN2100 叢集交換器重設為出廠預設值：</block>
+  <block id="843c91f97d7ae683c76349f4ac699a9e" category="list-text">對於 Cumulus Linux 5.10 及更早版本，您可以套用 Cumulus 映像。</block>
+  <block id="b09bf03dc0fb6f34f597d719ec3e4e95" category="list-text">對於 Cumulus Linux 5.11 及更高版本，您可以使用<block ref="3855b6f7babaffe66134264b2942b8dd" prefix=" " category="inline-code"></block>命令。</block>
+  <block id="2c40e2c18715e28784c5c9e47a590e11" category="list-text">您必須擁有 root 密碼才能使用 sudo 存取命令。</block>
+  <block id="def186cdd754662c29dc1f6af4203700" category="admonition">有關安裝 Cumulus Linux 的更多信息，請參閱<block ref="393d4e260f338007c4ef9d6b87e66408" category="inline-link-macro-rx"></block>。</block>
+  <block id="93efb65ca411fb2f44e039994d93433f" category="open-title">Cumulus Linux 5.10 及更早版本</block>
+  <block id="bbcee58fab96e29ea5ea1cb02a9552ab" category="list-text">從 Cumulus 控制台，使用指令下載並排隊交換機軟體安裝<block ref="ab09d01458fda05214076f30062575f2" prefix=" " category="inline-code"></block>後面跟著交換器軟體的檔案路徑，例如：</block>
+  <block id="f20713f57f6f52b8dc4d27808293a5d0" category="list-text">安裝程式開始下載。當映像下載並驗證後，當提示確認安裝時，輸入*y*。</block>
+  <block id="3c7dc9464907352b97aa6886bff1a24a" category="list-text">重新啟動交換器以安裝新軟體。</block>
+  <block id="a7684986aa13d220654f08fd150ba1b1" category="paragraph"><block ref="06d12c03aa485826b7f204affe755aa8" prefix="" category="inline-code"></block></block>
+  <block id="972f863fec0fbbb37a05f5682a699725" category="admonition">交換器重新啟動並進入交換器軟體安裝，這需要一些時間。安裝完成後，交換器重新啟動並保持在<block ref="bc652c82cd8c0ef0dc61c2d0a1c12185" prefix=" " category="inline-code"></block>迅速的。</block>
+  <block id="a3580f5596bb00e5707b7191ce64770e" category="open-title">Cumulus Linux 5.11 及更高版本</block>
+  <block id="c0e0b7df3f8df43ccdadb6ca94680e14" category="list-text">若要將交換器重設為出廠預設值並刪除所有設定、系統文件和日誌文件，請執行：</block>
+  <block id="da873dcea6434f241bb6174b47bc5de1" category="paragraph"><block ref="3855b6f7babaffe66134264b2942b8dd" prefix="" category="inline-code"></block></block>
+  <block id="e4d429356be5e6da00762aa4e0f17c02" category="inline-link">恢復出廠設定</block>
+  <block id="65b15908d3975eca97852d85faed95fc" category="paragraph">查看NVIDIA<block ref="9dfd1c4f2388cd5d25bf744ac7e5636b" category="inline-link-rx"></block>文件以了解更多詳細資訊。</block>
+  <block id="dfdd7a263a4eff8de2a25648aa3e8187" category="paragraph-title"><block ref="ef78558f80439832e0f51cc22cee8b8c" category="inline-image-macro-rx" type="image"></block><block ref="8095854abc938426014eb4aece7b4acd" category="inline-link-macro-rx"></block></block>
+  <block id="1be93b4b1346481ccfcdf6a6bd2008e8" category="paragraph">清除 SN2100 儲存開關設定。</block>
+  <block id="8bd633b356e38314c746a25f8da3b76b" category="doc">將 SN2100 儲存交換器重設為出廠預設值</block>
+  <block id="c3b2428233cf84612f16bff57a3bfb02" category="paragraph">若要將 SN2100 儲存交換器重設為出廠預設值：</block>
 </blocks>

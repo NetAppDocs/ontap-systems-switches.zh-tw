@@ -32,3 +32,7 @@ summary: Cisco Nexus 9336C-FX2共享交換器軟體組態總覽
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["五"]link:upgrade-rcf-software-9336c-shared.html["升級您的 RCF"]
 [role="quick-margin-para"]
 當您的操作交換器上安裝了現有版本的 RCF 檔案時，請升級您的 RCF 版本。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["六"]link:reset-switch-9336c-shared.html["將交換器重設為出廠預設值"]
+[role="quick-margin-para"]
+清除 9336C-FX2 共享交換器設定。
