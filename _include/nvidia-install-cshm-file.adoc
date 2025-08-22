@@ -123,3 +123,5 @@ cluster1::> *system switch ethernet show*
 
 
 NOTE: 如果套用組態檔案後、您的機型仍顯示 * 其他 * 、請聯絡 NetApp 支援部門。
+
+查看 https://docs.netapp.com/us-en/ontap-cli/system-switch-ethernet-configure-health-monitor.html["系統交換器乙太網路設定-健康-監控"^]命令以了解更多詳細資訊。

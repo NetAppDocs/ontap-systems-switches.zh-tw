@@ -3974,8 +3974,6 @@
   <block id="d71c484dda1d9ad3392c9e1a47d3f9d8" category="paragraph">連接埠 eth1/31 和 eth1/32 應顯示（ P ）、這表示兩個 ISL 連接埠都在連接埠通道中。</block>
   <block id="e2163aa514dd6f969019af7f51eb5403" category="paragraph"><block ref="ba8401ca8d9063944fa4c23801539873" prefix="" category="inline-code"></block></block>
   <block id="2bc32577d8d84ba98d84472c4916dd0f" category="admonition">僅支援 NetApp 驗證的後端交換器（從 NetApp 訂購）。</block>
-  <block id="d69d8c23518c3e983c5799321eb27404" category="list-text">清理交換器 CS2 的組態、然後重新啟動交換器。</block>
-  <block id="a3d5cbedb318ff78ae8c3f9bced7661b" category="list-text">執行交換器的基本設定。請參閱 <block ref="ab35665c267fa570f19ad0ebf8386ab4" category="inline-link-macro-rx"></block> 以取得詳細資料。</block>
   <block id="a8d8d025a84c64f53b535b4e606fd65a" category="summary">您可以使用此程序來安裝適用於 Nexus 92300YC 叢集交換器叢集交換器健全狀況監控的組態檔。</block>
   <block id="0bf9f283c6d4cf639f7438f8d69e8f4f" category="doc">安裝叢集交換器健全狀況監視器（ SHM ）組態檔案</block>
   <block id="5a70ef3971f7a5956d9f9f829efc730c" category="paragraph">請遵循此程序、安裝適用於 Nexus 9336C-FX2 叢集交換器叢集交換器健全狀況監控（ SHM ）的組態檔。</block>
@@ -4206,12 +4204,10 @@
   <block id="5bbf59ef7905b487a457d2cb4ffc731b" category="list-text">使用下列傳輸協定之一、將 RCF 複製到交換器 CS1 的 bootflash ： FTP 、 TFTP 、 SFTP 或 SCP 。</block>
   <block id="e50ba1fce28410003473ea665c3f69a1" category="paragraph">此範例顯示使用 TFTP 將 RCF 複製到交換器 CS1 上的 bootflash ：</block>
   <block id="7dd3ebbd2a9cb0ef43e6dfe425bf3368" category="paragraph">此範例顯示RCF檔案<block ref="5f4fa6cd54278b4d7a194c1bbdef65ea" prefix=" " category="inline-code"></block> 安裝在交換器 CS1 上：</block>
-  <block id="1d46b4d726541133306aadb791fbac06" category="paragraph"><block ref="dfc31c90abcf8c7a53e718b270cdf0aa" prefix="" category="inline-code"></block></block>
   <block id="b49fe5d89ca32aff6d41fc29d768d68c" category="paragraph">如需Cisco命令的詳細資訊、請參閱中的適當指南<block ref="dba0e49fdfeab9433bb71da6c505aa34" category="inline-link-rx"></block>。</block>
   <block id="758d64d19fd5c7f49ed73e0b94a6f13f" category="list-text">重新開機交換器CS1。</block>
   <block id="c55a2ac1185a6d9fa389abde666b6620" category="paragraph"><block ref="47b50d91942746c6b7da7bcb3a3898ea" prefix="" category="inline-code"></block></block>
   <block id="d692b83806892fb177d501de252dd5bc" category="paragraph"><block ref="b62877e87bc2393ec2c608f3105d0333" prefix="" category="inline-code"></block></block>
-  <block id="b1c7d54c4a64389501f56df63a9cb2b8" category="list-text">在交換器 CS2 上重複步驟 1 到 7 。</block>
   <block id="bdd2caa835c08370cb1ccd414ffee5e1" category="list-text">將 ONTAP 叢集中所有節點的叢集連接埠連接至交換器 CS1 和 CS2 。</block>
   <block id="40a4ddeef3e9ca8e912f65eb91474da3" category="section-title">步驟 2 ：驗證交換器連線</block>
   <block id="1f541b542b1e6f49a912e719b1269f20" category="section-title">步驟 3 ：設定 ONTAP 叢集</block>
@@ -4226,25 +4222,15 @@
   <block id="b77c6d3e350c043b8f790e806e7bc521" category="list-text">記錄目前執行組態和使用中 RCF 檔案（例如組織的 SNMP 組態）之間的任何自訂新增項目。</block>
   <block id="085ebea59269f171d2893f7c9fd27a56" category="list-text">若為 NX-OS 10.2 及更新版本、請使用<block ref="9c370f72db0e0d920841657ac5268365" prefix=" " category="inline-code"></block> 用於比較 bootflash 中儲存的 RCF 檔案的命令。  否則、請使用第三個零件差異 / 比較工具。</block>
   <block id="7a1b725f171ccc55c2b6a943c968b20f" category="list-text">將基本組態詳細資料儲存至 bootflash 上的 write_erase.cfg 檔案。</block>
-  <block id="39a62c1e7dfb4ebb50f79d526c4b3b41" category="paragraph"><block ref="a21819917a390159ce4a3fc4cabe324f" prefix="" category="inline-code"></block></block>
-  <block id="e08fd1b6e2dcb2a7248eed4e8ddd7c7b" category="paragraph"><block ref="29620a94cb1ba65f2a65d98c6830535b" prefix="" category="inline-code"></block></block>
-  <block id="6f88c4f0ef85a211d5223ff2604d28e0" category="paragraph"><block ref="39e41c7158b7217359d1d024d442d826" prefix="" category="inline-code"></block></block>
-  <block id="eaa6f7b071ff32e6edcef64256d0871f" category="paragraph"><block ref="ad01ff5bd18b23321f4a5f80b714f692" prefix="" category="inline-code"></block></block>
   <block id="62fcaa3e0af91f6b966bcf398e3e6086" category="list-text">發出寫入清除命令以清除目前儲存的組態：</block>
-  <block id="dc6fc35df489bd6bb938c2c7b2d410c5" category="paragraph"><block ref="8b6d14a918e69565b7089260305efbc6" prefix="" category="inline-code"></block></block>
   <block id="f455f9d17674cb5efba0664c003ad484" category="paragraph"><block ref="7812e68ffa4111ad9046c1ab43dcaf2c" prefix="" category="inline-code"></block></block>
-  <block id="e2288282565e302230f8a37041768ed2" category="paragraph"><block ref="a8fd1d47e1eed37a3bc905f1c0e383a9" prefix="" category="inline-code"></block></block>
   <block id="459d1bc967bf4f56f677e29979bb87fd" category="list-text">將先前儲存的基本組態複製到啟動組態。</block>
-  <block id="e2409a8cab7026a9fcbcf9839a3cf49d" category="paragraph"><block ref="eb00d852fdfa84462bda944d2348d9a5" prefix="" category="inline-code"></block></block>
-  <block id="1691d1c0e9b3cc92b3ba388f00d859e2" category="paragraph"><block ref="2dde6c3abd7b2f462a4f2162fae48851" prefix="" category="inline-code"></block></block>
-  <block id="cd05c6b0946147cbb3f39299b8dcdeed" category="paragraph"><block ref="320348c7039a92322f8ae8aa6b9548b3" prefix="" category="inline-code"></block></block>
   <block id="e90414dab5eca6b338b4136c697db6b5" category="list-text">再次到達管理 IP 位址之後、請透過 SSH 登入交換器。</block>
   <block id="c91e8b7706844bcabdc205a7e43be636" category="paragraph">您可能需要更新與 SSH 金鑰相關的主機檔案項目。</block>
   <block id="75d60e24abda3d2be5719b222283e4ab" category="list-text">驗證 RCF 版本、自訂新增項目和交換器設定是否正確之後、請將執行組態檔案複製到啟動組態檔案。</block>
   <block id="59a8406e97bc3122bcc4f9fec1cab7c9" category="paragraph"><block ref="e1e291973b667f98a077e4eb6f5aa9ac" prefix="" category="inline-code"></block></block>
   <block id="a899bc4bde195885d1d8f64046805509" category="paragraph"><block ref="f09b6decdfbfa4d8cb5b241722b9a9e6" prefix="" category="inline-code"></block></block>
   <block id="c6a89cc6a58761d5abcb1b9cf05f3b99" category="list-text">重新開機交換器CS1。您可以在交換器重新開機時忽略節點上報告的「叢集交換器健全狀況監視器」警示和「叢集連接埠關閉」事件。</block>
-  <block id="9743e816fbdd9c60a2c9c6f91cbe208b" category="list-text">在交換器 CS2 上重複步驟 1 至 18 。</block>
   <block id="8e74fc1d82f0252ff302e728b8ef84b7" category="paragraph"><block ref="fefdb12e2547581b07493ad4416e36ba" prefix="" category="inline-code"></block></block>
   <block id="47de5e0c657f20c6f281aea421f423db" category="section-title">步驟 3 ：驗證叢集網路組態和叢集健全狀況</block>
   <block id="bf7f666145d20a64bc0df89aff1412b4" category="paragraph">如果有任何叢集生命期尚未返回其主連接埠、請從本機節點手動還原：</block>
@@ -4407,7 +4393,6 @@
   <block id="87a5e94476d6bdcbe9c972165d34090a" category="list-text">您已驗證交換器序號、以確保更換正確的交換器。</block>
   <block id="2d6eb81058fa2415eb5247e2c14c5452" category="inline-link">如何在保留遠端連線的同時清除 Cisco 互連交換器上的組態</block>
   <block id="9fa76c217cee95f26808d0c64f43dcda" category="list-text">安裝 RCF 時、需要與交換器建立主控台連線。如果您已使用知識庫文件、則此需求為選用項目<block ref="3e8c2406d6e0211f305d1081c755846f" category="inline-link-rx"></block> 事先清除組態。</block>
-  <block id="83ad3b6efa173a2560e396a36d6ac2f0" category="admonition">更新或套用新的RCF時、您必須清除交換器設定並執行基本組態。您 * 必須 * 連線至交換器序列主控台連接埠、才能再次設定交換器。不過、如果您已使用知識庫文件、則此需求為選用項目<block ref="3e8c2406d6e0211f305d1081c755846f" category="inline-link-rx"></block> 事先清除組態。</block>
   <block id="bf2e41df1fe93346157f93aa59a48dd6" category="section-title">啟用主控台記錄</block>
   <block id="a1f2e4cbaec8fa16860e427a059b89aa" category="paragraph">NetApp 強烈建議您在使用的裝置上啟用主控台記錄功能、並在更換交換器時採取下列動作：</block>
   <block id="7a15fb36e18a42514f358533c9af4dae" category="list-text">在維護期間保持啟用 AutoSupport 。</block>
@@ -4596,7 +4581,6 @@
   <block id="2599d5f1ece8078590877d15b717f346" category="list-text">[[step9]] 關閉 CL1 上的連接埠 1/31 和 1/32 、以及作用中的 Nexus 3132Q-V 交換器：</block>
   <block id="e24c0f89ee0b0fb577ecce66e38a9e4d" category="list-text">[[step10]] 關閉使用中 CN1610 交換器 CL1 上的 ISL 連接埠 13 到 16 ：</block>
   <block id="8401a156e54d36682ab941dd51ed3e9d" category="list-text">[[step12]] 在叢集中的每個節點上、移轉與要取代的第一個 CN1610 交換器 CL1 相關的介面：</block>
-  <block id="a1362b00e7776e62ab541ebf090bf150" category="list-text">在交換器 CS1 上重複步驟 7 至 17 。</block>
   <block id="09c97f0f4f7a646915b2abf749bc1d6f" category="list-text">[[step3]] 使用適當的命令、關閉使用中 CN1610 交換器 CL1 上的 ISL 連接埠 13 到 16 。</block>
   <block id="e2ad2b2cb346f8abd448d557881c7dd5" category="list-text">[[step16]] 移轉與第一個 CN1610 交換器 CL1 相關的生命週期：</block>
   <block id="e542ca85e220af35c4b3a82c0642077a" category="list-text">[[step4]] 將節點新增至 Nexus 3232C 叢集交換器以擴充叢集。</block>
@@ -4940,14 +4924,12 @@
   <block id="df8a9198280d88db538535b2609f0f83" category="sidebar">Replace_switches_3232C</block>
   <block id="253d101ba7a8a0f1e24c1a3b13a1b5b5" category="sidebar">install_upgrade _RCF</block>
   <block id="2b8efdb0e77054ffe22b4bfb75564155" category="sidebar">安裝或升級 RCF 總覽</block>
-  <block id="b6503bc6a2e6ede86368a60473711626" category="list-text">在交換器 CS1 上重複步驟 1 至 11 。</block>
   <block id="ea6719e8ba4a5a7aea0b4185afc5408b" category="summary">首次設定 Nexus 9336C-FX2 儲存交換器後，即可安裝 RCF 。您也可以使用此程序來升級RCF版本。</block>
   <block id="fc3ebe0c41be566a2062e99eee81c6ba" category="paragraph">首次設定 Nexus 9336C-FX2 儲存交換器之後，請安裝參考組態檔案（ RCF ）。</block>
   <block id="0d54a8a99337a48199414ba38d122135" category="list-text">交換器 CS1 和交換器 CS2 已開機，並完成初始交換器設定（管理 IP 位址和 SSH 已設定）。</block>
   <block id="f1de50ac922202c9581e806906499ae8" category="paragraph">此範例顯示正在交換器 CS1 上安裝的 RCF<block ref="fcd688c0fb8c0256c7fc0b5ca2fd673d" prefix=" " category="inline-code"></block> ：</block>
   <block id="a697c9a980376d3a62210b2b53d5b0b8" category="list-text">檢查命令的橫幅輸出<block ref="6d53824b9996e36fd31937e922967215" prefix=" " category="inline-code"></block>。您必須閱讀並遵循這些指示，以確保交換器的組態和操作正確。</block>
   <block id="b0d1465a243b273a8f71d6084fd2c12c" category="list-text">確認 RCF 是正確的較新版本：</block>
-  <block id="7fd5f97719ed93b62ce57a2401ebb179" category="list-text">驗證 RCF 版本和交換器設定正確之後，請將執行組態檔複製到啟動組態檔：</block>
   <block id="f7b017d791fb57f4bbb1b2ce01659ed8" category="paragraph">System Manager 為叢集設定和組態提供簡單易用的工作流程，包括指派節點管理 IP 位址，初始化叢集，建立本機層，設定通訊協定和配置初始儲存設備。</block>
   <block id="7ff4d12d3e81fb159ea571275dbbb3fd" category="admonition">請注意、將BSP-53248叢集交換器從EFOS 3.3.x.x或3.4.x.x升級至EFOS 3.7.0.4或3.8.0.2之後、交換器間連結（ISL）和連接埠通道會標示為「*向下*」狀態。這是預期的行為，除非您對自動還原的舉升有任何問題，否則繼續升級是安全的。如需詳細資訊，請參閱知識庫文件：<block ref="eb6085a70a8e8bb2aba905d5e75797ab" category="inline-link-rx"></block>。</block>
   <block id="4624388fca013386d1c7314566aa1510" category="list-text">從備份組態啟動系統：</block>
@@ -5185,9 +5167,6 @@
   <block id="86f7f66cb381cc46fe300e0c2c8f0499" category="inline-link-macro">NTP 伺服器設定不適用於 NVIDIA SN2100 交換機</block>
   <block id="c77e68e056a1f231532a65076ed213f7" category="paragraph">請參閱知識庫文章<block ref="54a4a8d8880601232d1c62bd5f55e05a" category="inline-link-macro-rx"></block>了解更多詳情。</block>
   <block id="18e6dddff6b5dbe3698443f6bf547259" category="list-text">對於 RCF 版本 1.12 及更高版本，執行以下命令：</block>
-  <block id="b9290d13c5441920a725478322d847bc" category="paragraph"><block ref="fd00e81f5f0cef46bffcdca10e8bb0be" prefix="" category="inline-code"></block></block>
-  <block id="34425e3277b6cd10529c78a1067175a7" category="paragraph"><block ref="56f6c12b458176a1c5a0b7f219fc582f" prefix="" category="inline-code"></block></block>
-  <block id="36e8b4b3d01f5fa01bc38b742b7adae1" category="paragraph"><block ref="ceccb5672696bf7833b4da32e595b96e" prefix="" category="inline-code"></block></block>
   <block id="255946ce0bdffe025ba4bdaa710146e6" category="list-text">驗證 write_erase.cfg 檔案是否如預期填入：</block>
   <block id="c8608e8042094ff03aff5d73acbce651" category="paragraph"><block ref="aa69f627a489063557f4707be7ba43f0" prefix="" category="inline-code"></block></block>
   <block id="90b56b330f7736518fea2723b6853482" category="list-text">在交換器 CS2 上重複步驟 1 至 20 。</block>
@@ -5573,4 +5552,40 @@
   <block id="1be93b4b1346481ccfcdf6a6bd2008e8" category="paragraph">清除 SN2100 儲存開關設定。</block>
   <block id="8bd633b356e38314c746a25f8da3b76b" category="doc">將 SN2100 儲存交換器重設為出廠預設值</block>
   <block id="c3b2428233cf84612f16bff57a3bfb02" category="paragraph">若要將 SN2100 儲存交換器重設為出廠預設值：</block>
+  <block id="5667ca92a697e03bc95d429bfe20fda5" category="inline-link">系統交換器乙太網路設定-健康-監控</block>
+  <block id="a7692359e6ab53408219d1f4fbab4614" category="paragraph">查看<block ref="e8f3e733a7456e37aaeb3c329fac3e94" category="inline-link-rx"></block>命令以了解更多詳細資訊。</block>
+  <block id="562153472d2b6000e72406f01051792a" category="list-text">記錄目前運行配置和正在使用的 RCF 檔案之間的任何自訂新增。</block>
+  <block id="1cc7482dc94a503d163babfacdc05d90" category="admonition">升級或套用新的 RCF 時，必須清除交換器設定並執行基本配置。您必須連接到交換器序列控制台連接埠才能重新設定交換器。</block>
+  <block id="4232320468cc891ca1def7307234fdab" category="paragraph"><block ref="6ed0af64cbf818bf56b147579b24eab3" prefix="" category="inline-code"></block></block>
+  <block id="8ca0b900e4290328d2b41984aafe90e7" category="paragraph"><block ref="c95ad3fed420195ce350910275648421" prefix="" category="inline-code"></block></block>
+  <block id="023d3cea21f793fbb3e2e5d28e57a72b" category="paragraph"><block ref="9ce063e5d5eba89cfe73c4a7aa644c03" prefix="" category="inline-code"></block></block>
+  <block id="028ec7d09f77a158fe61f03d83610921" category="paragraph"><block ref="cb92f45d862d75a23e3fac8a5fd092f8" prefix="" category="inline-code"></block></block>
+  <block id="717d34c223b104b615a461bc9992fec2" category="paragraph"><block ref="7a6b9b4916c4b73908fdd869ba141f50" prefix="" category="inline-code"></block></block>
+  <block id="5874439536649fa36cb953afac4bdfc9" category="paragraph"><block ref="515277b58830c3c4e31f38d9f9963be8" prefix="" category="inline-code"></block></block>
+  <block id="f44d2548870db270213e5ffe209b4689" category="paragraph"><block ref="6a2fde838f43d6496891962036acd77d" prefix="" category="inline-code"></block></block>
+  <block id="19bc101773ab2f0483029be1ff96054c" category="paragraph"><block ref="0ea7b23ad779f4f48bd0160828e3c364" prefix="" category="inline-code"></block></block>
+  <block id="ef7b355e739842b9c934aa44f9d23a94" category="paragraph"><block ref="b919614541ccef30710bff6c217f0c43" prefix="" category="inline-code"></block></block>
+  <block id="d28ac33ba46b5ee3d2d06276a2e27ed6" category="paragraph">請參閱知識庫文章<block ref="b46f374ac5dd40f108fec29ae35860ee" category="inline-link-rx"></block>了解更多詳情。</block>
+  <block id="51ed24b6228c8b36770dd39391d8bc7e" category="list-text">發出<block ref="ed3fe2a45ef033acf306fc90fbafdd66" prefix=" " category="inline-code"></block>命令來刪除目前已儲存的配置：</block>
+  <block id="a60beffd34bc0a1af921bd1718bcdace" category="paragraph"><block ref="34032a1bb449f32c9fcbb7ff1cfe5bd5" prefix="" category="inline-code"></block></block>
+  <block id="1919cf67cee23cb44c0e96cb3fc4c876" category="paragraph"><block ref="efdac8d32d2f272bc15624cc43f8f294" prefix="" category="inline-code"></block></block>
+  <block id="fed74a4623bde0237a1b3be8e8042cbc" category="paragraph"><block ref="5df914552885278ba9e8a73fcaf7994a" prefix="" category="inline-code"></block></block>
+  <block id="ec29d2d5a1b4f802e07ac896a15e5624" category="paragraph"><block ref="02c29bd72975e1a289eaf536ccb4ac05" prefix="" category="inline-code"></block></block>
+  <block id="684a4c2862f5fef1f6d28303a5df57cb" category="list-text">在交換器 cs1 上重複步驟 1 至 19。</block>
+  <block id="770d2d8ee323646f71bd836e04b6bcf1" category="paragraph"><block ref="c76e6e9e0613f45a95bce39f19a419a9" prefix="" category="inline-code"></block></block>
+  <block id="3a950462bc76b1e9a5ad74b10ff9376a" category="list-text">在交換器 cs1 上重複步驟 7 至 20。</block>
+  <block id="0cf70822d9949e4c6758e918643273c8" category="paragraph"><block ref="a11ecf52d39ead0e156683247ccf2127" prefix="" category="inline-code"></block></block>
+  <block id="509c8307041a8ec518033cbc63e3c50b" category="paragraph"><block ref="8c3437ea3e27545ca4b0d2b43011cd70" prefix="" category="inline-code"></block></block>
+  <block id="f754809a548cd76d671cc491b7eec29b" category="paragraph"><block ref="6bcd94cf62d325392b1785ec7c4d0b4f" prefix="" category="inline-code"></block></block>
+  <block id="ebe26990aabba87fe33eb909a21ad9b9" category="paragraph"><block ref="a4807a2f59573034bf9e433b7f092ac2" prefix="" category="inline-code"></block></block>
+  <block id="620dbb76acb886552dbf90beae61a089" category="paragraph"><block ref="c7bad43350d7f24c8f6009f19bfb7ac2" prefix="" category="inline-code"></block></block>
+  <block id="a8a84368cc5da872ee27b5aa916012bf" category="paragraph"><block ref="c504e3bbf97ff14f7b88da0a3b4bed45" prefix="" category="inline-code"></block></block>
+  <block id="92a263f83655527a8570ddfd3130dcf6" category="paragraph"><block ref="141e63272914863fc9c959b427fdacd7" prefix="" category="inline-code"></block></block>
+  <block id="002be8e67a0ddc666dd0ab6ed8d9b723" category="paragraph"><block ref="8c066b528dcbc1486476e4154920e286" prefix="" category="inline-code"></block></block>
+  <block id="baa9d9b44ef34df5ca5f98884d0608d3" category="paragraph"><block ref="603fb14344e659fed2e403db2df24a4a" prefix="" category="inline-code"></block></block>
+  <block id="99dac37d19301bd793cd70886317bb05" category="list-text">在交換器 cs2 上重複步驟 1 至 12。</block>
+  <block id="432ba1ee34f738963470ac6a7bb24dee" category="paragraph"><block ref="c43d8f1df82823c11979a10dcc012390" prefix="" category="inline-code"></block></block>
+  <block id="bc19795a1e2342c4b6ced06c4d40bf1f" category="paragraph"><block ref="06ea8c0ad9680ca72f21fb9acf4190a7" prefix="" category="inline-code"></block></block>
+  <block id="c0203a2fdd4f105bd33b18aba6317c1b" category="paragraph"><block ref="13a92d9b51e90b702df63253eaabc9ad" prefix="" category="inline-code"></block></block>
+  <block id="473d16af00e46c61faa5f7ae956e2c65" category="paragraph"><block ref="02a3315103301dc60f71538670f8e63e" prefix="" category="inline-code"></block></block>
 </blocks>

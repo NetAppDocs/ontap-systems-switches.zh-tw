@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: install rcf 
 summary: 您可以在初次設定Nexus 3132Q-V交換器之後安裝RCF。您也可以使用此程序來升級RCF版本。 
 ---
-= 安裝參考組態檔（RCF）
+= 安裝或升級參考組態檔案（ RCF ）
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -273,40 +273,67 @@ cluster1::*>
 +
 「如何執行設定」
 
-. 清除交換器CS2上的組態、然後執行基本設定。
+. 記錄目前運行配置和正在使用的 RCF 檔案之間的任何自訂新增。
+. 將基本組態詳細資料儲存至 bootflash 上的 write_erase.cfg 檔案。
 +
 
-WARNING: 更新或套用新的RCF時、您必須清除交換器設定並執行基本組態。您 * 必須 * 連線至交換器序列主控台連接埠、才能再次設定交換器。不過、如果您已使用知識庫文件、則此需求為選用項目 https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["如何在保留遠端連線的同時清除 Cisco 互連交換器上的組態"^] 事先清除組態。
+NOTE: 升級或套用新的 RCF 時，必須清除交換器設定並執行基本配置。您必須連接到交換器序列控制台連接埠才能重新設定交換器。
 
 +
-.. 清理組態：
+`cs2# show run | section "switchname" > bootflash:write_erase.cfg`
+
 +
-.顯示範例
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-(cs2)# *write erase*
+`cs2# show run | section "hostname" >> bootflash:write_erase.cfg`
 
-Warning: This command will erase the startup-configuration.
-
-Do you wish to proceed anyway? (y/n)  [n]  *y*
-----
-====
-.. 重新啟動交換器：
 +
-.顯示範例
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-(cs2)# *reload*
+`cs2# show run | i "username admin password" >> bootflash:write_erase.cfg`
 
-Are you sure you would like to reset the system? (y/n) *y*
++
+`cs2# show run | section "vrf context management" >> bootflash:write_erase.cfg`
 
-----
-====
++
+`cs2# show run | section "interface mgmt0" >> bootflash:write_erase.cfg`
 
+. 對於 RCF 版本 1.12 及更高版本，執行以下命令：
++
+`cs2# echo "hardware access-list tcam region vpc-convergence 256" > bootflash:write_erase.cfg`
+
++
+`cs2# echo "hardware access-list tcam region racl 256" >> bootflash:write_erase.cfg`
+
++
+`cs2# echo "hardware access-list tcam region e-racl 256" >> bootflash:write_erase.cfg`
+
++
+`cs2# echo "hardware access-list tcam region qos 256" >> bootflash:write_erase.cfg`
+
++
+請參閱知識庫文章 https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["如何在保留遠端連線的同時清除 Cisco 互連交換器上的組態"^]了解更多詳情。
+
+. 驗證 write_erase.cfg 檔案是否如預期填入：
++
+`show file bootflash:write_erase.cfg`
+
+. 發出 `write erase`命令來刪除目前已儲存的配置：
++
+`cs2# *write erase*`
+
++
+`Warning: This command will erase the startup-configuration.`
+
++
+`Do you wish to proceed anyway? (y/n)  [n] *y*`
+
+. 將先前儲存的基本組態複製到啟動組態。
++
+`cs2# *copy write_erase.cfg startup-config*`
+
+. 重新啟動交換器：
++
+`cs2# *reload*`
+
++
+`This command will reboot the system. (y/n)?  [n] *y*`
 
 . 使用下列傳輸傳輸協定之一、將RCF複製到交換器CS2的bootflash：FTP、TFTP、SFTP或scp。如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^] 指南：
 +
@@ -637,7 +664,7 @@ cluster1-04          true     true          false
 cluster1::*>
 ----
 ====
-. 在交換器 CS1 上重複步驟 1 至 11 。
+. 在交換器 cs1 上重複步驟 1 至 19。
 . 在叢集生命體上啟用自動還原。
 +
 .顯示範例
