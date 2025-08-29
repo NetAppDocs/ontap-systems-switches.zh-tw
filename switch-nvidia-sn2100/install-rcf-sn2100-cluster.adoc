@@ -129,7 +129,7 @@ MSN2100-RCF-v1._x_-Cluster-HA-Breakout-LLDP         100% 8607   111.2KB/s       
 ----
 +
 
-NOTE: 而 `scp` 在範例中使用時、您可以使用偏好的檔案傳輸方法。
+NOTE: 儘管 `scp`在範例中使用，您可以使用您喜歡的檔案傳輸方法，例如 SFTP、HTTPS 或 FTP。
 
 . 套用 RCF python 指令碼 * MSN2100-RCF-v1. _x_ 叢集 -HA-BreakOut-LLDP* 。
 +
@@ -394,7 +394,7 @@ MSN2100-RCF-v1.x-Cluster-HA-Breakout-LLDP          100% 8607   111.2KB/s        
 ----
 +
 
-NOTE: 而 `scp` 在範例中使用時、您可以使用偏好的檔案傳輸方法。
+NOTE: 儘管 `scp`在範例中使用，您可以使用您喜歡的檔案傳輸方法，例如 SFTP、HTTPS 或 FTP。
 
 . 套用 RCF python 指令碼 * MSN2100-RCF-v1. _x_ 叢集 -HA-BreakOut-LLDP* 。
 +
@@ -760,7 +760,7 @@ MSN2100-RCF-v1.x-Cluster-HA-Breakout-LLDP          100% 8607   111.2KB/s        
 ----
 +
 
-NOTE: 雖然在範例中使用，但 `scp`您可以使用偏好的檔案傳輸方法。
+NOTE: 雖然 `scp`在範例中使用，您可以使用您喜歡的檔案傳輸方法，例如 SFTP、HTTPS 或 FTP。
 
 . 套用 RCF python 指令碼 * MSN2100-RCF-v1. _x_ 叢集 -HA-BreakOut-LLDP* 。
 +

@@ -41,8 +41,7 @@ SCP server Administrative Mode: ............... Disabled
 ----
 ====
 +
-如果 SSH 未停用，請按如下方式停用它：
-
+** 如果 SSH 未停用，請按如下方式停用它：
 +
 .顯示範例
 [%collapsible]
@@ -57,7 +56,9 @@ SCP server Administrative Mode: ............... Disabled
 
 WARNING: 修改金鑰之前請確保已停用 SSH，否則交換器上會報告警告。
 
-. 產生SSH金鑰：
+
+
+. 在設定模式下，產生 SSH 金鑰：
 +
 `crypto key generate`
 
@@ -82,13 +83,45 @@ Do you want to overwrite the existing DSA keys? (y/n): *y*
 (switch) (Config)# *crypto key generate ecdsa 521*
 
 Do you want to overwrite the existing ECDSA keys? (y/n): *y*
+----
+====
+. 在設定模式下，設定ONTAP日誌收集的 AAA 授權：
++
+`aaa authorization commands "noCmdAuthList" none`
 
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
 (switch) (Config)# *aaa authorization commands "noCmdAuthList" none*
 (switch) (Config)# *exit*
+----
+====
+. 重新啟用 SSH/SCP。
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
 (switch)# *ip ssh server enable*
 (switch)# *ip scp server enable*
 (switch)# *ip ssh pubkey-auth*
-(switch)# *write mem*
+----
+====
+. 將這些變更儲存到啟動配置：
++
+寫入記憶體
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(switch)# *write memory*
 
 This operation may take a few minutes.
 Management interfaces will not be available during this time.
@@ -135,8 +168,8 @@ Do you want to continue? (y/n): *y*
 
 Config file 'startup-config' created successfully.
 
-(switch) (Config)# end
-(switch)# write memory
+(switch) (Config)# *end*
+(switch)# *write memory*
 
 This operation may take a few minutes.
 Management interfaces will not be available during this time.

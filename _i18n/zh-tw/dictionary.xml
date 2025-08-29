@@ -1379,7 +1379,6 @@
   <block id="3d7d92fe9fa50ff07a52fda11ae8d646" category="paragraph">下列範例顯示交換器CS2上已啟用連接埠1到16：</block>
   <block id="30530896511238b69b0e6acc7e04d6ce" category="list-text">驗證所有介面是否都顯示「true」表示「is Home」：</block>
   <block id="470e1e7d03d4911b1e5ad8bf036ca8cb" category="inline-link">NetApp知識庫文章：如何在排定的維護時間內禁止自動建立案例</block>
-  <block id="59ed8d797343a87748211be365bd1d90" category="list-text">產生SSH金鑰：</block>
   <block id="83a0e3bf9dd48caad05146cc29f81e6b" category="list-text">確認SSH已啟用：</block>
   <block id="82c7b5069d64f95a2a115dff1c9ad171" category="doc">安裝叢集交換器健全狀況監視器（CSHM）組態檔</block>
   <block id="f4041989c699a535116c689437df5c7f" category="inline-link">NetApp軟體下載</block>
@@ -2074,19 +2073,12 @@
   <block id="815792b56cadfb802621ba5d3728c768" category="admonition">每次安裝CummUS Linux時、整個檔案系統結構都會被清除並重新建置。</block>
   <block id="6ae4d8bf3ebde7936b05c2fe894d7ada" category="admonition">累計使用者帳戶的預設密碼為*累計*。第一次登入CummulUS Linux時、您必須變更此預設密碼。安裝新映像之前、請務必更新任何自動化指令碼。CummUS Linux提供命令列選項、可在安裝程序期間自動變更預設密碼。</block>
   <block id="06c2ede7dabacb6c8f4f628bf6b1de39" category="paragraph">對於NVIDIA SN2100交換器主控台存取、序列主控台交換器上的傳輸速率需求必須設定為115200、如下所示：</block>
-  <block id="9e6b336700c1d2e767e05525b2b57ef3" category="list-text">請查看Cummuls Linux版本：</block>
   <block id="2667c65a518ae8fb280dc9f6a61de3c5" category="list-text">設定主機名稱、IP位址、子網路遮罩和預設閘道。只有重新啟動主控台/SSH工作階段之後、新的主機名稱才會生效。</block>
   <block id="62b623b92c382746efee9767d590d86c" category="admonition">Cummuls Linux交換器至少提供一個稱為「eth0」的專用乙太網路管理連接埠。此介面專供頻外管理使用。根據預設、管理介面會使用DHCP v4進行定址。</block>
   <block id="91dcca4278a428afbccb2f118d523e13" category="admonition">請勿在主機名稱中使用底線（_）、單引號（'）或非ASCII字元。</block>
   <block id="5e82a0b4b15e3bfeac2a57b4a294a39c" category="paragraph">此命令會同時修改「/etc/hostname'」和「/etc/hosts」檔案。</block>
-  <block id="6c42fa7e4c3302fb56f4374e70b97fc2" category="list-text">使用NTP互動模式設定時區。</block>
-  <block id="3f13db29081af25b57d3e76ea324a03b" category="list-text">在終端機上執行下列命令：</block>
-  <block id="83d1563d45527134091bdab8d6e5072d" category="list-text">依照畫面上的功能表選項、選取地理區域和區域。</block>
-  <block id="fe0f6a5f9b992c1eea817100a2c1c148" category="list-text">若要設定所有服務和精靈的時區、請重新啟動交換器。</block>
-  <block id="61d6aab01fc093c66c1e769d05c39812" category="list-text">確認交換器上的日期和時間正確無誤、並視需要更新。</block>
   <block id="9a828cf107e0b55e82b0e52b871aa982" category="paragraph">安裝程式隨即開始下載。出現提示時鍵入* y*。</block>
   <block id="b64202cf747d1cf1ed877a2b16051b9b" category="list-text">重新啟動NVIDIA SN2100交換器：</block>
-  <block id="9f4f33c5c40ac522549c3e58d187e0a0" category="list-text">安裝會自動啟動、並顯示下列的Grub畫面。請勿*不*做任何選擇：</block>
   <block id="0356af5b3daf1c5f334184d547ba7462" category="list-text">Cummule-Linux GNU/Linux</block>
   <block id="a64ef5ea949c8d49f35a27151295f942" category="list-text">Onie：安裝作業系統</block>
   <block id="e0fb005ad468c2c6da5d94ae5ee83311" category="list-text">Cummule-install</block>
@@ -2379,7 +2371,6 @@
   <block id="8e64ad5c6fa8e624c5e3a0540ce81b15" category="paragraph">請注意下列事項：</block>
   <block id="ed4bb13420682d03565e592a54ec52c0" category="list-text">登入交換器。</block>
   <block id="0dc40761c6c698e59be5abb0f871de2e" category="paragraph">首次登入交換器時、使用者名稱/密碼必須為*累計*/*累計*<block ref="d338b3f0f405eb5e51c8cc1e5ca66f02" prefix=" " category="inline-code"></block> 權限：</block>
-  <block id="cbb09f555687650b38fcf6ac05ce4978" category="paragraph"><block ref="518227d11c3d0b4ad2468e4272be661a" prefix="" category="inline-code"></block></block>
   <block id="81ed2a4b4b4f78c31401892f676d00f6" category="list-text">確認主機名稱、IP位址、子網路遮罩和預設閘道已更新。</block>
   <block id="d592f003299c9790cf6b7880991e4552" category="list-text">建立新使用者、並將此使用者新增至<block ref="d338b3f0f405eb5e51c8cc1e5ca66f02" prefix=" " category="inline-code"></block> 群組：此使用者只有在主控台/SSH工作階段重新啟動後才會生效。</block>
   <block id="d006305baa198ce937fb8d7cec588b7e" category="paragraph"><block ref="5f3d789fda71670b944a623edd4613a5" prefix="" category="inline-code"></block></block>
@@ -3565,7 +3556,6 @@
   <block id="6bb3008abc00d2a0fe4d634f0b89831e" category="list-text">您可以在交換器執行Cummulis Linux或ONIE時安裝Cumm截止Linux。</block>
   <block id="8f77c20cd9bd8afa1521eb15ea44a8ef" category="list-text">已安裝Cummulis Linux 4.4.3。</block>
   <block id="2da5e3ee5bdcbc1a5443b42db962c1bb" category="list-text">安裝CummUS Linux 4.4.3：</block>
-  <block id="d639f69fd7b303cd7aefe025e7d76848" category="list-text">驗證是否為4.4.3版的Cummulis Linux：</block>
   <block id="4a4b6084f06cc45c6f17ae2aa9bd4dc4" category="inline-link">Cisco軟體下載</block>
   <block id="0a6aaed7ba5c231511f7822eac6c4607" category="list-text">適用的NX-OS版本、可從下載<block ref="f823faeecc1cbb37f2d732cc29c07d86" category="inline-link-rx"></block> 頁面。</block>
   <block id="b27df45c7b9d2b8ac8126550ac4038eb" category="list-text">檢查叢集網路交換器的版本、必要時可從將NetApp支援的軟體版本下載至交換器<block ref="f823faeecc1cbb37f2d732cc29c07d86" category="inline-link-rx"></block> 頁面。</block>
@@ -5588,4 +5578,12 @@
   <block id="bc19795a1e2342c4b6ced06c4d40bf1f" category="paragraph"><block ref="06ea8c0ad9680ca72f21fb9acf4190a7" prefix="" category="inline-code"></block></block>
   <block id="c0203a2fdd4f105bd33b18aba6317c1b" category="paragraph"><block ref="13a92d9b51e90b702df63253eaabc9ad" prefix="" category="inline-code"></block></block>
   <block id="473d16af00e46c61faa5f7ae956e2c65" category="paragraph"><block ref="02a3315103301dc60f71538670f8e63e" prefix="" category="inline-code"></block></block>
+  <block id="a857d7fbcfec4b7266d8ae96e74feaff" category="list-text">在設定模式下，產生 SSH 金鑰：</block>
+  <block id="e7a2f981aa0484adea9bedbd78c1087b" category="list-text">在設定模式下，設定ONTAP日誌收集的 AAA 授權：</block>
+  <block id="4f4336771d0733889f26dc02ed32b5b4" category="paragraph"><block ref="160edba9b79d23472e05dab56e0f0cfa" prefix="" category="inline-code"></block></block>
+  <block id="558547888dbf1ed9cea97d962f5a635c" category="list-text">重新啟用 SSH/SCP。</block>
+  <block id="a2c7fa8f383a047f3591230c9b0234c9" category="list-text">將這些變更儲存到啟動配置：</block>
+  <block id="7411e9f163d9baab36b5ebc3f80bda73" category="admonition">儘管<block ref="8a444a43bdf534c0c6338bb7809659b3" prefix=" " category="inline-code"></block>在範例中使用，您可以使用您喜歡的檔案傳輸方法，例如 SFTP、HTTPS 或 FTP。</block>
+  <block id="5b9b8dea15de063806f0306fe78872c8" category="admonition">雖然<block ref="8a444a43bdf534c0c6338bb7809659b3" prefix=" " category="inline-code"></block>在範例中使用，您可以使用您喜歡的檔案傳輸方法，例如 SFTP、HTTPS 或 FTP。</block>
+  <block id="bea4eb9c3f61f6fc9076a215ac1173fe" category="paragraph"><block ref="c1b3921cc8c2b4b51a888d2dc803623c" category="inline-link-macro-rx"></block> 。</block>
 </blocks>
