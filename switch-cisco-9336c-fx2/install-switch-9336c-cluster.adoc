@@ -4,14 +4,14 @@ sidebar: sidebar
 keywords: require, configuration, information, documentation, cluster, management, network, switches, set up the switches - cisco nexus 9336c-fx2 
 summary: 請依照此程序安裝Cisco Nexus 9336C-FX2交換器。 
 ---
-= 安裝9336C-FX2叢集交換器
+= 安裝 9336C-FX2 和 9336C-FX2-T 叢集交換機
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-請遵循此程序來設定及設定Cisco Nexus 9336C-FX2交換器。
+請依照下列步驟設定和設定Cisco Nexus 9336C-FX2 和 9336C-FX2-T 交換器。
 
 .開始之前
 請確定您擁有下列項目：
@@ -50,4 +50,4 @@ NetApp系統機櫃中的Cisco Nexus 9336C-FX2
 
 
 .接下來呢？
-或者，您可以link:install-switch-and-passthrough-panel-9336c-cluster.html["在NetApp機櫃中安裝Cisco Nexus 9336C-FX2交換器"]。否則，轉到link:cabling-considerations-9336c-fx2.html["檢視纜線佈線與組態"]。
+或者，您可以link:install-switch-and-passthrough-panel-9336c-cluster.html["在NetApp機櫃中安裝Cisco Nexus 9336C-FX2交換器"]。否則，轉到link:cabling-considerations-9336c-fx2.html["檢查佈線和配置"]。

@@ -4,14 +4,14 @@ sidebar: sidebar
 keywords: migrating to a cluster with Cisco Nexus 9336C-FX2 cluster switches, how to migrate 
 summary: 您可以將不中斷營運的舊Cisco叢集交換器移轉至ONTAP Cisco Nexus 9336C-FX2叢集網路交換器、以利進行非中斷的叢集式叢集。 
 ---
-= 從老舊的Cisco交換器移轉至Cisco Nexus 9336C-FX2叢集交換器
+= 從較舊的Cisco交換器遷移到Cisco Nexus 9336C-FX2 和 9336C-FX2-T 交換機
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-您可以將舊版Cisco叢集交換器移轉至ONTAP Cisco Nexus 9336C-FX2儲存網路交換器。這是不中斷營運的程序。
+您可以將ONTAP叢集的舊Cisco交換器遷移到Cisco Nexus 9336C-FX2 和 9336C-FX2-T 儲存網路交換器。這是一個非破壞性的過程。
 
 
 
@@ -711,4 +711,4 @@ RPC status:
 
 
 .接下來呢？
-link:../switch-cshm/config-overview.html["設定交換器健全狀況監控"]。
+遷移交換器後，您link:../switch-cshm/config-overview.html["配置交換器健康監控"]。

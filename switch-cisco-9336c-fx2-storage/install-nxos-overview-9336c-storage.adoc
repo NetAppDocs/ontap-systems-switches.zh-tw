@@ -225,4 +225,4 @@ Cluster
 
 
 .接下來呢？
-link:install-nxos-software-9336c-storage.html["安裝或升級 NX-OS 軟體"]。
+準備好安裝 NX-OS 軟體和 RCF 後，您link:install-nxos-software-9336c-storage.html["安裝或升級 NX-OS 軟體"]。

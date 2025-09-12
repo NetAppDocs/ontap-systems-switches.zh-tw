@@ -4,7 +4,7 @@ permalink: /switch-cisco-9336c-fx2/configure-reqs-9336c-cluster.html
 keywords: shared storage cluster switch 
 summary: 從S299.1開始ONTAP 、您可以使用Cisco Nexus 9336C-FX2交換器、將儲存設備和叢集功能結合到共享交換器情境中。 
 ---
-= Cisco Nexus 9336C-FX2叢集交換器的組態需求
+= Cisco Nexus 9336C-FX2 和 9336C-FX2-T 叢集交換器的設定需求
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,12 +14,16 @@ summary: 從S299.1開始ONTAP 、您可以使用Cisco Nexus 9336C-FX2交換器�
 
 
 [role="lead"]
-對於Cisco Nexus 9336C-FX2交換器的安裝與維護、請務必檢閱組態與網路需求。
+對於Cisco Nexus 9336C-FX2 和 9336C-FX2-T 交換器的安裝和維護，請務必查看設定和網路需求。
 
 
 
 == 支援ONTAP
 
+[role="tabbed-block"]
+====
+.更新版本ONTAP
+--
 從S299.1開始ONTAP 、您可以使用Cisco Nexus 9336C-FX2交換器、將儲存設備和叢集功能結合到共享交換器組態中。
 
 如果您想要建置ONTAP 具有兩個以上節點的叢集、您需要兩個支援的網路交換器。
@@ -27,6 +31,15 @@ summary: 從S299.1開始ONTAP 、您可以使用Cisco Nexus 9336C-FX2交換器�
 
 NOTE: 乙太網路交換器健全狀況監視器不支援 ONTAP 9.13.1P8 及更早版本、以及 9.14.1P3 及更早版本或 NX-OS 版本 10.3(4a)(M) 。
 
+--
+.ONTAP 9.10.1 及更高版本
+--
+此外，從ONTAP 9.10.1 開始，您可以使用Cisco Nexus 9336C-FX2-T 交換器將儲存和叢集功能組合到共用交換器設定中。
+
+如果您想要建置ONTAP 具有兩個以上節點的叢集、您需要兩個支援的網路交換器。
+
+--
+====
 
 
 == 組態需求
@@ -52,4 +65,4 @@ NOTE: 乙太網路交換器健全狀況監視器不支援 ONTAP 9.13.1P8 及更�
 如需交換器初始組態的詳細資訊、請參閱下列指南： https://www.cisco.com/c/en/us/td/docs/dcn/hw/nx-os/nexus9000/9336c-fx2-e/cisco-nexus-9336c-fx2-e-nx-os-mode-switch-hardware-installation-guide.html["Cisco Nexus 9336C-FX2安裝與升級指南"^]。
 
 .下一步
-link:components-9336c-cluster.html["元件與零件編號"] 。
+查看配置要求後，您可以確認您的link:components-9336c-cluster.html["組件和零件編號"]。

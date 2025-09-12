@@ -4,14 +4,14 @@ sidebar: sidebar
 keywords: require, configuration, information, documentation, cluster, management, network, switches, set up the switches - cisco nexus 9336c-fx2 
 summary: 請遵循此程序來設定及設定Cisco Nexus 9336C-FX2交換器。 
 ---
-= 設定9336C-FX2叢集交換器
+= 配置 9336C-FX2 和 9336C-FX2-T 叢集交換機
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-請遵循此程序來設定Cisco Nexus 9336C-FX2交換器。
+請依照下列步驟設定Cisco Nexus 9336C-FX2 和 9336C-FX2-T 交換器。
 
 .開始之前
 請確定您擁有下列項目：
@@ -192,4 +192,4 @@ NOTE: 如果您在此階段未儲存組態、下次重新啟動交換器時、�
 
 
 .接下來呢？
-link:install-nxos-overview-9336c-cluster.html["準備安裝NX-OS和RCF"]
+配置好交換器後，link:install-nxos-overview-9336c-cluster.html["準備安裝NX-OS軟體和RCF"] 。

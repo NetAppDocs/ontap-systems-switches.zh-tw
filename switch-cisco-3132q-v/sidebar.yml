@@ -2,7 +2,7 @@
 section: switch-cisco-3132q-v
 title: Cisco Nexus 3132Q-V
 entries:
-- title: 總覽
+- title: 開始使用
   pdf-filename: overview_3132q-v
   entries:
   - title: 快速入門

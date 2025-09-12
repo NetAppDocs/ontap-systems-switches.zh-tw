@@ -4,26 +4,27 @@ sidebar: sidebar
 keywords: migrate cluster Cisco Nexus 9336C-FX2 cluster switches cn1610 
 summary: 您可以不中斷地將 ONTAP 叢集的 NetApp CN1610 叢集交換器移轉至 Cisco Nexus 9336C-FX2 叢集網路交換器。 
 ---
-= 從 NetApp CN1610 叢集交換器移轉至 Cisco 9336C-FX2 叢集交換器
+= 從NetApp CN1610 叢集交換器遷移到Cisco 9336C-FX2 和 9336C-FX2-T 叢集交換機
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-您可以將 ONTAP 叢集的 NetApp CN1610 叢集交換器移轉至 Cisco 9336C-FX2 叢集交換器。這是不中斷營運的程序。
+您可以將ONTAP叢集的NetApp CN1610 叢集交換器移轉到Cisco 9336C-FX2 和 9336C-FX2-T 叢集交換器。這是一個非破壞性的過程。
 
 
 
 == 檢閱要求
 
-當您使用 Cisco 9336C-FX2 叢集交換器更換 NetApp CN1610 叢集交換器時、您必須瞭解某些組態資訊、連接埠連線和纜線需求。此外、請確認交換器序號、以確保移轉正確的交換器。
+使用Cisco 9336C-FX2 和 9336C-FX2-T 叢集交換器取代NetApp CN1610 叢集交換器時，必須了解某些設定資訊、連接埠連線和佈線要求。您還必須驗證交換器序號以確保遷移了正確的交換器。
 
 .支援的交換器
 支援下列叢集交換器：
 
 * NetApp CN1610
 * Cisco 9336C-FX2
+* Cisco9336C-FX2-T
 
 
 如需受支援連接埠及其組態的詳細資訊、請參閱 https://hwu.netapp.com/["Hardware Universe"^]。
@@ -33,7 +34,7 @@ summary: 您可以不中斷地將 ONTAP 叢集的 NetApp CN1610 叢集交換器�
 
 * 現有叢集已正確設定並正常運作。
 * 所有叢集連接埠都處於「* up*」狀態、以確保不中斷營運。
-* Cisco 9336C-FX2 叢集交換器是在正確版本的 NX-OS 下設定及操作、並套用參考組態檔案（ RCF ）。
+* Cisco 9336C-FX2 和 9336C-FX2-T 叢集交換器在安裝並套用參考設定檔 (RCF) 的正確版本的 NX-OS 下設定和運作。
 * 現有的叢集網路組態具有下列特性：
 +
 ** 使用 NetApp CN1610 交換器的備援全功能 NetApp 叢集。
@@ -41,8 +42,8 @@ summary: 您可以不中斷地將 ONTAP 叢集的 NetApp CN1610 叢集交換器�
 ** 使用叢集生命區的所有叢集生命區都位於主連接埠上。
 
 
-* 部分連接埠是在 Cisco 9336C-FX2 交換器上設定、以 40GbE 或 100GbE 執行。
-* 您已規劃、移轉並記錄從節點到 Cisco 9336C-FX2 叢集交換器的 40GbE 和 100GbE 連線。
+* 一些連接埠在Cisco 9336C-FX2 和 9336C-FX2-T 交換器上配置為以 40GbE 或 100GbE 運作。
+* 您已經規劃、遷移並記錄了從節點到Cisco 9336C-FX2 和 9336C-FX2-T 叢集交換器的 40GbE 和 100GbE 連線。
 
 
 
@@ -325,7 +326,7 @@ CAUTION: 請勿嘗試手動移轉叢集生命期。
 (C2)(Interface 0/1-0/12)# *exit*
 (C2)(Config)# *exit*
 ----
-. 使用 Cisco 9336C-FX2 支援的適當纜線、將節點叢集連接埠從舊的交換器 C2 移至新的交換器 CS2 。
+. 使用Cisco 9336C-FX2 和 9336C-FX2-T 支援的適當電纜將節點叢集連接埠從舊交換器 C2 移至新交換器 cs2。
 . 顯示網路連接埠屬性：
 +
 「網路連接埠show -IPSpace Cluster」
@@ -409,7 +410,7 @@ Cluster
 (C1)(Interface 0/1-0/12)# *exit*
 (C1)(Config)# *exit*
 ----
-. 使用 Cisco 9336C-FX2 支援的適當纜線、將節點叢集連接埠從舊的交換器 C1 移至新的交換器 CS1 。
+. 使用Cisco 9336C-FX2 和 9336C-FX2-T 支援的適當電纜將節點叢集連接埠從舊交換器 C1 移至新交換器 cs1。
 . 驗證叢集的最終組態：
 +
 「網路連接埠show -IPSpace Cluster」
@@ -562,4 +563,4 @@ Cluster
 
 
 .接下來呢？
-link:../switch-cshm/config-overview.html["設定交換器健全狀況監控"]。
+遷移交換器後，您link:../switch-cshm/config-overview.html["配置交換器健康監控"]。

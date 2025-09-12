@@ -11,7 +11,7 @@ summary: 首次設定 Nexus 9336C-FX2 儲存交換器後，即可安裝 RCF 。�
 
 
 [role="lead"]
-首次設定 Nexus 9336C-FX2 儲存交換器之後，請安裝參考組態檔案（ RCF ）。
+首次設定 Nexus 9336C-FX2 和 9336C-FX2-T 儲存交換器後，安裝參考設定檔 (RCF)。
 
 如需安裝 RCF 的詳細資訊，請參閱知識庫link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["如何在保留遠端連線的同時清除 Cisco 互連交換器上的組態"^]文件。
 
@@ -118,7 +118,7 @@ cs1# show banner motd
 
 . 對於 RCF 版本 1.12 及更高版本，執行以下命令：
 +
-`cs1# echo "hardware access-list tcam region ing-racl 1024" > bootflash:write_erase.cfg`
+`cs1# echo "hardware access-list tcam region ing-racl 1024" >> bootflash:write_erase.cfg`
 
 +
 `cs1# echo "hardware access-list tcam region egr-racl 1024" >> bootflash:write_erase.cfg`
@@ -480,4 +480,4 @@ System Manager 為叢集設定和組態提供簡單易用的工作流程，包�
 前往 https://docs.netapp.com/us-en/ontap/task_configure_ontap.html["使用系統管理員在新叢集上設定 ONTAP"] 以取得設定指示。
 
 .接下來呢？
-link:configure-ssh-keys.html["驗證SSH組態"]
+安裝或升級 RCF 後，您link:configure-ssh-keys.html["驗證 SSH 配置"]

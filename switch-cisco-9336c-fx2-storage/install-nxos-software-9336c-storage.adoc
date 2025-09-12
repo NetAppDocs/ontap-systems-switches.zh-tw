@@ -11,7 +11,7 @@ summary: 您可以使用此程序、在Nexus 9336C-FX2叢集交換器上安裝NX
 
 
 [role="lead"]
-請遵循此程序、在Nexus 9336C-FX2叢集交換器上安裝NX-OS軟體。
+請依照下列步驟在 Nexus 9336C-FX2 和 9336C-FX2-T 交換器上安裝 NX-OS 軟體。
 
 開始之前、請先完成中的程序 link:install-nxos-overview-9336c-storage.html["準備安裝NX-OS和RCF"]。
 
@@ -696,4 +696,4 @@ cluster1::*>
 
 
 .接下來呢？
-link:install-rcf-software-9336c-storage.html["安裝或升級 RCF"]。
+安裝或升級 NX-OS 軟體後，您link:install-rcf-software-9336c-storage.html["安裝或升級 RCF"]。

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: migrate, switchless cluster interconnect, cisco nexus switch 9336C-FX2 
 summary: 您可以從具有交換式叢集網路的叢集移轉至兩個節點直接連線的叢集ONTAP 、以供支援使用於更新版本的版本。 
 ---
-= 以無交換器連線取代Cisco Nexus 9336C-FX2叢集交換器
+= 使用無交換器連接取代Cisco Nexus 9336C-FX2 和 9336C-FX2-T 叢集交換機
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

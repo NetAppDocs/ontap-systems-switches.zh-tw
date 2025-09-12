@@ -112,7 +112,7 @@ N9K-9336C 65CFM、連接埠側進氣氣流
 |===
 
 
-== Cisco 智慧型授權
+== 僅適用於 9336C-FX2-T 連接埠的Cisco智慧許可證
 
 若要在 Cisco Nexus 9336C-FX-T 叢集交換器上啟動超過 12 個連接埠，您必須購買 Cisco 智慧型授權。Cisco 智慧型授權是透過 Cisco 智慧型帳戶進行管理。
 
@@ -124,4 +124,4 @@ N9K-9336C 65CFM、連接埠側進氣氣流
 NOTE: 購買智慧型授權後，請安裝適當的 RCF ，以啟用並設定所有 36 個可用連接埠以供使用。
 
 .下一步
-link:required-documentation-9336c-cluster.html["必要文件"] 。
+確認組件和零件號碼後，您可以查看link:required-documentation-9336c-cluster.html["所需文件"]。

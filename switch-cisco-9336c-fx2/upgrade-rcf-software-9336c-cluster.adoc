@@ -920,4 +920,4 @@ RPC status:
 --
 ====
 .接下來呢？
-link:configure-ssh-keys.html["驗證SSH組態"]。
+升級 RCF 後，您link:configure-ssh-keys.html["驗證 SSH 配置"]。

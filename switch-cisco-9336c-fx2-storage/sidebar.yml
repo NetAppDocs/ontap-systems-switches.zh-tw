@@ -3,7 +3,7 @@ section: switch-cisco-9336c-fx2-storage
 title: Cisco Nexus 9336C-FX2 或 9336C-FX2-T
 pdf-filename: 交換器 - Cisco-9336c-FX2 儲存設備
 entries:
-- title: 總覽
+- title: 開始使用
   pdf-filename: overview_9336c-FX2-storage
   entries:
   - title: 快速入門

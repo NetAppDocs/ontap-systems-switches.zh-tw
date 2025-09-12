@@ -11,11 +11,11 @@ summary: 您可以將Cisco Nexus 3232C交換器當作AFF 叢集交換器、放�
 
 
 [role="lead"]
-若要使用Smart Call Home功能、請參閱下列準則。
+若要使用 Smart Call Home，您必須設定叢集網路交換器以透過電子郵件與 Smart Call Home 系統進行通訊。此外，您也可以選擇設定叢集網路交換機，以利用 Cisco 的嵌入式 Smart Call Home 支援功能。
 
-Smart Call Home可監控網路上的硬體和軟體元件。發生關鍵系統組態時、會產生電子郵件通知、並對目的地設定檔中設定的所有收件者發出警示。若要使用Smart Call Home、您必須將叢集網路交換器設定為使用電子郵件與Smart Call Home系統進行通訊。此外、您也可以選擇性地設定叢集網路交換器、以利用Cisco的內嵌式Smart Call Home支援功能。
+Smart Call Home 監控您網路上的硬體和軟體元件。當發生關鍵系統配置時，它會產生基於電子郵件的通知並向目標設定檔中配置的所有收件者發出警報。
 
-在使用Smart Call Home之前、請注意下列考量事項：
+在使用 Smart Call Home 之前，請注意以下要求：
 
 * 電子郵件伺服器必須就位。
 * 交換器必須具備IP連線至電子郵件伺服器的功能。

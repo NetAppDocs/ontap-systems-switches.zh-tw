@@ -11,7 +11,7 @@ summary: 如果您現有的雙節點無交換式叢集環境、可以使用Cisco
 
 
 [role="lead"]
-如果您現有的雙節點_無交換器_叢集環境、可以使用Cisco Nexus 9336C-FX2交換器移轉至雙節點_交換_叢集環境。
+如果您已有雙節點無交換器叢集環境，則可以使用Cisco Nexus 9336C-FX2 和 9336C-FX2-T 交換器遷移到雙節點有交換器叢集環境。
 
 移轉程序適用於使用光纖或雙軸纜線連接埠的所有節點、但如果節點使用內建10Gb Base-T RJ45連接埠作為叢集網路連接埠、則此交換器不支援此程序。
 
@@ -629,4 +629,4 @@ RPC status:
 
 
 .接下來呢？
-link:../switch-cshm/config-overview.html["設定交換器健全狀況監控"]。
+遷移交換器後，您link:../switch-cshm/config-overview.html["配置交換器健康監控"]。

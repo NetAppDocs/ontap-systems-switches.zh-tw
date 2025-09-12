@@ -2,7 +2,7 @@
 section: switch-netapp-cn1610
 title: NetApp CN1610
 entries:
-- title: 總覽
+- title: 開始使用
   pdf-filename: overview_cn1610.
   url: "/switch-netapp-cn1610/switch-overview-cn1610.html"
 - title: 安裝及設定工作流程

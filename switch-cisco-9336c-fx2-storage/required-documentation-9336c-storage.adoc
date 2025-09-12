@@ -4,7 +4,7 @@ permalink: switch-cisco-9336c-fx2-storage/required-documentation-9336c-storage.h
 keywords: shared storage cluster switch 
 summary: 對於Cisco Nexus 9336C-FX2交換器的安裝與維護、請務必檢閱特定的交換器與控制器文件、以設定Cisco 9336-FX2交換器與ONTAP 叢集。 
 ---
-= Cisco Nexus 9336C-FX2儲存交換器的文件需求
+= Cisco Nexus 9336C-FX2 和 9336C-FX2-T 儲存交換器的文件要求
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,7 @@ summary: 對於Cisco Nexus 9336C-FX2交換器的安裝與維護、請務必檢�
 
 
 [role="lead"]
-對於Cisco Nexus 9336C-FX2交換器的安裝與維護、請務必檢閱特定的交換器與控制器文件、以設定Cisco 9336-FX2交換器與ONTAP 叢集。
+對於Cisco Nexus 9336C-FX2 和 9336C-FX2-T 交換器的安裝和維護，請務必查看特定的交換器和控制器文件以設定您的Cisco 9336-FX2 交換器和ONTAP叢集。
 
 
 

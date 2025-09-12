@@ -4,14 +4,14 @@ sidebar: sidebar
 keywords: replacing, replace, defective, nexus, switch, cluster, network, nondisruptive, procedure, ndu, replace a cisco nexus 9336c-fx2 cluster switch - cisco nexus 9336c-fx2 
 summary: 在叢集網路中更換故障的Nexus 9336C-FX2交換器、是不中斷營運的程序（NDU）。 
 ---
-= 更換Cisco Nexus 9336C-FX2叢集交換器
+= 更換Cisco Nexus 9336C-FX2 和 9336C-FX2-T 集群交換機
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-請依照下列步驟、在叢集網路中更換故障的Nexus 9336C-FX2交換器。這是不中斷營運的程序（NDU）。
+請依照下列步驟更換集群網路中有缺陷的 Nexus 9336C-FX2 和 9336C-FX2-T 交換器。這是一個無中斷程式 (NDU)。
 
 
 
@@ -618,4 +618,4 @@ Total entries displayed: 4
 
 
 .接下來呢？
-link:../switch-cshm/config-overview.html["設定交換器健全狀況監控"]。
+更換開關後，您link:../switch-cshm/config-overview.html["配置交換器健康監控"]。
