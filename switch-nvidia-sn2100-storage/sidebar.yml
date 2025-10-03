@@ -1,10 +1,8 @@
 ---
 section: switch-nvidia-sn2100-storage
 title: NVIDIA SN2100
-pdf-filename: 交換器 NVIDIA sn2100 儲存設備
 entries:
 - title: 開始使用
-  pdf-filename: overview_sn2100 儲存設備
   entries:
   - title: 快速入門
     url: "/switch-nvidia-sn2100-storage/configure-overview-sn2100-storage.html"

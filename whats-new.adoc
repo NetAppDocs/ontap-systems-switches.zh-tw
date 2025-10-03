@@ -7,7 +7,7 @@ summary: 深入瞭解FAS 適用於整個系統的全新交換器AFF 。
 = 交換器的新功能
 :allow-uri-read: 
 :icons: font
-:imagesdir: ../media/
+:imagesdir: ./media/
 
 
 [role="lead"]

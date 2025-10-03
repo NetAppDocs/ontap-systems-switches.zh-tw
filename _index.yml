@@ -1,5 +1,8 @@
 ---
 indexpage:
+  title: ONTAP系統的交換機
+  summary: 請使用本網站上的文件來安裝、升級及維護叢集、共享儲存設備和MetroCluster 交換器。
+  keywords: switches
   lead: NetApp 提供叢集、儲存設備和共用交換器、可在主機儲存設備和兩個或多個 NetApp 控制器之間提供連線、讓您在儲存基礎架構中不中斷地移動資料和網路介面。
   tiles:
   - title: 開始使用
@@ -21,7 +24,7 @@ indexpage:
     - title: 儲存交換器 - Cisco Nexus 9336C-FX2 或 9336C-FX2-T
       url: "/switch-cisco-9336c-fx2-storage/configure-switch-overview-9336c-storage.html"
     - title: 儲存交換器 - NVIDIA SN2100
-      url: "/switch-nvidia-sn2100/configure-overview-sn2100-storage.html"
+      url: "/switch-nvidia-sn2100-storage/configure-overview-sn2100-storage.html"
     - title: 共享交換器 - Cisco Nexus 9336C-FX2
       url: "/switch-cisco-9336c-fx2-shared/configure-switch-overview-9336c-shared.html"
   - title: 終止可用度交換器

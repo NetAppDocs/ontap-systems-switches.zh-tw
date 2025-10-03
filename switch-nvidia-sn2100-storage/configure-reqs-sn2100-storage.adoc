@@ -21,7 +21,7 @@ summary: 對於NVIDIA SN2100交換器的安裝與維護、請務必檢閱所有�
 
 您可以在NVIDIA雙/單一交換器機櫃中安裝NVIDIA SN2100交換器（X190006/X190106）、並附有交換器隨附的標準支架。
 
-如需纜線佈線準則、請參閱 link:cabling-considerations-sn2100-cluster.html["佈線與組態考量"]。
+有關佈線指南，請參閱link:cabling-considerations-sn2100-storage.html["佈線與組態考量"]。
 
 
 

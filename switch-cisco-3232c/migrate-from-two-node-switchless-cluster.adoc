@@ -60,7 +60,7 @@ summary: 如果您有雙節點無交換式叢集、則可在不中斷營運的�
 * N1_clus2是第一個叢集LIF、用於連接至節點n1的叢集交換器C2。
 * n2_clus1是第一個叢集LIF、用於連接至節點n2的叢集交換器C1。
 * n2_clus2是第二個叢集LIF、用於連接至節點n2的叢集交換器C2。
-* 10 GbE和40/100 GbE連接埠的數量是在上可用的參考組態檔（RCFs）中定義 https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco®叢集網路交換器參考組態檔案下載"^] 頁面。
+* 10 GbE 和 40/100 GbE 連接埠的數量在參考設定檔 (RCF) 中定義，可從link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco®叢集網路交換器參考組態檔案下載"^]。
 
 
 [NOTE]
@@ -165,14 +165,14 @@ Enable Switchless Cluster Detection: true
 +
 .. 請前往NetApp支援網站上的「Cisco乙太網路交換器」頁面。
 +
-http://support.netapp.com/NOW/download/software/cm_switches/["Cisco乙太網路交換器"^]
+link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器"^]
 
 .. 請在該頁的表格中記下您的交換器和所需的軟體版本。
 .. 下載適當版本的RCF。
 .. 按一下「*說明*」頁面上的「*繼續*」、接受授權合約、然後依照「*下載*」頁面上的指示下載RCF。
 .. 下載適當版本的映像軟體。
 +
-https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco叢集與管理網路交換器參考組態檔案下載頁面"^]
+link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco叢集和管理網路交換器參考設定檔下載"^] 。
 
 
 

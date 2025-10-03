@@ -17,14 +17,20 @@ summary: 在設定Cisco Nexus 3232C 叢集交換器之前，請先查看設定�
 [role="quick-margin-para"]
 佈線工作表範例提供從交換器到控制器的建議連接埠指派範例。空白工作表提供範本、可用於設定叢集。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["二"]link:install-switch-3232c.html["安裝交換器"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["二"]
+link:install-switch-3232c.html["安裝交換器"]
+
 [role="quick-margin-para"]
 安裝3232C開關。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三"]link:install-switch-and-passthrough-panel-9336c-cluster.html["將交換器安裝在 NetApp 機櫃中"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三"]
+link:install-cisco-nexus-3232c.html["將交換器安裝在 NetApp 機櫃中"]
+
 [role="quick-margin-para"]
 依需求在NetApp機櫃中安裝 3232C 交換器和直通面板。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["四"]link:cabling-considerations-3232c.html["檢視纜線佈線與組態"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["四"]
+link:cabling-considerations-3232c.html["檢視纜線佈線與組態"]
+
 [role="quick-margin-para"]
 審查對NVIDIA乙太網路連接埠的支援。

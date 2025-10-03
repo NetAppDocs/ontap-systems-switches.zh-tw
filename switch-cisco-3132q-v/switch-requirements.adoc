@@ -18,7 +18,7 @@ summary: 更換Cisco Nexus 3132Q-V叢集交換器時、您必須注意特定的�
 == Cisco Nexus 3132Q-V需求
 
 * Cisco Nexus 3132Q-V叢集交換器受到支援。
-* 10 GbE 和 40 GbE 連接埠的數量定義於頁面上可用的參考組態檔案（ RCFs ）link:https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco®叢集網路交換器參考組態檔案下載"^]。
+* 10 GbE 和 40 GbE 連接埠的數量在參考設定檔 (RCF) 中定義，可從link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco®叢集網路交換器參考組態檔案下載"^]。
 * 叢集交換器使用交換器間連結（ISL）連接埠E1/31至32。
 * 。 link:https://hwu.netapp.com["Hardware Universe"^] 包含有關支援的Nexus 3132Q-V交換器纜線連接資訊：
 +
@@ -44,7 +44,7 @@ summary: 更換Cisco Nexus 3132Q-V叢集交換器時、您必須注意特定的�
 
 * 您必須完成規劃，移轉，並閱讀 10 GbE 和 40 GbE 連線的必要文件，從節點連線至 Nexus 3132Q-V 叢集交換器。
 +
-。 link:http://mysupport.netapp.com/NOW/download/software/cm_switches/["Cisco乙太網路交換器"^] 頁面提供ONTAP 本程序所支援的有關支援的版本資訊。
+link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器"^]包含有關此過程中支援的ONTAP和 NX-OS 版本的資訊。
 
 
 
@@ -58,7 +58,7 @@ summary: 更換Cisco Nexus 3132Q-V叢集交換器時、您必須注意特定的�
 ** Nexus 3132Q-V
 
 
-* 10 GbE 和 40 GbE 連接埠的數量定義於頁面上可用的參考組態檔案（ RCFs ） https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco®叢集網路交換器參考組態檔案下載"^]。
+* 10 GbE 和 40 GbE 連接埠的數量在參考設定檔 (RCF) 中定義，可從link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco®叢集網路交換器參考組態檔案下載"^]。
 * 叢集交換器使用下列連接埠來連線至節點：
 +
 ** 連接埠E1/1-40（10 GbE）：Nexus 5596
@@ -114,7 +114,7 @@ NOTE: 您可以使用「硬體設定檔前端連接埠模式SFP-PLUS」命令、
 NOTE: 您可以使用「介面中斷模組1連接埠1-6 MAP 10ge-4x」命令、將前六個連接埠分割成4x10 GbE模式。同樣地、您也可以使用「無介面中斷模組1連接埠1-6 MAP 10g-4x」命令、從中斷組態重新分組前六個QSFP+連接埠。
 
 * 您已完成規劃，移轉，並閱讀 10 GbE 和 40 GbE 連線的必要文件，從節點連線至 Nexus 3132Q-V 叢集交換器。
-* 本程序所支援的支援的支援版本包括ONTAP link:http://support.netapp.com/NOW/download/software/cm_switches/["Cisco乙太網路交換器"^] 頁面。
+* 此過程中支援的ONTAP和 NX-OS 版本為link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器"^]。
 
 
 
@@ -176,6 +176,6 @@ NOTE: 使用前四個SFP+連接埠時、會停用第一個40GbE QSFP連接埠。
 您可以使用命令將前六個連接埠分成 4x10 GbE 模式 `interface breakout module 1 port 1-6 map 10g-4x`。同樣地，您也可以使用命令，從 _ 中斷 _ 組態重新分組前六個 QSFP+ 連接埠 `no interface breakout module 1 port 1-6 map 10g-4x`。
 
 * 您必須完成規劃，移轉，並閱讀 10 GbE 和 40 GbE 連線的必要文件，從節點連線至 Nexus 3132Q-V 叢集交換器。
-* 本程序所支援的支援的支援版本包括ONTAP link:http://support.netapp.com/NOW/download/software/cm_switches/["Cisco乙太網路交換器"^] 頁面。
-* 本程序所支援的支援的版本包括ONTAP link:http://support.netapp.com/NOW/download/software/cm_switches_ntap/["NetApp CN1601與CN1610交換器"^] 頁面。
+* 此過程中支援的ONTAP和 NX-OS 版本列於link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器"^]。
+* 此過程中支援的ONTAP和 FASTPATH 版本列於link:https://mysupport.netapp.com/site/products/all/details/netapp-cluster-switches/docs-tab["NetApp CN1601與CN1610交換器"^]。
 

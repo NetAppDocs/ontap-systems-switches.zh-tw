@@ -1,5 +1,5 @@
 ---
-permalink: switch-bes-53248/cabling-considerations-bes-53248.html 
+permalink: switch-bes-53248/cabling-considerations-bes53248.html 
 sidebar: sidebar 
 keywords: BES-53248 cabling setup, BES-53248 switches configuration, efos 
 summary: 設定 Broadcom BS-53248 交換器之前、請先檢閱下列資訊。 

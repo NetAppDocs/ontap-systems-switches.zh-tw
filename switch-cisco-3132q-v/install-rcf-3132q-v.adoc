@@ -274,7 +274,7 @@ cluster1::*>
 「如何執行設定」
 
 . 記錄目前運行配置和正在使用的 RCF 檔案之間的任何自訂新增。
-. 將基本組態詳細資料儲存至 bootflash 上的 write_erase.cfg 檔案。
+. 將基本配置詳細資訊儲存到 `write_erase.cfg`bootflash 上的檔案。
 +
 
 NOTE: 升級或套用新的 RCF 時，必須清除交換器設定並執行基本配置。您必須連接到交換器序列控制台連接埠才能重新設定交換器。
@@ -308,9 +308,9 @@ NOTE: 升級或套用新的 RCF 時，必須清除交換器設定並執行基本
 `cs2# echo "hardware access-list tcam region qos 256" >> bootflash:write_erase.cfg`
 
 +
-請參閱知識庫文章 https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["如何在保留遠端連線的同時清除 Cisco 互連交換器上的組態"^]了解更多詳情。
+請參閱知識庫文章link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["如何在保留遠端連線的同時清除 Cisco 互連交換器上的組態"^]了解更多詳情。
 
-. 驗證 write_erase.cfg 檔案是否如預期填入：
+. 驗證 `write_erase.cfg`文件按預期填充：
 +
 `show file bootflash:write_erase.cfg`
 
@@ -326,7 +326,7 @@ NOTE: 升級或套用新的 RCF 時，必須清除交換器設定並執行基本
 
 . 將先前儲存的基本組態複製到啟動組態。
 +
-`cs2# *copy write_erase.cfg startup-config*`
+`cs2# *copy bootflash:write_erase.cfg startup-config*`
 
 . 重新啟動交換器：
 +
@@ -335,7 +335,7 @@ NOTE: 升級或套用新的 RCF 時，必須清除交換器設定並執行基本
 +
 `This command will reboot the system. (y/n)?  [n] *y*`
 
-. 使用下列傳輸傳輸協定之一、將RCF複製到交換器CS2的bootflash：FTP、TFTP、SFTP或scp。如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^] 指南：
+. 使用下列傳輸協定之一將 RCF 複製到交換器 cs2 的 bootflash：FTP、TFTP、SFTP 或 SCP。有關Cisco命令的更多信息，請參閱link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]指南。
 +
 .顯示範例
 [%collapsible]
@@ -352,7 +352,7 @@ Copy complete, now saving to disk (please wait)...
 ====
 . 將先前下載的RCF套用至bootFlash。
 +
-如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^] 指南：
+有關Cisco命令的更多信息，請參閱link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]指南。
 
 +
 .顯示範例
@@ -664,7 +664,7 @@ cluster1-04          true     true          false
 cluster1::*>
 ----
 ====
-. 在交換器 cs1 上重複步驟 1 至 19。
+. 在交換器 cs1 上重複步驟 1 至 17。
 . 在叢集生命體上啟用自動還原。
 +
 .顯示範例
@@ -832,8 +832,7 @@ Cluster cluster1-02_clus2 169.254.19.183 cluster1-02     e0b
 Local = 169.254.47.194 169.254.19.183
 Remote = 169.254.209.69 169.254.49.125
 Cluster Vserver Id = 4294967293
-Ping status:
-....
+Ping status:....
 Basic connectivity succeeds on 4 path(s)
 Basic connectivity fails on 0 path(s)
 ................

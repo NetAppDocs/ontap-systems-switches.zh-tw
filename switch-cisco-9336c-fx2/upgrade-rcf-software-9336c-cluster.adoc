@@ -248,11 +248,11 @@ cluster1::*>
 「如何執行設定」
 
 +
-.. 記錄目前執行組態和使用中 RCF 檔案（例如組織的 SNMP 組態）之間的任何自訂新增項目。
-.. 若為 NX-OS 10.2 及更新版本、請使用 `show diff running-config` 用於比較 bootflash 中儲存的 RCF 檔案的命令。  否則、請使用第三個零件差異 / 比較工具。
+.. 記錄當前之間的任何自訂添加 `running-config`以及正在使用的 RCF 檔案（例如您組織的 SNMP 配置）。
+.. 從 NX-OS 10.2 開始，使用 `show diff running-config`指令與 Bootflash 中儲存的 RCF 檔案進行比較。否則，請使用第三方差異/比較工具。
 
 
-. 將基本組態詳細資料儲存至 bootflash 上的 write_erase.cfg 檔案。
+. 將基本配置詳細資訊儲存到 `write_erase.cfg`bootflash 上的檔案。
 +
 `cs1# show run | i "username admin password" > bootflash:write_erase.cfg`
 
@@ -276,9 +276,9 @@ cluster1::*>
 `cs1# echo "hardware access-list tcam region ing-l2-qos 1280" >> bootflash:write_erase.cfg`
 
 +
-請參閱知識庫文章 https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["如何在保留遠端連線的同時清除 Cisco 互連交換器上的組態"^]了解更多詳情。
+請參閱知識庫文章link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["如何在保留遠端連線的同時清除 Cisco 互連交換器上的組態"^]了解更多詳情。
 
-. 驗證 write_erase.cfg 檔案是否如預期填入：
+. 驗證 `write_erase.cfg`文件按預期填充：
 +
 `show file bootflash:write_erase.cfg`
 
@@ -309,7 +309,7 @@ cluster1::*>
 
 . 使用下列傳輸協定之一、將 RCF 複製到交換器 CS1 的 bootflash ： FTP 、 TFTP 、 SFTP 或 SCP 。
 +
-如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000系列NX-OS命令參考"^] 指南：
+有關Cisco命令的更多信息，請參閱link:https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000系列NX-OS命令參考"^]指南。
 
 +
 .顯示範例

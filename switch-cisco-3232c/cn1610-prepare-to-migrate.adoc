@@ -159,11 +159,11 @@ CL2                           cluster-network  10.10.1.102   CN1610
 此時您應該準備兩個交換器。如果您需要升級RCF和映像、必須完成下列程序：
 
 +
-.. 請參閱 link:http://support.netapp.com/NOW/download/software/cm_switches/.html["Cisco乙太網路交換器"^] 頁面。
+.. 看link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器"^]在NetApp支援站點上。
 .. 請在該頁的表格中記下您的交換器和所需的軟體版本。
 .. 下載適當版本的RCF。
 .. 在 * 說明 * 頁面上選取 * 繼續 * ，接受授權合約，然後依照 * 下載 * 頁面上的指示下載 RCF 。
-.. 請至下載適當版本的映像軟體 link:http://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.html["Cisco®叢集與管理網路交換器參考組態檔案下載"^]。
+.. 下載對應版本的影像軟體link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco®叢集與管理網路交換器參考組態檔案下載"^]。
 
 
 . 移轉與您計畫更換的第二台 CN1610 交換器相關的生命週期：

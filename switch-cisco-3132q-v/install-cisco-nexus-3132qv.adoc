@@ -42,7 +42,7 @@ summary: 您可以將Cisco Nexus 3132Q-V交換器和傳遞面板安裝在NetApp�
 .. 將面板垂直置中、以防止侵入鄰近的機架空間、然後鎖緊螺絲。
 .. 將兩根48吋跳接線的母接頭從面板背面插入、並穿過筆刷組件。
 +
-image::../media/cisco_9148_jumper_cords.gif[Cisco 9148跳接線]
+image::../media/cisco_9148_jumper_cords.gif[]
 
 +
 _（1）跳接線的母接頭。_
@@ -62,7 +62,7 @@ image::../media/3132q_front_bracket.gif[前支架]
 
 . 將夾螺帽安裝在四個IEA柱的方孔位置。
 +
-image::../media/ru_locations_for_3132q_v.gif[用於3132q v的RU位置]
+image::../media/ru_locations_for_3132q_v.gif[]
 
 +
 兩個3132Q-V交換器一律安裝在機櫃RU41和42的頂端2U中。
@@ -71,7 +71,7 @@ image::../media/ru_locations_for_3132q_v.gif[用於3132q v的RU位置]
 +
 .. 將第一個滑軌放在左後柱背面的RU42標記處、插入符合螺絲類型的螺絲、然後用手指鎖緊螺絲。
 +
-image::../media/3132q_v_slider_rails.gif[3132q v滑軌]
+image::../media/3132q_v_slider_rails.gif[]
 
 +
 _（1）當您輕推滑桿軌道時、請將滑軌對準機架上的螺絲孔。_
@@ -101,7 +101,7 @@ _（2）輕推交換器、直到前機架安裝支架與前柱齊平。_
 
 .. 將交換器連接至機櫃。
 +
-image::../media/3132q_attaching.gif[3132q附加]
+image::../media/3132q_attaching.gif[]
 
 +
 _（1）當一個人拿著機箱前端時、另一個人應將四顆後螺絲完全鎖緊至機箱柱。_

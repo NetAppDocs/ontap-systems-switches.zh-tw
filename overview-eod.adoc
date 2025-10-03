@@ -7,7 +7,7 @@ summary: EOD交換器適用於FAS Efd和AFF Efesd系統。
 = 終止可用度
 :allow-uri-read: 
 :icons: font
-:imagesdir: ../media/
+:imagesdir: ./media/
 
 
 [role="lead"]

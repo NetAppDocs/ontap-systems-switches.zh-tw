@@ -172,7 +172,7 @@ CL2                           cluster-network    10.10.1.102     NX5596
 +
 .. 請前往NetApp支援網站上的「Cisco乙太網路交換器」頁面。
 +
-http://support.netapp.com/NOW/download/software/cm_switches/["Cisco乙太網路交換器"^]
+link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器"^]
 
 .. 請在該頁的表格中記下您的交換器和所需的軟體版本。
 .. 下載適當版本的RCF。

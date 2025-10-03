@@ -14,7 +14,7 @@ summary: 您可以將不中斷營運的舊Cisco叢集交換器移轉至ONTAP Cis
 您可以將不中斷營運的舊Cisco叢集交換器移轉至ONTAP Cisco Nexus 92300YC叢集網路交換器、以供支援使用。
 
 
-NOTE: 移轉完成後、您可能需要安裝所需的組態檔、以支援適用於92300YC叢集交換器的叢集交換器健全狀況監視器（CSHM）。請參閱link:setup-install-cshm-file.html["安裝叢集交換器健全狀況監視器（CSHM）"]。
+NOTE: 遷移完成後，您可能需要安裝所需的設定檔以支援 92300YC 叢集交換器的叢集交換器健康監視器 (CSHM)。看link:../switch-cshm/cshm-overview.html["交換機健康監測（CSHM）"] 。
 
 
 

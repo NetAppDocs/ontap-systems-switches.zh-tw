@@ -66,11 +66,11 @@ CN1610至3232C（QSFP至SFP+）
 2條QSFP光纖或銅線直接連接纜線
 
 |===
-您必須下載適用的參考組態檔（RCT）。10 GbE和40/100 GbE連接埠的數量是在上可用的RCFs中定義 https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco®叢集網路交換器參考組態檔案下載"^] 頁面。
+您必須下載適用的參考設定檔（RCF）。  10 GbE 和 40/100 GbE 連接埠的數量在link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco®叢集網路交換器參考組態檔案下載"^]。
 
-本程序所支援的支援的支援版本包括ONTAP link:https://mysupport.netapp.com/NOW/download/software/cm_switches/.html["Cisco乙太網路交換器頁面"^]。
+此過程中支援的ONTAP和 NX-OS 版本列於link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器"^]。
 
-本程序所支援的支援的版本包括ONTAP link:http://support.netapp.com/NOW/download/software/cm_switches_ntap/.html["NetApp CN1601與CN1610交換器頁面"^]。
+此過程中支援的ONTAP和 FASTPATH 版本列於link:https://mysupport.netapp.com/site/products/all/details/netapp-cluster-switches/docs-tab["NetApp CN1601與CN1610交換器"^]。
 
 
 
@@ -123,7 +123,7 @@ CN1610至3232C（QSFP至SFP+）
 
 ====
 *** 您已完成規劃、移轉、並閱讀10 GbE和40/100 GbE連線所需的文件、從節點連接至Nexus 3232C叢集交換器。
-*** 本程序所支援的支援的支援版本包括ONTAP link:http://support.netapp.com/NOW/download/software/cm_switches/.html["Cisco乙太網路交換器頁面"^]。
+*** 此過程中支援的ONTAP和 NX-OS 版本為link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器"^]。
 
 
 

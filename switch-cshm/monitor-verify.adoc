@@ -29,7 +29,7 @@ system switch ethernet show
 
 [NOTE]
 ====
-如果命令輸出中未列出交換器，則 ONTAP 可能尚未發現它。確認交換器纜線正確。如有必要，您可以手動新增交換器。如需詳細資訊、請參閱 link:manage-monitor.html["管理乙太網路交換器的監控"] 。
+如果命令輸出中未列出交換機，則ONTAP可能尚未發現它。確認交換器的接線正確。如果需要，您可以手動新增交換器。請參閱link:monitor-manage.html["管理乙太網路交換器的監控"]了解更多詳情。
 
 ====
 

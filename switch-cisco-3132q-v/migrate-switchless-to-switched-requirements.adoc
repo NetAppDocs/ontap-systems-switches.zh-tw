@@ -19,9 +19,9 @@ summary: 在設定 Cisco Nexus 3132q-v 交換器之前，請先檢閱程序和�
 ====
 如需詳細資訊、請參閱：
 
-* http://support.netapp.com/NOW/download/software/cm_switches_ntap/["NetApp CN1601與CN1610說明頁面"^]
-* http://support.netapp.com/NOW/download/software/cm_switches/["Cisco乙太網路交換器說明頁面"^]
-* http://hwu.netapp.com["Hardware Universe"^]
+* link:https://mysupport.netapp.com/site/products/all/details/netapp-cluster-switches/docs-tab["NetApp CN1601 和 CN1610"^]
+* link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器"^]
+* link:http://hwu.netapp.com["Hardware Universe"^]
 
 
 .連接埠和節點連線
@@ -50,7 +50,7 @@ summary: 在設定 Cisco Nexus 3132q-v 交換器之前，請先檢閱程序和�
 +
 您可以使用「介面中斷模組1連接埠1-6 MAP 10ge-4x」命令、將前六個連接埠分割成4x10 GbE模式。同樣地、您也可以使用「無介面中斷模組1連接埠1-6 MAP 10g-4x」命令、從中斷組態重新分組前六個QSFP+連接埠。
 
-* 10 GbE 和 40 GbE 連接埠的數量定義於頁面上可用的參考組態檔案（ RCFs ） https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco®叢集網路交換器參考組態檔案下載"^]。
+* 10 GbE 和 40 GbE 連接埠的數量在參考設定檔 (RCF) 中定義，可從link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco®叢集網路交換器參考組態檔案下載"^]。
 
 
 .開始之前
@@ -63,7 +63,7 @@ summary: 在設定 Cisco Nexus 3132q-v 交換器之前，請先檢閱程序和�
 ** Nexus 3132叢集基礎架構、可在兩台交換器上備援且完全正常運作。
 ** 交換器上最新的RCF和NX-OS版本。
 +
-。 link:http://mysupport.netapp.com/NOW/download/software/cm_switches/["Cisco乙太網路交換器"^] 頁面提供ONTAP 本程序所支援的有關支援的版本資訊。
+link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器"^]包含有關此過程中支援的ONTAP和 NX-OS 版本的資訊。
 
 ** 管理兩台交換器的連線能力。
 ** 兩個交換器的主控台存取。
@@ -94,7 +94,7 @@ summary: 在設定 Cisco Nexus 3132q-v 交換器之前，請先檢閱程序和�
 * *n1_clus2* 是第一個連接至叢集交換器 C2 的叢集 LIF ，用於節點 *n1* 。
 * *n2_clus1* 是第一個連接到節點 *n2* 的叢集交換器 C1 的叢集 LIF 。
 * *n2_clus2* 是連接至叢集交換器 C2 的第二個叢集 LIF ，用於節點 *n2* 。
-* 10 GbE 和 40 GbE 連接埠的數量定義於頁面上可用的參考組態檔案（ RCFs ） https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco®叢集網路交換器參考組態檔案下載"^]。
+* 10 GbE 和 40 GbE 連接埠的數量在參考設定檔 (RCF) 中定義，可從link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco®叢集網路交換器參考組態檔案下載"^]。
 
 
 [NOTE]

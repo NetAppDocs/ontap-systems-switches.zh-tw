@@ -19,8 +19,8 @@ Cisco Nexus 3232C交換器可做AFF 為您的叢集或FAS 叢集內的叢集交�
 ====
 如需詳細資訊、請參閱：
 
-* http://support.netapp.com/NOW/download/software/cm_switches/["Cisco乙太網路交換器說明頁面"^]
-* http://hwu.netapp.com["Hardware Universe"^]
+* link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器"^]
+* link:http://hwu.netapp.com["Hardware Universe"^]
 
 
 
@@ -81,7 +81,7 @@ Cisco Nexus 3232C交換器可做AFF 為您的叢集或FAS 叢集內的叢集交�
 
 ====
 * 您已完成規劃、移轉、並閱讀10 GbE和40/100 GbE連線所需的文件、從節點連接至Nexus 3232C叢集交換器。
-* 本程序所支援的支援的支援版本包括ONTAP link:http://support.netapp.com/NOW/download/software/cm_switches/.html["Cisco乙太網路交換器頁面"^]。
+* 此過程中支援的ONTAP和 NX-OS 版本為link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器"^]。
 
 
 .關於所使用的範例
@@ -96,7 +96,7 @@ Cisco Nexus 3232C交換器可做AFF 為您的叢集或FAS 叢集內的叢集交�
 * *n1_clus2* 是第一個連接至叢集交換器 2 （ CL2 或 C2 ）的叢集 LIF ，用於節點 *n1* 。
 * *n1_clus3* 是第二個連接至叢集交換器 2 （ CL2 或 C2 ）的 LIF 節點 *n1* 。
 * *n1_clus4* 是第二個連接至叢集交換器 1 （ CL1 或 C1 ）的 LIF 節點 *n1* 。
-* 10 GbE和40/100 GbE連接埠的數量是在上可用的參考組態檔（RCFs）中定義 https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco®叢集網路交換器參考組態檔案下載"^] 頁面。
+* 10 GbE 和 40/100 GbE 連接埠的數量在link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco®叢集網路交換器參考組態檔案下載"^]。
 * 節點包括 *n1* ， *n2* ， *n3* 和 *n4* 。
 
 

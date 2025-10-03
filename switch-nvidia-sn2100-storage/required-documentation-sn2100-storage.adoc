@@ -35,13 +35,6 @@ https://docs.netapp.com/us-en/ontap-systems-switches/switch-nvidia-sn2100/migrat
 
 
  a| 
-https://docs.netapp.com/us-en/ontap-systems-switches/switch-nvidia-sn2100/migrate-cisco-storage-switch-sn2100-storage.html["_從Cisco儲存交換器移轉至NVIDIA儲存交換器_"^]
- a| 
-說明如何從使用Cisco儲存交換器的環境移轉至使用NVIDIA SN2100儲存交換器的環境。
-
-
-
- a| 
 https://docs.netapp.com/us-en/ontap-systems-switches/switch-nvidia-sn2100/migrate-2n-switched-sn2100-cluster.html["_使用NVIDIA SN2100叢集交換器移轉至雙節點交換式叢集_"^]
  a| 
 說明如何使用NVIDIA SN2100叢集交換器移轉至雙節點交換環境。

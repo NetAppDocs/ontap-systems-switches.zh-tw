@@ -25,7 +25,7 @@ summary: 在叢集網路中更換故障的Cisco Nexus 3132Q-V交換器是不中�
 +
 ** Nexus 3132Q-V叢集基礎架構是備援的、而且在兩個交換器上都能完全正常運作。
 +
-。 link:http://support.netapp.com/NOW/download/software/cm_switches/["Cisco乙太網路交換器"^] 頁面提供您交換器上最新的RCF和NX-OS版本。
+link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco乙太網路交換器"^]為您的交換器提供最新的 RCF 和 NX-OS 版本。
 
 ** 所有叢集連接埠都位於中 `up` 州/省。
 ** 兩台交換器都有管理連線功能。
@@ -40,7 +40,7 @@ summary: 在叢集網路中更換故障的Cisco Nexus 3132Q-V交換器是不中�
 ** 交換器的初始自訂已完成。
 
 
-* http://hwu.netapp.com["Hardware Universe"^]
+* link:http://hwu.netapp.com["Hardware Universe"^]
 
 
 
@@ -50,8 +50,8 @@ summary: 在叢集網路中更換故障的Cisco Nexus 3132Q-V交換器是不中�
 NetApp 強烈建議您在使用的裝置上啟用主控台記錄功能、並在更換交換器時採取下列動作：
 
 * 在維護期間保持啟用 AutoSupport 。
-* 在維護前後觸發維護 AutoSupport 、以在維護期間停用案例建立。請參閱本知識庫文件 https://kb.netapp.com/Support_Bulletins/Customer_Bulletins/SU92["SU92 ：如何在排程的維護期間內、禁止自動建立案例"^] 以取得更多詳細資料。
-* 啟用任何 CLI 工作階段的工作階段記錄。如需如何啟用工作階段記錄的說明、請參閱本知識庫文件中的「記錄工作階段輸出」一節 https://kb.netapp.com/on-prem/ontap/Ontap_OS/OS-KBs/How_to_configure_PuTTY_for_optimal_connectivity_to_ONTAP_systems["如何設定 Putty 以最佳化連線至 ONTAP 系統"^]。
+* 在維護之前和之後觸發維護AutoSupport ，以在維護期間停用案例建立。請參閱此知識庫文章link:https://kb.netapp.com/Support_Bulletins/Customer_Bulletins/SU92["SU92 ：如何在排程的維護期間內、禁止自動建立案例"^]了解更多詳情。
+* 為任何 CLI 會話​​啟用會話日誌記錄。有關如何啟用會話日誌記錄的說明，請參閱此知識庫文章中的「日誌記錄會話輸出」部分link:https://kb.netapp.com/on-prem/ontap/Ontap_OS/OS-KBs/How_to_configure_PuTTY_for_optimal_connectivity_to_ONTAP_systems["如何設定 Putty 以最佳化連線至 ONTAP 系統"^]。
 
 
 
@@ -67,7 +67,7 @@ NetApp 強烈建議您在使用的裝置上啟用主控台記錄功能、並在�
 * N1_clus2是第一個連接至叢集交換器CL2或C2的叢集LIF、適用於節點n1。
 * N1_clus3是連接至叢集交換器C2的第二個LIF、適用於節點n1。
 * N1_clus4是連接至叢集交換器CL1的第二個LIF、適用於節點n1。
-* 10 GbE 和 40 GbE 連接埠的數量定義於頁面上可用的參考組態檔案（ RCFs ）link:https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco®叢集網路交換器參考組態檔案下載"^]。
+* 10 GbE 和 40 GbE 連接埠的數量在參考設定檔 (RCF) 中定義，可從link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco®叢集網路交換器參考組態檔案下載"^]。
 * 節點為n1、n2、n3和n4。本程序中的範例使用四個節點：兩個節點使用四個10 Gb叢集互連連接埠：e0a、e0b、e0c和e0d。其他兩個節點使用兩個40 GB叢集互連連接埠：E4A和e4e。請參閱 link:https://hwu.netapp.com/["Hardware Universe"^] 適用於您平台上的實際叢集連接埠。
 
 
@@ -261,7 +261,7 @@ CL2                          cluster-network   10.10.1.102      NX3132V
 此時您必須準備更換交換器。如果您需要升級RCF和映像、則必須執行下列步驟：
 
 +
-.. 在NetApp支援網站上、前往 link:http://support.netapp.com/NOW/download/software/cm_switches/["Cisco乙太網路交換器"^] 頁面。
+.. 在NetApp支援網站上，請參閱link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch/["Cisco乙太網路交換器"^]。
 .. 請在該頁的表格中記下您的交換器和所需的軟體版本。
 .. 下載適當版本的RCF。
 .. 按一下「*說明*」頁面上的「*繼續*」、接受授權合約、然後依照「*下載*」頁面上的指示下載RCF。
@@ -577,8 +577,8 @@ cluster::*> network interface revert -vserver Cluster -lif n1_clus2
 cluster::*> network interface revert -vserver Cluster -lif n1_clus3
 cluster::*> network interface revert -vserver Cluster -lif n2_clus2
 cluster::*> network interface revert -vserver Cluster -lif n2_clus3
-Cluster::*> network interface revert –vserver Cluster –lif n3_clus2
-Cluster::*> network interface revert –vserver Cluster –lif n4_clus2
+cluster::*> network interface revert -vserver Cluster -lif n3_clus2
+cluster::*> network interface revert -vserver Cluster -lif n4_clus2
 ----
 ====
 . 確認叢集互連連接埠現在已還原至其主目錄：
@@ -624,7 +624,7 @@ Cluster
 ====
 [listing]
 ----
-cluster::*> network port show –role cluster
+cluster::*> network port show -role cluster
   (network port show)
 Node: n1
                                                                        Ignore

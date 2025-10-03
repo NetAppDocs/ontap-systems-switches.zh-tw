@@ -46,6 +46,6 @@ NOTE: 在RCF 1.2版中、由於安全考量、已明確停用對Telnet的支援�
 
 此程序分為兩部分：
 
-* link:task-install-fastpath-software.html["安裝FastPath軟體"] 說明如何安裝FastPath軟體。
-* link:task-install-an-rcf-on-a-cn1610-switch.html["在CN1610交換器上安裝RCF"] 說明如何安裝RCT。
+* link:install-fastpath-software.html["安裝FastPath軟體"]描述如何安裝 FASTPATH 軟體。
+* link:install-rcf-file.html["在CN1610交換器上安裝RCF"]描述如何安裝 RCF。
 

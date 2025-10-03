@@ -61,7 +61,7 @@ Copy complete, now saving to disk (please wait)...
 
 [listing]
 ----
-cs1# copy NNexus_9336C_RCF_v1.6-Storage.txt running-config echo-commands
+cs1# copy Nexus_9336C_RCF_v1.6-Storage.txt running-config echo-commands
 ----
 ====
 . 檢查命令的橫幅輸出 `show banner motd`。您必須閱讀並遵循這些指示，以確保交換器的組態和操作正確。
@@ -102,8 +102,14 @@ cs1# show banner motd
 
 
 
-. 重新套用任何先前的自訂項目至交換器組態。如link:cabling-considerations-9336c-fx2.html["檢閱纜線佈線和組態考量"]需進一步變更的詳細資料、請參閱。
-. 將基本組態詳細資料儲存至 bootflash 上的 write_erase.cfg 檔案。
+. 記錄當前之間的任何自訂添加 `running-config`文件和正在使用的 RCF 文件。
+. 確認 RCF 版本和開關設定正確後，複製 `running-config`文件到 `startup-config`文件。
++
+[listing]
+----
+cs1# copy running-config startup-config [########################################] 100% Copy complete
+----
+. 將基本配置詳細資訊儲存到 `write_erase.cfg`bootflash 上的檔案。
 +
 `cs1# show run | i "username admin password" > bootflash:write_erase.cfg`
 
@@ -127,9 +133,9 @@ cs1# show banner motd
 `cs1# echo "hardware access-list tcam region ing-l2-qos 1280" >> bootflash:write_erase.cfg`
 
 +
-請參閱知識庫文章 https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["如何在保留遠端連線的同時清除 Cisco 互連交換器上的組態"^]了解更多詳情。
+請參閱知識庫文章link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["如何在保留遠端連線的同時清除 Cisco 互連交換器上的組態"^]了解更多詳情。
 
-. 驗證 write_erase.cfg 檔案是否如預期填入：
+. 驗證 `write_erase.cfg`文件按預期填充：
 +
 `show file bootflash:write_erase.cfg`
 
@@ -154,7 +160,7 @@ cs1# show banner motd
 +
 `This command will reboot the system. (y/n)?  [n] *y*`
 
-. 在交換器 cs2 上重複步驟 1 至 12。
+. 在交換器 cs2 上重複步驟 1 至 13。
 . 將 ONTAP 叢集中所有節點的叢集連接埠連接至交換器 CS1 和 CS2 。
 
 

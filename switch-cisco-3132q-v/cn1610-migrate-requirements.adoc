@@ -19,8 +19,8 @@ Cisco Nexus 3132Q-V交換器可做AFF 為您的叢集或FAS 叢集內的叢集�
 ====
 如需詳細資訊、請參閱：
 
-* http://support.netapp.com/NOW/download/software/cm_switches_ntap/["NetApp CN1601與CN1610說明頁面"^]
-* http://support.netapp.com/NOW/download/software/cm_switches/["Cisco乙太網路交換器說明頁面"^]
+* https://mysupport.netapp.com/site/products/all/details/netapp-cluster-switches/docs-tab["NetApp CN1601與CN1610說明頁面"^]
+* https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器說明頁面"^]
 * http://hwu.netapp.com["Hardware Universe"^]
 
 

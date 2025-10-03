@@ -40,8 +40,8 @@ summary: 您可以執行特定的工作順序、在不中斷營運的情況下�
 .以取得更多資訊
 請參閱下列內容：
 
-* http://support.netapp.com/NOW/download/software/cm_switches/["Cisco乙太網路交換器說明頁面"^]
-* http://hwu.netapp.com["Hardware Universe"^]
+* link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器"^]
+* link:http://hwu.netapp.com["Hardware Universe"^]
 
 
 
@@ -51,8 +51,8 @@ summary: 您可以執行特定的工作順序、在不中斷營運的情況下�
 NetApp 強烈建議您在使用的裝置上啟用主控台記錄功能、並在更換交換器時採取下列動作：
 
 * 在維護期間保持啟用 AutoSupport 。
-* 在維護前後觸發維護 AutoSupport 、以在維護期間停用案例建立。請參閱本知識庫文件 https://kb.netapp.com/Support_Bulletins/Customer_Bulletins/SU92["SU92 ：如何在排程的維護期間內、禁止自動建立案例"^] 以取得更多詳細資料。
-* 啟用任何 CLI 工作階段的工作階段記錄。如需如何啟用工作階段記錄的說明、請參閱本知識庫文件中的「記錄工作階段輸出」一節 https://kb.netapp.com/on-prem/ontap/Ontap_OS/OS-KBs/How_to_configure_PuTTY_for_optimal_connectivity_to_ONTAP_systems["如何設定 Putty 以最佳化連線至 ONTAP 系統"^]。
+* 在維護之前和之後觸發維護AutoSupport ，以在維護期間停用案例建立。請參閱此知識庫文章link:https://kb.netapp.com/Support_Bulletins/Customer_Bulletins/SU92["SU92 ：如何在排程的維護期間內、禁止自動建立案例"^]了解更多詳情。
+* 為任何 CLI 會話​​啟用會話日誌記錄。有關如何啟用會話日誌記錄的說明，請參閱此知識庫文章中的「日誌記錄會話輸出」部分link:https://kb.netapp.com/on-prem/ontap/Ontap_OS/OS-KBs/How_to_configure_PuTTY_for_optimal_connectivity_to_ONTAP_systems["如何設定 Putty 以最佳化連線至 ONTAP 系統"^]。
 
 
 
@@ -84,7 +84,7 @@ NetApp 強烈建議您在使用的裝置上啟用主控台記錄功能、並在�
 * N1_clus4是連接至叢集交換器CL1的第二個LIF、適用於節點n1。
 
 
-10 GbE和40/100 GbE連接埠的數量是在上可用的參考組態檔（RCFs）中定義 https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco®叢集網路交換器參考組態檔案下載"^] 頁面。
+10 GbE 和 40/100 GbE 連接埠的數量在參考設定檔 (RCF) 中定義，可從link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco®叢集網路交換器參考組態檔案下載"^]。
 
 此取代程序的範例使用四個節點。其中兩個節點使用四個10 Gb叢集互連連接埠：e0a、e0b、e0c和e0d。其他兩個節點使用兩個40 GB叢集互連連接埠：E4A和e4e。請參閱 link:https://hwu.netapp.com["Hardware Universe"^] 驗證平台的叢集連接埠是否正確。
 
@@ -260,13 +260,13 @@ http://mysupport.netapp.com/["mysupport.netapp.com"^]
 
 .. 前往「* Cisco乙太網路交換器*」頁面、並在表格中記下所需的軟體版本。
 +
-https://mysupport.netapp.com/NOW/download/software/cm_switches/["Cisco乙太網路交換器"^]
+https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器"^]
 
 .. 下載適當版本的RCF。
 .. 按一下「*說明*」頁面上的「*繼續*」、接受授權合約、然後瀏覽至「*下載*」頁面。
 .. 從「* Cisco®叢集與管理網路交換器參考組態檔案下載*」頁面下載正確版本的映像軟體。
 +
-http://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco®叢集與管理網路交換器參考組態檔案下載"^]
+link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco®叢集與管理網路交換器參考組態檔案下載"^]
 
 
 

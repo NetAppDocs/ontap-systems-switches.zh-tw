@@ -33,7 +33,7 @@ summary: 瞭解叢集、儲存設備和共享交換器。
  a| 
 .儲存交換器
 * link:../switch-cisco-9336c-fx2-storage/install-9336c-storage.html["安裝Cisco Nexus 9336C-FX2交換器"]
-* link:../switch-nvidia-sn2100/install-hardware-sn2100-storage.html["安裝NVIDIA SN2100交換器"]
+* link:../switch-nvidia-sn2100-storage/install-hardware-sn2100-storage.html["安裝NVIDIA SN2100交換器"]
 
  a| 
 .共享交換器
@@ -78,7 +78,7 @@ ONTAP 系統的安裝與設定說明包括將控制器連接埠連接至交換�
  a| 
 .儲存交換器
 * link:../switch-cisco-9336c-fx2-storage/setup-worksheet-9336c-storage.html["Cisco Nexus 9336C-FX2交換器纜線"]
-* link:../switch-nvidia-sn2100/cabling-considerations-sn2100-storage.html["纜線NVIDIA SN2100交換器"]
+* link:../switch-nvidia-sn2100-storage/cabling-considerations-sn2100-storage.html["纜線NVIDIA SN2100交換器"]
 
  a| 
 .共享交換器
@@ -104,7 +104,7 @@ ONTAP 系統的安裝與設定說明包括將控制器連接埠連接至交換�
  a| 
 .儲存交換器
 * link:../switch-cisco-9336c-fx2-storage/setup-switch-9336c-storage.html["設定Cisco Nexus 9336C-FX2交換器"]
-* link:../switch-nvidia-sn2100/configure-sn2100-storage.html["設定NVIDIA SN2100交換器"]
+* link:../switch-nvidia-sn2100-storage/configure-sn2100-storage.html["設定NVIDIA SN2100交換器"]
 
  a| 
 .共享交換器
@@ -130,7 +130,7 @@ ONTAP 系統的安裝與設定說明包括將控制器連接埠連接至交換�
  a| 
 .儲存交換器
 * link:../switch-cisco-9336c-fx2-storage/configure-software-overview-9336c-storage.html["安裝Cisco Nexus 9336C-FX2交換器軟體"]
-* link:../switch-nvidia-sn2100/configure-software-sn2100-storage.html["安裝NVIDIA SN2100交換器的軟體"]
+* link:../switch-nvidia-sn2100-storage/configure-software-sn2100-storage.html["安裝NVIDIA SN2100交換器的軟體"]
 
  a| 
 .共享交換器

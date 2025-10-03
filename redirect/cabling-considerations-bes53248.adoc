@@ -1,0 +1,8 @@
+---
+permalink: switch-bes-53248/cabling-considerations-bes-53248.html 
+redirect: switch-bes-53248/cabling-considerations-bes53248.html 
+---
+= 
+:allow-uri-read: 
+
+

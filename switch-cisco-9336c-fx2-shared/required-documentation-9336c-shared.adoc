@@ -10,7 +10,7 @@ summary: 對於Cisco Nexus 9336C-FX2交換器的安裝與維護、請務必檢�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -34,7 +34,7 @@ summary: 對於Cisco Nexus 9336C-FX2交換器的安裝與維護、請務必檢�
 | link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-command-reference-list.html["Cisco Nexus 9000系列NX-OS命令參考主索引"] | 提供Cisco所提供之各種命令參考資料的連結。 
 
 
-| link:https://www.cisco.com/c/en/us/td/docs/switches/datacenter/sw/mib/quickreference/b_Cisco_Nexus_7000_Series_and_9000_Series_NX-OS_MIB_Quick_Reference.html["Cisco Nexus 9000 MIBs參考資料"] | 說明Nexus 9000交換器的管理資訊庫（MIB）檔案。 
+| link:https://www.cisco.com/c/en/us/td/docs/switches/datacenter/sw/mib/reference/MIBRef.html["Cisco Nexus 9000 MIBs參考資料"] | 說明Nexus 9000交換器的管理資訊庫（MIB）檔案。 
 
 
 | link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-system-message-guides-list.html["Nexus 9000系列NX-OS系統訊息參考"] | 說明Cisco Nexus 9000系列交換器的系統訊息、資訊訊息、以及其他可能有助於診斷連結、內部硬體或系統軟體問題的訊息。 

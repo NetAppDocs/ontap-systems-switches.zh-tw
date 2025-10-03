@@ -21,7 +21,7 @@ entries:
   - title: 安裝交換器
     url: "/switch-bes-53248/install-hardware-bes53248.html"
   - title: 檢視纜線佈線與組態
-    url: "/switch-bes-53248/cabling-considerations-bes-53248.html"
+    url: "/switch-bes-53248/cabling-considerations-bes53248.html"
 - title: 設定軟體
   pdf-filename: Configure_software_bes53248
   entries:

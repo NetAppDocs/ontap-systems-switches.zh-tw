@@ -1,0 +1,8 @@
+---
+permalink: other/switch-linkout.html 
+redirect: other/switch_linkout.html 
+---
+= 
+:allow-uri-read: 
+
+

@@ -30,7 +30,7 @@ summary: 您可以在初次設定Nexus 9336C-FX2交換器之後安裝RCF。您�
 . 使用 SSH 或序列主控台登入交換器 CS1 。
 . 使用下列傳輸協定之一、將 RCF 複製到交換器 CS1 的 bootflash ： FTP 、 TFTP 、 SFTP 或 SCP 。
 +
-如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000系列NX-OS命令參考"^] 指南：
+有關Cisco命令的更多信息，請參閱link:https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000系列NX-OS命令參考"^]指南。
 
 +
 .顯示範例
@@ -50,7 +50,7 @@ Copy complete, now saving to disk (please wait)...
 ====
 . 將先前下載的RCF套用至bootFlash。
 +
-如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000系列NX-OS命令參考"^] 指南：
+有關Cisco命令的更多信息，請參閱link:https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000系列NX-OS命令參考"^]指南。
 
 +
 .顯示範例
@@ -121,8 +121,14 @@ g mode:
 
 
 
-. 重新套用任何先前的自訂項目至交換器組態。如link:cabling-considerations-9336c-fx2.html["檢閱纜線佈線和組態考量"]需進一步變更的詳細資料、請參閱。
-. 將基本組態詳細資料儲存至 bootflash 上的 write_erase.cfg 檔案。
+. 記錄當前之間的任何自訂添加 `running-config`文件和正在使用的 RCF 文件。
+. 確認 RCF 版本和開關設定正確後，複製 `running-config`文件到 `startup-config`文件。
++
+[listing]
+----
+cs1# copy running-config startup-config [########################################] 100% Copy complete
+----
+. 將基本配置詳細資訊儲存到 `write_erase.cfg`bootflash 上的檔案。
 +
 `cs1# show run | i "username admin password" > bootflash:write_erase.cfg`
 
@@ -146,9 +152,9 @@ g mode:
 `cs1# echo "hardware access-list tcam region ing-l2-qos 1280" >> bootflash:write_erase.cfg`
 
 +
-請參閱知識庫文章 https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["如何在保留遠端連線的同時清除 Cisco 互連交換器上的組態"^]了解更多詳情。
+請參閱知識庫文章link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["如何在保留遠端連線的同時清除 Cisco 互連交換器上的組態"^]了解更多詳情。
 
-. 驗證 write_erase.cfg 檔案是否如預期填入：
+. 驗證 `write_erase.cfg`文件按預期填充：
 +
 `show file bootflash:write_erase.cfg`
 
@@ -173,7 +179,7 @@ g mode:
 +
 `This command will reboot the system. (y/n)?  [n] *y*`
 
-. 在交換器 cs2 上重複步驟 1 至 12。
+. 在交換器 cs2 上重複步驟 1 至 13。
 . 將 ONTAP 叢集中所有節點的叢集連接埠連接至交換器 CS1 和 CS2 。
 
 

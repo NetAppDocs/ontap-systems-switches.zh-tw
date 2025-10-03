@@ -17,9 +17,9 @@ NOTE: 此程序需要同時使用ONTAP 支援指令和Cisco Nexus 3000系列交�
 
 如有必要、請參閱下列內容以取得更多資訊：
 
-* http://support.netapp.com/NOW/download/software/cm_switches_ntap/["NetApp CN1601與CN1610說明頁面"^]
-* http://support.netapp.com/NOW/download/software/cm_switches/["Cisco乙太網路交換器說明頁面"^]
-* http://hwu.netapp.com["Hardware Universe"^]
+* link:https://mysupport.netapp.com/site/products/all/details/netapp-cluster-switches/docs-tab["NetApp CN1601 和 CN1610"^]
+* link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器"^]
+* link:http://hwu.netapp.com["Hardware Universe"^]
 
 
 
@@ -75,11 +75,11 @@ CN1610至3232C（QSFP至SFP+）
 2條QSFP光纖或銅線直接連接纜線
 
 |===
-您必須下載適用的參考組態檔（RCT）。10 GbE和40/100 GbE連接埠的數量是在上可用的RCFs中定義 https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco®叢集網路交換器參考組態檔案下載"^] 頁面。
+您必須下載適用的參考設定檔（RCF）。  10 GbE 和 40/100 GbE 連接埠的數量在以下 RCF 中定義：link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco®叢集網路交換器參考組態檔案下載"^] 。
 
-本程序所支援的支援的支援版本包括ONTAP link:https://mysupport.netapp.com/NOW/download/software/cm_switches/.html["Cisco乙太網路交換器頁面"^]。
+此過程中支援的ONTAP和 NX-OS 版本列於link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器"^]。
 
-本程序所支援的支援的版本包括ONTAP link:http://support.netapp.com/NOW/download/software/cm_switches_ntap/.html["NetApp CN1601與CN1610交換器頁面"^]。
+此過程中支援的ONTAP和 FASTPATH 版本列於link:https://mysupport.netapp.com/site/products/all/details/netapp-cluster-switches/docs-tab["NetApp CN1601與CN1610交換器"^]。
 
 .關於所使用的範例
 移轉程序中的範例使用四個節點：
@@ -101,7 +101,7 @@ link:https://hwu.netapp.com/["_SUR__ Hardware Universe"^]具有適用於您平�
 * *n1_clus2* 是第一個連接至叢集交換器 2 （ CL2 或 C2 ）的叢集 LIF ，用於節點 *n1* 。
 * *n1_clus3* 是第二個連接到節點 *n1* 的叢集交換器 2 （ CL2 或 C2 ）的 LIF 。
 * *n1_clus4* 是第二個連接到節點 *n1* 的叢集交換器 1 （ CL1 或 C1 ）的 LIF 。
-* 10 GbE和40/100 GbE連接埠的數量是在上可用的參考組態檔（RCFs）中定義 https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco®叢集網路交換器參考組態檔案下載"^] 頁面。
+* 10 GbE 和 40/100 GbE 連接埠的數量在參考設定檔 (RCF) 中定義，可從link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco®叢集網路交換器參考組態檔案下載"^]。
 
 
 .接下來呢？
