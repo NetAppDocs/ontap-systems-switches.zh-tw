@@ -1,0 +1,37 @@
+---
+sidebar: sidebar 
+permalink: switch-cisco-9364d-gx2a/configure-reqs-9364d-cluster.html 
+keywords: shared storage cluster switch 
+summary: 從ONTAP 9.9.1 開始，您可以使用Cisco Nexus 9364d-gx2a 交換器將儲存和叢集功能組合到共用交換器場景。 
+---
+= Cisco Nexus 9364D-GX2A 交換器的網路需求
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+對於Cisco Nexus 9364D-GX2A 交換器的安裝和維護，請務必檢查佈線和網路需求。
+
+
+
+== 網路需求
+
+所有交換器組態都需要下列網路資訊。
+
+* 用於管理網路流量的IP子網路
+* 每個儲存系統控制器和所有適用交換器的主機名稱和IP位址
+* 大多數儲存系統控制器透過連接到乙太網路服務連接埠（扳手圖示）透過 e0M 介面進行管理。
+* 請參閱 https://hwu.netapp.com["Hardware Universe"^] 以取得最新資訊。
+
+
+
+
+== 佈線要求
+
+* 交換器的纜線和纜線連接器數量和類型都適當。請參閱 https://hwu.netapp.com["Hardware Universe"^]。
+* 視您初始設定的交換器類型而定、您需要使用隨附的主控台纜線連接至交換器主控台連接埠。
+

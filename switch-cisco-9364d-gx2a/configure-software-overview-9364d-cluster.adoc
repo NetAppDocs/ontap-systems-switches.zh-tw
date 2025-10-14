@@ -1,0 +1,40 @@
+---
+permalink: switch-cisco-9364d-gx2a/configure-software-overview-9364d-cluster.html 
+sidebar: sidebar 
+keywords: switches, initial installation, configure 9364d-gx2a switch 
+summary: Cisco 9364d-gx2a 叢集交換器軟體設定概述 
+---
+= 為Cisco 9364D-GX2A 交換器設定軟體工作流程
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+若要安裝和設定Cisco 9364D-GX2A 交換器的軟體以及安裝或升級參考設定檔 (RCF)，請依照下列步驟操作：
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一"]link:setup-switch-9364d-cluster.html["配置 9364D-GX2A 交換機"]
+[role="quick-margin-para"]
+設定Cisco 9364D-GX2A 交換器。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["二"] link:install-nxos-overview-9364d-cluster.html["準備安裝 NX-OS 軟體和 RCF"]
+[role="quick-margin-para"]
+在Cisco 9364D-GX2A 交換器上安裝Cisco NX-OS 軟體和參考設定檔 (RCF)。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三"]link:install-nxos-software-9364d-cluster.html["安裝或升級 NX-OS 軟體"]
+[role="quick-margin-para"]
+下載並安裝或升級Cisco 9364D-GX2A 交換器上的 NX-OS 軟體。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["四"]link:install-upgrade-rcf-overview-cluster.html["安裝或升級 RCF"]
+[role="quick-margin-para"]
+首次設定Cisco 9364D-GX2A 交換器後安裝或升級 RCF。您也可以使用此程序升級您的 RCF 版本。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["五"]link:configure-ssh-keys.html["驗證 Nexus 9364D-GX2A 交換器上是否啟用了 SSH"]
+[role="quick-margin-para"]
+驗證Cisco 9364D-GX2A 交換器上是否啟用了 SSH，以便與乙太網路交換器健康監視器 (CSHM) 和日誌收集功能一起使用。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["六"]link:reset-switch-9364d.html["將交換器重設為出廠預設值"]
+[role="quick-margin-para"]
+清除Cisco 9364D-GX2A 交換器設定。
+
+完成交換器配置後，請前往link:https://docs.netapp.com/us-en/ontap-afx/install-setup/power-on-hardware.html["啟動 AFX 1K 儲存系統"^]。

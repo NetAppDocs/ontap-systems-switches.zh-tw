@@ -1,0 +1,34 @@
+---
+permalink: switch-cisco-9332d-gx2b/configure-switch-overview-9332d-cluster.html 
+sidebar: sidebar 
+keywords: switches, initial installation, configure switch-cisco-9332d-gx2b switch 
+summary: Cisco 9332D-GX2B 叢集交換器安裝與設定概述 
+---
+= Cisco 9332D-GX2B 交換器的安裝與設定工作流程
+:allow-uri-read: 
+
+
+[role="lead"]
+Cisco 9332D-GX2B 交換器是Cisco Nexus 9000 平台的一部份。  AFX 系統交換器可讓您建立具有兩個以上節點的ONTAP叢集。
+
+請依照這些工作流程步驟安裝並設定您的Cisco 9332D-GX2B 交換器。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一"]link:configure-setup-ports-9332d.html["查看交換器連接埠詳細信息"]
+[role="quick-margin-para"]
+查看Cisco 9332D-GX2B 交換器的連接埠詳細資訊。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["二"]link:required-documentation-9332d-cluster.html["審查所需文件"]
+[role="quick-margin-para"]
+查看特定的交換器和控制器文件以設定您的 9332D-GX2B 交換器和ONTAP叢集。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三"]link:smart-call-9332d-cluster.html["查看 Smart Call Home 要求"]
+[role="quick-margin-para"]
+查看Cisco Smart Call Home 功能的要求，該功能用於監控網路上的硬體和軟體元件。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["四"]link:install-hardware.html["安裝硬體"]
+[role="quick-margin-para"]
+安裝交換器硬體。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["五"]link:configure-software-overview-9332d-cluster.html["設定軟體"]
+[role="quick-margin-para"]
+配置交換器軟體。

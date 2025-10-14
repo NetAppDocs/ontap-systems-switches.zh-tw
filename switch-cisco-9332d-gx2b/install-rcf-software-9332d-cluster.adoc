@@ -1,0 +1,495 @@
+---
+permalink: switch-cisco-9332d-gx2b/install-rcf-software-9332d-cluster.html 
+sidebar: sidebar 
+keywords: install rcf, cisco switches 
+summary: 首次設定 Nexus 9332D-GX2B 交換器後，您可以安裝 RCF。 
+---
+= 安裝參考組態檔（RCF）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+首次設定 Nexus 9332D-GX2B 交換器後，安裝參考設定檔 (RCF)。
+
+.開始之前
+驗證下列安裝和連線：
+
+* 與交換器的主控台連線。如果您可以遠端存取交換器、則可選用主控台連線。
+* 交換器 CS1 和交換器 CS2 已開機，並完成初始交換器設定（管理 IP 位址和 SSH 已設定）。
+* 已安裝所需的 NX-OS 版本。
+* 交換器之間的 ISL 連線已連線。
+
+
+
+
+== 步驟 1 ：在交換器上安裝 RCF
+
+. 使用 SSH 或序列主控台登入交換器 CS1 。
+. 使用下列傳輸協定之一、將 RCF 複製到交換器 CS1 的 bootflash ： FTP 、 TFTP 、 SFTP 或 SCP 。
++
+如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000系列NX-OS命令參考"^] 指南：
+
++
+.顯示範例
+[%collapsible]
+====
+此範例顯示使用 TFTP 將 RCF 複製到交換器 CS1 上的 bootflash ：
+
+[listing, subs="+quotes"]
+----
+cs1# *copy tftp: bootflash: vrf management*
+Enter source filename: *NX9332D-GX2B-RCF-v10.0-Shared.txt*
+Enter hostname for the tftp server: *172.22.201.50*
+Trying to connect to tftp server......Connection to Server Established.
+TFTP get operation was successful
+Copy complete, now saving to disk (please wait)...
+----
+====
+. 將先前下載的RCF套用至bootFlash。
++
+如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000系列NX-OS命令參考"^] 指南：
+
++
+此範例顯示 RCF 文件 `NX9332D-GX2B-RCF-v10.0-Shared.txt`正在交換器 cs1 上安裝：
+
++
+[listing, subs="+quotes"]
+----
+cs1# *copy NX9332D-GX2B-RCF-v10.0-Shared.txt running-config echo-commands*
+----
+. 檢查「show banner motd」命令的橫幅輸出。您必須閱讀並遵循這些指示、以確保交換器的組態和操作正確無誤。
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+cs1# show banner motd
+
+******************************************************************************
+* NetApp Reference Configuration File (RCF)
+*
+* Switch   : NX9332D-GX2B
+* Filename : NX9332D-GX2B-RCF-v10.0-Shared.txt
+* Date     : 05-09-2025
+* Version  : v10.0
+* Port Usage:
+* Ports  1-30: 100GbE Intra-Cluster/HA/Storage Ports, int e1/{1-30}/1-4
+* Ports 31-32: Intra-Cluster ISL Ports, int e1/31-32
+*
+* IMPORTANT NOTES
+* Interface port-channel999 is reserved to identify the version of this file.
+******************************************************************************
+----
+====
+. 確認RCF檔案為正確的更新版本：
++
+「如何執行設定」
+
++
+當您檢查輸出以確認您擁有正確的RCF時、請確定下列資訊正確無誤：
+
++
+** RCF橫幅
+** 節點和連接埠設定
+** 自訂
++
+輸出會因站台組態而異。請檢查連接埠設定、並參閱版本說明、以瞭解您安裝的RCF的任何特定變更。
+
+
+
+. 將基本配置詳細資訊儲存到 `write_erase.cfg`bootflash 上的檔案。
++
+[NOTE]
+====
+確保配置以下內容：
+
+** 使用者名稱和密碼
+** 管理 IP 位址
+** 預設網關
+** 交換器名稱
+
+
+====
++
+`cs1# show run | i "username admin password" > bootflash:write_erase.cfg`
+
++
+`cs1# show run | section "vrf context management" >> bootflash:write_erase.cfg`
+
++
+`cs1# show run | section "interface mgmt0" >> bootflash:write_erase.cfg`
+
++
+`cs1# show run | section "switchname" >> bootflash:write_erase.cfg`
+
++
+`cs1# echo "hardware access-list tcam region ing-racl 1024" >> bootflash:write_erase.cfg`
+
++
+`cs1# echo "hardware access-list tcam region egr-racl 1024" >> bootflash:write_erase.cfg`
+
++
+`cs1# echo "hardware access-list tcam region ing-l2-qos 1536" >> bootflash:write_erase.cfg`
+
++
+請參閱知識庫文章link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["如何在保留遠端連線的同時清除 Cisco 互連交換器上的組態"^]了解更多詳情。
+
+. 驗證 `write_erase.cfg`文件按預期填充：
++
+`*show file bootflash:write_erase.cfg*`
+
+. 發出 `write erase`命令來刪除目前已儲存的配置：
++
+`cs1# *write erase*`
+
++
+`Warning: This command will erase the startup-configuration.`
+
++
+`Do you wish to proceed anyway? (y/n)  [n] *y*`
+
+. 將先前儲存的基本組態複製到啟動組態。
++
+`cs1# *copy bootflash:write_erase.cfg startup-config*`
+
+. 重新啟動交換器：
++
+`cs1# *reload*`
+
++
+`This command will reboot the system. (y/n)?  [n] *y*`
+
+. 在交換器 cs2 上重複步驟 1 至 10。
+. 將ONTAP叢集中所有節點的連接埠連接到交換器 cs1 和 cs2。
+
+
+
+
+== 步驟 2 ：驗證交換器連線
+
+. 驗證連接到叢集連接埠的交換器連接埠是否已啟動：
++
+`show interface brief`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cs1# *show interface brief | grep up*
+.
+.
+Eth1/9/3        1       eth  trunk  up      none                     100G(D) --
+Eth1/9/4        1       eth  trunk  up      none                     100G(D) --
+Eth1/15/1       1       eth  trunk  up      none                     100G(D) --
+Eth1/15/2       1       eth  trunk  up      none                     100G(D) --
+Eth1/15/3       1       eth  trunk  up      none                     100G(D) --
+Eth1/15/4       1       eth  trunk  up      none                     100G(D) --
+Eth1/16/1       1       eth  trunk  up      none                     100G(D) --
+Eth1/16/2       1       eth  trunk  up      none                     100G(D) --
+Eth1/16/3       1       eth  trunk  up      none                     100G(D) --
+Eth1/16/4       1       eth  trunk  up      none                     100G(D) --
+Eth1/17/1       1       eth  trunk  up      none                     100G(D) --
+Eth1/17/2       1       eth  trunk  up      none                     100G(D) --
+Eth1/17/3       1       eth  trunk  up      none                     100G(D) --
+Eth1/17/4       1       eth  trunk  up      none                     100G(D) --
+.
+.
+----
+====
+. 使用下列命令、確認叢集節點位於正確的叢集 VLAN 中：
++
+`show vlan brief`
+
++
+`show interface trunk`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cs1# *show vlan brief*
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    Po1, Po999, Eth1/31, Eth1/32
+                                                Eth1/33, Eth1/34, Eth1/1/1
+                                                Eth1/1/2, Eth1/1/3, Eth1/1/4
+                                                Eth1/2/1, Eth1/2/2, Eth1/2/3
+                                                Eth1/2/4, Eth1/3/1, Eth1/3/2
+                                                Eth1/3/3, Eth1/3/4, Eth1/4/1
+                                                Eth1/4/2, Eth1/4/3, Eth1/4/4
+                                                Eth1/5/1, Eth1/5/2, Eth1/5/3
+                                                Eth1/5/4, Eth1/6/1, Eth1/6/2
+                                                Eth1/6/3, Eth1/6/4, Eth1/7/1
+                                                Eth1/7/2, Eth1/7/3, Eth1/7/4
+                                                Eth1/8/1, Eth1/8/2, Eth1/8/3
+                                                Eth1/8/4, Eth1/9/1, Eth1/9/2
+                                                Eth1/9/3, Eth1/9/4, Eth1/10/1
+                                                Eth1/10/2, Eth1/10/3, Eth1/10/4
+                                                Eth1/11/1, Eth1/11/2, Eth1/11/3
+                                                Eth1/11/4, Eth1/12/1, Eth1/12/2
+                                                Eth1/12/3, Eth1/12/4, Eth1/13/1
+                                                Eth1/13/2, Eth1/13/3, Eth1/13/4
+                                                Eth1/14/1, Eth1/14/2, Eth1/14/3
+                                                Eth1/14/4, Eth1/15/1, Eth1/15/2
+                                                Eth1/15/3, Eth1/15/4, Eth1/16/1
+                                                Eth1/16/2, Eth1/16/3, Eth1/16/4
+                                                Eth1/17/1, Eth1/17/2, Eth1/17/3
+                                                Eth1/17/4, Eth1/18/1, Eth1/18/2
+                                                Eth1/18/3, Eth1/18/4, Eth1/19/1
+                                                Eth1/19/2, Eth1/19/3, Eth1/19/4
+                                                Eth1/20/1, Eth1/20/2, Eth1/20/3
+                                                Eth1/20/4, Eth1/21/1, Eth1/21/2
+                                                Eth1/21/3, Eth1/21/4, Eth1/22/1
+                                                Eth1/22/2, Eth1/22/3, Eth1/22/4
+                                                Eth1/23/1, Eth1/23/2, Eth1/23/3
+                                                Eth1/23/4, Eth1/24/1, Eth1/24/2
+                                                Eth1/24/3, Eth1/24/4, Eth1/25/1
+                                                Eth1/25/2, Eth1/25/3, Eth1/25/4
+                                                Eth1/26/1, Eth1/26/2, Eth1/26/3
+                                                Eth1/26/4, Eth1/27/1, Eth1/27/2
+                                                Eth1/27/3, Eth1/27/4, Eth1/28/1
+                                                Eth1/28/2, Eth1/28/3, Eth1/28/4
+                                                Eth1/29/1, Eth1/29/2, Eth1/29/3
+                                                Eth1/29/4, Eth1/30/1, Eth1/30/2
+                                                Eth1/30/3, Eth1/30/4
+17   VLAN0017                         active    Eth1/1/1, Eth1/1/2, Eth1/1/3
+                                                Eth1/1/4, Eth1/2/1, Eth1/2/2
+                                                Eth1/2/3, Eth1/2/4, Eth1/3/1
+                                                Eth1/3/2, Eth1/3/3, Eth1/3/4
+                                                Eth1/4/1, Eth1/4/2, Eth1/4/3
+                                                Eth1/4/4, Eth1/5/1, Eth1/5/2
+                                                Eth1/5/3, Eth1/5/4, Eth1/6/1
+                                                Eth1/6/2, Eth1/6/3, Eth1/6/4
+                                                Eth1/7/1, Eth1/7/2, Eth1/7/3
+                                                Eth1/7/4, Eth1/8/1, Eth1/8/2
+                                                Eth1/8/3, Eth1/8/4, Eth1/9/1
+                                                Eth1/9/2, Eth1/9/3, Eth1/9/4
+                                                Eth1/10/1, Eth1/10/2, Eth1/10/3
+                                                Eth1/10/4, Eth1/11/1, Eth1/11/2
+                                                Eth1/11/3, Eth1/11/4, Eth1/12/1
+                                                Eth1/12/2, Eth1/12/3, Eth1/12/4
+                                                Eth1/13/1, Eth1/13/2, Eth1/13/3
+                                                Eth1/13/4, Eth1/14/1, Eth1/14/2
+                                                Eth1/14/3, Eth1/14/4, Eth1/15/1
+                                                Eth1/15/2, Eth1/15/3, Eth1/15/4
+                                                Eth1/16/1, Eth1/16/2, Eth1/16/3
+                                                Eth1/16/4, Eth1/17/1, Eth1/17/2
+                                                Eth1/17/3, Eth1/17/4, Eth1/18/1
+                                                Eth1/18/2, Eth1/18/3, Eth1/18/4
+                                                Eth1/19/1, Eth1/19/2, Eth1/19/3
+                                                Eth1/19/4, Eth1/20/1, Eth1/20/2
+                                                Eth1/20/3, Eth1/20/4, Eth1/21/1
+                                                Eth1/21/2, Eth1/21/3, Eth1/21/4
+                                                Eth1/22/1, Eth1/22/2, Eth1/22/3
+                                                Eth1/22/4, Eth1/23/1, Eth1/23/2
+                                                Eth1/23/3, Eth1/23/4, Eth1/24/1
+                                                Eth1/24/2, Eth1/24/3, Eth1/24/4
+                                                Eth1/25/1, Eth1/25/2, Eth1/25/3
+                                                Eth1/25/4, Eth1/26/1, Eth1/26/2
+                                                Eth1/26/3, Eth1/26/4, Eth1/27/1
+                                                Eth1/27/2, Eth1/27/3, Eth1/27/4
+                                                Eth1/28/1, Eth1/28/2, Eth1/28/3
+                                                Eth1/28/4, Eth1/29/1, Eth1/29/2
+                                                Eth1/29/3, Eth1/29/4, Eth1/30/1
+                                                Eth1/30/2, Eth1/30/3, Eth1/30/4
+18   VLAN0018                         active    Eth1/1/1, Eth1/1/2, Eth1/1/3
+                                                Eth1/1/4, Eth1/2/1, Eth1/2/2
+                                                Eth1/2/3, Eth1/2/4, Eth1/3/1
+                                                Eth1/3/2, Eth1/3/3, Eth1/3/4
+                                                Eth1/4/1, Eth1/4/2, Eth1/4/3
+                                                Eth1/4/4, Eth1/5/1, Eth1/5/2
+                                                Eth1/5/3, Eth1/5/4, Eth1/6/1
+                                                Eth1/6/2, Eth1/6/3, Eth1/6/4
+                                                Eth1/7/1, Eth1/7/2, Eth1/7/3
+                                                Eth1/7/4, Eth1/8/1, Eth1/8/2
+                                                Eth1/8/3, Eth1/8/4, Eth1/9/1
+                                                Eth1/9/2, Eth1/9/3, Eth1/9/4
+                                                Eth1/10/1, Eth1/10/2, Eth1/10/3
+                                                Eth1/10/4, Eth1/11/1, Eth1/11/2
+                                                Eth1/11/3, Eth1/11/4, Eth1/12/1
+                                                Eth1/12/2, Eth1/12/3, Eth1/12/4
+                                                Eth1/13/1, Eth1/13/2, Eth1/13/3
+                                                Eth1/13/4, Eth1/14/1, Eth1/14/2
+                                                Eth1/14/3, Eth1/14/4, Eth1/15/1
+                                                Eth1/15/2, Eth1/15/3, Eth1/15/4
+                                                Eth1/16/1, Eth1/16/2, Eth1/16/3
+                                                Eth1/16/4, Eth1/17/1, Eth1/17/2
+                                                Eth1/17/3, Eth1/17/4, Eth1/18/1
+                                                Eth1/18/2, Eth1/18/3, Eth1/18/4
+                                                Eth1/19/1, Eth1/19/2, Eth1/19/3
+                                                Eth1/19/4, Eth1/20/1, Eth1/20/2
+                                                Eth1/20/3, Eth1/20/4, Eth1/21/1
+                                                Eth1/21/2, Eth1/21/3, Eth1/21/4
+                                                Eth1/22/1, Eth1/22/2, Eth1/22/3
+                                                Eth1/22/4, Eth1/23/1, Eth1/23/2
+                                                Eth1/23/3, Eth1/23/4, Eth1/24/1
+                                                Eth1/24/2, Eth1/24/3, Eth1/24/4
+                                                Eth1/25/1, Eth1/25/2, Eth1/25/3
+                                                Eth1/25/4, Eth1/26/1, Eth1/26/2
+                                                Eth1/26/3, Eth1/26/4, Eth1/27/1
+                                                Eth1/27/2, Eth1/27/3, Eth1/27/4
+                                                Eth1/28/1, Eth1/28/2, Eth1/28/3
+                                                Eth1/28/4, Eth1/29/1, Eth1/29/2
+                                                Eth1/29/3, Eth1/29/4, Eth1/30/1
+                                                Eth1/30/2, Eth1/30/3, Eth1/30/4
+30   VLAN0030                         active    Eth1/1/1, Eth1/1/2, Eth1/1/3
+                                                Eth1/1/4, Eth1/2/1, Eth1/2/2
+                                                Eth1/2/3, Eth1/2/4, Eth1/3/1
+                                                Eth1/3/2, Eth1/3/3, Eth1/3/4
+                                                Eth1/4/1, Eth1/4/2, Eth1/4/3
+                                                Eth1/4/4, Eth1/5/1, Eth1/5/2
+                                                Eth1/5/3, Eth1/5/4, Eth1/6/1
+                                                Eth1/6/2, Eth1/6/3, Eth1/6/4
+                                                Eth1/7/1, Eth1/7/2, Eth1/7/3
+                                                Eth1/7/4, Eth1/8/1, Eth1/8/2
+                                                Eth1/8/3, Eth1/8/4, Eth1/9/1
+                                                Eth1/9/2, Eth1/9/3, Eth1/9/4
+                                                Eth1/10/1, Eth1/10/2, Eth1/10/3
+                                                Eth1/10/4, Eth1/11/1, Eth1/11/2
+                                                Eth1/11/3, Eth1/11/4, Eth1/12/1
+                                                Eth1/12/2, Eth1/12/3, Eth1/12/4
+                                                Eth1/13/1, Eth1/13/2, Eth1/13/3
+                                                Eth1/13/4, Eth1/14/1, Eth1/14/2
+                                                Eth1/14/3, Eth1/14/4, Eth1/15/1
+                                                Eth1/15/2, Eth1/15/3, Eth1/15/4
+                                                Eth1/16/1, Eth1/16/2, Eth1/16/3
+                                                Eth1/16/4, Eth1/17/1, Eth1/17/2
+                                                Eth1/17/3, Eth1/17/4, Eth1/18/1
+                                                Eth1/18/2, Eth1/18/3, Eth1/18/4
+                                                Eth1/19/1, Eth1/19/2, Eth1/19/3
+                                                Eth1/19/4, Eth1/20/1, Eth1/20/2
+                                                Eth1/20/3, Eth1/20/4, Eth1/21/1
+                                                Eth1/21/2, Eth1/21/3, Eth1/21/4
+                                                Eth1/22/1, Eth1/22/2, Eth1/22/3
+                                                Eth1/22/4, Eth1/23/1, Eth1/23/2
+                                                Eth1/23/3, Eth1/23/4, Eth1/24/1
+                                                Eth1/24/2, Eth1/24/3, Eth1/24/4
+                                                Eth1/25/1, Eth1/25/2, Eth1/25/3
+                                                Eth1/25/4, Eth1/26/1, Eth1/26/2
+                                                Eth1/26/3, Eth1/26/4, Eth1/27/1
+                                                Eth1/27/2, Eth1/27/3, Eth1/27/4
+                                                Eth1/28/1, Eth1/28/2, Eth1/28/3
+                                                Eth1/28/4, Eth1/29/1, Eth1/29/2
+                                                Eth1/29/3, Eth1/29/4, Eth1/30/1
+                                                Eth1/30/2, Eth1/30/3, Eth1/30/4
+40   VLAN0040                         active    Eth1/1/1, Eth1/1/2, Eth1/1/3
+                                                Eth1/1/4, Eth1/2/1, Eth1/2/2
+                                                Eth1/2/3, Eth1/2/4, Eth1/3/1
+                                                Eth1/3/2, Eth1/3/3, Eth1/3/4
+                                                Eth1/4/1, Eth1/4/2, Eth1/4/3
+                                                Eth1/4/4, Eth1/5/1, Eth1/5/2
+                                                Eth1/5/3, Eth1/5/4, Eth1/6/1
+                                                Eth1/6/2, Eth1/6/3, Eth1/6/4
+                                                Eth1/7/1, Eth1/7/2, Eth1/7/3
+                                                Eth1/7/4, Eth1/8/1, Eth1/8/2
+                                                Eth1/8/3, Eth1/8/4, Eth1/9/1
+                                                Eth1/9/2, Eth1/9/3, Eth1/9/4
+                                                Eth1/10/1, Eth1/10/2, Eth1/10/3
+                                                Eth1/10/4, Eth1/11/1, Eth1/11/2
+                                                Eth1/11/3, Eth1/11/4, Eth1/12/1
+                                                Eth1/12/2, Eth1/12/3, Eth1/12/4
+                                                Eth1/13/1, Eth1/13/2, Eth1/13/3
+                                                Eth1/13/4, Eth1/14/1, Eth1/14/2
+                                                Eth1/14/3, Eth1/14/4, Eth1/15/1
+                                                Eth1/15/2, Eth1/15/3, Eth1/15/4
+                                                Eth1/16/1, Eth1/16/2, Eth1/16/3
+                                                Eth1/16/4, Eth1/17/1, Eth1/17/2
+                                                Eth1/17/3, Eth1/17/4, Eth1/18/1
+                                                Eth1/18/2, Eth1/18/3, Eth1/18/4
+                                                Eth1/19/1, Eth1/19/2, Eth1/19/3
+                                                Eth1/19/4, Eth1/20/1, Eth1/20/2
+                                                Eth1/20/3, Eth1/20/4, Eth1/21/1
+                                                Eth1/21/2, Eth1/21/3, Eth1/21/4
+                                                Eth1/22/1, Eth1/22/2, Eth1/22/3
+                                                Eth1/22/4, Eth1/23/1, Eth1/23/2
+                                                Eth1/23/3, Eth1/23/4, Eth1/24/1
+                                                Eth1/24/2, Eth1/24/3, Eth1/24/4
+                                                Eth1/25/1, Eth1/25/2, Eth1/25/3
+                                                Eth1/25/4, Eth1/26/1, Eth1/26/2
+                                                Eth1/26/3, Eth1/26/4, Eth1/27/1
+                                                Eth1/27/2, Eth1/27/3, Eth1/27/4
+                                                Eth1/28/1, Eth1/28/2, Eth1/28/3
+                                                Eth1/28/4, Eth1/29/1, Eth1/29/2
+                                                Eth1/29/3, Eth1/29/4, Eth1/30/1
+                                                Eth1/30/2, Eth1/30/3, Eth1/30/4
+
+cs1# *show interface trunk*
+--------------------------------------------------------------------------------
+Port          Native  Status        Port
+              Vlan                  Channel
+--------------------------------------------------------------------------------
+Eth1/1/1      1       trunking      --
+Eth1/1/2      1       trunking      --
+Eth1/1/3      1       trunking      --
+Eth1/1/4      1       trunking      --
+Eth1/2/1      1       trunking      --
+Eth1/2/2      1       trunking      --
+Eth1/2/3      1       trunking      --
+Eth1/2/4      1       trunking      --
+.
+.
+.
+Eth1/30/1     none
+Eth1/30/2     none
+Eth1/30/3     none
+Eth1/30/4     none
+Eth1/31       none
+Eth1/32       none
+Po1           1
+----
+====
++
+
+NOTE: 如需特定連接埠和 VLAN 使用詳細資料、請參閱 RCF 中的橫幅和重要附註一節。
+
+. 確認CS1與CS2之間的ISL正常運作：
++
+[source, cli]
+----
+show port-channel summary
+----
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cs1# *show port-channel summary*
+Flags:  D - Down        P - Up in port-channel (members)
+        I - Individual  H - Hot-standby (LACP only)
+        s - Suspended   r - Module-removed
+        b - BFD Session Wait
+        S - Switched    R - Routed
+        U - Up (port-channel)
+        p - Up in delay-lacp mode (member)
+        M - Not in use. Min-links not met
+--------------------------------------------------------------------------------
+Group Port-       Type     Protocol  Member Ports
+      Channel
+--------------------------------------------------------------------------------
+1     Po1(SU)     Eth      LACP      Eth1/31(P)   Eth1/32(P)
+999   Po999(SD)   Eth      NONE      --
+cs1#
+----
+====
+
+
+
+
+== 步驟 3 ：設定 ONTAP 叢集
+
+NetApp 建議您使用系統管理員來設定新叢集。
+
+System Manager 為叢集設定和組態提供簡單易用的工作流程、包括指派節點管理 IP 位址、初始化叢集、建立本機層、設定通訊協定和配置初始儲存設備。
+
+前往 https://docs.netapp.com/us-en/ontap/task_configure_ontap.html["使用系統管理員在新叢集上設定 ONTAP"] 以取得設定指示。
+
+.接下來呢？
+安裝 RCF 後，您link:configure-ssh-keys.html["驗證 SSH 配置"]。

@@ -100,7 +100,7 @@ https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-92300/configur
 
 
  a| 
-https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-92300/migrate-to-92300yc-overview.html["_從舊的Cisco交換器移轉至Cisco Nexus 2300YC交換器_"^]
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-92300/migrate-to-92300yc.html["_從舊的Cisco交換器移轉至Cisco Nexus 2300YC交換器_"^]
  a| 
 說明以Cisco Nexus 2300YC叢集交換器取代舊版Cisco交換器的程序。
 

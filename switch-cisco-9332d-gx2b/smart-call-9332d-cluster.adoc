@@ -1,8 +1,8 @@
 ---
-permalink: switch-cisco-3232c/smart-call-home-3232c.html 
+permalink: switch-cisco-9332d-gx2b/smart-call-9332d-cluster.html 
 sidebar: sidebar 
-keywords: cisco 3232c, cluster switches 
-summary: 您可以將Cisco Nexus 3232C交換器當作AFF 叢集交換器、放在您的叢FAS 集或叢集內。 
+keywords: cisco smart call,small call home 
+summary: Smart Call Home可監控網路上的硬體和軟體元件、針對關鍵系統狀況產生電子郵件通知。當裝置發生事件時、Smart Call Home會向目的地設定檔中設定的所有收件者發出警示。 
 ---
 = 智慧電話住家需求
 :allow-uri-read: 

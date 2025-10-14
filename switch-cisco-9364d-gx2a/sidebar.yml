@@ -1,0 +1,45 @@
+---
+section: switch-cisco-9364d-gx2a
+title: CiscoNexus 9364D-GX2A
+entries:
+- title: 開始使用
+  pdf-filename: Overview_9364d-gx2a
+  entries:
+  - title: 快速入門
+    url: "/switch-cisco-9364d-gx2a/configure-switch-overview-9364d-cluster.html"
+  - title: 交換器連接埠詳細信息
+    url: "/switch-cisco-9364d-gx2a/configure-setup-ports-9364d.html"
+  - title: 必要文件
+    url: "/switch-cisco-9364d-gx2a/required-documentation-9364d-cluster.html"
+  - title: 智慧電話住家需求
+    url: "/switch-cisco-9364d-gx2a/smart-call-9364d-cluster.html"
+- title: 安裝硬體
+  url: "/switch-cisco-9364d-gx2a/install-hardware.html"
+  pdf-filename: Install_hardware_9364d-gx2a
+- title: 設定軟體
+  pdf-filename: Configure_software_9364d-gx2a
+  entries:
+  - title: 配置軟體工作流程
+    url: "/switch-cisco-9364d-gx2a/configure-software-overview-9364d-cluster.html"
+  - title: 設定交換器
+    url: "/switch-cisco-9364d-gx2a/setup-switch-9364d-cluster.html"
+  - title: 準備安裝NX-OS和RCF
+    url: "/switch-cisco-9364d-gx2a/install-nxos-overview-9364d-cluster.html"
+  - title: 安裝或升級 NX-OS 軟體
+    url: "/switch-cisco-9364d-gx2a/install-nxos-software-9364d-cluster.html"
+  - title: 安裝或升級 RCF
+    pdf-filename: install_upgrade _RCF
+    entries:
+    - title: 安裝或升級 RCF 總覽
+      url: "/switch-cisco-9364d-gx2a/install-upgrade-rcf-overview-cluster.html"
+    - title: 安裝RCF
+      url: "/switch-cisco-9364d-gx2a/install-rcf-software-9364d-cluster.html"
+    - title: 升級 RCF 版本
+      url: "/switch-cisco-9364d-gx2a/upgrade-rcf-software-9364d-cluster.html"
+  - title: 驗證 SSH 是否已啟用
+    url: "/switch-cisco-9364d-gx2a/configure-ssh-keys.html"
+  - title: 將交換器重設為出廠預設值
+    url: "/switch-cisco-9364d-gx2a/reset-switch-9364d.html"
+- title: 更換 9364D-GX2A 開關
+  url: "/switch-cisco-9364d-gx2a/replace-9364d-cluster.html"
+  pdf-filename: Replace_switches_9364d-gx2a

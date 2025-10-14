@@ -23,6 +23,33 @@ summary: 深入瞭解FAS 適用於整個系統的全新交換器AFF 。
 
 
  a| 
+32 連接埠 400GbECisco交換器（X190300-CS-PI 和 X190300-PE）
+ a| 
+Cisco 9332D-GX2B 叢集內/HA/儲存交換器支援。
+ a| 
+ONTAP 9.17.1
+
+
+
+ a| 
+64埠400GbECisco交換器（X190310-CS-PI）
+ a| 
+Cisco 9364D-GX2A 叢集內/HA/儲存交換器支援。
+ a| 
+ONTAP 9.17.1
+
+
+
+ a| 
+12 連接埠 10/25/40/100GbE Cisco Nexus 9336C-FX2-T 叢集和儲存交換器（X190212-CS-PE 和 X190212-CS-PI）
+ a| 
+支援 10/25/40/100GbE 叢集配置和 100GbE 儲存（交換器連接儲存）配置。
+ a| 
+ONTAP 9.10.1.
+
+
+
+ a| 
 12 連接埠 10/25/40/100GbE Cisco Nexus 9336C-FX2-T 叢集和儲存交換器（X190212-CS-PE 和 X190212-CS-PI）
  a| 
 支援 10/25/40/100GbE 叢集配置和 100GbE 儲存（交換器連接儲存）配置。

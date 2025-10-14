@@ -1,0 +1,204 @@
+---
+permalink: switch-cisco-9332d-gx2b/setup-switch-9332d-cluster.html 
+sidebar: sidebar 
+keywords: require, configuration, information, documentation, cluster, management, network, switches, set up the switches - cisco nexus 9332d-gx2b 
+summary: 請依照下列步驟設定Cisco Nexus 9332D-GX2B 交換器。 
+---
+= 配置 9332D-GX2B 交換機
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+請依照下列步驟設定Cisco Nexus 9332D-GX2B 交換器。
+
+.開始之前
+確保您擁有：
+
+* 已開啟交換器電源。
+* 存取安裝站台的HTTP、FTP或TFTP伺服器、下載適用的NX-OS和參考組態檔（RCF）版本。
+* 適用的NX-OS版本、可從下載 https://software.cisco.com/download/home["Cisco軟體下載"^] 頁面。
+
+
+[IMPORTANT]
+====
+* NX-OS 10.4.2 是ONTAP叢集中Cisco Nexus 9332D-GX2B 交換器唯一支援的版本。
+* 請勿將您的 NX-OS 版本升級或降級為不支援的版本；目前僅支援 10.4.2。
+
+
+====
+* 適用的授權、網路與組態資訊、以及纜線。
+* 適用的NetApp共享網路和管理網路 RCF 可從NetApp支援網站下載，網址為 http://mysupport.netapp.com/["mysupport.netapp.com"^]。所有Cisco共享網路和管理網路交換器均採用標準Cisco出廠預設設定。這些交換器也具有目前版本的 NX-OS 軟體，但未載入 RCF。
+* link:required-documentation-9332d-cluster.html["所需的交換器和ONTAP 功能文件"] 。
+
+
+.步驟
+. 執行共用網路交換器的初始設定。
++
+在您第一次開機交換器時、針對下列初始設定問題提供適當的回應。您站台的安全性原則會定義要啟用的回應和服務。
+
++
+[cols="1,2"]
+|===
+| 提示 | 回應 
+
+
+ a| 
+中止自動資源配置並繼續正常設定？（是/否）
+ a| 
+回應* yes *。預設值為「否」
+
+
+
+ a| 
+是否要強制執行安全密碼標準？（是/否）
+ a| 
+回應* yes *。預設值為yes。
+
+
+
+ a| 
+輸入admin的密碼。
+ a| 
+預設密碼為「admin」；您必須建立新的強式密碼。弱密碼可能會遭到拒絕。
+
+
+
+ a| 
+是否要進入基本組態對話方塊？（是/否）
+ a| 
+在交換器的初始組態中回應* yes *。
+
+
+
+ a| 
+建立另一個登入帳戶？（是/否）
+ a| 
+您的答案取決於您站台的原則、取決於替代系統管理員。預設值為*否*。
+
+
+
+ a| 
+設定唯讀SNMP社群字串？（是/否）
+ a| 
+回應*否*。預設值為「否」
+
+
+
+ a| 
+設定讀寫SNMP社群字串？（是/否）
+ a| 
+回應*否*。預設值為「否」
+
+
+
+ a| 
+輸入交換器名稱。
+ a| 
+輸入交換器名稱、最多可輸入63個英數字元。
+
+
+
+ a| 
+是否繼續頻外（mgmt0）管理組態？（是/否）
+ a| 
+在該提示字元中以* yes *（預設值）回應。在mgmt0 ipv4位址：提示字元中、輸入您的IP位址：ip_address.
+
+
+
+ a| 
+設定預設閘道？（是/否）
+ a| 
+回應* yes *。在「Default-gateway:（預設閘道：）」提示字元的IPV4位址、輸入您的預設閘道。
+
+
+
+ a| 
+設定進階IP選項？（是/否）
+ a| 
+回應*否*。預設值為「否」
+
+
+
+ a| 
+啟用Telnet服務？（是/否）
+ a| 
+回應*否*。預設值為「否」
+
+
+
+ a| 
+啟用SSH服務？（是/否）
+ a| 
+回應* yes *。預設值為yes。
+
+
+NOTE: 使用乙太網路交換器健全狀況監視器（ CSHM ）進行記錄收集功能時、建議使用 SSH 。我們也建議使用SSHv2來增強安全性。
+
+
+
+ a| 
+輸入您要產生的SSH金鑰類型（DSA/RSA/rsa1）。
+ a| 
+預設值為* RSA*。
+
+
+
+ a| 
+輸入金鑰位元數（1024-2048）。
+ a| 
+輸入從1024到2048的金鑰位元數。
+
+
+
+ a| 
+設定NTP伺服器？（是/否）
+ a| 
+回應*否*。預設值為「否」
+
+
+
+ a| 
+設定預設介面層（L3/L2）
+ a| 
+回應* L2*。預設值為L2。
+
+
+
+ a| 
+設定預設交換器連接埠介面狀態（關機/節點關機）
+ a| 
+使用* noshut*回應。預設值為noshut。
+
+
+
+ a| 
+設定CoPP系統設定檔（嚴格/中等/輕度/高密度）
+ a| 
+回應*嚴格*。預設為嚴格。
+
+
+
+ a| 
+是否要編輯組態？（是/否）
+ a| 
+此時您應該會看到新的組態。檢閱您剛輸入的組態、並進行必要的變更。如果您對組態感到滿意、請在提示字元中回應*否*。如果您要編輯組態設定、請使用* yes *回應。
+
+
+
+ a| 
+使用此組態並加以儲存？（是/否）
+ a| 
+回應* yes *以儲存組態。這會自動更新Kickstart和系統映像。
+
+
+NOTE: 如果您在此階段未儲存組態、下次重新啟動交換器時、將不會有任何變更生效。
+
+|===
+. 確認您在設定結束時所顯示的顯示器上所做的組態選擇、並確定您已儲存組態。
+. 檢查共用網路交換器上的版本，如有必要，NetApp https://software.cisco.com/download/home["Cisco軟體下載"^]頁。
+
+
+.接下來呢？
+配置好交換器後，link:install-nxos-overview-9332d-cluster.html["準備安裝NX-OS軟體和RCF"] 。

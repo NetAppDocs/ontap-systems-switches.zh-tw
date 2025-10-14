@@ -1,6 +1,17 @@
-= 檢閱要求
+---
+permalink: switch-cisco-9332d-gx2b/migrate-to-9332d-cluster.html 
+sidebar: sidebar 
+keywords: migrating to a cluster with Cisco Nexus 9332D-GX2B cluster switches, how to migrate 
+summary: 您可以將ONTAP叢集的舊Cisco叢集交換器無中斷地遷移到Cisco Nexus 9332D-GX2B 叢集網路交換器。 
+---
+= 從較舊的Cisco交換器遷移到Cisco Nexus 9332D-GX2B 交換器
 :allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
 
+
+[role="lead"]
+您可以從較舊的Cisco叢集交換器執行無中斷遷移到Cisco Nexus 9332D-GX2B 叢集網路交換器。
 
 
 

@@ -21,35 +21,28 @@ summary: 對於NVIDIA SN2100交換器的安裝與維護、請務必檢閱所有�
 
 
  a| 
-https://docs.netapp.com/us-en/ontap-systems-switches/switch-nvidia-sn2100/install-hardware-sn2100-cluster.html["_設定及設定NVIDIA SN2100交換器_"^]
+link:https://docs.netapp.com/us-en/ontap-systems-switches/switch-nvidia-sn2100/install-hardware-sn2100-cluster.html["_設定及設定NVIDIA SN2100交換器_"^]
  a| 
 說明如何設定及設定NVIDIA SN2100交換器、包括安裝CummUS Linux和適用的RCT。
 
 
 
  a| 
-https://docs.netapp.com/us-en/ontap-systems-switches/switch-nvidia-sn2100/migrate-cisco-sn2100-cluster-switch.html["_從Cisco叢集交換器移轉至NVIDIA SN2100叢集交換器_"^]
+link:https://docs.netapp.com/us-en/ontap-systems-switches/switch-nvidia-sn2100-storage/migrate-cisco-storage-switch-sn2100-storage.html["從Cisco儲存交換器遷移到NVIDIA SN2100 儲存交換器"^]
  a| 
-說明如何從使用Cisco叢集交換器的環境移轉至使用NVIDIA SN2100叢集交換器的環境。
+說明如何從使用Cisco儲存交換器的環境遷移到使用NVIDIA SN2100 儲存交換器的環境。
 
 
 
  a| 
-https://docs.netapp.com/us-en/ontap-systems-switches/switch-nvidia-sn2100/migrate-2n-switched-sn2100-cluster.html["_使用NVIDIA SN2100叢集交換器移轉至雙節點交換式叢集_"^]
+link:https://docs.netapp.com/us-en/ontap-systems-switches/switch-nvidia-sn2100/migrate-2n-switched-sn2100-cluster.html["_使用NVIDIA SN2100叢集交換器移轉至雙節點交換式叢集_"^]
  a| 
 說明如何使用NVIDIA SN2100叢集交換器移轉至雙節點交換環境。
 
 
 
  a| 
-https://docs.netapp.com/us-en/ontap-systems-switches/switch-nvidia-sn2100/replace-sn2100-switch-cluster.html["_更換NVIDIA SN2100叢集交換器_"^]
- a| 
-說明在叢集中更換有瑕疵的NVIDIA SN2100交換器、以及下載CummUS Linux和參考組態檔案的程序。
-
-
-
- a| 
-https://docs.netapp.com/us-en/ontap-systems-switches/switch-nvidia-sn2100/replace-sn2100-switch-storage.html["_更換NVIDIA SN2100儲存交換器_"^]
+link:https://docs.netapp.com/us-en/ontap-systems-switches/switch-nvidia-sn2100-storage/replace-sn2100-switch-storage.html["_更換NVIDIA SN2100儲存交換器_"^]
  a| 
 說明更換有瑕疵的NVIDIA SN2100儲存交換器、以及下載CummUS Linux和參考組態檔案的程序。
 

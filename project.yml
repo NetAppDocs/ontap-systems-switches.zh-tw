@@ -22,6 +22,10 @@ sidebar:
       url: "/get-started/learn-switch-concept.html"
     - title: 開始運作
       url: "/get-started/get-up-and-running.html"
+  - title: AFX 系統交換機
+    entries:
+    - section: switch-cisco-9332d-gx2b
+    - section: switch-cisco-9364d-gx2a
   - title: 叢集交換器
     entries:
     - section: switch-bes-53248

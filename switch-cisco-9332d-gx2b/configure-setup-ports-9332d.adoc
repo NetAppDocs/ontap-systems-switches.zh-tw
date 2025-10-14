@@ -1,0 +1,36 @@
+---
+permalink: switch-cisco-9332d-gx2b/configure-setup-ports-9332d.html 
+sidebar: sidebar 
+keywords: switches, initial installation, ports, configure switch-cisco-9332d-gx2b switch 
+summary: Cisco Nexus 9332D-GX2B 交換器的連接埠詳細資訊 
+---
+= Cisco Nexus 9332D-GX2B 交換器的連接埠詳細資訊
+:allow-uri-read: 
+
+
+[role="lead"]
+Cisco Nexus 9332D-GX2B 交換器是Cisco Nexus 9000 平台的一部份。  AFX 系統交換器可讓您建立具有兩個以上節點的ONTAP叢集。
+
+
+
+== Cisco Nexus 9332D-GX2B 連接埠詳情
+
+[cols="1,2"]
+|===
+| 連接埠 | 說明 
+
+
+ a| 
+乙太網路 1/1/1-4 至乙太網路 1/30/1-4
+ a| 
+4x100GbE 模式用於叢集、HA 和儲存連接
+
+
+
+ a| 
+乙太網路 1/31、乙太網路 1/32
+ a| 
+400GbE ISL
+
+|===
+查看 https://hwu.netapp.com["Hardware Universe"^]有關平台使用的連接埠的詳細資訊。

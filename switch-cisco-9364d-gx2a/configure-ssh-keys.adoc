@@ -1,0 +1,70 @@
+---
+permalink: switch-cisco-9364d-gx2a/configure-ssh-keys.html 
+sidebar: sidebar 
+keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, cisco 9332d-gx2b 
+summary: '使用群集交換器健康監視器 (CSHM) 和日誌收集功能時需要 SSH。若要在Cisco 9364d-gx2a 叢集交換器上啟用 SSH，您需要先生成 SSH 金鑰，然後啟用 SSH。' 
+---
+= 驗證SSH組態
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果您正在使用乙太網路交換器健康監視器 (CSHM) 和日誌收集功能，請驗證交換器上是否啟用了 SSH 和 SSH 金鑰。
+
+.步驟
+. 確認SSH已啟用：
++
+[listing, subs="+quotes"]
+----
+(switch) *show ssh server*
+ssh version 2 is enabled
+----
+. 確認 SSH 金鑰已啟用：
++
+`show ssh key`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(switch)# *show ssh key*
+
+rsa Keys generated:Thu May 15 15:09:55 2025
+
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQDCQJPZk7OGhg0j1t0NWKylnI8R8zDpuMpU6KKAjPOCShTFpibeYQqxOPTCAKACkut8dduZmc3bY9DIOle0cKYQ8PgS2mG9ovQ0RJ56RUNhVNPdJuhXM4ckHoiVJxIAbHkbcw8rzawbkT6cNBUiZY3MrOMh0e0CnMRhh9we
+MOo/vQ==
+
+
+bitcount:1024
+fingerprint:
+SHA256:TMUXFgyRC3EcIZEVbQ/P0elDByBCJizPJ1XKMkIXfPI
+**************************************
+could not retrieve dsa key information
+**************************************
+ecdsa Keys generated:Thu May 15 15:12:09 2025
+
+
+ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBADquZcNSDA/eLAaItXyxVZxsSJSE3u4et9B6+RLq162zTe/3A6JTCyBrkfrMhQt9QMQ7XrMqJGxLSinXhyUClBxwQD/ZbkZueZHiFuYg5hKN97wUYvts+EwpG2mSVonxKKp
+atmtgu48BqKfZTc4LZYL5vgdh5uuktJ0Z8mYHt3xKPXsvw==
+
+
+bitcount:521
+fingerprint:
+SHA256:K8LDx6L7sJjLFn8iubUhjt66uk8TYmXwnQKWVD04C1o
+**************************************
+
+(switch)# *show feature | include scpServer*
+scpServer              1          enabled
+(switch)# *show feature | include ssh*
+sshServer              1          enabled
+(switch)#
+----
+====
+
+
+.接下來呢？
+驗證 SSH 配置後，link:../switch-cshm/config-overview.html["配置交換器健康監控"] 。

@@ -4,14 +4,14 @@ sidebar: sidebar
 keywords:  
 summary: 瞭解叢集、儲存設備和共享交換器。 
 ---
-= 使用叢集、儲存設備和共享交換器來啟動和執行
+= 使用 AFX 系統、叢集、儲存和共用交換器啟動並運行
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-若要使用叢集、儲存設備和共用交換器來啟動和執行、您需要安裝硬體元件並設定交換器。
+若要啟動並執行 AFX 系統、叢集、儲存和共用交換機，您需要安裝硬體元件並設定交換器。
 
 部署交換器涉及下列工作流程。
 
@@ -19,11 +19,15 @@ summary: 瞭解叢集、儲存設備和共享交換器。
 [role="quick-margin-para"]
 將交換器安裝在機架或機櫃中。請參閱下列交換器機型的指示。
 
-[cols="2,9,9,9"]
+[cols="11,9,9,9"]
 |===
 
 
  a| 
+.AFX 系統交換機
+* link:https://docs.netapp.com/us-en/ontap-afx/install-setup/install-switches.html["安裝Cisco Nexus 9332D-GX2B 交換機"^]
+* link:https://docs.netapp.com/us-en/ontap-afx/install-setup/install-switches.html["安裝Cisco Nexus 9364D-GX2A 交換機"^]
+
  a| 
 .叢集交換器
 * link:../switch-bes-53248/install-hardware-bes53248.html["安裝BS-53248交換器"]
@@ -45,12 +49,13 @@ summary: 瞭解叢集、儲存設備和共享交換器。
 [role="quick-margin-para"]
 在機櫃或機架中安裝儲存系統和儲存櫃。存取您平台機型的安裝與設定指示。
 
-[cols="4,9,9,9"]
+[cols="2,9,9,9"]
 |===
 
 
  a| 
  a| 
+* https://docs.netapp.com/us-en/ontap-afx/index.html["AFX 系統"^]
 * https://docs.netapp.com/us-en/ontap-systems/aff-landing/index.html["系統AFF"^]
 * https://docs.netapp.com/us-en/ontap-systems/allsan-landing/index.html["系統ASA"^]
 * https://docs.netapp.com/us-en/asa-r2/index.html["ASA r2 系統"^]
@@ -60,67 +65,49 @@ summary: 瞭解叢集、儲存設備和共享交換器。
  a| 
 
 |===
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三"]將交換器連接至控制器
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三"]將交換器連接到控制器
 [role="quick-margin-para"]
 ONTAP 系統的安裝與設定說明包括將控制器連接埠連接至交換器的說明。不過、如果您需要支援的纜線和收發器清單、以及交換器主機連接埠的詳細資訊、請針對您的交換器機型存取下列指示。
 
-[cols="2,9,9,9"]
+[cols="11,9,9,9"]
 |===
 
 
  a| 
+.AFX 系統交換機
+* link:https://docs.netapp.com/us-en/ontap-afx/install-setup/afx-cable-overview.html["為Cisco Nexus 9332D-GX2B 交換器佈線"^]
+* link:https://docs.netapp.com/us-en/ontap-afx/install-setup/afx-cable-overview.html["為Cisco Nexus 9364D-GX2A 交換器佈線"^]
+
  a| 
 .叢集交換器
-* link:../switch-bes-53248/configure-reqs-bes53248.html#configuration-requirements["連接BS-53248交換器"]
-* link:../switch-cisco-9336c-fx2/setup-worksheet-9336c-cluster.html["Cisco Nexus 9336C-FX2交換器纜線"]
-* link:../switch-nvidia-sn2100/cabling-considerations-sn2100-cluster.html["纜線NVIDIA SN2100交換器"]
+* link:../switch-bes-53248/configure-reqs-bes53248.html#configuration-requirements["為 BES-53248 交換器佈線"]
+* link:../switch-cisco-9336c-fx2/setup-worksheet-9336c-cluster.html["為Cisco Nexus 9336C-FX2 交換器佈線"]
+* link:../switch-nvidia-sn2100/cabling-considerations-sn2100-cluster.html["連接NVIDIA SN2100 交換機"]
 
  a| 
 .儲存交換器
-* link:../switch-cisco-9336c-fx2-storage/setup-worksheet-9336c-storage.html["Cisco Nexus 9336C-FX2交換器纜線"]
-* link:../switch-nvidia-sn2100-storage/cabling-considerations-sn2100-storage.html["纜線NVIDIA SN2100交換器"]
+* link:../switch-cisco-9336c-fx2-storage/setup-worksheet-9336c-storage.html["為Cisco Nexus 9336C-FX2 交換器佈線"]
+* link:../switch-nvidia-sn2100-storage/cabling-considerations-sn2100-storage.html["連接NVIDIA SN2100 交換機"]
 
  a| 
 .共享交換器
-* link:../switch-cisco-9336c-fx2-shared/cable-9336c-shared.html["Cisco Nexus 9336C-FX2交換器纜線"]
+* link:../switch-cisco-9336c-fx2-shared/cable-9336c-shared.html["為Cisco Nexus 9336C-FX2 交換器佈線"]
 
 
 |===
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["四"]設定交換器
-[role="quick-margin-para"]
-執行交換器的初始設定。請參閱下列交換器機型的指示。
-
-[cols="2,9,9,9"]
-|===
-
-
- a| 
- a| 
-.叢集交換器
-* link:../switch-bes-53248/configure-install-initial.html["設定BS-53248交換器"]
-* link:../switch-cisco-9336c-fx2/setup-switch-9336c-cluster.html["設定Cisco Nexus 9336C-FX2交換器"]
-* link:../switch-nvidia-sn2100/configure-sn2100-cluster.html["設定NVIDIA SN2100交換器"]
-
- a| 
-.儲存交換器
-* link:../switch-cisco-9336c-fx2-storage/setup-switch-9336c-storage.html["設定Cisco Nexus 9336C-FX2交換器"]
-* link:../switch-nvidia-sn2100-storage/configure-sn2100-storage.html["設定NVIDIA SN2100交換器"]
-
- a| 
-.共享交換器
-* link:../switch-cisco-9336c-fx2-shared/setup-and-configure-9336c-shared.html["設定Cisco Nexus 9336C-FX2交換器"]
-
-
-|===
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["五"] 安裝交換器軟體
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["四"]配置交換器軟體
 [role="quick-margin-para"]
 若要在交換器上安裝及設定軟體、請遵循交換器機型的軟體安裝工作流程。
 
-[cols="2,9,9,9"]
+[cols="11,9,9,9"]
 |===
 
 
  a| 
+.AFX 系統交換機
+* link:../switch-cisco-9332d-gx2b/configure-software-overview-9332d-cluster.html["為Cisco Nexus 9332D-GX2B 交換器安裝軟體"]
+* link:../switch-cisco-9364d-gx2a/configure-software-overview-9364d-cluster.html["為Cisco Nexus 9364D-GX2A 交換器安裝軟體"]
+
  a| 
 .叢集交換器
 * link:../switch-bes-53248/configure-software-overview-bes53248.html["安裝適用於BS-53248交換器的軟體"]
@@ -138,16 +125,17 @@ ONTAP 系統的安裝與設定說明包括將控制器連接埠連接至交換�
 
 
 |===
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["六"] 完成系統設定
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["五"]完成系統設定
 [role="quick-margin-para"]
 設定交換器並安裝必要軟體之後，請存取 ONTAP 系統平台機型的安裝與設定指示，以完成系統設定。
 
-[cols="4,9,9,9"]
+[cols="2,9,9,9"]
 |===
 
 
  a| 
  a| 
+* https://docs.netapp.com/us-en/ontap-afx/index.html["AFX 系統"^]
 * https://docs.netapp.com/us-en/ontap-systems/aff-landing/index.html["系統AFF"^]
 * https://docs.netapp.com/us-en/ontap-systems/allsan-landing/index.html["系統ASA"^]
 * https://docs.netapp.com/us-en/asa-r2/index.html["ASA r2 系統"^]
@@ -157,7 +145,7 @@ ONTAP 系統的安裝與設定說明包括將控制器連接埠連接至交換�
  a| 
 
 |===
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-7.png["七"] 完整ONTAP 的功能組態
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["六"]完成ONTAP配置
 [role="quick-margin-para"]
 安裝並設定 ONTAP 系統控制器和交換器之後，您必須在 ONTAP 中完成儲存設備的設定。根據部署組態存取下列指示。
 
