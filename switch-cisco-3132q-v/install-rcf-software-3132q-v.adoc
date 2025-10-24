@@ -1,0 +1,427 @@
+---
+permalink: switch-cisco-3132q-v/install-rcf-software-3132q-v.html 
+sidebar: sidebar 
+keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, cisco 3132q-v 
+summary: '使用群集交換器健康監視器 (CSHM) 和日誌收集功能時需要 SSH。若要在Cisco 3132q-v 叢集交換器上啟用 SSH，請先生成 SSH 金鑰，然後啟用 SSH。' 
+---
+= 安裝參考組態檔（RCF）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+首次設定 Nexus 3132Q-V 交換器後，安裝參考設定檔 (RCF)。
+
+.開始之前
+驗證下列安裝和連線：
+
+* 交換器組態的目前備份。
+* 完全正常運作的叢集（記錄檔中沒有錯誤或類似問題）。
+* 目前的 RCF 。
+* 安裝RCF時所需的交換器主控台連線。
+
+
+.關於這項工作
+此程序需要同時使用ONTAP 支援指令和Cisco Nexus 3000系列交換器的命令；ONTAP 除非另有說明、否則會使用支援指令。
+
+在此過程中不需要任何可操作的交換器間連結 (ISL)。這是設計使然，因為 RCF 版本的變更可能會暫時影響 ISL 連線。為了實現無中斷叢集操作，以下步驟將所有叢集 LIF 遷移到可操作的合作夥伴交換機，同時在目標交換器上執行步驟。
+
+
+
+== 步驟 1 ：在交換器上安裝 RCF
+
+. 顯示連接至叢集交換器之每個節點上的叢集連接埠：
++
+「網路裝置探索秀」
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network device-discovery show*
+Node/       Local  Discovered
+Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
+----------- ------ ------------------------- ----------------  ------------
+cluster1-01/cdp
+            e0a    cs1                       Ethernet1/7       N3K-C3132Q-V
+            e0d    cs2                       Ethernet1/7       N3K-C3132Q-V
+cluster1-02/cdp
+            e0a    cs1                       Ethernet1/8       N3K-C3132Q-V
+            e0d    cs2                       Ethernet1/8       N3K-C3132Q-V
+cluster1-03/cdp
+            e0a    cs1                       Ethernet1/1/1     N3K-C3132Q-V
+            e0b    cs2                       Ethernet1/1/1     N3K-C3132Q-V
+cluster1-04/cdp
+            e0a    cs1                       Ethernet1/1/2     N3K-C3132Q-V
+            e0b    cs2                       Ethernet1/1/2     N3K-C3132Q-V
+cluster1::*>
+----
+====
+. 檢查每個叢集連接埠的管理和作業狀態。
++
+.. 確認所有叢集連接埠都正常運作：
++
+「網路連接埠show -IPSpace Cluster」
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network port show -ipspace Cluster*
+Node: cluster1-01
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+e0a       Cluster      Cluster          up   9000  auto/100000 healthy false
+e0d       Cluster      Cluster          up   9000  auto/100000 healthy false
+Node: cluster1-02
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+e0a       Cluster      Cluster          up   9000  auto/100000 healthy false
+e0d       Cluster      Cluster          up   9000  auto/100000 healthy false
+8 entries were displayed.
+Node: cluster1-03
+   Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
+e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
+Node: cluster1-04
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
+e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
+cluster1::*>
+----
+====
+.. 確認所有叢集介面（l生命）都位於主連接埠：
++
+「網路介面show -vserver叢集」
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface show -vserver Cluster*
+            Logical            Status     Network           Current      Current Is
+Vserver     Interface          Admin/Oper Address/Mask      Node         Port    Home
+----------- ------------------ ---------- ----------------- ------------ ------- ----
+Cluster
+            cluster1-01_clus1  up/up     169.254.3.4/23     cluster1-01  e0a     true
+            cluster1-01_clus2  up/up     169.254.3.5/23     cluster1-01  e0d     true
+            cluster1-02_clus1  up/up     169.254.3.8/23     cluster1-02  e0a     true
+            cluster1-02_clus2  up/up     169.254.3.9/23     cluster1-02  e0d     true
+            cluster1-03_clus1  up/up     169.254.1.3/23     cluster1-03  e0a     true
+            cluster1-03_clus2  up/up     169.254.1.1/23     cluster1-03  e0b     true
+            cluster1-04_clus1  up/up     169.254.1.6/23     cluster1-04  e0a     true
+            cluster1-04_clus2  up/up     169.254.1.7/23     cluster1-04  e0b     true
+cluster1::*>
+----
+====
+.. 驗證叢集是否顯示兩個叢集交換器的資訊：
++
+「系統叢集交換器show -is監控、可運作的true」
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *system cluster-switch show -is-monitoring-enabled-operational true*
+Switch                      Type               Address          Model
+--------------------------- ------------------ ---------------- ---------------
+cs1                         cluster-network    10.0.0.1         NX3132QV
+     Serial Number: FOXXXXXXXGS
+      Is Monitored: true
+            Reason: None
+  Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
+                    9.3(4)
+    Version Source: CDP
+cs2                         cluster-network    10.0.0.2         NX3132QV
+     Serial Number: FOXXXXXXXGD
+      Is Monitored: true
+            Reason: None
+  Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
+                    9.3(4)
+    Version Source: CDP
+2 entries were displayed.
+----
+====
+
+
++
+
+NOTE: 對於 ONTAP 9.8 及更新版本、請使用命令 `system switch ethernet show -is-monitoring-enabled-operational true`。
+
+. 停用叢集生命體上的自動還原。
++
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert false*
+----
++
+請確定執行此命令後已停用自動還原。
+
+. 在叢集交換器CS2上、關閉連接至節點叢集連接埠的連接埠。
++
+[listing, subs="+quotes"]
+----
+cs2> *enable*
+cs2# *configure*
+cs2(config)# *interface eth1/1/1-2,eth1/7-8*
+cs2(config-if-range)# *shutdown*
+cs2(config-if-range)# *exit*
+cs2# *exit*
+----
++
+
+NOTE: 顯示的連接埠數量會根據叢集中的節點數量而變化。
+
+. 驗證叢集連接埠是否已故障轉移到叢集交換器 cs1 上託管的連接埠。這可能需要幾秒鐘。
++
+「網路介面show -vserver叢集」
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface show -vserver Cluster*
+            Logical           Status     Network            Current       Current Is
+Vserver     Interface         Admin/Oper Address/Mask       Node          Port    Home
+----------- ----------------- ---------- ------------------ ------------- ------- ----
+Cluster
+            cluster1-01_clus1 up/up      169.254.3.4/23     cluster1-01   e0a     true
+            cluster1-01_clus2 up/up      169.254.3.5/23     cluster1-01   e0a     false
+            cluster1-02_clus1 up/up      169.254.3.8/23     cluster1-02   e0a     true
+            cluster1-02_clus2 up/up      169.254.3.9/23     cluster1-02   e0a     false
+            cluster1-03_clus1 up/up      169.254.1.3/23     cluster1-03   e0a     true
+            cluster1-03_clus2 up/up      169.254.1.1/23     cluster1-03   e0a     false
+            cluster1-04_clus1 up/up      169.254.1.6/23     cluster1-04   e0a     true
+            cluster1-04_clus2 up/up      169.254.1.7/23     cluster1-04   e0a     false
+cluster1::*>
+----
+====
+. 驗證叢集是否正常：
++
+「叢集展示」
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *cluster show*
+Node                 Health  Eligibility   Epsilon
+-------------------- ------- ------------  -------
+cluster1-01          true    true          false
+cluster1-02          true    true          false
+cluster1-03          true    true          true
+cluster1-04          true    true          false
+cluster1::*>
+----
+====
+. 如果您尚未這麼做、請將下列命令的輸出複製到文字檔、以儲存目前交換器組態的複本：
++
+「如何執行設定」
+
+. 記錄目前運行配置和正在使用的 RCF 檔案之間的任何自訂新增。
++
+[NOTE]
+====
+確保設定以下內容：* 使用者名稱和密碼* 管理 IP 位址* 預設閘道* 交換器名稱
+
+====
+. 將基本配置詳細資訊儲存到 `write_erase.cfg`bootflash 上的檔案。
++
+
+NOTE: 升級或套用新的 RCF 時，必須清除交換器設定並執行基本配置。您必須連接到交換器序列控制台連接埠才能重新設定交換器。
+
++
+`cs2# show run | section "switchname" > bootflash:write_erase.cfg`
+
++
+`cs2# show run | section "hostname" >> bootflash:write_erase.cfg`
+
++
+`cs2# show run | i "username admin password" >> bootflash:write_erase.cfg`
+
++
+`cs2# show run | section "vrf context management" >> bootflash:write_erase.cfg`
+
++
+`cs2# show run | section "interface mgmt0" >> bootflash:write_erase.cfg`
+
+. 對於 RCF 版本 1.12 及更高版本，執行以下命令：
++
+`cs2# echo "hardware access-list tcam region vpc-convergence 256" >> bootflash:write_erase.cfg`
+
++
+`cs2# echo "hardware access-list tcam region racl 256" >> bootflash:write_erase.cfg`
+
++
+`cs2# echo "hardware access-list tcam region e-racl 256" >> bootflash:write_erase.cfg`
+
++
+`cs2# echo "hardware access-list tcam region qos 256" >> bootflash:write_erase.cfg`
+
++
+請參閱知識庫文章 https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["如何在保留遠端連線的同時清除 Cisco 互連交換器上的組態"^]了解更多詳情。
+
+. 驗證 `write_erase.cfg`文件按預期填充：
++
+`*show file bootflash:write_erase.cfg*`
+
+. 發出 `write erase`命令來刪除目前已儲存的配置：
++
+`cs2# *write erase*`
+
++
+`Warning: This command will erase the startup-configuration.`
+
++
+`Do you wish to proceed anyway? (y/n)  [n] *y*`
+
+. 將先前儲存的基本組態複製到啟動組態。
++
+`cs2# *copy bootflash:write_erase.cfg startup-config*`
+
+. 重新啟動交換器：
++
+`cs2# *reload*`
+
++
+`This command will reboot the system. (y/n)?  [n] *y*`
+
+. 在交換器CS1上重複步驟7至14。
+. 將 ONTAP 叢集中所有節點的叢集連接埠連接至交換器 CS1 和 CS2 。
+
+
+
+
+== 步驟 2 ：驗證交換器連線
+
+. 驗證連接至叢集連接埠的交換器連接埠是否為* up*。
++
+`show interface brief | grep up`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cs1# *show interface brief | grep up*
+.
+.
+Eth1/1/1      1       eth  access up      none                    10G(D) --
+Eth1/1/2      1       eth  access up      none                    10G(D) --
+Eth1/7        1       eth  trunk  up      none                   100G(D) --
+Eth1/8        1       eth  trunk  up      none                   100G(D) --
+.
+.
+----
+====
+. 確認CS1與CS2之間的ISL正常運作：
++
+「How port-channel Summary」
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cs1# *show port-channel summary*
+Flags:  D - Down        P - Up in port-channel (members)
+        I - Individual  H - Hot-standby (LACP only)
+        s - Suspended   r - Module-removed
+        b - BFD Session Wait
+        S - Switched    R - Routed
+        U - Up (port-channel)
+        p - Up in delay-lacp mode (member)
+        M - Not in use. Min-links not met
+--------------------------------------------------------------------------------
+Group Port-       Type     Protocol  Member Ports
+      Channel
+--------------------------------------------------------------------------------
+1     Po1(SU)     Eth      LACP      Eth1/31(P)   Eth1/32(P)
+cs1#
+----
+====
+. 驗證叢集生命區是否已還原至其主連接埠：
++
+「網路介面show -vserver叢集」
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface show -vserver Cluster*
+            Logical            Status     Network            Current             Current Is
+Vserver     Interface          Admin/Oper Address/Mask       Node                Port    Home
+----------- ------------------ ---------- ------------------ ------------------- ------- ----
+Cluster
+            cluster1-01_clus1  up/up      169.254.3.4/23     cluster1-01         e0d     true
+            cluster1-01_clus2  up/up      169.254.3.5/23     cluster1-01         e0d     true
+            cluster1-02_clus1  up/up      169.254.3.8/23     cluster1-02         e0d     true
+            cluster1-02_clus2  up/up      169.254.3.9/23     cluster1-02         e0d     true
+            cluster1-03_clus1  up/up      169.254.1.3/23     cluster1-03         e0b     true
+            cluster1-03_clus2  up/up      169.254.1.1/23     cluster1-03         e0b     true
+            cluster1-04_clus1  up/up      169.254.1.6/23     cluster1-04         e0b     true
+            cluster1-04_clus2  up/up      169.254.1.7/23     cluster1-04         e0b     true
+cluster1::*>
+----
+====
+. 驗證叢集是否正常：
++
+「叢集展示」
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *cluster show*
+Node                 Health  Eligibility   Epsilon
+-------------------- ------- ------------- -------
+cluster1-01          true    true          false
+cluster1-02          true    true          false
+cluster1-03          true    true          true
+cluster1-04          true    true          false
+cluster1::*>
+----
+====
+
+
+
+
+== 步驟 3：設定ONTAP集群
+
+NetApp 建議您使用系統管理員來設定新叢集。
+
+系統管理器為叢集設定和配置提供了簡單易行的工作流程，包括分配節點管理 IP 位址、初始化叢集、建立本機層、設定協定和配置初始儲存。
+
+參考link:https://docs.netapp.com/us-en/ontap/task_configure_ontap.html["使用系統管理員在新叢集上設定 ONTAP"]了解設定說明。
+
+.接下來呢？
+安裝 RCF 後，您link:configure-ssh-keys.html["驗證 SSH 配置"]。

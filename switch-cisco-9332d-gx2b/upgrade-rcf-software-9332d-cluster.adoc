@@ -951,7 +951,7 @@ node1-04          true     true          false
 4 entries were displayed.
 ----
 ====
-. 在交換器 cs2 上重複步驟 4 至 17。
+. 在交換器 cs2 上重複步驟 4 至 18。
 . 在叢集生命體上啟用自動還原。
 +
 「網路介面修改-vserver叢集-lif*-auta-f還原 為真」

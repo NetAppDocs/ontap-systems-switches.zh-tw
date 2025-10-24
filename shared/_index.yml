@@ -1,0 +1,31 @@
+---
+indexpage:
+  title: 共享交換器
+  summary: 使用此站點上的文件來安裝、設定和維護用於ONTAP叢集部署的共用交換器。
+  keywords: shared switches, cisco nexus switches, cluster switches, ontap clusters
+  lead: 共享交換器使您能夠建立具有兩個以上節點的ONTAP叢集。這些Cisco Nexus 9000 平台交換器為NetApp ONTAP環境中的可擴展叢集互連解決方案提供了基礎。
+  tiles:
+  - title: 開始使用
+    links:
+    - title: Cisco Nexus 9336C-FX2
+      url: "../switch-cisco-9336c-fx2-shared/configure-switch-overview-9336c-shared.html"
+  - title: 安裝和設定共用交換機
+    links:
+    - title: 安裝 9336C-FX2 交換器硬體
+      url: "../switch-cisco-9336c-fx2-shared/install-hardware-workflow.html"
+    - title: 配置9336C-FX2交換器軟體
+      url: "../switch-cisco-9336c-fx2-shared/configure-software-overview-9336c-shared.html"
+  - title: 維護共享交換機
+    links:
+    - title: 更換 9336C-FX2 開關
+      url: "../switch-cisco-9336c-fx2-shared/replace-9336c-fx2-shared.html"
+    - title: 將 9336C-FX2 交換器重設為出廠預設值
+      url: "../switch-cisco-9336c-fx2-shared/reset-switch-9336c-shared.html"
+  - title: 相關文件
+    links:
+    - title: ONTAP 硬體系統
+      url: https://docs.netapp.com/us-en/ontap-systems/index.html
+    - title: 集群交換機文檔
+      url: "../index.html"
+    - title: 交換器健康監控
+      url: "../switch-cshm/config-overview.html"

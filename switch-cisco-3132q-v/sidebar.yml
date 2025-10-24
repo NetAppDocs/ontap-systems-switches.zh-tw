@@ -33,13 +33,18 @@ entries:
     url: "/switch-cisco-3132q-v/configure-software-overview-3132q-v-cluster.html"
   - title: 設定交換器
     url: "/switch-cisco-3132q-v/setup-switch.html"
-  - title: 準備安裝NX-OS和RCF
-    url: "/switch-cisco-3132q-v/prepare-install-cisco-nexus-3132q.html"
   - title: 安裝NX-OS軟體
     url: "/switch-cisco-3132q-v/install-nx-os-software-3132q-v.html"
   - title: 安裝或升級 RCF
-    url: "/switch-cisco-3132q-v/install-rcf-3132q-v.html"
-  - title: 驗證SSH組態
+    pdf-filename: 安裝升級
+    entries:
+    - title: 安裝或升級 RCF 總覽
+      url: "/switch-cisco-3132q-v/install-upgrade-rcf-overview-3132q-v.html"
+    - title: 安裝RCF
+      url: "/switch-cisco-3132q-v/install-rcf-software-3132q-v.html"
+    - title: 升級 RCF 版本
+      url: "/switch-cisco-3132q-v/upgrade-rcf-3132q-v.html"
+  - title: 驗證 SSH 配置
     url: "/switch-cisco-3132q-v/configure-ssh-keys.html"
   - title: 將交換器重設為出廠預設值
     url: "/switch-cisco-3132q-v/reset-switch-3132q-v.html"

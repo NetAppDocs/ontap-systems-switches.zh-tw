@@ -1,8 +1,8 @@
 ---
-permalink: switch-cisco-9336c-fx2/upgrade-rcf-software-9336c-cluster.html 
+permalink: switch-cisco-3132q-v/upgrade-rcf-3132q-v.html 
 sidebar: sidebar 
-keywords: install rcf, cisco switches 
-summary: 您可以在初次設定Nexus 9336C-FX2交換器之後安裝RCF。您也可以使用此程序來升級RCF版本。 
+keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, cisco 3132q-v 
+summary: '使用群集交換器健康監視器 (CSHM) 和日誌收集功能時需要 SSH。若要在Cisco 3132q-v 叢集交換器上啟用 SSH，請先生成 SSH 金鑰，然後啟用 SSH。' 
 ---
 = 升級參考組態檔案（ RCF ）
 :allow-uri-read: 
@@ -48,27 +48,27 @@ CAUTION: 在安裝新的交換器軟體版本和RCFs之前、您必須清除交�
 cluster1::*> *network device-discovery show*
 Node/       Local  Discovered
 Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
------------ ------ ------------------------- ----------------  --------
+----------- ------ ------------------------- ----------------  ------------
 cluster1-01/cdp
-            e0a    cs1                       Ethernet1/7       N9K-C9336C
-            e0d    cs2                       Ethernet1/7       N9K-C9336C
+            e0a    cs1                       Ethernet1/7       N3K-C3132Q-V
+            e0d    cs2                       Ethernet1/7       N3K-C3132Q-V
 cluster1-02/cdp
-            e0a    cs1                       Ethernet1/8       N9K-C9336C
-            e0d    cs2                       Ethernet1/8       N9K-C9336C
+            e0a    cs1                       Ethernet1/8       N3K-C3132Q-V
+            e0d    cs2                       Ethernet1/8       N3K-C3132Q-V
 cluster1-03/cdp
-            e0a    cs1                       Ethernet1/1/1     N9K-C9336C
-            e0b    cs2                       Ethernet1/1/1     N9K-C9336C
+            e0a    cs1                       Ethernet1/1/1     N3K-C3132Q-V
+            e0b    cs2                       Ethernet1/1/1     N3K-C3132Q-V
 cluster1-04/cdp
-            e0a    cs1                       Ethernet1/1/2     N9K-C9336C
-            e0b    cs2                       Ethernet1/1/2     N9K-C9336C
+            e0a    cs1                       Ethernet1/1/2     N3K-C3132Q-V
+            e0b    cs2                       Ethernet1/1/2     N3K-C3132Q-V
 cluster1::*>
 ----
 ====
 . 檢查每個叢集連接埠的管理和作業狀態。
 +
-.. 驗證所有的叢集連接埠是否為「正常」狀態*「up」*：
+.. 確認所有叢集連接埠都正常運作：
 +
-「網路連接埠show -role cluster」
+「網路連接埠show -IPSpace Cluster」
 
 +
 .顯示範例
@@ -76,7 +76,7 @@ cluster1::*>
 ====
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network port show -role cluster*
+cluster1::*> *network port show -ipspace Cluster*
 
 Node: cluster1-01
                                                                        Ignore
@@ -116,7 +116,7 @@ cluster1::*>
 ====
 .. 確認所有叢集介面（l生命）都位於主連接埠：
 +
-「網路介面show -role cluster」
+「網路介面show -vserver叢集」
 
 +
 .顯示範例
@@ -124,7 +124,7 @@ cluster1::*>
 ====
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network interface show -role cluster*
+cluster1::*> *network interface show -vserver Cluster*
             Logical            Status     Network           Current      Current Is
 Vserver     Interface          Admin/Oper Address/Mask      Node         Port    Home
 ----------- ------------------ ---------- ----------------- ------------ ------- ----
@@ -137,7 +137,6 @@ Cluster
             cluster1-03_clus2  up/up     169.254.1.1/23     cluster1-03  e0b     true
             cluster1-04_clus1  up/up     169.254.1.6/23     cluster1-04  e0a     true
             cluster1-04_clus2  up/up     169.254.1.7/23     cluster1-04  e0b     true
-8 entries were displayed.
 cluster1::*>
 ----
 ====
@@ -153,30 +152,40 @@ cluster1::*>
 ----
 cluster1::*> *system cluster-switch show -is-monitoring-enabled-operational true*
 Switch                      Type               Address          Model
---------------------------- ------------------ ---------------- -----
-cs1                         cluster-network    10.233.205.90    N9K-C9336C
-     Serial Number: FOCXXXXXXGD
+--------------------------- ------------------ ---------------- ---------------
+cs1                         cluster-network    10.0.0.1         NX3132QV
+     Serial Number: FOXXXXXXXGS
       Is Monitored: true
             Reason: None
   Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
-                    9.3(5)
+                    9.3(4)
     Version Source: CDP
 
-cs2                         cluster-network    10.233.205.91    N9K-C9336C
-     Serial Number: FOCXXXXXXGS
+cs2                         cluster-network    10.0.0.2         NX3132QV
+     Serial Number: FOXXXXXXXGD
       Is Monitored: true
             Reason: None
   Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
-                    9.3(5)
+                    9.3(4)
     Version Source: CDP
-cluster1::*>
+
+2 entries were displayed.
 ----
 ====
 
 
++
+
+NOTE: 對於 ONTAP 9.8 及更新版本、請使用命令 `system switch ethernet show -is-monitoring-enabled-operational true`。
+
 . 停用叢集生命體上的自動還原。
 +
-`cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert false*`
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert false*
+----
++
+請確定執行此命令後已停用自動還原。
 
 
 
@@ -184,32 +193,24 @@ cluster1::*>
 
 == 步驟2：設定連接埠
 
-. 在叢集交換器CS1上、關閉連接至節點叢集連接埠的連接埠。
+. 在叢集交換器CS2上、關閉連接至節點叢集連接埠的連接埠。
 +
-`cs1> *enable*`
-
-+
-`cs1# *configure*`
-
-+
-`cs1(config)# *interface eth1/1/1-2,eth1/7-8*`
-
-+
-`cs1(config-if-range)# *shutdown*`
-
-+
-`cs1(config-if-range)# *exit*`
-
-+
-`cs1# *exit*`
-
+[listing, subs="+quotes"]
+----
+cs2> *enable*
+cs2# *configure*
+cs2(config)# *interface eth1/1/1-2,eth1/7-8*
+cs2(config-if-range)# *shutdown*
+cs2(config-if-range)# *exit*
+cs2# *exit*
+----
 +
 
-CAUTION: 請務必關閉 * 所有 * 連線的叢集連接埠、以避免任何網路連線問題。如 https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/Node_out_of_quorum_when_migrating_cluster_lif_during_switch_OS_upgrade["在交換器作業系統升級期間移轉叢集 LIF 時、節點超出仲裁範圍"^]需詳細資訊、請參閱知識庫文章。
+NOTE: 顯示的連接埠數量會根據叢集中的節點數量而變化。
 
-. 驗證叢集生命期是否已容錯移轉至叢集交換器 CS1 上所主控的連接埠。這可能需要幾秒鐘的時間。
+. 驗證叢集連接埠是否已故障轉移到叢集交換器 cs1 上託管的連接埠。這可能需要幾秒鐘。
 +
-「網路介面show -role cluster」
+「網路介面show -vserver叢集」
 
 +
 .顯示範例
@@ -217,7 +218,7 @@ CAUTION: 請務必關閉 * 所有 * 連線的叢集連接埠、以避免任何�
 ====
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network interface show -role cluster*
+cluster1::*> *network interface show -vserver Cluster*
             Logical           Status     Network            Current       Current Is
 Vserver     Interface         Admin/Oper Address/Mask       Node          Port    Home
 ----------- ----------------- ---------- ------------------ ------------- ------- ----
@@ -230,7 +231,6 @@ Cluster
             cluster1-03_clus2 up/up      169.254.1.1/23     cluster1-03   e0a     false
             cluster1-04_clus1 up/up      169.254.1.6/23     cluster1-04   e0a     true
             cluster1-04_clus2 up/up      169.254.1.7/23     cluster1-04   e0a     false
-8 entries were displayed.
 cluster1::*>
 ----
 ====
@@ -251,7 +251,6 @@ cluster1-01          true    true          false
 cluster1-02          true    true          false
 cluster1-03          true    true          true
 cluster1-04          true    true          false
-4 entries were displayed.
 cluster1::*>
 ----
 ====
@@ -259,12 +258,7 @@ cluster1::*>
 +
 「如何執行設定」
 
-+
-.. 記錄當前之間的任何自訂添加 `running-config`以及正在使用的 RCF 檔案（例如您組織的 SNMP 配置）。
-.. 從 NX-OS 10.2 開始，使用 `show diff running-config`指令與 Bootflash 中儲存的 RCF 檔案進行比較。否則，請使用第三方差異/比較工具。
-
-
-. 將基本配置詳細資訊儲存到 `write_erase.cfg`bootflash 上的檔案。
+. 記錄目前運行配置和正在使用的 RCF 檔案之間的任何自訂新增。
 +
 [NOTE]
 ====
@@ -277,38 +271,49 @@ cluster1::*>
 
 
 ====
+. 將基本配置詳細資訊儲存到 `write_erase.cfg`bootflash 上的檔案。
 +
-`cs1# show run | i "username admin password" > bootflash:write_erase.cfg`
+
+NOTE: 升級或套用新的 RCF 時，必須清除交換器設定並執行基本配置。您必須連接到交換器序列控制台連接埠才能重新設定交換器。
 
 +
-`cs1# show run | section "vrf context management" >> bootflash:write_erase.cfg`
+`cs2# show run | section "switchname" > bootflash:write_erase.cfg`
 
 +
-`cs1# show run | section "interface mgmt0" >> bootflash:write_erase.cfg`
+`cs2# show run | section "hostname" >> bootflash:write_erase.cfg`
 
 +
-`cs1# show run | section "switchname" >> bootflash:write_erase.cfg`
+`cs2# show run | i "username admin password" >> bootflash:write_erase.cfg`
+
++
+`cs2# show run | section "vrf context management" >> bootflash:write_erase.cfg`
+
++
+`cs2# show run | section "interface mgmt0" >> bootflash:write_erase.cfg`
 
 . 對於 RCF 版本 1.12 及更高版本，執行以下命令：
 +
-`cs1# echo "hardware access-list tcam region ing-racl 1024" >> bootflash:write_erase.cfg`
+`cs2# echo "hardware access-list tcam region vpc-convergence 256" >> bootflash:write_erase.cfg`
 
 +
-`cs1# echo "hardware access-list tcam region egr-racl 1024" >> bootflash:write_erase.cfg`
+`cs2# echo "hardware access-list tcam region racl 256" >> bootflash:write_erase.cfg`
 
 +
-`cs1# echo "hardware access-list tcam region ing-l2-qos 1280" >> bootflash:write_erase.cfg`
+`cs2# echo "hardware access-list tcam region e-racl 256" >> bootflash:write_erase.cfg`
 
 +
-請參閱知識庫文章link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["如何在保留遠端連線的同時清除 Cisco 互連交換器上的組態"^]了解更多詳情。
+`cs2# echo "hardware access-list tcam region qos 256" >> bootflash:write_erase.cfg`
+
++
+請參閱知識庫文章 https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["如何在保留遠端連線的同時清除 Cisco 互連交換器上的組態"^]了解更多詳情。
 
 . 驗證 `write_erase.cfg`文件按預期填充：
 +
 `*show file bootflash:write_erase.cfg*`
 
-. 發出寫入清除命令以清除目前儲存的組態：
+. 發出 `write erase`命令來刪除目前已儲存的配置：
 +
-`cs1# *write erase*`
+`cs2# *write erase*`
 
 +
 `Warning: This command will erase the startup-configuration.`
@@ -318,11 +323,11 @@ cluster1::*>
 
 . 將先前儲存的基本組態複製到啟動組態。
 +
-`cs1# *copy bootflash:write_erase.cfg startup-config*`
+`cs2# *copy bootflash:write_erase.cfg startup-config*`
 
 . 重新啟動交換器：
 +
-`switch# *reload*`
+`cs2# *reload*`
 
 +
 `This command will reboot the system. (y/n)?  [n] *y*`
@@ -331,35 +336,34 @@ cluster1::*>
 +
 您可能需要更新與 SSH 金鑰相關的主機檔案項目。
 
-. 使用下列傳輸協定之一、將 RCF 複製到交換器 CS1 的 bootflash ： FTP 、 TFTP 、 SFTP 或 SCP 。
+. 使用下列傳輸協定之一將 RCF 複製到交換器 cs2 的 bootflash：FTP、TFTP、SFTP 或 SCP。有關Cisco命令的更多信息，請參閱link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]指南。
 +
-有關Cisco命令的更多信息，請參閱link:https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000系列NX-OS命令參考"^]指南。
-
-+
-此範例顯示使用 TFTP 將 RCF 複製到交換器 CS1 上的 bootflash ：
-
-+
+.顯示範例
+[%collapsible]
+====
 [listing, subs="+quotes"]
 ----
-cs1# *copy tftp: bootflash: vrf management*
-Enter source filename: *Nexus_9336C_RCF_v1.6-Cluster-HA-Breakout.txt*
-Enter hostname for the tftp server: *172.22.201.50*
+cs2# *copy tftp: bootflash: vrf management*
+Enter source filename: *Nexus_3132QV_RCF_v1.6-Cluster-HA-Breakout.txt*
+Enter hostname for the tftp server: 172.22.201.50
 Trying to connect to tftp server......Connection to Server Established.
 TFTP get operation was successful
 Copy complete, now saving to disk (please wait)...
 ----
+====
 . 將先前下載的RCF套用至bootFlash。
 +
-有關Cisco命令的更多信息，請參閱link:https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000系列NX-OS命令參考"^]。
+如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^] 指南：
 
 +
-此範例顯示RCF檔案 `Nexus_9336C_RCF_v1.6-Cluster-HA-Breakout.txt` 安裝在交換器 CS1 上：
-
-+
+.顯示範例
+[%collapsible]
+====
 [listing, subs="+quotes"]
 ----
-cs1# *copy Nexus_9336C_RCF_v1.6-Cluster-HA-Breakout.txt running-config echo-commands*
+cs2# *copy Nexus_3132QV_RCF_v1.6-Cluster-HA-Breakout.txt running-config echo-commands*
 ----
+====
 +
 [NOTE]
 ====
@@ -380,31 +384,38 @@ cs1# *copy Nexus_9336C_RCF_v1.6-Cluster-HA-Breakout.txt running-config echo-comm
 +
 輸出會因站台組態而異。請檢查連接埠設定、並參閱版本說明、以瞭解您安裝的RCF的任何特定變更。
 
-
-
-. 重新套用任何先前的自訂項目至交換器組態。如link:cabling-considerations-9336c-fx2.html["檢閱纜線佈線和組態考量"]需進一步變更的詳細資料、請參閱。
-. 驗證 RCF 版本、自訂新增項目和交換器設定是否正確之後、請將執行組態檔案複製到啟動組態檔案。
 +
-有關Cisco命令的更多信息，請參閱link:https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000系列NX-OS命令參考"^]。
 
-+
-`cs1# copy running-config startup-config`
+NOTE: 有關如何在 RCF 升級後使 10GbE 連接埠連線的步驟，請參閱知識庫文章link:https://kb.netapp.com/onprem%2FSwitches%2FCisco%2F10GbE_ports_on_Cisco_3132Q_cluster_switch_do_not_come_online["Cisco 3132Q 叢集交換器上的 10GbE 連接埠無法連線"^]。
 
-+
-`[########################################] 100% Copy complete`
 
-. 重新開機交換器CS1。您可以在交換器重新開機時忽略節點上報告的「叢集交換器健全狀況監視器」警示和「叢集連接埠關閉」事件。
+
+. 驗證 RCF 版本和開關設定正確後，複製 `running-config`文件到 `startup-config`文件。
 +
-`cs1# *reload*`
+有關Cisco命令的更多信息，請參閱link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]指南。
 
 +
-`This command will reboot the system. (y/n)?  [n] *y*`
-
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+cs2# copy running-config startup-config [########################################] 100% Copy complete
+----
+====
+. 重新開機交換器CS2。您可以忽略交換器重新開機時、節點上報告的「叢集連接埠關閉」事件和錯誤 `% Invalid command at '^' marker` 輸出。
++
+[listing, subs="+quotes"]
+----
+cs2# *reload*
+This command will reboot the system. (y/n)?  [n] *y*
+----
+. 重新套用任何先前的自訂項目至交換器組態。如link:cabling-considerations-3132q-v.html["檢閱纜線佈線和組態考量"]需進一步變更的詳細資料、請參閱。
 . 驗證叢集上叢集連接埠的健全狀況。
 +
 .. 驗證叢集內所有節點的叢集連接埠是否正常運作：
 +
-「網路連接埠show -role cluster」
+「網路連接埠show -IPSpace Cluster」
 
 +
 .顯示範例
@@ -412,7 +423,7 @@ cs1# *copy Nexus_9336C_RCF_v1.6-Cluster-HA-Breakout.txt running-config echo-comm
 ====
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network port show -role cluster*
+cluster1::*> *network port show -ipspace Cluster*
 
 Node: cluster1-01
                                                                        Ignore
@@ -445,7 +456,6 @@ Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
 --------- ------------ ---------------- ---- ---- ----------- -------- ------
 e0a       Cluster      Cluster          up   9000  auto/100000 healthy false
 e0d       Cluster      Cluster          up   9000  auto/100000 healthy false
-8 entries were displayed.
 ----
 ====
 .. 驗證叢集的交換器健全狀況。
@@ -463,50 +473,107 @@ Node/       Local  Discovered
 Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
 ----------- ------ ------------------------- ----------------- --------
 cluster1-01/cdp
-            e0a    cs1                       Ethernet1/7       N9K-C9336C
-            e0d    cs2                       Ethernet1/7       N9K-C9336C
+            e0a    cs1                       Ethernet1/7       N3K-C3132Q-V
+            e0d    cs2                       Ethernet1/7       N3K-C3132Q-V
 cluster01-2/cdp
-            e0a    cs1                       Ethernet1/8       N9K-C9336C
-            e0d    cs2                       Ethernet1/8       N9K-C9336C
+            e0a    cs1                       Ethernet1/8       N3K-C3132Q-V
+            e0d    cs2                       Ethernet1/8       N3K-C3132Q-V
 cluster01-3/cdp
-            e0a    cs1                       Ethernet1/1/1     N9K-C9336C
-            e0b    cs2                       Ethernet1/1/1     N9K-C9336C
+            e0a    cs1                       Ethernet1/1/1     N3K-C3132Q-V
+            e0b    cs2                       Ethernet1/1/1     N3K-C3132Q-V
 cluster1-04/cdp
-            e0a    cs1                       Ethernet1/1/2     N9K-C9336C
-            e0b    cs2                       Ethernet1/1/2     N9K-C9336C
+            e0a    cs1                       Ethernet1/1/2     N3K-C3132Q-V
+            e0b    cs2                       Ethernet1/1/2     N3K-C3132Q-V
 
 cluster1::*> *system cluster-switch show -is-monitoring-enabled-operational true*
 Switch                      Type               Address          Model
 --------------------------- ------------------ ---------------- -----
-cs1                         cluster-network    10.233.205.90    NX9-C9336C
-     Serial Number: FOCXXXXXXGD
+cs1                         cluster-network    10.233.205.90    N3K-C3132Q-V
+     Serial Number: FOXXXXXXXGD
       Is Monitored: true
             Reason: None
   Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
-                    9.3(5)
+                    9.3(4)
     Version Source: CDP
 
-cs2                         cluster-network    10.233.205.91    NX9-C9336C
-     Serial Number: FOCXXXXXXGS
+cs2                         cluster-network    10.233.205.91    N3K-C3132Q-V
+     Serial Number: FOXXXXXXXGS
       Is Monitored: true
             Reason: None
   Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
-                    9.3(5)
+                    9.3(4)
     Version Source: CDP
 
 2 entries were displayed.
 ----
+====
++
+
+NOTE: 對於 ONTAP 9.8 及更新版本、請使用命令 `system switch ethernet show -is-monitoring-enabled-operational true`。
+
++
+[NOTE]
+====
 您可能會在CS1交換器主控台觀察到下列輸出、視先前載入交換器的RCF版本而定：
 
-[listing]
+[source]
 ----
 2020 Nov 17 16:07:18 cs1 %$ VDC-1 %$ %STP-2-UNBLOCK_CONSIST_PORT: Unblocking port port-channel1 on VLAN0092. Port consistency restored.
 2020 Nov 17 16:07:23 cs1 %$ VDC-1 %$ %STP-2-BLOCK_PVID_PEER: Blocking port-channel1 on VLAN0001. Inconsistent peer vlan.
 2020 Nov 17 16:07:23 cs1 %$ VDC-1 %$ %STP-2-BLOCK_PVID_LOCAL: Blocking port-channel1 on VLAN0092. Inconsistent local vlan.
 ----
 ====
++
+
+NOTE: 叢集節點報告為健全狀態最多可能需要5分鐘。
 
 
+
+. 在叢集交換器CS1上、關閉連接至節點叢集連接埠的連接埠。
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cs1> *enable*
+cs1# *configure*
+cs1(config)# *interface eth1/1/1-2,eth1/7-8*
+cs1(config-if-range)# *shutdown*
+cs1(config-if-range)# *exit*
+cs1# *exit*
+----
+====
++
+
+NOTE: 顯示的連接埠數量會根據叢集中的節點數量而變化。
+
+. 驗證叢集LIF是否已移轉至交換器CS2上裝載的連接埠。這可能需要幾秒鐘的時間。
++
+「網路介面show -vserver叢集」
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface show -vserver Cluster*
+            Logical            Status     Network            Current             Current Is
+Vserver     Interface          Admin/Oper Address/Mask       Node                Port    Home
+----------- ------------------ ---------- ------------------ ------------------- ------- ----
+Cluster
+            cluster1-01_clus1  up/up      169.254.3.4/23     cluster1-01         e0d     false
+            cluster1-01_clus2  up/up      169.254.3.5/23     cluster1-01         e0d     true
+            cluster1-02_clus1  up/up      169.254.3.8/23     cluster1-02         e0d     false
+            cluster1-02_clus2  up/up      169.254.3.9/23     cluster1-02         e0d     true
+            cluster1-03_clus1  up/up      169.254.1.3/23     cluster1-03         e0b     false
+            cluster1-03_clus2  up/up      169.254.1.1/23     cluster1-03         e0b     true
+            cluster1-04_clus1  up/up      169.254.1.6/23     cluster1-04         e0b     false
+            cluster1-04_clus2  up/up      169.254.1.7/23     cluster1-04         e0b     true
+cluster1::*>
+----
+====
 . 驗證叢集是否正常：
 +
 「叢集展示」
@@ -528,20 +595,29 @@ cluster1-04          true     true          false
 cluster1::*>
 ----
 ====
-. 在交換器 cs2 上重複步驟 1 至 19。
+. 在交換器 cs1 上重複步驟 1 至 19。
 . 在叢集生命體上啟用自動還原。
 +
-`cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert True*`
-
-
-
-
-
-== 步驟 3 ：驗證叢集網路組態和叢集健全狀況
-
-. 驗證連接至叢集連接埠的交換器連接埠是否為* up*。
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert True*
+----
+. 重新開機交換器CS1。您可以這樣做、觸發叢集生命期以恢復到其主連接埠。您可以在交換器重新開機時忽略節點上報告的「叢集連接埠當機」事件。
 +
-`show interface brief`
+[listing, subs="+quotes"]
+----
+cs1# *reload*
+This command will reboot the system. (y/n)?  [n] *y*
+----
+
+
+
+
+== 步驟3：驗證組態
+
+. 驗證連接至叢集連接埠的交換器連接埠是否正常運作。
++
+`show interface brief | grep up`
 
 +
 .顯示範例
@@ -560,189 +636,6 @@ Eth1/8        1       eth  trunk  up      none                   100G(D) --
 .
 ----
 ====
-. 確認預期的節點仍已連線：
-+
-「How cup neighbor」
-
-+
-.顯示範例
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-cs1# *show cdp neighbors*
-
-Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
-                  S - Switch, H - Host, I - IGMP, r - Repeater,
-                  V - VoIP-Phone, D - Remotely-Managed-Device,
-                  s - Supports-STP-Dispute
-
-Device-ID          Local Intrfce  Hldtme Capability  Platform      Port ID
-node1              Eth1/1         133    H           FAS2980       e0a
-node2              Eth1/2         133    H           FAS2980       e0a
-cs1                Eth1/35        175    R S I s     N9K-C9336C    Eth1/35
-cs1                Eth1/36        175    R S I s     N9K-C9336C    Eth1/36
-
-Total entries displayed: 4
-----
-====
-. 使用下列命令、確認叢集節點位於正確的叢集 VLAN 中：
-+
-`show vlan brief`
-
-+
-`show interface trunk`
-
-+
-.顯示範例
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-cs1# *show vlan brief*
-
-VLAN Name                             Status    Ports
----- -------------------------------- --------- -------------------------------
-1    default                          active    Po1, Eth1/1, Eth1/2, Eth1/3
-                                                Eth1/4, Eth1/5, Eth1/6, Eth1/7
-                                                Eth1/8, Eth1/35, Eth1/36
-                                                Eth1/9/1, Eth1/9/2, Eth1/9/3
-                                                Eth1/9/4, Eth1/10/1, Eth1/10/2
-                                                Eth1/10/3, Eth1/10/4
-17   VLAN0017                         active    Eth1/1, Eth1/2, Eth1/3, Eth1/4
-                                                Eth1/5, Eth1/6, Eth1/7, Eth1/8
-                                                Eth1/9/1, Eth1/9/2, Eth1/9/3
-                                                Eth1/9/4, Eth1/10/1, Eth1/10/2
-                                                Eth1/10/3, Eth1/10/4
-18   VLAN0018                         active    Eth1/1, Eth1/2, Eth1/3, Eth1/4
-                                                Eth1/5, Eth1/6, Eth1/7, Eth1/8
-                                                Eth1/9/1, Eth1/9/2, Eth1/9/3
-                                                Eth1/9/4, Eth1/10/1, Eth1/10/2
-                                                Eth1/10/3, Eth1/10/4
-31   VLAN0031                         active    Eth1/11, Eth1/12, Eth1/13
-                                                Eth1/14, Eth1/15, Eth1/16
-                                                Eth1/17, Eth1/18, Eth1/19
-                                                Eth1/20, Eth1/21, Eth1/22
-32   VLAN0032                         active    Eth1/23, Eth1/24, Eth1/25
-                                                Eth1/26, Eth1/27, Eth1/28
-                                                Eth1/29, Eth1/30, Eth1/31
-                                                Eth1/32, Eth1/33, Eth1/34
-33   VLAN0033                         active    Eth1/11, Eth1/12, Eth1/13
-                                                Eth1/14, Eth1/15, Eth1/16
-                                                Eth1/17, Eth1/18, Eth1/19
-                                                Eth1/20, Eth1/21, Eth1/22
-34   VLAN0034                         active    Eth1/23, Eth1/24, Eth1/25
-                                                Eth1/26, Eth1/27, Eth1/28
-                                                Eth1/29, Eth1/30, Eth1/31
-                                                Eth1/32, Eth1/33, Eth1/34
-
-cs1# *show interface trunk*
-
------------------------------------------------------
-Port          Native  Status        Port
-              Vlan                  Channel
------------------------------------------------------
-Eth1/1        1       trunking      --
-Eth1/2        1       trunking      --
-Eth1/3        1       trunking      --
-Eth1/4        1       trunking      --
-Eth1/5        1       trunking      --
-Eth1/6        1       trunking      --
-Eth1/7        1       trunking      --
-Eth1/8        1       trunking      --
-Eth1/9/1      1       trunking      --
-Eth1/9/2      1       trunking      --
-Eth1/9/3      1       trunking      --
-Eth1/9/4      1       trunking      --
-Eth1/10/1     1       trunking      --
-Eth1/10/2     1       trunking      --
-Eth1/10/3     1       trunking      --
-Eth1/10/4     1       trunking      --
-Eth1/11       33      trunking      --
-Eth1/12       33      trunking      --
-Eth1/13       33      trunking      --
-Eth1/14       33      trunking      --
-Eth1/15       33      trunking      --
-Eth1/16       33      trunking      --
-Eth1/17       33      trunking      --
-Eth1/18       33      trunking      --
-Eth1/19       33      trunking      --
-Eth1/20       33      trunking      --
-Eth1/21       33      trunking      --
-Eth1/22       33      trunking      --
-Eth1/23       34      trunking      --
-Eth1/24       34      trunking      --
-Eth1/25       34      trunking      --
-Eth1/26       34      trunking      --
-Eth1/27       34      trunking      --
-Eth1/28       34      trunking      --
-Eth1/29       34      trunking      --
-Eth1/30       34      trunking      --
-Eth1/31       34      trunking      --
-Eth1/32       34      trunking      --
-Eth1/33       34      trunking      --
-Eth1/34       34      trunking      --
-Eth1/35       1       trnk-bndl     Po1
-Eth1/36       1       trnk-bndl     Po1
-Po1           1       trunking      --
-
-------------------------------------------------------
-Port          Vlans Allowed on Trunk
-------------------------------------------------------
-Eth1/1        1,17-18
-Eth1/2        1,17-18
-Eth1/3        1,17-18
-Eth1/4        1,17-18
-Eth1/5        1,17-18
-Eth1/6        1,17-18
-Eth1/7        1,17-18
-Eth1/8        1,17-18
-Eth1/9/1      1,17-18
-Eth1/9/2      1,17-18
-Eth1/9/3      1,17-18
-Eth1/9/4      1,17-18
-Eth1/10/1     1,17-18
-Eth1/10/2     1,17-18
-Eth1/10/3     1,17-18
-Eth1/10/4     1,17-18
-Eth1/11       31,33
-Eth1/12       31,33
-Eth1/13       31,33
-Eth1/14       31,33
-Eth1/15       31,33
-Eth1/16       31,33
-Eth1/17       31,33
-Eth1/18       31,33
-Eth1/19       31,33
-Eth1/20       31,33
-Eth1/21       31,33
-Eth1/22       31,33
-Eth1/23       32,34
-Eth1/24       32,34
-Eth1/25       32,34
-Eth1/26       32,34
-Eth1/27       32,34
-Eth1/28       32,34
-Eth1/29       32,34
-Eth1/30       32,34
-Eth1/31       32,34
-Eth1/32       32,34
-Eth1/33       32,34
-Eth1/34       32,34
-Eth1/35       1
-Eth1/36       1
-Po1           1
-..
-..
-..
-..
-..
-----
-====
-+
-
-NOTE: 如需特定連接埠和 VLAN 使用詳細資料、請參閱 RCF 中的橫幅和重要附註一節。
-
 . 確認CS1與CS2之間的ISL正常運作：
 +
 「How port-channel Summary」
@@ -763,15 +656,16 @@ Flags:  D - Down        P - Up in port-channel (members)
         p - Up in delay-lacp mode (member)
         M - Not in use. Min-links not met
 --------------------------------------------------------------------------------
-Group Port-       Type     Protocol  Member Ports      Channel
+Group Port-       Type     Protocol  Member Ports
+      Channel
 --------------------------------------------------------------------------------
-1     Po1(SU)     Eth      LACP      Eth1/35(P)        Eth1/36(P)
+1     Po1(SU)     Eth      LACP      Eth1/31(P)   Eth1/32(P)
 cs1#
 ----
 ====
-. 驗證叢集生命區是否已還原至其主連接埠：
+. 驗證叢集 LIF 是否已恢復到其主連接埠：
 +
-「網路介面show -role cluster」
+「網路介面show -vserver叢集」
 
 +
 .顯示範例
@@ -779,7 +673,7 @@ cs1#
 ====
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network interface show -role cluster*
+cluster1::*> *network interface show -vserver Cluster*
             Logical            Status     Network            Current             Current Is
 Vserver     Interface          Admin/Oper Address/Mask       Node                Port    Home
 ----------- ------------------ ---------- ------------------ ------------------- ------- ----
@@ -792,16 +686,9 @@ Cluster
             cluster1-03_clus2  up/up      169.254.1.1/23     cluster1-03         e0b     true
             cluster1-04_clus1  up/up      169.254.1.6/23     cluster1-04         e0b     true
             cluster1-04_clus2  up/up      169.254.1.7/23     cluster1-04         e0b     true
-8 entries were displayed.
 cluster1::*>
 ----
 ====
-+
-如果有任何叢集生命期尚未返回其主連接埠、請從本機節點手動還原：
-
-+
-`network interface revert -vserver vserver_name -lif lif_name`
-
 . 驗證叢集是否正常：
 +
 「叢集展示」
@@ -819,7 +706,6 @@ cluster1-01          true    true          false
 cluster1-02          true    true          false
 cluster1-03          true    true          true
 cluster1-04          true    true          false
-4 entries were displayed.
 cluster1::*>
 ----
 ====
@@ -838,20 +724,21 @@ cluster1::*>
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-* 注意： * 請等待數秒後再執行 `show`命令以顯示詳細資料。
+* 注意： * 在執行 show 命令之前、請等待數秒以顯示詳細資料。
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity show*
-                                  Source               Destination         Packet
-Node   Date                       LIF                  LIF                 Loss
------- -------------------------- -------------------- ------------------- -----------
-node1
-       3/5/2022 19:21:18 -06:00   cluster1-01_clus2    cluster1-02-clus1   none
-       3/5/2022 19:21:20 -06:00   cluster1-01_clus2    cluster1-02_clus2   none
-node2
-       3/5/2022 19:21:18 -06:00   cluster1-02_clus2    cluster1-01_clus1   none
-       3/5/2022 19:21:20 -06:00   cluster1-02_clus2    cluster1-01_clus2   none
+                                  Source              Destination         Packet
+Node   Date                       LIF                 LIF                 Loss
+------ -------------------------- ------------------- ------------------- -----------
+cluster1-01
+       3/5/2022 19:21:18 -06:00   cluster1-01_clus2   cluster1-02_clus1   none
+       3/5/2022 19:21:20 -06:00   cluster1-01_clus2   cluster1-02_clus2   none
+
+cluster1-02
+       3/5/2022 19:21:18 -06:00   cluster1-02_clus2   cluster1-01_clus1   none
+       3/5/2022 19:21:20 -06:00   cluster1-02_clus2   cluster1-01_clus2   none
 ----
 --
 .所有 ONTAP 版本
@@ -863,41 +750,28 @@ node2
 [listing, subs="+quotes"]
 ----
 cluster1::*> *cluster ping-cluster -node local*
-Host is cluster1-03
+Host is cluster1-02
 Getting addresses from network interface table...
-Cluster cluster1-03_clus1 169.254.1.3 cluster1-03 e0a
-Cluster cluster1-03_clus2 169.254.1.1 cluster1-03 e0b
-Cluster cluster1-04_clus1 169.254.1.6 cluster1-04 e0a
-Cluster cluster1-04_clus2 169.254.1.7 cluster1-04 e0b
-Cluster cluster1-01_clus1 169.254.3.4 cluster1-01 e0a
-Cluster cluster1-01_clus2 169.254.3.5 cluster1-01 e0d
-Cluster cluster1-02_clus1 169.254.3.8 cluster1-02 e0a
-Cluster cluster1-02_clus2 169.254.3.9 cluster1-02 e0d
-Local = 169.254.1.3 169.254.1.1
-Remote = 169.254.1.6 169.254.1.7 169.254.3.4 169.254.3.5 169.254.3.8 169.254.3.9
+Cluster cluster1-01_clus1 169.254.209.69 cluster1-01     e0a
+Cluster cluster1-01_clus2 169.254.49.125 cluster1-01     e0b
+Cluster cluster1-02_clus1 169.254.47.194 cluster1-02     e0a
+Cluster cluster1-02_clus2 169.254.19.183 cluster1-02     e0b
+Local = 169.254.47.194 169.254.19.183
+Remote = 169.254.209.69 169.254.49.125
 Cluster Vserver Id = 4294967293
-Ping status:
-............
-Basic connectivity succeeds on 12 path(s)
+Ping status: ......
+Basic connectivity succeeds on 4 path(s)
 Basic connectivity fails on 0 path(s)
-................................................
-Detected 9000 byte MTU on 12 path(s):
-    Local 169.254.1.3 to Remote 169.254.1.6
-    Local 169.254.1.3 to Remote 169.254.1.7
-    Local 169.254.1.3 to Remote 169.254.3.4
-    Local 169.254.1.3 to Remote 169.254.3.5
-    Local 169.254.1.3 to Remote 169.254.3.8
-    Local 169.254.1.3 to Remote 169.254.3.9
-    Local 169.254.1.1 to Remote 169.254.1.6
-    Local 169.254.1.1 to Remote 169.254.1.7
-    Local 169.254.1.1 to Remote 169.254.3.4
-    Local 169.254.1.1 to Remote 169.254.3.5
-    Local 169.254.1.1 to Remote 169.254.3.8
-    Local 169.254.1.1 to Remote 169.254.3.9
-Larger than PMTU communication succeeds on 12 path(s)
+................
+Detected 9000 byte MTU on 4 path(s):
+    Local 169.254.19.183 to Remote 169.254.209.69
+    Local 169.254.19.183 to Remote 169.254.49.125
+    Local 169.254.47.194 to Remote 169.254.209.69
+    Local 169.254.47.194 to Remote 169.254.49.125
+Larger than PMTU communication succeeds on 4 path(s)
 RPC status:
-6 paths up, 0 paths down (tcp check)
-6 paths up, 0 paths down (udp check)
+2 paths up, 0 paths down (tcp check)
+2 paths up, 0 paths down (udp check)
 ----
 --
 ====

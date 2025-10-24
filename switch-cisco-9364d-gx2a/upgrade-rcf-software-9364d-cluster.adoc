@@ -952,7 +952,7 @@ node1-04          true     true          false
 4 entries were displayed.
 ----
 ====
-. 在交換器 cs2 上重複步驟 4 至 16。
+. 在交換器 cs2 上重複步驟 4 至 18。
 . 在叢集生命體上啟用自動還原：
 +
 `network interface modify -vserver Cluster -lif  * -auto-revert True`
