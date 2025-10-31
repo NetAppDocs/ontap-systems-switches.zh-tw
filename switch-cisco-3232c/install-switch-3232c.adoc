@@ -50,4 +50,4 @@ NetApp系統機櫃中的Cisco Nexus 3232C
 
 
 .接下來呢？
-或者，您可以link:install-cisco-nexus-3232c.html["在NetApp機櫃中安裝Cisco Nexus 3223C 交換機"]。否則，轉到link:cabling-considerations-3232c.html["檢視纜線佈線與組態"]。
+（可選） link:install-cisco-nexus-3232c.html["在NetApp機櫃中安裝Cisco Nexus 3223C 交換機"]。否則，請前往 link:cabling-considerations-3232c.html["檢查佈線和配置"]。

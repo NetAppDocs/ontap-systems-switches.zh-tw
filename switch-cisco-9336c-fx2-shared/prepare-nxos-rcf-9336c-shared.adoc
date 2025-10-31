@@ -246,4 +246,4 @@ Cluster
 
 
 .接下來呢？
-link:install-nxos-software-9336c-shared.html["安裝NX-OS軟體"]。
+準備好安裝 NX-OS 軟體和 RCF 後，您可以… link:install-nxos-software-9336c-shared.html["安裝 NX-OS 軟體"]。

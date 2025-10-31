@@ -426,4 +426,4 @@ unit 	active 	    backup   current-active  next-active
 
 
 .下一步
-link:configure-licenses.html["安裝授權"] 。
+安裝 EFOS 軟體後，您可以… link:configure-licenses.html["安裝您的許可證"]。

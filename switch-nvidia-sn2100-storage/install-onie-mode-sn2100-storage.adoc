@@ -140,4 +140,4 @@ DISTRIB_DESCRIPTION=*"Cumulus Linux 4.4.3”*
 
 
 .接下來呢？
-link:install-rcf-sn2100-storage.html["安裝或升級 RCF 指令碼"] 。
+在 ONIE 模式下安裝 Cumulus Linux 後，您 link:install-rcf-sn2100-storage.html["安裝或升級 RCF 腳本"]。

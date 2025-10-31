@@ -82,4 +82,4 @@ summary: 您可以使用「Bes - 53248叢集交換器連接埠指派表」作為
 
 
 .下一步
-link:components-bes53248.html["元件與零件編號"] 。
+在您查看完配置要求後，您可以確認您的配置。 link:components-bes53248.html["組件和零件編號"]。

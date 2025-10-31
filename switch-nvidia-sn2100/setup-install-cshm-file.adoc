@@ -136,4 +136,4 @@ NOTE: 如果套用組態檔案後、您的機型仍顯示 * 其他 * 、請聯�
 查看 https://docs.netapp.com/us-en/ontap-cli/system-switch-ethernet-configure-health-monitor.html["系統交換器乙太網路設定-健康-監控"^]命令以了解更多詳細資訊。
 
 .接下來呢？
-link:../switch-cshm/config-overview.html["設定交換器健全狀況監控"]。
+安裝 CSHM 檔案後，您 link:../switch-cshm/config-overview.html["配置交換器健康監控"]。

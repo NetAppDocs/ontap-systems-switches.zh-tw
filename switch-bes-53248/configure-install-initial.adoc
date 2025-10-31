@@ -249,4 +249,4 @@ Configuration Saved!
 
 
 .接下來呢？
-link:configure-efos-software.html["安裝EFOS軟體"]。
+配置好交換器後，您可以… link:configure-efos-software.html["安裝 EFOS 軟體"]。

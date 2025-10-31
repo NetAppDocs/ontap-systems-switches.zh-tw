@@ -19,4 +19,4 @@ summary: 若要安裝SN2100硬體、請參閱NVIDIA的說明文件。
 
 
 .接下來呢？
-link:cabling-considerations-sn2100-cluster.html["檢視纜線佈線與組態"] 。
+安裝完硬體後，你 link:cabling-considerations-sn2100-cluster.html["檢查佈線和配置"] 要求。

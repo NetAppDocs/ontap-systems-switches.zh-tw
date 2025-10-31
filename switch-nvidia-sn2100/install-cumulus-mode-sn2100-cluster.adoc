@@ -723,4 +723,4 @@ swp16      100G   swp   sw6                                       swp16
 --
 ====
 .接下來呢？
-link:install-rcf-sn2100-cluster.html["安裝參考組態檔（RCF）指令碼"]。
+在 Cumulus 模式下安裝 Cumulus Linux 後，您 link:install-rcf-sn2100-cluster.html["安裝參考設定檔 (RCF) 腳本"]。

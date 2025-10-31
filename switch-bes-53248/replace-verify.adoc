@@ -95,4 +95,4 @@ node2                true    true          false
 
 
 .接下來呢？
-link:../switch-cshm/config-overview.html["設定交換器健全狀況監控"]。
+確認 EFOS 軟體或 RCF 升級後，您可以… link:../switch-cshm/config-overview.html["配置交換器健康監控"]。

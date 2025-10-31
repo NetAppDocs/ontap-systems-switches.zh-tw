@@ -19,4 +19,4 @@ summary: 若要安裝BS-53248硬體、請參閱NVIDIA文件。
 
 
 .接下來呢？
-link:install-cumulus-mode-sn2100-storage.html["在Cummuls模式下安裝Cummulus Linux"]或者link:install-onie-mode-sn2100-storage.html["以ONIE模式安裝CummulUS Linux"]。
+配置好交換器之後，你 link:install-cumulus-mode-sn2100-storage.html["以 Cumulus 模式安裝 Cumulus Linux"] 或者 link:install-onie-mode-sn2100-storage.html["以 ONIE 模式安裝 Cumulus Linux"]。

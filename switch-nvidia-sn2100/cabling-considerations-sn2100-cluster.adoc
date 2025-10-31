@@ -333,4 +333,4 @@ UP     swp16      100G  9216   BondMember  cs01 (swp16)     Master: cl
 --
 ====
 .接下來呢？
-link:install-cable-shelves-sn2100-cluster.html["將NS224磁碟櫃纜線當作交換器附加儲存設備"]。
+在您審核佈線和配置要求後，您 link:install-cable-shelves-sn2100-cluster.html["將 NS224 貨架連接成交換器連接的儲存設備"]。

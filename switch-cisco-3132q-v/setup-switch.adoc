@@ -212,4 +212,4 @@ NOTE: 如果您在此階段未儲存組態、下次重新啟動交換器時、�
 
 
 .接下來呢？
-link:prepare-install-cisco-nexus-3132q.html["準備安裝NX-OS和RCF"]。
+配置好交換器之後，你 link:prepare-install-cisco-nexus-3132q.html["準備安裝 NX-OS 和 RCF"]。

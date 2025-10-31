@@ -307,3 +307,6 @@ cluster1::*>
 ----
 ====
 
+
+.接下來呢？
+交換器遷移完成後，您可以… link:../switch-cshm/config-overview.html["配置交換器健康監控"]。

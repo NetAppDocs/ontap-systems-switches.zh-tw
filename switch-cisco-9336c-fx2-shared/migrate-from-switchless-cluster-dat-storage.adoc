@@ -856,4 +856,4 @@ storage port modify –node [node name] –port [port name] –mode network
 
 
 .接下來呢？
-link:../switch-cshm/config-overview.html["設定交換器健全狀況監控"]。
+交換器遷移完成後，您可以… link:../switch-cshm/config-overview.html["配置交換器健康監控"]。

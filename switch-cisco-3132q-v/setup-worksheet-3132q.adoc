@@ -590,4 +590,4 @@ summary: 如果您想要記錄支援的平台、您必須使用完整的佈線�
 
 |===
 .下一步
-link:install-switch-3132qv.html["安裝交換器"] 。
+完成佈線工作表後，你 link:install-switch-3132qv.html["安裝開關"]。

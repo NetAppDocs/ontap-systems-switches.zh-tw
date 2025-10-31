@@ -672,4 +672,4 @@ unreachable default metric 4278198272
 --
 ====
 .接下來呢？
-link:install-rcf-sn2100-cluster.html["安裝或升級 RCF 指令碼"]。
+升級 Cumulus Linux 版本後，您 link:install-rcf-sn2100-cluster.html["安裝或升級 RCF 腳本"]。

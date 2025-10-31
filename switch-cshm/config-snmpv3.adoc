@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: cshm, configure, snmpv3, switch logs, debugging, collection 
 summary: 您可以使用此程序來設定特定交換器的 SNMPv3 、以支援乙太網路交換器健全狀況監控（ CSHM ）。 
 ---
-= 選用：為交換器設定 SNMPv3
+= 為交換器配置 SNMPv3（可選）
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -33,4 +33,4 @@ summary: 對於Cisco Nexus 3132Q-V交換器的安裝與維護、請務必檢閱�
 請參閱 https://hwu.netapp.com["Hardware Universe"^] 以取得最新資訊。
 
 .下一步
-link:required-documentation-3132q.html["必要文件"] 。
+在您查看完配置要求後，您可以查看 link:required-documentation-3132q.html["所需文件"]。

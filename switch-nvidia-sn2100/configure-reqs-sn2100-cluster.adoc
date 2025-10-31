@@ -45,4 +45,4 @@ SN2100 交換器可透過不同的交換器配對，在 ONTAP 9.10.1P3 及更新
 
 
 .接下來呢？
-link:components-sn2100-cluster.html["元件與零件編號"] 。
+在您查看完配置要求後，您可以確認您的配置。 link:components-sn2100-cluster.html["組件和零件編號"]。

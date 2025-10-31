@@ -127,4 +127,4 @@ Network Processing Device...................... BCM56873_A0
 ----
 ====
 .下一步
-link:required-documentation-bes53248.html["必要文件"] 。
+確認組件和零件編號後，您可以進行審核。 link:required-documentation-bes53248.html["所需文件"]。

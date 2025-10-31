@@ -571,3 +571,6 @@ RPC status:
 「et -priv. admin」
 
 
+
+.接下來呢？
+更換開關後，您link:../switch-cshm/config-overview.html["配置交換器健康監控"]。

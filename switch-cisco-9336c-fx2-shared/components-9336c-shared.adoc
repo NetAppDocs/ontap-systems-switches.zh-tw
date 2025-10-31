@@ -43,4 +43,4 @@ summary: 從S299.1開始ONTAP 、您可以使用Cisco Nexus 9336C-FX2交換器�
 | X-NXA-FAN-65CFM-PI | N9K-9336C 65CFM、連接埠側進氣氣流 
 |===
 .下一步
-link:required-documentation-9336c-shared.html["必要文件"] 。
+確認組件和零件編號後，您需要進行審核。 link:required-documentation-9336c-shared.html["所需文件"]。

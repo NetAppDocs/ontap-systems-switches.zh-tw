@@ -71,4 +71,4 @@ image:blank_cabling_worksheet.jpg["空白的佈線工作表"]
 
 
 .下一步
-link:install-9336c-shared.html["安裝交換器"]。
+完成佈線工作表後，您可以 link:install-9336c-shared.html["安裝開關"]。

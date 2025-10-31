@@ -424,4 +424,4 @@ NetApp 建議您使用系統管理員來設定新叢集。
 參考link:https://docs.netapp.com/us-en/ontap/task_configure_ontap.html["使用系統管理員在新叢集上設定 ONTAP"]了解設定說明。
 
 .接下來呢？
-安裝 RCF 後，您link:configure-ssh-keys.html["驗證 SSH 配置"]。
+安裝 RCF 後，您可以… link:configure-ssh-keys.html["驗證 SSH 配置"]。

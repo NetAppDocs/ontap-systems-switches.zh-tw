@@ -24,4 +24,4 @@ https://hwu.netapp.com/["NetApp Hardware Universe"^]
 
 
 .接下來呢？
-link:configure-sn2100-cluster.html["設定交換器"]。
+給書架佈線完成後，你 link:configure-sn2100-cluster.html["配置交換機"]。

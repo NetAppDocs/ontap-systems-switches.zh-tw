@@ -33,6 +33,8 @@ entries:
     url: "/switch-cisco-3232c/configure-software-overview-3232c-cluster.html"
   - title: 設定交換器
     url: "/switch-cisco-3232c/setup-switch.html"
+  - title: 準備安裝NX-OS軟體和RCF
+    url: "/switch-cisco-3232c/prepare-install-cisco-nexus-3232c.html"
   - title: 安裝NX-OS軟體
     url: "/switch-cisco-3232c/install-nx-os-software-3232c.html"
   - title: 安裝或升級 RCF

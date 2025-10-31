@@ -562,4 +562,4 @@ Cluster
 
 
 .接下來呢？
-link:../switch-cshm/config-overview.html["設定交換器健全狀況監控"]。
+遷移交換器後，您link:../switch-cshm/config-overview.html["配置交換器健康監控"]。

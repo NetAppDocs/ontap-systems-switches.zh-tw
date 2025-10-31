@@ -19,4 +19,4 @@ summary: 若要安裝BS-53248硬體、請參閱Broadcom的說明文件。
 
 
 .接下來呢？
-link:cabling-considerations-bes-53248.html["檢視纜線佈線與組態"] 。
+安裝好交換器的硬體後，您可以… link:cabling-considerations-bes53248.html["檢查佈線和配置"] 要求。

@@ -270,7 +270,7 @@ cluster1::*>
 +
 `cs2# show run | section "interface mgmt0" >> bootflash:write_erase.cfg`
 
-. 對於 RCF 版本 1.12 及更高版本，執行以下命令：
+. 升級到 RCF 版本 1.12 及更高版本時，請執行以下命令：
 +
 `cs2# echo "hardware access-list tcam region racl-lite 512" >> bootflash:write_erase.cfg`
 
