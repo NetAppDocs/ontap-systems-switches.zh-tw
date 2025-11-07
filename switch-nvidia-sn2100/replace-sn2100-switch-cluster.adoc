@@ -679,4 +679,4 @@ swp16      100G   BondMember  nsw2            swp16
 
 
 .接下來呢？
-更換開關後，您link:../switch-cshm/config-overview.html["配置交換器健康監控"]。
+更換開關後，您可以 link:../switch-cshm/config-overview.html["配置交換器健康監控"]。

@@ -120,4 +120,4 @@ N9K-9336C 65CFM、連接埠側進氣氣流
 NOTE: 購買智慧型授權後，請安裝適當的 RCF ，以啟用並設定所有 36 個可用連接埠以供使用。
 
 .下一步
-確認組件和零件號碼後，請查看link:required-documentation-9336c-storage.html["所需文件"]。
+確認組件和零件編號後，您可以進行審核。 link:required-documentation-9336c-storage.html["所需文件"]。

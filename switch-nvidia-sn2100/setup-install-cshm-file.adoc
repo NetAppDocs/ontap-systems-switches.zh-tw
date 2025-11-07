@@ -96,7 +96,7 @@ summary: 您可以使用此程序來安裝適用的組態檔、以監控 NVIDIA 
 +
 [listing, subs="+quotes"]
 ----
-cluster1::> *system switch ethernet*
+cluster1::> *system switch ethernet configure-health-monitor*
 ----
 . 確認 ONTAP 版本的命令輸出結尾為下列文字：
 
@@ -122,11 +122,11 @@ CSHM 下載套件已成功處理。
 如果發生錯誤、請聯絡NetApp支援部門。
 
 . [[step6]] 在完成下一個步驟之前、請等待最多兩倍的乙太網路交換器健全狀況監視器輪詢時間間隔（透過執行找到 `system switch ethernet polling-interval show`）。
-. 在 ONTAP 系統上執行命令 `system switch ethernet show` 、並確定探索到叢集交換器時、監控欄位設定為 * 真 * 、序號欄位未顯示 * 未知 * 。
+. 運行該命令 `system switch ethernet configure-health-monitor show`在ONTAP系統中，確保已發現叢集交換機，並且監控欄位設定為 *True*，序號欄位不顯示 *Unknown*。
 +
 [listing, subs="+quotes"]
 ----
-cluster1::> *system switch ethernet show*
+cluster1::> *system switch ethernet configure-health-monitor show*
 ----
 
 
@@ -136,4 +136,4 @@ NOTE: 如果套用組態檔案後、您的機型仍顯示 * 其他 * 、請聯�
 查看 https://docs.netapp.com/us-en/ontap-cli/system-switch-ethernet-configure-health-monitor.html["系統交換器乙太網路設定-健康-監控"^]命令以了解更多詳細資訊。
 
 .接下來呢？
-安裝 CSHM 檔案後，您 link:../switch-cshm/config-overview.html["配置交換器健康監控"]。
+安裝 CSHM 檔案後，您可以link:../switch-cshm/config-overview.html["配置交換器健康監控"]。

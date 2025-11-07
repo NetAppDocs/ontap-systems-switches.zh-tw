@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: install rcf, cisco switches, storage 
 summary: 首次設定 Nexus 9336C-FX2 儲存交換器後，即可安裝 RCF 。您也可以使用此程序來升級RCF版本。 
 ---
-= 安裝或升級參考組態檔案
+= 安裝參考組態檔案
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -122,7 +122,7 @@ cs1# copy running-config startup-config [#######################################
 +
 `cs1# show run | section "switchname" >> bootflash:write_erase.cfg`
 
-. 對於 RCF 版本 1.12 及更高版本，執行以下命令：
+. 安裝 RCF 1.12 及更高版本時，請執行以下命令：
 +
 `cs1# echo "hardware access-list tcam region ing-racl 1024" >> bootflash:write_erase.cfg`
 
@@ -137,7 +137,7 @@ cs1# copy running-config startup-config [#######################################
 
 . 驗證 `write_erase.cfg`文件按預期填充：
 +
-`show file bootflash:write_erase.cfg`
+`*show file bootflash:write_erase.cfg*`
 
 . 發出 `write erase`命令來刪除目前已儲存的配置：
 +
@@ -486,4 +486,4 @@ System Manager 為叢集設定和組態提供簡單易用的工作流程，包�
 前往 https://docs.netapp.com/us-en/ontap/task_configure_ontap.html["使用系統管理員在新叢集上設定 ONTAP"] 以取得設定指示。
 
 .接下來呢？
-安裝或升級 RCF 後，您link:configure-ssh-keys.html["驗證 SSH 配置"]
+安裝 RCF 後，您可以…link:configure-ssh-keys.html["驗證 SSH 配置"]

@@ -1061,4 +1061,4 @@ sw2                         cluster-network    10.233.205.91    MSN2100-CB2RC
 --
 ====
 .接下來呢？
-安裝 RCF 後，你 link:setup-install-cshm-file.html["安裝 CSHM 文件"]。
+安裝 RCF 後，您可以… link:setup-install-cshm-file.html["安裝 CSHM 文件"]。

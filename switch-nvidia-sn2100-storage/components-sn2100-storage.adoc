@@ -75,4 +75,4 @@ X-MTEF套件E-E
 NOTE: 如需詳細資訊、請參閱NVIDIA文件 https://docs.nvidia.com/networking/display/sn2000pub/Installation["安裝SN2100交換器與軌道套件"^]。
 
 .下一步
-確認組件和零件編號後，您需要進行審核。 link:required-documentation-sn2100-storage.html["所需文件"]。
+確認組件和零件編號後，您可以進行審核。 link:required-documentation-sn2100-storage.html["所需文件"]。

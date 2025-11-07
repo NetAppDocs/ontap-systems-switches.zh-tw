@@ -192,4 +192,4 @@ NOTE: 如果您在此階段未儲存組態、下次重新啟動交換器時、�
 
 
 .接下來呢？
-配置好交換器後，link:install-nxos-overview-9336c-storage.html["準備安裝NX-OS軟體和RCF"] 。
+配置好交換器後，您可以… link:install-nxos-overview-9336c-storage.html["準備安裝NX-OS軟體和RCF"]。

@@ -696,4 +696,4 @@ cluster1::*>
 
 
 .接下來呢？
-安裝或升級 NX-OS 軟體後，您link:install-upgrade-rcf-overview-cluster.html["安裝或升級參考設定檔（RCF）"]。
+安裝或升級 NX-OS 軟體後，您可以…link:install-upgrade-rcf-overview-cluster.html["安裝或升級參考設定檔（RCF）"] 。

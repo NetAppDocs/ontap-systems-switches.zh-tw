@@ -76,3 +76,5 @@ Do you want to continue? [y/n] *y*
 
 --
 ====
+.下一步
+重置開關後，您可以link:configure-overview-sn2100-cluster.html["重新配置"]根據需要使用。

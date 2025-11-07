@@ -132,4 +132,4 @@ NOTE: 為了維持備援、必須將兩條線路連接至不同的PDU。
 
 
 .接下來呢？
-在NetApp機櫃中安裝交換器後，link:setup-switch-9336c-cluster.html["設定Cisco Nexus 9336C-FX2 和 9336C-FX2-T 交換機"] 。
+將交換器安裝到NetApp機櫃後，您可以…link:setup-switch-9336c-cluster.html["設定Cisco Nexus 9336C-FX2 和 9336C-FX2-T 交換機"] 。

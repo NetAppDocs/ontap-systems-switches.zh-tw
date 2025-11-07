@@ -1,8 +1,8 @@
 ---
-permalink: switch-cisco-9336c-fx2/install-upgrade-rcf-overview-cluster.html 
+permalink: switch-cisco-9336c-fx2-storage/install-upgrade-rcf-overview-9336c-storage.html 
 sidebar: sidebar 
 keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, cisco 9336c-fx2 
-summary: 使用叢集交換器健全狀況監視器（CSHM\）和記錄收集功能時、必須使用SSH。若要在 Cisco 9336c-FX2 叢集交換器上啟用 SSH 、請先產生 SSH 金鑰、然後再啟用 SSH 。 
+summary: 首次設定 Nexus 9336C-FX2 交換器後，您可以安裝 RCF。您也可以使用此程序升級您的 RCF 版本。 
 ---
 = 安裝或升級參考組態檔案（ RCF ）總覽
 :allow-uri-read: 
@@ -11,7 +11,7 @@ summary: 使用叢集交換器健全狀況監視器（CSHM\）和記錄收集功
 
 
 [role="lead"]
-首次設定 Nexus 9336C-FX2 和 9336C-FX2-T 交換器後，安裝參考設定檔 (RCF)。當您的交換器上安裝了現有版本的 RCF 檔案時，您可以升級您的 RCF 版本。
+首次設定 Nexus 9336C-FX2 儲存交換器後，您需要安裝參考設定檔 (RCF)。當您的交換器上安裝了現有版本的 RCF 檔案時，您可以升級您的 RCF 版本。
 
 如需安裝或升級 RCF 的詳細資訊，請參閱知識庫link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["如何在保留遠端連線的同時清除 Cisco 互連交換器上的組態"^]文件。
 
@@ -56,14 +56,14 @@ summary: 使用叢集交換器健全狀況監視器（CSHM\）和記錄收集功
  a| 
 叢集式 HA 儲存設備
  a| 
-連接埠可設定為用於叢集 + HA 的 40/100GbE 、用於叢集的 4x10GbE 中斷連接、用於叢集 + HA 的 4x25GbE 中斷連接、以及用於每個儲存 HA 配對的 100GbE 連接埠。
+連接埠配置為：叢集+HA 40/100GbE，叢集 4x10GbE 分支，叢集+HA 4x25GbE 分支，以及每個儲存 HA 對 100GbE。
 
 
 
  a| 
 叢集
  a| 
-兩種 RCF 類型、分別配置 4 個 10GbE 連接埠（中斷）和 40/100GbE 連接埠。除了 AFF A320 、 AFF A250 和 FAS500f 系統之外、所有的 FS/AFF 節點都受到支援。
+兩種 RCF 版本，分別分配了不同的 4x10GbE 連接埠（分支）和 40/100GbE 連接埠。除了AFF A320、 AFF A250和FAS500f系統之外，所有FAS和AFF節點均受支援。
 
 
 
@@ -74,11 +74,11 @@ summary: 使用叢集交換器健全狀況監視器（CSHM\）和記錄收集功
 
 |===
 .建議的文件
-* link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco 乙太網路交換器（ NSS ）"^]
+* link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器"^]
 +
 請參閱交換器相容性表、瞭解 NetApp 支援網站 上支援的 ONTAP 和 RCF 版本。請注意、 RCF 中的命令語法與特定版本 NX-OS 中的語法之間可能存在命令相依性。
 
-* link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000系列交換器"^]
+* link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Cisco Nexus 9000系列交換器"^]
 +
 如需 Cisco 交換器升級與降級程序的完整文件、請參閱 Cisco 網站上提供的適當軟體與升級指南。
 
@@ -87,21 +87,19 @@ summary: 使用叢集交換器健全狀況監視器（CSHM\）和記錄收集功
 .關於範例
 本程序中的範例使用下列交換器和節點命名法：
 
-* 兩個 Cisco 交換器的名稱分別是 *CS1* 和 *CS2* 。
-* 節點名稱為 * cluster1-01* ， * cluster1-02* ， * cluster1-03* 及 * cluster1-04* 。
-* 叢集 LIF 名稱為 * cluster1-01_clus1* ， * cluster1-01_clus2* ， * cluster1-02_clus1* ， * cluster1-02_clus2* ， * cluster1-03_clus1* ， * cluster1-03_clus2* ， * cluster1-04_clus1* 和 * clus04-clus1* 。
+* 兩個Cisco交換器的名稱為CS1和CS2。
+* 節點名稱為node1-01、node1-02、node1-03和node1-04。
+* 群集 LIF 名稱稱為 node1-01_clus1、node1-01_clus2、node1-02_clus1、node1-02_clus2、node1-03_clus1、node1-03_clus2、node1-04_clus1 和 node1-04_clus2。
 * 「cluster1：*：>」提示會指出叢集的名稱。
 
 
-本程序中的範例使用四個節點。這些節點使用兩個 10GbE 叢集互連連接埠 *e0A* 和 *e0b* 。請參閱 https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^]以驗證平台上正確的叢集連接埠。
+查看 https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^]驗證平台上的正確連接埠。
 
 
 NOTE: 命令輸出可能會因ONTAP 不同版本的不相同而有所差異。
-
-如需可用 RCF 組態的詳細資訊、請參閱 link:configure-software-overview-9336c-cluster.html["軟體安裝工作流程"]。
 
 .使用的命令
 此程序需要同時使用ONTAP 支援指令和Cisco Nexus 9000系列交換器的指令；ONTAP 除非另有說明、否則會使用支援指令。
 
 .接下來呢？
-在您查看 RCF 安裝或升級流程後，您可以link:install-rcf-software-9336c-cluster.html["安裝 RCF"]或者link:upgrade-rcf-software-9336c-cluster.html["升級您的 RCF"]根據需要。
+在您查看 RCF 安裝或升級流程後，您可以link:install-rcf-software-9336c-storage.html["安裝 RCF"]或者link:upgrade-rcf-software-9336c-storage.html["升級您的 RCF"]根據需要。

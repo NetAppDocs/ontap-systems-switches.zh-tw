@@ -723,4 +723,4 @@ swp16      100G   swp   sw6                                       swp16
 --
 ====
 .接下來呢？
-在 Cumulus 模式下安裝 Cumulus Linux 後，您 link:install-rcf-sn2100-storage.html["安裝或升級 RCF 腳本"]。
+在 Cumulus 模式下安裝 Cumulus Linux 後，您可以…link:install-rcf-sn2100-storage.html["安裝或升級 RCF 腳本"] 。

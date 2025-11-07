@@ -712,4 +712,4 @@ RPC status:
 
 
 .接下來呢？
-遷移交換器後，您link:../switch-cshm/config-overview.html["配置交換器健康監控"]。
+交換器遷移完成後，您可以link:../switch-cshm/config-overview.html["配置交換器健康監控"]。

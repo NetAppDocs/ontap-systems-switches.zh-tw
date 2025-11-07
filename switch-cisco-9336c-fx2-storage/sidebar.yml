@@ -37,8 +37,14 @@ entries:
   - title: 安裝或升級 NX-OS 軟體
     url: "/switch-cisco-9336c-fx2-storage/install-nxos-software-9336c-storage.html"
   - title: 安裝或升級 RCF
-    url: "/switch-cisco-9336c-fx2-storage/install-rcf-software-9336c-storage.html"
-  - title: 驗證SSH組態
+    pdf-filename: install_upgrade _RCF
+    entries:
+    - title: 安裝或升級 RCF 總覽
+      url: "/switch-cisco-9336c-fx2-storage/install-upgrade-rcf-overview-9336c-storage.html"
+    - title: 安裝RCF
+      url: "/switch-cisco-9336c-fx2-storage/install-rcf-software-9336c-storage.html"
+    - title: 升級 RCF 版本
+      url: "/switch-cisco-9336c-fx2-storage/upgrade-rcf-software-9336c-storage.html"
     url: "/switch-cisco-9336c-fx2-storage/configure-ssh-keys.html"
   - title: 將交換器重設為出廠預設值
     url: "/switch-cisco-9336c-fx2-storage/reset-switch-9336c-storage.html"

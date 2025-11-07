@@ -1,0 +1,459 @@
+---
+permalink: switch-cisco-9336c-fx2-storage/upgrade-rcf-software-9336c-storage.html 
+sidebar: sidebar 
+keywords: install rcf, cisco switches 
+summary: 您可以使用此程序升級您的 RCF 版本。 
+---
+= 升級參考組態檔案（ RCF ）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+當您的作業交換器上已安裝 RCF 檔案的現有版本時、即可升級 RCF 版本。
+
+.開始之前
+請確定您擁有下列項目：
+
+* 交換器組態的目前備份。
+* 完全正常運作的叢集（記錄檔中沒有錯誤或類似問題）。
+* 目前的 RCF 。
+* 如果您要更新 RCF 版本、則需要 RCF 中的開機組態、以反映所需的開機映像。
++
+如果您需要變更開機組態以反映目前的開機映像、則必須在重新套用RCF之前執行此動作、以便在未來重新開機時產生正確的版本。
+
+
+
+
+NOTE: 在此程序期間、不需要運作中的交換器間連結（ISL）。這是因為RCF版本變更可能會暫時影響ISL連線。為確保叢集作業不中斷、下列程序會在目標交換器上執行步驟時、將所有叢集生命體移轉至作業夥伴交換器。
+
+
+CAUTION: 在安裝新的交換器軟體版本和RCFs之前、您必須清除交換器設定並執行基本組態。在清除交換器設定之前，您必須使用序列主控台連線至交換器，或保留基本組態資訊。
+
+
+
+== 步驟 1 ：準備升級
+
+. 如果AutoSupport 此叢集啟用了「支援」功能、請叫用AutoSupport 下列訊息來禁止自動建立案例：
++
+「系統節點AutoSupport 不完整地叫用節點*-type all -Message MAn=xh」
+
++
+其中 _x_ 為維護視窗的持續時間（小時）。
+
+. 將權限等級變更為進階、並在系統提示您繼續時輸入* y*：
++
+"進階權限"
+
++
+出現進階提示（*>）。
+
+. 顯示每個節點上連接到交換器的連接埠：
++
+[source, cli]
+----
+network device-discovery show
+----
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> network device-discovery show
+Node/       Local  Discovered
+Protocol    Port   Device (LLDP: ChassisID) Interface       Platform
+----------- ------ ------------------------ --------------- ---------
+node1-01/cdp
+            e3a    cs1                       Ethernet1/7     N9K-C9336C
+            e3b    cs2                       Ethernet1/7     N9K-C9336C
+node1-02/cdp
+            e3a    cs1                       Ethernet1/8     N9K-C9336C
+            e3b    cs2                       Ethernet1/8     N9K-C9336C
+.
+.
+.
+----
+====
+. 驗證所有儲存連接埠均處於正常狀態：
++
+[source, cli]
+----
+storage port show -port-type ENET
+----
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *storage port show -port-type ENET*
+
+
+                                      Speed
+Node               Port Type  Mode    (Gb/s) State    Status
+------------------ ---- ----- ------- ------ -------- -----------
+node1-01
+                   e3a ENET  -         100   enabled  online
+                   e3b ENET  -         100   enabled  online
+                   e7a ENET  -         100   enabled  online
+                   e7b ENET  -         100   enabled  online
+node1-02
+                   e3a ENET  -         100   enabled  online
+                   e3b ENET  -         100   enabled  online
+                   e7a ENET  -         100   enabled  online
+                   e7b ENET  -         100   enabled  online
+.
+.
+.
+----
+====
+. 停用叢集生命體上的自動還原。
++
+「網路介面修改-vserver叢集-lIF *-auta-fRevert假」
+
+
+
+
+
+== 步驟2：設定連接埠
+
+. 在交換器cs1上，關閉與節點所有連接埠連接的連接埠。
++
+[listing, subs="+quotes"]
+----
+cs1> *enable*
+cs1# *configure*
+cs1(config)# *interface eth1/1/1-2,eth1/7-8*
+cs1(config-if-range)# *shutdown*
+cs1(config-if-range)# *exit*
+cs1(config)# *exit*
+----
++
+
+CAUTION: 確保關閉所有連接的連接埠以避免任何網路連線問題。請參閱知識庫文章 https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/Node_out_of_quorum_when_migrating_cluster_lif_during_switch_OS_upgrade["在交換器作業系統升級期間移轉叢集 LIF 時、節點超出仲裁範圍"^]了解更多詳情。
+
+. 驗證叢集 LIF 是否已故障轉移到交換器 cs1 上託管的連接埠。這可能需要幾秒鐘。
++
+[source, cli]
+----
+network interface show -role cluster
+----
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface show -role cluster*
+
+            Logical         Status     Network            Current     Current Is
+Vserver     Interface       Admin/Oper Address/Mask       Node        Port    Home
+----------- --------------- ---------- ------------------ ----------- ------- ----
+Cluster
+            node1-01_clus1  up/up      169.254.36.44/16   node1-01    e7a     true
+            node1-01_clus2  up/up      169.254.7.5/16     node1-01    e7b     true
+            node1-02_clus1  up/up      169.254.197.206/16 node1-02    e7a     true
+            node1-02_clus2  up/up      169.254.195.186/16 node1-02    e7b     true
+            node1-03_clus1  up/up      169.254.192.49/16  node1-03    e7a     true
+            node1-03_clus2  up/up      169.254.182.76/16  node1-03    e7b     true
+            node1-04_clus1  up/up      169.254.59.49/16   node1-04    e7a     true
+            node1-04_clus2  up/up      169.254.62.244/16  node1-04    e7b     true
+
+8 entries were displayed.
+----
+====
+. 驗證叢集是否正常：
++
+「叢集展示」
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *cluster show*
+Node              Health  Eligibility   Epsilon
+----------------- ------- ------------  -------
+node1-01          true    true          false
+node1-02          true    true          false
+node1-03          true    true          true
+node1-04          true    true          false
+
+4 entries were displayed.
+----
+====
+. 如果您尚未這麼做、請將下列命令的輸出複製到文字檔、以儲存目前交換器組態的複本：
++
+「如何執行設定」
+
++
+.. 記錄當前之間的任何自訂添加 `running-config`以及正在使用的 RCF 檔案（例如您組織的 SNMP 配置）。
+.. 對於 NX-OS 10.2 及更高版本，請使用 `show diff running-config`用於與 bootflash 中儲存的 RCF 檔案進行比較的命令。否則，請使用第三方差異比較工具。
+
+
+. 將基本配置詳細資訊儲存到 `write_erase.cfg`bootflash 上的檔案。
++
+[NOTE]
+====
+確保配置以下內容：
+
+** 使用者名稱和密碼
+** 管理 IP 位址
+** 預設網關
+** 交換器名稱
+
+
+====
++
+`cs1# show run | i "username admin password" > bootflash:write_erase.cfg`
+
++
+`cs1# show run | section "vrf context management" >> bootflash:write_erase.cfg`
+
++
+`cs1# show run | section "interface mgmt0" >> bootflash:write_erase.cfg`
+
++
+`cs1# show run | section "switchname" >> bootflash:write_erase.cfg`
+
+. 升級到 RCF 版本 1.12 及更高版本時，請執行以下命令：
+`cs1# echo "hardware access-list tcam region ing-racl 1024" >> bootflash:write_erase.cfg`
++
+`cs1# echo "hardware access-list tcam region egr-racl 1024" >> bootflash:write_erase.cfg`
+
++
+`cs1# echo "hardware access-list tcam region ing-l2-qos 1280 >> bootflash:write_erase.cfg`
+
++
+請參閱知識庫文章link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["如何在保留遠端連線的同時清除 Cisco 互連交換器上的組態"^]了解更多詳情。
+
+. 驗證 `write_erase.cfg`文件按預期填充：
++
+`*show file bootflash:write_erase.cfg*`
+
+. 發出 `write erase`命令來刪除目前已儲存的配置：
++
+`cs1# *write erase*`
+
++
+`Warning: This command will erase the startup-configuration.`
+
++
+`Do you wish to proceed anyway? (y/n)  [n] *y*`
+
+. 將先前儲存的基本組態複製到啟動組態。
++
+`cs1# *copy bootflash:write_erase.cfg startup-config*`
+
+. 重新啟動交換器：
++
+`cs1# *reload*`
+
++
+`This command will reboot the system. (y/n)?  [n] *y*`
+
+. 再次到達管理 IP 位址之後、請透過 SSH 登入交換器。
++
+您可能需要更新與 SSH 金鑰相關的主機檔案項目。
+
+. 使用下列傳輸協定之一、將 RCF 複製到交換器 CS1 的 bootflash ： FTP 、 TFTP 、 SFTP 或 SCP 。
++
+如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000系列NX-OS命令參考"^] 指南：
+
++
+.顯示範例
+[%collapsible]
+====
+此範例顯示使用 TFTP 將 RCF 複製到交換器 CS1 上的 bootflash ：
+
+[listing, subs="+quotes"]
+----
+cs1# *copy tftp: bootflash: vrf management*
+Enter source filename: *Nexus_9336C_RCF_v1.6-Storage.txt*
+Enter hostname for the tftp server: *172.22.201.50*
+Trying to connect to tftp server......Connection to Server Established.
+TFTP get operation was successful
+Copy complete, now saving to disk (please wait)...
+----
+====
+. 將先前下載的RCF套用至bootFlash。
++
+如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000系列NX-OS命令參考"^] 指南：
+
++
+此範例展示了 RCF 文件 `NX9336C-FX2-RCF-v1.13-1-Storage.txt`正在交換器 cs1 上安裝：
+
++
+[listing, subs="+quotes"]
+----
+cs1# *copy Nexus_9336C_RCF_v1.6-Storage.txt running-config echo-commands*
+----
++
+[CAUTION]
+====
+確保仔細閱讀 RCF 的 *安裝說明*、*重要說明* 和 *橫幅* 部分。您必須閱讀並遵循這些說明以確保交換器的正確配置和操作。
+
+====
+. 確認RCF檔案為正確的更新版本：
++
+「如何執行設定」
+
++
+當您檢查輸出以確認您擁有正確的RCF時、請確定下列資訊正確無誤：
+
++
+** RCF橫幅
+** 節點和連接埠設定
+** 自訂
++
+輸出會因站台組態而異。請檢查連接埠設定、並參閱版本說明、以瞭解您安裝的RCF的任何特定變更。
+
+
+
+. 將先前的所有自訂重新套用到交換器配置。
+. 驗證 RCF 版本、自訂新增和開關設定正確後，複製 `running-config`文件到 `startup-config`文件。
++
+如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000系列NX-OS命令參考"^] 指南：
+
++
+`cs1# *copy running-config startup-config*`
+
++
+`[########################################] 100% Copy complete`
+
+. 重新開機交換器CS1。您可以在交換器重新開機時忽略節點上報告的「叢集交換器健全狀況監視器」警示和「叢集連接埠關閉」事件。
++
+`cs1# *reload*`
+
++
+`This command will reboot the system. (y/n)?  [n] *y*`
+
+. 驗證所有儲存連接埠均處於正常狀態：
++
+[source, cli]
+----
+storage port show -port-type ENET
+----
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *storage port show -port-type ENET*
+
+
+                                      Speed
+Node               Port Type  Mode    (Gb/s) State    Status
+------------------ ---- ----- ------- ------ -------- -----------
+node1-01
+                   e3a  ENET  -          100 enabled  online
+                   e3b  ENET  -          100 enabled  online
+                   e7a  ENET  -          100 enabled  online
+                   e7b  ENET  -          100 enabled  online
+node1-02
+                   e3a  ENET  -          100 enabled  online
+                   e3b  ENET  -          100 enabled  online
+                   e7a  ENET  -          100 enabled  online
+                   e7b  ENET  -          100 enabled  online
+.
+.
+.
+----
+====
+. 驗證叢集是否正常：
++
+「叢集展示」
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *cluster show*
+Node              Health   Eligibility   Epsilon
+----------------- -------- ------------- -------
+node1-01          true     true          false
+node1-02          true     true          false
+node1-03          true     true          true
+node1-04          true     true          false
+
+4 entries were displayed.
+----
+====
+. 在交換器 cs2 上重複步驟 4 至 19。
+. 在叢集生命體上啟用自動還原。
++
+「網路介面修改-vserver叢集-lif*-auta-f還原 為真」
+
+
+
+
+
+== 步驟 3 ：驗證叢集網路組態和叢集健全狀況
+
+. 驗證連接至叢集連接埠的交換器連接埠是否為* up*。
++
+[source, cli]
+----
+show interface brief
+----
+. 確認預期的節點仍已連線：
++
+[source, cli]
+----
+show cdp neighbors
+----
+. 使用下列命令、確認叢集節點位於正確的叢集 VLAN 中：
++
+[source, cli]
+----
+show vlan brief
+----
++
+[source, cli]
+----
+show interface trunk
+----
+. 驗證叢集生命區是否已還原至其主連接埠：
++
+[source, cli]
+----
+network interface show -role cluster
+----
++
+如果有任何叢集生命期尚未返回其主連接埠、請從本機節點手動還原：
+
++
+`network interface revert -vserver vserver_name -lif <lif-name>`
+
+. 驗證叢集是否正常：
++
+[source, cli]
+----
+cluster show
+----
+. 驗證遠端叢集介面的連線能力：
++
+.. 您可以使用 `network interface check cluster-connectivity show`命令顯示集群連接可訪問性檢查的詳細資訊：
++
+[source, cli]
+----
+network interface check cluster-connectivity show
+----
+.. 或者，您可以使用 `cluster ping-cluster -node <node-name>`檢查連接性的命令：
++
+[source, cli]
+----
+cluster ping-cluster -node <node-name>
+----
+
+
+
+
+.接下來呢？
+升級 RCF 後，您可以link:configure-ssh-keys.html["驗證 SSH 配置"]。
