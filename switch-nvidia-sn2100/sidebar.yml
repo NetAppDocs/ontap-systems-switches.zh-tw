@@ -2,59 +2,59 @@
 section: switch-nvidia-sn2100
 title: NVIDIA SN2100
 entries:
-- title: 開始使用
+- title: 開始
   entries:
-  - title: 快速入門
+  - title: 快速啟動
     url: "/switch-nvidia-sn2100/configure-overview-sn2100-cluster.html"
-  - title: 組態需求
+  - title: 配置要求
     url: "/switch-nvidia-sn2100/configure-reqs-sn2100-cluster.html"
-  - title: 元件與零件編號
+  - title: 組件和零件編號
     url: "/switch-nvidia-sn2100/components-sn2100-cluster.html"
-  - title: 必要文件
+  - title: 所需文件
     url: "/switch-nvidia-sn2100/required-documentation-sn2100-cluster.html"
 - title: 安裝硬體
-  pdf-filename: install_hardware _sn2100
+  pdf-filename: Install_hardware_sn2100
   entries:
   - title: 硬體安裝工作流程
     url: "/switch-nvidia-sn2100/install-hardware-workflow.html"
-  - title: 安裝交換器
+  - title: 安裝開關
     url: "/switch-nvidia-sn2100/install-hardware-sn2100-cluster.html"
-  - title: 檢視纜線佈線與組態
+  - title: 檢查佈線和配置
     url: "/switch-nvidia-sn2100/cabling-considerations-sn2100-cluster.html"
-  - title: 連接NS224磁碟櫃
+  - title: NS224 架子的電纜
     url: "/switch-nvidia-sn2100/install-cable-shelves-sn2100-cluster.html"
 - title: 設定軟體
   pdf-filename: Configure_software_sn2100
   entries:
   - title: 軟體安裝工作流程
     url: "/switch-nvidia-sn2100/configure-software-overview-sn2100-cluster.html"
-  - title: 設定交換器
+  - title: 配置交換機
     url: "/switch-nvidia-sn2100/configure-sn2100-cluster.html"
-  - title: 在Cummuls模式下安裝Cummulus Linux
+  - title: 以 Cumulus 模式安裝 Cumulus Linux
     url: "/switch-nvidia-sn2100/install-cumulus-mode-sn2100-cluster.html"
-  - title: 以ONIE模式安裝CummulUS Linux
+  - title: 以 ONIE 模式安裝 Cumulus Linux
     url: "/switch-nvidia-sn2100/install-onie-mode-sn2100-cluster.html"
   - title: 升級 Cumulus Linux 版本
     url: "/switch-nvidia-sn2100/upgrade-cl-version.html"
-  - title: 安裝或升級 RCF 指令碼
+  - title: 安裝或升級 RCF 腳本
     url: "/switch-nvidia-sn2100/install-rcf-sn2100-cluster.html"
-  - title: 安裝 CSHM 檔案
+  - title: 安裝 CSHM 文件
     url: "/switch-nvidia-sn2100/setup-install-cshm-file.html"
   - title: 將交換器重設為出廠預設值
     url: "/switch-nvidia-sn2100/reset-switch-sn2100.html"
-- title: 移轉交換器
-  pdf-filename: migrate_switchs_sn2100
+- title: 遷移交換機
+  pdf-filename: Migrate_switches_sn2100
   entries:
-  - title: 從 CN1610 叢集交換器移轉
+  - title: 從 CN1610 叢集交換器遷移
     url: "/switch-nvidia-sn2100/migrate-cn1610-sn2100-cluster-switch.html"
-  - title: 從Cisco叢集交換器移轉
+  - title: 從Cisco叢集交換器遷移
     url: "/switch-nvidia-sn2100/migrate-cisco-sn2100-cluster-switch.html"
-  - title: 移轉至雙節點交換叢集
+  - title: 遷移到雙節點交換集群
     url: "/switch-nvidia-sn2100/migrate-2n-switched-sn2100-cluster.html"
 - title: 更換開關
-  pdf-filename: replace 開關 _sn2100
+  pdf-filename: Replace_switches_sn2100
   entries:
-  - title: 更換叢集交換器
+  - title: 更換集群開關
     url: "/switch-nvidia-sn2100/replace-sn2100-switch-cluster.html"
-  - title: 使用無交換器連線取代叢集交換器
+  - title: 用無開關連接取代集群開關
     url: "/switch-nvidia-sn2100/migrate-to-switchless-interconnect-sn2100-cluster.html"

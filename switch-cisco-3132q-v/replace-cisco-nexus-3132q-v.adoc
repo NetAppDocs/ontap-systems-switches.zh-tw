@@ -2,42 +2,42 @@
 permalink: switch-cisco-3132q-v/replace-cisco-nexus-3132q-v.html 
 sidebar: sidebar 
 keywords: replace, cisco nexus 3132q-v cluster switches 
-summary: 在叢集網路中更換故障的Cisco Nexus 3132Q-V交換器是不中斷營運的程序（NDO）、您必須執行特定的工作順序。 
+summary: '在叢集網路中更換有缺陷的Cisco Nexus 3132Q-V 交換器是一個非中斷程序 (NDO)，您必須執行特定的任務順序。' 
 ---
-= 更換Cisco Nexus 3132Q-V叢集交換器
+= 更換Cisco Nexus 3132Q-V 集群交換機
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-請遵循此程序、在叢集網路中更換故障的Cisco Nexus 3132Q-V交換器。更換程序是不中斷營運的程序（NDO）。
+請依照下列步驟更換叢集網路中發生故障的Cisco Nexus 3132Q-V 交換器。更換過程屬於非中斷性過程（NDO）。
 
 
 
-== 檢閱要求
+== 審查要求
 
-.交換器需求
-檢閱 link:switch-requirements.html["更換Cisco Nexus 3132Q-V叢集交換器的需求"]。
+.交換機要求
+複習link:switch-requirements.html["更換Cisco Nexus 3132Q-V 群集交換器的要求"]。
 
 .開始之前
-* 現有的叢集和網路組態具有：
+* 現有叢集和網路配置如下：
 +
-** Nexus 3132Q-V叢集基礎架構是備援的、而且在兩個交換器上都能完全正常運作。
+** Nexus 3132Q-V 叢集基礎設施是冗餘的，並且在兩台交換器上都能完全正常運作。
 +
-link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco乙太網路交換器"^]為您的交換器提供最新的 RCF 和 NX-OS 版本。
+link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco乙太網路交換機"^]擁有適用於交換器的最新 RCF 和 NX-OS 版本。
 
-** 所有叢集連接埠都位於中 `up` 州/省。
-** 兩台交換器都有管理連線功能。
-** 所有叢集邏輯介面（lifs）都位於中 `up` 並已移轉。
+** 所有集群連接埠都在 `up`狀態。
+** 兩台交換器都具備管理連線功能。
+** 所有集群邏輯介面（LIF）都在 `up`狀態並已遷移。
 
 
-* 對於Nexus 3132Q-V替換交換器、請確定：
+* 更換 Nexus 3132Q-V 的開關時，請確保：
 +
-** 替換交換器上的管理網路連線功能正常。
-** 更換交換器的主控台存取已就緒。
-** 所需的RCF和NX-OS作業系統映像交換器已載入交換器。
-** 交換器的初始自訂已完成。
+** 替換交換器的管理網路連線功能正常。
+** 已具備對替換開關的控制台存取權限。
+** 將所需的 RCF 和 NX-OS 作業系統映像交換器載入到交換器上。
+** 交換器的初始定制已完成。
 
 
 * link:http://hwu.netapp.com["Hardware Universe"^]
@@ -45,65 +45,65 @@ link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storag
 
 
 
-== 啟用主控台記錄
+== 啟用控制台日誌記錄
 
-NetApp 強烈建議您在使用的裝置上啟用主控台記錄功能、並在更換交換器時採取下列動作：
+NetApp強烈建議您在使用的裝置上啟用控制台日誌記錄，並在更換交換器時執行以下操作：
 
-* 在維護期間保持啟用 AutoSupport 。
-* 在維護之前和之後觸發維護AutoSupport ，以在維護期間停用案例建立。請參閱此知識庫文章link:https://kb.netapp.com/Support_Bulletins/Customer_Bulletins/SU92["SU92 ：如何在排程的維護期間內、禁止自動建立案例"^]了解更多詳情。
-* 為任何 CLI 會話​​啟用會話日誌記錄。有關如何啟用會話日誌記錄的說明，請參閱此知識庫文章中的「日誌記錄會話輸出」部分link:https://kb.netapp.com/on-prem/ontap/Ontap_OS/OS-KBs/How_to_configure_PuTTY_for_optimal_connectivity_to_ONTAP_systems["如何設定 Putty 以最佳化連線至 ONTAP 系統"^]。
-
-
+* 維護期間請保持AutoSupport功能啟用。
+* 在維護前後觸發維護AutoSupport，以在維護期間停用案例建立。請參考這篇知識庫文章link:https://kb.netapp.com/Support_Bulletins/Customer_Bulletins/SU92["SU92：如何在計劃維護視窗期間抑制自動建立案例"^]更多詳情請見下文。
+* 啟用所有 CLI 會話​​的會話日誌記錄。有關如何啟用會話日誌記錄的說明，請查看此知識庫文章中的「記錄會話輸出」部分。link:https://kb.netapp.com/on-prem/ontap/Ontap_OS/OS-KBs/How_to_configure_PuTTY_for_optimal_connectivity_to_ONTAP_systems["如何配置 PuTTY 以獲得與ONTAP系統的最佳連接"^] 。
 
 
-== 更換交換器
 
-此程序將第二個Nexus 31382Q-V叢集交換器CL2取代為全新的31382Q-V交換器C2。
+
+== 更換開關
+
+此程式將第二個 Nexus 3132Q-V 叢集交換器 CL2 替換為新的 3132Q-V 交換器 C2。
 
 .關於範例
-本程序中的範例使用下列交換器和節點命名法：
+本流程中的範例使用以下開關和節點命名規則：
 
-* N1_clus1是第一個叢集邏輯介面（LIF）、連接至節點n1的叢集交換器C1。
-* N1_clus2是第一個連接至叢集交換器CL2或C2的叢集LIF、適用於節點n1。
-* N1_clus3是連接至叢集交換器C2的第二個LIF、適用於節點n1。
-* N1_clus4是連接至叢集交換器CL1的第二個LIF、適用於節點n1。
-* 10 GbE 和 40 GbE 連接埠的數量在參考設定檔 (RCF) 中定義，可從link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco®叢集網路交換器參考組態檔案下載"^]。
-* 節點為n1、n2、n3和n4。本程序中的範例使用四個節點：兩個節點使用四個10 Gb叢集互連連接埠：e0a、e0b、e0c和e0d。其他兩個節點使用兩個40 GB叢集互連連接埠：E4A和e4e。請參閱 link:https://hwu.netapp.com/["Hardware Universe"^] 適用於您平台上的實際叢集連接埠。
+* n1_clus1 是連接到節點 n1 的叢集交換器 C1 的第一個叢集邏輯介面 (LIF)。
+* n1_clus2 是連接到叢集交換器 CL2 或 C2 的第一個叢集 LIF，用於節點 n1。
+* n1_clus3 是連接到叢集交換器 C2 的第二個 LIF，用於節點 n1。
+* n1_clus4 是連接到叢集交換器 CL1 的第二個 LIF，用於節點 n1。
+* 10 GbE 和 40 GbE 連接埠的數量在參考設定檔 (RCF) 中定義，這些檔案可在以下位置取得：link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco叢集網路交換器參考設定檔下載"^] 。
+* 這些節點分別是 n1、n2、n3 和 n4。 - 本流程中的範例使用了四個節點：兩個節點使用四個 10 GB 叢集互連連接埠：e0a、e0b、e0c 和 e0d。另外兩個節點使用兩個 40 GB 叢集互連連接埠：e4a 和 e4e。參見link:https://hwu.netapp.com/["Hardware Universe"^]用於您平台上的實際集群連接埠。
 
 
-.關於這項工作
-本程序涵蓋下列案例：
+.關於此任務
+本流程涵蓋以下情況：
 
-* 叢集從連接至兩個Nexus 3132Q-V叢集交換器（CL1和CL2）的四個節點開始。
-* 叢集交換器CL2將由C2取代
+* 叢集由四個節點組成，這些節點連接到兩個 Nexus 3132Q-V 叢集交換器 CL1 和 CL2。
+* 集群開關 CL2 將由 C2 取代。
 +
-** 在每個節點上、連接至CL2的叢集l生命 會移轉至連接至CL1的叢集連接埠。
-** 從CL2上的所有連接埠拔下纜線、然後將纜線重新連接至替換交換器C2上的相同連接埠。
-** 在每個節點上、其移轉的叢集lifs都會還原。
+** 在每個節點上，連接到 CL2 的叢集 LIF 遷移到連接到 CL1 的叢集連接埠上。
+** 斷開 CL2 上所有連接埠的電纜連接，然後將電纜重新連接到替換交換器 C2 上的相同連接埠。
+** 在每個節點上，其遷移的叢集 LIF 將被還原。
 
 
 
 
 
 
-=== 步驟1：準備更換
+=== 第一步：準備更換
 
-. 如果AutoSupport 此叢集啟用了「支援」功能、請叫用AutoSupport 下列訊息來禁止自動建立案例：
+. 如果此叢集上啟用了AutoSupport ，則透過呼叫AutoSupport訊息來抑制自動建立案例：
 +
-「系統節點AutoSupport 不完整地叫用節點*-type all -訊息MAn=xh」
+`system node autosupport invoke -node * -type all - message MAINT=xh`
 
 +
-_x_是維護時段的持續時間（以小時為單位）。
+_x_ 是維護視窗的持續時間，單位為小時。
 
 +
 [NOTE]
 ====
-此資訊可通知技術支援人員執行此維護工作、以便在維護期間抑制自動建立案例。AutoSupport
+AutoSupport訊息會通知技術支援此維護任務，以便在維護視窗期間抑制自動建立案例。
 
 ====
-. 顯示組態中裝置的相關資訊：
+. 顯示配置中設備的資訊：
 +
-「網路裝置探索秀」
+`network device-discovery show`
 
 +
 .顯示範例
@@ -135,11 +135,11 @@ n4         /cdp
 12 entries were displayed
 ----
 ====
-. 判斷每個叢集介面的管理或作業狀態：
+. 確定每個叢集介面的管理或運作狀態：
 +
 .. 顯示網路連接埠屬性：
 +
-「網路連接埠展示」
+`network port show`
 
 +
 .顯示範例
@@ -188,9 +188,9 @@ e4e       Cluster      Cluster          up   9000 auto/40000  -        -
 12 entries were displayed.
 ----
 ====
-.. 顯示有關邏輯介面的資訊：
+.. 顯示邏輯介面資訊：
 +
-「網路介面展示」
+`network interface show`
 
 +
 .顯示範例
@@ -221,9 +221,9 @@ Cluster
 12 entries were displayed.
 ----
 ====
-.. 顯示探索到的叢集交換器資訊：
+.. 顯示已發現的群集交換器的相關資訊：
 +
-「系統叢集交換器顯示」
+`system cluster-switch show`
 
 +
 .顯示範例
@@ -256,27 +256,27 @@ CL2                          cluster-network   10.10.1.102      NX3132V
 ====
 
 
-. 根據您的需求、確認新的Nexus 3132Q-V交換器上已安裝適當的RCF和映像、並進行任何必要的站台自訂。
+. 確認新的 Nexus 3132Q-V 交換器上已根據您的要求安裝了相應的 RCF 和映像，並進行任何必要的網站自訂。
 +
-此時您必須準備更換交換器。如果您需要升級RCF和映像、則必須執行下列步驟：
+現在必須準備好替換開關。如果需要升級 RCF 和鏡像，必須按照以下步驟操作：
 
 +
-.. 在NetApp支援網站上，請參閱link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch/["Cisco乙太網路交換器"^]。
-.. 請在該頁的表格中記下您的交換器和所需的軟體版本。
-.. 下載適當版本的RCF。
-.. 按一下「*說明*」頁面上的「*繼續*」、接受授權合約、然後依照「*下載*」頁面上的指示下載RCF。
-.. 下載適當版本的映像軟體。
+.. 在NetApp支援網站上，請參閱link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch/["Cisco乙太網路交換機"^]。
+.. 請記下您交換器的型號以及該頁表格中所需的軟體版本。
+.. 下載相應版本的RCF。
+.. 在“描述”頁面上點擊“繼續”，接受許可協議，然後按照“下載”頁面上的說明下載 RCF。
+.. 下載對應版本的影像處理軟體。
 
 
-. 移轉連接至交換器C2之叢集連接埠的相關生命量：
+. 遷移與連接到交換器 C2 的叢集連接埠關聯的 LIF：
 +
-網路介面移轉
+`network interface migrate`
 
 +
 .顯示範例
 [%collapsible]
 ====
-此範例顯示LIF移轉是在所有節點上完成：
+此範例表示 LIF 遷移已在所有節點上完成：
 
 [listing]
 ----
@@ -289,9 +289,9 @@ cluster::*> network interface migrate -vserver Cluster -lif n3_clus2 -source-nod
 cluster::*> network interface migrate -vserver Cluster -lif n4_clus2 -source-node n4 –destination-node n4 -destination-port e4a
 ----
 ====
-. 驗證叢集的健全狀況：
+. 驗證集群健康狀況：
 +
-「網路介面展示」
+`network interface show`
 
 +
 .顯示範例
@@ -321,15 +321,15 @@ Cluster
 12 entries were displayed.
 ----
 ====
-. 關閉實體連接至交換器CL2的叢集互連連接埠：
+. 關閉與交換器 CL2 實體連線的叢集互連連接埠：
 +
-網路連接埠修改
+`network port modify`
 
 +
 .顯示範例
 [%collapsible]
 ====
-此範例顯示所有節點上要關閉的指定連接埠：
+此範例顯示如何關閉所有節點上的指定連接埠：
 
 [listing]
 ----
@@ -341,22 +341,22 @@ cluster::*> network port modify -node n3 -port e4e -up-admin false
 cluster::*> network port modify -node n4 -port e4e -up-admin false
 ----
 ====
-. 驗證遠端叢集介面的連線能力：
+. 驗證遠端集群介面的連接性：
 
 
 [role="tabbed-block"]
 ====
-.更新版本ONTAP
+.ONTAP 9.9.1 及更高版本
 --
-您可以使用 `network interface check cluster-connectivity` 命令以啟動叢集連線的存取檢查、然後顯示詳細資料：
+你可以使用 `network interface check cluster-connectivity`執行命令以啟動叢集連接性檢查，然後顯示詳細資訊：
 
-`network interface check cluster-connectivity start` 和 `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`和 `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-* 注意： * 在執行 show 命令之前、請等待數秒以顯示詳細資料。
+*注意：*在執行 show 命令顯示詳細資訊之前，請等待幾秒鐘。
 
 [listing, subs="+quotes"]
 ----
@@ -379,9 +379,9 @@ n4
 ...
 ----
 --
-.所有 ONTAP 版本
+.所有ONTAP版本
 --
-對於所有 ONTAP 版本、您也可以使用 `cluster ping-cluster -node <name>` 檢查連線能力的命令：
+對於所有ONTAP版本，您也可以使用 `cluster ping-cluster -node <name>`檢查連接性的命令：
 
 `cluster ping-cluster -node <name>`
 
@@ -452,15 +452,15 @@ RPC status:
 ----
 --
 ====
-. [[step9]] 關閉 CL1 上的連接埠 1/31 和 1/32 、以及作用中的 Nexus 3132Q-V 交換器：
+. [[step9]]關閉 CL1 上的連接埠 1/31 和 1/32，以及活動的 Nexus 3132Q-V 交換器：
 +
-「關機」
+`shutdown`
 
 +
 .顯示範例
 [%collapsible]
 ====
-此範例顯示交換器CL1上的ISL連接埠1/31和1/32正在關機：
+此範例顯示交換器 CL1 上的 ISL 連接埠 1/31 和 1/32 已關閉：
 
 [listing]
 ----
@@ -476,11 +476,11 @@ RPC status:
 
 
 
-=== 步驟2：設定連接埠
+=== 步驟 2：設定埠
 
-. 拔下連接至Nexus 3132Q-V交換器CL2的所有纜線、然後將其重新連接至所有節點上的交換器C2。
-. 從CL2上的E1/31和E1/32連接埠拔下ISL纜線、然後重新連接至替換交換器C2上的相同連接埠。
-. 在Nexus 3132Q-V交換器CL1上啟動ISL連接埠1/31和1/32：
+. 拆下連接到 Nexus 3132Q-V 交換器 CL2 的所有電纜，並將它們重新連接到所有節點上的替換交換器 C2。
+. 從 CL2 上的 e1/31 和 e1/32 連接埠拆下 ISL 電纜，然後將它們重新連接到替換交換器 C2 上的相同連接埠。
+. 在 Nexus 3132Q-V 交換器 CL1 上啟用 ISL 連接埠 1/31 和 1/32：
 +
 [listing]
 ----
@@ -491,12 +491,12 @@ RPC status:
 (CL1)(Config)# exit
 (CL1)#
 ----
-. 確認ISL在CL1上正常運作：
+. 確認 CL1 上的 ISL 是否已啟動：
 +
-「How port-channel」
+`show port-channel`
 
 +
-連接埠eth1/31和eth1/32應顯示「（P）」、這表示ISL連接埠在連接埠通道上。
+連接埠 Eth1/31 和 Eth1/32 應指示 `(P)`這表示 ISL 連接埠已在連接埠通道中啟動。
 
 +
 .顯示範例
@@ -518,12 +518,12 @@ Group Port-        Type   Protocol  Member 						Ports
 1     Po1(SU)      Eth    LACP      Eth1/31(P)   Eth1/32(P)
 ----
 ====
-. 確認C2上的ISL正常運作：
+. 請確認C2上的ISL連線是否已建立：
 +
-「How port-channel Summary」
+`show port-channel summary`
 
 +
-連接埠eth1/31和eth1/32應顯示「（P）」、這表示兩個ISL連接埠都在連接埠通道中。
+連接埠 Eth1/31 和 Eth1/32 應指示 `(P)`這意味著兩個 ISL 連接埠都在連接埠通道中運作。
 
 +
 .顯示範例
@@ -545,9 +545,9 @@ Group Port-        Type   Protocol  Member Ports
 1     Po1(SU)      Eth    LACP      Eth1/31(P)   Eth1/32(P)
 ----
 ====
-. 在所有節點上、開啟連接至Nexus 3132Q-V交換器C2的所有叢集互連連接埠：
+. 在所有節點上，啟動連接到 Nexus 3132Q-V 交換器 C2 的所有叢集互連連接埠：
 +
-網路連接埠修改
+`network port modify`
 
 +
 .顯示範例
@@ -563,9 +563,9 @@ cluster::*> network port modify -node n3 -port e4e -up-admin true
 cluster::*> network port modify -node n4 -port e4e -up-admin true
 ----
 ====
-. 對於所有節點、請回復所有移轉的叢集互連lifs：
+. 對於所有節點，還原所有已遷移的叢集互連 LIF：
 +
-網路介面回復
+`network interface revert`
 
 +
 .顯示範例
@@ -581,15 +581,15 @@ cluster::*> network interface revert -vserver Cluster -lif n3_clus2
 cluster::*> network interface revert -vserver Cluster -lif n4_clus2
 ----
 ====
-. 確認叢集互連連接埠現在已還原至其主目錄：
+. 請確認叢集互連連接埠已恢復至其原始設定：
 +
-「網路介面展示」
+`network interface show`
 
 +
 .顯示範例
 [%collapsible]
 ====
-此範例顯示所有的生命週期都已成功還原、因為「目前連接埠」欄下所列的連接埠在「is Home」欄位中的狀態為「true」。如果「is Home」欄位值為「假」、則LIF尚未還原。
+此範例表示所有 LIF 都已成功還原，因為列出的連接埠位於 `Current Port`列具有以下狀態 `true`在 `Is Home`柱子。如果 `Is Home`列值為 `false`LIF尚未被撤銷。
 
 [listing]
 ----
@@ -614,9 +614,9 @@ Cluster
 12 entries were displayed.
 ----
 ====
-. 驗證是否已連接叢集連接埠：
+. 請確認叢集連接埠已連線：
 +
-「網路連接埠展示」
+`network port show`
 
 +
 .顯示範例
@@ -664,22 +664,22 @@ e4e       Cluster      Cluster          up   9000 auto/40000  -        -
 12 entries were displayed.
 ----
 ====
-. 驗證遠端叢集介面的連線能力：
+. 驗證遠端集群介面的連接性：
 
 
 [role="tabbed-block"]
 ====
-.更新版本ONTAP
+.ONTAP 9.9.1 及更高版本
 --
-您可以使用 `network interface check cluster-connectivity` 命令以啟動叢集連線的存取檢查、然後顯示詳細資料：
+你可以使用 `network interface check cluster-connectivity`執行命令以啟動叢集連接性檢查，然後顯示詳細資訊：
 
-`network interface check cluster-connectivity start` 和 `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`和 `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-* 注意： * 在執行 show 命令之前、請等待數秒以顯示詳細資料。
+*注意：*在執行 show 命令顯示詳細資訊之前，請等待幾秒鐘。
 
 [listing, subs="+quotes"]
 ----
@@ -702,9 +702,9 @@ n4
 ...
 ----
 --
-.所有 ONTAP 版本
+.所有ONTAP版本
 --
-對於所有 ONTAP 版本、您也可以使用 `cluster ping-cluster -node <name>` 檢查連線能力的命令：
+對於所有ONTAP版本，您也可以使用 `cluster ping-cluster -node <name>`檢查連接性的命令：
 
 `cluster ping-cluster -node <name>`
 
@@ -775,14 +775,14 @@ RPC status:
 ====
 
 
-=== 步驟3：驗證組態
+=== 步驟 3：驗證配置
 
-. 顯示組態中裝置的相關資訊：
+. 顯示配置中設備的資訊：
 +
-** 「網路裝置探索秀」
-** 「網路連接埠show -role cluster」
-** 「網路介面show -role cluster」
-** 「系統叢集交換器顯示」
+** `network device-discovery show`
+** `network port show -role cluster`
+** `network interface show -role cluster`
+** `system cluster-switch show`
 
 
 +
@@ -908,18 +908,18 @@ C2                          cluster-network    10.10.1.103      NX3132V
 3 entries were displayed.
 ----
 ====
-. 如果更換的Nexus 3132Q-V交換器尚未自動移除、請將其移除：
+. 如果更換後的 Nexus 3132Q-V 開關尚未自動移除，請將其移除：
 +
-「系統叢集交換器刪除」
+`system cluster-switch delete`
 
 +
 [listing]
 ----
 cluster::*> system cluster-switch delete –device CL2
 ----
-. 確認已監控適當的叢集交換器：
+. 確認已對正確的群集交換器進行監控：
 +
-「系統叢集交換器顯示」
+`system cluster-switch show`
 
 +
 .顯示範例
@@ -950,11 +950,11 @@ C2                          cluster-network     10.10.1.103      NX3132V
 2 entries were displayed.
 ----
 ====
-. 如果您禁止自動建立個案、請叫用AutoSupport 下列訊息來重新啟用：
+. 如果您已停用自動建立案例功能，請透過呼叫AutoSupport訊息重新啟用該功能：
 +
-「系統節點AutoSupport 不完整地叫用節點*-type all -most MAn=end」
+`system node autosupport invoke -node * -type all -message MAINT=END`
 
 
 
-.接下來呢？
-link:../switch-cshm/config-overview.html["設定交換器健全狀況監控"]
+.下一步是什麼？
+link:../switch-cshm/config-overview.html["配置交換器健康監控"]

@@ -2,24 +2,24 @@
 permalink: switch-cisco-3132q-v/migrate-switchless-configure-ports.html 
 sidebar: sidebar 
 keywords: cisco 3132q-v, cluster switches 
-summary: 您可以在 AFF 或 FAS 叢集中使用 Cisco Nexus 3132q-v 交換器作為叢集交換器。 
+summary: 您可以在AFF或FAS叢集中使用Cisco Nexus 3132q-v 交換器作為叢集交換器。 
 ---
-= 設定連接埠，以便從無交換器叢集移轉至交換式叢集
+= 配置連接埠以從無交換器集群遷移到有交換器集群
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-請依照下列步驟設定連接埠，以便從雙節點無交換器叢集移轉至雙節點交換式叢集。
+請依照下列步驟配置端口，以便從雙節點無交換器叢集遷移到雙節點有交換器叢集。
 
 .步驟
-. 在Nexus 3132Q-V交換器C1和C2上、停用所有面向節點的連接埠C1和C2、但不要停用ISL連接埠。
+. 在 Nexus 3132Q-V 交換器 C1 和 C2 上，停用所有面向節點的連接埠 C1 和 C2，但不要停用 ISL 連接埠。
 +
 .顯示範例
 [%collapsible]
 ====
-下列範例顯示使用RCF支援的組態、在Nexus 3132Q-V叢集交換器C1和C2上停用連接埠1到30 `NX3132_RCF_v1.1_24p10g_26p40g.txt`：
+以下範例展示如何使用 RCF 支援的配置，在 Nexus 3132Q-V 叢集交換器 C1 和 C2 上停用連接埠 1 到 30。 `NX3132_RCF_v1.1_24p10g_26p40g.txt` ：
 
 [listing]
 ----
@@ -42,10 +42,10 @@ C2(config-if-range)# exit
 C2(config)# exit
 ----
 ====
-. 使用支援的纜線、將C1上的連接埠1/31和1/32連接至C2上的相同連接埠。
-. 確認ISL連接埠在C1和C2上正常運作：
+. 使用支援的電纜將 C1 上的連接埠 1/31 和 1/32 連接到 C2 上的相同連接埠。
+. 請確認C1和C2上的ISL連接埠是否正常運作：
 +
-「How port-channel Summary」
+`show port-channel summary`
 
 +
 .顯示範例
@@ -80,9 +80,9 @@ Group Port-        Type   Protocol  Member Ports
 1     Po1(SU)      Eth    LACP      Eth1/31(P)   Eth1/32(P)
 ----
 ====
-. 顯示交換器上的鄰近裝置清單：
+. 顯示交換器上相鄰設備的清單：
 +
-「How cup neighbor」
+`show cdp neighbors`
 
 +
 .顯示範例
@@ -115,15 +115,15 @@ C1                 Eth1/32        178    R S I s     N3K-C3132Q-V  Eth1/32
 Total entries displayed: 2
 ----
 ====
-. 顯示每個節點上的叢集連接埠連線能力：
+. 顯示每個節點上的叢集連接埠連線情況：
 +
-「網路裝置探索秀」
+`network device-discovery show`
 
 +
 .顯示範例
 [%collapsible]
 ====
-下列範例顯示雙節點無交換器叢集組態。
+以下範例展示了一個雙節點無交換器叢集配置。
 
 [listing]
 ----
@@ -139,9 +139,9 @@ n2         /cdp
             e4e    n1                  e4e              FAS9000
 ----
 ====
-. 將clus1介面移轉至裝載clus2的實體連接埠：
+. 將 clus1 介面遷移到託管 clus2 的實體連接埠：
 +
-網路介面移轉
+`network interface migrate`
 
 +
 從每個本機節點執行此命令。
@@ -158,9 +158,9 @@ cluster::*> network interface migrate -vserver Cluster -lif n2_clus1 -source-nod
 -destination-node n2 -destination-port e4e
 ----
 ====
-. 驗證叢集介面移轉：
+. 驗證叢集介面遷移：
 +
-「網路介面展示」
+`network interface show`
 
 +
 .顯示範例
@@ -182,9 +182,9 @@ Cluster
 4 entries were displayed.
 ----
 ====
-. 關閉兩個節點上的叢集連接埠clus1 LIF：
+. 關閉兩個節點上的叢集連接埠 clus1 LIF：
 +
-網路連接埠修改
+`network port modify`
 
 +
 [listing]
@@ -192,22 +192,22 @@ Cluster
 cluster::*> network port modify -node n1 -port e4a -up-admin false
 cluster::*> network port modify -node n2 -port e4a -up-admin false
 ----
-. 驗證遠端叢集介面的連線能力：
+. 驗證遠端集群介面的連接性：
 
 
 [role="tabbed-block"]
 ====
-.更新版本ONTAP
+.ONTAP 9.9.1 及更高版本
 --
-您可以使用 `network interface check cluster-connectivity` 命令以啟動叢集連線的存取檢查、然後顯示詳細資料：
+你可以使用 `network interface check cluster-connectivity`執行命令以啟動叢集連接性檢查，然後顯示詳細資訊：
 
-`network interface check cluster-connectivity start` 和 `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`和 `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-* 注意： * 在執行 show 命令之前、請等待數秒以顯示詳細資料。
+*注意：*在執行 show 命令顯示詳細資訊之前，請等待幾秒鐘。
 
 [listing, subs="+quotes"]
 ----
@@ -224,9 +224,9 @@ n2
        3/5/2022 19:21:20 -06:00   n2_clus2        n1_clus2      none
 ----
 --
-.所有 ONTAP 版本
+.所有ONTAP版本
 --
-對於所有 ONTAP 版本、您也可以使用 `cluster ping-cluster -node <name>` 檢查連線能力的命令：
+對於所有ONTAP版本，您也可以使用 `cluster ping-cluster -node <name>`檢查連接性的命令：
 
 `cluster ping-cluster -node <name>`
 
@@ -259,24 +259,24 @@ RPC status:
 ----
 --
 ====
-. [[step10]] 從節點 n1 上的 E4A 拔下纜線。
+. [[step10]]斷開節點 n1 上 e4a 的電纜。
 +
-您可以參考執行中的組態、並使用Nexus 3132Q-V上支援的纜線、將交換器C1（本範例中為連接埠1/7）上的前40 GbE連接埠連接至n1上的E4A
+您可以參考運行配置，並使用 Nexus 3132Q-V 上支援的電纜將交換器 C1 上的第一個 40 GbE 連接埠（本例中為連接埠 1/7）連接到 n1 上的 e4a。
 
 +
 
-NOTE: 將任何纜線重新連接至新的Cisco叢集交換器時、所使用的纜線必須是Cisco支援的光纖或纜線。
+NOTE: 將任何電纜重新連接到新的Cisco集群交換器時，所使用的電纜必須是光纖或Cisco支援的電纜。
 
-. 從節點n2上的E4A拔下纜線。
+. 斷開節點 n2 上 e4a 的電纜。
 +
-您可以參考執行中的組態、並使用支援的纜線、將E4A連接至C1連接埠1/8上的下一個可用40 GbE連接埠。
+您可以參考運行配置，使用支援的電纜將 e4a 連接到 C1 上的下一個可用的 40 GbE 連接埠 1/8。
 
-. 啟用C1上的所有面向節點的連接埠。
+. 啟用 C1 上所有面向節點的連接埠。
 +
 .顯示範例
 [%collapsible]
 ====
-下列範例顯示使用RCF支援的組態、在Nexus 3132Q-V叢集交換器C1和C2上啟用連接埠1到30 `NX3132_RCF_v1.1_24p10g_26p40g.txt`：
+以下範例展示如何使用 RCF 中支援的配置，在 Nexus 3132Q-V 叢集交換器 C1 和 C2 上啟用連接埠 1 到 30。 `NX3132_RCF_v1.1_24p10g_26p40g.txt` ：
 
 [listing]
 ----
@@ -287,9 +287,9 @@ C1(config-if-range)# exit
 C1(config)# exit
 ----
 ====
-. 在每個節點上啟用第一個叢集連接埠E4A：
+. 在每個節點上啟用第一個叢集連接埠 e4a：
 +
-網路連接埠修改
+`network port modify`
 
 +
 .顯示範例
@@ -301,9 +301,9 @@ cluster::*> network port modify -node n1 -port e4a -up-admin true
 cluster::*> network port modify -node n2 -port e4a -up-admin true
 ----
 ====
-. 驗證兩個節點上的叢集是否均已啟動：
+. 確認兩個節點上的叢集都已啟動：
 +
-「網路連接埠展示」
+`network port show`
 
 +
 .顯示範例
@@ -331,15 +331,15 @@ e4e       Cluster      Cluster          up   9000 auto/40000  -        -
 4 entries were displayed.
 ----
 ====
-. 針對每個節點、還原所有移轉的叢集互連生命生命、如下所示：
+. 對於每個節點，還原所有已遷移的叢集互連 LIF：
 +
-網路介面回復
+`network interface revert`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示移轉的LIF正還原至其主連接埠。
+以下範例顯示已移轉的 LIF 還原至其原始連接埠。
 
 [listing]
 ----
@@ -347,12 +347,12 @@ cluster::*> network interface revert -vserver Cluster -lif n1_clus1
 cluster::*> network interface revert -vserver Cluster -lif n2_clus1
 ----
 ====
-. 確認所有的叢集互連連接埠現在都已還原至其主連接埠：
+. 確認所有群集互連連接埠均已恢復為其原始連接埠：
 +
-「網路介面展示」
+`network interface show`
 
 +
-對於「目前連接埠」欄中所列的所有連接埠、「is Home」欄位應顯示「true」。如果顯示的值為「假」、表示連接埠尚未還原。
+這 `Is Home`該列應顯示以下值： `true`對於列表中列出的所有端口 `Current Port`柱子。如果顯示的值為 `false`連接埠尚未恢復。
 
 +
 .顯示範例
@@ -373,9 +373,9 @@ Cluster
 4 entries were displayed.
 ----
 ====
-. 顯示每個節點上的叢集連接埠連線能力：
+. 顯示每個節點上的叢集連接埠連線情況：
 +
-「網路裝置探索秀」
+`network device-discovery show`
 
 +
 .顯示範例
@@ -395,9 +395,9 @@ n2         /cdp
             e4e    n1                  e4e              FAS9000
 ----
 ====
-. 在每個節點的主控台上、將clus2移轉至連接埠E4A：
+. 在每個節點的控制台上，將 clus2 遷移到連接埠 e4a：
 +
-網路介面移轉
+`network interface migrate`
 
 +
 .顯示範例
@@ -411,12 +411,12 @@ cluster::*> network interface migrate -vserver Cluster -lif n2_clus2 -source-nod
 -destination-node n2 -destination-port e4a
 ----
 ====
-. 關閉兩個節點上的叢集連接埠clus2 LIF：
+. 關閉兩個節點上的叢集連接埠 clus2 LIF：
 +
-網路連接埠修改
+`network port modify`
 
 +
-以下範例顯示兩個節點上要關閉的指定連接埠：
+以下範例展示如何在兩個節點上關閉指定的連接埠：
 
 +
 [listing]
@@ -424,9 +424,9 @@ cluster::*> network interface migrate -vserver Cluster -lif n2_clus2 -source-nod
 cluster::*> network port modify -node n1 -port e4e -up-admin false
 cluster::*> network port modify -node n2 -port e4e -up-admin false
 ----
-. 驗證叢集LIF狀態：
+. 驗證叢集 LIF 狀態：
 +
-「網路介面展示」
+`network interface show`
 
 +
 .顯示範例
@@ -447,20 +447,20 @@ Cluster
 4 entries were displayed.
 ----
 ====
-. 從節點n1上的e4e拔下纜線。
+. 斷開節點 n1 上 e4e 的電纜。
 +
-您可以參考執行中的組態、並使用Nexus 3132Q-V上支援的纜線、將交換器C2上的前40 GbE連接埠（本範例中為連接埠1/7）連接至n1上的e4e
+您可以參考運行配置，並使用 Nexus 3132Q-V 上支援的電纜將交換器 C2 上的第一個 40 GbE 連接埠（本例中為連接埠 1/7）連接到 n1 上的 e4e。
 
-. 從節點n2上的e4e拔下纜線。
+. 斷開節點 n2 上 e4e 的電纜。
 +
-您可以參考執行中的組態、並使用支援的纜線、將e4e連接至C2連接埠1/8上的下一個可用40 GbE連接埠。
+您可以參考運行配置，使用支援的電纜將 e4e 連接到 C2 上下一個可用的 40 GbE 連接埠 1/8。
 
-. 在C2上啟用所有面向節點的連接埠。
+. 啟用 C2 上所有面向節點的連接埠。
 +
 .顯示範例
 [%collapsible]
 ====
-下列範例顯示使用RCF支援的組態、在Nexus 3132Q-V叢集交換器C1和C2上啟用連接埠1到30 `NX3132_RCF_v1.1_24p10g_26p40g.txt`：
+以下範例展示如何使用 RCF 支援的設定在 Nexus 3132Q-V 叢集交換器 C1 和 C2 上啟用連接埠 1 到 30。 `NX3132_RCF_v1.1_24p10g_26p40g.txt` ：
 
 [listing]
 ----
@@ -471,12 +471,12 @@ C2(config-if-range)# exit
 C2(config)# exit
 ----
 ====
-. 在每個節點上啟用第二個叢集連接埠e4e：
+. 在每個節點上啟用第二個叢集連接埠 e4e：
 +
-網路連接埠修改
+`network port modify`
 
 +
-下列範例顯示正在啟動的指定連接埠：
+以下範例顯示如何啟動指定的連接埠：
 
 +
 [listing]
@@ -484,12 +484,12 @@ C2(config)# exit
 cluster::*> network port modify -node n1 -port e4e -up-admin true
 cluster::*> network port modify -node n2 -port e4e -up-admin true
 ----
-. 針對每個節點、還原所有移轉的叢集互連生命生命、如下所示：
+. 對於每個節點，還原所有已遷移的叢集互連 LIF：
 +
-網路介面回復
+`network interface revert`
 
 +
-以下範例顯示移轉的LIF正還原至其主連接埠。
+以下範例顯示已移轉的 LIF 還原至其原始連接埠。
 
 +
 [listing]
@@ -497,12 +497,12 @@ cluster::*> network port modify -node n2 -port e4e -up-admin true
 cluster::*> network interface revert -vserver Cluster -lif n1_clus2
 cluster::*> network interface revert -vserver Cluster -lif n2_clus2
 ----
-. 確認所有的叢集互連連接埠現在都已還原至其主連接埠：
+. 確認所有群集互連連接埠均已恢復為其原始連接埠：
 +
-「網路介面展示」
+`network interface show`
 
 +
-對於「目前連接埠」欄中所列的所有連接埠、「is Home」欄位應顯示「true」。如果顯示的值為「假」、表示連接埠尚未還原。
+這 `Is Home`該列應顯示以下值： `true`對於列表中列出的所有端口 `Current Port`柱子。如果顯示的值為 `false`連接埠尚未恢復。
 
 +
 .顯示範例
@@ -523,9 +523,9 @@ Cluster
 4 entries were displayed.
 ----
 ====
-. 驗證所有的叢集互連連接埠是否都處於「up」狀態。
+. 確認所有群集互連連接埠均已連線。 `up`狀態。
 +
-「網路連接埠show -role cluster」
+`network port show -role cluster`
 
 +
 .顯示範例
@@ -555,5 +555,5 @@ e4e       Cluster      Cluster          up   9000 auto/40000  -        -
 ====
 
 
-.接下來呢？
-link:migrate-switchless-complete-migration.html["完成移轉"]。
+.下一步是什麼？
+link:migrate-switchless-complete-migration.html["完成遷移"]。

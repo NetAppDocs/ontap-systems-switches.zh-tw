@@ -2,56 +2,56 @@
 permalink: switch-cshm/log-collection-troubleshoot.html 
 sidebar: sidebar 
 keywords: cshm, cluster, storage, switch logs, debugging, collection 
-summary: 您可以使用此處提供的命令來 ... 
+summary: 您可以使用此處提供的命令來… 
 ---
-= 疑難排解記錄收集
+= 排查日誌收集問題
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-如果您遇到記錄收集功能報告的下列任何錯誤狀態（在命令輸出中可見 `system switch ethernet log show` ）、請嘗試對應的偵錯步驟：
+如果您遇到日誌收集功能報告的以下任何錯誤狀態（可在輸出中查看）， `system switch ethernet log show`命令），嘗試對應的調試步驟：
 
 |===
 
 
-| * 記錄收集錯誤狀態 * | * 解決方法 * 
+| *日誌收集錯誤狀態* | *解決* 
 
 
  a| 
-* 不存在 RSA 金鑰 *
+*RSA金鑰不存在*
  a| 
-重新產生 ONTAP SSH 金鑰。
-
-
-
- a| 
-* 切換密碼錯誤 *
- a| 
-驗證認證、測試 SSH 連線、並重新產生 ONTAP SSH 金鑰。請參閱交換器說明文件、或聯絡 NetApp 支援部門以取得相關指示。
+重新產生ONTAP SSH 金鑰。
 
 
 
  a| 
-* FIPS 不存在 ECDSA 金鑰 *
+*切換密碼錯誤*
  a| 
-如果啟用 FIPS 模式、則必須先在交換器上產生 ECDSA 金鑰、然後再重新嘗試。
-
-
-
- a| 
-* 找到預先存在的記錄 *
- a| 
-移除交換器上先前的記錄集合檔案。
+驗證憑證，測試 SSH 連接，並重新產生ONTAP SSH 金鑰。請查閱交換器文件或聯絡NetApp支援以取得說明。
 
 
 
  a| 
-* 交換器傾印記錄錯誤 *
+*FIPS 系統中不存在 ECDSA 金鑰*
  a| 
-確保交換器使用者擁有記錄收集權限。請參閱上述先決條件。
+如果啟用了 FIPS 模式，則需要在交換器上產生 ECDSA 金鑰，然後再重試。
+
+
+
+ a| 
+*發現已存在的日誌*
+ a| 
+刪除交換器上之前的日誌收集檔案。
+
+
+
+ a| 
+*交換器轉儲日誌錯誤*
+ a| 
+請確保切換使用者擁有日誌收集權限。請參考以上先決條件。
 
 |===
 
-NOTE: 如果解決方案詳細資料無法運作、請聯絡 NetApp 支援部門。
+NOTE: 如果上述解決方案無效，請聯絡NetApp支援。

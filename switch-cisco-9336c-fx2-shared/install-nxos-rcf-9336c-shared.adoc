@@ -2,43 +2,43 @@
 permalink: switch-cisco-9336c-fx2-shared/install-nxos-rcf-9336c-shared.html 
 sidebar: sidebar 
 keywords: install rcf, cisco switches 
-summary: 您可以在初次設定Nexus 9336C-FX2交換器之後安裝RCF。您也可以使用此程序來升級RCF版本。 
+summary: 首次設定好 Nexus 9336C-FX2 交換器後，即可安裝 RCF。您也可以使用此方法升級 RCF 版本。 
 ---
-= 安裝參考組態檔（RCF）
+= 安裝參考設定檔（RCF）
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-首次設定 Nexus 9336C-FX2 交換器之後，您可以安裝參考組態檔（ RCF ）。
+首次設定 Nexus 9336C-FX2 交換器後，即可安裝參考設定檔 (RCF)。
 
-開始之前、請先完成中的程序 link:prepare-nxos-rcf-9336c-shared.html["準備安裝NX-OS和RCF"]。
+開始之前，請先完成以下步驟。link:prepare-nxos-rcf-9336c-shared.html["準備安裝 NX-OS 和 RCF"] 。
 
 .開始之前
-驗證下列安裝和連線：
+請核實以下安裝和連接：
 
-* 與交換器的主控台連線。如果您可以遠端存取交換器、則可選用主控台連線。
-* 交換器 CS1 和交換器 CS2 已開機，並完成初始交換器設定（管理 IP 位址和 SSH 已設定）。
+* 控制台與交換器的連接。如果您可以遠端存取交換機，則控制台連線是可選的。
+* 交換器 cs1 和交換器 cs2 已通電，交換器初始設定已完成（管理 IP 位址和 SSH 已設定）。
 * 已安裝所需的 NX-OS 版本。
-* 交換器之間的交換器間連結（ ISL ）連線已連線。
-* ONTAP 節點叢集連接埠未連線。
+* 交換器之間的交換器間鏈路（ISL）連接已連接。
+* ONTAP節點叢集連接埠未連線。
 
 
 
 
-== 步驟 1 ：在交換器上安裝 RCF
+== 步驟 1：在交換器上安裝 RCF
 
-. 使用 SSH 或序列主控台登入交換器 CS1 。
-. 使用下列傳輸協定之一、將 RCF 複製到交換器 CS1 的 bootflash ： FTP 、 TFTP 、 SFTP 或 SCP 。
+. 使用 SSH 或序列控制台登入 switch cs1。
+. 使用下列傳輸協定之一將 RCF 複製到交換器 cs1 的 bootflash：FTP、TFTP、SFTP 或 SCP。
 +
-如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000系列NX-OS命令參考"^]。
+有關Cisco命令的更多信息，請參閱 https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000 系列 NX-OS 指令參考"^]。
 
 +
 .顯示範例
 [%collapsible]
 ====
-此範例顯示使用 TFTP 將 RCF 複製到交換器 CS1 上的 bootflash ：
+此範例展示如何使用 TFTP 將 RCF 檔案複製到交換器 cs1 的啟動快閃記憶體中：
 
 [listing, subs="+quotes"]
 ----
@@ -50,22 +50,22 @@ TFTP get operation was successful
 Copy complete, now saving to disk (please wait)...
 ----
 ====
-. 將先前下載的RCF套用至bootFlash。
+. 將先前下載的 RCF 檔案套用到啟動快閃記憶體。
 +
-如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000系列NX-OS命令參考"^]。
+有關Cisco命令的更多信息，請參閱 https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000 系列 NX-OS 指令參考"^]。
 
 +
 .顯示範例
 [%collapsible]
 ====
-此範例顯示RCF檔案 `Nexus_9336C_RCF_v1.6-Cluster-HA-Breakout.txt` 安裝在交換器 CS1 上：
+此範例展示了 RCF 文件 `Nexus_9336C_RCF_v1.6-Cluster-HA-Breakout.txt`正在交換器 cs1 上安裝：
 
 [listing]
 ----
 cs1# copy Nexus_9336C_RCF_v1.6-Cluster-HA-Breakout.txt running-config echo-commands
 ----
 ====
-. 檢查「show banner motd」命令的橫幅輸出。您必須閱讀並遵循這些指示、以確保交換器的組態和操作正確無誤。
+. 檢查橫幅輸出 `show banner motd`命令。您必須閱讀並遵循這些說明以確保交換器的正確配置和操作。
 +
 .顯示範例
 [%collapsible]
@@ -107,30 +107,30 @@ g mode:
 ******************************************************************************
 ----
 ====
-. 確認RCF檔案為正確的更新版本：
+. 請確認 RCF 檔案是否為最新版本：
 +
-「如何執行設定」
+`show running-config`
 
 +
-當您檢查輸出以確認您擁有正確的RCF時、請確定下列資訊正確無誤：
+檢查輸出結果以驗證是否擁有正確的 RCF 時，請確保以下資訊正確：
 
 +
 ** RCF橫幅
-** 節點和連接埠設定
-** 自訂
+** 節點和連接埠設置
+** 客製化
 +
-輸出會因站台組態而異。請檢查連接埠設定、並參閱版本說明、以瞭解您安裝的RCF的任何特定變更。
+輸出結果會根據您的網站配置而有所不同。檢查連接埠設置，並參考發行說明，以了解您安裝的 RCF 版本是否有任何特定變更。
 
 
 
-. 記錄當前之間的任何自訂添加 `running-config`文件和正在使用的 RCF 文件。
-. 確認 RCF 版本和開關設定正確後，複製 `running-config`文件到 `startup-config`文件。
+. 記錄目前版本與目前版本之間的任何自訂新增內容。 `running-config`文件和正在使用的 RCF 文件。
+. 確認 RCF 版本和交換器設定正確後，複製以下內容： `running-config`文件到 `startup-config`文件。
 +
 [listing]
 ----
 cs1# copy running-config startup-config [########################################] 100% Copy complete
 ----
-. 將基本配置詳細資訊儲存到 `write_erase.cfg`bootflash 上的檔案。
+. 儲存基本配置詳細信息 `write_erase.cfg`啟動閃存上的檔案。
 +
 `cs1# show run | i "username admin password" > bootflash:write_erase.cfg`
 
@@ -143,7 +143,7 @@ cs1# copy running-config startup-config [#######################################
 +
 `cs1# show run | section "switchname" >> bootflash:write_erase.cfg`
 
-. 對於 RCF 版本 1.12 及更高版本，執行以下命令：
+. 對於 RCF 版本 1.12 及更高版本，請執行以下命令：
 +
 `cs1# echo "hardware access-list tcam region ing-racl 1024" >> bootflash:write_erase.cfg`
 
@@ -154,13 +154,13 @@ cs1# copy running-config startup-config [#######################################
 `cs1# echo "hardware access-list tcam region ing-l2-qos 1280" >> bootflash:write_erase.cfg`
 
 +
-請參閱知識庫文章link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["如何在保留遠端連線的同時清除 Cisco 互連交換器上的組態"^]了解更多詳情。
+請參閱知識庫文章link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["如何在保持遠端連線的情況下清除Cisco互連交換器上的配置"^]更多詳情請見下文。
 
-. 驗證 `write_erase.cfg`文件按預期填充：
+. 確認 `write_erase.cfg`文件已如預期填入：
 +
 `show file bootflash:write_erase.cfg`
 
-. 發出寫入清除命令以清除目前儲存的組態：
+. 發出 write erase 指令以擦除目前已儲存的設定：
 +
 `cs1# *write erase*`
 
@@ -170,11 +170,11 @@ cs1# copy running-config startup-config [#######################################
 +
 `Do you wish to proceed anyway? (y/n)  [n] *y*`
 
-. 將先前儲存的基本組態複製到啟動組態。
+. 將先前儲存的基本配置複製到啟動配置中。
 +
 `cs1# *copy bootflash:write_erase.cfg startup-config*`
 
-. 重新開機交換器CS1。
+. 重啟交換器cs1。
 +
 `cs1# *reload*`
 
@@ -182,14 +182,14 @@ cs1# copy running-config startup-config [#######################################
 `This command will reboot the system. (y/n)?  [n] *y*`
 
 . 在交換器 cs2 上重複步驟 1 至 13。
-. 將 ONTAP 叢集中所有節點的叢集連接埠連接至交換器 CS1 和 CS2 。
+. 將ONTAP叢集中所有節點的叢集連接埠連接到交換器 cs1 和 cs2。
 
 
 
 
-== 步驟 2 ：驗證交換器連線
+== 步驟 2：驗證交換器連接
 
-. 驗證連接至叢集連接埠的交換器連接埠是否為* up*。
+. 確認連接到叢集連接埠的交換器連接埠已啟用。
 +
 `show interface brief`
 
@@ -210,7 +210,7 @@ Eth1/8        1       eth  trunk  up      none                   100G(D) --
 .
 ----
 ====
-. 使用下列命令、確認叢集節點位於正確的叢集 VLAN 中：
+. 使用下列命令驗證叢集節點是否位於正確的叢集 VLAN 中：
 +
 `show vlan brief`
 
@@ -365,11 +365,11 @@ Po1           1
 ====
 +
 
-NOTE: 如需特定連接埠和 VLAN 使用詳細資料、請參閱 RCF 中的橫幅和重要附註一節。
+NOTE: 有關具體連接埠和 VLAN 使用詳情，請參閱 RCF 中的橫幅和重要說明部分。
 
-. 確認CS1與CS2之間的ISL正常運作：
+. 驗證 cs1 和 cs2 之間的 ISL 連線是否正常：
 +
-「How port-channel Summary」
+`show port-channel summary`
 
 +
 .顯示範例
@@ -397,13 +397,13 @@ cs1#
 
 
 
-== 步驟 3 ：設定 ONTAP 叢集
+== 步驟 3：設定ONTAP集群
 
-NetApp 建議您使用系統管理員來設定新叢集。
+NetApp建議您使用系統管理員來設定新的叢集。
 
-System Manager 為叢集設定和組態提供簡單易用的工作流程、包括指派節點管理 IP 位址、初始化叢集、建立本機層、設定通訊協定和配置初始儲存設備。
+系統管理器為叢集設定和配置提供了簡單易用的工作流程，包括分配節點管理 IP 位址、初始化叢集、建立本機層、設定協定和配置初始儲存。
 
-前往 https://docs.netapp.com/us-en/ontap/task_configure_ontap.html["使用系統管理員在新叢集上設定 ONTAP"] 以取得設定指示。
+前往 https://docs.netapp.com/us-en/ontap/task_configure_ontap.html["使用 System Manager 在新叢集上設定ONTAP"]有關設定說明，請參閱相關文件。
 
-.接下來呢？
+.下一步是什麼？
 安裝 RCF 後，您可以… link:../switch-cshm/config-overview.html["配置交換器健康監控"]。

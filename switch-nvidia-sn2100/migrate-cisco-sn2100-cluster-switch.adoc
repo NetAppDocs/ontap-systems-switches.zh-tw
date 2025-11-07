@@ -2,25 +2,25 @@
 permalink: switch-nvidia-sn2100/migrate-cisco-sn2100-cluster-switch.html 
 sidebar: sidebar 
 keywords: migrating to a cluster with NVIDIA SN2100 cluster switches, how to migrate 
-summary: 您可以將不中斷營運的舊Cisco叢集交換器移轉至ONTAP NVIDIA SN2100叢集網路交換器、以供支援使用。 
+summary: 您可以將ONTAP叢集中較舊的Cisco叢集交換器無中斷地移轉到NVIDIA SN2100 叢集網路交換器。 
 ---
-= 從Cisco叢集交換器移轉至NVIDIA SN2100叢集交換器
+= 將Cisco群集交換器遷移到NVIDIA SN2100 群集交換機
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-您可以將適用於ONTAP 某個叢集的Cisco叢集交換器移轉至NVIDIA SN2100叢集交換器。這是不中斷營運的程序。
+您可以將用於ONTAP叢集的Cisco叢集交換器遷移到NVIDIA SN2100 叢集交換器。這是一個非破壞性的過程。
 
 
 
-== 檢閱要求
+== 審查要求
 
-當您將部分舊的Cisco叢集交換器更換為NVIDIA SN2100叢集交換器時、必須注意特定的組態資訊、連接埠連線和纜線需求。請參閱 link:configure-overview-sn2100-cluster.html["NVIDIA SN2100交換器的安裝與組態總覽"]。
+當您用NVIDIA SN2100 叢集交換器取代一些較舊的Cisco叢集交換器時，您必須了解某些設定資訊、連接埠連線和佈線要求。看link:configure-overview-sn2100-cluster.html["NVIDIA SN2100交換器的安裝與設定概述"]。
 
-.支援的交換器
-支援下列Cisco叢集交換器：
+.支援的交換機
+支援以下Cisco集群交換器：
 
 * Nexus 9336C-FX2
 * Nexus 92300YC
@@ -29,100 +29,100 @@ summary: 您可以將不中斷營運的舊Cisco叢集交換器移轉至ONTAP NVI
 * Nexus 3132Q-V
 
 
-如需受支援連接埠及其組態的詳細資訊、請參閱 https://hwu.netapp.com/["Hardware Universe"^] 。
+有關支援的連接埠及其配置的詳細信息，請參閱 https://hwu.netapp.com/["Hardware Universe"^]。
 
-.您需要的產品
+.你需要什麼
 確保：
 
-* 現有的叢集已正確設定並正常運作。
-* 所有叢集連接埠都處於「* up*」狀態、以確保不中斷營運。
-* NVIDIA SN2100叢集交換器是在適當版本的CummUS Linux下設定及操作、並套用參考組態檔（RCF）。
-* 現有的叢集網路組態具有下列特性：
+* 現有叢集已正確設定並正常運作。
+* 為確保運作不中斷，所有叢集連接埠均處於*開啟*狀態。
+* NVIDIA SN2100 叢集交換器已設定並運行在安裝了正確版本的 Cumulus Linux 下，並應用了參考設定檔 (RCF)。
+* 現有叢集網路配置如下：
 +
-** 使用兩個舊Cisco交換器的備援且功能完整的NetApp叢集。
-** 管理連線能力、以及對舊Cisco交換器和新交換器的主控台存取。
-** 使用叢集生命區的所有叢集生命區都位於主連接埠上。
-** 在舊的Cisco交換器之間以及新交換器之間啟用或連接ISL連接埠。
+** 使用較舊的Cisco交換機構建立冗餘且功能齊全的NetApp叢集。
+** 舊款Cisco交換器和新交換器的管理連線和控制台存取。
+** 所有處於啟動狀態的叢集 LIF 都位於其主連接埠上。
+** ISL 連接埠已啟用，並已在舊款Cisco交換器和新款交換器之間連接了線纜。
 
 
-* 部分連接埠是在NVIDIA SN2100交換器上設定、以40 GbE或100 GbE的速度執行。
-* 您已規劃、移轉並記錄40 GbE和100 GbE連線、從節點連接至NVIDIA SN2100叢集交換器。
-
-
-
-NOTE: 如果您要變更 AFF A800 或 AFF C800 系統上 e0a 和 e1a 叢集連接埠的連接埠速度、您可能會發現速度轉換後收到格式錯誤的封包。請參閱 https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1570339["錯誤 1570339"^] 以及知識庫文章 https://kb.netapp.com/onprem/ontap/hardware/CRC_errors_on_T6_ports_after_converting_from_40GbE_to_100GbE["從 40GbE 轉換為 100GbE 後、 T6 連接埠發生 CRC 錯誤"^] 以取得指引。
+* NVIDIA SN2100 交換器上的一些連接埠配置為以 40 GbE 或 100 GbE 運作。
+* 您已規劃、遷移並記錄了從節點到NVIDIA SN2100 叢集交換器的 40 GbE 和 100 GbE 連線。
 
 
 
-== 移轉交換器
+NOTE: 如果您變更AFF A800或AFF C800系統上 e0a 和 e1a 叢集連接埠的連接埠速度，您可能會觀察到速度轉換後接收到格式錯誤的套件。看 https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1570339["漏洞編號 1570339"^]以及知識庫文章 https://kb.netapp.com/onprem/ontap/hardware/CRC_errors_on_T6_ports_after_converting_from_40GbE_to_100GbE["將 40GbE 轉換為 100GbE 後，T6 連接埠出現 CRC 錯誤"^]供參考。
+
+
+
+== 遷移交換機
 
 .關於範例
-在本程序中、Cisco Nexus 3232C叢集交換器可用於命令和輸出等用途。
+在此過程中，使用Cisco Nexus 3232C 叢集交換器作為範例指令和輸出。
 
-本程序中的範例使用下列交換器和節點命名法：
+本流程中的範例使用以下開關和節點命名規則：
 
-* 現有的Cisco Nexus 3232C叢集交換器為_C1_和_C2_。
-* 新的NVIDIA SN2100叢集交換器是_sw1_和_SW2_。
-* 節點是_node1_和_node2_。
-* 叢集生命區分別是節點1上的_node1_clus1_和節點1上的_node1_clus2_、以及節點2上的節點2_node2_clus1_和節點2_clus2_。
-* 「cluster1：*：>」提示會指出叢集的名稱。
-* 此程序中使用的叢集連接埠為_e3a_和_e3c_。
-* 中斷連接埠的格式為：swp[port] s[中斷 連接埠0-3]。例如、swp1上的四個中斷連接埠分別是_swp1s0_、_swp1s1_、_swp1s2_和_swp1s3_。
+* 現有的Cisco Nexus 3232C 叢集交換器是 _c1_ 和 _c2_。
+* 新的NVIDIA SN2100 叢集交換器是 _sw1_ 和 _sw2_。
+* 節點分別為 _node1_ 和 _node2_。
+* 節點 1 上的叢集 LIF 分別為 _node1_clus1_ 和 _node1_clus2_，節點 2 上的叢集 LIF 分別為 _node2_clus1_ 和 _node2_clus2_。
+* 這 `cluster1::*>`prompt 指示叢集名稱。
+* 此過程中使用的叢集連接埠為 _e3a_ 和 _e3b_。
+* 分支端口採用以下格式：swp[端口]s[分支端口 0-3]。例如，swp1 上的四個分支連接埠分別是 _swp1s0_、_swp1s1_、_swp1s2_ 和 _swp1s3_。
 
 
-.關於這項工作
-本程序涵蓋下列案例：
+.關於此任務
+本流程涵蓋以下情況：
 
-* 交換機 C2 首先由交換機 SW2 取代。
+* 首先將交換器 c2 替換為交換器 sw2。
 +
-** 關閉連接至叢集節點的連接埠。必須同時關閉所有連接埠、以避免叢集不穩定。
-** 然後從C2中斷連接節點與C2之間的纜線、並重新連接至SW2。
+** 關閉叢集節點的連接埠。為避免叢集不穩定，所有連接埠必須同時關閉。
+** 然後斷開節點與 c2 之間的電纜與 c2 的連接，並重新連接到 sw2。
 
 
-* 交換器 C1 由交換器 sw1 取代。
+* 交換器 c1 被交換器 sw1 取代。
 +
-** 關閉連接至叢集節點的連接埠。必須同時關閉所有連接埠、以避免叢集不穩定。
-** 然後、節點與C1之間的纜線會從C1中斷開、並重新連接至sw1。
+** 關閉叢集節點的連接埠。為避免叢集不穩定，所有連接埠必須同時關閉。
+** 然後斷開節點與 c1 之間的電纜與 c1 的連接，並重新連接到 sw1。
 
 
 
 
 
 
-=== 步驟1：準備移轉
+=== 步驟 1：準備遷移
 
-. 如果AutoSupport 此叢集啟用了「支援」功能、請叫用AutoSupport 下列訊息來禁止自動建立案例：
+. 如果此叢集上啟用了AutoSupport ，則透過呼叫AutoSupport訊息來抑制自動建立案例：
 +
-「系統節點AutoSupport 不完整地叫用節點*-type all -Message MAn=xh」
-
-+
-其中_x_是維護時段的持續時間（以小時為單位）。
-
-. 將權限等級變更為進階、並在系統提示您繼續時輸入* y*：
-+
-"進階權限"
+`system node autosupport invoke -node * -type all -message MAINT=xh`
 
 +
-出現進階提示（*>）。
+其中 _x_ 為維護視窗的持續時間（小時）。
 
-. 停用叢集生命體上的自動還原：
+. 將權限級別變更為高級，並在提示繼續時輸入 *y*：
 +
-「網路介面修改-vserver叢集-lIF *-auta-fRevert假」
+`set -privilege advanced`
 
-
-
-
-
-=== 步驟2：設定連接埠和纜線
-
-. 確定每個叢集介面的管理或作業狀態。
 +
-每個連接埠應顯示「Link」（連結）、「Health Status」（健全狀況狀態）則顯示為「Healthy」（健全狀況）。
+出現高階提示符號（*>）。
+
+. 停用叢集 LIF 的自動回滾功能：
++
+`network interface modify -vserver Cluster -lif * -auto-revert false`
+
+
+
+
+
+=== 步驟二：設定埠和線纜
+
+. 確定每個叢集介面的管理或運作狀態。
++
+每個連接埠都應該顯示出來。 `Link`而且對身體有益 `Health Status`。
 
 +
 .. 顯示網路連接埠屬性：
 +
-「網路連接埠show -IPSpace Cluster」
+`network port show -ipspace Cluster`
 
 +
 .顯示範例
@@ -149,12 +149,12 @@ e3a       Cluster    Cluster          up   9000  auto/100000  healthy  false
 e3b       Cluster    Cluster          up   9000  auto/100000  healthy  false
 ----
 ====
-.. 顯示有關邏輯介面及其指定主節點的資訊：
+.. 顯示有​​關邏輯介面及其指定歸屬節點的資訊：
 +
-「網路介面show -vserver叢集」
+`network interface show -vserver Cluster`
 
 +
-應顯示每個LIF `up/up` 適用於 `Status Admin/Oper` 而且真的適用於 `Is Home`。
+每個 LIF 都應顯示 `up/up`為了 `Status Admin/Oper`確實如此 `Is Home`。
 
 +
 .顯示範例
@@ -177,7 +177,7 @@ Cluster
 ====
 
 
-. 每個節點上的叢集連接埠會以下列方式連接至現有的叢集交換器（從節點的角度來看）：
+. 從節點的角度來看，每個節點上的叢集連接埠與現有叢集交換器的連接方式如下：
 +
 `network device-discovery show -protocol lldp`
 
@@ -199,9 +199,9 @@ node2      /lldp
             e3b    c2 (6a:ad:4f:98:4c:a4)    Eth1/2            -
 ----
 ====
-. 叢集連接埠和交換器的連接方式如下（從交換器的觀點來看）：
+. 叢集連接埠和交換器的連接方式如下（從交換器的角度來看）：
 +
-「How cup neighbor」
+`show cdp neighbors`
 
 +
 .顯示範例
@@ -237,22 +237,22 @@ c1                    Eth1/31       175    S I s       N3K-C3232C       Eth1/31
 c1                    Eth1/32       175    S I s       N3K-C3232C       Eth1/32
 ----
 ====
-. 驗證遠端叢集介面的連線能力：
+. 驗證遠端集群介面的連接性：
 
 
 [role="tabbed-block"]
 ====
-.更新版本ONTAP
+.ONTAP 9.9.1 及更高版本
 --
-您可以使用 `network interface check cluster-connectivity` 命令以啟動叢集連線的存取檢查、然後顯示詳細資料：
+你可以使用 `network interface check cluster-connectivity`執行命令以啟動叢集連接性檢查，然後顯示詳細資訊：
 
-`network interface check cluster-connectivity start` 和 `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`和 `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-* 注意： * 請等待數秒後再執行 `show`命令以顯示詳細資料。
+*注意：*運行程式前請等待幾秒鐘 `show`顯示詳細資訊的命令。
 
 [listing, subs="+quotes"]
 ----
@@ -268,9 +268,9 @@ node2
        3/5/2022 19:21:20 -06:00   node2_clus2      node1_clus2      none
 ----
 --
-.所有 ONTAP 版本
+.所有ONTAP版本
 --
-對於所有 ONTAP 版本、您也可以使用 `cluster ping-cluster -node <name>` 檢查連線能力的命令：
+對於所有ONTAP版本，您也可以使用 `cluster ping-cluster -node <name>`檢查連接性的命令：
 
 `cluster ping-cluster -node <name>`
 
@@ -302,7 +302,7 @@ RPC status:
 ----
 --
 ====
-. [[step5]] 在交換器 C2 上、關閉連接至節點叢集連接埠的連接埠、以便容錯移轉叢集生命週期。
+. [[step5]] 在交換器 c2 上，關閉連接到節點集群端口的端口，以便集群 LIF 進行故障轉移。
 +
 [listing, subs="+quotes"]
 ----
@@ -315,10 +315,10 @@ Enter configuration commands, one per line. End with CNTL/Z.
 (c2)(Config)# *exit*
 (c2)#
 ----
-. 使用NVIDIA SN2100支援的適當纜線、將節點叢集連接埠從舊交換器C2移至新交換器SW2。
+. 將節點叢集連接埠從舊交換器 c2 移至新交換器 sw2，使用NVIDIA SN2100 支援的適當線纜。
 . 顯示網路連接埠屬性：
 +
-「網路連接埠show -IPSpace Cluster」
+`network port show -ipspace Cluster`
 
 +
 .顯示範例
@@ -345,7 +345,7 @@ e3a       Cluster    Cluster          up   9000  auto/100000  healthy  false
 e3b       Cluster    Cluster          up   9000  auto/100000  healthy  false
 ----
 ====
-. 從節點的觀點來看、每個節點上的叢集連接埠現在都以下列方式連接至叢集交換器：
+. 從節點的角度來看，每個節點上的叢集連接埠現在會以以下方式連接到叢集交換器：
 +
 .顯示範例
 [%collapsible]
@@ -365,7 +365,7 @@ node2      /lldp
             e3b    sw2 (b8:ce:f6:19:1b:96)   swp4              -
 ----
 ====
-. 在交換器SW2上、確認所有節點叢集連接埠都已啟動：
+. 在交換器 sw2 上，確認所有節點叢集連接埠均已啟動：
 +
 `net show interface`
 
@@ -387,7 +387,7 @@ UP     swp15        100G  9216   BondMember  sw1 (swp15)       Master: cluster_i
 UP     swp16        100G  9216   BondMember  sw1 (swp16)       Master: cluster_isl(UP)
 ----
 ====
-. 在交換器 C1 上、關閉連接到節點叢集連接埠的連接埠、以便容錯移轉叢集生命期。
+. 在交換器 c1 上，關閉連接到節點集群端口的端口，以便集群 LIF 進行故障轉移。
 +
 [listing, subs="+quotes"]
 ----
@@ -400,13 +400,13 @@ Enter configuration commands, one per line. End with CNTL/Z.
 (c1)(Config)# *exit*
 (c1)#
 ----
-. 使用NVIDIA SN2100支援的適當纜線、將節點叢集連接埠從舊交換器C1移至新交換器sw1。
-. 驗證叢集的最終組態：
+. 將節點叢集連接埠從舊交換器 c1 移至新交換器 sw1，使用NVIDIA SN2100 支援的適當線纜。
+. 驗證叢集的最終配置：
 +
-「網路連接埠show -IPSpace Cluster」
+`network port show -ipspace Cluster`
 
 +
-應顯示每個連接埠 `up` 適用於 `Link` 而且健康 `Health Status`。
+每個連接埠應顯示 `up`為了 `Link`而且對身體有益 `Health Status`。
 
 +
 .顯示範例
@@ -433,7 +433,7 @@ e3a       Cluster    Cluster          up   9000  auto/100000  healthy  false
 e3b       Cluster    Cluster          up   9000  auto/100000  healthy  false
 ----
 ====
-. 從節點的觀點來看、每個節點上的叢集連接埠現在都以下列方式連接至叢集交換器：
+. 從節點的角度來看，每個節點上的叢集連接埠現在會以以下方式連接到叢集交換器：
 +
 .顯示範例
 [%collapsible]
@@ -453,7 +453,7 @@ node2      /lldp
             e3b    sw2 (b8:ce:f6:19:1b:96)   swp4            -
 ----
 ====
-. 在交換器sw1和SW2上、確認所有節點叢集連接埠都已啟動：
+. 在交換器 sw1 和 sw2 上，驗證所有節點叢集連接埠是否都已啟動：
 +
 `net show interface`
 
@@ -487,7 +487,7 @@ UP     swp15        100G  9216   BondMember  sw1 (swp15)       Master: cluster_i
 UP     swp16        100G  9216   BondMember  sw1 (swp16)       Master: cluster_isl(UP)
 ----
 ====
-. 驗證兩個節點各自與每個交換器都有一個連線：
+. 確認兩個節點都分別與每個交換器建立了一個連線：
 +
 `net show lldp`
 
@@ -495,7 +495,7 @@ UP     swp16        100G  9216   BondMember  sw1 (swp16)       Master: cluster_i
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示兩個交換器的適當結果：
+以下範例顯示了兩種開關的正確結果：
 
 [listing, subs="+quotes"]
 ----
@@ -522,15 +522,15 @@ swp16      100G   BondMember  sw1                 swp16
 
 
 
-=== 步驟3：驗證組態
+=== 步驟 3：驗證配置
 
-. 在叢集生命體上啟用自動還原：
+. 啟用叢集 LIF 的自動回滾功能：
 +
 `cluster1::*> network interface modify -vserver Cluster -lif * -auto-revert true`
 
-. 驗證所有叢集網路lifs是否都回到其主連接埠：
+. 確認所有叢集網路 LIF 都已恢復到其原始連接埠：
 +
-「網路介面展示」
+`network interface show`
 
 +
 .顯示範例
@@ -550,15 +550,15 @@ Cluster
             node2_clus2  up/up    169.254.19.183/16  node2         e3b     true
 ----
 ====
-. 將權限層級變更回管理：
+. 將權限等級改回管理員：
 +
-「et -priv. admin」
+`set -privilege admin`
 
-. 如果您禁止自動建立個案、請叫用AutoSupport 下列訊息來重新啟用：
+. 如果您已停用自動建立案例功能，請透過呼叫AutoSupport訊息重新啟用該功能：
 +
-「系統節點AutoSupport 不完整地叫用節點*-type all -most MAn=end」
+`system node autosupport invoke -node * -type all -message MAINT=END`
 
 
 
-.接下來呢？
+.下一步是什麼？
 交換器遷移完成後，您可以… link:../switch-cshm/config-overview.html["配置交換器健康監控"]。

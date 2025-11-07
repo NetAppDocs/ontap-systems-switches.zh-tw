@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: switch-cisco-9336c-fx2-shared/configure-reqs-9336c-shared.html 
 keywords: shared storage cluster switch 
-summary: 從S299.1開始ONTAP 、您可以使用Cisco Nexus 9336C-FX2交換器、將儲存設備和叢集功能結合到共享交換器情境中。 
+summary: 從ONTAP 9.9.1 開始，您可以使用Cisco Nexus 9336C-FX2 交換器將儲存和叢集功能組合到共用交換器場景。 
 ---
-= Cisco Nexus 9336C-FX2共享交換器的組態需求
+= Cisco Nexus 9336C-FX2 共享交換器的設定需求
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,37 +14,37 @@ summary: 從S299.1開始ONTAP 、您可以使用Cisco Nexus 9336C-FX2交換器�
 
 
 [role="lead"]
-對於Cisco Nexus 9336C-FX2交換器的安裝與維護、請務必檢閱組態與網路需求。
+對於Cisco Nexus 9336C-FX2 交換器的安裝和維護，請務必查看設定和網路需求。
 
 
 
-== 支援ONTAP
+== ONTAP 支援
 
-從S299.1開始ONTAP 、您可以使用Cisco Nexus 9336C-FX2交換器、將儲存設備和叢集功能結合到共享交換器組態中。
+從ONTAP 9.9.1 開始，您可以使用Cisco Nexus 9336C-FX2 交換器將儲存和叢集功能組合到共用交換器配置中。
 
-如果您想要建置ONTAP 具有兩個以上節點的叢集、您需要兩個支援的網路交換器。
+如果要建置包含兩個以上節點的ONTAP集群，則需要兩個受支援的網路交換器。
 
 
 
-== 組態需求
+== 配置要求
 
-對於組態設定、您需要適當數量和類型的纜線和纜線連接器、以供交換器使用。
+配置時，您需要為交換器準備相應數量和類型的電纜和電纜連接器。
 
-視您初始設定的交換器類型而定、您需要使用隨附的主控台纜線連接至交換器主控台連接埠；您也需要提供特定的網路資訊。
+根據您最初設定的交換器類型，您需要使用隨附的控制台連接線連接到交換器控制台連接埠；您還需要提供特定的網路資訊。
 
 
 
 == 網路需求
 
-所有交換器組態都需要下列網路資訊。
+所有交換器配置都需要以下網路資訊。
 
-* 用於管理網路流量的IP子網路
-* 每個儲存系統控制器和所有適用交換器的主機名稱和IP位址
-* 大部分的儲存系統控制器都是透過e0M介面來管理、方法是連接至乙太網路服務連接埠（扳手圖示）。在E0M介面上AFF 、E0M AFF 介面使用專用的乙太網路連接埠、可在ESIA800和ESIEA700s系統上使用。
-* 請參閱 https://hwu.netapp.com["Hardware Universe"] 以取得最新資訊。
+* 管理網路流量的 IP 子網
+* 每個儲存系統控制器和所有適用交換器的主機名稱和 IP 位址
+* 大多數儲存系統控制器透過連接到乙太網路服務連接埠（扳手圖示）透過 e0M 介面進行管理。在AFF A800和AFF A700s系統中，e0M 介面使用專用乙太網路連接埠。
+* 請參閱 https://hwu.netapp.com["Hardware Universe"]獲取最新資訊。
 
 
-如需交換器初始組態的詳細資訊、請參閱下列指南： https://www.cisco.com/c/en/us/td/docs/dcn/hw/nx-os/nexus9000/9336c-fx2-e/cisco-nexus-9336c-fx2-e-nx-os-mode-switch-hardware-installation-guide.html["Cisco Nexus 9336C-FX2安裝與升級指南"]。
+有關交換器初始配置的更多信息，請參閱以下指南： https://www.cisco.com/c/en/us/td/docs/dcn/hw/nx-os/nexus9000/9336c-fx2-e/cisco-nexus-9336c-fx2-e-nx-os-mode-switch-hardware-installation-guide.html["Cisco Nexus 9336C-FX2 安裝與升級指南"] 。
 
 .下一步
 在您查看完配置要求後，您可以確認您的配置。 link:components-9336c-shared.html["組件和零件編號"]。

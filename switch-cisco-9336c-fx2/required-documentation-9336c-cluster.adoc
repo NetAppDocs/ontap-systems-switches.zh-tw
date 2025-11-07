@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: switch-cisco-9336c-fx2/required-documentation-9336c-cluster.html 
 keywords: shared storage cluster switch 
-summary: 對於Cisco Nexus 9336C-FX2交換器的安裝與維護、請務必檢閱特定的交換器與控制器文件、以設定Cisco 9336-FX2交換器與ONTAP 叢集。 
+summary: 對於Cisco Nexus 9336C-FX2 交換器的安裝和維護，請務必查看特定的交換器和控制器文件以設定您的Cisco 9336-FX2 交換器和ONTAP叢集。 
 ---
 = Cisco Nexus 9336C-FX2 和 9336C-FX2-T 交換器的文件要求
 :hardbreaks:
@@ -18,121 +18,121 @@ summary: 對於Cisco Nexus 9336C-FX2交換器的安裝與維護、請務必檢�
 
 
 
-== 交換器文件
+== 切換文檔
 
-要設定Cisco Nexus 9336C-FX2 和 9336C-FX2-T 交換機，您需要以下文檔 https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Cisco Nexus 9000系列交換器支援"^]頁：
-
-[cols="1,2"]
-|===
-| 文件標題 | 說明 
-
-
- a| 
-_Nexus 9000系列硬體安裝指南_
- a| 
-提供有關站台需求、交換器硬體詳細資料及安裝選項的詳細資訊。
-
-
-
- a| 
-_Cisco Nexus 9000系列交換器軟體組態指南_（請選擇您交換器上安裝的NX-OS版本指南）
- a| 
-提供您需要的初始交換器組態資訊、然後才能設定交換器ONTAP 以供執行故障操作。
-
-
-
- a| 
-_Cisco Nexus 9000系列NX-OS軟體升級與降級指南_（請針對安裝在交換器上的NX-OS版本選擇指南）
- a| 
-如ONTAP 有必要、提供如何將交換器降級至支援的交換器軟體的相關資訊。
-
-
-
- a| 
-_Cisco Nexus 9000系列NX-OS命令參考主索引_
- a| 
-提供Cisco所提供之各種命令參考資料的連結。
-
-
-
- a| 
-_Cisco Nexus 9000 MIBs參考資料_
- a| 
-說明Nexus 9000交換器的管理資訊庫（MIB）檔案。
-
-
-
- a| 
-_Nexus 9000系列NX-OS系統訊息參考_
- a| 
-說明Cisco Nexus 9000系列交換器的系統訊息、資訊訊息、以及其他可能有助於診斷連結、內部硬體或系統軟體問題的訊息。
-
-
-
- a| 
-_Cisco Nexus 9000系列NX-OS版本資訊（請選擇安裝在交換器上的NX-OS版本附註）_
- a| 
-說明Cisco Nexus 9000系列的功能、錯誤和限制。
-
-
-
- a| 
-Cisco Nexus 9000系列的法規遵循與安全資訊
- a| 
-提供Nexus 9000系列交換器的國際機構法規遵循、安全及法規資訊。
-
-|===
-
-
-== 系統文件ONTAP
-
-要設定 ONTAP 系統，您需要以下適用於您的作業系統版本的文檔 https://docs.netapp.com/ontap-9/index.jsp["功能9. ONTAP"^] 。
+要設定Cisco Nexus 9336C-FX2 和 9336C-FX2-T 交換機，您需要以下文件： https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Cisco Nexus 9000 系列交換器支援"^]頁：
 
 [cols="1,2"]
 |===
-| 名稱 | 說明 
+| 文件標題 | 描述 
 
 
  a| 
-控制器專屬的安裝與設定指示_
+Nexus 9000 系列硬體安裝指南
  a| 
-說明如何安裝NetApp硬體。
+提供有關站點要求、交換器硬體詳情和安裝選項的詳細資訊。
 
 
 
  a| 
-本文檔 ONTAP
+Cisco Nexus 9000 系列交換器軟體設定指南（請選擇與您的交換器上安裝的 NX-OS 版本相對應的指南）
  a| 
-提供ONTAP 有關這些版本的所有方面的詳細資訊。
+提供在配置交換器以進行ONTAP操作之前所需的初始交換器配置資訊。
+
+
+
+ a| 
+Cisco Nexus 9000 系列 NX-OS 軟體升級與降級指南（請選擇與您的交換器上安裝的 NX-OS 版本相對應的指南）
+ a| 
+提供有關如何將交換器降級到ONTAP支援的交換器軟體（如有必要）的資訊。
+
+
+
+ a| 
+Cisco Nexus 9000 系列 NX-OS 指令參考主索引
+ a| 
+提供Cisco提供的各種指令參考的連結。
+
+
+
+ a| 
+Cisco Nexus 9000 MIB 參考
+ a| 
+描述 Nexus 9000 交換器的管理資訊庫 (MIB) 檔案。
+
+
+
+ a| 
+Nexus 9000 系列 NX-OS 系統訊息參考
+ a| 
+描述Cisco Nexus 9000 系列交換器的系統訊息，包括資訊性訊息和其他可能有助於診斷連結、內部硬體或系統軟體問題的訊息。
+
+
+
+ a| 
+Cisco Nexus 9000 系列 NX-OS 版本說明（請選擇交換器上已安裝的 NX-OS 版本對應的說明）
+ a| 
+描述了CiscoNexus 9000 系列的功能、缺陷和限制。
+
+
+
+ a| 
+Cisco Nexus 9000 系列的法規遵循和安全訊息
+ a| 
+提供 Nexus 9000 系列交換器的國際機構合規性、安全性和法規資訊。
+
+|===
+
+
+== ONTAP 系統文檔
+
+若要設定ONTAP系統，您需要以下適用於您作業系統版本的文件。 https://docs.netapp.com/ontap-9/index.jsp["ONTAP 9"^] 。
+
+[cols="1,2"]
+|===
+| Name | 描述 
+
+
+ a| 
+控制器專用_安裝與設定說明_
+ a| 
+介紹如何安裝NetApp硬體。
+
+
+
+ a| 
+ONTAP 文檔
+ a| 
+提供有關ONTAP版本各個方面的詳細資訊。
 
 
 
  a| 
 https://hwu.netapp.com["Hardware Universe"^]
  a| 
-提供NetApp硬體組態與相容性資訊。
+提供NetApp硬體配置和相容性資訊。
 
 |===
 
 
-== 軌道套件與機櫃文件
+== 軌道套件和機櫃文檔
 
-若要在NetApp機櫃中安裝Cisco 9336-FX2交換器、請參閱下列硬體文件。
+若要在NetApp機櫃中安裝Cisco 9336-FX2 交換機，請參閱下列硬體文件。
 
 [cols="1,2"]
 |===
-| 名稱 | 說明 
+| Name | 描述 
 
 
  a| 
-https://library.netapp.com/ecm/ecm_download_file/ECMM1280394["42U系統機櫃、深度指南"^]
+https://library.netapp.com/ecm/ecm_download_file/ECMM1280394["42U 系統機櫃，深導軌"^]
  a| 
-說明與42U系統機櫃相關的FRU、並提供維護與FRU更換指示。
+描述與 42U 系統機櫃相關的 FRU，並提供保養和 FRU 更換說明。
 
 
 
  a| 
-link:install-switch-and-passthrough-panel-9336c-cluster.html["在NetApp機櫃中安裝Cisco 9336-FX2交換器"^]
+link:install-switch-and-passthrough-panel-9336c-cluster.html["在NetApp機櫃中安裝一台Cisco 9336-FX2 交換器。"^]
  a| 
 介紹如何在四柱NetApp機櫃中安裝Cisco Nexus 9336C-FX2 和 9336C-FX2-T 交換器。
 

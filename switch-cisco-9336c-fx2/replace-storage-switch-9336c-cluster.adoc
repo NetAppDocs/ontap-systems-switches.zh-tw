@@ -2,66 +2,66 @@
 permalink: switch-cisco-9336c-fx2/replace-storage-switch-9336c-cluster.html 
 sidebar: sidebar 
 keywords: replacing, replace, defective, nexus, switch, cluster, network, nondisruptive, procedure, ndu, replace a cisco nexus 9336c-fx2 cluster switch - cisco nexus 9336c-fx2 
-summary: 在叢集網路中更換故障的Nexus 9336C-FX2交換器、是不中斷營運的程序（NDU）。 
+summary: '更換叢集網路中有缺陷的 Nexus 9336C-FX2 交換器是一個無中斷過程 \(NDU\)。' 
 ---
-= 更換Cisco Nexus 9336C-FX2儲存交換器
+= 更換Cisco Nexus 9336C-FX2 儲存交換機
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-更換Cisco Nexus 9336C-FX2儲存交換器時、您必須注意特定的組態資訊、連接埠連線和纜線需求。
+更換Cisco Nexus 9336C-FX2 儲存交換器時，您必須了解某些設定資訊、連接埠連線和佈線需求。
 
-.您需要的產品
-在Cisco Nexus 9336C-FX2儲存交換器上安裝NX-OS軟體和RCF之前、您必須先確認是否存在下列情況：
+.你需要什麼
+在Cisco Nexus 9336C-FX2 儲存交換器上安裝 NX-OS 軟體和 RCF 之前，必須先驗證以下條件是否存在：
 
-* 您的系統可支援Cisco Nexus 9336C-FX2儲存交換器。
-* 您必須查閱Cisco乙太網路交換器頁面上的交換器相容性表、以取得支援ONTAP 的版本、包括支援的功能、NX-OS和RCF。
-* 您必須參閱Cisco網站上提供的適當軟體與升級指南。Cisco Nexus 3000系列交換器
-* 您必須下載適用的RCT。
-* 現有的網路組態必須具有下列特性：
+* 您的系統可以支援Cisco Nexus 9336C-FX2 儲存交換器。
+* 您必須查閱Cisco乙太網路交換器頁面上的交換器相容性表格，以了解支援的ONTAP、NX-OS 和 RCF 版本。
+* 您一定參考過Cisco網站上提供的對應軟體和升級指南。CiscoNexus 3000 系列交換機
+* 您必須已下載適用的 RCF 檔案。
+* 現有網路配置必須具備以下特徵：
 +
-** 「Cisco乙太網路交換器」頁面提供您交換器上最新的RCF和NX-OS版本。
-** 兩台交換器都必須具備管理連線能力。
+** Cisco乙太網路交換器頁麵包含交換器上最新的 RCF 和 NX-OS 版本。
+** 兩台交換器都必須具備管理連線功能。
 
 
-* 更換的Cisco Nexus 9336C-FX2交換器必須具備下列特性：
+* 更換用的CiscoNexus 9336C-FX2 交換器必須具備以下特性：
 +
-** 管理網路連線功能必須正常。
-** 更換交換器的主控台存取必須已就緒。
-** 必須將適當的RCF和NX-OS作業系統映像載入交換器。
+** 管理網路連線必須正常。
+** 必須具備對更換開關的控制台存取權限。
+** 必須將對應的 RCF 和 NX-OS 作業系統映像載入到交換器上。
 ** 交換器的初始配置必須完成。
 
 
 
 
-.關於這項工作
-此程序將第二個Nexus 9336C-FX2儲存交換器S2取代為新的9336C-FX交換器NS2。這兩個節點分別是node1和node2。
+.關於此任務
+此程序將第二台 Nexus 9336C-FX2 儲存交換器 S2 替換為新的 9336C-FX 交換器 NS2。這兩個節點分別是節點1和節點2。
 
 完成步驟：
 
-* 確認要更換的交換器為S2。
-* 從交換器S2拔下纜線。
-* 將纜線重新連接至交換器NS2。
-* 確認交換器NS2上的所有裝置組態。
+* 確認要更換的開關是 S2。
+* 斷開交換器 S2 的電纜。
+* 重新連接電纜至 NS2 交換器。
+* 請核實交換器 NS2 上的所有設備配置。
 +
 
-NOTE: RCF和NX-OS版本中的命令語法可能會有相依性。
+NOTE: RCF 和 NX-OS 版本中的指令語法可能存在相依性。
 
 
 
 .步驟
-. 如果AutoSupport 此叢集啟用了「支援」功能、請叫用AutoSupport 下列訊息來禁止自動建立案例：
+. 如果此叢集上啟用了AutoSupport ，則透過呼叫AutoSupport訊息來抑制自動建立案例：
 +
-「系統節點AutoSupport 不完整地叫用節點*-type all -訊息MAn=xh」
+`system node autosupport invoke -node * -type all - message MAINT=xh`
 
 +
-_x_是維護時段的持續時間（以小時為單位）。
+_x_ 是維護視窗的持續時間，單位為小時。
 
-. 檢查儲存節點連接埠的健全狀況、確定已連線至儲存交換器S1：
+. 檢查儲存節點連接埠的運作狀況，確保與儲存交換器S1有連接：
 +
-「torage port show -port-type ENET」
+`storage port show -port-type ENET`
 
 +
 .顯示範例
@@ -86,9 +86,9 @@ node2
 storage::*>
 ----
 ====
-. 確認儲存交換器S1可用：
+. 確認儲存交換器 S1 可用：
 +
-「網路裝置探索秀」
+`network device-discovery show`
 
 +
 .顯示範例
@@ -119,7 +119,7 @@ node2/lldp
 storage::*>
 ----
 ====
-. 執行展示 `lldp neighbors` 在工作交換器上執行命令、確認您可以同時看到節點和所有磁碟櫃：
+. 掌控全場 `lldp neighbors`在工作交換器上執行指令，確認可以看到兩個節點和所有機架：
 +
 `show lldp neighbors`
 
@@ -142,7 +142,7 @@ SHFGD2008000022  Eth1/7       120          S             e0a
 SHFGD2008000022  Eth1/8       120          S             e0a
 ----
 ====
-. 驗證儲存系統中的機櫃連接埠：
+. 檢查儲存系統中的貨架連接埠：
 +
 `storage shelf port show -fields remote-device,remote-port`
 
@@ -166,11 +166,11 @@ shelf   id  remote-port   remote-device
 storage::*>
 ----
 ====
-. 拔下連接至儲存交換器S2的所有纜線。
-. 將所有纜線重新連接至更換的交換器NS2。
-. 重新檢查儲存節點連接埠的健全狀況：
+. 拆下連接到儲存交換器 S2 的所有電纜。
+. 將所有電纜重新連接到替換交換器 NS2。
+. 請重新檢查儲存節點連接埠的運作狀況：
 +
-「torage port show -port-type ENET」
+`storage port show -port-type ENET`
 
 +
 .顯示範例
@@ -195,9 +195,9 @@ node2
 storage::*>
 ----
 ====
-. 確認兩個交換器都可用：
+. 確認兩台交換器均可用：
 +
-「網路裝置探索秀」
+`network device-discovery show`
 
 +
 .顯示範例
@@ -232,7 +232,7 @@ node2/lldp
 storage::*>
 ----
 ====
-. 驗證儲存系統中的機櫃連接埠：
+. 檢查儲存系統中的貨架連接埠：
 +
 `storage shelf port show -fields remote-device,remote-port`
 
@@ -256,8 +256,8 @@ shelf   id    remote-port     remote-device
 storage::*>
 ----
 ====
-. 如果您禁止自動建立個案、請叫用AutoSupport 下列訊息來重新啟用：
+. 如果您已停用自動建立案例功能，請透過呼叫AutoSupport訊息重新啟用該功能：
 +
-「系統節點AutoSupport 不完整地叫用節點*-type all -most MAn=end」
+`system node autosupport invoke -node * -type all -message MAINT=END`
 
 

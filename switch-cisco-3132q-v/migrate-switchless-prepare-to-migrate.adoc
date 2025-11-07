@@ -2,36 +2,36 @@
 permalink: switch-cisco-3132q-v/migrate-switchless-prepare-to-migrate.html 
 sidebar: sidebar 
 keywords: cisco 3132q-v, cluster switches 
-summary: 您可以在 AFF 或 FAS 叢集中使用 Cisco Nexus 3132q-v 交換器作為叢集交換器。 
+summary: 您可以在AFF或FAS叢集中使用Cisco Nexus 3132q-v 交換器作為叢集交換器。 
 ---
-= 準備從無交換器叢集移轉至交換式叢集
+= 做好從無交換器叢集遷移到有交換器叢集的準備
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-請依照下列步驟準備無交換器叢集，以便移轉至雙節點交換式叢集。
+請依照下列步驟準備無交換器集群，以便遷移到雙節點交換器集群。
 
 .步驟
-. 如果AutoSupport 此叢集啟用了「支援」功能、請叫用AutoSupport 下列訊息來禁止自動建立案例：
+. 如果此叢集上啟用了AutoSupport ，則透過呼叫AutoSupport訊息來抑制自動建立案例：
 +
-「系統節點AutoSupport 不完整地叫用節點*-type all -訊息MAn=xh」
+`system node autosupport invoke -node * -type all - message MAINT=xh`
 
 +
-_x_是維護時段的持續時間（以小時為單位）。
+_x_ 是維護視窗的持續時間，單位為小時。
 
 +
 [NOTE]
 ====
-此資訊可通知技術支援人員執行此維護工作、以便在維護期間抑制自動建立案例。AutoSupport
+AutoSupport訊息會通知技術支援此維護任務，以便在維護視窗期間抑制自動建立案例。
 
 ====
-. 判斷每個叢集介面的管理或作業狀態：
+. 確定每個叢集介面的管理或運作狀態：
 +
 .. 顯示網路連接埠屬性：
 +
-「網路連接埠展示」
+`network port show`
 
 +
 .顯示範例
@@ -59,9 +59,9 @@ e4e       Cluster      Cluster          up   9000 auto/40000  -        -
 4 entries were displayed.
 ----
 ====
-.. 顯示有關邏輯介面的資訊：
+.. 顯示邏輯介面資訊：
 +
-「網路介面展示」
+`network interface show`
 
 +
 .顯示範例
@@ -84,20 +84,20 @@ Cluster
 ====
 
 
-. 根據您的需求、確認新的31382Q-V交換器上已安裝適當的RCV和映像、並進行必要的站台自訂、例如使用者和密碼、網路位址等。
+. 確認已根據您的要求在新 3132Q-V 交換器上安裝了相應的 RCF 和映像，並進行任何必要的網站自訂，例如使用者和密碼、網路位址等。
 +
-此時您必須準備兩個交換器。如果您需要升級RCF和映像軟體、則必須執行下列步驟：
+此時您必須準備好這兩個開關。如果需要升級 RCF 和鏡像軟體，必須按照以下步驟操作：
 
 +
-.. 前往link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器"^]在NetApp支援站點上。
-.. 請在該頁的表格中記下您的交換器和所需的軟體版本。
-.. 下載適當版本的RCF。
-.. 在 * 說明 * 頁面上選取 * 繼續 * ，接受授權合約，然後依照 * 下載 * 頁面上的指示下載 RCF 。
-.. 下載適當版本的映像軟體。
+.. 前往link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換機"^]在NetApp支援網站上。
+.. 請記下您交換器的型號以及該頁表格中所需的軟體版本。
+.. 下載相應版本的RCF。
+.. 在“描述”頁面上選擇“繼續”，接受許可協議，然後按照“下載”頁面上的說明下載 RCF。
+.. 下載對應版本的影像處理軟體。
 
 
-. 在 * 說明 * 頁面上選取 * 繼續 * ，接受授權合約，然後依照 * 下載 * 頁面上的指示下載 RCF 。
+. 在“描述”頁面上選擇“繼續”，接受許可協議，然後按照“下載”頁面上的說明下載 RCF。
 
 
-.接下來呢？
-link:migrate-switchless-configure-ports.html["設定連接埠"]。
+.下一步是什麼？
+link:migrate-switchless-configure-ports.html["配置連接埠"]。

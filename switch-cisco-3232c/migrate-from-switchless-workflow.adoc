@@ -2,29 +2,29 @@
 permalink: switch-cisco-3232c/migrate-from-switchless-workflow.html 
 sidebar: sidebar 
 keywords: 3232c cabling setup, 3232c switches configuration, nx-os 
-summary: 設定 Cisco 3232C 交換器之前、請先檢閱下列資訊。 
+summary: 在設定Cisco 3232C 交換器之前，請先查看以下資訊。 
 ---
-= 從雙節點無交換器叢集工作流程進行移轉
+= 從雙節點無交換器叢集工作流程遷移
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-請遵循下列工作流程步驟，從雙節點無交換器叢集移轉至具有 Cisco Nexus 3232C 叢集交換器的叢集。
+依照下列工作流程步驟，從雙節點無交換器叢集遷移到具有Cisco Nexus 3232C 叢集交換器的叢集。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一"]link:migrate-from-switchless-migrate-requirements.html["移轉需求"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一"]link:migrate-from-switchless-migrate-requirements.html["遷移要求"]
 [role="quick-margin-para"]
-檢閱移轉程序的交換器範例資訊。
+請查看遷移過程中的範例交換器資訊。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["二"]link:migrate-from-switchless-prepare-to-migrate.html["準備移轉"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["二"]link:migrate-from-switchless-prepare-to-migrate.html["做好遷移準備"]
 [role="quick-margin-para"]
-準備雙節點無交換器叢集，以便移轉至雙節點交換式叢集。
+準備好將你的雙節點無交換器叢集遷移到雙節點有交換器叢集。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三"]link:migrate-from-switchless-configure-ports.html["設定連接埠"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三"]link:migrate-from-switchless-configure-ports.html["配置連接埠"]
 [role="quick-margin-para"]
-設定雙節點無交換器叢集以移轉至雙節點交換式叢集。
+配置您的雙節點無交換器集群，以便遷移到雙節點有交換器集群。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["四"]link:migrate-from-switchless-complete-migration.html["完成移轉"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["四"]link:migrate-from-switchless-complete-migration.html["完成遷移"]
 [role="quick-margin-para"]
-完成移轉至雙節點交換式叢集。
+完成向雙節點交換叢集的遷移。

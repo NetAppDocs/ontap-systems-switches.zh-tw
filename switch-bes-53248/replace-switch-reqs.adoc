@@ -2,60 +2,60 @@
 permalink: switch-bes-53248/replace-switch-reqs.html 
 sidebar: sidebar 
 keywords: replace, replacing, defective, broadcom-supported, bes, cluster, switch, network, nondisruptive, procedure, ndu, replace a broadcom-supported bes-53428 cluster switch - bes-53428 switches 
-summary: 在叢集網路中更換故障的Broadcom支援的Bes-53248叢集交換器、是不中斷營運的程序（NDU）。 
+summary: '在叢集網路中更換有缺陷的博通支援的 BES-53248 叢集交換器是一個非中斷程式 \(NDU\)。' 
 ---
-= 更換需求
+= 更換要求
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-更換交換器之前、請先確定在目前環境和更換交換器上符合下列條件。
+更換交換器之前，請確保目前環境和待更換的交換器符合以下條件。
 
 
 
-== 現有的叢集與網路基礎架構
+== 現有集群和網路基礎設施
 
-請確定：
+請確保：
 
-* 現有的叢集已通過驗證、完全正常運作、至少有一個完全連接的叢集交換器。
-* 所有叢集連接埠均為* up*。
-* 所有叢集邏輯介面（LIF）都在管理和操作上* up *及其主連接埠上。
-* The The ONTAP `cluster ping-cluster -node node1` 命令必須指出設定、 `basic connectivity` 和 `larger than PMTU communication`在所有路徑上都成功。
-
-
-
-
-== BS-53248替換叢集交換器
-
-請確定：
-
-* 替換交換器上的管理網路連線功能正常。
-* 更換交換器的主控台存取已就緒。
-* 節點連線是連接埠0/1到0/16、具有預設授權。
-* 所有交換器間連結（ISL）連接埠在0/55和0/56上都會停用。
-* 所需的參考組態檔（RCF）和EFOS作業系統交換器映像會載入交換器。
-* 交換器的初始自訂完成、如所述 link:configure-install-initial.html["設定BS-53248叢集交換器"]。
-
-
-任何先前的站台自訂（例如STP、SNMP和SSH）都會複製到新交換器。
-
-
-
-== 啟用主控台記錄
-
-NetApp 強烈建議您在使用的裝置上啟用主控台記錄功能、並在更換交換器時採取下列動作：
-
-* 在維護期間保持啟用 AutoSupport 。
-* 在維護前後觸發維護 AutoSupport 、以在維護期間停用案例建立。請參閱本知識庫文件 https://kb.netapp.com/Support_Bulletins/Customer_Bulletins/SU92["SU92 ：如何在排程的維護期間內、禁止自動建立案例"^] 以取得更多詳細資料。
-* 啟用任何 CLI 工作階段的工作階段記錄。如需如何啟用工作階段記錄的說明、請參閱本知識庫文件中的「記錄工作階段輸出」一節 https://kb.netapp.com/on-prem/ontap/Ontap_OS/OS-KBs/How_to_configure_PuTTY_for_optimal_connectivity_to_ONTAP_systems["如何設定 Putty 以最佳化連線至 ONTAP 系統"^]。
+* 現有集群已驗證功能完全正常，至少有一個完全連接的集群交換器。
+* 叢集所有連接埠均已啟動。
+* 所有叢集邏輯介面（LIF）在管理和運行上均已*啟動*，並且位於其主連接埠上。
+* ONTAP `cluster ping-cluster -node node1`命令必須表明設置， `basic connectivity`和 `larger than PMTU communication`在所有道路上都取得了成功。
 
 
 
 
-== 以取得更多資訊
+== BES-53248 替換式集群開關
 
-* https://mysupport.netapp.com/["NetApp 支援網站"^]
-* https://hwu.netapp.com/Home/Index["NetApp Hardware Universe"^]
+請確保：
+
+* 替換交換器的管理網路連線功能正常。
+* 已具備對替換開關的控制台存取權限。
+* 節點連線使用連接埠 0/1 至 0/16，採用預設授權。
+* 連接埠 0/55 和 0/56 上的所有交換器間連結 (ISL) 連接埠均已停用。
+* 所需的參考設定檔（RCF）和 EFOS 作業系統交換器映像已載入到交換器上。
+* 交換器的初始客製化工作已完成，詳情如下：link:configure-install-initial.html["配置 BES-53248 集群交換機"] 。
+
+
+先前站點的所有自訂設置，如 STP、SNMP 和 SSH，都會複製到新交換器上。
+
+
+
+== 啟用控制台日誌記錄
+
+NetApp強烈建議您在使用的裝置上啟用控制台日誌記錄，並在更換交換器時執行以下操作：
+
+* 維護期間請保持AutoSupport功能啟用。
+* 在維護前後觸發維護AutoSupport，以在維護期間停用案例建立。請參考這篇知識庫文章 https://kb.netapp.com/Support_Bulletins/Customer_Bulletins/SU92["SU92：如何在計劃維護視窗期間抑制自動建立案例"^]更多詳情請見下文。
+* 啟用所有 CLI 會話​​的會話日誌記錄。有關如何啟用會話日誌記錄的說明，請查看此知識庫文章中的「記錄會話輸出」部分。 https://kb.netapp.com/on-prem/ontap/Ontap_OS/OS-KBs/How_to_configure_PuTTY_for_optimal_connectivity_to_ONTAP_systems["如何配置 PuTTY 以獲得與ONTAP系統的最佳連接"^] 。
+
+
+
+
+== 更多資訊
+
+* https://mysupport.netapp.com/["NetApp支援站點"^]
+* https://hwu.netapp.com/Home/Index["NetAppHardware Universe"^]
 

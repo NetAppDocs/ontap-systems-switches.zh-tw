@@ -2,17 +2,17 @@
 permalink: switch-cshm/config-overview.html 
 sidebar: sidebar 
 keywords: cshm, cluster, storage, switch logs, debugging, collection 
-summary: 乙太網路交換器健全狀況監視器（ CSHM ）負責確保叢集與儲存網路交換器的作業健全狀況、並收集交換器記錄以供偵錯之用。 
+summary: '乙太網路交換器健康監視器 (CSHM) 負責確保叢集和儲存網路交換器的運作健康，並收集交換器日誌以進行偵錯。' 
 ---
-= 組態總覽
+= 配置概述
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-乙太網路交換器健全狀況監視器（ CSHM ）負責確保叢集與儲存網路交換器的作業健全狀況、並收集交換器記錄以供偵錯之用。
+乙太網路交換器健康監視器 (CSHM) 負責確保叢集和儲存網路交換器的運作健康，並收集交換器日誌以進行偵錯。
 
-* link:config-log-collection.html["設定記錄收集"]
-* link:config-snmpv3.html["設定 SNMPv3 （選用）"]
+* link:config-log-collection.html["配置日誌收集"]
+* link:config-snmpv3.html["配置 SNMPv3（可選）"]
 

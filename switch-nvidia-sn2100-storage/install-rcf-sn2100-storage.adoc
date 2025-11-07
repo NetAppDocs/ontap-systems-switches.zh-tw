@@ -2,36 +2,36 @@
 permalink: switch-nvidia-sn2100-storage/install-rcf-sn2100-storage.html 
 sidebar: sidebar 
 keywords: install rcf script, python script, sn2100 SN2100 switches, cumulus 
-summary: 請遵循此程序來安裝RCF指令碼。 
+summary: 請依照以下步驟安裝 RCF 腳本。 
 ---
-= 安裝或升級 RCF 指令碼
+= 安裝或升級 RCF 腳本
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-請遵循此程序來安裝或升級 RCF 指令碼。
+請依照以下步驟安裝或升級 RCF 腳本。
 
 .開始之前
-在安裝或升級 RCF 指令碼之前，請確定交換器上有下列可用項目：
+在安裝或升級 RCF 腳本之前，請確保交換器上具備以下條件：
 
-* 已安裝Cummulis Linux 4.4.3。
-* IP位址、子網路遮罩和預設閘道、是透過DHCP定義或手動設定的。
-
-
-.目前的RCF指令碼版本
-叢集與儲存應用程式可使用兩個RCF指令碼。每個的程序都相同。
-
-* 叢集： * MSN2100-RCF-v1. _x_ 叢集 *
-* 儲存： * MSN2100-RCF-v1. _x_ 儲存 *
+* 已安裝 Cumulus Linux 4.4.3。
+* IP 位址、子網路遮罩和預設閘道透過 DHCP 定義或手動設定。
 
 
+.目前 RCF 腳本版本
+有兩個 RCF 腳本可用於叢集和儲存應用。每種情況的處理步驟都相同。
 
-NOTE: 下列程序範例說明如何下載及套用叢集交換器的RCF指令碼。
+* 叢集：*MSN2100-RCF-v1._x_-Cluster*
+* 儲存：*MSN2100-RCF-v1._x_-儲存*
 
 
-NOTE: 命令輸出範例使用交換器管理IP位址10.233.204.71、網路遮罩255．255．255．0和預設閘道10．233.204.1。
+
+NOTE: 以下範例步驟顯示如何下載和套用叢集交換器的 RCF 腳本。
+
+
+NOTE: 範例指令輸出使用交換器管理 IP 位址 10.233.204.71，子網路遮罩 255.255.254.0 和預設閘道 10.233.204.1。
 
 .步驟
 . 顯示SN2100交換器上的可用介面：
@@ -68,7 +68,7 @@ ADMDN  swp15  N/A  9216   NotConfigured
 ADMDN  swp16  N/A  9216   NotConfigured
 ----
 ====
-. 將RCF python指令碼複製到交換器：
+. 將 RCF Python 腳本複製到交換器：
 +
 [listing, subs="+quotes"]
 ----
@@ -79,7 +79,7 @@ cumulus@cumulus:mgmt:/tmp$ *scp _<user>@<host:/<path>_/MSN2100-RCF-v1.8-Cluster*
 ssologin@10.233.204.71's password:
 MSN2100-RCF-v1.8-Cluster                 100% 8607   111.2KB/s         00:00
 ----
-. 套用RCF python指令碼* MSN2100-RCF-v1.8-Cluster*：
+. 應用 RCF Python 腳本 *MSN2100-RCF-v1.8-Cluster*：
 +
 [listing, subs="+quotes"]
 ----
@@ -101,14 +101,14 @@ Step 12: Configure SNMP
 Step 13: Reboot the switch
 ----
 +
-RCF指令碼會完成上述步驟。
+RCF腳本會完成上述步驟。
 
 +
 
-NOTE: 若有任何無法修正的RCF python指令碼問題、請聯絡 https://mysupport.netapp.com/["NetApp支援"^] 以取得協助。
+NOTE: 如果遇到任何無法解決的 RCF Python 腳本問題，請聯絡我們。 https://mysupport.netapp.com/["NetApp支援"^]尋求幫助。
 
-. 重新套用任何先前的自訂項目至交換器組態。如link:cabling-considerations-sn2100-storage.html["檢閱纜線佈線和組態考量"]需進一步變更的詳細資料、請參閱。
-. 重新開機後驗證組態：
+. 將先前對交換器配置所做的任何自訂設定重新套用。請參閱link:cabling-considerations-sn2100-storage.html["審查佈線和配置注意事項"]有關任何後續變更的詳細資訊。
+. 重啟後驗證配置：
 +
 `net show interface all`
 
@@ -179,7 +179,7 @@ switch-priority  TC  ETS
 5                 5  DWRR 43%
 ----
 ====
-. 驗證介面中收發器的資訊：
+. 請核對介面中收發器的資訊：
 +
 `net show interface pluggables`
 
@@ -198,7 +198,7 @@ swp15      0x11 (QSFP28)  Amphenol     112-00573        APF21109348001
 swp16      0x11 (QSFP28)  Amphenol     112-00573        APF21109347895  B0
 ----
 ====
-. 確認每個節點都有連線至每個交換器：
+. 確認每個節點都與每個交換器有連接：
 +
 `net show lldp`
 
@@ -218,11 +218,11 @@ swp15      100G   BondMember  sw13                    swp15
 swp16      100G   BondMember  sw14                    swp16
 ----
 ====
-. 驗證叢集上叢集連接埠的健全狀況。
+. 檢查叢集上叢集連接埠的運作狀況。
 +
-.. 驗證叢集中所有節點的e0d連接埠是否正常運作：
+.. 驗證叢集中所有節點的 e0d 連接埠是否已啟動且運作狀況良好：
 +
-「網路連接埠show -role cluster」
+`network port show -role cluster`
 
 +
 .顯示範例
@@ -249,7 +249,7 @@ e3a       Cluster      Cluster          up   9000  auto/10000 healthy  false
 e3b       Cluster      Cluster          up   9000  auto/10000 healthy  false
 ----
 ====
-.. 驗證叢集的交換器健全狀況（這可能不會顯示交換器SW2、因為l生命 週數不在e0d上）。
+.. 從叢集驗證交換器的健康狀況（這可能不會顯示交換器 sw2，因為 LIF 沒有歸位到 e0d）。
 +
 .顯示範例
 [%collapsible]
@@ -293,5 +293,5 @@ sw2                         cluster-network    10.233.205.91    MSN2100-CB2RC
 
 
 
-.接下來呢？
+.下一步是什麼？
 安裝或升級 RCF 後，您可以…link:setup-install-cshm-file.html["安裝 CSHM 文件"] 。

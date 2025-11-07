@@ -15,62 +15,62 @@ summary: '更換叢集網路中有缺陷的 Nexus 9332D-GX2B 交換器是一個�
 
 
 
-== 檢閱要求
+== 審查要求
 
-更換交換器之前、請確定：
+更換開關之前，請確保：
 
-* 您已驗證交換器序號、以確保更換正確的交換器。
-* 在現有的叢集和網路基礎架構上：
+* 您已確認交換器序號，以確保更換的是正確的交換器。
+* 在現有集群和網路基礎設施的基礎上：
 +
-** 現有的叢集已通過驗證、完全正常運作、至少有一個完全連接的叢集交換器。
-** 所有叢集連接埠均已啟動。
-** 所有叢集邏輯介面（LIF）都在其主連接埠上。
-** ONTAP `cluster ping-cluster -node <node-name>`命令必須表示所有路徑上的基本連接和大於 PMTU 的通訊均成功。
+** 現有集群已驗證功能完全正常，至少有一個完全連接的集群交換器。
+** 叢集所有連接埠均已啟動。
+** 所有群集邏輯介面（LIF）均已啟動並位於其所屬連接埠上。
+** ONTAP `cluster ping-cluster -node <node-name>`命令必須表示所有路徑上的基本連接和大於 PMTU 的通訊均已成功。
 
 
 * 在 Nexus 9332D-GX2B 替換交換器上：
 +
-** 替換交換器上的管理網路連線功能正常。
-** 更換交換器的主控台存取已就緒。
+** 替換交換器的管理網路連線功能正常。
+** 已具備對替換開關的控制台存取權限。
 ** 節點連接是連接埠 1/1 至 1/30。
 ** 連接埠 1/31 和 1/32 上的所有交換器間連結 (ISL) 連接埠均停用。
-** 所需的參考組態檔（RCF）和NX-OS作業系統映像交換器會載入交換器。
-** 開關的初始定制已完成，詳見link:setup-switch-9332d-cluster.html["配置 9332D-GX2B 叢集交換機"]。
+** 將所需的參考設定檔 (RCF) 和 NX-OS 作業系統映像交換器載入到交換器上。
+** 交換器的初始客製化工作已完成，詳情如下：link:setup-switch-9332d-cluster.html["配置 9332D-GX2B 集群交換機"] 。
 +
-任何先前的站台自訂（例如STP、SNMP和SSH）都會複製到新交換器。
+先前站點的所有自訂設置，如 STP、SNMP 和 SSH，都會複製到新交換器上。
 
 
 
-* 您已執行命令、從裝載叢集LIF的節點移轉叢集LIF。
-
-
-
-
-== 啟用主控台記錄
-
-NetApp 強烈建議您在使用的裝置上啟用主控台記錄功能、並在更換交換器時採取下列動作：
-
-* 在維護期間保持啟用 AutoSupport 。
-* 在維護前後觸發維護 AutoSupport 、以在維護期間停用案例建立。請參閱本知識庫文件 https://kb.netapp.com/Support_Bulletins/Customer_Bulletins/SU92["SU92 ：如何在排程的維護期間內、禁止自動建立案例"^] 以取得更多詳細資料。
-* 啟用任何 CLI 工作階段的工作階段記錄。如需如何啟用工作階段記錄的說明、請參閱本知識庫文件中的「記錄工作階段輸出」一節 https://kb.netapp.com/on-prem/ontap/Ontap_OS/OS-KBs/How_to_configure_PuTTY_for_optimal_connectivity_to_ONTAP_systems["如何設定 Putty 以最佳化連線至 ONTAP 系統"^]。
+* 您已執行將叢集 LIF 從其所在的節點遷移的命令。
 
 
 
 
-== 更換交換器
+== 啟用控制台日誌記錄
+
+NetApp強烈建議您在使用的裝置上啟用控制台日誌記錄，並在更換交換器時執行以下操作：
+
+* 維護期間請保持AutoSupport功能啟用。
+* 在維護前後觸發維護AutoSupport，以在維護期間停用案例建立。請參考這篇知識庫文章 https://kb.netapp.com/Support_Bulletins/Customer_Bulletins/SU92["SU92：如何在計劃維護視窗期間抑制自動建立案例"^]更多詳情請見下文。
+* 啟用所有 CLI 會話​​的會話日誌記錄。有關如何啟用會話日誌記錄的說明，請查看此知識庫文章中的「記錄會話輸出」部分。 https://kb.netapp.com/on-prem/ontap/Ontap_OS/OS-KBs/How_to_configure_PuTTY_for_optimal_connectivity_to_ONTAP_systems["如何配置 PuTTY 以獲得與ONTAP系統的最佳連接"^] 。
+
+
+
+
+== 更換開關
 
 .關於範例
-本程序中的範例使用下列交換器和節點命名法：
+本流程中的範例使用以下開關和節點命名規則：
 
 * 現有的 Nexus 9332D-GX2B 交換器的名稱為 cs1 和 cs2。
 * 新的 Nexus 9332D-GX2B 交換器的名稱是 newcs2。
 * 節點名稱為node1-01、node1-02、node1-03和node1-04。
 * 對於 node1-01，集群 LIF 名稱為 node1-01_clus1 和 node1-01_clus2；對於 node1-02，集群 LIF 名稱為 node1-02_clus1 和 node1-02_clus2；對於 node1-03，集群 LIF 名稱為 node1-03_clusclus​​d LIF-clus05-0105-00055-01055-000525-000525-01055-00025-000125-0105-000125-00013；名稱為 node1-04_clus1 和 node1-04_clus2。
-* 對所有叢集節點進行變更的提示為cluster1：：*>
+* 對所有叢集節點進行變更的提示是 cluster1::*>
 
 
-.關於這項工作
-下列程序以下列叢集網路拓撲為基礎：
+.關於此任務
+以下步驟基於以下叢集網路拓撲結構：
 
 .顯示範例
 [%collapsible]
@@ -214,33 +214,33 @@ Total entries displayed: 18
 ====
 
 
-=== 步驟1：準備更換
+=== 第一步：準備更換
 
-. 如果AutoSupport 此叢集啟用了「支援」功能、請叫用AutoSupport 下列訊息來禁止自動建立案例：
+. 如果此叢集上啟用了AutoSupport ，則透過呼叫AutoSupport訊息來抑制自動建立案例：
 +
-「系統節點AutoSupport 不完整地叫用節點*-type all -Message MAn=xh」
-
-+
-其中x是維護時段的持續時間（以小時為單位）。
+`system node autosupport invoke -node * -type all -message MAINT=xh`
 
 +
-
-NOTE: 此資訊可通知技術支援人員執行此維護工作、以便在維護期間抑制自動建立案例。AutoSupport
-
-. 在交換器newcs2上安裝適當的RCF和映像、並進行必要的站台準備。
-+
-如有必要、請針對新交換器驗證、下載及安裝適當版本的RCF和NX-OS軟體。如果您已確認新交換器已正確設定、而且不需要更新RCF和NX-OS軟體、請繼續執行步驟2。
+其中 x 為維護窗口的持續時間（小時）。
 
 +
-.. 請前往NetApp支援網站上的_NetApp叢集與管理網路交換器參考組態檔案說明頁面_。
-.. 按一下_叢集網路與管理網路相容性對照表_的連結、然後記下所需的交換器軟體版本。
-.. 按一下瀏覽器的返回箭號以返回「Description（說明）」頁面、按一下*繼續*、接受授權合約、然後前往「Download（下載）」頁面。
-.. 請依照下載頁面上的步驟、針對ONTAP 您要安裝的版本的更新軟體、下載正確的RCF和NX-OS檔案。
+
+NOTE: AutoSupport訊息會通知技術支援此維護任務，以便在維護視窗期間抑制自動建立案例。
+
+. 在交換器上安裝對應的 RCF 和映像，newcs2，並進行任何必要的現場準備。
++
+如有必要，請驗證、下載並安裝適用於新交換器的 RCF 和 NX-OS 軟體的相應版本。如果您已確認新交換器設定正確，且不需要更新 RCF 和 NX-OS 軟體，請繼續執行步驟 2。
+
++
+.. 前往NetApp支援網站上的 _NetApp 叢集和管理網路交換器參考設定檔說明頁面_。
+.. 點擊連結查看“叢集網路和管理網路相容性矩陣”，然後記下所需的交換器軟體版本。
+.. 點擊瀏覽器後退箭頭返回描述頁面，點擊*繼續*，接受許可協議，然後前往下載頁面。
+.. 請依照下載頁面上的步驟，下載與您要安裝的ONTAP軟體版本相對應的正確 RCF 和 NX-OS 檔案。
 
 
 . 在新交換器上，以管理員身分登入並關閉所有將連接到節點叢集介面的連接埠（連接埠 1/1 到 1/30）。
 +
-如果您要更換的交換器無法正常運作且已關機、請前往步驟4。叢集節點上的LIF應已容錯移轉至每個節點的其他叢集連接埠。
+如果您要更換的開關無法正常運作且已斷電，請轉到步驟 4。叢集節點上的 LIF 應該已經針對每個節點故障轉移到另一個叢集連接埠。
 
 +
 .顯示範例
@@ -261,7 +261,7 @@ newcs2(config-if-range)# exit
 newcs2(config)# exit
 ----
 ====
-. 確認所有叢集生命體均已啟用自動還原：
+. 確認所有叢集 LIF 都已啟用自動回滾功能：
 +
 [source, cli]
 ----
@@ -286,9 +286,9 @@ Cluster      node1-04_clus2   true
 4 entries were displayed.
 ----
 ====
-. 驗證遠端叢集介面的連線能力：
+. 驗證遠端集群介面的連接性：
 +
-.. 您可以使用 `network interface check cluster-connectivity show`命令顯示集群連接可訪問性檢查的詳細資訊：
+.. 你可以使用 `network interface check cluster-connectivity show`用於顯示叢集連接性可訪問性檢查詳細資訊的命令：
 +
 [source, cli]
 ----
@@ -357,7 +357,7 @@ RPC status:
 
 
 
-=== 步驟2：設定纜線和連接埠
+=== 步驟 2：設定線纜和連接埠
 
 . 關閉 Nexus 9332D-GX2B 交換器 cs1 上的 ISL 連接埠 Eth1/31 和 Eth1/32。
 +
@@ -417,7 +417,7 @@ network port show ipspace Cluster
 .顯示範例
 [%collapsible]
 ====
-輸出應類似於下列內容：
+輸出結果應類似以下內容：
 
 [listing, subs="+quotes"]
 ----
@@ -461,14 +461,14 @@ e7b       Cluster      Cluster          up   9000  auto/100000 healthy false
 8 entries were displayed.
 ----
 ====
-. 在上一步所用的同一個節點上、使用network interface revert命令、還原上一步中與連接埠相關聯的叢集LIF。
+. 在上一個步驟中使用的相同節點上，使用 network interface revert 指令還原與上一個步驟中的連接埠關聯的叢集 LIF。
 +
 .顯示範例
 [%collapsible]
 ====
 在此範例中，如果 Home 值為 true 且連接埠為 e7b，則 node1-01 上的 LIF node1-01_clus2 成功復原。
 
-以下命令返回 LIF `node1-01_clus2`在 `node1-01`到母港 `e7a`並顯示有關兩個節點上的 LIF 的資訊。如果兩個叢集介面的 Is Home 列均為真，且顯示正確的連接埠分配，則啟動第一個節點成功，在本例中 `e7a`和 `e7b`在節點1-01上。
+以下命令返回 LIF `node1-01_clus2`在 `node1-01`回到母港 `e7a`並顯示有關兩個節點上 LIF 的資訊。如果兩個叢集介面的「是否為 Home」列均為 true，且它們顯示正確的連接埠分配，則表示第一個節點啟動成功。 `e7a`和 `e7b`在節點 1-01 上。
 
 [listing, subs="+quotes"]
 ----
@@ -489,13 +489,13 @@ Cluster
 ====
 . 顯示叢集中節點的相關資訊：
 +
-「叢集展示」
+`cluster show`
 
 +
 .顯示範例
 [%collapsible]
 ====
-此範例顯示此叢集中節點1和節點2的節點健全狀況為真：
+此範例表明，該叢集中節點 1 和節點 2 的節點健康狀況為真：
 
 [listing, subs="+quotes"]
 ----
@@ -509,7 +509,7 @@ node1-03       true    true
 node1-04       true    true
 ----
 ====
-. 驗證所有實體叢集連接埠是否正常運作：
+. 確認所有實體叢集連接埠均已啟動：
 +
 [source, cli]
 ----
@@ -544,9 +544,9 @@ e7b       Cluster      Cluster          up   9000  auto/100000 healthy false
 .
 ----
 ====
-. 驗證遠端叢集介面的連線能力：
+. 驗證遠端集群介面的連接性：
 +
-.. 您可以使用 `network interface check cluster-connectivity`命令顯示集群連接可訪問性檢查的詳細資訊：
+.. 你可以使用 `network interface check cluster-connectivity`用於顯示叢集連接性可訪問性檢查詳細資訊的命令：
 +
 [source, cli]
 ----
@@ -615,13 +615,13 @@ RPC status:
 
 
 
-=== 步驟3：驗證組態
+=== 步驟 3：驗證配置
 
 . 驗證叢集上所有連接埠的健康狀況。
 +
 .. *集群連接埠*
 +
-... 驗證叢集內所有節點的叢集連接埠是否正常運作：
+... 確認叢集中所有節點的叢集連接埠均已啟動且運作狀況良好：
 +
 [source, cli]
 ----
@@ -975,11 +975,11 @@ shelf id connector-state remote-port    remote-device
 
 
 
-. 如果您禁止自動建立個案、請叫用AutoSupport 下列訊息來重新啟用：
+. 如果您已停用自動建立案例功能，請透過呼叫AutoSupport訊息重新啟用該功能：
 +
-「系統節點AutoSupport 不完整地叫用節點*-type all -most MAn=end」
+`system node autosupport invoke -node * -type all -message MAINT=END`
 
 
 
-.接下來呢？
-更換開關後，您link:../switch-cshm/config-overview.html["配置交換器健康監控"]。
+.下一步是什麼？
+更換完開關後，你link:../switch-cshm/config-overview.html["配置交換器健康監控"]。

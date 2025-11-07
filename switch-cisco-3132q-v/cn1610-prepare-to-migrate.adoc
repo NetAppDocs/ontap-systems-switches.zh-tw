@@ -2,38 +2,38 @@
 permalink: switch-cisco-3132q-v/cn1610-prepare-to-migrate.html 
 sidebar: sidebar 
 keywords: cisco 3132q-v, cluster switches 
-summary: 您可以在 AFF 或 FAS 叢集中使用 Cisco Nexus 3132q-v 交換器作為叢集交換器。 
+summary: 您可以在AFF或FAS叢集中使用Cisco Nexus 3132q-v 交換器作為叢集交換器。 
 ---
-= 準備從 CN1610 交換器移轉至 3132Q-V 交換器
+= 準備從 CN1610 交換器遷移到 3132Q-V 交換機
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-請依照下列步驟準備 CN1610 交換器，以便移轉至 Cisco Nexus 3132Q-V 交換器。
+請依照下列步驟準備您的 CN1610 交換機，以便移轉到Cisco Nexus 3132Q-V 交換器。
 
 .步驟
-. 如果AutoSupport 此叢集啟用了「支援」功能、請叫用AutoSupport 下列訊息來禁止自動建立案例：
+. 如果此叢集上啟用了AutoSupport ，則透過呼叫AutoSupport訊息來抑制自動建立案例：
 +
-「系統節點AutoSupport 不完整地叫用節點*-type all -訊息MAn=xh」
+`system node autosupport invoke -node * -type all - message MAINT=xh`
 
 +
-_x_是維護時段的持續時間（以小時為單位）。
+_x_ 是維護視窗的持續時間，單位為小時。
 
 +
 
-NOTE: 此資訊可通知技術支援人員執行此維護工作、以便在維護期間抑制自動建立案例。AutoSupport
+NOTE: AutoSupport訊息會通知技術支援此維護任務，以便在維護視窗期間抑制自動建立案例。
 
-. 顯示組態中裝置的相關資訊：
+. 顯示配置中設備的資訊：
 +
-「網路裝置探索秀」
+`network device-discovery show`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示每個叢集互連交換器的每個節點已設定多少個叢集互連介面：
+以下範例顯示了每個節點上每個叢集互連交換器配置的叢集互連連接口數量：
 
 [listing]
 ----
@@ -56,17 +56,17 @@ n2     /cdp
 8 entries were displayed.
 ----
 ====
-. 確定每個叢集介面的管理或作業狀態。
+. 確定每個叢集介面的管理或運作狀態。
 +
-.. 顯示叢集網路連接埠屬性：
+.. 顯示集群網路連接埠屬性：
 +
-「網路連接埠展示」
+`network port show`
 
 +
 .顯示範例
 [%collapsible]
 ====
-下列範例顯示系統上的網路連接埠屬性：
+以下範例顯示系統上的網路連接埠屬性：
 
 [listing]
 ----
@@ -94,13 +94,13 @@ e0d   cluster   cluster    up    9000  auto/10000     -        -
 8 entries were displayed.
 ----
 ====
-.. 顯示有關邏輯介面的資訊：+
+.. 顯示邏輯介面資訊：+
 `network interface show`
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示系統上所有生命生命的一般資訊：
+以下範例顯示系統中所有 LIF 的一般資訊：
 
 [listing]
 ----
@@ -123,15 +123,15 @@ Cluster
 8 entries were displayed.
 ----
 ====
-.. 顯示探索到的叢集交換器相關資訊：
+.. 顯示已發現的群集交換器的相關資訊：
 +
-「系統叢集交換器顯示」
+`system cluster-switch show`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示叢集已知的叢集交換器及其管理IP位址：
+以下範例顯示了叢集已知的叢集交換器及其管理 IP 位址：
 
 [listing]
 ----
@@ -158,9 +158,9 @@ CL2                           cluster-network  10.10.1.102   CN1610
 ====
 
 
-. 設定 `-auto-revert` 兩個節點上的叢集lust1和clus4參數設為假：
+. 設定 `-auto-revert`在兩個節點上，將叢集 LIF clus1 和 clus4 的參數設定為 false：
 +
-網路介面修改
+`network interface modify`
 
 +
 .顯示範例
@@ -174,36 +174,36 @@ cluster::*> network interface modify -vserver node2 -lif clus1 -auto-revert fals
 cluster::*> network interface modify -vserver node2 -lif clus4 -auto-revert false
 ----
 ====
-. 根據您的需求、確認新的31382Q-V交換器上已安裝適當的RCF和映像、並進行必要的站台自訂、例如使用者和密碼、網路位址等。
+. 確認新的 3132Q-V 交換器上已根據您的要求安裝了相應的 RCF 和映像，並進行任何必要的網站自訂，例如使用者和密碼、網路位址等。
 +
-此時您必須準備兩個交換器。如果您需要升級RCF和映像、請遵循下列步驟：
+此時您必須準備好這兩個開關。如果需要升級 RCF 和鏡像，請依照下列步驟操作：
 
 +
-.. 看link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器"^]在NetApp支援站點上。
-.. 請在該頁的表格中記下您的交換器和所需的軟體版本。
-.. 下載適當版本的RCF。
-.. 在 * 說明 * 頁面上選取 * 繼續 * ，接受授權合約，然後依照 * 下載 * 頁面上的指示下載 RCF 。
-.. 下載適當版本的映像軟體。
+.. 看link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換機"^]在NetApp支援網站上。
+.. 請記下您交換器的型號以及該頁表格中所需的軟體版本。
+.. 下載相應版本的RCF。
+.. 在“描述”頁面上選擇“繼續”，接受許可協議，然後按照“下載”頁面上的說明下載 RCF。
+.. 下載對應版本的影像處理軟體。
 +
-https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco®叢集與管理網路交換器參考組態檔案下載"^]
+https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco叢集和管理網路交換器參考設定檔下載"^]
 
 
 
-. 移轉與第二個要更換的CN1610交換器相關的生命週期：
+. 遷移與待替換的第二台 CN1610 交換器相關的 LIF：
 +
-網路介面移轉
+`network interface migrate`
 
 +
 [NOTE]
 ====
-您必須透過擁有要移轉之叢集LIF的服務處理器或節點管理介面、將叢集LIF從連線移轉至節點。
+您必須透過服務處理器或節點管理接口，從與節點的連接遷移群集 LIF，該連接擁有要遷移的群集 LIF。
 
 ====
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示n1和n2、但必須在所有節點上執行LIF移轉：
+以下範例顯示了 n1 和 n2，但 LIF 遷移必須在所有節點上執行：
 
 [listing]
 ----
@@ -214,15 +214,15 @@ cluster::*> network interface migrate -vserver Cluster -lif n2_clus2 -destinatio
 cluster::*> network interface migrate -vserver Cluster -lif n2_clus3 -destination-node  n2  -destination-port  e0d
 ----
 ====
-. 驗證叢集的健全狀況：
+. 驗證集群健康狀況：
 +
-「網路介面展示」
+`network interface show`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示先前「網路介面移轉」命令的結果：
+以下範例展示了前一個結果。 `network interface migrate`命令：
 
 [listing]
 ----
@@ -245,15 +245,15 @@ Cluster
 8 entries were displayed.
 ----
 ====
-. 關閉實體連接至交換器CL2的叢集互連連接埠：
+. 關閉與交換器 CL2 實體連線的叢集互連連接埠：
 +
-網路連接埠修改
+`network port modify`
 
 +
 .顯示範例
 [%collapsible]
 ====
-下列命令會關閉n1和n2上的指定連接埠、但必須關閉所有節點上的連接埠：
+以下命令關閉 n1 和 n2 上的指定端口，但必須關閉所有節點上的端口：
 
 [listing]
 ----
@@ -263,22 +263,22 @@ cluster::*> network port modify -node n2 -port e0b -up-admin false
 cluster::*> network port modify -node n2 -port e0c -up-admin false
 ----
 ====
-. 驗證遠端叢集介面的連線能力：
+. 驗證遠端集群介面的連接性：
 
 
 [role="tabbed-block"]
 ====
-.更新版本ONTAP
+.ONTAP 9.9.1 及更高版本
 --
-您可以使用 `network interface check cluster-connectivity` 命令以啟動叢集連線的存取檢查、然後顯示詳細資料：
+你可以使用 `network interface check cluster-connectivity`執行命令以啟動叢集連接性檢查，然後顯示詳細資訊：
 
-`network interface check cluster-connectivity start` 和 `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`和 `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-* 注意： * 在執行 show 命令之前、請等待數秒以顯示詳細資料。
+*注意：*在執行 show 命令顯示詳細資訊之前，請等待幾秒鐘。
 
 [listing, subs="+quotes"]
 ----
@@ -295,9 +295,9 @@ n2
        3/5/2022 19:21:20 -06:00   n2_clus2   n1_clus2       none
 ----
 --
-.所有 ONTAP 版本
+.所有ONTAP版本
 --
-對於所有 ONTAP 版本、您也可以使用 `cluster ping-cluster -node <name>` 檢查連線能力的命令：
+對於所有ONTAP版本，您也可以使用 `cluster ping-cluster -node <name>`檢查連接性的命令：
 
 `cluster ping-cluster -node <name>`
 
@@ -347,15 +347,15 @@ RPC status:
 ----
 --
 ====
-. [[step10]] 關閉使用中 CN1610 交換器 CL1 上的 ISL 連接埠 13 到 16 ：
+. [[step10]] 關閉活動 CN1610 交換器 CL1 上的 ISL 連接埠 13 至 16：
 +
-「關機」
+`shutdown`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例說明如何關閉CN1610交換器CL1上的ISL連接埠13至16：
+以下範例展示如何關閉 CN1610 交換器 CL1 上的 ISL 連接埠 13 至 16：
 
 [listing]
 ----
@@ -367,12 +367,12 @@ RPC status:
 (CL1)#
 ----
 ====
-. 在CL1和C2之間建置暫時ISL：
+. 在 CL1 和 C2 之間建立臨時 ISL：
 +
 .顯示範例
 [%collapsible]
 ====
-下列範例在CL1（連接埠13-16）和C2（連接埠E1/24/1-4）之間建置暫用ISL：
+以下範例在 CL1（連接埠 13-16）和 C2（連接埠 e1/24/1-4）之間建立臨時 ISL：
 
 [listing]
 ----
@@ -392,5 +392,5 @@ C2(config-if)# exit
 ====
 
 
-.接下來呢？
-link:cn1610-configure-ports.html["設定連接埠"]。
+.下一步是什麼？
+link:cn1610-configure-ports.html["配置連接埠"]。

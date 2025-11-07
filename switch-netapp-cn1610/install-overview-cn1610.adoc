@@ -2,22 +2,22 @@
 permalink: switch-netapp-cn1610/install-overview-cn1610.html 
 sidebar: sidebar 
 keywords: install, fastpath, software, rcfs 
-summary: 在設定NetApp CN1610交換器之前、請先檢閱程序總覽。 
+summary: 在設定NetApp CN1610 交換器之前，請先查看流程概述。 
 ---
-= 安裝及設定NetApp CN1610交換器的工作流程
+= 安裝並設定NetApp CN1610 交換器的工作流程
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-若要在執行ONTAP 下列步驟的系統上安裝及設定NetApp CN1610交換器：
+若要在執行ONTAP 的系統上安裝和設定NetApp CN1610 交換機，請依照下列步驟操作：
 
 . link:install-hardware-cn1610.html["安裝硬體"]
-. link:install-fastpath-software.html["安裝FastPath軟體"]
-. link:install-rcf-file.html["安裝參考組態檔案"]
+. link:install-fastpath-software.html["安裝 FASTPATH 軟體"]
+. link:install-rcf-file.html["安裝參考設定檔"]
 +
-如果交換器執行ONTAP 的是版本不符合指令性的版本8.3.1、請依照中的指示操作 link:install-fastpath-rcf-831.html["將FastPath和RCFs安裝在執行ONTAP 《S還原8.3.1及更新版本》的交換器上。"]
+如果交換器運作的是ONTAP 8.3.1 或更高版本，請依照下列說明操作：link:install-fastpath-rcf-831.html["在運作ONTAP 8.3.1 及更高版本的交換器上安裝 FASTPATH 和 RCF。"]
 
-. link:configure-hardware-cn1610.html["設定交換器"]
+. link:configure-hardware-cn1610.html["配置交換機"]
 

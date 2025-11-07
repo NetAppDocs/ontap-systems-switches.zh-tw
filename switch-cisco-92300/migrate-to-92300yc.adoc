@@ -2,116 +2,116 @@
 permalink: switch-cisco-92300/migrate-to-92300yc.html 
 sidebar: sidebar 
 keywords: migration steps for cisco nexus 92300yc cluster switch 
-summary: 您可以將不中斷營運的舊Cisco叢集交換器移轉至ONTAP Cisco Nexus 92300YC叢集網路交換器、以供支援使用。 
+summary: 您可以將ONTAP叢集的舊Cisco叢集交換器無中斷地遷移到Cisco Nexus 92300YC 叢集網路交換器。 
 ---
-= 從Cisco交換器移轉至Cisco Nexus 2300YC交換器
+= 將Cisco交換器遷移到Cisco Nexus 92300YC 交換機
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-您可以將不中斷營運的舊Cisco叢集交換器移轉至ONTAP Cisco Nexus 92300YC叢集網路交換器、以供支援使用。
+您可以將ONTAP叢集的舊Cisco叢集交換器無中斷地遷移到Cisco Nexus 92300YC 叢集網路交換器。
 
 
-NOTE: 遷移完成後，您可能需要安裝所需的設定檔以支援 92300YC 叢集交換器的叢集交換器健康監視器 (CSHM)。看link:../switch-cshm/cshm-overview.html["交換機健康監測（CSHM）"] 。
+NOTE: 遷移完成後，您可能需要安裝所需的設定文件，以支援 92300YC 叢集交換器的叢集交換器健康監視器 (CSHM)。看link:../switch-cshm/cshm-overview.html["交換器健康監測 (CSHM)"]。
 
 
 
-== 檢閱要求
+== 審查要求
 
 .開始之前
-請確定您擁有下列項目：
+請確保您擁有以下物品：
 
-* 完整功能的現有叢集。
-* 從節點到Nexus 2300YC叢集交換器的10 GbE和40 GbE連線能力。
-* 所有叢集連接埠都處於「up」狀態、以確保不中斷營運。
-* Nexus 2300YC叢集交換器上安裝的NX-OS適當版本和參考組態檔（RCF）。
-* 使用兩個舊Cisco交換器的備援且功能完整的NetApp叢集。
-* 管理連線能力、以及對舊Cisco交換器和新交換器的主控台存取。
-* 使用叢集生命區的所有叢集生命區都位於主連接埠上。
-* 在舊的Cisco交換器之間以及新交換器之間啟用或連接ISL連接埠。
-
-
+* 一個功能齊全的現有集群。
+* 節點到 Nexus 92300YC 叢集交換器的 10 GbE 和 40 GbE 連接。
+* 叢集所有連接埠均處於啟用狀態，以確保運作不中斷。
+* Nexus 92300YC 叢集交換器上安裝了正確版本的 NX-OS 和參考設定檔 (RCF)。
+* 使用較舊的Cisco交換機構建立冗餘且功能齊全的NetApp叢集。
+* 舊款Cisco交換器和新交換器的管理連線和控制台存取。
+* 所有處於啟動狀態的叢集 LIF 都位於其主連接埠上。
+* ISL 連接埠已啟用，並已在舊款Cisco交換器和新款交換器之間連接了線纜。
 
 
-== 移轉交換器
+
+
+== 遷移交換機
 
 .關於範例
-本程序中的範例使用下列交換器和節點命名法：
+本流程中的範例使用以下開關和節點命名規則：
 
-* 現有的Cisco Nexus 5596UP叢集交換器為C1和C2。
-* 新的Nexus 2300YC叢集交換器為CS1和CS2。
-* 節點是node1和node2。
-* 叢集lIF分別是節點1上的node1_clus1和node1_clus2、以及節點2上的node2_clus1和node2_clus2。
-* 交換器C2先由交換器CS2取代、然後由交換器CS1取代交換器C1。
+* 現有的Cisco Nexus 5596UP 叢集交換器為 c1 和 c2。
+* 新的 Nexus 92300YC 叢集交換器是 cs1 和 cs2。
+* 節點分別為 node1 和 node2。
+* 節點 1 上的叢集 LIF 分別為 node1_clus1 和 node1_clus2，節點 2 上的叢集 LIF 分別為 node2_clus1 和 node2_clus2。
+* 首先將交換器 c2 替換為交換器 cs2，然後將交換器 c1 替換為交換器 cs1。
 +
-** 將C1連接至CS1的CS1上建置了暫時ISL。
-** 然後從C2中斷連接節點與C2之間的纜線、並重新連接至CS2。
-** 然後、節點與C1之間的纜線會從C1中斷連線、然後重新連線至CS1。
-** 然後移除C1與CS1之間的暫用ISL。
+** 在 cs1 上建立臨時 ISL，將 c1 連接到 cs1。
+** 然後斷開節點與 c2 之間的電纜與 c2 的連接，並重新連接到 cs2。
+** 然後斷開節點與 c1 之間的電纜與 c1 的連接，並重新連接到 cs1。
+** 然後移除 c1 和 cs1 之間的暫存 ISL。
 
 
 
 
-.用於連線的連接埠
-* 有些連接埠是在Nexus 2300YC交換器上設定、以10 GbE或40 GbE執行。
-* 叢集交換器使用下列連接埠來連線至節點：
+.用於連接的連接埠
+* Nexus 92300YC 交換器上的某些連接埠配置為以 10 GbE 或 40 GbE 運作。
+* 叢集交換器使用下列連接埠連接到節點：
 +
-** 連接埠E1/1-48（10/25 GbE）、E1/49-64（40/100 GbE）：Nexus 2300YC
-** 連接埠E1/1-40（10 GbE）：Nexus 5596UP
-** 連接埠E1/1-32（10 GbE）：Nexus 5020
-** 連接埠E1/1-12、2/1-6（10 GbE）：Nexus 5010、含擴充模組
+** 埠 e1/1-48 (10/25 GbE)、e1/49-64 (40/100 GbE)：Nexus 92300YC
+** 埠 e1/1-40 (10 GbE)：Nexus 5596UP
+** 埠 e1/1-32 (10 GbE)：Nexus 5020
+** 連接埠 e1/1-12、e2/1-6 (10 GbE)：附擴充模組的 Nexus 5010
 
 
-* 叢集交換器使用下列交換器間連結（ISL）連接埠：
+* 叢集交換器使用下列交換器間連結 (ISL) 連接埠：
 +
-** 連接埠E1/65-66（100 GbE）：Nexus 92300YC
-** 連接埠E1/41至48（10 GbE）：Nexus 5596UP
-** 連接埠E1/33-40（10 GbE）：Nexus 5020
-** 連接埠E1/13-20（10 GbE）：Nexus 5010
+** 埠 e1/65-66 (100 GbE)：Nexus 92300YC
+** 埠 e1/41-48 (10 GbE)：Nexus 5596UP
+** 埠 e1/33-40 (10 GbE)：Nexus 5020
+** 埠 e1/13-20 (10 GbE)：Nexus 5010
 
 
-* https://hwu.netapp.com/SWITCH/INDEX["交換器Hardware Universe"^] 包含所有叢集交換器支援的纜線連接資訊。
-* 本程序所支援的支援的支援版本包括ONTAP https://support.netapp.com/NOW/download/software/cm_switches/["Cisco乙太網路交換器"^] 頁面。
+* https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe- 交換機"^]包含所有群集交換器支援的佈線資訊。
+* 本流程支援的ONTAP和 NX-OS 版本如下： https://support.netapp.com/NOW/download/software/cm_switches/["Cisco乙太網路交換機"^]頁。
 
 
 
 
-=== 步驟1：準備移轉
+=== 步驟 1：準備遷移
 
-. 將權限等級變更為進階、並在系統提示您繼續時輸入* y*：
+. 將權限級別變更為高級，並在提示繼續時輸入 *y*：
 +
-"進階權限"
-
-+
-出現進階提示（*>）。
-
-. 如果AutoSupport 此叢集啟用了「支援」功能、請叫用AutoSupport 下列訊息來禁止自動建立案例：
-+
-「系統節點AutoSupport 不完整地叫用節點*-type all -Message MAn=xh」
+`set -privilege advanced`
 
 +
-其中x是維護時段的持續時間（以小時為單位）。
+出現高階提示符號（*>）。
+
+. 如果此叢集上啟用了AutoSupport ，則透過呼叫AutoSupport訊息來抑制自動建立案例：
++
+`system node autosupport invoke -node * -type all -message MAINT=xh`
+
++
+其中 x 為維護窗口的持續時間（小時）。
 
 +
 
-NOTE: 此資訊可通知技術支援人員執行此維護工作、以便在維護期間抑制自動建立案例。AutoSupport
+NOTE: AutoSupport訊息會通知技術支援此維護任務，以便在維護視窗期間抑制自動建立案例。
 
 +
 .顯示範例
 [%collapsible]
 ====
-下列命令會禁止自動建立兩小時的個案：
+以下命令可抑制自動建立案件兩小時：
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *system node autosupport invoke -node * -type all -message MAINT=2h*
 ----
 ====
-. 驗證是否已在所有叢集生命體上啟用自動還原：
+. 確認所有叢集 LIF 都已啟用自動回滾功能：
 +
-「網路介面show -vserver叢集-功能 變數自動回復」
+`network interface show -vserver Cluster -fields auto-revert`
 
 +
 .顯示範例
@@ -133,14 +133,14 @@ Cluster
 4 entries were displayed.
 ----
 ====
-. 判斷每個叢集介面的管理或作業狀態：
+. 確定每個叢集介面的管理或運作狀態：
 +
-每個連接埠應顯示「Link」（連結）、「Health Status」（健全狀況狀態）則顯示為「Healthy」（健全狀況）。
+每個連接埠都應該顯示出來。 `Link`而且對身體有益 `Health Status`。
 
 +
 .. 顯示網路連接埠屬性：
 +
-「網路連接埠show -IPSpace Cluster」
+`network port show -ipspace Cluster`
 
 +
 .顯示範例
@@ -169,12 +169,12 @@ e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
 4 entries were displayed.
 ----
 ====
-.. 顯示有關邏輯介面及其指定主節點的資訊：
+.. 顯示有​​關邏輯介面及其指定歸屬節點的資訊：
 +
-「網路介面show -vserver叢集」
+`network interface show -vserver Cluster`
 
 +
-每個LIF都應顯示為「狀態管理/作業者」、而「IS主頁」則顯示為「真」。
+每個 LIF 都應該顯示 up/up。 `Status Admin/Oper`確實如此 `Is Home`。
 
 +
 .顯示範例
@@ -198,9 +198,9 @@ Cluster
 ====
 
 
-. 使用命令、驗證每個節點上的叢集連接埠是否以下列方式（從節點的觀點）連接至現有的叢集交換器：
+. 使用下列命令（從節點角度）驗證每個節點上的叢集連接埠是否已以下列方式連接到現有的叢集交換器：
 +
-「network device-dDiscovery show -protocol cup」
+`network device-discovery show -protocol cdp`
 
 +
 .顯示範例
@@ -222,9 +222,9 @@ node1      /cdp
 4 entries were displayed.
 ----
 ====
-. 使用命令確認叢集連接埠和交換器的連線方式如下（從交換器的觀點來看）：
+. 使用以下命令驗證叢集連接埠和交換器是否以下列方式連接（從交換器的角度來看）：
 +
-「How cup neighbor」
+`show cdp neighbors`
 
 +
 .顯示範例
@@ -290,22 +290,22 @@ c1(FOX2025GEEX)     Eth1/47        176    S I s     N5K-C5596UP        Eth1/47
 c1(FOX2025GEEX)     Eth1/48        176    S I s     N5K-C5596UP        Eth1/48
 ----
 ====
-. 驗證遠端叢集介面的連線能力：
+. 驗證遠端集群介面的連接性：
 
 
 [role="tabbed-block"]
 ====
-.更新版本ONTAP
+.ONTAP 9.9.1 及更高版本
 --
-您可以使用 `network interface check cluster-connectivity` 命令以啟動叢集連線的存取檢查、然後顯示詳細資料：
+你可以使用 `network interface check cluster-connectivity`執行命令以啟動叢集連接性檢查，然後顯示詳細資訊：
 
-`network interface check cluster-connectivity start` 和 `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`和 `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-* 注意： * 請等待數秒後再執行 `show`命令以顯示詳細資料。
+*注意：*運行程式前請等待幾秒鐘 `show`顯示詳細資訊的命令。
 
 [listing, subs="+quotes"]
 ----
@@ -321,9 +321,9 @@ node2
        3/5/2022 19:21:20 -06:00   node2_clus2      node1_clus2      none
 ----
 --
-.所有 ONTAP 版本
+.所有ONTAP版本
 --
-對於所有 ONTAP 版本、您也可以使用 `cluster ping-cluster -node <name>` 檢查連線能力的命令：
+對於所有ONTAP版本，您也可以使用 `cluster ping-cluster -node <name>`檢查連接性的命令：
 
 `cluster ping-cluster -node <name>`
 
@@ -358,14 +358,14 @@ RPC status:
 ====
 
 
-=== 步驟2：設定纜線和連接埠
+=== 步驟 2：設定線纜和連接埠
 
-. 在連接埠E1/41-48（C1與CS1之間）的cs1on上設定暫用ISL。
+. 在 c1 和 cs1 之間的連接埠 e1/41-48 上設定 cs1 上的臨時 ISL。
 +
 .顯示範例
 [%collapsible]
 ====
-下列範例顯示如何在C1和CS1上設定新的ISL：
+以下範例展示如何在 c1 和 cs1 上設定新的 ISL：
 
 [listing, subs="+quotes"]
 ----
@@ -386,16 +386,16 @@ cs1(config-if)# *exit*
 cs1(config)# *exit*
 ----
 ====
-. 從C2的連接埠E1/41至48拔下ISL纜線、並將纜線連接至CS1的連接埠E1/41至48。
-. 確認ISL連接埠和連接埠通道可正常運作、連接C1和CS1：
+. 從 c2 的 e1/41-48 連接埠移除 ISL 電纜，並將電纜連接到 cs1 的 e1/41-48 連接埠。
+. 驗證 ISL 連接埠和連接埠通道是否正常運作，連接 c1 和 cs1：
 +
-「How port-channel Summary」
+`show port-channel summary`
 
 +
 .顯示範例
 [%collapsible]
 ====
-下列範例顯示Cisco show port-channel摘要命令、用於驗證C1和CS1上的ISL連接埠是否正常運作：
+以下範例顯示如何使用Cisco show port-channel summary 指令來驗證 c1 和 cs1 上的 ISL 連接埠是否正常運作：
 
 [listing, subs="+quotes"]
 ----
@@ -436,11 +436,11 @@ Group Port-       Type     Protocol  Member Ports
                                      Eth1/47(P)   Eth1/48(P)
 ----
 ====
-. 對於節點1、請從C2上的E1/1拔下纜線、然後使用Nexus 2300YC支援的適當纜線、將纜線連接至CS2上的E1/1。
-. 對於節點2、請從C2上的E1/2拔下纜線、然後使用Nexus 2300YC支援的適當纜線、將纜線連接至CS2上的E1/2。
-. 從節點的觀點來看、每個節點上的叢集連接埠現在都以下列方式連接至叢集交換器：
+. 對於節點 1，斷開 c2 上的 e1/1 電纜，然後使用 Nexus 92300YC 支援的適當電纜將電纜連接到 cs2 上的 e1/1。
+. 對於節點 2，斷開 c2 上的 e1/2 電纜，然後使用 Nexus 92300YC 支援的適當電纜將電纜連接到 cs2 上的 e1/2。
+. 從節點的角度來看，每個節點上的叢集連接埠現在會以以下方式連接到叢集交換器：
 +
-「network device-dDiscovery show -protocol cup」
+`network device-discovery show -protocol cdp`
 
 +
 .顯示範例
@@ -463,11 +463,11 @@ node1      /cdp
 4 entries were displayed.
 ----
 ====
-. 對於節點1、請從C1上的E1/1拔下纜線、然後使用Nexus 2300YC支援的適當纜線、將纜線連接至CS1上的E1/1。
-. 對於節點2、請從C1上的E1/2拔下纜線、然後使用Nexus 2300YC支援的適當纜線、將纜線連接至CS1上的E1/2。
-. 從節點的觀點來看、每個節點上的叢集連接埠現在都以下列方式連接至叢集交換器：
+. 對於節點 1，斷開 c1 上的 e1/1 電纜，然後使用 Nexus 92300YC 支援的適當電纜將電纜連接到 cs1 上的 e1/1。
+. 對於節點 2，斷開 c1 上的 e1/2 的電纜，然後使用 Nexus 92300YC 支援的適當電纜將電纜連接到 cs1 上的 e1/2。
+. 從節點的角度來看，每個節點上的叢集連接埠現在會以以下方式連接到叢集交換器：
 +
-「network device-dDiscovery show -protocol cup」
+`network device-discovery show -protocol cdp`
 
 +
 .顯示範例
@@ -488,7 +488,7 @@ node1      /cdp
 4 entries were displayed.
 ----
 ====
-. 刪除CS1和C1之間的暫用ISL。
+. 刪除 cs1 和 c1 之間的暫存 ISL。
 +
 .顯示範例
 [%collapsible]
@@ -511,14 +511,14 @@ cs1(config)# *exit*
 
 
 
-=== 步驟3：完成移轉
+=== 步驟 3：完成遷移
 
-. 驗證叢集的最終組態：
+. 驗證叢集的最終配置：
 +
-「網路連接埠show -IPSpace Cluster」
+`network port show -ipspace Cluster`
 
 +
-每個連接埠應顯示「Link」（連結）、「Health Status」（健全狀況狀態）則顯示為「Healthy」（健全狀況）。
+每個連接埠都應該顯示出來。 `Link`而且對身體有益 `Health Status`。
 
 +
 .顯示範例
@@ -608,22 +608,22 @@ cs1(FDO220329KU)
 Total entries displayed: 4
 ----
 ====
-. 驗證遠端叢集介面的連線能力：
+. 驗證遠端集群介面的連接性：
 
 
 [role="tabbed-block"]
 ====
-.更新版本ONTAP
+.ONTAP 9.9.1 及更高版本
 --
-您可以使用 `network interface check cluster-connectivity` 命令以啟動叢集連線的存取檢查、然後顯示詳細資料：
+你可以使用 `network interface check cluster-connectivity`執行命令以啟動叢集連接性檢查，然後顯示詳細資訊：
 
-`network interface check cluster-connectivity start` 和 `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`和 `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-* 注意： * 請等待數秒後再執行 `show`命令以顯示詳細資料。
+*注意：*運行程式前請等待幾秒鐘 `show`顯示詳細資訊的命令。
 
 [listing, subs="+quotes"]
 ----
@@ -639,9 +639,9 @@ node2
        3/5/2022 19:21:20 -06:00   node2_clus2      node1_clus2      none
 ----
 --
-.所有 ONTAP 版本
+.所有ONTAP版本
 --
-對於所有 ONTAP 版本、您也可以使用 `cluster ping-cluster -node <name>` 檢查連線能力的命令：
+對於所有ONTAP版本，您也可以使用 `cluster ping-cluster -node <name>`檢查連接性的命令：
 
 `cluster ping-cluster -node <name>`
 
@@ -674,9 +674,9 @@ RPC status:
 ----
 --
 ====
-. [[step3]] 如果您禁止自動建立個案、請叫用 AutoSupport 訊息來重新啟用：
+. [[步驟3]] 如果您已停用自動建立案例功能，請透過呼叫AutoSupport訊息重新啟用此功能：
 +
-「系統節點AutoSupport 不完整地叫用節點*-type all -most MAn=end」
+`system node autosupport invoke -node * -type all -message MAINT=END`
 
 +
 .顯示範例
@@ -687,11 +687,11 @@ RPC status:
 cluster1::*> *system node autosupport invoke -node * -type all -message MAINT=END*
 ----
 ====
-. 將權限層級變更回管理：
+. 將權限等級改回管理員：
 +
-「et -priv. admin」
+`set -privilege admin`
 
 
 
-.接下來呢？
-link:../switch-cshm/config-overview.html["設定交換器健全狀況監控"]。
+.下一步是什麼？
+link:../switch-cshm/config-overview.html["配置交換器健康監控"]。

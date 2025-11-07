@@ -2,7 +2,7 @@
 permalink: switch-nvidia-sn2100/configure-overview-sn2100-cluster.html 
 sidebar: sidebar 
 keywords: sn2100 SN2100 switches setup, sn2100 SN2100 switches install, cumulus linux 
-summary: NVIDIA SN2100交換器是執行Cummulis Linux的10/25/40/100 GbE乙太網路交換器。SN2100交換器可在ONTAP 不同的交換器配對上、以《S209.10.1》提供叢集與儲存應用程式的服務。 
+summary: NVIDIA SN2100 交換器是一款運行 Cumulus Linux 的 10/25/40/100 GbE 乙太網路交換器。  SN2100 交換器透過不同的交換器對為ONTAP 9.10.1 中的叢集和儲存應用提供服務。 
 ---
 = NVIDIA SN2100 交換器的安裝與設定工作流程
 :allow-uri-read: 
@@ -11,7 +11,7 @@ summary: NVIDIA SN2100交換器是執行Cummulis Linux的10/25/40/100 GbE乙太�
 
 
 [role="lead"]
-NVIDIA SN2100是一款叢集交換器、可讓您建置ONTAP 包含兩個以上節點的各種叢集。
+NVIDIA SN2100 是一款叢集交換機，可讓您建立具有兩個以上節點的ONTAP叢集。
 
 請依照下列工作流程步驟安裝並設定NVIDIA SN2100 交換器。
 

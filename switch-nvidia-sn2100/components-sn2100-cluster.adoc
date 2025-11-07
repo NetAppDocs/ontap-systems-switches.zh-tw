@@ -2,63 +2,63 @@
 permalink: switch-nvidia-sn2100/components-sn2100-cluster.html 
 sidebar: sidebar 
 keywords: nvidia SN2100 switches 
-summary: 如果您想要建置ONTAP 具有兩個以上節點的叢集、您需要兩個支援的叢集網路交換器。您可以使用額外的管理交換器、這是選用的。 
+summary: 如果要建置包含兩個以上節點的ONTAP集群，則需要兩個受支援的集群網路交換器。您也可以使用額外的管理交換機，這些交換機是可選的。 
 ---
-= NVIDIA SN2100交換器的元件和零件編號
+= NVIDIA SN2100交換器的組件和零件號
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-對於NVIDIA SN2100交換器的安裝與維護、請務必檢閱機櫃與軌道套件的元件清單與零件編號。
+對於NVIDIA SN2100 交換器的安裝和維護，請務必查看機櫃和導軌套件的組件和零件號碼清單。
 
 
 
-== 機櫃詳細資料
+== 內閣細節
 
-您可以將 NVIDIA SN2100 交換器（ X190006 ）安裝在 NVIDIA 雙 / 單交換器機櫃中、並附有交換器隨附的標準支架。
+您可以使用交換器隨附的標準支架將NVIDIA SN2100 交換器 (X190006) 安裝到NVIDIA雙/單交換器機櫃。
 
 
 
-== 軌道套件詳細資料
+== 鐵路套件詳情
 
-下表列出SN2100交換器和軌道套件的零件編號和說明：
+下表列出了 SN2100 開關和導軌套件的零件編號和描述：
 
 [cols="1,2"]
 |===
-| 產品編號 | 說明 
+| 零件編號 | 描述 
 
 
  a| 
 X190006-PE
  a| 
-叢集交換器、 NVIDIA SN2100 、 16pt 100GbE 、 PTSX
+集群交換機， NVIDIA SN2100，16PT 100GbE，PTSX
 
 
 
  a| 
 X190006-PI
  a| 
-叢集交換器、 NVIDIA SN2100 、 16pt 100GbE 、 PSIN
+集群交換機， NVIDIA SN2100，16PT 100GbE，PSIN
 
 
 
  a| 
-X-MTEF套件D
+X-MTEF-KIT-D
  a| 
-導軌套件、NVIDIA雙交換器並排
+Rail Kit， NVIDIA雙開關並排
 
 
 
  a| 
-X-MTEF套件E-E
+X-MTEF-KIT-E
  a| 
-導軌套件、NVIDIA單一交換器短深度
+Rail Kit， NVIDIA單開關短深度
 
 |===
 
-NOTE: 如需詳細資訊、請參閱NVIDIA文件 https://docs.nvidia.com/networking/display/sn2000pub/Installation["安裝SN2100交換器與軌道套件"^]。
+NOTE: 有關詳細信息，請參閱NVIDIA文件。 https://docs.nvidia.com/networking/display/sn2000pub/Installation["安裝您的 SN2100 道岔和導軌套件"^] 。
 
-.接下來呢？
+.下一步是什麼？
 確認組件和零件編號後，您可以進行審核。 link:required-documentation-sn2100-cluster.html["所需文件"]。

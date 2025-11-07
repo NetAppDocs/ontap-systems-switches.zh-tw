@@ -2,15 +2,15 @@
 permalink: switch-cshm/log-collection-overview.html 
 sidebar: sidebar 
 keywords: cshm, cluster, storage, switch logs, debugging, collection 
-summary: 您可以使用提供的命令 ... 
+summary: 您可以使用提供的命令… 
 ---
-= 記錄集合總覽
+= 日誌收集概覽
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-設定記錄收集後、您可以啟用 AutoSupport 每小時收集的定期資料、並要求詳細的支援記錄。
+設定日誌收集後，您可以啟用AutoSupport每小時收集的定期數據，並要求詳細的支援日誌。
 
-如需詳細資訊、請參閱 link:config-log-collection.html["設定記錄收集"] 。
+看link:config-log-collection.html["配置日誌收集"]更多詳情請見下文。

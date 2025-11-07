@@ -2,32 +2,32 @@
 permalink: switch-cisco-92300/configure-install-initial.html 
 sidebar: sidebar 
 keywords: install cisco 92300YC cluster switch, cisco nx 92300yc 
-summary: 您可以使用此程序來執行Cisco Nexus 2300YC交換器的初始安裝。 
+summary: 您可以使用此程式執行Cisco Nexus 92300YC 交換器的初始安裝。 
 ---
-= 設定Cisco Nexus 2300YC交換器
+= 設定Cisco Nexus 92300YC 交換機
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-請遵循此程序來設定及設定Cisco Nexus 2300YC交換器。
+請依照下列步驟設定和設定Cisco Nexus 92300YC 交換器。
 
 .步驟
-. 將序列連接埠連接至主機或序列連接埠。
-. 將管理連接埠（位於交換器的非連接埠端）連接至SFTP伺服器所在的相同網路。
-. 在主控台設定主機端序列設定：
+. 將串口連接到主機或串列埠。
+. 將管理埠（交換器的非連接埠側）連接到 SFTP 伺服器所在的相同網路。
+. 在控制台上，設定主機端串列埠設定：
 +
-** 9600傳輸速率
-** 8個資料位元
-** 1停止位元
-** 同位元檢查：無
-** 流程控制：無
+** 9600波特
+** 8 位元數據
+** 1 停止位
+** 奇偶性：無
+** 流量控制：無
 
 
-. 首次開機或清除執行組態後重新開機時、Nexus 92300YC交換器會在開機週期中循環運作。輸入* yes *中止開機自動資源配置、以中斷此週期。
+. 首次啟動或在擦除運行配置後重新啟動時，Nexus 92300YC 交換機會陷入啟動循環。輸入 *yes* 即可中斷此循環，中止開機自動設定。
 +
-隨即顯示系統管理員帳戶設定。
+顯示系統管理員帳戶設定。
 
 +
 .顯示範例
@@ -44,20 +44,20 @@ Disabling POAP.......Disabling POAP
 Do you want to enforce secure password standard (yes/no) [y]:
 ----
 ====
-. 輸入* y*以強制執行安全密碼標準：
+. 輸入 *y* 強制執行安全密碼標準：
 +
 [listing, subs="+quotes"]
 ----
 Do you want to enforce secure password standard (yes/no) [y]: *y*
 ----
-. 輸入並確認使用者管理的密碼：
+. 請輸入並確認管理者使用者的密碼：
 +
 [listing]
 ----
 Enter the password for "admin":
 Confirm the password for "admin":
 ----
-. 鍵入* yes*以進入「基本系統組態」對話方塊。
+. 輸入 *yes* 進入基本系統設定對話框。
 +
 .顯示範例
 [%collapsible]
@@ -85,7 +85,7 @@ Would you like to enter the basic configuration dialog (yes/no):
 ----
 Create another login account (yes/no) [n]:
 ----
-. 設定唯讀和讀寫SNMP社群字串：
+. 設定唯讀和讀寫 SNMP 團體字串：
 +
 [listing]
 ----
@@ -93,13 +93,13 @@ Configure read-only SNMP community string (yes/no) [n]:
 
 Configure read-write SNMP community string (yes/no) [n]:
 ----
-. 設定叢集交換器名稱：
+. 配置叢集交換器名稱：
 +
 [listing, subs="+quotes"]
 ----
 Enter the switch name : *cs2*
 ----
-. 設定頻外管理介面：
+. 設定帶外管理介面：
 +
 [listing, subs="+quotes"]
 ----
@@ -113,13 +113,13 @@ Configure the default gateway? (yes/no) [y]: *y*
 
 IPv4 address of the default gateway : 172.22.128.1
 ----
-. 設定進階IP選項：
+. 配置進階 IP 選項：
 +
 [listing, subs="+quotes"]
 ----
 Configure advanced IP options? (yes/no) [n]: *n*
 ----
-. 設定遠端登入服務：
+. 設定 Telnet 服務：
 +
 [listing, subs="+quotes"]
 ----
@@ -135,7 +135,7 @@ Enable the ssh service? (yes/no) [y]: *y*
 
        Number of rsa key bits <1024-2048> [1024]: *2048*
 ----
-. 設定其他設定：
+. 配置其他設定：
 +
 [listing, subs="+quotes"]
 ----
@@ -147,7 +147,7 @@ Configure the ntp server? (yes/no) [n]: *n*
 
   Configure CoPP system profile (strict/moderate/lenient/dense) [strict]: *strict*
 ----
-. 確認交換器資訊並儲存組態：
+. 確認交換器資訊並儲存配置：
 +
 [listing, subs="+quotes"]
 ----
@@ -161,5 +161,5 @@ Copy complete.
 ----
 
 
-.接下來呢？
-link:install-nxos-overview.html["準備安裝NX-OS軟體和RCF"]。
+.下一步是什麼？
+link:install-nxos-overview.html["準備安裝 NX-OS 軟體和 RCF"]。

@@ -17,10 +17,10 @@ summary: 在設定NVIDIA SN2100 叢集交換器之前，請先查看設定概述
 [role="quick-margin-para"]
 安裝交換器硬體。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["二"]link:cabling-considerations-sn2100-storage.html["檢閱纜線佈線和組態考量"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["二"]link:cabling-considerations-sn2100-storage.html["審查佈線和配置注意事項"]
 [role="quick-margin-para"]
-檢閱光纖連線、QSA介面卡和switchport速度的需求。
+審查光纖連接、QSA適配器和交換器連接埠速度的要求。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三"]link:install-cable-shelves-sn2100-storage.html["連接NS224磁碟櫃"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三"]link:install-cable-shelves-sn2100-storage.html["NS224 架子的電纜"]
 [role="quick-margin-para"]
-如果您的系統需要將NS224磁碟機櫃纜線作為交換器附加儲存設備（非直接附加儲存設備）、請遵循纜線程序。
+如果您的系統需要將 NS224 磁碟機架作為交換器連接儲存（而不是直接連接儲存）進行佈線，請按照佈線程式進行操作。

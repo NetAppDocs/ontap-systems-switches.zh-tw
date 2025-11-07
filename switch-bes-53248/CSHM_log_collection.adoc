@@ -2,26 +2,26 @@
 permalink: switch-bes-53248/CSHM_log_collection.html 
 sidebar: sidebar 
 keywords: log collection feature,collect switch-related log files,SSh key,crypto key generation,BES-53248 Broadcom setup,BES-53248 switches configuration,EFOS 
-summary: 乙太網路交換器健全狀況監視器（ CSHM ）記錄收集功能是用來從 ONTAP 中的叢集或儲存網路交換器收集記錄。 
+summary: 'ONTAP中的乙太網路交換器健康監視器 (CSHM) 日誌收集功能用於從叢集或儲存網路交換器收集日誌。' 
 ---
-= 乙太網路交換器健全狀況監控記錄收集
+= 乙太網路交換器健康監控日誌收集
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-乙太網路交換器健全狀況監視器（ CSHM ）負責確保叢集與儲存網路交換器的作業健全狀況、並收集交換器記錄以供偵錯之用。本程序將引導您完成設定及開始從交換器收集詳細 * 支援 * 記錄的程序、並開始每小時收集 AutoSupport 所收集的 * 定期 * 資料。
+乙太網路交換器健康監視器 (CSHM) 負責確保叢集和儲存網路交換器的運作健康，並收集交換器日誌以進行偵錯。此程式引導您完成從交換器設定和開始收集詳細*支援*日誌的流程，並開始每小時收集由AutoSupport收集的*定期*資料。
 
 .開始之前
-* 若要啟用記錄收集功能、您必須執行 ONTAP 9.10.1P15 、 9.11.1P12 或 9.12.1 或更新版本、以及 EFOS 3.8.0.2 或更新版本。
-* 必須為交換器啟用交換器健全狀況監控。請務必確認 `Is Monitored:` 欄位在的輸出中設為 * 真 * `system switch ethernet show` 命令。
+* 若要啟用日誌收集功能，您必須執行ONTAP版本 9.10.1P15、9.11.1P12 或 9.12.1 或更高版本以及 EFOS 3.8.0.2 或更高版本。
+* 必須為交換器啟用交換器健康監控功能。透過確保以下方式驗證這一點： `Is Monitored:`輸出中該欄位設定為*true* `system switch ethernet show`命令。
 
 
 .步驟
-. 若要設定記錄收集、請針對每個交換器執行下列命令。系統會提示您輸入用於記錄收集的交換器名稱、使用者名稱和密碼。
+. 若要設定日誌收集，請對每個交換器執行以下命令。系統會提示您輸入用於日誌收集的交換器名稱、使用者名稱和密碼。
 +
-「系統交換器乙太網路記錄設定密碼」
+`system switch ethernet log setup-password`
 
 +
 .顯示範例
@@ -53,7 +53,7 @@ Enter the password: *<enter switch password>*
 Enter the password again: *<enter switch password>*
 ----
 ====
-. 若要啟動記錄收集、請執行下列命令、以先前命令中使用的切換參數取代裝置。這會同時啟動記錄收集的兩種類型：詳細的 * 支援 * 記錄檔和 * 定期 * 資料的每小時集合。
+. 若要開始收集日誌，請執行以下命令，將 DEVICE 替換為上一個命令中使用的開關。這將啟動兩種類型的日誌收集：詳細的*支援*日誌和每小時收集的*定期*資料。
 +
 `system switch ethernet log modify -device _<switch-name>_ -log-request true`
 
@@ -77,57 +77,57 @@ Enabling cluster switch log collection.
 ----
 ====
 +
-等待 10 分鐘、然後檢查記錄收集是否完成：
+等待 10 分鐘，然後檢查日誌收集是否完成：
 
 +
 `system switch ethernet log show`
 
 +
 
-CAUTION: 如果這些命令中有任何一個傳回錯誤、或記錄集合未完成、請聯絡 NetApp 支援部門。
+CAUTION: 如果這些命令中的任何一個回傳錯誤，或日誌收集未完成，請聯絡NetApp支援。
 
 
 
-.疑難排解
-如果您遇到記錄收集功能報告的下列任何錯誤狀態（可在的輸出中看到 `system switch ethernet log show`）、請嘗試對應的除錯步驟：
+.故障排除
+如果您遇到日誌收集功能報告的以下任何錯誤狀態（可在輸出中查看）， `system switch ethernet log show` ），請嘗試對應的調試步驟：
 
 |===
 
 
-| * 記錄收集錯誤狀態 * | * 解決方法 * 
+| *日誌收集錯誤狀態* | *解決* 
 
 
  a| 
-* 不存在 RSA 金鑰 *
+*RSA金鑰不存在*
  a| 
-重新產生 ONTAP SSH 金鑰。請聯絡 NetApp 支援部門。
-
-
-
- a| 
-* 交換器密碼錯誤 *
- a| 
-驗證認證、測試 SSH 連線、並重新產生 ONTAP SSH 金鑰。請參閱交換器說明文件、或聯絡 NetApp 支援部門以取得相關指示。
+重新產生ONTAP SSH 金鑰。聯繫NetApp支援。
 
 
 
  a| 
-* FIPS 不存在 ECDSA 金鑰 *
+*切換密碼錯誤*
  a| 
-如果啟用 FIPS 模式、則必須先在交換器上產生 ECDSA 金鑰、然後再重新嘗試。
-
-
-
- a| 
-* 找到之前存在的記錄 *
- a| 
-移除交換器上先前的記錄集合檔案。
+驗證憑證，測試 SSH 連接，並重新產生ONTAP SSH 金鑰。請查閱交換器文件或聯絡NetApp支援以取得操作說明。
 
 
 
  a| 
-* 交換器傾印記錄錯誤 *
+*FIPS 系統中不存在 ECDSA 金鑰*
  a| 
-確保交換器使用者擁有記錄收集權限。請參閱上述先決條件。
+如果啟用了 FIPS 模式，則需要在交換器上產生 ECDSA 金鑰，然後再重試。
+
+
+
+ a| 
+*發現已存在的日誌*
+ a| 
+刪除交換器上之前的日誌收集檔案。
+
+
+
+ a| 
+*交換器轉儲日誌錯誤*
+ a| 
+請確保切換使用者擁有日誌收集權限。請參考以上先決條件。
 
 |===

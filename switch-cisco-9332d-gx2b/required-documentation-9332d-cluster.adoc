@@ -18,91 +18,91 @@ summary: 對於Cisco Nexus 9332D-GX2B 交換器的安裝和維護，請務必查
 
 
 
-== 交換器文件
+== 切換文檔
 
-要設定Cisco Nexus 9332D-GX2B 交換機，您需要以下文檔link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Cisco Nexus 9000系列交換器支援"^]頁：
+要設定Cisco Nexus 9332D-GX2B 交換機，您需要以下文件：link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Cisco Nexus 9000 系列交換器支援"^]頁：
 
 [cols="1,2"]
 |===
-| 文件標題 | 說明 
+| 文件標題 | 描述 
 
 
  a| 
 link:https://www.cisco.com/c/en/us/td/docs/dcn/hw/nx-os/nexus9000/9332d-gx2b/cisco-nexus-9332d-gx2b-nx-os-mode-switch-hardware-installation-guide/m_installing-the-switch-chassis-new-1ru-rack-mount.html["Cisco Nexus 9332D-GX2B NX-OS 模式交換器硬體安裝指南"^]
  a| 
-提供有關站台需求、交換器硬體詳細資料及安裝選項的詳細資訊。
+提供有關站點要求、交換器硬體詳情和安裝選項的詳細資訊。
 
 
 
  a| 
-link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-installation-and-configuration-guides-list.html["Cisco Nexus 9000系列交換器軟體組態指南"^]（選擇安裝在您的交換器上的 NX-OS 版本的指南）
+link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-installation-and-configuration-guides-list.html["Cisco Nexus 9000 系列交換器軟體設定指南"^]（請選擇與您的交換器上安裝的 NX-OS 版本相對應的指南）
  a| 
-提供您需要的初始交換器組態資訊、然後才能設定交換器ONTAP 以供執行故障操作。
-
-
-
- a| 
-link:https://www.cisco.com/c/en/us/td/docs/dcn/nx-os/nexus9000/101x/upgrade/cisco-nexus-9000-nx-os-software-upgrade-downgrade-guide-101x.html["Cisco Nexus 9000系列NX-OS軟體升級與降級指南"^]（選擇安裝在您的交換器上的 NX-OS 版本的指南）
- a| 
-如ONTAP 有必要、提供如何將交換器降級至支援的交換器軟體的相關資訊。
+提供在配置交換器以進行ONTAP操作之前所需的初始交換器配置資訊。
 
 
 
  a| 
-link:https://www.cisco.com/c/en/us/td/docs/dcn/nx-os/nexus9000/102x/command-reference/config/b_n9k_config_commands_1021.html["Cisco Nexus 9000系列NX-OS命令參考"^]
+link:https://www.cisco.com/c/en/us/td/docs/dcn/nx-os/nexus9000/101x/upgrade/cisco-nexus-9000-nx-os-software-upgrade-downgrade-guide-101x.html["Cisco Nexus 9000 系列 NX-OS 軟體升級與降級指南"^]（請選擇與您的交換器上安裝的 NX-OS 版本相對應的指南）
  a| 
-提供Cisco所提供之各種命令參考資料的連結。
+提供有關如何將交換器降級到ONTAP支援的交換器軟體（如有必要）的資訊。
+
+
+
+ a| 
+link:https://www.cisco.com/c/en/us/td/docs/dcn/nx-os/nexus9000/102x/command-reference/config/b_n9k_config_commands_1021.html["Cisco Nexus 9000 系列 NX-OS 指令參考"^]
+ a| 
+提供Cisco提供的各種指令參考的連結。
 
 
 
  a| 
 link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-system-message-guides-list.html["Cisco Nexus 9000 系列 NX-OS 系統訊息參考"^]
  a| 
-說明Cisco Nexus 9000系列交換器的系統訊息、資訊訊息、以及其他可能有助於診斷連結、內部硬體或系統軟體問題的訊息。
+描述Cisco Nexus 9000 系列交換器的系統訊息，包括資訊性訊息和其他可能有助於診斷連結、內部硬體或系統軟體問題的訊息。
 
 
 
  a| 
-link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-release-notes-list.html["Cisco Nexus 9000系列NX-OS版本資訊"^]（選擇交換器上安裝的 NX-OS 版本的註解）
+link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-release-notes-list.html["Cisco Nexus 9000 系列 NX-OS 發行說明"^]（請選擇交換器上安裝的 NX-OS 版本對應的說明）
  a| 
-說明Cisco Nexus 9000系列的功能、錯誤和限制。
+描述了CiscoNexus 9000 系列的功能、缺陷和限制。
 
 
 
  a| 
-link:https://www.cisco.com/c/en/us/td/docs/switches/datacenter/mds9000/hw/regulatory/compliance/RCSI.html?dtid=osscdc000283&linkclickid=srch["Cisco Nexus 9000系列的法規遵循與安全資訊"^]
+link:https://www.cisco.com/c/en/us/td/docs/switches/datacenter/mds9000/hw/regulatory/compliance/RCSI.html?dtid=osscdc000283&linkclickid=srch["Cisco Nexus 9000 系列的法規遵循和安全訊息"^]
  a| 
-提供Nexus 9000系列交換器的國際機構法規遵循、安全及法規資訊。
+提供 Nexus 9000 系列交換器的國際機構合規性、安全性和法規資訊。
 
 |===
 
 
-== 系統文件ONTAP
+== ONTAP 系統文檔
 
-要設定ONTAP系統，您需要從 https://docs.netapp.com/ontap-9/index.jsp["ONTAP 9 文檔中心"^]。
+若要設定ONTAP系統，您需要以下適用於您作業系統版本的文件： https://docs.netapp.com/ontap-9/index.jsp["ONTAP 9 文檔中心"^] 。
 
 [cols="1,2"]
 |===
-| 名稱 | 說明 
+| Name | 描述 
 
 
  a| 
 https://docs.netapp.com/us-en/ontap-afx/index.html["AFX 系統文檔"^]
  a| 
-說明如何安裝NetApp硬體。
+介紹如何安裝NetApp硬體。
 
 
 
  a| 
-https://docs.netapp.com/us-en/ontap-family/["本文檔 ONTAP"^]
+https://docs.netapp.com/us-en/ontap-family/["ONTAP 文檔"^]
  a| 
-提供ONTAP 有關這些版本的所有方面的詳細資訊。
+提供有關ONTAP版本各個方面的詳細資訊。
 
 
 
  a| 
 https://hwu.netapp.com["Hardware Universe"^]
  a| 
-提供NetApp硬體組態與相容性資訊。
+提供NetApp硬體配置和相容性資訊。
 
 |===

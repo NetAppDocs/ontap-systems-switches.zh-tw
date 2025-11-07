@@ -2,60 +2,60 @@
 permalink: switch-netapp-cn1610/migrate-fas22xx-systems.html 
 sidebar: sidebar 
 keywords: migrate, two-node switched cluster, fas22xx systems, single, network connection 
-summary: 如果您在現有的雙節點無交換式叢集中有FAS22xx系統、其中每個控制器模組都有單一的後端對後端10 GbE連線、以進行叢集連線、您可以使用無交換器式叢集網路選項、並以交換器連線取代直接的後端對後端連線。 
+summary: 如果您在現有的雙節點無交換器叢集中擁有 FAS22xx 系統，其中每個控制器模組都有一個用於叢集連接的單一背對背 10 GbE 連接，則可以使用無交換器叢集連網選項，並將直接背對背連接替換為交換器連接。 
 ---
-= 使用單一叢集網路連線、在FAS22xx系統中移轉至雙節點交換叢集
+= 在 FAS22xx 系統中，使用單一叢集網路連線遷移到雙節點交換集群
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-如果您在現有的雙節點無交換式叢集中有FAS22xx系統、其中每個控制器模組都有單一的後端對後端10 GbE連線、以進行叢集連線、您可以使用無交換器式叢集網路選項、並以交換器連線取代直接的後端對後端連線。
+如果您在現有的雙節點無交換器叢集中擁有 FAS22xx 系統，其中每個控制器模組都有一個用於叢集連接的單一背對背 10 GbE 連接，則可以使用無交換器叢集連網選項，並將直接背對背連接替換為交換器連接。
 
 
 
-== 檢閱要求
+== 審查要求
 
 .開始之前
-請確定您擁有下列項目：
+請確保您擁有以下物品：
 
-* 兩個叢集連線、用於從無交換器組態移轉至交換式組態。
-* 叢集運作正常、由兩個節點組成、並以後端對後端連線方式連線。
-* 節點執行ONTAP 的是版本8.2或更新版本。
-* 無交換器式叢集功能無法搭配兩個以上的節點使用。
-* 所有叢集連接埠都位於中 `up` 州/省。
+* 兩個叢集連接，用於從無交換器配置遷移到有交換器配置。
+* 叢集運作狀況良好，由兩個透過背靠背連接連接的節點組成。
+* 節點運行的是ONTAP 8.2 或更高版本。
+* 無交換器叢集功能不能用於兩個以上的節點。
+* 所有集群連接埠都在 `up`狀態。
 
 
 .相關資訊
-https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/How_to_suppress_automatic_case_creation_during_scheduled_maintenance_windows["NetApp知識庫文件編號1010449：如何在排程的維護期間、抑制自動建立案例"^]
+https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/How_to_suppress_automatic_case_creation_during_scheduled_maintenance_windows["NetApp知識庫文章 1010449：如何在計畫維護窗口期間禁止自動建立案例"^]
 
 
 
-== 移轉交換器
+== 遷移交換機
 
-此程序不中斷營運、可移除無交換器環境中的直接叢集連線、並以連線至合作夥伴節點的方式取代與交換器的每個連線。
+該過程是一個非中斷性過程，它在無交換器環境中移除直接叢集連接，並將每個與交換器的連接替換為與夥伴節點的連接。
 
 
 
-=== 步驟1：準備移轉
+=== 步驟 1：準備遷移
 
-. 將權限等級變更為進階、並在系統提示您繼續時輸入「y」：
+. 將權限級別變更為高級，輸入 `y`當系統提示繼續：
 +
-"進階權限"
+`set -privilege advanced`
 
 +
-出現進階提示（「*>」）。
+進階提示(`*>`出現。
 
-. 在任一節點的系統主控台檢查節點的叢集狀態：
+. 在任一節點的系統控制台上檢查節點的叢集狀態：
 +
-「叢集展示」
+`cluster show`
 
 +
 .顯示範例
 [%collapsible]
 ====
-下列範例顯示叢集中節點的健全狀況和資格資訊：
+以下範例顯示了叢集中節點的健康狀況和資格資訊：
 
 [listing]
 ----
@@ -69,12 +69,12 @@ node2                true    true          false
 2 entries were displayed.
 ----
 ====
-. 在任一節點的系統主控台檢查HA配對的狀態：「儲存容錯移轉顯示」
+. 在任一節點的系統控制台上檢查HA對的狀態： `storage failover show`
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示node1和node2的狀態：
+以下範例顯示了節點 1 和節點 2 的狀態：
 
 [listing]
 ----
@@ -87,29 +87,29 @@ node2          node1          true      Connected to node1
 2 entries were displayed.
 ----
 ====
-. 如果AutoSupport 此叢集啟用了「支援」功能、請叫用AutoSupport 下列訊息來禁止自動建立案例：
+. 如果此叢集上啟用了AutoSupport ，則透過呼叫AutoSupport訊息來抑制自動建立案例：
 +
-「系統節點AutoSupport 不完整地叫用節點*-type all -Message MAn=xh」
+`system node autosupport invoke -node * -type all -message MAINT=xh`
 
 +
-「x」是指維護所需時間（以小時計）。
+`x`是維護窗口的持續時間，以小時為單位。
 
 +
 
-NOTE: 此訊息會通知技術支援人員此維護工作、以便在維護期間禁止自動建立案例。
+NOTE: 此訊息通知技術支援部門此維護任務，以便在維護期間禁止自動建立案例。
 
 +
 .顯示範例
 [%collapsible]
 ====
-下列命令會禁止自動建立兩小時的個案：
+以下命令可抑制自動建立案件兩小時：
 
 [listing]
 ----
 cluster::*> system node autosupport invoke -node * -type all -message MAINT=2h
 ----
 ====
-. 確認無交換器叢集的目前狀態為 `true`，然後停用無交換器叢集模式：
+. 確認無交換器叢集的目前狀態為： `true`然後停用無開關叢集模式：
 +
 `network options switchless-cluster modify -enabled false`
 
@@ -118,15 +118,15 @@ cluster::*> system node autosupport invoke -node * -type all -message MAINT=2h
 `storage failover takeover -ofnode _target_node_name_`
 
 +
-無論哪個節點是目標節點、都沒有關係。接管之後、目標節點會自動重新開機、並顯示「正在等待恢復...」訊息。
+哪個節點是目標節點並不重要。當目標節點被接管後，它會自動重新啟動並顯示以下內容： `Waiting for giveback...`訊息.
 
 +
-作用中節點現在正在為接管的合作夥伴（目標）節點提供資料。
+目前活動節點正在為被接管的夥伴（目標）節點提供資料服務。
 
-. 在接管受損節點後等待兩分鐘、以確認接管作業已成功完成。
-. 目標節點顯示「正在等待恢復...」訊息、請將其關閉。
+. 接管受損節點後，請等待兩分鐘以確認接管已成功完成。
+. 目標節點顯示 `Waiting for giveback...`訊息已發送，請關閉。
 +
-用來關閉節點的方法取決於您是否透過節點服務處理器（SP）使用遠端管理。
+關閉節點的方法取決於您是否透過節點服務處理器（SP）進行遠端管理。
 
 +
 |===
@@ -134,39 +134,39 @@ cluster::*> system node autosupport invoke -node * -type all -message MAINT=2h
 
 
  a| 
-已設定
+已配置
  a| 
-登入受損節點SP、然後關閉系統電源：「系統關機」
+登入發生故障的節點SP，然後關閉系統電源： `system power off`
 
 
 
  a| 
-尚未設定
+未配置
  a| 
-在受損節點提示下、按「Ctrl-C」、然後回應「y」來停止節點。
+在出現故障節點提示時，按 `Ctrl-C`然後回應 `y`停止節點運行。
 
 |===
 
 
 
 
-=== 步驟2：設定纜線和連接埠
+=== 步驟 2：設定線纜和連接埠
 
-. 在每個控制器模組上、拔下將10 GbE叢集連接埠連接至無交換器叢集的纜線。
-. 將10 GbE叢集連接埠連接至兩個控制器模組上的交換器。
-. 確認交換器上連接的10 GbE叢集連接埠已設定為同一個VLAN的一部分。
+. 在每個控制器模組上，斷開將 10 GbE 叢集連接埠連接到無交換器叢集的電纜。
+. 將兩個控制器模組上的 10 GbE 叢集連接埠連接到交換器。
+. 確認交換器上連接的 10 GbE 叢集連接埠配置為屬於同一個 VLAN。
 +
-如果您打算將每個控制器模組上的叢集連接埠連接至不同的交換器、則必須確認每個交換器上連接叢集連接埠的連接埠已設定為相同的VLAN、而且兩個交換器上的主幹連線均已正確設定。
+如果您打算將每個控制器模組上的叢集連接埠連接到不同的交換機，則必須驗證每個交換器上連接叢集連接埠的連接埠是否已配置為相同的 VLAN，以及兩個交換器上是否正確配置了連結聚合。
 
-. 將儲存設備交回目標節點：
+. 將儲存空間回饋給目標節點：
 +
 `storage failover giveback -ofnode node2`
 
-. 監控恢復作業的進度：
+. 監控回饋活動的進度：
 +
 `storage failover show-giveback`
 
-. 恢復作業完成後、請確認HA配對正常、而且可以接管：
+. 交還操作完成後，確認HA對運作正常且可以接手：
 +
 `storage failover show`
 
@@ -174,7 +174,7 @@ cluster::*> system node autosupport invoke -node * -type all -message MAINT=2h
 .顯示範例
 [%collapsible]
 ====
-輸出應類似於下列內容：
+輸出結果應類似以下內容：
 
 [listing]
 ----
@@ -187,15 +187,15 @@ node2          node1          true      Connected to node1
 2 entries were displayed.
 ----
 ====
-. 驗證叢集連接埠LIF是否正常運作：
+. 驗證叢集連接埠 LIF 是否正常運作：
 +
-「網路介面show -role cluster」
+`network interface show -role cluster`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示、節點1和節點2上的lifs為「up」、且「is Home」欄結果為「true」：
+以下範例顯示 LIF 是 `up`在節點 1 和節點 2 上，「是否在家」列的結果是 `true`：
 
 [listing]
 ----
@@ -212,15 +212,15 @@ node2
 2 entries were displayed.
 ----
 ====
-. 在任一節點的系統主控台檢查節點的叢集狀態：
+. 在任一節點的系統控制台上檢查節點的叢集狀態：
 +
-「叢集展示」
+`cluster show`
 
 +
 .顯示範例
 [%collapsible]
 ====
-下列範例顯示叢集中節點的健全狀況和資格資訊：
+以下範例顯示了叢集中節點的健康狀況和資格資訊：
 
 [listing]
 ----
@@ -234,22 +234,22 @@ node2                true    true          false
 2 entries were displayed.
 ----
 ====
-. 驗證遠端叢集介面的連線能力：
+. 驗證遠端集群介面的連接性：
 
 
 [role="tabbed-block"]
 ====
-.更新版本ONTAP
+.ONTAP 9.9.1 及更高版本
 --
-您可以使用 `network interface check cluster-connectivity` 命令以啟動叢集連線的存取檢查、然後顯示詳細資料：
+你可以使用 `network interface check cluster-connectivity`執行命令以啟動叢集連接性檢查，然後顯示詳細資訊：
 
-`network interface check cluster-connectivity start` 和 `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`和 `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-* 注意： * 請等待數秒後再執行 `show`命令以顯示詳細資料。
+*注意：*運行程式前請等待幾秒鐘 `show`顯示詳細資訊的命令。
 
 [listing, subs="+quotes"]
 ----
@@ -265,9 +265,9 @@ node2
        3/5/2022 19:21:20 -06:00   node2_clus2      node1_clus2      none
 ----
 --
-.所有 ONTAP 版本
+.所有ONTAP版本
 --
-對於所有 ONTAP 版本、您也可以使用 `cluster ping-cluster -node <name>` 檢查連線能力的命令：
+對於所有ONTAP版本，您也可以使用 `cluster ping-cluster -node <name>`檢查連接性的命令：
 
 `cluster ping-cluster -node <name>`
 
@@ -301,11 +301,11 @@ RPC status:
 ====
 
 
-=== 步驟3：完成程序
+=== 步驟 3：完成該步驟
 
-. 如果您禁止自動建立個案、請叫用AutoSupport 下列消息來重新啟用此功能：
+. 如果您已停用自動建立案例功能，請透過呼叫AutoSupport訊息重新啟用該功能：
 +
-「系統節點AutoSupport 不完整地叫用節點*-type all -most MAn=end」
+`system node autosupport invoke -node * -type all -message MAINT=END`
 
 +
 .顯示範例
@@ -316,8 +316,8 @@ RPC status:
 cluster::*> system node autosupport invoke -node * -type all -message MAINT=END
 ----
 ====
-. 將權限層級變更回管理：
+. 將權限等級改回管理員：
 +
-「et -priv. admin」
+`set -privilege admin`
 
 

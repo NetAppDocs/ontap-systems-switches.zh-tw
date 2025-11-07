@@ -2,36 +2,36 @@
 permalink: switch-nvidia-sn2100-storage/configure-software-sn2100-storage.html 
 sidebar: sidebar 
 keywords: sn2100 SN2100 switches setup, sn2100 SN2100 switches install, cumulus linux 
-summary: NVIDIA SN2100儲存交換器軟體組態程序總覽。 
+summary: NVIDIA SN2100 儲存交換器軟體設定流程概述。 
 ---
-= NVIDIA SN2100儲存交換器的軟體安裝工作流程
+= NVIDIA SN2100 儲存交換器的軟體安裝工作流程
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-若要安裝及設定NVIDIA SN2100交換器的軟體、請遵循下列步驟：
+若要安裝和設定NVIDIA SN2100 交換器的軟體，請依照下列步驟操作：
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一"]link:configure-sn2100-storage.html["設定交換器"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一"]link:configure-sn2100-storage.html["配置交換機"]
 [role="quick-margin-para"]
 配置NVIDIA SN2100交換器。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["二"]link:install-cumulus-mode-sn2100-storage.html["在Cummuls模式下安裝Cummulus Linux"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["二"]link:install-cumulus-mode-sn2100-storage.html["以 Cumulus 模式安裝 Cumulus Linux"]
 [role="quick-margin-para"]
 當交換器執行 Cumulus Linux 時，您可以安裝 Cumulus Linux (CL) 作業系統。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三"]link:install-onie-mode-sn2100-storage.html["以ONIE模式安裝CummulUS Linux"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三"]link:install-onie-mode-sn2100-storage.html["以 ONIE 模式安裝 Cumulus Linux"]
 [role="quick-margin-para"]
 或者，您可以在交換器以 ONIE 模式執行 Cumulus Linux 時安裝 Cumulus Linux (CL) 作業系統。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["四"]link:install-rcf-sn2100-storage.html["安裝參考組態檔（RCF）指令碼"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["四"]link:install-rcf-sn2100-storage.html["安裝參考設定檔 (RCF) 腳本"]
 [role="quick-margin-para"]
-叢集與儲存應用程式可使用兩個RCF指令碼。每個的程序都相同。
+有兩個 RCF 腳本可用於叢集和儲存應用。每種情況的處理步驟都相同。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["五"]link:setup-install-cshm-file.html["安裝 CSHM 檔案"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["五"]link:setup-install-cshm-file.html["安裝 CSHM 文件"]
 [role="quick-margin-para"]
-您可以安裝適用於 NVIDIA 叢集交換器之乙太網路交換器健全狀況監控的組態檔。
+您可以安裝適用於NVIDIA叢集交換器的乙太網路交換器健康狀況監控的設定檔。
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["六"]link:reset-switch-sn2100-storage.html["將交換器重設為出廠預設值"]
 [role="quick-margin-para"]

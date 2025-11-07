@@ -2,31 +2,31 @@
 permalink: switch-bes-53248/components-bes53248.html 
 sidebar: sidebar 
 keywords: cluster-mode,supported versions,switches supported,cluster network,efos 
-summary: 若為BS-53248交換器安裝與維護、請務必檢閱元件清單和零件編號。 
+summary: 對於 BES-53248 交換器的安裝和維護，請務必查看組件和零件編號清單。 
 ---
-= BS-53248叢集交換器的元件和零件編號
+= BES-53248 集群開關的組件和零件編號
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-若為BS-53248交換器安裝與維護、請務必檢閱元件清單和零件編號。
+對於 BES-53248 交換器的安裝和維護，請務必查看組件和零件編號清單。
 
-下表列出 BS-53248 叢集交換器元件的零件編號、說明及最低 EFOS 和 ONTAP 版本、包括機架安裝軌道套件詳細資料。
+下表列出了 BES-53248 叢集交換器組件的零件號碼、描述以及最低 EFOS 和ONTAP版本，包括機架安裝導軌套件的詳細資訊。
 
 
-NOTE: 零件編號 *X190005-B* 和 *X190005R-B* 需要 * 3.10.0.3* 的 EFOS 最低版本。
+NOTE: 零件號碼 *X190005-B* 和 *X190005R-B* 需要最低 EFOS 版本 *3.10.0.3*。
 
 [cols="20,40,20,20"]
 |===
-| 產品編號 | 說明 | EFOS 最低版本 | 最低 ONTAP 版本 
+| 零件編號 | 描述 | 最低 EFOS 版本 | 最低ONTAP版本 
 
 
  a| 
 X190005-B
  a| 
-BS-53248-B/IX8 、 CLSW 、 16PT10/25GB 、 PTSX （ PTSX = 連接埠側排氣）
+BES-53248-B/IX8、CLSW、16PT10/25GB、PTSX（PTSX = 端口側排氣）
  a| 
 3.10.0.3
  a| 
@@ -37,7 +37,7 @@ BS-53248-B/IX8 、 CLSW 、 16PT10/25GB 、 PTSX （ PTSX = 連接埠側排氣�
  a| 
 X190005R-B
  a| 
-BS-53248-B/IX8 、 CLSW 、 16PT10/25GB 、 PSIN （ PSIN = 連接埠側攝入）
+BES-53248-B/IX8、CLSW、16PT10/25GB、PSIN（PSIN = 端口側進氣）
  a| 
 3.10.0.3
  a| 
@@ -48,29 +48,29 @@ BS-53248-B/IX8 、 CLSW 、 16PT10/25GB 、 PSIN （ PSIN = 連接埠側攝入�
  a| 
 X190005
  a| 
-BS-53248 、 CLSW 、 16Pt10/25GB 、 PTSX 、 BRDCM 支援
+BES-53248、CLSW、16Pt10/25GB、PTSX、BRDCM SUPP
  a| 
-3.4.6.4.
+3.4.4.6
  a| 
-9.5 第 8 頁
+9.5P8
 
 
 
  a| 
 X190005R
  a| 
-BS-53248 、 CLSW 、 16Pt10/25GB 、 PSIN 、 BRDCM
+BES-53248、CLSW、16Pt10/25GB、PSIN、BRDCM SUPP
  a| 
-3.4.6.4.
+3.4.4.6
  a| 
-9.5 第 8 頁
+9.5P8
 
 
 
  a| 
-X-RAIL：4後190005
+X-RAIL-4POST-190005
  a| 
-機架安裝軌道套件Ozeki 4柱19吋
+Ozeki 4柱19吋機架安裝導軌套件
  a| 
 不適用
  a| 
@@ -78,28 +78,28 @@ X-RAIL：4後190005
 
 |===
 
-IMPORTANT: 請注意下列關於機器類型的資訊：
+IMPORTANT: 請注意以下有關機器類型的資訊：
 
 [cols="50,50"]
 |===
-| 機器類型 | EFOS 最低版本 
+| 機器類型 | 最低 EFOS 版本 
 
 
  a| 
-BS-53248A1
-| 3.4.6.4. 
+BES-53248A1
+| 3.4.4.6 
 
 
  a| 
-BS-53248A2
+BES-53248A2
 | 3.10.0.3 
 
 
  a| 
-BS-53248A3
+BES-53248A3
 | 3.10.0.3 
 |===
-您可以使用下列命令來判斷您的特定機器類型： `show version`
+您可以使用以下命令確定您的特定機器類型： `show version`
 
 .顯示範例
 [%collapsible]

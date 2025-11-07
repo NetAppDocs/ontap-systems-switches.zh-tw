@@ -2,68 +2,68 @@
 section: switch-cisco-9336c-fx2
 title: Cisco Nexus 9336C-FX2 或 9336C-FX2-T
 entries:
-- title: 開始使用
+- title: 開始
   entries:
-  - title: 快速入門
+  - title: 快速啟動
     url: "/switch-cisco-9336c-fx2/configure-switch-overview-9336c-cluster.html"
-  - title: 組態需求
+  - title: 配置要求
     url: "/switch-cisco-9336c-fx2/configure-reqs-9336c-cluster.html"
-  - title: 元件與零件編號
+  - title: 組件和零件編號
     url: "/switch-cisco-9336c-fx2/components-9336c-cluster.html"
-  - title: 必要文件
+  - title: 所需文件
     url: "/switch-cisco-9336c-fx2/required-documentation-9336c-cluster.html"
-  - title: 智慧電話住家需求
+  - title: 智慧呼叫中心的要求
     url: "/switch-cisco-9336c-fx2/smart-call-9336c-cluster.html"
 - title: 安裝硬體
-  pdf-filename: install_hardware _ 9336c-FX2
+  pdf-filename: Install_hardware_9336c-fx2
   entries:
   - title: 硬體安裝工作流程
     url: "/switch-cisco-9336c-fx2/install-hardware-workflow.html"
   - title: 完整的佈線工作表
     url: "/switch-cisco-9336c-fx2/setup-worksheet-9336c-cluster.html"
-  - title: 安裝交換器
+  - title: 安裝開關
     url: "/switch-cisco-9336c-fx2/install-switch-9336c-cluster.html"
   - title: 在NetApp機櫃中安裝交換機
     url: "/switch-cisco-9336c-fx2/install-switch-and-passthrough-panel-9336c-cluster.html"
-  - title: 檢視纜線佈線與組態
+  - title: 檢查佈線和配置
     url: "/switch-cisco-9336c-fx2/cabling-considerations-9336c-fx2.html"
 - title: 設定軟體
-  pdf-filename: Configure_software_9336c-FX2
+  pdf-filename: Configure_software_9336c-fx2
   entries:
   - title: 軟體安裝工作流程
     url: "/switch-cisco-9336c-fx2/configure-software-overview-9336c-cluster.html"
-  - title: 設定交換器
+  - title: 配置交換機
     url: "/switch-cisco-9336c-fx2/setup-switch-9336c-cluster.html"
-  - title: 準備安裝NX-OS和RCF
+  - title: 準備安裝 NX-OS 和 RCF
     url: "/switch-cisco-9336c-fx2/install-nxos-overview-9336c-cluster.html"
   - title: 安裝或升級 NX-OS 軟體
     url: "/switch-cisco-9336c-fx2/install-nxos-software-9336c-cluster.html"
   - title: 安裝或升級 RCF
-    pdf-filename: install_upgrade _RCF
+    pdf-filename: 安裝升級 rcf
     entries:
-    - title: 安裝或升級 RCF 總覽
+    - title: 安裝或升級 RCF 概述
       url: "/switch-cisco-9336c-fx2/install-upgrade-rcf-overview-cluster.html"
-    - title: 安裝RCF
+    - title: 安裝 RCF
       url: "/switch-cisco-9336c-fx2/install-rcf-software-9336c-cluster.html"
-    - title: 升級 RCF 版本
+    - title: 升級您的 RCF 版本
       url: "/switch-cisco-9336c-fx2/upgrade-rcf-software-9336c-cluster.html"
-  - title: 驗證SSH組態
+  - title: 驗證 SSH 配置
     url: "/switch-cisco-9336c-fx2/configure-ssh-keys.html"
   - title: 將交換器重設為出廠預設值
     url: "/switch-cisco-9336c-fx2/reset-switch-9336c.html"
-- title: 移轉交換器
-  pdf-filename: migrate_switchs_9336c-FX2
+- title: 遷移交換機
+  pdf-filename: Migrate_switches_9336c-fx2
   entries:
-  - title: 從 CN1610 叢集交換器移轉
+  - title: 從 CN1610 叢集交換器遷移
     url: "/switch-cisco-9336c-fx2/migrate-cn1610-9336c-cluster.html"
-  - title: 從舊的Cisco交換器移轉
+  - title: 從舊的Cisco交換器遷移
     url: "/switch-cisco-9336c-fx2/migrate-to-9336-cluster.html"
-  - title: 移轉至雙節點交換叢集
+  - title: 遷移到雙節點交換集群
     url: "/switch-cisco-9336c-fx2/migrate-to-2n-switched-9336-cluster.html"
 - title: 更換開關
-  pdf-filename: REPLACE 交換器 _9336c-FX2
+  pdf-filename: Replace_switches_9336c-fx2
   entries:
-  - title: 更換叢集交換器
+  - title: 更換集群開關
     url: "/switch-cisco-9336c-fx2/replace-9336c-cluster.html"
-  - title: 使用無交換器連線取代叢集交換器
+  - title: 用無開關連接取代集群開關
     url: "/switch-cisco-9336c-fx2/migrate-to-switchless-interconnect-9336-cluster.html"

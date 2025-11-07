@@ -2,43 +2,43 @@
 :allow-uri-read: 
 
 
-若要在 NVIDIA 乙太網路交換器上設定乙太網路交換器健康監控，請依照下列步驟操作。
+若要在NVIDIA乙太網路交換器上設定乙太網路交換器健康狀況監控，請依照下列步驟操作。
 
-如果 NVIDIA X190006-PE 和 X190006-PI 交換器無法正確偵測，則適用這些說明，可以透過執行 `system switch ethernet show`並檢查您的型號是否顯示*OTHER*。若要辨識您的 NVIDIA 交換器型號，請使用以下指令尋找零件編號 `nv show platform hardware`對於 NVIDIA CL 5.8 及更早版本或 `nv show platform`適用於後續版本。
+如果NVIDIA X190006-PE 和 X190006-PI 開關未被正確偵測到，則適用以下說明，可透過執行以下命令來確認這一點： `system switch ethernet show`並檢查您的型號是否顯示“其他”選項。若要辨識您的NVIDIA交換器型號，請使用下列指令尋找零件號碼。 `nv show platform hardware`適用於NVIDIA CL 5.8 及更早版本或 `nv show platform`適用於後續版本。
 
 [NOTE]
 ====
-如果您希望在使用 NVIDIA CL 5.11.x 和以下 ONTAP 版本時，健康監控和日誌收集能夠如預期運作，也建議您執行這些步驟。雖然沒有這些步驟，健康監測和日誌收集可能仍會起作用，但遵循這些步驟可以確保一切正常運作。
+如果您希望在使用NVIDIA CL 5.11.x 和以下ONTAP版本時，健康監控和日誌收集能夠如預期運作，也建議執行這些步驟。即使不採取這些步驟，健康監測和日誌收集功能也可能仍然有效，但遵循這些步驟可確保一切正常運作。
 
-* 9.10.1P20、9.11.1P18、9.12.1P16、9.13.1P8、9.14.1、9.15.1 及更高補丁版本
+* 9.10.1P20、9.11.1P18、9.12.1P16、9.13.1P8、9.14.1、9.15.1 及更高版本的補丁
 
 
 ====
 .開始之前
-* 請確定ONTAP 支援並執行不中斷的叢集。
-* 在交換器上啟用 SSH 以使用 CSHM 中可用的所有功能。
+* 請確保ONTAP叢集已啟動並正在運作。
+* 在交換器上啟用 SSH，即可使用 CSHM 中的所有功能。
 * 清除 `/mroot/etc/cshm_nod/nod_sign/`所有節點上的目錄：
 +
-.. 輸入節點：
+.. 進入節點 shell：
 +
 `system node run -node <name>`
 
-.. 變更為進階權限：
+.. 切換到進階權限：
 +
 `priv set advanced`
 
-.. 列出目錄中的組態檔案 `/etc/cshm_nod/nod_sign`。如果目錄存在且包含組態檔案，則會列出檔案名稱。
+.. 列出設定檔 `/etc/cshm_nod/nod_sign`目錄。如果目錄存在且包含設定文件，則會列出檔案名稱。
 +
 `ls /etc/cshm_nod/nod_sign`
 
-.. 刪除所有與您所連接交換器機型對應的組態檔案。
+.. 刪除與所連接的交換器型號對應的所有設定檔。
 +
-如果您不確定，請移除上述所列支援機型的所有組態檔案，然後下載並安裝相同機型的最新組態檔案。
+如果您不確定，請刪除上面列出的受支援型號的所有配置文件，然後下載並安裝這些型號的最新設定檔。
 
 +
 `rm /etc/cshm_nod/nod_sign/<filename>`
 
-.. 確認刪除的組態檔不再位於目錄中：
+.. 確認已刪除的設定檔已不在目錄中：
 +
 `ls /etc/cshm_nod/nod_sign`
 
@@ -47,19 +47,19 @@
 
 
 .步驟
-. 根據對應的 ONTAP 版本、下載乙太網路交換器健全狀況監視器組態 zip 檔案。此檔案可從 https://mysupport.netapp.com/site/info/nvidia-cluster-switch["NVIDIA 乙太網路交換器"^] 頁面取得。
+. 根據對應的ONTAP版本下載乙太網路交換器健康監控器設定 zip 檔案。該文件可從以下位置取得： https://mysupport.netapp.com/site/info/nvidia-cluster-switch["NVIDIA乙太網路交換機"^]頁。
 +
-.. 在 NVIDIA SN2100 軟體下載頁面上、選取 * Nvidia CSHM 檔案 * 。
-.. 在「注意 / 必須閱讀」頁面上、勾選核取方塊以同意。
-.. 在「終端使用者授權合約」頁面上、勾選核取方塊以同意、然後按一下 * 接受並繼續 * 。
-.. 在 Nvidia CSHM File - Download 頁面上、選取適用的組態檔案。以下檔案可供使用：
+.. 在NVIDIA SN2100 軟體下載頁面上，選擇 *Nvidia CSHM 檔案*。
+.. 在「注意事項/必讀」頁面上，選取核取方塊表示同意。
+.. 在最終使用者許可協議頁面上，選取核取方塊表示同意，然後按一下「接受並繼續」。
+.. 在 Nvidia CSHM 檔案 - 下載頁面上，選擇適用的設定檔。以下文件可供下載：
 
 
 
 
 [role="tabbed-block"]
 ====
-.ONTAP 9.15.1 及更新版本
+.ONTAP 9.15.1 及更高版本
 --
 * MSN2100-CB2FC-v1.4.zip
 * MSN2100-CB2RC-v1.4.zip
@@ -78,41 +78,41 @@
 
 --
 ====
-. [[step2]] 將適用的 zip 檔案上傳至內部 Web 伺服器。
-. 從叢集中的其中一個 ONTAP 系統存取進階模式設定。
+. [[step2]]將對應的 zip 檔案上傳到您的內部 Web 伺服器。
+. 從叢集中的某個ONTAP系統存取進階模式設定。
 +
-"進階權限"
+`set -privilege advanced`
 
-. 執行交換器健全狀況監視器組態命令。
+. 執行交換器健康監控設定指令。
 +
 [listing, subs="+quotes"]
 ----
 cluster1::> *system switch ethernet configure-health-monitor*
 ----
-. 確認 ONTAP 版本的命令輸出結尾為下列文字：
+. 請確認您的ONTAP版本命令輸出是否以以下文字結尾：
 
 
 [role="tabbed-block"]
 ====
-.ONTAP 9.15.1 及更新版本
+.ONTAP 9.15.1 及更高版本
 --
-乙太網路交換器健全狀況監控已安裝組態檔。
+乙太網路交換器健康監控已安裝設定檔。
 
 --
 .ONTAP 9.11.1 至 9.14.1
 --
-shm 已安裝組態檔案。
+SHM 已安裝設定檔。
 
 --
-.ONTAP 9.10.1.
+.ONTAP 9.10.1
 --
-CSHM 下載套件已成功處理。
+CSHM下載包已成功處理。
 
 --
 ====
-如果發生錯誤、請聯絡NetApp支援部門。
+如果發生錯誤，請聯絡NetApp支援。
 
-. [[step6]] 在完成下一個步驟之前、請等待最多兩倍的乙太網路交換器健全狀況監視器輪詢時間間隔（透過執行找到 `system switch ethernet polling-interval show`）。
+. [[step6]]等待乙太網路交換器健康監視器輪詢間隔的兩倍，該間隔可透過執行下列命令找到。 `system switch ethernet polling-interval show`在完成下一步之前。
 . 運行該命令 `system switch ethernet configure-health-monitor show`在ONTAP系統中，確保已發現叢集交換機，並且監控欄位設定為 *True*，序號欄位不顯示 *Unknown*。
 +
 [listing, subs="+quotes"]
@@ -122,6 +122,6 @@ cluster1::> *system switch ethernet configure-health-monitor show*
 
 
 
-NOTE: 如果套用組態檔案後、您的機型仍顯示 * 其他 * 、請聯絡 NetApp 支援部門。
+NOTE: 如果套用設定檔後，您的模型仍然顯示“*OTHER*”，請聯絡NetApp支援。
 
-查看 https://docs.netapp.com/us-en/ontap-cli/system-switch-ethernet-configure-health-monitor.html["系統交換器乙太網路設定-健康-監控"^]命令以了解更多詳細資訊。
+參見 https://docs.netapp.com/us-en/ontap-cli/system-switch-ethernet-configure-health-monitor.html["系統交換器乙太網路設定-健康-監控"^]運行命令以獲取更多詳情。

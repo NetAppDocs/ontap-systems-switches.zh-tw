@@ -2,98 +2,98 @@
 permalink: switch-nvidia-sn2100/migrate-cisco-storage-switch-sn2100-cluster.html 
 sidebar: sidebar 
 keywords: migrating to a storage switch with NVIDIA SN2100 storage switches, how to migrate 
-summary: 您可以將ONTAP 不中斷營運的舊款Cisco交換器移轉至NVIDIA SN2100儲存交換器、以利實現一個不中斷的叢集。 
+summary: 您可以將ONTAP叢集中較舊的Cisco交換器無中斷地遷移到NVIDIA SN2100 儲存交換器。 
 ---
-= 從Cisco儲存交換器移轉至NVIDIA SN2100儲存交換器
+= 將儲存交換器從Cisco)移轉到NVIDIA) SN2100 儲存交換機
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-您可以從舊版Cisco交換器移轉ONTAP 至NVIDIA SN2100儲存交換器、以供使用。這是不中斷營運的程序。
+您可以將ONTAP叢集中的舊款Cisco交換器遷移到NVIDIA SN2100 儲存交換器。這是一個非破壞性的過程。
 
 
 
-== 檢閱要求
+== 審查要求
 
-當您將部分舊款Cisco交換器更換為NVIDIA SN2100儲存交換器時、必須注意特定的組態資訊、連接埠連線和纜線需求。請參閱 link:configure-overview-sn2100-cluster.html["NVIDIA SN2100交換器的安裝與組態總覽"]。
+當您用NVIDIA SN2100 儲存交換器取代一些較舊的Cisco交換器時，您必須了解某些設定資訊、連接埠連線和佈線要求。看link:configure-overview-sn2100-cluster.html["NVIDIA SN2100交換器的安裝與設定概述"]。
 
-.支援的交換器
-支援下列儲存交換器：
+.支援的交換機
+支援以下儲存交換器：
 
-* Cisco Nexus 9336C-FX2
-* Cisco Nexus 3232C
+* CiscoNexus 9336C-FX2
+* CiscoNexus 3232C
 
 
-如需受支援連接埠及其組態的詳細資訊、請參閱 https://hwu.netapp.com/["Hardware Universe"^]。
+有關支援的連接埠及其配置的詳細信息，請參閱 https://hwu.netapp.com/["Hardware Universe"^]。
 
-.您需要的產品
+.你需要什麼
 確保：
 
-* 現有的叢集已正確設定並正常運作。
-* 所有儲存連接埠都處於「正常」狀態、以確保不中斷營運。
-* NVIDIA SN2100儲存交換器是在適當版本的CummUS Linux下設定及操作、並套用參考組態檔（RCF）。
-* 現有的儲存網路組態如下：
+* 現有叢集已正確設定並正常運作。
+* 所有儲存連接埠均處於開啟狀態，以確保運作不會中斷。
+* NVIDIA SN2100 儲存交換器已設定並運行在正確版本的 Cumulus Linux 下，並應用了參考設定檔 (RCF)。
+* 現有儲存網路配置如下：
 +
-** 使用兩個舊Cisco交換器的備援且功能完整的NetApp叢集。
-** 管理連線能力、以及對舊Cisco交換器和新交換器的主控台存取。
-** 使用叢集l生命 區的所有叢集LIF都位於其主連接埠上。
-** 在舊的Cisco交換器之間以及新交換器之間啟用或連接ISL連接埠。
+** 使用較舊的Cisco交換機構建立冗餘且功能齊全的NetApp叢集。
+** 舊款Cisco交換器和新交換器的管理連線和控制台存取。
+** 叢集中所有處於 *up* 狀態的 LIF 都位於其主連接埠上。
+** ISL 連接埠已啟用，並已在舊款Cisco交換器和新款交換器之間連接了線纜。
 
 
-* NVIDIA SN2100交換器上的部分連接埠設定為以100 GbE執行。
-* 您已規劃、移轉並記錄從節點到NVIDIA SN2100儲存交換器的100 GbE連線。
+* NVIDIA SN2100 交換器上的某些連接埠配置為以 100 GbE 運作。
+* 您已規劃、遷移並記錄了從節點到NVIDIA SN2100 儲存交換器的 100 GbE 連線。
 
 
 
 
-== 移轉交換器
+== 遷移交換機
 
 .關於範例
-在此程序中、Cisco Nexus 9336C-FX2儲存交換器可用於命令和輸出等用途。
+在此過程中，使用Cisco Nexus 9336C-FX2 儲存交換器作為範例指令和輸出。
 
-本程序中的範例使用下列交換器和節點命名法：
+本流程中的範例使用以下開關和節點命名規則：
 
-* 現有的Cisco Nexus 9336C-FX2儲存交換器為_S1_和_s2_。
-* 全新NVIDIA SN2100儲存交換器為_sw1_和_SW2_。
-* 節點是_node1_和_node2_。
-* 叢集生命區分別是節點1上的_node1_clus1_和節點1上的_node1_clus2_、以及節點2上的節點2_node2_clus1_和節點2_clus2_。
-* 「cluster1：*：>」提示會指出叢集的名稱。
-* 此程序中使用的網路連接埠為_e5a _和_e5b_。
-* 分組連接埠的格式為：swp1s-3。例如、swp1上的四個中斷連接埠分別是_swp1s0_、_swp1s1_、_swp1s2_和_swp1s3_。
-* 交換器S2先由交換器SW2取代、然後由交換器sw1取代交換器S1。
+* 現有的Cisco Nexus 9336C-FX2 儲存交換器型號為 _S1_ 和 _S2_。
+* 新的NVIDIA SN2100 儲存交換器型號為 _sw1_ 和 _sw2_。
+* 節點分別為 _node1_ 和 _node2_。
+* 節點 1 上的叢集 LIF 分別為 _node1_clus1_ 和 _node1_clus2_，節點 2 上的叢集 LIF 分別為 _node2_clus1_ 和 _node2_clus2_。
+* 這 `cluster1::*>`prompt 指示叢集名稱。
+* 此過程中使用的網路連接埠為_e5a_和_e5b_。
+* 分支端口採用以下格式：swp1s0-3。例如，swp1 上的四個分支連接埠分別是 _swp1s0_、_swp1s1_、_swp1s2_ 和 _swp1s3_。
+* 首先將交換器 S2 替換為交換器 sw2，然後將交換器 S1 替換為交換器 sw1。
 +
-** 然後、節點與S2之間的纜線會從S2中斷連線、並重新連接至SW2。
-** 然後從S1中斷連接節點與S1之間的纜線、並重新連接至sw1。
+** 然後斷開節點與 S2 之間的電纜與 S2 的連接，並重新連接到 sw2。
+** 然後斷開節點與 S1 之間的電纜與 S1 的連接，並重新連接到 sw1。
 
 
 
 
 
 
-=== 步驟1：準備移轉
+=== 步驟 1：準備遷移
 
-. 如果啟用了「支援」功能、請叫用下列消息來禁止自動建立個案AutoSupport AutoSupport ：
+. 如果啟用了AutoSupport，則透過呼叫AutoSupport訊息來阻止自動建立案例：
 +
-「系統節點AutoSupport 不完整地叫用節點*-type all -Message MAn=xh」
+`system node autosupport invoke -node * -type all -message MAINT=xh`
 
 +
-其中_x_是維護時段的持續時間（以小時為單位）。
+其中 _x_ 為維護視窗的持續時間（小時）。
 
-. 將權限層級變更為進階、並在系統提示您繼續時輸入* y*：「et -priv家 特權進階」
+. 將權限級別變更為高級，並在提示繼續時輸入 *y*： `set -privilege advanced`
 +
-出現進階提示（*>）。
+出現高階提示符號（*>）。
 
 
 
 
 
-=== 步驟2：設定連接埠和纜線
+=== 步驟二：設定埠和線纜
 
-. 確定每個儲存介面的管理或作業狀態。
+. 確定每個儲存介面的管理或運作狀態。
 +
-每個連接埠都應顯示為「狀態」。
+每個連接埠都應顯示為已啟用。 `Status` 。
 
 +
 顯示網路連接埠屬性：
@@ -124,7 +124,7 @@ node2
 cluster1::*>
 ----
 ====
-. 每個節點上的儲存連接埠會以下列方式（從節點的觀點）、使用命令連接至現有的儲存交換器：
+. 從節點的角度來看，每個節點上的儲存連接埠透過以下命令連接到現有的儲存交換器：
 +
 `network device-discovery show -protocol lldp`
 
@@ -146,7 +146,7 @@ node2      /lldp
             e5b    S2 (7c:ad:4f:98:8e:3c)    Eth1/2           -
 ----
 ====
-. 在交換器S1和S2上、儲存連接埠和交換器會以下列方式（從交換器的觀點來看）使用命令進行連線：
+. 在交換器 S1 和 S2 上，儲存連接埠和交換器透過以下命令連接（從交換器的角度來看）：
 +
 `show lldp neighbors`
 
@@ -183,7 +183,7 @@ SHFGB2017000269       Eth1/12        120         S                
 SHFGB2017000269       Eth1/13        120         S                   e0b
 ----
 ====
-. 在交換器SW2上、關閉連接至磁碟櫃儲存連接埠和節點的連接埠。
+. 在交換器 sw2 上，關閉連接到磁碟櫃儲存連接埠和節點的連接埠。
 +
 .顯示範例
 [%collapsible]
@@ -195,8 +195,8 @@ cumulus@sw2:~$ *net pending*
 cumulus@sw2:~$ *net commit*
 ----
 ====
-. 使用NVIDIA SN2100支援的適當纜線、將控制器和磁碟櫃的節點儲存連接埠從舊交換器S2移至新交換器SW2。
-. 在交換器SW2上、開啟連接至節點和磁碟櫃儲存連接埠的連接埠。
+. 將控制器和磁碟機櫃的節點儲存連接埠從舊交換器 S2 移至新交換器 sw2，使用NVIDIA SN2100 支援的適當電纜。
+. 在交換器 sw2 上，啟動連接到節點儲存連接埠和磁碟櫃的連接埠。
 +
 .顯示範例
 [%collapsible]
@@ -208,7 +208,7 @@ cumulus@sw2:~$ *net pending*
 cumulus@sw2:~$ *net commit*
 ----
 ====
-. 從節點的觀點來看、每個節點上的儲存連接埠現在都以下列方式連接至交換器：
+. 從節點的角度來看，每個節點上的儲存連接埠現在會以以下方式連接到交換器：
 +
 .顯示範例
 [%collapsible]
@@ -229,7 +229,7 @@ node2      /lldp
             e5b    sw2 (b8:ce:f6:19:1a:7e)   swp2           -
 ----
 ====
-. 驗證網路連接埠屬性：
+. 請驗證網路連接埠屬性：
 +
 `storage port show`
 
@@ -256,7 +256,7 @@ node2
 cluster1::*>
 ----
 ====
-. 在交換器SW2上、確認所有節點儲存連接埠都已開啟：
+. 在交換器 sw2 上，確認所有節點儲存連接埠均已啟動：
 +
 .顯示範例
 [%collapsible]
@@ -279,7 +279,7 @@ UP     swp6    100G  9216   Trunk/L2   SHFFG1826000102 (e0b)   Master: bridge(UP
 ...
 ----
 ====
-. 在交換器sw1上、關閉連接至節點和磁碟櫃儲存連接埠的連接埠。
+. 在交換器 sw1 上，關閉連接到節點和磁碟機儲存連接埠的連接埠。
 +
 .顯示範例
 [%collapsible]
@@ -291,8 +291,8 @@ cumulus@sw1:~$ *net pending*
 cumulus@sw1:~$ *net commit*
 ----
 ====
-. 使用NVIDIA SN2100支援的適當纜線、將控制器的節點儲存連接埠和磁碟櫃從舊交換器S1移至新交換器sw1。
-. 在交換器sw1上、開啟連接至節點和磁碟櫃儲存連接埠的連接埠。
+. 使用NVIDIA SN2100 支援的適當線纜，將控制器的節點儲存連接埠和磁碟機櫃從舊交換器 S1 移至新交換器 sw1。
+. 在交換器 sw1 上，啟動連接到節點儲存連接埠和磁碟櫃的連接埠。
 +
 .顯示範例
 [%collapsible]
@@ -304,7 +304,7 @@ cumulus@sw1:~$ *net pending*
 cumulus@sw1:~$ *net commit*
 ----
 ====
-. 從節點的觀點來看、每個節點上的儲存連接埠現在都以下列方式連接至交換器：
+. 從節點的角度來看，每個節點上的儲存連接埠現在會以以下方式連接到交換器：
 +
 .顯示範例
 [%collapsible]
@@ -325,12 +325,12 @@ node2      /lldp
             e5b    sw2  (b8:ce:f6:19:1a:7e)  swp2            -
 ----
 ====
-. 驗證最終組態：
+. 驗證最終配置：
 +
 `storage port show`
 
 +
-每個連接埠都應顯示為「tate」（已啟用）、並啟用「tatus」（狀態）。
+每個連接埠都應顯示為已啟用。 `State`並已啟用 `Status`。
 
 +
 .顯示範例
@@ -355,7 +355,7 @@ node2
 cluster1::*>
 ----
 ====
-. 在交換器SW2上、確認所有節點儲存連接埠都已開啟：
+. 在交換器 sw2 上，確認所有節點儲存連接埠均已啟動：
 +
 .顯示範例
 [%collapsible]
@@ -378,7 +378,7 @@ UP     swp6    100G  9216   Trunk/L2   SHFFG1826000102 (e0b)   Master: bridge(UP
 ...
 ----
 ====
-. 驗證兩個節點各自與每個交換器都有一個連線：
+. 確認兩個節點都分別與每個交換器建立了一個連線：
 +
 `net show lldp`
 
@@ -386,7 +386,7 @@ UP     swp6    100G  9216   Trunk/L2   SHFFG1826000102 (e0b)   Master: bridge(UP
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示兩個交換器的適當結果：
+以下範例顯示了兩種開關的正確結果：
 
 [listing, subs="+quotes"]
 ----
@@ -417,11 +417,11 @@ swp6       100G   Trunk/L2  SHFFG1826000102        e0b
 
 
 
-=== 步驟3：完成程序
+=== 步驟 3：完成該步驟
 
-. 為乙太網路交換器健全狀況監視器記錄收集功能建立密碼：
+. 為乙太網路交換器健康監控日誌收集功能建立密碼：
 +
-「系統交換器乙太網路記錄設定密碼」
+`system switch ethernet log setup-password`
 
 +
 .顯示範例
@@ -453,7 +453,7 @@ Enter the password: *<enter switch password>*
 Enter the password again: *<enter switch password>*
 ----
 ====
-. 啟用乙太網路交換器健全狀況監視器記錄收集功能：
+. 啟用乙太網路交換器健康監控日誌收集功能：
 +
 `system switch ethernet log modify -device _<switch-name>_ -log-request true`
 
@@ -477,7 +477,7 @@ Enabling cluster switch log collection.
 ----
 ====
 +
-等待 10 分鐘、然後檢查記錄收集是否完成：
+等待 10 分鐘，然後檢查日誌收集是否完成：
 
 +
 `system switch ethernet log show`
@@ -499,14 +499,14 @@ Index  Switch                       Log Timestamp        Status
 ====
 +
 
-CAUTION: 如果這些命令中有任何一個傳回錯誤、或記錄集合未完成、請聯絡 NetApp 支援部門。
+CAUTION: 如果這些命令中的任何一個回傳錯誤，或日誌收集未完成，請聯絡NetApp支援。
 
-. 將權限層級變更回管理：
+. 將權限等級改回管理員：
 +
-「et -priv. admin」
+`set -privilege admin`
 
-. 如果您禁止自動建立個案、請叫用AutoSupport 下列消息來重新啟用此功能：
+. 如果您已停用自動建立案例功能，請透過呼叫AutoSupport訊息重新啟用該功能：
 +
-「系統節點AutoSupport 不完整地叫用節點*-type all -most MAn=end」
+`system node autosupport invoke -node * -type all -message MAINT=END`
 
 

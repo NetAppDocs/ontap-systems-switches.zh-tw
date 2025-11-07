@@ -2,7 +2,7 @@
 permalink: switch-cisco-9336c-fx2-storage/configure-software-overview-9336c-storage.html 
 sidebar: sidebar 
 keywords: BES-53248 switches, initial installation, configure switch-cisco-9336c-fx2 switch 
-summary: Cisco Nexus 9336C-FX2儲存交換器軟體組態總覽 
+summary: Cisco Nexus 9336C-FX2 儲存交換器的軟體設定概述 
 ---
 = Cisco Nexus 9336C-FX2 和 9336C-FX2-T 儲存交換器的軟體安裝工作流程
 :allow-uri-read: 
@@ -13,7 +13,7 @@ summary: Cisco Nexus 9336C-FX2儲存交換器軟體組態總覽
 [role="lead"]
 若要安裝和設定Cisco Nexus 9336C-FX2 和 9336C-FX2-T 儲存交換器的軟體，請依照下列步驟操作：
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一"]link:setup-switch-9336c-storage.html["設定交換器"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一"]link:setup-switch-9336c-storage.html["配置交換機"]
 [role="quick-margin-para"]
 配置 9336C-FX2 和 9336C-FX2-T 儲存交換器。
 
@@ -29,7 +29,7 @@ summary: Cisco Nexus 9336C-FX2儲存交換器軟體組態總覽
 [role="quick-margin-para"]
 首次設定Cisco 9336C-FX2 和 9336C-FX2-T 交換器後安裝或升級 RCF。您也可以使用此程序升級您的 RCF 版本。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["五"]link:configure-ssh-keys.html["驗證SSH組態"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["五"]link:configure-ssh-keys.html["驗證 SSH 配置"]
 [role="quick-margin-para"]
 驗證交換器上是否啟用了 SSH 以使用乙太網路交換器健康監視器 (CSHM) 和日誌收集功能。
 

@@ -2,63 +2,63 @@
 permalink: switch-cisco-3232c/upgrade-3232c-storage-switches.html 
 sidebar: sidebar 
 keywords: upgrade, cisco nexus, 3232c storage switch 
-summary: Cisco NX-OS軟體與參考組態檔（RCT）可在Cisco Nexus 3232C儲存交換器上升級。 
+summary: 'Cisco Nexus 3232C 儲存交換器可升級Cisco NX-OS 軟體和參考設定檔 (RCF)。' 
 ---
-= 升級Cisco Nexus 3232C儲存交換器
+= 升級Cisco Nexus 3232C 儲存交換機
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-請依照下列步驟升級Cisco Nexus 3232C交換器上的Cisco NX-OS軟體和參考組態檔（RCF）。
+請依照下列步驟升級Cisco Nexus 3232C 交換器上的Cisco NX-OS 軟體和參考設定檔 (RCF)。
 
 
 
-== 檢閱要求
+== 審查要求
 
 .開始之前
-在升級儲存交換器上的NX-OS軟體和RCFs之前、請先確認下列情況：
+在升級儲存交換器上的 NX-OS 軟體和 RCF 之前，請確保滿足以下條件：
 
-* 交換器完全正常運作（記錄中不應有錯誤或類似問題）。
-* 如果您只安裝NX-OS並保留目前的RCF版本、則已在RCF中檢查或設定所需的開機變數、以反映所需的開機映像。
+* 交換器功能完全正常（日誌中不應有任何錯誤或類似問題）。
+* 如果您僅安裝 NX-OS 並保留目前的RCF 版本，則您已在 RCF 中檢查或設定了所需的啟動變量，以反映所需的啟動映像。
 +
-如果您需要變更開機變數以反映目前的開機映像、則必須在重新套用RCF之前執行此動作、以便在未來重新開機時產生正確的版本。
+如果需要更改啟動變數以反映目前的啟動映像，則必須在重新應用 RCF 之前進行更改，以便在以後的重新啟動中實例化正確的版本。
 
-* 您已參閱上提供的適當軟體與升級指南 http://www.cisco.com/en/US/products/ps9670/prod_installation_guides_list.html["Cisco Nexus 3000系列交換器"^] 頁面以取得Cisco儲存設備升級與降級程序的完整文件。
-* 10 GbE和40/100 GbE連接埠的數量是在上可用的參考組態檔（RCFs）中定義 https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco®乙太網路交換器"^] 頁面。
-
-
+* 您已參考了網站上提供的相應軟體和升級指南。 http://www.cisco.com/en/US/products/ps9670/prod_installation_guides_list.html["CiscoNexus 3000 系列交換機"^]此頁麵包含有關Cisco儲存升級和降級程序的完整文件。
+* 10 GbE 和 40/100 GbE 連接埠的數量在參考設定檔 (RCF) 中定義，該檔案可在以下位置取得： https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco®乙太網路交換機"^]頁。
 
 
-== 更換交換器
+
+
+== 更換開關
 
 .關於範例
-本程序中的範例使用下列交換器和節點命名法：
+本流程中的範例使用以下開關和節點命名規則：
 
-* 這兩個儲存交換器的名稱分別為S1和S2。
-* 節點是node1和node2。
-
-
-本程序中的範例使用兩個節點：節點1具有兩個儲存連接埠、節點2則有兩個儲存連接埠。請參閱 link:https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^] 驗證平台上的儲存連接埠是否正確。
+* 這兩個儲存交換器的名稱分別為 S1 和 S2。
+* 節點分別為 node1 和 node2。
 
 
-NOTE: 此程序需要同時使用ONTAP 支援指令和Cisco Nexus 3000系列交換器的命令；ONTAP 除非另有說明、否則會使用支援指令。命令輸出可能會因ONTAP 不同版本的不相同而有所差異。
+本流程中的範例使用了兩個節點；節點 1 有兩個儲存端口，節點 2 也有兩個儲存端口。參見link:https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^]請確認您平台上的儲存連接埠是否正確。
+
+
+NOTE: 流程需要同時使用ONTAP指令和Cisco Nexus 3000 系列交換器指令；除非另有說明，否則使用ONTAP指令。命令輸出可能因ONTAP版本不同而有所差異。
 
 
 
-=== 步驟1：檢查交換器和連接埠的健全狀況
+=== 步驟 1：檢查交換器和連接埠的運作狀況
 
-. 如果啟用了「支援」功能、請叫用下列消息來禁止自動建立個案AutoSupport AutoSupport ：
+. 如果啟用了AutoSupport，則透過呼叫AutoSupport訊息來阻止自動建立案例：
 `system node autosupport invoke -node * -type all - message MAINT=xh`
 +
-_x_是維護時段的持續時間（以小時為單位）。
+_x_ 是維護視窗的持續時間，單位為小時。
 
 +
 
-NOTE: 此資訊可通知技術支援人員執行此維護工作、以便在維護期間抑制自動建立案例。AutoSupport
+NOTE: AutoSupport訊息會通知技術支援此維護任務，以便在維護視窗期間抑制自動建立案例。
 
-. 檢查儲存交換器是否可用：
+. 檢查儲存開關是否可用：
 +
 `system switch ethernet show`
 
@@ -93,9 +93,9 @@ S2
 storage::*>
 ----
 ====
-. 驗證節點連接埠是否正常運作：
+. 確認節點連接埠運作正常：
 +
-「torage port show -port-type ENET」
+`storage port show -port-type ENET`
 
 +
 .顯示範例
@@ -119,7 +119,7 @@ node2
                    e7b  ENET  storage    100 enabled  online        30
 ----
 ====
-. 檢查是否沒有儲存交換器或纜線問題：
+. 檢查儲存交換器或線纜是否有問題：
 +
 `system health alert show -instance`
 
@@ -137,17 +137,17 @@ There are no entries matching your query.
 
 
 
-=== 步驟2：將RCF複製到Cisco交換器S2
+=== 步驟 2：將 RCF 複製到Cisco交換器 S2
 
-. 使用下列傳輸傳輸協定之一、將交換器S2上的RCF複製到交換器bootflash：FTP、HTTP、TFTP、SFTP或scp。
+. 使用下列傳輸協定之一將交換器 S2 上的 RCF 複製到交換器啟動快閃記憶體：FTP、HTTP、TFTP、SFTP 或 SCP。
 +
-如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
+有關Cisco命令的更多信息，請參閱 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 系列 NX-OS 指令參考"^]。
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示HTTP用於將RCF複製到交換器S2上的bootflash：
+以下範例展示如何使用 HTTP 將 RCF 檔案複製到交換器 S2 的啟動快閃記憶體中：
 
 [listing, subs="+quotes"]
 ----
@@ -160,7 +160,7 @@ Copy complete.
 S2#
 ----
 ====
-. 將先前下載的RCF套用至bootflash：
+. 將先前下載的 RCF 檔案套用到啟動快閃記憶體：
 +
 `copy bootflash:`
 
@@ -168,31 +168,31 @@ S2#
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示交換器S2上安裝的RCF檔案「Nexus _3232C_RCF-v1.6-Storage.txt'：
+以下範例展示了 RCF 文件 `Nexus_3232C_RCF_v1.6-Storage.txt`正在交換器 S2 上安裝：
 
 [listing, subs="+quotes"]
 ----
 S2# *copy Nexus_3232C_RCF_v1.6-Storage.txt running-config echo-commands*
 ----
 ====
-. 確認RCF檔案為正確的更新版本：
+. 請確認 RCF 檔案是否為最新版本：
 +
-「如何執行設定」
+`show running-config`
 
 +
-當您檢查輸出以確認您擁有正確的RCF時、請確定下列資訊正確無誤：
+檢查輸出結果以驗證是否擁有正確的 RCF 時，請確保以下資訊正確：
 
 +
 ** RCF橫幅
-** 節點和連接埠設定
-** 自訂
+** 節點和連接埠設置
+** 客製化
 +
-輸出會因站台組態而異。請檢查連接埠設定、並參閱版本說明、以瞭解您安裝的RCF的任何特定變更。
+輸出結果會根據您的網站配置而有所不同。檢查連接埠設置，並參考發行說明，以了解您安裝的 RCF 版本是否有任何特定變更。
 
 +
 [NOTE]
 ====
-的橫幅輸出 `show banner motd` 命令時、您必須閱讀並遵循「*重要注意事項*」一節中的指示、以確保交換器的組態和操作正確。
+在橫幅輸出中 `show banner motd`要執行此命令，您必須閱讀並遵循「重要提示」部分中的說明，以確保交換器的正確配置和操作。
 
 ====
 +
@@ -239,19 +239,19 @@ S2#
 ====
 +
 
-NOTE: 第一次套用RCF時、預期會出現*錯誤：無法寫入VSH命令*訊息、因此可以忽略。
+NOTE: 首次套用 RCF 時，出現 *錯誤：寫入 VSH 指令失敗* 訊息是正常的，可以忽略。
 
 
 
-. 驗證軟體版本和交換器設定是否正確之後、請複製 `running-config` 檔案至 `startup-config` 交換器S2上的檔案。
+. 確認軟體版本和交換器設定正確後，複製以下內容： `running-config`文件到 `startup-config`文件位於交換器 S2 上。
 +
-如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
+有關Cisco命令的更多信息，請參閱 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 系列 NX-OS 指令參考"^]。
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示「執行組態」檔案已成功複製到「儲存組態」檔案：
+以下範例展示了 `running-config`文件已成功複製到 `startup-config`文件：
 
 [listing]
 ----
@@ -263,9 +263,9 @@ S2# copy running-config startup-config
 
 
 
-=== 步驟3：將NX-OS映像複製到Cisco交換器S2並重新開機
+=== 步驟 3：將 NX-OS 映像複製到Cisco交換器 S2 並重新啟動
 
-. 將NX-OS映像複製到交換器S2。
+. 複製 NX-OS 映像檔到 S2 交換器。
 +
 .顯示範例
 [%collapsible]
@@ -305,9 +305,9 @@ Copy complete, now saving to disk (please wait)...
 Copy complete.
 ----
 ====
-. 安裝系統映像、以便下次重新啟動交換器S2時載入新版本。
+. 安裝系統映像，以便下次交換器 S2 重新啟動時載入新版本。
 +
-交換器會在10秒內重新開機、並顯示新映像、如下面的輸出所示：
+交換器將在 10 秒後重啟，並套用如下輸出所示的新鏡像：
 
 +
 .顯示範例
@@ -376,12 +376,12 @@ Finishing the upgrade, switch will reboot in 10 seconds.
 S2#
 ----
 ====
-. 儲存組態。
+. 儲存配置。
 +
-如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
+有關Cisco命令的更多信息，請參閱 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 系列 NX-OS 指令參考"^]。
 
 +
-系統會提示您重新開機。
+系統提示您重新啟動。
 
 +
 .顯示範例
@@ -395,7 +395,7 @@ S2# *reload*
 This command will reboot the system. (y/n)?  [n] *y*
 ----
 ====
-. 確認交換器上有新的NX-OS版本編號：
+. 確認交換器上已更新為新的NX-OS版本號：
 +
 .顯示範例
 [%collapsible]
@@ -457,9 +457,9 @@ S2#
 
 
 
-=== 步驟4：重新檢查交換器和連接埠的健全狀況
+=== 步驟 4：重新檢查交換器和連接埠的運作狀況
 
-. 重新啟動後、請重新檢查儲存交換器是否可用：
+. 重新啟動後請再次檢查儲存交換器是否可用：
 +
 `system switch ethernet show`
 
@@ -494,9 +494,9 @@ S2
 storage::*>
 ----
 ====
-. 確認交換器連接埠在重新開機後正常運作：
+. 重新啟動後，請確認交換器連接埠運作正常：
 +
-「torage port show -port-type ENET」
+`storage port show -port-type ENET`
 
 +
 .顯示範例
@@ -520,7 +520,7 @@ node2
                    e7b  ENET  storage    100 enabled  online        30
 ----
 ====
-. 重新檢查叢集是否沒有儲存交換器或纜線問題：
+. 再次檢查叢集是否有儲存交換器或線纜問題：
 +
 `system health alert show -instance`
 
@@ -534,9 +534,9 @@ storage::*> *system health alert show -instance*
 There are no entries matching your query.
 ----
 ====
-. 重複此程序、升級交換器S1上的NX-OS軟體和RCF。
-. 如果您禁止自動建立個案、請叫用AutoSupport 下列訊息來重新啟用：
+. 重複上述步驟，升級交換器 S1 上的 NX-OS 軟體和 RCF。
+. 如果您已停用自動建立案例功能，請透過呼叫AutoSupport訊息重新啟用該功能：
 +
-「系統節點AutoSupport 不完整地叫用節點*-type all -most MAn=end」
+`system node autosupport invoke -node * -type all -message MAINT=END`
 
 

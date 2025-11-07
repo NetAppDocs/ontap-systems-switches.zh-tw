@@ -2,17 +2,17 @@
 permalink: switch-netapp-cn1610/switch-overview-cn1610.html 
 sidebar: sidebar 
 keywords: install, fastpath, software, rcfs 
-summary: 在設定NetApp CN1610交換器之前、請先檢閱程序總覽。 
+summary: 在設定NetApp CN1610 交換器之前，請先查看流程概述。 
 ---
-= NetApp CN1610交換器的安裝與組態總覽
+= NetApp CN1610交換器的安裝與設定概述
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-CN1610是一款高頻寬的託管第2層交換器、提供16個10 Gb小型可插拔Plus（SFP+）連接埠。
+CN1610 是一款高頻寬、可管理的二層交換機，提供 16 個 10 千兆小型可插拔增強型 (SFP+) 連接埠。
 
-交換器內含備援電源供應器和風扇托架、可支援熱交換以獲得高可用度。此1U交換器可安裝在標準19吋NetApp 42U系統機櫃或協力廠商機櫃中。
+此交換器包含冗餘電源和風扇托架，支援熱插拔，實現高可用性。這款 1U 交換器可安裝在標準的 19 吋NetApp 42U 系統機櫃或第三方機櫃中。
 
-交換器可透過主控台連接埠或透過網路連線使用遠端登入或SSH進行遠端管理。CN1610包含專用的1 Gigabit乙太網路RJ45管理連接埠、可進行頻外交換器管理。您可以在命令列介面（CLI）中輸入命令、或使用SNMP型網路管理系統（NMS）來管理交換器。
+此交換器支援透過控制台連接埠進行本機管理，或透過網路連線使用 Telnet 或 SSH 進行遠端管理。 CN1610 包含一個專用的 1 千兆乙太網路 RJ45 管理端口，用於帶外交換器管理。您可以透過在命令列介面 (CLI) 中輸入命令或使用基於 SNMP 的網路管理系統 (NMS) 來管理交換器。

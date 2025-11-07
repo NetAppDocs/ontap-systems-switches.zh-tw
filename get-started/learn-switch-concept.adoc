@@ -2,7 +2,7 @@
 permalink: get-started/learn-switch-concept.html 
 sidebar: sidebar 
 keywords:  
-summary: 瞭解叢集、儲存設備和共享交換器。 
+summary: 了解叢集交換器、儲存交換器和共用交換器。 
 ---
 = 了解 AFX 系統、叢集、儲存和共用交換機
 :allow-uri-read: 
@@ -13,16 +13,16 @@ summary: 瞭解叢集、儲存設備和共享交換器。
 [role="lead"]
 NetApp提供 AFX 系統、叢集、儲存和共享交換機，可實現內部通信，並能夠在叢集內無中斷地移動資料和網路介面。
 
-「前端」交換器可連線至主機儲存設備、而「後端」叢集交換器則可在兩個或多個NetApp控制器之間建立連線。
+「前端」交換器提供與主機儲存的連接，而「後端」叢集交換器則提供兩個或多個NetApp控制器之間的連接。
 
 
-NOTE: 僅支援 NetApp 驗證的後端交換器（從 NetApp 訂購）。
+NOTE: 僅支援經NetApp驗證的後端交換器（從NetApp訂購）。
 
 
 
 == AFX 系統交換機
 
-AFX 系統交換器可讓您建立快速、節能且節省空間的網路交換器。它們體積小、端口密度高，非常適合處理大型網路。這些連接埠支援不同的速度，並且可以分成多個連接。  NetApp支援的 AFX 系統交換器包括：
+AFX 系統交換器可讓您建立快速、節能且節省空間的網路交換器。它們體積小、端口密度高，非常適合處理大型網路。這些連接埠支援不同的速度，並且可以分成多個連接。NetApp支援的 AFX 系統交換器包括：
 
 * CiscoNexus 9332D-GX2B
 * CiscoNexus 9364D-GX2A
@@ -30,42 +30,42 @@ AFX 系統交換器可讓您建立快速、節能且節省空間的網路交換�
 
 
 
-== 叢集交換器
+== 集群交換機
 
-叢集交換器可讓您建立ONTAP 具有兩個以上節點的叢集。NetApp支援的叢集交換器包括：
+叢集交換器可讓您建立具有兩個以上節點的ONTAP叢集。NetApp支援的叢集交換器包括：
 
-* Broadcom Bes - 53248
-* Cisco Nexus 9336C-FX2
+* 博通 BES-53248
+* CiscoNexus 9336C-FX2
 * NVIDIA SN2100
 
 
 
 
-== 儲存交換器
+== 儲存交換機
 
-儲存交換器可讓您在儲存區域網路（SAN）的伺服器與儲存陣列之間路由傳送資料。NetApp 支援的儲存交換器包括：
+儲存交換器可讓您在儲存區域網路 (SAN) 中的伺服器和儲存陣列之間路由資料。  NetApp支援的儲存交換器包括：
 
-* Cisco Nexus 9336C-FX2
+* CiscoNexus 9336C-FX2
 * NVIDIA SN2100
 
 
 
 
-== 共享交換器
+== 共享交換機
 
-共享交換器可支援使用共享叢集和儲存設備的RCT、將叢集和儲存功能結合成共享交換器組態。NetApp支援的共享交換器包括：
+共用交換器可讓您將叢集和儲存功能合併到共用交換器設定中，支援使用共用叢集和儲存 RCF。  NetApp支援的共享交換器是：
 
-* Cisco Nexus 9336C-FX2
-
-
+* CiscoNexus 9336C-FX2
 
 
-== 終止可用度
 
-下列儲存交換器已不再提供購買、但仍受到支援：
 
-* Cisco Nexus 3232C
-* Cisco Nexus 3132Q-V
-* Cisco Nexus 2300YC
+== 停止供應
+
+以下儲存交換器已停止銷售，但仍提供支援：
+
+* CiscoNexus 3232C
+* CiscoNexus 3132Q-V
+* CiscoNexus 92300YC
 * NetApp CN1610
 

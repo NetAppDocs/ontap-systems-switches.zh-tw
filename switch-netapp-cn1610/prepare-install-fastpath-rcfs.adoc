@@ -2,50 +2,50 @@
 permalink: switch-netapp-cn1610/prepare-install-fastpath-rcfs.html 
 sidebar: sidebar 
 keywords: install, fastpath, software, rcfs, netapp cluster switch 
-summary: 您必須在NetApp CN1610叢集交換器上安裝FastPath軟體和參考組態檔（RCT）。 
+summary: '您必須在NetApp CN1610 叢集交換器上安裝 FASTPATH 軟體和參考設定檔 (RCF)。' 
 ---
-= 準備在NetApp叢集交換器上安裝FastPath軟體和RCFs
+= 準備在NetApp叢集交換器上安裝 FASTPATH 軟體和 RCF。
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-您必須在NetApp CN1610叢集交換器上安裝FastPath軟體和參考組態檔（RCT）。
+您必須在NetApp CN1610 叢集交換器上安裝 FASTPATH 軟體和參考設定檔 (RCF)。
 
 .開始之前
-* 叢集必須是運作正常的叢集。
-* 叢集網路介面卡（NIC）必須無故障、而且叢集交換器上所有連接的連接埠都必須正常運作。
-* 所有叢集連接埠都必須正常運作。
-* 所有叢集邏輯介面（LIF）都必須正常運作、而且不得移轉。
-* 這個指令（權限：進階）「叢集ping叢集節點節點節點1」必須指出、所有路徑上的「大於PMTU通訊」都會成功。ONTAP
-* 您必須參閱上的交換器相容性表 http://mysupport.netapp.com/NOW/download/software/cm_switches_ntap/["NetApp CN1601與CN1610交換器"^] 頁面、以取得所支援的FastPath、RCF及ONTAP 支援的版本。
+* 此集群必須是功能齊全的集群。
+* 叢集網路介面卡（NIC）不得有任何缺陷，叢集交換器上的所有連接連接埠必須功能正常。
+* 叢集所有連接埠必須處於啟用狀態。
+* 所有叢集邏輯介面（LIF）必須處於啟用狀態，且不得已遷移。
+* ONTAP （權限：進階） `cluster ping-cluster -node node1`命令必須表明 `larger than PMTU communication`在所有路徑上都取得了成功。
+* 您必須查閱交換器相容性表格。 http://mysupport.netapp.com/NOW/download/software/cm_switches_ntap/["NetApp CN1601 和 CN1610 交換機"^]此頁面列出了支援的 FASTPATH、RCF 和ONTAP版本。
 +
-RCF和FastPath版本中的命令語法之間可能存在命令相依性。
+RCF 和 FASTPATH 版本中的指令語法可能存在指令依賴關係。
 
 
 
 
-NOTE: 在RCF 1.2版中、由於安全考量、已明確停用對Telnet的支援。若要避免安裝RCF 1.2時發生連線問題、您必須確認已啟用Secure Shell（SSH）。。 https://library.netapp.com/ecm/ecm_get_file/ECMP1117874["NetApp®CN1610交換器管理員指南"^] 有更多關於SSH的資訊。
+NOTE: 由於安全性問題，RCF 版本 1.2 中已明確停用對 Telnet 的支援。為避免安裝 RCF 1.2 時出現連線問題，必須確認安全殼層 (SSH) 已啟用。這 https://library.netapp.com/ecm/ecm_get_file/ECMP1117874["NetApp CN1610 交換器管理員指南"^]包含更多關於 SSH 的資訊。
 
-.關於這項工作
-本程序中的範例使用下列交換器和節點命名法：
+.關於此任務
+本流程中的範例使用以下開關和節點命名規則：
 
-* 本文件中的程序使用叢集Data ONTAP 式的示例8.2語法。因此、叢集Vserver、LIF名稱和CLI輸出將會不同Data ONTAP 於畫面8.3。
-* 兩個NetApp交換器分別是CS1和CS2。
-* 這兩個叢集l生命 區是clus1和clus2。
-* Vserver是VS1和VS2。
-* 「cluster：*>」提示會指出叢集的名稱。
-* 每個節點上的叢集連接埠名稱為e1a和E2A。
+* 本文檔中的程式使用叢集式Data ONTAP 8.2 語法。因此，叢集 Vserver、LIF 名稱和 CLI 輸出將與Data ONTAP 8.3 中的不同。
+* 這兩台NetApp交換器分別是 cs1 和 cs2。
+* 這兩個簇 LIF 分別是 clus1 和 clus2。
+* 虛擬伺服器為 vs1 和 vs2。
+* 這 `cluster::*>`prompt 指示叢集名稱。
+* 每個節點上的叢集連接埠分別命名為 e1a 和 e2a。
 +
-。 https://hwu.netapp.com/["Hardware Universe"^] 有更多有關平台所支援的實際叢集連接埠資訊。
+這 https://hwu.netapp.com/["Hardware Universe"^]包含有關您的平台支援的實際集群連接埠的更多資訊。
 
-* NetApp叢集交換器支援的交換器間連結（ISL）是連接埠0/13到0/16。
-* NetApp叢集交換器支援的節點連線是連接埠0/1到0/12。
+* NetApp叢集交換器支援的交換器間連結 (ISL) 為連接埠 0/13 至 0/16。
+* NetApp叢集交換器支援的節點連接埠為 0/1 至 0/12。
 
 
-此程序分為兩部分：
+程式分為兩部分：
 
-* link:install-fastpath-software.html["安裝FastPath軟體"]描述如何安裝 FASTPATH 軟體。
-* link:install-rcf-file.html["在CN1610交換器上安裝RCF"]描述如何安裝 RCF。
+* link:install-fastpath-software.html["安裝 FASTPATH 軟體"]介紹如何安裝 FASTPATH 軟體。
+* link:install-rcf-file.html["在 CN1610 交換器上安裝 RCF"]描述如何安裝 RCF。
 

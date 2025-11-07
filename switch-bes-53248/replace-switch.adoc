@@ -2,32 +2,32 @@
 permalink: switch-bes-53248/replace-switch.html 
 sidebar: sidebar 
 keywords: replace, replacing, defective, broadcom-supported, bes, cluster, switch, network, nondisruptive, procedure, ndu, replace a broadcom-supported bes-53428 cluster switch - bes-53428 switches 
-summary: 在叢集網路中更換故障的Broadcom支援的Bes-53248叢集交換器、是不中斷營運的程序（NDU）。 
+summary: '在叢集網路中更換有缺陷的博通支援的 BES-53248 叢集交換器是一個非中斷程式 \(NDU\)。' 
 ---
-= 更換Broadcom支援的Bes - 53248叢集交換器
+= 更換博通支援的 BES-53248 集群交換機
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-請依照下列步驟、在叢集網路中更換Broadcom支援的BS-53248叢集交換器故障。這是不中斷營運的程序（NDU）。
+請依照下列步驟更換叢集網路中發生故障的博通支援的 BES-53248 叢集交換器。這是一個無中斷程式 (NDU)。
 
 .關於範例
-本程序中的範例使用下列交換器和節點命名法：
+本流程中的範例使用以下開關和節點命名規則：
 
-* 現有的BS-53248交換器名稱為「CS1」和「CS2」。
-* 新的BS-53248交換器名稱為「newcs2」。
-* 節點名稱是「node1」和「node2」。
-* 每個節點上的叢集連接埠名稱為「e0a」和「e0b」。
-* 叢集LIF名稱為節點1的「node1_clus1」和「node1_clus2」、節點2的「node2_clus1」和「node2_clus2」。
-* 對所有叢集節點進行變更的提示是「cluster1：>」
+* 現有BES-53248交換器的名稱是 `cs1`和 `cs2`。
+* 新型BES-53248交換器的名稱是 `newcs2`。
+* 節點名稱是 `node1`和 `node2`。
+* 每個節點上的叢集連接埠都命名為 `e0a`和 `e0b`。
+* 集群 LIF 名稱為 `node1_clus1`和 `node1_clus2`對於節點1，以及 `node2_clus1`和 `node2_clus2`對於節點2。
+* 提示對所有叢集節點進行更改 `cluster1::>`
 
 
-.關於拓撲
-此程序以下列叢集網路拓撲為基礎：
+.關於拓樸結構
+此流程基於以下叢集網路拓撲結構：
 
-.顯示拓撲範例
+.顯示範例拓撲
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -103,38 +103,38 @@ cs1                      0/56      179       R          BES-53248        0/56
 ----
 ====
 .步驟
-. 檢閱 link:replace-switch-reqs.html["更換需求"]。
-. 如果AutoSupport 此叢集啟用了「支援」功能、請叫用AutoSupport 下列訊息來禁止自動建立案例：
+. 複習link:replace-switch-reqs.html["更換要求"]。
+. 如果此叢集上啟用了AutoSupport ，則透過呼叫AutoSupport訊息來抑制自動建立案例：
 +
-「系統節點AutoSupport 不完整地叫用節點*-type all -Message MAn=xh」
-
-+
-其中_x_是維護時段的持續時間（以小時為單位）。
+`system node autosupport invoke -node * -type all -message MAINT=xh`
 
 +
-
-NOTE: 此資訊可通知技術支援人員執行此維護工作、以便在維護期間抑制自動建立案例。AutoSupport
-
-. 在交換器newcs2上安裝適當的參考組態檔（RCF）和映像、並進行必要的站台準備。
-+
-如有必要、請為新交換器驗證、下載及安裝適當版本的RCF和EFOS軟體。如果您已確認新交換器已正確設定、而且不需要更新RCF和EFOS軟體、請繼續執行步驟2。
-
-+
-.. 您可以從下載適用於叢集交換器的Broadcom EFOS軟體 https://www.broadcom.com/support/bes-switch["Broadcom乙太網路交換器支援"^] 網站。請依照下載頁面上的步驟、下載您ONTAP 所安裝之版本的EOSOS檔案。
-.. 您可從取得適當的RCF https://mysupport.netapp.com/site/products/all/details/broadcom-cluster-switches/downloads-tab["Broadcom叢集交換器"^] 頁面。請依照下載頁面上的步驟、針對ONTAP 您要安裝的版本、下載正確的RCF。
-
-
-. 在新交換器上、以身分登入 `admin` 並關閉所有連接至節點叢集介面的連接埠（連接埠1至16）。
-+
-
-NOTE: 如果您購買額外的連接埠授權、也請關閉這些連接埠。
-
-+
-如果您要更換的交換器無法正常運作且已關機、則叢集節點上的LIF應已容錯移轉至每個節點的其他叢集連接埠。
+其中 _x_ 為維護視窗的持續時間（小時）。
 
 +
 
-NOTE: 不需要密碼即可進入「啟用」模式。
+NOTE: AutoSupport訊息會通知技術支援此維護任務，以便在維護視窗期間抑制自動建立案例。
+
+. 在交換器 newcs2 上安裝對應的參考設定檔 (RCF) 和映像，並進行任何必要的站點準備。
++
+如有必要，請驗證、下載並安裝適用於新交換器的 RCF 和 EFOS 軟體的相應版本。如果您已確認新交換器設定正確，且不需要更新 RCF 和 EFOS 軟體，請繼續執行步驟 2。
+
++
+.. 您可以從以下位置下載適用於您的叢集交換器的 Broadcom EFOS 軟體： https://www.broadcom.com/support/bes-switch["博通乙太網路交換器支援"^]地點。請依照下載頁面上的步驟，下載與您要安裝的ONTAP軟體版本相對應的 EFOS 檔案。
+.. 可從以下途徑取得對應的 RCF： https://mysupport.netapp.com/site/products/all/details/broadcom-cluster-switches/downloads-tab["博通集群交換機"^]頁。請依照下載頁面上的步驟，下載與您要安裝的ONTAP軟體版本相符的正確 RCF 檔案。
+
+
+. 在新交換器上，以以下身分登入： `admin`並關閉所有將連接到節點集群介面的連接埠（連接埠 1 至 16）。
++
+
+NOTE: 如果您購買了其他連接埠的額外許可證，也請關閉這些連接埠。
+
++
+如果您要更換的交換器無法正常運作且已斷電，則叢集節點上的 LIF 應該已經故障轉移到每個節點的另一個叢集連接埠。
+
++
+
+NOTE: 無需密碼即可進入 `enable`模式。
 
 +
 .顯示範例
@@ -153,12 +153,12 @@ Password:
 (newcs2)#
 ----
 ====
-. 確認所有叢集生命體均已啟用「自動還原」：
+. 確認所有集群 LIF 都已 `auto-revert`已啟用：
 +
-「網路介面show -vserver叢集-功能 變數自動回復」
+`network interface show -vserver Cluster -fields auto-revert`
 
 +
-.顯示拓撲範例
+.顯示範例拓撲
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -174,9 +174,9 @@ Cluster   node2_clus1  true
 Cluster   node2_clus2  true
 ----
 ====
-. 關閉BS1-53248交換器CS1上的ISL連接埠0/55和0/56：
+. 關閉 BES-53248 交換器 cs1 上的 ISL 連接埠 0/55 和 0/56：
 +
-.顯示拓撲範例
+.顯示範例拓撲
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -186,16 +186,16 @@ Cluster   node2_clus2  true
 (cs1)(interface 0/55-0/56)# *shutdown*
 ----
 ====
-. 從BS-53248 CS2交換器拔下所有纜線、然後將纜線連接至BS-53248 newcs2交換器上的相同連接埠。
-. 在CS1和newcs2交換器之間啟動ISL連接埠0/55和0/56、然後驗證連接埠通道作業狀態。
+. 從 BES-53248 cs2 交換器移除所有電纜，然後將它們連接到 BES-53248 newcs2 交換器上的相同連接埠。
+. 在 cs1 和 newcs2 交換器之間啟動 ISL 連接埠 0/55 和 0/56，然後驗證連接埠通道運作狀態。
 +
-連接埠通道1/1的連結狀態應為*上線*、且連接埠作用中標題下的所有成員連接埠均應為真。
+連接埠通道 1/1 的連結狀態應為 *up*，且所有成員連接埠在「連接埠活動」標題下都應為 True。
 
 +
 .顯示範例
 [%collapsible]
 ====
-此範例可啟用ISL連接埠0/55和0/56、並在交換器CS1上顯示連接埠通道1/1的連結狀態：
+此範例啟用 ISL 連接埠 0/55 和 0/56，並顯示交換器 cs1 上連接埠通道 1/1 的連結狀態：
 
 [listing, subs="+quotes"]
 ----
@@ -223,10 +223,10 @@ Ports  Timeout       Speed      Active
        partner/long
 ----
 ====
-. 在新交換器newcs2上、重新啟用連接至節點叢集介面的所有連接埠（連接埠1至16）。
+. 在新交換器 newcs2 上，重新啟用所有連接到節點叢集介面的連接埠（連接埠 1 到 16）。
 +
 
-NOTE: 如果您購買額外的連接埠授權、也請關閉這些連接埠。
+NOTE: 如果您購買了其他連接埠的額外許可證，也請關閉這些連接埠。
 
 +
 .顯示範例
@@ -244,15 +244,15 @@ Password:
 (newcs2)(config)# *exit*
 ----
 ====
-. 驗證連接埠e0b是否為* up*：
+. 確認連接埠 e0b 是否已啟用：
 +
-「網路連接埠show -IPSpace Cluster」
+`network port show -ipspace Cluster`
 
 +
 .顯示範例
 [%collapsible]
 ====
-輸出應類似於下列內容：
+輸出結果應類似以下內容：
 
 [listing, subs="+quotes"]
 ----
@@ -275,14 +275,14 @@ e0a       Cluster      Cluster          up   9000  auto/10000  healthy  false
 e0b       Cluster      Cluster          up   9000  auto/auto   -        false
 ----
 ====
-. 在與上一步相同的節點上、等待節點1上的叢集LIF node1_clus2自動還原。
+. 在與上一個步驟相同的節點上，等待節點 1 上的叢集 LIF node1_clus2 自動復原。
 +
 .顯示範例
 [%collapsible]
 ====
-在此範例中、如果「is Home」為「true」且連接埠為e0b、則節點1上的LIF node1_clus2會成功還原。
+在本例中，如果節點 1 上的 LIF node1_clus2 被成功撤銷，則 `Is Home`是 `true`連接埠為 e0b。
 
-下列命令會顯示兩個節點上的LIF相關資訊。如果兩個叢集介面的「is Home」均為「true」、且顯示正確的連接埠指派、則在節點1上的「is Home」和「e0b」範例中、啟動第一個節點就會成功。
+以下命令顯示有關兩個節點上 LIF 的資訊。若滿足以下條件，則啟動第一個節點即為成功： `Is Home`是 `true`在本例中，兩個集群介面都顯示了正確的連接埠分配。 `e0a`和 `e0b`在節點1上。
 
 [listing, subs="+quotes"]
 ----
@@ -300,13 +300,13 @@ Cluster
 ====
 . 顯示叢集中節點的相關資訊：
 +
-「叢集展示」
+`cluster show`
 
 +
 .顯示範例
 [%collapsible]
 ====
-此範例顯示此叢集中的節點健全狀況為「node1」和「node2」、為「true」：
+此範例顯示了節點健康狀況 `node1`和 `node2`該集群中是 `true`：
 
 [listing, subs="+quotes"]
 ----
@@ -317,12 +317,12 @@ node1  true     true          true
 node2  true     true          true
 ----
 ====
-. 確認下列叢集網路組態：
+. 請確認以下叢集網路配置：
 +
-「網路連接埠展示」
+`network port show`
 
 +
-「網路介面展示」
+`network interface show`
 
 +
 .顯示範例
@@ -361,9 +361,9 @@ Cluster
 4 entries were displayed.
 ----
 ====
-. 驗證叢集網路是否正常：
+. 驗證叢集網路是否運作正常：
 +
-「我的鄰居」
+`show isdp neighbors`
 
 +
 .顯示範例
@@ -393,11 +393,11 @@ cs1          0/55    179         R             BES-53248   0/55
 cs1          0/56    179         R             BES-53248   0/56
 ----
 ====
-. 如果您禁止自動建立個案、請叫用AutoSupport 下列訊息來重新啟用：
+. 如果您已停用自動建立案例功能，請透過呼叫AutoSupport訊息重新啟用該功能：
 +
-「系統節點AutoSupport 不完整地叫用節點*-type all -most MAn=end」
+`system node autosupport invoke -node * -type all -message MAINT=END`
 
 
 
-.接下來呢？
+.下一步是什麼？
 更換開關後，您可以 link:../switch-cshm/config-overview.html["配置交換器健康監控"]。

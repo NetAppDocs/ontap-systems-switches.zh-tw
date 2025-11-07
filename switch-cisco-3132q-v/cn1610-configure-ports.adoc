@@ -2,39 +2,39 @@
 permalink: switch-cisco-3132q-v/cn1610-configure-ports.html 
 sidebar: sidebar 
 keywords: cisco 3132q-v, cluster switches 
-summary: 您可以在 AFF 或 FAS 叢集中使用 Cisco Nexus 3132q-v 交換器作為叢集交換器。 
+summary: 您可以在AFF或FAS叢集中使用Cisco Nexus 3132q-v 交換器作為叢集交換器。 
 ---
-= 設定連接埠，以便從 CN1610 交換器移轉至 3132Q-V 交換器
+= 配置連接埠以從 CN1610 交換器遷移到 3132Q-V 交換機
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-請依照下列步驟設定連接埠，以便從 CN1610 交換器移轉至新的 Nexus 3132Q-V 交換器。
+請依照下列步驟設定端口，以便從 CN1610 交換器遷移到新的 Nexus 3132Q-V 交換器。
 
 .步驟
-. 在所有節點上、移除連接至CN1610交換器CL2的纜線。
+. 在所有節點上，拆下連接到 CN1610 交換器 CL2 的電纜。
 +
-使用支援的纜線時、您必須將所有節點上已中斷連線的連接埠重新連接至Nexus 3132Q-V交換器C2。
+使用支援的佈線，您必須將所有節點上斷開的連接埠重新連接到 Nexus 3132Q-V 交換器 C2。
 
-. 從CN1610交換器CL1的連接埠13到16拔下四條ISL纜線。
+. 從 CN1610 交換器 CL1 的 13 至 16 號連接埠移除四條 ISL 纜線。
 +
-您必須將適當的Cisco QSFP連接至SFP+中斷纜線、以連接新Cisco 3132Q-V交換器C2上的連接埠1/24、連接至現有CN1610交換器CL1上的連接埠13至16。
+您必須將適當的Cisco QSFP 轉 SFP+ 分支電纜連接到新的Cisco 3132Q-V 交換器 C2 的連接埠 1/24 和現有 CN1610 交換器 CL1 的連接埠 13 至 16。
 
 +
 
-NOTE: 將任何纜線重新連接至新的Cisco 3132Q-V交換器時、您必須使用光纖或Cisco雙軸纜線。
+NOTE: 將任何電纜重新連接到新的Cisco 3132Q-V 交換器時，必須使用光纖或Cisco雙絞線電纜。
 
-. 若要使ISL成為動態、請在作用中的CN1610交換器上設定ISL介面3/1、以停用靜態模式：「無連接埠通道靜態」
+. 若要使 ISL 動態化，請將活動 CN1610 交換器上的 ISL 介面 3/1 設定為停用靜態模式： `no port-channel static`
 +
-當步驟 11 中的兩台交換器上啟動 ISL 時，此組態與 3132Q-V 交換器 C2 上的 ISL 組態相符。
+此設定與在步驟 11 中兩台交換器上啟動 ISL 時 3132Q-V 交換器 C2 上的 ISL 設定相符。
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示使用「no port-channel static」命令來設定ISL介面3/1、使ISL成為動態：
+以下範例展示如何使用下列方式設定 ISL 介面 3/1： `no port-channel static`使 ISL 動態化的命令：
 
 [listing]
 ----
@@ -46,12 +46,12 @@ NOTE: 將任何纜線重新連接至新的Cisco 3132Q-V交換器時、您必須�
 (CL1)#
 ----
 ====
-. 在活動的CN1610交換器CL1上啟動ISL 13到16。
+. 在活動的 CN1610 交換器 CL1 上啟動 ISL 13 至 16。
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例說明在連接埠通道介面3/1上啟動ISL連接埠13到16的程序：
+以下範例說明了在連接埠通道介面 3/1 上啟動 ISL 連接埠 13 至 16 的過程：
 
 [listing]
 ----
@@ -63,12 +63,12 @@ NOTE: 將任何纜線重新連接至新的Cisco 3132Q-V交換器時、您必須�
 (CL1)#
 ----
 ====
-. 驗證ISL是否正確 `up` 在CN1610交換器CL1上：
+. 確認 ISL 是否為 `up`在 CN1610 交換器 CL1 上：
 +
-「How port-channel」
+`show port-channel`
 
 +
-「Link State」（連結狀態）應為「up」（正常）、「Type」（類型）應為「Dynamic」（動態）、而「Port Active」（連接埠作用中）欄應為「True」（真）、連接埠0/13至0/16：
+「鏈路狀態」應為 `Up`「類型」應為 `Dynamic`且「連接埠活動」列應為： `True`埠 0/13 至 0/16：
 
 +
 .顯示範例
@@ -98,15 +98,15 @@ Ports  Timeout       Speed       Active
        partner/long
 ----
 ====
-. 驗證3132Q-V交換器C2上的ISL是否為「up（正常））：
+. 確認 ISL 是否為 `up`在 3132Q-V 開關 C2 上：
 +
-「How port-channel Summary」
+`show port-channel summary`
 
 +
 .顯示範例
 [%collapsible]
 ====
-連接埠eth1/24/1至eth1/24/4應顯示為「（P）」、表示連接埠通道中的所有四個ISL連接埠均處於正常狀態。eth1/31和eth1/32應顯示「（D）」、因為它們並未連線：
+連接埠 Eth1/24/1 至 Eth1/24/4 應指示 `(P)`這意味著所有四個 ISL 連接埠都在連接埠通道中運作。  Eth1/31 和 eth1/32 應表示 `(D)`因為它們之間沒有關聯：
 
 [listing]
 ----
@@ -127,15 +127,15 @@ Group Port-       Type     Protocol  Member Ports
                                      Eth1/24/4(P)
 ----
 ====
-. 開啟所有節點上連接至3132Q-V交換器C2的所有叢集互連連接埠：
+. 在所有節點上啟用連接到 3132Q-V 交換器 C2 的所有叢集互連連接埠：
 +
-網路連接埠修改
+`network port modify`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例說明如何啟動連接至3132Q-V交換器C2的叢集互連連接埠：
+以下範例展示如何啟動連接至 3132Q-V 交換器 C2 的叢集互連連接埠：
 
 [listing]
 ----
@@ -145,9 +145,9 @@ cluster::*> network port modify -node n2 -port e0b -up-admin true
 cluster::*> network port modify -node n2 -port e0c -up-admin true
 ----
 ====
-. 還原所有連接至所有節點上C2的所有移轉叢集互連生命期：
+. 撤銷所有已遷移的、連接到所有節點上 C2 的叢集互連 LIF：
 +
-網路介面回復
+`network interface revert`
 
 +
 .顯示範例
@@ -161,15 +161,15 @@ cluster::*> network interface revert -vserver Cluster -lif n2_clus2
 cluster::*> network interface revert -vserver Cluster -lif n2_clus3
 ----
 ====
-. 確認所有的叢集互連連接埠都已還原至其主連接埠：
+. 確認所有叢集互連連接埠都已恢復到其原始連接埠：
 +
-「網路介面展示」
+`network interface show`
 
 +
 .顯示範例
 [%collapsible]
 ====
-下列範例顯示clus2上的lifs會還原為其主連接埠、並顯示如果「目前連接埠」欄中的連接埠在「is Home」欄中的狀態為「true」、則會成功還原lifs。如果是Home值為「假」、則不會還原LIF。
+以下範例表明 clus2 上的 LIF 已恢復到其來源端口，並且如果“當前端口”列中的端口狀態為“已恢復”，則表示 LIF 已成功恢復。 `true`在「是否在家」一欄。如果房屋價值是 `false`那麼 LIF 就不會被撤銷。
 
 [listing]
 ----
@@ -192,15 +192,15 @@ Cluster
 8 entries were displayed.
 ----
 ====
-. 確認所有的叢集連接埠均已連接：
+. 確認叢集所有連接埠均已連線：
 +
-「網路連接埠展示」
+`network port show`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示先前「網路連接埠修改」命令的結果、驗證所有的叢集互連都是「正常」：
+以下範例展示了前一個結果。 `network port modify`指令，驗證所有群集互連是否都已連接 `up`：
 
 [listing]
 ----
@@ -228,22 +228,22 @@ e0d   cluster   cluster     up    9000  auto/10000     -        -
 8 entries were displayed.
 ----
 ====
-. 驗證遠端叢集介面的連線能力：
+. 驗證遠端集群介面的連接性：
 
 
 [role="tabbed-block"]
 ====
-.更新版本ONTAP
+.ONTAP 9.9.1 及更高版本
 --
-您可以使用 `network interface check cluster-connectivity` 命令以啟動叢集連線的存取檢查、然後顯示詳細資料：
+你可以使用 `network interface check cluster-connectivity`執行命令以啟動叢集連接性檢查，然後顯示詳細資訊：
 
-`network interface check cluster-connectivity start` 和 `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`和 `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-* 注意： * 在執行 show 命令之前、請等待數秒以顯示詳細資料。
+*注意：*在執行 show 命令顯示詳細資訊之前，請等待幾秒鐘。
 
 [listing, subs="+quotes"]
 ----
@@ -260,9 +260,9 @@ n2
        3/5/2022 19:21:20 -06:00   n2_clus2   n1_clus2       none
 ----
 --
-.所有 ONTAP 版本
+.所有ONTAP版本
 --
-對於所有 ONTAP 版本、您也可以使用 `cluster ping-cluster -node <name>` 檢查連線能力的命令：
+對於所有ONTAP版本，您也可以使用 `cluster ping-cluster -node <name>`檢查連接性的命令：
 
 `cluster ping-cluster -node <name>`
 
@@ -312,15 +312,15 @@ RPC status:
 ----
 --
 ====
-. [[step12]] 在叢集中的每個節點上、移轉與要取代的第一個 CN1610 交換器 CL1 相關的介面：
+. [[step12]] 在叢集中的每個節點上，遷移與第一個待替換的 CN1610 交換器 CL1 關聯的介面：
 +
-網路介面移轉
+`network interface migrate`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示節點n1和n2上正在移轉的連接埠或LIF：
+以下範例顯示了節點 n1 和 n2 上正在遷移的連接埠或 LIF：
 
 [listing]
 ----
@@ -332,13 +332,13 @@ cluster::*> network interface migrate -vserver Cluster -lif n2_clus4 -destinatio
 ====
 . 驗證叢集狀態：
 +
-「網路介面展示」
+`network interface show`
 
 +
 .顯示範例
 [%collapsible]
 ====
-下列範例顯示所需的叢集l生命 已移轉至叢集交換器C2上裝載的適當叢集連接埠：
+以下範例表明，所需的叢集 LIF 已遷移到叢集交換器 C2 上託管的相應叢集連接埠：
 
 [listing]
 ----
@@ -361,15 +361,15 @@ Cluster
 8 entries were displayed.
 ----
 ====
-. 關閉所有節點上連接至CL1的節點連接埠：
+. 關閉所有節點上連接到 CL1 的節點連接埠：
 +
-網路連接埠修改
+`network port modify`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例說明如何關閉節點n1和n2上的指定連接埠：
+以下範例顯示如何關閉節點 n1 和 n2 上的指定連接埠：
 
 [listing]
 ----
@@ -379,15 +379,15 @@ cluster::*> network port modify -node n2 -port e0a -up-admin false
 cluster::*> network port modify -node n2 -port e0d -up-admin false
 ----
 ====
-. 關閉作用中的3132Q-V交換器C2上的ISL連接埠24、31和32：
+. 關閉活動 3132Q-V 交換器 C2 上的 ISL 連接埠 24、31 和 32：
 +
-「關機」
+`shutdown`
 
 +
 .顯示範例
 [%collapsible]
 ====
-下列範例說明如何在作用中的31382Q-V交換器C2上關閉ISL 24、31和32：
+以下範例顯示如何關閉活動 3132Q-V 交換器 C2 上的 ISL 24、31 和 32：
 
 [listing]
 ----
@@ -402,20 +402,20 @@ C2(config)# exit
 C2#
 ----
 ====
-. 拔下所有節點上連接至CN1610交換器CL1的纜線。
+. 拆下所有節點上連接到 CN1610 交換器 CL1 的電纜。
 +
-使用支援的纜線時、您必須將所有節點上已中斷連線的連接埠重新連接至Nexus 3132Q-V交換器C1。
+使用支援的佈線，您必須將所有節點上斷開的連接埠重新連接到 Nexus 3132Q-V 交換器 C1。
 
-. 從Nexus 3132Q-V C2連接埠E1/24拔下QSFP纜線。
+. 從 Nexus 3132Q-V C2 連接埠 e1/24 移除 QSFP 纜線。
 +
-您必須使用支援的Cisco QSFP光纖或直接連接纜線、將C1上的E1/31和E1/32連接埠連接至C2上的E1/31和E1/32連接埠。
+您必須使用支援的Cisco QSFP 光纖或直連接線將 C1 上的 e1/31 和 e1/32 連接埠連接到 C2 上的 e1/31 和 e1/32 連接埠。
 
-. 在連接埠24上還原組態、然後複製以移除C2上的暫用連接埠通道2 `running-configuration` 檔案至 `startup-configuration` 檔案：
+. 恢復連接埠 24 的配置，並透過複製以下內容刪除 C2 上的臨時連接埠通道 2： `running-configuration`文件到 `startup-configuration`文件。
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例將「執行組態設定（running、configuration）檔複製到「儲存組態（startup、configuration）檔：
+以下範例複製了 `running-configuration`文件到 `startup-configuration`文件：
 
 [listing]
 ----
@@ -434,7 +434,7 @@ C2# copy running-config startup-config
 Copy Complete.
 ----
 ====
-. 啟動C2上的ISL連接埠31和32、作用中的31382Q-V交換器：
+. 在 C2（活動的 3132Q-V 交換器）上啟用 ISL 連接埠 31 和 32：
 +
 `no shutdown`
 
@@ -442,7 +442,7 @@ Copy Complete.
 .顯示範例
 [%collapsible]
 ====
-以下範例說明如何在31382-V交換器C2上啟動ISL 31和32：
+以下範例展示如何在 3132Q-V 交換器 C2 上啟動 ISL 31 和 32：
 
 [listing]
 ----
@@ -459,5 +459,5 @@ Copy Complete.
 ====
 
 
-.接下來呢？
-link:cn1610-complete-migration.html["完成移轉"]。
+.下一步是什麼？
+link:cn1610-complete-migration.html["完成遷移"]。

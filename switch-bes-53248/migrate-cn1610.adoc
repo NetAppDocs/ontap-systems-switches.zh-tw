@@ -2,162 +2,162 @@
 permalink: switch-bes-53248/migrate-cn1610.html 
 sidebar: sidebar 
 keywords: CN1610, CN1610 replacing, migrate from CN1610 
-summary: 若要將叢集中現有的CN1610叢集交換器更換為Broadcom支援的Bes - 53248叢集交換器、您必須執行特定的工作順序。 
+summary: 若要將叢集中現有的 CN1610 叢集交換器替換為 Broadcom 支援的 BES-53248 叢集交換機，必須執行一系列特定的任務。 
 ---
-= 將CN1610叢集交換器移轉至BS-53248叢集交換器
+= 將 CN1610 叢集交換器遷移到 BES-53248 叢集交換機
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-若要將叢集中的CN1610叢集交換器移轉至Broadcom支援的BS-53248叢集交換器、請檢閱移轉需求、然後遵循移轉程序。
+若要將叢集中的 CN1610 叢集交換器移轉到 Broadcom 支援的 BES-53248 叢集交換機，請先查看遷移需求，然後依照遷移程序進行操作。
 
-支援下列叢集交換器：
+支援以下集群交換器：
 
-* CN1610.
-* Bes - 53248-
-
-
+* CN1610
+* BES-53248
 
 
-== 檢閱要求
 
-確認您的組態符合下列需求：
 
-* 將 BS-53248 交換器上的部分連接埠設定為在 10GbE 執行。
-* 從節點到 BS-53248 叢集交換器的 10GbE 連線能力已規劃、移轉及記錄。
-* 叢集運作正常（記錄中不應有錯誤或類似問題）。
-* 初始自訂 BS-53248 交換器已完成、因此：
+== 審查要求
+
+請確認您的配置符合以下要求：
+
+* BES-53248 交換器上的某些連接埠配置為以 10GbE 運作。
+* 節點到 BES-53248 叢集交換器的 10GbE 連線已規劃、遷移和記錄。
+* 叢集運作正常（日誌中不應有任何錯誤或類似問題）。
+* BES-53248 交換器的初始客製化工作已完成，具體如下：
 +
-** BS-53248 交換器正在執行最新建議版本的 EFOS 軟體。
-** 參考組態檔（RCT）已套用至交換器。
-** 任何站台自訂、例如DNS、NTP、SMTP、SNMP、和SSH、在新交換器上設定。
+** BES-53248 交換器運作的是最新推薦版本的 EFOS 軟體。
+** 交換器已套用參考設定檔（RCF）。
+** 任何網站定制，如 DNS、NTP、SMTP、SNMP 和 SSH，都在新交換器上進行設定。
 
 
 
 
 
 
-=== 節點連線
+=== 節點連接
 
-叢集交換器支援下列節點連線：
+叢集交換器支援以下節點連線：
 
-* NetApp CN1610 ：連接埠 0/1 到 0/12 （ 10GbE ）
-* BS-53248 ：連接埠 0/1-0/16 （ 10GbE/25GbE ）
+* NetApp CN1610：連接埠 0/1 至 0/12 (10GbE)
+* BES-53248：連接埠 0/1-0/16（10GbE/25GbE）
 +
 
-NOTE: 購買連接埠授權即可啟動其他連接埠。
+NOTE: 可透過購買連接埠許可證啟動其他連接埠。
 
 
 
 
 
-=== ISL連接埠
+=== ISL 連接埠
 
-叢集交換器使用下列交換器間連結（ISL）連接埠：
+叢集交換器使用下列交換器間鏈路（ISL）連接埠：
 
-* NetApp CN1610 ：連接埠 0/13 至 0/16 （ 10GbE ）
-* BS-53248 ：連接埠 0/55-0/56 （ 100GbE ）
-
-
-。 https://hwu.netapp.com/Home/Index["_NetApp Hardware Universe SUR__"^] 包含ONTAP 有關支援功能的資訊、支援的EFOS韌體、以及連接至BE-53248叢集交換器的纜線。
+* NetApp CN1610：連接埠 0/13 至 0/16 (10GbE)
+* BES-53248：連接埠 0/55-0/56 (100GbE)
 
 
-
-=== ISL纜線
-
-適當的ISL纜線如下：
-
-* *開頭：*適用於CN1610至CN1610（SFP+至SFP+）、四條SFP+光纖或銅線直接連接纜線。
-* *最終版本：*適用於BS53248至BS53248（QSFP28至QSFP28）、兩條QSFP28光纖收發器/光纖或銅線直接附加纜線。
+這 https://hwu.netapp.com/Home/Index["NetApp硬體世界"^]包含有關ONTAP相容性、支援的 EFOS 韌體以及與 BES-53248 叢集交換器的佈線的資訊。
 
 
 
+=== ISL佈線
 
-== 移轉交換器
+適用的ISL佈線如下：
 
-請遵循此程序、將CN1610叢集交換器移轉至BS-53248叢集交換器。
+* *起始：*對於 CN1610 到 CN1610（SFP+ 到 SFP+），四條 SFP+ 光纖或銅纜直連接線。
+* *最終：*對於 BES-53248 到 BES-53248（QSFP28 到 QSFP28），兩個 QSFP28 光收發器/光纖或銅纜直接連接纜線。
+
+
+
+
+== 遷移交換機
+
+請依照下列步驟將 CN1610 叢集交換器遷移到 BES-53248 叢集交換器。
 
 .關於範例
-本程序中的範例使用下列交換器和節點命名法：
+本流程中的範例使用以下開關和節點命名規則：
 
-* 這些範例使用兩個節點、每個節點都部署兩個10 GbE叢集互連連接埠： `e0a` 和 `e0b`。
-* 命令輸出可能會因ONTAP 各種版本的不相同的更新而有所不同。
-* 要更換的CN1610交換器是「CL1」和「CL2」。
-* 用於更換CN1610交換器的BS-53248交換器為「CS1」和「CS2」。
-* 節點是「node1」和「node2」。
-* 交換器CL2會先由CS2取代、接著由CS1取代CL1。
-* BS-53248交換器預先載入支援版本的參考組態檔（RCF）和乙太網路架構作業系統（EFOS）、並將ISL纜線連接至連接埠55和56。
-* 叢集LIF名稱為節點1的「node1_clus1」和「node1_clus2」、節點2的「node2_clus1」和「node2_clus2」。
+* 範例使用了兩個節點，每個節點部署了兩個 10 GbE 叢集互連連接埠： `e0a`和 `e0b`。
+* 命令輸出可能因ONTAP軟體版本不同而有所差異。
+* 需要更換的CN1610交換器有： `CL1`和 `CL2`。
+* 用於替代 CN1610 交換器的 BES-53248 交換器是 `cs1`和 `cs2`。
+* 節點是 `node1`和 `node2`。
+* 首先將開關 CL2 替換為 cs2，然後將 CL1 替換為 cs1。
+* BES-53248 交換器預先安裝了支援的參考設定檔 (RCF) 和乙太網路交換矩陣作業系統 (EFOS) 版本，ISL 纜線連接在連接埠 55 和 56 上。
+* 集群 LIF 名稱為 `node1_clus1`和 `node1_clus2`對於節點1，以及 `node2_clus1`和 `node2_clus2`對於節點2。
 
 
-.關於這項工作
-本程序涵蓋下列案例：
+.關於此任務
+本流程涵蓋以下情況：
 
-* 叢集從兩個節點開始、連接至兩個CN1610叢集交換器。
-* CN1610交換器CL2由BS-53248交換器CS2取代：
+* 叢集由兩個節點組成，這兩個節點連接到兩個 CN1610 叢集交換器。
+* CN1610 交換器 CL2 被 BES-53248 交換器 cs2 取代：
 +
-** 關閉連接至叢集節點的連接埠。必須同時關閉所有連接埠、以避免叢集不穩定。
-** 從連接至CL2的所有節點上的所有叢集連接埠拔下纜線、然後使用支援的纜線將連接埠重新連接至新叢集交換器CS2。
+** 關閉叢集節點的連接埠。為避免叢集不穩定，所有連接埠必須同時關閉。
+** 斷開連接到 CL2 的所有節點上所有叢集連接埠的電纜，然後使用支援的電纜將連接埠重新連接到新的叢集交換器 cs2。
 
 
-* CN1610交換器CL1由BY-53248交換器CS1取代：
+* CN1610 交換器 CL1 被 BES-53248 交換器 cs1 取代：
 +
-** 關閉連接至叢集節點的連接埠。必須同時關閉所有連接埠、以避免叢集不穩定。
-** 從連接至CL1的所有節點上的所有叢集連接埠拔下纜線、然後使用支援的纜線將連接埠重新連接至新叢集交換器CS1。
+** 關閉叢集節點的連接埠。為避免叢集不穩定，所有連接埠必須同時關閉。
+** 斷開連接到 CL1 的所有節點上所有叢集連接埠的電纜，然後使用支援的電纜將連接埠重新連接到新的叢集交換器 cs1。
 
 
 
 
 
-NOTE: 在此程序期間、不需要運作中的交換器間連結（ISL）。這是因為RCF版本變更可能會暫時影響ISL連線。為確保叢集作業不中斷、下列程序會在目標交換器上執行步驟時、將所有叢集生命體移轉至作業夥伴交換器。
+NOTE: 在此過程中不需要任何可操作的交換器間連結 (ISL)。這是設計使然，因為 RCF 版本的變更可能會暫時影響 ISL 連線。為確保叢集運作不會中斷，以下步驟將所有叢集 LIF 遷移到運作夥伴交換機，同時在目標交換器上執行對應步驟。
 
 
 
-=== 步驟1：準備移轉
+=== 步驟 1：準備遷移
 
-. 如果AutoSupport 此叢集啟用了「支援」功能、請叫用AutoSupport 下列訊息來禁止自動建立案例：
+. 如果此叢集上啟用了AutoSupport ，則透過呼叫AutoSupport訊息來抑制自動建立案例：
 +
-「系統節點AutoSupport 不完整地叫用節點*-type all -Message MAn=xh」
-
-+
-其中x是維護時段的持續時間（以小時為單位）。
+`system node autosupport invoke -node * -type all -message MAINT=xh`
 
 +
-
-NOTE: 此資訊可通知技術支援人員執行此維護工作、以便在維護期間抑制自動建立案例。AutoSupport
+其中 x 為維護窗口的持續時間（小時）。
 
 +
-下列命令會禁止自動建立兩小時的個案：
+
+NOTE: AutoSupport訊息會通知技術支援此維護任務，以便在維護視窗期間抑制自動建立案例。
+
++
+以下命令可抑制自動建立案件兩小時：
 
 +
 [listing]
 ----
 cluster1::*> system node autosupport invoke -node * -type all -message MAINT=2h
 ----
-. 將權限等級變更為進階、並在系統提示您繼續時輸入* y*：
+. 將權限級別變更為高級，並在提示繼續時輸入 *y*：
 +
-"進階權限"
+`set -privilege advanced`
 
 +
-出現進階提示（*>）。
+出現高階提示符號（*>）。
 
 
 
 
 
-=== 步驟2：設定連接埠和纜線
+=== 步驟二：設定埠和線纜
 
-. 在新的交換器上、確認 ISL 已連接好纜線、且在交換器 CS1 和 CS2 之間運作正常：
+. 在新交換器上，確認交換器 cs1 和 cs2 之間的 ISL 線纜連接正常且運作良好：
 +
-「How port-channel」
+`show port-channel`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示交換器CS1上的ISL連接埠為* up*：
+以下範例表示交換器 cs1 上的 ISL 連接埠已啟用：
 
 [listing, subs="+quotes"]
 ----
@@ -180,7 +180,7 @@ Ports  Timeout       Speed      Active
        partner/long
 (cs1) #
 ----
-以下範例顯示交換器CS2上的ISL連接埠為* up*：
+以下範例表示交換器 cs2 上的 ISL 連接埠已啟用：
 
 [listing, subs="+quotes"]
 ----
@@ -203,15 +203,15 @@ Ports  Timeout       Speed      Active
        partner/long
 ----
 ====
-. 在連接至現有叢集交換器的每個節點上顯示叢集連接埠：
+. 顯示連接到現有叢集交換器的每個節點上的叢集連接埠：
 +
-「network device-dDiscovery show -protocol cup」
+`network device-discovery show -protocol cdp`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示每個叢集互連交換器的每個節點已設定多少個叢集互連介面：
+以下範例顯示了每個節點上每個叢集互連交換器配置的叢集互連連接口數量：
 
 [listing, subs="+quotes"]
 ----
@@ -227,11 +227,11 @@ node1      /cdp
             e0b    CL2                       0/1               CN1610
 ----
 ====
-. 確定每個叢集介面的管理或作業狀態。
+. 確定每個叢集介面的管理或運作狀態。
 +
-.. 確認所有叢集連接埠都已存在 `up` 使用 `healthy` 狀態：
+.. 確認所有叢集連接埠都已連接 `up`與一個 `healthy`地位：
 +
-「網路連接埠show -IPSpace Cluster」
+`network port show -ipspace Cluster`
 
 +
 .顯示範例
@@ -258,9 +258,9 @@ e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
 e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
 ----
 ====
-.. 確認所有叢集介面（l生命）都位於其主連接埠上：
+.. 確認所有叢集介面（LIF）都已連接到其所屬連接埠：
 +
-「網路介面show -vserver叢集」
+`network interface show -vserver Cluster`
 
 +
 .顯示範例
@@ -282,14 +282,14 @@ Cluster
 ====
 
 
-. 驗證叢集是否顯示兩個叢集交換器的資訊：
+. 確認集群顯示兩個集群交換器的資訊：
 
 
 [role="tabbed-block"]
 ====
-.更新版本ONTAP
+.ONTAP 9.8 及更高版本
 --
-從 ONTAP 9.8 開始、請使用命令： `system switch ethernet show -is-monitoring-enabled-operational true`
+從ONTAP 9.8 開始，使用以下指令： `system switch ethernet show -is-monitoring-enabled-operational true`
 
 [listing, subs="+quotes"]
 ----
@@ -312,9 +312,9 @@ CL2                           cluster-network  10.10.1.102   CN1610
 cluster1::*>
 ----
 --
-.更新版本ONTAP
+.ONTAP 9.7 及更早版本
 --
-對於 ONTAP 9.7 及更早版本、請使用命令： `system cluster-switch show -is-monitoring-enabled-operational true`
+對於ONTAP 9.7 及更早版本，請使用以下指令： `system cluster-switch show -is-monitoring-enabled-operational true`
 
 [listing, subs="+quotes"]
 ----
@@ -338,13 +338,13 @@ cluster1::*>
 ----
 --
 ====
-. [[step5]] 停用叢集生命週轉的自動還原功能。
+. [[step5]]停用叢集 LIF 的自動還原功能。
 +
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert false*
 ----
-. 在叢集交換器 CL2 上、關閉連接至節點叢集連接埠的連接埠、以便容錯移轉叢集生命期：
+. 在叢集交換器 CL2 上，關閉連接到節點叢集連接埠的端口，以便進行叢集 LIF 的故障轉移：
 +
 [listing, subs="+quotes"]
 ----
@@ -355,9 +355,9 @@ cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert fals
 (CL2)(Config)# *exit*
 (CL2)#
 ----
-. 驗證叢集生命期是否已容錯移轉至叢集交換器 CL1 上託管的連接埠。這可能需要幾秒鐘的時間。
+. 確認叢集 LIF 已故障轉移到叢集交換器 CL1 上託管的連接埠。這可能需要幾秒鐘。
 +
-「網路介面show -vserver叢集」
+`network interface show -vserver Cluster`
 
 +
 .顯示範例
@@ -376,9 +376,9 @@ Cluster
             node2_clus2  up/up      169.254.19.183/16  node2         e0a     false
 ----
 ====
-. 驗證叢集是否正常：
+. 驗證叢集是否運作正常：
 +
-「叢集展示」
+`cluster show`
 
 +
 .顯示範例
@@ -393,10 +393,10 @@ node1      true    true          false
 node2      true    true          false
 ----
 ====
-. 將所有叢集節點連線纜線從舊版 CL2 交換器移至新的 CS2 交換器。
-. 確認移至 CS2 的網路連線健全狀況：
+. 將所有叢集節點連接電纜從舊的 CL2 交換器移至新的 cs2 交換器。
+. 確認遷移到 cs2 的網路連線狀況：
 +
-「網路連接埠show -IPSpace Cluster」
+`network port show -ipspace Cluster`
 
 +
 .顯示範例
@@ -424,11 +424,11 @@ e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
 ----
 ====
 +
-所有已移動的叢集連接埠都應該是 `up`。
+所有已遷移的叢集連接埠都應該是 `up`。
 
-. 檢查叢集連接埠上的鄰近資訊：
+. 檢查叢集連接埠的鄰居資訊：
 +
-「network device-dDiscovery show -protocol cup」
+`network device-discovery show -protocol cdp`
 
 +
 .顯示範例
@@ -448,14 +448,14 @@ node1      /cdp
             e0b    cs2                       0/1               BES-53248
 ----
 ====
-. 從交換器 CS2 的觀點來看、確認交換器連接埠連線狀況良好：
+. 從交換器 CS2 的角度確認交換器連接埠連接是否正常：
 +
 [listing, subs="+quotes"]
 ----
 cs2# *show interface all*
 cs2# *show isdp neighbors*
 ----
-. 在叢集交換器 CL1 上、關閉連接至節點叢集連接埠的連接埠、以便容錯移轉叢集生命期：
+. 在叢集交換器 CL1 上，關閉連接到節點叢集連接埠的端口，以便進行叢集 LIF 的故障轉移：
 +
 [listing, subs="+quotes"]
 ----
@@ -467,11 +467,11 @@ cs2# *show isdp neighbors*
 (CL1)#
 ----
 +
-所有叢集生命都會容錯移轉至 CS2 交換器。
+所有群集 LIF 故障轉移到 cs2 交換器。
 
-. 驗證叢集生命安全移轉到交換器 CS2 上主控的連接埠。這可能需要幾秒鐘的時間：
+. 驗證叢集 LIF 是否已故障轉移到交換器 cs2 上託管的連接埠。這可能需要幾秒鐘：
 +
-「網路介面show -vserver叢集」
+`network interface show -vserver Cluster`
 
 +
 .顯示範例
@@ -490,9 +490,9 @@ Cluster
             node2_clus2  up/up      169.254.19.183/16  node2         e0b     true
 ----
 ====
-. 驗證叢集是否正常：
+. 驗證叢集是否運作正常：
 +
-「叢集展示」
+`cluster show`
 
 +
 .顯示範例
@@ -507,10 +507,10 @@ node1      true    true          false
 node2      true    true          false
 ----
 ====
-. 將叢集節點連線纜線從 CL1 移至新的 CS1 交換器。
-. 確認移至 CS1 的網路連線健全狀況：
+. 將叢集節點連接電纜從 CL1 移至新的 cs1 交換器。
+. 確認已遷移至 cs1 的網路連線的健康狀況：
 +
-「網路連接埠show -IPSpace Cluster」
+`network port show -ipspace Cluster`
 
 +
 .顯示範例
@@ -538,11 +538,11 @@ e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
 ----
 ====
 +
-所有已移動的叢集連接埠都應該是 `up`。
+所有已遷移的叢集連接埠都應該是 `up`。
 
-. 檢查叢集連接埠上的鄰近資訊：
+. 檢查叢集連接埠的鄰居資訊：
 +
-「網路裝置探索秀」
+`network device-discovery show`
 
 +
 .顯示範例
@@ -562,22 +562,22 @@ node2      /cdp
             e0b    cs2                       0/2               BES-53248
 ----
 ====
-. 從交換器 CS1 的觀點來看、確認交換器連接埠連線狀況良好：
+. 從交換器 CS1 的角度確認交換器連接埠連接是否正常：
 +
 [listing, subs="+quotes"]
 ----
 cs1# *show interface all*
 cs1# *show isdp neighbors*
 ----
-. 確認 CS1 和 CS2 之間的 ISL 仍可運作：
+. 確認 cs1 和 cs2 之間的 ISL 連線仍然正常運作：
 +
-「How port-channel」
+`show port-channel`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示交換器CS1上的ISL連接埠為* up*：
+以下範例表示交換器 cs1 上的 ISL 連接埠已啟用：
 
 [listing, subs="+quotes"]
 ----
@@ -600,7 +600,7 @@ Ports  Timeout       Speed      Active
        partner/long
 (cs1) #
 ----
-以下範例顯示交換器CS2上的ISL連接埠為* up*：
+以下範例表示交換器 cs2 上的 ISL 連接埠已啟用：
 
 [listing, subs="+quotes"]
 ----
@@ -623,14 +623,14 @@ Ports  Timeout       Speed      Active
        partner/long
 ----
 ====
-. 如果未自動移除已更換的 CN1610 交換器、請將其從叢集的交換器表中刪除：
+. 如果被取代的 CN1610 交換器沒有自動刪除，則將其從叢集的交換器表中刪除：
 
 
 [role="tabbed-block"]
 ====
-.更新版本ONTAP
+.ONTAP 9.8 及更高版本
 --
-從 ONTAP 9.8 開始、請使用命令： `system switch ethernet delete -device _device-name_`
+從ONTAP 9.8 開始，使用以下指令： `system switch ethernet delete -device _device-name_`
 
 [listing]
 ----
@@ -638,9 +638,9 @@ cluster::*> system switch ethernet delete -device CL1
 cluster::*> system switch ethernet delete -device CL2
 ----
 --
-.更新版本ONTAP
+.ONTAP 9.7 及更早版本
 --
-對於 ONTAP 9.7 及更早版本、請使用命令： `system cluster-switch delete -device _device-name_`
+對於ONTAP 9.7 及更早版本，請使用以下指令： `system cluster-switch delete -device _device-name_`
 
 [listing]
 ----
@@ -651,44 +651,44 @@ cluster::*> system cluster-switch delete -device CL2
 ====
 
 
-=== 步驟3：驗證組態
+=== 步驟 3：驗證配置
 
-. 在叢集生命體上啟用自動還原。
+. 啟用叢集 LIF 的自動回滾功能。
 +
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert true*
 ----
-. 驗證叢集生命區是否已還原至其主連接埠（這可能需要一分鐘時間）：
+. 驗證叢集 LIF 是否已恢復到其原始連接埠（這可能需要一分鐘）：
 +
-「網路介面show -vserver叢集」
+`network interface show -vserver Cluster`
 
 +
-如果叢集l生命 尚未還原至其主連接埠、請手動還原它們：
+如果叢集 LIF 尚未恢復到其主端口，請手動恢復它們：
 
 +
-「網路介面回復-vserver叢集-lIF *」
+`network interface revert -vserver Cluster -lif *`
 
-. 驗證叢集是否正常：
+. 驗證叢集是否運作正常：
 +
-「叢集展示」
+`cluster show`
 
-. 驗證遠端叢集介面的連線能力：
+. 驗證遠端集群介面的連接性：
 
 
 [role="tabbed-block"]
 ====
-.更新版本ONTAP
+.ONTAP 9.9.1 及更高版本
 --
-您可以使用 `network interface check cluster-connectivity` 命令以啟動叢集連線的存取檢查、然後顯示詳細資料：
+你可以使用 `network interface check cluster-connectivity`執行命令以啟動叢集連接性檢查，然後顯示詳細資訊：
 
-`network interface check cluster-connectivity start` 和 `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`和 `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-* 注意： * 請等待數秒後再執行 `show`命令以顯示詳細資料。
+*注意：*運行程式前請等待幾秒鐘 `show`顯示詳細資訊的命令。
 
 [listing, subs="+quotes"]
 ----
@@ -705,9 +705,9 @@ node2
        3/5/2022 19:21:20 -06:00   node2_clus2      node1_clus2      none
 ----
 --
-.所有 ONTAP 版本
+.所有ONTAP版本
 --
-對於所有 ONTAP 版本、您也可以使用 `cluster ping-cluster -node <name>` 檢查連線能力的命令：
+對於所有ONTAP版本，您也可以使用 `cluster ping-cluster -node <name>`檢查連接性的命令：
 
 `cluster ping-cluster -node <name>`
 
@@ -739,9 +739,9 @@ RPC status:
 ----
 --
 ====
-. [[step5]] 如果您禁止自動建立個案、請叫用 AutoSupport 訊息來重新啟用：
+. [[step5]]如果您已停用自動建立案例功能，請透過呼叫AutoSupport訊息重新啟用此功能：
 +
-「系統節點AutoSupport 不完整地叫用節點*-type all -most MAn=end」
+`system node autosupport invoke -node * -type all -message MAINT=END`
 
 +
 [listing, subs="+quotes"]
@@ -750,5 +750,5 @@ cluster::*> system node autosupport invoke -node * -type all -message MAINT=END
 ----
 
 
-.接下來呢？
+.下一步是什麼？
 交換器遷移完成後，您可以… link:../switch-cshm/config-overview.html["配置交換器健康監控"]。

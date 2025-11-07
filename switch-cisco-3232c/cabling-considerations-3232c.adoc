@@ -2,22 +2,22 @@
 permalink: switch-cisco-3232c/cabling-considerations-3232c.html 
 sidebar: sidebar 
 keywords: 3232c cabling setup, 3232c switches configuration, nx-os 
-summary: 設定 Cisco 3232C 交換器之前、請先檢閱下列資訊。 
+summary: 在設定Cisco 3232C 交換器之前，請先查看以下資訊。 
 ---
-= 檢閱纜線佈線和組態考量
+= 審查佈線和配置注意事項
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-在設定 Cisco 3232C 交換器之前、請先檢閱下列考量事項。
+在設定Cisco 3232C 交換器之前，請先查看以下注意事項。
 
 
 
-== 支援 NVIDIA CX6 、 CX6-DX 和 CX7 乙太網路連接埠
+== 支援NVIDIA CX6、CX6-DX 和 CX7 乙太網路端口
 
-如果使用 NVIDIA ConnectX-6 （ CX6 ）、 ConnectX-6 Dx （ CX6-DX ）或 ConnectX-7 （ CX7 ） NIC 連接埠將交換器連接埠連接至 ONTAP 控制器、則必須硬編碼交換器連接埠速度。
+如果使用NVIDIA ConnectX-6 (CX6)、ConnectX-6 Dx (CX6-DX) 或 ConnectX-7 (CX7) NIC 連接埠將交換器連接埠連接到ONTAP控制器，則必須硬編碼交換器連接埠速度。
 
 [listing, subs="+quotes"]
 ----
@@ -32,4 +32,4 @@ summary: 設定 Cisco 3232C 交換器之前、請先檢閱下列資訊。
 *Save the changes:*
 (cs1)# *copy running-config startup-config*
 ----
-請參閱 https://hwu.netapp.com/Switch/Index["Hardware Universe"^] 如需交換器連接埠的詳細資訊、
+參見 https://hwu.netapp.com/Switch/Index["Hardware Universe"^]有關交換器連接埠的詳細資訊。

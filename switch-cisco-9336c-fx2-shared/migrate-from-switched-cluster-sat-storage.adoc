@@ -4,7 +4,7 @@ permalink: switch-cisco-9336c-fx2-shared/migrate-from-switched-cluster-sat-stora
 keywords:  
 summary:  
 ---
-= 使用交換器附加儲存設備從交換式叢集移轉
+= 從具有交換器連接儲存的交換叢集遷移
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,14 +14,14 @@ summary:
 
 
 [role="lead"]
-您可以重複使用儲存交換器、從交換式叢集與交換式附加儲存設備進行移轉。
+你可以透過重複使用儲存交換機，從有交換器連接儲存的交換集群進行遷移。
 
-重複使用儲存交換器後、HA配對1的儲存交換器就會成為共用交換器、如下圖所示。
+透過重複使用儲存交換機，HA 對 1 的儲存交換機變成共用交換機，如下圖所示。
 
-image:9336c_image1.jpg["交換器附加"]
+image:9336c_image1.jpg["開關連接"]
 
 .步驟
-. 確認HA配對1（和HA配對2）的儲存組態正確無誤、而且沒有錯誤：
+. 驗證 HA 對 1（和 HA 對 2）的儲存配置是否正確且無錯誤：
 +
 `system switch ethernet show`
 
@@ -57,12 +57,12 @@ storage::*>
 ====
 
 
-. [[step2]]將HA配對1、NSM224路徑A纜線從儲存交換器A移至儲存交換器A上的HA配對1、路徑A的NSM224儲存連接埠
-. 將纜線從HA配對1、節點A、路徑A移至儲存交換器A上的NSM224儲存連接埠
-. 將纜線從HA配對1、節點B、路徑A移至儲存交換器A上的NSM224儲存連接埠、以供HA配對1使用
-. 驗證連接至HA配對1的儲存設備、儲存交換器A是否正常：
+. [[step2]]將 HA 對 1、NSM224 路徑 A 的電纜從儲存交換器 A 移至儲存交換器 A 上 HA 對 1、路徑 A 的 NSM224 儲存連接埠。
+. 將 HA 對 1、節點 A、路徑 A 的電纜移至儲存交換器 A 上 HA 對 1、節點 A 的 NSM224 儲存連接埠。
+. 將 HA 對 1、節點 B、路徑 A 的電纜移至儲存交換器 A 上 HA 對 1、節點 B 的 NSM224 儲存連接埠。
+. 驗證連接到 HA 對 1 的儲存裝置（儲存交換器 A）是否運作正常：
 +
-「torage port show -port-type ENET」
+`storage port show -port-type ENET`
 
 +
 .顯示範例
@@ -89,8 +89,8 @@ node2
 ====
 
 
-. [[step6]將共享交換器A上的儲存RCF替換為共用RCF檔案。請參閱 link:install-nxos-rcf-9336c-shared.html["在Cisco Nexus 9336C-FX2共享交換器上安裝RCF"] 以取得更多詳細資料。
-. 驗證連接至HA配對1的儲存設備、儲存交換器A是否正常：
+. [[step6]]將共用交換器 A 上的儲存 RCF 檔案替換為共用 RCF 檔案。看link:install-nxos-rcf-9336c-shared.html["在Cisco Nexus 9336C-FX2 共用交換器上安裝 RCF"]更多詳情請見下文。
+. 驗證連接到 HA 對 1 的儲存裝置（儲存交換器 A）是否運作正常：
 +
 `system health alert show -instance`
 
@@ -106,10 +106,10 @@ There are no entries matching your query.
 ====
 
 
-. [[step8]將HA配對1、NSM224路徑B纜線從儲存交換器B移至HA配對1的共享NS224儲存連接埠、將路徑B移至儲存交換器B
-. 將纜線從HA配對1、節點A、路徑B移至HA配對1、節點A、儲存交換器B上路徑B的共享儲存連接埠
-. 將纜線從HA配對1、節點B、路徑B移至HA配對1、節點B、儲存交換器B路徑B的共享儲存連接埠
-. 驗證連接至HA配對1的儲存設備、儲存交換器B是否正常：
+. [[step8]]將 HA 對 1、NSM224 路徑 B 電纜從儲存交換器 B 移至 HA 對 1、路徑 B 到儲存交換器 B 的共用 NS224 儲存連接埠。
+. 將 HA 對 1、節點 A、路徑 B 的電纜移至儲存交換器 B 上 HA 對 1、節點 A、路徑 B 的共用儲存連接埠。
+. 將 HA 對 1、節點 B、路徑 B 的電纜移至儲存交換器 B 上 HA 對 1、節點 B、路徑 B 的共用儲存連接埠。
+. 驗證連接到 HA 對 1 的儲存裝置（儲存交換器 B）是否運作正常：
 +
 `system health alert show -instance`
 
@@ -125,8 +125,8 @@ There are no entries matching your query.
 ====
 
 
-. [[step12]將共享交換器B上的儲存RCF檔案替換為共用RCF檔案。請參閱 link:install-nxos-rcf-9336c-shared.html["在Cisco Nexus 9336C-FX2共享交換器上安裝RCF"] 以取得更多詳細資料。
-. 驗證連接至HA配對1的儲存設備、儲存交換器B是否正常：
+. [[step12]]將共用交換器 B 上的儲存 RCF 檔案替換為共用 RCF 檔案。看link:install-nxos-rcf-9336c-shared.html["在Cisco Nexus 9336C-FX2 共用交換器上安裝 RCF"]更多詳情請見下文。
+. 驗證連接到 HA 對 1 的儲存裝置（儲存交換器 B）是否運作正常：
 +
 `system health alert show -instance`
 
@@ -142,7 +142,7 @@ There are no entries matching your query.
 ====
 
 
-. [[step14]確認HA配對1的儲存組態正確無誤、而且沒有錯誤：
+. [[step14]]驗證HA對1的儲存配置是否正確且無錯誤：
 +
 `system switch ethernet show`
 
@@ -178,7 +178,7 @@ storage::*>
 ====
 
 
-. [[step15]在共享交換器A和共享交換器B之間安裝ISL：
+. [[step15]]在共用交換器 A 和共用交換器 B 之間安裝 ISL：
 +
 .顯示範例
 [%collapsible]
@@ -203,14 +203,14 @@ sh1 (config)# *exit*
 ====
 
 
-. [[step16]使用交換器更換程序和共用RCF、將叢集網路從現有的叢集交換器移轉到共用交換器。新的共享交換器A是「CS1」。新的共享交換器B是「CS2」。請參閱 link:replace-9336c-fx2-shared.html["更換Cisco Nexus 9336C-FX2共享交換器"] 和 link:install-nxos-rcf-9336c-shared.html["在Cisco Nexus 9336C-FX2共享交換器上安裝RCF"] 以取得更多詳細資料。
-. 驗證交換式網路組態是否有效：
+. [[step16]]使用交換器更換程式和共用 RCF 將叢集網路從現有叢集交換器遷移到共用交換器。新的共享交換器 A 為「cs1」。新的共享交換器 B 是「cs2」。看link:replace-9336c-fx2-shared.html["更換Cisco Nexus 9336C-FX2 共用交換機"]和link:install-nxos-rcf-9336c-shared.html["在Cisco Nexus 9336C-FX2 共用交換器上安裝 RCF"]更多詳情請見下文。
+. 驗證交換網路配置是否有效：
 +
-「網路連接埠展示」
+`network port show`
 
-. 移除未使用的叢集交換器。
-. 移除未使用的儲存交換器。
+. 拆除未使用的集群開關。
+. 拆除未使用的儲存開關。
 
 
-.接下來呢？
+.下一步是什麼？
 交換器遷移完成後，您可以… link:../switch-cshm/config-overview.html["配置交換器健康監控"]。

@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: switch-cisco-9336c-fx2-shared/cable-9336c-shared.html 
 keywords: shared storage cluster switch cable 
-summary: 使用佈線映像完成控制器與交換器之間的佈線。 
+summary: 使用佈線圖完成控制器和交換器之間的佈線。 
 ---
-= 填寫Cisco Nexus 9336C-FX2纜線工作表
+= 完成Cisco Nexus 9336C-FX2 佈線工作表
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,60 +14,60 @@ summary: 使用佈線映像完成控制器與交換器之間的佈線。
 
 
 [role="lead"]
-請使用下列纜線映像來完成控制器與交換器之間的纜線連接。
+請使用以下佈線圖完成控制器和交換器之間的佈線。
 
 
 
-== 連接交換器的NS224儲存設備纜線
+== NS224 電纜儲存作為交換器連接
 
-如果您想要將NS224儲存設備連接成交換器、請依照交換器附加的圖表進行：
+若要將 NS224 儲存裝置以交換器連接方式進行佈線，請依照交換器連接圖進行操作：
 
-image:9336c_image1.jpg["交換器附加"]
+image:9336c_image1.jpg["開關連接"]
 
-請參閱 https://hwu.netapp.com/Switch/Index["Hardware Universe"] 如需交換器連接埠的詳細資訊、
-
-
-
-== 將NS224儲存設備連接至直接連接的纜線
-
-如果您想要將NS224儲存設備連接成直接附加的連接埠、而非使用共用交換器儲存連接埠、請依照直接附加的圖表進行：
-
-image:9336c_image2.jpg["直接附加"]
-
-請參閱 https://hwu.netapp.com/Switch/Index["Hardware Universe"] 如需交換器連接埠的詳細資訊、
+參見 https://hwu.netapp.com/Switch/Index["Hardware Universe"]有關交換器連接埠的詳細資訊。
 
 
 
-== Cisco Nexus 9336C-FX2纜線工作表
+== NS224 電纜儲存作為直接連接
 
-如果您想要記錄支援的平台、您必須使用完整的佈線工作表範例作為指南來填寫空白的佈線工作表。
+如果您要將 NS224 儲存裝置以直連方式連接，而不是使用共用交換器儲存端口，請按照直連接線圖進行操作：
 
-每對交換器的連接埠定義範例如下：
+image:9336c_image2.jpg["直連式"]
+
+參見 https://hwu.netapp.com/Switch/Index["Hardware Universe"]有關交換器連接埠的詳細資訊。
+
+
+
+== Cisco Nexus 9336C-FX2 佈線工作表
+
+如果要記錄支援的平台，則必須使用已完成的範例佈線工作表作為指南，填寫空白的佈線工作表。
+
+每對交換器上的範例連接埠定義如下：
 
 image:cabling_worksheet.jpg["佈線工作表"]
 
-其中：
+在哪裡：
 
-* 100G ISL至交換器A連接埠35
-* 100G ISL至交換器A連接埠36
-* 100G ISL至交換器B連接埠35
-* 100G ISL至交換器B連接埠36
-
-
+* 100G ISL 至交換器 A 連接埠 35
+* 100G ISL 連接至交換器 A 連接埠 36
+* 100G ISL 連接至交換器 B 連接埠 35
+* 100G ISL 連接至交換器 B 連接埠 36
 
 
-== 空白的佈線工作表
 
-您可以使用空白的佈線工作表來記錄叢集中支援作為節點的平台。支援的叢集連線表Hardware Universe 定義平台所使用的叢集連接埠。
 
-image:blank_cabling_worksheet.jpg["空白的佈線工作表"]
+== 空白佈線工作表
 
-其中：
+您可以使用空白的佈線工作表來記錄叢集中支援的節點平台。Hardware Universe的「支援的叢集連接」表定義了平台使用的叢集連接埠。
 
-* 100G ISL至交換器A連接埠35
-* 100G ISL至交換器A連接埠36
-* 100G ISL至交換器B連接埠35
-* 100G ISL至交換器B連接埠36
+image:blank_cabling_worksheet.jpg["空白佈線工作表"]
+
+在哪裡：
+
+* 100G ISL 至交換器 A 連接埠 35
+* 100G ISL 連接至交換器 A 連接埠 36
+* 100G ISL 連接至交換器 B 連接埠 35
+* 100G ISL 連接至交換器 B 連接埠 36
 
 
 .下一步

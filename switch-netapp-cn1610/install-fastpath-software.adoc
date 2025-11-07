@@ -2,75 +2,75 @@
 permalink: switch-netapp-cn1610/install-fastpath-software.html 
 sidebar: sidebar 
 keywords: install, fastpath, software 
-summary: 當您在NetApp交換器上安裝FastPath軟體時、必須先從第二個交換器CS2開始升級。 
+summary: 在NetApp交換器上安裝 FASTPATH 軟體時，必須從第二個交換器 cs2 開始升級。 
 ---
-= 安裝FastPath軟體
+= 安裝 FASTPATH 軟體
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-當您在NetApp交換器上安裝FastPath軟體時、必須先從第二個交換器_CS2_開始升級。
+在NetApp交換器上安裝 FASTPATH 軟體時，必須從第二個交換器 _cs2_ 開始升級。
 
 
 
-== 檢閱要求
+== 審查要求
 
 .開始之前
-請確定您擁有下列項目：
+請確保您擁有以下物品：
 
-* 交換器組態的目前備份。
-* 完全正常運作的叢集（記錄中沒有錯誤、也沒有故障的叢集網路介面卡（NIC）或類似問題）。
-* 叢集交換器上的完整功能連接埠連線。
-* 設定所有叢集連接埠。
-* 所有已設定的叢集邏輯介面（lifs）（不得已移轉）。
-* 成功的溝通途徑：ONTAP The es執行（權限：進階） `cluster ping-cluster -node node1` 命令必須指出這一點 `larger than PMTU communication` 在所有路徑上都成功。
-* 受支援版本的FastPath和ONTAP 支援的功能。
+* 交換器配置的目前備份。
+* 一個功能齊全的叢集（日誌中沒有錯誤，叢集網路介面卡（NIC）也沒有缺陷或類似問題）。
+* 集群交換器上的連接埠連線功能齊全。
+* 所有群集連接埠均已設定。
+* 所有群集邏輯介面（LIF）均已設定（必須尚未遷移）。
+* 一條成功的溝通路徑： ONTAP （權限：進階） `cluster ping-cluster -node node1`命令必須表明 `larger than PMTU communication`在所有路徑上都取得了成功。
+* 支援的 FASTPATH 和ONTAP版本。
 +
-請務必參閱上的交換器相容性表 http://mysupport.netapp.com/NOW/download/software/cm_switches_ntap/["NetApp CN1601與CN1610交換器"^] 頁面、以取得支援的FastPath和ONTAP 支援的版本。
+請務必查閱交換器相容性表格。 http://mysupport.netapp.com/NOW/download/software/cm_switches_ntap/["NetApp CN1601 和 CN1610 交換機"^]本頁列出了支援的 FASTPATH 和ONTAP版本。
 
 
 
 
 
-== 安裝FastPath
+== 安裝 FASTPATH
 
-下列程序使用叢集Data ONTAP 式的循環8.2語法。因此、叢集Vserver、LIF名稱和CLI輸出與Data ONTAP 《Sv3 8.3》中的不同。
+下列程序使用叢集式Data ONTAP 8.2 語法。因此，叢集 Vserver、LIF 名稱和 CLI 輸出與Data ONTAP 8.3 中的不同。
 
-RCF和FastPath版本中的命令語法之間可能存在命令相依性。
+RCF 和 FASTPATH 版本中的指令語法可能存在指令依賴關係。
 
 .關於範例
-本程序中的範例使用下列交換器和節點命名法：
+本流程中的範例使用以下開關和節點命名規則：
 
-* 兩個NetApp交換器分別是CS1和CS2。
-* 這兩個叢集l生命 區是clus1和clus2。
-* Vserver是VS1和VS2。
-* 「cluster：*>」提示會指出叢集的名稱。
-* 每個節點上的叢集連接埠名稱為e1a和E2A。
+* 這兩台NetApp交換器分別是 cs1 和 cs2。
+* 這兩個簇 LIF 分別是 clus1 和 clus2。
+* 虛擬伺服器為 vs1 和 vs2。
+* 這 `cluster::*>`prompt 指示叢集名稱。
+* 每個節點上的叢集連接埠分別命名為 e1a 和 e2a。
 +
-https://hwu.netapp.com/["Hardware Universe"^] 有更多有關平台所支援的實際叢集連接埠資訊。
+https://hwu.netapp.com/["Hardware Universe"^]包含有關您的平台支援的實際集群連接埠的更多資訊。
 
-* 支援的交換器間連結（ISL）是連接埠0/13到0/16。
-* 支援的節點連線是連接埠0/1到0/12。
-
-
+* 支援的交換器間連結 (ISL) 為連接埠 0/13 至 0/16。
+* 支援的節點連接為連接埠 0/1 至 0/12。
 
 
-=== 步驟1：移轉叢集
 
-. 如果AutoSupport 此叢集啟用了「支援」功能、請叫用AutoSupport 下列訊息來禁止自動建立案例：
+
+=== 步驟 1：遷移集群
+
+. 如果此叢集上啟用了AutoSupport ，則透過呼叫AutoSupport訊息來抑制自動建立案例：
 +
-「系統節點AutoSupport 不完整地叫用節點*-type all -訊息MAn=xh」
-
-+
-_x_是維護時段的持續時間（以小時為單位）。
+`system node autosupport invoke -node * -type all - message MAINT=xh`
 
 +
+_x_ 是維護視窗的持續時間，單位為小時。
 
-NOTE: 此資訊可通知技術支援人員執行此維護工作、以便在維護期間抑制自動建立案例。AutoSupport
++
 
-. 以admin身分登入交換器。預設沒有密碼。在「（CS2）#」提示字元中、輸入「enable」命令。同樣地、預設也沒有密碼。這可讓您存取「優先執行」模式、以便設定網路介面。
+NOTE: AutoSupport訊息會通知技術支援此維護任務，以便在維護視窗期間抑制自動建立案例。
+
+. 以管理員身分登入交換器。預設沒有密碼。在 `(cs2) #`提示，輸入 `enable`命令。再次強調，預設沒有密碼。這樣您就可以存取特權 EXEC 模式，從而設定網路介面。
 +
 .顯示範例
 [%collapsible]
@@ -82,9 +82,9 @@ Password (Enter)
 (cs2) #
 ----
 ====
-. 在每個節點的主控台上、將clus2移轉至連接埠e1a：
+. 在每個節點的控制台上，將 clus2 遷移到連接埠 e1a：
 +
-網路介面移轉
+`network interface migrate`
 
 +
 .顯示範例
@@ -96,12 +96,12 @@ cluster::*> network interface migrate -vserver vs1 -lif clus2 -destnode node1 -d
 cluster::*> network interface migrate -vserver vs2 -lif clus2 -destnode node2 -dest-port e1a
 ----
 ====
-. 在每個節點的主控台上、確認移轉發生：
+. 在每個節點的控制台上，驗證遷移是否已完成：
 +
-「網路介面展示」
+`network interface show`
 
 +
-以下範例顯示、clus2已移轉至兩個節點上的連接埠e1a：
+以下範例顯示 clus2 已遷移到兩個節點上的 e1a 連接埠：
 
 +
 .顯示範例
@@ -126,17 +126,17 @@ vs2
 
 
 
-=== 步驟2：安裝FastPath軟體
+=== 步驟 2：安裝 FASTPATH 軟體
 
-. 關閉兩個節點上的叢集連接埠E2A：
+. 關閉兩個節點上的叢集連接埠 e2a：
 +
-網路連接埠修改
+`network port modify`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示兩個節點上的連接埠E2A正在關機：
+以下範例顯示了兩個節點上的 e2a 連接埠都已關閉：
 
 [listing]
 ----
@@ -144,9 +144,9 @@ cluster::*> network port modify -node node1 -port e2a -up-admin false
 cluster::*> network port modify -node node2 -port e2a -up-admin false
 ----
 ====
-. 確認兩個節點上的連接埠E2A均已關機：
+. 請確認兩個節點上的 e2a 連接埠均已關閉：
 +
-「網路連接埠展示」
+`network port show`
 
 +
 .顯示範例
@@ -167,7 +167,7 @@ node2
        e2a  cluster  down 9000   true/true   full/full   auto/10000
 ----
 ====
-. 關閉CS1上的交換器間連結（ISL）連接埠、即作用中的NetApp交換器：
+. 關閉活動NetApp交換器 cs1 上的交換器間連結 (ISL) 連接埠：
 +
 .顯示範例
 [%collapsible]
@@ -181,7 +181,7 @@ node2
 (cs1)(config) # exit
 ----
 ====
-. 在CS2上備份目前使用中的映像。
+. 備份 CS2 上目前活動的影像。
 +
 .顯示範例
 [%collapsible]
@@ -210,9 +210,9 @@ Copy operation successful
 (cs2) #
 ----
 ====
-. 將映像檔下載到交換器。
+. 將鏡像檔下載到交換器。
 +
-將映像檔複製到作用中映像、表示當您重新開機時、該映像會建立執行中的FastPath版本。上一個映像仍可作為備份使用。
+將鏡像檔案複製到活動鏡像意味著，當您重新啟動時，該鏡像將建立正在運行的 FASTPATH 版本。之前的鏡像檔案仍可作為備份使用。
 
 +
 .顯示範例
@@ -238,9 +238,9 @@ TFTP Code transfer starting...
 File transfer operation completed successfully.
 ----
 ====
-. 驗證FastPath軟體的執行版本。
+. 請確認FASTPATH軟體的運作版本。
 +
-《如何版本》
+`show version`
 
 +
 .顯示範例
@@ -271,9 +271,9 @@ Additional Packages................. FASTPATH QOS
                                      FASTPATH IPv6 Management
 ----
 ====
-. 檢視使用中和備份組態的開機映像。
+. 查看活動配置和備份配置的啟動映像。
 +
-「如何啟動bootvar
+`show bootvar`
 
 +
 .顯示範例
@@ -297,9 +297,9 @@ Image Descriptions
     1        1.1.0.3      1.1.0.3          1.1.0.3           1.1.0.5
 ----
 ====
-. 重新啟動交換器。
+. 重啟交換器。
 +
-"重裝"
+`reload`
 
 +
 .顯示範例
@@ -318,11 +318,11 @@ System will now restart!
 
 
 
-=== 步驟3：驗證安裝
+=== 步驟 3：驗證安裝
 
-. 再次登入、並驗證FastPath軟體的新版本。
+. 重新登錄，並驗證 FASTPATH 軟體的新版本。
 +
-《如何版本》
+`show version`
 
 +
 .顯示範例
@@ -353,9 +353,9 @@ Additional Packages.................. FASTPATH QOS
                                       FASTPATH IPv6 Management
 ----
 ====
-. 啟動使用中交換器CS1上的ISL連接埠。
+. 在活動交換器 cs1 上啟用 ISL 連接埠。
 +
-設定
+`configure`
 
 +
 .顯示範例
@@ -370,12 +370,12 @@ Additional Packages.................. FASTPATH QOS
 (cs1) (config) # exit
 ----
 ====
-. 驗證ISL是否正常運作：
+. 確認ISL是否正常運作：
 +
-「How port-channel 3/1」
+`show port-channel 3/1`
 
 +
-「Link State（連結狀態）」欄位應顯示「Up（啟動）」。
+“鏈路狀態”欄位應指示 `Up`。
 
 +
 .顯示範例
@@ -406,7 +406,7 @@ Ports  Timeout       Speed     Active
        partner/long
 ----
 ====
-. 如果您對軟體版本和交換器設定滿意、請將「執行組態」檔案複製到「儲存組態」檔案。
+. 複製 `running-config`文件到 `startup-config`當您對軟體版本和開關設定滿意後，請提交文件。
 +
 .顯示範例
 [%collapsible]
@@ -425,9 +425,9 @@ Config file 'startup-config' created successfully .
 Configuration Saved!
 ----
 ====
-. 在每個節點上啟用第二個叢集連接埠E2A：
+. 在每個節點上啟用第二個叢集連接埠 e2a：
 +
-網路連接埠修改
+`network port modify`
 
 +
 .顯示範例
@@ -439,12 +439,12 @@ cluster::*> network port modify -node node1 -port e2a -up-admin true
 cluster::*> **network port modify -node node2 -port e2a -up-admin true**
 ----
 ====
-. 還原與連接埠E2A相關的clus2：
+. 還原與連接埠 e2a 關聯的 clus2：
 +
-網路介面回復
+`network interface revert`
 
 +
-LIF可能會自動回復、視ONTAP 您使用的版本而定。
+LIF 可能會自動恢復，具體取決於您的ONTAP軟體版本。
 
 +
 .顯示範例
@@ -456,9 +456,9 @@ cluster::*> network interface revert -vserver Cluster -lif n1_clus2
 cluster::*> network interface revert -vserver Cluster -lif n2_clus2
 ----
 ====
-. 確認LIF現在位於兩個節點上的主節點（「true」）：
+. 確認 LIF 現在已歸位(`true`）在兩個節點上：
 +
-「網路介面show -_role叢集_」
+`network interface show -_role cluster_`
 
 +
 .顯示範例
@@ -479,9 +479,9 @@ vs2
           clus2      up/up      10.10.10.2/24  node2    e2a     true
 ----
 ====
-. 檢視節點狀態：
+. 查看節點狀態：
 +
-「叢集展示」
+`cluster show`
 
 +
 .顯示範例
@@ -497,9 +497,9 @@ node1                true    true
 node2                true    true
 ----
 ====
-. 重複上述步驟、在另一台交換器CS1上安裝FastPath軟體。
-. 如果您禁止自動建立個案、請叫用AutoSupport 下列訊息來重新啟用：
+. 重複上述步驟，在另一台交換器 cs1 上安裝 FASTPATH 軟體。
+. 如果您已停用自動建立案例功能，請透過呼叫AutoSupport訊息重新啟用該功能：
 +
-「系統節點AutoSupport 不完整地叫用節點*-type all -most MAn=end」
+`system node autosupport invoke -node * -type all -message MAINT=END`
 
 

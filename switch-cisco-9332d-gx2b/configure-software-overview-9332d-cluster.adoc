@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: switches, initial installation, configure switch-cisco-9332d-gx2b switch 
 summary: Cisco 9332D-GX2B 交換器軟體設定概述 
 ---
-= 設定Cisco 9332D-GX2B 交換器的軟體工作流程
+= 為Cisco 9332D-GX2B 交換器設定軟體工作流程
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -37,4 +37,4 @@ summary: Cisco 9332D-GX2B 交換器軟體設定概述
 [role="quick-margin-para"]
 清除Cisco 9332D-GX2B 交換器設定。
 
-完成交換器配置後，請前往link:https://docs.netapp.com/us-en/ontap-afx/install-setup/power-on-hardware.html["啟動 AFX 1K 儲存系統"^]。
+交換器配置完成後，請前往link:https://docs.netapp.com/us-en/ontap-afx/install-setup/power-on-hardware.html["啟動 AFX 1K 儲存系統"^]。

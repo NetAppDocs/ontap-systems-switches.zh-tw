@@ -2,64 +2,64 @@
 permalink: switch-cisco-9336c-fx2/install-nxos-overview-9336c-cluster.html 
 sidebar: sidebar 
 keywords: cisco, nx-os, software, reference, configuration, file, rcf, install, fx2, cluster, switch, install nx-os software and rcfs on cisco nexus 9336-fx2 cluster switches - cisco nexus 9336x-fx2 
-summary: Cisco NX-OS軟體和參考組態檔（RCF）必須安裝在Cisco Nexus 9336C-FX2叢集交換器上。 
+summary: '必須在Cisco Nexus 9336C-FX2 叢集交換器上安裝Cisco NX-OS 軟體和參考設定檔 \(RCFs\)。' 
 ---
-= 準備安裝NX-OS軟體和RCF
+= 準備安裝 NX-OS 軟體和 RCF
 :allow-uri-read: 
 
 
 [role="lead"]
-在安裝NX-OS軟體和參考組態檔（RCF）之前、請遵循此程序。
+在安裝 NX-OS 軟體和參考設定檔 (RCF) 之前，請依照下列步驟操作。
 
-.建議的文件
+.建議的文檔
 * link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器頁面"^]
 +
-請參閱交換器相容性表、以瞭解支援ONTAP 的功能表和NX-OS版本。
+請查閱交換器相容性表格，以了解支援的ONTAP和 NX-OS 版本。
 
 * link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-installation-guides-list.html["軟體升級與降級指南"^]
 +
-如需 Cisco 交換器升級與降級程序的完整文件、請參閱 Cisco 網站上提供的適當軟體與升級指南。
+有關Cisco交換器升級和降級程序的完整文檔，請參閱Cisco網站上提供的相應軟體和升級指南。
 
-* link:https://www.cisco.com/c/dam/en/us/td/docs/dcn/tools/nexus-9k3k-issu-matrix/index.html["Cisco Nexus 9000 與 3000 升級與 ISSU 對照表"^]
+* link:https://www.cisco.com/c/dam/en/us/td/docs/dcn/tools/nexus-9k3k-issu-matrix/index.html["Cisco Nexus 9000 和 3000 升級和 ISSU 矩陣"^]
 +
-根據您目前和目標版本提供有關 Nexus 9000 系列交換器上的 Cisco NX-OS 軟體的中斷升級/降級的資訊。
+根據您目前和目標版本，提供有關 Nexus 9000 系列交換器上Cisco NX-OS 軟體的中斷式升級/降級的資訊。
 
 +
-在頁面上、選取 * 顛覆性升級 * 、然後從下拉式清單中選取您目前的版本和目標版本。
+在頁面上，選擇“中斷式升級”，然後從下拉清單中選擇目前版本和目標版本。
 
 
 
 .關於範例
-本程序中的範例使用下列交換器和節點命名法：
+本流程中的範例使用以下開關和節點命名規則：
 
-* 兩個Cisco交換器的名稱為CS1和CS2。
-* 節點名稱為cluster1-01和cluster1-02。
-* 叢集LIF名稱為cluster1-01_clus1、cluster1-01_clus2（叢集1-01）和cluster1-02_clus2（叢集1-01）、cluster1-02_clus2（叢集1-02）。
-* 「cluster1：*：>」提示會指出叢集的名稱。
+* 這兩個Cisco交換器的名稱分別是 cs1 和 cs2。
+* 節點名稱為 cluster1-01 和 cluster1-02。
+* 群集 LIF 名稱分別為 cluster1-01_clus1 和 cluster1-01_clus2（對應群集 1-01）以及 cluster1-02_clus1 和 cluster1-02_clus2（對應群集 1-02）。
+* 這 `cluster1::*>`prompt 指示叢集名稱。
 
 
-.關於這項工作
-此程序需要同時使用ONTAP 支援指令和Cisco Nexus 9000系列交換器的指令；ONTAP 除非另有說明、否則會使用支援指令。
+.關於此任務
+流程需要同時使用ONTAP指令和Cisco Nexus 9000 系列交換器指令；除非另有說明，否則使用ONTAP指令。
 
 .步驟
-. 如果AutoSupport 此叢集啟用了「支援功能」、請叫用AutoSupport 下列訊息來抑制自動建立案例：「System Node AutoSupport Rsepooke -Node *-type all -most MAn=x h」
+. 如果此叢集上啟用了AutoSupport ，則透過呼叫AutoSupport訊息來抑制自動建立案例： `system node autosupport invoke -node * -type all -message MAINT=x h`
 +
-其中x是維護時段的持續時間（以小時為單位）。
+其中 x 為維護窗口的持續時間（小時）。
 
 +
 
-NOTE: 此資訊可通知技術支援人員執行此維護工作、以便在維護期間抑制自動建立案例。AutoSupport
+NOTE: AutoSupport訊息會通知技術支援此維護任務，以便在維護視窗期間抑制自動建立案例。
 
-. 將權限等級變更為進階、並在系統提示您繼續時輸入* y*：
+. 將權限級別變更為高級，並在提示繼續時輸入 *y*：
 +
 [source, cli]
 ----
 set -privilege advanced
 ----
 +
-出現進階提示（「*>」）。
+進階提示(`*>`出現。
 
-. 顯示每個叢集互連交換器的每個節點已設定多少個叢集互連介面：
+. 顯示每個節點上每個群集互連交換器配置的群集互連口數量：
 +
 [source, cli]
 ----
@@ -86,7 +86,7 @@ cluster1-01/cdp
 4 entries were displayed.
 ----
 ====
-. 檢查每個叢集介面的管理或作業狀態。
+. 檢查每個叢集介面的管理或運作狀態。
 +
 .. 顯示網路連接埠屬性：
 +
@@ -119,7 +119,7 @@ e0b       Cluster      Cluster          up   9000  auto/10000 healthy
 4 entries were displayed.
 ----
 ====
-.. 顯示關於生命的資訊：
+.. 顯示有​​關 LIF 的資訊：
 +
 [source, cli]
 ----
@@ -147,22 +147,22 @@ Cluster
 ====
 
 
-. 驗證遠端叢集介面的連線能力：
+. 驗證遠端集群介面的連接性：
 
 
 [role="tabbed-block"]
 ====
-.更新版本ONTAP
+.ONTAP 9.9.1 及更高版本
 --
-您可以使用 `network interface check cluster-connectivity` 命令以啟動叢集連線的存取檢查、然後顯示詳細資料：
+你可以使用 `network interface check cluster-connectivity`執行命令以啟動叢集連接性檢查，然後顯示詳細資訊：
 
-`network interface check cluster-connectivity start` 和 `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`和 `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-* 注意： * 請等待數秒後再執行 `show`命令以顯示詳細資料。
+*注意：*運行程式前請等待幾秒鐘 `show`顯示詳細資訊的命令。
 
 [listing, subs="+quotes"]
 ----
@@ -178,9 +178,9 @@ node2
        3/5/2022 19:21:20 -06:00   cluster1-02_clus2    cluster1-01_clus2   none
 ----
 --
-.所有 ONTAP 版本
+.所有ONTAP版本
 --
-對於所有 ONTAP 版本、您也可以使用 `cluster ping-cluster -node <name>` 檢查連線能力的命令：
+對於所有ONTAP版本，您也可以使用 `cluster ping-cluster -node <name>`檢查連接性的命令：
 
 `cluster ping-cluster -node <name>`
 
@@ -213,7 +213,7 @@ RPC status:
 ----
 --
 ====
-. [[step6]] 驗證是否已在所有叢集生命體上啟用自動還原命令：
+. [[步驟6]] 驗證所有叢集 LIF 上是否已啟用自動還原指令：
 +
 [source, cli]
 ----
@@ -240,5 +240,5 @@ Cluster
 ====
 
 
-.接下來呢？
+.下一步是什麼？
 準備好安裝 NX-OS 軟體和 RCF 後，您可以… link:install-nxos-software-9336c-cluster.html["安裝或升級 NX-OS 軟體"]。

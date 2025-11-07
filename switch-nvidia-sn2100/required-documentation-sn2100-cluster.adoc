@@ -2,7 +2,7 @@
 permalink: switch-nvidia-sn2100/required-documentation-sn2100-cluster.html 
 sidebar: sidebar 
 keywords: nvidia SN2100 switches 
-summary: 對於NVIDIA SN2100交換器的安裝與維護、請務必檢閱所有建議的文件。 
+summary: 對於NVIDIA SN2100 交換器的安裝和維護，請務必查看所有建議的文件。 
 ---
 = NVIDIA SN2100交換器的文件需求
 :allow-uri-read: 
@@ -11,30 +11,30 @@ summary: 對於NVIDIA SN2100交換器的安裝與維護、請務必檢閱所有�
 
 
 [role="lead"]
-對於NVIDIA SN2100交換器的安裝與維護、請務必檢閱所有建議的文件。
+對於NVIDIA SN2100 交換器的安裝和維護，請務必查看所有建議的文件。
 
 [cols="1,2"]
 |===
-| 標題 | 說明 
+| 標題 | 描述 
 
 
  a| 
-https://docs.nvidia.com/networking/display/sn2000pub/Installation["NVIDIA交換器安裝指南"^]
+https://docs.nvidia.com/networking/display/sn2000pub/Installation["NVIDIA開關安裝指南"^]
  a| 
-說明如何安裝NVIDIA SN2100交換器。
-
-
-
- a| 
-https://library.netapp.com/ecm/ecm_download_file/ECMLP2876580["NS224 NVMe磁碟機櫃佈線指南"^]
- a| 
-顯示如何設定磁碟機櫃佈線的概觀與圖例。
+介紹如何安裝NVIDIA SN2100 交換器。
 
 
 
  a| 
-https://hwu.netapp.com/["NetApp Hardware Universe"^]
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2876580["NS224 NVMe 硬碟架佈線指南"^]
  a| 
-可讓您確認平台機型支援的硬體、例如儲存交換器和纜線。
+概述和圖示，展示如何配置驅動器機架的佈線。
+
+
+
+ a| 
+https://hwu.netapp.com/["NetAppHardware Universe"^]
+ a| 
+允許您確認平台型號支援的硬件，例如儲存交換器和電纜。
 
 |===

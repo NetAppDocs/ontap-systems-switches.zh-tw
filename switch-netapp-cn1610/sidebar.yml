@@ -2,35 +2,35 @@
 section: switch-netapp-cn1610
 title: NetApp CN1610
 entries:
-- title: 開始使用
-  pdf-filename: overview_cn1610.
+- title: 開始
+  pdf-filename: Overview_cn1610
   url: "/switch-netapp-cn1610/switch-overview-cn1610.html"
-- title: 安裝及設定工作流程
+- title: 安裝和設定工作流程
   url: "/switch-netapp-cn1610/install-overview-cn1610.html"
-- title: 必要文件
+- title: 所需文件
   url: "/switch-netapp-cn1610/required-documentation-cn1610.html"
-- title: 安裝與設定
-  pdf-filename: install_configure_cn1610
+- title: 安裝和配置
+  pdf-filename: Install_configure_cn1610
   entries:
   - title: 安裝硬體
     url: "/switch-netapp-cn1610/install-hardware-cn1610.html"
-  - title: 安裝FastPath軟體
+  - title: 安裝 FASTPATH 軟體
     url: "/switch-netapp-cn1610/install-fastpath-software.html"
-  - title: 安裝RCF
+  - title: 安裝 RCF
     url: "/switch-netapp-cn1610/install-rcf-file.html"
-  - title: 安裝FastPath和RCF for ONTAP Rf48.3.1及更新版本
+  - title: 為ONTAP 8.3.1 及更高版本安裝 FASTPATH 和 RCF
     url: "/switch-netapp-cn1610/install-fastpath-rcf-831.html"
-  - title: 設定交換器
+  - title: 配置交換機
     url: "/switch-netapp-cn1610/configure-hardware-cn1610.html"
-- title: 移轉交換器
-  pdf-filename: migrate_switchs_cn1610
+- title: 遷移交換機
+  pdf-filename: Migrate_switches_cn1610
   entries:
-  - title: 從無交換器叢集移轉至交換式叢集
+  - title: 從無交換器集群遷移到有交換器集群
     url: "/switch-netapp-cn1610/migrate-switched-netapp-cn1610.html"
-- title: 更換交換器
-  pdf-filename: replace 開關 _cn1610
+- title: 更換開關
+  pdf-filename: Replace_switches_cn1610
   entries:
-  - title: 更換 NetApp CN1610 叢集交換器
+  - title: 更換NetApp CN1610 叢集交換機
     url: "/switch-netapp-cn1610/replace-cn1610-switch.html"
-  - title: 使用無交換器連線取代叢集交換器
+  - title: 用無開關連接取代集群開關
     url: "/switch-netapp-cn1610/migrate-to-switchless-cluster-interconnect.html"

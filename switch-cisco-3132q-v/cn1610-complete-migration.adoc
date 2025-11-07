@@ -2,24 +2,24 @@
 permalink: switch-cisco-3132q-v/cn1610-complete-migration.html 
 sidebar: sidebar 
 keywords: cisco 3132q-v, cluster switches 
-summary: 您可以在 AFF 或 FAS 叢集中使用 Cisco Nexus 3132q-v 交換器作為叢集交換器。 
+summary: 您可以在AFF或FAS叢集中使用Cisco Nexus 3132q-v 交換器作為叢集交換器。 
 ---
-= 完成從 CN1610 交換器移轉至 Nexus 3132Q-V 交換器的作業
+= 完成從 CN1610 交換器到 Nexus 3132Q-V 交換器的遷移
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-完成下列步驟以完成 CN1610 交換器移轉至 Nexus 3132Q-V 交換器的作業。
+完成以下步驟，以最終完成 CN1610 交換器向 Nexus 3132Q-V 交換器的遷移。
 
 .步驟
-. 驗證ISL連線是否正常 `up` 在3132Q-V交換器C2上：
+. 確認 ISL 連線是否正常 `up`在 3132Q-V 開關 C2 上：
 +
-「How port-channel Summary」
+`show port-channel summary`
 
 +
-端口eth1/31和eth1/32應顯示“（P）”，這意味着端口通道中的兩個ISL端口均處於“up（正常）”狀態。
+連接埠 Eth1/31 和 Eth1/32 應指示 `(P)`這意味著兩個 ISL 連接埠都是 `up`在連接埠通道中。
 
 +
 .顯示範例
@@ -42,15 +42,15 @@ Group Port-       Type     Protocol  Member Ports
 1     Po1(SU)     Eth      LACP      Eth1/31(P)   Eth1/32(P)
 ----
 ====
-. 開啟所有節點上連接至全新3138Q V交換器C1的所有叢集互連連接埠：
+. 在所有節點上啟用連接到新的 3132Q-V 交換器 C1 的所有叢集互連連接埠：
 +
-網路連接埠修改
+`network port modify`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例說明如何啟動連接至新款31382Q-V交換器C1的所有叢集互連連接埠：
+以下範例展示如何啟動連接到新的 3132Q-V 交換器 C1 的所有叢集互連連接埠：
 
 [listing]
 ----
@@ -60,15 +60,15 @@ cluster::*> network port modify -node n2 -port e0a -up-admin true
 cluster::*> network port modify -node n2 -port e0d -up-admin true
 ----
 ====
-. 驗證叢集節點連接埠的狀態：
+. 驗證叢集節點連接埠狀態：
 +
-「網路連接埠展示」
+`network port show`
 
 +
 .顯示範例
 [%collapsible]
 ====
-下列範例可驗證新款31382Q-V交換器C1上n1和n2上的所有叢集互連連接埠均為「up（正常））：
+以下範例驗證了新的 3132Q-V 交換器 C1 上的 n1 和 n2 上的所有群集互連連接埠均已連線。 `up` ：
 
 [listing]
 ----
@@ -96,15 +96,15 @@ e0d   cluster   cluster    up    9000  auto/10000     -        -
 8 entries were displayed.
 ----
 ====
-. 還原所有原本連線至所有節點C1的所有移轉叢集互連生命期：
+. 撤銷所有已遷移的叢集互連 LIF，這些 LIF 最初連接到所有節點上的 C1：
 +
-網路介面回復
+`network interface revert`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例說明如何將移轉的叢集生命區還原至其主連接埠：
+以下範例展示如何將遷移後的叢集 LIF 還原到其原始連接埠：
 
 [listing]
 ----
@@ -114,15 +114,15 @@ cluster::*> network interface revert -vserver Cluster -lif n2_clus1
 cluster::*> network interface revert -vserver Cluster -lif n2_clus4
 ----
 ====
-. 確認介面現在是主介面：
+. 請確認介面已連接到主伺服器：
 +
-「網路介面展示」
+`network interface show`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示n1和n2的叢集互連介面狀態為「up」和「is home.」：
+以下範例顯示了叢集互連接口的狀態： `up`和 `Is home`對於 n1 和 n2：
 
 [listing]
 ----
@@ -145,22 +145,22 @@ Cluster
 8 entries were displayed.
 ----
 ====
-. 驗證遠端叢集介面的連線能力：
+. 驗證遠端集群介面的連接性：
 
 
 [role="tabbed-block"]
 ====
-.更新版本ONTAP
+.ONTAP 9.9.1 及更高版本
 --
-您可以使用 `network interface check cluster-connectivity` 命令以啟動叢集連線的存取檢查、然後顯示詳細資料：
+你可以使用 `network interface check cluster-connectivity`執行命令以啟動叢集連接性檢查，然後顯示詳細資訊：
 
-`network interface check cluster-connectivity start` 和 `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`和 `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-* 注意： * 在執行 show 命令之前、請等待數秒以顯示詳細資料。
+*注意：*在執行 show 命令顯示詳細資訊之前，請等待幾秒鐘。
 
 [listing, subs="+quotes"]
 ----
@@ -177,9 +177,9 @@ n2
        3/5/2022 19:21:20 -06:00   n2_clus2   n1_clus2       none
 ----
 --
-.所有 ONTAP 版本
+.所有ONTAP版本
 --
-對於所有 ONTAP 版本、您也可以使用 `cluster ping-cluster -node <name>` 檢查連線能力的命令：
+對於所有ONTAP版本，您也可以使用 `cluster ping-cluster -node <name>`檢查連接性的命令：
 
 `cluster ping-cluster -node <name>`
 
@@ -229,18 +229,18 @@ RPC status:
 ----
 --
 ====
-. [step7]將節點新增至Nexus 3132Q-V叢集交換器、以擴充叢集。
-. 顯示組態中裝置的相關資訊：
+. [[step7]]透過在 Nexus 3132Q-V 叢集交換器中新增節點來擴展叢集。
+. 顯示配置中設備的資訊：
 +
-** 「網路裝置探索秀」
-** 「網路連接埠show -role cluster」
-** 「網路介面show -role cluster」
-** 「系統叢集交換器顯示」
+** `network device-discovery show`
+** `network port show -role cluster`
+** `network interface show -role cluster`
+** `system cluster-switch show`
 +
 .顯示範例
 [%collapsible]
 ====
-下列範例顯示節點n3和n4、其40 GbE叢集連接埠分別連接至連接埠E1/7和E1/8、同時連接Nexus 3132Q-V叢集交換器、而且兩個節點都已加入叢集。使用的40 GbE叢集互連連接埠為E4A和e4e。
+以下範例顯示了節點 n3 和 n4，它們分別透過 40 GbE 叢集連接埠連接到 Nexus 3132Q-V 叢集交換器的 e1/7 和 e1/8 端口，並且這兩個節點都已加入叢集。使用的 40 GbE 群集互連埠為 e4a 和 e4e。
 
 [listing]
 ----
@@ -372,15 +372,15 @@ CL2                         cluster-network  10.10.1.102    CN1610
 ====
 
 
-. 如果更換的CN1610交換器未自動移除、請將其移除：
+. 如果更換後的 CN1610 交換器沒有自動移除，請將其移除：
 +
-「系統叢集交換器刪除」
+`system cluster-switch delete`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例說明如何移除CN1610交換器：
+以下範例展示如何拆卸 CN1610 開關：
 
 [listing]
 ----
@@ -389,7 +389,7 @@ cluster::> system cluster-switch delete -device CL1
 cluster::> system cluster-switch delete -device CL2
 ----
 ====
-. 將每個節點上的叢集clus1和clus4設定為「-aut-revert」、並確認：
+. 配置叢集 clus1 和 clus4 為 `-auto-revert`在每個節點上確認：
 +
 .顯示範例
 [%collapsible]
@@ -402,9 +402,9 @@ cluster::*> network interface modify -vserver node2 -lif clus1 -auto-revert true
 cluster::*> network interface modify -vserver node2 -lif clus4 -auto-revert true
 ----
 ====
-. 確認已監控適當的叢集交換器：
+. 確認已對正確的群集交換器進行監控：
 +
-「系統叢集交換器顯示」
+`system cluster-switch show`
 
 +
 .顯示範例
@@ -435,11 +435,11 @@ C2                          cluster-network    10.10.1.104      NX3132V
 2 entries were displayed.
 ----
 ====
-. [[step43_replacecn1610]]如果您禁止自動建立個案、請叫用AutoSupport 此資訊以重新啟用：
+. [[step43_replacecn1610]]如果您已停用自動建立案例，請透過呼叫AutoSupport訊息重新啟用它：
 +
-「系統節點AutoSupport 不完整地叫用節點*-type all -most MAn=end」
+`system node autosupport invoke -node * -type all -message MAINT=END`
 
 
 
-.接下來呢？
-link:../switch-cshm/config-overview.html["設定交換器健全狀況監控"]。
+.下一步是什麼？
+link:../switch-cshm/config-overview.html["配置交換器健康監控"]。

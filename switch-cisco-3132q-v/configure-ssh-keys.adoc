@@ -2,26 +2,26 @@
 permalink: switch-cisco-3132q-v/configure-ssh-keys.html 
 sidebar: sidebar 
 keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, cisco 9336c-fx2 
-summary: 使用叢集交換器健全狀況監視器（CSHM\）和記錄收集功能時、必須使用SSH。若要在 Cisco 3132Q-V 叢集交換器上啟用 SSH 、請先產生 SSH 金鑰、然後再啟用 SSH 。 
+summary: '使用群集交換器健康監視器 (CSHM) 和日誌收集功能時需要 SSH。若要在Cisco 3132Q-V 叢集交換器上啟用 SSH，您需要先生成 SSH 金鑰，然後啟用 SSH。' 
 ---
-= 驗證SSH組態
+= 請檢查您的 SSH 配置
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-如果您使用的是乙太網路交換器健全狀況監視器（ CSHM ）和記錄收集功能、請確認叢集交換器上已啟用 SSH 和 SSH 金鑰。
+如果您正在使用乙太網路交換器健康監視器 (CSHM) 和日誌收集功能，請確認叢集交換器上已啟用 SSH 和 SSH 金鑰。
 
 .步驟
-. 確認SSH已啟用：
+. 確認 SSH 已啟用：
 +
 [listing, subs="+quotes"]
 ----
 (switch) *show ssh server*
 ssh version 2 is enabled
 ----
-. 確認 SSH 金鑰已啟用：
+. 請確認 SSH 金鑰已啟用：
 +
 `show ssh key`
 
@@ -61,7 +61,7 @@ sshServer              1          enabled
 
 
 
-IMPORTANT: 啟用 FIPS 時、您必須使用命令將交換器上的位元數變更為 256 `ssh key ecdsa 256 force` 。如需詳細資訊、請參閱 https://docs.netapp.com/us-en/ontap/networking/configure_network_security_using_federal_information_processing_standards_@fips@.html#enable-fips["使用FIPS設定網路安全性"^]。
+IMPORTANT: 啟用 FIPS 時，必須使用下列指令將交換器上的位元計數變更為 256。 `ssh key ecdsa 256 force` 。看 https://docs.netapp.com/us-en/ontap/networking/configure_network_security_using_federal_information_processing_standards_@fips@.html#enable-fips["使用 FIPS 設定網路安全"^]更多詳情請見下文。
 
-.接下來呢？
+.下一步是什麼？
 驗證完 SSH 配置後，您可以… link:../switch-cshm/config-overview.html["配置交換器健康監控"]。

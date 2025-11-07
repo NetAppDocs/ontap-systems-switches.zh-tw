@@ -1,24 +1,24 @@
-= 建立交換器項目，讓 ONTAP 能夠監控
+= 建立交換器條目，以便ONTAP可以對其進行監控。
 :allow-uri-read: 
 
 
 
 
-== 建立交換器項目，讓 ONTAP 能夠監控
+== 建立交換器條目，以便ONTAP可以對其進行監控。
 
-使用 `system switch ethernet create`命令手動設定及啟用指定乙太網路交換器的監控。如果 ONTAP 未自動新增交換器，或您先前已移除交換器並想要重新新增交換器，這項功能就很實用。
+使用 `system switch ethernet create`手動設定並啟用指定乙太網路交換器的監控命令。如果ONTAP沒有自動添加交換機，或者您之前刪除了交換器並想重新添加它，這將很有幫助。
 
 [source, cli]
 ----
 system switch ethernet create -device DeviceName -address 1.2.3.4 -snmp-version SNMPv2c -community-or-username cshm1! -model NX3132V -type cluster-network
 ----
-典型的例子是新增一個名為 [DeviceName] 的交換器， IP 位址為 1.2.3.4 ，而 SNMPv2c 認證設定為 *cshm1!* 。如果您正在設定儲存交換器，請改 `-type cluster-network`用 `-type storage-network`。
+一個典型的例子是新增一個名為 [DeviceName] 的交換機，其 IP 位址為 1.2.3.4，SNMPv2c 憑證設定為 *cshm1!*。使用 `-type storage-network`而不是 `-type cluster-network`如果您正在設定儲存交換器。
 
 
 
-== 停用監控，但不刪除交換器
+== 停用監控而不刪除開關
 
-如果您想要暫停或停止監控某個交換器，但仍保留它以供未來監控，請修改其 `is-monitoring-enabled-admim`參數而非刪除它。
+如果您想暫停或停止對某個交換器的監控，但仍希望保留該交換器以供日後監控，請修改其設定。 `is-monitoring-enabled-admim`保留參數而不是刪除它。
 
 例如：
 
@@ -26,22 +26,22 @@ system switch ethernet create -device DeviceName -address 1.2.3.4 -snmp-version 
 ----
 system switch ethernet modify -device DeviceName -is-monitoring-enabled-admin false
 ----
-這可讓您保留交換器的詳細資料和組態，而無需產生新警示或重新探索。
+這樣可以保留交換器的詳細資訊和配置，而不會產生新的警報或重新發現。
 
 
 
-== 移除不再需要的交換器
+== 移除不再需要的開關
 
-用於 `system switch ethernet delete`刪除已中斷連線或不再需要的交換器：
+使用 `system switch ethernet delete`刪除已斷開連接或不再需要的開關：
 
 [source, cli]
 ----
 system switch ethernet delete -device DeviceName
 ----
-根據預設，只有在 ONTAP 目前未透過 CDP 或 LLDP 偵測到交換器時，此命令才會成功。若要移除探索到的交換器，請使用 `-force`參數：
+預設情況下，只有當ONTAP目前未透過 CDP 或 LLDP 偵測到交換器時，此指令才會成功。若要移除已發現的交換機，請使用 `-force`範圍：
 
 [source, cli]
 ----
 system switch ethernet delete -device DeviceName -force
 ----
- `-force`使用時，如果 ONTAP 再次偵測到交換器，可能會自動重新新增交換器。
+什麼時候 `-force`如果使用此開關，當ONTAP再次偵測到該開關時，可能會自動重新新增該開關。

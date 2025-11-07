@@ -15,8 +15,8 @@ summary: 在設定Cisco Nexus SN2100 交換器之前，請先查看以下資訊�
 * 對於 Cumulus Linux 5.11 及更高版本，您可以使用 `nv action reset system factory-default`命令。
 
 
-.關於這項工作
-* 您必須使用序列主控台連線至交換器。
+.關於此任務
+* 您必須使用串列埠控制台連接到交換器。
 * 您必須擁有 root 密碼才能使用 sudo 存取命令。
 
 
@@ -28,7 +28,7 @@ NOTE: 有關安裝 Cumulus Linux 的更多信息，請參閱link:configure-softw
 ====
 .Cumulus Linux 5.10 及更早版本
 --
-. 從 Cumulus 控制台，使用指令下載並排隊交換機軟體安裝 `onie-install -a -i`後面跟著交換器軟體的檔案路徑，例如：
+. 從 Cumulus 控制台，使用以下命令下載交換器軟體並將其新增至安裝佇列。 `onie-install -a -i`後面是交換器軟體的檔案路徑，例如：
 +
 [listing, subs="+quotes"]
 ----
@@ -46,7 +46,7 @@ cumulus@sw1:mgmt:~$ *sudo reboot*
 ----
 +
 
-NOTE: 交換器重新啟動並進入交換器軟體安裝，這需要一些時間。安裝完成後，交換器重新啟動並保持在 `log-in`迅速的。
+NOTE: 交換器重新啟動並進入交換器軟體安裝，這需要一些時間。安裝完成後，交換器重新啟動並保持在該狀態。 `log-in`迅速的。
 
 
 
@@ -72,7 +72,7 @@ Do you want to continue? [y/n] *y*
 ----
 
 
-查看NVIDIA https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-511/Installation-Management/Factory-Reset/["恢復出廠設定"^]文件以了解更多詳細資訊。
+請參閱NVIDIA https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-511/Installation-Management/Factory-Reset/["恢復出廠設定"^]更多詳情請參閱相關文件。
 
 --
 ====

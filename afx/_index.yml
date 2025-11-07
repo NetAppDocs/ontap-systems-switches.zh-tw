@@ -5,7 +5,7 @@ indexpage:
   keywords: AFX systems switches, cisco nexus switches, cluster switches, ontap clusters
   lead: AFX 系統交換器可讓您建置具有兩個以上節點的ONTAP叢集。這些Cisco Nexus 9000 平台交換器為NetApp ONTAP環境中的可擴展叢集互連解決方案提供了基礎。
   tiles:
-  - title: 開始使用
+  - title: 開始
     links:
     - title: CiscoNexus 9332D-GX2B
       url: "../switch-cisco-9332d-gx2b/configure-switch-overview-9332d-cluster.html"
@@ -33,7 +33,7 @@ indexpage:
       url: "../switch-cisco-9364d-gx2a/reset-switch-9364d.html"
   - title: 相關文件
     links:
-    - title: ONTAP 硬體系統
+    - title: ONTAP硬體系統
       url: https://docs.netapp.com/us-en/ontap-systems/index.html
     - title: 集群交換機文檔
       url: "../index.html"

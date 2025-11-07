@@ -2,147 +2,147 @@
 permalink: switch-bes-53248/configure-licenses.html 
 sidebar: sidebar 
 keywords: bes, cluster, switch, base, model, license, 10gbe, 25gbe, 100gbe, port, add, purchasing, purchase, install licenses for bes-53248 cluster switches - bes-53248 switches 
-summary: B16-53248叢集交換器基礎模式已獲得16個10GbE或25GbE連接埠和2個100GbE連接埠的授權。您可以購買更多授權來新增連接埠。 
+summary: BES-53248 叢集交換器基本型號授權配備 16 個 10GbE 或 25GbE 連接埠和 2 個 100GbE 連接埠。可以透過購買更多許可證來新增連接埠。 
 ---
-= 安裝適用於B3作業 叢集交換器的授權
+= 安裝 BES-53248 叢集交換器的許可證
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-B16-53248叢集交換器基礎模式已獲得16個10GbE或25GbE連接埠和2個100GbE連接埠的授權。您可以購買更多授權來新增連接埠。
+BES-53248 叢集交換器基本型號授權配備 16 個 10GbE 或 25GbE 連接埠和 2 個 100GbE 連接埠。您可以透過購買更多許可證來新增連接埠。
 
 
-CAUTION: 對於 EFOS 3.12 及更新版本、請遵循中的安裝步驟link:efos-install-rcf-license-file.html["安裝參考組態檔案（ RCF ）和授權檔案"]。
-
-
-
-== 檢閱可用的授權
-
-下列授權可在B3交互 式叢集交換器上使用：
-
-[cols="1,2,3"]
-|===
-| 授權類型 | 授權詳細資料 | 支援的韌體版本 
-
-
- a| 
-SW-BS-53248A2-8P-2P
- a| 
-Broadcom 8Pt - 10G25G + 2pt-40G100G 授權金鑰、 X190005/R
- a| 
-EFOS 3.4.4.6及更新版本
+CAUTION: 對於 EFOS 3.12 及更高版本，請按照以下安裝步驟進行操作：link:efos-install-rcf-license-file.html["安裝參考設定檔 (RCF) 和授權文件"] 。
 
 
 
- a| 
-SW-BS-53248A2-8P-1025G
- a| 
-Broadcom 8 連接埠 10G25G 授權金鑰、 X190005/R
- a| 
-EFOS 3.4.4.6及更新版本
+== 查看可用許可證
 
-
-
- a| 
-SW-BES53248A2-6P-40-100g
- a| 
-Broadcom 6 連接埠 40G100G 授權金鑰、 X190005/R
- a| 
-EFOS 3.4.4.6及更新版本
-
-|===
-
-
-== 舊版授權
-
-下表列出可在 BS-53248 叢集交換器上使用的舊版授權：
+以下許可證可用於 BES-53248 叢集交換器：
 
 [cols="1,2,3"]
 |===
-| 授權類型 | 授權詳細資料 | 支援的韌體版本 
+| 許可證類型 | 許可證詳情 | 支援的韌體版本 
 
 
  a| 
-SW-BE-53248A1-G1-8P-LIC
+SW-BES-53248A2-8P-2P
  a| 
-Broadcom 8P 10-25、2P40至100授權金鑰、X190005/R
+博通 8PT-10G25G + 2PT-40G100G 許可證密鑰，X190005/R
  a| 
-EFOS 3.4.3.3及更新版本
-
-
-
- a| 
-SW-BE-53248A1-G1-16P-LIC
- a| 
-Broadcom 16P 10-25、4P40-100授權金鑰、X190005/R
- a| 
-EFOS 3.4.3.3及更新版本
+EFOS 3.4.4.6 及更高版本
 
 
 
  a| 
-SW-BE-53248A1-G1-24P-LIC
+SW-BES-53248A2-8P-1025G
  a| 
-Broadcom 24P 10-256P40-100授權金鑰、X190005/R
+博通8埠10G25G許可證金鑰，X190005/R
  a| 
-EFOS 3.4.3.3及更新版本
+EFOS 3.4.4.6 及更高版本
 
 
 
  a| 
-SW-BES54248-40-100G授權
+SW-BES53248A2-6P-40-100G
  a| 
-Broadcom 6port 40G100G授權金鑰、X190005/R
+博通 6 埠 40G/100G 許可證金鑰，X190005/R
  a| 
-EFOS 3.4.4.6及更新版本
+EFOS 3.4.4.6 及更高版本
+
+|===
+
+
+== 舊版許可證
+
+下表列出了可在 BES-53248 叢集交換器上使用的舊版授權：
+
+[cols="1,2,3"]
+|===
+| 許可證類型 | 許可證詳情 | 支援的韌體版本 
+
+
+ a| 
+SW-BES-53248A1-G1-8P-LIC
+ a| 
+Broadcom 8P 10-25,2P40-100 許可證金鑰，X190005/R
+ a| 
+EFOS 3.4.3.3 及更高版本
 
 
 
  a| 
-SW-BES53248-8P-10G25G授權
+SW-BES-53248A1-G1-16P-LIC
  a| 
-Broadcom 8Port 10G25G授權金鑰、X190005/R
+Broadcom 16P 10-25,4P40-100 許可證金鑰，X190005/R
  a| 
-EFOS 3.4.4.6及更新版本
+EFOS 3.4.3.3 及更高版本
+
+
+
+ a| 
+SW-BES-53248A1-G1-24P-LIC
+ a| 
+Broadcom 24P 10-25,6P40-100 許可證金鑰，X190005/R
+ a| 
+EFOS 3.4.3.3 及更高版本
+
+
+
+ a| 
+SW-BES54248-40-100G-LIC
+ a| 
+博通 6 埠 40G/100G 許可證金鑰，X190005/R
+ a| 
+EFOS 3.4.4.6 及更高版本
+
+
+
+ a| 
+SW-BES53248-8P-10G25G-LIC
+ a| 
+博通8埠10G25G許可證金鑰，X190005/R
+ a| 
+EFOS 3.4.4.6 及更高版本
 
 
 
  a| 
 SW-BES53248-16P-1025G-LIC
  a| 
-Broadcom 16Port 10G25G授權金鑰、X190005/R
+博通 16 埠 10G25G 許可證金鑰，X190005/R
  a| 
-EFOS 3.4.4.6及更新版本
+EFOS 3.4.4.6 及更高版本
 
 
 
  a| 
 SW-BES53248-24P-1025G-LIC
  a| 
-Broadcom 24Port 10G25G授權金鑰、X190005/R
+博通 24 埠 10G/25G 許可證金鑰，X190005/R
  a| 
-EFOS 3.4.4.6及更新版本
+EFOS 3.4.4.6 及更高版本
 
 |===
 
-NOTE: 基礎組態不需要授權。
+NOTE: 基本配置不需要許可證。
 
 
 
-== 安裝授權檔案
+== 安裝許可證文件
 
-請依照下列步驟安裝BS-53248叢集交換器的授權。
+請依照下列步驟安裝 BES-53248 叢集交換器的授權。
 
 .步驟
-. 將叢集交換器連接至管理網路。
-. 使用「ping」命令來驗證與裝載EFOS、授權和RCF檔案的伺服器之間的連線。
+. 將集群交換器連接到管理網路。
+. 使用 `ping`用於驗證與託管 EFOS、許可證和 RCF 檔案的伺服器的連接性的命令。
 +
 .顯示範例
 [%collapsible]
 ====
-此範例可驗證交換器是否連接至IP位址為172.19.2.1的伺服器：
+此範例驗證交換器是否已連接到 IP 位址為 172.19.2.1 的伺服器：
 
 [listing, subs="+quotes"]
 ----
@@ -152,9 +152,9 @@ Pinging 172.19.2.1 with 0 bytes of data:
 Reply From 172.19.2.1: icmp_seq = 0. time= 5910 usec.
 ----
 ====
-. 檢查交換器CS2目前的授權使用量：
+. 檢查交換器 CS2 的目前許可證使用：
 +
-「如何授權」
+`show license`
 
 +
 .顯示範例
@@ -172,15 +172,15 @@ License Index  License Type     Status
 No license file found.
 ----
 ====
-. 安裝授權檔案。
+. 安裝許可證文件。
 +
-重複此步驟以載入更多授權、並使用不同的金鑰索引編號。
+重複此步驟以載入更多許可證並使用不同的金鑰索引號。
 
 +
 .顯示範例
 [%collapsible]
 ====
-下列範例使用SFTP將授權檔案複製到金鑰索引1。
+以下範例使用 SFTP 將授權檔案複製到金鑰索引 1。
 
 [listing, subs="+quotes"]
 ----
@@ -202,9 +202,9 @@ File transfer in progress. Management access will be blocked for the duration of
 License Key transfer operation completed successfully. System reboot is required.
 ----
 ====
-. 顯示所有目前的授權資訊、並在重新啟動交換器CS2之前記下授權狀態：
+. 顯示所有目前許可證信息，並在交換機 cs2 重新啟動前記錄許可證狀態：
 +
-「如何授權」
+`show license`
 
 +
 .顯示範例
@@ -223,12 +223,12 @@ License Index  License Type      Status
 1              Port              License valid but not applied
 ----
 ====
-. 顯示所有授權連接埠：
+. 顯示所有已授權連接埠：
 +
-「How port all | exclude Detach」
+`show port all | exclude Detach`
 
 +
-交換器重新開機後、才會顯示其他授權檔的連接埠。
+交換器重新啟動後才會顯示附加許可證文件中的連接埠。
 
 +
 .顯示範例
@@ -261,9 +261,9 @@ Intf      Type   Mode      Mode       Status     Status Trap    Mode   Timeout
 0/56             Disable   Auto                  Down   Enable  Enable long
 ----
 ====
-. 重新啟動交換器：
+. 重啟交換器：
 +
-"重裝"
+`reload`
 
 +
 .顯示範例
@@ -282,9 +282,9 @@ Configuration Saved!
 Are you sure you would like to reset the system? (y/n) *y*
 ----
 ====
-. 請檢查新授權是否已啟用、並注意已套用授權：
+. 請檢查新許可證是否已激活，並確認許可證已應用：
 +
-「如何授權」
+`show license`
 
 +
 .顯示範例
@@ -306,7 +306,7 @@ License Index  License Type              Status
 ====
 . 檢查所有新連接埠是否可用：
 +
-「How port all | exclude Detach」
+`show port all | exclude Detach`
 
 +
 .顯示範例
@@ -348,15 +348,15 @@ Intf      Type   Mode      Mode       Status     Status Trap    Mode   Timeout
 
 
 
-CAUTION: 安裝額外授權時、您必須手動設定新介面。請勿將RCF重新套用至現有運作中的正式作業交換器。
+CAUTION: 安裝其他許可證時，必須手動設定新介面。不要對現有正在運作的生產交換器重新套用 RCF。
 
 
 
-== 疑難排解安裝問題
+== 排查安裝問題
 
-如果安裝授權時發生問題、請在執行之前執行下列偵錯命令 `copy` 命令。
+如果在安裝許可證時出現問題，請在執行以下命令之前執行以下偵錯命令： `copy`再次發出命令。
 
-要使用的除錯命令：「Debuger transfer」和「debugs license」
+可使用的調試命令： `debug transfer`和 `debug license`
 
 .顯示範例
 [%collapsible]
@@ -369,7 +369,7 @@ Debug transfer output is enabled.
 Enabled capability licensing debugging.
 ----
 ====
-當您執行時 `copy` 命令 `debug transfer` 和 `debug license` 選項已啟用、會傳回記錄輸出。
+當你運行 `copy`使用命令 `debug transfer`和 `debug license`啟用這些選項後，將傳回日誌輸出。
 
 .顯示範例
 [%collapsible]
@@ -399,32 +399,32 @@ CAPABILITY LICENSING : Fri Sep 11 13:41:32 2020: Feature not found in license fi
 CAPABILITY LICENSING : Fri Sep 11 13:41:32 2020: Applying license file 1.
 ----
 ====
-在偵錯輸出中檢查下列項目：
+請檢查調試輸出中的以下內容：
 
-* 請檢查序號是否符合：「序號QTFC38290012相符」
-* 檢查交換器機型是否符合「model Bes - 53248 matched」
-* 檢查之前是否未使用指定的授權索引。如果已使用授權索引、則會傳回下列錯誤：「License file /mnt/download//license．dat.1 already exists（授權檔案/mnt/download//license．dat.1已存在）」
-* 連接埠授權並非功能授權。因此、預期會有下列陳述：「在索引= 1的授權檔案中找不到功能。」
+* 請檢查序號是否匹配： `Serial number QTFCU38290012 matched.`
+* 檢查交換器型號是否匹配： `Model BES-53248 matched.`
+* 檢查指定的許可證索引是否之前未被使用過。如果許可證索引已被使用，則會傳回下列錯誤： `License file /mnt/download//license.dat.1 already exists.`
+* 連接埠許可證並非功能許可證。因此，預期會出現以下語句： `Feature not found in license file with index = 1.`
 
 
-使用 `copy` 將連接埠授權備份到伺服器的命令：
+使用 `copy`將連接埠許可證備份到伺服器的命令：
 
 [listing, subs="+quotes"]
 ----
 (cs2)# *copy nvram:license-key 1 scp://<UserName>@<IP_address>/saved_license_1.dat*
 ----
 
-CAUTION: 如果您需要將交換器軟體從3.4.4.6版降級、則會移除授權。這是預期的行為。
+CAUTION: 如果需要將交換器軟體從 3.4.4.6 版本降級，則許可證將被移除。這是預期行為。
 
-您必須先安裝適當的舊版授權、才能還原至舊版軟體。
+在還原到軟體的舊版本之前，您必須先安裝相應的舊版本許可證。
 
 
 
-== 啟動新授權的連接埠
+== 啟動新授權的端口
 
-若要啟動新授權的連接埠、您必須編輯最新版的RCF、然後取消註釋適用的連接埠詳細資料。
+要啟動新授權的端口，您需要編輯最新版本的 RCF 文件，並取消註釋適用的端口詳細資訊。
 
-預設授權會啟動連接埠0/1到0/16和0/55到0/56、而新授權的連接埠則會在連接埠0/17到0/54之間、視可用授權的類型和數量而定。例如、若要啟動SW-BES54248-40-100g-LIC授權、您必須取消註解RCF中的下列章節：
+預設許可證啟動連接埠 0/1 至 0/16 和 0/55 至 0/56，而新授權的連接埠將根據可用許可證的類型和數量在連接埠 0/17 至 0/54 之間。例如，要啟動 SW-BES54248-40-100G-LIC 許可證，您必須取消註釋 RCF 中的以下部分：
 
 .顯示範例
 [%collapsible]
@@ -531,7 +531,7 @@ exit
 ----
 ====
 
-NOTE: 對於0/49到0/54（含）之間的高速連接埠、請針對每個連接埠取消註解、但在RCF中只取消註釋一條*速度*線路、例如*速度100g全雙工*或*速度40G全雙工*、如範例所示。對於0/17到0/48（含）之間的低速度連接埠、請在啟用適當授權後、取消註釋整個8埠區段。
+NOTE: 對於 0/49 到 0/54 之間的高速端口（含 0/49 和 0/54），取消註釋每個端口，但每個端口的 RCF 中僅取消註釋一行 *speed*，可以是：*speed 100G 全雙工* 或 *speed 40G 全雙工*，如示例所示。對於 0/17 到 0/48 之間的低速連接埠（含 0/17 和 0/48），當啟動對應的許可證後，請取消註解整個 8 埠部分。
 
-.接下來呢？
+.下一步是什麼？
 安裝許可證後，您可以 link:configure-install-rcf.html["安裝參考設定檔（RCF）"] 或者 link:upgrade-rcf.html["升級 RCF"]。

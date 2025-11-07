@@ -4,38 +4,38 @@
 
 [NOTE]
 ====
-* 僅 ONTAP 9.12.1 及更新版本支援 SNMPv3 。
-* ONTAP 9.13.1P12、9.14.1P9、9.15.1P5、9.16.1 及更高版本修正了以下兩個問題：
+* ONTAP 9.12.1 及更高版本僅支援 SNMPv3。
+* ONTAP 9.13.1P12、9.14.1P9、9.15.1P5、9.16.1 及更高版本修復了這兩個問題：
 +
-** link:https://kb.netapp.com/on-prem/ontap/OHW/OHW-Issues/CONTAP-82891["對於 Cisco 交換器的 ONTAP 運作狀況監控，切換到 SNMPv3 進行監控後仍可能看到 SNMPv2 流量"^]
-** link:https://kb.netapp.com/on-prem/ontap/OHW/OHW-Issues/CONTAP-119131["SNMP 故障發生時誤報交換器風扇及電源警報"^]
+** link:https://kb.netapp.com/on-prem/ontap/OHW/OHW-Issues/CONTAP-82891["對於使用ONTAP對Cisco交換器進行健康監控的情況，即使切換到 SNMPv3 進行監控，可能仍會看到 SNMPv2 流量。"^]
+** link:https://kb.netapp.com/on-prem/ontap/OHW/OHW-Issues/CONTAP-119131["當 SNMP 故障發生時，交換器風扇和電源警報可能會出現誤報。"^]
 
 
 
 
 ====
-.關於這項工作
-以下命令用於在 *Broadcom* 、 *Cisco* 和 *NVidia 交換機上配置 SNMPv3 用戶名：
+.關於此任務
+以下命令用於在 Broadcom、 Cisco和NVIDIA交換器上設定 SNMPv3 使用者名稱：
 
 [role="tabbed-block"]
 ====
-.Broadcom 交換器
+.博通交換機
 --
-在 Broadcom BS-53248 交換器上設定 SNMPv3 使用者名稱網路操作員。
+在 Broadcom BES-53248 交換器上設定 SNMPv3 使用者名稱 NETWORK-OPERATOR。
 
-* 若為 * 無驗證 * ：
+* 對於*無需身份驗證*的情況：
 +
 [source, cli]
 ----
 snmp-server user SNMPv3UserNoAuth NETWORK-OPERATOR noauth
 ----
-* 對於 *MD5/SHA 驗證 * ：
+* 用於 *MD5/SHA 認證*：
 +
 [source, cli]
 ----
 snmp-server user SNMPv3UserAuth NETWORK-OPERATOR [auth-md5|auth-sha]
 ----
-* 對於採用 AES/DES 加密的 * MD5/SHA 驗證 * ：
+* 用於*MD5/SHA認證與AES/DES加密*：
 +
 [source, cli]
 ----
@@ -43,20 +43,20 @@ snmp-server user SNMPv3UserAuthEncrypt NETWORK-OPERATOR [auth-md5|auth-sha] [pri
 ----
 
 
-下列命令可在 ONTAP 端設定 SNMPv3 使用者名稱：
+以下指令在ONTAP端設定 SNMPv3 使用者名稱：
 
 [source, cli]
 ----
 security login create -user-or-group-name SNMPv3_USER -application snmp -authentication-method usm -remote-switch-ipaddress ADDRESS
 ----
-下列命令會使用 CSHM 建立 SNMPv3 使用者名稱：
+以下命令用於在 CSHM 中建立 SNMPv3 使用者名稱：
 
 [source, cli]
 ----
 cluster1::*> system switch ethernet modify -device DEVICE -snmp-version SNMPv3 -community-or-username SNMPv3_USER
 ----
 .步驟
-. 設定交換器上的v3使用者使用驗證和加密：
+. 在交換器上設定 SNMPv3 使用者以使用身份驗證和加密：
 +
 [source, cli]
 ----
@@ -74,7 +74,7 @@ show snmp status
 ----------------- ------------------ ---- ------ -------------------------
 <username>        network-admin      MD5  AES128 8000113d03d8c497710bee
 ----
-. 設定位在邊上的v3使用者ONTAP ：
+. 在ONTAP端設定 SNMPv3 用戶：
 +
 [source, cli]
 ----
@@ -99,7 +99,7 @@ Which privacy protocol do you want to choose (none, des, aes128) [none]: *aes128
 Enter privacy protocol password (minimum 8 characters long):
 Enter privacy protocol password again:
 ----
-. 設定 CSHM 以監控新的 SNMPv3 使用者：
+. 設定 CSHM 以使用新的 SNMPv3 使用者進行監控：
 +
 [source, cli]
 ----
@@ -128,7 +128,7 @@ DEPRECATED-Community String or SNMPv3 Username: -
 cluster1::*>
 cluster1::*> *system switch ethernet modify -device "sw1" -snmp-version SNMPv3 -community-or-username <username>*
 ----
-. 等待 CSHM 輪詢期後，驗證乙太網路交換器的序號是否已填入。
+. 等待 CSHM 輪詢週期結束後，確認乙太網路交換器的序號已填入。
 +
 [source, cli]
 ----
@@ -159,23 +159,23 @@ DEPRECATED-Community String or SNMPv3 Username: -
 
 
 --
-.Cisco交換器
+.Cisco交換機
 --
-在 Cisco 9336C-FX2 交換器上設定 SNMPv3 使用者名稱 SNMPv3 使用者：
+在Cisco 9336C-FX2 交換器上設定 SNMPv3 使用者名稱 SNMPv3_USER：
 
-* 若為 * 無驗證 * ：
+* 對於*無需身份驗證*的情況：
 +
 [source, cli]
 ----
 snmp-server user SNMPv3_USER NoAuth
 ----
-* 對於 *MD5/SHA 驗證 * ：
+* 用於 *MD5/SHA 認證*：
 +
 [source, cli]
 ----
 snmp-server user SNMPv3_USER auth [md5|sha] AUTH-PASSWORD
 ----
-* 對於採用 AES/DES 加密的 * MD5/SHA 驗證 * ：
+* 用於*MD5/SHA認證與AES/DES加密*：
 +
 [source, cli]
 ----
@@ -183,20 +183,20 @@ snmp-server user SNMPv3_USER AuthEncrypt  auth [md5|sha] AUTH-PASSWORD priv aes-
 ----
 
 
-下列命令可在 ONTAP 端設定 SNMPv3 使用者名稱：
+以下指令在ONTAP端設定 SNMPv3 使用者名稱：
 
 [source, cli]
 ----
 security login create -user-or-group-name SNMPv3_USER -application snmp -authentication-method usm -remote-switch-ipaddress ADDRESS
 ----
-下列命令會使用 CSHM 建立 SNMPv3 使用者名稱：
+以下命令用於在 CSHM 中建立 SNMPv3 使用者名稱：
 
 [source, cli]
 ----
 system switch ethernet modify -device DEVICE -snmp-version SNMPv3 -community-or-username SNMPv3_USER
 ----
 .步驟
-. 設定交換器上的v3使用者使用驗證和加密：
+. 在交換器上設定 SNMPv3 使用者以使用身份驗證和加密：
 +
 [source, cli]
 ----
@@ -227,7 +227,7 @@ User              Auth               Priv
 
 (sw1)(Config)#
 ----
-. 設定位在邊上的v3使用者ONTAP ：
+. 在ONTAP端設定 SNMPv3 用戶：
 +
 [source, cli]
 ----
@@ -254,7 +254,7 @@ Which privacy protocol do you want to choose (none, des, aes128) [none]: *aes128
 Enter privacy protocol password (minimum 8 characters long):
 Enter privacy protocol password again:
 ----
-. 設定 CSHM 以監控新的 SNMPv3 使用者：
+. 設定 CSHM 以使用新的 SNMPv3 使用者進行監控：
 +
 [source, cli]
 ----
@@ -283,7 +283,7 @@ cluster1::*>
 cluster1::*> *system switch ethernet modify -device "sw1" -snmp-version SNMPv3 -community-or-username <username>*
 cluster1::*>
 ----
-. 驗證要與新建立的 SNMPv3 使用者查詢的序號、是否與 CSHM 輪詢期間結束後上一步所述相同。
+. 在 CSHM 輪詢週期結束後，驗證使用新建立的 SNMPv3 使用者查詢的序號是否與上一個步驟中詳細說明的序號相同。
 +
 [source, cli]
 ----
@@ -316,23 +316,23 @@ cluster1::*>
 
 
 --
-.NVIDIA-CL 5.4.0
+.NVIDIA - CL 5.4.0
 --
-在執行 CLI 5.4.0 的 NVIDIA SN2100 交換器上設定 SNMPv3 使用者名稱 SNMPv3_USER：
+在執行 CLI 5.4.0 的NVIDIA SN2100 交換器上設定 SNMPv3 使用者名稱 SNMPv3_USER：
 
-* 若為 * 無驗證 * ：
+* 對於*無需身份驗證*的情況：
 +
 [source, cli]
 ----
 nv set service snmp-server username SNMPv3_USER auth-none
 ----
-* 對於 *MD5/SHA 驗證 * ：
+* 用於 *MD5/SHA 認證*：
 +
 [source, cli]
 ----
 nv set service snmp-server username SNMPv3_USER [auth-md5|auth-sha] AUTH-PASSWORD
 ----
-* 對於採用 AES/DES 加密的 * MD5/SHA 驗證 * ：
+* 用於*MD5/SHA認證與AES/DES加密*：
 +
 [source, cli]
 ----
@@ -340,20 +340,20 @@ nv set service snmp-server username SNMPv3_USER [auth-md5|auth-sha] AUTH-PASSWOR
 ----
 
 
-下列命令可在 ONTAP 端設定 SNMPv3 使用者名稱：
+以下指令在ONTAP端設定 SNMPv3 使用者名稱：
 
 [source, cli]
 ----
 security login create -user-or-group-name SNMPv3_USER -application snmp -authentication-method usm -remote-switch-ipaddress ADDRESS
 ----
-下列命令會使用 CSHM 建立 SNMPv3 使用者名稱：
+以下命令用於在 CSHM 中建立 SNMPv3 使用者名稱：
 
 [source, cli]
 ----
 system switch ethernet modify -device DEVICE -snmp-version SNMPv3 -community-or-username SNMPv3_USER
 ----
 .步驟
-. 設定交換器上的v3使用者使用驗證和加密：
+. 在交換器上設定 SNMPv3 使用者以使用身份驗證和加密：
 +
 [source, cli]
 ----
@@ -428,7 +428,7 @@ Version 3 Usernames                Configured     *<---- Configured here*
 ---------------------------------  ----------------
 cumulus@sw1:~$
 ----
-. 設定位在邊上的v3使用者ONTAP ：
+. 在ONTAP端設定 SNMPv3 用戶：
 +
 [source, cli]
 ----
@@ -453,7 +453,7 @@ Which privacy protocol do you want to choose (none, des, aes128) [none]: *aes128
 Enter privacy protocol password (minimum 8 characters long):
 Enter privacy protocol password again:
 ----
-. 設定 CSHM 以監控新的 SNMPv3 使用者：
+. 設定 CSHM 以使用新的 SNMPv3 使用者進行監控：
 +
 [source, cli]
 ----
@@ -481,7 +481,7 @@ DEPRECATED-Community String or SNMPv3 Username: -
 cluster1::*>
 cluster1::*> *system switch ethernet modify -device "sw1 (b8:59:9f:09:7c:22)" -snmp-version SNMPv3 -community-or-username SNMPv3User*
 ----
-. 驗證要與新建立的 SNMPv3 使用者查詢的序號、是否與 CSHM 輪詢期間結束後上一步所述相同。
+. 在 CSHM 輪詢週期結束後，驗證使用新建立的 SNMPv3 使用者查詢的序號是否與上一個步驟中詳細說明的序號相同。
 +
 [source, cli]
 ----
@@ -512,23 +512,23 @@ DEPRECATED-Community String or SNMPv3 Username: -
 
 
 --
-.NVIDIA-CL 5.11.0
+.NVIDIA - CL 5.11.0
 --
-在執行 CLI 5.11.0 的 NVIDIA SN2100 交換器上設定 SNMPv3 使用者名稱 SNMPv3_USER：
+在執行 CLI 5.11.0 的NVIDIA SN2100 交換器上設定 SNMPv3 使用者名稱 SNMPv3_USER：
 
-* 若為 * 無驗證 * ：
+* 對於*無需身份驗證*的情況：
 +
 [source, cli]
 ----
 nv set system snmp-server username SNMPv3_USER auth-none
 ----
-* 對於 *MD5/SHA 驗證 * ：
+* 用於 *MD5/SHA 認證*：
 +
 [source, cli]
 ----
 nv set system snmp-server username SNMPv3_USER [auth-md5|auth-sha] AUTH-PASSWORD
 ----
-* 對於採用 AES/DES 加密的 * MD5/SHA 驗證 * ：
+* 用於*MD5/SHA認證與AES/DES加密*：
 +
 [source, cli]
 ----
@@ -536,20 +536,20 @@ nv set system snmp-server username SNMPv3_USER [auth-md5|auth-sha] AUTH-PASSWORD
 ----
 
 
-下列命令可在 ONTAP 端設定 SNMPv3 使用者名稱：
+以下指令在ONTAP端設定 SNMPv3 使用者名稱：
 
 [source, cli]
 ----
 security login create -user-or-group-name SNMPv3_USER -application snmp -authentication-method usm -remote-switch-ipaddress ADDRESS
 ----
-下列命令會使用 CSHM 建立 SNMPv3 使用者名稱：
+以下命令用於在 CSHM 中建立 SNMPv3 使用者名稱：
 
 [source, cli]
 ----
 system switch ethernet modify -device DEVICE -snmp-version SNMPv3 -community-or-username SNMPv3_USER
 ----
 .步驟
-. 設定交換器上的v3使用者使用驗證和加密：
+. 在交換器上設定 SNMPv3 使用者以使用身份驗證和加密：
 +
 [source, cli]
 ----
@@ -575,7 +575,7 @@ trap-link-down
 state                 enabled
 cumulus@sw1:~$
 ----
-. 設定位在邊上的v3使用者ONTAP ：
+. 在ONTAP端設定 SNMPv3 用戶：
 +
 [source, cli]
 ----
@@ -600,7 +600,7 @@ Which privacy protocol do you want to choose (none, des, aes128) [none]: *aes128
 Enter privacy protocol password (minimum 8 characters long):
 Enter privacy protocol password again:
 ----
-. 設定 CSHM 以監控新的 SNMPv3 使用者：
+. 設定 CSHM 以使用新的 SNMPv3 使用者進行監控：
 +
 [source, cli]
 ----
@@ -628,7 +628,7 @@ DEPRECATED-Community String or SNMPv3 Username: -
 cluster1::*>
 cluster1::*> *system switch ethernet modify -device "sw1 (b8:59:9f:09:7c:22)" -snmp-version SNMPv3 -community-or-username SNMPv3User*
 ----
-. 驗證要與新建立的 SNMPv3 使用者查詢的序號、是否與 CSHM 輪詢期間結束後上一步所述相同。
+. 在 CSHM 輪詢週期結束後，驗證使用新建立的 SNMPv3 使用者查詢的序號是否與上一個步驟中詳細說明的序號相同。
 +
 [source, cli]
 ----

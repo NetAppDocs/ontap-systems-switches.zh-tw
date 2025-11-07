@@ -2,72 +2,71 @@
 permalink: switch-cisco-9336c-fx2-shared/install-nxos-software-9336c-shared.html 
 sidebar: sidebar 
 keywords: procedure, install, nx-os, software, nexus, cluster, switch, install the nx-os software - cisco nexus 9336c-fx2 
-summary: 您可以使用此程序、在Nexus 9336C-FX2叢集交換器上安裝NX-OS軟體。 
+summary: 您可以依照以下步驟在 Nexus 9336C-FX2 叢集交換器上安裝 NX-OS 軟體。 
 ---
-= 安裝NX-OS軟體
+= 安裝 NX-OS 軟體
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-請遵循此程序、在Nexus 9336C-FX2共用交換器上安裝NX-OS軟體。
+請依照下列步驟在 Nexus 9336C-FX2 共用交換器上安裝 NX-OS 軟體。
 
-開始之前、請先完成中的程序 link:prepare-nxos-rcf-9336c-shared.html["準備安裝NX-OS和RCF"]。
+開始之前，請先完成以下步驟。link:prepare-nxos-rcf-9336c-shared.html["準備安裝 NX-OS 和 RCF"] 。
 
 
 
-== 檢閱要求
+== 審查要求
 
 .開始之前
-請確定您擁有下列項目：
+請確保您擁有以下物品：
 
-* 交換器組態的目前備份。
-* 完全正常運作的叢集（記錄檔中沒有錯誤或類似問題）。
+* 交換器配置的目前備份。
+* 一個功能齊全的群集（日誌中沒有錯誤或類似問題）。
 
 
-.建議的文件
+.建議的文檔
 * link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器頁面"^]
 +
-請參閱交換器相容性表、以瞭解支援ONTAP 的功能表和NX-OS版本。
+請查閱交換器相容性表格，以了解支援的ONTAP和 NX-OS 版本。
 
 * link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-installation-guides-list.html["軟體升級與降級指南"^]
 +
-如需 Cisco 交換器升級與降級程序的完整文件、請參閱 Cisco 網站上提供的適當軟體與升級指南。
+有關Cisco交換器升級和降級程序的完整文檔，請參閱Cisco網站上提供的相應軟體和升級指南。
 
-* link:https://www.cisco.com/c/dam/en/us/td/docs/dcn/tools/nexus-9k3k-issu-matrix/index.html["Cisco Nexus 9000 與 3000 升級與 ISSU 對照表"^]
+* link:https://www.cisco.com/c/dam/en/us/td/docs/dcn/tools/nexus-9k3k-issu-matrix/index.html["Cisco Nexus 9000 和 3000 升級和 ISSU 矩陣"^]
 +
-提供 Nexus 9000 系列交換器上 Cisco NX-OS 軟體的中斷升級 / 降級相關資訊
-根據您目前的版本和目標版本。
+根據您目前和目標版本，提供有關 Nexus 9000 系列交換器上Cisco NX-OS 軟體的中斷式升級/降級的資訊。
 
 +
-在頁面上、選取 * 顛覆性升級 * 、然後從下拉式清單中選取您目前的版本和目標版本。
+在頁面上，選擇“中斷式升級”，然後從下拉清單中選擇目前版本和目標版本。
 
 
 
 .關於範例
-本程序中的範例使用下列交換器和節點命名法：
+本流程中的範例使用以下開關和節點命名規則：
 
-* 兩個Cisco交換器的名稱為CS1和CS2。
+* 這兩個Cisco交換器的名稱分別是 cs1 和 cs2。
 * 節點名稱為cluster1-01、cluster1-02、cluster1-03和cluster1-04。
-* 叢集LIF名稱為cluster1-01_clus1、cluster1-01_clus2、cluster1-02_clus1、cluster1-02_clus2、cluster1-03_clus1、 cluster1-03_clus2、cluster1-04_clus1和cluster1-04_clus2。
-* 「cluster1：*：>」提示會指出叢集的名稱。
+* 群集 LIF 名稱稱為 cluster1-01_clus1、cluster1-01_clus2、cluster1-02_clus1、cluster1-02_clus2、cluster1-03_clus1、cluster1-03_clus2、cluster1-04_clus1 和 cluster1-04_clus2。
+* 這 `cluster1::*>`prompt 指示叢集名稱。
 
 
 
 
 == 安裝軟體
 
-此程序需要同時使用ONTAP 支援指令和Cisco Nexus 9000系列交換器的指令；ONTAP 除非另有說明、否則會使用支援指令。
+流程需要同時使用ONTAP指令和Cisco Nexus 9000 系列交換器指令；除非另有說明，否則使用ONTAP指令。
 
 .步驟
-. 將叢集交換器連接至管理網路。
-. 使用ping命令來驗證與裝載NX-OS軟體和RCF之伺服器的連線能力。
+. 將集群交換器連接到管理網路。
+. 使用 ping 指令驗證與託管 NX-OS 軟體和 RCF 的伺服器的連接性。
 +
 .顯示範例
 [%collapsible]
 ====
-此範例可驗證交換器是否能以IP位址172.19.2.1連至伺服器：
+此範例驗證交換器可以存取 IP 位址為 172.19.2.1 的伺服器：
 
 [listing, subs="+quotes"]
 ----
@@ -77,9 +76,9 @@ Pinging 172.19.2.1 with 0 bytes of data:
 Reply From 172.19.2.1: icmp_seq = 0. time= 5910 usec.
 ----
 ====
-. 顯示連接至叢集交換器之每個節點上的叢集連接埠：
+. 顯示每個節點上連接到叢集交換器的叢集連接埠：
 +
-「網路裝置探索秀」
+`network device-discovery show`
 
 +
 .顯示範例
@@ -106,11 +105,11 @@ cluster1-04/cdp
 cluster1::*>
 ----
 ====
-. 檢查每個叢集連接埠的管理和作業狀態。
+. 檢查每個叢集連接埠的管理和運作狀態。
 +
-.. 驗證所有的叢集連接埠是否為「正常」狀態*「up」*：
+.. 確認叢集所有連接埠均已啟動且狀態正常：
 +
-「網路連接埠show -role cluster」
+`network port show -role cluster`
 
 +
 .顯示範例
@@ -156,9 +155,9 @@ e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
 cluster1::*>
 ----
 ====
-.. 確認所有叢集介面（l生命）都位於主連接埠：
+.. 確認所有叢集介面（LIF）都位於主連接埠上：
 +
-「網路介面show -role cluster」
+`network interface show -role cluster`
 
 +
 .顯示範例
@@ -183,9 +182,9 @@ Cluster
 cluster1::*>
 ----
 ====
-.. 驗證叢集是否顯示兩個叢集交換器的資訊：
+.. 確認集群顯示兩個集群交換器的資訊：
 +
-「系統叢集交換器show -is監控、可運作的true」
+`system cluster-switch show -is-monitoring-enabled-operational true`
 
 +
 .顯示範例
@@ -216,11 +215,11 @@ cluster1::*>
 ====
 
 
-. 停用叢集生命體上的自動還原。叢集生命體將容錯移轉至合作夥伴叢集交換器、並在目標交換器上執行升級程序時保留在那裡：
+. 停用群集 LIF 的自動回滾功能。叢集 LIF 會故障轉移到夥伴叢集交換機，並在您對目標交換器執行升級程序時保留在該交換器上：
 +
-「網路介面修改-vserver叢集-lIF *-auta-fRevert假」
+`network interface modify -vserver Cluster -lif * -auto-revert false`
 
-. 將NX-OS軟體和EPLD映像複製到Nexus 9336C-FX2交換器。
+. 將 NX-OS 軟體和 EPLD 映像複製到 Nexus 9336C-FX2 交換器。
 +
 .顯示範例
 [%collapsible]
@@ -261,9 +260,9 @@ Copy complete, now saving to disk (please wait)...
 Copy complete.
 ----
 ====
-. 驗證NX-OS軟體的執行版本：
+. 請確認NX-OS軟體的運作版本：
 +
-《如何版本》
+`show version`
 
 +
 .顯示範例
@@ -324,9 +323,9 @@ Active Package(s):
 cs2#
 ----
 ====
-. 安裝NX-OS映像。
+. 安裝 NX-OS 鏡像。
 +
-安裝映像檔會在每次重新開機時載入映像檔。
+安裝鏡像檔案後，每次交換器重新啟動時都會載入該檔案。
 
 +
 .顯示範例
@@ -396,9 +395,9 @@ Warning: please do not remove or power off the module at this time.
 Finishing the upgrade, switch will reboot in 10 seconds.
 ----
 ====
-. 在交換器重新開機後、驗證新版本的NX-OS軟體：
+. 交換器重新啟動後，請先驗證NX-OS軟體的新版本：
 +
-《如何版本》
+`show version`
 
 +
 .顯示範例
@@ -456,7 +455,7 @@ plugin
 Active Package(s):
 ----
 ====
-. 升級EPLD映像、然後重新啟動交換器。
+. 升級EPLD鏡像並重新啟動交換器。
 +
 .顯示範例
 [%collapsible]
@@ -507,7 +506,7 @@ EPLDs upgraded.
 Module 1 EPLD upgrade is successful.
 ----
 ====
-. 交換器重新開機後、再次登入、並確認新版的EPLD已成功載入。
+. 交換器重新啟動後，再次登入並驗證新版本的 EPLD 是否已成功載入。
 +
 .顯示範例
 [%collapsible]
@@ -527,11 +526,11 @@ GEM  FPGA                        0x2
 GEM  FPGA                        0x2
 ----
 ====
-. 驗證叢集上叢集連接埠的健全狀況。
+. 檢查叢集上叢集連接埠的運作狀況。
 +
-.. 驗證叢集內所有節點的叢集連接埠是否正常運作：
+.. 確認叢集中所有節點的叢集連接埠均已啟動且運作狀況良好：
 +
-「網路連接埠show -role cluster」
+`network port show -role cluster`
 
 +
 .顯示範例
@@ -575,9 +574,9 @@ e0d       Cluster      Cluster          up   9000  auto/100000 healthy false
 8 entries were displayed.
 ----
 ====
-.. 驗證叢集的交換器健全狀況。
+.. 從叢集中驗證交換器的運作狀況。
 +
-「network device-dDiscovery show -protocol cup」
+`network device-discovery show -protocol cdp`
 
 +
 .顯示範例
@@ -623,7 +622,7 @@ cs2                         cluster-network    10.233.205.91    N9K-C9336C-FX2
 
 2 entries were displayed.
 ----
-您可能會在CS1交換器主控台觀察到下列輸出、視先前載入交換器的RCF版本而定：
+根據交換器上先前載入的 RCF 版本，您可能會在 cs1 交換器控制台上看到以下輸出：
 
 [listing]
 ----
@@ -634,9 +633,9 @@ cs2                         cluster-network    10.233.205.91    N9K-C9336C-FX2
 ====
 
 
-. 驗證叢集是否正常：
+. 驗證叢集是否運作正常：
 +
-「叢集展示」
+`cluster show`
 
 +
 .顯示範例
@@ -655,14 +654,14 @@ cluster1-04          true     true          false
 cluster1::*>
 ----
 ====
-. 重複步驟 6 至 13 、在交換器 CS1 上安裝 NX-OS 軟體。
-. 在叢集生命體上啟用自動還原。
+. 重複步驟 6 至 13，在交換器 cs1 上安裝 NX-OS 軟體。
+. 啟用叢集 LIF 的自動回滾功能。
 +
-「網路介面修改-vserver叢集-lif*-auta-f還原 為真」
+`network interface modify -vserver Cluster -lif * -auto-revert true`
 
-. 驗證叢集生命區是否已還原至其主連接埠：
+. 確認叢集 LIF 已恢復到其原始連接埠：
 +
-「網路介面show -role cluster」
+`network interface show -role cluster`
 
 +
 .顯示範例
@@ -688,12 +687,12 @@ cluster1::*>
 ----
 ====
 +
-如果有任何叢集生命期尚未返回其主連接埠、請從本機節點手動還原：
+如果任何叢集 LIF 尚未返回其來源端口，請從本機節點手動將其還原：
 
 +
 `network interface revert -vserver Cluster -lif <lif_name>`
 
 
 
-.接下來呢？
+.下一步是什麼？
 安裝 NX-OS 軟體後，您可以… link:install-nxos-rcf-9336c-shared.html["安裝 RCF"]。

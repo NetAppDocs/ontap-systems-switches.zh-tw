@@ -2,50 +2,50 @@
 permalink: switch-nvidia-sn2100/migrate-2n-switched-sn2100-cluster.html 
 sidebar: sidebar 
 keywords: two-node switchless cluster environments,migrating to a two-node switched NVIDIA SN2100 cluster environment,switchless cluster environments,NVIDIA SN2100 switches 
-summary: 如果您有現有的雙節點無交換式叢集環境、可以使用NVIDIA SN2100交換器移轉至雙節點交換式叢集環境、以便擴充至叢集內的兩個節點以外。 
+summary: 如果您已經擁有一個雙節點無交換器叢集環境，則可以使用NVIDIA SN2100 交換器遷移到雙節點有交換器叢集環境，從而使叢集能夠擴展到兩個以上的節點。 
 ---
-= 使用NVIDIA SN2100叢集交換器移轉至雙節點交換叢集
+= 遷移到採用NVIDIA SN2100 叢集交換器的雙節點交換集群
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-如果您有現有的雙節點無交換式叢集環境、可以使用NVIDIA SN2100交換器移轉至雙節點交換式叢集環境、以便擴充至叢集內的兩個節點以外。
+如果您已經擁有一個雙節點無交換器叢集環境，則可以使用NVIDIA SN2100 交換器遷移到雙節點有交換器叢集環境，從而使叢集能夠擴展到兩個以上的節點。
 
-您使用的程序取決於每個控制器上是否有兩個專屬的叢集網路連接埠、或每個控制器上是否有一個叢集連接埠。記錄的程序適用於所有使用光纖或雙軸纜線連接埠的節點、但如果節點使用內建10GBASE-T RJ45連接埠來連接叢集網路連接埠、則此交換器不支援此程序。
+具體操作步驟取決於每個控制器上是有兩個專用叢集網路連接埠還是只有一個叢集連接埠。記錄的過程適用於所有使用光纖或 Twinax 連接埠的節點，但如果節點使用板載 10GBASE-T RJ45 連接埠作為叢集網路端口，則此交換器不支援此過程。
 
 
 
-== 檢閱要求
+== 審查要求
 
-.雙節點無交換器組態
+.雙節點無交換器配置
 確保：
 
-* 雙節點無交換器組態已正確設定並正常運作。
-* 節點執行ONTAP 的是功能不全的9.10.1P3及更新版本。
-* 所有叢集連接埠都處於* up*狀態。
-* 所有叢集邏輯介面（LIF）都處於* up*狀態、並位於其主連接埠上。
+* 雙節點無交換器配置已正確設定並正常運作。
+* 這些節點運行的是ONTAP 9.10.1P3 及更高版本。
+* 叢集所有連接埠均處於*開啟*狀態。
+* 所有群集邏輯介面（LIF）均處於 *up* 狀態，並位於其主連接埠上。
 
 
-.NVIDIA SN2100叢集交換器組態
+.NVIDIA SN2100 叢集交換器配置
 確保：
 
-* 兩台交換器都有管理網路連線功能。
-* 有對叢集交換器的主控台存取權。
-* NVIDIA SN2100節點對節點交換器和交換器對交換器連線使用雙軸纜線或光纖纜線。
+* 兩台交換器都具備管理網路連線功能。
+* 可以透過控制台存取叢集交換器。
+* NVIDIA SN2100 節點到節點交換器和交換器到交換器的連接使用 Twinax 或光纖電纜。
 +
 
-IMPORTANT: 請參閱 link:cabling-considerations-sn2100-cluster.html["檢閱纜線佈線和組態考量"] 以瞭解相關注意事項及進一步的詳細資料。。 https://hwu.netapp.com/SWITCH/INDEX["交換器Hardware Universe"^] 也包含纜線的詳細資訊。
+IMPORTANT: 看link:cabling-considerations-sn2100-cluster.html["審查佈線和配置注意事項"]有關注意事項和更多詳情，請參閱相關說明。這 https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe- 交換機"^]也包含更多關於佈線的資訊。
 
-* 交換器間連結（ISL）纜線連接至兩個NVIDIA SN2100交換器的交換器交換器連接埠swp15和swp16。
-* 完成兩個SN2100交換器的初始自訂、以便：
+* 交換器間連結 (ISL) 電纜連接到兩台NVIDIA SN2100 交換器的 swp15 和 swp16 連接埠。
+* 兩台 SN2100 交換器的初始自訂已完成，因此：
 +
-** SN2100交換器正在執行最新版的Cummuls Linux
-** 參考組態檔（RCT）會套用至交換器
-** 任何站台自訂功能（例如、SMTP、SNMP和SSH）都會在新交換器上設定。
+** SN2100交換器運行的是最新版本的Cumulus Linux作業系統。
+** 參考設定檔（RCF）應用於交換機
+** 任何站點定制，如 SMTP、SNMP 和 SSH，都在新交換器上進行設定。
 +
-。 https://hwu.netapp.com["Hardware Universe"^] 包含平台實際叢集連接埠的最新資訊。
+這 https://hwu.netapp.com["Hardware Universe"^]包含您平台實際集群連接埠的最新資訊。
 
 
 
@@ -53,47 +53,47 @@ IMPORTANT: 請參閱 link:cabling-considerations-sn2100-cluster.html["檢閱纜�
 
 
 
-== 移轉交換器
+== 遷移交換機
 
 .關於範例
-本程序中的範例使用下列叢集交換器和節點命名法：
+本流程中的範例使用下列叢集交換器和節點命名規則：
 
-* SN2100交換器的名稱為_sw1_和_SW2_。
-* 叢集SVM的名稱為_node1_和_node2_。
-* lifs的名稱分別是節點1上的_node1_clus1_和節點1_clus2_、節點2上的節點2_clus1_和節點2_clus2_。
-* 「cluster1：*：>」提示會指出叢集的名稱。
-* 此程序中使用的叢集連接埠為_e3a_和_e3c_。
-* 中斷連接埠的格式為：swp[port] s[中斷 連接埠0-3]。例如、swp1上的四個中斷連接埠分別是_swp1s0_、_swp1s1_、_swp1s2_和_swp1s3_。
-
-
+* SN2100 交換器的名稱為 _sw1_ 和 _sw2_。
+* 聚類SVM的名稱為_node1_和_node2_。
+* 節點 1 上的 LIF 名稱分別為 _node1_clus1_ 和 _node1_clus2_，節點 2 上的 LIF 名稱分別為 _node2_clus1_ 和 _node2_clus2_。
+* 這 `cluster1::*>`prompt 指示叢集名稱。
+* 此過程中使用的叢集連接埠為 _e3a_ 和 _e3b_。
+* 分支端口採用以下格式：swp[端口]s[分支端口 0-3]。例如，swp1 上的四個分支連接埠分別是 _swp1s0_、_swp1s1_、_swp1s2_ 和 _swp1s3_。
 
 
-=== 步驟1：準備移轉
 
-. 如果AutoSupport 此叢集啟用了「支援功能」、請叫用AutoSupport 「系統節點AutoSupport 支援功能叫用節點*-type all -most MAn=xh」訊息來禁止自動建立案例
+
+=== 步驟 1：準備遷移
+
+. 如果此叢集上啟用了AutoSupport ，則透過呼叫AutoSupport訊息來抑制自動建立案例： `system node autosupport invoke -node * -type all -message MAINT=xh`
 +
-其中_x_是維護時段的持續時間（以小時為單位）。
+其中 _x_ 為維護視窗的持續時間（小時）。
 
-. 請將權限等級變更為進階、並在系統提示您繼續時輸入「y」：「et -priv榮幸 進階」
+. 將權限級別變更為高級，輸入 `y`當系統提示繼續： `set -privilege advanced`
 +
-出現進階提示（「*>」）。
+進階提示(`*>`出現。
 
 
 
 
 
-=== 步驟2：設定連接埠和纜線
+=== 步驟二：設定埠和線纜
 
 [role="tabbed-block"]
 ====
 .Cumulus Linux 4.4.x
 --
-. 在新的叢集交換器sw1和SW2上停用所有面向節點的連接埠（非ISL連接埠）。
+. 停用新叢集交換器 sw1 和 sw2 上所有面向節點的連接埠（非 ISL 連接埠）。
 +
-您不得停用ISL連接埠。
+您不得禁用 ISL 連接埠。
 
 +
-下列命令會停用交換器sw1和SW2上的節點對準連接埠：
+下列命令可停用交換器 sw1 和 sw2 上面向節點的連接埠：
 
 +
 [listing, subs="+quotes"]
@@ -106,12 +106,12 @@ cumulus@sw2:~$ *net add interface swp1s0-3, swp2s0-3, swp3-14 link down*
 cumulus@sw2:~$ *net pending*
 cumulus@sw2:~$ *net commit*
 ----
-. 驗證兩個SN2100交換器sw1和SW2之間的ISL和ISL實體連接埠是否在交換器swp15和swp16上開啟：
+. 確認兩台 SN2100 交換器 sw1 和 sw2 之間的 ISL 以及 ISL 上的實體連接埠 swp15 和 swp16 是否已啟動：
 +
 `net show interface`
 
 +
-下列命令顯示交換器 sw1 和 SW2 上的 ISL 連接埠為開啟狀態：
+以下命令顯示交換器 sw1 和 sw2 上的 ISL 連接埠已啟動：
 
 +
 [listing, subs="+quotes"]
@@ -139,12 +139,12 @@ UP     swp16      100G  9216   BondMember  sw1 (swp16)  Master: cluster_isl(UP)
 --
 .Cumulus Linux 5.x
 --
-. 停用新叢集交換器 sw1 和 SW2 上的所有節點對端口（非 ISL 連接埠）。
+. 停用兩個新叢集交換器 sw1 和 sw2 上所有面向節點的連接埠（非 ISL 連接埠）。
 +
-您不得停用ISL連接埠。
+您不得禁用 ISL 連接埠。
 
 +
-下列命令會停用交換器sw1和SW2上的節點對準連接埠：
+下列命令可停用交換器 sw1 和 sw2 上面向節點的連接埠：
 
 +
 [listing, subs="+quotes"]
@@ -157,12 +157,12 @@ cumulus@sw2:~$ *nv set interface swp1s0-3,swp2s0-3,swp3-14 link state down*
 cumulus@sw2:~$ *nv config apply*
 cumulus@sw2:~$ *nv config save*
 ----
-. 驗證兩個SN2100交換器sw1和SW2之間的ISL和ISL實體連接埠是否在交換器swp15和swp16上開啟：
+. 確認兩台 SN2100 交換器 sw1 和 sw2 之間的 ISL 以及 ISL 上的實體連接埠 swp15 和 swp16 是否已啟動：
 +
 `nv show interface`
 
 +
-下列範例顯示交換器 sw1 和 SW2 上的 ISL 連接埠為開啟狀態：
+以下範例表示交換器 sw1 和 sw2 上的 ISL 連接埠已啟動：
 
 +
 [listing, subs="+quotes"]
@@ -192,12 +192,12 @@ Interface     MTU    Speed  State  Remote Host  Remote Port                     
 
 --
 ====
-. [[step3]] 確認所有叢集連接埠均已啟動：
+. 步驟3：驗證叢集所有連接埠是否都已啟動：
 +
-「網路連接埠展示」
+`network port show`
 
 +
-應顯示每個連接埠 `up` 適用於 `Link` 而且健康 `Health Status`。
+每個連接埠應顯示 `up`為了 `Link`而且對身體有益 `Health Status`。
 
 +
 .顯示範例
@@ -227,12 +227,12 @@ e3b       Cluster      Cluster          up   9000  auto/100000 healthy  false
 
 ----
 ====
-. 驗證所有叢集生命體是否正常運作：
+. 確認所有叢集 LIF 都已啟動並正常運作：
 +
-「網路介面展示」
+`network interface show`
 
 +
-每個叢集LIF都應顯示為true `Is Home` 並擁有 `Status Admin/Oper` 的 `up/up`。
+每個聚類 LIF 都應該顯示為 true `Is Home`並且擁有 `Status Admin/Oper`的 `up/up`。
 
 +
 .顯示範例
@@ -252,9 +252,9 @@ Cluster
             node2_clus2  up/up    169.254.19.183/16  node2         e3b     true
 ----
 ====
-. 停用叢集生命體上的自動還原：
+. 停用叢集 LIF 的自動回滾功能：
 +
-「網路介面修改-vserver叢集-lIF *-auta-fRevert假」
+`network interface modify -vserver Cluster -lif * -auto-revert false`
 
 +
 .顯示範例
@@ -275,20 +275,20 @@ Cluster
 
 ----
 ====
-. 從節點1上的叢集連接埠e3a拔下纜線、然後使用SN2100交換器所支援的適當纜線、將e3a連接至叢集交換器sw1上的連接埠3。
+. 斷開節點 3 上的叢集連接埠 e3a 的電纜，然後使用 SN2100 交換器支援的適當電纜將 e3a 連接到叢集交換器 sw1 上的連接埠 1。
 +
-。 https://hwu.netapp.com/SWITCH/INDEX["交換器Hardware Universe"^] 包含纜線的詳細資訊。
+這 https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe- 交換機"^]包含更多關於佈線的資訊。
 
-. 從節點2上的叢集連接埠e3a拔下纜線、然後使用SN2100交換器所支援的適當纜線、將e3a連接至叢集交換器sw1上的連接埠4。
+. 斷開節點 4 上的叢集連接埠 e3a 的電纜，然後使用 SN2100 交換器支援的適當電纜將 e3a 連接到叢集交換器 sw1 上的連接埠 2。
 
 
 [role="tabbed-block"]
 ====
 .Cumulus Linux 4.4.x
 --
-. [[step8]] 在交換器 sw1 上、啟用所有節點對準的連接埠。
+. [[step8]] 在交換器 sw1 上，啟用所有面向節點的連接埠。
 +
-下列命令可在交換器 sw1 上啟用所有面對節點的連接埠。
+以下命令啟用交換器 sw1 上所有面向節點的連接埠。
 
 +
 [listing, subs="+quotes"]
@@ -299,7 +299,7 @@ cumulus@sw1:~$ *net commit*
 ----
 
 
-. [[STEST] 在交換器 sw1 上、確認所有連接埠均已啟動：
+. [[步驟]] 在交換器 sw1 上，驗證所有連接埠是否都已啟動：
 +
 `net show interface all`
 
@@ -332,9 +332,9 @@ UP     swp16     100G  9216   BondMember  swp16          Master: cluster_isl(UP)
 --
 .Cumulus Linux 5.x
 --
-. [[step8]] 在交換器 sw1 上、啟用所有節點對準的連接埠。
+. [[step8]] 在交換器 sw1 上，啟用所有面向節點的連接埠。
 +
-下列命令可在交換器 sw1 上啟用所有面對節點的連接埠。
+以下命令啟用交換器 sw1 上所有面向節點的連接埠。
 
 +
 [listing, subs="+quotes"]
@@ -345,7 +345,7 @@ cumulus@sw1:~$ *nv config save*
 ----
 
 
-. [[step9] 在交換器 sw1 上、確認所有連接埠都已啟動：
+. [[步驟9]] 在交換器 sw1 上，驗證所有連接埠是否都已啟動：
 +
 `nv show interface`
 
@@ -378,15 +378,15 @@ swp16        up     100G   9216   swp       ossg-int-rcf10                    sw
 
 --
 ====
-. [[step10]] 確認所有叢集連接埠均已啟動：
+. 步驟10：驗證叢集所有連接埠是否都已啟動。
 +
-「網路連接埠show -IPSpace Cluster」
+`network port show -ipspace Cluster`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示節點1和節點2上的所有叢集連接埠都已啟動：
+以下範例顯示節點 1 和節點 2 上的所有叢集連接埠均已啟動：
 
 [listing, subs="+quotes"]
 ----
@@ -410,15 +410,15 @@ e3b       Cluster      Cluster          up   9000  auto/100000 healthy  false
 
 ----
 ====
-. 顯示叢集中節點狀態的相關資訊：
+. 顯示叢集中節點的狀態資訊：
 +
-「叢集展示」
+`cluster show`
 
 +
 .顯示範例
 [%collapsible]
 ====
-下列範例顯示叢集中節點的健全狀況和資格資訊：
+以下範例顯示了叢集中節點的健康狀況和資格資訊：
 
 [listing, subs="+quotes"]
 ----
@@ -431,17 +431,17 @@ node2                true    true          false
 
 ----
 ====
-. 從節點1上的叢集連接埠e3b拔下纜線、然後使用SN2100交換器所支援的適當纜線、將e3b連接至叢集交換器SW2上的連接埠3。
-. 從節點2上的叢集連接埠e3b拔下纜線、然後使用SN2100交換器所支援的適當纜線、將e3b連接至叢集交換器SW2上的連接埠4。
+. 斷開節點 3 上的叢集連接埠 e3b 的電纜，然後使用 SN2100 交換器支援的適當電纜將 e3b 連接到叢集交換器 sw2 上的連接埠 1。
+. 斷開節點 4 上的叢集連接埠 e3b 的電纜，然後使用 SN2100 交換器支援的適當電纜將 e3b 連接到叢集交換器 sw2 上的連接埠 2。
 
 
 [role="tabbed-block"]
 ====
 .Cumulus Linux 4.4.x
 --
-. [[step14] 在交換器 SW2 上、啟用所有面對節點的連接埠。
+. [[step14]] 在交換器 sw2 上，啟用所有面向節點的連接埠。
 +
-下列命令可在交換器SW2上啟用面向節點的連接埠：
+下列指令啟用交換器 sw2 上面向節點的連接埠：
 
 +
 [listing, subs="+quotes"]
@@ -450,7 +450,7 @@ cumulus@sw2:~$ *net del interface swp1s0-3, swp2s0-3, swp3-14 link down*
 cumulus@sw2:~$ *net pending*
 cumulus@sw2:~$ *net commit*
 ----
-. [[step15]] 在交換器 SW2 上、確認所有連接埠都已啟動：
+. [[步驟15]] 在交換器sw2上，驗證所有連接埠是否都已啟動：
 +
 `net show interface all`
 
@@ -480,12 +480,12 @@ UP     swp16     100G  9216   BondMember  swp16          Master: cluster_isl(UP)
 ----
 
 
-. [[step16]] 在交換器 sw1 和 SW2 上、確認兩個節點都有一個連線到每個交換器：
+. [[step16]] 在交換器 sw1 和 sw2 上，驗證兩個節點是否都與每個交換器建立了一個連線：
 +
 `net show lldp`
 
 +
-下列範例顯示交換器sw1和SW2的適當結果：
+以下範例顯示了交換器 sw1 和 sw2 的正確結果：
 
 
 
@@ -512,9 +512,9 @@ swp16      100G   BondMember  sw1                swp16
 --
 .Cumulus Linux 5.x
 --
-. [[step14] 在交換器 SW2 上、啟用所有面對節點的連接埠。
+. [[step14]] 在交換器 sw2 上，啟用所有面向節點的連接埠。
 +
-下列命令可在交換器SW2上啟用面向節點的連接埠：
+下列指令啟用交換器 sw2 上面向節點的連接埠：
 
 +
 [listing, subs="+quotes"]
@@ -523,7 +523,7 @@ cumulus@sw2:~$ *nv set interface swp1s0-3,swp2s0-3,swp3-14 link state up*
 cumulus@sw2:~$ *nv config apply*
 cumulus@sw2:~$ *nv config save*
 ----
-. [[step15]] 在交換器 SW2 上、確認所有連接埠都已啟動：
+. [[步驟15]] 在交換器sw2上，驗證所有連接埠是否都已啟動：
 +
 `nv show interface`
 
@@ -554,12 +554,12 @@ swp16        up     100G   9216   swp       ossg-int-rcf10                    sw
 ----
 
 
-. [[step16]] 在交換器 sw1 和 SW2 上、確認兩個節點都有一個連線到每個交換器：
+. [[step16]] 在交換器 sw1 和 sw2 上，驗證兩個節點是否都與每個交換器建立了一個連線：
 +
 `nv show interface --view=lldp`
 
 +
-下列範例顯示交換器 sw1 和 SW2 的適當結果：
+以下範例顯示了交換器 sw1 和 sw2 的對應結果：
 
 +
 [listing, subs="+quotes"]
@@ -612,7 +612,7 @@ swp16        100G   swp       ossg-int-rcf10                      swp16
 
 --
 ====
-. [[step17]] 顯示叢集中探索到的網路裝置相關資訊：
+. [[step17]] 顯示集群中已發現的網路設備資訊：
 +
 `network device-discovery show -protocol lldp`
 
@@ -634,15 +634,15 @@ node2      /lldp
             e3b    sw2 (b8:ce:f6:19:1b:96)   swp4          -
 ----
 ====
-. 驗證所有叢集連接埠是否正常運作：
+. 請確認叢集所有連接埠均已啟動：
 +
-「網路連接埠show -IPSpace Cluster」
+`network port show -ipspace Cluster`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示節點1和節點2上的所有叢集連接埠都已啟動：
+以下範例顯示節點 1 和節點 2 上的所有叢集連接埠均已啟動：
 
 [listing, subs="+quotes"]
 ----
@@ -670,9 +670,9 @@ e3b       Cluster      Cluster          up   9000  auto/10000 healthy  false
 
 
 
-=== 步驟3：驗證組態
+=== 步驟 3：驗證配置
 
-. 在所有叢集生命體上啟用自動還原：
+. 啟用所有叢集 LIF 的自動回滾功能：
 +
 `net interface modify -vserver Cluster -lif * -auto-revert true`
 
@@ -694,19 +694,19 @@ Cluster
           node2_clus2   true
 ----
 ====
-. 驗證所有介面是否都顯示「true」表示「is Home」：
+. 確認所有介面均顯示 `true`為了 `Is Home`：
 +
 `net interface show -vserver Cluster`
 
 +
 
-NOTE: 這可能需要一分鐘的時間才能完成。
+NOTE: 這可能需要一分鐘才能完成。
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示所有lifs都在node1和node2上、而且「is Home」結果為真：
+以下範例顯示節點 1 和節點 2 上的所有 LIF 都已啟動，並且 `Is Home`結果屬實：
 
 [listing, subs="+quotes"]
 ----
@@ -723,15 +723,15 @@ Cluster
 
 ----
 ====
-. 確認設定已停用：
+. 請確認這些設定已停用：
 +
-「網路選項、無交換式叢集展示」
+`network options switchless-cluster show`
 
 +
 .顯示範例
 [%collapsible]
 ====
-下列範例中的假輸出顯示組態設定已停用：
+以下範例中的錯誤輸出表示組態設定已停用：
 
 [listing, subs="+quotes"]
 ----
@@ -741,13 +741,13 @@ Enable Switchless Cluster: *false*
 ====
 . 驗證叢集中節點成員的狀態：
 +
-「叢集展示」
+`cluster show`
 
 +
 .顯示範例
 [%collapsible]
 ====
-下列範例顯示叢集中節點的健全狀況和資格資訊：
+以下範例顯示了叢集中節點的健康狀況和資格資訊：
 
 [listing, subs="+quotes"]
 ----
@@ -759,22 +759,22 @@ node1                true    true          false
 node2                true    true          false
 ----
 ====
-. 驗證遠端叢集介面的連線能力：
+. 驗證遠端集群介面的連接性：
 
 
 [role="tabbed-block"]
 ====
-.更新版本ONTAP
+.ONTAP 9.9.1 及更高版本
 --
-您可以使用 `network interface check cluster-connectivity` 命令以啟動叢集連線的存取檢查、然後顯示詳細資料：
+你可以使用 `network interface check cluster-connectivity`執行命令以啟動叢集連接性檢查，然後顯示詳細資訊：
 
-`network interface check cluster-connectivity start` 和 `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`和 `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-* 注意： * 請等待數秒後再執行 `show`命令以顯示詳細資料。
+*注意：*運行程式前請等待幾秒鐘 `show`顯示詳細資訊的命令。
 
 [listing, subs="+quotes"]
 ----
@@ -790,9 +790,9 @@ node2
        3/5/2022 19:21:20 -06:00   node2_clus2      node1_clus2      none
 ----
 --
-.所有 ONTAP 版本
+.所有ONTAP版本
 --
-對於所有 ONTAP 版本、您也可以使用 `cluster ping-cluster -node <name>` 檢查連線能力的命令：
+對於所有ONTAP版本，您也可以使用 `cluster ping-cluster -node <name>`檢查連接性的命令：
 
 `cluster ping-cluster -node <name>`
 
@@ -825,15 +825,15 @@ RPC status:
 ----
 --
 ====
-. [[step6]] 將權限等級變更回 admin ：
+. 步驟6：將權限等級改回管理員：
 +
-「et -priv. admin」
+`set -privilege admin`
 
-. 如果您禁止自動建立個案、請叫用AutoSupport 下列消息來重新啟用此功能：
+. 如果您已停用自動建立案例功能，請透過呼叫AutoSupport訊息重新啟用該功能：
 +
-「系統節點AutoSupport 不完整地叫用節點*-type all -most MAn=end」
+`system node autosupport invoke -node * -type all -message MAINT=END`
 
 
 
-.接下來呢？
+.下一步是什麼？
 交換器遷移完成後，您可以… link:../switch-cshm/config-overview.html["配置交換器健康監控"]。

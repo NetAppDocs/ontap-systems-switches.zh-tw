@@ -2,19 +2,19 @@
 permalink: switch-cisco-3232c/cn1610-complete-migration.html 
 sidebar: sidebar 
 keywords: cisco 3232c, cluster switches 
-summary: 您可以將Cisco Nexus 3232C交換器當作AFF 叢集交換器、放在您的叢FAS 集或叢集內。 
+summary: 您可以在AFF或FAS叢集中使用Cisco Nexus 3232C 交換器作為叢集交換器。 
 ---
-= 完成從 CN1610 交換器移轉至 3232C 交換器的作業
+= 完成從 CN1610 交換器到 3232C 交換器的遷移
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-完成下列步驟以完成 CN1610 交換器移轉至 Nexus 3232C 交換器的作業。
+完成以下步驟，以最終完成 CN1610 交換器向 Nexus 3232C 交換器的遷移。
 
 .步驟
-. 還原所有原本連線至所有節點C1的所有移轉叢集互連生命期：
+. 撤銷所有已遷移的叢集互連 LIF，這些 LIF 最初連接到所有節點上的 C1：
 +
 `network interface revert -server cluster -lif _lif-name_`
 
@@ -22,7 +22,7 @@ summary: 您可以將Cisco Nexus 3232C交換器當作AFF 叢集交換器、放�
 .顯示範例
 [%collapsible]
 ====
-您必須個別移轉每個LIF、如下列範例所示：
+您必須按照以下範例所示，逐一遷移每個 LIF：
 
 [listing, subs="+quotes"]
 ----
@@ -32,15 +32,15 @@ cluster::*> *network interface revert -vserver cluster -lif n2_clus1*
 cluster::*> *network interface revert -vserver cluster -lif n2_clus4*
 ----
 ====
-. 確認介面現在是主介面：
+. 請確認介面已連接到主伺服器：
 +
-「網路介面show -role cluster」
+`network interface show -role cluster`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示節點n1和n2的叢集互連介面狀態為「up」和「is Home」：
+以下範例顯示了叢集互連接口的狀態： `up`以及節點 n1 和 n2 的「是否在家」：
 
 [listing, subs="+quotes"]
 ----
@@ -62,22 +62,22 @@ Cluster
 8 entries were displayed.
 ----
 ====
-. 驗證遠端叢集介面的連線能力：
+. 驗證遠端集群介面的連接性：
 
 
 [role="tabbed-block"]
 ====
-.更新版本ONTAP
+.ONTAP 9.9.1 及更高版本
 --
-您可以使用 `network interface check cluster-connectivity` 命令以啟動叢集連線的存取檢查、然後顯示詳細資料：
+你可以使用 `network interface check cluster-connectivity`執行命令以啟動叢集連接性檢查，然後顯示詳細資訊：
 
-`network interface check cluster-connectivity start` 和 `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`和 `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-* 注意： * 請等待數秒後再執行 `show`命令以顯示詳細資料。
+*注意：*運行程式前請等待幾秒鐘 `show`顯示詳細資訊的命令。
 
 [listing, subs="+quotes"]
 ----
@@ -94,9 +94,9 @@ n2
        3/5/2022 19:21:20 -06:00   n2_clus2         n1_clus2         none
 ----
 --
-.所有 ONTAP 版本
+.所有ONTAP版本
 --
-對於所有 ONTAP 版本、您也可以使用 `cluster ping-cluster -node <name>` 檢查連線能力的命令：
+對於所有ONTAP版本，您也可以使用 `cluster ping-cluster -node <name>`檢查連接性的命令：
 
 `cluster ping-cluster -node <name>`
 
@@ -145,18 +145,18 @@ RPC status:
 ----
 --
 ====
-. [[step4]] 將節點新增至 Nexus 3232C 叢集交換器以擴充叢集。
-. 顯示組態中裝置的相關資訊：
+. [[step4]] 透過在 Nexus 3232C 叢集交換器中新增節點來擴展叢集。
+. 顯示配置中設備的資訊：
 +
-** 「網路裝置探索秀」
-** 「網路連接埠show -role cluster」
-** 「網路介面show -role cluster」
-** 「系統叢集交換器顯示」
+** `network device-discovery show`
+** `network port show -role cluster`
+** `network interface show -role cluster`
+** `system cluster-switch show`
 +
 .顯示範例
 [%collapsible]
 ====
-下列範例顯示節點n3和n4、其中40個GbE叢集連接埠分別連接至Nexus 3232C叢集交換器上的連接埠E1/7和E1/8。這兩個節點都會加入叢集。使用的40 GbE叢集互連連接埠為E4A和e4e。
+以下範例顯示了節點 n3 和 n4，它們分別透過 40 GbE 叢集連接埠連接到 Nexus 3232C 叢集交換器的 e1/7 和 e1/8 連接埠。兩個節點都已加入叢集。使用的 40 GbE 群集互連埠為 e4a 和 e4e。
 
 [listing, subs="+quotes"]
 ----
@@ -282,7 +282,7 @@ CL2                         cluster-network  10.10.1.102    CN1610
 ====
 
 
-. 如果更換的CN1610交換器未自動移除、請將其移除：
+. 如果更換後的 CN1610 交換器沒有自動移除，請將其移除：
 +
 `system cluster-switch delete -device _switch-name_`
 
@@ -290,7 +290,7 @@ CL2                         cluster-network  10.10.1.102    CN1610
 .顯示範例
 [%collapsible]
 ====
-您必須個別刪除這兩個裝置、如下列範例所示：
+您必須分別刪除這兩個設備，如下例所示：
 
 [listing, subs="+quotes"]
 ----
@@ -298,15 +298,15 @@ cluster::> *system cluster-switch delete –device CL1*
 cluster::> *system cluster-switch delete –device CL2*
 ----
 ====
-. 確認已監控適當的叢集交換器：
+. 確認已對正確的群集交換器進行監控：
 +
-「系統叢集交換器顯示」
+`system cluster-switch show`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示正在監控叢集交換器C1和C2：
+以下範例顯示如何監控叢集交換器 C1 和 C2：
 
 [listing, subs="+quotes"]
 ----
@@ -334,11 +334,11 @@ C2                          cluster-network    10.10.1.104      NX3232C
 2 entries were displayed.
 ----
 ====
-. 如果您禁止自動建立個案、請叫用AutoSupport 下列消息來重新啟用此功能：
+. 如果您已停用自動建立案例功能，請透過呼叫AutoSupport訊息重新啟用該功能：
 +
-「系統節點AutoSupport 不完整地叫用節點*-type all -most MAn=end」
+`system node autosupport invoke -node * -type all -message MAINT=END`
 
 
 
-.接下來呢？
-link:../switch-cshm/config-overview.html["設定交換器健全狀況監控"]。
+.下一步是什麼？
+link:../switch-cshm/config-overview.html["配置交換器健康監控"]。

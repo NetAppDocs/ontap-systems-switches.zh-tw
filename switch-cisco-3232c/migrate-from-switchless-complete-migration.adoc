@@ -2,24 +2,24 @@
 permalink: switch-cisco-3232c/migrate-from-switchless-complete-migration.html 
 sidebar: sidebar 
 keywords: cisco 3232c, cluster switches 
-summary: 您可以將Cisco Nexus 3232C交換器當作AFF 叢集交換器、放在您的叢FAS 集或叢集內。 
+summary: 您可以在AFF或FAS叢集中使用Cisco Nexus 3232C 交換器作為叢集交換器。 
 ---
-= 完成從雙節點無交換器叢集移轉至雙節點交換式叢集的作業
+= 完成從雙節點無交換器叢集到雙節點交換式叢集的遷移
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-完成下列步驟，完成雙節點無交換器叢集移轉至 Nexus 3232C 交換器上的雙節點交換叢集。
+完成以下步驟，最終將雙節點無交換器叢集遷移到 Nexus 3232C 交換器上的雙節點有交換器叢集。
 
 .步驟
-. 確認所有的叢集互連連接埠現在都已還原至其主連接埠：
+. 確認所有群集互連連接埠均已恢復為其原始連接埠：
 +
-「網路介面show -role cluster」
+`network interface show -role cluster`
 
 +
-對於「目前連接埠」欄中所列的所有連接埠、「is Home」欄位應顯示「true」。如果顯示的值為「假」、表示連接埠尚未還原。
+這 `Is Home`該列應顯示以下值： `true`對於列表中列出的所有端口 `Current Port`柱子。如果顯示的值為 `false`連接埠尚未恢復。
 
 +
 .顯示範例
@@ -40,13 +40,13 @@ Cluster
 4 entries were displayed.
 ----
 ====
-. 確認所有叢集互連連接埠都處於「up」狀態：
+. 確認所有群集互連連接埠均已連線。 `up`狀態：
 +
-「網路連接埠show -role cluster」
+`network port show -role cluster`
 
-. 顯示叢集交換器連接埠編號，每個叢集連接埠都會透過這些編號連接至每個節點：
+. 顯示叢集交換器連接埠號，每個叢集連接埠透過這些連接埠連接到每個節點：
 +
-「網路裝置探索秀」
+`network device-discovery show`
 
 +
 .顯示範例
@@ -66,9 +66,9 @@ n2          /cdp
             e4e    C2                  Ethernet1/8      N3K-C3232C
 ----
 ====
-. 顯示已探索及監控的叢集交換器：
+. 顯示已發現和監控的群集交換器：
 +
-「系統叢集交換器顯示」
+`system cluster-switch show`
 
 +
 .顯示範例
@@ -95,26 +95,26 @@ Software Version: Cisco Nexus Operating System (NX-OS) Software, Version 7.0(3)I
 Version Source: CDP 2 entries were displayed.
 ----
 ====
-. 確認無交換器式叢集偵測已將無交換器式叢集選項變更為停用：
+. 確認無交換器叢集偵測已將無交換器叢集選項變更為停用：
 +
-「網路選項、無交換式叢集展示」
+`network options switchless-cluster show`
 
-. 驗證遠端叢集介面的連線能力：
+. 驗證遠端集群介面的連接性：
 
 
 [role="tabbed-block"]
 ====
-.更新版本ONTAP
+.ONTAP 9.9.1 及更高版本
 --
-您可以使用 `network interface check cluster-connectivity` 命令以啟動叢集連線的存取檢查、然後顯示詳細資料：
+你可以使用 `network interface check cluster-connectivity`執行命令以啟動叢集連接性檢查，然後顯示詳細資訊：
 
-`network interface check cluster-connectivity start` 和 `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`和 `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-* 注意： * 請等待數秒後再執行 `show`命令以顯示詳細資料。
+*注意：*運行程式前請等待幾秒鐘 `show`顯示詳細資訊的命令。
 
 [listing, subs="+quotes"]
 ----
@@ -131,9 +131,9 @@ n2
        3/5/2022 19:21:20 -06:00   n2_clus2         n1_clus2         none
 ----
 --
-.所有 ONTAP 版本
+.所有ONTAP版本
 --
-對於所有 ONTAP 版本、您也可以使用 `cluster ping-cluster -node <name>` 檢查連線能力的命令：
+對於所有ONTAP版本，您也可以使用 `cluster ping-cluster -node <name>`檢查連接性的命令：
 
 `cluster ping-cluster -node <name>`
 
@@ -163,11 +163,11 @@ Larger than PMTU communication succeeds on 4 path(s) RPC status:
 ----
 --
 ====
-. [[step7]] 如果您禁止自動建立個案、請叫用 AutoSupport 訊息來重新啟用：
+. [[步驟7]] 如果您已停用自動建立案例功能，請透過呼叫AutoSupport訊息重新啟用此功能：
 +
-「系統節點AutoSupport 不完整地叫用節點*-type all -most MAn=end」
+`system node autosupport invoke -node * -type all -message MAINT=END`
 
 
 
-.接下來呢？
-link:../switch-cshm/config-overview.html["設定交換器健全狀況監控"]。
+.下一步是什麼？
+link:../switch-cshm/config-overview.html["配置交換器健康監控"]。

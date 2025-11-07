@@ -2,32 +2,32 @@
 permalink: switch-bes-53248/replace-verify.html 
 sidebar: sidebar 
 keywords: command, verify, operational, bes, cluster, switch, upgrade, verify the configuration after a cluster switch upgrade - bes-53428 switches 
-summary: 您可以使用此處提供的命令、驗證在升級B作業 至53268叢集交換器之後、所有的功能都能正常運作。 
+summary: 您可以使用此處提供的命令來驗證 BES-53248 叢集交換器升級後一切是否正常運作。 
 ---
-= 在 EFOS 軟體或 RCF 升級 BS-53248 叢集交換器之後、驗證 ONTAP 叢集網路
+= 在對 BES-53248 叢集交換器進行 EFOS 軟體或 RCF 升級後，請驗證ONTAP叢集網路。
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-升級 EFOS 軟體後、您可以使用下列命令來驗證 ONTAP 叢集網路的健全狀況、或是升級為 BS-53248 叢集交換器的 RCF 。
+升級 EFOS 軟體或 RCF for BES-53248 叢集交換器後，您可以使用下列指令來驗證ONTAP叢集網路的運作狀況。
 
 .步驟
-. 使用命令顯示叢集上網路連接埠的相關資訊：
+. 使用以下命令顯示叢集上的網路連接埠資訊：
 +
 [source, cli]
 ----
 network port show -ipspace Cluster
 ----
 +
-“Link（鏈接）”的值必須是「UP（向上）」和「Health Status（健康狀態）」、必須是「Healthy（健康）」。
+`Link`必須具有該值 `up`和 `Health Status`必須是 `healthy`。
 
 +
 .顯示範例
 [%collapsible]
 ====
-下列範例顯示命令的輸出：
+以下範例顯示了該命令的輸出結果：
 
 [listing, subs="+quotes"]
 ----
@@ -50,7 +50,7 @@ e0a    Cluster      Cluster          up   9000  auto/10000 healthy  false
 e0b    Cluster      Cluster          up   9000  auto/10000 healthy  false
 ----
 ====
-. 針對每個LIF、請確認 `Is Home` 是 `true` 和 `Status Admin/Oper` 是 `up` 在兩個節點上、使用命令：
+. 對於每個 LIF，驗證 `Is Home`是 `true`和 `Status Admin/Oper`是 `up`在兩個節點上，使用以下命令：
 +
 [source, cli]
 ----
@@ -74,9 +74,9 @@ Cluster
             node2_clus2  up/up    169.254.110.131/16 node2         e0b     true
 ----
 ====
-. 確認 `Health Status` 每個節點的 `true` 使用命令：
+. 確認 `Health Status`每個節點的 `true`使用以下命令：
 +
-「叢集展示」
+`cluster show`
 
 +
 .顯示範例
@@ -94,5 +94,5 @@ node2                true    true          false
 ====
 
 
-.接下來呢？
+.下一步是什麼？
 確認 EFOS 軟體或 RCF 升級後，您可以… link:../switch-cshm/config-overview.html["配置交換器健康監控"]。

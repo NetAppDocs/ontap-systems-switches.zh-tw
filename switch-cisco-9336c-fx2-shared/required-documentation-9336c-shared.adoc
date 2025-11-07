@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: switch-cisco-9336c-fx2-shared/required-documentation-9336c-shared.html 
 keywords: shared storage cluster switch 
-summary: 對於Cisco Nexus 9336C-FX2交換器的安裝與維護、請務必檢閱特定的交換器與控制器文件、以設定Cisco 9336-FX2交換器與ONTAP 叢集。 
+summary: 對於Cisco Nexus 9336C-FX2 交換器的安裝和維護，請務必查看特定的交換器和控制器文件以設定您的Cisco 9336-FX2 交換器和ONTAP叢集。 
 ---
-= Cisco Nexus 9336C-FX2共享交換器的文件要求
+= Cisco Nexus 9336C-FX2 共享交換器的文件需求
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,34 +14,34 @@ summary: 對於Cisco Nexus 9336C-FX2交換器的安裝與維護、請務必檢�
 
 
 [role="lead"]
-對於Cisco Nexus 9336C-FX2交換器的安裝與維護、請務必檢閱特定的交換器與控制器文件、以設定Cisco 9336-FX2交換器與ONTAP 叢集。
+對於Cisco Nexus 9336C-FX2 交換器的安裝和維護，請務必查看特定的交換器和控制器文件以設定您的Cisco 9336-FX2 交換器和ONTAP叢集。
 
-若要設定Cisco Nexus 9336C-FX2共用交換器、請參閱 https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Cisco Nexus 9000系列交換器支援"] 頁面。
+若要設定Cisco Nexus 9336C-FX2 共用交換機，請參閱 https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Cisco Nexus 9000 系列交換器支援"]頁。
 
 |===
-| 文件標題 | 說明 
+| 文件標題 | 描述 
 
 
-| link:https://www.cisco.com/c/en/us/td/docs/dcn/hw/nx-os/nexus9000/9336c-fx2-e/cisco-nexus-9336c-fx2-e-nx-os-mode-switch-hardware-installation-guide.html["Nexus 9000系列硬體安裝指南"] | 提供有關站台需求、交換器硬體詳細資料及安裝選項的詳細資訊。 
+| link:https://www.cisco.com/c/en/us/td/docs/dcn/hw/nx-os/nexus9000/9336c-fx2-e/cisco-nexus-9336c-fx2-e-nx-os-mode-switch-hardware-installation-guide.html["Nexus 9000 系列硬體安裝指南"] | 提供有關站點要求、交換器硬體詳情和安裝選項的詳細資訊。 
 
 
-| link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-installation-and-configuration-guides-list.html["Cisco Nexus 9000系列交換器軟體組態指南"] （請選擇安裝在交換器上的NX-OS版本指南） | 提供您需要的初始交換器組態資訊、然後才能設定交換器ONTAP 以供執行故障操作。 
+| link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-installation-and-configuration-guides-list.html["Cisco Nexus 9000 系列交換器軟體設定指南"]（請選擇與您的交換器上安裝的 NX-OS 版本相對應的指南） | 提供在配置交換器以進行ONTAP操作之前所需的初始交換器配置資訊。 
 
 
-| link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html#InstallandUpgrade["Cisco Nexus 9000系列NX-OS軟體升級與降級指南"] （請選擇安裝在交換器上的NX-OS版本指南） | 如ONTAP 有必要、提供如何將交換器降級至支援的交換器軟體的相關資訊。 
+| link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html#InstallandUpgrade["Cisco Nexus 9000 系列 NX-OS 軟體升級與降級指南"]（請選擇與您的交換器上安裝的 NX-OS 版本相對應的指南） | 提供有關如何將交換器降級到ONTAP支援的交換器軟體（如有必要）的資訊。 
 
 
-| link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-command-reference-list.html["Cisco Nexus 9000系列NX-OS命令參考主索引"] | 提供Cisco所提供之各種命令參考資料的連結。 
+| link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-command-reference-list.html["Cisco Nexus 9000 系列 NX-OS 指令參考主索引"] | 提供Cisco提供的各種指令參考的連結。 
 
 
-| link:https://www.cisco.com/c/en/us/td/docs/switches/datacenter/sw/mib/reference/MIBRef.html["Cisco Nexus 9000 MIBs參考資料"] | 說明Nexus 9000交換器的管理資訊庫（MIB）檔案。 
+| link:https://www.cisco.com/c/en/us/td/docs/switches/datacenter/sw/mib/reference/MIBRef.html["Cisco Nexus 9000 MIB 參考"] | 描述 Nexus 9000 交換器的管理資訊庫 (MIB) 檔案。 
 
 
-| link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-system-message-guides-list.html["Nexus 9000系列NX-OS系統訊息參考"] | 說明Cisco Nexus 9000系列交換器的系統訊息、資訊訊息、以及其他可能有助於診斷連結、內部硬體或系統軟體問題的訊息。 
+| link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-system-message-guides-list.html["Nexus 9000 系列 NX-OS 系統訊息參考"] | 描述Cisco Nexus 9000 系列交換器的系統訊息，包括資訊性訊息和其他可能有助於診斷連結、內部硬體或系統軟體問題的訊息。 
 
 
-| link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html#ReleaseandCompatibility["Cisco Nexus 9000系列NX-OS版本資訊"] （請針對安裝在交換器上的NX-OS版本選擇附註） | 說明Cisco Nexus 9000系列的功能、錯誤和限制。 
+| link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html#ReleaseandCompatibility["Cisco Nexus 9000 系列 NX-OS 發行說明"]（請選擇交換器上安裝的 NX-OS 版本對應的說明） | 描述了CiscoNexus 9000 系列的功能、缺陷和限制。 
 
 
-| link:https://www.cisco.com/c/en/us/td/docs/switches/datacenter/mds9000/hw/regulatory/compliance/RCSI.html["Cisco Nexus 9000系列的法規遵循與安全資訊"] | 提供Nexus 9000系列交換器的國際機構法規遵循、安全及法規資訊。 
+| link:https://www.cisco.com/c/en/us/td/docs/switches/datacenter/mds9000/hw/regulatory/compliance/RCSI.html["Cisco Nexus 9000 系列的法規遵循和安全訊息"] | 提供 Nexus 9000 系列交換器的國際機構合規性、安全性和法規資訊。 
 |===

@@ -15,12 +15,12 @@ summary: 在設定Cisco Nexus 9336C-FX2 交換器之前，請先查看設定概�
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一"]link:cable-9336c-shared.html["完成佈線工作表"]
 [role="quick-margin-para"]
-佈線工作表範例提供從交換器到控制器的建議連接埠指派範例。空白工作表提供範本、可用於設定叢集。
+範例佈線工作表提供了從交換器到控制器的建議連接埠分配範例。空白工作表提供了一個模板，您可以在設定叢集時使用該模板。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["二"]link:install-9336c-shared.html["安裝交換器"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["二"]link:install-9336c-shared.html["安裝開關"]
 [role="quick-margin-para"]
 安裝 9336C-FX2 交換器。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三"]link:install-switch-and-passthrough-panel-9336c-shared.html["將交換器安裝在 NetApp 機櫃中"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三"]link:install-switch-and-passthrough-panel-9336c-shared.html["將交換器安裝在NetApp機櫃中"]
 [role="quick-margin-para"]
 根據需要在NetApp機櫃中安裝 9336C-FX2 交換器和直通面板。

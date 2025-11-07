@@ -2,63 +2,63 @@
 permalink: switch-netapp-cn1610/required-documentation-cn1610.html 
 sidebar: sidebar 
 keywords: cn1610, switch, netapp 
-summary: 對於NetApp CN1610交換器的安裝與維護、請務必檢閱所有建議的文件。 
+summary: 對於NetApp CN1610 交換器的安裝和維護，請務必查看所有建議的文件。 
 ---
-= NetApp CN1610交換器的文件要求
+= NetApp CN1610交換器的文件需求
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-對於NetApp CN1610交換器的安裝與維護、請務必檢閱所有建議的文件。
+對於NetApp CN1610 交換器的安裝和維護，請務必查看所有建議的文件。
 
 [cols="1,2"]
 |===
-| 文件標題 | 說明 
+| 文件標題 | 描述 
 
 
  a| 
-https://library.netapp.com/ecm/ecm_download_file/ECMP1117853["1G安裝指南"^]
+https://library.netapp.com/ecm/ecm_download_file/ECMP1117853["1G 安裝指南"^]
  a| 
-CN1601交換器的硬體與軟體功能與安裝程序總覽。
-
-
-
- a| 
-https://library.netapp.com/ecm/ecm_download_file/ECMP1117824["10G安裝指南"^]
- a| 
-CN1610交換器硬體與軟體功能總覽、並說明安裝交換器及存取CLI的功能。
+CN1601交換器硬體及軟體特性及安裝過程概述。
 
 
 
  a| 
-https://library.netapp.com/ecm/ecm_download_file/ECMP1118645["CN1601與CN1610交換器設定與組態指南"^]
+https://library.netapp.com/ecm/ecm_download_file/ECMP1117824["10G 安裝指南"^]
  a| 
-詳細說明如何為叢集環境設定交換器硬體和軟體。
-
-
-
- a| 
-CN1601交換器管理員指南
- a| 
-提供典型網路中如何使用CN1601交換器的範例。
-
-* https://library.netapp.com/ecm/ecm_download_file/ECMP1117844["系統管理員指南"^]
-* https://library.netapp.com/ecm/ecm_download_file/ECMLP2811865["系統管理員指南、版本1.1.x.x"^]
-* https://library.netapp.com/ecm/ecm_download_file/ECMP1117874["系統管理員指南、1.2.x.x版"^]
-
+概述 CN1610 交換器的硬體和軟體特性，並介紹安裝交換器和存取 CLI 的功能。
 
 
 
  a| 
-CN1610 Network Switch CLI命令參考
+https://library.netapp.com/ecm/ecm_download_file/ECMP1118645["CN1601 和 CN1610 交換器設定和設定指南"^]
  a| 
-提供有關用於設定CN1601軟體的命令列介面（CLI）命令的詳細資訊。
+詳細介紹如何為您的叢集環境配置交換器硬體和軟體。
 
-* https://library.netapp.com/ecm/ecm_download_file/ECMP1117834["命令參考資料"^]
-* https://library.netapp.com/ecm/ecm_download_file/ECMLP2811863["命令參考資料1.1.1.x.x版"^]
-* https://library.netapp.com/ecm/ecm_download_file/ECMP1117863["命令參考資料1.2.x.x版"^]
+
+
+ a| 
+CN1601 交換器管理員指南
+ a| 
+提供在典型網路中使用 CN1601 交換器的範例。
+
+* https://library.netapp.com/ecm/ecm_download_file/ECMP1117844["管理員指南"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2811865["管理員指南，版本 1.1.xx"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMP1117874["管理員指南，版本 1.2.xx"^]
+
+
+
+
+ a| 
+CN1610 網路交換器 CLI 指令參考
+ a| 
+提供有關配置 CN1601 軟體的命令列介面 (CLI) 命令的詳細資訊。
+
+* https://library.netapp.com/ecm/ecm_download_file/ECMP1117834["命令參考"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2811863["指令參考，版本 1.1.xx"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMP1117863["指令參考，版本 1.2.xx"^]
 
 
 |===

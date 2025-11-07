@@ -2,64 +2,65 @@
 permalink: switch-cisco-3232c/replace-storage-switch.html 
 sidebar: sidebar 
 keywords: replace, cisco nexus, 3232c storage switch 
-summary: 您可以執行特定的工作順序、不中斷地更換故障的Cisco Nexus 3232C儲存交換器。 
+summary: 您可以按照特定步驟，在不中斷業務的情況下更換有缺陷的Cisco Nexus 3232C 儲存交換器。 
 ---
-= 更換Cisco Nexus 3232C儲存交換器
+= 更換一台Cisco Nexus 3232C 儲存交換機
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-請依照下列步驟更換故障的Cisco Nexus 3232C儲存交換器。這是不中斷營運的程序。
+請依照以下步驟更換有缺陷的Cisco Nexus 3232C 儲存交換器。這是一個非破壞性的過程。
 
 
 
-== 檢閱要求
+== 審查要求
 
-現有的網路組態必須具有下列特性：
+現有網路配置必須具備以下特徵：
 
-* 「Cisco乙太網路交換器」頁面提供您交換器上最新的RCF和NX-OS版本。
-* 兩台交換器都必須具備管理連線能力。
+* Cisco乙太網路交換器頁麵包含交換器上最新的 RCF 和 NX-OS 版本。
+* 兩台交換器都必須具備管理連線功能。
 +
 [NOTE]
 ====
-請確定已完成所有疑難排解步驟、以確認您的交換器需要更換。
+請確保已完成所有故障排除步驟，以確認您的交換器需要更換。
 
 ====
 
 
-更換的Cisco Nexus 3232C交換器必須具備下列特性：
+更換用的CiscoNexus 3232C 交換器必須具備以下特性：
 
-* 管理網路連線功能必須正常。
-* 更換交換器的主控台存取必須已就緒。
-* 必須將適當的RCF和NX-OS作業系統映像載入交換器。
-* 交換器的初始自訂必須完成。
-
-
-
-
-== 更換交換器
-
-此程序會以新的3232C交換器NS2取代第二個Nexus 3232C儲存交換器S2。這兩個節點分別是node1和node2。
+* 管理網路連線必須正常。
+* 必須具備對更換開關的控制台存取權限。
+* 必須將對應的 RCF 和 NX-OS 作業系統映像載入到交換器上。
+* 交換器的初始定制必須完成。
 
 
 
-=== 步驟1：確認要更換的交換器為S2
 
-. 如果AutoSupport 此叢集啟用了「支援功能」、請叫用AutoSupport 下列訊息來抑制自動建立案例：「System Node AutoSupport 支援功能叫用節點*-type all - Message MAn=xh」
+== 更換開關
+
+此程序將第二個 Nexus 3232C 儲存交換器 S2 替換為新的 3232C 交換器 NS2。這兩個節點分別是節點1和節點2。
+
+
+
+=== 步驟 1：確認待更換的開關是 S2
+
+. 如果此叢集上啟用了AutoSupport ，則透過呼叫AutoSupport訊息來抑制自動建立案例：
+`system node autosupport invoke -node * -type all - message MAINT=xh`
 +
-_x_是維護時段的持續時間（以小時為單位）。
+_x_ 是維護視窗的持續時間，單位為小時。
 
 +
 [NOTE]
 ====
-此資訊可通知技術支援人員執行此維護工作、以便在維護期間抑制自動建立案例。AutoSupport
+AutoSupport訊息會通知技術支援此維護任務，以便在維護視窗期間抑制自動建立案例。
 
 ====
-. 檢查儲存節點連接埠的健全狀況、確定已連線至儲存交換器S1：
+. 檢查儲存節點連接埠的運作狀況，確保與儲存交換器S1有連接：
 +
-「torage port show -port-type ENET」
+`storage port show -port-type ENET`
 
 +
 .顯示範例
@@ -83,9 +84,9 @@ node2
                    e7b  ENET  storage      0 enabled  offline     30
 ----
 ====
-. 確認儲存交換器S1可用：
+. 確認儲存交換器 S1 可用：
 +
-「網路裝置探索秀」
+`network device-discovery show`
 
 +
 .顯示範例
@@ -115,7 +116,7 @@ node2/lldp
             e4e    node1                     e4e               -
 ----
 ====
-. 執行 `show lldp neighbors` 在工作交換器上執行命令、確認您可以同時看到節點和所有磁碟櫃：
+. 運行 `show lldp neighbors`在工作交換器上執行指令，確認可以看到兩個節點和所有機架：
 +
 `show lldp neighbors`
 
@@ -142,9 +143,9 @@ SHFGD2008000022         Eth1/8          120        S           e0a
 
 
 
-=== 步驟2：設定纜線
+=== 步驟二：配置線纜
 
-. [[五]驗證儲存系統中的機櫃連接埠：
+. [[五]]檢查儲存系統中的貨架連接埠：
 +
 `storage shelf port show -fields remote-device,remote-port`
 
@@ -168,17 +169,17 @@ shelf  id  remote-port  remote-device
 3.20   3   -            -
 ----
 ====
-. 拔下連接至儲存交換器S2的所有纜線。
-. 將所有纜線重新連接至更換的交換器NS2。
+. 拆下連接到儲存交換器 S2 的所有電纜。
+. 將所有電纜重新連接到替換交換器 NS2。
 
 
 
 
-=== 步驟3：檢查交換器NS2上的所有裝置組態
+=== 步驟 3：驗證交換器 NS2 上的所有設備配置
 
-. 驗證儲存節點連接埠的健全狀況：
+. 驗證儲存節點連接埠的健康狀況：
 +
-「torage port show -port-type ENET」
+`storage port show -port-type ENET`
 
 +
 .顯示範例
@@ -202,9 +203,9 @@ node2
                    e7b  ENET  storage    100 enabled  online        30
 ----
 ====
-. 確認兩個交換器都可用：
+. 確認兩台交換器均可用：
 +
-「網路裝置探索秀」
+`network device-discovery show`
 
 +
 .顯示範例
@@ -238,7 +239,7 @@ node2/lldp
             e7b    NS2                       Ethernet1/2       -
 ----
 ====
-. 驗證儲存系統中的機櫃連接埠：
+. 檢查儲存系統中的貨架連接埠：
 +
 `storage shelf port show -fields remote-device,remote-port`
 
@@ -261,11 +262,11 @@ shelf id remote-port remote-device
 3.20  3  Ethernet1/8 NS2
 ----
 ====
-. 如果您禁止自動建立個案、請叫用AutoSupport 下列訊息來重新啟用：
+. 如果您已停用自動建立案例功能，請透過呼叫AutoSupport訊息重新啟用該功能：
 +
-「系統節點AutoSupport 不完整地叫用節點*-type all -most MAn=end」
+`system node autosupport invoke -node * -type all -message MAINT=END`
 
 
 
-.接下來呢？
-link:../switch-cshm/config-overview.html["設定交換器健全狀況監控"]
+.下一步是什麼？
+link:../switch-cshm/config-overview.html["配置交換器健康監控"]

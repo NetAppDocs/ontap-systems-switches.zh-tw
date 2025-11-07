@@ -2,7 +2,7 @@
 permalink: switch-nvidia-sn2100-storage/configure-overview-sn2100-storage.html 
 sidebar: sidebar 
 keywords: sn2100 SN2100 switches setup, sn2100 SN2100 switches install, cumulus linux 
-summary: 在設定NVIDIA SN2100交換器之前、請先檢閱程序總覽。 
+summary: 在設定NVIDIA SN2100 交換器之前，請先查看步驟概述。 
 ---
 = NVIDIA SN2100 交換器的安裝與設定工作流程
 :allow-uri-read: 
@@ -11,7 +11,7 @@ summary: 在設定NVIDIA SN2100交換器之前、請先檢閱程序總覽。
 
 
 [role="lead"]
-NVIDIA SN2100 是乙太網路交換器、可讓您在控制器和磁碟櫃之間切換資料。
+NVIDIA SN2100 是一款乙太網路交換機，可用於在控制器和磁碟機之間交換資料。
 
 請依照這些工作流程步驟安裝並設定您的 SN2100 交換器。
 

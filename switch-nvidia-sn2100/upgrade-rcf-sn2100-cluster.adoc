@@ -2,43 +2,43 @@
 permalink: switch-nvidia-sn2100/upgrade-rcf-sn2100-cluster.html 
 sidebar: sidebar 
 keywords: upgrade rcf script, python script, sn2100 SN2100 switches, cumulus 
-summary: 在安裝RCF指令碼之前、請確定交換器上有下列項目可用 
+summary: 在安裝 RCF 腳本之前，請確保交換器上具備以下條件。 
 ---
-= 升級參考組態檔案（ RCF ）指令碼
+= 升級參考設定檔 (RCF) 腳本
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-請遵循此程序升級 RCF 指令碼。
+請依照以下步驟升級 RCF 腳本。
 
 .開始之前
-在升級 RCF 指令碼之前，請確定交換器上有下列可用項目：
+在升級 RCF 腳本之前，請確保交換器上具備以下條件：
 
-* 已安裝 Cumulus Linux 。請參閱 https://hwu.netapp.com/Switch/Index["Hardware Universe"^] 適用於支援的版本。
-* IP位址、子網路遮罩和預設閘道、是透過DHCP定義或手動設定的。
+* Cumulus Linux 已安裝。參見 https://hwu.netapp.com/Switch/Index["Hardware Universe"^]適用於支援的版本。
+* IP 位址、子網路遮罩和預設閘道透過 DHCP 定義或手動設定。
 
 
 
-NOTE: 您必須在 RCF 中指定一個使用者（管理使用者除外）、以專門用於記錄收集。
+NOTE: 除了管理員使用者之外，您還必須在 RCF 中指定專門用於日誌收集的使用者。
 
-.目前的RCF指令碼版本
-叢集和儲存應用程式有兩個 RCF 指令碼可用。請從頁面下載 RCFs https://mysupport.netapp.com/site/info/nvidia-cluster-switch["NVIDIA SN2100 軟體下載"^] 。每個的程序都相同。
+.目前 RCF 腳本版本
+叢集和儲存應用可以使用兩種 RCF 腳本。從 https://mysupport.netapp.com/site/info/nvidia-cluster-switch["NVIDIA SN2100 軟體下載"^]頁。每種情況的處理步驟都相同。
 
-* 叢集： * MSN2100-RCF-v1. _x_ 叢集 - HA-BreakOut-LLDP*
-* 儲存： * MSN2100-RCF-v1. _x_ 儲存 *
+* 叢集：*MSN2100-RCF-v1._x_-Cluster-HA-Breakout-LLDP*
+* 儲存：*MSN2100-RCF-v1._x_-儲存*
 
 
 .關於範例
-下列程序範例說明如何下載及套用叢集交換器的RCF指令碼。
+以下範例步驟顯示如何下載和套用叢集交換器的 RCF 腳本。
 
-命令輸出範例使用交換器管理IP位址10.233.204.71、網路遮罩255．255．255．0和預設閘道10．233.204.1。
+範例指令輸出使用交換器管理 IP 位址 10.233.204.71，子網路遮罩 255.255.254.0 和預設閘道 10.233.204.1。
 
 .步驟
 [role="tabbed-block"]
 ====
-.Cumulus Linux 5.11.
+.Cumulus Linux 5.11
 --
 . 顯示SN2100交換器上的可用介面：
 +
@@ -59,7 +59,7 @@ Interface     MTU   Speed State Remote Host         Remote Port- Type      Summa
 + swp15      9216 100G    up sw2                      swp15       swp
 + swp16      9216 100G    up sw2                      swp16       swp
 ----
-. 將RCF python指令碼複製到交換器。
+. 將 RCF Python 腳本複製到交換器。
 +
 [listing, subs="+quotes"]
 ----
@@ -70,9 +70,9 @@ MSN2100-RCF-v1.x-Cluster-HA-Breakout-LLDP          100% 8607   111.2KB/s        
 ----
 +
 
-NOTE: 雖然在範例中使用，但 `scp`您可以使用偏好的檔案傳輸方法。
+NOTE: 雖然 `scp`範例中使用的是這種方法，您可以使用您喜歡的任何文件傳輸方法。
 
-. 套用 RCF python 指令碼 * MSN2100-RCF-v1. _x_ 叢集 -HA-BreakOut-LLDP* 。
+. 應用 RCF python 腳本 *MSN2100-RCF-v1._x_-Cluster-HA-Breakout-LLDP*。
 +
 [listing, subs="+quotes"]
 ----
@@ -95,11 +95,11 @@ Step 12: Configure SNMP
 Step 13: Reboot the switch
 ----
 +
-RCF指令碼會完成上述範例中所列的步驟。
+RCF 腳本完成了上面範例中列出的步驟。
 
 +
 
-NOTE: 在步驟 3 * 更新上述 MOTD 檔案 * 中、命令 `cat /etc/issue` 執行。這可讓您驗證 RCF 檔案名稱、 RCF 版本、要使用的連接埠、以及 RCF 橫幅中的其他重要資訊。
+NOTE: 在上述步驟 3「更新 MOTD 檔案」中，該指令 `cat /etc/issue`正在運行。這樣，您就可以驗證 RCF 檔案名稱、RCF 版本、要使用的連接埠以及 RCF 橫幅中的其他重要資訊。
 
 +
 例如：
@@ -138,10 +138,10 @@ admin@sw1:mgmt:~$ cat /etc/issue
 ----
 +
 
-NOTE: 若有任何無法修正的RCF python指令碼問題、請聯絡 https://mysupport.netapp.com/["NetApp支援"^] 以取得協助。
+NOTE: 如果遇到任何無法解決的 RCF Python 腳本問題，請聯絡我們。 https://mysupport.netapp.com/["NetApp支援"^]尋求幫助。
 
-. 重新套用任何先前的自訂項目至交換器組態。如link:cabling-considerations-sn2100-cluster.html["檢閱纜線佈線和組態考量"]需進一步變更的詳細資料、請參閱。
-. 重新開機後驗證組態：
+. 將先前對交換器配置所做的任何自訂設定重新套用。請參閱link:cabling-considerations-sn2100-cluster.html["審查佈線和配置注意事項"]有關任何後續變更的詳細資訊。
+. 重啟後驗證配置：
 +
 [listing, subs="+quotes"]
 ----
@@ -255,9 +255,9 @@ Incomplete Command: set interface swp3-16 link fast-linkupp3-16 link fast-linkup
 ----
 +
 
-NOTE: 列出的例外情況不會影響效能、因此可以安全地忽略。
+NOTE: 所列例外情況不影響效能，可以忽略。
 
-. 驗證介面中收發器的資訊：
+. 請核對介面中收發器的資訊：
 +
 [listing, subs="+quotes"]
 ----
@@ -282,7 +282,7 @@ swp6       0x00 None
 swp15      0x11 (QSFP28)  Amphenol     112-00595        APF20279210117  B0
 swp16      0x11 (QSFP28)  Amphenol     112-00595        APF20279210166  B0
 ----
-. 確認每個節點都有連線至每個交換器：
+. 確認每個節點都與每個交換器有連接：
 +
 [listing, subs="+quotes"]
 ----
@@ -295,9 +295,9 @@ swp2s1     25G    Trunk/L2    node1                 �
 swp15      100G   BondMember  sw2                      swp15
 swp16      100G   BondMember  sw2                      swp16
 ----
-. 驗證叢集上叢集連接埠的健全狀況。
+. 檢查叢集上叢集連接埠的運作狀況。
 +
-.. 驗證叢集內所有節點的叢集連接埠是否正常運作：
+.. 確認叢集中所有節點的叢集連接埠均已啟動且運作狀況良好：
 +
 [listing, subs="+quotes"]
 ----
@@ -319,7 +319,7 @@ Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
 e3a       Cluster      Cluster          up   9000  auto/10000 healthy  false
 e3b       Cluster      Cluster          up   9000  auto/10000 healthy  false
 ----
-.. 驗證叢集的交換器健全狀況（這可能不會顯示交換器SW2、因為l生命 週數不在e0d上）。
+.. 從叢集驗證交換器的健康狀況（這可能不會顯示交換器 sw2，因為 LIF 沒有歸位到 e0d）。
 +
 [listing, subs="+quotes"]
 ----
@@ -360,7 +360,7 @@ sw2                         cluster-network    10.233.205.91    MSN2100-CB2RC
 
 
 --
-.Cumulus Linux 5.4.
+.Cumulus Linux 5.4
 --
 . 顯示SN2100交換器上的可用介面：
 +
@@ -381,7 +381,7 @@ Interface     MTU   Speed State Remote Host         Remote Port- Type      Summa
 + swp15      9216 100G    up sw2                      swp15       swp
 + swp16      9216 100G    up sw2                      swp16       swp
 ----
-. 將RCF python指令碼複製到交換器。
+. 將 RCF Python 腳本複製到交換器。
 +
 [listing, subs="+quotes"]
 ----
@@ -392,9 +392,9 @@ MSN2100-RCF-v1.x-Cluster-HA-Breakout-LLDP          100% 8607   111.2KB/s        
 ----
 +
 
-NOTE: 而 `scp` 在範例中使用時、您可以使用偏好的檔案傳輸方法。
+NOTE: 儘管 `scp`範例中使用的是這種方法，您可以使用您喜歡的任何文件傳輸方法。
 
-. 套用 RCF python 指令碼 * MSN2100-RCF-v1. _x_ 叢集 -HA-BreakOut-LLDP* 。
+. 應用 RCF python 腳本 *MSN2100-RCF-v1._x_-Cluster-HA-Breakout-LLDP*。
 +
 [listing, subs="+quotes"]
 ----
@@ -417,11 +417,11 @@ Step 12: Configure SNMP
 Step 13: Reboot the switch
 ----
 +
-RCF指令碼會完成上述範例中所列的步驟。
+RCF 腳本完成了上面範例中列出的步驟。
 
 +
 
-NOTE: 在步驟 3 * 更新上述 MOTD 檔案 * 中、命令 `cat /etc/issue` 執行。這可讓您驗證 RCF 檔案名稱、 RCF 版本、要使用的連接埠、以及 RCF 橫幅中的其他重要資訊。
+NOTE: 在上述步驟 3「更新 MOTD 檔案」中，該指令 `cat /etc/issue`正在運行。這樣，您就可以驗證 RCF 檔案名稱、RCF 版本、要使用的連接埠以及 RCF 橫幅中的其他重要資訊。
 
 +
 例如：
@@ -460,10 +460,10 @@ admin@sw1:mgmt:~$ cat /etc/issue
 ----
 +
 
-NOTE: 若有任何無法修正的RCF python指令碼問題、請聯絡 https://mysupport.netapp.com/["NetApp支援"^] 以取得協助。
+NOTE: 如果遇到任何無法解決的 RCF Python 腳本問題，請聯絡我們。 https://mysupport.netapp.com/["NetApp支援"^]尋求幫助。
 
-. 重新套用任何先前的自訂項目至交換器組態。如link:cabling-considerations-sn2100-cluster.html["檢閱纜線佈線和組態考量"]需進一步變更的詳細資料、請參閱。
-. 重新開機後驗證組態：
+. 將先前對交換器配置所做的任何自訂設定重新套用。請參閱link:cabling-considerations-sn2100-cluster.html["審查佈線和配置注意事項"]有關任何後續變更的詳細資訊。
+. 重啟後驗證配置：
 +
 [listing, subs="+quotes"]
 ----
@@ -577,9 +577,9 @@ Incomplete Command: set interface swp3-16 link fast-linkupp3-16 link fast-linkup
 ----
 +
 
-NOTE: 列出的例外情況不會影響效能，因此可以安全地忽略。
+NOTE: 所列例外情況不影響效能，可以安全地忽略。
 
-. 驗證介面中收發器的資訊：
+. 請核對介面中收發器的資訊：
 +
 [listing, subs="+quotes"]
 ----
@@ -604,7 +604,7 @@ swp6       0x00 None
 swp15      0x11 (QSFP28)  Amphenol     112-00595        APF20279210117  B0
 swp16      0x11 (QSFP28)  Amphenol     112-00595        APF20279210166  B0
 ----
-. 確認每個節點都有連線至每個交換器：
+. 確認每個節點都與每個交換器有連接：
 +
 [listing, subs="+quotes"]
 ----
@@ -617,9 +617,9 @@ swp2s1     25G    Trunk/L2    node1                 �
 swp15      100G   BondMember  sw2                      swp15
 swp16      100G   BondMember  sw2                      swp16
 ----
-. 驗證叢集上叢集連接埠的健全狀況。
+. 檢查叢集上叢集連接埠的運作狀況。
 +
-.. 驗證叢集內所有節點的叢集連接埠是否正常運作：
+.. 確認叢集中所有節點的叢集連接埠均已啟動且運作狀況良好：
 +
 [listing, subs="+quotes"]
 ----
@@ -641,7 +641,7 @@ Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
 e3a       Cluster      Cluster          up   9000  auto/10000 healthy  false
 e3b       Cluster      Cluster          up   9000  auto/10000 healthy  false
 ----
-.. 驗證叢集的交換器健全狀況（這可能不會顯示交換器SW2、因為l生命 週數不在e0d上）。
+.. 從叢集驗證交換器的健康狀況（這可能不會顯示交換器 sw2，因為 LIF 沒有歸位到 e0d）。
 +
 [listing, subs="+quotes"]
 ----
@@ -711,7 +711,7 @@ ADMDN  swp14  N/A  9216   NotConfigured
 ADMDN  swp15  N/A  9216   NotConfigured
 ADMDN  swp16  N/A  9216   NotConfigured
 ----
-. 將RCF python指令碼複製到交換器。
+. 將 RCF Python 腳本複製到交換器。
 +
 [listing, subs="+quotes"]
 ----
@@ -722,9 +722,9 @@ MSN2100-RCF-v1._x_-Cluster-HA-Breakout-LLDP         100% 8607   111.2KB/s       
 ----
 +
 
-NOTE: 而 `scp` 在範例中使用時、您可以使用偏好的檔案傳輸方法。
+NOTE: 儘管 `scp`範例中使用的是這種方法，您可以使用您喜歡的任何文件傳輸方法。
 
-. 套用 RCF python 指令碼 * MSN2100-RCF-v1. _x_ 叢集 -HA-BreakOut-LLDP* 。
+. 應用 RCF python 腳本 *MSN2100-RCF-v1._x_-Cluster-HA-Breakout-LLDP*。
 +
 [listing, subs="+quotes"]
 ----
@@ -746,18 +746,18 @@ Step 12: Configure SNMP
 Step 13: Reboot the switch
 ----
 +
-RCF指令碼會完成上述範例中所列的步驟。
+RCF 腳本完成了上面範例中列出的步驟。
 
 +
 
-NOTE: 在步驟 3 * 更新上述 MOTD 檔案 * 中、命令 `cat /etc/motd` 執行。這可讓您驗證 RCF 檔案名稱、 RCF 版本、要使用的連接埠、以及 RCF 橫幅中的其他重要資訊。
+NOTE: 在上述步驟 3「更新 MOTD 檔案」中，該指令 `cat /etc/motd`正在運行。這樣，您就可以驗證 RCF 檔案名稱、RCF 版本、要使用的連接埠以及 RCF 橫幅中的其他重要資訊。
 
 +
 
-NOTE: 若有任何無法修正的RCF python指令碼問題、請聯絡 https://mysupport.netapp.com/["NetApp支援"^] 以取得協助。
+NOTE: 如果遇到任何無法解決的 RCF Python 腳本問題，請聯絡我們。 https://mysupport.netapp.com/["NetApp支援"^]尋求幫助。
 
-. 重新套用任何先前的自訂項目至交換器組態。如link:cabling-considerations-sn2100-cluster.html["檢閱纜線佈線和組態考量"]需進一步變更的詳細資料、請參閱。
-. 重新開機後驗證組態：
+. 將先前對交換器配置所做的任何自訂設定重新套用。請參閱link:cabling-considerations-sn2100-cluster.html["審查佈線和配置注意事項"]有關任何後續變更的詳細資訊。
+. 重啟後驗證配置：
 +
 [listing, subs="+quotes"]
 ----
@@ -821,7 +821,7 @@ switch-priority  TC  ETS
 2                 2  DWRR 28%
 5                 5  DWRR 43%
 ----
-. 驗證介面中收發器的資訊：
+. 請核對介面中收發器的資訊：
 +
 [listing, subs="+quotes"]
 ----
@@ -833,7 +833,7 @@ swp4       0x11 (QSFP28)  AVAGO        332-00440        AF1815GU05Z 
 swp15      0x11 (QSFP28)  Amphenol     112-00573        APF21109348001  B0
 swp16      0x11 (QSFP28)  Amphenol     112-00573        APF21109347895  B0
 ----
-. 確認每個節點都有連線至每個交換器：
+. 確認每個節點都與每個交換器有連接：
 +
 [listing, subs="+quotes"]
 ----
@@ -846,9 +846,9 @@ swp4       100G   Trunk/L2    sw2                     e3b
 swp15      100G   BondMember  sw13                    swp15
 swp16      100G   BondMember  sw14                    swp16
 ----
-. 驗證叢集上叢集連接埠的健全狀況。
+. 檢查叢集上叢集連接埠的運作狀況。
 +
-.. 驗證叢集內所有節點的叢集連接埠是否正常運作：
+.. 確認叢集中所有節點的叢集連接埠均已啟動且運作狀況良好：
 +
 [listing, subs="+quotes"]
 ----
@@ -870,7 +870,7 @@ Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
 e3a       Cluster      Cluster          up   9000  auto/10000 healthy  false
 e3b       Cluster      Cluster          up   9000  auto/10000 healthy  false
 ----
-.. 驗證叢集的交換器健全狀況（這可能不會顯示交換器SW2、因為l生命 週數不在e0d上）。
+.. 從叢集驗證交換器的健康狀況（這可能不會顯示交換器 sw2，因為 LIF 沒有歸位到 e0d）。
 +
 [listing, subs="+quotes"]
 ----

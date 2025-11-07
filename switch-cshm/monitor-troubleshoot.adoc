@@ -2,19 +2,19 @@
 permalink: switch-cshm/monitor-troubleshoot.html 
 sidebar: sidebar 
 keywords: cshm, cluster, storage, switch logs, debugging, collection 
-summary: 您可以使用下列命令 ... 
+summary: 您可以使用以下命令… 
 ---
-= 疑難排解警示
+= 故障排除警報
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-如果叢集中的乙太網路交換器偵測到故障、風險或嚴重狀況、就會發出警示。
+如果叢集中的乙太網路交換器偵測到故障、風險或嚴重情況，則會發出警報。
 
-如果有發出警示、系統健全狀況狀態會報告叢集的降級狀態。所發出的警示包括回應降級系統健全狀況所需的資訊。
+如果發出警報，系統健康狀況報告群集狀態下降。發出的警報包含您需要應對系統健康狀況下降的資訊。
 
-若要檢視可用的乙太網路交換器健全狀況監視器警示、請執行命令： `system health alert definition show -monitor ethernet-switch`
+若要查看可用的乙太網路交換器健康監控警報，請執行以下命令： `system health alert definition show -monitor ethernet-switch`
 
-如需警示的進階解決方案詳細資料、請參閱知識庫 https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/Cluster_Switch_Health_Monitor_CSHM_Alert_Resolution_Guide["交換器健全狀況監視器警示解析指南"^] 文件。
+請參閱知識庫文章 https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/Cluster_Switch_Health_Monitor_CSHM_Alert_Resolution_Guide["Switch 健康監控器警報解決指南"^]有關警報的高級解析詳情。

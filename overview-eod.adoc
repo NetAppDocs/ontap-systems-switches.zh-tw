@@ -2,30 +2,30 @@
 sidebar: sidebar 
 permalink: overview-eod.html 
 keywords: switches, fas, aff systems, end of availability, EOD 
-summary: EOD交換器適用於FAS Efd和AFF Efesd系統。 
+summary: FAS和AFF系統的 EOD 開關。 
 ---
-= 終止可用度
+= 停止供應
 :allow-uri-read: 
 :icons: font
 :imagesdir: ./media/
 
 
 [role="lead"]
-下列交換器已不再提供購買、但仍受到支援。
+以下交換器已停止銷售，但仍提供支援。
 
-* link:./switch-cisco-3232c/install-overview-cisco-3232c.html["Cisco Nexus 3232C"]
-* link:./switch-cisco-3132q-v/install-overview-cisco-3132qv.html["Cisco Nexus 3132Q-V"]
-* link:./switch-cisco-92300/install-overview-cisco-92300.html["Cisco Nexus 2300YC"]
+* link:./switch-cisco-3232c/install-overview-cisco-3232c.html["CiscoNexus 3232C"]
+* link:./switch-cisco-3132q-v/install-overview-cisco-3132qv.html["CiscoNexus 3132Q-V"]
+* link:./switch-cisco-92300/install-overview-cisco-92300.html["CiscoNexus 92300YC"]
 * link:./switch-netapp-cn1610/install-overview-cn1610.html["NetApp CN1610"]
 
 
 
 
-== 終止銷售和終止使用的公告
+== 停售和停產公告
 
-* link:https://www.cisco.com/c/en/us/products/collateral/switches/nexus-3000-series-switches/n3k-c3232c-eol.html["Cisco Nexus 3232C 的終止銷售與終止使用公告"]
-* link:https://www.cisco.com/c/en/us/products/collateral/switches/nexus-3000-series-switches/nexus-31108pc-v-31108tc-v-nexus-3132q-v-eol.html["Cisco Nexus 31108PC-V ， 31108TC-V 和 Nexus 3132Q-V 的終止銷售和終止使用公告"]
-* link:https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/eos-eol-notice-c51-742776.html["Cisco N9K-C93120TX ， N9K-C92300YC 的終止銷售與終止使用公告"]
-* link:https://www.cisco.com/c/en/us/products/collateral/switches/nexus-5000-series-switches/eos-eol-notice-c51-740720.html["Cisco Nexus 5500 系列交換器的終止銷售與終止使用公告"]
-* link:https://mysupport.netapp.com/info/communications/ECMLP2859128.html["終止供應： NetApp CN1610 叢集互連 SKU"]
+* link:https://www.cisco.com/c/en/us/products/collateral/switches/nexus-3000-series-switches/n3k-c3232c-eol.html["Cisco Nexus 3232C 停止銷售和停止生命週期公告"]
+* link:https://www.cisco.com/c/en/us/products/collateral/switches/nexus-3000-series-switches/nexus-31108pc-v-31108tc-v-nexus-3132q-v-eol.html["Cisco Nexus 31108PC-V、31108TC-V 和 Nexus 3132Q-V 停止銷售和停止生命週期公告"]
+* link:https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/eos-eol-notice-c51-742776.html["Cisco N9K-C93120TX、N9K-C92300YC 停止銷售和停止產品生命週期公告"]
+* link:https://www.cisco.com/c/en/us/products/collateral/switches/nexus-5000-series-switches/eos-eol-notice-c51-740720.html["CiscoNexus 5500系列交換器停售及生命週期終止公告"]
+* link:https://mysupport.netapp.com/info/communications/ECMLP2859128.html["停產通知： NetApp CN1610 叢集互連 SKU"]
 

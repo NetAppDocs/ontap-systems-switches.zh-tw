@@ -4,40 +4,40 @@ sidebar: sidebar
 keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, cisco 3232c 
 summary: '使用群集交換器健康監視器 (CSHM) 和日誌收集功能時需要 SSH。若要在Cisco 3232c 叢集交換器上啟用 SSH，您需要先生成 SSH 金鑰，然後啟用 SSH。' 
 ---
-= 升級參考組態檔案（ RCF ）
+= 升級您的參考設定檔 (RCF)
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-當您的作業交換器上已安裝 RCF 檔案的現有版本時、即可升級 RCF 版本。
+當您的運行交換器上已安裝了現有版本的 RCF 檔案時，您需要升級 RCF 版本。
 
 .開始之前
-請確定您擁有下列項目：
+請確保您擁有以下物品：
 
-* 交換器組態的目前備份。
-* 完全正常運作的叢集（記錄檔中沒有錯誤或類似問題）。
-* 目前的 RCF 。
-* 如果您要更新 RCF 版本、則需要 RCF 中的開機組態、以反映所需的開機映像。
+* 交換器配置的目前備份。
+* 一個功能齊全的群集（日誌中沒有錯誤或類似問題）。
+* 當前的RCF。
+* 如果您要更新 RCF 版本，則需要在 RCF 中進行啟動配置，以反映所需的啟動映像。
 +
-如果您需要變更開機組態以反映目前的開機映像、則必須在重新套用RCF之前執行此動作、以便在未來重新開機時產生正確的版本。
+如果需要更改啟動配置以反映目前的啟動映像，則必須在重新套用 RCF 之前進行更改，以便在以後的重新啟動中實例化正確的版本。
 
 
 
 
-NOTE: 在此程序期間、不需要運作中的交換器間連結（ISL）。這是因為RCF版本變更可能會暫時影響ISL連線。為確保叢集作業不中斷、下列程序會在目標交換器上執行步驟時、將所有叢集生命體移轉至作業夥伴交換器。
+NOTE: 在此過程中不需要任何可操作的交換器間連結 (ISL)。這是設計使然，因為 RCF 版本的變更可能會暫時影響 ISL 連線。為確保叢集運作不會中斷，以下步驟將所有叢集 LIF 遷移到運作夥伴交換機，同時在目標交換器上執行對應步驟。
 
 
-CAUTION: 在安裝新的交換器軟體版本和RCFs之前、您必須清除交換器設定並執行基本組態。在清除交換器設定之前、您必須使用序列主控台連線至交換器、或保留基本組態資訊。
+CAUTION: 在安裝新的交換器軟體版本和 RCF 之前，必須清除交換器設定並執行基本設定。您必須使用序列控制台連接到交換機，或在擦除交換器設定之前保留基本設定資訊。
 
 
 
-== 步驟 1 ：準備升級
+== 第一步：準備升級
 
-. 顯示連接至叢集交換器之每個節點上的叢集連接埠：
+. 顯示每個節點上連接到叢集交換器的叢集連接埠：
 +
-「網路裝置探索秀」
+`network device-discovery show`
 
 +
 .顯示範例
@@ -64,9 +64,9 @@ cluster1-04/cdp
 cluster1::*>
 ----
 ====
-. 檢查每個叢集連接埠的管理和作業狀態。
+. 檢查每個叢集連接埠的管理和運作狀態。
 +
-.. 確認所有叢集連接埠都正常運作：
+.. 確認叢集所有連接埠均已啟動且狀態正常：
 +
 `network port show –role cluster`
 
@@ -109,9 +109,9 @@ e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
 cluster1::*>
 ----
 ====
-.. 確認所有叢集介面（l生命）都位於主連接埠：
+.. 確認所有叢集介面（LIF）都位於主連接埠上：
 +
-「網路介面show -role cluster」
+`network interface show -role cluster`
 
 +
 .顯示範例
@@ -136,9 +136,9 @@ Cluster
 cluster1::*>
 ----
 ====
-.. 驗證叢集是否顯示兩個叢集交換器的資訊：
+.. 確認集群顯示兩個集群交換器的資訊：
 +
-「系統叢集交換器show -is監控、可運作的true」
+`system cluster-switch show -is-monitoring-enabled-operational true`
 
 +
 .顯示範例
@@ -168,7 +168,7 @@ cs2                         cluster-network    10.233.205.93    NX3232C
 ====
 
 
-. 停用叢集生命體上的自動還原。
+. 停用群集 LIF 的自動回滾功能。
 +
 [listing, subs="+quotes"]
 ----
@@ -178,9 +178,9 @@ cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert fals
 
 
 
-== 步驟2：設定連接埠
+== 步驟 2：設定埠
 
-. 在叢集交換器CS2上、關閉連接至節點叢集連接埠的連接埠。
+. 在叢集交換器 cs2 上，關閉連接到節點叢集連接埠的連接埠。
 +
 [listing, subs="+quotes"]
 ----
@@ -193,11 +193,11 @@ cs2# *exit*
 ----
 +
 
-CAUTION: 請務必關閉 * 所有 * 連線的叢集連接埠、以避免任何網路連線問題。如 https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/Node_out_of_quorum_when_migrating_cluster_lif_during_switch_OS_upgrade["在交換器作業系統升級期間移轉叢集 LIF 時、節點超出仲裁範圍"^]需詳細資訊、請參閱知識庫文章。
+CAUTION: 請務必關閉所有已連接的叢集端口，以避免任何網路連線問題。請參閱知識庫文章 https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/Node_out_of_quorum_when_migrating_cluster_lif_during_switch_OS_upgrade["在切換作業系統升級期間遷移叢集 LIF 時，節點脫離仲裁。"^]更多詳情請見下文。
 
 . 驗證叢集連接埠是否已故障轉移到叢集交換器 cs1 上託管的連接埠。這可能需要幾秒鐘。
 +
-「網路介面show -role cluster」
+`network interface show -role cluster`
 
 +
 .顯示範例
@@ -222,9 +222,9 @@ Cluster
 cluster1::*>
 ----
 ====
-. 驗證叢集是否正常：
+. 驗證叢集是否運作正常：
 +
-「叢集展示」
+`cluster show`
 
 +
 .顯示範例
@@ -243,12 +243,12 @@ cluster1-04          true    true          false
 cluster1::*>
 ----
 ====
-. 如果您尚未這麼做、請將下列命令的輸出複製到文字檔、以儲存目前交換器組態的複本：
+. 如果您尚未儲存目前交換器配置，請將以下命令的輸出複製到文字檔案中：
 +
-「如何執行設定」
+`show running-config`
 
-. 記錄當前之間的任何自訂添加 `running-config`以及正在使用的 RCF 檔案（例如您組織的 SNMP 配置）。
-. 將基本配置詳細資訊儲存到 `write_erase.cfg`bootflash 上的檔案。
+. 記錄目前版本與目前版本之間的任何自訂新增內容。 `running-config`以及正在使用的 RCF 檔案（例如貴組織的 SNMP 配置）。
+. 儲存基本配置詳細信息 `write_erase.cfg`啟動閃存上的檔案。
 +
 [NOTE]
 ====
@@ -278,13 +278,13 @@ cluster1::*>
 `cs2# echo "hardware access-list tcam region qos 256" >> bootflash:write_erase.cfg`
 
 +
-請參閱知識庫文章 https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["如何在保留遠端連線的同時清除 Cisco 互連交換器上的組態"^]了解更多詳情。
+請參閱知識庫文章 https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["如何在保持遠端連線的情況下清除Cisco互連交換器上的配置"^]更多詳情請見下文。
 
-. 驗證 `write_erase.cfg`文件按預期填充：
+. 確認 `write_erase.cfg`文件已如預期填入：
 +
 `*show file bootflash:write_erase.cfg*`
 
-. 發出 `write erase`命令來刪除目前已儲存的配置：
+. 問題 `write erase`清除目前已儲存配置的命令：
 +
 `cs2# *write erase*`
 
@@ -294,7 +294,7 @@ cluster1::*>
 +
 `Do you wish to proceed anyway? (y/n)  [n] *y*`
 
-. 將先前儲存的基本組態複製到啟動組態。
+. 將先前儲存的基本配置複製到啟動配置中。
 +
 `cs2# *copy bootflash:write_erase.cfg startup-config*`
 
@@ -305,16 +305,16 @@ cluster1::*>
 +
 `This command will reboot the system. (y/n)?  [n] *y*`
 
-. 再次到達管理 IP 位址之後、請透過 SSH 登入交換器。
+. 管理 IP 位址恢復正常後，透過 SSH 登入交換器。
 +
-您可能需要更新與 SSH 金鑰相關的主機檔案項目。
+您可能需要更新與 SSH 金鑰相關的 hosts 檔案項目。
 
-. 使用下列傳輸協定之一將 RCF 複製到交換器 cs2 的 bootflash：FTP、TFTP、SFTP 或 SCP。有關Cisco命令的更多信息，請參閱 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]指南。
+. 使用下列傳輸協定之一將 RCF 複製到交換器 cs2 的 bootflash：FTP、TFTP、SFTP 或 SCP。有關Cisco命令的更多信息，請參閱 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 系列 NX-OS 指令參考"^]指南。
 +
 .顯示範例
 [%collapsible]
 ====
-本範例顯示使用TFTP將RCF複製到交換器CS2上的bootFlash：
+此範例展示如何使用 TFTP 將 RCF 檔案複製到交換器 cs2 的啟動快閃記憶體中：
 
 [listing, subs="+quotes"]
 ----
@@ -326,15 +326,15 @@ TFTP get operation was successful
 Copy complete, now saving to disk (please wait)...
 ----
 ====
-. 將先前下載的RCF套用至bootFlash。
+. 將先前下載的 RCF 檔案套用到啟動快閃記憶體。
 +
-如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^] 指南：
+有關Cisco命令的更多信息，請參閱 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 系列 NX-OS 指令參考"^]指南。
 
 +
 .顯示範例
 [%collapsible]
 ====
-此範例顯示在交換器CS2上安裝的RCF檔案「Nexus _3232C_RCF-v1.6-Cluster-HA-Breakout.txt'：
+此範例展示了 RCF 文件 `Nexus_3232C_RCF_v1.6-Cluster-HA-Breakout.txt`正在交換器 cs2 上安裝：
 
 [listing, subs="+quotes"]
 ----
@@ -347,44 +347,44 @@ cs2# *copy Nexus_3232C_RCF_v1.6-Cluster-HA-Breakout.txt running-config echo-comm
 請務必仔細閱讀 RCF 的 *安裝說明*、*重要說明* 和 *橫幅* 部分。您必須閱讀並遵循這些說明以確保交換器的正確配置和操作。
 
 ====
-. 確認RCF檔案為正確的更新版本：
+. 請確認 RCF 檔案是否為最新版本：
 +
-「如何執行設定」
+`show running-config`
 
 +
-當您檢查輸出以確認您擁有正確的RCF時、請確定下列資訊正確無誤：
+檢查輸出結果以驗證是否擁有正確的 RCF 時，請確保以下資訊正確：
 
 +
 ** RCF橫幅
-** 節點和連接埠設定
-** 自訂
+** 節點和連接埠設置
+** 客製化
 +
-輸出會因站台組態而異。請檢查連接埠設定、並參閱版本說明、以瞭解您安裝的RCF的任何特定變更。
+輸出結果會根據您的網站配置而有所不同。檢查連接埠設置，並參考發行說明，以了解您安裝的 RCF 版本是否有任何特定變更。
 
 
 
-. 重新套用任何先前的自訂項目至交換器組態。如link:cabling-considerations-3232c.html["檢閱纜線佈線和組態考量"]需進一步變更的詳細資料、請參閱。
-. 驗證RCF版本和交換器設定是否正確之後、請將執行組態檔複製到啟動組態檔。
+. 將先前對交換器配置所做的任何自訂設定重新套用。請參閱link:cabling-considerations-3232c.html["審查佈線和配置注意事項"]有關任何後續變更的詳細資訊。
+. 確認 RCF 版本和交換器設定正確後，將運行設定檔複製到啟動設定檔。
 +
-如需Cisco命令的詳細資訊、請參閱中的適當指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^] 指南：
+有關Cisco命令的更多信息，請參閱 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 系列 NX-OS 指令參考"^]指南。
 
 +
 [listing]
 ----
 cs2# copy running-config startup-config [########################################] 100% Copy complete
 ----
-. 重新開機交換器CS2。您可以在交換器重新開機時忽略節點上報告的「叢集連接埠當機」事件。
+. 重啟交換器cs2。交換器重新啟動期間，您可以忽略節點上報告的「叢集連接埠關閉」事件。
 +
 [listing, subs="+quotes"]
 ----
 cs2# *reload*
 This command will reboot the system. (y/n)?  [n] *y*
 ----
-. 驗證叢集上叢集連接埠的健全狀況。
+. 檢查叢集上叢集連接埠的運作狀況。
 +
-.. 驗證叢集中所有節點的e0d連接埠是否正常運作：
+.. 驗證叢集中所有節點的 e0d 連接埠是否已啟動且運作狀況良好：
 +
-「網路連接埠show -role cluster」
+`network port show -role cluster`
 
 +
 .顯示範例
@@ -424,7 +424,7 @@ e0d       Cluster      Cluster          up   9000  auto/100000 healthy false
 8 entries were displayed.
 ----
 ====
-.. 驗證叢集的交換器健全狀況（這可能不會顯示交換器CS2、因為LIF不是位於e0d上）。
+.. 從叢集驗證交換器的健康狀況（這可能不會顯示交換器 cs2，因為 LIF 沒有歸位到 e0d）。
 +
 .顯示範例
 [%collapsible]
@@ -470,21 +470,21 @@ cs2                         cluster-network    10.233.205.91    N3K-C3232C
 +
 [NOTE]
 ====
-根據交換器上先前載入的 RCF 版本，您可能會在 cs1 交換器控制台上觀察到以下輸出 2020 年 11 月 17 日 16:07:18 cs1 %$ VDC-1 %$ %STP-2-UNBLOCK_CONSIST_PORT：解除 VLAN0092 上的連接埠 VLAN0092 上的連接埠。連接埠一致性已恢復。 2020 年 11 月 17 日 16:07:23 cs1 %$ VDC-1 %$ %STP-2-BLOCK_PVID_PEER：阻塞 VLAN0001 上的連接埠通道 1。對等 VLAN 不一致。 2020 年 11 月 17 日 16:07:23 cs1 %$ VDC-1 %$ %STP-2-BLOCK_PVID_LOCAL：阻塞 VLAN0092 上的連接埠通道 1。本地vlan不一致。
+根據交換器上先前載入的 RCF 版本，您可能會在 cs1 交換器控制台上觀察到以下輸出 2020 年 11 月 17 日 16:07:18 cs1 %$ VDC-1 %$ %STP-2-UNBLOCK_CONSIST_PORT：解除 VLAN0092 上的連接埠 VLAN0092 上的連接埠。連接埠一致性已恢復。2020 年 11 月 17 日 16:07:23 cs1 %$ VDC-1 %$ %STP-2-BLOCK_PVID_PEER：阻塞 VLAN0001 上的連接埠通道 1。對等 VLAN 不一致。2020 年 11 月 17 日 16:07:23 cs1 %$ VDC-1 %$ %STP-2-BLOCK_PVID_LOCAL：阻塞 VLAN0092 上的連接埠通道 1。本地vlan不一致。
 
 ====
 
 
 +
 
-NOTE: 叢集節點報告為健全狀態最多可能需要5分鐘。
+NOTE: 叢集節點最多可能需要 5 分鐘才能報告為健康狀態。
 
-. 在叢集交換器CS1上、關閉連接至節點叢集連接埠的連接埠。
+. 在叢集交換器 cs1 上，關閉連接到節點叢集連接埠的連接埠。
 +
 .顯示範例
 [%collapsible]
 ====
-下列範例使用步驟1的介面輸出範例：
+以下範例使用步驟 1 中的介面範例輸出：
 
 [listing, subs="+quotes"]
 ----
@@ -492,9 +492,9 @@ cs1(config)# *interface eth1/1/1-2,eth1/7-8*
 cs1(config-if-range)# *shutdown*
 ----
 ====
-. 驗證叢集LIF是否已移轉至交換器CS2上裝載的連接埠。這可能需要幾秒鐘的時間。
+. 確認叢集 LIF 已遷移到交換器 cs2 上託管的連接埠。這可能需要幾秒鐘。
 +
-「網路介面show -role cluster」
+`network interface show -role cluster`
 
 +
 .顯示範例
@@ -519,9 +519,9 @@ Cluster
 cluster1::*>
 ----
 ====
-. 驗證叢集是否正常：
+. 驗證叢集是否運作正常：
 +
-「叢集展示」
+`cluster show`
 
 +
 .顯示範例
@@ -541,7 +541,7 @@ cluster1::*>
 ----
 ====
 . 在交換器 cs1 上重複步驟 4 至 19。
-. 在叢集生命體上啟用自動還原。
+. 啟用叢集 LIF 的自動回滾功能。
 +
 [listing, subs="+quotes"]
 ----
@@ -551,9 +551,9 @@ cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert true
 
 
 
-== 步驟 3 ：驗證叢集網路組態和叢集健全狀況
+== 步驟 3：驗證叢集網路配置和叢集健康狀況
 
-. 驗證連接至叢集連接埠的交換器連接埠是否為* up*。
+. 確認連接到叢集連接埠的交換器連接埠已啟用。
 +
 `show interface brief | grep up`
 
@@ -574,9 +574,9 @@ Eth1/8        1       eth  trunk  up      none                   100G(D) --
 .
 ----
 ====
-. 確認CS1與CS2之間的ISL正常運作：
+. 驗證 cs1 和 cs2 之間的 ISL 連線是否正常：
 +
-「How port-channel Summary」
+`show port-channel summary`
 
 +
 .顯示範例
@@ -601,9 +601,9 @@ Group Port-       Type     Protocol  Member Ports
 cs1#
 ----
 ====
-. 驗證叢集生命區是否已還原至其主連接埠：
+. 確認叢集 LIF 已恢復到其原始連接埠：
 +
-「網路介面show -role cluster」
+`network interface show -role cluster`
 
 +
 .顯示範例
@@ -629,12 +629,12 @@ cluster1::*>
 ----
 ====
 +
-如果有任何叢集LIF尚未返回其主連接埠、請手動還原它們：
+如果任何集群 LIFS 尚未返回其主端口，請手動將其恢復：
 `network interface revert -vserver _vserver_name_ -lif _lif_name_`
 
-. 驗證叢集是否正常：
+. 驗證叢集是否運作正常：
 +
-「叢集展示」
+`cluster show`
 
 +
 .顯示範例
@@ -653,12 +653,12 @@ cluster1-04          true    true          false
 cluster1::*>
 ----
 ====
-. 驗證遠端叢集介面的連線能力：
+. 驗證遠端集群介面的連接性：
 
 
 [role="tabbed-block"]
 ====
-.更新版本ONTAP
+.ONTAP 9.9.1 及更高版本
 --
 您可以使用 `network interface check cluster-connectivity`命令啟動叢集連接性的可訪問性檢查，然後顯示詳細資訊：
 `network interface check cluster-connectivity start`和 `network interface check cluster-connectivity show`
@@ -667,7 +667,7 @@ cluster1::*>
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-* 注意： * 請等待數秒後再執行 `show`命令以顯示詳細資料。
+*注意：*運行程式前請等待幾秒鐘 `show`顯示詳細資訊的命令。
 
 [listing, subs="+quotes"]
 ----
@@ -697,7 +697,7 @@ cluster1-04
 .
 ----
 --
-.所有 ONTAP 版本
+.所有ONTAP版本
 --
 對於所有ONTAP版本，您也可以使用
 `cluster ping-cluster -node <name>`檢查連接性的命令：
@@ -744,5 +744,5 @@ RPC status:
 ----
 --
 ====
-.接下來呢？
+.下一步是什麼？
 升級 RCF 後，您link:configure-ssh-keys.html["驗證 SSH 配置"]。

@@ -2,35 +2,35 @@
 permalink: switch-cisco-3232c/configure-reqs-3232c.html 
 sidebar: sidebar 
 keywords: cisco 3232c, cluster switches 
-summary: 您可以將Cisco Nexus 3232C交換器當作AFF 叢集交換器、放在您的叢FAS 集或叢集內。 
+summary: 您可以在AFF或FAS叢集中使用Cisco Nexus 3232C 交換器作為叢集交換器。 
 ---
-= Cisco Nexus 3232C交換器的組態需求
+= Cisco Nexus 3232C 交換器的設定需求
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-對於Cisco Nexus 3232C交換器的安裝與維護、請務必檢閱組態與網路需求。
+對於Cisco Nexus 3232C 交換器的安裝和維護，請務必查看設定和網路需求。
 
 
 
-== 組態需求
+== 配置要求
 
-若要設定叢集、您需要適當數量和類型的纜線、以及交換器的纜線連接器。視您初始設定的交換器類型而定、您需要使用隨附的主控台纜線連接至交換器主控台連接埠；您也需要提供特定的網路資訊。
+若要設定集群，您需要交換器適用數量和類型的電纜和電纜連接器。根據您最初設定的交換器類型，您需要使用隨附的控制台連接線連接到交換器控制台連接埠；您還需要提供特定的網路資訊。
 
 
 
 == 網路需求
 
-所有交換器組態都需要下列網路資訊：
+所有交換器配置都需要以下網路資訊：
 
-* 用於管理網路流量的IP子網路
-* 每個儲存系統控制器和所有適用交換器的主機名稱和IP位址
-* 大部分的儲存系統控制器都是透過e0M介面來管理、方法是連接至乙太網路服務連接埠（扳手圖示）。在ESIA800和ESIEA700系統上AFF 、e0M介面使用專用的乙太網路連接埠。AFF
+* 管理網路流量的 IP 子網
+* 每個儲存系統控制器和所有適用交換器的主機名稱和 IP 位址
+* 大多數儲存系統控制器透過連接到乙太網路服務連接埠（扳手圖示）透過 e0M 介面進行管理。在AFF A800和AFF A700系統中，e0M 介面使用專用乙太網路連接埠。
 
 
-請參閱 https://hwu.netapp.com["Hardware Universe"^] 以取得最新資訊。
+請參閱 https://hwu.netapp.com["Hardware Universe"^]獲取最新資訊。
 
 .下一步
 確認配置要求後，您需要查看以下內容： link:required-documentation-3232c.html["所需文件"]。

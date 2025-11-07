@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, cisco 9332d-gx2b 
 summary: 首次設定 Nexus 9332D-GX2B 交換器後，您可以安裝 RCF。您也可以使用此程序升級您的 RCF 版本。 
 ---
-= 安裝或升級參考組態檔案（ RCF ）總覽
+= 安裝或升級參考設定檔 (RCF) 概述
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -13,41 +13,41 @@ summary: 首次設定 Nexus 9332D-GX2B 交換器後，您可以安裝 RCF。您�
 [role="lead"]
 首次設定 Nexus 9332D-GX2B 交換器後，安裝參考設定檔 (RCF)。當您的交換器上安裝了現有版本的 RCF 檔案時，您可以升級您的 RCF 版本。
 
-如需安裝或升級 RCF 的詳細資訊，請參閱知識庫link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["如何在保留遠端連線的同時清除 Cisco 互連交換器上的組態"^]文件。
+請參閱知識庫文章link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["如何在保持遠端連線的情況下清除Cisco互連交換器上的配置"^]安裝或升級 RCF 時，有關更多信息，請參閱以下內容。
 
 .可用的 RCF 配置
 * *Cluster-HA-Storage* - 支援連接埠上的共用叢集/HA/儲存流量（NX9332D-GX2B-RCF-v10.0-Shared.txt）。
 
 
-如需特定連接埠和 VLAN 使用詳細資料、請參閱 RCF 中的橫幅和重要附註一節。
+有關具體連接埠和 VLAN 使用詳情，請參閱 RCF 中的橫幅和重要說明部分。
 
-.建議的文件
-* link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco 乙太網路交換器（ NSS ）"^]
+.建議的文檔
+* link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器（NSS）"^]
 +
-請參閱交換器相容性表、瞭解 NetApp 支援網站 上支援的 ONTAP 和 RCF 版本。請注意、 RCF 中的命令語法與特定版本 NX-OS 中的語法之間可能存在命令相依性。
+請參閱NetApp支援網站上的交換器相容性表格，以了解支援的ONTAP和 RCF 版本。請注意，RCF 中的命令語法與特定版本的 NX-OS 中的語法之間可能存在命令依賴關係。
 
-* link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Cisco Nexus 9000系列交換器"^]
+* link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["CiscoNexus 9000 系列交換機"^]
 +
-如需 Cisco 交換器升級與降級程序的完整文件、請參閱 Cisco 網站上提供的適當軟體與升級指南。
+有關Cisco交換器升級和降級程序的完整文檔，請參閱Cisco網站上提供的相應軟體和升級指南。
 
 
 
 .關於範例
-本程序中的範例使用下列交換器和節點命名法：
+本流程中的範例使用以下開關和節點命名規則：
 
-* 兩個Cisco交換器的名稱為CS1和CS2。
+* 這兩個Cisco交換器的名稱分別是 cs1 和 cs2。
 * 節點名稱為node1-01、node1-02、node1-03和node1-04。
 * 群集 LIF 名稱稱為 node1-01_clus1、node1-01_clus2、node1-02_clus1、node1-02_clus2、node1-03_clus1、node1-03_clus2、node1-04_clus1 和 node1-04_clus2。
-* 「cluster1：*：>」提示會指出叢集的名稱。
+* 這 `cluster1::*>`prompt 指示叢集名稱。
 
 
-查看 https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^]驗證平台上的正確連接埠。
+參見 https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^]驗證平台上的連接埠是否正確。
 
 
-NOTE: 命令輸出可能會因ONTAP 不同版本的不相同而有所差異。
+NOTE: 命令輸出可能因ONTAP版本不同而有所差異。
 
 .使用的命令
-此程序需要同時使用ONTAP 支援指令和Cisco Nexus 9000系列交換器的指令；ONTAP 除非另有說明、否則會使用支援指令。
+流程需要同時使用ONTAP指令和Cisco Nexus 9000 系列交換器指令；除非另有說明，否則使用ONTAP指令。
 
-.接下來呢？
+.下一步是什麼？
 在您查看安裝 RCF 或升級 RCF 程式後，您link:install-rcf-software-9332d-cluster.html["安裝 RCF"]或者link:upgrade-rcf-software-9332d-cluster.html["升級您的 RCF"]按要求。

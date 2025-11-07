@@ -4,7 +4,7 @@ permalink: switch-cisco-9336c-fx2-shared/install-9336c-shared.html
 keywords:  
 summary:  
 ---
-= 安裝Cisco Nexus 9336C-FX2共享交換器
+= 安裝Cisco Nexus 9336C-FX2 共用交換機
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,23 +14,23 @@ summary:
 
 
 [role="lead"]
-請依照下列指示設定Cisco Nexus 9336C-FX2共用交換器。
+請依照以下說明設定Cisco Nexus 9336C-FX2 共用交換器。
 
 .開始之前
-請確定您擁有下列項目：
+請確保您擁有以下物品：
 
-* 必要的共享交換器文件、控制器文件和ONTAP 參考文件。請參閱 link:required-documentation-9336c-shared.html["Cisco Nexus 9336C-FX2共享交換器的文件要求"] 和 https://docs.netapp.com/us-en/ontap/index.html["NetApp ONTAP 產品文件"^]。
-* 適用的授權、網路與組態資訊、以及纜線。
-* 完成佈線工作表。請參閱 link:cable-9336c-shared.html["填寫Cisco Nexus 9336C-FX2纜線工作表"]。如需纜線的詳細資訊、請參閱 https://hwu.netapp.com["Hardware Universe"]。
+* 需要共用交換器文件、控制器文件和ONTAP文件。看link:required-documentation-9336c-shared.html["Cisco Nexus 9336C-FX2 共享交換器的文件需求"]和 https://docs.netapp.com/us-en/ontap/index.html["NetApp ONTAP 文檔"^]。
+* 適用的許可證、網路和設定資訊以及線纜。
+* 已完成佈線工作表。看link:cable-9336c-shared.html["完成Cisco Nexus 9336C-FX2 佈線工作表"]。有關佈線的更多信息，請參閱 https://hwu.netapp.com["Hardware Universe"]。
 
 
 .步驟
-. 裝入交換器、控制器和NS224 NVMe儲存櫃。
+. 將交換器、控制器和 NS224 NVMe 儲存架安裝到機架上。
 +
-請參閱link:../switch-cisco-9336c-fx2/install-switch-and-passthrough-panel-9336c-cluster.html["機架安裝說明"]以瞭解如何在 NetApp 機櫃中架裝交換器。
+參見link:../switch-cisco-9336c-fx2/install-switch-and-passthrough-panel-9336c-cluster.html["貨架安裝說明"]學習如何將交換器安裝到NetApp機櫃。
 
-. 開啟交換器、控制器和NS224 NVMe儲存櫃的電源。
+. 開啟交換器、控制器和 NS224 NVMe 儲存架的電源。
 
 
-.接下來呢？
-或者，您可以link:install-switch-and-passthrough-panel-9336c-shared.html["在NetApp機櫃中安裝Cisco Nexus 9336C-FX2交換器"]。否則，轉到link:setup-and-configure-9336c-shared.html["設定交換器"]。
+.下一步是什麼？
+（可選） link:install-switch-and-passthrough-panel-9336c-shared.html["在NetApp機櫃中安裝Cisco Nexus 9336C-FX2 交換機"]。否則，請前往 link:setup-and-configure-9336c-shared.html["配置交換機"]。

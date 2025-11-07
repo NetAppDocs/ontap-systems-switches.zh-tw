@@ -2,77 +2,77 @@
 permalink: switch-netapp-cn1610/install-fastpath-rcf-831.html 
 sidebar: sidebar 
 keywords: fastpath, software, install, netapp cluster switches, rcfs, ontap 
-summary: 安裝步驟與執行ONTAP 本版本的NetApp CN1601管理交換器和CN1610叢集交換器相同。不過、這兩種機型需要不同的軟體和RCT。 
+summary: 對於運行ONTAP 8.3.1 或更高版本的NetApp CN1601 管理交換器和 CN1610 叢集交換機，安裝步驟相同。然而，這兩種模型需要不同的軟體和 RCF。 
 ---
-= 安裝FastPath軟體和RCV for ONTAP Sf48.3.1及更新版本
+= 安裝適用於ONTAP 8.3.1 及更高版本的 FASTPATH 軟體和 RCF。
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-請依照此程序安裝FastPath軟體和RCV for ONTAP Sf48.3.1及更新版本。
+請依照以下步驟為ONTAP 8.3.1 及更高版本安裝 FASTPATH 軟體和 RCF。
 
-安裝步驟與執行ONTAP 本版本的NetApp CN1601管理交換器和CN1610叢集交換器相同。不過、這兩種機型需要不同的軟體和RCT。
+對於運行ONTAP 8.3.1 或更高版本的NetApp CN1601 管理交換器和 CN1610 叢集交換機，安裝步驟相同。然而，這兩種模型需要不同的軟體和 RCF。
 
 
 
-== 檢閱要求
+== 審查要求
 
 .開始之前
-請確定您擁有下列項目：
+請確保您擁有以下物品：
 
-* 交換器組態的目前備份。
-* 完全正常運作的叢集（記錄中沒有錯誤、也沒有故障的叢集網路介面卡（NIC）或類似問題）。
-* 叢集交換器上的完整功能連接埠連線。
-* 設定所有叢集連接埠。
-* 所有已設定的叢集邏輯介面（lifs）（不得已移轉）。
-* 成功的溝通途徑：ONTAP The es執行（權限：進階） `cluster ping-cluster -node node1` 命令必須指出這一點 `larger than PMTU communication` 在所有路徑上都成功。
-* 受支援版本的FastPath、RCF和ONTAP RESZ.
+* 交換器配置的目前備份。
+* 一個功能齊全的叢集（日誌中沒有錯誤，叢集網路介面卡（NIC）也沒有缺陷或類似問題）。
+* 集群交換器上的連接埠連線功能齊全。
+* 所有群集連接埠均已設定。
+* 所有群集邏輯介面（LIF）均已設定（必須尚未遷移）。
+* 一條成功的溝通路徑： ONTAP （權限：進階） `cluster ping-cluster -node node1`命令必須表明 `larger than PMTU communication`在所有路徑上都取得了成功。
+* 支援的 FASTPATH、RCF 和ONTAP版本。
 +
-請務必參閱上的交換器相容性表 http://mysupport.netapp.com/NOW/download/software/cm_switches_ntap/["NetApp CN1601與CN1610交換器"^] 頁面、以取得所支援的FastPath、RCF及ONTAP 支援的版本。
+請務必查閱交換器相容性表格。 http://mysupport.netapp.com/NOW/download/software/cm_switches_ntap/["NetApp CN1601 和 CN1610 交換機"^]此頁面列出了支援的 FASTPATH、RCF 和ONTAP版本。
 
 
 
 
 
-== 安裝FastPath軟體
+== 安裝 FASTPATH 軟體
 
-下列程序使用叢集Data ONTAP 式的循環8.2語法。因此、叢集Vserver、LIF名稱和CLI輸出與Data ONTAP 《Sv3 8.3》中的不同。
+下列程序使用叢集式Data ONTAP 8.2 語法。因此，叢集 Vserver、LIF 名稱和 CLI 輸出與Data ONTAP 8.3 中的不同。
 
-RCF和FastPath版本中的命令語法之間可能存在命令相依性。
+RCF 和 FASTPATH 版本中的指令語法可能存在指令依賴關係。
 
 
-NOTE: 在RCF 1.2版中、由於安全考量、已明確停用對Telnet的支援。若要避免安裝RCF 1.2時發生連線問題、請確認已啟用Secure Shell（SSH）。。 https://library.netapp.com/ecm/ecm_get_file/ECMP1117874["NetApp CN1610交換器管理員指南"^] 有更多關於SSH的資訊。
+NOTE: 由於安全性問題，RCF 版本 1.2 中已明確停用對 Telnet 的支援。為避免安裝 RCF 1.2 時出現連線問題，請確認安全殼層 (SSH) 已啟用。這 https://library.netapp.com/ecm/ecm_get_file/ECMP1117874["NetApp CN1610 交換器管理員指南"^]包含更多關於 SSH 的資訊。
 
 .關於範例
-本程序中的範例使用下列交換器和節點命名法：
+本流程中的範例使用以下開關和節點命名規則：
 
-* 兩個NetApp交換器名稱分別是CS1和CS2。
-* 叢集邏輯介面（LIF）名稱為node1_clus1、node1_clus2為node1、node2_clus1為node2_clus1、node2_clus2為node2。（叢集中最多可有24個節點。）
+* 這兩個NetApp交換器的名稱分別是 cs1 和 cs2。
+* 叢集邏輯介面 (LIF) 名稱對於節點 1 為 node1_clus1 和 node1_clus2，對於節點 2 為 node2_clus1 和 node2_clus2。  （一個叢集最多可以包含 24 個節點。）
 * 儲存虛擬機器（SVM）名稱為叢集。
-* 「cluster1：*：>」提示會指出叢集的名稱。
-* 每個節點上的叢集連接埠名稱為e0a和e0b。
+* 這 `cluster1::*>`prompt 指示叢集名稱。
+* 每個節點上的叢集連接埠分別命名為 e0a 和 e0b。
 +
-https://hwu.netapp.com/["Hardware Universe"^] 有更多有關平台所支援的實際叢集連接埠資訊。
+https://hwu.netapp.com/["Hardware Universe"^]包含有關您的平台支援的實際集群連接埠的更多資訊。
 
-* 支援的交換器間連結（ISL）是連接埠0/13到0/16。
-* 支援的節點連線是連接埠0/1到0/12。
-
-
+* 支援的交換器間連結 (ISL) 為連接埠 0/13 至 0/16。
+* 支援的節點連接為連接埠 0/1 至 0/12。
 
 
-=== 步驟1：移轉叢集
 
-. 顯示叢集上網路連接埠的相關資訊：
+
+=== 步驟 1：遷移集群
+
+. 顯示叢集上的網路連接埠資訊：
 +
-「網路連接埠show -_IPSpace叢集_」
+`network port show -_ipspace cluster_`
 
 +
 .顯示範例
 [%collapsible]
 ====
-下列範例顯示命令的輸出類型：
+以下範例顯示了該命令的輸出類型：
 
 [listing]
 ----
@@ -89,15 +89,15 @@ node2
 4 entries were displayed.
 ----
 ====
-. 顯示叢集上有關生命的資訊：
+. 顯示集群上 LIF 的相關資訊：
 +
-「網路介面show -_role叢集_」
+`network interface show -_role cluster_`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示叢集上的邏輯介面。在此範例中、「-role」參數會顯示與叢集連接埠相關聯的lifs資訊：
+以下範例展示了叢集上的邏輯介面。在這個例子中， `-role`此參數顯示與叢集連接埠關聯的 LIF 的相關資訊：
 
 [listing]
 ----
@@ -114,12 +114,12 @@ Cluster
 4 entries were displayed.
 ----
 ====
-. 在每個節點上、使用節點管理LIF、將節點1上的節點1_clus2移轉至e0a、並將節點2上的節點2_clus2移轉至節點2上的e0a：
+. 在每個節點上，使用節點管理 LIF，將 node1_clus2 遷移到 node1 上的 e0a，將 node2_clus2 遷移到 node2 上的 e0a：
 +
-網路介面移轉
+`network interface migrate`
 
 +
-您必須在控制器主控台上輸入擁有各自叢集生命的命令。
+您必須在擁有對應群集 LIF 的控制器控制台上輸入指令。
 
 +
 .顯示範例
@@ -133,14 +133,14 @@ cluster1::> network interface migrate -vserver Cluster -lif node2_clus2 -destina
 ====
 +
 
-NOTE: 對於此命令、叢集名稱區分大小寫、命令應在每個節點上執行。無法在一般叢集LIF中執行此命令。
+NOTE: 對於此命令，叢集名稱區分大小寫，並且該命令應在每個節點上運行。無法在通用叢集 LIF 中執行此命令。
 
-. 在節點上使用「network interface show」命令來驗證是否已進行移轉。
+. 使用以下方法驗證遷移是否已完成： `network interface show`在節點上執行命令。
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示clus2已移轉至節點node1和node2上的連接埠e0a：
+以下範例顯示 clus2 已遷移到節點 node1 和 node2 上的 e0a 連接埠：
 
 [listing]
 ----
@@ -156,25 +156,25 @@ Cluster
 4 entries were displayed.
 ----
 ====
-. 將權限層級變更為進階、並在系統提示您繼續時輸入y：
+. 將權限級別變更為高級，並在提示繼續時輸入 y：
 +
-"進階權限"
+`set -privilege advanced`
 
 +
-出現進階提示（*>）。
+出現高階提示符號（*>）。
 
-. 關閉兩個節點上的叢集連接埠e0b：
+. 關閉兩個節點上的叢集連接埠 e0b：
 +
-「網路連接埠修改-node_node_name_-port _port_name_-up管理假」
+`network port modify -node _node_name_ -port _port_name_ -up-admin false`
 
 +
-您必須在控制器主控台上輸入擁有各自叢集生命的命令。
+您必須在擁有對應群集 LIF 的控制器控制台上輸入指令。
 
 +
 .顯示範例
 [%collapsible]
 ====
-下列範例顯示在所有節點上關閉連接埠e0b的命令：
+以下範例展示了關閉所有節點上 e0b 連接埠的命令：
 
 [listing]
 ----
@@ -182,9 +182,9 @@ cluster1::*> network port modify -node node1 -port e0b -up-admin false
 cluster1::*> network port modify -node node2 -port e0b -up-admin false
 ----
 ====
-. 確認兩個節點上的連接埠e0b均已關機：
+. 請確認兩個節點上的 e0b 連接埠都已關閉：
 +
-「網路連接埠展示」
+`network port show`
 
 +
 .顯示範例
@@ -206,7 +206,7 @@ node2
 4 entries were displayed.
 ----
 ====
-. 關閉CS1上的交換器間連結（ISL）連接埠。
+. 關閉 cs1 上的交換器間連結 (ISL) 連接埠。
 +
 .顯示範例
 [%collapsible]
@@ -220,7 +220,7 @@ node2
 (cs1) (Config)#exit
 ----
 ====
-. 在CS2上備份目前使用中的映像。
+. 備份 CS2 上目前活動的影像。
 +
 .顯示範例
 [%collapsible]
@@ -252,9 +252,9 @@ Copy operation successful
 
 
 
-=== 步驟2：安裝FastPath軟體和RCF
+=== 步驟 2：安裝 FASTPATH 軟體和 RCF
 
-. 驗證FastPath軟體的執行版本。
+. 請確認FASTPATH軟體的運作版本。
 +
 .顯示範例
 [%collapsible]
@@ -283,9 +283,9 @@ Additional Packages............................ FASTPATH QOS
                                                 FASTPATH IPv6 Management
 ----
 ====
-. 將映像檔下載到交換器。
+. 將鏡像檔下載到交換器。
 +
-將映像檔複製到作用中映像、表示當您重新開機時、該映像會建立執行中的FastPath版本。上一個映像仍可作為備份使用。
+將鏡像檔案複製到活動鏡像意味著，當您重新啟動時，該鏡像將建立正在運行的 FASTPATH 版本。之前的鏡像檔案仍可作為備份使用。
 
 +
 .顯示範例
@@ -311,9 +311,9 @@ SFTP Code transfer starting...
 File transfer operation completed successfully.
 ----
 ====
-. 確認目前和下一個作用中的開機映像版本：
+. 確認目前和下一個活動的啟動映像版本：
 +
-「如何啟動bootvar
+`show bootvar`
 
 +
 .顯示範例
@@ -338,9 +338,9 @@ Image Descriptions
     1     1.1.0.8     1.1.0.8            1.1.0.8            1.2.0.7
 ----
 ====
-. 將新映像版本的相容RCF安裝至交換器。
+. 將與新鏡像版本相容的 RCF 安裝到交換器上。
 +
-如果RCF版本已正確、請開啟ISL連接埠。
+如果 RCF 版本已正確，則啟動 ISL 連接埠。
 
 +
 .顯示範例
@@ -374,12 +374,12 @@ File transfer operation completed successfully.
 ====
 +
 
-NOTE: 在啟動指令碼之前、必須先將「.scr」副檔名設定為檔案名稱的一部分。此副檔名適用於FastPath作業系統。
+NOTE: 這 `.scr`在呼叫腳本之前，必須將檔案副檔名設定為檔案名稱的一部分。此擴充功能適用於 FASTPATH 作業系統。
 
 +
-交換器會在指令碼下載到交換器時自動驗證該指令碼。輸出會移至主控台。
+交換器在腳本下載到交換器時會自動驗證。輸出結果會顯示在控制台上。
 
-. 確認已下載指令碼並儲存至您指定的檔案名稱。
+. 請確認腳本已下載並儲存為您指定的檔案名稱。
 +
 .顯示範例
 [%collapsible]
@@ -396,7 +396,7 @@ CN1610_CS_RCF_v1.2.scr                  2191
 2541 Kbytes free.
 ----
 ====
-. 將指令碼套用至交換器。
+. 將腳本應用到交換器上。
 +
 .顯示範例
 [%collapsible]
@@ -411,9 +411,9 @@ Are you sure you want to apply the configuration script? (y/n) y
 Configuration script 'CN1610_CS_RCF_v1.2.scr' applied.
 ----
 ====
-. 確認變更已套用至交換器、然後儲存：
+. 確認變更已套用至交換機，然後儲存：
 +
-「如何執行設定」
+`show running-config`
 
 +
 .顯示範例
@@ -424,7 +424,7 @@ Configuration script 'CN1610_CS_RCF_v1.2.scr' applied.
 (cs2) #show running-config
 ----
 ====
-. 儲存執行中的組態、使其成為重新啟動交換器時的啟動組態。
+. 儲存運作配置，使其在交換器重新啟動時成為啟動配置。
 +
 .顯示範例
 [%collapsible]
@@ -442,7 +442,7 @@ Config file 'startup-config' created successfully.
 Configuration Saved!
 ----
 ====
-. 重新啟動交換器。
+. 重啟交換器。
 +
 .顯示範例
 [%collapsible]
@@ -463,9 +463,9 @@ System will now restart!
 
 
 
-=== 步驟3：驗證安裝
+=== 步驟 3：驗證安裝
 
-. 再次登入、然後確認交換器正在執行新版本的FastPath軟體。
+. 再次登錄，然後驗證交換器是否正在執行新版本的 FASTPATH 軟體。
 +
 .顯示範例
 [%collapsible]
@@ -494,9 +494,9 @@ Additional Packages............................ FASTPATH QOS
 ----
 ====
 +
-重新開機完成後、您必須登入以驗證映像版本、檢視執行中的組態、並在介面3/64（RCF的版本標籤）上尋找說明。
+重新啟動完成後，您必須登入以驗證映像版本，查看執行配置，並在介面 3/64 上尋找描述，這是 RCF 的版本標籤。
 
-. 啟動使用中交換器CS1上的ISL連接埠。
+. 在活動交換器 cs1 上啟用 ISL 連接埠。
 +
 .顯示範例
 [%collapsible]
@@ -510,12 +510,12 @@ Additional Packages............................ FASTPATH QOS
 (cs1) (Config) #exit
 ----
 ====
-. 驗證ISL是否正常運作：
+. 確認ISL是否正常運作：
 +
-「How port-channel 3/1」
+`show port-channel 3/1`
 
 +
-「Link State（連結狀態）」欄位應顯示「Up（啟動）」。
+“鏈路狀態”欄位應指示 `Up`。
 
 +
 .顯示範例
@@ -546,18 +546,18 @@ Ports  Timeout       Speed     Active
        partner/long
 ----
 ====
-. 在所有節點上啟動叢集連接埠e0b：
+. 在所有節點上啟用叢集連接埠 e0b：
 +
-網路連接埠修改
+`network port modify`
 
 +
-您必須在控制器主控台上輸入擁有各自叢集生命的命令。
+您必須在擁有對應群集 LIF 的控制器控制台上輸入指令。
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示節點1和節點2上正在啟動的連接埠e0b：
+以下範例展示如何在節點 1 和節點 2 上啟動連接埠 e0b：
 
 [listing]
 ----
@@ -565,9 +565,9 @@ cluster1::*> network port modify -node node1 -port e0b -up-admin true
 cluster1::*> network port modify -node node2 -port e0b -up-admin true
 ----
 ====
-. 確認所有節點上的連接埠e0b都已開啟：
+. 請確認所有節點上的 e0b 連接埠均已啟用：
 +
-「網路連接埠show -IPSpace叢集」
+`network port show -ipspace cluster`
 
 +
 .顯示範例
@@ -589,9 +589,9 @@ node2
 4 entries were displayed.
 ----
 ====
-. 確認LIF現在位於兩個節點上的主節點（「true」）：
+. 確認 LIF 現在已歸位(`true`）在兩個節點上：
 +
-「網路介面show -_role叢集_」
+`network interface show -_role cluster_`
 
 +
 .顯示範例
@@ -614,7 +614,7 @@ Cluster
 ====
 . 顯示節點成員的狀態：
 +
-「叢集展示」
+`cluster show`
 
 +
 .顯示範例
@@ -631,9 +631,9 @@ node2                true    true          false
 2 entries were displayed.
 ----
 ====
-. 返回管理權限層級：
+. 傳回管理員權限等級：
 +
-「et -priv. admin」
+`set -privilege admin`
 
-. 重複上述步驟、在另一台交換器CS1上安裝FastPath軟體和RCF。
+. 重複上述步驟，在另一台交換器 cs1 上安裝 FASTPATH 軟體和 RCF。
 

@@ -2,46 +2,46 @@
 permalink: switch-nvidia-sn2100-storage/install-onie-mode-sn2100-storage.html 
 sidebar: sidebar 
 keywords: install cumulus onie mode, sn2100 SN2100 switches setup, cumulus linux, onie mode 
-summary: 在交換器執行Cummulos Linux或ONIE時、可以安裝CummUS Linux（CL）作業系統。 
+summary: '當交換器運行 Cumulus Linux 或 ONIE 時，可以安裝 Cumulus Linux (CL) 作業系統。' 
 ---
-= 以ONIE模式安裝CummulUS Linux
+= 以 ONIE 模式安裝 Cumulus Linux
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-當交換器以ONIE模式執行時、請遵循此程序來安裝Cummulos Linux（CL）OS。
+當交換器運作在 ONIE 模式下時，請依照下列步驟安裝 Cumulus Linux (CL) 作業系統。
 
 
-NOTE: 可以在交換器執行Cummulos Linux或ONIE時安裝Cummulos Linux（CL）作業系統（請參閱 link:install-cumulus-mode-sn2100-storage.html["以Cummuls模式安裝"]）。
+NOTE: Cumulus Linux (CL) 作業系統可以在交換器運行 Cumulus Linux 或 ONIE 時安裝（參見link:install-cumulus-mode-sn2100-storage.html["以 Cumulus 模式安裝"]）。
 
-.關於這項工作
-您可以使用開放式網路安裝環境（ONIE）來安裝Cummulus Linux、以便自動探索網路安裝程式映像。這有助於以作業系統選擇（例如Cummulas Linux）來保護交換器的系統模式。使用ONIE安裝Cummulis Linux最簡單的方法、就是使用本機HTTP探索。
+.關於此任務
+您可以使用開放網路安裝環境 (ONIE) 安裝 Cumulus Linux，該環境允許自動發現網路安裝程式映像。這有助於實現透過作業系統選擇（例如 Cumulus Linux）來保護交換器的系統模型。使用 ONIE 安裝 Cumulus Linux 最簡單的方法是透過本機 HTTP 發現。
 
 
-NOTE: 如果您的主機已啟用IPv6、請確定它正在執行Web伺服器。如果您的主機已啟用IPV4、請確定除了Web伺服器、主機還在執行DHCP。
+NOTE: 如果您的主機支援 IPv6，請確保它正在執行 Web 伺服器。如果您的主機支援 IPv4，請確保除了 Web 伺服器之外，它還執行 DHCP 服務。
 
-此程序示範如何在系統管理員在ONIE中開機後升級Cummuls Linux。
+本過程示範了管理員在 ONIE 啟動後如何升級 Cumulus Linux。
 
 .步驟
-. 將Cummuls Linux安裝檔案下載至Web伺服器的根目錄。重新命名此檔案「onie-installer」。
-. 使用乙太網路纜線將主機連接至交換器的管理乙太網路連接埠。
-. 開啟交換器電源。交換器會下載ONIE映像安裝程式並開機。安裝完成後、會在終端機視窗中顯示CummUS Linux登入提示。
+. 將 Cumulus Linux 安裝檔下載到 Web 伺服器的根目錄。重新命名此文件 `onie-installer`。
+. 使用乙太網路線將主機連接到交換器的管理乙太網路連接埠。
+. 打開開關電源。交換器下載 ONIE 鏡像安裝程式並啟動。安裝完成後，終端機視窗中會出現 Cumulus Linux 登入提示字元。
 +
 
-NOTE: 每次安裝CummUS Linux時、整個檔案系統結構都會被清除並重新建置。
+NOTE: 每次安裝 Cumulus Linux 時，整個檔案系統結構都會被擦除並重建。
 
-. 重新啟動SN2100交換器：
+. 重啟SN2100交換器：
 +
 [listing, subs="+quotes"]
 ----
 cumulus@cumulus:mgmt:~$ *sudo reboot*
 ----
-. 在"GNU Grub（GNU Grub）"屏幕上按* Esc*鍵以中斷正常的引導過程，選擇"*ONIE*（* ONIE *）"並按* Enter鍵。
-. 在下一個畫面中、選取「* ONIE：install OS*（* ONIE：安裝OS*）」。
-. ONIE安裝程式探索程序會執行搜尋自動安裝。按* Enter *可暫時停止此程序。
-. 當探索程序停止時：
+. 在 GNU GRUB 畫面上按 *Esc* 鍵中斷正常的啟動過程，選擇 *ONIE* 並按 *Enter* 鍵。
+. 在顯示的下一個畫面上，選擇 *ONIE：安裝作業系統*。
+. ONIE 安裝程式發現程序會執行以搜尋自動安裝程式。按 *Enter* 鍵暫時停止該行程。
+. 當發現過程停止時：
 +
 [listing, subs="+quotes"]
 ----
@@ -50,7 +50,7 @@ discover: installer mode detected.
 Stopping: discover...start-stop-daemon: warning: killing process 427:
 No such process done.
 ----
-. 如果您的網路上正在執行DHCP服務、請確認已正確指派IP位址、子網路遮罩和預設閘道：
+. 如果您的網路正在執行 DHCP 服務，請驗證 IP 位址、子網路遮罩和預設閘道是否已正確指派：
 +
 `ifconfig eth0`
 
@@ -79,15 +79,15 @@ default         10.233.204.1    0.0.0.0         UG    0      0      0   eth0
 10.233.204.0    *               255.255.254.0   U     0      0      0   eth0
 ----
 ====
-. 如果手動定義IP定址方案、請執行下列步驟：
+. 如果 IP 位址方案是手動定義的，請執行下列操作：
 +
 [listing, subs="+quotes"]
 ----
 ONIE:/ # *ifconfig eth0 10.233.204.71 netmask 255.255.254.0*
 ONIE:/ # *route add default gw 10.233.204.1*
 ----
-. 重複步驟9、確認已正確輸入靜態資訊。
-. 安裝CummUS Linux：
+. 重複步驟 9 以驗證靜態資訊是否已正確輸入。
+. 安裝 Cumulus Linux：
 +
 [listing, subs="+quotes"]
 ----
@@ -104,7 +104,7 @@ ONIE:/ # *route*
   ...
   ...
 ----
-. 安裝完成後、請登入交換器：
+. 安裝完成後，登入交換器：
 +
 .顯示範例
 [%collapsible]
@@ -120,7 +120,7 @@ New password: *<new_password>*
 Retype new password: *<new_password>*
 ----
 ====
-. 驗證Cummuls Linux版本：
+. 請驗證 Cumulus Linux 版本：
 +
 `net show version`
 
@@ -139,5 +139,5 @@ DISTRIB_DESCRIPTION=*"Cumulus Linux 4.4.3”*
 ====
 
 
-.接下來呢？
+.下一步是什麼？
 在 ONIE 模式下安裝 Cumulus Linux 後，您可以…link:install-rcf-sn2100-storage.html["安裝或升級 RCF 腳本"] 。

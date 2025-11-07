@@ -4,7 +4,7 @@ permalink: switch-cisco-9336c-fx2-shared/replace-9336c-fx2-shared.html
 keywords:  
 summary:  
 ---
-= 更換Cisco Nexus 9336C-FX2共享交換器
+= 更換Cisco Nexus 9336C-FX2 共用交換機
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,49 +14,49 @@ summary:
 
 
 [role="lead"]
-您可以更換故障的Nexus 9336C-FX2共用交換器。這是不中斷營運的程序（NDU）。
+您可以更換有缺陷的 Nexus 9336C-FX2 共用交換器。這是一個無中斷程式 (NDU)。
 
 .開始之前
-更換交換器之前、請確定：
+更換開關之前，請確保：
 
-* 在現有的叢集與網路基礎架構中：
+* 在現有的集群和網路基礎設施中：
 +
-** 現有的叢集已通過驗證、完全正常運作、至少有一個完全連接的叢集交換器。
-** 所有叢集連接埠均為* up*。
-** 所有叢集邏輯介面（l生命）都是* up *及其主連接埠。
-** 使用支援Ping叢ONTAP 集的節點節點node1命令時、必須指出所有路徑上的基本連線能力和大於PMTU的通訊均已成功完成。
+** 現有集群已驗證功能完全正常，至少有一個完全連接的集群交換器。
+** 叢集所有連接埠均已啟動。
+** 所有群集邏輯介面（LIF）均已啟動並位於其所屬連接埠上。
+** ONTAP叢集 ping-cluster -node node1 指令必須表示所有路徑上的基本連線和大於 PMTU 的通訊均已成功。
 
 
-* Nexus 9336C-FX2替換交換器：
+* 適用於 Nexus 9336C-FX2 的替換開關：
 +
-** 替換交換器上的管理網路連線功能正常。
-** 更換交換器的主控台存取已就緒。
-** 節點連線為連接埠1/1至1/34：
-** 所有交換器間連結（ISL）連接埠在連接埠1/35和1/36上都會停用。
-** 所需的參考組態檔（RCF）和NX-OS作業系統映像交換器會載入交換器。
-** 任何先前的站台自訂（例如STP、SNMP和SSH）都應該複製到新交換器。
+** 替換交換器的管理網路連線功能正常。
+** 已具備對替換開關的控制台存取權限。
+** 節點連接埠為 1/1 至 1/34：
+** 連接埠 1/35 和 1/36 上的所有交換器間連結 (ISL) 連接埠均已停用。
+** 將所需的參考設定檔 (RCF) 和 NX-OS 作業系統映像交換器載入到交換器上。
+** 之前站點的所有自訂設置，如 STP、SNMP 和 SSH，都應該複製到新交換器上。
 
 
 
 
 .關於範例
-您必須執行命令、從裝載叢集LIF的節點移轉叢集LIF。
+您必須從叢集 LIF 所在的節點執行遷移叢集 LIF 的命令。
 
-本程序中的範例使用下列交換器和節點命名法：
+本流程中的範例使用以下開關和節點命名規則：
 
-* 現有Nexus 9336C-FX2交換器的名稱為_SH1_和_sh2_。
-* 新Nexus 9336C-FX2交換器的名稱為_newsh1_和_newsh2_。
-* 節點名稱是_node1_和_node2_。
-* 每個節點上的叢集連接埠名稱為_e3a_和_e3c_。
-* 叢集LIF名稱為節點1的「node1_clus1」和「node1_clus2」、節點2的「node2_clus1」和「node2_clus2」。
-* 對所有叢集節點進行變更的提示為cluster1：：*>。
+* 現有的 Nexus 9336C-FX2 交換器的名稱是 _sh1_ 和 _sh2_。
+* 新款 Nexus 9336C-FX2 交換器的名稱是 _newsh1_ 和 _newsh2_。
+* 節點名稱為 _node1_ 和 _node2_。
+* 每個節點上的叢集連接埠分別命名為_e3a_和_e3b_。
+* 集群 LIF 名稱為 `node1_clus1`和 `node1_clus2`對於節點1，以及 `node2_clus1`和 `node2_clus2`對於節點2。
+* 對所有叢集節點進行變更的提示是 cluster1::*>。
 +
 
-NOTE: 下列程序以下列網路拓撲為基礎：
+NOTE: 以下步驟基於以下網路拓撲結構：
 
 
 
-.顯示拓撲範例
+.顯示範例拓撲
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -131,23 +131,23 @@ Total entries displayed: 4
 ----
 ====
 .步驟
-. 如果AutoSupport 此叢集啟用了「支援」功能、請叫用AutoSupport 下列訊息來禁止自動建立案例：
+. 如果此叢集上啟用了AutoSupport ，則透過呼叫AutoSupport訊息來抑制自動建立案例：
 +
-「系統節點AutoSupport 不完整地叫用節點*-type all -Message MAn=xh」
+`system node autosupport invoke -node * -type all -message MAINT=xh`
 
 +
-其中x是維護時段的持續時間（以小時為單位）。
+其中 x 為維護窗口的持續時間（小時）。
 
-. 選用：在交換器newsh2上安裝適當的RCF和映像、並進行必要的站台準備。
+. 選購：在交換器上安裝對應的 RCF 和映像、newsh2，並進行任何必要的站點準備。
 +
-.. 如有必要、請針對新交換器驗證、下載及安裝適當版本的RCF和NX-OS軟體。如果您已確認新交換器已正確設定、而且不需要更新RCF和NX-OS軟體、請繼續執行 <<step3,步驟3.>>。
-.. 請前往NetApp支援網站上的NetApp叢集與管理網路交換器參考組態檔案說明頁面。
-.. 按一下叢集網路與管理網路相容性對照表的連結、然後記下所需的交換器軟體版本。
-.. 按一下瀏覽器的返回箭號以返回「Description（說明）」頁面、按一下「Continue（繼續）」、「Accept the license agreement（接受授權合約）」、然後前往「Download（下載）」頁面。
-.. 請依照下載頁面上的步驟、針對ONTAP 您要安裝的版本的更新軟體、下載正確的RCF和NX-OS檔案。
+.. 如有必要，請驗證、下載並安裝適用於新交換器的 RCF 和 NX-OS 軟體的相應版本。如果您已確認新交換器設定正確，且無需更新 RCF 和 NX-OS 軟體，請繼續。<<step3,步驟3>> 。
+.. 前往NetApp支援網站上的NetApp叢集和管理網路交換器參考設定檔說明頁面。
+.. 點擊叢集網路和管理網路相容性矩陣的鏈接，然後記下所需的交換器軟體版本。
+.. 點擊瀏覽器後退箭頭返回描述頁面，點擊繼續，接受許可協議，然後前往下載頁面。
+.. 請依照下載頁面上的步驟，下載與您要安裝的ONTAP軟體版本相對應的正確 RCF 和 NX-OS 檔案。
 
 
-. [[step3]在新交換器上、以admin身分登入、並關閉所有連接至節點叢集介面的連接埠（連接埠1/1至1/34）。如果您要更換的交換器無法正常運作且已關機、請前往 <<step4,步驟4.>>。叢集節點上的LIF應已容錯移轉至每個節點的其他叢集連接埠。
+. [[step3]]在新交換器上，以管理員身分登錄，並關閉所有將連接到節點叢集介面的連接埠（連接埠 1/1 到 1/34）。如果您要更換的開關無法正常運作且已斷電，請轉到：<<step4,步驟4>> 。叢集節點上的 LIF 應該已經針對每個節點故障轉移到另一個叢集連接埠。
 +
 .顯示範例
 [%collapsible]
@@ -162,7 +162,7 @@ newsh2(config-if-range)# *shutdown*
 ====
 
 
-. [[step4]]確認所有叢集生命週年都已啟用自動還原功能。
+. [[step4]]驗證所有叢集 LIF 是否都已啟用自動復原功能。
 +
 `network interface show - vserver Cluster -fields auto-revert`
 
@@ -185,22 +185,22 @@ Cluster      node2_clus2   true
 ====
 
 
-. [[step5]] 驗證遠端叢集介面的連線：
+. [[步驟5]] 驗證遠端叢集介面的連線性：
 
 
 [role="tabbed-block"]
 ====
-.更新版本ONTAP
+.ONTAP 9.9.1 及更高版本
 --
-您可以使用 `network interface check cluster-connectivity` 命令以啟動叢集連線的存取檢查、然後顯示詳細資料：
+你可以使用 `network interface check cluster-connectivity`執行命令以啟動叢集連接性檢查，然後顯示詳細資訊：
 
-`network interface check cluster-connectivity start` 和 `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`和 `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-* 注意： * 請等待數秒後再執行 `show`命令以顯示詳細資料。
+*注意：*運行程式前請等待幾秒鐘 `show`顯示詳細資訊的命令。
 
 [listing, subs="+quotes"]
 ----
@@ -216,9 +216,9 @@ node2
        3/5/2022 19:21:20 -06:00   node2_clus2      node1_clus2      none
 ----
 --
-.所有 ONTAP 版本
+.所有ONTAP版本
 --
-對於所有 ONTAP 版本、您也可以使用 `cluster ping-cluster -node <name>` 檢查連線能力的命令：
+對於所有ONTAP版本，您也可以使用 `cluster ping-cluster -node <name>`檢查連接性的命令：
 
 `cluster ping-cluster -node <name>`
 
@@ -251,7 +251,7 @@ RPC status:
 ----
 --
 ====
-. [[step6]關閉Nexus 9336C-FX2交換器SH1上的ISL連接埠1/35和1/36。
+. [[step6]]關閉 Nexus 9336C-FX2 交換器 sh1 上的 ISL 連接埠 1/35 和 1/36。
 +
 .顯示範例
 [%collapsible]
@@ -266,16 +266,16 @@ sh1(config-if-range)# *shutdown*
 ====
 
 
-. [[step7]從Nexus 9336C-FX2 sh2交換器拔下所有纜線、然後將其連接至Nexus C9336C-FX2 newsh2交換器上的相同連接埠。
-. 在SH1和newsh2交換器之間啟動ISL連接埠1/35和1/36、然後驗證連接埠通道作業狀態。
+. [[step7]]從 Nexus 9336C-FX2 sh2 交換器上拆下所有電纜，然後將它們連接到 Nexus C9336C-FX2 newsh2 交換器上的相同連接埠。
+. 在 sh1 和 newsh2 交換器之間啟動 ISL 連接埠 1/35 和 1/36，然後驗證連接埠通道運作狀態。
 +
-連接埠通道應指示PO1（SU）、而成員連接埠應指示eth1/35（P）和eth1/36（P）。
+Port-Channel 應指示 Po1(SU)，成員連接埠應指示 Eth1/35(P) 和 Eth1/36(P)。
 
 +
 .顯示範例
 [%collapsible]
 ====
-此範例可啟用ISL連接埠1/35和1/36、並在交換器SH1上顯示連接埠通道摘要。
+此範例啟用 ISL 連接埠 1/35 和 1/36，並在交換器 sh1 上顯示連接埠通道摘要。
 
 [listing, subs="+quotes"]
 ----
@@ -303,15 +303,15 @@ sh1 (config-if-range)#
 ====
 
 
-. [[step9]]確認所有節點上的連接埠e3b都已啟動：
+. 步驟9：驗證所有節點上的 e3b 連接埠是否已啟用：
 +
-「網路連接埠顯示IPSpace叢集」
+`network port show ipspace Cluster`
 
 +
 .顯示範例
 [%collapsible]
 ====
-輸出應如下所示：
+輸出結果應如下所示：
 
 [listing, subs="+quotes"]
 ----
@@ -337,12 +337,12 @@ e3b       Cluster      Cluster          up   9000  auto/auto    -        false
 ====
 
 
-. [[step10]在上一步所用的同一個節點上、使用network interface revert命令、還原上一步與連接埠相關聯的叢集LIF。
+. [[step10]]在上一個步驟中使用的相同節點上，使用 network interface revert 指令還原與上一個步驟中的連接埠關聯的叢集 LIF。
 +
-在此範例中、如果Home值為true且連接埠為e3b、則節點1上的LIF node1_clus2會成功還原。
+在本例中，如果 Home 值為 true 且連接埠為 e3b，則節點 1 上的 LIF node1_clus2 將成功還原。
 
 +
-下列命令會將節點1上的LIF node1_clus2傳回主連接埠e3a、並顯示兩個節點上的LIF LIF相關資訊。如果兩個叢集介面的「Is Home」欄位都為* true*、而且顯示正確的連接埠指派、則啟動第一個節點會成功、在此範例中、節點1上的「是Home」欄位和「e3b」。
+以下命令將節點 1 上的 LIF node1_clus2 返回主連接埠 e3a，並顯示有關兩個節點上 LIF 的資訊。如果兩個叢集介面的「Is Home」欄位都是*true*，且它們顯示正確的連接埠分配（在本例中為節點 1 上的 e3a 和 e3b），則啟動第一個節點成功。
 
 +
 .顯示範例
@@ -365,15 +365,15 @@ Cluster
 ====
 
 
-. [[step11]顯示叢集中節點的相關資訊：
+. [[step11]]顯示集群中節點的相關資訊：
 +
-「叢集展示」
+`cluster show`
 
 +
 .顯示範例
 [%collapsible]
 ====
-此範例顯示此叢集中節點1和節點2的節點健全狀況為真：
+此範例表明，該叢集中節點 1 和節點 2 的節點健康狀況為真：
 
 [listing, subs="+quotes"]
 ----
@@ -386,9 +386,9 @@ node2         true    true
 ====
 
 
-. [[step12]確認所有實體叢集連接埠都已啟動：
+. 步驟12：驗證所有實體叢集連接埠是否都已啟動：
 +
-「網路連接埠顯示IPSpace叢集」
+`network port show ipspace Cluster`
 
 +
 .顯示範例
@@ -417,22 +417,22 @@ e3b       Cluster      Cluster          up    9000  auto/100000  healthy  false
 ====
 
 
-. [[step13]] 驗證遠端叢集介面的連線能力：
+. [[步驟13]] 驗證遠端叢集介面的連線性：
 
 
 [role="tabbed-block"]
 ====
-.更新版本ONTAP
+.ONTAP 9.9.1 及更高版本
 --
-您可以使用 `network interface check cluster-connectivity` 命令以啟動叢集連線的存取檢查、然後顯示詳細資料：
+你可以使用 `network interface check cluster-connectivity`執行命令以啟動叢集連接性檢查，然後顯示詳細資訊：
 
-`network interface check cluster-connectivity start` 和 `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`和 `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-* 注意： * 請等待數秒後再執行 `show`命令以顯示詳細資料。
+*注意：*運行程式前請等待幾秒鐘 `show`顯示詳細資訊的命令。
 
 [listing, subs="+quotes"]
 ----
@@ -448,9 +448,9 @@ node2
        3/5/2022 19:21:20 -06:00   node2_clus2      node1_clus2      none
 ----
 --
-.所有 ONTAP 版本
+.所有ONTAP版本
 --
-對於所有 ONTAP 版本、您也可以使用 `cluster ping-cluster -node <name>` 檢查連線能力的命令：
+對於所有ONTAP版本，您也可以使用 `cluster ping-cluster -node <name>`檢查連接性的命令：
 
 `cluster ping-cluster -node <name>`
 
@@ -483,9 +483,9 @@ RPC status:
 ----
 --
 ====
-. [[step14]確認下列叢集網路組態：
+. [[步驟14]]確認以下叢集網路配置：
 +
-「網路連接埠展示」
+`network port show`
 
 +
 .顯示範例
@@ -562,11 +562,11 @@ Total entries displayed: 4
 ====
 
 
-. [[step15]將儲存連接埠從舊交換器sh2移至新交換器newsh2。
-. 驗證連接至HA配對1的儲存設備、共享交換器newsh2是否正常。
-. 驗證連接至HA配對2的儲存設備、共享交換器newsh2是否正常：
+. [[step15]]將儲存埠從舊交換器 sh2 移至新交換器 newsh2。
+. 驗證連接到 HA 對 1 的儲存裝置（共用交換器 newsh2）是否正常。
+. 請確認連接到 HA 對 2 的共享交換器 newsh2 的儲存設備運作狀況良好：
 +
-「torage port show -port-type ENET」
+`storage port show -port-type ENET`
 
 +
 .顯示範例
@@ -593,7 +593,7 @@ node2
 ====
 
 
-. [[step18]確認磁碟櫃的纜線是否正確：
+. 步驟18：確認貨架上的電纜連接是否正確：
 +
 `storage shelf port show -fields remote- device,remote-port`
 
@@ -619,13 +619,13 @@ shelf id remote-port  remote-device
 ====
 
 
-. [[step19]移除舊交換器sh2。
-. 對交換器SH1和新交換器newsh1重複這些步驟。
-. 如果您禁止自動建立個案、請叫用AutoSupport 下列消息來重新啟用此功能：
+. [[step19]]移除舊交換器sh2。
+. 對交換器 sh1 和新交換器 newsh1 重複這些步驟。
+. 如果您已停用自動建立案例功能，請透過呼叫AutoSupport訊息重新啟用該功能：
 +
-「系統節點AutoSupport 不完整地叫用節點*-type all -most MAn=end」
+`system node autosupport invoke -node * -type all -message MAINT=END`
 
 
 
-.接下來呢？
+.下一步是什麼？
 更換開關後，您可以 link:../switch-cshm/config-overview.html["配置交換器健康監控"]。

@@ -2,22 +2,22 @@
 permalink: other/switch_linkout.html 
 sidebar: sidebar 
 keywords: cisco, Nexus 5596, CN1601 
-summary: 您可以將這些連結用於其他交換器機型。 
+summary: 您可以使用這些連結尋找其他交換器型號。 
 ---
-= 早期機型
+= 早期型號
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-您可以使用這些連結尋找早期型號的叢集和儲存交換器的文件。這些連結會將您帶到不同的文件網站。
+您可以使用這些連結尋找早期型號的叢集交換器和儲存交換器的文件。這些連結會將您帶到另一個文件網站。
 
-* https://mysupport.netapp.com/documentation/docweb/index.html?productID=62376&language=en-US["Cisco Nexus 5596"]
+* https://mysupport.netapp.com/documentation/docweb/index.html?productID=62376&language=en-US["CiscoNexus 5596"]
 * https://mysupport.netapp.com/documentation/docweb/index.html?productID=62373&language=en-USNetApp["CN1601"]
 
 
 
-NOTE: Nexus 5596UP/5596T叢集交換器已不再可從NetApp取得、但Cisco僅支援有限的Tim。
+NOTE: NetApp已停止銷售 Nexus 5596UP/5596T 叢集交換機，但Cisco將在有限的時間內提供支援。
 
-客戶可在中使用截至硬體支援結束的支援範圍內AFF 的支援功能、以供客戶參考FAS https://mysupport.netapp.com/documentation/productsatoz/index.html?archive=true["歸檔"]。
+已停止硬體支援的AFF和FAS交換器型號的相關文件可供客戶使用。 https://mysupport.netapp.com/documentation/productsatoz/index.html?archive=true["檔案"] 。

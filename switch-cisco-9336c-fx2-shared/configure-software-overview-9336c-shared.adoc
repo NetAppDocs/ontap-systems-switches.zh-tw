@@ -2,18 +2,18 @@
 permalink: switch-cisco-9336c-fx2-shared/configure-software-overview-9336c-shared.html 
 sidebar: sidebar 
 keywords: BES-53248 switches, initial installation, configure switch-cisco-9336c-fx2 switch 
-summary: Cisco Nexus 9336C-FX2共享交換器軟體組態總覽 
+summary: Cisco Nexus 9336C-FX2 共享交換器的軟體設定概述 
 ---
-= Cisco Nexus 9336C-FX2共享交換器的軟體安裝工作流程
+= Cisco Nexus 9336C-FX2 共享交換器的軟體安裝工作流程
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-若要安裝及設定 Cisco Nexus 9336C-FX2 共用交換器的軟體、請遵循下列步驟：
+若要為Cisco Nexus 9336C-FX2 共用交換器安裝和設定軟體，請依照下列步驟操作：
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一"]link:setup-and-configure-9336c-shared.html["設定交換器"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一"]link:setup-and-configure-9336c-shared.html["配置交換機"]
 [role="quick-margin-para"]
 配置 9336C-FX2 共享交換器。
 
@@ -25,7 +25,7 @@ summary: Cisco Nexus 9336C-FX2共享交換器軟體組態總覽
 [role="quick-margin-para"]
 下載並安裝或升級Cisco 9336C-FX2 共用交換器上的 NX-OS 軟體。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["四"]link:install-nxos-rcf-9336c-shared.html["安裝RCF"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["四"]link:install-nxos-rcf-9336c-shared.html["安裝 RCF"]
 [role="quick-margin-para"]
 首次設定Cisco 9336C-FX2 共用交換器後安裝 RCF。
 

@@ -2,7 +2,7 @@
 permalink: switch-bes-53248/upgrade-switch-overview.html 
 sidebar: sidebar 
 keywords: BES-53248 switches, initial installation, configure new bes-53248 switch 
-summary: 在設定BS-53248叢集交換器之前、請先檢閱程序與命名規則的總覽。 
+summary: 在設定 BES-53248 叢集交換器之前，請先檢視流程概述和命名規則。 
 ---
 = BES-53248 叢集交換器的升級工作流程
 :allow-uri-read: 
@@ -11,16 +11,16 @@ summary: 在設定BS-53248叢集交換器之前、請先檢閱程序與命名規
 
 
 [role="lead"]
-請依照下列步驟、視情況升級 Broadcom BS-54328 叢集交換器上的 EFOS 軟體和參考組態檔案（ RCFs ）。
+請依照以下步驟升級 Broadcom BES-54328 叢集交換器上的 EFOS 軟體和參考設定檔 (RCF)（如適用）。
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一"]link:upgrade-efos-software.html["升級您的 EFOS 版本"]
 [role="quick-margin-para"]
-在BS-53248叢集交換器上下載並安裝乙太網路架構作業系統（EFOS）軟體。
+在 BES-53248 叢集交換器上下載並安裝乙太網路結構作業系統 (EFOS) 軟體。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["二"]link:upgrade-rcf.html["升級 RCF 版本"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["二"]link:upgrade-rcf.html["升級您的 RCF 版本"]
 [role="quick-margin-para"]
-在 BS-53248 叢集交換器上升級 RCF 、然後在套用 RCF 之後驗證連接埠是否有額外授權。
+升級 BES-53248 叢集交換器上的 RCF，然後在應用 RCF 後驗證連接埠是否具有額外的授權。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三"]link:replace-verify.html["升級後驗證 ONTAP 叢集網路"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三"]link:replace-verify.html["升級後驗證ONTAP叢集網絡"]
 [role="quick-margin-para"]
-在升級 EFOS 軟體或用於 BS-53248 叢集交換器的 RCF 之後、驗證 ONTAP 叢集網路的健全狀況。
+升級 EFOS 軟體或 RCF 後，驗證 BES-53248 叢集交換器的ONTAP叢集網路的運作狀況。

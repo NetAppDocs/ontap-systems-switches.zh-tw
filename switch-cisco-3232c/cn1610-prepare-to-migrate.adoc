@@ -2,40 +2,40 @@
 permalink: switch-cisco-3232c/cn1610-prepare-to-migrate.html 
 sidebar: sidebar 
 keywords: cisco 3232c, cluster switches 
-summary: 您可以將Cisco Nexus 3232C交換器當作AFF 叢集交換器、放在您的叢FAS 集或叢集內。 
+summary: 您可以在AFF或FAS叢集中使用Cisco Nexus 3232C 交換器作為叢集交換器。 
 ---
-= 準備從 CN1610 交換器 3232C 交換器移轉
+= 準備從 CN1610 交換器遷移到 3232C 交換機
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-請依照下列步驟準備將 CN1610 交換器移轉至 Cisco Nexus 3232C 交換器。
+請依照下列步驟準備將 CN1610 交換器遷移到Cisco Nexus 3232C 交換器。
 
 .步驟
-. 如果AutoSupport 此叢集啟用了「支援」功能、請叫用AutoSupport 下列訊息來禁止自動建立案例：
+. 如果此叢集上啟用了AutoSupport ，則透過呼叫AutoSupport訊息來抑制自動建立案例：
 +
-「系統節點AutoSupport 不完整地叫用節點*-type all -Message MAn=xh」
+`system node autosupport invoke -node * -type all -message MAINT=xh`
 
 +
-_x_是維護時段的持續時間（以小時為單位）。
+_x_ 是維護視窗的持續時間，單位為小時。
 
 +
 [NOTE]
 ====
-此訊息會通知技術支援人員此維護工作、以便在維護期間禁止自動建立案例。
+此訊息通知技術支援部門此維護任務，以便在維護期間禁止自動建立案例。
 
 ====
-. 顯示組態中裝置的相關資訊：
+. 顯示配置中設備的資訊：
 +
-「網路裝置探索秀」
+`network device-discovery show`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示每個叢集互連交換器的每個節點已設定多少個叢集互連介面：
+以下範例顯示了每個節點上每個叢集互連交換器配置的叢集互連連接口數量：
 
 [listing, subs="+quotes"]
 ----
@@ -58,11 +58,11 @@ n2     /cdp
 8 entries were displayed.
 ----
 ====
-. 確定每個叢集介面的管理或作業狀態。
+. 確定每個叢集介面的管理或運作狀態。
 +
-.. 顯示叢集網路連接埠屬性：
+.. 顯示集群網路連接埠屬性：
 +
-「網路連接埠show -role cluster」
+`network port show -role cluster`
 
 +
 .顯示範例
@@ -93,9 +93,9 @@ e0d   cluster   cluster    up    9000  auto/10000     -
 8 entries were displayed.
 ----
 ====
-.. 顯示有關邏輯介面的資訊：
+.. 顯示邏輯介面資訊：
 +
-「網路介面show -role cluster」
+`network interface show -role cluster`
 
 +
 .顯示範例
@@ -121,15 +121,15 @@ Cluster
  8 entries were displayed.
 ----
 ====
-.. 顯示探索到的叢集交換器相關資訊：
+.. 顯示已發現的群集交換器的相關資訊：
 +
-「系統叢集交換器顯示」
+`system cluster-switch show`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示叢集已知的叢集交換器及其管理IP位址：
+以下範例顯示了叢集已知的叢集交換器及其管理 IP 位址：
 
 [listing, subs="+quotes"]
 ----
@@ -154,19 +154,19 @@ CL2                           cluster-network  10.10.1.102   CN1610
 ====
 
 
-. 根據您的需求、確認新的3232C交換器上已安裝適當的RCF和映像、並進行必要的站台自訂。
+. 確認已根據您的要求在新 3232C 交換器上安裝了相應的 RCF 和映像，並進行任何必要的網站自訂。
 +
-此時您應該準備兩個交換器。如果您需要升級RCF和映像、必須完成下列程序：
+此時您應該準備好這兩台交換器。如果需要升級 RCF 和鏡像，則必須完成以下步驟：
 
 +
-.. 看link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器"^]在NetApp支援站點上。
-.. 請在該頁的表格中記下您的交換器和所需的軟體版本。
-.. 下載適當版本的RCF。
-.. 在 * 說明 * 頁面上選取 * 繼續 * ，接受授權合約，然後依照 * 下載 * 頁面上的指示下載 RCF 。
-.. 下載對應版本的影像軟體link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco®叢集與管理網路交換器參考組態檔案下載"^]。
+.. 看link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換機"^]在NetApp支援網站上。
+.. 請記下您交換器的型號以及該頁表格中所需的軟體版本。
+.. 下載相應版本的RCF。
+.. 在“描述”頁面上選擇“繼續”，接受許可協議，然後按照“下載”頁面上的說明下載 RCF。
+.. 請從以下網址下載對應版本的影像處理軟體：link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco叢集和管理網路交換器參考設定檔下載"^] 。
 
 
-. 移轉與您計畫更換的第二台 CN1610 交換器相關的生命週期：
+. 遷移與計畫替換的第二個 CN1610 交換器關聯的 LIF：
 +
 `network interface migrate -vserver _vserver-name_ -lif _lif-name_ -source-node _source-node-name_ destination-node _destination-node-name_ -destination-port _destination-port-name_`
 
@@ -174,7 +174,7 @@ CL2                           cluster-network  10.10.1.102   CN1610
 .顯示範例
 [%collapsible]
 ====
-您必須個別移轉每個LIF、如下列範例所示：
+您必須按照以下範例所示，逐一遷移每個 LIF：
 
 [listing, subs="+quotes"]
 ----
@@ -188,9 +188,9 @@ cluster::*> *network interface migrate -vserver cluster -lif n2_clus3 -source-no
 -destination-node  n2  -destination-port  e0d*
 ----
 ====
-. 驗證叢集的健全狀況：
+. 驗證集群健康狀況：
 +
-「網路介面show -role cluster」
+`network interface show -role cluster`
 
 +
 .顯示範例
@@ -218,5 +218,5 @@ Cluster
 ====
 
 
-.接下來呢？
+.下一步是什麼？
 link:cn1610-replace-CL2.html["將 CN1610 交換器 CL2 更換為 3232C 交換器 C2"]。

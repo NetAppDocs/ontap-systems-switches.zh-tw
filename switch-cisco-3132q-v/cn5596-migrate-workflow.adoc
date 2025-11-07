@@ -2,29 +2,29 @@
 permalink: switch-cisco-3132q-v/cn5596-migrate-workflow.html 
 sidebar: sidebar 
 keywords: 3132q-v cabling setup, 3132q-v switches configuration, nx-os 
-summary: 設定 Cisco 3132q-v 交換器之前，請先檢閱下列資訊。 
+summary: 在設定Cisco 3132q-v 交換器之前，請先查看以下資訊。 
 ---
-= 從 Nexus 5596 交換器移轉至 Nexus 3132Q-V 交換器工作流程
+= 將 Nexus 5596 交換器移轉到 Nexus 3132Q-V 交換器的工作流程
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-請遵循下列工作流程步驟，將 Cisco Nexus 5596 交換器移轉至 Cisco Nexus 3132Q-V 交換器。
+請依照下列工作流程步驟，將您的Cisco Nexus 5596 交換器移轉到Cisco Nexus 3132Q-V 交換器。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一"]link:cn5596-migrate-requirements.html["移轉需求"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一"]link:cn5596-migrate-requirements.html["遷移要求"]
 [role="quick-margin-para"]
-檢閱移轉程序的需求和交換器資訊範例。
+查看遷移過程的要求和範例交換器資訊。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["二"]link:cn5596-prepare-to-migrate.html["準備移轉"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["二"]link:cn5596-prepare-to-migrate.html["做好遷移準備"]
 [role="quick-margin-para"]
-準備好 Nexus 5596 交換器以移轉至 Nexus 3132Q-V 交換器。
+準備好將 Nexus 5596 交換器遷移到 Nexus 3132Q-V 交換器。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三"]link:cn5596-configure-ports.html["設定連接埠"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三"]link:cn5596-configure-ports.html["配置連接埠"]
 [role="quick-margin-para"]
-設定連接埠以移轉至新的 Nexus 3132Q-V 交換器。
+配置連接埠以遷移到新的 Nexus 3132Q-V 交換器。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["四"]link:cn5596-complete-migration.html["完成移轉"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["四"]link:cn5596-complete-migration.html["完成遷移"]
 [role="quick-margin-para"]
-完成新 Nexus 3132Q-V 交換器的移轉。
+完成向新型 Nexus 3132Q-V 交換器的遷移。

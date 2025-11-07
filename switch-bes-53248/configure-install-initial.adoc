@@ -2,54 +2,54 @@
 permalink: switch-bes-53248/configure-install-initial.html 
 sidebar: sidebar 
 keywords: switches initial setup,initial setup,efos download 
-summary: 您可以使用此程序來執行Bes - 53248叢集交換器的初始安裝。 
+summary: 您可以使用此程式執行 BES-53248 叢集交換器的初始安裝。 
 ---
-= 設定BS-53248叢集交換器
+= 配置 BES-53248 集群交換機
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-請依照下列步驟執行BS-53248叢集交換器的初始設定。
+請依照下列步驟對 BES-53248 叢集交換器進行初步設定。
 
 .開始之前
-* 硬體已安裝、如所述 link:install-hardware-bes53248.html["安裝硬體"]。
-* 您已檢閱下列內容：
+* 硬體已按所述方式安裝。link:install-hardware-bes53248.html["安裝硬體"] 。
+* 您已審閱以下內容：
 +
-** link:configure-reqs-bes53248.html["組態需求"]
-** link:components-bes53248.html["元件與零件編號"]
-** link:required-documentation-bes53248.html["文件需求"]
+** link:configure-reqs-bes53248.html["配置要求"]
+** link:components-bes53248.html["組件和零件編號"]
+** link:required-documentation-bes53248.html["文件要求"]
 
 
 
 
 .關於範例
-組態程序中的範例使用下列交換器和節點命名法：
+設定過程中的範例使用下列交換器和節點命名規則：
 
-* NetApp交換器名稱為 `cs1` 和 `cs2`。升級從第二個交換器（_CS2._）開始
-* 叢集LIF名稱為節點1的「node1_clus1」和「node1_clus2」、節點2的「node2_clus1」和「node2_clus2」。
-* IPspace名稱為叢集。
-* 「cluster1：>」提示會指出叢集的名稱。
-* 每個節點上的叢集連接埠都會命名為 `e0a` 和 `e0b`。請參閱 https://hwu.netapp.com/Home/Index["NetApp Hardware Universe"^] 以取得平台所支援的實際叢集連接埠。
-* NetApp交換器支援的交換器間連結（ISL）為連接埠0/55和0/56。
-* NetApp交換器支援的節點連線是連接埠0/1到0/16、並具有預設授權。
-* 範例使用兩個節點、但叢集中最多可有24個節點。
+* NetApp交換器的名稱是 `cs1`和 `cs2`。升級從第二個交換器 _cs2 開始。
+* 集群 LIF 名稱為 `node1_clus1`和 `node1_clus2`對於節點1，以及 `node2_clus1`和 `node2_clus2`對於節點2。
+* IP空間名稱為Cluster。
+* 這 `cluster1::>`prompt 指示叢集名稱。
+* 每個節點上的叢集連接埠都命名為 `e0a`和 `e0b`。參見 https://hwu.netapp.com/Home/Index["NetAppHardware Universe"^]針對您的平台實際支援的叢集連接埠。
+* NetApp交換器支援的交換器間連結 (ISL) 為連接埠 0/55 和 0/56。
+* NetApp交換器支援的節點連接為連接埠 0/1 至 0/16，採用預設授權。
+* 範例中使用了兩個節點，但叢集中最多可以有 24 個節點。
 
 
 .步驟
-. 將序列連接埠連接至主機或序列連接埠。
-. 將管理連接埠（交換器左側的RJ-45扳手連接埠）連接至您的TFTP伺服器所在的相同網路。
-. 在主控台設定主機端的序列設定：
+. 將串口連接到主機或串列埠。
+. 將管理連接埠（交換器左側的 RJ-45 扳手連接埠）連接到 TFTP 伺服器所在的相同網路。
+. 在控制台上，設定主機端串列埠設定：
 +
-** 115200傳輸率
-** 8個資料位元
-** 1停止位元
-** 同位元檢查：無
-** 流程控制：無
+** 115200 波特
+** 8 位元數據
+** 1 停止位
+** 奇偶性：無
+** 流量控制：無
 
 
-. 以身分登入交換器 `admin` 並在系統提示輸入密碼時按* Enter鍵。預設的交換器名稱為*路由選擇*。在提示字元下輸入 `enable`。這可讓您存取交換器組態的優先執行模式。
+. 以管理員身分登入交換器。 `admin`當系統提示輸入密碼時，按 *Enter* 鍵。預設交換器名稱為 *routing*。出現提示時，輸入 `enable`。這樣您就可以存取特權 EXEC 模式以進行交換器設定。
 +
 [listing, subs="+quotes"]
 ----
@@ -59,7 +59,7 @@ Password:
 Password:
 (Routing)#
 ----
-. 將交換器名稱變更為* CS2*。
+. 將開關名稱變更為 *cs2*。
 +
 [listing, subs="+quotes"]
 ----
@@ -73,7 +73,7 @@ Password:
 ====
 .IPv4
 --
-ServicePort預設為使用DHCP。系統會自動指派IP位址、子網路遮罩和預設閘道位址。
+服務連接埠預設為使用 DHCP。  IP位址、子網路遮罩和預設閘道位址將自動指派。
 
 [listing, subs="+quotes"]
 ----
@@ -84,7 +84,7 @@ ServicePort預設為使用DHCP。系統會自動指派IP位址、子網路遮罩
 --
 .IPv6
 --
-ServicePort預設為使用DHCP。系統會自動指派IP位址、子網路遮罩和預設閘道位址。
+服務連接埠預設為使用 DHCP。  IP位址、子網路遮罩和預設閘道位址將自動指派。
 
 [listing, subs="+quotes"]
 ----
@@ -95,9 +95,9 @@ ServicePort預設為使用DHCP。系統會自動指派IP位址、子網路遮罩
 ----
 --
 ====
-. [[step7]]使用指令驗證結果：
+. [[步驟7]]使用下列指令驗證結果：
 +
-「How ServicePort」
+`show serviceport`
 
 +
 [listing, subs="+quotes"]
@@ -115,7 +115,7 @@ Configured IPv6 Protocol....................... None
 IPv6 AutoConfig Mode........................... Disabled
 Burned In MAC Address.......................... D8:C4:97:71:12:3C
 ----
-. 設定網域和名稱伺服器：
+. 配置網域名稱和名稱伺服器：
 +
 [source, cli]
 ----
@@ -131,14 +131,14 @@ ip name server <server_name>
 (cs2)(Config)# *exit*
 (cs2)#
 ----
-. 設定NTP伺服器。
+. 配置NTP伺服器。
 
 
 [role="tabbed-block"]
 ====
-.EFOS 3.10.0.3 及更新版本
+.EFOS 3.10.0.3 及更高版本
 --
-設定時區與時間同步（ NTP ）：
+配置時區和時間同步（NTP）：
 
 [source, cli]
 ----
@@ -156,7 +156,7 @@ clock
 --
 .EFOS 3.9.0.2 及更早版本
 --
-設定時區與時間同步（SNTP）：
+設定時區和時間同步（SNTP）：
 
 [source, cli]
 ----
@@ -175,16 +175,16 @@ clock
 ----
 --
 ====
-. [[step10]] 如果您未在上一個步驟中設定 NTP 伺服器、請手動設定時間。
+. [[step10]]如果您在上一個步驟中沒有設定 NTP 伺服器，請手動設定時間。
 
 
 [role="tabbed-block"]
 ====
-.EFOS 3.10.0.3 及更新版本
+.EFOS 3.10.0.3 及更高版本
 --
 手動設定時間。
 
-"時鐘"
+`clock`
 
 [listing, subs="+quotes"]
 ----
@@ -207,7 +207,7 @@ No time source
 --
 手動設定時間。
 
-"時鐘"
+`clock`
 
 [listing, subs="+quotes"]
 ----
@@ -228,9 +228,9 @@ No time source
 ----
 --
 ====
-. [[step11]] 將執行組態儲存至啟動組態：
+. [[步驟11]]將運行配置儲存到啟動配置：
 +
-寫入記憶體
+`write memory`
 
 +
 [listing, subs="+quotes"]
@@ -248,5 +248,5 @@ Configuration Saved!
 ----
 
 
-.接下來呢？
+.下一步是什麼？
 配置好交換器後，您可以… link:configure-efos-software.html["安裝 EFOS 軟體"]。

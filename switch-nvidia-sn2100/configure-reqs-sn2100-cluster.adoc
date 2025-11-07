@@ -2,47 +2,47 @@
 permalink: switch-nvidia-sn2100/configure-reqs-sn2100-cluster.html 
 sidebar: sidebar 
 keywords: nvidia SN2100 switches 
-summary: 對於NVIDIA SN2100交換器的安裝與維護、請務必檢閱所有要求與建議文件。 
+summary: 對於NVIDIA SN2100 交換器的安裝和維護，請務必查看所有要求和建議文件。 
 ---
-= NVIDIA SN2100交換器的組態需求
+= NVIDIA SN2100交換器的設定需求
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-對於NVIDIA SN2100交換器的安裝與維護、請務必檢閱所有組態需求。
+對於NVIDIA SN2100 交換器的安裝和維護，請務必查看所有設定需求。
 
 
 
-== 安裝需求
+== 安裝要求
 
-如果您想要建置ONTAP 具有兩個以上節點的叢集、您需要兩個支援的叢集網路交換器。您可以使用額外的管理交換器、這是選用的。
+如果要建置包含兩個以上節點的ONTAP集群，則需要兩個受支援的集群網路交換器。您也可以使用額外的管理交換機，這些交換機是可選的。
 
-您可以將 NVIDIA SN2100 交換器（ X190006 ）安裝在 NVIDIA 雙 / 單交換器機櫃中、並附有交換器隨附的標準支架。
+您可以使用交換器隨附的標準支架將NVIDIA SN2100 交換器 (X190006) 安裝到NVIDIA雙/單交換器機櫃。
 
-如需纜線佈線準則、請參閱 link:cabling-considerations-sn2100-cluster.html["檢閱纜線佈線和組態考量"]。
+有關佈線指南，請參閱link:cabling-considerations-sn2100-cluster.html["審查佈線和配置注意事項"]。
 
 
 
-== 支援的支援ONTAP
+== ONTAP和 Linux 支援
 
-NVIDIA SN2100 交換器是執行 Cumulus Linux 的 10/25/40/100GbE 交換器。交換器支援下列項目：
+NVIDIA SN2100 交換器是一款運行 Cumulus Linux 的 10/25/40/100GbE 交換器。此交換器支援以下功能：
 
-* ONTAP 9.10.1P3 及更新版本
+* ONTAP 9.10.1P3 及更高版本
 +
-SN2100 交換器可透過不同的交換器配對，在 ONTAP 9.10.1P3 及更新版本中為叢集與儲存應用程式提供服務。
+SN2100 交換器透過不同的交換器對為ONTAP 9.10.1P3 及更高版本中的叢集和儲存應用提供服務。
 
-* Cumulus Linux （ CL ）作業系統版本
+* Cumulus Linux (CL) 作業系統版本
 +
-** 特定的 CL 版本符合資格且受 NetApp 支援。如需目前的相容性資訊，請參閱link:https://mysupport.netapp.com/site/info/nvidia-cluster-switch["NVIDIA 乙太網路交換器資訊"^]頁面或link:https://hwu.netapp.com["NetApp Hardware Universe"^]。
-** 若要從 NVIDIA 下載 SN2100 Cumulus 軟體、您必須擁有登入認證才能存取 NVIDIA 的 Enterprise Support Portal 。請參閱知識庫文章 https://kb.netapp.com/onprem/Switches/Nvidia/How_To_Register_With_NVIDIA_For_Enterprise_Support_Portal_Access["如何向 NVIDIA 註冊企業支援入口網站存取"^]。
+** NetApp對特定 CL 版本進行了認證和支援。有關當前相容性信息，請參閱link:https://mysupport.netapp.com/site/info/nvidia-cluster-switch["NVIDIA乙太網路交換器訊息"^]頁面或link:https://hwu.netapp.com["NetAppHardware Universe"^]。
+** 若要從NVIDIA下載 SN2100 Cumulus 軟體，您必須擁有登入憑證才能存取 NVIDIA 企業支援入口網站。請參閱知識庫文章 https://kb.netapp.com/onprem/Switches/Nvidia/How_To_Register_With_NVIDIA_For_Enterprise_Support_Portal_Access["如何註冊NVIDIA企業支援入口網站存取權限"^]。
 
 
 
 
-* 您可以在交換器執行Cummulis Linux或ONIE時安裝Cumm截止Linux。
+* 當交換器執行 Cumulus Linux 或 ONIE 時，您可以安裝 Cumulus Linux。
 
 
-.接下來呢？
+.下一步是什麼？
 在您查看完配置要求後，您可以確認您的配置。 link:components-sn2100-cluster.html["組件和零件編號"]。

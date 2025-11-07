@@ -4,7 +4,7 @@ permalink: switch-cisco-9336c-fx2-shared/migrate-from-switched-configuration-dat
 keywords:  
 summary:  
 ---
-= 使用直接附加儲存設備從交換式組態移轉
+= 從交換式配置遷移到直連存儲
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,83 +14,83 @@ summary:
 
 
 [role="lead"]
-您可以新增兩個新的共用交換器、從具有直接附加儲存設備的交換式組態進行移轉。
+您可以透過新增兩個新的共用交換機，從具有直連儲存的交換式設定遷移到共用式設定。
 
-.支援的交換器
-支援下列交換器：
+.支援的交換機
+支援以下交換器：
 
 * Nexus 9336C-FX2
 * Nexus 3232C
 
 
-本程序所支援的支援的支援版本包括Cisco乙太網路交換器頁面。ONTAP請參閱 https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器"]。
+此過程中支援的ONTAP和 NX-OS 版本請參閱Cisco乙太網路交換器頁面。看 https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換機"]。
 
-.連線連接埠
-交換器使用下列連接埠來連接節點：
+.連接埠
+交換器使用以下連接埠連接到節點：
 
 * Nexus 9336C-FX2：
 +
-** 連接埠1-3：離線模式（4個10G）叢集內連接埠、int E1/1/1-4、E1/2/1-4
-** 連接埠4-6：中斷模式（4個25G）叢集內/ HA連接埠、int E1/4/1-4、E1/5/1-4
-** 連接埠7-34：40/100GbE叢集內/ HA連接埠、int E1/7-34
+** 連接埠 1-3：分支模式 (4x10G) 叢集內端口，內部 e1/1/1-4、e1/2/1-4、e1/3/1-4
+** 連接埠 4-6：分支模式 (4x25G) 叢集內/高可用性端口，內部 e1/4/1-4、e1/5/1-4、e1/6/1-4
+** 連接埠 7-34：40/100GbE 叢集內/高可用性端口，內部 e1/7-34
 
 
 * Nexus 3232C：
 +
-** 連接埠1-30：10/40/100 GbE
+** 連接埠 1-30：10/40/100 GbE
 
 
-* 交換器使用下列交換器間連結（ISL）連接埠：
+* 這些交換器使用以下交換器間連結（ISL）連接埠：
 +
-** 連接埠int E1/35-36：Nexus 9336C-FX2
-** 連接埠E1/31至32：Nexus 3232C
+** 埠 int e1/35-36：Nexus 9336C-FX2
+** 連接埠 e1/31-32：Nexus 3232C
 
 
 
 
-。 https://hwu.netapp.com["Hardware Universe"] 包含所有叢集交換器支援的纜線連接資訊。
+這 https://hwu.netapp.com["Hardware Universe"]包含所有群集交換器支援的佈線資訊。
 
-.您需要的產品
-* 請確定您已完成下列工作：
+.你需要什麼
+* 請確保您已完成以下任務：
 +
-** 已將Nexus 9336C-FX2交換器上的部分連接埠設定為以100 GbE執行。
-** 從節點到Nexus 9336C-FX2交換器的100 GbE連線已規劃、移轉及記錄。
-** 將其他不中斷營運的Cisco叢集交換器從ONTAP 一個不中斷叢集移轉至Cisco Nexus 9336C-FX2網路交換器。
+** 將 Nexus 9336C-FX2 交換器上的一些連接埠配置為以 100 GbE 運作。
+** 規劃、遷移並記錄了從節點到 Nexus 9336C-FX2 交換器的 100 GbE 連線。
+** 將其他Cisco集群交換器從ONTAP集群無中斷地遷移到Cisco Nexus 9336C-FX2 網路交換器。
 
 
-* 現有的交換器網路已正確設定並正常運作。
-* 所有連接埠都處於「* up*」狀態、以確保不中斷營運。
-* Nexus 9336C-FX2交換器的設定與操作均採用適當版本的NX-OS安裝與參考組態檔（RCF）。
-* 現有的網路組態具有下列特性：
+* 現有交換網路已正確設定並正常運作。
+* 所有連接埠均處於*開啟*狀態，以確保運作不會中斷。
+* Nexus 9336C-FX2 交換器已設定並運作在已安裝的正確版本的 NX-OS 和已套用的參考設定檔 (RCF) 下。
+* 現有網路配置如下：
 +
-** 使用兩個舊Cisco交換器的備援且功能完整的NetApp叢集。
-** 管理連線能力、以及對舊Cisco交換器和新交換器的主控台存取。
-** 使用叢集生命區的所有叢集生命區都位於其主連接埠上。
-** 在其他Cisco交換器之間以及新交換器之間啟用或連接ISL連接埠。
+** 使用較舊的Cisco交換機構建立冗餘且功能齊全的NetApp叢集。
+** 舊款Cisco交換器和新交換器的管理連線和控制台存取。
+** 叢集中所有處於 *up* 狀態的 LIF 都位於其主連接埠上。
+** ISL 連接埠已啟用，並且已在其他Cisco交換器之間以及新交換器之間連接了電纜。
 
 
 
 
 .關於範例
-本程序中的範例使用下列交換器和節點命名法：
+本流程中的範例使用以下開關和節點命名規則：
 
-* 現有的Cisco Nexus 3232C叢集交換器為_C1_和_C2_。
-* 新的Nexus 9336C-FX2交換器為_SH1_和_sh2_。
-* 節點是_node1_和_node2_。
-* 叢集生命區分別是節點1上的_node1_clus1_和節點1上的_node1_clus2_、以及節點2上的節點2_node2_clus1_和節點2_clus2_。
-* 交換器C2會先由交換器sh2取代、然後由交換器SH1取代交換器C1。
+* 現有的Cisco Nexus 3232C 叢集交換器是 _c1_ 和 _c2_。
+* 新的 Nexus 9336C-FX2 交換器型號為 _sh1_ 和 _sh2_。
+* 節點分別為 _node1_ 和 _node2_。
+* 節點 1 上的叢集 LIF 分別為 _node1_clus1_ 和 _node1_clus2_，節點 2 上的叢集 LIF 分別為 _node2_clus1_ 和 _node2_clus2_。
+* 首先將交換器 c2 替換為交換器 sh2，然後將交換器 c1 替換為交換器 sh1。
 
 
 .步驟
-. 如果AutoSupport 此叢集啟用了「支援」功能、請叫用AutoSupport 下列訊息來禁止自動建立案例：
+. 如果此叢集上啟用了AutoSupport ，則透過呼叫AutoSupport訊息來抑制自動建立案例：
 +
 `system node autosupport invoke -node * -type all -message MAINT=x h`
 
 +
-其中x是維護時段的持續時間（以小時為單位）。
+其中 x 為維護窗口的持續時間（小時）。
 
-. 檢查每個叢集連接埠的管理和作業狀態。
-. 確認所有叢集連接埠都正常運作：
+. 檢查每個叢集連接埠的管理和運作狀態。
+. 確認叢集所有連接埠均已啟動且狀態正常：
 +
 `network port show –role cluster`
 
@@ -122,9 +122,9 @@ cluster1::*>
 ====
 
 
-. [[step4]]確認所有叢集介面（lifs）都位於主連接埠：
+. [[步驟4]]驗證所有叢集介面（LIF）是否都在主連接埠上：
 +
-「網路介面show -role cluster」
+`network interface show -role cluster`
 
 +
 .顯示範例
@@ -147,9 +147,9 @@ cluster1::*>
 ====
 
 
-. [[step5]]確認叢集顯示兩個叢集交換器的資訊：
+. [[步驟5]]驗證叢集是否顯示兩個叢集交換器的資訊：
 +
-「系統叢集交換器show -is監控、可運作的true」
+`system cluster-switch show -is-monitoring-enabled-operational true`
 
 +
 .顯示範例
@@ -179,7 +179,7 @@ cluster1::*>
 ====
 
 
-. [[step6]]停用叢集生命體上的自動還原功能。
+. [[step6]]停用叢集 LIF 的自動還原功能。
 +
 .顯示範例
 [%collapsible]
@@ -191,7 +191,7 @@ cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert fals
 ====
 
 
-. [[step7]關閉C2交換器。
+. [[step7]]關閉 c2 交換器。
 +
 .顯示範例
 [%collapsible]
@@ -206,12 +206,12 @@ c2(config)# *shutdown*
 ====
 
 
-. [[step8]確認叢集LIF已移轉至叢集交換器SH1上裝載的連接埠：
+. [[步驟8]]驗證叢集 LIF 是否已移轉到叢集交換器 sh1 上託管的連接埠：
 +
-「網路介面show -role cluster」
+`network interface show -role cluster`
 
 +
-這可能需要幾秒鐘的時間。
+這可能需要幾秒鐘。
 
 +
 .顯示範例
@@ -234,9 +234,9 @@ cluster1::*>
 ====
 
 
-. [[step9]]將交換器C2更換為新交換器sh2、然後重新連接新交換器。
-. 確認sh2上的連接埠已備份。*注意*生命仍在交換器C1上。
-. 關閉C1交換器。
+. [[step9]]將交換器 c2 替換為新的交換器 sh2，並重新連接新交換器的電纜。
+. 請確認 sh2 上的連接埠是否已恢復正常。  *注意* LIF 仍在交換器 c1 上。
+. 關閉 c1 交換器。
 +
 .顯示範例
 [%collapsible]
@@ -251,7 +251,7 @@ c1(config)# *shutdown*
 ====
 
 
-. [[step12]驗證叢集LIF是否已移轉至叢集交換器sh2上裝載的連接埠。這可能需要幾秒鐘的時間。
+. [[step12]]驗證叢集 LIF 是否已移轉到叢集交換器 sh2 上託管的連接埠。這可能需要幾秒鐘。
 +
 .顯示範例
 [%collapsible]
@@ -273,9 +273,9 @@ cluster1::*>
 ====
 
 
-. [[step13]將交換器C1更換為新的交換器SH1、然後重新連接新的交換器。
-. 確認SH1上的連接埠已備份。*注意*生命仍在交換器C2上。
-. 在叢集生命體上啟用自動還原：
+. [[step13]]將交換器 c1 更換為新的交換器 sh1，並重新連接新交換器的電纜。
+. 請確認 sh1 上的連接埠是否已恢復正常。  *注意* LIF 仍在交換器 c2 上。
+. 啟用叢集 LIF 的自動回滾功能：
 +
 .顯示範例
 [%collapsible]
@@ -287,9 +287,9 @@ cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert True
 ====
 
 
-. [[step16]驗證叢集是否健全：
+. [[步驟16]]驗證叢集是否健康：
 +
-「叢集展示」
+`cluster show`
 
 +
 .顯示範例
@@ -308,5 +308,5 @@ cluster1::*>
 ====
 
 
-.接下來呢？
+.下一步是什麼？
 交換器遷移完成後，您可以… link:../switch-cshm/config-overview.html["配置交換器健康監控"]。

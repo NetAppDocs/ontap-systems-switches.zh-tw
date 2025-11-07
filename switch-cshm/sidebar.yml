@@ -1,34 +1,34 @@
 ---
 section: switch-cshm
-title: 監控交換器健全狀況
+title: 監控交換器運作狀況
 entries:
-- title: 交換器健全狀況監控總覽
+- title: 交換機健康監測概述
   url: "/switch-cshm/cshm-overview.html"
-  pdf-filename: switch_health _ cshm
-- title: 設定交換器健全狀況監控
-  pdf-filename: Configure_switch_health
+  pdf-filename: 切換健康_cshm
+- title: 配置交換器健康監控
+  pdf-filename: 配置交換器健康狀況
   entries:
-  - title: 組態總覽
+  - title: 配置概述
     url: "/switch-cshm/config-overview.html"
-  - title: 設定記錄收集
+  - title: 配置日誌收集
     url: "/switch-cshm/config-log-collection.html"
-  - title: 設定 SNMPv3 （選用）
+  - title: 配置 SNMPv3（可選）
     url: "/switch-cshm/config-snmpv3.html"
-- title: 檢查交換器健全狀況
-  pdf-filename: Monitor_switch_health
+- title: 檢查交換機健康狀況
+  pdf-filename: 監控交換器健康狀況
   entries:
-  - title: 健全狀況檢查總覽
+  - title: 健康檢查概述
     url: "/switch-cshm/monitor-overview.html"
   - title: 管理交換器監控
     url: "/switch-cshm/monitor-manage.html"
   - title: 驗證交換器監控
     url: "/switch-cshm/monitor-verify.html"
-  - title: 疑難排解警示
+  - title: 故障排除警報
     url: "/switch-cshm/monitor-troubleshoot.html"
-- title: 記錄收集
+- title: 日誌收集
   pdf-filename: log_collection_switch_health
   entries:
-  - title: 記錄集合總覽
+  - title: 日誌收集概覽
     url: "/switch-cshm/log-collection-overview.html"
-  - title: 疑難排解
+  - title: 故障排除
     url: "/switch-cshm/log-collection-troubleshoot.html"

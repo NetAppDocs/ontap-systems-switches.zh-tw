@@ -2,38 +2,38 @@
 permalink: switch-nvidia-sn2100-storage/cabling-considerations-sn2100-storage.html 
 sidebar: sidebar 
 keywords: sn2100 SN2100 cabling setup, sn2100 switches configuration, cumulus linux os 
-summary: 在設定NVIDIA SN2100交換器之前、請先檢閱下列資訊。 
+summary: 在設定NVIDIA SN2100 交換器之前，請先查看以下資訊。 
 ---
-= 檢閱纜線佈線和組態考量
+= 審查佈線和配置注意事項
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-在設定NVIDIA SN2100交換器之前、請先檢閱下列考量事項。
+在設定NVIDIA SN2100 交換器之前，請先查看以下注意事項。
 
 
 
-== NVIDIA連接埠詳細資料
+== NVIDIA連接埠詳情
 
 |===
 
 
-| *交換器連接埠* | *連接埠使用率* 
+| *交換埠* | *連接埠使用情況* 
 
 
  a| 
-swp1s-3
+swp1s0-3
  a| 
-4個10GbE中斷叢集連接埠節點
+4x10GbE 分支集群埠節點
 
 
 
  a| 
-swp2s-3
+swp2s0-3
  a| 
-4個25GbE中斷叢集連接埠節點
+4x25GbE 分支集群埠節點
 
 
 
@@ -47,16 +47,16 @@ swp3-14
  a| 
 swp15-16
  a| 
-100GbE 交換器間連結（ ISL ）連接埠
+100GbE交換器間鏈路（ISL）端口
 
 |===
-請參閱 https://hwu.netapp.com/Switch/Index["Hardware Universe"^] 如需交換器連接埠的詳細資訊、
+參見 https://hwu.netapp.com/Switch/Index["Hardware Universe"^]有關交換器連接埠的詳細資訊。
 
 
 
-== 光纖連線的連結延遲
+== 光纖連接中的鏈路延遲
 
-如果您遇到超過五秒的連結延遲、 Cumulus Linux 5.4 及更新版本均支援快速連結。您可以使用來設定連結 `nv set` 命令如下：
+如果您遇到連線延遲超過五秒的情況，Cumulus Linux 5.4 及更高版本包含對快速連線的支援。您可以使用以下方法配置連結： `nv set`命令如下：
 
 [listing, subs="+quotes"]
 ----
@@ -81,15 +81,15 @@ Only switchd reload required
 ====
 
 
-== 支援銅線連線
+== 支援銅連接
 
-若要修正此問題、必須進行下列組態變更。
+要解決此問題，需要進行以下配置變更。
 
 [role="tabbed-block"]
 ====
 .Cumulus Linux 4.4.3
 --
-. 使用 40GbE/100GbE 銅線識別每個介面的名稱：
+. 確定使用 40GbE/100GbE 銅纜的每個介面的名稱：
 +
 [listing, subs="+quotes"]
 ----
@@ -100,7 +100,7 @@ Interface  Identifier     Vendor Name     Vendor PN    Vendor SN      Vendor Rev
 swp3       0x11 (QSFP28)  Molex           112-00576    93A2229911111  B0
 swp4       0x11 (QSFP28)  Molex           112-00576    93A2229922222  B0
 ----
-. 將下列兩行新增至 `/etc/cumulus/switchd.conf` 使用 40GbE/100GbE 銅線的每個連接埠（ swjpg <n> ）檔案：
+. 將以下兩行加入 `/etc/cumulus/switchd.conf`使用 40GbE/100GbE 銅纜的每個連接埠 (swp<n>) 的檔案：
 +
 ** `interface.swp<n>.enable_media_depended_linkup_flow=TRUE`
 ** `interface.swp<n>.enable_short_tuning=TRUE`
@@ -120,13 +120,13 @@ interface.swp4.enable_short_tuning=TRUE
 ----
 
 
-. 重新啟動 `switchd` 服務：
+. 重新啟動 `switchd`服務：
 +
 [listing, subs="+quotes"]
 ----
 cumulus@cumulus:mgmt:~$ *sudo systemctl restart switchd.service*
 ----
-. 確認連接埠已啟動：
+. 確認連接埠已開啟：
 +
 [listing, subs="+quotes"]
 ----
@@ -142,7 +142,7 @@ UP     swp4      100G  9216   Trunk/L2                     Master: bridge(UP)
 --
 .Cumulus Linux 5.x
 --
-. 使用 40GbE/100GbE 銅線識別每個介面的名稱：
+. 確定使用 40GbE/100GbE 銅纜的每個介面的名稱：
 +
 [listing, subs="+quotes"]
 ----
@@ -153,11 +153,11 @@ Interface  Identifier     Vendor Name     Vendor PN    Vendor SN      Vendor Rev
 swp3       0x11 (QSFP28)  Molex           112-00576    93A2229911111  B0
 swp4       0x11 (QSFP28)  Molex           112-00576    93A2229922222  B0
 ----
-. 使用設定連結 `nv set` 命令如下：
+. 使用以下方式配置鏈接 `nv set`命令如下：
 +
 ** `nv set interface <interface-id> link fast-linkup on`
 ** `nv config apply`
-** 重新載入 `switchd` 服務
+** 重新載入 `switchd`服務
 +
 例如：
 
@@ -175,7 +175,7 @@ Only switchd reload required
 ----
 
 
-. 確認連接埠已啟動：
+. 確認連接埠已開啟：
 +
 [listing, subs="+quotes"]
 ----
@@ -190,34 +190,34 @@ UP     swp4      100G  9216   Trunk/L2                     Master: bridge(UP)
 
 --
 ====
-如 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/Fabric_Interconnect_and_Management_Switches/NVIDIA_SN2100_switch_fails_to_connect_using_40_100GbE_copper_cable["SN2100 交換器無法使用 40/100GbE 銅線連接"^]需詳細資訊、請參閱知識庫文章。
+請參閱知識庫文章 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/Fabric_Interconnect_and_Management_Switches/NVIDIA_SN2100_switch_fails_to_connect_using_40_100GbE_copper_cable["SN2100交換器無法使用40/100GbE銅纜連接"^]更多詳情請見下文。
 
-在 Cumulus Linux 4.4.2 上、採用 X1151A NIC 、 X1146A NIC 或內建 100GbE 連接埠的 SN2100 交換器不支援銅線連線。例如：
+在 Cumulus Linux 4.4.2 中，配備 X1151A NIC、X1146A NIC 或板載 100GbE 連接埠的 SN2100 交換器不支援銅纜連接。例如：
 
-* 連接埠e0a和e0b上的SI-A800 AFF
-* 連接埠e0g和e0h上的E320 AFF
-
-
-
-
-== QSA介面卡
-
-當 QSA 介面卡用於連線至平台上的 10GbE/25GbE 叢集連接埠時、連結可能不會啟動。
-
-若要解決此問題、請執行下列步驟：
-
-* 對於 10GbE 、請手動將 swp1s-3 連結速度設定為 10000 、並將自動交涉設定為關閉。
-* 若是 25GbE 、請手動將 swp2s-3 連結速度設定為 25000 、並將自動交涉設定為關閉。
+* AFF A800位於連接埠 e0a 和 e0b
+* AFF A320在 e0g 和 e0h 連接埠上
 
 
 
-NOTE: 使用 10GbE/25GbE QSA 介面卡時、請將其插入非中斷 40GbE/100GbE 連接埠（ swp3-swp14 ）。請勿將 QSA 介面卡插入設定為中斷連接的連接埠。
+
+== QSA適配器
+
+當使用 QSA 適配器連接到平台上的 10GbE/25GbE 叢集連接埠時，連結可能無法建立。
+
+若要解決此問題，請執行下列操作：
+
+* 對於 10GbE，手動將 swp1s0-3 連結速度設定為 10000，並將自動協商設定為關閉。
+* 對於 25GbE，手動將 swp2s0-3 連結速度設定為 25000，並將自動協商設定為關閉。
 
 
 
-== 設定中斷連接埠的介面速度
+NOTE: 使用 10GbE/25GbE QSA 轉接器時，將其插入非分線 40GbE/100GbE 連接埠（swp3-swp14）。請勿將 QSA 適配器插入配置為分線連接埠的連接埠。
 
-視交換器連接埠中的收發器而定、您可能需要將交換器介面上的速度設定為固定速度。如果使用 10GbE 和 25GbE 中斷連接埠、請確認自動交涉已關閉、並在交換器上設定介面速度。
+
+
+== 設定分支端口的介面速度
+
+根據交換器連接埠中的收發器，您可能需要將交換器介面的速度設定為固定速度。如果使用 10GbE 和 25GbE 分支端口，請確認自動協商已關閉，並在交換器上設定介面速度。
 
 [role="tabbed-block"]
 ====
@@ -254,7 +254,7 @@ iface swp2s0
      link-autoneg off
      link-speed 25000 *<---- port speed set*
 ----
-檢查介面和連接埠狀態、確認已套用設定：
+檢查介面和連接埠狀態，以確認設定已套用：
 
 [listing, subs="+quotes"]
 ----
@@ -302,7 +302,7 @@ link                                                   
 [breakout]                                                                                    
   state                 up                      up                      up
 ----
-檢查介面和連接埠狀態、確認已套用設定：
+檢查介面和連接埠狀態，以確認設定已套用：
 
 [listing, subs="+quotes"]
 ----
@@ -332,5 +332,5 @@ UP     swp16      100G  9216   BondMember  cs01 (swp16)     Master: cl
 ----
 --
 ====
-.接下來呢？
+.下一步是什麼？
 在您審核佈線和配置要求後，您可以link:install-cable-shelves-sn2100-storage.html["將 NS224 貨架連接成交換器連接的儲存設備"]。

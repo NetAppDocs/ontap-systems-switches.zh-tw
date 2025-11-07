@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: 9332d-gx2b cabling setup, 9364d-gx2a switches configuration, nx-os 
 summary: 在設定Cisco 9364d-gx2a 交換器之前，請先查看以下資訊。 
 ---
-= 檢閱纜線佈線和組態考量
+= 審查佈線和配置注意事項
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -29,4 +29,4 @@ summary: 在設定Cisco 9364d-gx2a 交換器之前，請先查看以下資訊。
 (cs1)(config)# *exit*
 (cs1)# *copy running-config startup-config*
 ----
-請參閱 https://hwu.netapp.com/Switch/Index["Hardware Universe"^] 如需交換器連接埠的詳細資訊、
+參見 https://hwu.netapp.com/Switch/Index["Hardware Universe"^]有關交換器連接埠的詳細資訊。

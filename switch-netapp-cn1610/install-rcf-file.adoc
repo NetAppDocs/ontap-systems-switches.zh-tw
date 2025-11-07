@@ -2,81 +2,81 @@
 permalink: switch-netapp-cn1610/install-rcf-file.html 
 sidebar: sidebar 
 keywords: reference configuration, file ,install, cn1610, switch, install rcf 
-summary: 當您安裝參考組態檔（RCF）時、必須先將叢集l生命 從交換器CS2移除。安裝並驗證RCF之後、便可將LIF移回。 
+summary: '安裝參考設定檔 (RCF) 時，必須先將叢集 LIF 從交換器 cs2 遷移出去。  RCF 安裝並驗證完成後，LIF 即可遷移回去。' 
 ---
-= 在CN1610交換器上安裝參考組態檔
+= 在 CN1610 交換器上安裝參考設定檔
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-請遵循此程序來安裝參考組態檔（RCF）。
+請依照以下步驟安裝參考設定檔 (RCF)。
 
-在安裝RCF之前、您必須先將叢集LIF從交換器CS2移轉。安裝並驗證RCF之後、便可將LIF移回。
+在安裝 RCF 之前，必須先將叢集 LIF 從交換器 cs2 遷移出去。  RCF 安裝並驗證完成後，LIF 即可遷移回去。
 
 
 
-== 檢閱要求
+== 審查要求
 
 .開始之前
-請確定您擁有下列項目：
+請確保您擁有以下物品：
 
-* 交換器組態的目前備份。
-* 完全正常運作的叢集（記錄中沒有錯誤、也沒有故障的叢集網路介面卡（NIC）或類似問題）。
-* 叢集交換器上的完整功能連接埠連線。
-* 設定所有叢集連接埠。
-* 設定所有叢集邏輯介面（lifs）。
-* 成功的溝通途徑：ONTAP The es執行（權限：進階） `cluster ping-cluster -node node1` 命令必須指出這一點 `larger than PMTU communication` 在所有路徑上都成功。
-* 支援版本的RCF和ONTAP 不支援。
+* 交換器配置的目前備份。
+* 一個功能齊全的叢集（日誌中沒有錯誤，叢集網路介面卡（NIC）也沒有缺陷或類似問題）。
+* 集群交換器上的連接埠連線功能齊全。
+* 所有群集連接埠均已設定。
+* 所有群集邏輯介面（LIF）均已設定。
+* 一條成功的溝通路徑： ONTAP （權限：進階） `cluster ping-cluster -node node1`命令必須表明 `larger than PMTU communication`在所有路徑上都取得了成功。
+* 受支援的 RCF 和ONTAP版本。
 +
-請務必參閱上的交換器相容性表 http://mysupport.netapp.com/NOW/download/software/cm_switches_ntap/["NetApp CN1601與CN1610交換器"^] 頁面、以取得支援的RCF和ONTAP 版本。
+請務必查閱交換器相容性表格。 http://mysupport.netapp.com/NOW/download/software/cm_switches_ntap/["NetApp CN1601 和 CN1610 交換機"^]本頁列出了支援的 RCF 和ONTAP版本。
 
 
 
 
 
-== 安裝RCF
+== 安裝 RCF
 
-下列程序使用叢集Data ONTAP 式的循環8.2語法。因此、叢集Vserver、LIF名稱和CLI輸出與Data ONTAP 《Sv3 8.3》中的不同。
+下列程序使用叢集式Data ONTAP 8.2 語法。因此，叢集 Vserver、LIF 名稱和 CLI 輸出與Data ONTAP 8.3 中的不同。
 
-RCF和FastPath版本中的命令語法之間可能存在命令相依性。
+RCF 和 FASTPATH 版本中的指令語法可能存在指令依賴關係。
 
 
-NOTE: 在RCF 1.2版中、由於安全考量、已明確停用對Telnet的支援。若要避免安裝RCF 1.2時發生連線問題、請確認已啟用Secure Shell（SSH）。。 https://library.netapp.com/ecm/ecm_get_file/ECMP1117874["NetApp CN1610交換器管理員指南"^] 有更多關於SSH的資訊。
+NOTE: 由於安全性問題，RCF 版本 1.2 中已明確停用對 Telnet 的支援。為避免安裝 RCF 1.2 時出現連線問題，請確認安全殼層 (SSH) 已啟用。這 https://library.netapp.com/ecm/ecm_get_file/ECMP1117874["NetApp CN1610 交換器管理員指南"^]包含更多關於 SSH 的資訊。
 
 .關於範例
-本程序中的範例使用下列交換器和節點命名法：
+本流程中的範例使用以下開關和節點命名規則：
 
-* 兩個NetApp交換器分別是CS1和CS2。
-* 這兩個叢集l生命 區是clus1和clus2。
-* Vserver是VS1和VS2。
-* 「cluster：*>」提示會指出叢集的名稱。
-* 每個節點上的叢集連接埠名稱為e1a和E2A。
+* 這兩台NetApp交換器分別是 cs1 和 cs2。
+* 這兩個簇 LIF 分別是 clus1 和 clus2。
+* 虛擬伺服器為 vs1 和 vs2。
+* 這 `cluster::*>`prompt 指示叢集名稱。
+* 每個節點上的叢集連接埠分別命名為 e1a 和 e2a。
 +
-https://hwu.netapp.com/["Hardware Universe"^] 有更多有關平台所支援的實際叢集連接埠資訊。
+https://hwu.netapp.com/["Hardware Universe"^]包含有關您的平台支援的實際集群連接埠的更多資訊。
 
-* 支援的交換器間連結（ISL）是連接埠0/13到0/16。
-* 支援的節點連線是連接埠0/1到0/12。
-* 受支援版本的FastPath、RCF和ONTAP RESZ.
+* 支援的交換器間連結 (ISL) 為連接埠 0/13 至 0/16。
+* 支援的節點連接為連接埠 0/1 至 0/12。
+* 支援的 FASTPATH、RCF 和ONTAP版本。
 +
-請務必參閱上的交換器相容性表 http://mysupport.netapp.com/NOW/download/software/cm_switches_ntap/["NetApp CN1601與CN1610交換器"^] 頁面、以取得所支援的FastPath、RCF及ONTAP 支援的版本。
+請務必查閱交換器相容性表格。 http://mysupport.netapp.com/NOW/download/software/cm_switches_ntap/["NetApp CN1601 和 CN1610 交換機"^]此頁面列出了支援的 FASTPATH、RCF 和ONTAP版本。
 
 
 
 
 
-=== 步驟1：移轉叢集
+=== 步驟 1：遷移集群
 
-. 儲存您目前的交換器組態資訊：
+. 儲存您目前的交換器設定資訊：
 +
-寫入記憶體
+`write memory`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示目前交換器組態儲存至交換器CS2上的啟動組態（「startup組態」）檔案：
+以下範例展示如何將目前交換器組態儲存到啟動組態中。(`startup-config` ) 文件在交換器 cs2 上：
 
 [listing]
 ----
@@ -91,9 +91,9 @@ Config file 'startup-config' created successfully.
 Configuration Saved!
 ----
 ====
-. 在每個節點的主控台上、將clus2移轉至連接埠e1a：
+. 在每個節點的控制台上，將 clus2 遷移到連接埠 e1a：
 +
-網路介面移轉
+`network interface migrate`
 
 +
 .顯示範例
@@ -106,15 +106,15 @@ cluster::*> network interface migrate -vserver vs1 -lif clus2 -source-node node1
 cluster::*> network interface migrate -vserver vs2 -lif clus2 -source-node node2 -destnode node2 -dest-port e1a
 ----
 ====
-. 在每個節點的主控台上、確認移轉是否發生：
+. 在每個節點的控制台上，驗證遷移是否已完成：
 +
-「網路介面show -role cluster」
+`network interface show -role cluster`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示、clus2已移轉至兩個節點上的連接埠e1a：
+以下範例顯示 clus2 已遷移到兩個節點上的 e1a 連接埠：
 
 [listing]
 ----
@@ -123,15 +123,15 @@ cluster::*> network port show -role cluster
          clus2      up/up      10.10.10.2/16   node2    e1a     false
 ----
 ====
-. 關閉兩個節點上的連接埠E2A：
+. 關閉兩個節點上的 e2a 連接埠：
 +
-網路連接埠修改
+`network port modify`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示兩個節點上的連接埠E2A正在關機：
+以下範例顯示了兩個節點上的 e2a 連接埠都已關閉：
 
 [listing]
 ----
@@ -139,9 +139,9 @@ cluster::*> network port modify -node node1 -port e2a -up-admin false
 cluster::*> network port modify -node node2 -port e2a -up-admin false
 ----
 ====
-. 確認兩個節點上的連接埠E2A均已關機：
+. 請確認兩個節點上的 e2a 連接埠均已關閉：
 +
-「網路連接埠展示」
+`network port show`
 
 +
 .顯示範例
@@ -162,7 +162,7 @@ node2
        e2a    cluster  down 9000  true/true   full/full   auto/10000
 ----
 ====
-. 關閉使用中NetApp交換器CS1上的ISL連接埠。
+. 關閉活動NetApp交換器 cs1 上的 ISL 連接埠。
 +
 .顯示範例
 [%collapsible]
@@ -180,15 +180,15 @@ node2
 
 
 
-=== 步驟2：安裝RCF
+=== 步驟 2：安裝 RCF
 
-. 將RCF複製到交換器。
+. 將 RCF 複製到交換器。
 +
 
-NOTE: 您必須先將「.scr」副檔名設定為檔案名稱的一部分、才能叫用指令碼。此副檔名是FastPath作業系統的副檔名。
+NOTE: 你必須設定 `.scr`在呼叫腳本之前，將檔案副檔名作為檔案名稱的一部分。此擴充功能是適用於 FASTPATH 作業系統的擴充功能。
 
 +
-交換器會在下載指令碼到交換器時自動驗證指令碼、然後輸出會移至主控台。
+交換機會在腳本下載到交換器時自動驗證，並將輸出結果輸出到控制台。
 
 +
 .顯示範例
@@ -203,7 +203,7 @@ Configuration script validated.
 File transfer operation completed successfully.
 ----
 ====
-. 確認已下載指令碼、並以您指定的檔案名稱儲存。
+. 請確認腳本已下載並以您指定的檔案名稱儲存。
 +
 .顯示範例
 [%collapsible]
@@ -220,10 +220,10 @@ CN1610_CS_RCF_v1.1.scr           2199
 6038 Kbytes free.
 ----
 ====
-. 驗證指令碼。
+. 驗證腳本。
 +
 
-NOTE: 指令碼會在下載期間驗證、以驗證每一行是否為有效的交換器命令列。
+NOTE: 下載過程中會對腳本進行驗證，以確保每一行都是有效的交換器命令列。
 
 +
 .顯示範例
@@ -236,7 +236,7 @@ NOTE: 指令碼會在下載期間驗證、以驗證每一行是否為有效的�
 Configuration script 'CN1610_CS_RCF_v1.1.scr' validated.
 ----
 ====
-. 將指令碼套用至交換器。
+. 將腳本應用到交換器上。
 +
 .顯示範例
 [%collapsible]
@@ -251,17 +251,17 @@ Are you sure you want to apply the configuration script? (y/n) y
 Configuration script 'CN1610_CS_RCF_v1.1.scr' applied.
 ----
 ====
-. 確認交換器已實作您的變更。
+. 請確認您的變更已在交換器上生效。
 +
 [listing]
 ----
 (cs2) # show running-config
 ----
 +
-此範例顯示交換器上的「執行組態」檔案。您必須將檔案與RCF進行比較、以驗證您設定的參數是否符合預期。
+該範例展示了 `running-config`文件在交換器上。您必須將該檔案與 RCF 進行比較，以驗證您設定的參數是否符合預期。
 
-. 儲存變更。
-. 將「執行組態」檔案設為標準檔案。
+. 儲存更改。
+. 設定 `running-config`文件將成為標準文件。
 +
 .顯示範例
 [%collapsible]
@@ -277,9 +277,9 @@ Are you sure you want to save? (y/n) y
 Config file 'startup-config' created successfully.
 ----
 ====
-. 重新啟動交換器、確認「執行組態」檔案正確無誤。
+. 重新啟動交換器並驗證 `running-config`文件正確。
 +
-重新開機完成後、您必須登入、檢視「執行組態」檔案、然後在介面3/64上尋找說明、該介面是RCF的版本標籤。
+重新啟動完成後，您必須登入並查看 `running-config`然後尋找文件，並在介面 3/64 上尋找描述，這是 RCF 的版本標籤。
 
 +
 .顯示範例
@@ -298,7 +298,7 @@ Configuration Saved!
 System will now restart!
 ----
 ====
-. 啟動使用中交換器CS1上的ISL連接埠。
+. 在活動交換器 cs1 上啟用 ISL 連接埠。
 +
 .顯示範例
 [%collapsible]
@@ -312,12 +312,12 @@ System will now restart!
 (cs1) (config)# exit
 ----
 ====
-. 驗證ISL是否正常運作：
+. 確認ISL是否正常運作：
 +
-「How port-channel 3/1」
+`show port-channel 3/1`
 
 +
-「Link State（連結狀態）」欄位應顯示「Up（啟動）」。
+“鏈路狀態”欄位應指示 `Up`。
 
 +
 .顯示範例
@@ -349,15 +349,15 @@ Ports  Timeout       Speed     Active
        partner/long
 ----
 ====
-. 在兩個節點上啟動叢集連接埠E2A：
+. 在兩個節點上啟動叢集連接埠 e2a：
 +
-網路連接埠修改
+`network port modify`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示節點1和節點2上正在啟動的連接埠E2A：
+以下範例展示如何在節點 1 和節點 2 上啟動連接埠 e2a：
 
 [listing]
 ----
@@ -369,9 +369,9 @@ cluster::*> network port modify -node node2 -port e2a -up-admin true
 
 
 
-=== 步驟3：驗證安裝
+=== 步驟 3：驗證安裝
 
-. 驗證兩個節點上的連接埠E2A是否都已開啟：
+. 請確認兩個節點上的 e2a 連接埠都已啟動：
 +
 `network port show -_role cluster_`
 
@@ -394,12 +394,12 @@ node2
        e2a  cluster  up   9000  true/true   full/full   auto/10000
 ----
 ====
-. 在兩個節點上、還原與連接埠E2A相關的clus2：
+. 在兩個節點上，還原與連接埠 e2a 關聯的 clus2：
 +
-網路介面回復
+`network interface revert`
 
 +
-LIF可能會自動回復、視ONTAP 您的版本而定。
+LIF 可能會自動恢復，具體取決於您的ONTAP版本。
 
 +
 .顯示範例
@@ -411,9 +411,9 @@ cluster::*> network interface revert -vserver node1 -lif clus2
 cluster::*> network interface revert -vserver node2 -lif clus2
 ----
 ====
-. 確認LIF現在位於兩個節點上的主節點（「true」）：
+. 確認 LIF 現在已歸位(`true`）在兩個節點上：
 +
-「網路介面show -_role叢集_」
+`network interface show -_role cluster_`
 
 +
 .顯示範例
@@ -434,9 +434,9 @@ vs2
         clus2      up/up      10.10.10.2/24  node2    e2a     true
 ----
 ====
-. 檢視節點成員的狀態：
+. 查看節點成員的狀態：
 +
-「叢集展示」
+`cluster show`
 
 +
 .顯示範例
@@ -454,7 +454,7 @@ node2
                true    true
 ----
 ====
-. 如果您對軟體版本和交換器設定滿意、請將「執行組態」檔案複製到「儲存組態」檔案。
+. 複製 `running-config`文件到 `startup-config`當您對軟體版本和開關設定滿意後，請提交文件。
 +
 .顯示範例
 [%collapsible]
@@ -472,8 +472,8 @@ Config file 'startup-config' created successfully.
 Configuration Saved!
 ----
 ====
-. 重複上述步驟、在另一台交換器CS1上安裝RCF。
+. 重複上述步驟，在另一台交換器 cs1 上安裝 RCF。
 
 
-.接下來呢？
-link:../switch-cshm/config-overview.html["設定交換器健全狀況監控"]
+.下一步是什麼？
+link:../switch-cshm/config-overview.html["配置交換器健康監控"]

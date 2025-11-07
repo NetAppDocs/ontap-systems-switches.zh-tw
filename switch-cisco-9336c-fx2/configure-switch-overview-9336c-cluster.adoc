@@ -2,7 +2,7 @@
 permalink: switch-cisco-9336c-fx2/configure-switch-overview-9336c-cluster.html 
 sidebar: sidebar 
 keywords: switches, initial installation, configure switch-cisco-9336c-fx2 switch 
-summary: Cisco Nexus 9336C-FX2叢集交換器的安裝與組態總覽 
+summary: Cisco Nexus 9336C-FX2 叢集交換器的安裝與設定概述 
 ---
 = Cisco Nexus 9336C-FX2 和 9336C-FX2-T 叢集交換器的安裝和設定工作流程
 :allow-uri-read: 

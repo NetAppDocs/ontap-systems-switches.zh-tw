@@ -2,90 +2,90 @@
 permalink: switch-cisco-3132q-v/cn1610-migrate-requirements.html 
 sidebar: sidebar 
 keywords: install, cisco nexus 3132q-v switch, 
-summary: 在設定 Cisco Nexus 3132q-v 交換器之前，請先檢閱程序和命名規則的總覽。 
+summary: 在設定Cisco Nexus 3132q-v 交換器之前，請先查看流程概述和命名規則。 
 ---
-= 移轉需求
+= 遷移要求
 :allow-uri-read: 
 :imagesdir: ../media/
 
 
 [role="lead"]
-Cisco Nexus 3132Q-V交換器可做AFF 為您的叢集或FAS 叢集內的叢集交換器。叢集交換器可讓您建立ONTAP 具有兩個以上節點的叢集。
+Cisco Nexus 3132Q-V 交換器可作為AFF或FAS叢集中的叢集交換器。叢集交換器可讓您建立具有兩個以上節點的ONTAP叢集。
 
 [NOTE]
 ====
-此程序需要同時使用ONTAP 支援指令和Cisco Nexus 3000系列交換器的命令；ONTAP 除非另有說明、否則會使用支援指令。
+流程需要同時使用ONTAP指令和Cisco Nexus 3000 系列交換器指令；除非另有說明，否則使用ONTAP指令。
 
 ====
-如需詳細資訊、請參閱：
+有關詳細信息，請參閱：For more information, see:
 
-* https://mysupport.netapp.com/site/products/all/details/netapp-cluster-switches/docs-tab["NetApp CN1601與CN1610說明頁面"^]
-* https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器說明頁面"^]
+* https://mysupport.netapp.com/site/products/all/details/netapp-cluster-switches/docs-tab["NetApp CN1601 和 CN1610 說明頁"^]
+* https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器描述頁面"^]
 * http://hwu.netapp.com["Hardware Universe"^]
 
 
 
 
-== CN1610要求
+== CN1610 要求
 
-支援下列叢集交換器：
+支援以下集群交換器：
 
 * NetApp CN1610
-* Cisco Nexus 3132Q-V
+* CiscoNexus 3132Q-V
 
 
-叢集交換器支援下列節點連線：
+叢集交換器支援以下節點連線：
 
-* NetApp CN1610：連接埠0/1到0/12（10 GbE）
-* Cisco Nexus 3132Q-V：連接埠E1/1-30（40/100 GbE）
+* NetApp CN1610：連接埠 0/1 至 0/12 (10 GbE)
+* Cisco Nexus 3132Q-V：連接埠 e1/1-30 (40/100 GbE)
 
 
-叢集交換器使用下列交換器間連結（ISL）連接埠：
+叢集交換器使用下列交換器間鏈路（ISL）連接埠：
 
-* NetApp CN1610：連接埠0/13至0/16（10 GbE）
-* Cisco Nexus 3132Q-V：連接埠E1/31-32（40/100 GbE）
+* NetApp CN1610：連接埠 0/13 至 0/16 (10 GbE)
+* Cisco Nexus 3132Q-V：連接埠 e1/31-32 (40/100 GbE)
 +
-。 link:https://hwu.netapp.com/["Hardware Universe"^] 包含有關支援的Nexus 3132Q-V交換器纜線連接資訊：
+這link:https://hwu.netapp.com/["Hardware Universe"^]包含有關 Nexus 3132Q-V 交換器支援的佈線資訊：
 
-* 具有10 GbE叢集連線的節點需要QSFP至SFP+光纖中斷纜線、或QSFP至SFP+銅線中斷纜線
-* 具有40/100 GbE叢集連線的節點、需要使用光纖纜線或QSFP/QSFP28銅線直接連接纜線來支援QSFP/QSFP28光纖模組
-
-
-適當的ISL纜線如下：
-
-* 開始：CN1610至CN1610（SFP+至SFP+）、四條SFP+光纖或銅線直接連接纜線
-* 過渡：適用於CN1610至Nexus 3132Q-V（QSFP至四個SFP+中斷）、一條QSFP至SFP+光纖或銅線中斷纜線
-* 最終版本：適用於Nexus 3138S-V至Nexus 3138S-V（QSFP28至QSFP28）、兩條QSFP28光纖或銅線直接連接纜線
+* 具有 10 GbE 叢集連接的節點需要 QSFP 轉 SFP+ 光纖分支電纜或 QSFP 轉 SFP+ 銅纜分支纜線。
+* 具有 40/100 GbE 叢集連接的節點需要支援 QSFP/QSFP28 的光模組，並配備光纖纜線或 QSFP/QSFP28 銅纜直連線。
 
 
-NetApp雙軸纜線與Cisco Nexus 3132Q-V交換器不相容。
+適用的ISL佈線如下：
 
-如果您目前的CN1610組態使用NetApp雙軸纜線進行叢集節點對交換器連線或ISL連線、而您想要在環境中繼續使用雙軸纜線、則需要購買Cisco雙軸纜線。或者、您也可以使用光纖纜線進行ISL連線和叢集節點對交換器連線。
+* 起始端：對於 CN1610 到 CN1610（SFP+ 到 SFP+），四條 SFP+ 光纖或銅纜直連電纜
+* 臨時方案：對於 CN1610 到 Nexus 3132Q-V（QSFP 轉四個 SFP+ 分支），使用一條 QSFP 轉 SFP+ 光纖或銅纜分支電纜
+* 最後：對於 Nexus 3132Q-V 到 Nexus 3132Q-V（QSFP28 到 QSFP28）的連接，需要兩條 QSFP28 光纖或銅纜直連接線。
+
+
+NetApp雙絞線電纜與Cisco Nexus 3132Q-V 交換器不相容。
+
+如果您目前的 CN1610 設定使用NetApp雙絞線電纜進行叢集節點到交換器的連接或 ISL 連接，並且您想要繼續在您的環境中使用雙絞線，則需要購買Cisco雙絞線電纜。或者，您可以使用光纖電纜同時進行 ISL 連線和叢集節點到交換器的連線。
 
 .關於所使用的範例
-本程序中的範例說明如何以 Cisco Nexus 3132Q-V 交換器取代 CN1610 交換器。您可以將這些步驟（含修改）用於其他較舊的 Cisco 交換器。
+本流程中的範例說明如何以Cisco Nexus 3132Q-V 交換器取代 CN1610 交換器。您可以對這些步驟（稍作修改）用於其他較舊的Cisco交換器。
 
-此程序也使用下列交換器和節點命名法：
+該過程還使用了以下交換器和節點命名規則：
 
-* 命令輸出可能會因ONTAP 不同版本的不相同而有所差異。
-* 要更換的 CN1610 交換器為 * CL1* 和 * CL2* 。
-* 用於更換 CN1610 交換器的 Nexus 3132Q-V 交換器是 *C1* 和 *C2* 。
-* *n1_clus1* 是第一個連接至叢集交換器 1 （ CL1 或 C1 ）的叢集邏輯介面（ LIF ），用於節點 *n1* 。
-* *n1_clus2* 是第一個連接至叢集交換器 2 （ CL2 或 C2 ）的叢集 LIF ，用於節點 *n1* 。
-* *n1_clus3* 是第二個連接至叢集交換器 2 （ CL2 或 C2 ）的 LIF 節點 *n1* 。
-* *n1_clus4* 是第二個連接至叢集交換器 1 （ CL1 或 C1 ）的 LIF 節點 *n1* 。
-* 10 GbE和40/100 GbE連接埠的數量是在上可用的參考組態檔（RCFs）中定義 https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco®叢集網路交換器參考組態檔案下載"^] 頁面。
-* 節點包括 *n1* ， *n2* ， *n3* 和 *n4* 。
+* 命令輸出可能因ONTAP版本不同而有所差異。
+* 需要更換的 CN1610 交換器是 *CL1* 和 *CL2*。
+* 用來取代 CN1610 交換器的 Nexus 3132Q-V 交換器是 *C1* 和 *C2*。
+* *n1_clus1* 是連接到節點 *n1* 的叢集交換器 1 (CL1 或 C1) 的第一個叢集邏輯介面 (LIF)。
+* *n1_clus2* 是連接到節點 *n1* 的叢集交換器 2 (CL2 或 C2) 的第一個叢集 LIF。
+* *n1_clus3* 是連接到節點 *n1* 的叢集交換器 2 (CL2 或 C2) 的第二個 LIF。
+* *n1_clus4* 是連接到節點 *n1* 的叢集交換器 1 (CL1 或 C1) 的第二個 LIF。
+* 10 GbE 和 40/100 GbE 連接埠的數量在參考設定檔 (RCF) 中定義，該檔案可在以下位置取得： https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco叢集網路交換器參考設定檔下載"^]頁。
+* 這些節點是 *n1*、*n2*、*n3* 和 *n4*。
 
 
-本程序中的範例使用四個節點：
+本流程範例中使用了四個節點：
 
-* 兩個節點使用四個 10 GbE 叢集互連連接埠： * e0A* ， * e0b* ， * e0c* 和 * e0d* 。
-* 其他兩個節點使用兩個 40 GbE 叢集互連連接埠： * E4A* 和 * e4e* 。
+* 兩個節點使用四個 10 GbE 叢集互連連接埠：*e0a*、*e0b*、*e0c* 和 *e0d*。
+* 另外兩個節點使用兩個 40 GbE 叢集互連連接埠：*e4a* 和 *e4e*。
 +
-link:https://hwu.netapp.com/["Hardware Universe"^]列出平台上的實際叢集連接埠。
+這link:https://hwu.netapp.com/["Hardware Universe"^]列出平台上的實際集群連接埠。
 
 
 
-.接下來呢？
-link:cn5596-prepare-to-migrate.html["準備移轉"]。
+.下一步是什麼？
+link:cn5596-prepare-to-migrate.html["做好遷移準備"]。

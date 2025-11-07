@@ -2,111 +2,111 @@
 permalink: switch-cisco-3132q-v/migrate-switchless-to-switched-requirements.html 
 sidebar: sidebar 
 keywords: install, cisco nexus 3132q-v switch, 
-summary: 在設定 Cisco Nexus 3132q-v 交換器之前，請先檢閱程序和命名規則的總覽。 
+summary: 在設定Cisco Nexus 3132q-v 交換器之前，請先查看流程概述和命名規則。 
 ---
-= 移轉需求
+= 遷移要求
 :allow-uri-read: 
 :imagesdir: ../media/
 
 
 [role="lead"]
-如果您有雙節點無交換器叢集，請檢閱此程序以瞭解移轉至雙節點交換式叢集的適用需求。
+如果您有一個雙節點無交換器集群，請查看此過程，以了解遷移到雙節點交換集群的適用要求。
 
 [NOTE]
 ====
-此程序需要同時使用ONTAP 支援指令和Cisco Nexus 3000系列交換器的命令；ONTAP 除非另有說明、否則會使用支援指令。
+流程需要同時使用ONTAP指令和Cisco Nexus 3000 系列交換器指令；除非另有說明，否則使用ONTAP指令。
 
 ====
-如需詳細資訊、請參閱：
+有關詳細信息，請參閱：For more information, see:
 
 * link:https://mysupport.netapp.com/site/products/all/details/netapp-cluster-switches/docs-tab["NetApp CN1601 和 CN1610"^]
-* link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器"^]
+* link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換機"^]
 * link:http://hwu.netapp.com["Hardware Universe"^]
 
 
-.連接埠和節點連線
-使用Cisco Nexus 3132Q-V叢集交換器移轉至雙節點交換式叢集時、請務必瞭解連接埠、節點連線及纜線需求。
+.連接埠和節點連接
+當您遷移到使用Cisco Nexus 3132Q-V 叢集交換器的雙節點交換叢集時，請務必了解連接埠和節點連線以及佈線需求。
 
-* 叢集交換器使用交換器間連結（ISL）連接埠E1/31至32。
-* 。 link:https://hwu.netapp.com/["Hardware Universe"^] 包含有關支援的Nexus 3132Q-V交換器纜線連接資訊：
+* 叢集交換器使用交換器間連結 (ISL) 連接埠 e1/31-32。
+* 這link:https://hwu.netapp.com/["Hardware Universe"^]包含有關 Nexus 3132Q-V 交換器支援的佈線資訊：
 +
-** 具有10 GbE叢集連線的節點需要QSFP光纖模組搭配中斷光纖纜線、或QSFP至SFP+銅線中斷纜線。
-** 具有 40 GbE 叢集連線的節點需要支援的 QSFP/QSFP28 光纖模組，以及光纖纜線或 QSFP/QSFP28 銅線直接附加纜線。
-** 叢集交換器使用適當的ISL纜線：2條QSFP28光纖或銅線直接連接纜線。
+** 具有 10 GbE 叢集連接的節點需要 QSFP 光模組和分支光纖纜線或 QSFP 轉 SFP+ 銅纜分支纜線。
+** 具有 40 GbE 叢集連接的節點需要支援 QSFP/QSFP28 光模組，並配備光纖電纜或 QSFP/QSFP28 銅纜直連接纜線。
+** 叢集交換器使用適當的 ISL 佈線：2x QSFP28 光纖或銅纜直連接纜線。
 
 
-* 在 Nexus 3132Q-V 上，您可以將 QSFP 連接埠以 40 Gb 乙太網路或 4x10 Gb 乙太網路模式運作。
+* 在 Nexus 3132Q-V 上，您可以將 QSFP 連接埠用作 40 Gb 乙太網路或 4x10 Gb 乙太網路模式。
 +
-依預設， 40 Gb 乙太網路模式有 32 個連接埠。這些40 Gb乙太網路連接埠的編號為2元組命名慣例。例如、第二個40 Gb乙太網路連接埠編號為1/2。將組態從40 Gb乙太網路變更為10 Gb乙太網路的過程稱為_中斷_、將組態從10 Gb乙太網路變更為40 Gb乙太網路的過程稱為_breakin _。當您將 40 Gb 乙太網路連接埠分成 10 Gb 乙太網路連接埠時，產生的連接埠會使用三個端點命名慣例進行編號。例如、第二個40 Gb乙太網路連接埠的中斷連接埠編號為1/2/1、1/2/2、1/2/3和1/2/4。
+預設情況下，40Gb乙太網路模式下有32個連接埠。這些 40 Gb 乙太網路連接埠採用二元組命名規則進行編號。例如，第二個 40 Gb 乙太網路連接埠編號為 1/2。將配置從 40 Gb 乙太網路變更為 10 Gb 乙太網路的過程稱為 _breakout_，將設定從 10 Gb 乙太網路變更為 40 Gb 乙太網路的過程稱為 _breakin_。當您將 40 Gb 乙太網路連接埠分割為 10 Gb 乙太網路連接埠時，產生的連接埠將使用三元組命名約定進行編號。例如，第二個 40 Gb 乙太網路連接埠的分線連接埠編號為 1/2/1、1/2/2、1/2/3 和 1/2/4。
 
-* Nexus 3132Q-V左側是四個SFP+連接埠、可多工複用至第一個QSFP連接埠。
+* Nexus 3132Q-V 的左側有一組四個 SFP+ 端口，重複使用到第一個 QSFP 連接埠。
 +
-根據預設、RCF結構為使用第一個QSFP連接埠。
+預設情況下，RCF 結構為使用第一個 QSFP 連接埠。
 
 +
-您可以使用「硬體設定檔前端連接埠模式SFP-PLUS」命令、使Nexus 3138S-V的四個SFP+連接埠變成作用中狀態、而非QSFP連接埠。同樣地、您也可以使用「硬體設定檔前端連接埠模式qsfp'命令、將Nexus 3138S-V重設為使用QSFP連接埠、而非使用四個SFP+連接埠。
+您可以使用以下方法將 Nexus 3132Q-V 的四個 SFP+ 連接埠設定為活動狀態，而不是一個 QSFP 連接埠： `hardware profile front portmode sfp-plus`命令。同樣，您可以使用以下方法將 Nexus 3132Q-V 重設為使用 QSFP 連接埠而不是四個 SFP+ 連接埠： `hardware profile front portmode qsfp`命令。
 
-* 請務必將 Nexus 3132Q-V 上的部分連接埠設定為以 10 GbE 或 40 GbE 執行。
+* 請確保已將 Nexus 3132Q-V 上的某些連接埠配置為以 10 GbE 或 40 GbE 運作。
 +
-您可以使用「介面中斷模組1連接埠1-6 MAP 10ge-4x」命令、將前六個連接埠分割成4x10 GbE模式。同樣地、您也可以使用「無介面中斷模組1連接埠1-6 MAP 10g-4x」命令、從中斷組態重新分組前六個QSFP+連接埠。
+您可以使用下列方法將前六個連接埠分接成 4x10 GbE 模式： `interface breakout module 1 port 1-6 map 10g-4x`命令。同樣，您可以使用下列方法將前六個 QSFP+ 連接埠從分支配置中重新分組： `no interface breakout module 1 port 1-6 map 10g-4x`命令。
 
-* 10 GbE 和 40 GbE 連接埠的數量在參考設定檔 (RCF) 中定義，可從link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco®叢集網路交換器參考組態檔案下載"^]。
+* 10 GbE 和 40 GbE 連接埠的數量在參考設定檔 (RCF) 中定義，這些檔案可在以下位置取得：link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco叢集網路交換器參考設定檔下載"^] 。
 
 
 .開始之前
-* 組態設定正確且正常運作。
-* 執行ONTAP 版本為4、4或更新版本的節點。
-* 中的所有叢集連接埠 `up` 州/省。
-* Cisco Nexus 3132Q-V叢集交換器受到支援。
-* 現有的叢集網路組態具有：
+* 配置已正確設定並正常運作。
+* 運行ONTAP 9.4 或更高版本的節點。
+* 集群中的所有端口 `up`狀態。
+* 支援Cisco Nexus 3132Q-V 集群交換器。
+* 現有叢集網路配置具有：
 +
-** Nexus 3132叢集基礎架構、可在兩台交換器上備援且完全正常運作。
-** 交換器上最新的RCF和NX-OS版本。
+** Nexus 3132 叢集基礎架構在兩台交換器上都是冗餘的，並且功能齊全。
+** 交換器上已安裝最新的 RCF 和 NX-OS 版本。
 +
-link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器"^]包含有關此過程中支援的ONTAP和 NX-OS 版本的資訊。
+link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換機"^]包含有關此過程中支援的ONTAP和 NX-OS 版本的資訊。
 
-** 管理兩台交換器的連線能力。
-** 兩個交換器的主控台存取。
-** 所有叢集邏輯介面（lifs）都處於「up」（開機）狀態、而不需移轉。
-** 初始自訂交換器。
-** 所有ISL連接埠均已啟用及連線。
-
-
+** 兩台交換器均具備管理連線功能。
+** 可透過控制台存取兩台交換器。
+** 叢集中的所有邏輯介面（LIF） `up`未遷移的狀態。
+** 交換器的初始定制。
+** 所有ISL連接埠均已啟用並連接線纜。
 
 
-此外，您還必須規劃，移轉及閱讀 10 GbE 和 40 GbE 連線的必要文件，從節點連線至 Nexus 3132Q-V 叢集交換器。
+
+
+此外，您還必須規劃、遷移並閱讀有關從節點到 Nexus 3132Q-V 叢集交換器的 10 GbE 和 40 GbE 連接的必要文件。
 
 .關於所使用的範例
-本程序中的範例使用下列交換器和節點命名法：
+本流程中的範例使用以下開關和節點命名規則：
 
-* Nexus 3132Q-V叢集交換器、C1和C2。
-* 節點為n1和n2。
-
-
-[NOTE]
-====
-本程序的範例使用兩個節點，每個節點使用兩個 40 GbE 叢集互連連接埠 * E4A* 和 * e4e* 。link:https://hwu.netapp.com/["Hardware Universe"^]提供平台上叢集連接埠的詳細資料。
-
-====
-本程序涵蓋下列案例：
-
-* *n1_clus1* 是第一個連接到節點 *n1* 的叢集交換器 C1 的叢集邏輯介面 (LIF) 。
-* *n1_clus2* 是第一個連接至叢集交換器 C2 的叢集 LIF ，用於節點 *n1* 。
-* *n2_clus1* 是第一個連接到節點 *n2* 的叢集交換器 C1 的叢集 LIF 。
-* *n2_clus2* 是連接至叢集交換器 C2 的第二個叢集 LIF ，用於節點 *n2* 。
-* 10 GbE 和 40 GbE 連接埠的數量在參考設定檔 (RCF) 中定義，可從link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco®叢集網路交換器參考組態檔案下載"^]。
+* Nexus 3132Q-V 群集交換機，C1 和 C2。
+* 節點分別為 n1 和 n2。
 
 
 [NOTE]
 ====
-此程序需要同時使用ONTAP 支援指令和Cisco Nexus 3000系列交換器的命令；ONTAP 除非另有說明、否則會使用支援指令。
+本流程中的範例使用兩個節點，每個節點使用兩個 40 GbE 叢集互連連接埠 *e4a* 和 *e4e*。這link:https://hwu.netapp.com/["Hardware Universe"^]包含您平台上叢集連接埠的詳細資訊。
 
 ====
-* 叢集一開始會連接兩個節點、並在無交換器的雙節點叢集設定中運作。
-* 第一個叢集連接埠會移至C1。
-* 第二個叢集連接埠會移至C2。
-* 停用雙節點無交換器叢集選項。
+本流程涵蓋以下幾種情況：
+
+* *n1_clus1* 是連接到叢集交換器 C1 的第一個叢集邏輯介面 (LIF)，用於節點 *n1*。
+* *n1_clus2* 是第一個連接到叢集交換器 C2 的叢集 LIF，用於節點 *n1*。
+* *n2_clus1* 是第一個連接到叢集交換器 C1 的叢集 LIF，用於節點 *n2*。
+* *n2_clus2* 是第二個要連接到叢集交換器 C2 的叢集 LIF，用於節點 *n2*。
+* 10 GbE 和 40 GbE 連接埠的數量在參考設定檔 (RCF) 中定義，這些檔案可在以下位置取得：link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco叢集網路交換器參考設定檔下載"^] 。
 
 
-.接下來呢？
-link:migrate-switchless-prepare-to-migrate.html["準備移轉"]。
+[NOTE]
+====
+流程需要同時使用ONTAP指令和Cisco Nexus 3000 系列交換器指令；除非另有說明，否則使用ONTAP指令。
+
+====
+* 叢集由兩個連接並運作的節點組成，採用雙節點無交換器叢集設定。
+* 第一個集群連接埠移至 C1。
+* 第二個叢集連接埠已移至 C2。
+* 雙節點無交換器叢集選項已停用。
+
+
+.下一步是什麼？
+link:migrate-switchless-prepare-to-migrate.html["做好遷移準備"]。

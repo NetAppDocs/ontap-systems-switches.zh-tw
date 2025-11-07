@@ -2,7 +2,7 @@
 permalink: switch-nvidia-sn2100/upgrade-cl-version.html 
 sidebar: sidebar 
 keywords: nvidia SN2100 switches 
-summary: 請完成下列步驟以升級您的 Cumulus Linux 版本。 
+summary: 請依照以下步驟升級您的 Cumulus Linux 版本。 
 ---
 = 升級 Cumulus Linux 版本
 :allow-uri-read: 
@@ -11,68 +11,68 @@ summary: 請完成下列步驟以升級您的 Cumulus Linux 版本。
 
 
 [role="lead"]
-請完成下列程序、視需要升級您的 Cumulus Linux 版本。
+請依照以下步驟升級您的 Cumulus Linux 版本（如有需要）。
 
 .開始之前
-請確定您擁有下列項目：
+請確保您擁有以下物品：
 
-* 中級Linux知識。
-* 熟悉基本文字編輯、UNIX檔案權限及程序監控。已預先安裝多種文字編輯器、包括 `vi` 和 `nano`。
-* 存取Linux或UNIX Shell。如果您執行的是Windows、請使用Linux環境做為命令列工具、與Cummulas Linux互動。
-* 對於NVIDIA SN2100交換器主控台存取、序列主控台交換器上的傳輸速率需求設定為115200、如下所示：
+* 具備中級Linux知識。
+* 熟悉基本的文字編輯、UNIX 檔案權限和進程監控。預先安裝了多種文字編輯器，包括 `vi`和 `nano`。
+* 能夠存取 Linux 或 UNIX shell。如果您使用的是 Windows 系統，請使用 Linux 環境作為與 Cumulus Linux 互動的命令列工具。
+* 對於NVIDIA SN2100 交換器控制台訪問，序列控制台交換器的波特率要求設定為 115200，具體如下：
 +
-** 115200傳輸率
-** 8個資料位元
-** 1停止位元
-** 同位元檢查：無
-** 流程控制：無
+** 115200 波特
+** 8 位元數據
+** 1 停止位
+** 奇偶性：無
+** 流量控制：無
 
 
 
 
-.關於這項工作
-請注意下列事項：
+.關於此任務
+請注意以下事項：
 
 
-NOTE: 每次升級 Cumulus Linux 時、整個檔案系統結構都會被清除並重新建立。您現有的組態將會清除。更新 Cumulus Linux 之前、您必須先儲存並記錄交換器組態。
+NOTE: 每次 Cumulus Linux 升級時，整個檔案系統結構都會被擦除並重建。您現有的配置將被清除。在更新 Cumulus Linux 之前，必須儲存並記錄交換器配置。
 
 
-CAUTION: 累計使用者帳戶的預設密碼為*累計*。第一次登入CummulUS Linux時、您必須變更此預設密碼。安裝新映像之前、您必須更新任何自動化指令碼。CummUS Linux提供命令列選項、可在安裝程序期間自動變更預設密碼。
+CAUTION: Cumulus 使用者帳戶的預設密碼是 *cumulus*。首次登入 Cumulus Linux 時，必須變更此預設密碼。安裝新鏡像之前，必須先更新所有自動化腳本。  Cumulus Linux 提供命令列選項，可在安裝過程中自動變更預設密碼。
 
-如需詳細資訊，請參閱 https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-510/Installation-Management/Installing-a-New-Cumulus-Linux-Image/["安裝新的 Cumulus Linux 映像"^]。
+看 https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-510/Installation-Management/Installing-a-New-Cumulus-Linux-Image/["安裝新的 Cumulus Linux 鏡像"^]欲了解更多資訊。
 
 .步驟
 [role="tabbed-block"]
 ====
 .Cumulus Linux 4.4.x 至 Cumulus Linux 5.4.0
 --
-. 將叢集交換器連接至管理網路。
-. 使用 ping 指令驗證與託管 Cumulus Linux 和 RCF 的伺服器的連線。
-. 顯示連接至叢集交換器之每個節點上的叢集連接埠：
+. 將集群交換器連接到管理網路。
+. 使用 ping 指令驗證與託管 Cumulus Linux 和 RCF 的伺服器的連線性。
+. 顯示每個節點上連接到叢集交換器的叢集連接埠：
 +
-「網路裝置探索秀」
+`network device-discovery show`
 
-. 檢查每個叢集連接埠的管理和作業狀態。
+. 檢查每個叢集連接埠的管理和運作狀態。
 +
-.. 確認所有叢集連接埠都正常運作：
+.. 確認叢集所有連接埠均已啟動且狀態正常：
 +
-「網路連接埠show -role cluster」
+`network port show -role cluster`
 
-.. 確認所有叢集介面（l生命）都位於主連接埠：
+.. 確認所有叢集介面（LIF）都位於主連接埠上：
 +
-「網路介面show -role cluster」
+`network interface show -role cluster`
 
-.. 驗證叢集是否顯示兩個叢集交換器的資訊：
+.. 確認集群顯示兩個集群交換器的資訊：
 +
-「系統叢集交換器show -is監控、可運作的true」
+`system cluster-switch show -is-monitoring-enabled-operational true`
 
 
 
-. 停用叢集生命體上的自動還原。叢集生命體將容錯移轉至合作夥伴叢集交換器、並在目標交換器上執行升級程序時保留在那裡：
+. 停用群集 LIF 的自動回滾功能。叢集 LIF 會故障轉移到夥伴叢集交換機，並在您對目標交換器執行升級程序時保留在該交換器上：
 +
-「網路介面修改-vserver叢集-lIF *-auta-fRevert假」
+`network interface modify -vserver Cluster -lif * -auto-revert false`
 
-. 檢查目前的 Cumulus Linux 版本和連線連接埠：
+. 檢查目前 Cumulus Linux 版本和已連接的連接埠：
 +
 [listing, subs="+quotes"]
 ----
@@ -109,7 +109,7 @@ UP     swp6    100G  9216   Trunk/L2    SHFFG1826000102 (e0b)   Master: bridge(U
 .
 .
 ----
-. 下載 Cumulux Linux 5.4.0 映像：
+. 下載 Cumulux Linux 5.4.0 鏡像：
 +
 [listing, subs="+quotes"]
 ----
@@ -135,13 +135,13 @@ Are you sure (y/N)? *y*
 Activating staged installer...done.
 Reboot required to take effect.
 ----
-. 重新啟動交換器：
+. 重啟交換器：
 +
 [listing, subs="+quotes"]
 ----
 cumulus@cumulus:mgmt:~$ *sudo reboot*
 ----
-. 變更密碼：
+. 更改密碼：
 +
 [listing, subs="+quotes"]
 ----
@@ -158,7 +158,7 @@ Welcome to NVIDIA Cumulus (R) Linux (R)
 
 ZTP in progress. To disable, do 'ztp -d'
 ----
-. 請查看Cummuls Linux版本： `nv show system`
+. 檢查 Cumulus Linux 版本： `nv show system`
 +
 [listing, subs="+quotes"]
 ----
@@ -170,7 +170,7 @@ build      Cumulus Linux 5.4.0
 uptime     14:07:08
 timezone   Etc/UTC
 ----
-. 變更主機名稱：
+. 更改主機名稱：
 +
 [listing, subs="+quotes"]
 ----
@@ -182,7 +182,7 @@ Warning: The following files have been changed since the last save, and they WIL
 .
 .
 ----
-. 登出並再次登入交換器、即可在提示下看到更新的交換器名稱：
+. 登出並重新登入交換機，即可在提示符號處看到更新後的交換器名稱：
 +
 [listing, subs="+quotes"]
 ----
@@ -203,7 +203,7 @@ ZTP in progress. To disable, do 'ztp -d'
 
 cumulus@sw1:mgmt:~$
 ----
-. 設定 IP 位址：
+. 設定IP位址：
 +
 [listing, subs="+quotes"]
 ----
@@ -217,7 +217,7 @@ unreachable default metric 4278198272
 10.231.80.0/22 dev eth0 proto kernel scope link src 10.231.80.206
 127.0.0.0/8 dev mgmt proto kernel scope link src 127.0.0.1
 ----
-. 建立新使用者、並將此使用者新增至 `sudo` 群組：此使用者只有在主控台/SSH工作階段重新啟動後才會生效。
+. 建立一個新用戶並將該用戶加入到 `sudo`團體。該使用者僅在控制台/SSH會話重新啟動後生效。
 +
 `sudo adduser --ingroup netedit admin`
 
@@ -262,7 +262,7 @@ http://www.cumulusnetworks.com/support
 The registered trademark Linux (R) is used pursuant to a sublicense from LMI, the exclusive licensee of Linus Torvalds, owner of the mark on a world-wide basis.
 admin@sw1:mgmt:~$
 ----
-. 新增其他使用者群組供管理員使用者存取 `nv` 命令：
+. 新增其他使用者群組以供管理員使用者訪問 `nv`命令：
 +
 [listing, subs="+quotes"]
 ----
@@ -273,40 +273,40 @@ cumulus@sw1:mgmt:~$ *sudo adduser admin nvshow*
      Done.
 ----
 +
-請參閱 https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-54/System-Configuration/Authentication-Authorization-and-Accounting/User-Accounts/["NVIDIA 使用者帳戶"^] 以取得更多資訊。
+看 https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-54/System-Configuration/Authentication-Authorization-and-Accounting/User-Accounts/["NVIDIA使用者帳戶"^]了解更多。
 
 
 
 --
 .Cumulus Linux 5.x 至 Cumulus Linux 5.4.0
 --
-. 將叢集交換器連接至管理網路。
-. 使用 ping 指令驗證與託管 Cumulus Linux 和 RCF 的伺服器的連線。
-. 顯示連接至叢集交換器之每個節點上的叢集連接埠：
+. 將集群交換器連接到管理網路。
+. 使用 ping 指令驗證與託管 Cumulus Linux 和 RCF 的伺服器的連線性。
+. 顯示每個節點上連接到叢集交換器的叢集連接埠：
 +
-「網路裝置探索秀」
+`network device-discovery show`
 
-. 檢查每個叢集連接埠的管理和作業狀態。
+. 檢查每個叢集連接埠的管理和運作狀態。
 +
-.. 確認所有叢集連接埠都正常運作：
+.. 確認叢集所有連接埠均已啟動且狀態正常：
 +
-「網路連接埠show -role cluster」
+`network port show -role cluster`
 
-.. 確認所有叢集介面（l生命）都位於主連接埠：
+.. 確認所有叢集介面（LIF）都位於主連接埠上：
 +
-「網路介面show -role cluster」
+`network interface show -role cluster`
 
-.. 驗證叢集是否顯示兩個叢集交換器的資訊：
+.. 確認集群顯示兩個集群交換器的資訊：
 +
-「系統叢集交換器show -is監控、可運作的true」
+`system cluster-switch show -is-monitoring-enabled-operational true`
 
 
 
-. 停用叢集生命體上的自動還原。叢集生命體將容錯移轉至合作夥伴叢集交換器、並在目標交換器上執行升級程序時保留在那裡：
+. 停用群集 LIF 的自動回滾功能。叢集 LIF 會故障轉移到夥伴叢集交換機，並在您對目標交換器執行升級程序時保留在該交換器上：
 +
-「網路介面修改-vserver叢集-lIF *-auta-fRevert假」
+`network interface modify -vserver Cluster -lif * -auto-revert false`
 
-. 檢查目前的 Cumulus Linux 版本和連線連接埠：
+. 檢查目前 Cumulus Linux 版本和已連接的連接埠：
 +
 [listing, subs="+quotes"]
 ----
@@ -333,7 +333,7 @@ Interface     MTU   Speed State Remote Host         Remote Port- Type      Summa
 + swp15      9216 100G    up sw2                      swp15       swp
 + swp16      9216 100G    up sw2                      swp16       swp
 ----
-. 下載 Cumulux Linux 5.4.0 映像：
+. 下載 Cumulux Linux 5.4.0 鏡像：
 +
 [listing, subs="+quotes"]
 ----
@@ -359,13 +359,13 @@ Are you sure (y/N)? *y*
 Activating staged installer...done.
 Reboot required to take effect.
 ----
-. 重新啟動交換器：
+. 重啟交換器：
 +
 [listing, subs="+quotes"]
 ----
 cumulus@sw1:mgmt:~$ *sudo reboot*
 ----
-. 變更密碼：
+. 更改密碼：
 +
 [listing, subs="+quotes"]
 ----
@@ -382,7 +382,7 @@ Welcome to NVIDIA Cumulus (R) Linux (R)
 
 ZTP in progress. To disable, do 'ztp -d'
 ----
-. 請查看Cummuls Linux版本： `nv show system`
+. 檢查 Cumulus Linux 版本： `nv show system`
 +
 [listing, subs="+quotes"]
 ----
@@ -394,7 +394,7 @@ build          Cumulus Linux 5.4.0
 uptime         14:07:08
 timezone       Etc/UTC
 ----
-. 變更主機名稱：
+. 更改主機名稱：
 +
 [listing, subs="+quotes"]
 ----
@@ -406,7 +406,7 @@ Warning: The following files have been changed since the last save, and they WIL
 .
 .
 ----
-. 登出並再次登入交換器、即可在提示下看到更新的交換器名稱：
+. 登出並重新登入交換機，即可在提示符號處看到更新後的交換器名稱：
 +
 [listing, subs="+quotes"]
 ----
@@ -427,7 +427,7 @@ ZTP in progress. To disable, do 'ztp -d'
 
 cumulus@sw1:mgmt:~$
 ----
-. 設定 IP 位址：
+. 設定IP位址：
 +
 [listing, subs="+quotes"]
 ----
@@ -442,7 +442,7 @@ unreachable default metric 4278198272
 10.231.80.0/22 dev eth0 proto kernel scope link src 10.231.80.206
 127.0.0.0/8 dev mgmt proto kernel scope link src 127.0.0.1
 ----
-. 建立新使用者、並將此使用者新增至 `sudo` 群組：此使用者只有在主控台/SSH工作階段重新啟動後才會生效。
+. 建立一個新用戶並將該用戶加入到 `sudo`團體。該使用者僅在控制台/SSH會話重新啟動後生效。
 +
 `sudo adduser --ingroup netedit admin`
 
@@ -487,7 +487,7 @@ http://www.cumulusnetworks.com/support
 The registered trademark Linux (R) is used pursuant to a sublicense from LMI, the exclusive licensee of Linus Torvalds, owner of the mark on a world-wide basis.
 admin@sw1:mgmt:~$
 ----
-. 新增其他使用者群組供管理員使用者存取 `nv` 命令：
+. 新增其他使用者群組以供管理員使用者訪問 `nv`命令：
 +
 [listing, subs="+quotes"]
 ----
@@ -498,40 +498,40 @@ cumulus@sw1:mgmt:~$ *sudo adduser admin nvshow*
      Done.
 ----
 +
-請參閱 https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-54/System-Configuration/Authentication-Authorization-and-Accounting/User-Accounts/["NVIDIA 使用者帳戶"^] 以取得更多資訊。
+看 https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-54/System-Configuration/Authentication-Authorization-and-Accounting/User-Accounts/["NVIDIA使用者帳戶"^]了解更多。
 
 
 
 --
 .Cumulus Linux 5.4.0 至 Cumulus Linux 5.11.0
 --
-. 將叢集交換器連接至管理網路。
-. 使用 ping 指令驗證與託管 Cumulus Linux 和 RCF 的伺服器的連線。
-. 顯示連接至叢集交換器之每個節點上的叢集連接埠：
+. 將集群交換器連接到管理網路。
+. 使用 ping 指令驗證與託管 Cumulus Linux 和 RCF 的伺服器的連線性。
+. 顯示每個節點上連接到叢集交換器的叢集連接埠：
 +
-「網路裝置探索秀」
+`network device-discovery show`
 
-. 檢查每個叢集連接埠的管理和作業狀態。
+. 檢查每個叢集連接埠的管理和運作狀態。
 +
-.. 確認所有叢集連接埠都正常運作：
+.. 確認叢集所有連接埠均已啟動且狀態正常：
 +
-「網路連接埠show -role cluster」
+`network port show -role cluster`
 
-.. 確認所有叢集介面（l生命）都位於主連接埠：
+.. 確認所有叢集介面（LIF）都位於主連接埠上：
 +
-「網路介面show -role cluster」
+`network interface show -role cluster`
 
-.. 驗證叢集是否顯示兩個叢集交換器的資訊：
+.. 確認集群顯示兩個集群交換器的資訊：
 +
-「系統叢集交換器show -is監控、可運作的true」
+`system cluster-switch show -is-monitoring-enabled-operational true`
 
 
 
-. 停用叢集生命體上的自動還原。叢集生命體將容錯移轉至合作夥伴叢集交換器、並在目標交換器上執行升級程序時保留在那裡：
+. 停用群集 LIF 的自動回滾功能。叢集 LIF 會故障轉移到夥伴叢集交換機，並在您對目標交換器執行升級程序時保留在該交換器上：
 +
-「網路介面修改-vserver叢集-lIF *-auta-fRevert假」
+`network interface modify -vserver Cluster -lif * -auto-revert false`
 
-. 檢查目前的 Cumulus Linux 版本和連線連接埠：
+. 檢查目前 Cumulus Linux 版本和已連接的連接埠：
 +
 [listing, subs="+quotes"]
 ----
@@ -558,7 +558,7 @@ Interface     MTU   Speed State Remote Host         Remote Port- Type      Summa
 + swp15      9216 100G    up sw2                      swp15       swp
 + swp16      9216 100G    up sw2                      swp16       swp
 ----
-. 下載 Cumulux Linux 5.11.0 映像：
+. 下載 Cumulux Linux 5.11.0 鏡像：
 +
 [listing, subs="+quotes"]
 ----
@@ -584,13 +584,13 @@ Are you sure (y/N)? *y*
 Activating staged installer...done.
 Reboot required to take effect.
 ----
-. 重新啟動交換器：
+. 重啟交換器：
 +
 [listing, subs="+quotes"]
 ----
 cumulus@sw1:mgmt:~$ *sudo reboot*
 ----
-. 變更密碼：
+. 更改密碼：
 +
 [listing, subs="+quotes"]
 ----
@@ -607,7 +607,7 @@ Welcome to NVIDIA Cumulus (R) Linux (R)
 
 ZTP in progress. To disable, do 'ztp -d'
 ----
-. 請查看Cummuls Linux版本： `nv show system`
+. 檢查 Cumulus Linux 版本： `nv show system`
 +
 [listing, subs="+quotes"]
 ----
@@ -619,7 +619,7 @@ build          Cumulus Linux 5.11.0
 uptime         14:07:08
 timezone       Etc/UTC
 ----
-. 變更主機名稱：
+. 更改主機名稱：
 +
 [listing, subs="+quotes"]
 ----
@@ -631,7 +631,7 @@ Warning: The following files have been changed since the last save, and they WIL
 .
 .
 ----
-. 登出並再次登入交換機，即可在提示下看到更新後的交換器名稱：
+. 登出並重新登入交換機，即可在提示符號處看到更新後的交換器名稱：
 +
 [listing, subs="+quotes"]
 ----
@@ -652,7 +652,7 @@ ZTP in progress. To disable, do 'ztp -d'
 
 cumulus@sw1:mgmt:~$
 ----
-. 設定 IP 位址：
+. 設定IP位址：
 +
 [listing, subs="+quotes"]
 ----
@@ -671,5 +671,5 @@ unreachable default metric 4278198272
 
 --
 ====
-.接下來呢？
+.下一步是什麼？
 升級 Cumulus Linux 版本後，您可以…link:install-rcf-sn2100-cluster.html["安裝或升級 RCF 腳本"] 。

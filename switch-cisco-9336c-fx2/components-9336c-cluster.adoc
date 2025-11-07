@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: switch-cisco-9336c-fx2/components-9336c-cluster.html 
 keywords: shared storage cluster switch 
-summary: 從S299.1開始ONTAP 、您可以使用Cisco Nexus 9336C-FX2交換器、將儲存設備和叢集功能結合到共享交換器情境中。 
+summary: 從ONTAP 9.9.1 開始，您可以使用Cisco Nexus 9336C-FX2 交換器將儲存和叢集功能組合到共用交換器場景。 
 ---
 = Cisco Nexus 9336C-FX2 和 9336C-FX2-T 叢集交換器的元件和零件編號
 :hardbreaks:
@@ -14,114 +14,114 @@ summary: 從S299.1開始ONTAP 、您可以使用Cisco Nexus 9336C-FX2交換器�
 
 
 [role="lead"]
-對於 Cisco Nexus 9336C-FX2 和 9336C-FX2-T 交換器的安裝與維護，請務必檢閱元件清單和零件編號。
+對於Cisco Nexus 9336C-FX2 和 9336C-FX2-T 交換器的安裝和維護，請務必查看組件和零件號碼清單。
 
 
 
-== 零件編號詳細資料
+== 零件編號詳情
 
-下表列出 9336C-FX2 和 9336C-FX2-T 交換器，風扇和電源供應器的零件編號和說明：
+下表列出了 9336C-FX2 和 9336C-FX2-T 交換器、風扇和電源的零件號碼和描述：
 
 [cols="1,2"]
 |===
-| 產品編號 | 說明 
+| 零件編號 | 描述 
 
 
  a| 
 X190200-CS-PE
  a| 
-叢集交換器， N9336C 36Pt PTSX 10/25/40/100g
+集群開關，N9336C 36點 PTSX 10/25/40/100G
 
 
 
  a| 
 X190200-CS-PI
  a| 
-叢集交換器， N9336C 36Pt PSIN 10/25/40/100g
+集群交換機，N9336C 36點 PSIN 10/25/40/100G
 
 
 
  a| 
 X190212-CS-PE
  a| 
-叢集交換器， N9336C 12pt （ 9336C-FX2-T ） PTSX 10/25/40/100g
+群集開關，N9336C 12點 (9336C-FX2-T) PTSX 10/25/40/100G
 
 
 
  a| 
 X190212-CS-PI
  a| 
-叢集交換器， N9336C 12pt （ 9336C-FX2-T ） PSIN 10/25/40/100g
+集群交換機，N9336C 12點 (9336C-FX2-T) PSIN 10/25/40/100G
 
 
 
  a| 
 SW-N9K-FX2-24P-UPG
  a| 
-軟體， Cisco 9336CFX2 24 埠 Pod 授權
+SW，Cisco9336CFX2 24 連接埠 POD 許可證
 
 
 
  a| 
 X190210-FE-PE
  a| 
-N9K-9336C ， FTE ， PTSX ， 36PT 10/25/40/100GQSFP28
+N9K-9336C、FTE、PTSX、36PT 10/25/40/100GQSFP28
 
 
 
  a| 
 X190210-FE-PI
  a| 
-N9K-9336C ， FTE ， PSIN ， 36PT 10/25/40/100GQSFP28
+N9K-9336C，FTE，PSIN，36PT 10/25/40/100GQSFP28
 
 
 
  a| 
 X190002
  a| 
-配件套件X190001/X190003
+配件套件 X190001/X190003
 
 
 
  a| 
-X-NXA-PAC-1100 W-PE2
+X-NXA-PAC-1100W-PE2
  a| 
-N9K-9336C AC 1100 W PSU -連接埠側邊排氣氣流
+N9K-9336C 交流 1100W 電源供應器 - 連接埠側排氣
 
 
 
  a| 
-X-NXA-PAC-1100 W-Pi2
+X-NXA-PAC-1100W-PI2
  a| 
-N9K-9336C AC 1100 W PSU -連接埠側進氣
+N9K-9336C 交流 1100W 電源 - 埠側進氣
 
 
 
  a| 
 X-NXA-FAN-65CFM-PE
  a| 
-N9K-9336C 65CFM、連接埠側邊排氣氣流
+N9K-9336C 65CFM，左舷排氣氣流
 
 
 
  a| 
 X-NXA-FAN-65CFM-PI
  a| 
-N9K-9336C 65CFM、連接埠側進氣氣流
+N9K-9336C 65CFM，左舷進氣氣流
 
 |===
 
 
 == 僅適用於 9336C-FX2-T 連接埠的Cisco智慧許可證
 
-若要在 Cisco Nexus 9336C-FX-T 叢集交換器上啟動超過 12 個連接埠，您必須購買 Cisco 智慧型授權。Cisco 智慧型授權是透過 Cisco 智慧型帳戶進行管理。
+若要啟動Cisco Nexus 9336C-FX-T 叢集交換器上的 12 個以上端口，您必須購買Cisco Smart 授權。  Cisco Smart 授權透過Cisco Smart 帳戶進行管理。
 
-. 視需要建立新的 Smart 帳戶。如需詳細資訊、請參閱 https://id.cisco.com/signin/register["建立新的 Smart 帳戶"^]。
-. 要求存取現有的 Smart 帳戶。如需詳細資訊、請參閱 https://id.cisco.com/oauth2/default/v1/authorize?response_type=code&scope=openid%20profile%20address%20offline_access%20cci_coimemberOf%20email&client_id=cae-okta-web-gslb-01&state=s2wvKDiBja__7ylXonWrq8w-FAA&redirect_uri=https%3A%2F%2Frpfa.cloudapps.cisco.com%2Fcb%2Fsso&nonce=qO6s3cZE5ZdhC8UKMEfgE6fbu3mvDJ8PTw5jYOp6z30["要求存取現有的 Smart 帳戶"^]。
+. 如有需要，請建立新的 Smart 帳戶。看 https://id.cisco.com/signin/register["建立新的智慧帳戶"^]了解詳情。
+. 請求存取現有Smart帳戶。看 https://id.cisco.com/oauth2/default/v1/authorize?response_type=code&scope=openid%20profile%20address%20offline_access%20cci_coimemberOf%20email&client_id=cae-okta-web-gslb-01&state=s2wvKDiBja__7ylXonWrq8w-FAA&redirect_uri=https%3A%2F%2Frpfa.cloudapps.cisco.com%2Fcb%2Fsso&nonce=qO6s3cZE5ZdhC8UKMEfgE6fbu3mvDJ8PTw5jYOp6z30["請求存取現有智慧帳戶"^]了解詳情。
 
 
 
-NOTE: 購買智慧型授權後，請安裝適當的 RCF ，以啟用並設定所有 36 個可用連接埠以供使用。
+NOTE: 購買 Smart 授權後，安裝對應的 RCF 以啟用和設定所有 36 個可用連接埠。
 
 .下一步
 確認組件和零件編號後，您可以進行審核。 link:required-documentation-9336c-cluster.html["所需文件"]。

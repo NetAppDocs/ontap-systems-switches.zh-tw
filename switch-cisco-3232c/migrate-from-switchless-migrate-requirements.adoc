@@ -2,70 +2,70 @@
 permalink: switch-cisco-3232c/migrate-from-switchless-migrate-requirements.html 
 sidebar: sidebar 
 keywords: install, cisco nexus 3232c switch, 
-summary: 在設定Cisco Nexus 3232c交換器之前、請先檢閱程序與命名規則的總覽。 
+summary: 在設定Cisco Nexus 3232c 交換器之前，請先查看流程概述和命名規則。 
 ---
-= 移轉需求
+= 遷移要求
 :allow-uri-read: 
 :imagesdir: ../media/
 
 
 [role="lead"]
-如果您有雙節點無交換器叢集，則可以移轉至包含 Cisco Nexus 3232C 叢集網路交換器的雙節點交換叢集。這是不中斷營運的程序。
+如果您有一個雙節點無交換器集群，您可以遷移到包含Cisco Nexus 3232C 集群網路交換器的雙節點有交換器集群。這是一個非破壞性的過程。
 
 .開始之前
-驗證下列安裝和連線：
+請核實以下安裝和連接：
 
-* 連接埠可用於節點連線。叢集交換器使用交換器間連結（ISL）連接埠E1/31至32。
-* 您有適當的叢集連線纜線：
+* 連接埠可用於節點連接。叢集交換器使用交換器間連結 (ISL) 連接埠 e1/31-32。
+* 您擁有適用於叢集連線的線纜：
 +
-** 具有10 GbE叢集連線的節點需要QSFP光纖模組搭配中斷光纖纜線、或QSFP至SFP+銅線中斷纜線。
-** 具有40/100 GbE叢集連線的節點需要支援的QSFP/QSFP28光纖模組（含光纖纜線）或QSFP/QSFP28銅線直接連接纜線。
-** 叢集交換器需要適當的 ISL 纜線：
+** 具有 10 GbE 叢集連接的節點需要 QSFP 光模組和分支光纖纜線或 QSFP 轉 SFP+ 銅纜分支纜線。
+** 具有 40/100 GbE 叢集連接的節點需要支援 QSFP/QSFP28 光模組，並配備光纖電纜或 QSFP/QSFP28 銅纜直連接纜線。
+** 叢集交換器需要合適的ISL電纜：
 +
-*** 2 條 QSFP28 光纖或銅線直接連接纜線。
+*** 2條QSFP28光纖或銅纜直連光纜。
 
 
 
 
-* 組態已正確設定並正常運作。
+* 配置已正確設定並正常運作。
 +
-這兩個節點必須連線、並在無交換器的雙節點叢集設定中運作。
+這兩個節點必須連接在一起，並在雙節點無交換器叢集環境中運作。
 
-* 所有叢集連接埠都處於* up*狀態。
-* 支援Cisco Nexus 3232C叢集交換器。
-* 現有的叢集網路組態具有下列特性：
+* 叢集所有連接埠均處於*開啟*狀態。
+* 支援Cisco Nexus 3232C 集群交換器。
+* 現有叢集網路配置如下：
 +
-** 這是兩部交換器上備援且功能完整的Nexus 3232C叢集基礎架構
-** 交換器上最新的RCF和NX-OS版本
-** 管理兩台交換器的連線能力
-** 兩個交換器的主控台存取
-** 所有叢集邏輯介面（lifs）均處於「* up*」狀態、且未移轉
-** 初始自訂交換器
-** 所有ISL連接埠均已啟用並已連接纜線
+** 兩台交換器上都配備了冗餘且功能齊全的 Nexus 3232C 叢集基礎設施。
+** 交換器上的最新 RCF 和 NX-OS 版本
+** 兩台交換器的管理連線功能
+** 可透過控制台存取兩台交換機
+** 所有處於*up*狀態但尚未遷移的叢集邏輯介面（LIF）
+** 開關的初始定制
+** 所有ISL連接埠均已啟用並連接線纜
 
 
 
 
 .關於所使用的範例
-本程序中的範例使用下列交換器和節點命名法：
+本流程中的範例使用以下開關和節點命名規則：
 
-* Nexus 3232C 叢集交換器， * C1* 和 * C2* 。
-* 節點是 *n1* 和 *n2* 。
+* Nexus 3232C 叢集交換機，*C1* 和 *C2*。
+* 節點為 *n1* 和 *n2*。
 
 
-本程序的範例使用兩個節點，每個節點使用兩個 40 GbE 叢集互連連接埠 * E4A* 和 * e4e* 。link:https://hwu.netapp.com/["_SUR__ Hardware Universe"^]提供平台上叢集連接埠的詳細資料。
+本流程中的範例使用兩個節點，每個節點使用兩個 40 GbE 叢集互連連接埠 *e4a* 和 *e4e*。這link:https://hwu.netapp.com/["硬體宇宙"^]包含您平台上叢集連接埠的詳細資訊。
 
-* *n1_clus1* 是第一個連接至叢集交換器 *C1* 的叢集邏輯介面（ LIF ），用於節點 *n1* 。
-* *n1_clus2* 是第一個連接至叢集交換器 *C2* 的叢集 LIF ，用於節點 *n1* 。
-* *n2_clus1* 是第一個連接至叢集交換器 *C1* 的叢集 LIF ，用於節點 *n2* 。
-* *n2_clus2* 是連接至叢集交換器 *C2* 的第二個叢集 LIF ，用於節點 *n2* 。
-* 10 GbE和40/100 GbE連接埠的數量是在上可用的參考組態檔（RCFs）中定義 https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco®叢集網路交換器參考組態檔案下載"^] 頁面。
+* *n1_clus1* 是連接到叢集交換器 *C1* 的第一個叢集邏輯介面 (LIF)，用於節點 *n1*。
+* *n1_clus2* 是第一個連接到節點 *n1* 的叢集交換器 *C2* 的叢集 LIF。
+* *n2_clus1* 是第一個連接到叢集交換器 *C1* 的叢集 LIF，用於節點 *n2*。
+* *n2_clus2* 是第二個要連接到叢集交換器 *C2* 的叢集 LIF，用於節點 *n2*。
+* 10 GbE 和 40/100 GbE 連接埠的數量在參考設定檔 (RCF) 中定義，該檔案可在以下位置取得： https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco叢集網路交換器參考設定檔下載"^]頁。
 
 
 [NOTE]
 ====
-此程序需要同時使用ONTAP 支援指令和Cisco Nexus 3000系列交換器的命令；ONTAP 除非另有說明、否則會使用支援指令。
+流程需要同時使用ONTAP指令和Cisco Nexus 3000 系列交換器指令；除非另有說明，否則使用ONTAP指令。
 
 ====
-.接下來呢？
-link:migrate-from-switchless-prepare-to-migrate.html["準備移轉"]。
+.下一步是什麼？
+link:migrate-from-switchless-prepare-to-migrate.html["做好遷移準備"]。

@@ -2,7 +2,7 @@
 permalink: switch-cisco-3132q-v/install-overview-cisco-3132qv.html 
 sidebar: sidebar 
 keywords: install, Cisco Nexus 3132Q-V 
-summary: 在設定Cisco Nexus 3132Q-V交換器之前、請先檢閱程序與命名規則的總覽。 
+summary: 在設定Cisco Nexus 3132Q-V 交換器之前，請先查看流程概述和命名規則。 
 ---
 = Cisco Nexus 3132Q-V 交換器的安裝與設定工作流程
 :allow-uri-read: 
@@ -11,19 +11,19 @@ summary: 在設定Cisco Nexus 3132Q-V交換器之前、請先檢閱程序與命�
 
 
 [role="lead"]
-Cisco Nexus 3132Q-V交換器可做AFF 為您的叢集或FAS 叢集內的叢集交換器。叢集交換器可讓您建立ONTAP 具有兩個以上節點的叢集。
+Cisco Nexus 3132Q-V 交換器可作為AFF或FAS叢集中的叢集交換器。叢集交換器可讓您建立具有兩個以上節點的ONTAP叢集。
 
 請依照這些工作流程步驟安裝並設定您的Cisco Nexus 3132Q-V 交換器。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一"]link:configure-reqs-3132q.html["組態需求"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一"]link:configure-reqs-3132q.html["配置要求"]
 [role="quick-margin-para"]
 查看 3132Q-V 群集交換器的設定需求。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["二"]link:required-documentation-3132q.html["必要文件"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["二"]link:required-documentation-3132q.html["所需文件"]
 [role="quick-margin-para"]
 查看特定的交換器和控制器文件以設定您的 3132Q-V 交換器和ONTAP叢集。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三"]link:smart-call-home-3132q.html["智慧電話住家需求"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三"]link:smart-call-home-3132q.html["智慧呼叫中心的要求"]
 [role="quick-margin-para"]
 查看Cisco Smart Call Home 功能的要求，該功能用於監控網路上的硬體和軟體元件。
 

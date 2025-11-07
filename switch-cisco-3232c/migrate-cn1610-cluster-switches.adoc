@@ -2,79 +2,79 @@
 permalink: switch-cisco-3232c/migrate-cn1610-cluster-switches.html 
 sidebar: sidebar 
 keywords: migrate, cn1610 switch, cisco nexus 3232c cluster 
-summary: 若要使用Cisco Nexus 3232C叢集交換器取代叢集中現有的CN1610叢集交換器、您必須執行特定的工作順序。 
+summary: 若要將叢集中現有的 CN1610 叢集交換器替換為Cisco Nexus 3232C 叢集交換機，必須執行特定的任務序列。 
 ---
-= 將CN1610叢集交換器移轉至Cisco Nexus 3232C叢集交換器
+= 將 CN1610 叢集交換器遷移到Cisco Nexus 3232C 叢集交換機
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-若要使用Cisco Nexus 3232C叢集交換器取代叢集中現有的CN1610叢集交換器、您必須執行特定的工作順序。
+若要將叢集中現有的 CN1610 叢集交換器替換為Cisco Nexus 3232C 叢集交換機，必須執行特定的任務序列。
 
 
 
-== 檢閱要求
+== 審查要求
 
-移轉之前、請務必先檢閱 link:migrate-requirements-3232c.html["移轉需求"]。
+遷移前，請務必查看link:migrate-requirements-3232c.html["遷移要求"]。
 
 
-NOTE: 此程序需要同時使用ONTAP 支援指令和Cisco Nexus 3000系列交換器的命令；ONTAP 除非另有說明、否則會使用支援指令。
+NOTE: 流程需要同時使用ONTAP指令和Cisco Nexus 3000 系列交換器指令；除非另有說明，否則使用ONTAP指令。
 
-如有必要、請參閱下列內容以取得更多資訊：
+如有需要，請參考以下內容以了解更多資訊：
 
 * link:https://mysupport.netapp.com/site/products/all/details/netapp-cluster-switches/docs-tab["NetApp CN1601 和 CN1610"^]
-* link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器"^]
+* link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換機"^]
 * link:http://hwu.netapp.com["Hardware Universe"^]
 
 
 
 
-== 移轉交換器
+== 遷移交換機
 
 .關於範例
-本程序的範例使用四個節點：兩個節點使用四個10 GbE叢集互連連接埠：e0a、e0b、e0c和e0d。其他兩個節點使用兩條40 GbE叢集互連光纖纜線：E4A和e4e。。 link:https://hwu.netapp.com/["_SUR__ Hardware Universe"^] 擁有平台上叢集光纖纜線的相關資訊。
+本流程中的範例使用了四個節點：兩個節點使用四個 10 GbE 叢集互連連接埠：e0a、e0b、e0c 和 e0d。另外兩個節點使用兩條 40 GbE 群集互連光纖電纜：e4a 和 e4e。這link:https://hwu.netapp.com/["硬體宇宙"^]包含有關您平台上的叢集光纖電纜的資訊。
 
-本程序中的範例使用下列交換器和節點命名法：
+本流程中的範例使用以下開關和節點命名規則：
 
-* 節點為n1、n2、n3和n4。
-* 命令輸出可能會因ONTAP 各種版本的不相同的更新而有所不同。
-* 要更換的CN1610交換器為CL1和CL2。
-* 用於更換CN1610交換器的Nexus 3232C交換器為C1和C2。
-* N1_clus1是第一個叢集邏輯介面（LIF）、連接至節點n1的叢集交換器1（CL1或C1）。
-* N1_clus2是第一個叢集LIF、連接至節點n1的叢集交換器2（CL2或C2）。
-* N1_clus3是第二個LIF、連接至節點n1的叢集交換器2（CL2或C2）。
-* N1_clus4是第二個LIF、連接至節點n1的叢集交換器1（CL1或C1）。
-* 10 GbE 和 40/100 GbE 連接埠的數量在參考設定檔 (RCF) 中定義，可從link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco®叢集網路交換器參考組態檔案下載"^]。
-
-
+* 這些節點分別是 n1、n2、n3 和 n4。
+* 命令輸出可能因ONTAP軟體版本不同而有所差異。
+* 需要更換的 CN1610 交換器是 CL1 和 CL2。
+* 用於替換 CN1610 交換器的 Nexus 3232C 交換器是 C1 和 C2。
+* n1_clus1 是連接到節點 n1 的叢集交換器 1 (CL1 或 C1) 的第一個叢集邏輯介面 (LIF)。
+* n1_clus2 是連接到節點 n1 的叢集交換器 2 (CL2 或 C2) 的第一個叢集 LIF。
+* n1_clus3 是連接到節點 n1 的叢集交換器 2 (CL2 或 C2) 的第二個 LIF。
+* n1_clus4 是連接到節點 n1 的叢集交換器 1 (CL1 或 C1) 的第二個 LIF。
+* 10 GbE 和 40/100 GbE 連接埠的數量在參考設定檔 (RCF) 中定義，這些檔案可在以下網址取得：link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco叢集網路交換器參考設定檔下載"^] 。
 
 
-=== 步驟1：準備移轉
 
-. 如果AutoSupport 此叢集啟用了「支援」功能、請叫用AutoSupport 下列訊息來禁止自動建立案例：
+
+=== 步驟 1：準備遷移
+
+. 如果此叢集上啟用了AutoSupport ，則透過呼叫AutoSupport訊息來抑制自動建立案例：
 +
-「系統節點AutoSupport 不完整地叫用節點*-type all -Message MAn=xh」
+`system node autosupport invoke -node * -type all -message MAINT=xh`
 
 +
-_x_是維護時段的持續時間（以小時為單位）。
+_x_ 是維護視窗的持續時間，單位為小時。
 
 +
 [NOTE]
 ====
-此訊息會通知技術支援人員此維護工作、以便在維護期間禁止自動建立案例。
+此訊息通知技術支援部門此維護任務，以便在維護期間禁止自動建立案例。
 
 ====
-. 顯示組態中裝置的相關資訊：
+. 顯示配置中設備的資訊：
 +
-「網路裝置探索秀」
+`network device-discovery show`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示每個叢集互連交換器的每個節點已設定多少個叢集互連介面：
+以下範例顯示了每個節點上每個叢集互連交換器配置的叢集互連連接口數量：
 
 [listing, subs="+quotes"]
 ----
@@ -97,11 +97,11 @@ n2     /cdp
 8 entries were displayed.
 ----
 ====
-. 確定每個叢集介面的管理或作業狀態。
+. 確定每個叢集介面的管理或運作狀態。
 +
-.. 顯示叢集網路連接埠屬性：
+.. 顯示集群網路連接埠屬性：
 +
-「網路連接埠show -role cluster」
+`network port show -role cluster`
 
 +
 .顯示範例
@@ -132,9 +132,9 @@ e0d   cluster   cluster    up    9000  auto/10000     -
 8 entries were displayed.
 ----
 ====
-.. 顯示有關邏輯介面的資訊：
+.. 顯示邏輯介面資訊：
 +
-「網路介面show -role cluster」
+`network interface show -role cluster`
 
 +
 .顯示範例
@@ -160,15 +160,15 @@ Cluster
  8 entries were displayed.
 ----
 ====
-.. 顯示探索到的叢集交換器相關資訊：
+.. 顯示已發現的群集交換器的相關資訊：
 +
-「系統叢集交換器顯示」
+`system cluster-switch show`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示叢集已知的叢集交換器及其管理IP位址：
+以下範例顯示了叢集已知的叢集交換器及其管理 IP 位址：
 
 [listing, subs="+quotes"]
 ----
@@ -193,19 +193,19 @@ CL2                           cluster-network  10.10.1.102   CN1610
 ====
 
 
-. 根據您的需求、確認新的3232C交換器上已安裝適當的RCF和映像、並進行必要的站台自訂。
+. 確認已根據您的要求在新 3232C 交換器上安裝了相應的 RCF 和映像，並進行任何必要的網站自訂。
 +
-此時您應該準備兩個交換器。如果您需要升級RCF和映像、必須完成下列程序：
+此時您應該準備好這兩台交換器。如果需要升級 RCF 和鏡像，則必須完成以下步驟：
 
 +
-.. 看link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器"^]在NetApp支援站點上。
-.. 請在該頁的表格中記下您的交換器和所需的軟體版本。
-.. 下載適當版本的RCF。
-.. 按一下「*說明*」頁面上的「*繼續*」、接受授權合約、然後依照「*下載*」頁面上的指示下載RCF。
-.. 下載對應版本的影像軟體link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco®叢集與管理網路交換器參考組態檔案下載"^]。
+.. 看link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換機"^]在NetApp支援網站上。
+.. 請記下您交換器的型號以及該頁表格中所需的軟體版本。
+.. 下載相應版本的RCF。
+.. 在“描述”頁面上點擊“繼續”，接受許可協議，然後按照“下載”頁面上的說明下載 RCF。
+.. 請從以下網址下載對應版本的影像處理軟體：link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco叢集和管理網路交換器參考設定檔下載"^] 。
 
 
-. 移轉與您計畫更換的第二台 CN1610 交換器相關的生命週期：
+. 遷移與計畫替換的第二個 CN1610 交換器關聯的 LIF：
 +
 `network interface migrate -vserver _vserver-name_ -lif _lif-name_ -source-node _source-node-name_ destination-node _destination-node-name_ -destination-port _destination-port-name_`
 
@@ -213,7 +213,7 @@ CL2                           cluster-network  10.10.1.102   CN1610
 .顯示範例
 [%collapsible]
 ====
-您必須個別移轉每個LIF、如下列範例所示：
+您必須按照以下範例所示，逐一遷移每個 LIF：
 
 [listing, subs="+quotes"]
 ----
@@ -227,9 +227,9 @@ cluster::*> *network interface migrate -vserver cluster -lif n2_clus3 -source-no
 -destination-node  n2  -destination-port  e0d*
 ----
 ====
-. 驗證叢集的健全狀況：
+. 驗證集群健康狀況：
 +
-「網路介面show -role cluster」
+`network interface show -role cluster`
 
 +
 .顯示範例
@@ -259,17 +259,17 @@ Cluster
 
 
 
-=== 步驟2：將叢集交換器CL2更換為C2
+=== 步驟 2：將集群開關 CL2 更換為 C2
 
-. 關閉實體連接至交換器CL2的叢集互連連接埠：
+. 關閉與交換器 CL2 實體連線的叢集互連連接埠：
 +
-「網路連接埠修改-node-name_-port _port-name_-up、admin假」
+`network port modify -node _node-name_ -port _port-name_ -up-admin false`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示節點n1和節點n2的四個叢集互連連接埠正在關機：
+以下範例顯示如何關閉節點 n1 和節點 n2 的四個叢集互連連接埠：
 
 [listing, subs="+quotes"]
 ----
@@ -279,22 +279,22 @@ cluster::*> *network port modify -node n2 -port e0b -up-admin false*
 cluster::*> *network port modify -node n2 -port e0c -up-admin false*
 ----
 ====
-. 驗證遠端叢集介面的連線能力：
+. 驗證遠端集群介面的連接性：
 
 
 [role="tabbed-block"]
 ====
-.更新版本ONTAP
+.ONTAP 9.9.1 及更高版本
 --
-您可以使用 `network interface check cluster-connectivity` 命令以啟動叢集連線的存取檢查、然後顯示詳細資料：
+你可以使用 `network interface check cluster-connectivity`執行命令以啟動叢集連接性檢查，然後顯示詳細資訊：
 
-`network interface check cluster-connectivity start` 和 `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`和 `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-* 注意： * 請等待數秒後再執行 `show`命令以顯示詳細資料。
+*注意：*運行程式前請等待幾秒鐘 `show`顯示詳細資訊的命令。
 
 [listing, subs="+quotes"]
 ----
@@ -311,9 +311,9 @@ n2
        3/5/2022 19:21:20 -06:00   n2_clus2         n1_clus2         none
 ----
 --
-.所有 ONTAP 版本
+.所有ONTAP版本
 --
-對於所有 ONTAP 版本、您也可以使用 `cluster ping-cluster -node <name>` 檢查連線能力的命令：
+對於所有ONTAP版本，您也可以使用 `cluster ping-cluster -node <name>`檢查連接性的命令：
 
 `cluster ping-cluster -node <name>`
 
@@ -362,15 +362,15 @@ RPC status:
 ----
 --
 ====
-. [[step3]] 使用適當的命令、關閉使用中 CN1610 交換器 CL1 上的 ISL 連接埠 13 到 16 。
+. [[step3]] 使用適當的命令關閉活動 CN1610 交換器 CL1 上的 ISL 連接埠 13 至 16。
 +
-如需Cisco命令的詳細資訊、請參閱中所列的指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
+有關Cisco命令的更多信息，請參閱以下位置列出的指南： https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 系列 NX-OS 指令參考"^] 。
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示CN1610交換器CL1上的ISL連接埠13至16正在關機：
+以下範例顯示 CN1610 交換器 CL1 上的 ISL 連接埠 13 至 16 已關閉：
 
 [listing, subs="+quotes"]
 ----
@@ -382,15 +382,15 @@ RPC status:
 (CL1)#
 ----
 ====
-. 在CL1和C2之間建置暫時ISL：
+. 在 CL1 和 C2 之間建立臨時 ISL：
 +
-如需Cisco命令的詳細資訊、請參閱中所列的指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
+有關Cisco命令的更多信息，請參閱以下位置列出的指南： https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 系列 NX-OS 指令參考"^] 。
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示使用Cisco「交換埠模式主幹」命令、在CL1（連接埠13-16）和C2（連接埠E1/24/1-4）之間建置暫用ISL：
+以下範例顯示如何使用Cisco在 CL1（連接埠 13-16）和 C2（連接埠 e1/24/1-4）之間建立臨時 ISL。 `switchport mode trunk`命令：
 
 [listing, subs="+quotes"]
 ----
@@ -408,32 +408,32 @@ C2(config-if-range)# *exit*
 C2(config-if)# *exit*
 ----
 ====
-. 拔下所有節點上連接至CN1610交換器CL2的纜線。
+. 拆下所有節點上連接到 CN1610 交換器 CL2 的電纜。
 +
-使用支援的纜線、您必須將所有節點上的中斷連接連接埠重新連接至Nexus 3232C交換器C2。
+使用支援的線纜，您必須將所有節點上斷開的連接埠重新連接到 Nexus 3232C 交換器 C2。
 
-. 從CN1610交換器CL1的連接埠13到16拔下四條ISL纜線。
+. 從 CN1610 交換器 CL1 的 13 至 16 號連接埠移除四條 ISL 纜線。
 +
-您必須連接適當的Cisco QSFP28至SFP+中斷纜線、將新Cisco 3232C交換器C2上的連接埠1/24連接至現有CN1610交換器CL1上的連接埠13至16。
+您必須將適當的Cisco QSFP28 轉 SFP+ 分線電纜連接到新的Cisco 3232C 交換器 C2 上的連接埠 1/24 和現有 CN1610 交換器 CL1 上的連接埠 13 至 16。
 
 +
 [NOTE]
 ====
-將任何纜線重新連接至新的Cisco 3232C交換器時、所使用的纜線必須是光纖纜線或Cisco雙軸纜線。
+將任何電纜重新連接到新的Cisco 3232C 交換器時，使用的電纜必須是光纖或Cisco雙絞線電纜。
 
 ====
-. 將主動式CN1610交換器上的ISL介面3/1設定為停用靜態模式、使ISL成為動態。
+. 透過設定活動 CN1610 交換器上的 ISL 介面 3/1 來停用靜態模式，使 ISL 動態化。
 +
-當在兩個交換器上啟動ISL時、此組態會與3232C交換器C2上的ISL組態相符。
+當兩台交換器上都啟動 ISL 時，此設定與 3232C 交換器 C2 上的 ISL 設定相符。
 
 +
-如需Cisco命令的詳細資訊、請參閱中所列的指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
+有關Cisco命令的更多信息，請參閱以下位置列出的指南： https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 系列 NX-OS 指令參考"^] 。
 
 +
 .顯示範例
 [%collapsible]
 ====
-下列範例顯示要設定ISL介面3/1以使ISL成為動態：
+以下範例展示如何設定 ISL 介面 3/1 以使 ISL 動態化：
 
 [listing, subs="+quotes"]
 ----
@@ -445,15 +445,15 @@ C2(config-if)# *exit*
 (CL1)#
 ----
 ====
-. 在活動的CN1610交換器CL1上啟動ISL 13到16。
+. 在活動的 CN1610 交換器 CL1 上啟動 ISL 13 至 16。
 +
-如需Cisco命令的詳細資訊、請參閱中所列的指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
+有關Cisco命令的更多信息，請參閱以下位置列出的指南： https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 系列 NX-OS 指令參考"^] 。
 
 +
 .顯示範例
 [%collapsible]
 ====
-下列範例顯示連接埠通道介面3/1上的ISL連接埠13到16：
+以下範例顯示在連接埠通道介面 3/1 上啟動 ISL 連接埠 13 至 16：
 
 [listing, subs="+quotes"]
 ----
@@ -465,15 +465,15 @@ C2(config-if)# *exit*
 (CL1)#
 ----
 ====
-. 驗證CN1610交換器CL1上的ISL是否為「up」。
+. 確認 ISL 是否為 `up`在 CN1610 交換器 CL1 上。
 +
-「Link State」（連結狀態）應為「up」（正常）、「Type」（類型）應為「Dynamic」（動態）、而「Port Active」（作用中連接埠）欄位應為「True」（真）、連接埠0/13至0/16。
+「鏈路狀態」應為 `Up`「類型」應為 `Dynamic`且「連接埠活動」列應為： `True`適用於連接埠 0/13 至 0/16。
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示CN1610交換器CL1上的ISL已驗證為「UP」：
+以下範例展示了 ISL 的驗證過程 `up`在 CN1610 交換器 CL1 上：
 
 [listing, subs="+quotes"]
 ----
@@ -499,21 +499,21 @@ Ports  Timeout       Speed       Active
        partner/long
 ----
 ====
-. 驗證ISL是否正確 `up` 在3232C交換器C2上：
+. 確認 ISL 是否為 `up`在 3232C 交換器 C2 上：
 +
-「How port-channel Summary」
+`show port-channel summary`
 
 +
-如需Cisco命令的詳細資訊、請參閱中所列的指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
+有關Cisco命令的更多信息，請參閱以下位置列出的指南： https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 系列 NX-OS 指令參考"^] 。
 
 +
-連接埠eth1/24/1至eth1/24/4應顯示為「（P）」、表示連接埠通道中的所有四個ISL連接埠均處於正常狀態。eth1/31和eth1/32應顯示「（D）」、因為它們並未連線。
+連接埠 Eth1/24/1 至 Eth1/24/4 應指示 `(P)`這意味著所有四個 ISL 連接埠都在連接埠通道中運作。  Eth1/31 和 eth1/32 應表示 `(D)`因為它們之間沒有關聯。
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示3232C交換器C2上的ISL已驗證為「up」（啟動）：
+以下範例展示了 ISL 的驗證過程 `up`在 3232C 交換器 C2 上：
 
 [listing, subs="+quotes"]
 ----
@@ -534,15 +534,15 @@ Group Port-       Type     Protocol  Member Ports
                                      Eth1/24/4(P)
 ----
 ====
-. 開啟所有節點上連接至3232C交換器C2的所有叢集互連連接埠：
+. 在所有節點上啟用連接到 3232C 交換器 C2 的所有叢集互連連接埠：
 +
-「網路連接埠修改-node-name_-port _port-name_-up管理true」
+`network port modify -node _node-name_ -port _port-name_ -up-admin true`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例說明如何啟動連接至3232C交換器C2的叢集互連連接埠：
+以下範例展示如何啟動連接至 3232C 交換器 C2 的叢集互連連接埠：
 
 [listing, subs="+quotes"]
 ----
@@ -552,9 +552,9 @@ cluster::*> *network port modify -node n2 -port e0b -up-admin true*
 cluster::*> *network port modify -node n2 -port e0c -up-admin true*
 ----
 ====
-. 還原所有連接至所有節點上C2的所有移轉叢集互連生命期：
+. 撤銷所有已遷移的、連接到所有節點上 C2 的叢集互連 LIF：
 +
-「網路介面還原-vserver叢集-lif_lif-name_」
+`network interface revert -vserver cluster -lif _lif-name_`
 
 +
 .顯示範例
@@ -568,15 +568,15 @@ cluster::*> *network interface revert -vserver cluster -lif n2_clus2*
 cluster::*> *network interface revert -vserver cluster -lif n2_clus3*
 ----
 ====
-. 確認所有的叢集互連連接埠都已還原至其主連接埠：
+. 確認所有叢集互連連接埠都已恢復到其原始連接埠：
 +
-「網路介面show -role cluster」
+`network interface show -role cluster`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示clus2上的lifs會還原為其主連接埠；如果「目前連接埠」欄中的連接埠在「is Home」欄中的狀態為「true」、則會成功還原lifs。如果「原位」值為「假」、則不會還原LIF。
+以下範例表示 clus2 上的 LIF 已恢復到其來源連接埠；如果“目前連接埠”列中的連接埠狀態為“已復原”，則表示 LIF 已成功復原。 `true`在「是否在家」一欄。如果「是否在家」的值為 `false`那麼 LIF 就不會被撤銷。
 
 [listing, subs="+quotes"]
 ----
@@ -598,15 +598,15 @@ Cluster
 8 entries were displayed.
 ----
 ====
-. 確認所有的叢集連接埠均已連接：
+. 確認叢集所有連接埠均已連線：
 +
-「網路連接埠show -role cluster」
+`network port show -role cluster`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示驗證所有叢集互連的輸出為「up」（正常）：
+以下範例顯示了驗證所有群集互連是否正常的輸出結果。 `up` ：
 
 [listing, subs="+quotes"]
 ----
@@ -634,22 +634,22 @@ e0d   cluster   cluster     up    9000  auto/10000     -
 8 entries were displayed.
 ----
 ====
-. 驗證遠端叢集介面的連線能力：
+. 驗證遠端集群介面的連接性：
 
 
 [role="tabbed-block"]
 ====
-.更新版本ONTAP
+.ONTAP 9.9.1 及更高版本
 --
-您可以使用 `network interface check cluster-connectivity` 命令以啟動叢集連線的存取檢查、然後顯示詳細資料：
+你可以使用 `network interface check cluster-connectivity`執行命令以啟動叢集連接性檢查，然後顯示詳細資訊：
 
-`network interface check cluster-connectivity start` 和 `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`和 `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-* 注意： * 請等待數秒後再執行 `show`命令以顯示詳細資料。
+*注意：*運行程式前請等待幾秒鐘 `show`顯示詳細資訊的命令。
 
 [listing, subs="+quotes"]
 ----
@@ -666,9 +666,9 @@ n2
        3/5/2022 19:21:20 -06:00   n2_clus2         n1_clus2         none
 ----
 --
-.所有 ONTAP 版本
+.所有ONTAP版本
 --
-對於所有 ONTAP 版本、您也可以使用 `cluster ping-cluster -node <name>` 檢查連線能力的命令：
+對於所有ONTAP版本，您也可以使用 `cluster ping-cluster -node <name>`檢查連接性的命令：
 
 `cluster ping-cluster -node <name>`
 
@@ -717,7 +717,7 @@ RPC status:
 ----
 --
 ====
-. [[step16]] 移轉與第一個 CN1610 交換器 CL1 相關的生命週期：
+. [[步驟16]] 遷移與第一個 CN1610 交換器 CL1 關聯的 LIF：
 +
 `network interface migrate -vserver cluster -lif _lif-name_ -source-node _node-name_`
 
@@ -725,7 +725,7 @@ RPC status:
 .顯示範例
 [%collapsible]
 ====
-您必須個別將每個叢集LIF移轉至叢集交換器C2上裝載的適當叢集連接埠、如下列範例所示：
+您必須將每個叢集 LIF 單獨遷移到叢集交換器 C2 上託管的對應叢集端口，如下例所示：
 
 [listing, subs="+quotes"]
 ----
@@ -743,17 +743,17 @@ cluster::*> *network interface migrate -vserver cluster -lif n2_clus4 -source-no
 
 
 
-=== 步驟3：將叢集交換器CL1更換為C1
+=== 步驟 3：將集群開關 CL1 更換為 C1
 
-. 驗證叢集的狀態：
+. 驗證叢集狀態：
 +
-「網路介面show -role cluster」
+`network interface show -role cluster`
 
 +
 .顯示範例
 [%collapsible]
 ====
-下列範例顯示所需的叢集l生命 已移轉至叢集交換器C2上裝載的適當叢集連接埠：
+以下範例表明，所需的叢集 LIF 已遷移到叢集交換器 C2 上託管的相應叢集連接埠：
 
 [listing, subs="+quotes"]
 ----
@@ -775,15 +775,15 @@ Cluster
 8 entries were displayed.
 ----
 ====
-. 關閉所有節點上連接至CL1的節點連接埠：
+. 關閉所有節點上連接到 CL1 的節點連接埠：
 +
-「網路連接埠修改-node-name_-port _port-name_-up、admin假」
+`network port modify -node _node-name_ -port _port-name_ -up-admin false`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示節點n1和n2上的特定連接埠正在關機：
+以下範例顯示了節點 n1 和 n2 上特定連接埠的關閉：
 
 [listing, subs="+quotes"]
 ----
@@ -793,15 +793,15 @@ cluster::*> *network port modify -node n2 -port e0a -up-admin false*
 cluster::*> *network port modify -node n2 -port e0d -up-admin false*
 ----
 ====
-. 關閉主動式3232C交換器C2上的ISL連接埠24、31和32。
+. 關閉活動 3232C 交換器 C2 上的 ISL 連接埠 24、31 和 32。
 +
-如需Cisco命令的詳細資訊、請參閱中所列的指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
+有關Cisco命令的更多信息，請參閱以下位置列出的指南： https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 系列 NX-OS 指令參考"^] 。
 
 +
 .顯示範例
 [%collapsible]
 ====
-下列範例顯示使用中3232C交換器C2上的ISL 24、31和32正在關機：
+以下範例顯示了在活動 3232C 交換器 C2 上關閉 ISL 24、31 和 32：
 
 [listing, subs="+quotes"]
 ----
@@ -816,23 +816,23 @@ C2(config)# *exit*
 C2#
 ----
 ====
-. 拔下所有節點上連接至CN1610交換器CL1的纜線。
+. 拆下所有節點上連接到 CN1610 交換器 CL1 的電纜。
 +
-使用適當的纜線、您必須將所有節點上的中斷連接連接埠重新連接至Nexus 3232C交換器C1。
+使用適當的線纜，必須將所有節點上斷開的連接埠重新連接到 Nexus 3232C 交換器 C1。
 
-. 從Nexus 3232C C2連接埠E1/24拔下QSFP28纜線。
+. 從 Nexus 3232C C2 連接埠 e1/24 移除 QSFP28 纜線。
 +
-您必須使用支援的Cisco QSFP28光纖或直接連接纜線、將C1上的E1/31和E1/32連接埠連接至C2上的E1/31和E1/32連接埠。
+您必須使用支援的Cisco QSFP28 光纖或直連接線將 C1 上的連接埠 e1/31 和 e1/32 連接到 C2 上的連接埠 e1/31 和 e1/32。
 
-. 還原連接埠24的組態、並移除C2上的暫用連接埠通道2：
+. 恢復連接埠 24 的配置，並移除 C2 上的臨時連接埠通道 2：
 +
-如需Cisco命令的詳細資訊、請參閱中所列的指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
+有關Cisco命令的更多信息，請參閱以下位置列出的指南： https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 系列 NX-OS 指令參考"^] 。
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示正在複製到「startup組態」檔案的「執行組態」檔案：
+以下範例展示了 `running-configuration`文件正在複製到 `startup-configuration`文件：
 
 [listing, subs="+quotes"]
 ----
@@ -859,15 +859,15 @@ C2# copy running-config startup-config
 Copy Complete.
 ----
 ====
-. 在C2（主動式3232C交換器）上啟動ISL連接埠31和32。
+. 在活動 3232C 交換器 C2 上啟用 ISL 連接埠 31 和 32。
 +
-如需Cisco命令的詳細資訊、請參閱中所列的指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
+有關Cisco命令的更多信息，請參閱以下位置列出的指南： https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 系列 NX-OS 指令參考"^] 。
 
 +
 .顯示範例
 [%collapsible]
 ====
-下列範例顯示3232C交換器C2上的ISL 31和32：
+以下範例顯示了 ISL 31 和 32 被引入到 3232C 交換器 C2 上：
 
 [listing, subs="+quotes"]
 ----
@@ -881,15 +881,15 @@ C2# copy running-config startup-config
 Copy Complete.
 ----
 ====
-. 驗證3232C交換器C2上的ISL連線是否為「up（正常）」。
+. 確認 ISL 連線是否正常 `up`在 3232C 開關 C2 上。
 +
-如需Cisco命令的詳細資訊、請參閱中所列的指南 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000系列NX-OS命令參考資料"^]。
+有關Cisco命令的更多信息，請參閱以下位置列出的指南： https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 系列 NX-OS 指令參考"^] 。
 
 +
 .顯示範例
 [%collapsible]
 ====
-下列範例顯示正在驗證的ISL連線。連接埠eth1/31和eth1/32表示「（P）」、表示連接埠通道中的兩個ISL連接埠均為「up」（正常）：
+以下範例展示了 ISL 連線的驗證過程。連接埠 Eth1/31 和 Eth1/32 指示 `(P)`這意味著兩個 ISL 連接埠都是 `up`在連接埠通道中：
 
 [listing, subs="+quotes"]
 ----
@@ -920,15 +920,15 @@ Group Port-       Type     Protocol  Member Ports
 1     Po1(SU)     Eth      LACP      Eth1/31(P)   Eth1/32(P)
 ----
 ====
-. 開啟所有連接至所有節點上新3232C交換器C1的所有叢集互連連接埠：
+. 在所有節點上啟用連接到新的 3232C 交換器 C1 的所有叢集互連連接埠：
 +
-「網路連接埠修改-node-name_-port _port-name_-up管理true」
+`network port modify -node _node-name_ -port _port-name_ -up-admin true`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示連接至新的3232C交換器C1的所有叢集互連連接埠：
+以下範例顯示了連接到新 3232C 交換器 C1 的所有群集互連連接埠的啟動情況：
 
 [listing, subs="+quotes"]
 ----
@@ -938,15 +938,15 @@ cluster::*> *network port modify -node n2 -port e0a -up-admin true*
 cluster::*> *network port modify -node n2 -port e0d -up-admin true*
 ----
 ====
-. 驗證叢集節點連接埠的狀態：
+. 驗證叢集節點連接埠狀態：
 +
-「網路連接埠show -role cluster」
+`network port show -role cluster`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示的輸出可驗證新3232C交換器C1上節點n1和n2上的叢集互連連接埠是否為「up」（正常）：
+以下範例顯示了驗證新 3232C 交換器 C1 上節點 n1 和 n2 的叢集互連連接埠是否正常運作的輸出。 `up` ：
 
 [listing, subs="+quotes"]
 ----
@@ -978,9 +978,9 @@ e0d   cluster   cluster    up    9000  auto/10000     -
 
 
 
-=== 步驟4：完成程序
+=== 第四步：完成該步驟
 
-. 還原所有原本連線至所有節點C1的所有移轉叢集互連生命期：
+. 撤銷所有已遷移的叢集互連 LIF，這些 LIF 最初連接到所有節點上的 C1：
 +
 `network interface revert -server cluster -lif _lif-name_`
 
@@ -988,7 +988,7 @@ e0d   cluster   cluster    up    9000  auto/10000     -
 .顯示範例
 [%collapsible]
 ====
-您必須個別移轉每個LIF、如下列範例所示：
+您必須按照以下範例所示，逐一遷移每個 LIF：
 
 [listing, subs="+quotes"]
 ----
@@ -998,15 +998,15 @@ cluster::*> *network interface revert -vserver cluster -lif n2_clus1*
 cluster::*> *network interface revert -vserver cluster -lif n2_clus4*
 ----
 ====
-. 確認介面現在是主介面：
+. 請確認介面已連接到主伺服器：
 +
-「網路介面show -role cluster」
+`network interface show -role cluster`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示節點n1和n2的叢集互連介面狀態為「up」和「is Home」：
+以下範例顯示了叢集互連接口的狀態： `up`以及節點 n1 和 n2 的「是否在家」：
 
 [listing, subs="+quotes"]
 ----
@@ -1028,22 +1028,22 @@ Cluster
 8 entries were displayed.
 ----
 ====
-. 驗證遠端叢集介面的連線能力：
+. 驗證遠端集群介面的連接性：
 
 
 [role="tabbed-block"]
 ====
-.更新版本ONTAP
+.ONTAP 9.9.1 及更高版本
 --
-您可以使用 `network interface check cluster-connectivity` 命令以啟動叢集連線的存取檢查、然後顯示詳細資料：
+你可以使用 `network interface check cluster-connectivity`執行命令以啟動叢集連接性檢查，然後顯示詳細資訊：
 
-`network interface check cluster-connectivity start` 和 `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`和 `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-* 注意： * 請等待數秒後再執行 `show`命令以顯示詳細資料。
+*注意：*運行程式前請等待幾秒鐘 `show`顯示詳細資訊的命令。
 
 [listing, subs="+quotes"]
 ----
@@ -1060,9 +1060,9 @@ n2
        3/5/2022 19:21:20 -06:00   n2_clus2         n1_clus2         none
 ----
 --
-.所有 ONTAP 版本
+.所有ONTAP版本
 --
-對於所有 ONTAP 版本、您也可以使用 `cluster ping-cluster -node <name>` 檢查連線能力的命令：
+對於所有ONTAP版本，您也可以使用 `cluster ping-cluster -node <name>`檢查連接性的命令：
 
 `cluster ping-cluster -node <name>`
 
@@ -1111,18 +1111,18 @@ RPC status:
 ----
 --
 ====
-. [[step4]] 將節點新增至 Nexus 3232C 叢集交換器以擴充叢集。
-. 顯示組態中裝置的相關資訊：
+. [[step4]] 透過在 Nexus 3232C 叢集交換器中新增節點來擴展叢集。
+. 顯示配置中設備的資訊：
 +
-** 「網路裝置探索秀」
-** 「網路連接埠show -role cluster」
-** 「網路介面show -role cluster」
-** 「系統叢集交換器顯示」
+** `network device-discovery show`
+** `network port show -role cluster`
+** `network interface show -role cluster`
+** `system cluster-switch show`
 +
 .顯示範例
 [%collapsible]
 ====
-下列範例顯示節點n3和n4、其中40個GbE叢集連接埠分別連接至Nexus 3232C叢集交換器上的連接埠E1/7和E1/8。這兩個節點都會加入叢集。使用的40 GbE叢集互連連接埠為E4A和e4e。
+以下範例顯示了節點 n3 和 n4，它們分別透過 40 GbE 叢集連接埠連接到 Nexus 3232C 叢集交換器的 e1/7 和 e1/8 連接埠。兩個節點都已加入叢集。使用的 40 GbE 群集互連埠為 e4a 和 e4e。
 
 [listing, subs="+quotes"]
 ----
@@ -1248,7 +1248,7 @@ CL2                         cluster-network  10.10.1.102    CN1610
 ====
 
 
-. 如果更換的CN1610交換器未自動移除、請將其移除：
+. 如果更換後的 CN1610 交換器沒有自動移除，請將其移除：
 +
 `system cluster-switch delete -device _switch-name_`
 
@@ -1256,7 +1256,7 @@ CL2                         cluster-network  10.10.1.102    CN1610
 .顯示範例
 [%collapsible]
 ====
-您必須個別刪除這兩個裝置、如下列範例所示：
+您必須分別刪除這兩個設備，如下例所示：
 
 [listing, subs="+quotes"]
 ----
@@ -1264,15 +1264,15 @@ cluster::> *system cluster-switch delete –device CL1*
 cluster::> *system cluster-switch delete –device CL2*
 ----
 ====
-. 確認已監控適當的叢集交換器：
+. 確認已對正確的群集交換器進行監控：
 +
-「系統叢集交換器顯示」
+`system cluster-switch show`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示正在監控叢集交換器C1和C2：
+以下範例顯示如何監控叢集交換器 C1 和 C2：
 
 [listing, subs="+quotes"]
 ----
@@ -1300,11 +1300,11 @@ C2                          cluster-network    10.10.1.104      NX3232C
 2 entries were displayed.
 ----
 ====
-. 如果您禁止自動建立個案、請叫用AutoSupport 下列消息來重新啟用此功能：
+. 如果您已停用自動建立案例功能，請透過呼叫AutoSupport訊息重新啟用該功能：
 +
-「系統節點AutoSupport 不完整地叫用節點*-type all -most MAn=end」
+`system node autosupport invoke -node * -type all -message MAINT=END`
 
 
 
-.接下來呢？
-link:../switch-cshm/config-overview.html["設定交換器健全狀況監控"]。
+.下一步是什麼？
+link:../switch-cshm/config-overview.html["配置交換器健康監控"]。

@@ -1,13 +1,13 @@
 ---
 indexpage:
-  title: 叢集交換器
+  title: 集群交換機
   summary: 使用此站點上的文件來安裝、設定和維護用於ONTAP叢集部署的叢集交換器。
   keywords: cluster switches, cisco nexus switches, ontap clusters
   lead: 叢集交換器可讓您建立具有兩個以上節點的ONTAP叢集。這些Cisco Nexus 9000 平台交換器為NetApp ONTAP環境中的可擴展叢集互連解決方案提供了基礎。
   tiles:
-  - title: 開始使用
+  - title: 開始
     links:
-    - title: Broadcom Bes - 53248
+    - title: 博通 BES-53248
       url: "../switch-bes-53248/configure-new-switch-overview.html"
     - title: Cisco Nexus 9336C-FX2 和 9336C-FX2-T
       url: "../switch-cisco-9336c-fx2/configure-switch-overview-9336c-cluster.html"
@@ -43,7 +43,7 @@ indexpage:
       url: "../switch-nvidia-sn2100/reset-switch-sn2100.html"
   - title: 相關文件
     links:
-    - title: ONTAP 硬體系統
+    - title: ONTAP硬體系統
       url: https://docs.netapp.com/us-en/ontap-systems/index.html
     - title: 集群交換機文檔
       url: "../index.html"

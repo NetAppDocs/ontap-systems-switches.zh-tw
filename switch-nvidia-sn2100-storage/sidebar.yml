@@ -2,49 +2,49 @@
 section: switch-nvidia-sn2100-storage
 title: NVIDIA SN2100
 entries:
-- title: 開始使用
+- title: 開始
   entries:
-  - title: 快速入門
+  - title: 快速啟動
     url: "/switch-nvidia-sn2100-storage/configure-overview-sn2100-storage.html"
-  - title: 組態需求
+  - title: 配置要求
     url: "/switch-nvidia-sn2100-storage/configure-reqs-sn2100-storage.html"
-  - title: 元件與零件編號
+  - title: 組件和零件編號
     url: "/switch-nvidia-sn2100-storage/components-sn2100-storage.html"
-  - title: 必要文件
+  - title: 所需文件
     url: "/switch-nvidia-sn2100-storage/required-documentation-sn2100-storage.html"
 - title: 安裝硬體
-  pdf-filename: install_hardware _sn2100 儲存設備
+  pdf-filename: 安裝 SN2100 儲存硬體
   entries:
   - title: 硬體安裝工作流程
     url: "/switch-nvidia-sn2100-storage/install-hardware-workflow.html"
-  - title: 安裝交換器
+  - title: 安裝開關
     url: "/switch-nvidia-sn2100-storage/install-hardware-sn2100-storage.html"
-  - title: 檢視纜線佈線與組態
+  - title: 檢查佈線和配置
     url: "/switch-nvidia-sn2100-storage/cabling-considerations-sn2100-storage.html"
-  - title: NS224磁碟櫃纜線
+  - title: NS224 電纜架
     url: "/switch-nvidia-sn2100-storage/install-cable-shelves-sn2100-storage.html"
 - title: 設定軟體
-  pdf-filename: configure_software_nn2100-storage
+  pdf-filename: 設定軟體_sn2100-存儲
   entries:
   - title: 軟體安裝工作流程
     url: "/switch-nvidia-sn2100-storage/configure-software-sn2100-storage.html"
-  - title: 設定交換器
+  - title: 配置交換機
     url: "/switch-nvidia-sn2100-storage/configure-sn2100-storage.html"
-  - title: 在Cummuls模式下安裝Cummulus Linux
+  - title: 以 Cumulus 模式安裝 Cumulus Linux
     url: "/switch-nvidia-sn2100-storage/install-cumulus-mode-sn2100-storage.html"
-  - title: 以ONIE模式安裝CummulUS Linux
+  - title: 以 ONIE 模式安裝 Cumulus Linux
     url: "/switch-nvidia-sn2100-storage/install-onie-mode-sn2100-storage.html"
-  - title: 安裝或升級 RCF 指令碼
+  - title: 安裝或升級 RCF 腳本
     url: "/switch-nvidia-sn2100-storage/install-rcf-sn2100-storage.html"
-  - title: 安裝 CSHM 檔案
+  - title: 安裝 CSHM 文件
     url: "/switch-nvidia-sn2100-storage/setup-install-cshm-file.html"
   - title: 將交換器重設為出廠預設值
     url: "/switch-nvidia-sn2100-storage/reset-switch-sn2100-storage.html"
-- title: 移轉交換器
-  pdf-filename: migrate_switchs_sn2100 儲存設備
+- title: 遷移交換機
+  pdf-filename: 遷移交換器_sn2100-存儲
   entries:
-  - title: 從Cisco儲存交換器移轉
+  - title: 從Cisco儲存交換器遷移
     url: "/switch-nvidia-sn2100-storage/migrate-cisco-storage-switch-sn2100-storage.html"
-- title: 更換交換器
-  pdf-filename: replee_switch_sn2100 儲存設備
+- title: 更換開關
+  pdf-filename: 替換_switch_sn2100-storage
   url: "/switch-nvidia-sn2100-storage/replace-sn2100-switch-storage.html"

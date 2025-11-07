@@ -2,45 +2,45 @@
 permalink: switch-netapp-cn1610/migrate-switched-netapp-cn1610.html 
 sidebar: sidebar 
 keywords: migrate, switchless cluster environment, switched netapp cn1610 
-summary: 如果您有現有的雙節點無交換式叢集環境、則可使用CN1610叢集網路交換器移轉至雙節點交換式叢集環境、以便擴充至兩個節點以外的環境。 
+summary: 如果您已有雙節點無交換器叢集環境，則可以使用 CN1610 叢集網路交換器遷移到雙節點有交換器叢集環境，從而實現兩個節點以上的擴充。 
 ---
-= 從無交換器叢集環境移轉至交換式NetApp CN1610叢集環境
+= 從無交換器叢集環境遷移到有交換器的NetApp CN1610 叢集環境
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-如果您有現有的雙節點無交換式叢集環境、則可使用CN1610叢集網路交換器移轉至雙節點交換式叢集環境、以便擴充至兩個節點以外的環境。
+如果您已有雙節點無交換器叢集環境，則可以使用 CN1610 叢集網路交換器遷移到雙節點有交換器叢集環境，從而實現兩個節點以上的擴充。
 
 
 
-== 檢閱要求
+== 審查要求
 
 .開始之前
-請確定您擁有下列項目：
+請確保您擁有以下物品：
 
-對於雙節點無交換器組態、請確定：
+對於雙節點無交換器配置，請確保：
 
-* 雙節點無交換器組態已正確設定並正常運作。
-* 節點執行ONTAP 的是版本8.2或更新版本。
-* 所有叢集連接埠都位於中 `up` 州/省。
-* 所有叢集邏輯介面（lifs）都位於中 `up` 狀態及其主連接埠。
+* 雙節點無交換器配置已正確設定並運作正常。
+* 節點運行的是ONTAP 8.2 或更高版本。
+* 所有集群連接埠都在 `up`狀態。
+* 所有集群邏輯介面（LIF）都在 `up`各州及其母港。
 
 
-對於CN1610叢集交換器組態：
+CN1610群集交換器配置如下：
 
-* CN1610叢集交換器基礎架構可在兩台交換器上完全正常運作。
-* 兩台交換器都有管理網路連線功能。
-* 有對叢集交換器的主控台存取權。
-* CN1610節點對節點交換器和交換器對交換器連線使用雙軸纜線或光纖纜線。
+* CN1610群集交換器基礎設施在兩台交換器上均完全正常運作。
+* 兩台交換器都具備管理網路連線功能。
+* 可以透過控制台存取叢集交換器。
+* CN1610 節點到節點交換器和交換器到交換器的連接使用雙絞線或光纖電纜。
 +
-這link:https://hwu.netapp.com/["Hardware Universe"^]包含有關佈線的更多資訊。
+這link:https://hwu.netapp.com/["Hardware Universe"^]包含更多關於佈線的資訊。
 
-* 交換器間連結（ISL）纜線連接至兩個CN1610交換器上的連接埠13至16。
-* 完成兩個CN1610交換器的初始自訂。
+* 交換器間連結 (ISL) 電纜連接到兩台 CN1610 交換器的 13 至 16 號連接埠。
+* CN1610交換器的初始客製化工作已完成。
 +
-任何先前的站台自訂（例如、SMTP、SNMP和SSH）都應該複製到新的交換器。
+之前站點的所有自訂設置，例如 SMTP、SNMP 和 SSH，都應該複製到新的交換器上。
 
 
 
@@ -48,53 +48,53 @@ summary: 如果您有現有的雙節點無交換式叢集環境、則可使用CN
 * link:http://hwu.netapp.com["Hardware Universe"^]
 * link:https://mysupport.netapp.com/site/products/all/details/netapp-cluster-switches/docs-tab["NetApp CN1601 和 CN1610"]
 * link:https://library.netapp.com/ecm/ecm_download_file/ECMP1118645["CN1601 和 CN1610 交換器設定和配置"^]
-* link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/How_to_suppress_automatic_case_creation_during_scheduled_maintenance_windows["NetApp知識庫文件編號1010449：如何在排程的維護期間、抑制自動建立案例"^]
+* link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/How_to_suppress_automatic_case_creation_during_scheduled_maintenance_windows["NetApp知識庫文章 1010449：如何在計畫維護窗口期間禁止自動建立案例"^]
 
 
 
 
-== 移轉交換器
+== 遷移交換機
 
 .關於範例
-本程序中的範例使用下列叢集交換器和節點命名法：
+本流程中的範例使用下列叢集交換器和節點命名規則：
 
-* CN1610交換器的名稱為CS1和CS2。
-* lifs的名稱為clus1和clus2。
-* 節點名稱為node1和node2。
-* 「cluster：*>」提示會指出叢集的名稱。
-* 此程序中使用的叢集連接埠為e1a和E2A。
+* CN1610 交換器的名稱是 cs1 和 cs2。
+* LIF 的名稱是 clus1 和 clus2。
+* 節點的名稱分別為 node1 和 node2。
+* 這 `cluster::*>`prompt 指示叢集名稱。
+* 此過程中使用的叢集連接埠為 e1a 和 e2a。
 +
-這link:https://hwu.netapp.com/["Hardware Universe"^]包含有關您的平台的實際集群連接埠的最新資訊。
+這link:https://hwu.netapp.com/["Hardware Universe"^]包含您平台實際集群連接埠的最新資訊。
 
 
 
 
 
-=== 步驟1：準備移轉
+=== 步驟 1：準備遷移
 
-. 將權限等級變更為進階、並在系統提示您繼續時輸入「y」：
+. 將權限級別變更為高級，輸入 `y`當系統提示繼續：
 +
-"進階權限"
-
-+
-出現進階提示（*>）。
-
-. 如果AutoSupport 此叢集啟用了「支援」功能、請叫用AutoSupport 下列訊息來禁止自動建立案例：
-+
-「系統節點AutoSupport 不完整地叫用節點*-type all -Message MAn=xh」
+`set -privilege advanced`
 
 +
-_x_是維護時段的持續時間（以小時為單位）。
+出現高階提示符號（*>）。
+
+. 如果此叢集上啟用了AutoSupport ，則透過呼叫AutoSupport訊息來抑制自動建立案例：
++
+`system node autosupport invoke -node * -type all -message MAINT=xh`
+
++
+_x_ 是維護視窗的持續時間，單位為小時。
 
 +
 
-NOTE: 此資訊可通知技術支援人員執行此維護工作、以便在維護期間抑制自動建立案例。AutoSupport
+NOTE: AutoSupport訊息會通知技術支援此維護任務，以便在維護視窗期間抑制自動建立案例。
 
 +
 .顯示範例
 [%collapsible]
 ====
-下列命令會禁止自動建立兩小時的個案：
+以下命令可抑制自動建立案件兩小時：
 
 [listing]
 ----
@@ -105,17 +105,17 @@ cluster::*> system node autosupport invoke -node * -type all -message MAINT=2h
 
 
 
-=== 步驟2：設定連接埠
+=== 步驟 2：設定埠
 
-. 停用新叢集交換器CS1和CS2上的所有面向節點的連接埠（非ISL連接埠）。
+. 停用新叢集交換器 cs1 和 cs2 上所有面向節點的連接埠（非 ISL 連接埠）。
 +
-您不得停用ISL連接埠。
+您不得禁用 ISL 連接埠。
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示、交換器CS1上的節點對向連接埠1至12已停用：
+以下範例顯示交換器 cs1 上面向節點的連接埠 1 到 12 已停用：
 
 [listing]
 ----
@@ -127,7 +127,7 @@ cluster::*> system node autosupport invoke -node * -type all -message MAINT=2h
 (cs1)(Interface 0/1-0/12)# exit
 (cs1)(Config)# exit
 ----
-以下範例顯示、交換器CS2上的節點對向連接埠1到12已停用：
+以下範例顯示交換器 cs2 上面向節點的連接埠 1 到 12 已停用：
 
 [listing]
 ----
@@ -140,15 +140,15 @@ cluster::*> system node autosupport invoke -node * -type all -message MAINT=2h
 (cs2)(Config)# exit
 ----
 ====
-. 驗證兩個CN1610叢集交換器CS1和CS2之間的ISL和ISL上的實體連接埠是否正確 `up`：
+. 確認兩台 CN1610 叢集交換器 cs1 和 cs2 之間的 ISL 以及 ISL 上的實體連接埠是否正常。 `up` ：
 +
-「How port-channel」
+`show port-channel`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示交換器CS1上的ISL連接埠為「up」（開啟）：
+以下範例顯示了 ISL 連接埠是 `up`開啟交換器 cs1：
 
 [listing]
 ----
@@ -174,7 +174,7 @@ Ports  Timeout       Speed     Active
 0/16   actor/long    10G Full  True
        partner/long
 ----
-以下範例顯示交換器CS2上的ISL連接埠為「up」（開啟）：
+以下範例顯示了 ISL 連接埠是 `up`在交換器 cs2 上：
 
 [listing]
 ----
@@ -201,18 +201,18 @@ Ports  Timeout       Speed     Active
        partner/long
 ----
 ====
-. 顯示鄰近裝置的清單：
+. 顯示相鄰設備清單：
 +
-「我的鄰居」
+`show isdp neighbors`
 
 +
-此命令提供有關連線至系統之裝置的資訊。
+此命令提供有關連接到系統的設備的資訊。
 
 +
 .顯示範例
 [%collapsible]
 ====
-下列範例列出交換器CS1上的鄰近裝置：
+以下範例列出了交換器 cs1 上的相鄰設備：
 
 [listing]
 ----
@@ -227,7 +227,7 @@ cs2                    0/14         11        S            CN1610    0/14
 cs2                    0/15         11        S            CN1610    0/15
 cs2                    0/16         11        S            CN1610    0/16
 ----
-下列範例列出交換器CS2上的鄰近裝置：
+以下範例列出了交換器 cs2 上的相鄰設備：
 
 [listing]
 ----
@@ -243,15 +243,15 @@ cs1                    0/15         11        S            CN1610    0/15
 cs1                    0/16         11        S            CN1610    0/16
 ----
 ====
-. 顯示叢集連接埠清單：
+. 顯示集群連接埠清單：
 +
-「網路連接埠展示」
+`network port show`
 
 +
 .顯示範例
 [%collapsible]
 ====
-下列範例顯示可用的叢集連接埠：
+以下範例顯示了可用的叢集連接埠：
 
 [listing]
 ----
@@ -283,7 +283,7 @@ e4b       Cluster      Cluster          up   9000  auto/10000 healthy  false
 12 entries were displayed.
 ----
 ====
-. 確認每個叢集連接埠都已連接至其合作夥伴叢集節點上的對應連接埠：
+. 確認每個叢集連接埠都已連接到其對應叢集節點上的對應連接埠：
 +
 `run * cdpd show-neighbors`
 
@@ -291,7 +291,7 @@ e4b       Cluster      Cluster          up   9000  auto/10000 healthy  false
 .顯示範例
 [%collapsible]
 ====
-下列範例顯示叢集連接埠e1a和E2A已連接至其叢集合作夥伴節點上的相同連接埠：
+以下範例表示叢集連接埠 e1a 和 e2a 連接到其叢集夥伴節點上的相同連接埠：
 
 [listing]
 ----
@@ -316,12 +316,12 @@ e1a    node1           e1a                    FAS3270           161   H
 e2a    node1           e2a                    FAS3270           161   H
 ----
 ====
-. 驗證所有的叢集lifs是否都是 `up` 與營運：
+. 確認所有集群 LIF 都已存在 `up`以及營運方面：
 +
-「網路介面show -vserver叢集」
+`network interface show -vserver Cluster`
 
 +
-每個叢集LIF都應該在「is Home」欄位中顯示「true」。
+每個集群 LIF 應顯示 `true`在「是否在家」一欄。
 
 +
 .顯示範例
@@ -346,11 +346,11 @@ node2
 ====
 +
 
-NOTE: 必須從本機節點執行步驟10到13中的下列修改和移轉命令。
+NOTE: 步驟 10 到 13 中的以下修改和遷移命令必須從本機節點執行。
 
-. 確認所有叢集連接埠均為「up（正常））：
+. 確認所有叢集連接埠都已連接 `up`：
 +
-「網路連接埠show -IPSpace Cluster」
+`network port show -ipspace Cluster`
 
 +
 .顯示範例
@@ -373,9 +373,9 @@ node2
 4 entries were displayed.
 ----
 ====
-. 在兩個節點上、將叢集lifs clus1和clus2上的「-aut-revert」參數設為「假」：
+. 設定 `-auto-revert`參數 `false`在兩個節點上的叢集 LIF clus1 和 clus2 上：
 +
-網路介面修改
+`network interface modify`
 
 +
 .顯示範例
@@ -392,24 +392,24 @@ cluster::*> network interface modify -vserver node2 -lif clus2 -auto-revert fals
 ====
 +
 
-NOTE: 對於8.3版及更新版本、請使用下列命令：「network interface modify -vserver cluster -lIF *-auto-revert假」
+NOTE: 對於 8.3 及更高版本，請使用以下命令： `network interface modify -vserver Cluster -lif * -auto-revert false`
 
-. 驗證遠端叢集介面的連線能力：
+. 驗證遠端集群介面的連接性：
 
 
 [role="tabbed-block"]
 ====
-.更新版本ONTAP
+.ONTAP 9.9.1 及更高版本
 --
-您可以使用 `network interface check cluster-connectivity` 命令以啟動叢集連線的存取檢查、然後顯示詳細資料：
+你可以使用 `network interface check cluster-connectivity`執行命令以啟動叢集連接性檢查，然後顯示詳細資訊：
 
-`network interface check cluster-connectivity start` 和 `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`和 `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-* 注意： * 請等待數秒後再執行 `show`命令以顯示詳細資料。
+*注意：*運行程式前請等待幾秒鐘 `show`顯示詳細資訊的命令。
 
 [listing, subs="+quotes"]
 ----
@@ -425,9 +425,9 @@ node2
        3/5/2022 19:21:20 -06:00   node2_clus2      node1_clus2      none
 ----
 --
-.所有 ONTAP 版本
+.所有ONTAP版本
 --
-對於所有 ONTAP 版本、您也可以使用 `cluster ping-cluster -node <name>` 檢查連線能力的命令：
+對於所有ONTAP版本，您也可以使用 `cluster ping-cluster -node <name>`檢查連接性的命令：
 
 `cluster ping-cluster -node <name>`
 
@@ -460,15 +460,15 @@ RPC status:
 ----
 --
 ====
-. [[step10]] 將 clus1 移轉至每個節點主控台的連接埠 E2A ：
+. [[步驟10]] 將 clus1 遷移到每個節點控制台上的 e2a 連接埠：
 +
-網路介面移轉
+`network interface migrate`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示將clus1移轉至節點1和節點2上的連接埠E2A的程序：
+以下範例展示了將 clus1 遷移到節點 1 和節點 2 上的 e2a 連接埠的過程：
 
 [listing]
 ----
@@ -479,17 +479,17 @@ cluster::*> network interface migrate -vserver node2 -lif clus1 -source-node nod
 ====
 +
 
-NOTE: 對於8.3版及更新版本、請使用下列命令：「network interface mIGRADE -vserver cluster -lIF clus1 -dest-Node node1 -dest-port E2A」
+NOTE: 對於 8.3 及更高版本，請使用以下命令： `network interface migrate -vserver Cluster -lif clus1 -destination-node node1 -destination-port e2a`
 
-. 驗證移轉是否進行：
+. 確認遷移已完成：
 +
-「網路介面show -vserver叢集」
+`network interface show -vserver Cluster`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例驗證clus1是否已移轉至節點1和節點2上的連接埠E2A：
+以下範例驗證了 clus1 已遷移到 node1 和 node2 上的 e2a 連接埠：
 
 [listing]
 ----
@@ -508,15 +508,15 @@ node2
 4 entries were displayed.
 ----
 ====
-. 關閉兩個節點上的叢集連接埠e1a：
+. 關閉兩個節點上的叢集連接埠 e1a：
 +
-網路連接埠修改
+`network port modify`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例說明如何關閉節點1和節點2上的連接埠e1a：
+以下範例顯示如何關閉節點 1 和節點 2 上的 e1a 連接埠：
 
 [listing]
 ----
@@ -525,15 +525,15 @@ cluster::*> network port modify -node node1 -port e1a -up-admin false
 cluster::*> network port modify -node node2 -port e1a -up-admin false
 ----
 ====
-. 驗證連接埠狀態：
+. 請檢查連接埠狀態：
 +
-「網路連接埠展示」
+`network port show`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示節點1和節點2上的連接埠e1a為「自己的」：
+以下範例表示連接埠 e1a 是 `down`在節點 1 和節點 2 上：
 
 [listing]
 ----
@@ -552,17 +552,17 @@ node2
 4 entries were displayed.
 ----
 ====
-. 從節點1上的叢集連接埠e1a拔下纜線、然後使用CN1610交換器支援的適當纜線、將e1a連接至叢集交換器CS1上的連接埠1。
+. 斷開節點 1 上的叢集連接埠 e1a 的電纜，然後使用 CN1610 交換器支援的適當電纜將 e1a 連接到叢集交換器 cs1 上的連接埠 1。
 +
-。 link:https://hwu.netapp.com/Switch/Index["Hardware Universe"^] 包含纜線的詳細資訊。
+這link:https://hwu.netapp.com/Switch/Index["Hardware Universe"^]包含更多關於佈線的資訊。
 
-. 從節點2上的叢集連接埠e1a拔下纜線、然後使用CN1610交換器支援的適當纜線、將e1a連接至叢集交換器CS1上的連接埠2。
-. 在叢集交換器CS1上啟用所有面向節點的連接埠。
+. 斷開節點 2 上的叢集連接埠 e1a 的電纜，然後使用 CN1610 交換器支援的適當電纜將 e1a 連接到叢集交換器 cs1 上的連接埠 2。
+. 啟用叢集交換器 cs1 上所有面向節點的連接埠。
 +
 .顯示範例
 [%collapsible]
 ====
-下列範例顯示交換器CS1上已啟用連接埠1到12：
+以下範例顯示交換器 cs1 上的連接埠 1 到 12 已啟用：
 
 [listing]
 ----
@@ -574,15 +574,15 @@ node2
 (cs1)(Config)# exit
 ----
 ====
-. 在每個節點上啟用第一個叢集連接埠e1a：
+. 在每個節點上啟用第一個叢集連接埠 e1a：
 +
-網路連接埠修改
+`network port modify`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例說明如何在節點1和節點2上啟用連接埠e1a：
+以下範例展示如何在節點 1 和節點 2 上啟用連接埠 e1a：
 
 [listing]
 ----
@@ -591,15 +591,15 @@ cluster::*> network port modify -node node1 -port e1a -up-admin true
 cluster::*> network port modify -node node2 -port e1a -up-admin true
 ----
 ====
-. 確認所有的叢集連接埠都是 `up`：
+. 確認所有叢集連接埠都已啟用 `up`：
 +
-「網路連接埠show -IPSpace Cluster」
+`network port show -ipspace Cluster`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示節點1和節點2上的所有叢集連接埠均為「up」：
+以下範例顯示所有集群連接埠均為 `up`在節點 1 和節點 2 上：
 
 [listing]
 ----
@@ -618,15 +618,15 @@ node2
 4 entries were displayed.
 ----
 ====
-. 將兩個節點上的clus1（先前已移轉）還原為e1a：
+. 將兩個節點上的 clus1（之前已遷移）還原為 e1a：
 +
-網路介面回復
+`network interface revert`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例說明如何將clus1還原為節點1和節點2上的連接埠e1a：
+以下範例展示如何將節點 1 和節點 2 上的 clus1 還原到 e1a 連接埠：
 
 [listing]
 ----
@@ -637,17 +637,17 @@ cluster::*> network interface revert -vserver node2 -lif clus1
 ====
 +
 
-NOTE: 對於8.3版及更新版本、請使用下列命令：「network interface revert -vserver cluster -lIF <nodename_clus<N>>'
+NOTE: 對於 8.3 及更高版本，請使用以下命令： `network interface revert -vserver Cluster -lif <nodename_clus<N>>`
 
-. 驗證所有的叢集lifs是否都是 `up`、作業和顯示為 `true` 在「is Home」（原為首頁）欄中：
+. 確認所有集群 LIF 都已存在 `up`操作和顯示 `true`在「是否在家」一欄：
 +
-「網路介面show -vserver叢集」
+`network interface show -vserver Cluster`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示、節點1和節點2上的所有lifs均為「up」、且「is Home」欄位結果為「true」：
+以下範例顯示所有 LIF 都是 `up`在節點 1 和節點 2 上，「是否在家」列的結果是 `true`：
 
 [listing]
 ----
@@ -666,15 +666,15 @@ node2
 4 entries were displayed.
 ----
 ====
-. 顯示叢集中節點狀態的相關資訊：
+. 顯示叢集中節點的狀態資訊：
 +
-「叢集展示」
+`cluster show`
 
 +
 .顯示範例
 [%collapsible]
 ====
-下列範例顯示叢集中節點的健全狀況和資格資訊：
+以下範例顯示了叢集中節點的健康狀況和資格資訊：
 
 [listing]
 ----
@@ -686,15 +686,15 @@ node1                true    true          false
 node2                true    true          false
 ----
 ====
-. 將clus2移轉至每個節點主控台的連接埠e1a：
+. 在每個節點的控制台上將 clus2 遷移到 e1a 連接埠：
 +
-網路介面移轉
+`network interface migrate`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示將clus2移轉至節點1和節點2上的連接埠e1a的程序：
+以下範例展示了將 clus2 遷移到節點 1 和節點 2 上的 e1a 連接埠的過程：
 
 [listing]
 ----
@@ -705,17 +705,17 @@ cluster::*> network interface migrate -vserver node2 -lif clus2 -source-node nod
 ====
 +
 
-NOTE: 對於8.3版及更新版本、請使用下列命令：「network interface mIGRADE -vserver cluster -lIF node1_clus2 -dest-Node node1 -dest-port e1a」
+NOTE: 對於 8.3 及更高版本，請使用以下命令： `network interface migrate -vserver Cluster -lif node1_clus2 -dest-node node1 -dest-port e1a`
 
-. 驗證移轉是否進行：
+. 確認遷移已完成：
 +
-「網路介面show -vserver叢集」
+`network interface show -vserver Cluster`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例驗證clus2是否已移轉至節點1和節點2上的連接埠e1a：
+以下範例驗證了 clus2 已遷移到節點 1 和節點 2 上的 e1a 連接埠：
 
 [listing]
 ----
@@ -734,15 +734,15 @@ node2
 4 entries were displayed.
 ----
 ====
-. 關閉兩個節點上的叢集連接埠E2A：
+. 關閉兩個節點上的叢集連接埠 e2a：
 +
-網路連接埠修改
+`network port modify`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例說明如何關閉節點1和節點2上的連接埠E2A：
+以下範例顯示如何關閉節點 1 和節點 2 上的 e2a 連接埠：
 
 [listing]
 ----
@@ -751,15 +751,15 @@ cluster::*> network port modify -node node1 -port e2a -up-admin false
 cluster::*> network port modify -node node2 -port e2a -up-admin false
 ----
 ====
-. 驗證連接埠狀態：
+. 請檢查連接埠狀態：
 +
-「網路連接埠展示」
+`network port show`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示、節點1和節點2上的連接埠E2A是「自己」：
+以下範例表明連接埠 e2a 是 `down`在節點 1 和節點 2 上：
 
 [listing]
 ----
@@ -778,14 +778,14 @@ node2
 4 entries were displayed.
 ----
 ====
-. 從節點1上的叢集連接埠E2A拔下纜線、然後使用CN1610交換器所支援的適當纜線、將E2A連接至叢集交換器CS2上的連接埠1。
-. 從節點2上的叢集連接埠E2A拔下纜線、然後使用CN1610交換器所支援的適當纜線、將E2A連接至叢集交換器CS2上的連接埠2。
-. 在叢集交換器CS2上啟用所有面向節點的連接埠。
+. 斷開節點 1 上的叢集連接埠 e2a 的電纜，然後使用 CN1610 交換器支援的適當電纜將 e2a 連接到叢集交換器 cs2 上的連接埠 1。
+. 斷開節點 2 上的叢集連接埠 e2a 的電纜，然後使用 CN1610 交換器支援的適當電纜將 e2a 連接到叢集交換器 cs2 上的連接埠 2。
+. 啟用叢集交換器 cs2 上所有面向節點的連接埠。
 +
 .顯示範例
 [%collapsible]
 ====
-下列範例顯示交換器CS2上已啟用連接埠1到12：
+以下範例顯示交換器 cs2 上的連接埠 1 到 12 已啟用：
 
 [listing]
 ----
@@ -797,12 +797,12 @@ node2
 (cs2)(Config)# exit
 ----
 ====
-. 在每個節點上啟用第二個叢集連接埠E2A。
+. 在每個節點上啟用第二個叢集連接埠 e2a。
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例說明如何在節點1和節點2上啟用連接埠E2A：
+以下範例顯示如何在節點 1 和節點 2 上啟用連接埠 e2a：
 
 [listing]
 ----
@@ -811,15 +811,15 @@ cluster::*> network port modify -node node1 -port e2a -up-admin true
 cluster::*> network port modify -node node2 -port e2a -up-admin true
 ----
 ====
-. 確認所有的叢集連接埠都是 `up`：
+. 確認所有叢集連接埠都已啟用 `up`：
 +
-「網路連接埠show -IPSpace Cluster」
+`network port show -ipspace Cluster`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示節點1和節點2上的所有叢集連接埠均為「up」：
+以下範例顯示所有集群連接埠均為 `up`在節點 1 和節點 2 上：
 
 [listing]
 ----
@@ -838,15 +838,15 @@ node2
 4 entries were displayed.
 ----
 ====
-. 將兩個節點上的clus2（先前已移轉）還原為E2A：
+. 將兩個節點上的 clus2（之前已遷移）還原為 e2a：
 +
-網路介面回復
+`network interface revert`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例說明如何將clus2還原為節點1和節點2上的連接埠E2A：
+以下範例展示如何將節點 1 和節點 2 上的 clus2 還原到 e2a 連接埠：
 
 [listing]
 ----
@@ -857,23 +857,25 @@ cluster::*> network interface revert -vserver node2 -lif clus2
 ====
 +
 
-NOTE: 對於8.3版及更新版本、命令為：「cluster::*> network interface revert -vserver cluster -lIF node1_clus2」及「cluster:*> network interface revert -vserver cluster -lIF node2_clus2」
+NOTE: 對於 8.3 及更高版本，命令如下：
+`cluster::*> network interface revert -vserver Cluster -lif node1_clus2`和
+`cluster::*> network interface revert -vserver Cluster -lif node2_clus2`
 
 
 
 
 
-=== 步驟3：完成組態設定
+=== 步驟 3：完成配置
 
-. 確認所有介面均已顯示 `true` 在「is Home」（原為首頁）欄中：
+. 確認所有介面均顯示 `true`在「是否在家」一欄：
 +
-「網路介面show -vserver叢集」
+`network interface show -vserver Cluster`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示、節點1和節點2上的所有lifs均為「up」、且「is Home」欄位結果為「true」：
+以下範例顯示所有 LIF 都是 `up`在節點 1 和節點 2 上，「是否在家」列的結果是 `true`：
 
 [listing]
 ----
@@ -891,22 +893,22 @@ node2
              clus2      up/up      10.10.11.2/16      node2       e2a     true
 ----
 ====
-. 驗證遠端叢集介面的連線能力：
+. 驗證遠端集群介面的連接性：
 
 
 [role="tabbed-block"]
 ====
-.更新版本ONTAP
+.ONTAP 9.9.1 及更高版本
 --
-您可以使用 `network interface check cluster-connectivity` 命令以啟動叢集連線的存取檢查、然後顯示詳細資料：
+你可以使用 `network interface check cluster-connectivity`執行命令以啟動叢集連接性檢查，然後顯示詳細資訊：
 
-`network interface check cluster-connectivity start` 和 `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`和 `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-* 注意： * 請等待數秒後再執行 `show`命令以顯示詳細資料。
+*注意：*運行程式前請等待幾秒鐘 `show`顯示詳細資訊的命令。
 
 [listing, subs="+quotes"]
 ----
@@ -922,9 +924,9 @@ node2
        3/5/2022 19:21:20 -06:00   node2_clus2      node1_clus2      none
 ----
 --
-.所有 ONTAP 版本
+.所有ONTAP版本
 --
-對於所有 ONTAP 版本、您也可以使用 `cluster ping-cluster -node <name>` 檢查連線能力的命令：
+對於所有ONTAP版本，您也可以使用 `cluster ping-cluster -node <name>`檢查連接性的命令：
 
 `cluster ping-cluster -node <name>`
 
@@ -957,15 +959,15 @@ RPC status:
 ----
 --
 ====
-. [[step3]] 確認兩個節點都有兩個連線至每個交換器：
+. 步驟3：驗證兩個節點是否都與每個交換器有兩個連接：
 +
-「我的鄰居」
+`show isdp neighbors`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示兩個交換器的適當結果：
+以下範例顯示了兩種開關的正確結果：
 
 [listing]
 ----
@@ -995,11 +997,11 @@ cs1                    0/15         11        S            CN1610    0/15
 cs1                    0/16         11        S            CN1610    0/16
 ----
 ====
-. 顯示組態中裝置的相關資訊：
+. 顯示配置中設備的資訊：
 +
 `network device discovery show`
 
-. 使用進階權限命令、停用兩個節點上的無交換器組態設定：
+. 使用進階權限命令停用兩個節點上的雙節點無交換器配置設定：
 +
 `network options detect-switchless modify`
 
@@ -1007,7 +1009,7 @@ cs1                    0/16         11        S            CN1610    0/16
 .顯示範例
 [%collapsible]
 ====
-下列範例顯示如何停用無交換器組態設定：
+以下範例展示如何停用無開關配置設定：
 
 [listing]
 ----
@@ -1017,17 +1019,17 @@ cluster::*> network options detect-switchless modify -enabled false
 ====
 +
 
-NOTE: 若為9.2版及更新版本、請跳過此步驟、因為組態會自動轉換。
+NOTE: 對於 9.2 及更高版本，請跳過此步驟，因為設定會自動轉換。
 
-. 確認設定已停用：
+. 請確認這些設定已停用：
 +
-「網路選項偵測無交換器叢集顯示」
+`network options detect-switchless-cluster show`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例中的「假」輸出顯示組態設定已停用：
+這 `false`以下範例的輸出表示組態設定已停用：
 
 [listing]
 ----
@@ -1038,9 +1040,9 @@ Enable Switchless Cluster Detection: false
 ====
 +
 
-NOTE: 對於9.2版及更新版本、請等待「啟用無交換器叢集」設定為假。這可能需要三分鐘的時間。
+NOTE: 對於 9.2 及更高版本，請等待 `Enable Switchless Cluster`設定為 false。這可能需要長達三分鐘的時間。
 
-. 將叢集clus1和clus2設定為在每個節點上自動還原並確認。
+. 配置叢集 clus1 和 clus2 在每個節點上自動回滾，並確認。
 +
 .顯示範例
 [%collapsible]
@@ -1056,17 +1058,17 @@ cluster::*> network interface modify -vserver node2 -lif clus2 -auto-revert true
 ====
 +
 
-NOTE: 對於8.3版及更新版本、請使用下列命令：「network interface modify -vserver cluster -lIF *-auta-f還原true」、以在叢集中的所有節點上啟用自動還原功能。
+NOTE: 對於 8.3 及更高版本，請使用以下命令： `network interface modify -vserver Cluster -lif * -auto-revert true`啟用叢集中所有節點的自動回滾功能。
 
 . 驗證叢集中節點成員的狀態：
 +
-「叢集展示」
+`cluster show`
 
 +
 .顯示範例
 [%collapsible]
 ====
-下列範例顯示叢集中節點的健全狀況和資格資訊：
+以下範例顯示了叢集中節點的健康狀況和資格資訊：
 
 [listing]
 ----
@@ -1078,9 +1080,9 @@ node1                true    true          false
 node2                true    true          false
 ----
 ====
-. 如果您禁止自動建立個案、請叫用AutoSupport 下列消息來重新啟用此功能：
+. 如果您已停用自動建立案例功能，請透過呼叫AutoSupport訊息重新啟用該功能：
 +
-「系統節點AutoSupport 不完整地叫用節點*-type all -most MAn=end」
+`system node autosupport invoke -node * -type all -message MAINT=END`
 
 +
 .顯示範例
@@ -1091,8 +1093,8 @@ node2                true    true          false
 cluster::*> system node autosupport invoke -node * -type all -message MAINT=END
 ----
 ====
-. 將權限層級變更回管理：
+. 將權限等級改回管理員：
 +
-「et -priv. admin」
+`set -privilege admin`
 
 

@@ -2,16 +2,16 @@
 permalink: switch-bes-53248/configure-ssh.html 
 sidebar: sidebar 
 keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, bes, enable ssh on bes-53248 cluster switches - bes-53248 switches 
-summary: 使用叢集交換器健全狀況監視器（CSHM\）和記錄收集功能時、必須使用SSH。若要在BSe-53248叢集交換器上啟用SSH、您必須先產生SSH金鑰、然後再啟用SSH。 
+summary: '使用群集交換器健康監視器 (CSHM) 和日誌收集功能時需要 SSH。若要在 BES-53248 叢集交換器上啟用 SSH，首先需要產生 SSH 金鑰，然後再啟用 SSH。' 
 ---
-= 在BS-53248叢集交換器上啟用SSH
+= 在 BES-53248 叢集交換器上啟用 SSH
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-如果您使用乙太網路交換器健全狀況監視器（ CSHM ）和記錄收集功能、則必須產生 SSH 金鑰、然後在叢集交換器上啟用 SSH 。
+如果您正在使用乙太網路交換器健康監視器 (CSHM) 和日誌收集功能，則必須產生 SSH 金鑰，然後在叢集交換器上啟用 SSH。
 
 .步驟
 . 確認 SSH 已停用：
@@ -41,7 +41,7 @@ SCP server Administrative Mode: ............... Disabled
 ----
 ====
 +
-** 如果 SSH 未停用，請按如下方式停用它：
+** 如果 SSH 未停用，請依下列步驟停用：
 +
 `no ip ssh server enable`
 
@@ -58,7 +58,7 @@ SCP server Administrative Mode: ............... Disabled
 ====
 +
 
-WARNING: 修改金鑰之前請確保已停用 SSH，否則交換器上會報告警告。
+WARNING: 修改金鑰前請務必停用 SSH，否則交換器上會發出警告。
 
 
 
@@ -117,7 +117,7 @@ Do you want to overwrite the existing ECDSA keys? (y/n): *y*
 ====
 . 將這些變更儲存到啟動配置：
 +
-寫入記憶體
+`write memory`
 
 +
 .顯示範例
@@ -136,10 +136,10 @@ Config file 'startup-config' created successfully.
 Configuration Saved!
 ----
 ====
-. 加密 SSH 金鑰（僅適用於 * FIPS 模式 * ）：
+. 對 SSH 金鑰進行加密（僅限 *FIPS 模式*）：
 +
 
-CAUTION: 在 FIPS 模式中、金鑰必須使用密碼來加密、以確保安全。如果沒有加密金鑰、應用程式就無法啟動。使用下列命令建立和加密金鑰：
+CAUTION: 在 FIPS 模式下，為了安全起見，金鑰需要使用密碼短語進行加密。如果沒有加密金鑰，應用程式將無法啟動。使用以下命令建立和加密金鑰：
 
 +
 .顯示範例
@@ -184,11 +184,11 @@ Config file 'startup-config' created successfully.
 Configuration Saved!
 ----
 ====
-. 重新啟動交換器：
+. 重啟交換器：
 +
-"重裝"
+`reload`
 
-. 確認SSH已啟用：
+. 確認 SSH 已啟用：
 +
 `show ip ssh`
 
@@ -216,5 +216,5 @@ SCP server Administrative Mode: ............... Enabled
 ====
 
 
-.接下來呢？
+.下一步是什麼？
 啟用 SSH 後，您可以 link:../switch-cshm/config-overview.html["配置交換器健康監控"]。

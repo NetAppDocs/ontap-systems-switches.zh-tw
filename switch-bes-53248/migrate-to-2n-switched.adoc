@@ -2,123 +2,123 @@
 permalink: switch-bes-53248/migrate-to-2n-switched.html 
 sidebar: sidebar 
 keywords: two-node switchless clusters, migrating to a two-node switched BES-53248 cluster environment,BES-53248 switches, migrating two-node switched clusters,2-node 
-summary: 如果您有雙節點無交換式叢集、則可在不中斷營運的情況下、移轉至雙節點交換式叢集、其中包含Broadcom支援的BS-53248叢集交換器 
+summary: 如果您有一個雙節點無交換器集群，您可以無中斷地遷移到包含博通支援的 BES-53248 集群交換器的雙節點有交換器集群。 
 ---
-= 移轉至交換式NetApp叢集環境
+= 遷移到交換式NetApp叢集環境
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-如果您現有的雙節點_無交換器_叢集環境、則可以使用Broadcom支援的BS-53248叢集交換器、移轉至雙節點_交換式_叢集環境、使您能夠擴充至叢集中的兩個節點之外。
+如果您已經擁有一個雙節點無交換器叢集環境，則可以使用博通支援的 BES-53248 叢集交換器遷移到雙節點有交換器叢集環境，從而使叢集能夠擴展到兩個以上的節點。
 
-移轉程序適用於使用光纖或雙軸纜線連接埠的所有叢集節點連接埠、但如果節點使用內建10GBASE-T RJ45連接埠作為叢集網路連接埠、則此交換器不支援此程序。
+遷移過程適用於所有使用光纖或 Twinax 連接埠的叢集節點端口，但如果節點使用板載 10GBASE-T RJ45 連接埠作為叢集網路端口，則此交換器不支援此遷移過程。
 
 
 
-== 檢閱要求
+== 審查要求
 
-檢閱叢集環境的下列需求。
+請查看以下叢集環境要求。
 
-* 請注意、大多數系統在每個控制器上都需要兩個專用的叢集網路連接埠。
-* 請確定已依照中所述設定BS-53248叢集交換器 link:replace-switch-reqs.html["更換需求"] 開始此移轉程序之前。
-* 對於雙節點無交換器組態、請確定：
+* 請注意，大多數系統需要在每個控制器上設定兩個專用的叢集網路連接埠。
+* 請確保按照說明設定 BES-53248 集群開關。link:replace-switch-reqs.html["替換要求"]在開始遷移過程之前。
+* 對於雙節點無交換器配置，請確保：
 +
-** 雙節點無交換器組態已正確設定並正常運作。
-** 節點執行ONTAP 的是功能不全的9.5P8及更新版本。支援40/100 GbE叢集連接埠、從EFOS韌體版本3.4.4.6及更新版本開始。
-** 所有叢集連接埠都處於* up*狀態。
-** 所有叢集邏輯介面（LIF）都處於* up*狀態、並位於其主連接埠上。
+** 雙節點無交換器配置已正確設定並運作正常。
+** 這些節點運行的是ONTAP 9.5P8 及更高版本。從 EFOS 韌體版本 3.4.4.6 及更高版本開始支援 40/100 GbE 叢集連接埠。
+** 叢集所有連接埠均處於*開啟*狀態。
+** 所有群集邏輯介面（LIF）均處於 *up* 狀態，並位於其主連接埠上。
 
 
-* 對於Broadcom支援的BS-53248叢集交換器組態、請確定：
+* 對於博通支援的 BES-53248 叢集交換器配置，請確保：
 +
-** BS-53248叢集交換器可在兩個交換器上完全正常運作。
-** 兩台交換器都有管理網路連線功能。
-** 有對叢集交換器的主控台存取權。
-** BS-53248節點對節點交換器和交換器對交換器連線使用雙軸纜線或光纖纜線。
+** 兩台交換器上的 BES-53248 群集開關功能完全正常。
+** 兩台交換器都具備管理網路連線功能。
+** 可以透過控制台存取叢集交換器。
+** BES-53248 節點到節點交換器和交換器到交換器的連接使用 Twinax 或光纖電纜。
 +
-。 https://hwu.netapp.com/Home/Index["_NetApp Hardware Universe SUR__"^] 包含ONTAP 有關支援功能的資訊、支援的EFOS韌體、以及連接至B作業 環境與53248交換器的纜線。
+這 https://hwu.netapp.com/Home/Index["NetApp硬體世界"^]包含有關ONTAP相容性、支援的 EFOS 韌體以及與 BES-53248 交換器的佈線的資訊。
 
 
 
-* 交換器間連結（ISL）纜線連接至BS-53248交換器上的連接埠0/55和0/56。
-* 兩個BS-53248交換器的初始自訂已完成、因此：
+* 交換器間連結 (ISL) 電纜連接到兩個 BES-53248 交換器上的連接埠 0/55 和 0/56。
+* 兩台 BES-53248 交換器的初始客製化工作已完成，具體如下：
 +
-** BS-53248交換器正在執行最新版本的軟體。
-** 如果購買的是BS-53248交換器、則會安裝選用的連接埠授權。
-** 參考組態檔（RCT）會套用至交換器。
+** BES-53248 交換器運作的是最新版本的軟體。
+** BES-53248 交換器如果購買，則已安裝選用連接埠許可證。
+** 參考設定檔（RCF）應用於交換器。
 
 
-* 新交換器上會設定任何站台自訂（SMTP、SNMP和SSH）。
+* 所有站點自訂（SMTP、SNMP 和 SSH）均在新交換器上設定。
 
 
-.連接埠群組速度限制
-* 48 個 10/25GbE （ SFP28/SFP+ ）連接埠合併為 12 個 4 埠群組、如下所示：連接埠 1-4 、 5-8 、 9-12 、 13-16 、 17-20 、 21-24 、 25-28 、 29-32 、 33-36 、 37-40 、 41-44 和 45-48 。
-* 在4埠群組的所有連接埠之間、SFP28/SFP+連接埠速度必須相同（10GbE或25GbE）。
-* 如果 4 埠群組中的速度不同、交換器連接埠將無法正常運作。
+.連接埠組速度限制
+* 48 個 10/25GbE (SFP28/SFP+) 連接埠組合成 12 個 4 埠組，如下：連接埠 1-4、5-8、9-12、13-16、17-20、21-24、25-28、29-32、33-36、37、4-132、47-413
+* 4 連接埠組中所有連接埠的 SFP28/SFP+ 連接埠速度必須相同（10GbE 或 25GbE）。
+* 如果 4 個連接埠群組中的速度不同，交換器連接埠將無法正常運作。
 
 
 
 
-== 移轉至叢集環境
+== 遷移到叢集環境
 
 .關於範例
-本程序中的範例使用下列叢集交換器和節點命名法：
+本流程中的範例使用下列叢集交換器和節點命名規則：
 
-* BS-53248交換器的名稱為「CS1」和「CS2」。
-* 叢集SVM的名稱為「node1」和「node2」。
-* lifs的名稱分別是節點1上的「node1_clus1」和「node1_clus2」、節點2上的「node2_clus1」和「node2_clus2」。
-* 「cluster1：*：>」提示會指出叢集的名稱。
-* 此程序中使用的叢集連接埠為「e0a」和「e0b」。
+* BES-53248交換器的名稱是 `cs1`和 `cs2`。
+* 聚類SVM的名稱是 `node1`和 `node2`。
+* LIF的名稱是 `node1_clus1`和 `node1_clus2`在節點 1 上，並且 `node2_clus1`和 `node2_clus2`分別在節點 2 上。
+* 這 `cluster1::*>`prompt 指示叢集名稱。
+* 此過程中使用的集群連接埠為： `e0a`和 `e0b`。
 +
-。 https://hwu.netapp.com/Home/Index["_NetApp Hardware Universe SUR__"^] 包含平台實際叢集連接埠的最新資訊。
+這 https://hwu.netapp.com/Home/Index["NetApp硬體世界"^]包含您平台實際集群連接埠的最新資訊。
 
 
 
 
 
-=== 步驟1：準備移轉
+=== 步驟 1：準備遷移
 
-. 如果AutoSupport 此叢集啟用了「支援」功能、請叫用AutoSupport 下列訊息來禁止自動建立案例：
+. 如果此叢集上啟用了AutoSupport ，則透過呼叫AutoSupport訊息來抑制自動建立案例：
 +
-「系統節點AutoSupport 不完整地叫用節點*-type all -Message MAn=xh」
-
-+
-其中x是維護時段的持續時間（以小時為單位）。
+`system node autosupport invoke -node * -type all -message MAINT=xh`
 
 +
-
-NOTE: 此資訊可通知技術支援人員執行此維護工作、以便在維護期間抑制自動建立案例。AutoSupport
+其中 x 為維護窗口的持續時間（小時）。
 
 +
-下列命令會禁止自動建立兩小時的個案：
+
+NOTE: AutoSupport訊息會通知技術支援此維護任務，以便在維護視窗期間抑制自動建立案例。
+
++
+以下命令可抑制自動建立案件兩小時：
 
 +
 [listing]
 ----
 cluster1::*> system node autosupport invoke -node * -type all -message MAINT=2h
 ----
-. 將權限等級變更為進階、並在系統提示您繼續時輸入* y*：
+. 將權限級別變更為高級，並在提示繼續時輸入 *y*：
 +
-"進階權限"
-
-+
-出現進階提示（「*>」）。
-
-
-
-
-
-=== 步驟2：設定連接埠和纜線
-
-. 在新的叢集交換器CS1 *和* CS2上停用所有啟動的面向節點的連接埠（非ISL連接埠）。
-+
-
-NOTE: 您不得停用ISL連接埠。
+`set -privilege advanced`
 
 +
-以下範例顯示、交換器CS1上的節點對向連接埠1至16已停用：
+進階提示(`*>`出現。
+
+
+
+
+
+=== 步驟二：設定埠和線纜
+
+. 停用新叢集交換器 cs1 *和* cs2 上所有已啟動的面向節點的連接埠（不是 ISL 連接埠）。
++
+
+NOTE: 您不得禁用 ISL 連接埠。
+
++
+以下範例顯示交換器 cs1 上面向節點的連接埠 1 到 16 已停用：
 
 +
 [listing, subs="+quotes"]
@@ -129,15 +129,15 @@ NOTE: 您不得停用ISL連接埠。
 (cs1)(Interface 0/1-0/16)# *exit*
 (cs1)(Config)# *exit*
 ----
-. 確認兩台 BS-53248 交換器 CS1 和 CS2 之間的 ISL 和 ISL 上的實體連接埠已啟動：
+. 確認兩台 BES-53248 交換器 cs1 和 cs2 之間的 ISL 以及 ISL 上的實體連接埠均已啟動：
 +
-「How port-channel」
+`show port-channel`
 
 +
 .顯示範例
 [%collapsible]
 ====
-下列範例顯示交換器CS1上的ISL連接埠已開啟：
+以下範例表示交換器 cs1 上的 ISL 連接埠已啟動：
 
 [listing, subs="+quotes"]
 ----
@@ -160,7 +160,7 @@ Ports  Timeout       Speed      Active
        partner/long
 (cs1) #
 ----
-下列範例顯示交換器CS2上的ISL連接埠已開啟：
+以下範例表示交換器 cs2 上的 ISL 連接埠已啟動：
 
 [listing, subs="+quotes"]
 ----
@@ -183,18 +183,18 @@ Ports  Timeout       Speed      Active
        partner/long
 ----
 ====
-. 顯示鄰近裝置的清單：
+. 顯示相鄰設備清單：
 +
-「我的鄰居」
+`show isdp neighbors`
 
 +
-此命令提供有關連線至系統之裝置的資訊。
+此命令提供有關連接到系統的設備的資訊。
 
 +
 .顯示範例
 [%collapsible]
 ====
-下列範例列出交換器CS1上的鄰近裝置：
+以下範例列出了交換器 cs1 上的相鄰設備：
 
 [listing, subs="+quotes"]
 ----
@@ -207,7 +207,7 @@ Device ID      Intf     Holdtime  Capability   Platform    Port ID
 cs2            0/55     176       R            BES-53248   0/55
 cs2            0/56     176       R            BES-53248   0/56
 ----
-下列範例列出交換器CS2上的鄰近裝置：
+以下範例列出了交換器 cs2 上的相鄰設備：
 
 [listing, subs="+quotes"]
 ----
@@ -221,9 +221,9 @@ cs2            0/55     176       R            BES-53248   0/55
 cs2            0/56     176       R            BES-53248   0/56
 ----
 ====
-. 驗證所有叢集連接埠是否正常運作：
+. 請確認叢集所有連接埠均已啟動：
 +
-「網路連接埠show -IPSpace Cluster」
+`network port show -ipspace Cluster`
 
 +
 .顯示範例
@@ -250,9 +250,9 @@ e0a       Cluster      Cluster          up   9000  auto/10000 healthy
 e0b       Cluster      Cluster          up   9000  auto/10000 healthy
 ----
 ====
-. 驗證所有叢集生命體是否正常運作：
+. 確認所有叢集 LIF 都已啟動並正常運作：
 +
-「網路介面show -vserver叢集」
+`network interface show -vserver Cluster`
 
 +
 .顯示範例
@@ -272,20 +272,20 @@ Cluster
             node2_clus2  up/up      169.254.19.183/16  node2         e0b     true
 ----
 ====
-. 停用叢集生命體上的自動還原。
+. 停用群集 LIF 的自動回滾功能。
 +
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert false*
 ----
-. 從節點1上的叢集連接埠e0a拔下纜線、然後使用BES-53248交換器支援的適當纜線、將e0a連接至叢集交換器CS1上的連接埠1。
+. 斷開節點 1 上的叢集連接埠 e0a 的電纜，然後使用 BES-53248 交換器支援的適當電纜將 e0a 連接到叢集交換器 cs1 上的連接埠 1。
 +
-。 https://hwu.netapp.com/Home/Index["_NetApp Hardware Universe SUR__"^] 包含纜線的詳細資訊。
+這 https://hwu.netapp.com/Home/Index["NetApp硬體世界"^]包含更多關於佈線的資訊。
 
-. 從節點2上的叢集連接埠e0a拔下纜線、然後使用BES-53248交換器支援的適當纜線、將e0a連接至叢集交換器CS1上的連接埠2。
-. 在叢集交換器CS1上啟用所有面向節點的連接埠。
+. 斷開節點 2 上的叢集連接埠 e0a 的電纜，然後使用 BES-53248 交換器支援的適當電纜將 e0a 連接到叢集交換器 cs1 上的連接埠 2。
+. 啟用叢集交換器 cs1 上所有面向節點的連接埠。
 +
-下列範例顯示交換器CS1上已啟用連接埠1到16：
+以下範例顯示交換器 cs1 上的連接埠 1 到 16 已啟用：
 
 +
 [listing, subs="+quotes"]
@@ -296,9 +296,9 @@ cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert fals
 (cs1)(Interface 0/1-0/16)# *exit*
 (cs1)(Config)# *exit*
 ----
-. 驗證所有叢集連接埠是否正常運作：
+. 請確認叢集所有連接埠均已啟動：
 +
-「網路連接埠show -IPSpace Cluster」
+`network port show -ipspace Cluster`
 
 +
 .顯示範例
@@ -325,9 +325,9 @@ e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
 e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
 ----
 ====
-. 驗證所有叢集生命體是否正常運作：
+. 確認所有叢集 LIF 都已啟動並正常運作：
 +
-「網路介面show -vserver叢集」
+`network interface show -vserver Cluster`
 
 +
 .顯示範例
@@ -347,15 +347,15 @@ Cluster
          node2_clus2  up/up      169.254.19.183/16  node2       e0b     true
 ----
 ====
-. 顯示叢集中節點狀態的相關資訊：
+. 顯示叢集中節點的狀態資訊：
 +
-「叢集展示」
+`cluster show`
 
 +
 .顯示範例
 [%collapsible]
 ====
-下列範例顯示叢集中節點的健全狀況和資格資訊：
+以下範例顯示了叢集中節點的健康狀況和資格資訊：
 
 [listing, subs="+quotes"]
 ----
@@ -367,11 +367,11 @@ node1                true    true          false
 node2                true    true          false
 ----
 ====
-. 從節點1上的叢集連接埠e0b拔下纜線、然後使用BES-53248交換器支援的適當纜線、將e0b連接至叢集交換器CS2上的連接埠1。
-. 從節點2上的叢集連接埠e0b拔下纜線、然後使用BES-53248交換器支援的適當纜線、將e0b連接至叢集交換器CS2上的連接埠2。
-. 在叢集交換器CS2上啟用所有面向節點的連接埠。
+. 斷開節點 1 上的叢集連接埠 e0b 的電纜，然後使用 BES-53248 交換器支援的適當電纜將 e0b 連接到叢集交換器 cs2 上的連接埠 1。
+. 斷開節點 2 上的叢集連接埠 e0b 的電纜，然後使用 BES-53248 交換器支援的適當電纜將 e0b 連接到叢集交換器 cs2 上的連接埠 2。
+. 啟用叢集交換器 cs2 上所有面向節點的連接埠。
 +
-下列範例顯示交換器CS2上已啟用連接埠1到16：
+以下範例顯示交換器 cs2 上的連接埠 1 到 16 已啟用：
 
 +
 [listing, subs="+quotes"]
@@ -382,9 +382,9 @@ node2                true    true          false
 (cs2)(Interface 0/1-0/16)# *exit*
 (cs2)(Config)# *exit*
 ----
-. 驗證所有叢集連接埠是否正常運作：
+. 請確認叢集所有連接埠均已啟動：
 +
-「網路連接埠show -IPSpace Cluster」
+`network port show -ipspace Cluster`
 
 +
 .顯示範例
@@ -415,31 +415,31 @@ e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
 
 
 
-=== 步驟3：驗證組態
+=== 步驟 3：驗證配置
 
-. 在叢集生命體上啟用自動還原。
+. 啟用叢集 LIF 的自動回滾功能。
 +
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert true*
 ----
-. 驗證叢集生命區是否已還原至其主連接埠（這可能需要一分鐘時間）：
+. 驗證叢集 LIF 是否已恢復到其原始連接埠（這可能需要一分鐘）：
 +
-「網路介面show -vserver叢集」
+`network interface show -vserver Cluster`
 
 +
-如果叢集l生命 尚未還原至其主連接埠、請手動還原它們：
+如果叢集 LIF 尚未恢復到其主端口，請手動恢復它們：
 
 +
-「網路介面回復-vserver叢集-lIF *」
+`network interface revert -vserver Cluster -lif *`
 
-. 驗證所有介面是否都顯示「true」表示「is Home」：
+. 確認所有介面均顯示 `true`為了 `Is Home`：
 +
-「網路介面show -vserver叢集」
+`network interface show -vserver Cluster`
 
 +
 
-NOTE: 這可能需要幾分鐘的時間才能完成。
+NOTE: 這可能需要幾分鐘才能完成。
 
 +
 .顯示範例
@@ -459,15 +459,15 @@ Cluster
           node2_clus2  up/up      169.254.19.183/16  node2      e0b     true
 ----
 ====
-. 驗證兩個節點各自與每個交換器都有一個連線：
+. 確認兩個節點都分別與每個交換器建立了一個連線：
 +
-「我的鄰居」
+`show isdp neighbors`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示兩個交換器的適當結果：
+以下範例顯示了兩種開關的正確結果：
 
 [listing, subs="+quotes"]
 ----
@@ -495,9 +495,9 @@ cs1            0/55         175       R            BES-53248   0/55
 cs1            0/56         175       R            BES-53248   0/56
 ----
 ====
-. 顯示叢集中探索到的網路裝置相關資訊：
+. 顯示集群中已發現的網路設備資訊：
 +
-「network device-dDiscovery show -protocol cup」
+`network device-discovery show -protocol cdp`
 
 +
 .顯示範例
@@ -517,16 +517,16 @@ node1      /cdp
             e0b    cs2                       0/1               BES-53248
 ----
 ====
-. 確認設定已停用：
+. 請確認這些設定已停用：
 +
-「網路選項、無交換式叢集展示」
+`network options switchless-cluster show`
 
 +
 
-NOTE: 命令可能需要幾分鐘的時間才能完成。等待「3分鐘壽命即將到期」公告。
+NOTE: 命令可能需要幾分鐘才能完成。等待「3分鐘生命即將結束」的公告。
 
 +
-以下範例中的「假」輸出顯示組態設定已停用：
+這 `false`以下範例的輸出表示組態設定已停用：
 
 +
 [listing, subs="+quotes"]
@@ -536,13 +536,13 @@ Enable Switchless Cluster: false
 ----
 . 驗證叢集中節點成員的狀態：
 +
-「叢集展示」
+`cluster show`
 
 +
 .顯示範例
 [%collapsible]
 ====
-下列範例顯示叢集中節點的健全狀況和資格資訊：
+以下範例顯示了叢集中節點的健康狀況和資格資訊：
 
 [listing, subs="+quotes"]
 ----
@@ -554,22 +554,22 @@ node1                true    true          false
 node2                true    true          false
 ----
 ====
-. 驗證遠端叢集介面的連線能力：
+. 驗證遠端集群介面的連接性：
 
 
 [role="tabbed-block"]
 ====
-.更新版本ONTAP
+.ONTAP 9.9.1 及更高版本
 --
-您可以使用 `network interface check cluster-connectivity` 命令以啟動叢集連線的存取檢查、然後顯示詳細資料：
+你可以使用 `network interface check cluster-connectivity`執行命令以啟動叢集連接性檢查，然後顯示詳細資訊：
 
-`network interface check cluster-connectivity start` 和 `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`和 `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-* 注意： * 請等待數秒後再執行 `show`命令以顯示詳細資料。
+*注意：*運行程式前請等待幾秒鐘 `show`顯示詳細資訊的命令。
 
 [listing, subs="+quotes"]
 ----
@@ -586,9 +586,9 @@ node2
        3/5/2022 19:21:20 -06:00   node2_clus2      node1_clus2      none
 ----
 --
-.所有 ONTAP 版本
+.所有ONTAP版本
 --
-對於所有 ONTAP 版本、您也可以使用 `cluster ping-cluster -node <name>` 檢查連線能力的命令：
+對於所有ONTAP版本，您也可以使用 `cluster ping-cluster -node <name>`檢查連接性的命令：
 
 `cluster ping-cluster -node <name>`
 
@@ -620,13 +620,13 @@ RPC status:
 ----
 --
 ====
-. [[step9]將權限層級改回管理：
+. 步驟9：將權限等級改回管理員：
 +
-「et -priv. admin」
+`set -privilege admin`
 
-. 如果您禁止自動建立個案、請叫用AutoSupport 下列消息來重新啟用此功能：
+. 如果您已停用自動建立案例功能，請透過呼叫AutoSupport訊息重新啟用該功能：
 +
-「系統節點AutoSupport 不完整地叫用節點*-type all -most MAn=end」
+`system node autosupport invoke -node * -type all -message MAINT=END`
 
 +
 .顯示範例
@@ -638,9 +638,9 @@ cluster1::*> system node autosupport invoke -node * -type all -message MAINT=END
 ----
 ====
 +
-如需詳細資訊、請參閱： https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/How_to_suppress_automatic_case_creation_during_scheduled_maintenance_windows["NetApp知識庫文章：如何在排定的維護時間內禁止自動建立案例"^]
+更多資訊請見： https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/How_to_suppress_automatic_case_creation_during_scheduled_maintenance_windows["NetApp知識庫文章：如何在規劃維護視窗期間禁止自動建立案例"^]
 
 
 
-.接下來呢？
+.下一步是什麼？
 交換器遷移完成後，您可以… link:../switch-cshm/config-overview.html["配置交換器健康監控"]。

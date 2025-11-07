@@ -2,24 +2,24 @@
 sidebar: sidebar 
 permalink: whats-new.html 
 keywords: new, switches, fas, aff systems 
-summary: 深入瞭解FAS 適用於整個系統的全新交換器AFF 。 
+summary: 了解FAS和AFF系統的新型交換器。 
 ---
-= 交換器的新功能
+= 交換器有什麼新變化
 :allow-uri-read: 
 :icons: font
 :imagesdir: ./media/
 
 
 [role="lead"]
-深入瞭解FAS 適用於整個系統的全新交換器AFF 。如需交換器的其他資訊，請參閱 https://hwu.netapp.com/Switch/Index["NetApp Hardware Universe"^]。
+了解FAS和AFF系統的新型交換器。有關交換機的更多信息，請參閱 https://hwu.netapp.com/Switch/Index["NetAppHardware Universe"^]。
 
 
 
-== 新交換器支援
+== 新交換器支持
 
 [cols="25h,~,~"]
 |===
-| 交換器 | 說明 | 可用的開始 
+| 開關 | 描述 | 可開始 
 
 
  a| 
@@ -45,7 +45,7 @@ ONTAP 9.17.1
  a| 
 支援 10/25/40/100GbE 叢集配置和 100GbE 儲存（交換器連接儲存）配置。
  a| 
-ONTAP 9.10.1.
+ONTAP 9.10.1
 
 
 
@@ -54,57 +54,57 @@ ONTAP 9.10.1.
  a| 
 支援 10/25/40/100GbE 叢集配置和 100GbE 儲存（交換器連接儲存）配置。
  a| 
-ONTAP 9.10.1.
+ONTAP 9.10.1
 
 
 
  a| 
-16 埠 100GbE NVIDIA 交換器（ X190006-PE 和 X190006-PI ）
+16埠100GbE NVIDIA交換器（X190006-PE和X190006-PI）
  a| 
-NVIDIA SN2100 叢集互連交換器與儲存交換器支援、包括支援 MetroCluster IP 組態。
+支援NVIDIA SN2100 叢集互連交換器和儲存交換機，包括支援MetroCluster IP 配置。
  a| 
-ONTAP 9.10.1.
+ONTAP 9.10.1
 
 
 
  a| 
-36 埠 100GbE Cisco 交換器（ X190200-CS-PE 和 X190200-CS-PI ）
+36埠100GbECisco交換器（X190200-CS-PE和X190200-CS-PI）
  a| 
-在同一組Cisco Nexus 9336C-FX2交換器上支援共享基礎架構（叢集、HA和交換器附加儲存設備）、包括支援MetroCluster 不支援任何IP組態。
+支援在同一對Cisco Nexus 9336C-FX2 交換器上共用基礎架構（叢集、HA 和交換器附加儲存），包括對MetroCluster IP 配置的支援。
  a| 
-部分9.9.1 ONTAP
+ONTAP 9.9.1
 
 
 
  a| 
-36 埠 100GbE Cisco 交換器（ X190200-CS-PE 和 X190200-CS-PI ）、（ X190210-FE-PE 和 X190210-FE-PI ）
+36埠100GbECisco交換器（X190200-CS-PE和X190200-CS-PI），（X190210-FE-PE和X190210-FE-PI）
  a| 
-Cisco Nexus 9336C-FX2 叢集互連交換器和儲存交換器支援 AFF 和 ASA 儲存系統、也支援前端資料連線。
+Cisco Nexus 9336C-FX2 叢集互連交換器和儲存交換器支援AFF和ASA儲存系統，以及前端資料連線。
  a| 
-部分9.8 ONTAP
+ONTAP 9.8
 
 
 
  a| 
-Broadcom BCS-53248交換器（X190005和X190005R）
+博通 BES-53248 交換器（X190005 和 X190005R）
  a| 
-Broadcom BS-53248 叢集互連交換器支援配備 10/25GbE 和 40/100GbE 連接埠的 AFF / FAS 控制器。
+Broadcom BES-53248 群集互連交換器支援AFF/ FAS控制器，具有 10/25GbE 和 40/100GbE 連接埠。
  a| 
-部分9.8 ONTAP
+ONTAP 9.8
 
 
 
  a| 
-36 埠 100GbE Cisco 交換器（ X190200 ）和 32 埠 100GbE Cisco 交換器（ X190100 和 X190100R ）
+36埠100GbECisco交換器（X190200）及32埠100GbECisco交換器（X190100和X190100R）
  a| 
-Cisco Nexus 3232C 儲存交換器支援連接 NS224 NVMe 磁碟櫃 AFF 與 ASA 儲存系統：
+Cisco Nexus 3232C 儲存交換器支援連接 NS224 NVMe 磁碟機架AFF和ASA儲存系統：
 
-* 介紹A800/AFF的A800 AFF ASA
-* 介紹A700/AFF的功能AFF ASA
-* 介紹A400/AFF的功能AFF ASA
-* 解答320 AFF
+* AFF A800/ AFF ASA A800
+* AFF A700/ AFF ASA A700
+* AFF A400/ AFF ASA A400
+* AFF A320
 
  a| 
-部分9.8 ONTAP
+ONTAP 9.8
 
 |===

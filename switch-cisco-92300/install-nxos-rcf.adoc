@@ -2,55 +2,55 @@
 permalink: switch-cisco-92300/install-nxos-rcf.html 
 sidebar: sidebar 
 keywords: install rcf,rcf configure 
-summary: 您可以在初次設定Nexus 2300YC交換器之後安裝RCF。 
+summary: 首次設定 Nexus 92300YC 交換器後，您可以安裝 RCF。 
 ---
-= 安裝參考組態檔（RCF）
+= 安裝參考設定檔（RCF）
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-您可以在初次設定Nexus 2300YC交換器之後安裝RCF。
+首次設定 Nexus 92300YC 交換器後，您可以安裝 RCF。
 
 .交換器和節點命名法
-本程序中的範例使用下列交換器和節點命名法：
+本流程中的範例使用以下開關和節點命名規則：
 
-* 兩個Cisco交換器的名稱分別為「CS1」和「CS2」。
-* 節點名稱是「node1」和「node2」。
-* 叢集LIF的名稱為節點1的「node1_clus1」和「node1_clus2」、節點2的「node2_clus1」和「node2_clus2」。
-* 「cluster1：*：>」提示會指出叢集的名稱。
-* 每個節點上的叢集連接埠名稱為「e0a」和「e0b」。
+* 這兩台Cisco交換器的名稱是： `cs1`和 `cs2`。
+* 節點名稱是 `node1`和 `node2`。
+* 集群 LIF 名稱為 `node1_clus1`和 `node1_clus2`對於節點1和 `node2_clus1`和 `node2_clus2`對於節點2。
+* 這 `cluster1::*>`prompt 指示叢集名稱。
+* 每個節點上的叢集連接埠都命名為 `e0a`和 `e0b`。
 +
-請參閱 link:https://hwu.netapp.com/Home/Index["_SUR1__ Hardware Universe"] 以取得平台所支援的實際叢集連接埠。
+參見link:https://hwu.netapp.com/Home/Index["硬體宇宙"]針對您的平台實際支援的叢集連接埠。
 
 
 
-.支援的連接埠和節點連線
-* Nexus 2300YC交換器支援的交換器間連結（ISL）為連接埠1/65和1/66。
-* Nexus 2300YC交換器支援的節點連線為連接埠1/1到1/66。
-* 本程序中的範例使用兩個節點。這些節點使用兩個10GbE叢集互連連接埠 `e0a` 和 `e0b`。請參閱 https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^] 驗證平台上的叢集連接埠是否正確。
+.支援的連接埠和節點連接
+* Nexus 92300YC 交換器支援的交換器間連結 (ISL) 為連接埠 1/65 和 1/66。
+* Nexus 92300YC 交換器支援的節點連接為連接埠 1/1 至 1/66。
+* 本流程中的範例使用了兩個節點。這些節點使用兩個 10GbE 叢集互連端口 `e0a`和 `e0b`。參見 https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^]驗證平台上的叢集連接埠是否正確。
 
 
 .開始之前
-* 您必須擁有目前的RCF。
-* 叢集必須完全正常運作（記錄中不應有錯誤或類似問題）。
-* 如果您只安裝NX-OS並保留目前的RCF版本、則必須在RCF中檢查或設定所需的開機組態、以反映所需的開機映像。
-* 如果您需要變更開機組態以反映目前的開機映像、則必須在重新套用RCF之前執行此動作、以便在未來重新開機時產生正確的版本。
-* 您必須查閱上的交換器相容性表 https://support.netapp.com/NOW/download/software/cm_switches/["Cisco乙太網路交換器"^] 頁面、以取得支援ONTAP 的功能表、NX-OS和RCF版本。
-* RCF中的命令語法與NX-OS版本中的命令語法之間可能存在相依性。
+* 您必須持有最新的RCF。
+* 叢集必須完全正常運作（日誌中不應有任何錯誤或類似問題）。
+* 如果您僅安裝 NX-OS 並保留目前的RCF 版本，則必須已在 RCF 中檢查或設定所需的啟動配置，以反映所需的啟動映像。
+* 如果需要更改啟動配置以反映目前的啟動映像，則必須在重新套用 RCF 之前進行更改，以便在以後的重新啟動中實例化正確的版本。
+* 您一定查閱過交換器相容性表格。 https://support.netapp.com/NOW/download/software/cm_switches/["Cisco乙太網路交換機"^]支援的ONTAP、NX-OS 和 RCF 版本頁面。
+* RCF 中的指令語法與 NX-OS 版本中的指令語法之間可能存在指令依賴關係。
 
 
-.關於這項工作
-此程序需要同時使用ONTAP 支援指令和Cisco Nexus 9000系列交換器的指令；ONTAP 除非另有說明、否則會使用支援指令。
+.關於此任務
+流程需要同時使用ONTAP指令和Cisco Nexus 9000 系列交換器指令；除非另有說明，否則使用ONTAP指令。
 
-命令輸出可能會因ONTAP 不同版本的不相同而有所差異。
+命令輸出可能因ONTAP版本不同而有所差異。
 
 .步驟
-. 將叢集交換器連接至管理網路。
-. 使用ping命令來驗證與裝載RCF的伺服器的連線能力。
+. 將集群交換器連接到管理網路。
+. 使用 ping 指令驗證與託管 RCF 的伺服器的連線性。
 +
-此範例可驗證交換器是否能以IP位址172.19.2.1連至伺服器：
+此範例驗證交換器可以存取 IP 位址為 172.19.2.1 的伺服器：
 
 +
 [listing, subs="+quotes"]
@@ -60,7 +60,7 @@ Pinging 172.19.2.1 with 0 bytes of data:
 
 Reply From 172.19.2.1: icmp_seq = 0. time= 5910 usec.
 ----
-. 將RCF複製到Nexus 2300YC交換器：
+. 將 RCF 檔案複製到 Nexus 92300YC 交換器：
 +
 [listing, subs="+quotes"]
 ----
@@ -80,7 +80,7 @@ sftp> exit
 Copy complete, now saving to disk (please wait)...
 Copy complete.
 ----
-. 將RCF與交換器的執行組態合併：
+. 將 RCF 與交換器的運作配置合併：
 +
 [listing, subs="+quotes"]
 ----
@@ -108,9 +108,9 @@ Edge Port Type (Portfast) has been configured on Ethernet1/1 but will only
 Copy complete, now saving to disk (please wait)...
 Copy complete.
 ----
-. 在交換器上確認RCF已成功合併：
+. 在交換器上驗證 RCF 是否已成功合併：
 +
-「如何執行設定」
+`show running-config`
 
 +
 [listing, subs="+quotes"]
@@ -149,7 +149,7 @@ banner motd #
 *                                                                              *
 ********************************************************************************
 ----
-. 儲存執行中的組態、以便在您重新啟動交換器時將其變成啟動組態：
+. 儲存運作配置，以便重新啟動交換器時將其作為啟動配置：
 +
 [listing, subs="+quotes"]
 ----
@@ -159,7 +159,7 @@ cs2# *copy running-config startup-config*
 Copy complete, now saving to disk (please wait)...
 Copy complete.
 ----
-. 如需ONTAP 使用《系統叢集-交換器記錄設定密碼》和《系統叢集-交換器記錄啟用-收集》命令、請啟用乙太網路交換器健全狀況監視器記錄收集功能、以收集交換器相關的記錄檔
+. 對於ONTAP 9.6P8 及更高版本，請使用以下命令啟用乙太網路交換器運行狀況監視器日誌收集功能，以收集與交換器相關的日誌檔案： `system cluster-switch log setup-password`和 `system cluster-switch log enable-collection`
 +
 [listing, subs="+quotes"]
 ----
@@ -197,9 +197,9 @@ Enabling cluster switch log collection.
 
 cluster1::*>
 ----
-. 重新啟動交換器、並驗證執行中的組態是否正確：
+. 重新啟動交換器並驗證運作設定是否正確：
 +
-"重裝"
+`reload`
 
 +
 [listing, subs="+quotes"]

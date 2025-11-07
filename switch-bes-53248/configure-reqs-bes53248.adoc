@@ -2,83 +2,83 @@
 permalink: switch-bes-53248/configure-reqs-bes53248.html 
 sidebar: sidebar 
 keywords: bes, cluster, switch, port, assignment, table, configure, bes-53428 cluster switch port assignments - bes-53428 switches 
-summary: 您可以使用「Bes - 53248叢集交換器連接埠指派表」作為設定叢集的指南。 
+summary: 您可以參考 BES-53248 叢集交換器連接埠分配表來設定您的叢集。 
 ---
-= BS-53248叢集交換器的組態需求
+= BES-53248 叢集交換器的設定需求
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-若為 BS-53248 交換器安裝與維護、請務必檢閱 EFOS 和 ONTAP 支援與組態需求。
+對於 BES-53248 交換器的安裝和維護，請務必查看 EFOS 和ONTAP支援和設定要求。
 
 
 
-== EFOS 和 ONTAP 支援
+== EFOS 和ONTAP支持
 
-請參閱 https://hwu.netapp.com/Switch/Index["NetApp Hardware Universe"^] 和 https://mysupport.netapp.com/site/info/broadcom-cluster-switch["Broadcom 交換器相容性對照表"^] 適用於 EFOS 和 ONTAP 與 BS-53248 交換器的相容性資訊。EFOS 和 ONTAP 支援可能會因特定機器類型的 BS-53248 交換器而異。如需所有 BS-52348 交換器機型的詳細資訊、請參閱 link:components-bes53248.html["BS-53248叢集交換器的元件和零件編號"]。
-
-
-
-== 組態需求
-
-若要設定叢集、您需要叢集交換器適當的纜線數量和類型、以及纜線連接器。視您初始設定的叢集交換器類型而定、您需要使用隨附的主控台纜線連接至交換器主控台連接埠。
+參見 https://hwu.netapp.com/Switch/Index["NetAppHardware Universe"^]和 https://mysupport.netapp.com/site/info/broadcom-cluster-switch["博通交換器相容性矩陣"^]有關 BES-53248 交換器的 EFOS 和ONTAP相容性資訊。 EFOS 和ONTAP支援可能會因 BES-53248 交換器的特定機器類型而異。有關所有 BES-52348 交換器型號的詳細信息，請參閱link:components-bes53248.html["BES-53248 集群開關的組件和零件編號"]。
 
 
 
-=== 叢集交換器連接埠指派
+== 配置要求
 
-您可以使用Broadcom支援的Bes - 53248叢集交換器連接埠指派表、作為設定叢集的指南。
+要配置集群，您需要集群交換器的相應數量和類型的電纜和電纜連接器。根據您最初設定的群集交換器的類型，您需要使用隨附的控制台連接線連接到交換器控制台連接埠。
+
+
+
+=== 集群交換器連接埠分配
+
+您可以參考博通支援的 BES-53248 叢集交換器連接埠分配表來設定您的叢集。
 
 [cols="1,2"]
 |===
-| 交換器連接埠 | 連接埠使用量 
+| 交換器埠 | 連接埠使用情況 
 
 
  a| 
-2016年1月16日
+01-16
  a| 
-10/25GbE叢集連接埠節點、基礎組態
+10/25GbE 叢集連接埠節點，基本設定
 
 
 
  a| 
 17-48
  a| 
-10/25GbE叢集連接埠節點、含授權
+10/25GbE 叢集連接埠節點，附許可證
 
 
 
  a| 
-49至54歲
+49-54
  a| 
-40/100GbE 叢集連接埠節點、含授權、由右至左新增
+40/100GbE 叢集連接埠節點（含許可證），由右至左依序新增
 
 
 
  a| 
 55-56
  a| 
-100GbE叢集交換器間連結（ISL）連接埠、基礎組態
+100GbE 叢集交換器間鏈路 (ISL) 端口，基本配置
 
 |===
-請參閱 https://hwu.netapp.com/Switch/Index["Hardware Universe"] 如需交換器連接埠的詳細資訊、
+參見 https://hwu.netapp.com/Switch/Index["Hardware Universe"]有關交換器連接埠的詳細資訊。
 
 
 
-=== 連接埠群組速度限制
+=== 連接埠組速度限制
 
-* 在BES-53248叢集交換器上、48個10/25GbE（SFP28/SFP+）連接埠會結合成12個4埠群組、如下所示：連接埠1-4、5-8、9-12、13-16、17-20、21至24、25至28、29至32、33至36、37至40、41至44及45至48。
-* 在4埠群組的所有連接埠之間、SFP28/SFP+連接埠速度必須相同（10GbE或25GbE）。
-
-
+* 在 BES-53248 群集交換器上，48 個 10/25GbE (SFP28/SFP+) 連接埠組合成 12 個 4 埠組，如下：連接埠 1-4、5-8、9-12、13-16、17-20、21-24、25-283、23-23、36、21-36、 45-48。
+* 4 連接埠組中所有連接埠的 SFP28/SFP+ 連接埠速度必須相同（10GbE 或 25GbE）。
 
 
-=== 其他需求
 
-* 如果您購買額外授權、請參閱 link:configure-licenses.html["啟動新授權連接埠"] 如需如何啟動的詳細資訊、請參閱。
-* 如果 SSH 是作用中的、則必須在執行命令後手動重新啟用 SSH `erase startup-config` 然後重新啟動交換器。
+
+=== 其他要求
+
+* 如果您購買了額外的許可證，請參閱link:configure-licenses.html["啟動新授權端口"]有關如何啟動它們的詳細資訊。
+* 如果 SSH 已啟用，則執行該命令後必須手動重新啟用它。 `erase startup-config`並重啟交換器。
 
 
 .下一步

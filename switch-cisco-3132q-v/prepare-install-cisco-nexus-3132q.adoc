@@ -2,58 +2,58 @@
 permalink: switch-cisco-3132q-v/prepare-install-cisco-nexus-3132q.html 
 sidebar: sidebar 
 keywords: install, nx-os software, rcfs, cisco nexus 3132q-v, cluster switches 
-summary: Cisco NX-OS軟體和參考組態檔（RCV）必須安裝在Cisco Nexus 3132Q-V叢集交換器上。 
+summary: 'Cisco Nexus 3132Q-V 叢集交換器上必須安裝Cisco NX-OS 軟體和參考設定檔 (RCF)。' 
 ---
-= 準備安裝NX-OS軟體和參考組態檔案
+= 準備安裝 NX-OS 軟體和參考設定文件
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-在安裝NX-OS軟體和參考組態檔（RCF）之前、請遵循此程序。
+在安裝 NX-OS 軟體和參考設定檔 (RCF) 之前，請依照下列步驟操作。
 
 .關於範例
-本程序中的範例使用兩個節點。這些節點使用兩個10GbE叢集互連連接埠「e0a」和「e0b」。
+本流程中的範例使用了兩個節點。這些節點使用兩個 10GbE 叢集互連端口 `e0a`和 `e0b`。
 
-請參閱 link:https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^] 驗證平台上的叢集連接埠是否正確。
-
-
-NOTE: 命令輸出可能會因ONTAP 不同版本的不相同而有所差異。
-
-本程序中的範例使用下列交換器和節點命名法：
-
-* 兩個Cisco交換器的名稱分別為「CS1」和「CS2」。
-* 節點名稱為「cluster1-01」和「cluster1-02」。
-* 叢集LIF的名稱為「cluster1-01_clus1」、叢集式為「cluster1-01_clus2」、叢集式為「cluster1-02_clus1」、叢集式為「cluster1-02_clus2」。
-* 「cluster1：*：>」提示會指出叢集的名稱。
+參見link:https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^]驗證平台上的叢集連接埠是否正確。
 
 
-.關於這項工作
-此程序需要同時使用ONTAP 支援指令和Cisco Nexus 3000系列交換器的命令；ONTAP 除非另有說明、否則會使用支援指令。
+NOTE: 命令輸出可能因ONTAP版本不同而有所差異。
+
+本流程中的範例使用以下開關和節點命名規則：
+
+* 這兩台Cisco交換器的名稱是： `cs1`和 `cs2`。
+* 節點名稱是 `cluster1-01`和 `cluster1-02`。
+* 集群 LIF 名稱為 `cluster1-01_clus1`和 `cluster1-01_clus2`針對 cluster1-01 和 `cluster1-02_clus1`和 `cluster1-02_clus2`適用於集群1-02。
+* 這 `cluster1::*>`prompt 指示叢集名稱。
+
+
+.關於此任務
+流程需要同時使用ONTAP指令和Cisco Nexus 3000 系列交換器指令；除非另有說明，否則使用ONTAP指令。
 
 .步驟
-. 如果AutoSupport 此叢集啟用了「支援」功能、請叫用AutoSupport 下列訊息來禁止自動建立案例：
+. 如果此叢集上啟用了AutoSupport ，則透過呼叫AutoSupport訊息來抑制自動建立案例：
 +
-「系統節點AutoSupport 不完整地叫用節點*-type all -Message MAn=xh」
+`system node autosupport invoke -node * -type all -message MAINT=xh`
 
 +
-其中_x_是維護時段的持續時間（以小時為單位）。
+其中 _x_ 為維護視窗的持續時間（小時）。
 
 +
 
-NOTE: 此資訊可通知技術支援人員執行此維護工作、以便在維護期間抑制自動建立案例。AutoSupport
+NOTE: AutoSupport訊息會通知技術支援此維護任務，以便在維護視窗期間抑制自動建立案例。
 
-. 將權限等級變更為進階、並在系統提示您繼續時輸入* y*：
+. 將權限級別變更為高級，並在提示繼續時輸入 *y*：
 +
-"進階權限"
+`set -privilege advanced`
 
 +
-出現進階提示（「*>」）。
+進階提示(`*>`出現。
 
-. 顯示每個叢集互連交換器的每個節點已設定多少個叢集互連介面：
+. 顯示每個節點上每個群集互連交換器配置的群集互連口數量：
 +
-「network device-dDiscovery show -protocol cup」
+`network device-discovery show -protocol cdp`
 
 +
 .顯示範例
@@ -74,11 +74,11 @@ cluster1-01/cdp
             e0b    cs2                       Eth1/1            N3K-C3132Q-V
 ----
 ====
-. 檢查每個叢集介面的管理或作業狀態。
+. 檢查每個叢集介面的管理或運作狀態。
 +
 .. 顯示網路連接埠屬性：
 +
-「網路連接埠顯示–IPSpace叢集」
+`network port show –ipspace Cluster`
 
 +
 .顯示範例
@@ -103,9 +103,9 @@ e0a       Cluster      Cluster          up   9000  auto/10000 healthy
 e0b       Cluster      Cluster          up   9000  auto/10000 healthy
 ----
 ====
-.. 顯示關於生命的資訊：
+.. 顯示有​​關 LIF 的資訊：
 +
-「網路介面show -vserver叢集」
+`network interface show -vserver Cluster`
 
 +
 .顯示範例
@@ -127,22 +127,22 @@ Cluster
 ====
 
 
-. 驗證遠端叢集介面的連線能力：
+. 驗證遠端集群介面的連接性：
 
 
 [role="tabbed-block"]
 ====
-.更新版本ONTAP
+.ONTAP 9.9.1 及更高版本
 --
-您可以使用 `network interface check cluster-connectivity` 命令以啟動叢集連線的存取檢查、然後顯示詳細資料：
+你可以使用 `network interface check cluster-connectivity`執行命令以啟動叢集連接性檢查，然後顯示詳細資訊：
 
-`network interface check cluster-connectivity start` 和 `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`和 `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-* 注意： * 在執行 show 命令之前、請等待數秒以顯示詳細資料。
+*注意：*在執行 show 命令顯示詳細資訊之前，請等待幾秒鐘。
 
 [listing, subs="+quotes"]
 ----
@@ -159,9 +159,9 @@ cluster1-02
        3/5/2022 19:21:20 -06:00   cluster1-02_clus2   cluster1-01_clus2   none
 ----
 --
-.所有 ONTAP 版本
+.所有ONTAP版本
 --
-對於所有 ONTAP 版本、您也可以使用 `cluster ping-cluster -node <name>` 檢查連線能力的命令：
+對於所有ONTAP版本，您也可以使用 `cluster ping-cluster -node <name>`檢查連接性的命令：
 
 `cluster ping-cluster -node <name>`
 
@@ -193,9 +193,9 @@ RPC status:
 ----
 --
 ====
-. [[step6]] 確認所有叢集生命期均已啟用此 `auto-revert`命令：
+. 步驟6：驗證 `auto-revert`該命令已在所有叢集 LIF 上啟用：
 +
-「網路介面show -vserver叢集-功能 變數自動回復」
+`network interface show -vserver Cluster -fields auto-revert`
 
 +
 .顯示範例
@@ -217,5 +217,5 @@ Cluster
 ====
 
 
-.接下來呢？
+.下一步是什麼？
 準備好安裝 NX-OS 軟體和 RCF 後，您 link:install-nx-os-software-3132q-v.html["安裝 NX-OS 軟體"]。

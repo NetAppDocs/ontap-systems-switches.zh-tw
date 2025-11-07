@@ -2,22 +2,22 @@
 permalink: switch-bes-53248/reset-switch-bes-53248.html 
 sidebar: sidebar 
 keywords: BES-53248 reset switch to factory defaults, BES-53248 switches configuration, efos 
-summary: 設定 Broadcom BS-53248 交換器之前、請先檢閱下列資訊。 
+summary: 在設定博通BES-53248交換器之前，請先查看以下資訊。 
 ---
 = 將 BES-53248 集群交換器重設為出廠預設值
 :allow-uri-read: 
 
 
 [role="lead"]
-若要將 BES-53248 叢集交換器重設為出廠預設設置，必須清除 BES-53248 交換器設定。
+若要將 BES-53248 叢集交換器重設為原廠預設設置，必須清除 BES-53248 交換器設定。
 
-.關於這項工作
-* 您必須使用序列主控台連線至交換器。
-* 此工作會重設管理網路的組態。
+.關於此任務
+* 您必須使用串列埠控制台連接到交換器。
+* 此任務會重置管理網路的配置。
 
 
 .步驟
-. 變更為提升的命令提示字元。
+. 切換到管理員權限的命令提示字元。
 +
 [listing, subs="+quotes"]
 ----
@@ -35,7 +35,7 @@ summary: 設定 Broadcom BS-53248 交換器之前、請先檢閱下列資訊。
 
 Are you sure you want to clear the configuration? (y/n) *y*
 ----
-. 重新啟動交換器。
+. 重啟交換器。
 +
 [listing, subs="+quotes"]
 ----
@@ -45,11 +45,11 @@ Are you sure you would like to reset the system? (y/n) *y*
 
 
 
-NOTE: 如果系統在重新載入交換器之前詢問是否要儲存未儲存或變更的組態、請選取*否*。
+NOTE: 如果系統詢問是否在重新載入交換器之前儲存未儲存或已變更的配置，請選擇「否」。
 
 . [[step4]] 等待交換器重新加載，然後登入交換器。
 +
-預設使用者為“admin”，未設定密碼。畫面會顯示類似下列的提示：
+預設使用者為“admin”，未設定密碼。螢幕上會顯示類似以下內容的提示：
 
 +
 [listing]

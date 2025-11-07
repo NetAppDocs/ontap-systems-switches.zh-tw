@@ -1,48 +1,48 @@
 ---
 section: switch-bes-53248
-title: Broadcom支援的Bes：53248
+title: 博通支援的 BES-53248
 entries:
-- title: 開始使用
-  pdf-filename: overview_Bes53248
+- title: 開始
+  pdf-filename: Overview_bes53248
   entries:
-  - title: 快速入門
+  - title: 快速啟動
     url: "/switch-bes-53248/configure-new-switch-overview.html"
-  - title: 組態需求
+  - title: 配置要求
     url: "/switch-bes-53248/configure-reqs-bes53248.html"
-  - title: 元件與零件編號
+  - title: 組件和零件編號
     url: "/switch-bes-53248/components-bes53248.html"
-  - title: 必要文件
+  - title: 所需文件
     url: "/switch-bes-53248/required-documentation-bes53248.html"
 - title: 安裝硬體
-  pdf-filename: install_hardware _ bes53248
+  pdf-filename: Install_hardware_bes53248
   entries:
   - title: 硬體安裝工作流程
     url: "/switch-bes-53248/install-hardware-workflow.html"
-  - title: 安裝交換器
+  - title: 安裝開關
     url: "/switch-bes-53248/install-hardware-bes53248.html"
-  - title: 檢視纜線佈線與組態
+  - title: 檢查佈線和配置
     url: "/switch-bes-53248/cabling-considerations-bes53248.html"
 - title: 設定軟體
   pdf-filename: Configure_software_bes53248
   entries:
   - title: 軟體安裝工作流程
     url: "/switch-bes-53248/configure-software-overview-bes53248.html"
-  - title: 設定交換器
+  - title: 配置交換機
     url: "/switch-bes-53248/configure-install-initial.html"
-  - title: 安裝EFOS軟體
+  - title: 安裝 EFOS 軟體
     url: "/switch-bes-53248/configure-efos-software.html"
-  - title: 安裝適用於 EFOS 3.12 及更新版本的 RCF 和授權檔案
+  - title: 安裝適用於 EFOS 3.12 及更高版本的 RCF 和許可證文件
     url: "/switch-bes-53248/efos-install-rcf-license-file.html"
-  - title: 安裝授權
+  - title: 安裝許可證
     url: "/switch-bes-53248/configure-licenses.html"
-  - title: 安裝RCF組態檔
+  - title: 安裝 RCF 設定檔
     url: "/switch-bes-53248/configure-install-rcf.html"
-  - title: 啟用 SSH 進行記錄收集
+  - title: 啟用 SSH 以收集日誌
     url: "/switch-bes-53248/configure-ssh.html"
   - title: 將交換器重設為出廠預設值
     url: "/switch-bes-53248/reset-switch-bes-53248.html"
 - title: 升級交換機
-  pdf-filename: upgrade 開關 _bes53248
+  pdf-filename: Upgrade_switches_bes53248
   entries:
   - title: 升級工作流程
     url: "/switch-bes-53248/upgrade-switch-overview.html"
@@ -50,21 +50,21 @@ entries:
     url: "/switch-bes-53248/upgrade-efos-software.html"
   - title: 升級 RCF 版本
     url: "/switch-bes-53248/upgrade-rcf.html"
-  - title: 升級後驗證叢集
+  - title: 升級後驗證集群
     url: "/switch-bes-53248/replace-verify.html"
-- title: 移轉交換器
-  pdf-filename: migrate_switchs_bes53248
+- title: 遷移交換機
+  pdf-filename: Migrate_switches_bes53248
   entries:
-  - title: 從CN1610交換器移轉
+  - title: 從 CN1610 交換器遷移
     url: "/switch-bes-53248/migrate-cn1610.html"
-  - title: 移轉至雙節點交換式
+  - title: 遷移到雙節點交換式交換機
     url: "/switch-bes-53248/migrate-to-2n-switched.html"
 - title: 更換開關
-  pdf-filename: replace 交換器 _bes53248
+  pdf-filename: Replace_switches_bes53248
   entries:
-  - title: 更換需求
+  - title: 更換要求
     url: "/switch-bes-53248/replace-switch-reqs.html"
-  - title: 更換BS-53248交換器
+  - title: 更換 BES-53248 開關
     url: "/switch-bes-53248/replace-switch.html"
-  - title: 使用無交換器連線取代叢集交換器
+  - title: 用無開關連接取代集群開關
     url: "/switch-bes-53248/migrate-to-switchless-interconnect-bes-53248.html"

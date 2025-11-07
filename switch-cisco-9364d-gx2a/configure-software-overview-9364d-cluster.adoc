@@ -37,4 +37,4 @@ summary: Cisco 9364d-gx2a 叢集交換器軟體設定概述
 [role="quick-margin-para"]
 清除Cisco 9364D-GX2A 交換器設定。
 
-完成交換器配置後，請前往link:https://docs.netapp.com/us-en/ontap-afx/install-setup/power-on-hardware.html["啟動 AFX 1K 儲存系統"^]。
+交換器配置完成後，請前往link:https://docs.netapp.com/us-en/ontap-afx/install-setup/power-on-hardware.html["啟動 AFX 1K 儲存系統"^]。

@@ -2,36 +2,36 @@
 permalink: switch-nvidia-sn2100-storage/configure-reqs-sn2100-storage.html 
 sidebar: sidebar 
 keywords: nvidia SN2100 switches 
-summary: 對於NVIDIA SN2100交換器的安裝與維護、請務必檢閱所有要求。 
+summary: 安裝和維護NVIDIA SN2100 交換器時，請務必查看所有要求。 
 ---
-= NVIDIA SN2100交換器的組態需求
+= NVIDIA SN2100交換器的設定需求
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-對於NVIDIA SN2100交換器的安裝與維護、請務必檢閱所有要求。
+安裝和維護NVIDIA SN2100 交換器時，請務必查看所有要求。
 
 
 
-== 安裝需求
+== 安裝要求
 
-如果您想要建置ONTAP 具有兩個以上節點的叢集、您需要兩個支援的叢集網路交換器。您可以使用額外的管理交換器、這是選用的。
+如果要建置包含兩個以上節點的ONTAP集群，則需要兩個受支援的集群網路交換器。您也可以使用額外的管理交換機，這些交換機是可選的。
 
-您可以在NVIDIA雙/單一交換器機櫃中安裝NVIDIA SN2100交換器（X190006/X190106）、並附有交換器隨附的標準支架。
+您可以使用交換器隨附的標準支架，將NVIDIA SN2100 交換器 (X190006/X190106) 安裝到NVIDIA雙/單交換器機櫃。
 
-有關佈線指南，請參閱link:cabling-considerations-sn2100-storage.html["佈線與組態考量"]。
+有關佈線指南，請參閱link:cabling-considerations-sn2100-storage.html["佈線和配置注意事項"]。
 
 
 
-== 支援的支援ONTAP
+== ONTAP和 Linux 支援
 
-NVIDIA SN2100交換器是執行Cummulis Linux的10/25/40/100 Gb乙太網路交換器。交換器支援下列項目：
+NVIDIA SN2100 交換器是一款運行 Cumulus Linux 的 10/25/40/100 Gb 乙太網路交換器。此交換器支援以下功能：
 
-* 零點9.10.1P3 ONTAP 。SN2100交換器可在ONTAP 不同的交換器配對上、以S209.10.1P3提供叢集與儲存應用程式服務。從S209.10.1P3、ONTAP 您可以使用NVIDIA SN2100交換器、將儲存設備和叢集功能結合成共享交換器組態。
-* Cummulos Linux（CL）OS 4.4.3版。如需目前的相容性資訊、請參閱 https://mysupport.netapp.com/site/info/nvidia-cluster-switch["NVIDIA乙太網路交換器"^] 資訊頁面。
-* 您可以在交換器執行Cummulis Linux或ONIE時安裝Cumm截止Linux。
+* ONTAP 9.10.1P3。 SN2100 交換器透過不同的交換器對為ONTAP 9.10.1P3 中的叢集和儲存應用提供服務。從ONTAP 9.10.1P3 開始，您可以使用NVIDIA SN2100 交換器將儲存和叢集功能組合到共用交換器配置中。
+* Cumulus Linux (CL) 作業系統版本 4.4.3。有關當前相容性信息，請參閱 https://mysupport.netapp.com/site/info/nvidia-cluster-switch["NVIDIA乙太網路交換機"^]資訊頁面。
+* 當交換器執行 Cumulus Linux 或 ONIE 時，您可以安裝 Cumulus Linux。
 
 
 .下一步

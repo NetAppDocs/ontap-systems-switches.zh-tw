@@ -4,7 +4,7 @@ permalink: switch-cisco-9336c-fx2-shared/migrate-from-switchless-cluster-dat-sto
 keywords:  
 summary:  
 ---
-= 使用直接附加儲存設備從無交換器叢集移轉
+= 從無交換器叢集遷移到直連存儲
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,86 +14,86 @@ summary:
 
 
 [role="lead"]
-您可以新增兩個新的共用交換器、從具有直接附加儲存設備的無交換器叢集進行移轉。
+您可以透過新增兩個新的共用交換機，從無交換機叢集（採用直連儲存）遷移到共用叢集。
 
-您使用的程序取決於每個控制器上是否有兩個專屬的叢集網路連接埠、或每個控制器上是否有一個叢集連接埠。記錄的程序適用於所有使用光纖或雙軸纜線連接埠的節點、但如果節點使用內建10Gb Base-T RJ45連接埠來連接叢集網路連接埠、則此交換器不支援此程序。
+具體操作步驟取決於每個控制器上是有兩個專用叢集網路連接埠還是只有一個叢集連接埠。記錄的過程適用於所有使用光纖或 Twinax 連接埠的節點，但如果節點使用板載 10Gb BASE-T RJ45 連接埠作為叢集網路端口，則此交換器不支援此流程。
 
-大多數系統在每個控制器上都需要兩個專用的叢集網路連接埠。請參閱 https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器"] 以取得更多資訊。
+大多數系統需要在每個控制器上設定兩個專用的叢集網路連接埠。看 https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換機"]了解更多。
 
-如果您現有的雙節點無交換式叢集環境、可以使用Cisco Nexus 9336C-FX2交換器移轉至雙節點交換式叢集環境、以便擴充至叢集中的兩個節點以外。
+如果您已有雙節點無交換器叢集環境，則可以使用Cisco Nexus 9336C-FX2 交換器遷移到雙節點有交換器叢集環境，以便能夠將叢集擴展到兩個以上節點。
 
 
 
-== 檢閱要求
+== 審查要求
 
 確保：
 
-* 對於雙節點無交換器組態：
+* 對於雙節點無交換器配置：
 +
-** 雙節點無交換器組態已正確設定並正常運作。
-** 節點執行ONTAP 的是功能不正常的9.8或更新版本。
-** 所有叢集連接埠都處於* up*狀態。
-** 所有叢集邏輯介面（lifs）都處於* up*狀態、並且位於* home*連接埠。
+** 雙節點無交換器配置已正確設定並運作正常。
+** 這些節點運行的是ONTAP 9.8 及更高版本。
+** 叢集所有連接埠均處於*開啟*狀態。
+** 所有群集邏輯介面（LIF）均處於 *up* 狀態，並位於其 *home* 連接埠上。
 
 
-* Cisco Nexus 9336C-FX2交換器組態：
+* 對於Cisco Nexus 9336C-FX2 交換器配置：
 +
-** 兩台交換器都有管理網路連線功能。
-** 有對叢集交換器的主控台存取權。
-** Nexus 9336C-FX2節點對節點交換器和交換器對交換器連線使用雙軸纜線或光纖纜線。
-** NetApp https://hwu.netapp.com["Hardware Universe"] 包含纜線的詳細資訊。
-** 交換器間連結（ISL）纜線連接至9336C-FX2交換器的連接埠1/35和1/36。
+** 兩台交換器都具備管理網路連線功能。
+** 可以透過控制台存取叢集交換器。
+** Nexus 9336C-FX2 節點到節點交換器和交換器到交換器連接使用 Twinax 或光纖電纜。
+** NetApp https://hwu.netapp.com["Hardware Universe"]包含更多關於佈線的資訊。
+** 交換器間連結 (ISL) 電纜連接到兩個 9336C-FX2 交換器上的連接埠 1/35 和 1/36。
 
 
-* 9336C-FX2交換器的初始自訂已完成。因此：
+* 9336C-FX2交換器的初步客製化工作已完成。因此：
 +
-** 9336C-FX2交換器正在執行最新版本的軟體
-** 參考組態檔（RCT）已套用至交換器
-** 任何站台自訂功能（例如、SMTP、SNMP和SSH）都會在新交換器上設定。
+** 9336C-FX2交換器運作的是最新版本的軟體
+** 參考設定檔 (RCF) 已套用於交換機
+** 任何站點定制，如 SMTP、SNMP 和 SSH，都在新交換器上進行設定。
 
 
 
 
 
 
-== 移轉交換器
+== 遷移交換機
 
 .關於範例
-本程序中的範例使用下列叢集交換器和節點命名法：
+本流程中的範例使用下列叢集交換器和節點命名規則：
 
-* 9336C-FX2交換器的名稱為_CS1_和_CS2_。
-* 叢集SVM的名稱為_node1_和_node2_。
-* lifs的名稱分別是節點1上的_node1_clus1_和節點1_clus2_、節點2上的節點2_clus1_和節點2_clus2_。
-* cluster1：：*>提示會指出叢集的名稱。
-* 此程序中使用的叢集連接埠是_e3a_和_e3c_、如同AFF 根據ESIA400控制器。。 https://hwu.netapp.com["Hardware Universe"] 包含平台實際叢集連接埠的最新資訊。
-
-
+* 9336C-FX2 交換器的名稱是 _cs1_ 和 _cs2_。
+* 聚類SVM的名稱為_node1_和_node2_。
+* 節點 1 上的 LIF 名稱分別為 _node1_clus1_ 和 _node1_clus2_，節點 2 上的 LIF 名稱分別為 _node2_clus1_ 和 _node2_clus2_。
+* cluster1::*> 提示符號指示叢集的名稱。
+* 根據AFF A400控制器，此過程中使用的叢集連接埠為 _e3a_ 和 _e3b_。這 https://hwu.netapp.com["Hardware Universe"]包含您平台實際集群連接埠的最新資訊。
 
 
-=== 步驟1：從直接附加的無交換器叢集移轉
 
-. 如果AutoSupport 此叢集啟用了「支援功能」、請叫用AutoSupport 「系統節點AutoSupport 支援功能叫用節點*-type all -most MAn=xh」訊息來禁止自動建立案例。
+
+=== 步驟 1：從無交換器的集群遷移到直連式集群
+
+. 如果此叢集上啟用了AutoSupport ，則透過呼叫AutoSupport訊息來抑制自動建立案例： `system node autosupport invoke -node * -type all -message MAINT=xh` 。
 +
-其中x是維護時段的持續時間（以小時為單位）。
+其中 x 為維護窗口的持續時間（小時）。
 
 
 
 
-NOTE: 此資訊可通知技術支援人員執行此維護工作、以便在維護期間抑制自動建立案例。AutoSupport
+NOTE: AutoSupport訊息會通知技術支援此維護任務，以便在維護視窗期間抑制自動建立案例。
 
-. [[step2]]將權限層級變更為進階、並在系統提示您繼續時輸入y：
+. 步驟2：將權限級別變更為高級，並在提示繼續時輸入y：
 +
-"進階權限"
+`set -privilege advanced`
 
 +
-出現進階提示（*>）。
+出現高階提示符號（*>）。
 
-. 在新的叢集交換器CS1和CS2上停用所有面向節點的連接埠（非ISL連接埠）。您不得停用ISL連接埠。
+. 停用新叢集交換器 cs1 和 cs2 上所有面向節點的連接埠（非 ISL 連接埠）。您不得禁用 ISL 連接埠。
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示、交換器CS1上的節點對介連接埠1至34已停用：
+以下範例顯示交換器 cs1 上面向節點的連接埠 1 到 34 已停用：
 
 [listing, subs="+quotes"]
 ----
@@ -105,15 +105,15 @@ cs1(config-if-range)# *shutdown*
 ====
 
 
-. [[step4]驗證兩個9336C-FX2交換器CS1和CS2之間的ISL和實體連接埠是否在連接埠1/35和1/36上正常運作：
+. [[step4]]驗證兩個 9336C-FX2 交換器 cs1 和 cs2 之間的 ISL 以及 ISL 上的實體連接埠 1/35 和 1/36 是否已啟動：
 +
-「How port-channel Summary」
+`show port-channel summary`
 
 +
 .顯示範例
 [%collapsible]
 ====
-下列範例顯示交換器CS1上的ISL連接埠已開啟：
+以下範例表示交換器 cs1 上的 ISL 連接埠已啟動：
 
 [listing, subs="+quotes"]
 ----
@@ -132,7 +132,7 @@ Group Port-       Type     Protocol  Member Ports
 --------------------------------------------------------------------------------
 1     Po1(SU)     Eth      LACP      Eth1/35(P)   Eth1/36(P)
 ----
-下列範例顯示交換器CS2上的ISL連接埠已開啟：
+以下範例表示交換器 cs2 上的 ISL 連接埠已啟動：
 
 [listing, subs="+quotes"]
 ----
@@ -154,18 +154,18 @@ Group Port-       Type     Protocol  Member Ports
 ====
 
 
-. [[step5]顯示鄰近裝置的清單：
+. 【步驟5】顯示相鄰設備清單：
 +
-「How cup neighbor」
+`show cdp neighbors`
 
 +
-此命令提供有關連線至系統之裝置的資訊。
+此命令提供有關連接到系統的設備的資訊。
 
 +
 .顯示範例
 [%collapsible]
 ====
-下列範例列出交換器CS1上的鄰近裝置：
+以下範例列出了交換器 cs1 上的相鄰設備：
 
 [listing, subs="+quotes"]
 ----
@@ -179,7 +179,7 @@ cs2                Eth1/35        175    R S I s     N9K-C9336C    Eth1/35
 cs2                Eth1/36        175    R S I s     N9K-C9336C    Eth1/36
 Total entries displayed: 2
 ----
-下列範例列出交換器CS2上的鄰近裝置：
+以下範例列出了交換器 cs2 上的相鄰設備：
 
 [listing, subs="+quotes"]
 ----
@@ -197,12 +197,12 @@ Total entries displayed: 2
 ====
 
 
-. [[step6]]確認所有叢集連接埠都已啟動：
+. 步驟6：驗證叢集所有連接埠是否都已啟動：
 +
 `network port show - ipspace Cluster`
 
 +
-每個連接埠都應顯示為「Link（連結）」和「Healthy（健全狀況）」狀態。
+每個連接埠的“連接”狀態應顯示為“已連接”，並且“健康狀況”狀態應顯示為“正常”。
 
 +
 .顯示範例
@@ -230,12 +230,12 @@ e3b       Cluster      Cluster          up   9000  auto/100000 healthy
 ====
 
 
-. [[step7]確認所有叢集生命週期均正常運作：
+. 步驟7：驗證所有叢集LIF是否已啟動並正常運作：
 +
 `network interface show - vserver Cluster`
 
 +
-每個叢集LIF都應該顯示為「原位」、並具有「狀態管理/作業者」的開機/開機狀態。
+每個聚類 LIF 都應該顯示為 true `Is Home`且管理員/操作員狀態為 up/up。
 
 +
 .顯示範例
@@ -257,7 +257,7 @@ Cluster
 ====
 
 
-. [[step8]確認已在所有叢集生命體上啟用自動還原：
+. [[步驟8]]驗證所有叢集 LIF 是否已啟用自動回滾功能：
 +
 `network interface show - vserver Cluster -fields auto-revert`
 
@@ -281,17 +281,17 @@ Cluster
 ====
 
 
-. [[step9]使用936C-FX2交換器所支援的適當纜線、從節點1上的叢集連接埠e3a拔下纜線、然後將e3a連接至叢集交換器CS1上的連接埠1。
+. [[step9]]斷開節點 1 上的叢集連接埠 e3a 的電纜，然後使用 9336C-FX2 交換器支援的適當電纜將 e3a 連接到叢集交換器 cs1 上的連接埠 1。
 +
-NetApp https://hwu.netapp.com["Hardware Universe"] 包含纜線的詳細資訊。
+NetApp https://hwu.netapp.com["Hardware Universe"]包含更多關於佈線的資訊。
 
-. 從節點2上的叢集連接埠e3a拔下纜線、然後使用9336C-FX2交換器支援的適當纜線、將e3a連接至叢集交換器CS1上的連接埠2。
-. 在叢集交換器CS1上啟用所有面向節點的連接埠。
+. 斷開節點 2 上的叢集連接埠 e3a 的電纜，然後使用 9336C-FX2 交換器支援的適當電纜將 e3a 連接到叢集交換器 cs1 上的連接埠 2。
+. 啟用叢集交換器 cs1 上所有面向節點的連接埠。
 +
 .顯示範例
 [%collapsible]
 ====
-下列範例顯示交換器CS1上已啟用連接埠1/1至1/34：
+以下範例顯示交換器 cs1 上的連接埠 1/1 到 1/34 已啟用：
 
 [listing, subs="+quotes"]
 ----
@@ -303,7 +303,7 @@ cs1(config-if-range)# *no shutdown*
 ====
 
 
-. [[step12]請確認所有叢集生命體均為* up *、可正常運作、並顯示為true `Is Home`：
+. [[步驟12]]驗證所有叢集 LIF 是否已啟動、運作正常，並且顯示為 true。 `Is Home` ：
 +
 `network interface show - vserver Cluster`
 
@@ -311,7 +311,7 @@ cs1(config-if-range)# *no shutdown*
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示節點1和節點2上的所有lifs均為* up *、且「is Home」結果為* true*：
+以下範例表明，節點 1 和節點 2 上的所有 LIF 都已啟動。 `Is Home`結果屬實：
 
 [listing, subs="+quotes"]
 ----
@@ -329,15 +329,15 @@ Cluster
 ====
 
 
-. [[step13]顯示叢集中節點狀態的相關資訊：
+. [[step13]]顯示叢集中節點的狀態資訊：
 +
-「叢集展示」
+`cluster show`
 
 +
 .顯示範例
 [%collapsible]
 ====
-下列範例顯示叢集中節點的健全狀況和資格資訊：
+以下範例顯示了叢集中節點的健康狀況和資格資訊：
 
 [listing, subs="+quotes"]
 ----
@@ -351,14 +351,14 @@ node2                true    true          false
 ====
 
 
-. [[step14]使用9336C-FX2交換器支援的適當纜線、從節點1上的叢集連接埠e3b拔下纜線、然後將e3b連接至叢集交換器CS2上的連接埠1。
-. 從節點2上的叢集連接埠e3b拔下纜線、然後使用9336C-FX2交換器支援的適當纜線、將e3b連接至叢集交換器CS2上的連接埠2。
-. 在叢集交換器CS2上啟用所有面向節點的連接埠。
+. [[step14]]斷開節點 1 上的叢集連接埠 e3b 的電纜，然後使用 9336C-FX2 交換器支援的適當電纜將 e3b 連接到叢集交換器 cs2 上的連接埠 1。
+. 斷開節點 2 上的叢集連接埠 e3b 的電纜，然後使用 9336C-FX2 交換器支援的適當電纜將 e3b 連接到叢集交換器 cs2 上的連接埠 2。
+. 啟用叢集交換器 cs2 上所有面向節點的連接埠。
 +
 .顯示範例
 [%collapsible]
 ====
-下列範例顯示交換器CS2上已啟用連接埠1/1至1/34：
+以下範例顯示交換器 cs2 上的連接埠 1/1 到 1/34 已啟用：
 
 [listing, subs="+quotes"]
 ----
@@ -370,7 +370,7 @@ cs2(config-if-range)# *no shutdown*
 ====
 
 
-. [[step17]確認所有叢集連接埠都已啟動：
+. 步驟17：驗證叢集所有連接埠是否都已啟動。
 +
 `network port show - ipspace Cluster`
 
@@ -378,7 +378,7 @@ cs2(config-if-range)# *no shutdown*
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示節點1和節點2上的所有叢集連接埠都已啟動：
+以下範例顯示節點 1 和節點 2 上的所有叢集連接埠均已啟動：
 
 [listing, subs="+quotes"]
 ----
@@ -404,19 +404,19 @@ e3b       Cluster      Cluster          up   9000  auto/100000 healthy  false
 ====
 
 
-. [[step18]確認所有介面都顯示為true `Is Home`：
+. 步驟18：驗證所有介面是否都顯示為 true。 `Is Home` ：
 +
 `network interface show - vserver Cluster`
 
 +
 
-NOTE: 這可能需要幾分鐘的時間才能完成。
+NOTE: 這可能需要幾分鐘才能完成。
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示節點1和節點2上的所有lifs均為* up *、且「is Home」結果為真：
+以下範例表明，節點 1 和節點 2 上的所有 LIF 都已啟動。 `Is Home`結果屬實：
 
 [listing, subs="+quotes"]
 ----
@@ -434,15 +434,15 @@ Cluster
 ====
 
 
-. [[step19]確認兩個節點都有一個連線可連線至每個交換器：
+. 步驟19：驗證兩個節點是否都與每個交換器有一條連接：
 +
-「How cup neighbor」
+`show cdp neighbors`
 
 +
 .顯示範例
 [%collapsible]
 ====
-以下範例顯示兩個交換器的適當結果：
+以下範例顯示了兩種開關的正確結果：
 
 [listing, subs="+quotes"]
 ----
@@ -472,9 +472,9 @@ Total entries displayed: 4
 ====
 
 
-. [[step20]顯示叢集中探索到的網路裝置相關資訊：
+. [[step20]]顯示集群中已發現的網路設備資訊：
 +
-「network device-dDiscovery show -protocol cup」
+`network device-discovery show -protocol cdp`
 
 +
 .顯示範例
@@ -498,7 +498,7 @@ node1       /cdp
 ====
 
 
-. [[step21]確認HA配對1（和HA配對2）的儲存組態正確無誤、而且沒有錯誤：
+. [[step21]]驗證 HA 對 1（和 HA 對 2）的儲存配置是否正確且無錯誤：
 +
 `system switch ethernet show`
 
@@ -534,16 +534,16 @@ storage::*>
 ====
 
 
-. [[step22]確認設定已停用：
+. 步驟22：確認這些設定已停用：
 +
-「網路選項、無交換式叢集展示」
+`network options switchless-cluster show`
 
 +
 
-NOTE: 命令可能需要幾分鐘的時間才能完成。等待「3分鐘壽命到期」公告。
+NOTE: 命令可能需要幾分鐘才能完成。等待「剩餘3分鐘生命即將耗盡」的公告。
 
 +
-以下範例中的「假」輸出顯示組態設定已停用：
+這 `false`以下範例的輸出表示組態設定已停用：
 
 +
 .顯示範例
@@ -557,15 +557,15 @@ Enable Switchless Cluster: false
 ====
 
 
-. [[step23]驗證叢集中節點成員的狀態：
+. [[步驟23]]驗證叢集中節點成員的狀態：
 +
-「叢集展示」
+`cluster show`
 
 +
 .顯示範例
 [%collapsible]
 ====
-下列範例顯示叢集中節點的健全狀況和資格資訊：
+以下範例顯示了叢集中節點的健康狀況和資格資訊：
 
 [listing, subs="+quotes"]
 ----
@@ -576,22 +576,22 @@ node1                true    true          false
 node2                true    true          false
 ----
 ====
-. 驗證遠端叢集介面的連線能力：
+. 驗證遠端集群介面的連接性：
 
 
 [role="tabbed-block"]
 ====
-.更新版本ONTAP
+.ONTAP 9.9.1 及更高版本
 --
-您可以使用 `network interface check cluster-connectivity` 命令以啟動叢集連線的存取檢查、然後顯示詳細資料：
+你可以使用 `network interface check cluster-connectivity`執行命令以啟動叢集連接性檢查，然後顯示詳細資訊：
 
-`network interface check cluster-connectivity start` 和 `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`和 `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-* 注意： * 請等待數秒後再執行 `show`命令以顯示詳細資料。
+*注意：*運行程式前請等待幾秒鐘 `show`顯示詳細資訊的命令。
 
 [listing, subs="+quotes"]
 ----
@@ -607,9 +607,9 @@ node2
        3/5/2022 19:21:20 -06:00   node2_clus2      node1_clus2      none
 ----
 --
-.所有 ONTAP 版本
+.所有ONTAP版本
 --
-對於所有 ONTAP 版本、您也可以使用 `cluster ping-cluster -node <name>` 檢查連線能力的命令：
+對於所有ONTAP版本，您也可以使用 `cluster ping-cluster -node <name>`檢查連接性的命令：
 
 `cluster ping-cluster -node <name>`
 
@@ -641,26 +641,26 @@ RPC status:
 ----
 --
 ====
-. [[step25]] 將權限等級變更回 admin ：
+. 步驟25：將權限等級改回管理員：
 +
-「et -priv. admin」
+`set -privilege admin`
 
 
 
 
 
-=== 步驟2：設定共享交換器
+=== 步驟 2：設定共享交換機
 
-本程序中的範例使用下列交換器和節點命名法：
+本流程中的範例使用以下開關和節點命名規則：
 
-* 這兩個共享交換器的名稱為_SH1_和_sh2_。
-* 節點是_node1_和_node2_。
+* 兩個共用交換器的名稱分別為 _sh1_ 和 _sh2_。
+* 節點分別為 _node1_ 和 _node2_。
 
 
 
-NOTE: 此程序需要同時使用ONTAP 支援指令和Cisco Nexus 9000系列交換器的指令ONTAP 、除非另有說明、否則會使用指令。
+NOTE: 流程需要同時使用ONTAP指令和Cisco Nexus 9000 系列交換器指令，除非另有說明，否則使用ONTAP指令。
 
-. 確認HA配對1（和HA配對2）的儲存組態正確無誤、而且沒有錯誤：
+. 驗證 HA 對 1（和 HA 對 2）的儲存配置是否正確且無錯誤：
 +
 `system switch ethernet show`
 
@@ -694,9 +694,9 @@ sh2
 storage::*>
 ----
 ====
-. 確認儲存節點連接埠正常運作：
+. 確認儲存節點連接埠運作正常：
 +
-「torage port show -port-type ENET」
+`storage port show -port-type ENET`
 
 +
 .顯示範例
@@ -723,12 +723,12 @@ node2
 ====
 
 
-. [[step3]]將HA配對1、NSM224路徑A連接埠移至SH1連接埠範圍11-22。
-. 安裝HA配對1、節點1、SH1連接埠範圍11-22路徑A的纜線。例如AFF 、在不經意的情況下、儲存連接埠的路徑是e0c。
-. 安裝從HA配對1、節點2、路徑A到SH1連接埠範圍11-22的纜線。
-. 驗證節點連接埠是否正常運作：
+. [[step3]]將 HA 對 1、NSM224 路徑 A 連接埠移至 sh1 連接埠範圍 11-22。
+. 安裝一條從 HA 對 1、節點 1、路徑 A 到 sh1 連接埠範圍 11-22 的電纜。例如， AFF A400上的 A 路徑儲存連接埠為 e0c。
+. 安裝一條從 HA 對 1、節點 2、路徑 A 到 sh1 連接埠範圍 11-22 的電纜。
+. 確認節點連接埠運作正常：
 +
-「torage port show -port-type ENET」
+`storage port show -port-type ENET`
 
 +
 .顯示範例
@@ -753,7 +753,7 @@ node2
         e5b     ENET  storage           100      enabled  online        30
 ----
 ====
-. 檢查叢集是否沒有儲存交換器或纜線問題：
+. 檢查叢集是否有儲存交換器或線纜問題：
 +
 `system health alert show -instance`
 
@@ -767,12 +767,12 @@ storage::*> *system health alert show -instance*
 There are no entries matching your query.
 ----
 ====
-. 將HA配對1、NSM224路徑B連接埠移至sh2連接埠範圍11-22。
-. 安裝從HA配對1、節點1、路徑B到sh2連接埠範圍11-22的纜線。例如AFF 、位於ESIVA400上的路徑B儲存連接埠是e5b。
-. 安裝從HA配對1、節點2、路徑B到sh2連接埠範圍11-22的纜線。
-. 驗證節點連接埠是否正常運作：
+. 將 HA 對 1、NSM224 路徑 B 連接埠移至 sh2 連接埠範圍 11-22。
+. 安裝一條從 HA 對 1、節點 1、路徑 B 到 sh2 連接埠範圍 11-22 的電纜。例如， AFF A400上的 B 路徑儲存連接埠為 e5b。
+. 安裝一條從 HA 對 1、節點 2、路徑 B 到 sh2 連接埠範圍 11-22 的電纜。
+. 確認節點連接埠運作正常：
 +
-「torage port show -port-type ENET」
+`storage port show -port-type ENET`
 
 +
 .顯示範例
@@ -797,7 +797,7 @@ node2
         e5b     ENET  storage           100      enabled  online        30
 ----
 ====
-. 確認HA配對1的儲存組態正確無誤、而且沒有錯誤：
+. 驗證HA對1的儲存配置是否正確且無錯誤：
 +
 `system switch ethernet show`
 
@@ -831,7 +831,7 @@ sh2
 storage::*>
 ----
 ====
-. 將HA配對1上未使用的（控制器）二線儲存連接埠從儲存設備重新設定為網路。如果直接連接多個NS224、則應該重新設定連接埠。
+. 將 HA 對 1 上未使用的（控制器）輔助儲存連接埠從儲存重新配置為網路。如果直接連接了多個 NS224，則需要重新設定某些連接埠。
 +
 .顯示範例
 [%collapsible]
@@ -842,18 +842,18 @@ storage port modify –node [node name] –port [port name] –mode network
 ----
 ====
 +
-若要將儲存連接埠放入廣播網域：
+將儲存連接埠放入廣播域：
 
 +
-** 「網路連接埠廣播網域建立」（如有需要、可建立新網域）
-** 「網路連接埠廣播網域附加連接埠」（將連接埠新增至現有網域）
+** `network port broadcast-domain create`（如有需要，建立新網域）
+** `network port broadcast-domain add-ports`（向現有網域新增連接埠）
 
 
-. 如果您禁止自動建立個案、請叫用AutoSupport 下列訊息來重新啟用：
+. 如果您已停用自動建立案例功能，請透過呼叫AutoSupport訊息重新啟用該功能：
 +
-「系統節點AutoSupport 不完整地叫用節點*-type all -most MAn=end」
+`system node autosupport invoke -node * -type all -message MAINT=END`
 
 
 
-.接下來呢？
+.下一步是什麼？
 交換器遷移完成後，您可以… link:../switch-cshm/config-overview.html["配置交換器健康監控"]。

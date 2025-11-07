@@ -2,7 +2,7 @@
 permalink: switch-bes-53248/configure-new-switch-overview.html 
 sidebar: sidebar 
 keywords: BES-53248 switches, initial installation, configure new bes-53248 switch 
-summary: 在設定BS-53248叢集交換器之前、請先檢閱組態總覽。 
+summary: 在設定 BES-53248 叢集交換器之前，請先查看設定概述。 
 ---
 = BES-53248 交換器的安裝與設定工作流程
 :allow-uri-read: 
@@ -11,17 +11,17 @@ summary: 在設定BS-53248叢集交換器之前、請先檢閱組態總覽。
 
 
 [role="lead"]
-BS-53248是一款裸機交換器、設計用於ONTAP 2到24個節點的各種叢集。
+BES-53248 是一款裸金屬交換機，設計用於 2 到 24 個節點的ONTAP叢集。
 
 請依照這些工作流程步驟安裝並設定您的 BES-53248 交換器。
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一"]link:configure-reqs-bes53248.html["查看配置要求"]
 [role="quick-margin-para"]
-查看 BES-53248 叢集交換器的設定需求。
+查看 BES-53248 群集交換器的設定需求。
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["二"]link:components-bes53248.html["查看組件和零件編號"]
 [role="quick-margin-para"]
-查看 BES-53248 群集交換器的組件和零件號碼。
+查看 BES-53248 集群交換器的組件和零件編號。
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三"]link:required-documentation-bes53248.html["審查所需文件"]
 [role="quick-margin-para"]

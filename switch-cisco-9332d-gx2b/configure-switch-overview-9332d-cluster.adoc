@@ -9,7 +9,7 @@ summary: Cisco 9332D-GX2B 叢集交換器安裝與設定概述
 
 
 [role="lead"]
-Cisco 9332D-GX2B 交換器是Cisco Nexus 9000 平台的一部份。  AFX 系統交換器可讓您建立具有兩個以上節點的ONTAP叢集。
+Cisco 9332D-GX2B 交換器是Cisco Nexus 9000 平台的一部份。AFX 系統交換器可讓您建立具有兩個以上節點的ONTAP叢集。
 
 請依照這些工作流程步驟安裝並設定您的Cisco 9332D-GX2B 交換器。
 

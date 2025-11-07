@@ -2,31 +2,36 @@
 permalink: switch-nvidia-sn2100-storage/install-snmpv3-sn2100-storage.html 
 sidebar: sidebar 
 keywords: sn2100 SN2100 cabling setup, sn2100 switches configuration, cumulus linux os 
-summary: 此版本支援使用v3進行記錄監控。 
+summary: 此版本新增了對SNMPv3日誌監控的支援。 
 ---
-= 設定用於交換器記錄收集的v3
+= 設定 SNMPv3 以收集交換器日誌
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-請遵循此程序來設定支援交換器記錄收集和交換器健全狀況監控（SHM）的v3。
+請依照下列步驟設定 SNMPv3，SNMPv3 支援交換器日誌收集和交換器健康監控 (SHM)。
 
-.關於這項工作
-下列命令可在NVIDIA SN2100交換器上設定v3使用者名稱：
+.關於此任務
+以下指令用於在NVIDIA SN2100 交換器上設定 SNMPv3 使用者名稱：
 
-* 對於*無驗證*：「net add SNMP伺服器使用者名稱_SNMPv3 _user_ auth-none"
-* 若為* MD5/SHA驗證*：「net add SNMP伺服器使用者名稱_SNMPv3使用者_[auth-md5 | auth-SHa]_auth-password_」
-* 若為使用AES-D5/SHA加密的* MD5/SHA驗證*：「net add SNMP伺服器使用者名稱_SNMPv3使用者_驗證-md5 | auth-SHA」_auth-password_[加密-AES-|加密- des]_PRIV-password_
+* 對於*無需身份驗證*的情況：
+`net add snmp-server username _SNMPv3_USER_ auth-none`
+* 用於 *MD5/SHA 認證*：
+`net add snmp-server username _SNMPv3_USER_ [auth-md5|auth-sha] _AUTH-PASSWORD_`
+* 用於*MD5/SHA認證與AES/DES加密*：
+`net add snmp-server username _SNMPv3_USER_ [auth-md5|auth-sha] _AUTH-PASSWORD_ [encrypt-aes|encrypt-des] _PRIV-PASSWORD_`
 
 
-下列命令可在ONTAP Sfeside上設定一個v3使用者名稱：「cluster1：：*>安全登入create -user-or group name _MPv2_user_-applicationSNMP -imize-method USM -reme-switch-ipaddress_address_」
+以下指令在ONTAP端設定 SNMPv3 使用者名稱：
+`cluster1::*> security login create -user-or-group-name _SNMPv3_USER_ -application snmp -authentication-method usm -remote-switch-ipaddress _ADDRESS_`
 
-以下命令使用SHM建立了v3使用者名稱：「cluster1：：*>系統交換器乙太網路修改-DEVICE _DEVICE _-SNM-version v3 -community或-username_SNMPv3
+以下命令用於在 SHM 中建立 SNMPv3 使用者名稱：
+`cluster1::*> system switch ethernet modify -device _DEVICE_ -snmp-version SNMPv3 -community-or-username _SNMPv3_USER_`
 
 .步驟
-. 設定交換器上的v3使用者使用驗證和加密：
+. 在交換器上設定 SNMPv3 使用者以使用身份驗證和加密：
 +
 `net show snmp status`
 
@@ -104,7 +109,7 @@ Version 3 Usernames                Configured     *<---- Configured here*
 cumulus@sw1:~$
 ----
 ====
-. 設定位在邊上的v3使用者ONTAP ：
+. 在ONTAP端設定 SNMPv3 用戶：
 +
 `security login create -user-or-group-name SNMPv3User -application snmp -authentication-method usm -remote-switch-ipaddress 10.231.80.212`
 
@@ -131,7 +136,7 @@ Enter privacy protocol password (minimum 8 characters long):
 Enter privacy protocol password again:
 ----
 ====
-. 設定SHM以新的v3使用者進行監控：
+. 設定 SHM 以使用新的 SNMPv3 使用者進行監控：
 +
 `system switch ethernet show-all -device "sw1 (b8:59:9f:09:7c:22)" -instance`
 
@@ -161,7 +166,7 @@ cluster1::*>
 cluster1::*> *system switch ethernet modify -device "sw1 (b8:59:9f:09:7c:22)" -snmp-version SNMPv3 -community-or-username SNMPv3User*
 ----
 ====
-. 確認新建立的v3使用者要查詢的序號與SHM輪詢期間完成後、上一步所述的序號相同。
+. SHM 輪詢週期結束後，驗證使用新建立的 SNMPv3 使用者查詢的序號是否與上一個步驟中詳細說明的序號相同。
 +
 `system switch ethernet polling-interval show`
 

@@ -2,15 +2,15 @@
 :allow-uri-read: 
 
 
-乙太網路交換器健全狀況監視器（ CSHM ）負責確保叢集與儲存網路交換器的作業健全狀況、並收集交換器記錄以供偵錯之用。本程序將引導您完成設定收集、要求詳細的 * 支援 * 記錄、以及啟用 AutoSupport 所收集 * 定期 * 資料的每小時收集。
+乙太網路交換器健康監視器 (CSHM) 負責確保叢集和儲存網路交換器的運作健康，並收集交換器日誌以進行偵錯。此流程引導您完成設定收集、請求詳細的*支援*日誌以及啟用由AutoSupport收集的*定期*資料的每小時收集流程。
 
-* 注意： * 如果您啟用 FIPS 模式、則必須完成下列步驟：
+*注意：* 如果啟用 FIPS 模式，則必須完成以下步驟：
 
 [NOTE]
 ====
-. 使用廠商指示在交換器上重新產生 SSH 金鑰。
-. 使用在 ONTAP 中重新產生 SSH 金鑰 `debug system regenerate-systemshell-key-pair`
-. 使用 `system switch ethernet log setup-password`命令重新執行記錄收集設定例行程序
+. 依照廠商提供的說明，在交換器上重新產生 SSH 金鑰。
+. 使用ONTAP重新產生 SSH 金鑰 `debug system regenerate-systemshell-key-pair`
+. 使用以下方式重新執行日誌收集設定例程： `system switch ethernet log setup-password`命令
 
 
 ====
@@ -18,15 +18,15 @@
 
 == 開始之前
 
-* 使用者必須能夠存取交換器 `show` 命令。如果這些權限不可用、請建立新使用者、並將必要的權限授予使用者。
-* 必須為交換器啟用交換器健全狀況監控。請務必確認 `Is Monitored:` 欄位在的輸出中設為 * 真 * `system switch ethernet show` 命令。
-* 對於 Broadcom 和 Cisco 交換器的記錄收集：
+* 使用者必須有權存取該開關。 `show`命令。如果這些使用者不可用，請建立一個新使用者並授予該使用者必要的權限。
+* 必須為交換器啟用交換器健康監控功能。透過確保以下方式驗證這一點： `Is Monitored:`輸出中該欄位設定為*true* `system switch ethernet show`命令。
+* 用於收集博通和Cisco交換器的日誌：
 +
 ** 本機使用者必須具有網路管理員權限。
-** 應在交換器上為啟用記錄收集的每個叢集設定建立新使用者。這些交換器不支援同一位使用者的多個 SSH 金鑰。執行的任何其他記錄集合設定都會覆寫使用者先前存在的任何 SSH 金鑰。
+** 對於每個啟用了日誌收集的叢集設置，都應該在交換器上建立一個新使用者。這些交換器不支援同一用戶使用多個 SSH 金鑰。任何額外的日誌收集設定都會覆蓋使用者的任何現有 SSH 金鑰。
 
 
-* 若要使用 NVIDIA 交換器來支援記錄收集、必須允許記錄收集的 _user_ 執行 `cl-support`命令、而無需提供密碼。若要允許這種使用方式、請執行命令：
+* 為了支援使用NVIDIA交換器收集日誌，必須允許用於日誌收集的_user_ 執行此交換器。 `cl-support`無需提供密碼即可執行命令。若要啟用此用法，請執行下列命令：
 +
 `echo '_<user>_ ALL = NOPASSWD: /usr/cumulus/bin/cl-support' | sudo EDITOR='tee -a' visudo -f /etc/sudoers.d/cumulus`
 
@@ -38,11 +38,11 @@
 
 [role="tabbed-block"]
 ====
-.ONTAP 9.15.1 及更新版本
+.ONTAP 9.15.1 及更高版本
 --
-. 若要設定記錄收集、請針對每個交換器執行下列命令。系統會提示您輸入用於記錄收集的交換器名稱、使用者名稱和密碼。
+. 若要設定日誌收集，請對每個交換器執行以下命令。系統會提示您輸入用於日誌收集的交換器名稱、使用者名稱和密碼。
 +
-*注意：*如果對使用者規範提示回答 *y*，請確保使用者俱有必要的權限，如<<開始之前>> 。
+*注意：* 如果對使用者規範提示回答 *y*，請確保使用者擁有必要的權限，如下所述：<<開始之前>> 。
 
 +
 [source, cli]
@@ -79,9 +79,9 @@ Enter the password again: *<enter switch password>*
 
 
 
-NOTE: 對於 CL 5.11.1，建立使用者 *cumulus* 並對以下提示回答 *y*：您要指定管理員以外的使用者進行日誌收集嗎？{y|n}：*y*
+NOTE: 對於 CL 5.11.1，建立使用者 *cumulus* 並對以下提示回答 *y*：您是否要指定 admin 以外的使用者進行日誌收集？  {y|n}: *y*
 
-. [[step2]]啟用定期日誌收集：
+. 步驟2：啟用定期日誌收集。
 +
 [source, cli]
 ----
@@ -110,7 +110,7 @@ cs1                                       true        scheduled   never-run
 cs2                                       true        scheduled   never-run
 2 entries were displayed.
 ----
-. 要求支援記錄收集：
+. 請求支援日誌收集：
 +
 [source, cli]
 ----
@@ -135,7 +135,7 @@ cs1                                       false       halted      initiated
 cs2                                       true        scheduled   initiated
 2 entries were displayed.
 ----
-. 若要檢視記錄收集的所有詳細資料、包括啟用、狀態訊息、定期收集的先前時間戳記和檔名、要求狀態、狀態訊息、以及支援集合的先前時間戳記和檔名、請使用下列項目：
+. 要查看日誌收集的所有詳細信息，包括定期收集的啟用情況、狀態訊息、上一個時間戳和文件名，以及支援收集的請求狀態、狀態訊息、上一個時間戳和文件名，請使用以下命令：
 +
 [source, cli]
 ----
@@ -172,9 +172,9 @@ cluster1::*> *system switch ethernet log show -instance*
 --
 .ONTAP 9.14.1 及更早版本
 --
-. 若要設定記錄收集、請針對每個交換器執行下列命令。系統會提示您輸入用於記錄收集的交換器名稱、使用者名稱和密碼。
+. 若要設定日誌收集，請對每個交換器執行以下命令。系統會提示您輸入用於日誌收集的交換器名稱、使用者名稱和密碼。
 +
-* 注意： * 如果回答 `y`使用者規格提示，請確定使用者擁有中所述的必要權限<<開始之前>>。
+*注意：* 如果回答 `y`根據使用者規格提示，確保使用者擁有必要的權限，具體權限要求請參閱相關文件。<<開始之前>> 。
 
 +
 [source, cli]
@@ -211,9 +211,9 @@ Enter the password again: *<enter switch password>*
 
 
 
-NOTE: 對於 CL 5.11.1，建立使用者 *cumulus* 並對以下提示回答 *y*：您要指定管理員以外的使用者進行日誌收集嗎？{y|n}：*y*
+NOTE: 對於 CL 5.11.1，建立使用者 *cumulus* 並對以下提示回答 *y*：您是否要指定 admin 以外的使用者進行日誌收集？  {y|n}: *y*
 
-. [[step2]] 若要要求支援日誌收集並啟用定期收集，請執行下列命令。這會同時啟動記錄收集的兩種類型：詳細 `Support` 記錄和每小時收集 `Periodic` 的資料。
+. [[step2]] 若要要求支援日誌收集並啟用定期收集，請執行下列命令。這將啟動兩種類型的日誌收集：詳細日誌收集和詳細日誌收集。 `Support`日誌和每小時收集的數據 `Periodic`數據。
 +
 [source, cli]
 ----
@@ -235,7 +235,7 @@ Do you want to modify the cluster switch log collection configuration? {y|n}: [n
 Enabling cluster switch log collection.
 ----
 +
-等待 10 分鐘、然後檢查記錄收集是否完成：
+等待 10 分鐘，然後檢查日誌收集是否完成：
 
 +
 [source, cli]

@@ -2,86 +2,86 @@
 permalink: switch-bes-53248/upgrade-rcf.html 
 sidebar: sidebar 
 keywords: upgrade rcf,setup rcf,rcf file 
-summary: 您可以在設定 BS-53248 叢集交換器之後、以及套用任何新授權之後、升級參考組態檔案（ RCF ）。 
+summary: '設定 BES-53248 叢集交換器並套用任何新授權後，您可以升級參考設定檔 (RCF)。' 
 ---
-= 升級參考組態檔案（ RCF ）
+= 升級參考設定檔（RCF）
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-您可以在升級 BS-53248 叢集交換器 EFOS 之後、以及套用任何新授權之後、升級參考組態檔案（ RCF ）。
+升級 BES-53248 叢集交換器 EFOS 並套用任何新授權後，您可以升級參考設定檔 (RCF)。
 
 .開始之前
-請確定您擁有下列項目：
+請確保您擁有以下物品：
 
-* 交換器組態的目前備份。
-* 完全正常運作的叢集（記錄檔中沒有錯誤或類似問題）。
-* 目前的 RCF 檔案、可從取得 https://mysupport.netapp.com/site/products/all/details/broadcom-cluster-switches/downloads-tab["Broadcom叢集交換器"^] 頁面。
-* RCF 中的開機組態、可反映所需的開機映像、如果您只安裝 EFOS 並保留目前的 RCF 版本、則需要此組態。如果您需要變更開機組態以反映目前的開機映像、則必須在重新套用RCF之前執行此動作、以便在未來重新開機時產生正確的版本。
-* 從原廠預設狀態安裝 RCF 時、需要主控台連線至交換器。如果您已使用知識庫文件、則此需求為選用項目  https://kb.netapp.com/onprem/Switches/Broadcom/How_to_clear_configuration_on_a_Broadcom_interconnect_switch_while_retaining_remote_connectivity["如何清除 Broadcom 互連交換器上的組態、同時保持遠端連線"^] 事先清除組態。
+* 交換器配置的目前備份。
+* 一個功能齊全的群集（日誌中沒有錯誤或類似問題）。
+* 當前 RCF 檔案可從以下位置取得： https://mysupport.netapp.com/site/products/all/details/broadcom-cluster-switches/downloads-tab["博通集群交換機"^]頁。
+* RCF 中的啟動配置反映了所需的啟動映像，如果您僅安裝 EFOS 並保留目前的RCF 版本，則需要此配置。如果需要更改啟動配置以反映目前的啟動映像，則必須在重新套用 RCF 之前進行更改，以便在以後的重新啟動中實例化正確的版本。
+* 從出廠預設狀態安裝 RCF 時，需要透過控制台連接到交換器。如果您已使用知識庫文章，則此要求為可選。 https://kb.netapp.com/onprem/Switches/Broadcom/How_to_clear_configuration_on_a_Broadcom_interconnect_switch_while_retaining_remote_connectivity["如何在保持遠端連線的情況下清除博通互連交換器上的配置"^]事先清除配置。
 
 
-.建議的文件
-* 請參閱交換器相容性表、以瞭解支援ONTAP 的功能表和RCF版本。請參閱 https://mysupport.netapp.com/site/info/broadcom-cluster-switch["EFOS 軟體下載"^] 頁面。請注意、 RCF 中的命令語法與 EFOS 版本中的命令語法之間可能存在命令相依性。
-* 請參閱上提供的適當軟體和升級指南 https://www.broadcom.com/support/bes-switch["Broadcom"^] 有關 BS-53248 交換器升級與降級程序的完整文件、請參閱網站。
+.建議的文檔
+* 請查閱交換器相容性列表，以了解支援的ONTAP和 RCF 版本。參見 https://mysupport.netapp.com/site/info/broadcom-cluster-switch["EFOS軟體下載"^]頁。請注意，RCF 中的指令語法與 EFOS 版本中的指令語法之間可能存在指令依賴關係。
+* 請參閱網站上提供的相應軟體和升級指南。 https://www.broadcom.com/support/bes-switch["博通"^]本網站提供有關 BES-53248 交換器升級和降級程序的完整文件。
 
 
 .關於範例
-本程序中的範例使用下列交換器和節點命名法：
+本流程中的範例使用以下開關和節點命名規則：
 
-* 兩台 BS-53248 交換器的名稱分別是 CS1 和 CS2 。
+* 這兩台 BES-53248 交換器的名稱分別是 cs1 和 cs2。
 * 節點名稱為cluster1-01、cluster1-02、cluster1-03和cluster1-04。
-* 叢集 LIF 名稱為 cluster1-01_clus1 、 cluster1-01_clus2 、 cluster1-02_clus1 、 cluster1-02_clus2 、 cluster1-03_clus1 、 cluster1-03_clus2 、 cluster1-04_clus1 和 cluster1-04_clus2 。
-* 「cluster1：*：>」提示會指出叢集的名稱。
-* 本程序中的範例使用四個節點。這些節點使用兩個10GbE叢集互連連接埠 `e0a` 和 `e0b`。請參閱 https://hwu.netapp.com/Home/Index["Hardware Universe"^] 驗證平台上的叢集連接埠是否正確。
+* 群集 LIF 名稱稱為 cluster1-01_clus1、cluster1-01_clus2、cluster1-02_clus1、cluster1-02_clus2、cluster1-03_clus1、cluster1-03_clus2、cluster1-04_clus1 和 cluster1-04_clus2。
+* 這 `cluster1::*>`prompt 指示叢集名稱。
+* 本流程中的範例使用了四個節點。這些節點使用兩個 10GbE 叢集互連端口 `e0a`和 `e0b`。參見 https://hwu.netapp.com/Home/Index["Hardware Universe"^]驗證平台上的叢集連接埠是否正確。
 
 
 
-NOTE: 命令輸出可能會因ONTAP 不同版本的不相同而有所差異。
+NOTE: 命令輸出可能因ONTAP版本不同而有所差異。
 
-.關於這項工作
-此程序需要同時使用 ONTAP 命令和 Broadcom 交換器命令、除非另有說明、否則會使用 ONTAP 命令。
+.關於此任務
+該程式需要同時使用ONTAP命令和 Broadcom 交換器命令；除非另有說明，否則使用ONTAP命令。
 
-在此程序期間、不需要運作中的交換器間連結（ISL）。這是因為RCF版本變更可能會暫時影響ISL連線。為了確保叢集作業不中斷、下列程序會在執行目標交換器上的步驟時、將所有叢集生命體移轉至作業夥伴交換器。
-
-
-CAUTION: 在安裝新的交換器軟體版本和 RCFs 之前、請先參閱知識庫文章 https://kb.netapp.com/onprem/Switches/Broadcom/How_to_clear_configuration_on_a_Broadcom_interconnect_switch_while_retaining_remote_connectivity["如何清除 Broadcom 互連交換器上的組態、同時保持遠端連線"^]。如果您必須完全清除交換器設定、則需要再次執行基本組態。您必須使用序列主控台連線至交換器、因為完整的組態刪除會重設管理網路的組態。
+在此過程中不需要任何可操作的交換器間連結 (ISL)。這是設計使然，因為 RCF 版本的變更可能會暫時影響 ISL 連線。為確保叢集運作不會中斷，以下步驟會將所有叢集 LIF 遷移到運作夥伴交換機，同時在目標交換器上執行對應步驟。
 
 
+CAUTION: 在安裝新的交換器軟體版本和 RCF 之前，請先閱讀知識庫文章。 https://kb.netapp.com/onprem/Switches/Broadcom/How_to_clear_configuration_on_a_Broadcom_interconnect_switch_while_retaining_remote_connectivity["如何在保持遠端連線的情況下清除博通互連交換器上的配置"^] 。如果必須完全清除交換器設置，則需要重新進行基本配置。您必須使用序列控制台連接到交換機，因為完全清除設定會重設管理網路的設定。
 
-== 步驟 1 ：準備升級
 
-. 如果AutoSupport 此叢集啟用了「支援」功能、請叫用AutoSupport 下列訊息來禁止自動建立案例：
+
+== 第一步：準備升級
+
+. 如果此叢集上啟用了AutoSupport ，則透過呼叫AutoSupport訊息來抑制自動建立案例：
 +
-「系統節點AutoSupport 不完整地叫用節點*-type all -Message MAn=xh」
-
-+
-其中_x_是維護時段的持續時間（以小時為單位）。
+`system node autosupport invoke -node * -type all -message MAINT=xh`
 
 +
-
-NOTE: 此資訊可通知技術支援人員執行此維護工作、以便在維護期間抑制自動建立案例。AutoSupport
+其中 _x_ 為維護視窗的持續時間（小時）。
 
 +
-下列命令會禁止自動建立兩小時的個案：
+
+NOTE: AutoSupport訊息會通知技術支援此維護任務，以便在維護視窗期間抑制自動建立案例。
+
++
+以下命令可抑制自動建立案件兩小時：
 
 +
 [source, cli]
 ----
 system node autosupport invoke -node * -type all -message MAINT=2h
 ----
-. 將權限等級變更為進階、並在系統提示您繼續時輸入* y*：
+. 將權限級別變更為高級，並在提示繼續時輸入 *y*：
 +
 [source, cli]
 ----
 set -privilege advanced
 ----
 +
-出現進階提示（*>）。
+出現高階提示符號（*>）。
 
-. 顯示連接至叢集交換器之每個節點上的叢集連接埠：
+. 顯示每個節點上連接到叢集交換器的叢集連接埠：
 +
 [source, cli]
 ----
@@ -112,9 +112,9 @@ cluster1-04/cdp
 cluster1::*>
 ----
 ====
-. 檢查每個叢集連接埠的管理和作業狀態。
+. 檢查每個叢集連接埠的管理和運作狀態。
 +
-.. 確認所有叢集連接埠都正常運作：
+.. 確認叢集所有連接埠均已啟動且狀態正常：
 +
 [source, cli]
 ----
@@ -164,7 +164,7 @@ e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
 cluster1::*>
 ----
 ====
-.. 確認所有叢集介面（l生命）都位於主連接埠：
+.. 確認所有叢集介面（LIF）都位於主連接埠上：
 +
 [source, cli]
 ----
@@ -193,14 +193,14 @@ Cluster
 ====
 
 
-. 驗證叢集是否顯示兩個叢集交換器的資訊。
+. 確認集群顯示兩個集群交換器的資訊。
 
 
 [role="tabbed-block"]
 ====
-.更新版本ONTAP
+.ONTAP 9.8 及更高版本
 --
-從 ONTAP 9.8 開始、請使用命令：
+從ONTAP 9.8 開始，使用以下指令：
 
 [source, cli]
 ----
@@ -227,9 +227,9 @@ cs2                         cluster-network    10.228.143.202   BES-53248
 cluster1::*>
 ----
 --
-.更新版本ONTAP
+.ONTAP 9.7 及更早版本
 --
-對於 ONTAP 9.7 及更早版本、請使用命令：
+對於ONTAP 9.7 及更早版本，請使用以下指令：
 
 [source, cli]
 ----
@@ -257,7 +257,7 @@ cluster1::*>
 ----
 --
 ====
-. [[step6]]停用叢集生命體上的自動還原功能。
+. [[step6]]停用叢集 LIF 的自動還原功能。
 +
 [source, cli]
 ----
@@ -267,15 +267,15 @@ network interface modify -vserver Cluster -lif * -auto-revert false
 
 
 
-== 步驟2：設定連接埠
+== 步驟 2：設定埠
 
-. 在交換器 CS2 上、確認連接到叢集中節點的連接埠清單。
+. 在交換器 cs2 上，確認連接到叢集中節點的連接埠清單。
 +
 [source, cli]
 ----
 show isdp neighbor
 ----
-. 在交換器 CS2 上、關閉連接至節點叢集連接埠的連接埠。例如、如果連接埠 0/1 到 0/16 連接到 ONTAP 節點：
+. 在交換器 cs2 上，關閉連接到節點叢集連接埠的連接埠。例如，如果連接埠 0/1 到 0/16 連接到ONTAP節點：
 +
 [listing, subs="+quotes"]
 ----
@@ -286,7 +286,7 @@ show isdp neighbor
 (cs2)(Interface 0/1-0/16)# *exit*
 (cs2)(Config)#
 ----
-. 驗證叢集LIF是否已移轉至叢集交換器CS1上裝載的連接埠。這可能需要幾秒鐘的時間。
+. 驗證叢集 LIF 是否已遷移到叢集交換器 cs1 上託管的連接埠。這可能需要幾秒鐘。
 +
 [source, cli]
 ----
@@ -314,9 +314,9 @@ Cluster
 cluster1::*>
 ----
 ====
-. 驗證叢集是否正常：
+. 驗證叢集是否運作正常：
 +
-「叢集展示」
+`cluster show`
 
 +
 .顯示範例
@@ -333,34 +333,34 @@ cluster1-03          true    true          true
 cluster1-04          true    true          false
 ----
 ====
-. 如果您尚未這麼做、請將下列命令的輸出複製到記錄檔、以儲存目前的交換器組態：
+. 如果您尚未儲存目前交換器配置，請將以下命令的輸出複製到日誌檔案中：
 +
 [source, cli]
 ----
 show running-config
 ----
-. 清除交換器CS2上的組態、然後執行基本設定。
+. 清除交換器 cs2 上的配置並執行基本設定。
 +
 
-CAUTION: 更新或套用新的RCF時、您必須清除交換器設定並執行基本組態。您必須使用序列主控台連線至交換器、才能清除交換器設定。如果您已使用知識庫文件、則此需求為選用項目 https://kb.netapp.com/onprem/Switches/Broadcom/How_to_clear_configuration_on_a_Broadcom_interconnect_switch_while_retaining_remote_connectivity["如何清除 Broadcom 互連交換器上的組態、同時保持遠端連線"] 事先清除組態。
+CAUTION: 更新或套用新的 RCF 時，必須清除交換器設定並執行基本配置。必須使用串列埠控制台連接到交換器才能清除交換器設定。如果您已使用知識庫文章，則此要求為可選。 https://kb.netapp.com/onprem/Switches/Broadcom/How_to_clear_configuration_on_a_Broadcom_interconnect_switch_while_retaining_remote_connectivity["如何在保持遠端連線的情況下清除博通互連交換器上的配置"]事先清除配置。
 
 +
 
-NOTE: 清除組態不會刪除授權。
+NOTE: 清除配置不會刪除許可證。
 
 +
-.. SSH 進入交換器。
+.. 透過SSH連接到交換器。
 +
-只有當從交換器的連接埠移除所有叢集生命期、且交換器已準備好清除組態時、才能繼續進行。
+只有當交換器連接埠上的所有叢集 LIF 都被移除，且交換器準備好清除配置時，才能繼續執行此操作。
 
-.. 進入權限模式：
+.. 進入特權模式：
 +
 [listing]
 ----
 (cs2)> enable
 (cs2)#
 ----
-.. 複製並貼上下列命令以移除先前的 RCF 組態（視先前使用的 RCF 版本而定、如果沒有特定設定、某些命令可能會產生錯誤）：
+.. 複製並貼上以下命令以刪除先前的 RCF 配置（根據先前使用的 RCF 版本，如果缺少特定設置，某些命令可能會出錯）：
 +
 [source, cli]
 ----
@@ -413,9 +413,9 @@ no vlan 18
 exit
 show running-config
 ----
-.. 將執行組態儲存至啟動組態：
+.. 將運行配置儲存到啟動配置：
 +
-寫入記憶體
+`write memory`
 
 +
 [listing, subs="+quotes"]
@@ -430,9 +430,9 @@ Are you sure you want to save? (y/n) *y*
 Config file 'startup-config' created successfully.
 Configuration Saved!
 ----
-.. 重新啟動交換器：
+.. 重啟交換器：
 +
-"重裝"
+`reload`
 
 +
 [listing, subs="+quotes"]
@@ -443,21 +443,21 @@ Are you sure you would like to reset the system? (y/n) *y*
 .. 使用 SSH 再次登入交換器以完成 RCF 安裝。
 
 
-. 請注意下列事項：
+. 請注意以下事項：
 +
-.. 如果交換器上已安裝額外的連接埠授權、您必須修改 RCF 以設定額外的授權連接埠。請參閱 link:configure-licenses.html#activate-newly-licensed-ports["啟動新授權的連接埠"] 以取得詳細資料。
-.. 記錄在先前 RCF 中所做的任何自訂項目、並將這些項目套用至新的 RCF 。例如、設定連接埠速度或硬編碼 FEC 模式。
+.. 如果交換器上安裝了額外的連接埠許可證，則必須修改 RCF 以設定額外的許可證連接埠。看link:configure-licenses.html#activate-newly-licensed-ports["啟動新授權的端口"]了解詳情。
+.. 記錄先前 RCF 中所做的任何自訂設置，並將這些設定套用到新的 RCF 中。例如，設定連接埠速度或硬編碼 FEC 模式。
 
 
 
 
 [role="tabbed-block"]
 ====
-.EFOS 版本 3.2.x 及更新版本
+.EFOS 版本 3.12.x 及更高版本
 --
 . 使用下列傳輸協定之一將 RCF 複製到交換器 cs2 的 bootflash：HTTP、HTTPS、FTP、TFTP、SFTP 或 SCP。
 +
-此範例顯示 SFTP 用於將 RCF 複製到交換器 CS2 上的 bootflash ：
+此範例展示如何使用 SFTP 將 RCF 檔案複製到交換器 cs2 的啟動快閃記憶體中：
 
 
 
@@ -476,9 +476,9 @@ Are you sure you want to start? (y/n) *y*
 TFTP Code transfer starting...
 File transfer operation completed successfully.
 ----
-. 確認指令碼已下載並儲存在您指定的檔案名稱下：
+. 請確認腳本已下載並以您指定的檔案名稱儲存：
 +
-《記錄清單》
+`script list`
 
 +
 [listing, subs="+quotes"]
@@ -491,9 +491,9 @@ reference-config.scr                       2680         2024 05 31 21:54:22
 2 configuration script(s) found.
 2042 Kbytes free.
 ----
-. 將指令碼套用至交換器：
+. 將腳本應用到交換器：
 +
-適用記錄
+`script apply`
 
 +
 [listing, subs="+quotes"]
@@ -512,11 +512,11 @@ Configuration script 'reference-config.scr' applied.
 
 
 --
-.所有其他EFOS 版本
+.所有其他 EFOS 版本
 --
 . 使用下列傳輸協定之一將 RCF 複製到交換器 cs2 的 bootflash：HTTP、HTTPS、FTP、TFTP、SFTP 或 SCP。
 +
-此範例顯示 SFTP 用於將 RCF 複製到交換器 CS2 上的 bootflash ：
+此範例展示如何使用 SFTP 將 RCF 檔案複製到交換器 cs2 的啟動快閃記憶體中：
 
 
 
@@ -536,9 +536,9 @@ Are you sure you want to start? (y/n) *y*
 SFTP Code transfer starting...
 File transfer operation completed successfully.
 ----
-. 確認已下載指令碼並儲存至您指定的檔案名稱：
+. 請確認腳本已下載並儲存到您指定的檔案名稱：
 +
-《記錄清單》
+`script list`
 
 +
 [listing, subs="+quotes"]
@@ -551,9 +551,9 @@ BES-53248_RCF_v1.9-Cluster-HA.scr          2241         2020 09 30 05:41:00
 
 1 configuration script(s) found.
 ----
-. 將指令碼套用至交換器：
+. 將腳本應用到交換器：
 +
-適用記錄
+`script apply`
 
 +
 [listing, subs="+quotes"]
@@ -573,7 +573,7 @@ Configuration script 'BES-53248_RCF_v1.9-Cluster-HA.scr' applied.
 
 --
 ====
-. [[step11]] 檢查命令的橫幅輸出 `show clibanner`。您必須閱讀並遵循這些指示、以確保交換器的組態和操作正確無誤。
+. 步驟11：檢查橫幅輸出。 `show clibanner`命令。您必須閱讀並遵循這些說明以確保交換器的正確配置和操作。
 +
 `show clibanner`
 
@@ -612,7 +612,7 @@ startup-config'
 command has been executed and the switch rebooted
 ----
 ====
-. 在交換器上、確認附加授權連接埠在應用 RCF 之後出現：
+. 在交換器上，驗證應用 RCF 後是否出現了新增的授權連接埠：
 +
 [source, cli]
 ----
@@ -655,15 +655,15 @@ Intf      Type   Mode      Mode         Status     Status Trap    Mode   Timeout
 0/56             Enable    100G Full               Down   Enable  Enable long
 ----
 ====
-. 在交換器上確認您已進行變更。
+. 請在交換器上確認您的變更已生效。
 +
 [source, cli]
 ----
 show running-config
 ----
-. 儲存執行中的組態、以便在您重新啟動交換器時將其變成啟動組態：
+. 儲存運作配置，以便重新啟動交換器時將其作為啟動配置：
 +
-寫入記憶體
+`write memory`
 
 +
 .顯示範例
@@ -681,9 +681,9 @@ Config file 'startup-config' created successfully.
 Configuration Saved!
 ----
 ====
-. 重新啟動交換器、並確認執行組態正確。
+. 重新啟動交換器並驗證運轉配置是否正確。
 +
-"重裝"
+`reload`
 
 +
 [listing, subs="+quotes"]
@@ -692,7 +692,7 @@ Configuration Saved!
 Are you sure you would like to reset the system? (y/n) *y*
 System will now restart!
 ----
-. 在叢集交換器 CS2 上、開啟連接至節點叢集連接埠的連接埠。
+. 在叢集交換器 cs2 上，啟動連接到節點叢集連接埠的連接埠。
 +
 [listing, subs="+quotes"]
 ----
@@ -702,9 +702,9 @@ System will now restart!
 (cs2)(Interface 0/1-0/16)# *no shutdown*
 (cs2)(Config)# *exit*
 ----
-. 將執行組態儲存至啟動組態：
+. 將運行配置儲存到啟動配置：
 +
-寫入記憶體
+`write memory`
 
 +
 .顯示範例
@@ -723,7 +723,7 @@ Config file 'startup-config' created successfully.
 Configuration Saved!
 ----
 ====
-. 驗證交換器 CS2 上的連接埠：
+. 請檢查交換器 cs2 上的連接埠：
 +
 [source, cli]
 ----
@@ -759,9 +759,9 @@ Port       Name                 State   Mode        Status      Type        Cont
 0/56       Cluster   ISL Port   Up      Auto        100G Full   Copper      Inactive    Trunk
 ----
 ====
-. 驗證叢集上叢集連接埠的健全狀況。
+. 檢查叢集上叢集連接埠的運作狀況。
 +
-.. 驗證叢集中所有節點的 e0b 連接埠是否正常運作：
+.. 驗證叢集中所有節點的 e0b 連接埠是否已啟動且運作狀況良好：
 +
 [source, cli]
 ----
@@ -809,7 +809,7 @@ e0a       Cluster      Cluster          up   9000  auto/100000 healthy false
 e0b       Cluster      Cluster          up   9000  auto/100000 healthy false
 ----
 ====
-.. 從叢集驗證交換器健全狀況：
+.. 從叢集驗證交換器運作狀況：
 +
 [source, cli]
 ----
@@ -841,14 +841,14 @@ cluster1-04/cdp
 ====
 
 
-. 驗證叢集是否顯示兩個叢集交換器的資訊。
+. 確認集群顯示兩個集群交換器的資訊。
 
 
 [role="tabbed-block"]
 ====
-.更新版本ONTAP
+.ONTAP 9.8 及更高版本
 --
-從 ONTAP 9.8 開始、請使用命令：
+從ONTAP 9.8 開始，使用以下指令：
 
 [source, cli]
 ----
@@ -875,9 +875,9 @@ cs2                         cluster-network    10.228.143.202   BES-53248
 cluster1::*>
 ----
 --
-.更新版本ONTAP
+.ONTAP 9.7 及更早版本
 --
-對於 ONTAP 9.7 及更早版本、請使用命令：
+對於ONTAP 9.7 及更早版本，請使用以下指令：
 
 [source, cli]
 ----
@@ -905,29 +905,29 @@ cluster1::*>
 ----
 --
 ====
-. [[step21] 重複交換器 CS1 上的步驟 1 至 20 。
-. 在叢集生命體上啟用自動還原：
+. [[step21]]在交換器 cs1 上重複步驟 1 到 20。
+. 啟用叢集 LIF 的自動回滾功能：
 +
 [source, cli]
 ----
 network interface modify -vserver Cluster -lif * -auto-revert true
 ----
-. 。驗證叢集生命區是否已還原至其主連接埠：
+. 。確認叢集 LIF 已恢復到其原始連接埠：
 +
 [source, cli]
 ----
 network interface show -role Cluster
 ----
 +
-如需詳細資料、請參閱 link:https://docs.netapp.com/us-en/ontap/networking/revert_a_lif_to_its_home_port.html["將LIF還原至其主連接埠"]。
+更多詳情請參見link:https://docs.netapp.com/us-en/ontap/networking/revert_a_lif_to_its_home_port.html["將 LIF 恢復到其母端口"]。
 
 
 
 
 
-== 步驟3：驗證組態
+== 步驟 3：驗證配置
 
-. 在交換器 CS1 上、確認連接至叢集連接埠的交換器連接埠為 * 開啟 * ：
+. 在交換器 cs1 上，確認連接到叢集連接埠的交換器連接埠是否已啟動：
 +
 [source, cli]
 ----
@@ -963,7 +963,7 @@ Port       Name                 State   Mode        Status      Type        Cont
 0/56       Cluster   ISL Port   Up      Auto        100G Full   Copper      Inactive    Trunk
 ----
 ====
-. 驗證交換器 CS1 和 CS2 之間的 ISL 是否正常運作：
+. 驗證交換器 cs1 和 cs2 之間的 ISL 是否正常運作：
 +
 [source, cli]
 ----
@@ -993,7 +993,7 @@ Ports   Timeout       Speed     Active
         partner/long
 ----
 ====
-. 驗證叢集生命區是否已還原至其主連接埠：
+. 確認叢集 LIF 已恢復到其原始連接埠：
 +
 [source, cli]
 ----
@@ -1020,9 +1020,9 @@ Cluster
             cluster1-04_clus2  up/up      169.254.1.7/23     cluster1-04         e0b     true
 ----
 ====
-. 驗證叢集是否正常：
+. 驗證叢集是否運作正常：
 +
-「叢集展示」
+`cluster show`
 
 +
 .顯示範例
@@ -1039,22 +1039,22 @@ cluster1-03          true    true          true
 cluster1-04          true    true          false
 ----
 ====
-. 驗證遠端叢集介面的連線能力：
+. 驗證遠端集群介面的連接性：
 
 
 [role="tabbed-block"]
 ====
-.更新版本ONTAP
+.ONTAP 9.9.1 及更高版本
 --
-您可以使用 `network interface check cluster-connectivity` 命令以啟動叢集連線的存取檢查、然後顯示詳細資料：
+你可以使用 `network interface check cluster-connectivity`執行命令以啟動叢集連接性檢查，然後顯示詳細資訊：
 
-`network interface check cluster-connectivity start` 和 `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`和 `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-* 注意： * 請等待數秒後再執行 `show`命令以顯示詳細資料。
+*注意：*運行程式前請等待幾秒鐘 `show`顯示詳細資訊的命令。
 
 [listing, subs="+quotes"]
 ----
@@ -1071,9 +1071,9 @@ cluster1-02
        3/5/2022 19:21:20 -06:00   cluster1-02_clus2   cluster1-02_clus2   none
 ----
 --
-.所有 ONTAP 版本
+.所有ONTAP版本
 --
-對於所有 ONTAP 版本、您也可以使用 `cluster ping-cluster -node <name>` 檢查連線能力的命令：
+對於所有ONTAP版本，您也可以使用 `cluster ping-cluster -node <name>`檢查連接性的命令：
 
 `cluster ping-cluster -node <name>`
 
@@ -1119,13 +1119,13 @@ RPC status:
 ----
 --
 ====
-. 將權限層級變更回管理：
+. 將權限等級改回管理員：
 +
 [source, cli]
 ----
 set -privilege admin
 ----
-. 如果您禁止自動建立個案、請叫用AutoSupport 下列訊息來重新啟用：
+. 如果您已停用自動建立案例功能，請透過呼叫AutoSupport訊息重新啟用該功能：
 +
 [source, cli]
 ----

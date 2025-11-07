@@ -14,39 +14,39 @@ sidebar:
   entries:
   - title: ONTAP硬體系統的 Switch 文檔
     url: "/index.html"
-  - title: 開始使用
+  - title: 開始
     entries:
-    - title: 新增功能
+    - title: 什麼是新的
       url: "/whats-new.html"
-    - title: 瞭解ONTAP 關於功能性系統交換器的資訊
+    - title: 了解ONTAP系統交換機
       url: "/get-started/learn-switch-concept.html"
-    - title: 開始運作
+    - title: 啟動並運行
       url: "/get-started/get-up-and-running.html"
   - title: AFX 系統交換機
     url: "/afx/index.html"
     entries:
     - section: switch-cisco-9332d-gx2b
     - section: switch-cisco-9364d-gx2a
-  - title: 叢集交換器
+  - title: 集群交換機
     url: "/cluster/index.html"
     entries:
     - section: switch-bes-53248
     - section: switch-cisco-9336c-fx2
     - section: switch-nvidia-sn2100
-  - title: 儲存交換器
+  - title: 儲存交換機
     url: "/storage/index.html"
     entries:
     - section: switch-cisco-9336c-fx2-storage
     - section: switch-nvidia-sn2100-storage
-  - title: 共享交換器
+  - title: 共享交換機
     url: "/shared/index.html"
     entries:
     - section: switch-cisco-9336c-fx2-shared
-      pdf-filename: 交換器 - Cisco-9336c-FX2 儲存設備
+      pdf-filename: 思科9336c-fx2儲存交換機
   - section: switch-cshm
-  - title: 終止可用度交換器
+  - title: 可用性終止開關
     entries:
-    - title: 總覽
+    - title: 概況
       url: "/overview-eod.html"
     - section: switch-cisco-3232c
     - section: switch-cisco-3132q-v

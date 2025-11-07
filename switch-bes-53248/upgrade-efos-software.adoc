@@ -2,7 +2,7 @@
 permalink: switch-bes-53248/upgrade-efos-software.html 
 sidebar: sidebar 
 keywords: BES-53248 cluster switches,upgrading EFOS software 
-summary: 請依照下列步驟升級 BS-53248 叢集交換器上的乙太網路光纖 OS （ EFOS ）軟體。 
+summary: '請依照以下步驟升級 BES-53248 叢集交換器上的乙太網路結構作業系統 (EFOS) 軟體。' 
 ---
 = 升級 EFOS 軟體
 :allow-uri-read: 
@@ -11,90 +11,86 @@ summary: 請依照下列步驟升級 BS-53248 叢集交換器上的乙太網路�
 
 
 [role="lead"]
-請依照下列步驟升級 BS-53248 叢集交換器上的 EFOS 軟體。
+請依照以下步驟升級 BES-53248 叢集交換器上的 EFOS 軟體。
 
-EFOS軟體包含一組進階網路功能和傳輸協定、可用於開發乙太網路和IP基礎架構系統。此軟體架構適用於使用需要徹底封包檢查或分離的應用程式的任何網路組織裝置。
+EFOS 軟體包含一套用於開發乙太網路和 IP 基礎架構系統的進階網路功能和協定。這種軟體架構適用於任何使用需要徹底資料包檢查或分離的應用程式的網路組織裝置。
 
 
 
 == 準備升級
 
 .開始之前
-* 從下載適用於叢集交換器的Broadcom EFOS軟體 https://www.broadcom.com/support/bes-switch["Broadcom乙太網路交換器支援"^] 網站。
-* 請檢閱下列EFOS版本的相關附註。
+* 從以下位置下載適用於您的叢集交換器的 Broadcom EFOS 軟體： https://www.broadcom.com/support/bes-switch["博通乙太網路交換器支援"^]地點。
+* 請查看以下有關 EFOS 版本的說明。
 
 
 []
 ====
-*請注意下列事項：*
+*請注意以下事項：*
 
-* 從EFOS 3.4.x.x升級至EFOS 3.7.x.x或更新版本時、交換器必須執行EFOS 3.4.4.6（或更新版本3.4.x.x）。如果您執行之前的版本、請先將交換器升級至EFOS 3.4.4.6（或更新版本3.4.x.x）、然後將交換器升級至EFOS 3.7.x.x或更新版本。
-* EFOS 3.4.x.x和3.7.x.x或更新版本的組態不同。若要將EFOS版本從3.4.x.x變更為3.7.x.x或更新版本、或將其變更為3.7.x.x或更新版本、必須將交換器重設為原廠預設值、並套用對應EFOS版本的RCF檔案（重新）。此程序需要透過序列主控台連接埠存取。
-* 從EFOS 3.7.x.x或更新版本開始、我們提供不符合FIPS標準的版本、以及符合FIPS標準的版本。從非FIPS相容的版本移至FIPS相容的版本時、適用不同的步驟、反之亦然。將EFOS從非FIPS相容的版本變更為FIPS相容的版本、反之亦然、會將交換器重設為原廠預設值。此程序需要透過序列主控台連接埠存取。
+* 從 EFOS 3.4.xx 升級到 EFOS 3.7.xx 或更高版本時，交換器必須執行 EFOS 3.4.4.6（或更高版本的 3.4.xx）。如果您使用的是先前的版本，請先將交換器升級到 EFOS 3.4.4.6（或更高版本的 3.4.xx），然後再將交換器升級到 EFOS 3.7.xx 或更高版本。
+* EFOS 3.4.xx 和 3.7.xx 或更高版本的配置有所不同。將 EFOS 版本從 3.4.xx 更改為 3.7.xx 或更高版本，反之亦然，需要將交換器重置為出廠預設設置，並（重新）套用相應 EFOS 版本的 RCF 檔案。此過程需要透過序列控制台連接埠進行存取。
+* 從 EFOS 版本 3.7.xx 或更高版本開始，提供不符合 FIPS 標準的版本和符合 FIPS 標準的版本。從不符合 FIPS 標準的版本過渡到符合 FIPS 標準的版本或反之亦然時，需要採取不同的步驟。將 EFOS 從不符合 FIPS 標準的版本變更為符合 FIPS 標準的版本，反之亦然，會將交換器重設為原廠預設值。此過程需要透過序列控制台連接埠進行存取。
 
 
 ====
 |===
 
 
-| *程序* | *目前的EFOS版本* | *全新EFOS版本* | *高階步驟* 
+| *程式* | *當前EFOS版本* | *全新EFOS版本* | *進階步驟* 
 
 
  a| 
-在兩個（非）FIPS相容版本之間升級EFOS的步驟
- a| 
-3.4.x.x
+在兩個（非）符合 FIPS 標準的版本之間升級 EFOS 的步驟
  a| 
 3.4.x.x
  a| 
-使用升級新的 EFOS 映像 <<方法 1 ：升級 EFOS>>。
-系統會保留組態與授權資訊。
+3.4.x.x
+ a| 
+使用以下方式升級新的 EFOS 映像<<方法一：升級EFOS>>。配置和許可證資訊將被保留。
 
 
 
  a| 
-3.4.4.6（或更新版本3.4.x.x）
+3.4.4.6（或更高版本的 3.4.xx）
  a| 
-3.7.x.x或更新版本不符合FIPS標準
+3.7.xx 或更高版本不符合 FIPS 標準
  a| 
-使用升級EFOS <<方法 1 ：升級 EFOS>>。
-將交換器重設為原廠預設值、並套用EFOS 3.7.x.x或更新版本的RCF檔案。
+使用以下方式升級 EFOS<<方法一：升級EFOS>> 。將交換器重設為出廠預設設置，並套用適用於 EFOS 3.7.xx 或更高版本的 RCF 檔案。
 
 
 
-.2+| 3.7.x.x或更新版本不符合FIPS標準  a| 
-3.4.4.6（或更新版本3.4.x.x）
+.2+| 3.7.xx 或更高版本不符合 FIPS 標準  a| 
+3.4.4.6（或更高版本的 3.4.xx）
  a| 
-使用降級EFOS <<方法 1 ：升級 EFOS>>。
-將交換器重設為原廠預設值、並套用EFOS 3.4.x.x的RCF檔案
+使用降級 EFOS<<方法一：升級EFOS>> 。將交換器重設為出廠預設設置，並套用適用於 EFOS 3.4.xx 的 RCF 檔案。
 
 
 
  a| 
-3.7.x.x或更新版本不符合FIPS標準
+3.7.xx 或更高版本不符合 FIPS 標準
  a| 
-使用升級新的 EFOS 映像 <<方法 1 ：升級 EFOS>>。系統會保留組態與授權資訊。
-
-
-
- a| 
-3.7.x.x或更新版本符合FIPS標準
- a| 
-3.7.x.x或更新版本符合FIPS標準
- a| 
-使用升級新的 EFOS 映像 <<方法 1 ：升級 EFOS>>。
-系統會保留組態與授權資訊。
+使用以下方式升級新的 EFOS 映像<<方法一：升級EFOS>>。配置和許可證資訊將被保留。
 
 
 
  a| 
-從FIPS相容EFOS版本升級至/升級的步驟
+3.7.xx 或更高版本符合 FIPS 標準
+ a| 
+3.7.xx 或更高版本符合 FIPS 標準
+ a| 
+使用以下方式升級新的 EFOS 映像<<方法一：升級EFOS>>。配置和許可證資訊將被保留。
+
+
+
+ a| 
+從符合 FIPS 標準的 EFOS 版本升級到/從符合 FIPS 標準的 EFOS 版本升級的步驟
  a| 
 不符合FIPS標準
  a| 
 符合FIPS標準
  a| 
-使用升級 EFOS 映像 <<方法2：使用ONIE OS安裝來升級EFOS>>。交換器組態和授權資訊將會遺失。
+使用以下方式升級 EFOS 映像<<方法二：使用 ONIE OS 安裝程式升級 EFOS>>。交換器配置和許可證資訊將會遺失。
 
 
 
@@ -106,9 +102,9 @@ EFOS軟體包含一組進階網路功能和傳輸協定、可用於開發乙太�
 |===
 [IMPORTANT]
 ====
-若要檢查您的 EFOS 版本是否符合 FIPS 標準或不符合 FIPS 標準、請使用 `show fips status` 命令。在下列範例中、 *IP_switch_A1* 使用 FIPS 相容的 EFOS 、而 *IP_switch_A2* 則使用非 FIPS 相容的 EFOS 。
+若要檢查您的 EFOS 版本是否符合 FIPS 標準，請使用以下方法： `show fips status`命令。在以下範例中，*IP_switch_a1* 使用的是符合 FIPS 標準的 EFOS，而 *IP_switch_a2* 使用的是不符合 FIPS 標準的 EFOS。
 
-* 在交換器 IP_switch_A1 （符合 FIPS 標準的 EFOS ）上：
+* 在交換器 IP_switch_a1（符合 FIPS 標準的 EFOS）上：
 +
 [listing, subs="+quotes"]
 ----
@@ -116,7 +112,7 @@ IP_switch_a1 # *show fips status*
 
 System running in FIPS mode
 ----
-* 在交換器 IP_switch_A2 上（不符合 FIPS 標準的 EFOS ）：
+* 在交換器 IP_switch_a2（非 FIPS 合規 EFOS）上：
 +
 [listing, subs="+quotes"]
 ----
@@ -131,29 +127,29 @@ IP_switch_a2 # *show fips status*
 
 == 升級軟體
 
-請使用下列其中一種方法：
+請使用以下方法之一：
 
-* <<方法 1 ：升級 EFOS>>。適用於大多數情況（請參閱上表）。
-* <<方法2：使用ONIE OS安裝來升級EFOS>>。如果其中一個EFOS版本符合FIPS標準、而另一個EFOS版本不符合FIPS標準、請使用。
-
-
-
-NOTE: 一次在一台交換器上升級 EFOS 、以確保叢集網路持續運作。
+* <<方法一：升級EFOS>>。適用於大多數情況（見上表）。
+* <<方法二：使用 ONIE OS 安裝程式升級 EFOS>>。如果一個 EFOS 版本符合 FIPS 標準，而另一個 EFOS 版本則不符合 FIPS 標準，則可以使用此方法。
 
 
 
-=== 方法 1 ：升級 EFOS
-
-執行下列步驟以升級 EFOS 軟體。
+NOTE: 一次升級一台交換器上的 EFOS，以確保叢集網路持續運作。
 
 
-IMPORTANT: 請注意、將BSP-53248叢集交換器從EFOS 3.3.x.x或3.4.x.x升級至EFOS 3.7.0.4或3.8.0.2之後、交換器間連結（ISL）和連接埠通道會標示為「*向下*」狀態。這是預期的行為，除非您對自動還原的舉升有任何問題，否則繼續升級是安全的。如需詳細資訊，請參閱知識庫文件： https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/Fabric%2C_Interconnect_and_Management_Switches/BES-53248_Cluster_Switch_NDU_failed_upgrade_to_EFOS_3.7.0.4_and_later["BS-53248叢集交換器NDU無法升級至EFOS 3.7.0.4及更新版本"^]。
+
+=== 方法一：升級EFOS
+
+請依照以下步驟升級 EFOS 軟體。
+
+
+IMPORTANT: 請注意，將 BES-53248 叢集交換器從 EFOS 3.3.xx 或 3.4.xx 升級至 EFOS 3.7.0.4 或 3.8.0.2 後，交換器間連結 (ISL) 和連接埠通道將標示為 *Down* 狀態。這是預期行為，除非您在自動還原 LIF 時遇到問題，否則可以安全地繼續升級。請參閱知識庫文章： https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/Fabric%2C_Interconnect_and_Management_Switches/BES-53248_Cluster_Switch_NDU_failed_upgrade_to_EFOS_3.7.0.4_and_later["BES-53248 叢集交換器 NDU 升級到 EFOS 3.7.0.4 及更高版本失敗"^]更多詳情請見下文。
 
 .步驟
-. 將B通信 設備叢集交換器連接至管理網路。
-. 使用「ping」命令來驗證與裝載EFOS、授權和RCF檔案的伺服器之間的連線。
+. 將 BES-53248 叢集交換器連接到管理網路。
+. 使用 `ping`用於驗證與託管 EFOS、許可證和 RCF 檔案的伺服器的連接性的命令。
 +
-此範例可驗證交換器是否連接至IP位址為172.19.2.1的伺服器：
+此範例驗證交換器是否已連接到 IP 位址為 172.19.2.1 的伺服器：
 
 +
 [listing, subs="+quotes"]
@@ -163,15 +159,15 @@ Pinging 172.19.2.1 with 0 bytes of data:
 
 Reply From 172.19.2.1: icmp_seq = 0. time= 5910 usec.
 ----
-. 停用叢集生命體上的自動還原。
+. 停用群集 LIF 的自動回滾功能。
 +
 [source, cli]
 ----
 network interface modify -vserver Cluster -lif * -auto-revert false
 ----
-. 顯示使用中和備份組態的開機映像：
+. 顯示活動配置和備份配置的啟動映像：
 +
-「如何啟動bootvar
+`show bootvar`
 
 +
 .顯示範例
@@ -194,7 +190,7 @@ network interface modify -vserver Cluster -lif * -auto-revert false
 
 ----
 ====
-. 將映像檔下載到交換器。
+. 將鏡像檔下載到交換器。
 +
 將映像檔複製到備份映像意味著當您重新啟動時，該映像將建立正在執行的 EFOS 版本，從而完成更新。
 
@@ -218,9 +214,9 @@ SFTP Code transfer starting...
 
 File transfer operation completed successfully.
 ----
-. 顯示使用中和備份組態的開機映像：
+. 顯示活動配置和備份配置的啟動映像：
 +
-「如何啟動bootvar
+`show bootvar`
 
 +
 .顯示範例
@@ -242,7 +238,7 @@ Image Descriptions
     1      3.7.0.4    3.7.0.4             3.7.0.4       3.10.0.3
 ----
 ====
-. 從備份組態啟動系統：
+. 從備份配置啟動系統：
 +
 `boot system backup`
 
@@ -252,9 +248,9 @@ Image Descriptions
 (cs2)# *boot system backup*
 Activating image backup ..
 ----
-. 顯示使用中和備份組態的開機映像：
+. 顯示活動配置和備份配置的啟動映像：
 +
-「如何啟動bootvar
+`show bootvar`
 
 +
 .顯示範例
@@ -276,9 +272,9 @@ Image Descriptions
     1    3.10.0.3    3.10.0.3            3.10.0.3       3.10.0.3
 ----
 ====
-. 將執行組態儲存至啟動組態：
+. 將運行配置儲存到啟動配置：
 +
-寫入記憶體
+`write memory`
 
 +
 .顯示範例
@@ -297,9 +293,9 @@ Config file 'startup-config' created successfully.
 Configuration Saved!
 ----
 ====
-. 重新啟動交換器：
+. 重啟交換器：
 +
-"重裝"
+`reload`
 
 +
 .顯示範例
@@ -317,9 +313,9 @@ Configuration Saved!
 System will now restart!
 ----
 ====
-. 再次登入並驗證EFOS軟體的新版本：
+. 請重新登入並驗證EFOS軟體的新版本：
 +
-《如何版本》
+`show version`
 
 +
 .顯示範例
@@ -353,46 +349,46 @@ Additional Packages............................ BGP-4
 ............................................... Prototype Open API
 ----
 ====
-. 在交換器 CS1 上重複步驟 5 到 11 。
-. 在叢集生命體上啟用自動還原。
+. 在交換器 cs1 上重複步驟 5 到 11。
+. 啟用叢集 LIF 的自動回滾功能。
 +
 [source, cli]
 ----
 network interface modify -vserver Cluster -lif * -auto-revert true
 ----
-. 驗證叢集生命區是否已還原至其主連接埠：
+. 確認叢集 LIF 已恢復到其原始連接埠：
 +
 [source, cli]
 ----
 network interface show -role Cluster
 ----
 +
-如需詳細資料、請參閱 link:https://docs.netapp.com/us-en/ontap/networking/revert_a_lif_to_its_home_port.html["將LIF還原至其主連接埠"]。
+更多詳情請參見link:https://docs.netapp.com/us-en/ontap/networking/revert_a_lif_to_its_home_port.html["將 LIF 恢復到其母端口"]。
 
 
 
 
 
-=== 方法2：使用ONIE OS安裝來升級EFOS
+=== 方法二：使用 ONIE OS 安裝程式升級 EFOS
 
-如果其中一個EFOS版本符合FIPS標準、而另一個EFOS版本不符合FIPS標準、您可以執行下列步驟。如果交換器無法開機、這些步驟可用於從 ONIE 升級非 FIPS 或 FIPS 相容的 EFOS 3.7.x.x 映像。
-
-
-NOTE: 此功能僅適用於不符合FIPS標準的EFOS 3.7.x.x或更新版本。
+如果一個 EFOS 版本符合 FIPS 標準，而另一個 EFOS 版本則不符合 FIPS 標準，則可以執行下列步驟。如果交換器無法啟動，可以使用下列步驟從 ONIE 升級非 FIPS 或符合 FIPS 標準的 EFOS 3.7.xx 映像。
 
 
-CAUTION: 如果您使用 ONIE OS 安裝來升級 EFOS 、組態會重設為原廠預設值、並刪除授權。您必須設定交換器並安裝授權和支援的 RCF 、才能讓交換器恢復正常運作。
+NOTE: 此功能僅適用於不符合 FIPS 標準的 EFOS 3.7.xx 或更高版本。
+
+
+CAUTION: 如果使用 ONIE OS 安裝程式升級 EFOS，則設定將重設為原廠預設設置，許可證將被刪除。您必須設定交換器並安裝許可證和受支援的 RCF，才能使交換器恢復正常運作。
 
 .步驟
-. 停用叢集生命體上的自動還原。
+. 停用群集 LIF 的自動回滾功能。
 +
 [source, cli]
 ----
 network interface modify -vserver Cluster -lif * -auto-revert false
 ----
-. 將交換器開機至ONIE安裝模式。
+. 將交換器啟動到 ONIE 安裝模式。
 +
-在開機期間、當您看到提示時、請選取 ONIE ：
+啟動過程中，看到提示時選擇 ONIE：
 
 +
 [listing]
@@ -413,7 +409,7 @@ network interface modify -vserver Cluster -lif * -auto-revert false
 +--------------------------------------------------------------------+
 ----
 +
-選擇* ONIE*之後、交換器會載入並顯示多個選項。選擇*安裝OS*。
+選擇 *ONIE* 後，開關會載入並向您展示幾個選項。選擇“安裝作業系統”。
 
 +
 [listing]
@@ -434,11 +430,11 @@ network interface modify -vserver Cluster -lif * -auto-revert false
 +--------------------------------------------------------------------+
 ----
 +
-交換器會開機進入ONIE安裝模式。
+交換器啟動進入 ONIE 安裝模式。
 
-. 停止ONIE探索並設定乙太網路介面。
+. 停止 ONIE 發現並設定乙太網路介面。
 +
-出現以下訊息時、按* Enter *以叫用ONIE主控台：
+當出現以下訊息時，按 *Enter* 鍵開啟 ONIE 控制台：
 
 +
 [listing]
@@ -448,7 +444,7 @@ Please press Enter to activate this console. Info: eth0:  Checking link... up.
 ----
 +
 
-NOTE: ONIE會繼續探索、並將訊息列印至主控台。
+NOTE: ONIE 偵測仍在繼續，訊息會列印到控制台。
 
 +
 [listing]
@@ -459,14 +455,14 @@ discover: installer mode detected.
 Stopping: discover... done.
 ONIE:/ #
 ----
-. 使用「ifconfigeth0 <ipaddress> netmask> up」和「route add Default GW <gatewayAddress>」來設定乙太網路介面並新增路由
+. 設定乙太網路介面並新增路由 `ifconfig eth0 <ipAddress> netmask <netmask> up`和 `route add default gw <gatewayAddress>`
 +
 [listing]
 ----
 ONIE:/ # ifconfig eth0 10.10.10.10 netmask 255.255.255.0 up
 ONIE:/ # route add default gw 10.10.10.1
 ----
-. 確認裝載ONIE安裝檔案的伺服器可連線：
+. 請確認託管 ONIE 安裝檔案的伺服器可以存取：
 +
 `ping`
 
@@ -510,11 +506,11 @@ Preparing image archive ... OK.
 ----
 ====
 +
-軟體隨即安裝、然後重新啟動交換器。讓交換器正常重新開機至新的EFOS版本。
+軟體安裝完成後，交換器將會重新啟動。讓交換器正常重新啟動進入新的 EFOS 版本。
 
-. 驗證是否安裝了新的交換器軟體：
+. 確認新交換器軟體已安裝：
 +
-「如何啟動bootvar
+`show bootvar`
 
 +
 .顯示範例
@@ -534,29 +530,29 @@ unit 	active 	    backup   current-active  next-active
 (cs2) #
 ----
 ====
-. 完成安裝。交換器會重新啟動、但不會套用任何組態、並會重設為原廠預設值。完成下列步驟以重新設定交換器：
+. 完成安裝。交換器重新啟動後未套用任何配置，並重設為出廠預設值。請依照以下步驟重新設定交換器：
 +
-.. link:configure-licenses.html["安裝授權"]
-.. link:configure-install-rcf.html["安裝RCF"]
-.. link:configure-ssh.html["啟用SSH"]
-.. link:CSHM_log_collection.html["啟用記錄收集"]
-.. link:CSHM_snmpv3.html["設定用於監控的 SNMPv3"]
+.. link:configure-licenses.html["安裝許可證"]
+.. link:configure-install-rcf.html["安裝 RCF"]
+.. link:configure-ssh.html["啟用 SSH"]
+.. link:CSHM_log_collection.html["啟用日誌收集"]
+.. link:CSHM_snmpv3.html["設定 SNMPv3 進行監控"]
 
 
-. 在交換器 CS1 上重複步驟 2 到 8 。
-. 在叢集生命體上啟用自動還原。
+. 在交換器 cs1 上重複步驟 2 至 8。
+. 啟用叢集 LIF 的自動回滾功能。
 +
 [source, cli]
 ----
 network interface modify -vserver Cluster -lif * -auto-revert true
 ----
-. 驗證叢集生命區是否已還原至其主連接埠：
+. 確認叢集 LIF 已恢復到其原始連接埠：
 +
 [source, cli]
 ----
 network interface show -role Cluster
 ----
 +
-如需詳細資料、請參閱 link:https://docs.netapp.com/us-en/ontap/networking/revert_a_lif_to_its_home_port.html["將LIF還原至其主連接埠"]。
+更多詳情請參見link:https://docs.netapp.com/us-en/ontap/networking/revert_a_lif_to_its_home_port.html["將 LIF 恢復到其母端口"]。
 
 
