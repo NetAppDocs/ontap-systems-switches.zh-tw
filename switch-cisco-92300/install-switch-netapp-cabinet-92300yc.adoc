@@ -134,3 +134,6 @@ image::../media/3132q_attaching.gif[]
 管理連接埠是位於交換器 PSU 側的右上方連接埠。每個交換器的CAT6電纜在安裝完成後都需要穿過直通面板，以連接到管理交換器或管理網路。
 
 
+
+.下一步
+將交換器安裝到NetApp機櫃後，您可以…link:configure-install-initial.html["配置交換機"] 。

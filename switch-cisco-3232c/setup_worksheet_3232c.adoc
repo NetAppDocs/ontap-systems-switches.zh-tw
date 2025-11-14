@@ -590,4 +590,4 @@ summary: 如果要記錄支援的平台，則必須使用已完成的範例佈�
 
 |===
 .下一步
-完成佈線工作表後，你 link:install-switch-3232c.html["安裝開關"]。
+完成佈線工作表後，您可以 link:install-switch-3232c.html["安裝開關"]。

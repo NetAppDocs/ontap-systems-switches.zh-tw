@@ -133,4 +133,4 @@ Cisco Nexus 3132Q-V 交換器可作為AFF或FAS叢集中的叢集交換器。叢
 
 
 .下一步是什麼？
-link:cn5596-prepare-to-migrate.html["做好遷移準備"]。
+在您查看完遷移要求後，您可以link:cn5596-prepare-to-migrate.html["準備遷移交換機"]。

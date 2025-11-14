@@ -105,4 +105,4 @@ CN1610 至 3232C（QSFP 至 SFP+）
 
 
 .下一步是什麼？
-link:cn1610-prepare-to-migrate.html["做好遷移準備"]。
+在您查看完遷移要求後，您可以link:cn1610-prepare-to-migrate.html["準備遷移交換機"]。

@@ -68,4 +68,4 @@ Cisco Nexus 92300YC 交換器氣流詳情：
 
 
 .下一步
-link:required-documentation-92300.html["所需文件"]。
+確認組件和零件編號後，您可以進行審核。 link:required-documentation-92300.html["所需文件"]。

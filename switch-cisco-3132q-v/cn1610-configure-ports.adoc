@@ -460,4 +460,4 @@ Copy Complete.
 
 
 .下一步是什麼？
-link:cn1610-complete-migration.html["完成遷移"]。
+配置交換器連接埠後，您可以…link:cn1610-complete-migration.html["完成遷移"] 。

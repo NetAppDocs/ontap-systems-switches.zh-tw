@@ -689,4 +689,4 @@ cluster1::*>
 
 
 .下一步是什麼？
-安裝完 NX-OS 軟體後，您 link:install-upgrade-rcf-overview-3232c.html["安裝或升級參考設定檔（RCF）"]。
+安裝 NX-OS 軟體後，您可以… link:install-upgrade-rcf-overview-3232c.html["安裝或升級參考設定檔（RCF）"]。

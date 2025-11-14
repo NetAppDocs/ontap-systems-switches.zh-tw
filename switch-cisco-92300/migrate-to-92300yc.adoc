@@ -694,4 +694,4 @@ cluster1::*> *system node autosupport invoke -node * -type all -message MAINT=EN
 
 
 .下一步是什麼？
-link:../switch-cshm/config-overview.html["配置交換器健康監控"]。
+驗證完 SSH 配置後，您可以… link:../switch-cshm/config-overview.html["配置交換器健康監控"]。

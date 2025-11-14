@@ -162,4 +162,4 @@ Copy complete.
 
 
 .下一步是什麼？
-link:install-nxos-overview.html["準備安裝 NX-OS 軟體和 RCF"]。
+配置好交換器後，您可以… link:install-nxos-overview.html["準備安裝NX-OS軟體和RCF"]。

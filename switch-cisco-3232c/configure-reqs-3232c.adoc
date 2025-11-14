@@ -33,4 +33,4 @@ summary: 您可以在AFF或FAS叢集中使用Cisco Nexus 3232C 交換器作為�
 請參閱 https://hwu.netapp.com["Hardware Universe"^]獲取最新資訊。
 
 .下一步
-確認配置要求後，您需要查看以下內容： link:required-documentation-3232c.html["所需文件"]。
+確認配置要求後，您可以查看以下內容：link:required-documentation-3232c.html["所需文件"] 。

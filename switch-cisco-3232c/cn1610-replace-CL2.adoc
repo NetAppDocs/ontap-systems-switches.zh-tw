@@ -495,4 +495,4 @@ cluster::*> *network interface migrate -vserver cluster -lif n2_clus4 -source-no
 
 
 .下一步是什麼？
-link:cn1610-replace-CL1.html["將 CN1610 交換器 CL1 更換為 3232C 交換器 C1"]。
+更換 CN1610 交換器 CL2 後，您可以link:cn1610-replace-CL1.html["將 CN1610 交換器 CL1 更換為 3232C 交換器 C1"]。

@@ -1366,4 +1366,4 @@ ISL 連接到交換器 A 連接埠 66
 
 |===
 .下一步
-link:install-switch-92300yc.html["安裝開關"]。
+完成佈線工作表後，您可以 link:install-switch-92300yc.html["安裝開關"]。

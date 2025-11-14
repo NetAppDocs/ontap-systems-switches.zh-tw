@@ -246,4 +246,4 @@ n2         /cdp
 
 
 .下一步是什麼？
-link:migrate-from-switchless-configure-ports.html["配置連接埠"]。
+做好交換器遷移準備後，您可以…link:migrate-from-switchless-configure-ports.html["配置您的連接埠"] 。

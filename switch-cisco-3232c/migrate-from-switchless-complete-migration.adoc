@@ -170,4 +170,4 @@ Larger than PMTU communication succeeds on 4 path(s) RPC status:
 
 
 .下一步是什麼？
-link:../switch-cshm/config-overview.html["配置交換器健康監控"]。
+完成交換器遷移後，您可以link:../switch-cshm/config-overview.html["配置交換器健康監控"]。

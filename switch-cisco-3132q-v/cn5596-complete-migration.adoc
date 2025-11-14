@@ -436,4 +436,4 @@ C2                          cluster-network     10.10.1.104      NX3132V
 
 
 .下一步是什麼？
-link:../switch-cshm/config-overview.html["配置交換器健康監控"]。
+完成交換器遷移後，您可以link:../switch-cshm/config-overview.html["配置交換器健康監控"]。

@@ -745,4 +745,4 @@ RPC status:
 --
 ====
 .下一步是什麼？
-升級 RCF 後，您link:configure-ssh-keys.html["驗證 SSH 配置"]。
+升級 RCF 後，您可以link:configure-ssh-keys.html["驗證 SSH 配置"]。

@@ -556,4 +556,4 @@ e4e       Cluster      Cluster          up   9000 auto/40000  -        -
 
 
 .下一步是什麼？
-link:migrate-switchless-complete-migration.html["完成遷移"]。
+配置交換器連接埠後，您可以…link:migrate-switchless-complete-migration.html["完成遷移"] 。

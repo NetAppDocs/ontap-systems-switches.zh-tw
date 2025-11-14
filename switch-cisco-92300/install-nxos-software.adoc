@@ -379,4 +379,4 @@ GEM FPGA                         0x2
 
 
 .下一步是什麼？
-link:install-the-rcf-file.html["安裝參考設定檔"]
+安裝 NX-OS 軟體後，您可以… link:install-the-rcf-file.html["安裝參考設定檔"]。

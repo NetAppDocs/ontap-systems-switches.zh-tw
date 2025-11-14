@@ -109,4 +109,4 @@ link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太�
 
 
 .下一步是什麼？
-link:migrate-switchless-prepare-to-migrate.html["做好遷移準備"]。
+在您查看完遷移要求後，您可以link:migrate-switchless-prepare-to-migrate.html["準備遷移交換機"]。
