@@ -282,10 +282,8 @@
   <block id="85e04ff5dd770cff5dbbe435ea94a7dd" category="list-text">從交換器 cs1-new 的角度確認交換器連接埠連接：</block>
   <block id="800c1c0a764eb859a7e53df87ed00481" category="list-text">驗證 cs1-new 和 cs2-new 之間的 ISL 是否仍正常運作：</block>
   <block id="f8a26b1330fe6b7b741993630dd932e2" category="list-text">驗證叢集 LIF 是否已恢復到其原始連接埠（這可能需要一分鐘）：</block>
-  <block id="65201dcfc7c620613613b15eb161d307" category="paragraph">如果叢集 LIF 尚未恢復到其主端口，請手動恢復它們：</block>
   <block id="268d66b259b50e25cbef3d39885d450f" category="paragraph"><block ref="d4a4086e7952a80201c11ae52219be46" prefix="" category="inline-code"></block></block>
   <block id="fb17b612fdcb19e9fe42f0afa4b960d0" category="admonition">運行前請等待幾秒鐘<block ref="a7dd12b1dab17d25467b0b0a4c8d4a92" prefix=" " category="inline-code"></block>顯示詳細資訊的命令。</block>
-  <block id="c7ca49e9f550dc9b18f2402f13ad9430" category="list-text">[[步驟5]]如果您已停用自動建立案例功能，請透過呼叫AutoSupport訊息重新啟用此功能：<block ref="9ac424c0d7b432975df36a19daf50c9c" prefix=" " category="inline-code"></block></block>
   <block id="58eaebf972358f1cf03d386a4ade1a0f" category="paragraph-title">下一步是什麼？</block>
   <block id="00a850fef80958a3c902c0d0b0fc20c4" category="inline-link-macro">配置交換器健康監控</block>
   <block id="930d2612130a6eae69f4f0d6b6f79e03" category="paragraph">交換器遷移完成後，您可以<block ref="9c3be868eca09e30ec03c7542e485ba6" category="inline-link-macro-rx"></block>。</block>
@@ -1163,7 +1161,6 @@
   <block id="dae02701a0a247e1012b9b2832c32464" category="list-text">如果被取代的 CN1610 交換器沒有自動刪除，則將其從叢集的交換器表中刪除：</block>
   <block id="b48ac462b57bcb2860eecd434bd2c80f" category="paragraph">從ONTAP 9.8 開始，使用以下指令：<block ref="b4720f8aa09f4e4b3a04e78c558b6c90" prefix=" " category="inline-code"></block></block>
   <block id="c8b9229aed88be3704b6c26029b7ae94" category="paragraph">對於ONTAP 9.7 及更早版本，請使用以下指令：<block ref="f055904a9fc3a4f0bc33aca13ecd2b2d" prefix=" " category="inline-code"></block></block>
-  <block id="4e4f70ba52e8cb595faa069991c5a9f4" category="list-text">[[step5]]如果您已停用自動建立案例功能，請透過呼叫AutoSupport訊息重新啟用此功能：</block>
   <block id="30e3b2cfb1c72e5b230d98750db3bf2b" category="paragraph">交換器遷移完成後，您可以… <block ref="9c3be868eca09e30ec03c7542e485ba6" category="inline-link-macro-rx"></block>。</block>
   <block id="e8ab0c1581dc0dcc64441ffb1b729ce5" category="summary">如果您有一個雙節點無交換器集群，您可以無中斷地遷移到包含博通支援的 BES-53248 集群交換器的雙節點有交換器集群。</block>
   <block id="446e9d64184ff722494a9a706bbd9d06" category="doc">遷移到交換式NetApp叢集環境</block>
@@ -1209,7 +1206,6 @@
   <block id="3d7d92fe9fa50ff07a52fda11ae8d646" category="paragraph">以下範例顯示交換器 cs2 上的連接埠 1 到 16 已啟用：</block>
   <block id="30530896511238b69b0e6acc7e04d6ce" category="list-text">確認所有介面均顯示<block ref="b326b5062b2f0e69046810717534cb09" prefix=" " category="inline-code"></block>為了<block ref="53db3ce0fe0e71f06b3beb0b676b806c" prefix=" " category="inline-code"></block>：</block>
   <block id="f1d50a679b7b3d0967aafba21d2b1454" category="paragraph">這<block ref="68934a3e9455fa72420237eb05902327" prefix=" " category="inline-code"></block>以下範例的輸出表示組態設定已停用：</block>
-  <block id="c97fddef37af781b99f2bb564a90861d" category="list-text">步驟9：將權限等級改回管理員：</block>
   <block id="470e1e7d03d4911b1e5ad8bf036ca8cb" category="inline-link">NetApp知識庫文章：如何在規劃維護視窗期間禁止自動建立案例</block>
   <block id="1e44ccea9f1ae385026deb840bc9b5f4" category="paragraph">更多資訊請見：<block ref="780f810d0519883e7efdd6ef45cf51ed" category="inline-link-rx"></block></block>
   <block id="393a5f0f5f1f070aac964741815cca76" category="doc">用無開關連接取代 Broadcom BES-53248 集群交換機</block>
@@ -3789,7 +3785,6 @@
   <block id="db038ea8b37b62294a9f3eebe698b28a" category="paragraph">每個連接埠應顯示<block ref="46c48bec0d282018b9d167eef7711b2c" prefix=" " category="inline-code"></block>為了<block ref="97e7c9a7d06eac006a28bf05467fcc8b" prefix=" " category="inline-code"></block>和<block ref="741839f346d6e8126ae38ee76a96fd12" prefix=" " category="inline-code"></block>為了<block ref="fbcf0d1f787c74663ca9dc925ebf5f0c" prefix=" " category="inline-code"></block>。</block>
   <block id="ba04a36ca69927056bab3bba36362e9b" category="list-text">在交換器 cs1 和 cs2 上，驗證所有節點叢集連接埠是否都已啟動：</block>
   <block id="366abeaa2bac7598f17d029db42f0407" category="paragraph"><block ref="478474aa0db28144d5db02c478cd5215" prefix="" category="inline-code"></block></block>
-  <block id="496fe3dd70b4f5816f2c409909812bb5" category="list-text">確認所有叢集網路 LIF 都已恢復到其原始連接埠：</block>
   <block id="ccc533253625ec3fd1cd1ad3dd395ae6" category="summary">如果您已有雙節點無交換器叢集環境，則可以使用Cisco Nexus 9336C-FX2 交換器遷移到雙節點有交換器叢集環境，以便能夠將叢集擴展到兩個以上節點。</block>
   <block id="44062246be6e5585fa8092a371375894" category="paragraph">如果您已有雙節點無交換器叢集環境，則可以使用Cisco Nexus 9336C-FX2 和 9336C-FX2-T 交換器遷移到雙節點有交換器叢集環境。</block>
   <block id="ec9e474afc999353343db9439e541082" category="summary">您可以將ONTAP叢集的舊Cisco叢集交換器無中斷地遷移到Cisco Nexus 9336C-FX2 叢集網路交換器。</block>
@@ -5224,7 +5219,6 @@
   <block id="ec493d1a781282d3b831640adff57617" category="paragraph"><block ref="1be2284fb441d5fc39c1bb2882bcfe33" prefix="" category="inline-code"></block></block>
   <block id="609878b299dde0e13898cea02c9f40e5" category="paragraph"><block ref="780e8a1ebd2c830e4aeaebb59c666b98" prefix="" category="inline-code"></block></block>
   <block id="7c1863f1ebbe4335b617904d5c56fbc1" category="admonition">這可能需要一分鐘才能完成。</block>
-  <block id="0e18e00d28d8ccbabfbea2b32f607774" category="list-text">步驟6：將權限等級改回管理員：</block>
   <block id="0b9620a0fea8fa88010e59eebf7cbf63" category="summary">您可以將ONTAP叢集中較舊的Cisco叢集交換器無中斷地移轉到NVIDIA SN2100 叢集網路交換器。</block>
   <block id="9cb69df206c9ac9ed5e1f4f5f353f643" category="doc">將Cisco群集交換器遷移到NVIDIA SN2100 群集交換機</block>
   <block id="65b0458ae1a5a43752e6cbb805a3b583" category="paragraph">您可以將用於ONTAP叢集的Cisco叢集交換器遷移到NVIDIA SN2100 叢集交換器。這是一個非破壞性的過程。</block>
@@ -5857,4 +5851,15 @@
   <block id="896088c62ad7b687065540892080324f" category="paragraph">將交換器安裝到NetApp機櫃後，您可以…<block ref="e720d023779d66bfe8b12a8e36518dcc" category="inline-link-macro-rx"></block> 。</block>
   <block id="ce7e45bf2954b88a6750644b0448950a" category="paragraph">安裝 RCF 後，您可以… <block ref="9c2eadd0cc07686b4a17c38ca62f4a4c" category="inline-link-macro-rx"></block>。</block>
   <block id="c9c986f56a1b508d37d42c57396f5c6e" category="paragraph">完成佈線工作表後，您可以 <block ref="524641f31ca2f6882ec8e6343313f85c" category="inline-link-macro-rx"></block>。</block>
+  <block id="eb87b9d92bab86a5eff1f86bc4b9d609" category="list-text">在交換器 cs2 上，關閉並重新啟動所有叢集端口，以觸發所有不在它們所屬端口上的集群 LIF 的自動恢復。</block>
+  <block id="0722720446d120472012852570da7854" category="paragraph">如果叢集中的任何 LIF 尚未恢復到其主端口，請手動將其復原。您必須連接到擁有該 LIF 的本機節點的每個節點管理 LIF 或SP/ BMC系統控制台：</block>
+  <block id="ec5ea2f0318e4d906c296f5576b9c026" category="list-text">[[步驟6]]如果您已停用自動建立案例功能，請透過呼叫AutoSupport訊息重新啟用此功能：<block ref="9ac424c0d7b432975df36a19daf50c9c" prefix=" " category="inline-code"></block></block>
+  <block id="a012eaed89d2ac51303f8c01a7d0aaaa" category="list-text">步驟10：將權限等級改回管理員：</block>
+  <block id="2f3040f570b3d77425ad0bf50fc7985c" category="list-text">步驟6：將權限等級改回管理員：</block>
+  <block id="eee9eca0197e609d5560419338f13cb5" category="list-text">在交換器 sw2 上，關閉並重新啟動所有叢集端口，以觸發所有不在它們所屬端口上的叢集 LIF 的自動恢復。</block>
+  <block id="9867d4546ca72c2aef3de3dd388f027a" category="open-title">積雲 4.4.3</block>
+  <block id="c9e15b180ce232c5238f71bbe70022b5" category="open-title">Cumulus 5.x</block>
+  <block id="77c4c65090a7a14ac6d2a4180ac07a3c" category="list-text">[[步驟3]]驗證叢集 LIF 是否已恢復到其原始連接埠（這可能需要一分鐘）：</block>
+  <block id="5a443ae50dfc3d613ac9445266752a19" category="list-text">步驟8：將權限等級改回管理員：</block>
+  <block id="397fcdbb1cd3a03c8bd47ec26ea0418d" category="list-text">[[step5]]在交換器 c2 上，關閉連接到節點集群端口的端口，以便集群 LIF 進行故障轉移。</block>
 </blocks>

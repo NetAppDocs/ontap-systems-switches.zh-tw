@@ -301,7 +301,7 @@ RPC status:
 ----
 --
 ====
-. [[step5]] 在交換器 c2 上，關閉連接到節點集群端口的端口，以便集群 LIF 進行故障轉移。
+. [[step5]]在交換器 c2 上，關閉連接到節點集群端口的端口，以便集群 LIF 進行故障轉移。
 +
 [listing, subs="+quotes"]
 ----
@@ -529,28 +529,56 @@ swp16      100G   BondMember  sw1                 swp16
 +
 `cluster1::*> network interface modify -vserver Cluster -lif * -auto-revert true`
 
-. 確認所有叢集網路 LIF 都已恢復到其原始連接埠：
-+
-`network interface show`
+. 在交換器 sw2 上，關閉並重新啟動所有叢集端口，以觸發所有不在它們所屬端口上的叢集 LIF 的自動恢復。
 
-+
-.顯示範例
-[%collapsible]
+
+[role="tabbed-block"]
 ====
+.積雲 4.4.3
+--
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network interface show -vserver Cluster*
+cumulus@sw2:mgmt:~$ *net add interface swp1-14 link down*
+cumulus@sw2:mgmt:~$ *net pending*
+cumulus@sw2:mgmt:~$ *net commit*
 
-            Logical    Status     Network            Current       Current Is
-Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
------------ ---------- ---------- ------------------ ------------- ------- ----
-Cluster
-            node1_clus1  up/up    169.254.209.69/16  node1         e3a     true
-            node1_clus2  up/up    169.254.49.125/16  node1         e3b     true
-            node2_clus1  up/up    169.254.47.194/16  node2         e3a     true
-            node2_clus2  up/up    169.254.19.183/16  node2         e3b     true
+(Wait for 5-10 seconds before re-enabling the ports)
+
+cumulus@sw2:mgmt:~$ *net add interface swp1-14 link up*
+cumulus@sw2:mgmt:~$ *net pending*
+cumulus@sw2:mgmt:~$ *net commit*
+
+(After executing the link state up command, the nodes detect the change and begin to auto-revert the cluster LIFs to their home ports)
 ----
+--
+.Cumulus 5.x
+--
+[listing, subs="+quotes"]
+----
+cumulus@sw2:mgmt:~$ *nv set interface swp1-14 link state down*
+cumulus@sw2:mgmt:~$ *nv config apply*
+cumulus@sw2:mgmt:~$ *nv show interface*
+
+(Wait for 5-10 seconds before re-enabling the ports)
+
+cumulus@sw2:mgmt:~$ *nv set interface swp1-14 link state up*
+cumulus@sw2:mgmt:~$ *nv config apply*
+cumulus@sw2:mgmt:~$ *nv show interface*
+
+(After executing the link state up command, the nodes detect the change and begin to auto-revert the cluster LIFs to their home ports)
+----
+--
 ====
+. [[步驟3]]驗證叢集 LIF 是否已恢復到其原始連接埠（這可能需要一分鐘）：
++
+`network interface show -vserver Cluster`
+
++
+如果叢集中的任何 LIF 尚未恢復到其主端口，請手動將其復原。您必須連接到擁有該 LIF 的本機節點的每個節點管理 LIF 或SP/ BMC系統控制台：
+
++
+`network interface revert -vserver Cluster -lif *`
+
 . 將權限等級改回管理員：
 +
 `set -privilege admin`

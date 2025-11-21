@@ -415,6 +415,39 @@ e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
 
 === 步驟 3：驗證配置
 
+. 啟用叢集 LIF 的自動回滾功能。
++
+`network interface modify -vserver Cluster -lif * -auto-revert true`
+
+. 在交換器 cs2 上，關閉並重新啟動所有叢集端口，以觸發所有不在它們所屬端口上的集群 LIF 的自動恢復。
++
+[listing, subs="+quotes"]
+----
+cs2> *enable*
+cs2# *configure*
+cs2(config)# *interface eth1/1-1/2*
+cs2(config-if-range)# *shutdown*
+
+(Wait for 5-10 seconds before re-enabling the ports)
+
+cs2(config-if-range)# *no shutdown*
+
+(After executing the no shutdown command, the nodes detect the change and begin to auto-revert the cluster LIFs to their home ports)
+
+cs2(config-if-range)# *exit*
+cs2(config)# *exit*
+cs2#
+----
+. 驗證叢集 LIF 是否已恢復到其原始連接埠（這可能需要一分鐘）：
++
+`network interface show -vserver Cluster`
+
++
+如果叢集中的任何 LIF 尚未恢復到其主端口，請手動將其復原。您必須連接到擁有該 LIF 的本機節點的每個節點管理 LIF 或SP/ BMC系統控制台：
+
++
+`network interface revert -vserver Cluster -lif *`
+
 . 驗證所有介面是否都顯示為 true `Is Home` ：
 +
 `network interface show -vserver Cluster`
@@ -521,17 +554,14 @@ node1      /cdp
 NOTE: 命令可能需要幾分鐘才能完成。等待「3分鐘生命即將結束」的公告。
 
 +
-.顯示範例
-[%collapsible]
-====
 以下範例中的錯誤輸出表示組態設定已停用：
 
-[listing]
++
+[listing, subs="+quotes"]
 ----
 cluster1::*> network options switchless-cluster show
-Enable Switchless Cluster: false
+Enable Switchless Cluster: *false*
 ----
-====
 . 驗證叢集中節點成員的狀態：
 +
 `cluster show`
@@ -618,7 +648,7 @@ RPC status:
 ----
 --
 ====
-. 步驟7：將權限等級改回管理員：
+. 步驟10：將權限等級改回管理員：
 +
 `set -privilege admin`
 
