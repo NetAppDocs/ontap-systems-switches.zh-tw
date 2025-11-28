@@ -73,6 +73,33 @@ summary: '使用群集交換器健康監視器 (CSHM) 和日誌收集功能時�
 所有連接埠均配置為 100GbE NVMe 儲存連線。
 
 |===
+.可用的RCF
+下表列出了 3232C 交換器的可用 RCF。選擇適合您配置的RCF版本。看link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換機"^]了解更多。
+
+[cols="1"]
+|===
+| RCF 名稱 
+
+
+ a| 
+叢集高可用性分拆 RCF v1._xx_
+
+
+
+ a| 
+叢集高可用性 RCF v1._xx_
+
+
+
+ a| 
+儲存 RCF v1._xx_
+
+
+
+ a| 
+叢集 RCF 1._xx_
+
+|===
 .建議的文檔
 * link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器（NSS）"^]
 +

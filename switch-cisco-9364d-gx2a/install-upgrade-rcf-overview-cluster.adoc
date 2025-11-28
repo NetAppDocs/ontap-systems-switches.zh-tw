@@ -16,10 +16,10 @@ summary: 首次設定 Nexus 9364d-gx2a 交換器後，您可以安裝 RCF。您�
 請參閱知識庫文章link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["如何在保持遠端連線的情況下清除Cisco互連交換器上的配置"^]安裝或升級 RCF 時，有關更多信息，請參閱以下內容。
 
 .可用的 RCF 配置
-* *Cluster-HA-Storage* - 支援連接埠上的共用叢集/HA/儲存流量（NX9364D-GX2A-RCF-v10.0-Shared.txt）。
+* *叢集-HA-儲存 AFX* - 所有連接埠均配置為 4x100GbE 分線模式，普遍支援 AFX 節點叢集、HA、儲存連接埠和 NX224 儲存架連接埠。交換器之間採用 400GbE ISL 連線。  （_Cluster-HA-Storage AFX RCF_vxx.x_）。
 
 
-有關具體連接埠和 VLAN 使用詳情，請參閱 RCF 中的橫幅和重要說明部分。
+有關具體連接埠和 VLAN 使用詳情，請參閱 RCF 中的橫幅和重要說明部分。看link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換機"^]了解更多。
 
 .建議的文檔
 * link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器（NSS）"^]

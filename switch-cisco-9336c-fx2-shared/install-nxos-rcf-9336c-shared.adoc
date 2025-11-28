@@ -25,6 +25,10 @@ summary: 首次設定好 Nexus 9336C-FX2 交換器後，即可安裝 RCF。您�
 * ONTAP節點叢集連接埠未連線。
 
 
+.可用的 RCF 配置
+* *ClusterStorageRCF* - 支援交換器上的分區叢集和兩個儲存區域（Cluster-Storage RCF 1._xx_）。
+
+
 
 
 == 步驟 1：在交換器上安裝 RCF

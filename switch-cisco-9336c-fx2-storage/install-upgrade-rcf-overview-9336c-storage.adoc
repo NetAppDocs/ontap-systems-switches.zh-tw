@@ -16,7 +16,7 @@ summary: 首次設定 Nexus 9336C-FX2 交換器後，您可以安裝 RCF。您�
 請參閱知識庫文章link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["如何在保持遠端連線的情況下清除Cisco互連交換器上的配置"^]安裝或升級 RCF 時，有關更多信息，請參閱以下內容。
 
 .可用的 RCF 配置
-下表描述了不同配置可用的 RCF。選擇適用於您配置的 RCF。
+下表描述了不同配置可用的 RCF。選擇適用於您配置的 RCF。看link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換機"^]了解更多。
 
 有關具體連接埠和 VLAN 使用詳情，請參閱 RCF 中的橫幅和重要說明部分。
 
@@ -71,6 +71,33 @@ summary: 首次設定 Nexus 9336C-FX2 交換器後，您可以安裝 RCF。您�
 儲存
  a| 
 所有連接埠均配置為 100GbE NVMe 儲存連線。
+
+|===
+.可用的RCF
+下表列出了 9336C-FX2 和 9336C-FX2-T 交換器可用的 RCF。選擇適合您配置的RCF版本。看link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換機"^]了解更多。
+
+[cols="1"]
+|===
+| RCF 名稱 
+
+
+ a| 
+叢集高可用性突破 RCF 1._xx_
+
+
+
+ a| 
+叢集高可用性儲存 RCF 1._xx_
+
+
+
+ a| 
+儲存 RCF 1._xx_
+
+
+
+ a| 
+MultiCluster-HA RCF 1._xx_
 
 |===
 .建議的文檔

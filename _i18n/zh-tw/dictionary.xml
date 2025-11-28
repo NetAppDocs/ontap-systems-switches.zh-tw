@@ -3494,7 +3494,6 @@
   <block id="7dee171d359db124d6e3b08b8707107d" category="summary">首次設定 Nexus 9332D-GX2B 交換器後，您可以安裝 RCF。您也可以使用此程序升級您的 RCF 版本。</block>
   <block id="5b7289386d4021753b2b2d113123dfb8" category="paragraph">首次設定 Nexus 9332D-GX2B 交換器後，安裝參考設定檔 (RCF)。當您的交換器上安裝了現有版本的 RCF 檔案時，您可以升級您的 RCF 版本。</block>
   <block id="906296921ce498fa9500d86133cb4a2b" category="list-title">可用的 RCF 配置</block>
-  <block id="7b40fce84349514c8e494666eb6951f5" category="list-text">*Cluster-HA-Storage* - 支援連接埠上的共用叢集/HA/儲存流量（NX9332D-GX2B-RCF-v10.0-Shared.txt）。</block>
   <block id="fdb500ee5ab5f21c1b5bc773c9113780" category="list-text"><block ref="fdb500ee5ab5f21c1b5bc773c9113780" category="inline-link-macro-rx"></block></block>
   <block id="504a1b6b42b6a39b780a20e097a68439" category="paragraph">參見<block ref="cd25cbe53f0a314145c84729c6ce2c78" category="inline-link-rx"></block>驗證平台上的連接埠是否正確。</block>
   <block id="fdd1967bcc4179d15ff49af9f4eb5d7e" category="paragraph">在您查看安裝 RCF 或升級 RCF 程式後，您<block ref="804caa6e47e068ee420004b49576cb27" category="inline-link-macro-rx"></block>或者<block ref="34eb350590adb58b30d7d2c85b3e73cb" category="inline-link-macro-rx"></block>按要求。</block>
@@ -4419,7 +4418,6 @@
   <block id="4ddbf9913cf137f28df7ad8a4a25d0f5" category="paragraph">此範例展示了 RCF 文件<block ref="1b86452473f90818e41227cf4b4157de" prefix=" " category="inline-code"></block>正在交換器 cs1 上安裝：</block>
   <block id="7ea042ac2614a0600db9c4b93b98f977" category="summary">首次設定 Nexus 9364d-gx2a 交換器後，您可以安裝 RCF。您也可以使用此程序升級您的 RCF。</block>
   <block id="8dd25033ecbddeb30056a46518ad3275" category="paragraph">首次設定 Nexus 9364D-GX2A 交換器後，安裝參考設定檔 (RCF)。當您的交換器上安裝了現有版本的 RCF 檔案時，您可以升級您的 RCF 版本。</block>
-  <block id="fb96e6d079fabb1d2b736726ce69ee12" category="list-text">*Cluster-HA-Storage* - 支援連接埠上的共用叢集/HA/儲存流量（NX9364D-GX2A-RCF-v10.0-Shared.txt）。</block>
   <block id="6384776866a1079fc5ff9f0437dc01f4" category="inline-link-macro">Cisco Nexus 3=9000 系列交換機</block>
   <block id="1c345898c1385054a5914f9f0437669c" category="list-text"><block ref="1c345898c1385054a5914f9f0437669c" category="inline-link-macro-rx"></block></block>
   <block id="bd377da5df344ea4407f28a5db2a6983" category="paragraph">參見<block ref="cd25cbe53f0a314145c84729c6ce2c78" category="inline-link-rx"></block>驗證平台上的叢集連接埠是否正確。</block>
@@ -5862,4 +5860,22 @@
   <block id="77c4c65090a7a14ac6d2a4180ac07a3c" category="list-text">[[步驟3]]驗證叢集 LIF 是否已恢復到其原始連接埠（這可能需要一分鐘）：</block>
   <block id="5a443ae50dfc3d613ac9445266752a19" category="list-text">步驟8：將權限等級改回管理員：</block>
   <block id="397fcdbb1cd3a03c8bd47ec26ea0418d" category="list-text">[[step5]]在交換器 c2 上，關閉連接到節點集群端口的端口，以便集群 LIF 進行故障轉移。</block>
+  <block id="653ccfe7cf284b57a5c46bee65e0a58e" category="paragraph-title">可用的RCF</block>
+  <block id="9b3a99f9973c4d272fa2de0253bc085a" category="paragraph">下表列出了 3132Q-V 交換器的可用 RCF。選擇適合您配置的RCF版本。看<block ref="3f6421172f80f8047523f4f7c07d2e71" category="inline-link-macro-rx"></block>了解更多。</block>
+  <block id="abe8ded30ab73da274c1efff617dc311" category="paragraph">叢集高可用性分拆 RCF v1._xx_</block>
+  <block id="f544c486b2c67e532c8ee779f96f0860" category="paragraph">叢集高可用性 RCF v1._xx_</block>
+  <block id="b4897f3fa8ac5a2d92f22b537ed54960" category="paragraph">叢集 RCF 1._xx_</block>
+  <block id="4f67b0befe3bedde34e483ad0566f9d6" category="paragraph">下表列出了 3232C 交換器的可用 RCF。選擇適合您配置的RCF版本。看<block ref="3f6421172f80f8047523f4f7c07d2e71" category="inline-link-macro-rx"></block>了解更多。</block>
+  <block id="8072779b33a273468d78ef6cb6d4c966" category="paragraph">儲存 RCF v1._xx_</block>
+  <block id="464c28165f67adadcec6dbdd6535b183" category="list-text">*叢集-HA-儲存 AFX* - 所有連接埠均配置為 4x100GbE 分線模式，普遍支援 AFX 節點叢集、HA、儲存連接埠和 NX224 儲存架連接埠。交換器之間採用 400GbE ISL 連線。  （_Cluster-HA-Storage AFX RCF_vxx.x_）。</block>
+  <block id="76decbd40d1d1dd0ecd3f76d346188a5" category="paragraph">有關具體連接埠和 VLAN 使用詳情，請參閱 RCF 中的橫幅和重要說明部分。看<block ref="3f6421172f80f8047523f4f7c07d2e71" category="inline-link-macro-rx"></block>了解更多。</block>
+  <block id="5cc428f45cb55d942754b2958164f425" category="paragraph">下表描述了不同配置可用的 RCF。選擇適用於您配置的 RCF。看<block ref="3f6421172f80f8047523f4f7c07d2e71" category="inline-link-macro-rx"></block>了解更多。</block>
+  <block id="737fb9ece28f7ddaf8a5f5726f370a3b" category="cell">RCF配置</block>
+  <block id="d3b7f231b852de83cebf230ffbd5e959" category="paragraph">下表列出了 9336C-FX2 和 9336C-FX2-T 交換器可用的 RCF。選擇適合您配置的RCF版本。看<block ref="3f6421172f80f8047523f4f7c07d2e71" category="inline-link-macro-rx"></block>了解更多。</block>
+  <block id="01e0f71d3ae376e4d904595d8f085eaf" category="paragraph">叢集高可用性突破 RCF 1._xx_</block>
+  <block id="b276093f4295f09c529b653cf500f9a9" category="paragraph">叢集高可用性儲存 RCF 1._xx_</block>
+  <block id="d7357d88efc626b8a59124411cdaaf7c" category="paragraph">儲存 RCF 1._xx_</block>
+  <block id="31d1f8ac94c6c6348baf87c178d54ca6" category="paragraph">MultiCluster-HA RCF 1._xx_</block>
+  <block id="882f88e519afe0ccad4d00b167a8f9f4" category="list-text"><block ref="882f88e519afe0ccad4d00b167a8f9f4" category="inline-link-macro-rx"></block></block>
+  <block id="56b1e9ee9f81d9d1458caeb63a57b431" category="list-text">*ClusterStorageRCF* - 支援交換器上的分區叢集和兩個儲存區域（Cluster-Storage RCF 1._xx_）。</block>
 </blocks>
