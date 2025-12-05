@@ -48,8 +48,6 @@ entries:
   entries:
   - title: 遷移到雙節點交換集群
     url: "/switch-cisco-92300/migrate-to-2n-switched.html"
-  - title: 從舊的Cisco交換器遷移
-    url: "/switch-cisco-92300/migrate-to-92300yc.html"
 - title: 更換開關
   pdf-filename: Replace_switches_92300yc
   entries:

@@ -53,34 +53,6 @@ entries:
 - title: 遷移交換機
   pdf-filename: Migrate_switches_3232C
   entries:
-  - title: CN1610交換器遷移
-    pdf-filename: CN1610_switch_migration
-    entries:
-    - title: 從 CN1610 交換器工作流程遷移
-      url: "/switch-cisco-3232c/cn1610-migrate-workflow.html"
-    - title: 遷移要求
-      url: "/switch-cisco-3232c/cn1610-migrate-to-3232c-overview.html"
-    - title: 做好遷移準備
-      url: "/switch-cisco-3232c/cn1610-prepare-to-migrate.html"
-    - title: 更換集群開關 CL2
-      url: "/switch-cisco-3232c/cn1610-replace-CL2.html"
-    - title: 更換集群開關 CL1
-      url: "/switch-cisco-3232c/cn1610-replace-CL1.html"
-    - title: 完成遷移
-      url: "/switch-cisco-3232c/cn1610-complete-migration.html"
-  - title: Nexus 5596 交換器遷移
-    pdf-filename: CN5596_switch_migration
-    entries:
-    - title: 從Cisco Nexus 5596 交換器工作流程遷移
-      url: "/switch-cisco-3232c/cn5596-migrate-workflow.html"
-    - title: 遷移要求
-      url: "/switch-cisco-3232c/cn5596-migrate-requirements.html"
-    - title: 做好遷移準備
-      url: "/switch-cisco-3232c/cn5596-prepare-to-migrate.html"
-    - title: 配置連接埠
-      url: "/switch-cisco-3232c/cn5596-configure-ports.html"
-    - title: 完成遷移
-      url: "/switch-cisco-3232c/cn5596-complete-migration.html"
   - title: 從雙節點無交換器叢集遷移
     pdf-filename: 從無交換器叢集遷移
     entries:

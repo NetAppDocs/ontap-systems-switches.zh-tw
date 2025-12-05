@@ -53,32 +53,6 @@ entries:
 - title: 遷移交換機
   pdf-filename: 遷移交換器 3132q-v
   entries:
-  - title: CN1610交換器遷移
-    pdf-filename: CN1610_switch_migration
-    entries:
-    - title: CN1610交換器遷移工作流程
-      url: "/switch-cisco-3132q-v/cn1610-migrate-workflow.html"
-    - title: 遷移要求
-      url: "/switch-cisco-3132q-v/cn1610-migrate-requirements.html"
-    - title: 做好遷移準備
-      url: "/switch-cisco-3132q-v/cn1610-prepare-to-migrate.html"
-    - title: 配置連接埠
-      url: "/switch-cisco-3132q-v/cn1610-configure-ports.html"
-    - title: 完成遷移
-      url: "/switch-cisco-3132q-v/cn1610-complete-migration.html"
-  - title: Cisco Nexus 5596 交換器遷移
-    pdf-filename: CN5596_switch_migration
-    entries:
-    - title: Cisco Nexus 5596 交換器遷移工作流程
-      url: "/switch-cisco-3132q-v/cn5596-migrate-workflow.html"
-    - title: 遷移要求
-      url: "/switch-cisco-3132q-v/cn5596-migrate-requirements.html"
-    - title: 做好遷移準備
-      url: "/switch-cisco-3132q-v/cn5596-prepare-to-migrate.html"
-    - title: 配置連接埠
-      url: "/switch-cisco-3132q-v/cn5596-configure-ports.html"
-    - title: 完成遷移
-      url: "/switch-cisco-3132q-v/cn5596-complete-migration.html"
   - title: 從無交換器集群遷移到雙節點交換式集群
     pdf-filename: 從無交換器集群遷移到有交換器集群
     entries:
