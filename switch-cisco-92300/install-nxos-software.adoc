@@ -48,7 +48,7 @@ NX-OS 是Cisco系統公司提供的 Nexus 系列乙太網路交換器和 MDS 系
 * 這 `cluster1::*>`prompt 指示叢集名稱。
 * 每個節點上的叢集連接埠都命名為 `e0a`和 `e0b`。
 +
-參見link:https://hwu.netapp.com/Home/Index["硬體宇宙"]針對您的平台實際支援的叢集連接埠。
+參見link:https://hwu.netapp.com/Home/Index["硬體宇宙"]針對您的平台實際支援的叢集連接埠。看 link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["安裝HWU中沒有的設備還需要哪些額外資訊？"^] 有關交換器安裝要求的詳細資訊。
 
 
 

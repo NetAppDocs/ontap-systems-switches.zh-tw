@@ -29,4 +29,4 @@ summary: 在設定Cisco 9364d-gx2a 交換器之前，請先查看以下資訊。
 (cs1)(config)# *exit*
 (cs1)# *copy running-config startup-config*
 ----
-參見 https://hwu.netapp.com/Switch/Index["Hardware Universe"^]有關交換器連接埠的詳細資訊。
+參見 https://hwu.netapp.com/Switch/Index["Hardware Universe"^]有關交換器連接埠的詳細資訊。看 link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["安裝HWU中沒有的設備還需要哪些額外資訊？"^] 有關交換器安裝要求的詳細資訊。

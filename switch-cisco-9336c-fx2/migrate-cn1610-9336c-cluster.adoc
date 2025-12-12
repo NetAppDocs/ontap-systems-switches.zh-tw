@@ -27,7 +27,7 @@ summary: 您可以將ONTAP叢集的NetApp CN1610 叢集交換器無中斷地移�
 * Cisco9336C-FX2-T
 
 
-有關支援的連接埠及其配置的詳細信息，請參閱 https://hwu.netapp.com/["Hardware Universe"^]。
+有關支援的連接埠及其配置的詳細信息，請參閱 https://hwu.netapp.com/["Hardware Universe"^]。看 link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["安裝HWU中沒有的設備還需要哪些額外資訊？"^] 有關交換器安裝要求的詳細資訊。
 
 .你需要什麼
 請確認您的配置符合以下要求：

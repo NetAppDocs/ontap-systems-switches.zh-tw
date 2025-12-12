@@ -32,7 +32,7 @@ NOTE: 如果您變更AFF A800或AFF C800系統上 e0a 和 e1a 叢集連接埠的
 == 遷移交換機
 
 .關於範例
-本流程中的範例使用了兩個節點。這些節點使用兩個 10GbE 叢集互連連接埠 e0a 和 e0b。參見 https://hwu.netapp.com/["Hardware Universe"^]驗證平台上的叢集連接埠是否正確。
+本流程中的範例使用了兩個節點。這些節點使用兩個 10GbE 叢集互連連接埠 e0a 和 e0b。參見 https://hwu.netapp.com/["Hardware Universe"^]驗證平台上的叢集連接埠是否正確。看 link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["安裝HWU中沒有的設備還需要哪些額外資訊？"^] 有關交換器安裝要求的詳細資訊。
 
 
 NOTE: 命令輸出可能因ONTAP版本不同而有所差異。

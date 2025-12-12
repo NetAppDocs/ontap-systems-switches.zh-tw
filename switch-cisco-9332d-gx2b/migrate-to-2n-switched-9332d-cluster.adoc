@@ -57,7 +57,7 @@ summary: 如果您已有雙節點無交換器叢集環境，則可以使用Cisco
 * 此過程中使用的叢集連接埠為 e0a 和 e0b。
 
 
-看 https://hwu.netapp.com["Hardware Universe"^]有關您平台集群連接埠的資訊。
+看 https://hwu.netapp.com["Hardware Universe"^]有關您平台集群連接埠的資訊。看 link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["安裝HWU中沒有的設備還需要哪些額外資訊？"^] 有關交換器安裝要求的詳細資訊。
 
 
 

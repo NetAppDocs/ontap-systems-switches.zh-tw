@@ -27,6 +27,7 @@ NOTE: 流程需要同時使用ONTAP指令和Cisco Nexus 3000 系列交換器指�
 * link:https://mysupport.netapp.com/site/products/all/details/netapp-cluster-switches/docs-tab["NetApp CN1601 和 CN1610"^]
 * link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換機"^]
 * link:http://hwu.netapp.com["Hardware Universe"^]
+* link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["安裝HWU中沒有的設備還需要哪些額外資訊？"^]
 
 
 
@@ -34,7 +35,7 @@ NOTE: 流程需要同時使用ONTAP指令和Cisco Nexus 3000 系列交換器指�
 == 遷移交換機
 
 .關於範例
-本流程中的範例使用了四個節點：兩個節點使用四個 10 GbE 叢集互連連接埠：e0a、e0b、e0c 和 e0d。另外兩個節點使用兩條 40 GbE 群集互連光纖電纜：e4a 和 e4e。這link:https://hwu.netapp.com/["硬體宇宙"^]包含有關您平台上的叢集光纖電纜的資訊。
+本流程中的範例使用了四個節點：兩個節點使用四個 10 GbE 叢集互連連接埠：e0a、e0b、e0c 和 e0d。另外兩個節點使用兩條 40 GbE 群集互連光纖電纜：e4a 和 e4e。這link:https://hwu.netapp.com/["硬體宇宙"^]包含有關您平台上的叢集光纖電纜的資訊。看 link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["安裝HWU中沒有的設備還需要哪些額外資訊？"^] 有關交換器安裝要求的詳細資訊。
 
 本流程中的範例使用以下開關和節點命名規則：
 

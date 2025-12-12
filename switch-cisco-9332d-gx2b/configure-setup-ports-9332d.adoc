@@ -33,4 +33,4 @@ Cisco Nexus 9332D-GX2B 交換器是Cisco Nexus 9000 平台的一部份。AFX 系
 400GbE ISL
 
 |===
-參見 https://hwu.netapp.com["Hardware Universe"^]有關平台所用連接埠的詳細資訊。
+參見 https://hwu.netapp.com["Hardware Universe"^]有關平台所用連接埠的詳細資訊。看 link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["安裝HWU中沒有的設備還需要哪些額外資訊？"^] 有關交換器安裝要求的詳細資訊。

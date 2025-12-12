@@ -238,13 +238,12 @@ Additional Packages............................ BGP-4
 ............................................... Prototype Open API
 ----
 ====
-. 完成安裝。請依照以下五個步驟重新設定交換器：
+. 完成安裝。請依照以下四個步驟重新設定交換器：
 +
 .. link:configure-licenses.html["安裝許可證"]
 .. link:configure-install-rcf.html["安裝 RCF 文件"]
 .. link:configure-ssh.html["啟用 SSH"]
-.. link:CSHM_log_collection.html["啟用日誌收集"]
-.. link:CSHM_snmpv3.html["設定 SNMPv3 進行監控"]
+.. link:../switch-cshm/config-overview.html["配置交換器健康監控"]
 
 
 . 在夥伴交換器上重複步驟 1 至 7。
@@ -410,14 +409,13 @@ unit 	active 	    backup   current-active  next-active
 (cs2) #
 ----
 ====
-. 完成安裝。交換器重新啟動後未套用任何配置，並重設為出廠預設值。請依照以下六個步驟重新設定交換器：
+. 完成安裝。交換器重新啟動後未套用任何配置，並重設為出廠預設值。請依照以下五個步驟重新設定交換器：
 +
 .. link:configure-install-initial.html["配置交換機"]
 .. link:configure-licenses.html["安裝許可證"]
 .. link:configure-install-rcf.html["安裝 RCF 文件"]
 .. link:configure-ssh.html["啟用 SSH"]
-.. link:CSHM_log_collection.html["啟用日誌收集"]
-.. link:CSHM_snmpv3.html["設定 SNMPv3 進行監控"]
+.. link:../switch-cshm/config-overview.html["配置交換器健康監控"]
 
 
 . 在夥伴交換器上重複步驟 1 至 8。

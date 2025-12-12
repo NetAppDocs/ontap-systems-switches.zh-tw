@@ -121,7 +121,6 @@
   <block id="b3149015de75b42da42a42eacb5ceefd" category="list-text">可以透過控制台存取叢集交換器。</block>
   <block id="a632b651e4503b7d77ef195465e2f380" category="list-text">Nexus 9336C-FX2 節點到節點交換器和交換器到交換器連接使用 Twinax 或光纖電纜。</block>
   <block id="a6f490a59820ed4289028acdc4d2c508" category="inline-link">Hardware Universe- 交換機</block>
-  <block id="8b67b9724755020007e070354b9dfe8e" category="paragraph">看<block ref="fc1c96ca1130118b28ccd7598f63fe21" category="inline-link-rx"></block>有關佈線的更多資訊。</block>
   <block id="af07533269d8677fc160e13c429716e7" category="list-text">交換器間連結 (ISL) 電纜連接到兩個 9336C-FX2 交換器上的連接埠 1/35 和 1/36。</block>
   <block id="ad7a9068d60c59ac13db65b63fbef350" category="list-text">兩台 9336C-FX2 交換器的初始自訂已完成，因此：</block>
   <block id="9141f91a06036d85e1a5abfe502946bb" category="list-text">9336C-FX2 交換器運作的是最新版本的軟體。</block>
@@ -224,7 +223,6 @@
   <block id="3fc74bed2ec666d227e966120d5c4160" category="inline-link">漏洞編號 1570339</block>
   <block id="a9881d2bc89c135aee3c1490acc55259" category="inline-link">將 40GbE 轉換為 100GbE 後，T6 連接埠出現 CRC 錯誤</block>
   <block id="835174c5c468acf2b423cff0eb23994f" category="admonition">如果您變更AFF A800或AFF C800系統上 e0a 和 e1a 叢集連接埠的連接埠速度，您可能會觀察到速度轉換後接收到格式錯誤的套件。看<block ref="f867b947e44d8d6bccd25f3219f3d6d9" category="inline-link-rx"></block>以及知識庫文章<block ref="2a93cc61bbc3892324bc1b6369d71212" category="inline-link-rx"></block>供參考。</block>
-  <block id="0db1e0bcdfd24db323c5c37def104aff" category="paragraph">本流程中的範例使用了兩個節點。這些節點使用兩個 10GbE 叢集互連連接埠 e0a 和 e0b。參見<block ref="a9613e1dbacf145285c45df4264fe797" category="inline-link-rx"></block>驗證平台上的叢集連接埠是否正確。</block>
   <block id="4ad14943532a190c518f634a57c3dbc8" category="admonition">命令輸出可能因ONTAP版本不同而有所差異。</block>
   <block id="ff3339197a97612c0ebbaf2641bdfcfa" category="list-text">現有的兩台Cisco交換器的名稱分別為 *cs1* 和 *cs2*。</block>
   <block id="0152c4d08b7616e344d95f6017c7732e" category="list-text">新的 Nexus 9336C-FX2 叢集交換器是 *cs1-new* 和 *cs2-new*。</block>
@@ -765,7 +763,6 @@
   <block id="2ab6a6c6e3efa9ded96d007db3c8ddd6" category="paragraph"><block ref="d952dcd329fa507e9e731ce0c7d8dbc1" prefix="" category="inline-code"></block></block>
   <block id="a211b71e1f024e68733a28ffda5d2276" category="list-text">重啟交換器：</block>
   <block id="be48ba6e238c192e1fd4688b655d0b0b" category="list-text">請重新登入並驗證EFOS軟體的新版本：</block>
-  <block id="22555900248572659217c1157207aa25" category="list-text">完成安裝。請依照以下五個步驟重新設定交換器：</block>
   <block id="e12f54ec861369fe9d4230c607023240" category="inline-link-macro">安裝許可證</block>
   <block id="cc83c245da410495a294f033719b1669" category="list-text"><block ref="cc83c245da410495a294f033719b1669" category="inline-link-macro-rx"></block></block>
   <block id="27f5a81d534f36d81d8bfa46ffcc98b6" category="inline-link-macro">安裝 RCF 文件</block>
@@ -794,7 +791,6 @@
   <block id="49215cf233256204aa5b6259719da694" category="paragraph"><block ref="6db371c6b710567f9ba5b5a3491f792a" prefix="" category="inline-code"></block></block>
   <block id="fead9f0c9e5b3f33cc2bdfbb331d335c" category="paragraph">軟體安裝完成後，交換器將會重新啟動。讓交換器正常重新啟動進入新的 EFOS 版本。</block>
   <block id="204b0f515feca07e238d07748be2b4e3" category="list-text">登入並確認新交換器軟體已安裝：</block>
-  <block id="a207fb9399afa79821bb5dc81994c122" category="list-text">完成安裝。交換器重新啟動後未套用任何配置，並重設為出廠預設值。請依照以下六個步驟重新設定交換器：</block>
   <block id="1fc245f373dd47304db35c4ef2df408e" category="inline-link-macro">配置交換機</block>
   <block id="163c95e139774086e604f88f7e2f31d3" category="list-text"><block ref="163c95e139774086e604f88f7e2f31d3" category="inline-link-macro-rx"></block></block>
   <block id="04204be9eff305a81c8050c2ee21ed34" category="list-text">在夥伴交換器上重複步驟 1 至 8。</block>
@@ -1016,7 +1012,6 @@
   <block id="647742b7ed5a74255a1cd295f9fd2fc9" category="paragraph">對於 BES-53248 交換器的安裝和維護，請務必查看 EFOS 和ONTAP支援和設定要求。</block>
   <block id="553524d0c0ef22a471e2424d00a09694" category="section-title">EFOS 和ONTAP支持</block>
   <block id="738451c0daa7cff3a610bea3abfefaf0" category="inline-link">博通交換器相容性矩陣</block>
-  <block id="c7c51b6011824439212ed43b1a65c583" category="paragraph">參見<block ref="341c1c8afc925d24c41903215e7d4958" category="inline-link-rx"></block>和<block ref="019bec57a33f30d395c26e4eab684618" category="inline-link-rx"></block>有關 BES-53248 交換器的 EFOS 和ONTAP相容性資訊。 EFOS 和ONTAP支援可能會因 BES-53248 交換器的特定機器類型而異。有關所有 BES-52348 交換器型號的詳細信息，請參閱<block ref="18673e02a37b64215efc2503c4149ac9" category="inline-link-macro-rx"></block>。</block>
   <block id="794a085de55fb93282159bfe457b5455" category="paragraph">要配置集群，您需要集群交換器的相應數量和類型的電纜和電纜連接器。根據您最初設定的群集交換器的類型，您需要使用隨附的控制台連接線連接到交換器控制台連接埠。</block>
   <block id="2bd5eb99d9f67d841743740c2c9e58fc" category="section-title">集群交換器連接埠分配</block>
   <block id="16c3e502f28be460a987ad28ccd36874" category="paragraph">您可以參考博通支援的 BES-53248 叢集交換器連接埠分配表來設定您的叢集。</block>
@@ -1115,7 +1110,6 @@
   <block id="cf5d4db6cebbe371c7454d022aa56dd3" category="list-text">NetApp CN1610：連接埠 0/13 至 0/16 (10GbE)</block>
   <block id="8f74ad2c7978b9cd5864f853839e8666" category="list-text">BES-53248：連接埠 0/55-0/56 (100GbE)</block>
   <block id="148a1525f4c4b2d620941031bf03f670" category="inline-link">NetApp硬體世界</block>
-  <block id="23e7cf6793dbbe3c59640d6ebb6cf4fc" category="paragraph">這<block ref="141c10db18cf1753fa5fc05f553c33ff" category="inline-link-rx"></block>包含有關ONTAP相容性、支援的 EFOS 韌體以及與 BES-53248 叢集交換器的佈線的資訊。</block>
   <block id="0f92a7d54d19ea727ff8ed91081b5563" category="section-title">ISL佈線</block>
   <block id="1dd482f318ebf3baf239afefb0c0756b" category="paragraph">適用的ISL佈線如下：</block>
   <block id="0770c9d05dca95d3cdebb78f361ae6e8" category="list-text">*起始：*對於 CN1610 到 CN1610（SFP+ 到 SFP+），四條 SFP+ 光纖或銅纜直連接線。</block>
@@ -1175,7 +1169,6 @@
   <block id="e2989030c14ee86e7848f72ff468a9ab" category="list-text">對於博通支援的 BES-53248 叢集交換器配置，請確保：</block>
   <block id="2d7d11d5ca06e5804b001f6cda0d17a3" category="list-text">兩台交換器上的 BES-53248 群集開關功能完全正常。</block>
   <block id="826a409f86be0f4492cd1fcfbb70c872" category="list-text">BES-53248 節點到節點交換器和交換器到交換器的連接使用 Twinax 或光纖電纜。</block>
-  <block id="c0be2d74ddb0ea6b8972b9da2fc2c223" category="paragraph">這<block ref="141c10db18cf1753fa5fc05f553c33ff" category="inline-link-rx"></block>包含有關ONTAP相容性、支援的 EFOS 韌體以及與 BES-53248 交換器的佈線的資訊。</block>
   <block id="b882fd3c046d6c04ba3ecdc2047afed2" category="list-text">交換器間連結 (ISL) 電纜連接到兩個 BES-53248 交換器上的連接埠 0/55 和 0/56。</block>
   <block id="6be77b0027e4f23e5d6a0cf5e7ed697b" category="list-text">兩台 BES-53248 交換器的初始客製化工作已完成，具體如下：</block>
   <block id="c95d1e7e5f83accb779725a14e5a945b" category="list-text">BES-53248 交換器運作的是最新版本的軟體。</block>
@@ -1417,8 +1410,6 @@
   <block id="4c53e24e451af6129456f6303c30d40c" category="section-title">支援NVIDIA CX6、CX6-DX 和 CX7 乙太網路端口</block>
   <block id="9631cf0fb6580db66010faf0ddf48e5a" category="paragraph">如果使用NVIDIA ConnectX-6 (CX6)、ConnectX-6 Dx (CX6-DX) 或 ConnectX-7 (CX7) NIC 連接埠將交換器連接埠連接到ONTAP控制器，則必須硬編碼交換器連接埠速度。</block>
   <block id="4071b2d290eb3b1857c92068de31aa78" category="summary">您可以在AFF或FAS叢集中使用Cisco Nexus 3132q-v 交換器作為叢集交換器。</block>
-  <block id="b62fecd2daa19a4b26cb97fb72713787" category="doc">完成從 CN1610 交換器到 Nexus 3132Q-V 交換器的遷移</block>
-  <block id="bd5e70cef701e4d8487bec53bbb9de80" category="paragraph">完成以下步驟，以最終完成 CN1610 交換器向 Nexus 3132Q-V 交換器的遷移。</block>
   <block id="2b1e8c90a6d76027bb51745a4c74f60b" category="list-text">確認 ISL 連線是否正常<block ref="46c48bec0d282018b9d167eef7711b2c" prefix=" " category="inline-code"></block>在 3132Q-V 開關 C2 上：</block>
   <block id="d729f8810ac441b9edfcb8be0c3d6946" category="paragraph">連接埠 Eth1/31 和 Eth1/32 應指示<block ref="664c0d6743f35461a17b57d1b74aca61" prefix=" " category="inline-code"></block>這意味著兩個 ISL 連接埠都是<block ref="46c48bec0d282018b9d167eef7711b2c" prefix=" " category="inline-code"></block>在連接埠通道中。</block>
   <block id="9cb3b79ca9481ccd4278c560494c2d07" category="list-text">在所有節點上啟用連接到新的 3132Q-V 交換器 C1 的所有叢集互連連接埠：</block>
@@ -1444,15 +1435,12 @@
   <block id="b79fbcaa83bfb2240ef82f145e0ade9d" category="list-text">[[step43_replacecn1610]]如果您已停用自動建立案例，請透過呼叫AutoSupport訊息重新啟用它：</block>
   <block id="58a19c530e54f6364edd838f35b1830e" category="inline-link-macro">配置交換器健康監控</block>
   <block id="d21243682bbd31fa9c0d32d291135394" category="paragraph"><block ref="5b8b393a675dcaaee97c02828356657c" category="inline-link-macro-rx"></block>。</block>
-  <block id="f2236b10ee05c554b0c3377444eff836" category="doc">配置連接埠以從 CN1610 交換器遷移到 3132Q-V 交換機</block>
-  <block id="719a1057b8bbb9801d534f6f5dbe6138" category="paragraph">請依照下列步驟設定端口，以便從 CN1610 交換器遷移到新的 Nexus 3132Q-V 交換器。</block>
   <block id="3fe7956fd750714f32d9b6e932832821" category="list-text">在所有節點上，拆下連接到 CN1610 交換器 CL2 的電纜。</block>
   <block id="c287f4f908346f49f828e85b4c6354b2" category="paragraph">使用支援的佈線，您必須將所有節點上斷開的連接埠重新連接到 Nexus 3132Q-V 交換器 C2。</block>
   <block id="c8b5ecb61e1ca17bbf70c94fc45188c4" category="list-text">從 CN1610 交換器 CL1 的 13 至 16 號連接埠移除四條 ISL 纜線。</block>
   <block id="d622789660e949f6885c0f479a1a5581" category="paragraph">您必須將適當的Cisco QSFP 轉 SFP+ 分支電纜連接到新的Cisco 3132Q-V 交換器 C2 的連接埠 1/24 和現有 CN1610 交換器 CL1 的連接埠 13 至 16。</block>
   <block id="2a1d4c54dfd1530a1b4f7a507989e876" category="admonition">將任何電纜重新連接到新的Cisco 3132Q-V 交換器時，必須使用光纖或Cisco雙絞線電纜。</block>
   <block id="5d343b4af30094867f51850d2cea7721" category="list-text">若要使 ISL 動態化，請將活動 CN1610 交換器上的 ISL 介面 3/1 設定為停用靜態模式：<block ref="0eb212361b235188a498737cb6d380ef" prefix=" " category="inline-code"></block></block>
-  <block id="7b68f622594ff21ee6c47962c9e43be1" category="paragraph">此設定與在步驟 11 中兩台交換器上啟動 ISL 時 3132Q-V 交換器 C2 上的 ISL 設定相符。</block>
   <block id="62a68446ec92394b2aaec7d739cfa83c" category="paragraph">以下範例展示如何使用下列方式設定 ISL 介面 3/1：<block ref="0eb212361b235188a498737cb6d380ef" prefix=" " category="inline-code"></block>使 ISL 動態化的命令：</block>
   <block id="bc184e6696a5706a12239ac0612dda19" category="list-text">在活動的 CN1610 交換器 CL1 上啟動 ISL 13 至 16。</block>
   <block id="ebc3087eb9f360e12512c4e617d5e77e" category="paragraph">以下範例說明了在連接埠通道介面 3/1 上啟動 ISL 連接埠 13 至 16 的過程：</block>
@@ -1492,55 +1480,24 @@
   <block id="fc9286ab35f04cf48b4c402b64077bfe" category="paragraph">Cisco Nexus 3132Q-V 交換器可作為AFF或FAS叢集中的叢集交換器。叢集交換器可讓您建立具有兩個以上節點的ONTAP叢集。</block>
   <block id="7f66bc04b2dfdeb5c9e1ad66b46c6cc7" category="paragraph">流程需要同時使用ONTAP指令和Cisco Nexus 3000 系列交換器指令；除非另有說明，否則使用ONTAP指令。</block>
   <block id="c6adba6217951ed0e1a8ae3a9a50e632" category="paragraph">有關詳細信息，請參閱：For more information, see:</block>
-  <block id="2c6231c37aa5eee842fb3faba0147be9" category="inline-link">NetApp CN1601 和 CN1610 說明頁</block>
-  <block id="e0be92acbe486240b4bb6d67d353a18e" category="list-text"><block ref="e0be92acbe486240b4bb6d67d353a18e" category="inline-link-rx"></block></block>
-  <block id="f775db4015a6969e3d7826094686747b" category="inline-link">Cisco乙太網路交換器描述頁面</block>
-  <block id="4e6ad2bd98b8c1138520f786b74bba0a" category="list-text"><block ref="4e6ad2bd98b8c1138520f786b74bba0a" category="inline-link-rx"></block></block>
-  <block id="c611db29cc6e6a239383ecd8e657d54c" category="list-text"><block ref="c611db29cc6e6a239383ecd8e657d54c" category="inline-link-rx"></block></block>
-  <block id="812fe850222050801e38b7832058886b" category="section-title">CN1610 要求</block>
   <block id="59f69cc7526dca532d61c11acf92ab1b" category="list-text">NetApp CN1610：連接埠 0/1 至 0/12 (10 GbE)</block>
-  <block id="246b4f4943a9ef7d81b1ecb7d14db012" category="list-text">Cisco Nexus 3132Q-V：連接埠 e1/1-30 (40/100 GbE)</block>
   <block id="d85b5de5ebd96ca279df638f293965ec" category="list-text">NetApp CN1610：連接埠 0/13 至 0/16 (10 GbE)</block>
-  <block id="57d3034f2867f54843c59eacb52d62bf" category="list-text">Cisco Nexus 3132Q-V：連接埠 e1/31-32 (40/100 GbE)</block>
   <block id="dd91c3681cdde4bc7616a4b3ec5f7e72" category="paragraph">這<block ref="cbfe825e8e02458e2eef3cd048612d7d" category="inline-link-macro-rx"></block>包含有關 Nexus 3132Q-V 交換器支援的佈線資訊：</block>
   <block id="472bbef967b4ae7a0b29aff643bee169" category="list-text">具有 10 GbE 叢集連接的節點需要 QSFP 轉 SFP+ 光纖分支電纜或 QSFP 轉 SFP+ 銅纜分支纜線。</block>
-  <block id="409f985ef1bffdcbe3bc46fc059d909f" category="list-text">具有 40/100 GbE 叢集連接的節點需要支援 QSFP/QSFP28 的光模組，並配備光纖纜線或 QSFP/QSFP28 銅纜直連線。</block>
   <block id="7b5781881fa8326227e58e694e97198c" category="list-text">起始端：對於 CN1610 到 CN1610（SFP+ 到 SFP+），四條 SFP+ 光纖或銅纜直連電纜</block>
   <block id="277ee11ec93d0d5d7bb265959cfadb18" category="list-text">臨時方案：對於 CN1610 到 Nexus 3132Q-V（QSFP 轉四個 SFP+ 分支），使用一條 QSFP 轉 SFP+ 光纖或銅纜分支電纜</block>
   <block id="21e8ded62a39d44e1afa6aaee348bd88" category="list-text">最後：對於 Nexus 3132Q-V 到 Nexus 3132Q-V（QSFP28 到 QSFP28）的連接，需要兩條 QSFP28 光纖或銅纜直連接線。</block>
   <block id="d129b7927c768a17882184f936cb7a36" category="paragraph">NetApp雙絞線電纜與Cisco Nexus 3132Q-V 交換器不相容。</block>
   <block id="9781497a027920a312b9c4cd217b3956" category="paragraph">如果您目前的 CN1610 設定使用NetApp雙絞線電纜進行叢集節點到交換器的連接或 ISL 連接，並且您想要繼續在您的環境中使用雙絞線，則需要購買Cisco雙絞線電纜。或者，您可以使用光纖電纜同時進行 ISL 連線和叢集節點到交換器的連線。</block>
   <block id="6ba18f6bbaf15727c7ee5c3b67c96d09" category="paragraph-title">關於所使用的範例</block>
-  <block id="7aebbb4cb5adb1f73c7978267be88c10" category="paragraph">本流程中的範例說明如何以Cisco Nexus 3132Q-V 交換器取代 CN1610 交換器。您可以對這些步驟（稍作修改）用於其他較舊的Cisco交換器。</block>
   <block id="36ead4e4eff2d381301d7bfff0ade3f3" category="paragraph">該過程還使用了以下交換器和節點命名規則：</block>
-  <block id="80e1f6c007030f67f6111ab0c8408c28" category="list-text">需要更換的 CN1610 交換器是 *CL1* 和 *CL2*。</block>
-  <block id="4aae134657701551f1dcef1c3781e263" category="list-text">用來取代 CN1610 交換器的 Nexus 3132Q-V 交換器是 *C1* 和 *C2*。</block>
-  <block id="798438ca23b2ff82b9170b4d5bfa6280" category="list-text">*n1_clus1* 是連接到節點 *n1* 的叢集交換器 1 (CL1 或 C1) 的第一個叢集邏輯介面 (LIF)。</block>
-  <block id="6a6c766323eee285145b66e14d4ee43e" category="list-text">*n1_clus2* 是連接到節點 *n1* 的叢集交換器 2 (CL2 或 C2) 的第一個叢集 LIF。</block>
-  <block id="6dadf030423e26329824b12725fb09ed" category="list-text">*n1_clus3* 是連接到節點 *n1* 的叢集交換器 2 (CL2 或 C2) 的第二個 LIF。</block>
-  <block id="1006eba9d47424524bb3c7816cd7318e" category="list-text">*n1_clus4* 是連接到節點 *n1* 的叢集交換器 1 (CL1 或 C1) 的第二個 LIF。</block>
   <block id="cfe31ca921d74cd993703a61d1e43033" category="inline-link">Cisco叢集網路交換器參考設定檔下載</block>
   <block id="48bce5ec820f8f37a68ba6bb2b9d8b81" category="list-text">10 GbE 和 40/100 GbE 連接埠的數量在參考設定檔 (RCF) 中定義，該檔案可在以下位置取得：<block ref="cce23acfce4c9bc9bb74fd35873aedf2" category="inline-link-rx"></block>頁。</block>
-  <block id="6852ffab1dd842604cd9df0a0c1471d9" category="list-text">這些節點是 *n1*、*n2*、*n3* 和 *n4*。</block>
   <block id="599e429de04ef19f05e05c80158f2130" category="paragraph">本流程範例中使用了四個節點：</block>
-  <block id="54c4ccc4fa820b0a98b3f0c8fc663c4d" category="list-text">兩個節點使用四個 10 GbE 叢集互連連接埠：*e0a*、*e0b*、*e0c* 和 *e0d*。</block>
-  <block id="ab84df33131df5aa5511dff21c37d1ea" category="list-text">另外兩個節點使用兩個 40 GbE 叢集互連連接埠：*e4a* 和 *e4e*。</block>
-  <block id="1ca31d8f144e1f71bfbab9016379c2a1" category="paragraph">這<block ref="cbfe825e8e02458e2eef3cd048612d7d" category="inline-link-macro-rx"></block>列出平台上的實際集群連接埠。</block>
   <block id="0d370a4f587f437e7fc4ece5f78f2e7d" category="inline-link-macro">做好遷移準備</block>
   <block id="e0dff501823a918e2f3033a5949c3621" category="summary">在設定Cisco 3132q-v 交換器之前，請先查看以下資訊。</block>
-  <block id="e14e49b4caef6bc8ad9775a137668670" category="doc">將 CN1610 交換器移轉到 Nexus 3132Q-V 交換器的工作流程</block>
-  <block id="7a4ba1a6c0b027572a0416dc6bf401d3" category="paragraph">請依照下列工作流程步驟將您的 CN1610 交換器移轉到Cisco Nexus 3132Q-V 交換器。</block>
-  <block id="ac8a9f99175fd1d85515f7d3c6356968" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block><block ref="846ed39deca0bc0696743f56a2fa6e52" category="inline-link-macro-rx"></block></block>
   <block id="8d468f64bcee3973d1e1e9806146df11" category="paragraph">查看遷移過程的要求和範例交換器資訊。</block>
-  <block id="0334936cbcd27a48ad2744fb7577c089" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block><block ref="09f8647628955f086bee147d39a109c3" category="inline-link-macro-rx"></block></block>
-  <block id="4c01d7183bdd28aca1e3aabe05c578b1" category="paragraph">準備好將 CN1610 交換器遷移到 Nexus 3132Q-V 交換器。</block>
   <block id="340c3bb044e471e15ff9876bdc67bf83" category="inline-link-macro">配置連接埠</block>
-  <block id="d6871df2b359eba290ac55f996b13edf" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block><block ref="cf3c8509cc39fe5420b82170551e0955" category="inline-link-macro-rx"></block></block>
-  <block id="5ff4738de3bcf4d3af66e04647c33b3d" category="paragraph">配置連接埠以遷移到新的 Nexus 3132Q-V 交換器。</block>
-  <block id="67f09b76c948374a9d851b981ff65cfb" category="paragraph-title"><block ref="beadfa85a2fdca06b91edc1131c603e6" category="inline-image-macro-rx" type="image"></block><block ref="4f1fe635f2afbf3ed63b1436d0bc6ba5" category="inline-link-macro-rx"></block></block>
-  <block id="dac43038eaedf93c572310a5d870ca1d" category="paragraph">完成向新型 Nexus 3132Q-V 交換器的遷移。</block>
-  <block id="11d45d16ea49b4afe88aaf89a666e5ef" category="doc">準備從 CN1610 交換器遷移到 3132Q-V 交換機</block>
-  <block id="0c78de6b6a8759c718830efb792c573b" category="paragraph">請依照下列步驟準備您的 CN1610 交換機，以便移轉到Cisco Nexus 3132Q-V 交換器。</block>
   <block id="e0c459ee022d3d4ac187fbf896f3a3de" category="paragraph"><block ref="80cae18d0d871afff6b1bcabf727d6da" prefix="" category="inline-code"></block></block>
   <block id="8d0e687377afc5c133d276af126b6104" category="paragraph">_x_ 是維護視窗的持續時間，單位為小時。</block>
   <block id="996e8be91ffccb3b29b5d97095bde5d3" category="list-text">顯示配置中設備的資訊：</block>
@@ -1554,13 +1511,11 @@
   <block id="453a6890d60e4080c71b10898159e292" category="paragraph"><block ref="141f671a5edc94f5cc9316f953bc9ffb" prefix="" category="inline-code"></block></block>
   <block id="e75185bd3368ee464150b091fadaea64" category="list-text">確認新的 3132Q-V 交換器上已根據您的要求安裝了相應的 RCF 和映像，並進行任何必要的網站自訂，例如使用者和密碼、網路位址等。</block>
   <block id="62a32a8da5c635f011843056ed2be49c" category="paragraph">此時您必須準備好這兩個開關。如果需要升級 RCF 和鏡像，請依照下列步驟操作：</block>
-  <block id="770b3b3dd4b6a860f71aabb021e433d2" category="list-text">看<block ref="3f6421172f80f8047523f4f7c07d2e71" category="inline-link-macro-rx"></block>在NetApp支援網站上。</block>
   <block id="690cd80190ecafe95c1bad59ef6e05e9" category="list-text">請記下您交換器的型號以及該頁表格中所需的軟體版本。</block>
   <block id="75a2d93cb4e527c0e286f843787fab5e" category="list-text">下載相應版本的RCF。</block>
   <block id="c3e4865cf90af929edc8bd070be90861" category="list-text">在“描述”頁面上選擇“繼續”，接受許可協議，然後按照“下載”頁面上的說明下載 RCF。</block>
   <block id="64382be6f4f3f33c4cddf77b7e43a871" category="list-text">下載對應版本的影像處理軟體。</block>
   <block id="3d8dff955662cfeaf1bbd38f49a7762a" category="inline-link">Cisco叢集和管理網路交換器參考設定檔下載</block>
-  <block id="503f7cd5b4831af5280f50689787ef2e" category="paragraph"><block ref="503f7cd5b4831af5280f50689787ef2e" category="inline-link-rx"></block></block>
   <block id="7ce02bd6a5e67e04f7cac449dc854124" category="list-text">遷移與待替換的第二台 CN1610 交換器相關的 LIF：</block>
   <block id="e8b36898a14025655c5bbcd25316af3f" category="paragraph">您必須透過服務處理器或節點管理接口，從與節點的連接遷移群集 LIF，該連接擁有要遷移的群集 LIF。</block>
   <block id="92c7135f045da2103cc2998aaea78fe4" category="paragraph">以下範例顯示了 n1 和 n2，但 LIF 遷移必須在所有節點上執行：</block>
@@ -1572,61 +1527,31 @@
   <block id="20fca188f9df647063b0798615526c99" category="paragraph">以下範例展示如何關閉 CN1610 交換器 CL1 上的 ISL 連接埠 13 至 16：</block>
   <block id="8d9520a7db10148df2c9a1262cf4055a" category="list-text">在 CL1 和 C2 之間建立臨時 ISL：</block>
   <block id="abf1c60f9d26f9c51258947dd5ef15d2" category="paragraph">以下範例在 CL1（連接埠 13-16）和 C2（連接埠 e1/24/1-4）之間建立臨時 ISL：</block>
-  <block id="4c4cf4e66a2a549efd98b45aa0d53a3d" category="doc">完成從 Nexus 5596 交換器到 Nexus 3132Q-V 交換器的遷移</block>
-  <block id="90da058bec2aa2bf1b450c4b8c56c4c6" category="paragraph">完成以下步驟，即可完成 Nexus 5596 交換器向 Nexus 3132Q-V 交換器的遷移。</block>
-  <block id="cece4dbf87807c9dd5ea9bd3a957178c" category="paragraph">連接埠 Eth1/31 和 Eth1/32 應指示<block ref="664c0d6743f35461a17b57d1b74aca61" prefix=" " category="inline-code"></block>這意味著兩個 ISL 連接埠都是<block ref="46c48bec0d282018b9d167eef7711b2c" prefix=" " category="inline-code"></block>在連接埠通道中：</block>
-  <block id="31904c5355f17c93a1b24971a19bd1bf" category="list-text">在所有節點上，啟動連接到新的 3132Q-V 交換器 C1 的所有叢集互連連接埠：</block>
-  <block id="ad74bf339ee8d5d96a2bd94af6adee60" category="paragraph">以下範例顯示了在 3132Q-V 交換器 C1 上為 n1 和 n2 啟動的所有群集互連連接埠：</block>
-  <block id="f1cf8003cdf52e8ffcd5e3ec861861de" category="paragraph">以下範例驗證了新的 3132Q-V 交換器 C1 上所有節點的所有叢集互連連接埠是否都已連線。<block ref="46c48bec0d282018b9d167eef7711b2c" prefix=" " category="inline-code"></block> ：</block>
   <block id="6c098a32373500c8400f32fb07dde9e3" category="list-text">在所有節點上，將特定的叢集 LIF 恢復到其原始連接埠：</block>
   <block id="6ddfcc3224ee61de55be71f4235743ce" category="paragraph">以下範例顯示了特定叢集 LIF 在節點 n1 和 n2 上還原到其原生連接埠的情況：</block>
   <block id="d4a8913469db1fc0f552292a60d6e828" category="list-text">確認介面是否處於主狀態：</block>
-  <block id="21091c00fdd6019fd30fabd99febe37a" category="list-text">如果被替換的 Nexus 5596 沒有自動移除，請將其移除：</block>
-  <block id="9330abbaaa76e6624badc34f8f4a32ea" category="paragraph">以下範例展示如何移除 Nexus 5596：</block>
   <block id="875f7e7648c993f0e954e0bebec605a3" category="list-text">配置叢集 clus1 和 clus2 在每個節點上自動回滾，並確認。</block>
-  <block id="32f9fed32eca7dddd4b24cc2fa065d9c" category="doc">配置連接埠以從 5596 交換器遷移到 3132Q-V 交換機</block>
-  <block id="4195a8a96c799352ae40908b3ae9cfa3" category="paragraph">請依照下列步驟配置端口，以便從 Nexus 5596 交換器遷移到新的 Nexus 3132Q-V 交換器。</block>
   <block id="9dfa5ca81b6cfbfa68b56dbce5da8530" category="list-text">在所有節點上，移除連接到 Nexus 5596 交換器 CL2 的所有電纜。</block>
-  <block id="966456a7b0c13d93e99995ce83647e5f" category="paragraph">使用支援的電纜，將所有節點上斷開的連接埠重新連接到 Nexus 3132Q-V 交換器 C2。</block>
   <block id="ef734cd74ae1841f6b5f92caa7675791" category="list-text">從 Nexus 5596 交換器 CL2 移除所有電纜。</block>
-  <block id="6bc3f2d33e7a041a76d77c45f9132983" category="paragraph">將合適的Cisco QSFP 轉 SFP+ 分線電纜連接到新的Cisco 3132Q-V 交換器 C2 的連接埠 1/24 和現有 Nexus 5596 CL1 的連接埠 45 至 48。</block>
-  <block id="39114fed6f0c082867dc441d7d2e5f43" category="list-text">確認介面 eth1/45-48 是否已存在<block ref="272b3828e33dc4bc4bfe71f68f0dabe0" prefix=" " category="inline-code"></block>在其運行配置中。</block>
   <block id="0ba1878488fa8c1dcdcbe279bbb1ebca" category="list-text">在活動的 Nexus 5596 交換器 CL1 上啟用 ISL 連接埠 45 至 48。</block>
   <block id="fd6ad519327f19b20670ad5335a253a2" category="paragraph">以下範例展示如何啟動 ISL 的 45 至 48 號連接埠：</block>
-  <block id="4d4bc08e276af766d54e3467b9949fa8" category="list-text">確認 ISL 是否為<block ref="46c48bec0d282018b9d167eef7711b2c" prefix=" " category="inline-code"></block>在 Nexus 5596 交換器 CL1 上：</block>
-  <block id="af921cfb31e494afff016da33715afa6" category="paragraph">eth1/45 至 eth1/48 連接埠應標示 (P)，表示 ISL 連接埠為<block ref="46c48bec0d282018b9d167eef7711b2c" prefix=" " category="inline-code"></block>在連接埠通道中：</block>
-  <block id="9598511e759613b613671d3b65d3d555" category="paragraph">連接埠 eth1/24/1、eth1/24/2、eth1/24/3 和 eth1/24/4 應標示 (P)，表示 ISL 連接埠為<block ref="46c48bec0d282018b9d167eef7711b2c" prefix=" " category="inline-code"></block>在連接埠通道中：</block>
-  <block id="58508b4426f2f445d9955df582a81637" category="list-text">在所有節點上，啟動連接到 3132Q-V 交換器 C2 的所有叢集互連連接埠：</block>
   <block id="68799151fadf324a361d2bc7241a9e99" category="paragraph">以下範例展示如何在節點 n1 和 n2 上啟動指定的連接埠：</block>
   <block id="79172c8124efb7d716197673757d5578" category="list-text">在所有節點上，還原所有已遷移的連接到 C2 的叢集互連 LIF：</block>
-  <block id="782def794cc49dccc5a354b283becc30" category="paragraph">以下範例顯示了遷移後的叢集 LIF 如何還原到節點 n1 和 n2 上的原始連接埠：</block>
   <block id="fc58eb548b356f004f25deb55d7debe2" category="list-text">請確認所有群集互連連接埠均已恢復至原始設定：</block>
   <block id="9e34505e95067067c4258419479733a1" category="paragraph">以下範例表明 clus2 上的 LIF 已恢復到其來源端口，並且如果“當前端口”列中的端口狀態為“已恢復”，則表示 LIF 已成功恢復。<block ref="b326b5062b2f0e69046810717534cb09" prefix=" " category="inline-code"></block>在<block ref="53db3ce0fe0e71f06b3beb0b676b806c" prefix=" " category="inline-code"></block>柱子。如果<block ref="53db3ce0fe0e71f06b3beb0b676b806c" prefix=" " category="inline-code"></block>值是<block ref="68934a3e9455fa72420237eb05902327" prefix=" " category="inline-code"></block>LIF尚未被撤銷。</block>
   <block id="b0522263b2b188ed6c32b8d81c7f9286" category="list-text">請確認叢集連接埠已連線：</block>
   <block id="14860c40af5b70801e3ca603e17cb1ae" category="paragraph">以下範例展示了前一個結果。<block ref="c41d3983ecd2badd54b3bb9658675080" prefix=" " category="inline-code"></block>指令，驗證所有群集互連是否都已連接<block ref="46c48bec0d282018b9d167eef7711b2c" prefix=" " category="inline-code"></block>：</block>
-  <block id="86134d7d31c06aa0711aee6c64ddd4f3" category="list-text">[[step12]]在叢集中的每個節點上，遷移與第一個要替換的 Nexus 5596 交換器 CL1 關聯的介面：</block>
-  <block id="29d3d66101e62951d378ea2e5a755eef" category="paragraph">以下範例表明，所需的叢集 LIF 已遷移到叢集交換器 C2 上託管的相應叢集連接埠：</block>
   <block id="b7504e51bec148bae865f23a95894f3d" category="list-text">在所有節點上，關閉連接到 CL1 的節點連接埠：</block>
   <block id="f1a61336765f82c643fb26938f79ed9c" category="paragraph">以下範例顯示了在節點 n1 和 n2 上關閉指定連接埠的情況：</block>
-  <block id="40648c0313929f34489755e1ba08f9dc" category="paragraph">以下範例展示如何關閉 ISL 24、31 和 32：</block>
   <block id="0c01a4b0e93b8a36bb98d2bcd3566432" category="list-text">在所有節點上，移除連接到 Nexus 5596 交換器 CL1 的所有電纜。</block>
-  <block id="1f46be4069dcf6cf295b5ef450654445" category="paragraph">使用支援的電纜，將所有節點上斷開的連接埠重新連接到 Nexus 3132Q-V 交換器 C1。</block>
-  <block id="fbdd94f42a48647720da88d59c4b201d" category="list-text">從 Nexus 3132Q-V C2 連接埠 e1/24 移除 QSFP 分線纜線。</block>
   <block id="1bcca78caf802f62188aa9cc8b5984f2" category="paragraph">使用支援的Cisco QSFP 光纖或直連接電纜，將 C1 上的連接埠 e1/31 和 e1/32 連接到 C2 上的連接埠 e1/31 和 e1/32。</block>
-  <block id="57b7a4769fe7ed3b97b5fa3c1e1b265c" category="list-text">恢復連接埠 24 的配置，並移除 C2 上的臨時連接埠通道 2：</block>
-  <block id="a759436e74247502ca654a3594a02206" category="list-text">在 C2（活動的 3132Q-V 交換器）上啟用 ISL 連接埠 31 和 32：<block ref="3c9abc42a241e1475a5055b440143fa5" prefix=" " category="inline-code"></block></block>
   <block id="62791e1f76f82dd4c5d54b4700356919" category="inline-link-macro">Cisco乙太網路交換機</block>
   <block id="316f1eecb7ad81ecbbff1b421526b4b8" category="list-text"><block ref="316f1eecb7ad81ecbbff1b421526b4b8" category="inline-link-macro-rx"></block></block>
   <block id="65de4ce73578ac5d8407f9a06f97685b" category="list-text"><block ref="65de4ce73578ac5d8407f9a06f97685b" category="inline-link-macro-rx"></block></block>
   <block id="ac3ce89c8c9c9f66bbf4ad6b656b2b3d" category="section-title">Cisco Nexus 5596 要求</block>
   <block id="555e8da414bf5a2d01f0f64a306f311c" category="paragraph">叢集交換器使用下列連接埠連接到節點：</block>
-  <block id="80f164080758aa5bfc804c244125df73" category="list-text">Nexus 5596：連接埠 e1/1-40 (10 GbE)</block>
-  <block id="65d2c518897dd18b3b7d147b6d6f4104" category="list-text">Nexus 3132Q-V：連接埠 e1/1-30 (10/40/100 GbE)</block>
   <block id="2310f479b987de6cbfc70f812fee99fd" category="paragraph">叢集交換器使用下列交換器間連結 (ISL) 連接埠：</block>
-  <block id="c909e005a718a451d653aced6fa25fef" category="list-text">Nexus 5596：連接埠 e1/41-48 (10 GbE)</block>
-  <block id="e6f0cb5332884d3ca43e5ad15b409681" category="list-text">Nexus 3132Q-V：連接埠 e1/31-32 (40/100 GbE)</block>
   <block id="9855955d9b3a740776b3e213e42bcb16" category="inline-link-macro">硬體宇宙</block>
-  <block id="6e04545690c667d3d164a3213eecb026" category="paragraph">這<block ref="ed925a5605a5afba7260684d8fd47590" category="inline-link-macro-rx"></block>包含有關 Nexus 3132Q-V 交換器支援的佈線資訊：</block>
   <block id="8ad5621547abb5f398de647f01ee8992" category="list-text">具有 10 GbE 叢集連接的節點需要 QSFP 轉 SFP+ 光纖分支電纜或 QSFP 轉 SFP+ 銅纜分支纜線。</block>
   <block id="cd4dd3ef0341a2660ec2e13a0afbda9c" category="list-text">具有 40/100 GbE 叢集連接的節點需要支援 QSFP/QSFP28 光模組，並配備光纖電纜或 QSFP/QSFP28 銅纜直連接纜線。</block>
   <block id="f6d943be4fed7a73b2b20c6cca1c0cb1" category="paragraph">叢集交換器使用對應的ISL電纜：</block>
@@ -1636,21 +1561,7 @@
   <block id="ff844f64ec493dced35fea3af41734fa" category="list-text">1條QSFP轉SFP+光纖分支線或銅纜分支線</block>
   <block id="50f94cbc4cf0a33ff4f99b9553620925" category="list-text">最終版：Nexus 3132Q-V 至 Nexus 3132Q-V（QSFP28 至 QSFP28）</block>
   <block id="9dac3929f5f08b4f7ea27d4b985ed09c" category="list-text">2條QSFP28光纖或銅纜直連接電纜</block>
-  <block id="28b054f899ccc3b204f1dc8f87461787" category="list-text">在 Nexus 3132Q-V 交換器上，您可以將 QSFP/QSFP28 連接埠操作為 40/100 千兆乙太網路或 4 x 10 千兆乙太網路模式。</block>
-  <block id="f2bec5f5cdac025c362ee7a63ef33243" category="paragraph">預設情況下，40/100 千兆乙太網路模式下有 32 個連接埠。這 40 個千兆乙太網路連接埠採用二元組命名規則進行編號。例如，第二個 40 千兆乙太網路連接埠編號為 1/2。</block>
-  <block id="2b3858746ef6d70b7cc2e4f1b48b1f0b" category="paragraph">將 40 千兆乙太網路配置更改為 10 千兆乙太網路的過程稱為 _breakout_，將 10 千兆乙太網路配置更改為 40 千兆乙太網路的過程稱為 _breakin_。</block>
-  <block id="722b85529a76604cf58c420f7a9ac06f" category="paragraph">當您將 40/100 千兆乙太網路連接埠拆分為 10 千兆乙太網路連接埠時，產生的連接埠將使用三元組命名規則進行編號。例如，第二個 40/100 千兆乙太網路連接埠的分線連接埠編號為 1/2/1、1/2/2、1/2/3 和 1/2/4。</block>
-  <block id="3528d94e0879a6fb80b0c21e2407afcb" category="list-text">Nexus 3132Q-V 交換器的左側有 2 個 SFP+ 端口，分別稱為 1/33 和 1/34。</block>
-  <block id="361c24584ea413c01856408e97a40411" category="list-text">您已將 Nexus 3132Q-V 交換器上的一些連接埠配置為以 10 GbE 或 40/100 GbE 運作。</block>
   <block id="9043114d5258d60e49a6ff62966f1f4d" category="paragraph">您可以使用下列方法將前六個連接埠配置為 4x10 GbE 模式：<block ref="08aac397a11274cd898dfbb3a635cf19" prefix=" " category="inline-code"></block>命令。同樣，您可以使用下列方法將前六個 QSFP+ 連接埠從分支配置中重新分組：<block ref="9437e02f9ec4a8d602d396abd2c360b4" prefix=" " category="inline-code"></block>命令。</block>
-  <block id="b56d0aacb2956c32c453bd556e641731" category="list-text">您已完成規劃、遷移，並閱讀了有關從節點到 Nexus 3132Q-V 叢集交換器的 10 GbE 和 40/100 GbE 連接的必要文件。</block>
-  <block id="629b3c36d556bc100a0c76bafef21d6f" category="list-text">此流程支援的ONTAP和 NX-OS 版本如下：<block ref="3f6421172f80f8047523f4f7c07d2e71" category="inline-link-macro-rx"></block> 。</block>
-  <block id="f5dd7ff0adcb0d1a9b383eb460b3c690" category="paragraph">本流程中的範例說明如何以Cisco Nexus 3132Q-V 交換器取代Cisco Nexus 5596 交換器。您可以對這些步驟（稍作修改）用於其他較舊的Cisco交換器。</block>
-  <block id="6deb3dc842a3dde4118935b248279fa8" category="list-text">需要更換的 Nexus 5596 交換器是 *CL1* 和 *CL2*。</block>
-  <block id="d88db22893852034863895c7c2ffb7a3" category="list-text">用來取代 Nexus 5596 交換器的 Nexus 3132Q-V 交換器是 *C1* 和 *C2*。</block>
-  <block id="d79863feaf7dda590b3bac794b234a6f" category="list-text">10 GbE 和 40/100 GbE 連接埠的數量在參考設定檔 (RCF) 中定義，這些檔案可在以下位置取得：<block ref="45b8f1baa941c556d7daa8d8054d886c" category="inline-link-macro-rx"></block> 。</block>
-  <block id="843bbf8c042bb49114b7773e1c0447fe" category="paragraph">這<block ref="ed925a5605a5afba7260684d8fd47590" category="inline-link-macro-rx"></block>列出平台上的實際集群連接埠。</block>
-  <block id="be22a0d322c8f53d170f9d25576359ff" category="paragraph-title">涵蓋的場景</block>
   <block id="9471c7c21cedfdb98486495bd0b6245b" category="paragraph">本流程涵蓋以下幾種情況：</block>
   <block id="64285f35389676785ba1a7c222e3e3db" category="list-text">叢集由兩個節點組成，這兩個節點透過兩個 Nexus 5596 叢集交換器連接並運作。</block>
   <block id="bc22e6be80918cfb669bd26425be5d46" category="list-text">將集群開關 CL2 替換為 C2（步驟 1 至 19）：</block>
@@ -1664,31 +1575,13 @@
   <block id="376d9754d8bf6cc760dbf7cec0de5688" category="list-text">斷開 CL1 和 C2 之間的 ISL 連接埠之間的電纜，然後使用支援的電纜從 C1 重新連接到 C2。</block>
   <block id="28013695101030544eb476048f1977d0" category="list-text">所有節點上連接到 C1 的所有叢集連接埠或 LIF 上的流量將被回滾。</block>
   <block id="d69d0cb0520d43e9420f393e270b4722" category="list-text">在叢集中新增了兩個FAS9000節點，並提供了叢集詳細資訊的範例。</block>
-  <block id="e1e4af2b76fc4cf7725e6ad531c83d04" category="doc">將 Nexus 5596 交換器移轉到 Nexus 3132Q-V 交換器的工作流程</block>
-  <block id="f03558b04d65ace52581aa38868c2ef6" category="paragraph">請依照下列工作流程步驟，將您的Cisco Nexus 5596 交換器移轉到Cisco Nexus 3132Q-V 交換器。</block>
-  <block id="5aed4d60c869bad1404f0a8b23f73253" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block><block ref="2ab73bc8048b4bb1f937f7cc0605a0de" category="inline-link-macro-rx"></block></block>
-  <block id="928ce7c43faad4a754aa0e952d9a0e41" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block><block ref="995229e1a43747c0714f7eb4992f1c0f" category="inline-link-macro-rx"></block></block>
-  <block id="c34787eca73871704459ab669d6a06b3" category="paragraph">準備好將 Nexus 5596 交換器遷移到 Nexus 3132Q-V 交換器。</block>
-  <block id="5f6de25cdf5d8986d417de6abd57aaab" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block><block ref="b245e0adb8a6dae5a3f9ec732103e83e" category="inline-link-macro-rx"></block></block>
-  <block id="96f2f19a47b7b3056f68853f79edaa55" category="paragraph-title"><block ref="beadfa85a2fdca06b91edc1131c603e6" category="inline-image-macro-rx" type="image"></block><block ref="303a8cd4f5d54f240e31d45fee06fb59" category="inline-link-macro-rx"></block></block>
-  <block id="296b6a4b7feb9a2539d964374ab3410a" category="doc">準備從 Nexus 5596 交換器遷移到 Nexus 3132Q-V 交換機</block>
-  <block id="344464c6be75ce8b80d0cc063326004c" category="paragraph">請依照下列步驟準備將Cisco Nexus 5596 交換器遷移到Cisco Nexus 3132Q-V 交換器。</block>
   <block id="9b199be8c3f1982fb3a23940f20b497c" category="admonition">此訊息通知技術支援部門此維護任務，以便在維護期間禁止自動建立案例。</block>
   <block id="cea6a6eecf8fd6cc967a6f4ddcffbdac" category="paragraph">以下範例顯示了每個節點上每個叢集互連交換器配置的叢集互連連接口數量：</block>
   <block id="ab3c28f964de5085a4ea20a8c2a1c6b0" category="list-text">確定每個叢集介面的管理或運作狀態：</block>
-  <block id="db31940f2b579882308cd543e5a6d236" category="list-text">顯示邏輯介面資訊：+<block ref="16fdd92def5a71313d6535c74ef67b81" prefix=" " category="inline-code"></block></block>
-  <block id="abe6208e30c618d92ae062645a3813ef" category="list-text">顯示已發現的群集交換器的相關資訊：+<block ref="694b56ad85eb627acc97ea9295f39018" prefix=" " category="inline-code"></block></block>
   <block id="f7bda53628939a52cb359a413eed21ac" category="list-text">設定<block ref="28c988ac956ff7a16325cde07547fef0" prefix=" " category="inline-code"></block>參數<block ref="68934a3e9455fa72420237eb05902327" prefix=" " category="inline-code"></block>在兩個節點上的叢集 LIF clus1 和 clus2 上：</block>
-  <block id="f4ea8698e3058f3f13b97ef311024a01" category="list-text">確認已根據您的要求在新 3132Q-V 交換器上安裝了相應的 RCF 和映像，並進行必要的網站自訂，例如使用者和密碼、網路位址等。</block>
   <block id="adde0526353316930b632fdb9e7146b3" category="list-text">前往<block ref="3f6421172f80f8047523f4f7c07d2e71" category="inline-link-macro-rx"></block>在NetApp支援網站上。</block>
-  <block id="327ee980e40b4244d4539d5661d8432d" category="paragraph">請參閱「__ONTAP 8.x 或更高版本叢集和管理網路交換器參考設定檔__下載」頁面，然後選擇對應的版本。</block>
   <block id="3765c5d59205afeccadd8e5bd55e38e9" category="paragraph">若要尋找正確的版本，請參閱_ONTAP 8.x 或更高版本叢集網路交換器下載頁面_。</block>
   <block id="dd3fa644952a65f1f6502b594da8056e" category="list-text">遷移與待替換的第二台 Nexus 5596 交換器相關的 LIF：</block>
-  <block id="f5532c44fa87b73888e57560b15f09ab" category="paragraph">以下範例顯示了 n1 和 n2，但 LIF 遷移必須在所有節點上執行：</block>
-  <block id="991d705309210a9623a3f1d994c15150" category="list-text">[[step10]]關閉活動 Nexus 5596 交換器 CL1 上的 ISL 連接埠 41 至 48：</block>
-  <block id="609bda8dbabe0a84f343b546e3d7a65a" category="paragraph">以下範例展示如何關閉 Nexus 5596 交換器 CL1 上的 ISL 連接埠 41 至 48：</block>
-  <block id="cd40e6280d7c588dd322df9d4c9bd367" category="paragraph">如果您要更換 Nexus 5010 或 5020，請指定 ISL 的對應連接埠號碼。</block>
-  <block id="74bb8188e949e71bcfef0fd8d38fa91b" category="list-text">在 CL1 和 C2 之間建立臨時 ISL。</block>
   <block id="621728c29c88ed3282a78eafc103c550" category="paragraph">以下範例展示如何在 CL1 和 C2 之間建立臨時 ISL：</block>
   <block id="d986ed9d4c8a95f299636380e9b4371b" category="summary">安裝和維護Cisco Nexus 3132Q-V 交換器時，請務必查看網路和設定需求。</block>
   <block id="8d41ecb75735e9a1894abf605fc11add" category="doc">Cisco Nexus 3132Q-V 交換器的設定需求</block>
@@ -1699,7 +1592,6 @@
   <block id="928578e16a90196fc9a03ee550b28e6a" category="list-text">用於管理網路流量的 IP 子網路。</block>
   <block id="becb2a794e73682397182ea70e8c3723" category="list-text">每個儲存系統控制器和所有適用交換器的主機名稱和 IP 位址。</block>
   <block id="3cce89e076695683c3ae0c299fd7edcd" category="list-text">大多數儲存系統控制器透過連接到乙太網路服務連接埠（扳手圖示）透過 e0M 介面進行管理。在AFF A800和AFF A700系統中，e0M 介面使用專用乙太網路連接埠。</block>
-  <block id="2db039ebbdf49e3bdc8288c26bc1ec4b" category="paragraph">請參閱<block ref="16a6d09025d51cb8dd3516798b3fee8a" category="inline-link-rx"></block>獲取最新資訊。</block>
   <block id="afcde3664e37d8f858999ffb7e9d8467" category="paragraph">在您查看完配置要求後，您可以查看 <block ref="3bfe41df5ada7a5031db91489b512eed" category="inline-link-macro-rx"></block>。</block>
   <block id="926ea8223c35e0974ecfabb2c02ad4ff" category="summary">Cisco Nexus 3132Q-V 叢集交換器軟體設定概述</block>
   <block id="fddd0032cd4149fb7bfea4114a217072" category="doc">Cisco Nexus 3132Q-V 叢集交換器的軟體安裝工作流程</block>
@@ -2087,7 +1979,6 @@
   <block id="dd7ac721959b4aaa170786e82881ae7b" category="summary">Cisco Nexus 3132Q-V 叢集交換器上必須安裝Cisco NX-OS 軟體和參考設定檔 (RCF)。</block>
   <block id="ccdb01c4cd8e253f3a70d7d150d9bc95" category="paragraph">在安裝 NX-OS 軟體和參考設定檔 (RCF) 之前，請依照下列步驟操作。</block>
   <block id="29b5c9f7c3e370b92a6acd04f777cd76" category="paragraph">本流程中的範例使用了兩個節點。這些節點使用兩個 10GbE 叢集互連端口<block ref="922c556baf6272bffc4fa28b2e9a0bbc" prefix=" " category="inline-code"></block>和<block ref="22fe67c2e87caff18249cf1804bbeaad" prefix=" " category="inline-code"></block>。</block>
-  <block id="d472e6c72465c08732a77102922a611d" category="paragraph">參見<block ref="34774b6dc875898cd8aa59f7081c068c" category="inline-link-macro-rx"></block>驗證平台上的叢集連接埠是否正確。</block>
   <block id="eaa553a851c0d94118e84937225d82b3" category="list-text">節點名稱是<block ref="b33422d3fbf7a4ba3b02e2bfcd37f46f" prefix=" " category="inline-code"></block>和<block ref="8fc15469c933cd7fd8db166bddedfd77" prefix=" " category="inline-code"></block>。</block>
   <block id="7c49971ba263cd138f6ac3897478ebe7" category="list-text">集群 LIF 名稱為<block ref="563c32279ac27a2f84ed166dc2b9076e" prefix=" " category="inline-code"></block>和<block ref="180ba796272cc27f8a30ae01b4ccd007" prefix=" " category="inline-code"></block>針對 cluster1-01 和<block ref="648d8ae7575d38efb172a5d730d01a5d" prefix=" " category="inline-code"></block>和<block ref="55c4d1f8af0a31bf748d22556fa667ed" prefix=" " category="inline-code"></block>適用於集群1-02。</block>
   <block id="a06f69669c864cc0902a5e544ee247bc" category="paragraph"><block ref="5a2357a985889803fc9ad4bba1f860e2" prefix="" category="inline-code"></block></block>
@@ -2388,8 +2279,6 @@
   <block id="b6dd8221599de3110a6be11272b8d643" category="summary">在設定Cisco 3232C 交換器之前，請先查看以下資訊。</block>
   <block id="855541c4370cb556c283600de9f0d1df" category="paragraph">在設定Cisco 3232C 交換器之前，請先查看以下注意事項。</block>
   <block id="3447206e4790bd39c75003aa974a1695" category="summary">您可以在AFF或FAS叢集中使用Cisco Nexus 3232C 交換器作為叢集交換器。</block>
-  <block id="3389061ef5c5bcdadd5ecdfff37602fa" category="doc">完成從 CN1610 交換器到 3232C 交換器的遷移</block>
-  <block id="f0bf1a2b31ff80fb86ed5789b7a48d25" category="paragraph">完成以下步驟，以最終完成 CN1610 交換器向 Nexus 3232C 交換器的遷移。</block>
   <block id="53df53d4b9649d9b2a5ab348bc614229" category="paragraph"><block ref="fa6e1d1bde7406e301eb5451453f52d0" prefix="" category="inline-code"></block></block>
   <block id="98eb99fcc0ed94997a2ab2be00fd87f8" category="paragraph">您必須按照以下範例所示，逐一遷移每個 LIF：</block>
   <block id="7bfca154df7416f9baa3531ebe91c06a" category="paragraph">以下範例顯示了叢集互連接口的狀態：<block ref="46c48bec0d282018b9d167eef7711b2c" prefix=" " category="inline-code"></block>以及節點 n1 和 n2 的「是否在家」：</block>
@@ -2419,42 +2308,16 @@
   <block id="beae421a14a34f831c113f61323d1ab3" category="paragraph">最終的</block>
   <block id="d11a624a3634c7a267c0cc0410c4beb4" category="paragraph">3232C 至 3232C（QSFP 至 QSFP）</block>
   <block id="06ecece0e268aedb2f7273751c5008b3" category="paragraph">2條QSFP光纖或銅纜直連電纜</block>
-  <block id="60b8b767809f4474fae0db07a1a7ee8f" category="paragraph">您必須已下載適用的參考設定檔（RCF）。  10 GbE 和 40/100 GbE 連接埠的數量在可用的 RCF 中定義。<block ref="45b8f1baa941c556d7daa8d8054d886c" category="inline-link-macro-rx"></block> 。</block>
   <block id="5db961153f448f70bb815693232bb42b" category="paragraph">此流程支援的ONTAP和 NX-OS 版本列於此。<block ref="3f6421172f80f8047523f4f7c07d2e71" category="inline-link-macro-rx"></block> 。</block>
   <block id="207f35cf9c6c7c9f28040945864a989c" category="paragraph">此流程支援的ONTAP和 FASTPATH 版本列於此處<block ref="219cc30d0865cce4b7cb2770e4a5080b" category="inline-link-macro-rx"></block>。</block>
-  <block id="b5c1f48dbbd0f62ce512ecc0aef04e3f" category="paragraph">遷移過程中的範例使用了四個節點：</block>
-  <block id="82e1166231278debac89387a0e0422c7" category="list-text">另外兩個節點使用兩條 40 GbE 群集互連光纖電纜：*e4a* 和 *e4e*。</block>
-  <block id="036faf3be33476665719658c1d113d1f" category="paragraph">這<block ref="ed925a5605a5afba7260684d8fd47590" category="inline-link-macro-rx"></block>包含您平台集群光纖電纜的資訊。</block>
-  <block id="0a96d641bdaeafc4452560c24d15de3e" category="list-text">用來取代 CN1610 交換器的 Nexus 3232C 交換器是 *C1* 和 *C2*。</block>
-  <block id="bf47436af31c0b7858338b60e063f394" category="list-text">*n1_clus1* 是連接到節點 *n1* 的叢集交換器 1 (CL1 或 C1) 的第一個叢集邏輯介面 (LIF)。</block>
-  <block id="d24d0d5ce5b4074c6fd1f46e42bca131" category="list-text">*n1_clus2* 是連接到節點 *n1* 的叢集交換器 2 (CL2 或 C2) 的第一個叢集 LIF。</block>
-  <block id="10244571410567e2c51f37b22dac0800" category="list-text">*n1_clus3* 是連接到節點 *n1* 的叢集交換器 2 (CL2 或 C2) 的第二個 LIF。</block>
-  <block id="15322d64f2fcf3eabe8ff475be1d3e70" category="list-text">*n1_clus4* 是連接到節點 *n1* 的叢集交換器 1 (CL1 或 C1) 的第二個 LIF。</block>
   <block id="8741c9a7235936d7adbe4b11e84059a0" category="list-text">10 GbE 和 40/100 GbE 連接埠的數量在參考設定檔 (RCF) 中定義，這些檔案可在以下網址取得：<block ref="45b8f1baa941c556d7daa8d8054d886c" category="inline-link-macro-rx"></block> 。</block>
-  <block id="1657c42e4a1f98d51d8b8bfad8d7de04" category="doc">將 CN1610 交換器遷移到 Nexus 3232C 交換器的工作流程</block>
-  <block id="5a34c77c4c5efb85ebaa9e3d436b8635" category="paragraph">請依照下列工作流程步驟將您的 CN1610 交換器移轉到Cisco Nexus 3232C 交換器。</block>
-  <block id="7eef64cb913bcf5aca5f712407ada50a" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block><block ref="27b0d36035f33f53ab52c04f31d383d8" category="inline-link-macro-rx"></block></block>
   <block id="1205a9993502e35e8471d480da5eb05e" category="paragraph">請查看遷移過程中的範例交換器資訊。</block>
-  <block id="ec781efd02b33874d9df34ef89fa4c42" category="paragraph">準備好將 CN1610 交換器遷移到 Nexus 3232C 交換器。</block>
-  <block id="8e3163eaacf1f14da57a6e65447f0880" category="inline-link-macro">更換集群開關 CL2</block>
-  <block id="29a15dea9912d3024285281c4c2b4f1b" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block><block ref="13d28c6a2469008d90d4de60976b9e00" category="inline-link-macro-rx"></block></block>
-  <block id="89858c73012930196e3e63defda60a43" category="paragraph">將集群開關 CL2 更換為新的 Nexus 3232C 開關 C2。</block>
-  <block id="94fbcc30109b1a9140abe6aec8dd454d" category="inline-link-macro">更換集群開關 CL1</block>
-  <block id="ac4b885d36addc1c0ccb3145b435e4ab" category="paragraph-title"><block ref="beadfa85a2fdca06b91edc1131c603e6" category="inline-image-macro-rx" type="image"></block><block ref="821a3996a82ef30ecf2d64eb50a45188" category="inline-link-macro-rx"></block></block>
-  <block id="4b073c16df367ada02019211678975f5" category="paragraph">將集群開關 CL1 更換為新的 Nexus 3232C 開關 C1。</block>
-  <block id="60692805a15c380512f28c03e95bbb5f" category="paragraph-title"><block ref="99e8b2f00e172bfcff96afdce69907bc" category="inline-image-macro-rx" type="image"></block><block ref="4f1fe635f2afbf3ed63b1436d0bc6ba5" category="inline-link-macro-rx"></block></block>
-  <block id="07ef527951996da76230984c22ce7928" category="paragraph">完成向新型 Nexus 3232C 交換器的遷移。</block>
-  <block id="6d0793b183f688567013a862d377ed22" category="doc">準備從 CN1610 交換器遷移到 3232C 交換機</block>
-  <block id="5e1660ddd8b97e086e5e03e0d15597b4" category="paragraph">請依照下列步驟準備將 CN1610 交換器遷移到Cisco Nexus 3232C 交換器。</block>
   <block id="51b92e50103faa05aefa082268abbfd6" category="paragraph">以下範例顯示了叢集已知的叢集交換器及其管理 IP 位址：</block>
   <block id="6864fdd0f6ad89e3fc724deeacd7576c" category="list-text">確認已根據您的要求在新 3232C 交換器上安裝了相應的 RCF 和映像，並進行任何必要的網站自訂。</block>
   <block id="bd8bc538541d81e289ef66a8873145af" category="paragraph">此時您應該準備好這兩台交換器。如果需要升級 RCF 和鏡像，則必須完成以下步驟：</block>
   <block id="c0ddaa892e58fbb2392ff94b96d1be20" category="list-text">請從以下網址下載對應版本的影像處理軟體：<block ref="63d583816b323795a688346cd7512345" category="inline-link-macro-rx"></block> 。</block>
   <block id="a2d242366fa878251941b37993d9c788" category="list-text">遷移與計畫替換的第二個 CN1610 交換器關聯的 LIF：</block>
   <block id="bac3eff3de1438929f64e35c9c1d753e" category="paragraph"><block ref="44d01163c6b63fd73868a8216bae200c" prefix="" category="inline-code"></block></block>
-  <block id="e2f05caa5f3cc6fd1ba268a6e3c05239" category="inline-link-macro">將 CN1610 交換器 CL2 更換為 3232C 交換器 C2</block>
-  <block id="58e1f502ac02bd1601dedcdd1deac1fc" category="doc">將 CN1610 交換器 CL1 更換為 3232C 交換器 C1</block>
-  <block id="2b0929b9490d63e5cb4fca44c9d3842d" category="paragraph">請依照下列步驟將您的 CN1610 (CL1) 交換器更換為 Nexus 3232C (C1) 交換器。</block>
   <block id="2f7e0ef82095fa5dae5874a5e402a389" category="list-text">驗證叢集狀態：</block>
   <block id="e95612c7ef671203cc282ce38a48bdb4" category="paragraph"><block ref="fdb936507a9dbe73b5c4b16108a324e6" prefix="" category="inline-code"></block></block>
   <block id="e4ac543aa85b6f67cf0e06098a2783f1" category="paragraph">以下範例顯示了節點 n1 和 n2 上特定連接埠的關閉：</block>
@@ -2475,7 +2338,6 @@
   <block id="be56b8565c3ff7246400103b874f9821" category="paragraph"><block ref="e2532c7d37f895a6959b2e10e6ae8b50" prefix="" category="inline-code"></block></block>
   <block id="38eb81980361ccffbcf933498afb8e35" category="paragraph">以下範例顯示了連接到新 3232C 交換器 C1 的所有群集互連連接埠的啟動情況：</block>
   <block id="647a3a17ca458bfb396ec8a44651ddec" category="paragraph">以下範例顯示了驗證新 3232C 交換器 C1 上節點 n1 和 n2 的叢集互連連接埠是否正常運作的輸出。<block ref="46c48bec0d282018b9d167eef7711b2c" prefix=" " category="inline-code"></block> ：</block>
-  <block id="3025e9ee6e43f2a019f74df41145874a" category="paragraph">請依照下列步驟將您的 CN1610 (CL2) 交換器更換為 Nexus 3232C (C2) 交換器。</block>
   <block id="58e4c812934a7909bf27428e713ee5c1" category="paragraph">以下範例顯示如何關閉節點 n1 和節點 n2 的四個叢集互連連接埠：</block>
   <block id="09c97f0f4f7a646915b2abf749bc1d6f" category="list-text">[[step3]] 使用適當的命令關閉活動 CN1610 交換器 CL1 上的 ISL 連接埠 13 至 16。</block>
   <block id="06b942f634ce75ef69a38ebe9aa1d02c" category="paragraph">以下範例顯示 CN1610 交換器 CL1 上的 ISL 連接埠 13 至 16 已關閉：</block>
@@ -2502,10 +2364,6 @@
   <block id="e2ad2b2cb346f8abd448d557881c7dd5" category="list-text">[[步驟16]] 遷移與第一個 CN1610 交換器 CL1 關聯的 LIF：</block>
   <block id="502a7ea7de47db18cb4d391cdc1c745e" category="paragraph"><block ref="e3b59667988659c950426714ec77861c" prefix="" category="inline-code"></block></block>
   <block id="4f654572a7a10c77f8cac19eb51cd80c" category="paragraph">您必須將每個叢集 LIF 單獨遷移到叢集交換器 C2 上託管的對應叢集端口，如下例所示：</block>
-  <block id="be546b7aaa48771ac77ceda9e55f432f" category="doc">完成從 5596 交換器到 3232C 交換器的遷移</block>
-  <block id="c448b455a0897874453f8d3930345c32" category="paragraph">完成以下步驟，即可完成 Nexus 5596 交換器向 Nexus 3232C 交換器的遷移。</block>
-  <block id="c274d79ace43975b3b128b3b576c461c" category="doc">設定連接埠以從 Nexus 5596 交換器遷移到 Nexus 3232C 交換機</block>
-  <block id="7e51f5697492b5d6c9ca506aa4c8ec9a" category="paragraph">請依照下列步驟設定端口，以便從 Nexus 5596 交換器遷移到新的 Nexus 3232C 交換器。</block>
   <block id="0dee5df137b8161e82554818a557ccc2" category="list-text">[[step3]] 使用Cisco關閉 CL1（即目前活動的 Nexus 5596 交換器）上的 ISL 41 至 48。<block ref="5924f03a95ee6f7277e5bdd1e81b8fdc" prefix=" " category="inline-code"></block>命令。</block>
   <block id="df3b3a025572a660a134a45b54c2ec44" category="paragraph">有關Cisco命令的更多信息，請參閱<block ref="ea38293a052c78dce084d149b79f50b3" category="inline-link-rx"></block>。</block>
   <block id="c66e3aa8ea0ac093e4c0a3cf3a2362e7" category="paragraph">以下範例顯示 Nexus 5596 交換器 CL1 上的 ISL 41 至 48 已關閉：</block>
@@ -2540,8 +2398,6 @@
   <block id="26b17225b626fb9238849fd60eabdf60" category="paragraph">+</block>
   <block id="14f9043f9320ada945dcdc0fdabd5320" category="list-text">使用以下方法移除已取代的 Nexus 5596：<block ref="d0cf0bb8f9cb1bf16d6567b77eb679ee" prefix=" " category="inline-code"></block>命令（如果未自動刪除）：</block>
   <block id="d26ec5166584f3719f955e387fc62cc0" category="paragraph"><block ref="e253a16317ae42c5957dd99b77483706" prefix="" category="inline-code"></block></block>
-  <block id="fc87ccf4cf505b0fb2473be9dcd9e67e" category="list-text">Nexus 3232C：連接埠 e1/1-30 (10/40/100 GbE)</block>
-  <block id="8ed64b0ce137cf35f68a135e6c8ab311" category="list-text">Nexus 3232C：連接埠 e1/31-32 (40/100 GbE)</block>
   <block id="49068b0fd2a4ef932997449b1e555d99" category="paragraph">這<block ref="ed925a5605a5afba7260684d8fd47590" category="inline-link-macro-rx"></block>包含有關 Nexus 3232C 交換器支援的佈線資訊：</block>
   <block id="9c2649ed8899b9cf8d1dd26b442a7169" category="list-text">過渡期：Nexus 5596 至 Nexus 3232C（QSFP 至 4xSFP+ 突破）</block>
   <block id="668e5f4c115be491833564aba0a5cab8" category="list-text">最終版：Nexus 3232C 至 Nexus 3232C（QSFP28 至 QSFP28）</block>
@@ -2550,14 +2406,6 @@
   <block id="4b8669b057c65ee1cad19a530029936e" category="list-text">您已將 Nexus 3232C 交換器上的一些連接埠配置為以 10 GbE 或 40/100 GbE 運作。</block>
   <block id="602a4b60cc5ad4be9e63d89704b18e8e" category="list-text">您已完成規劃、遷移，並閱讀了有關從節點到 Nexus 3232C 叢集交換器的 10 GbE 和 40/100 GbE 連接的必要文件。</block>
   <block id="a650c8622c1c716463bb44c8504590e4" category="paragraph">本流程中的範例描述如何以Cisco Nexus 3232C 交換器取代Cisco Nexus 5596 交換器。您可以對這些步驟（稍作修改）用於其他較舊的Cisco交換器（例如，3132Q-V）。</block>
-  <block id="a17efd2b9630998b93fa03cefb4d661c" category="list-text">用來取代 Nexus 5596 交換器的 Nexus 3232C 交換器是 *C1* 和 *C2*。</block>
-  <block id="30197795f50e0c0bd227d8e9fad9f92a" category="list-text">10 GbE 和 40/100 GbE 連接埠的數量在參考設定檔 (RCF) 中定義，該檔案可在以下位置取得：<block ref="45b8f1baa941c556d7daa8d8054d886c" category="inline-link-macro-rx"></block> 。</block>
-  <block id="08ba436321d6830374b30f2a9b1a19c6" category="doc">將 Nexus 5596 交換器移轉到 Nexus 3232C 交換器的工作流程</block>
-  <block id="225f6e4bdd26fba7a243ee1a8c078fbb" category="paragraph">請依照下列工作流程步驟，將您的Cisco Nexus 5596 交換器移轉到Cisco Nexus 3232C 交換器。</block>
-  <block id="6ee13ce970b0cf904b6aff86be47d214" category="paragraph">準備好將 Nexus 5596 交換器遷移到 Nexus 3232C 交換器。</block>
-  <block id="171d1c7a04893b51dece06634473764c" category="paragraph">配置連接埠以遷移到新的 Nexus 3232C 交換器。</block>
-  <block id="6ed61d5d0d6ca6ecb936d83500d9031e" category="doc">準備從 Nexus 5596 交換器遷移到 Nexus 3232C 交換機</block>
-  <block id="7dfcc0d1bc5379feba84258cd83499b5" category="paragraph">請依照下列步驟準備將Cisco Nexus 5596 交換器遷移到Cisco Nexus 3232C 交換器。</block>
   <block id="cd99db1c0b1dc3694e24c0e27b145d8b" category="paragraph">以下範例顯示了節點 n1 和 n2 上的網路連接埠屬性：</block>
   <block id="df3fa854d14e46f0aab44fc5eb56d22f" category="paragraph">以下範例顯示叢集上所有 LIF 的一般訊息，包括它們的目前連接埠：</block>
   <block id="2f7bf138265d1de77f1badbb185955c6" category="paragraph">以下範例顯示了活動的群集交換器：</block>
@@ -2565,7 +2413,6 @@
   <block id="db39960670bd5a0afd6aa3f81f3ba73d" category="paragraph">此時您必須準備好這兩個開關。</block>
   <block id="1e59f27afab544486b3444c5591d4f53" category="paragraph">如果需要升級 RCF 和鏡像，則必須完成以下步驟：</block>
   <block id="e6f83bff1ab8bd0edb5a79370ff0af31" category="list-text">請造訪NetApp支援網站上的 _Cisco 乙太網路交換器_ 頁面。</block>
-  <block id="71600be46c0f1ca12f61430270e6324a" category="paragraph">請參閱「ONTAP 8.x 或更高版本叢集和管理網路交換器參考設定檔」下載頁面，然後選擇對應的版本。</block>
   <block id="266daf0ca11ec57d9d3cb7598fd930b3" category="paragraph"><block ref="d14f00174ffa33ec8f559ffde7a52484" prefix="" category="inline-code"></block></block>
   <block id="23cd51d657266665ae8f8c9d2a2ae14f" category="paragraph">以下範例顯示了節點 n1 和 n2 的 LIF 遷移；所有節點都必須進行 LIF 遷移：</block>
   <block id="fb0f753ded9498a080196f8272f79423" category="paragraph">以下範例顯示了每個集群的目前狀態：</block>
@@ -2674,7 +2521,6 @@
   <block id="1cc0390a1e09f6355aa33a42546e034a" category="summary">若要將叢集中現有的 CN1610 叢集交換器替換為Cisco Nexus 3232C 叢集交換機，必須執行特定的任務序列。</block>
   <block id="0a16e487073b824b443013a4386a6758" category="doc">將 CN1610 叢集交換器遷移到Cisco Nexus 3232C 叢集交換機</block>
   <block id="0c0fcfb1c62bc821a6649a0cb742f88b" category="paragraph">遷移前，請務必查看<block ref="6894d466d0e09d0e91d8f514ea5bb845" category="inline-link-macro-rx"></block>。</block>
-  <block id="63118e28449881b4a45f2e3bdbfc97bc" category="paragraph">本流程中的範例使用了四個節點：兩個節點使用四個 10 GbE 叢集互連連接埠：e0a、e0b、e0c 和 e0d。另外兩個節點使用兩條 40 GbE 群集互連光纖電纜：e4a 和 e4e。這<block ref="ed925a5605a5afba7260684d8fd47590" category="inline-link-macro-rx"></block>包含有關您平台上的叢集光纖電纜的資訊。</block>
   <block id="e34a8fe284087ca24cac2ece5b6422c4" category="list-text">用於替換 CN1610 交換器的 Nexus 3232C 交換器是 C1 和 C2。</block>
   <block id="9c79613f94322b9249048fe262f0baea" category="section-title">步驟 2：將集群開關 CL2 更換為 C2</block>
   <block id="80ba2298ea2e8bd12acd9eb6839d255c" category="section-title">步驟 3：將集群開關 CL1 更換為 C1</block>
@@ -2941,7 +2787,6 @@
   <block id="01b7bc1db0e7dc619e0de057500994c2" category="list-text">10 GbE 和 40/100 GbE 連接埠的數量在參考設定檔 (RCF) 中定義，該檔案可在以下位置取得：<block ref="10c469496046da901842344cb3680d0e" category="inline-link-rx"></block>頁。</block>
   <block id="4fd3c39884768128b1709971be9c57ab" category="list-text">這兩個儲存交換器的名稱分別為 S1 和 S2。</block>
   <block id="79779dc1801a58ad11dd3078fff93f81" category="list-text">節點分別為 node1 和 node2。</block>
-  <block id="cba3f8a77a6b81eb95f2ca0a31707ee0" category="paragraph">本流程中的範例使用了兩個節點；節點 1 有兩個儲存端口，節點 2 也有兩個儲存端口。參見<block ref="34774b6dc875898cd8aa59f7081c068c" category="inline-link-macro-rx"></block>請確認您平台上的儲存連接埠是否正確。</block>
   <block id="db366391da91f981116eae4b0abd56c4" category="admonition">流程需要同時使用ONTAP指令和Cisco Nexus 3000 系列交換器指令；除非另有說明，否則使用ONTAP指令。命令輸出可能因ONTAP版本不同而有所差異。</block>
   <block id="77bd959484f1a1073326c408194dc65e" category="section-title">步驟 1：檢查交換器和連接埠的運作狀況</block>
   <block id="e3e32349be8562dbe95d6af1fcba4bbe" category="list-text">如果啟用了AutoSupport，則透過呼叫AutoSupport訊息來阻止自動建立案例：<block ref="80cae18d0d871afff6b1bcabf727d6da" prefix=" " category="inline-code"></block></block>
@@ -3024,7 +2869,6 @@
   <block id="249c296c1de730eddbe0ead3fe930200" category="summary">在設定Cisco 92300YC 交換器之前，請先查看以下資訊。</block>
   <block id="709ea8965bb4964023cd6e82df0d3c62" category="paragraph">在設定Cisco 92300YC 交換器之前，請先查看以下注意事項。</block>
   <block id="ce6bf7cd47eb09b6a69cb1199b0e124b" category="doc">Cisco Nexus 92300YC 交換器的組件和零件編號</block>
-  <block id="ed6ae629414abab8b0e9b2e8deadb8c2" category="paragraph">對於Cisco Nexus 92300YC 交換器的安裝和維護，請務必查看所有交換器組件和零件號碼。查看<block ref="cd25cbe53f0a314145c84729c6ce2c78" category="inline-link-rx"></block>了解詳情。</block>
   <block id="26961e618ecd01e172d0cc2829344d09" category="list-text">端口側排氣氣流（標準空氣）－冷空氣通過冷通道中的風扇和電源模組進入機箱，並通過機箱端口端的熱通道排出。左舷排氣氣流呈藍色。</block>
   <block id="a65de0b2540eeae253ed86b6c80d5cd8" category="list-text">端口側進氣氣流（逆向氣流）－冷空氣從冷通道的端口端進入機箱，然後通過熱通道的風扇和電源模組排出。左舷進氣口採用酒紅色塗裝。</block>
   <block id="ede2428532eb37220f5b7dc1131ef1f6" category="summary">您可以使用此程式執行Cisco Nexus 92300YC 交換器的初始安裝。</block>
@@ -3082,7 +2926,6 @@
   <block id="58d8f5733e0a28fbb10c789b8e8b1006" category="list-text">顯示有​​關 LIF 的資訊：<block ref="7af866342cc7e87972580d7b709d8820" prefix=" " category="inline-code"></block></block>
   <block id="13af841949dee66caeadbec7c281ed4f" category="summary">首次設定 Nexus 92300YC 交換器後，您可以安裝 RCF。</block>
   <block id="c2995f917cf848b1a8ad4f123990b08f" category="inline-link-macro">硬體宇宙</block>
-  <block id="47db2740e391cb9dd7afd4c727db1c28" category="paragraph">參見<block ref="2e30f42bb79c7c9fe477a9d63d7f110d" category="inline-link-macro-rx"></block>針對您的平台實際支援的叢集連接埠。</block>
   <block id="4467c0e8315716749952b403b5a34f1e" category="list-title">支援的連接埠和節點連接</block>
   <block id="8c24c8f1f5492e3c2d260cfb0bc25caa" category="list-text">Nexus 92300YC 交換器支援的交換器間連結 (ISL) 為連接埠 1/65 和 1/66。</block>
   <block id="6661eb47e9ec5d9c548abbe3d7e6a8cc" category="list-text">Nexus 92300YC 交換器支援的節點連接為連接埠 1/1 至 1/66。</block>
@@ -3188,53 +3031,13 @@
   <block id="a5ba084a16f4288f9dbb11676c16a481" category="list-text">斷開節點 2 上的叢集連接埠 e0b 的電纜，然後使用 92300YC 交換器支援的適當電纜將 e0b 連接到叢集交換器 cs2 上的連接埠 2。</block>
   <block id="5092d42ca2315a935e2e3c56036b8a27" category="paragraph">以下範例顯示交換器 cs2 上的連接埠 1/1 到 1/64 已啟用：</block>
   <block id="2ddf49eb6c3fafb7644444a8f6985876" category="list-text">[[步驟8]] 如果您已停用自動建立案例功能，請透過呼叫AutoSupport訊息重新啟用此功能：</block>
-  <block id="0087b0de389e5b9f017430f157337f28" category="summary">您可以將ONTAP叢集的舊Cisco叢集交換器無中斷地遷移到Cisco Nexus 92300YC 叢集網路交換器。</block>
-  <block id="96b8ff1634f6f4a5cc62e8b2c11e4a44" category="doc">將Cisco交換器遷移到Cisco Nexus 92300YC 交換機</block>
-  <block id="c24412eff0fdd364ed38f42c78180f6d" category="list-text">一個功能齊全的現有集群。</block>
-  <block id="72f6fbf7a37a5a7a645211259132da5b" category="list-text">節點到 Nexus 92300YC 叢集交換器的 10 GbE 和 40 GbE 連接。</block>
-  <block id="0b4e7dc1d810fd824ce3cb8e1eea7331" category="list-text">叢集所有連接埠均處於啟用狀態，以確保運作不中斷。</block>
-  <block id="7ee654c3fc1033653e4c755c7ad707c7" category="list-text">Nexus 92300YC 叢集交換器上安裝了正確版本的 NX-OS 和參考設定檔 (RCF)。</block>
   <block id="4911fe5a5a61a43546dd84d203eacf1c" category="list-text">使用較舊的Cisco交換機構建立冗餘且功能齊全的NetApp叢集。</block>
   <block id="c3f3714ca8555fda13d1cbc127147867" category="list-text">舊款Cisco交換器和新交換器的管理連線和控制台存取。</block>
   <block id="ee9f18fe03ee9b0dd7c1625d630104b6" category="list-text">所有處於啟動狀態的叢集 LIF 都位於其主連接埠上。</block>
   <block id="e1c4ebdf7c0ad72137d57dc5fd646845" category="list-text">ISL 連接埠已啟用，並已在舊款Cisco交換器和新款交換器之間連接了線纜。</block>
-  <block id="861442a3532c3e685a51468723598110" category="list-text">現有的Cisco Nexus 5596UP 叢集交換器為 c1 和 c2。</block>
-  <block id="2d424e30f5921ffd190e032bca1d7566" category="list-text">新的 Nexus 92300YC 叢集交換器是 cs1 和 cs2。</block>
-  <block id="3d1c2ff675fe732df9f817f3321c6054" category="list-text">節點 1 上的叢集 LIF 分別為 node1_clus1 和 node1_clus2，節點 2 上的叢集 LIF 分別為 node2_clus1 和 node2_clus2。</block>
-  <block id="cd4062096153c60d3a0b62dd4dfe8687" category="list-text">首先將交換器 c2 替換為交換器 cs2，然後將交換器 c1 替換為交換器 cs1。</block>
-  <block id="c38cb773f24f0b9ae3b8397c55c78d53" category="list-text">在 cs1 上建立臨時 ISL，將 c1 連接到 cs1。</block>
-  <block id="c4384bbea1341e272b5dfaffcff9c9d1" category="list-text">然後斷開節點與 c2 之間的電纜與 c2 的連接，並重新連接到 cs2。</block>
-  <block id="5b7decbae50904c9d97f36aefb67af39" category="list-text">然後斷開節點與 c1 之間的電纜與 c1 的連接，並重新連接到 cs1。</block>
-  <block id="30cb07dc2fdb252aa5173019f18e0ce7" category="list-text">然後移除 c1 和 cs1 之間的暫存 ISL。</block>
-  <block id="3fe274866aa3b2524aa38f499dbd44cf" category="list-title">用於連接的連接埠</block>
-  <block id="c9049e11062b6258ff369d40cf0004a5" category="list-text">Nexus 92300YC 交換器上的某些連接埠配置為以 10 GbE 或 40 GbE 運作。</block>
-  <block id="3050fa444ab7c4607b3b7d02616c51eb" category="list-text">埠 e1/1-48 (10/25 GbE)、e1/49-64 (40/100 GbE)：Nexus 92300YC</block>
-  <block id="de33a0a4a16e5fee7f1826829adfff72" category="list-text">埠 e1/1-40 (10 GbE)：Nexus 5596UP</block>
-  <block id="93c9d1eb87fa5f9c3bc749094f50da72" category="list-text">埠 e1/1-32 (10 GbE)：Nexus 5020</block>
-  <block id="9e8d8362d0e9cfd0d2e5df32d22df3d4" category="list-text">連接埠 e1/1-12、e2/1-6 (10 GbE)：附擴充模組的 Nexus 5010</block>
-  <block id="4ce71fb1aa3f03f9da350c35b471368d" category="list-text">埠 e1/65-66 (100 GbE)：Nexus 92300YC</block>
-  <block id="188bd851b27016e87d25d2c042f67ff8" category="list-text">埠 e1/41-48 (10 GbE)：Nexus 5596UP</block>
-  <block id="f9aee2e068bb28aa4c5deecd96b8027c" category="list-text">埠 e1/33-40 (10 GbE)：Nexus 5020</block>
-  <block id="c0f9b028477a4c90905b2a666cab2349" category="list-text">埠 e1/13-20 (10 GbE)：Nexus 5010</block>
-  <block id="ab69ec8d5c1225f57653957e1b830ada" category="list-text"><block ref="f5b758910e77ef4f56db9cc19f96d706" category="inline-link-rx"></block>包含所有群集交換器支援的佈線資訊。</block>
-  <block id="46f4e846ca08ef976e5fa57699be7358" category="list-text">本流程支援的ONTAP和 NX-OS 版本如下：<block ref="a29f73ef9de6be7554c49272d8910429" category="inline-link-rx"></block>頁。</block>
   <block id="300c4a8af362f43878948de70117255e" category="paragraph">每個 LIF 都應該顯示 up/up。<block ref="4f21ee5a18672b60f4c01e94e6be9c79" prefix=" " category="inline-code"></block>確實如此<block ref="53db3ce0fe0e71f06b3beb0b676b806c" prefix=" " category="inline-code"></block>。</block>
-  <block id="4485f5ea819522aa200ca55acefcd1bc" category="list-text">使用下列命令（從節點角度）驗證每個節點上的叢集連接埠是否已以下列方式連接到現有的叢集交換器：</block>
-  <block id="8bd9607443f1bca8467a9888834fc1ef" category="list-text">使用以下命令驗證叢集連接埠和交換器是否以下列方式連接（從交換器的角度來看）：</block>
-  <block id="990838b9b76e69aee53a16fbaf6802e0" category="list-text">在 c1 和 cs1 之間的連接埠 e1/41-48 上設定 cs1 上的臨時 ISL。</block>
-  <block id="48df2fb4a9556ac37edec166e7e858f9" category="paragraph">以下範例展示如何在 c1 和 cs1 上設定新的 ISL：</block>
-  <block id="2aa6bce99f388363decd09b81d00eb7d" category="list-text">從 c2 的 e1/41-48 連接埠移除 ISL 電纜，並將電纜連接到 cs1 的 e1/41-48 連接埠。</block>
-  <block id="33df6843420a464f89deffbd2926215b" category="list-text">驗證 ISL 連接埠和連接埠通道是否正常運作，連接 c1 和 cs1：</block>
-  <block id="f428750661677ee18c87e664c0eced86" category="paragraph">以下範例顯示如何使用Cisco show port-channel summary 指令來驗證 c1 和 cs1 上的 ISL 連接埠是否正常運作：</block>
-  <block id="b939ce60cfddd0851329ab4b6920640a" category="list-text">對於節點 1，斷開 c2 上的 e1/1 電纜，然後使用 Nexus 92300YC 支援的適當電纜將電纜連接到 cs2 上的 e1/1。</block>
-  <block id="e8591b2cd8ee695fa44e66dfdc1946fa" category="list-text">對於節點 2，斷開 c2 上的 e1/2 電纜，然後使用 Nexus 92300YC 支援的適當電纜將電纜連接到 cs2 上的 e1/2。</block>
   <block id="c1823cd6c866c4f070a5323fbfabc525" category="list-text">從節點的角度來看，每個節點上的叢集連接埠現在會以以下方式連接到叢集交換器：</block>
-  <block id="cac40dada74737ca3c53b204f6d69698" category="list-text">對於節點 1，斷開 c1 上的 e1/1 電纜，然後使用 Nexus 92300YC 支援的適當電纜將電纜連接到 cs1 上的 e1/1。</block>
-  <block id="43a394f626014f93d34c2270873ed0f5" category="list-text">對於節點 2，斷開 c1 上的 e1/2 的電纜，然後使用 Nexus 92300YC 支援的適當電纜將電纜連接到 cs1 上的 e1/2。</block>
-  <block id="27781c87d25f863e4d8141fb97e91e1d" category="list-text">刪除 cs1 和 c1 之間的暫存 ISL。</block>
-  <block id="2bac625f6ecebcbbf1a1ec0ca242d0a4" category="section-title">步驟 3：完成遷移</block>
   <block id="8b46c589466074f9f6f08c5ac2e65338" category="list-text">驗證叢集的最終配置：</block>
-  <block id="22265ef643cb758bbeafeae6b9005960" category="list-text">[[步驟3]] 如果您已停用自動建立案例功能，請透過呼叫AutoSupport訊息重新啟用此功能：</block>
   <block id="6dd41d8a8ed57c2ab7e587572c2bf8c5" category="doc">使用無交換器連接取代Cisco Nexus 92300YC 叢集交換機</block>
   <block id="24e7ed7655bcf90918459c3d0f5803c1" category="summary">更換叢集網路中有缺陷的 Nexus 92300YC 交換器是一個無中斷過程 \(NDU\)。</block>
   <block id="fd77dcf431c664f377add379bb8ba43b" category="doc">更換Cisco Nexus 92300YC 交換機</block>
@@ -5662,7 +5465,6 @@
   <block id="6d2ac3125800134a281aad252b2e6f7e" category="sidebar">維護共享交換機</block>
   <block id="e3a2407d2baf9ca6f3a0a7a13bf9ab66" category="sidebar">更換 9336C-FX2 開關</block>
   <block id="9725b453d47042649c1d30716f06297d" category="sidebar">將 9336C-FX2 交換器重設為出廠預設值</block>
-  <block id="749193dd106134969b2e8383155060cb" category="sidebar">儲存交換器可讓您建立具有兩個以上節點的ONTAP叢集。這些Cisco Nexus 9000 平台交換器為NetApp ONTAP環境中的可擴展叢集互連解決方案提供了基礎。</block>
   <block id="442072c0438c34942ba48441cb27b07d" category="sidebar">使用本網站上的文件來安裝、設定和維護用於ONTAP叢集部署的儲存交換器。</block>
   <block id="a1dd4aca43eb246c9849b3703c4fd095" category="sidebar">安裝和設定儲存交換機</block>
   <block id="ef93cc5be7463521789a10fbbbd5d7a6" category="sidebar">維護儲存交換機</block>
@@ -5702,13 +5504,6 @@
   <block id="f3b17afc64da773efa83071745456131" category="sidebar">驗證 SSH 配置</block>
   <block id="c0297ebb85b4b11dd34e1a95ad8ae773" category="sidebar">遷移交換機</block>
   <block id="5cb6e4827abbdff34c1577139d21756f" category="sidebar">遷移交換器 3132q-v</block>
-  <block id="a71e2a7b5da7f3f8346749ba6a40f97e" category="sidebar">CN1610交換器遷移</block>
-  <block id="314c03c94249ff930ebff3525fbc24b9" category="sidebar">CN1610_switch_migration</block>
-  <block id="615d128facaa5dc615433f0e1f95c945" category="sidebar">CN1610交換器遷移工作流程</block>
-  <block id="fdcf419452fc6546848017eb6bcdb98e" category="sidebar">完成遷移</block>
-  <block id="da2b7c9954dace16048c6ea887e10a29" category="sidebar">Cisco Nexus 5596 交換器遷移</block>
-  <block id="c01a1fe06f4b33ee4e155a262627add6" category="sidebar">CN5596_switch_migration</block>
-  <block id="35ed32a945dbf51bc4289e44a6b904ae" category="sidebar">Cisco Nexus 5596 交換器遷移工作流程</block>
   <block id="00831a481846747d1cb35679ec57efb0" category="sidebar">從無交換器集群遷移到雙節點交換式集群</block>
   <block id="553ab86ada0024cafa20d0134083fc4d" category="sidebar">從無交換器集群遷移到有交換器集群</block>
   <block id="63d1a94a57c77c8572aaec7d0388b931" category="sidebar">從無交換器工作流程遷移到雙節點交換工作流程</block>
@@ -5719,9 +5514,6 @@
   <block id="95af2603f5a4982908526f8688792890" category="sidebar">Install_hardware_3232C</block>
   <block id="52cb6d2a1abc8dd2ced7a38145d4a6f0" category="sidebar">Configure_software_3232C</block>
   <block id="5a3e455abb77dcfd46ecb114e3762d38" category="sidebar">Migrate_switches_3232C</block>
-  <block id="3b6fb26524302309d80c9149c7c440e4" category="sidebar">從 CN1610 交換器工作流程遷移</block>
-  <block id="d6b71e6ab26e9ca64a22a3632abea8e3" category="sidebar">Nexus 5596 交換器遷移</block>
-  <block id="84ae103339014eb3f8cca2119ae12ffe" category="sidebar">從Cisco Nexus 5596 交換器工作流程遷移</block>
   <block id="87dd95e61b34b8a0d24a9d76e9880689" category="sidebar">從雙節點無交換器叢集遷移</block>
   <block id="f36aa89aee5a55633ce25b54c9a779d3" category="sidebar">從無交換器叢集遷移</block>
   <block id="c32aa48aa3b92b64c3a5ea6a1b2e9a1f" category="sidebar">從雙節點無交換器叢集工作流程遷移</block>
@@ -5732,7 +5524,6 @@
   <block id="b6c306e6e3042fa0d66df82b85cdd615" category="sidebar">Configure_software_92300yc</block>
   <block id="a8bb0b5314965a8ac1d110202d7aae1f" category="sidebar">安裝 NX-OS</block>
   <block id="db006b145b3fbbf5410a350f5edd5d2a" category="sidebar">Migrate_switches_92300yc</block>
-  <block id="9c065304d8a82e97da8536d4c7484ee2" category="sidebar">從舊的Cisco交換器遷移</block>
   <block id="1b26a33c8f2840aaa88a3c83445b7162" category="sidebar">Replace_switches_92300yc</block>
   <block id="46fd2d8570ac9394d60d1c59d30d738d" category="sidebar">更換開關</block>
   <block id="d4a2bd843c47096577ed23fa1d4ed623" category="sidebar">Overview_9332d-gx2b</block>
@@ -5807,28 +5598,14 @@
   <block id="1ec880c9722934c26038bc64978254f2" category="admonition">若要使用交易密鑰兌換連接埠許可證密鑰文件，請前往<block ref="1a8ec2f1a7f8a934a4dd69a5d5c5300d" category="inline-link-macro-rx"></block>頁。請參閱知識庫文章<block ref="7475ce8d248fdfe999b98a176df29951" category="inline-link-macro-rx"></block>更多詳情請見下文。</block>
   <block id="63d84b478f5cf46bf22ac4a48d7dbdaf" category="paragraph">完成交換器遷移後，您可以<block ref="9c3be868eca09e30ec03c7542e485ba6" category="inline-link-macro-rx"></block>。</block>
   <block id="9da60a268433d9b3a5bb3faade2bc94e" category="inline-link-macro">完成遷移</block>
-  <block id="ceae281b9f46a498a90253a9b6035769" category="paragraph">配置交換器連接埠後，您可以…<block ref="25f55b685acb2e49f49d86a4b3166712" category="inline-link-macro-rx"></block> 。</block>
   <block id="ad922f3bf852d7de5ed44851b4878c58" category="inline-link-macro">準備遷移交換機</block>
-  <block id="14ae1457e72b1298fdb0f41375354ef4" category="paragraph">在您查看完遷移要求後，您可以<block ref="5556998cec31eb92f32df1b83459efff" category="inline-link-macro-rx"></block>。</block>
   <block id="1022079d6c4d0fb339ce219f5b0bc80b" category="inline-link-macro">配置您的連接埠</block>
-  <block id="356adc3b214ec21b02c42b4b115b16e9" category="paragraph">做好交換器遷移準備後，您可以…<block ref="d4000ec1d414a7502b21ae3dd3c5840a" category="inline-link-macro-rx"></block> 。</block>
-  <block id="89fc2b7e8e60c774cba9bcb9e55babaf" category="paragraph">配置交換器連接埠後，您可以…<block ref="bf0fa41c8a479d2cbcf6bdf3ae6ad5b4" category="inline-link-macro-rx"></block> 。</block>
-  <block id="d845a579f300234ad7fa54c0381582ac" category="paragraph">在您查看完遷移要求後，您可以<block ref="d9f2a1e304fb793e94600787aaab5d88" category="inline-link-macro-rx"></block>。</block>
-  <block id="00ac1893d99097cefb1a4ae2eadb9e59" category="paragraph">做好交換器遷移準備後，您可以…<block ref="4f22ab069aceb629014d3d9b8db60ebe" category="inline-link-macro-rx"></block> 。</block>
   <block id="1a91c84925ff3f64a04ef29a84fa8269" category="paragraph">配置交換器連接埠後，您可以…<block ref="9b4e9d59e070097158700db7eb74d2b4" category="inline-link-macro-rx"></block> 。</block>
   <block id="bed7763295ee5566a954be1784e7b963" category="paragraph">做好交換器遷移準備後，您可以…<block ref="7319dc5bee570ea2ba287a02c36de7d2" category="inline-link-macro-rx"></block> 。</block>
   <block id="0f6d465867451d9f7e8e3fccf626abdd" category="paragraph">在您查看完遷移要求後，您可以<block ref="74c2d6e9c24c0072ef10faf4f32888a2" category="inline-link-macro-rx"></block>。</block>
   <block id="1ff9776c7f96ac2701af319ed9604d31" category="paragraph">更換開關後，您可以<block ref="9c3be868eca09e30ec03c7542e485ba6" category="inline-link-macro-rx"></block>。</block>
   <block id="0daff9862c0ebe7681e5b726b1ef4b9f" category="paragraph">重置開關後，您可以<block ref="f45e97977128cc582bf2e734e3a331a3" category="inline-link-macro-rx"></block>根據您的要求進行操作。</block>
   <block id="f42bb157194542ddefd800174dd049dc" category="paragraph">完成交換器遷移後，您可以<block ref="9c3be868eca09e30ec03c7542e485ba6" category="inline-link-macro-rx"></block>。</block>
-  <block id="ef5fadf794d43b06212f5088bf371504" category="paragraph">在您查看完遷移要求後，您可以<block ref="5556998cec31eb92f32df1b83459efff" category="inline-link-macro-rx"></block>。</block>
-  <block id="830e4cd0f69745eb958c7daa4ecc2636" category="inline-link-macro">將 CN1610 交換器 CL2 更換為 3232C 交換器 C2</block>
-  <block id="af51490fe94d63e9c6bb318753351308" category="paragraph">做好交換器遷移準備後，您可以…<block ref="9118d2244e5db573f07108145936667f" category="inline-link-macro-rx"></block> 。</block>
-  <block id="0a641627612a9d2a3aa09e0a2a137416" category="paragraph">更換 CN1610 交換器 CL1 後，您可以<block ref="25f55b685acb2e49f49d86a4b3166712" category="inline-link-macro-rx"></block>。</block>
-  <block id="365d742f3775c4a7da973483112603fb" category="inline-link-macro">將 CN1610 交換器 CL1 更換為 3232C 交換器 C1</block>
-  <block id="95d03cf4f1eeb0c2b731a85968c385d3" category="paragraph">更換 CN1610 交換器 CL2 後，您可以<block ref="75e469a4a43720b7ea775c13aab22570" category="inline-link-macro-rx"></block>。</block>
-  <block id="e2a18836e5a4adf281837f9272df081e" category="paragraph">在您查看完遷移要求後，您可以<block ref="d9f2a1e304fb793e94600787aaab5d88" category="inline-link-macro-rx"></block>。</block>
-  <block id="580d29a0ebaa6c7d2498abf217dc22e7" category="paragraph">做好交換器遷移準備後，您可以…<block ref="4f22ab069aceb629014d3d9b8db60ebe" category="inline-link-macro-rx"></block> 。</block>
   <block id="da2164a7e11a5c0d8e92abe91adad16a" category="paragraph">確認配置要求後，您可以查看以下內容：<block ref="ebd73c3e74cc4ef5f3b03634c8dd9a01" category="inline-link-macro-rx"></block> 。</block>
   <block id="68f8477787757a5afa201ddf275decf3" category="paragraph">安裝 NX-OS 軟體後，您可以… <block ref="06b5548e8ac5164b226ba17b6e4d1fe4" category="inline-link-macro-rx"></block>。</block>
   <block id="35eb5cba73bda40c0b8b40e523662279" category="paragraph">在您查看 RCF 安裝或升級流程概述後，您可以<block ref="7022ba5e5ec6244ac8d3473bbc8c433f" category="inline-link-macro-rx"></block>或者<block ref="8a829f0d1f577ca80ad99d80f239a28e" category="inline-link-macro-rx"></block>根據需要。</block>
@@ -5878,4 +5655,43 @@
   <block id="31d1f8ac94c6c6348baf87c178d54ca6" category="paragraph">MultiCluster-HA RCF 1._xx_</block>
   <block id="882f88e519afe0ccad4d00b167a8f9f4" category="list-text"><block ref="882f88e519afe0ccad4d00b167a8f9f4" category="inline-link-macro-rx"></block></block>
   <block id="56b1e9ee9f81d9d1458caeb63a57b431" category="list-text">*ClusterStorageRCF* - 支援交換器上的分區叢集和兩個儲存區域（Cluster-Storage RCF 1._xx_）。</block>
+  <block id="10f894c966bd05206772ae4732990626" category="list-text">在叢集 LIF 上啟用自動回滾之前，請先驗證遠端叢集介面的連線性：</block>
+  <block id="0fb694df774685fe4c1df68d7d634243" category="list-text">[[step16]]啟用叢集 LIF 的自動還原功能。</block>
+  <block id="97577e43f592831dd6187cb42595ac7a" category="paragraph"><block ref="86271bc578254c48491961aec49f6a7c" prefix="" category="inline-code"></block></block>
+  <block id="4e92ea2b06ac769ad163ea1d047b1df4" category="list-text">看 <block ref="9157c7c9558b7cd53a9f90cf9b9c6139" category="inline-link-macro-rx"></block> 有關佈線的更多資訊。</block>
+  <block id="78a810b7e1cb1c8be2eccbd01a2c857f" category="inline-link-macro">安裝HWU中沒有的設備還需要哪些額外資訊？</block>
+  <block id="ff7aa79d98a2fcaa973e5b895e0f352f" category="list-text">看 <block ref="93586a8f49408f483b5b0ac7e6bc3bac" category="inline-link-macro-rx"></block> 有關交換器安裝要求的詳細資訊。</block>
+  <block id="5d82e300daaa1f8915402f12e6fe2709" category="paragraph">本流程中的範例使用了兩個節點。這些節點使用兩個 10GbE 叢集互連連接埠 e0a 和 e0b。參見<block ref="a9613e1dbacf145285c45df4264fe797" category="inline-link-rx"></block>驗證平台上的叢集連接埠是否正確。看 <block ref="93586a8f49408f483b5b0ac7e6bc3bac" category="inline-link-macro-rx"></block> 有關交換器安裝要求的詳細資訊。</block>
+  <block id="0b3058f905cd30a08120a8aaef46d84f" category="paragraph">參見<block ref="c043e01cdc55399f824e6d1e4eb8a5b5" category="inline-link-rx"></block>有關交換器連接埠的詳細資訊。看 <block ref="93586a8f49408f483b5b0ac7e6bc3bac" category="inline-link-macro-rx"></block> 有關交換器安裝要求的詳細資訊。</block>
+  <block id="1ace8c8df8c82bbdf035d2b6b2a610a7" category="list-text">完成安裝。請依照以下四個步驟重新設定交換器：</block>
+  <block id="38a7170e62a41698a024c914d2ae22be" category="list-text">完成安裝。交換器重新啟動後未套用任何配置，並重設為出廠預設值。請依照以下五個步驟重新設定交換器：</block>
+  <block id="c6df83973efb88b8200eaf11a9a6c99c" category="paragraph">參見<block ref="341c1c8afc925d24c41903215e7d4958" category="inline-link-rx"></block>和<block ref="019bec57a33f30d395c26e4eab684618" category="inline-link-rx"></block>有關 BES-53248 交換器的 EFOS 和ONTAP相容性資訊。EFOS 和ONTAP支援可能會因 BES-53248 交換器的特定機器類型而異。有關所有 BES-52348 交換器型號的詳細信息，請參閱<block ref="18673e02a37b64215efc2503c4149ac9" category="inline-link-macro-rx"></block>。看 <block ref="5b59c69ea97fcd509833c3dd14993ddd" category="inline-link-macro-rx"></block>^ 有關交換器安裝要求的詳細資訊。</block>
+  <block id="9f702335f914c423796259b7c2041f5e" category="paragraph">參見<block ref="ba81a2074219dbc1e842c96a03d02ea8" category="inline-link-rx"></block>有關交換器連接埠的詳細資訊。看 <block ref="93586a8f49408f483b5b0ac7e6bc3bac" category="inline-link-macro-rx"></block> 有關交換器安裝要求的詳細資訊。</block>
+  <block id="9c9fed70b2431d26e8296c958fa43437" category="paragraph">這 <block ref="cf71da9df512dc9905af42f5d1fdf834" category="inline-link-macro-rx"></block> 包含有關ONTAP相容性、支援的 EFOS 韌體以及與 BES-53248 叢集交換器的佈線的資訊。看 <block ref="93586a8f49408f483b5b0ac7e6bc3bac" category="inline-link-macro-rx"></block> 有關交換器安裝要求的詳細資訊。</block>
+  <block id="793a7952c9e3c096f7cb463983174c47" category="paragraph">這 <block ref="cf71da9df512dc9905af42f5d1fdf834" category="inline-link-macro-rx"></block> 包含有關ONTAP相容性、支援的 EFOS 韌體以及與 BES-53248 交換器的佈線的資訊。看 <block ref="93586a8f49408f483b5b0ac7e6bc3bac" category="inline-link-macro-rx"></block> 有關交換器安裝要求的詳細資訊。</block>
+  <block id="51b07d87cca2bb682d52678a9f3a6403" category="paragraph">請參閱<block ref="16a6d09025d51cb8dd3516798b3fee8a" category="inline-link-rx"></block>獲取最新資訊。看 <block ref="93586a8f49408f483b5b0ac7e6bc3bac" category="inline-link-macro-rx"></block> 有關交換器安裝要求的詳細資訊。</block>
+  <block id="78f85905b5f52a0e5726f2c1d78882b9" category="paragraph">參見<block ref="34774b6dc875898cd8aa59f7081c068c" category="inline-link-macro-rx"></block>驗證平台上的叢集連接埠是否正確。看 <block ref="93586a8f49408f483b5b0ac7e6bc3bac" category="inline-link-macro-rx"></block> 有關交換器安裝要求的詳細資訊。</block>
+  <block id="93586a8f49408f483b5b0ac7e6bc3bac" category="list-text"><block ref="93586a8f49408f483b5b0ac7e6bc3bac" category="inline-link-macro-rx"></block></block>
+  <block id="fff3dd334cd553c8e4ec9c505edf49b3" category="paragraph">本流程中的範例使用了四個節點：兩個節點使用四個 10 GbE 叢集互連連接埠：e0a、e0b、e0c 和 e0d。另外兩個節點使用兩條 40 GbE 群集互連光纖電纜：e4a 和 e4e。這<block ref="ed925a5605a5afba7260684d8fd47590" category="inline-link-macro-rx"></block>包含有關您平台上的叢集光纖電纜的資訊。看 <block ref="93586a8f49408f483b5b0ac7e6bc3bac" category="inline-link-macro-rx"></block> 有關交換器安裝要求的詳細資訊。</block>
+  <block id="4b5c62962abd78b2f1d7b46e2acefac2" category="paragraph">本流程中的範例使用了兩個節點；節點 1 有兩個儲存端口，節點 2 也有兩個儲存端口。參見<block ref="34774b6dc875898cd8aa59f7081c068c" category="inline-link-macro-rx"></block>請確認您平台上的儲存連接埠是否正確。看 <block ref="93586a8f49408f483b5b0ac7e6bc3bac" category="inline-link-macro-rx"></block> 有關交換器安裝要求的詳細資訊。</block>
+  <block id="70cdfafbbfc658158225450a1d735b53" category="paragraph">對於Cisco Nexus 92300YC 交換器的安裝和維護，請務必查看所有交換器組件和零件號碼。查看<block ref="cd25cbe53f0a314145c84729c6ce2c78" category="inline-link-rx"></block>了解詳情。看 <block ref="93586a8f49408f483b5b0ac7e6bc3bac" category="inline-link-macro-rx"></block> 有關交換器安裝要求的詳細資訊。</block>
+  <block id="e32282aeafd66288d3d17a82f0b26898" category="paragraph">參見<block ref="2e30f42bb79c7c9fe477a9d63d7f110d" category="inline-link-macro-rx"></block>針對您的平台實際支援的叢集連接埠。看 <block ref="93586a8f49408f483b5b0ac7e6bc3bac" category="inline-link-macro-rx"></block> 有關交換器安裝要求的詳細資訊。</block>
+  <block id="56d0c52f84ae87247377186dcd760614" category="list-text">停用叢集所有 LIF 的自動回滾功能：</block>
+  <block id="c883ecf9599211441495ef2b45d65924" category="list-text">請參閱<block ref="16a6d09025d51cb8dd3516798b3fee8a" category="inline-link-rx"></block>獲取最新資訊。看 <block ref="93586a8f49408f483b5b0ac7e6bc3bac" category="inline-link-macro-rx"></block> 有關交換器安裝要求的詳細資訊。</block>
+  <block id="66c5a9b93fc7043632d6abd12e1d9ea9" category="paragraph">參見<block ref="16a6d09025d51cb8dd3516798b3fee8a" category="inline-link-rx"></block>有關平台所用連接埠的詳細資訊。看 <block ref="93586a8f49408f483b5b0ac7e6bc3bac" category="inline-link-macro-rx"></block> 有關交換器安裝要求的詳細資訊。</block>
+  <block id="caa432665e0b78bb2e937e5a4335fe0a" category="paragraph">看<block ref="16a6d09025d51cb8dd3516798b3fee8a" category="inline-link-rx"></block>有關您平台集群連接埠的資訊。看 <block ref="93586a8f49408f483b5b0ac7e6bc3bac" category="inline-link-macro-rx"></block> 有關交換器安裝要求的詳細資訊。</block>
+  <block id="8475ebda22bdf39b934120a81ee8cc10" category="paragraph">有關支援的連接埠及其配置的詳細信息，請參閱<block ref="a9613e1dbacf145285c45df4264fe797" category="inline-link-rx"></block>。看 <block ref="93586a8f49408f483b5b0ac7e6bc3bac" category="inline-link-macro-rx"></block> 有關交換器安裝要求的詳細資訊。</block>
+  <block id="2a901f79a93d2d86148b32365b601aae" category="list-text">請參閱<block ref="e8018b6e740a667345f4bcc94e4023fc" category="inline-link-rx"></block>獲取最新資訊。看 <block ref="93586a8f49408f483b5b0ac7e6bc3bac" category="inline-link-macro-rx"></block> 有關交換器安裝要求的詳細資訊。</block>
+  <block id="ac9929f9f44881f40aa7a8c435e0f7db" category="paragraph">NetApp<block ref="e8018b6e740a667345f4bcc94e4023fc" category="inline-link-rx"></block>包含更多關於佈線的資訊。看 <block ref="93586a8f49408f483b5b0ac7e6bc3bac" category="inline-link-macro-rx"></block> 有關交換器安裝要求的詳細資訊。</block>
+  <block id="3829578a5b66588164cf513fb3c38fbc" category="paragraph">參見 <block ref="c845c6ffda77bc94ba897d84583cb923" category="inline-link-macro-rx"></block> 有關交換器連接埠的詳細資訊。</block>
+  <block id="baf1125386b3eeb8fb389e46ed17e086" category="paragraph">請參閱知識庫文章<block ref="f556049016aa8325c61d874db64ae1f9" category="inline-link-macro-rx"></block>更多詳情請見下文。</block>
+  <block id="386a8b4fb66b8e96b7c199b0d51c3d04" category="section-title">QSA 模組</block>
+  <block id="ecd4d35aa4ec1b7e41fc81e4d21486aa" category="paragraph">使用 QSFP+ (40GbE) 轉 SFP+ (10GbE) 轉接器或 QSFP28 (100GbE) 轉 SFP28 (25GbE) 轉接器 (QSA) 時，請將其插入非分線 40GbE/100GbE 交換器連接埠 (wps4)。請勿將 QSA 模組插入配置為分線連接埠的連接埠。</block>
+  <block id="69773ae4760c0c8ed1c2e07723d0bc7b" category="paragraph">當使用 QSA 模組連接到平台上的 10GbE/25GbE 叢集連接埠時，連結可能無法建立。</block>
+  <block id="bf65b73c9ce2f9d4f9660c1e21e696a2" category="list-text">對於 10GbE，手動將連結速度設定為 10000，並將自動協商設定為關閉。</block>
+  <block id="3e4cf35eb600304361fb04e90048a5a5" category="list-text">對於 25GbE，手動將連結速度設定為 25000，並將自動協商設定為關閉。</block>
+  <block id="45478d039f2c0c4cf1e53caab564b974" category="paragraph">根據交換器連接埠中的收發器，您可能需要將交換器介面的速度設定為固定速度。如果使用 10GbE 和 25GbE 分支連接埠或 QSA 模組，請確認自動協商已關閉，並在交換器上設定介面速度。</block>
+  <block id="b863fc58b633b41e58cc8a5b99e7043b" category="inline-link-macro">安裝我的設備（HWU中沒有包含這些資訊）還需要哪些其他資訊？</block>
+  <block id="ab9a0b8fd43af09ec7cd6f43a3cafa97" category="paragraph">參見 <block ref="c845c6ffda77bc94ba897d84583cb923" category="inline-link-macro-rx"></block>以及知識庫文章 <block ref="eaa81338373f6673f7bec757b105ef25" category="inline-link-macro-rx"></block> 了解更多。</block>
+  <block id="a1fe5f79e41b7a07061c6e55eb0e9030" category="sidebar">儲存交換器可讓您建立具有兩個以上節點的ONTAP叢集。這些乙太網路儲存交換器為NetApp ONTAP環境中的可擴展叢集互連解決方案提供了基礎。</block>
 </blocks>

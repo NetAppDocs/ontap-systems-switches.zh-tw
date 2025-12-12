@@ -17,7 +17,7 @@ summary: 您可以參考 BES-53248 叢集交換器連接埠分配表來設定您
 
 == EFOS 和ONTAP支持
 
-參見 https://hwu.netapp.com/Switch/Index["NetAppHardware Universe"^]和 https://mysupport.netapp.com/site/info/broadcom-cluster-switch["博通交換器相容性矩陣"^]有關 BES-53248 交換器的 EFOS 和ONTAP相容性資訊。 EFOS 和ONTAP支援可能會因 BES-53248 交換器的特定機器類型而異。有關所有 BES-52348 交換器型號的詳細信息，請參閱link:components-bes53248.html["BES-53248 集群開關的組件和零件編號"]。
+參見 https://hwu.netapp.com/Switch/Index["NetAppHardware Universe"^]和 https://mysupport.netapp.com/site/info/broadcom-cluster-switch["博通交換器相容性矩陣"^]有關 BES-53248 交換器的 EFOS 和ONTAP相容性資訊。EFOS 和ONTAP支援可能會因 BES-53248 交換器的特定機器類型而異。有關所有 BES-52348 交換器型號的詳細信息，請參閱link:components-bes53248.html["BES-53248 集群開關的組件和零件編號"]。看 link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["安裝HWU中沒有的設備還需要哪些額外資訊？"]^ 有關交換器安裝要求的詳細資訊。
 
 
 
@@ -63,7 +63,7 @@ summary: 您可以參考 BES-53248 叢集交換器連接埠分配表來設定您
 100GbE 叢集交換器間鏈路 (ISL) 端口，基本配置
 
 |===
-參見 https://hwu.netapp.com/Switch/Index["Hardware Universe"]有關交換器連接埠的詳細資訊。
+參見 https://hwu.netapp.com/Switch/Index["Hardware Universe"]有關交換器連接埠的詳細資訊。看 link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["安裝HWU中沒有的設備還需要哪些額外資訊？"^] 有關交換器安裝要求的詳細資訊。
 
 
 

@@ -40,7 +40,7 @@ summary: 'Cisco Nexus 3232C 儲存交換器可升級Cisco NX-OS 軟體和參考�
 * 節點分別為 node1 和 node2。
 
 
-本流程中的範例使用了兩個節點；節點 1 有兩個儲存端口，節點 2 也有兩個儲存端口。參見link:https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^]請確認您平台上的儲存連接埠是否正確。
+本流程中的範例使用了兩個節點；節點 1 有兩個儲存端口，節點 2 也有兩個儲存端口。參見link:https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^]請確認您平台上的儲存連接埠是否正確。看 link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["安裝HWU中沒有的設備還需要哪些額外資訊？"^] 有關交換器安裝要求的詳細資訊。
 
 
 NOTE: 流程需要同時使用ONTAP指令和Cisco Nexus 3000 系列交換器指令；除非另有說明，否則使用ONTAP指令。命令輸出可能因ONTAP版本不同而有所差異。

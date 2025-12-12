@@ -57,7 +57,7 @@ summary: 如果您已有雙節點無交換器叢集環境，則可以使用Cisco
 * 此過程中使用的叢集連接埠為 e0a 和 e0b。
 
 
-看 https://hwu.netapp.com["Hardware Universe"^]有關您平台集群連接埠的資訊。
+看 https://hwu.netapp.com["Hardware Universe"^]有關您平台集群連接埠的資訊。看 link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["安裝HWU中沒有的設備還需要哪些額外資訊？"^] 有關交換器安裝要求的詳細資訊。
 
 
 
@@ -264,9 +264,9 @@ Cluster
 4 entries were displayed.
 ----
 ====
-. 確認所有叢集 LIF 都已啟用自動回滾功能：
+. 停用叢集所有 LIF 的自動回滾功能：
 +
-`network interface show -vserver Cluster -fields auto-revert`
+`network interface modify -vserver Cluster -lif * -auto-revert false`
 
 +
 .顯示範例
@@ -274,16 +274,16 @@ Cluster
 ====
 [listing]
 ----
-cluster1::*> network interface show -vserver Cluster -fields auto-revert
+cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert false*
 
           Logical
 Vserver   Interface     Auto-revert
 --------- ------------- ------------
 Cluster
-          node1_clus1   true
-          node1_clus2   true
-          node2_clus1   true
-          node2_clus2   true
+          node1_clus1   false
+          node1_clus2   false
+          node2_clus1   false
+          node2_clus2   false
 
 4 entries were displayed.
 ----

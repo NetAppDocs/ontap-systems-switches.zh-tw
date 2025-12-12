@@ -30,7 +30,7 @@ summary: 安裝和維護Cisco Nexus 3132Q-V 交換器時，請務必查看網路
 * 大多數儲存系統控制器透過連接到乙太網路服務連接埠（扳手圖示）透過 e0M 介面進行管理。在AFF A800和AFF A700系統中，e0M 介面使用專用乙太網路連接埠。
 
 
-請參閱 https://hwu.netapp.com["Hardware Universe"^]獲取最新資訊。
+請參閱 https://hwu.netapp.com["Hardware Universe"^]獲取最新資訊。看 link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["安裝HWU中沒有的設備還需要哪些額外資訊？"^] 有關交換器安裝要求的詳細資訊。
 
 .下一步
 在您查看完配置要求後，您可以查看 link:required-documentation-3132q.html["所需文件"]。
