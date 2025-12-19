@@ -445,7 +445,7 @@ Are you sure you would like to reset the system? (y/n) *y*
 
 . 請注意以下事項：
 +
-.. 如果交換器上安裝了額外的連接埠許可證，則必須修改 RCF 以設定額外的許可證連接埠。看link:configure-licenses.html#activate-newly-licensed-ports["啟動新授權的端口"]了解詳情。
+.. 如果交換器上安裝了額外的連接埠許可證，則必須修改 RCF 以設定額外的許可證連接埠。看 link:configure-licenses.html#activate-newly-licensed-ports["啟動新授權的端口"] 詳情請見下文。但是，升级到 RCF 1.12 或更高版本时，不再需要进行这些修改，因为所有接口现在都已预先配置。
 .. 記錄先前 RCF 中所做的任何自訂設置，並將這些設定套用到新的 RCF 中。例如，設定連接埠速度或硬編碼 FEC 模式。
 
 

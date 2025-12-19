@@ -5694,4 +5694,5 @@
   <block id="b863fc58b633b41e58cc8a5b99e7043b" category="inline-link-macro">安裝我的設備（HWU中沒有包含這些資訊）還需要哪些其他資訊？</block>
   <block id="ab9a0b8fd43af09ec7cd6f43a3cafa97" category="paragraph">參見 <block ref="c845c6ffda77bc94ba897d84583cb923" category="inline-link-macro-rx"></block>以及知識庫文章 <block ref="eaa81338373f6673f7bec757b105ef25" category="inline-link-macro-rx"></block> 了解更多。</block>
   <block id="a1fe5f79e41b7a07061c6e55eb0e9030" category="sidebar">儲存交換器可讓您建立具有兩個以上節點的ONTAP叢集。這些乙太網路儲存交換器為NetApp ONTAP環境中的可擴展叢集互連解決方案提供了基礎。</block>
+  <block id="76980345fd6e2954226ddad45b3120c8" category="list-text">如果交換器上安裝了額外的連接埠許可證，則必須修改 RCF 以設定額外的許可證連接埠。看 <block ref="029ce138066352981401c2da3f4be7ea" category="inline-link-macro-rx"></block> 詳情請見下文。但是，升级到 RCF 1.12 或更高版本时，不再需要进行这些修改，因为所有接口现在都已预先配置。</block>
 </blocks>
