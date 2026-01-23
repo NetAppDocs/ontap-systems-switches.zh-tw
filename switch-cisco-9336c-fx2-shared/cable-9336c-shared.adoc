@@ -44,7 +44,7 @@ image:9336c_image2.jpg["直連式"]
 
 每對交換器上的範例連接埠定義如下：
 
-image:cabling_worksheet.jpg["佈線工作表"]
+image:cabling-worksheet.jpg["佈線工作表"]
 
 在哪裡：
 
@@ -60,7 +60,7 @@ image:cabling_worksheet.jpg["佈線工作表"]
 
 您可以使用空白的佈線工作表來記錄叢集中支援的節點平台。Hardware Universe的「支援的叢集連接」表定義了平台使用的叢集連接埠。
 
-image:blank_cabling_worksheet.jpg["空白佈線工作表"]
+image:blank-cabling-worksheet.jpg["空白佈線工作表"]
 
 在哪裡：
 

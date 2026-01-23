@@ -311,7 +311,7 @@ cs1(config)# interface e1/1/1-4, e1/2/1-4, e1/3/1-4, e1/4/1-4, e1/5/1-4, e1/6/1-
 cs1(config-if-range)# no shutdown
 ----
 ====
-. 確認所有叢集 LIF 均已啟動、運作正常並顯示為： `true`為了 `Is Home`：
+. 確認所有叢集 LIF 都已啟動並正常運作：
 +
 `network interface show -vserver Cluster`
 
@@ -319,7 +319,7 @@ cs1(config-if-range)# no shutdown
 .顯示範例
 [%collapsible]
 ====
-以下範例表明，節點 1 和節點 2 上的所有 LIF 都已啟動。 `Is Home`結果屬實：
+以下範例顯示 node1 和 node2 上的所有 LIF 都已啟動：
 
 [listing]
 ----
@@ -329,9 +329,9 @@ cluster1::*> network interface show -vserver Cluster
 Vserver  Interface    Admin/Oper Address/Mask       Node        Port    Home
 -------- ------------ ---------- ------------------ ----------- ------- ----
 Cluster
-         node1_clus1  up/up      169.254.209.69/16  node1       e0a     true
+         node1_clus1  up/up      169.254.209.69/16  node1       e0b     false
          node1_clus2  up/up      169.254.49.125/16  node1       e0b     true
-         node2_clus1  up/up      169.254.47.194/16  node2       e0a     true
+         node2_clus1  up/up      169.254.47.194/16  node2       e0b     false
          node2_clus2  up/up      169.254.19.183/16  node2       e0b     true
 
 4 entries were displayed.

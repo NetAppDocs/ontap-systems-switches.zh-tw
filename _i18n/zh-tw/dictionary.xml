@@ -1604,8 +1604,6 @@
   <block id="77486b34dc8c8bacbe90fd1ff1bd8f61" category="inline-link-macro">安裝或升級 NX-OS 軟體</block>
   <block id="dfcf2a586320c174c0f0f72098c1ed2a" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block><block ref="0c1c3c2834af58f16c322794f361a5d3" category="inline-link-macro-rx"></block></block>
   <block id="5e4bd304ccd5d3dec08fc2c5ecaecfa8" category="paragraph">下載並安裝或升級Cisco 3132Q-V 叢集交換器上的 NX-OS 軟體。</block>
-  <block id="6975b7df6e1f7b5b06f111de80008d57" category="paragraph-title"><block ref="beadfa85a2fdca06b91edc1131c603e6" category="inline-image-macro-rx" type="image"></block><block ref="fbbb5b6e99c6bc99f3e5627f226b3afd" category="inline-link-macro-rx"></block></block>
-  <block id="1da50282246b244ed4ad2b87ca491bec" category="paragraph">首次設定Cisco 3132Q-V 交換器後安裝 RCF。</block>
   <block id="fc9b57bfb616bf5697d55f4dc656cead" category="inline-link-macro">驗證 SSH 配置</block>
   <block id="98e2c8057648b4deb6fd5ef4edfc71b6" category="paragraph-title"><block ref="99e8b2f00e172bfcff96afdce69907bc" category="inline-image-macro-rx" type="image"></block><block ref="4767a0bcf3ab94aeda87c79dd4096ef4" category="inline-link-macro-rx"></block></block>
   <block id="5e3fca47bf540ed2f8359fed3ba3d933" category="paragraph">驗證交換器上是否啟用了 SSH 以使用乙太網路交換器健康監視器 (CSHM) 和日誌收集功能。</block>
@@ -1710,24 +1708,17 @@
   <block id="fc75d35af4aab364734bb7907f9e6f47" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block><block ref="e25a52f8aae59a2992e22d409c64553b" category="inline-link-macro-rx"></block></block>
   <block id="4e812a10246df32dd66fe0611501f478" category="paragraph">查看Cisco Smart Call Home 功能的要求，該功能用於監控網路上的硬體和軟體元件。</block>
   <block id="c92898e16387125646f364c22fd10ae2" category="paragraph-title"><block ref="99e8b2f00e172bfcff96afdce69907bc" category="inline-image-macro-rx" type="image"></block><block ref="c89123a4361d25247adbe917d9d89fa4" category="inline-link-macro-rx"></block></block>
-  <block id="0097132bac5d6c6b5abee712913401fa" category="summary">首次設定 Nexus 3132Q-V 交換器後，您可以安裝 RCF。您也可以使用此程序升級您的 RCF 版本。</block>
   <block id="8413afd23c9d43c590d477ddf9c3812c" category="doc">安裝或升級參考設定檔 (RCF)</block>
-  <block id="7a70cdeb40f157f9116e04abddab0733" category="paragraph">首次設定 Nexus 3132Q-V 交換器後，請依照下列步驟安裝 RCF。您也可以使用此程序升級您的 RCF 版本。</block>
   <block id="8d4b5bf22d2dde04a178ea3a0409a1ea" category="list-text">目前參考設定檔（RCF）。</block>
-  <block id="2d6eb81058fa2415eb5247e2c14c5452" category="inline-link">如何在保持遠端連線的情況下清除Cisco互連交換器上的配置</block>
-  <block id="9fa76c217cee95f26808d0c64f43dcda" category="list-text">安裝 RCF 時需要將控制台連接到交換器。如果您已使用知識庫文章，則此要求為可選。<block ref="3e8c2406d6e0211f305d1081c755846f" category="inline-link-rx"></block>事先清除配置。</block>
-  <block id="640a4fa921700610d9ec6d9545770197" category="list-text"><block ref="ad06ca9efd8c48f3172ea76c98c07c9d" category="inline-link-macro-rx"></block>。請查閱交換器相容性列表，以了解支援的ONTAP和 RCF 版本。請注意，RCF 中的命令語法與 NX-OS 版本中的命令語法之間可能存在命令依賴關係。</block>
   <block id="a0f8f334e7afd7ba20b6dba41fcda90a" category="section-title">安裝檔案</block>
   <block id="59d98c4371d8b96126b918b6e485c9d7" category="list-text">這兩台Cisco交換器的名稱是：<block ref="b12efe4e2b53de51a261421f77a3cbef" prefix=" " category="inline-code"></block>和<block ref="43c8ce94d81492e62c60092a3664a65f" prefix=" " category="inline-code"></block>。</block>
   <block id="17c77507bb5bee4b130dcc96474dd7aa" category="list-text">節點名稱是<block ref="b33422d3fbf7a4ba3b02e2bfcd37f46f" prefix=" " category="inline-code"></block>，<block ref="8fc15469c933cd7fd8db166bddedfd77" prefix=" " category="inline-code"></block> ，<block ref="db149dc3d7f89140c9672a9f29212264" prefix=" " category="inline-code"></block> ， 和<block ref="cc625049cff61aa9d916b06031cde054" prefix=" " category="inline-code"></block>。</block>
   <block id="3c85626b44218f810a57d295c3524acd" category="list-text">集群 LIF 名稱為<block ref="563c32279ac27a2f84ed166dc2b9076e" prefix=" " category="inline-code"></block>，<block ref="180ba796272cc27f8a30ae01b4ccd007" prefix=" " category="inline-code"></block> ，<block ref="648d8ae7575d38efb172a5d730d01a5d" prefix=" " category="inline-code"></block> ，<block ref="55c4d1f8af0a31bf748d22556fa667ed" prefix=" " category="inline-code"></block> ，<block ref="90ff7f7a4a8b2ed3aff6b3ee36b592fd" prefix=" " category="inline-code"></block> ，<block ref="0dfd52aef2ce81105e95b2f3d6aa3ec9" prefix=" " category="inline-code"></block> ，<block ref="8c185f7fbd90fbe49f1374f4ca7d3ded" prefix=" " category="inline-code"></block> ， 和<block ref="593b7f5724733c44c7b9988d87fb83e7" prefix=" " category="inline-code"></block>。</block>
-  <block id="f85e9af89252fc6fd85cfbb4e0aa1add" category="section-title">步驟 1：檢查連接埠狀態</block>
   <block id="256be937ef390f7d6dd71ad092869119" category="admonition">對於ONTAP 9.8 及更高版本，請使用以下指令<block ref="c57378c3b3bb81c6b42a2b31a30ddda7" prefix=" " category="inline-code"></block>。</block>
   <block id="c35204e874fcafc94c7c67e31162e966" category="paragraph">執行此命令後，請確保已停用自動還原功能。</block>
   <block id="5567fb27456995b9005b168c9dd39c7e" category="list-text">在叢集交換器 cs2 上，關閉連接到節點叢集連接埠的連接埠。</block>
   <block id="c946088bdd01d4ceb54099911c69adbe" category="admonition">顯示的連接埠數量取決於叢集中的節點數量。</block>
   <block id="835044aeea65c8864816e5160f4d5f92" category="list-text">確認叢集連接埠已遷移到叢集交換器 cs1 上託管的連接埠。這可能需要幾秒鐘。</block>
-  <block id="d08074ca4afc3cad1b1b41c1134b3f1e" category="section-title">步驟 2：配置並驗證設定</block>
   <block id="d23e0ef648ea8ae58d49d4170d37c221" category="list-text">如果您尚未儲存目前交換器配置，請將以下命令的輸出複製到文字檔案中：</block>
   <block id="2c4752308de3d9f3db61274d3c1d0e24" category="paragraph"><block ref="d064a73c32d00bf384204782a696a298" prefix="" category="inline-code"></block></block>
   <block id="562153472d2b6000e72406f01051792a" category="list-text">記錄目前運行配置和正在使用的 RCF 檔案之間的任何自訂新增。</block>
@@ -1759,7 +1750,6 @@
   <block id="7c030997affa0414983faa4b2509fc52" category="list-text">使用下列傳輸協定之一將 RCF 複製到交換器 cs2 的 bootflash：FTP、TFTP、SFTP 或 SCP。有關Cisco命令的更多信息，請參閱相應的指南。<block ref="6e18a1ade243629fb9906cba4db019d8" category="inline-link-macro-rx"></block>指南。</block>
   <block id="659367eff111e1369afd80610db2fa16" category="list-text">將先前下載的 RCF 檔案套用到啟動快閃記憶體。</block>
   <block id="60afd5e8705df191ca91f8bfec764b4a" category="paragraph">有關Cisco命令的更多信息，請參閱相應的指南。<block ref="6e18a1ade243629fb9906cba4db019d8" category="inline-link-macro-rx"></block>指南。</block>
-  <block id="3e671871acf365e09e492c2fd833d14f" category="list-text">檢查橫幅輸出<block ref="6d53824b9996e36fd31937e922967215" prefix=" " category="inline-code"></block>命令。您必須閱讀並遵循「重要提示」下的說明，以確保交換器的正確配置和運作。</block>
   <block id="0bdc52e912f1ecc312522eb07e5f2cbb" category="list-text">請確認 RCF 檔案是否為最新版本：</block>
   <block id="47c173b91782927bfc36acfeeaec5f9f" category="paragraph">檢查輸出結果以驗證是否擁有正確的 RCF 時，請確保以下資訊正確：</block>
   <block id="2a4c49daad6f24fc930342baa230202a" category="list-text">RCF橫幅</block>
@@ -1767,15 +1757,12 @@
   <block id="5bd909d2aabb76836e8fdad730968abb" category="list-text">客製化</block>
   <block id="6581e275d5beff2b5ac80574ca81f3ef" category="paragraph">輸出結果會根據您的網站配置而有所不同。檢查連接埠設置，並參考發行說明，以了解您安裝的 RCF 版本是否有任何特定變更。</block>
   <block id="427c15bca394e9d3b5f203c35b96c743" category="inline-link">Cisco 3132Q 叢集交換器上的 10GbE 連接埠無法連線</block>
-  <block id="20f0f9c709341c54050214259fc6c790" category="admonition">有關 RCF 升級後如何將 10GbE 連接埠上線的步驟，請參閱知識庫文章。<block ref="917fe6fdad3ed920883f4190398d0805" category="inline-link-rx"></block> 。</block>
   <block id="f84dbe517c4cab37d96220b08c6a7430" category="list-text">確認 RCF 版本和交換器設定正確後，將運行設定檔複製到啟動設定檔。</block>
   <block id="f22797e59a4f9df1be6a7bd93495674d" category="paragraph">有關Cisco命令的更多信息，請參閱<block ref="f93981dab484b88c422e924c27565997" category="inline-link-rx"></block>指南。</block>
   <block id="31c020d11cc321faf9c0793a662d1e53" category="list-text">重啟交換器cs2。您可以忽略交換器重新啟動期間節點上報告的「叢集連接埠關閉」事件和錯誤。<block ref="a9e34a08c2be7359540cbf7337dc5ce9" prefix=" " category="inline-code"></block>輸出。</block>
-  <block id="db82c22b5434946b4bc226a3b9b7888a" category="list-text">應用相同的 RCF 並再次儲存運行配置。這是必要的，因為 RCF 利用 QoS，需要重新配置 TCAM，這涉及到對 RCF 進行兩次加載，中間需要重新啟動交換器。</block>
   <block id="57b022aa023a23cddb03c6191daffa4f" category="list-text">將先前對交換器配置所做的任何自訂設定重新套用。請參閱<block ref="1d9551648f2ada4f38f23191d61ca885" category="inline-link-macro-rx"></block>有關任何後續變更的詳細資訊。</block>
   <block id="b6ec5ccd50e4a92a636c1dc432c89581" category="admonition">叢集節點最多可能需要 5 分鐘才能報告為健康狀態。</block>
   <block id="3c2f18bff391de44b747dd09d73e5d27" category="list-text">在叢集交換器 cs1 上，關閉連接到節點叢集連接埠的連接埠。</block>
-  <block id="c5ce507b464ba3c735c0c95c4fd9a3bc" category="list-text">在交換器 cs1 上重複步驟 1 至 17。</block>
   <block id="53a0bfa393247902d9ea8fedde7e8132" category="list-text">重啟交換器cs1。這樣做是為了觸發叢集 LIF 恢復到它們的來源連接埠。交換器重新啟動期間，您可以忽略節點上報告的「叢集連接埠關閉」事件。</block>
   <block id="9e9f720a4be60634e28d3a445f01d250" category="list-text">確認連接到叢集連接埠的交換器連接埠已開啟。</block>
   <block id="af4d9c4c765c5c1d9c279c35191c82da" category="paragraph"><block ref="e39b44798f52b1532971ab295180e1b0" prefix="" category="inline-code"></block></block>
@@ -3719,14 +3706,12 @@
   <block id="894b4eb288cb9e47b7d37a64253de1ff" category="section-title">Cisco Nexus 9336C-FX2 佈線工作表</block>
   <block id="d2aa2982691bcb6b044696b6691d5677" category="paragraph">如果要記錄支援的平台，則必須使用已完成的範例佈線工作表作為指南，填寫空白的佈線工作表。</block>
   <block id="3d7fd5afdd3e2a9008c8eb6e9d19e41c" category="inline-image-macro">佈線工作表</block>
-  <block id="5965a3db7e52c18148f117f0240c1e3f" category="paragraph"><block ref="5965a3db7e52c18148f117f0240c1e3f" category="inline-image-macro-rx" type="image"></block></block>
   <block id="4cd361459ea2bb087ed6c989579796c7" category="paragraph">在哪裡：</block>
   <block id="6518b73e43d19c30b6b829ae25fe0227" category="list-text">100G ISL 至交換器 A 連接埠 35</block>
   <block id="ad8373aefb70ebebc60fc801181d19ad" category="list-text">100G ISL 連接至交換器 A 連接埠 36</block>
   <block id="bd63d33de8f32e9e7d399fa9645015b1" category="list-text">100G ISL 連接至交換器 B 連接埠 35</block>
   <block id="27e9b823e7c71b4d7a3ecbd09ffb2838" category="list-text">100G ISL 連接至交換器 B 連接埠 36</block>
   <block id="9ec84c8a49c539fada5b23f8acb3e112" category="paragraph">您可以使用空白的佈線工作表來記錄叢集中支援的節點平台。Hardware Universe的「支援的叢集連接」表定義了平台使用的叢集連接埠。</block>
-  <block id="eff06c6a47d34c39807f7ae5e22214f9" category="paragraph"><block ref="eff06c6a47d34c39807f7ae5e22214f9" category="inline-image-macro-rx" type="image"></block></block>
   <block id="1fc28573c4253eea534a9b0a7346c2ae" category="paragraph">完成佈線工作表後，您可以 <block ref="4952d250d292a65a90c0bebba6014799" category="inline-link-macro-rx"></block>。</block>
   <block id="611b08d930d48a09d5b2a633fec085d8" category="doc">Cisco Nexus 9336C-FX2 共用交換器的組件和零件編號</block>
   <block id="b8ab63249f7a1fc61438aae7a64f12e3" category="paragraph">對於Cisco Nexus 9336C-FX2 交換器的安裝和維護，請務必查看組件和零件號碼清單。</block>
@@ -5695,4 +5680,9 @@
   <block id="ab9a0b8fd43af09ec7cd6f43a3cafa97" category="paragraph">參見 <block ref="c845c6ffda77bc94ba897d84583cb923" category="inline-link-macro-rx"></block>以及知識庫文章 <block ref="eaa81338373f6673f7bec757b105ef25" category="inline-link-macro-rx"></block> 了解更多。</block>
   <block id="a1fe5f79e41b7a07061c6e55eb0e9030" category="sidebar">儲存交換器可讓您建立具有兩個以上節點的ONTAP叢集。這些乙太網路儲存交換器為NetApp ONTAP環境中的可擴展叢集互連解決方案提供了基礎。</block>
   <block id="76980345fd6e2954226ddad45b3120c8" category="list-text">如果交換器上安裝了額外的連接埠許可證，則必須修改 RCF 以設定額外的許可證連接埠。看 <block ref="029ce138066352981401c2da3f4be7ea" category="inline-link-macro-rx"></block> 詳情請見下文。但是，升级到 RCF 1.12 或更高版本时，不再需要进行这些修改，因为所有接口现在都已预先配置。</block>
+  <block id="2fdbc7bf0b2682348d10603c51c6acb6" category="paragraph-title"><block ref="beadfa85a2fdca06b91edc1131c603e6" category="inline-image-macro-rx" type="image"></block><block ref="cffcce5cecc80bc34e6e6381be286300" category="inline-link-macro-rx"></block></block>
+  <block id="03854cf3ce2df81e34a3439dcc1ce984" category="paragraph">在設定好 Cisco 3132Q-V 交換器之後，安裝或升級 RCF。</block>
+  <block id="26222b7babf133e36c55ea55d4f3a125" category="paragraph">以下範例顯示 node1 和 node2 上的所有 LIF 都已啟動：</block>
+  <block id="f44088e99d2afac37e3a22fcc4020299" category="paragraph"><block ref="f44088e99d2afac37e3a22fcc4020299" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="1820672349ef5d1a7936d88b1e992610" category="paragraph"><block ref="1820672349ef5d1a7936d88b1e992610" category="inline-image-macro-rx" type="image"></block></block>
 </blocks>
