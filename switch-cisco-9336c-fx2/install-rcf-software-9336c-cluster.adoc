@@ -167,28 +167,7 @@ cs1# copy running-config startup-config [#######################################
 +
 `*show file bootflash:write_erase.cfg*`
 
-. 問題 `write erase`清除目前已儲存配置的命令：
-+
-`cs1# *write erase*`
-
-+
-`Warning: This command will erase the startup-configuration.`
-
-+
-`Do you wish to proceed anyway? (y/n)  [n] *y*`
-
-. 將先前儲存的基本配置複製到啟動配置中。
-+
-`cs1# *copy bootflash:write_erase.cfg startup-config*.`
-
-. 重啟交換器cs1。
-+
-`cs1# *reload*`
-
-+
-`This command will reboot the system. (y/n)?  [n] *y*`
-
-. 在交換器 cs2 上重複步驟 1 至 13。
+. 在交換器 cs2 上重複步驟 1 至 10。
 . 將ONTAP叢集中所有節點的叢集連接埠連接到交換器 cs1 和 cs2。
 
 

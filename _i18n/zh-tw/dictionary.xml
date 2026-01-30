@@ -3502,7 +3502,6 @@
   <block id="a8d1a66d62c022a563277e8b0691fa83" category="list-text">記錄目前版本與目前版本之間的任何自訂新增內容。<block ref="092a495b03acdb0bf155d8ff2997a8d6" prefix=" " category="inline-code"></block>文件和正在使用的 RCF 文件。</block>
   <block id="b978a3c040fa352cf3eb469eb092efd7" category="list-text">確認 RCF 版本和交換器設定正確後，複製以下內容：<block ref="092a495b03acdb0bf155d8ff2997a8d6" prefix=" " category="inline-code"></block>文件到<block ref="35b7dd24bfd716b0553d5e558b8afe97" prefix=" " category="inline-code"></block>文件。</block>
   <block id="92a263f83655527a8570ddfd3130dcf6" category="paragraph"><block ref="141e63272914863fc9c959b427fdacd7" prefix="" category="inline-code"></block></block>
-  <block id="baa9d9b44ef34df5ca5f98884d0608d3" category="paragraph"><block ref="603fb14344e659fed2e403db2df24a4a" prefix="" category="inline-code"></block></block>
   <block id="758d64d19fd5c7f49ed73e0b94a6f13f" category="list-text">重啟交換器cs1。</block>
   <block id="c360869741dd5844f76506c53b837af4" category="list-text">在交換器 cs2 上重複步驟 1 至 13。</block>
   <block id="7abb8bc9df6ce2c7758d9b3973b94f9a" category="summary">請依照下列步驟安裝Cisco Nexus 9336C-FX2 交換器。</block>
@@ -5761,4 +5760,6 @@
   <block id="e77c10b1a257ebcc959eb6fe14f2aa4d" category="sidebar">Overview_3232C_storage</block>
   <block id="8382d892581b7184fb83126ff18bb70d" category="sidebar">Install_hardware_3232C_storage</block>
   <block id="efc5205a1684eea7ad72b62e5417e2ce" category="sidebar">Configure_software_3232C_storage</block>
+  <block id="6754d52ab3aba634c1d3868f6ff1173b" category="paragraph"><block ref="4b5c6435698a249ed2ca19ecf903991f" prefix="" category="inline-code"></block></block>
+  <block id="eff487118c44b434c2174aab2b3a4e1c" category="list-text">重啟交換器 cs2。</block>
 </blocks>

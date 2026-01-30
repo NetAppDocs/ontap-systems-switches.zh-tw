@@ -68,7 +68,7 @@ cluster1::*>
 +
 .. 確認叢集所有連接埠均已啟動且狀態正常：
 +
-`network port show -role cluster`
+`network port show -ipspace cluster`
 
 +
 .顯示範例
@@ -76,7 +76,7 @@ cluster1::*>
 ====
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network port show -role cluster*
+cluster1::*> *network port show -ipspace cluster*
 
 Node: cluster1-01
                                                                        Ignore
@@ -116,7 +116,7 @@ cluster1::*>
 ====
 .. 確認所有叢集介面（LIF）都位於主連接埠上：
 +
-`network interface show -role cluster`
+`network interface show -vserver cluster`
 
 +
 .顯示範例
@@ -124,7 +124,7 @@ cluster1::*>
 ====
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network interface show -role cluster*
+cluster1::*> *network interface show -vserver cluster*
             Logical            Status     Network           Current      Current Is
 Vserver     Interface          Admin/Oper Address/Mask      Node         Port    Home
 ----------- ------------------ ---------- ----------------- ------------ ------- ----
@@ -209,7 +209,7 @@ CAUTION: 請務必關閉所有已連接的叢集端口，以避免任何網路�
 
 . 驗證叢集 LIF 是否已故障轉移到叢集交換器 cs1 上託管的連接埠。這可能需要幾秒鐘。
 +
-`network interface show -role cluster`
+`network interface show -vserver cluster`
 
 +
 .顯示範例
@@ -217,7 +217,7 @@ CAUTION: 請務必關閉所有已連接的叢集端口，以避免任何網路�
 ====
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network interface show -role cluster*
+cluster1::*> *network interface show -vserver cluster*
             Logical           Status     Network            Current       Current Is
 Vserver     Interface         Admin/Oper Address/Mask       Node          Port    Home
 ----------- ----------------- ---------- ------------------ ------------- ------- ----
@@ -404,7 +404,7 @@ cs1# *copy Nexus_9336C_RCF_v1.6-Cluster-HA-Breakout.txt running-config echo-comm
 +
 .. 確認叢集中所有節點的叢集連接埠均已啟動且運作狀況良好：
 +
-`network port show -role cluster`
+`network port show -ipspace cluster`
 
 +
 .顯示範例
@@ -412,7 +412,7 @@ cs1# *copy Nexus_9336C_RCF_v1.6-Cluster-HA-Breakout.txt running-config echo-comm
 ====
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network port show -role cluster*
+cluster1::*> *network port show -ipspace cluster*
 
 Node: cluster1-01
                                                                        Ignore
@@ -532,6 +532,13 @@ cluster1::*>
 . 啟用叢集 LIF 的自動回滾功能。
 +
 `cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert True*`
+
+. 重啟交換器 cs2。
++
+`cs2# *reload*`
+
++
+`This command will reboot the system. (y/n)?  [n] *y*`
 
 
 
@@ -771,7 +778,7 @@ cs1#
 ====
 . 確認叢集 LIF 已恢復到其原始連接埠：
 +
-`network interface show -role cluster`
+`network interface show -vserver cluster`
 
 +
 .顯示範例
@@ -779,7 +786,7 @@ cs1#
 ====
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network interface show -role cluster*
+cluster1::*> *network interface show -vserver cluster*
             Logical            Status     Network            Current             Current Is
 Vserver     Interface          Admin/Oper Address/Mask       Node                Port    Home
 ----------- ------------------ ---------- ------------------ ------------------- ------- ----
