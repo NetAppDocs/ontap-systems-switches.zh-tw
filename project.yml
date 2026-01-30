@@ -37,6 +37,7 @@ sidebar:
     url: "/storage/index.html"
     entries:
     - section: switch-cisco-9336c-fx2-storage
+    - section: switch-cisco-3232c-storage
     - section: switch-nvidia-sn2100-storage
   - title: 共享交換機
     url: "/shared/index.html"

@@ -1,0 +1,29 @@
+---
+permalink: switch-cisco-3232c-storage/smart-call-home-3232c-storage.html 
+sidebar: sidebar 
+keywords: cisco 3232c, storage switches 
+summary: 您可以在 AFF 或 FAS 叢集中使用 Cisco Nexus 3232C 交換器作為交換器。 
+---
+= 智慧呼叫中心的要求
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+若要使用 Smart Call Home，您必須設定叢集網路交換器以透過電子郵件與 Smart Call Home 系統進行通訊。此外，您也可以選擇設定叢集網路交換機，以利用 Cisco 的嵌入式 Smart Call Home 支援功能。
+
+Smart Call Home 監控您網路上的硬體和軟體元件。當發生關鍵系統配置時，它會產生基於電子郵件的通知並向目標設定檔中配置的所有收件者發出警報。
+
+Smart Call Home 監控您網路上的硬體和軟體元件。當發生關鍵系統配置時，它會產生基於電子郵件的通知並向目標設定檔中配置的所有收件者發出警報。
+
+在使用 Smart Call Home 之前，請注意以下要求：
+
+* 必須架設郵件伺服器。
+* 交換器必須與郵件伺服器建立IP連線。
+* 必須設定聯絡人姓名（SNMP 伺服器聯絡人）、電話號碼和街道地址資訊。這是為了確定所接收訊息的來源。
+* CCO ID 必須與貴公司適用的Cisco SMARTnet 服務合約關聯。
+* 設備必須已安裝Cisco SMARTnet 服務才能註冊。
+
+
+這 http://www.cisco.com/c/en/us/products/switches/index.html["Cisco支援網站"^]包含有關配置智慧呼叫中心命令的資訊。

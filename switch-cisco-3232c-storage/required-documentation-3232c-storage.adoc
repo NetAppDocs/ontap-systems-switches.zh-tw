@@ -1,0 +1,136 @@
+---
+permalink: switch-cisco-3232c-storage/required-documentation-3232c-storage.html 
+sidebar: sidebar 
+keywords: cisco 3232c, cluster switches 
+summary: 對於Cisco Nexus 3232C 交換器的安裝和維護，請務必查看所有建議的文件。 
+---
+= Cisco Nexus 3232C 儲存交換器的文件需求
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+對於Cisco Nexus 3232C 交換器的安裝和維護，請務必查看所有建議的文件。
+
+
+
+== 切換文檔
+
+要設定Cisco Nexus 3232C 交換機，您需要以下文件： https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/series.html["Cisco Nexus 3000 系列交換器支援"^]頁。
+
+[cols="1,2"]
+|===
+| 文件標題 | 描述 
+
+
+ a| 
+Nexus 3000 系列硬體安裝指南
+ a| 
+提供有關站點要求、交換器硬體詳情和安裝選項的詳細資訊。
+
+
+
+ a| 
+Cisco Nexus 3000 系列交換器軟體設定指南（請選擇與您的交換器上安裝的 NX-OS 版本相對應的指南）
+ a| 
+提供在配置交換器以進行ONTAP操作之前所需的初始交換器配置資訊。
+
+
+
+ a| 
+Cisco Nexus 3000 系列 NX-OS 軟體升級與降級指南（請選擇與您的交換器上安裝的 NX-OS 版本相對應的指南）
+ a| 
+提供有關如何將交換器降級到ONTAP支援的交換器軟體（如有必要）的資訊。
+
+
+
+ a| 
+Cisco Nexus 3000 系列 NX-OS 指令參考主索引
+ a| 
+提供Cisco提供的各種指令參考的連結。
+
+
+
+ a| 
+Cisco Nexus 3000 MIB 參考
+ a| 
+描述 Nexus 3000 交換器的管理資訊庫 (MIB) 檔案。
+
+
+
+ a| 
+Nexus 3000 系列 NX-OS 系統訊息參考
+ a| 
+描述Cisco Nexus 3000 系列交換器的系統訊息，包括資訊性訊息和其他可能有助於診斷連結、內部硬體或系統軟體問題的訊息。
+
+
+
+ a| 
+Cisco Nexus 3000 系列 NX-OS 版本說明（請選擇交換器上已安裝的 NX-OS 版本對應的說明）
+ a| 
+描述了CiscoNexus 3000 系列的功能、缺陷和限制。
+
+
+
+ a| 
+Cisco Nexus 6000、 Cisco Nexus 5000 系列、 Cisco Nexus 3000 系列和Cisco Nexus 2000 系列的法規、合規性和安全訊息
+ a| 
+提供 Nexus 3000 系列交換器的國際機構合規性、安全性和法規資訊。
+
+|===
+
+
+== ONTAP 系統文檔
+
+若要設定ONTAP系統，您需要以下適用於您作業系統版本的文件。 https://docs.netapp.com/ontap-9/index.jsp["ONTAP 9"^] 。
+
+[cols="1,2"]
+|===
+| Name | 描述 
+
+
+ a| 
+控制器專用_安裝與設定說明_
+ a| 
+介紹如何安裝NetApp硬體。
+
+
+
+ a| 
+ONTAP 文檔
+ a| 
+提供有關ONTAP版本各個方面的詳細資訊。
+
+
+
+ a| 
+https://hwu.netapp.com["Hardware Universe"^]
+ a| 
+提供NetApp硬體配置和相容性資訊。
+
+|===
+
+
+== 軌道套件和機櫃文檔
+
+若要在NetApp機櫃中安裝Cisco 3232C 交換機，請參閱下列硬體文件。
+
+[cols="1,2"]
+|===
+| Name | 描述 
+
+
+ a| 
+https://library.netapp.com/ecm/ecm_download_file/ECMM1280394["42U 系統機櫃，深導軌"^]
+ a| 
+描述與 42U 系統機櫃相關的 FRU，並提供保養和 FRU 更換說明。
+
+
+
+ a| 
+link:install-cisco-nexus-3232c-storage.html["在NetApp機櫃中安裝一台Cisco Nexus 3232C 交換器。"^]
+ a| 
+介紹如何在四柱NetApp機櫃中安裝Cisco Nexus 3232C 交換器。
+
+|===

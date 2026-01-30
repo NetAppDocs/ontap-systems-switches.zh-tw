@@ -9,26 +9,36 @@ indexpage:
     links:
     - title: Cisco Nexus 9336C-FX2 和 9336C-FX2-T
       url: "../switch-cisco-9336c-fx2-storage/configure-switch-overview-9336c-storage.html"
+    - title: CiscoNexus 3232C
+      url: "../switch-cisco-3232c-storage/configure-switch-overview-3232c-storage.html"
     - title: NVIDIA SN2100
       url: "../switch-nvidia-sn2100-storage/configure-overview-sn2100-storage.html"
   - title: 安裝和設定儲存交換機
     links:
     - title: 安裝 9336C-FX2 和 9336C-FX2-T 交換器硬件
       url: "../switch-cisco-9336c-fx2-storage/install-hardware-workflow.html"
+    - title: 安裝 3232C 交換器硬體
+      url: "../switch-cisco-3232c-storage/install-hardware-workflow.html"
     - title: 安裝NVIDIA SN2100 交換器硬體
       url: "../switch-nvidia-sn2100-storage/install-hardware-workflow.html"
     - title: 配置 9336C-FX2 和 9336C-FX2-T 交換器軟體
       url: "../switch-cisco-9336c-fx2-storage/configure-software-overview-9336c-storage.html"
+    - title: 配置 3232C 交換器軟體
+      url: "../switch-cisco-3232c-storage/configure-switch-overview-3232c-storage.html"
     - title: 設定NVIDIA SN2100交換器軟體
       url: "../switch-nvidia-sn2100-storage/configure-software-sn2100-storage.html"
   - title: 維護儲存交換機
     links:
     - title: 更換 9336C-FX2 和 9336C-FX2-T 交換機
       url: "../switch-cisco-9336c-fx2-storage/replace-storage-switch-9336c-storage.html"
+    - title: 更換 3232C 交換器
+      url: "../switch-cisco-3232c-storage/replace-storage-switch.html"
     - title: 更換NVIDIA SN2100交換機
       url: "../switch-nvidia-sn2100-storage/replace-sn2100-switch-storage.html"
     - title: 將 9336C-FX2 和 9336C-FX2-T 交換器重設為出廠預設值
       url: "../switch-cisco-9336c-fx2-storage/reset-switch-9336c-storage.html"
+    - title: 將 3232C 交換器重設為出廠預設值
+      url: "../switch-cisco-3232c-storage/reset-switch-3232c-storage.html"
     - title: 將NVIDIA SN2100 交換器重設為出廠預設值
       url: "../switch-nvidia-sn2100-storage/reset-switch-sn2100-storage.html"
   - title: 相關文件

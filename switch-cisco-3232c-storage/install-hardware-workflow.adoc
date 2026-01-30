@@ -1,0 +1,22 @@
+---
+permalink: switch-cisco-3232c-storage/install-hardware-workflow.html 
+sidebar: sidebar 
+keywords: switches, initial installation, configure switch-cisco-9336c-fx2 switch 
+summary: 在設定 Cisco Nexus 3232C 儲存交換器之前，請先檢閱組態概述。 
+---
+= Cisco Nexus 3232C 交換器的硬體安裝工作流程
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+若要安裝和設定 3232C 儲存交換器的硬體，請依照下列步驟操作：
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一"]link:install-switch-3232c-storage.html["安裝開關"]
+[role="quick-margin-para"]
+安裝 3232C 儲存交換器。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["二"]link:install-cisco-nexus-3232c-storage.html["將交換器安裝在NetApp機櫃中"]
+[role="quick-margin-para"]
+根據需要，將 3232C 儲存開關和直通面板安裝到 NetApp 機櫃中。

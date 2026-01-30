@@ -118,7 +118,7 @@ cluster1::*>
 +
 [source, cli]
 ----
-network port show -role cluster
+network port show -ipspace cluster
 ----
 +
 .顯示範例
@@ -126,7 +126,7 @@ network port show -role cluster
 ====
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network port show -role cluster*
+cluster1::*> *network port show -ipspace cluster*
 
 Node: cluster1-01
                                                                        Ignore
@@ -168,7 +168,7 @@ cluster1::*>
 +
 [source, cli]
 ----
-network interface show -role cluster
+network interface show -vserver cluster
 ----
 +
 .顯示範例
@@ -176,7 +176,7 @@ network interface show -role cluster
 ====
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network interface show -role cluster*
+cluster1::*> *network interface show -vserver cluster*
             Logical            Status     Network           Current      Current Is
 Vserver     Interface          Admin/Oper Address/Mask      Node         Port    Home
 ----------- ------------------ ---------- ----------------- ------------ ------- ----
@@ -290,7 +290,7 @@ show isdp neighbor
 +
 [source, cli]
 ----
-network interface show -role cluster
+network interface show -vserver cluster
 ----
 +
 .顯示範例
@@ -298,7 +298,7 @@ network interface show -role cluster
 ====
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network interface show -role cluster*
+cluster1::*> *network interface show -vserver cluster*
             Logical           Status     Network            Current       Current Is
 Vserver     Interface         Admin/Oper Address/Mask       Node          Port    Home
 ----------- ----------------- ---------- ------------------ ------------- ------- ----
@@ -765,7 +765,7 @@ Port       Name                 State   Mode        Status      Type        Cont
 +
 [source, cli]
 ----
-network port show -role cluster
+network port show -ipspace cluster
 ----
 +
 .顯示範例
@@ -773,7 +773,7 @@ network port show -role cluster
 ====
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network port show -role cluster*
+cluster1::*> *network port show -ipspace cluster*
 
 Node: cluster1-01
                                                                       Ignore
@@ -916,7 +916,7 @@ network interface modify -vserver Cluster -lif * -auto-revert true
 +
 [source, cli]
 ----
-network interface show -role Cluster
+network interface show -vserver Cluster
 ----
 +
 更多詳情請參見link:https://docs.netapp.com/us-en/ontap/networking/revert_a_lif_to_its_home_port.html["將 LIF 恢復到其母端口"]。
@@ -997,7 +997,7 @@ Ports   Timeout       Speed     Active
 +
 [source, cli]
 ----
-network interface show -role cluster
+network interface show -vserver cluster
 ----
 +
 .顯示範例
@@ -1005,7 +1005,7 @@ network interface show -role cluster
 ====
 [listing, subs="+quotes"]
 ----
-cluster1::*> network interface show -role cluster
+cluster1::*> network interface show -vserver cluster
             Logical            Status     Network            Current             Current Is
 Vserver     Interface          Admin/Oper Address/Mask       Node                Port    Home
 ----------- ------------------ ---------- ------------------ ------------------- ------- ----

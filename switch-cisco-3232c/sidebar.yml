@@ -73,3 +73,10 @@ entries:
     url: "/switch-cisco-3232c/replace-cluster-switch.html"
   - title: 用無開關連接取代集群開關
     url: "/switch-cisco-3232c/migrate-to-switchless-cluster-interconnect.html"
+- title: Cisco 3232C 儲存交換機
+  pdf-filename: 3232C_storage_switches
+  entries:
+  - title: 升級 3232C 儲存交換器
+    url: "/switch-cisco-3232c/upgrade-3232c-storage-switches.html"
+  - title: 更換 3232C 儲存交換器
+    url: "/switch-cisco-3232c/replace-storage-switch.html"

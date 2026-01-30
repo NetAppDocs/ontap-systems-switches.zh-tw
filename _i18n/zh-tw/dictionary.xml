@@ -2769,9 +2769,7 @@
   <block id="22cbf300223089d4a6aef8c0c9a18286" category="list-text">交換器功能完全正常（日誌中不應有任何錯誤或類似問題）。</block>
   <block id="03a91969e86532bb4f05bf3c37f625c8" category="list-text">如果您僅安裝 NX-OS 並保留目前的RCF 版本，則您已在 RCF 中檢查或設定了所需的啟動變量，以反映所需的啟動映像。</block>
   <block id="14fbade2b67035c34eec7534fb6c6b2c" category="paragraph">如果需要更改啟動變數以反映目前的啟動映像，則必須在重新應用 RCF 之前進行更改，以便在以後的重新啟動中實例化正確的版本。</block>
-  <block id="078583e5caec046780e48c81c3573957" category="list-text">您已參考了網站上提供的相應軟體和升級指南。<block ref="71cb1c246557f874bc3fddad5f472c04" category="inline-link-rx"></block>此頁麵包含有關Cisco儲存升級和降級程序的完整文件。</block>
   <block id="a299e5855e22f0798ca0d44513e7d8b1" category="inline-link">Cisco®乙太網路交換機</block>
-  <block id="01b7bc1db0e7dc619e0de057500994c2" category="list-text">10 GbE 和 40/100 GbE 連接埠的數量在參考設定檔 (RCF) 中定義，該檔案可在以下位置取得：<block ref="10c469496046da901842344cb3680d0e" category="inline-link-rx"></block>頁。</block>
   <block id="4fd3c39884768128b1709971be9c57ab" category="list-text">這兩個儲存交換器的名稱分別為 S1 和 S2。</block>
   <block id="79779dc1801a58ad11dd3078fff93f81" category="list-text">節點分別為 node1 和 node2。</block>
   <block id="db366391da91f981116eae4b0abd56c4" category="admonition">流程需要同時使用ONTAP指令和Cisco Nexus 3000 系列交換器指令；除非另有說明，否則使用ONTAP指令。命令輸出可能因ONTAP版本不同而有所差異。</block>
@@ -5685,4 +5683,82 @@
   <block id="26222b7babf133e36c55ea55d4f3a125" category="paragraph">以下範例顯示 node1 和 node2 上的所有 LIF 都已啟動：</block>
   <block id="f44088e99d2afac37e3a22fcc4020299" category="paragraph"><block ref="f44088e99d2afac37e3a22fcc4020299" category="inline-image-macro-rx" type="image"></block></block>
   <block id="1820672349ef5d1a7936d88b1e992610" category="paragraph"><block ref="1820672349ef5d1a7936d88b1e992610" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="3de8c6c7d6f00358806b6e2c9dad9bd8" category="summary">從 ONTAP 9.9.1 開始，您可以使用 Cisco Nexus 3232C 交換器將儲存和叢集功能組合到共用交換器案例中。</block>
+  <block id="29cce731a48597a36fd0d567e4432b3d" category="doc">Cisco Nexus 3232C 儲存交換器的設定需求</block>
+  <block id="e7fc578c804a8af418dfb1303ef5f139" category="paragraph">您需要為交換器準備適當數量和類型的纜線及纜線連接器。根據您初始設定的交換器類型，您需要使用隨附的主控台纜線連接到交換器主控台連接埠；此外，您還需要提供特定的網路資訊。</block>
+  <block id="03078accc5cb88b87c4755936cdcb958" category="paragraph">確認配置要求後，您可以查看 <block ref="cf05fca06d69c94051d934b96e297229" category="inline-link-macro-rx"></block>。</block>
+  <block id="1ff0c50a0ce139ddc60f4ba8fe8c6357" category="summary">Cisco Nexus 3232C 儲存交換器的軟體設定概述</block>
+  <block id="1d420c1d1e521b9478c52b041d63fa99" category="doc">Cisco Nexus 3232C 儲存交換器的軟體安裝工作流程</block>
+  <block id="dc6836bd397da6aa31de5e3d189b6ad4" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block><block ref="dc69aae87624221d879057f6e28fc68c" category="inline-link-macro-rx"></block></block>
+  <block id="8768b698a7ad01028fd5f7665c522d92" category="paragraph">配置 3232C 儲存交換器。</block>
+  <block id="e364784ef63e5aaf282eec6b148178ec" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block><block ref="517191c1c7c31b7ef594262b71ada027" category="inline-link-macro-rx"></block></block>
+  <block id="f640735796f6ce4ddcce4b82fbf6aeea" category="paragraph">Cisco NX-OS 軟體和參考組態檔 (RCF) 必須安裝在 Cisco 3232C 儲存交換器上。</block>
+  <block id="c14e333544c9443204c51780fea9e136" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block><block ref="a285c717b6393bead903c98fcbe30022" category="inline-link-macro-rx"></block></block>
+  <block id="b8f7a4c738278123d85fffd10fa2a467" category="paragraph">在 Cisco 3232C 儲存交換器上下載並安裝或升級 NX-OS 軟體。</block>
+  <block id="c6d0dca6ce709ec3037c12ce665e1d73" category="paragraph-title"><block ref="beadfa85a2fdca06b91edc1131c603e6" category="inline-image-macro-rx" type="image"></block><block ref="587f86a7e8e3c4227a4ab76892548515" category="inline-link-macro-rx"></block></block>
+  <block id="3b35dec56eba70b9b8df023e06028e2d" category="paragraph">首次設定 Cisco 3232C 儲存交換器後，安裝 RCF。</block>
+  <block id="90cef7f4abd12b720aa9831aa8ff1a2b" category="paragraph-title"><block ref="ef78558f80439832e0f51cc22cee8b8c" category="inline-image-macro-rx" type="image"></block><block ref="210ba28fb3230dfd3413686e3a1b1df4" category="inline-link-macro-rx"></block></block>
+  <block id="18685b134f72eb49ab65bdafb8edba7d" category="paragraph">清除 3232C 儲存交換器設定。</block>
+  <block id="8618d738587e805e0480e36e2e58d8ce" category="summary">Cisco Nexus 3232C 儲存交換器的安裝與設定概述</block>
+  <block id="5b21fb300b66354ec1c46f9c7ac254ad" category="doc">Cisco Nexus 3232C 儲存交換器的安裝與設定工作流程</block>
+  <block id="2e750c24e9ce28a91d0f8e137313ad85" category="paragraph">Cisco Nexus 3232C 交換器是 Cisco Nexus 9000 平台的一部分，可安裝在 NetApp 系統機櫃中。</block>
+  <block id="82c113a0e61023e3323c8ef76ede528a" category="paragraph">請依照下列工作流程步驟安裝並設定您的 Cisco 3232C 交換器。</block>
+  <block id="e71da02584d1bd074079559fc3703346" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block><block ref="86563788f2d1652b1dc80bc02b0e35d2" category="inline-link-macro-rx"></block></block>
+  <block id="6a90de77da6518f6a96c117f1459a477" category="paragraph">查看 3232C 儲存交換器的組態需求。</block>
+  <block id="f6a526e34751c69ad8585db6f8260284" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block><block ref="1a0b2cba1553731bf80ec3a571944e9f" category="inline-link-macro-rx"></block></block>
+  <block id="5ed01985a5171c5ac955b7101700ef9d" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block><block ref="3b48d59a33e0abecd3882141b29f6158" category="inline-link-macro-rx"></block></block>
+  <block id="38ab90b40984c2a545436fa7efcc4437" category="paragraph-title"><block ref="beadfa85a2fdca06b91edc1131c603e6" category="inline-image-macro-rx" type="image"></block><block ref="a2bcf0ffba6f2a3571b43c83094ddce9" category="inline-link-macro-rx"></block></block>
+  <block id="f95f6812177403f7c5563e0035ce0041" category="paragraph-title"><block ref="99e8b2f00e172bfcff96afdce69907bc" category="inline-image-macro-rx" type="image"></block><block ref="212903051dd95e1e065b2a7aee9061c4" category="inline-link-macro-rx"></block></block>
+  <block id="85bdfc0da76b9069faffb64e229ac923" category="summary">您可以使用交換器隨附的標準支架，將 Cisco Nexus 3232C 儲存交換器和直通面板安裝到 NetApp 機櫃中。</block>
+  <block id="dfbe1e1998edbbbb46da2b21bece902e" category="doc">在 NetApp 機櫃中安裝 Cisco Nexus 3232C 儲存交換器</block>
+  <block id="eab8a784c8ab79196a0427b95264f993" category="paragraph">根據您的配置，您可能需要將 Cisco Nexus 3232C 儲存交換器和直通面板安裝到 NetApp 機櫃中，並使用交換器隨附的標準支架。</block>
+  <block id="9889773c648b2dd8e8a5d7faf7020fda" category="paragraph">請確認您已備齊以下物品：* 初始準備要求、套件內容和安全注意事項<block ref="68653a00888238590f65028b21764ae9" category="inline-link-macro-rx"></block>。* 每個交換器需要八顆 10-32 或 12-24 螺絲和卡扣螺母，用於將支架和滑軌安裝到機櫃前後立柱上。* Cisco 標準導軌套件，用於將交換器安裝到 NetApp 機櫃中。</block>
+  <block id="8167bc80922e82a2ba081a1a1ba26f3f" category="list-text">將機架安裝支架安裝到 Nexus 3232C 儲存交換器機箱上。</block>
+  <block id="bfd0690d09ef36f76f8412ba49078ed5" category="summary">在設定 Cisco Nexus 3232C 儲存交換器之前，請先檢閱組態概述。</block>
+  <block id="d71c2f5db0b8699253d8d9afc88cc3c7" category="paragraph">若要安裝和設定 3232C 儲存交換器的硬體，請依照下列步驟操作：</block>
+  <block id="9b1f2119a72c757cd6dac1093b5399f1" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block><block ref="950ac9f0c28590089480d1786f4290a0" category="inline-link-macro-rx"></block></block>
+  <block id="879c22fdad42cef95a34cefa150aaac3" category="paragraph">安裝 3232C 儲存交換器。</block>
+  <block id="afae30e17dbe966034a9393f39dd1e47" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block><block ref="d665afab6e1afe1369a1aba08de155e9" category="inline-link-macro-rx"></block></block>
+  <block id="d19d028248f4f96d11f8b50ecb04f870" category="paragraph">根據需要，將 3232C 儲存開關和直通面板安裝到 NetApp 機櫃中。</block>
+  <block id="894aaaaa87234939304667b89e118803" category="summary">您可以使用此程序在 Nexus 3232C 儲存交換器上安裝 NX-OS 軟體。</block>
+  <block id="75ec6a0c21e68db4a05d186638bf06b8" category="paragraph">請確認您已具備以下條件：* 交換器設定的最新備份。* 叢集運作正常（日誌中無錯誤或類似問題）。* <block ref="f29158c7335be7b7fe0a46dd82de6ed4" category="inline-link-macro-rx"></block>。請查閱交換器相容性列表，以了解支援的 ONTAP 和 NX-OS 版本。* <block ref="ad0d19783ccfa19f931108b838e4b7e4" category="inline-link-macro-rx"></block>。請參閱 Cisco 網站上提供的相應軟體和升級指南，以取得 Cisco 交換器升級和降級步驟的完整文件。</block>
+  <block id="2cef7fce55e0de5cf44abcd44c7ab260" category="paragraph">完成 <block ref="2aa57174599b1b56785fe57540877310" category="inline-link-macro-rx"></block> 中的程序，然後依照以下步驟操作。</block>
+  <block id="1c27c38bac9a25572e6ba2acc4d485c8" category="paragraph">安裝 NX-OS 軟體後，您可以<block ref="f925453c7ab7d4e5b07986b4df9dd89a" category="inline-link-macro-rx"></block>。</block>
+  <block id="2cccef4bbe97b25935d4cf78da1c415a" category="list-text">與交換器的主控台連線，安裝 RCF 時需要此連線。</block>
+  <block id="3b0e5a3fca5e05fff6459215469f5169" category="paragraph">請務必仔細閱讀 RCF 中的 *Installation notes*、*Important Notes* 和 *banner* 部分。您必須閱讀並遵循這些說明，以確保交換器的配置和運作正確。</block>
+  <block id="686fc1a5e33ff5dbb577c2ff7c1d99d7" category="summary">請依照下列步驟安裝 Cisco Nexus 3232C 儲存交換器。</block>
+  <block id="3c0a8f9413a8da0e5c17140b524c252d" category="doc">安裝 3232C 儲存交換器</block>
+  <block id="98e62008a71d8861e2fdf6fd5c4e4827" category="paragraph">請依照下列步驟設定並配置 Cisco Nexus 3232C 儲存交換器。</block>
+  <block id="06f98fb7dabad121f0a305f634bbd3d9" category="list-text"><block ref="2f0c8beed0944d74f65fe6f338a45004" category="inline-link-macro-rx"></block>。</block>
+  <block id="b93535b0bc8b7e60ab4fbdfe5a4542d1" category="inline-link-macro">將交換器安裝在 NetApp 機櫃中</block>
+  <block id="970547de0b1297e6e40fd3ffa36745f2" category="paragraph">安裝完 3232C 儲存交換器後，您可以<block ref="998eeccb90ed60d04433c9a9a151ef26" category="inline-link-macro-rx"></block>。</block>
+  <block id="678e13be1f1f5630381c676c3babc72d" category="summary">Cisco Nexus 3232C 儲存交換器上必須安裝 Cisco NX-OS 軟體和參考設定檔（RCF）。</block>
+  <block id="65459cc6f0f81aa31bfc775f15ed6bc4" category="paragraph">準備好安裝 NX-OS 軟體和 RCF 後，您可以<block ref="a2bf6a57e594c94642b3fd5d310037a1" category="inline-link-macro-rx"></block>。</block>
+  <block id="312661d0f59054d715a9246594bd18e4" category="paragraph">更換開關後，您可以<block ref="9c3be868eca09e30ec03c7542e485ba6" category="inline-link-macro-rx"></block>。</block>
+  <block id="ba142a42b9904c0d02cec8569ea8cf6f" category="doc">Cisco Nexus 3232C 儲存交換器的文件需求</block>
+  <block id="a10d75e2a42333615639b40ca1b541cb" category="paragraph"><block ref="a10d75e2a42333615639b40ca1b541cb" category="inline-link-macro-rx"></block></block>
+  <block id="72f486e2ab37cfdd1dc9f181fc8a3710" category="doc">將 3232C 儲存交換器重設為原廠預設值</block>
+  <block id="9340b08d4509ce976342fcd197922699" category="paragraph">若要將 3232C 儲存交換器重設為原廠預設值，您必須清除 3232C 儲存交換器設定。</block>
+  <block id="be50411a508a1e2e703e8b43cecc0b59" category="paragraph">重置交換器後，您可以根據需要<block ref="662d2b6a1d29a194e56f183d4610111a" category="inline-link-macro-rx"></block>。</block>
+  <block id="54008da51e28f9ba702bd14f8c52fc24" category="doc">配置 3232C 儲存交換器</block>
+  <block id="b9cb0e7c3e4aaa701fe9a8dba9bba547" category="paragraph">請參閱 <block ref="0e11ca331695ddbc443773df5dd19d70" category="inline-link-macro-rx"></block> 以獲取更多資訊。</block>
+  <block id="05b22658a16371ac97cf6b7aa3db3009" category="paragraph">有關在 NetApp 機櫃中安裝 Cisco Nexus 3232C 交換器和直通面板的說明，請參閱《在 NetApp 機櫃中安裝 Cisco Nexus 3232C 交換器和直通面板》指南。</block>
+  <block id="66efd157b9c5ea0a2c7173241f89d974" category="list-text">檢查叢集網路交換器上的版本，如有必要，請從<block ref="f823faeecc1cbb37f2d732cc29c07d86" category="inline-link-rx"></block>頁面下載 NetApp 支援的軟體版本到交換器。</block>
+  <block id="60ae3edf6d4c0e90e96bfdf1f7e48358" category="paragraph">配置好交換器後，您可以<block ref="d1e6509476f31fcb3085aa2d5f68bf19" category="inline-link-macro-rx"></block>。</block>
+  <block id="22b2aaac085da9ad2fe6e40506e29ba1" category="summary">您可以在 AFF 或 FAS 叢集中使用 Cisco Nexus 3232C 交換器作為交換器。</block>
+  <block id="5fd0d8a0d6ef3f5a537957b44606d2b5" category="list-text">您已參考 <block ref="62e0b65b4ce6c39360339b91963257d9" category="inline-link-macro-rx"></block> 頁面上提供的相應軟體和升級指南，以取得有關 Cisco 儲存升級和降級程序的完整文件。</block>
+  <block id="634e49d4eec40c4073713d59b4ec5651" category="list-text">10 GbE 和 40/100 GbE 連接埠的數量在<block ref="10b05013aed4ad7c608194314b862532" category="inline-link-macro-rx"></block>頁面上提供的參考設定檔（RCF）中定義。</block>
+  <block id="9ebf21a19a79d1847b64e9e53374ce08" category="paragraph">有關 Cisco 命令的更多資訊，請參閱 <block ref="486a8c2329b0edf4fdc0ce0949520ae0" category="inline-link-macro-rx"></block> 中的相應指南。</block>
+  <block id="46a0897482baa3090483a0e46d018f27" category="paragraph">升級交換器後，您可以<block ref="9c3be868eca09e30ec03c7542e485ba6" category="inline-link-macro-rx"></block>。</block>
+  <block id="c479f2f799e343a85837f9fdc1fa7b3d" category="sidebar">安裝 3232C 交換器硬體</block>
+  <block id="51669d60089895b06d8d9a89be3d3950" category="sidebar">配置 3232C 交換器軟體</block>
+  <block id="91c01224023f7e6eb5e86f6dc9f075f3" category="sidebar">更換 3232C 交換器</block>
+  <block id="80c21aeb9b803222f534896a3cb16cbc" category="sidebar">將 3232C 交換器重設為出廠預設值</block>
+  <block id="56ce3509c245e3da073f7aadda32a468" category="sidebar">Cisco 3232C 儲存交換機</block>
+  <block id="f0befe8d58c94afa984a5529fcad7248" category="sidebar">3232C_storage_switches</block>
+  <block id="b07cc4ef36ebacfefe07bc22c8a1ac33" category="sidebar">升級 3232C 儲存交換器</block>
+  <block id="1c91c345b68017e264d7ea868c60bc31" category="sidebar">更換 3232C 儲存交換器</block>
+  <block id="e77c10b1a257ebcc959eb6fe14f2aa4d" category="sidebar">Overview_3232C_storage</block>
+  <block id="8382d892581b7184fb83126ff18bb70d" category="sidebar">Install_hardware_3232C_storage</block>
+  <block id="efc5205a1684eea7ad72b62e5417e2ce" category="sidebar">Configure_software_3232C_storage</block>
 </blocks>

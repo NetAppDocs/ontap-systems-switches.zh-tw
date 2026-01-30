@@ -1,0 +1,36 @@
+---
+permalink: switch-cisco-3232c-storage/configure-switch-overview-3232c-storage.html 
+sidebar: sidebar 
+keywords: initial installation, configure switch-cisco-3232c-storage switch 
+summary: Cisco Nexus 3232C 儲存交換器的安裝與設定概述 
+---
+= Cisco Nexus 3232C 儲存交換器的安裝與設定工作流程
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cisco Nexus 3232C 交換器是 Cisco Nexus 9000 平台的一部分，可安裝在 NetApp 系統機櫃中。
+
+請依照下列工作流程步驟安裝並設定您的 Cisco 3232C 交換器。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一"]link:configure-reqs-3232c-storage.html["查看配置要求"]
+[role="quick-margin-para"]
+查看 3232C 儲存交換器的組態需求。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["二"]link:required-documentation-3232c-storage.html["審查所需文件"]
+[role="quick-margin-para"]
+查看特定的交換器和控制器文件以設定您的 3232C 交換器和ONTAP叢集。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三"]link:smart-call-home-3232c-storage.html["查看 Smart Call Home 要求"]
+[role="quick-margin-para"]
+查看Cisco Smart Call Home 功能的要求，該功能用於監控網路上的硬體和軟體元件。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["四"]link:install-switch-3232c-storage.html["安裝硬體"]
+[role="quick-margin-para"]
+安裝交換器硬體。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["五"]link:configure-software-overview-3232c-storage.html["設定軟體"]
+[role="quick-margin-para"]
+配置交換器軟體。
