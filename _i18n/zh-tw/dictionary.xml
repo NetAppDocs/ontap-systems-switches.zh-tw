@@ -5762,4 +5762,5 @@
   <block id="efc5205a1684eea7ad72b62e5417e2ce" category="sidebar">Configure_software_3232C_storage</block>
   <block id="6754d52ab3aba634c1d3868f6ff1173b" category="paragraph"><block ref="4b5c6435698a249ed2ca19ecf903991f" prefix="" category="inline-code"></block></block>
   <block id="eff487118c44b434c2174aab2b3a4e1c" category="list-text">重啟交換器 cs2。</block>
+  <block id="fb14b077ecd3df929fa7f98e0e505f8c" category="admonition">升級或套用新的 RCF 時，必須清除交換器設定並執行基本組態。</block>
 </blocks>

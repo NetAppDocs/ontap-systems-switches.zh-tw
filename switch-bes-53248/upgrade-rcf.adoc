@@ -118,7 +118,7 @@ cluster1::*>
 +
 [source, cli]
 ----
-network port show -ipspace cluster
+network port show -ipspace Cluster
 ----
 +
 .顯示範例
@@ -126,8 +126,7 @@ network port show -ipspace cluster
 ====
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network port show -ipspace cluster*
-
+cluster1::*> *network port show -ipspace Cluster*
 Node: cluster1-01
                                                                        Ignore
                                                   Speed(Mbps) Health   Health
@@ -168,7 +167,7 @@ cluster1::*>
 +
 [source, cli]
 ----
-network interface show -vserver cluster
+network interface show -vserver Cluster
 ----
 +
 .顯示範例
@@ -176,7 +175,7 @@ network interface show -vserver cluster
 ====
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network interface show -vserver cluster*
+cluster1::*> *network interface show -vserver Cluster*
             Logical            Status     Network           Current      Current Is
 Vserver     Interface          Admin/Oper Address/Mask      Node         Port    Home
 ----------- ------------------ ---------- ----------------- ------------ ------- ----
@@ -290,7 +289,7 @@ show isdp neighbor
 +
 [source, cli]
 ----
-network interface show -vserver cluster
+network interface show -vserver Cluster
 ----
 +
 .顯示範例
@@ -298,7 +297,7 @@ network interface show -vserver cluster
 ====
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network interface show -vserver cluster*
+cluster1::*> *network interface show -vserver Cluster*
             Logical           Status     Network            Current       Current Is
 Vserver     Interface         Admin/Oper Address/Mask       Node          Port    Home
 ----------- ----------------- ---------- ------------------ ------------- ------- ----
@@ -765,7 +764,7 @@ Port       Name                 State   Mode        Status      Type        Cont
 +
 [source, cli]
 ----
-network port show -ipspace cluster
+network port show -ipspace Cluster
 ----
 +
 .顯示範例
@@ -773,8 +772,7 @@ network port show -ipspace cluster
 ====
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network port show -ipspace cluster*
-
+cluster1::*> *network port show -ipspace Cluster*
 Node: cluster1-01
                                                                       Ignore
                                                   Speed(Mbps) Health  Health
@@ -997,7 +995,7 @@ Ports   Timeout       Speed     Active
 +
 [source, cli]
 ----
-network interface show -vserver cluster
+network interface show -vserver Cluster
 ----
 +
 .顯示範例
@@ -1005,7 +1003,7 @@ network interface show -vserver cluster
 ====
 [listing, subs="+quotes"]
 ----
-cluster1::*> network interface show -vserver cluster
+cluster1::*> network interface show -vserver Cluster
             Logical            Status     Network            Current             Current Is
 Vserver     Interface          Admin/Oper Address/Mask       Node                Port    Home
 ----------- ------------------ ---------- ------------------ ------------------- ------- ----

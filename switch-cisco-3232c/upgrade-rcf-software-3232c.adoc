@@ -277,9 +277,6 @@ cluster1::*>
 +
 `cs2# echo "hardware access-list tcam region qos 256" >> bootflash:write_erase.cfg`
 
-+
-請參閱知識庫文章 https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["如何在保持遠端連線的情況下清除Cisco互連交換器上的配置"^]更多詳情請見下文。
-
 . 確認 `write_erase.cfg`文件已如預期填入：
 +
 `*show file bootflash:write_erase.cfg*`
