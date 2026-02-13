@@ -5763,4 +5763,9 @@
   <block id="6754d52ab3aba634c1d3868f6ff1173b" category="paragraph"><block ref="4b5c6435698a249ed2ca19ecf903991f" prefix="" category="inline-code"></block></block>
   <block id="eff487118c44b434c2174aab2b3a4e1c" category="list-text">重啟交換器 cs2。</block>
   <block id="fb14b077ecd3df929fa7f98e0e505f8c" category="admonition">升級或套用新的 RCF 時，必須清除交換器設定並執行基本組態。</block>
+  <block id="ece376b7acc25f86ff2e09f80d38755c" category="paragraph">請務必完成以下事項：</block>
+  <block id="9a9e15bbbf81b37074eb3677448baf70" category="list-text">在交換器上執行 <block ref="856e0a903a301d6d44f55e6eb5b82200" prefix=" " category="inline-code"></block> 命令，以查看安裝或升級新的 NX-OS 軟體映像的影響。此指令會驗證映像完整性、檢查是否需要重新啟動、評估硬體相容性並確認空間是否足夠。</block>
+  <block id="1ce0015d97074c710fb18a71c0facacd" category="list-text">請查看目標 NX-OS 軟體版本的發行說明，以檢查是否有任何特定要求。</block>
+  <block id="07e8467e284d5ad4e9a20246ae001803" category="list-text">請確認您已備份目前的交換器組態。</block>
+  <block id="0280c61cdd286c198feabf97c27f4988" category="list-text">請確認您的叢集運作正常 （日誌中沒有錯誤或類似問題）。</block>
 </blocks>
