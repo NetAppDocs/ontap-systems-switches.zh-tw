@@ -25,26 +25,24 @@ summary: '使用群集交換器健康監視器 (CSHM) 和日誌收集功能時�
 .關於此任務
 流程需要同時使用ONTAP指令和Cisco Nexus 3000 系列交換器指令；除非另有說明，否則使用ONTAP指令。
 
-在此過程中不需要任何可操作的交換器間連結 (ISL)。這是設計使然，因為 RCF 版本的變更可能會暫時影響 ISL 連線。為了實現無中斷叢集操作，以下步驟將所有叢集 LIF 遷移到可操作的合作夥伴交換機，同時在目標交換器上執行步驟。
-
 完成 link:prepare-install-cisco-nexus-3232c-storage.html["準備安裝 NX-OS 和 RCF"] 中的程序，然後依照以下步驟操作。
 
 
 
 == 步驟 1：在交換器上安裝 RCF
 
-. 使用 SSH 或序列控制台登入 switch cs2。
-. 使用下列傳輸協定之一將 RCF 複製到交換器 cs2 的 bootflash：FTP、TFTP、SFTP 或 SCP。有關Cisco命令的更多信息，請參閱 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 系列 NX-OS 指令參考"^]。
+. 使用 SSH 或透過序列主控台登入交換器 s2。
+. 使用下列傳輸協定之一將 RCF 複製到交換器 s2 的 bootflash：FTP、TFTP、SFTP 或 SCP。如需 Cisco 命令的詳細資訊，請參閱 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 系列 NX-OS 指令參考"^]中的適當指南。
 +
 .顯示範例
 [%collapsible]
 ====
-此範例展示如何使用 TFTP 將 RCF 檔案複製到交換器 cs2 的啟動快閃記憶體中：
+此範例展示如何使用 TFTP 將 RCF 複製到交換器 s2 的 bootflash 上：
 
 [listing, subs="+quotes"]
 ----
-cs2# *copy tftp: bootflash: vrf management*
-Enter source filename: *Nexus_3232C_RCF_v1.6-Cluster-HA-Breakout.txt*
+s2# *copy tftp: bootflash: vrf management*
+Enter source filename: *NX3232C-RCF-v1.13-1-Storage.txt*
 Enter hostname for the tftp server: *172.22.201.50*
 Trying to connect to tftp server......Connection to Server Established.
 TFTP get operation was successful
@@ -59,11 +57,11 @@ Copy complete, now saving to disk (please wait)...
 .顯示範例
 [%collapsible]
 ====
-此範例展示了 RCF 文件 `Nexus_3232C_RCF_v1.6-Cluster-HA-Breakout.txt`正在交換器 cs2 上安裝：
+此範例顯示在交換器 s2 上安裝 RCF 檔案 `NX9336C-FX2-RCF-v1.13-1-Storage.txt`：
 
 [listing, subs="+quotes"]
 ----
-cs2# *copy Nexus_3232C_RCF_v1.6-Cluster-HA-Breakout.txt running-config echo-commands*
+s2# *copy NX9336C-FX2-RCF-v1.13-1-Storage.txt running-config echo-commands*
 ----
 ====
 +
@@ -90,171 +88,36 @@ cs2# *copy Nexus_3232C_RCF_v1.6-Cluster-HA-Breakout.txt running-config echo-comm
 
 
 . 將先前對交換器配置所做的任何自訂設定重新套用。
-. 儲存基本配置詳細信息 `write_erase.cfg`啟動閃存上的檔案。
+. 確認 RCF 版本和交換器設定正確後，複製以下內容： `running-config`文件到 `startup-config`文件。
 +
-[NOTE]
-====
-確保設定以下內容：* 使用者名稱和密碼* 管理 IP 位址* 預設閘道* 交換器名稱
+`s2# copy running-config startup-config [########################################] 100% Copy complete`
 
-====
+. 重新啟動交換器 s2：
 +
-`cs2# show run | section "switchname" > bootflash:write_erase.cfg`
-
-+
-`cs2# show run | section "hostname" >> bootflash:write_erase.cfg`
-
-+
-`cs2# show run | i "username admin password" >> bootflash:write_erase.cfg`
-
-+
-`cs2# show run | section "vrf context management" >> bootflash:write_erase.cfg`
-
-+
-`cs2# show run | section "interface mgmt0" >> bootflash:write_erase.cfg`
-
-. 安裝 RCF 1.12 及更高版本時，請執行以下命令：
-+
-`cs2# echo "hardware access-list tcam region racl-lite 512" >> bootflash:write_erase.cfg`
-
-+
-`cs2# echo "hardware access-list tcam region qos 256" >> bootflash:write_erase.cfg`
-
-+
-請參閱知識庫文章 https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["如何在保持遠端連線的情況下清除Cisco互連交換器上的配置"^]更多詳情請見下文。
-
-. 確認 `write_erase.cfg`文件已如預期填入：
-+
-`show file bootflash:write_erase.cfg`
-
-. 問題 `write erase`清除目前已儲存配置的命令：
-+
-`cs2# *write erase*`
-
-+
-`Warning: This command will erase the startup-configuration.`
-
-+
-`Do you wish to proceed anyway? (y/n)  [n] *y*`
-
-. 將先前儲存的基本配置複製到啟動配置中。
-+
-`cs2# *copy bootflash:write_erase.cfg startup-config*`
-
-. 重啟交換器cs2：
-+
-`cs2# *reload*`
+`s2# *reload*`
 
 +
 `This command will reboot the system. (y/n)?  [n] *y*`
 
-. 在交換器 cs1 上重複步驟 1 至 12。
-. 將ONTAP叢集中所有節點的叢集連接埠連接到交換器 cs1 和 cs2。
+. 在交換器 s1 上重複步驟 1 至 8。
+. 將 ONTAP 叢集中所有節點的節點儲存連接埠和儲存架連接埠連接至交換器 s1 和 s2 。
 
 
 
 
 == 步驟 2：驗證交換器連接
 
-. 確認連接到叢集連接埠的交換器連接埠已啟用。
+. 確認交換器連接埠為 *up* 狀態。
 +
-`show interface brief | grep up`
+`show interface brief`
+
+. 使用下列命令驗證節點儲存連接埠和儲存架連接埠是否位於正確的 VLAN 中：
++
+`show vlan brief`
 
 +
-.顯示範例
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-cs1# *show interface brief | grep up*
-.
-.
-Eth1/1/1      1       eth  access up      none                    10G(D) --
-Eth1/1/2      1       eth  access up      none                    10G(D) --
-Eth1/7        1       eth  trunk  up      none                   100G(D) --
-Eth1/8        1       eth  trunk  up      none                   100G(D) --
-.
-.
-----
-====
-. 驗證 cs1 和 cs2 之間的 ISL 連線是否正常：
-+
-`show port-channel summary`
+`show interface trunk`
 
-+
-.顯示範例
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-cs1# *show port-channel summary*
-Flags:  D - Down        P - Up in port-channel (members)
-        I - Individual  H - Hot-standby (LACP only)
-        s - Suspended   r - Module-removed
-        b - BFD Session Wait
-        S - Switched    R - Routed
-        U - Up (port-channel)
-        p - Up in delay-lacp mode (member)
-        M - Not in use. Min-links not met
---------------------------------------------------------------------------------
-Group Port-       Type     Protocol  Member Ports
-      Channel
---------------------------------------------------------------------------------
-1     Po1(SU)     Eth      LACP      Eth1/31(P)   Eth1/32(P)
-cs1#
-----
-====
-. 確認叢集 LIF 已恢復到其原始連接埠：
-+
-`network interface show -role cluster`
-
-+
-.顯示範例
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-cluster1::*> *network interface show -role cluster*
-            Logical            Status     Network            Current             Current Is
-Vserver     Interface          Admin/Oper Address/Mask       Node                Port    Home
------------ ------------------ ---------- ------------------ ------------------- ------- ----
-Cluster
-            cluster1-01_clus1  up/up      169.254.3.4/23     cluster1-01         e0d     true
-            cluster1-01_clus2  up/up      169.254.3.5/23     cluster1-01         e0d     true
-            cluster1-02_clus1  up/up      169.254.3.8/23     cluster1-02         e0d     true
-            cluster1-02_clus2  up/up      169.254.3.9/23     cluster1-02         e0d     true
-            cluster1-03_clus1  up/up      169.254.1.3/23     cluster1-03         e0b     true
-            cluster1-03_clus2  up/up      169.254.1.1/23     cluster1-03         e0b     true
-            cluster1-04_clus1  up/up      169.254.1.6/23     cluster1-04         e0b     true
-            cluster1-04_clus2  up/up      169.254.1.7/23     cluster1-04         e0b     true
-8 entries were displayed.
-cluster1::*>
-----
-====
-+
-如果任何集群 LIFS 尚未返回其主端口，請手動將其恢復：
-`network interface revert -vserver <vserver_name> -lif <lif_name>`
-
-. 驗證叢集是否運作正常：
-+
-`cluster show`
-
-+
-.顯示範例
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-cluster1::*> *cluster show*
-Node                 Health  Eligibility   Epsilon
--------------------- ------- ------------- -------
-cluster1-01          true    true          false
-cluster1-02          true    true          false
-cluster1-03          true    true          true
-cluster1-04          true    true          false
-4 entries were displayed.
-cluster1::*>
-----
-====
 
 
 

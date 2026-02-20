@@ -21,7 +21,7 @@ summary: Cisco Nexus 3232C 儲存交換器的軟體設定概述
 [role="quick-margin-para"]
 Cisco NX-OS 軟體和參考組態檔 (RCF) 必須安裝在 Cisco 3232C 儲存交換器上。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三"]link:install-nx-os-software-3232c-storage.html["安裝 NX-OS 軟體"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三"]link:install-nx-os-software-3232c-storage.html["安裝或升級 NX-OS 軟體"]
 [role="quick-margin-para"]
 在 Cisco 3232C 儲存交換器上下載並安裝或升級 NX-OS 軟體。
 
@@ -29,10 +29,14 @@ Cisco NX-OS 軟體和參考組態檔 (RCF) 必須安裝在 Cisco 3232C 儲存交
 [role="quick-margin-para"]
 首次設定 Cisco 3232C 儲存交換器後，安裝 RCF。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["五"]link:configure-ssh-keys.html["驗證 SSH 配置"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["五"]link:upgrade-rcf-software-3232c-storage.html["升級 RCF"]
+[role="quick-margin-para"]
+根據需要升級您現有的 RCF 版本。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["六"]link:configure-ssh-keys.html["驗證 SSH 配置"]
 [role="quick-margin-para"]
 驗證交換器上是否啟用了 SSH 以使用乙太網路交換器健康監視器 (CSHM) 和日誌收集功能。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["六"]link:reset-switch-3232c-storage.html["將交換器重設為出廠預設值"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-7.png["七"]link:reset-switch-3232c-storage.html["將交換器重設為出廠預設值"]
 [role="quick-margin-para"]
 清除 3232C 儲存交換器設定。

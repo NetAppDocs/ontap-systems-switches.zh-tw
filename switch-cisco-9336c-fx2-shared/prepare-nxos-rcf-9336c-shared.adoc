@@ -87,11 +87,11 @@ cluster1-02/cdp
 cluster1-01/cdp
             e0a    cs1                       Eth1/1            N9K-C9336C
             e0b    cs2                       Eth1/1            N9K-C9336C
-
-4 entries were displayed.
+.
+.
 ----
 ====
-. 檢查每個叢集介面的管理或運作狀態。
+. 檢查每個叢集介面、每個節點儲存連接埠和儲存架連接埠的管理或運作狀態。
 +
 .. 顯示網路連接埠屬性：
 +
@@ -120,8 +120,8 @@ Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status
 --------- ------------ ---------------- ---- ---- ----------- ------
 e0a       Cluster      Cluster          up   9000  auto/10000 healthy
 e0b       Cluster      Cluster          up   9000  auto/10000 healthy
-
-4 entries were displayed.
+.
+.
 ----
 ====
 .. 顯示有​​關 LIF 的資訊：
@@ -146,8 +146,116 @@ Cluster
             cluster1-01_clus2  up/up      169.254.49.125/16  cluster1-01   e0b     true
             cluster1-02_clus1  up/up      169.254.47.194/16  cluster1-02   e0a     true
             cluster1-02_clus2  up/up      169.254.19.183/16  cluster1-02   e0b     true
+.
+.
+----
+====
+.. 確認所有節點儲存連接埠均已啟動且狀態正常：
++
+[source, cli]
+----
+storage port show -port-type ENET
+----
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *storage port show -port-type ENET*
 
-4 entries were displayed.
+
+                                      Speed
+Node               Port Type  Mode    (Gb/s) State    Status
+------------------ ---- ----- ------- ------ -------- -----------
+cluster1-01
+                   e5a ENET  -         100   enabled  online
+                   e3b ENET  -         100   enabled  online
+cluster1-02
+                   e5a ENET  -         100   enabled  online
+                   e3b ENET  -         100   enabled  online
+.
+.
+----
+====
+.. 驗證所有儲存架連接埠是否處於正常狀態：
++
+[source, cli]
+----
+storage shelf port show
+----
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::> *storage shelf port show*
+
+Shelf ID Module State        Internal?
+----- -- ------ ------------ ---------
+1.4
+       0 A      connected    false
+       1 A      connected    false
+       2 B      connected    false
+       3 B      connected    false
+.
+.
+----
+====
+.. 確認交換器是否處於監控狀態。
++
+[source, cli]
+----
+system switch ethernet show
+----
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *system switch ethernet show*
+Switch                      Type               Address          Model
+--------------------------- ------------------ ---------------- ---------------
+s1
+                            storage-network    10.228.143.216   N9K-C9336C-FX2
+     Serial Number: FDOXXXXXXB
+      Is Monitored: true
+            Reason: None
+  Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
+                    10.4(6)
+    Version Source: CDP/ISDP
+
+
+s2
+                            storage-network    10.228.143.219   N9K-C9336C-FX2
+     Serial Number: FDOXXXXXXC
+      Is Monitored: true
+            Reason: None
+  Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
+                    10.6(2)
+    Version Source: CDP/ISDP
+
+
+cs1
+                            cluster-network    10.228.184.39    N9K-C9336C-FX2
+     Serial Number: FLMXXXXXXXJ
+      Is Monitored: true
+            Reason: None
+  Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
+                    10.4(6)
+    Version Source: CDP/ISDP
+
+
+cs2
+                            cluster-network    10.228.184.40    N9K-C9336C-FX2
+     Serial Number: FLMXXXXXXXG
+      Is Monitored: true
+            Reason: None
+  Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
+                    10.6(2)
+    Version Source: CDP/ISDP
 ----
 ====
 
@@ -240,7 +348,6 @@ Cluster
           cluster1-01_clus2   true
           cluster1-02_clus1   true
           cluster1-02_clus2   true
-4 entries were displayed.
 ----
 ====
 

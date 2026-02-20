@@ -22,6 +22,8 @@ entries:
     url: "/switch-cisco-3232c-storage/install-switch-3232c-storage.html"
   - title: 在NetApp機櫃中安裝交換機
     url: "/switch-cisco-3232c-storage/install-cisco-nexus-3232c-storage.html"
+  - title: 檢查佈線和配置
+    url: "/switch-cisco-3232c-storage/cabling-considerations-3232c-storage.html"
 - title: 設定軟體
   pdf-filename: Configure_software_3232C_storage
   entries:
@@ -31,10 +33,12 @@ entries:
     url: "/switch-cisco-3232c-storage/setup-switch-3232c-storage.html"
   - title: 準備安裝 NX-OS 軟體和 RCF
     url: "/switch-cisco-3232c-storage/prepare-install-cisco-nexus-3232c-storage.html"
-  - title: 安裝 NX-OS 軟體
+  - title: 安裝或升級 NX-OS 軟體
     url: "/switch-cisco-3232c-storage/install-nx-os-software-3232c-storage.html"
   - title: 安裝 RCF
     url: "/switch-cisco-3232c-storage/install-rcf-software-3232c-storage.html"
+  - title: 升級您的 RCF 版本
+    url: "/switch-cisco-3232c-storage/upgrade-rcf-software-3232c-storage.html"
   - title: 驗證 SSH 配置
     url: "/switch-cisco-3232c-storage/configure-ssh-keys.html"
   - title: 將交換器重設為出廠預設值

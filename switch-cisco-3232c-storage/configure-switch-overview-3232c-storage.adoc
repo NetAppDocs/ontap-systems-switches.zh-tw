@@ -11,7 +11,7 @@ summary: Cisco Nexus 3232C 儲存交換器的安裝與設定概述
 
 
 [role="lead"]
-Cisco Nexus 3232C 交換器是 Cisco Nexus 9000 平台的一部分，可安裝在 NetApp 系統機櫃中。
+Cisco Nexus 3232C 交換器是 Cisco Nexus 3000 平台的一部分，可安裝在 NetApp 系統機櫃中。
 
 請依照下列工作流程步驟安裝並設定您的 Cisco 3232C 交換器。
 

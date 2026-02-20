@@ -36,11 +36,11 @@ summary: 'Cisco Nexus 3232C 儲存交換器可升級Cisco NX-OS 軟體和參考�
 .關於範例
 本流程中的範例使用以下開關和節點命名規則：
 
-* 這兩個儲存交換器的名稱分別為 S1 和 S2。
-* 節點分別為 node1 和 node2。
+* 這兩個儲存交換器的名稱分別為 s1 和 s2。
+* 節點分別為 cluster1-01 和 cluster1-02。
 
 
-本流程中的範例使用了兩個節點；節點 1 有兩個儲存端口，節點 2 也有兩個儲存端口。參見link:https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^]請確認您平台上的儲存連接埠是否正確。看 link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["安裝HWU中沒有的設備還需要哪些額外資訊？"^] 有關交換器安裝要求的詳細資訊。
+本流程中的範例使用兩個節點：cluster1-01（帶兩個儲存連接埠）和 cluster1-02（帶兩個儲存連接埠）。請參閱 link:https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^] 以驗證您平台上的儲存連接埠是否正確。有關交換器安裝要求的更多資訊，請參閱 link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["安裝HWU中沒有的設備還需要哪些額外資訊？"^]。
 
 
 NOTE: 流程需要同時使用ONTAP指令和Cisco Nexus 3000 系列交換器指令；除非另有說明，否則使用ONTAP指令。命令輸出可能因ONTAP版本不同而有所差異。
@@ -69,10 +69,10 @@ NOTE: AutoSupport訊息會通知技術支援此維護任務，以便在維護視
 [listing, subs="+quotes"]
 ----
 storage::*> *system switch ethernet show*
-Switch                      Type               Address          Model
---------------------------- ------------------ ---------------- ---------------
-S1
-                            storage-network    172.17.227.5     NX3232C
+Switch                  Type               Address          Model
+----------------------- ------------------ ---------------- ---------------
+s1
+                        storage-network    172.17.227.5     NX3232C
      Serial Number: FOC221206C2
       Is Monitored: true
             Reason: None
@@ -80,8 +80,8 @@ S1
                     9.3(3)
     Version Source: CDP
 
-S2
-                            storage-network    172.17.227.6     NX3232C
+s2
+                        storage-network    172.17.227.6     NX3232C
      Serial Number: FOC220443LZ
       Is Monitored: true
             Reason: None
@@ -107,16 +107,18 @@ storage::*> *storage port show -port-type ENET*
                                       Speed                       VLAN
 Node               Port Type  Mode    (Gb/s) State    Status        ID
 ------------------ ---- ----- ------- ------ -------- ----------- ----
-node1
-                   e3a  ENET  storage    100 enabled  online        30
+cluster1-01
+                   e5a  ENET  storage    100 enabled  online        30
                    e3b  ENET  storage      0 enabled  offline       30
                    e7a  ENET  storage      0 enabled  offline       30
                    e7b  ENET  storage    100 enabled  online        30
-node2
-                   e3a  ENET  storage    100 enabled  online        30
+cluster1-02
+                   e5a  ENET  storage    100 enabled  online        30
                    e3b  ENET  storage      0 enabled  offline       30
                    e7a  ENET  storage      0 enabled  offline       30
                    e7b  ENET  storage    100 enabled  online        30
+.
+.
 ----
 ====
 . 檢查儲存交換器或線纜是否有問題：
@@ -137,9 +139,9 @@ There are no entries matching your query.
 
 
 
-=== 步驟 2：將 RCF 複製到Cisco交換器 S2
+=== 步驟 2：將 RCF 複製到 Cisco 交換器 s2
 
-. 使用下列傳輸協定之一將交換器 S2 上的 RCF 複製到交換器啟動快閃記憶體：FTP、HTTP、TFTP、SFTP 或 SCP。
+. 使用下列傳輸協定之一將交換器 s2 上的 RCF 複製到交換器 bootflash：FTP、HTTP、TFTP、SFTP 或 SCP。
 +
 有關 Cisco 命令的更多資訊，請參閱 link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 系列 NX-OS 指令參考"^] 中的相應指南。
 
@@ -147,17 +149,17 @@ There are no entries matching your query.
 .顯示範例
 [%collapsible]
 ====
-以下範例展示如何使用 HTTP 將 RCF 檔案複製到交換器 S2 的啟動快閃記憶體中：
+以下範例展示如何使用 HTTP 將 RCF 複製到交換器 s2 的 bootflash：
 
 [listing, subs="+quotes"]
 ----
-S2# *copy http://172.16.10.1//cfg/Nexus_3232C_RCF_v1.6-Storage.txt bootflash: vrf management*
+s2# *copy http://172.16.10.1//cfg/Nexus_3232C_RCF_v1.6-Storage.txt bootflash: vrf management*
 % Total    % Received % Xferd  Average  Speed   Time    Time     Time                          Current
                                Dload    Upload  Total   Spent    Left                          Speed
   100        3254       100    3254     0       0       8175     0 --:--:-- --:--:-- --:--:-   8301
 Copy complete, now saving to disk (please wait)...
 Copy complete.
-S2#
+s2#
 ----
 ====
 . 將先前下載的 RCF 檔案套用到啟動快閃記憶體：
@@ -168,11 +170,11 @@ S2#
 .顯示範例
 [%collapsible]
 ====
-以下範例展示了 RCF 文件 `Nexus_3232C_RCF_v1.6-Storage.txt`正在交換器 S2 上安裝：
+以下範例說明在交換器 s2 上安裝 RCF 檔案 `Nexus_3232C_RCF_v1.6-Storage.txt`：
 
 [listing, subs="+quotes"]
 ----
-S2# *copy Nexus_3232C_RCF_v1.6-Storage.txt running-config echo-commands*
+s2# *copy Nexus_3232C_RCF_v1.6-Storage.txt running-config echo-commands*
 ----
 ====
 . 請確認 RCF 檔案是否為最新版本：
@@ -201,7 +203,7 @@ S2# *copy Nexus_3232C_RCF_v1.6-Storage.txt running-config echo-commands*
 ====
 [listing]
 ----
-S2# show banner motd
+s2# show banner motd
 
 ******************************************************************************
 * NetApp Reference Configuration File (RCF)
@@ -234,7 +236,7 @@ S2# show banner motd
 *
 *   (4) Save running-configuration again
 ******************************************************************************
-S2#
+s2#
 ----
 ====
 +
@@ -243,7 +245,7 @@ NOTE: 首次套用 RCF 時，出現 *錯誤：寫入 VSH 指令失敗* 訊息是
 
 
 
-. 確認軟體版本和交換器設定正確後，複製以下內容： `running-config`文件到 `startup-config`文件位於交換器 S2 上。
+. 確認軟體版本和交換器設定正確後，將  `running-config` 檔案複製到交換器 s2 上的  `startup-config` 檔案。
 +
 有關 Cisco 命令的更多資訊，請參閱 link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 系列 NX-OS 指令參考"^] 中的相應指南。
 
@@ -255,7 +257,7 @@ NOTE: 首次套用 RCF 時，出現 *錯誤：寫入 VSH 指令失敗* 訊息是
 
 [listing]
 ----
-S2# copy running-config startup-config
+s2# copy running-config startup-config
 [########################################] 100% Copy complete.
 ----
 ====
@@ -263,16 +265,16 @@ S2# copy running-config startup-config
 
 
 
-=== 步驟 3：將 NX-OS 映像複製到Cisco交換器 S2 並重新啟動
+=== 步驟 3：將 NX-OS 映像複製到 Cisco 交換器 s2 並重新開機
 
-. 複製 NX-OS 映像檔到 S2 交換器。
+. 將 NX-OS 映像複製到交換器 s2。
 +
 .顯示範例
 [%collapsible]
 ====
 [listing, subs="+quotes"]
 ----
-S2# *copy sftp: bootflash: vrf management*
+s2# *copy sftp: bootflash: vrf management*
 Enter source filename: */code/nxos.9.3.4.bin*
 Enter hostname for the sftp server: *172.19.2.1*
 Enter username: *user1*
@@ -288,7 +290,7 @@ sftp> exit
 Copy complete, now saving to disk (please wait)...
 Copy complete.
 
-cs2# *copy sftp: bootflash: vrf management*
+s2# *copy sftp: bootflash: vrf management*
 Enter source filename: */code/n9000-epld.9.3.4.img*
 Enter hostname for the sftp server: *172.19.2.1*
 Enter username: *user1*
@@ -315,7 +317,7 @@ Copy complete.
 ====
 [listing, subs="+quotes"]
 ----
-S2# *install all nxos bootflash:nxos.9.3.4.bin*
+s2# *install all nxos bootflash:nxos.9.3.4.bin*
 Installer will perform compatibility check first. Please wait.
 Installer is forced disruptive
 
@@ -373,7 +375,7 @@ Warning: please do not remove or power off the module at this time.
 
 
 Finishing the upgrade, switch will reboot in 10 seconds.
-S2#
+s2#
 ----
 ====
 . 儲存配置。
@@ -389,9 +391,9 @@ S2#
 ====
 [listing, subs="+quotes"]
 ----
-S2# *copy running-config startup-config*
+s2# *copy running-config startup-config*
 [########################################] 100% Copy complete.
-S2# *reload*
+s2# *reload*
 This command will reboot the system. (y/n)?  [n] *y*
 ----
 ====
@@ -402,7 +404,7 @@ This command will reboot the system. (y/n)?  [n] *y*
 ====
 [listing, subs="+quotes"]
 ----
-S2# *show version*
+s2# *show version*
 Cisco Nexus Operating System (NX-OS) Software
 TAC support: http://www.cisco.com/tac
 Copyright (C) 2002-2020, Cisco and/or its affiliates.
@@ -450,7 +452,7 @@ plugin
 
 Active Package(s):
 
-S2#
+s2#
 ----
 ====
 
@@ -472,7 +474,7 @@ S2#
 storage::*> *system switch ethernet show*
 Switch                      Type               Address          Model
 --------------------------- ------------------ ---------------- ---------------
-S1
+s1
                             storage-network    172.17.227.5     NX3232C
      Serial Number: FOC221206C2
       Is Monitored: true
@@ -481,7 +483,7 @@ S1
                     9.3(4)
     Version Source: CDP
 
-S2
+s2
                             storage-network    172.17.227.6    NX3232C
      Serial Number: FOC220443LZ
       Is Monitored: true
@@ -489,9 +491,6 @@ S2
   Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
                     9.3(4)
     Version Source: CDP
-
-2 entries were displayed.
-storage::*>
 ----
 ====
 . 重新啟動後，請確認交換器連接埠運作正常：
@@ -508,13 +507,13 @@ storage::*> *storage port show -port-type ENET*
                                       Speed                       VLAN
 Node               Port Type  Mode    (Gb/s) State    Status        ID
 ------------------ ---- ----- ------- ------ -------- ----------- ----
-node1
-                   e3a  ENET  storage    100 enabled  online        30
+cluster1-01
+                   e5a  ENET  storage    100 enabled  online        30
                    e3b  ENET  storage      0 enabled  offline       30
                    e7a  ENET  storage      0 enabled  offline       30
                    e7b  ENET  storage    100 enabled  online        30
-node2
-                   e3a  ENET  storage    100 enabled  online        30
+cluster1-02
+                   e5a  ENET  storage    100 enabled  online        30
                    e3b  ENET  storage      0 enabled  offline       30
                    e7a  ENET  storage      0 enabled  offline       30
                    e7b  ENET  storage    100 enabled  online        30
@@ -534,7 +533,7 @@ storage::*> *system health alert show -instance*
 There are no entries matching your query.
 ----
 ====
-. 重複上述步驟，升級交換器 S1 上的 NX-OS 軟體和 RCF。
+. 重複上述步驟、升級交換器 s1 上的 NX-OS 軟體和 RCF。
 . 如果您已停用自動建立案例功能，請透過呼叫AutoSupport訊息重新啟用該功能：
 +
 `system node autosupport invoke -node * -type all -message MAINT=END`

@@ -20,12 +20,12 @@ summary: 如果您還沒有所需的設定資訊和文檔，則需要在設定�
 * 適用的NX-OS版本，可從以下網址下載： https://software.cisco.com/download/home["Cisco軟體下載"^]頁。
 * 適用的許可證、網路和設定資訊以及線纜。
 * 完全的link:setup-worksheet-9336c-storage.html["佈線工作表"]。
-* 可從NetApp支援網站下載適用的NetApp叢集網路和管理網路 RCF。 http://mysupport.netapp.com/["mysupport.netapp.com"^] 。所有Cisco集群網路和管理網路交換器均採用Cisco標準出廠預設設定。這些交換器也具有目前版本的 NX-OS 軟體，但未載入 RCF。
+* 適用的 NetApp 網路和管理網路 RCF 可從 NetApp 支援網站下載 http://mysupport.netapp.com/["mysupport.netapp.com"^]。所有 Cisco 網路和管理網路交換器均採用標準 Cisco 原廠預設組態。這些交換器也有最新版本的 NX-OS 軟體，但未載入 RCF。
 * 需要提供交換器文件。看link:required-documentation-9336c-storage.html["所需文件"]了解更多。
 
 
 .步驟
-. 對叢集網路交換器進行初始設定。
+. 對網路交換器進行初始組態設定。
 +
 首次啟動交換器時，請對以下初始設定問題提供相應的答案。您網站的安全性原則定義了要啟用的回應和服務。
 
@@ -188,7 +188,7 @@ NOTE: 如果此時不儲存配置，下次重新啟動交換器時，所有變�
 
 |===
 . 在設定結束時顯示的介面中，確認您所做的配置選擇，並確保儲存配置。
-. 檢查叢集網路交換器上的軟體版本，如有必要，請從 NetApp 官網下載NetApp支援的軟體版本到交換器。 https://software.cisco.com/download/home["Cisco軟體下載"^]頁。
+. 檢查網路交換器上的版本，如有必要，請從 https://software.cisco.com/download/home["Cisco軟體下載"^]頁面下載 NetApp 支援的軟體版本到交換器。
 
 
 .下一步是什麼？

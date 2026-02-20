@@ -24,7 +24,7 @@ summary: 在設定Cisco Nexus 9336C-FX2 交換器之前，請先查看以下資�
 +
 [listing, subs="+quotes"]
 ----
-(cs2)# *write erase*
+(s2)# *write erase*
 
 Warning: This command will erase the startup-configuration.
 Do you wish to proceed anyway? (y/n) [n] *y*
@@ -36,7 +36,7 @@ Do you wish to proceed anyway? (y/n) [n] *y*
 +
 [listing, subs="+quotes"]
 ----
-(cs2)# *reload*
+(s2)# *reload*
 
 This command will reboot the system. (y/n)? [n] *y*
 ----

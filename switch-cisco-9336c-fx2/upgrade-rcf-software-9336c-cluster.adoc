@@ -35,6 +35,20 @@ CAUTION: 在安裝新的交換器軟體版本和 RCF 之前，必須清除交換
 
 == 第一步：準備升級
 
+. 如果此叢集上啟用了AutoSupport ，則透過呼叫AutoSupport訊息來抑制自動建立案例：
++
+`system node autosupport invoke -node * -type all -message MAINT=xh`
+
++
+其中 _x_ 為維護視窗的持續時間（小時）。
+
+. 將權限級別變更為高級，並在提示繼續時輸入 *y*：
++
+`set -privilege advanced`
+
++
+出現高階提示符號（*>）。
+
 . 顯示每個節點上連接到叢集交換器的叢集連接埠：
 +
 `network device-discovery show`

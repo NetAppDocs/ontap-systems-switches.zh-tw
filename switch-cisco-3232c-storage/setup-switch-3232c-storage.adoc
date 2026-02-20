@@ -16,7 +16,7 @@ summary: 如果您還沒有所需的設定資訊和文檔，則需要在設定�
 .開始之前
 * 在安裝現場存取 HTTP、FTP 或 TFTP 伺服器，以下載適用的 NX-OS 和參考設定檔 (RCF) 版本。
 * 適用的NX-OS版本，可從以下網址下載： https://software.cisco.com/download/home["Cisco軟體下載"^]頁。
-* 所需的叢集網路和管理網路交換器文件。
+* 所需的網路和管理網路交換器文件。
 +
 請參閱 link:required-documentation-3232c-storage.html["所需文件"] 以獲取更多資訊。
 
@@ -25,12 +25,11 @@ summary: 如果您還沒有所需的設定資訊和文檔，則需要在設定�
 https://netapp.com/us/documenation/index.aspx["NetApp文檔"^]
 
 * 適用的許可證、網路和設定資訊以及線纜。
-* 已完成佈線工作表。
-* 適用的NetApp叢集網路和管理網路 RCF，可從NetApp支援網站下載。 http://mysupport.netapp.com/["mysupport.netapp.com"^]對於您收到的交換器。所有Cisco集群網路和管理網路交換器均採用Cisco標準出廠預設設定。這些交換器也安裝了最新版本的 NX-OS 軟體，但沒有載入 RCF。
+* 適用的 NetApp 儲存網路和管理網路 RCF，可從 NetApp 支援網站下載 http://mysupport.netapp.com/["mysupport.netapp.com"^]，適用於您收到的交換器。所有 Cisco 儲存網路和管理網路交換器均採用標準 Cisco 出廠預設配置。這些交換器也具有最新版本的 NX-OS 軟體，但未載入 RCF。
 
 
 .步驟
-. 將叢集網路和管理網路交換器及控制器安裝到機架上。
+. 將儲存網路及管理網路交換器及控制器安裝到機架上。
 +
 [cols="1,2"]
 |===
@@ -50,9 +49,9 @@ NetApp系統機櫃中的Cisco Nexus 3232C
 請參閱交換器硬體安裝指南和NetApp安裝設定說明中提供的步驟。
 
 |===
-. 使用已完成的佈線工作表，將叢集網路和管理網路交換器連接到控制器。
-. 啟動叢集網路和管理網路交換器及控制器。
-. 對叢集網路交換器進行初始設定。
+. 使用已完成的佈線工作表，將儲存網路和管理網路交換器連接到控制器。
+. 開啟儲存網路和管理網路交換器及控制器的電源。
+. 對儲存網路交換器進行初始組態設定。
 +
 首次啟動交換器時，請對以下初始設定問題提供相應的答案。您網站的安全性原則定義了要啟用的回應和服務。
 
@@ -215,7 +214,7 @@ NOTE: 如果此時不儲存配置，下次重新啟動交換器時，所有變�
 
 |===
 . 在設定結束時顯示的介面中，確認您所做的配置選擇，並確保儲存配置。
-. 檢查叢集網路交換器上的版本，如有必要，請從 https://software.cisco.com/download/home["Cisco軟體下載"^]頁面下載 NetApp 支援的軟體版本到交換器。
+. 檢查網路交換器上的版本，如有必要，請從 https://software.cisco.com/download/home["Cisco軟體下載"^]頁面下載 NetApp 支援的軟體版本到交換器。
 
 
 .下一步是什麼？

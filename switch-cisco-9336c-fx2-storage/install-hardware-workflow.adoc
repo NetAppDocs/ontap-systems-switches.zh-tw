@@ -24,3 +24,7 @@ summary: 在設定Cisco Nexus 9336C-FX2 叢集交換器之前，請先查看設�
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三"]link:install-switch-and-passthrough-panel-9336c-storage.html["將交換器安裝在NetApp機櫃中"]
 [role="quick-margin-para"]
 根據需要在NetApp機櫃中安裝 9336C-FX2 和 9336C-FX2-T 交換器和直通面板。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["四"]link:cabling-considerations-9336c-storage.html["審查佈線和配置注意事項"]
+[role="quick-margin-para"]
+在設定 9336C-FX2 和 9336C-FX2-T 交換器之前，請先檢閱佈線和組態考量事項。

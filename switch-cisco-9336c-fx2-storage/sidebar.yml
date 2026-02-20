@@ -25,6 +25,8 @@ entries:
     url: "/switch-cisco-9336c-fx2-storage/install-9336c-storage.html"
   - title: 在NetApp機櫃中安裝交換機
     url: "/switch-cisco-9336c-fx2-storage/install-switch-and-passthrough-panel-9336c-storage.html"
+  - title: 檢查佈線和配置
+    url: "/switch-cisco-9336c-fx2-storage/cabling-considerations-9336c-storage.html"
 - title: 設定軟體
   pdf-filename: 設定軟體 9336c-fx2-存儲
   entries:

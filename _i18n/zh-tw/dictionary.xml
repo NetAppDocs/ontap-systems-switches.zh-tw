@@ -2770,8 +2770,6 @@
   <block id="03a91969e86532bb4f05bf3c37f625c8" category="list-text">如果您僅安裝 NX-OS 並保留目前的RCF 版本，則您已在 RCF 中檢查或設定了所需的啟動變量，以反映所需的啟動映像。</block>
   <block id="14fbade2b67035c34eec7534fb6c6b2c" category="paragraph">如果需要更改啟動變數以反映目前的啟動映像，則必須在重新應用 RCF 之前進行更改，以便在以後的重新啟動中實例化正確的版本。</block>
   <block id="a299e5855e22f0798ca0d44513e7d8b1" category="inline-link">Cisco®乙太網路交換機</block>
-  <block id="4fd3c39884768128b1709971be9c57ab" category="list-text">這兩個儲存交換器的名稱分別為 S1 和 S2。</block>
-  <block id="79779dc1801a58ad11dd3078fff93f81" category="list-text">節點分別為 node1 和 node2。</block>
   <block id="db366391da91f981116eae4b0abd56c4" category="admonition">流程需要同時使用ONTAP指令和Cisco Nexus 3000 系列交換器指令；除非另有說明，否則使用ONTAP指令。命令輸出可能因ONTAP版本不同而有所差異。</block>
   <block id="77bd959484f1a1073326c408194dc65e" category="section-title">步驟 1：檢查交換器和連接埠的運作狀況</block>
   <block id="e3e32349be8562dbe95d6af1fcba4bbe" category="list-text">如果啟用了AutoSupport，則透過呼叫AutoSupport訊息來阻止自動建立案例：<block ref="80cae18d0d871afff6b1bcabf727d6da" prefix=" " category="inline-code"></block></block>
@@ -2780,17 +2778,10 @@
   <block id="3d568d6f5d7b3672d27ed346c7fddac2" category="list-text">確認節點連接埠運作正常：</block>
   <block id="abd1e059b59ee3b3be9267c9c1319923" category="list-text">檢查儲存交換器或線纜是否有問題：</block>
   <block id="c3bfcfece35a023a525f70b3955fa94d" category="paragraph"><block ref="f45218c1373cff36899b29f6a1585823" prefix="" category="inline-code"></block></block>
-  <block id="a05448735c103df38c48e8b66cbfb7cd" category="section-title">步驟 2：將 RCF 複製到Cisco交換器 S2</block>
-  <block id="a192bf261fd5da8051545bcfae60c0bd" category="list-text">使用下列傳輸協定之一將交換器 S2 上的 RCF 複製到交換器啟動快閃記憶體：FTP、HTTP、TFTP、SFTP 或 SCP。</block>
-  <block id="8aa0e5d5e9711d48a4320245feb83102" category="paragraph">以下範例展示如何使用 HTTP 將 RCF 檔案複製到交換器 S2 的啟動快閃記憶體中：</block>
   <block id="dde4a3ac33ed91bb6fb8322ef5fe1a3d" category="list-text">將先前下載的 RCF 檔案套用到啟動快閃記憶體：</block>
   <block id="ae93751a93d78c7a46cb2fb14c4ee8b7" category="paragraph"><block ref="37012567363af00fe31747157af69b42" prefix="" category="inline-code"></block></block>
-  <block id="eb0f91bea031339757f2f65848ab56af" category="paragraph">以下範例展示了 RCF 文件<block ref="b62271cc82d2a1b3e26d2157f183041f" prefix=" " category="inline-code"></block>正在交換器 S2 上安裝：</block>
   <block id="9678824a283295181839404bacab6aec" category="paragraph">在橫幅輸出中<block ref="6d53824b9996e36fd31937e922967215" prefix=" " category="inline-code"></block>要執行此命令，您必須閱讀並遵循「重要提示」部分中的說明，以確保交換器的正確配置和操作。</block>
-  <block id="5691cd5298e545e7d1addfde1db9b5b8" category="list-text">確認軟體版本和交換器設定正確後，複製以下內容：<block ref="092a495b03acdb0bf155d8ff2997a8d6" prefix=" " category="inline-code"></block>文件到<block ref="35b7dd24bfd716b0553d5e558b8afe97" prefix=" " category="inline-code"></block>文件位於交換器 S2 上。</block>
   <block id="2b5da61174f57535e5ac41ebce733b08" category="paragraph">以下範例展示了<block ref="092a495b03acdb0bf155d8ff2997a8d6" prefix=" " category="inline-code"></block>文件已成功複製到<block ref="35b7dd24bfd716b0553d5e558b8afe97" prefix=" " category="inline-code"></block>文件：</block>
-  <block id="c95ced7468e70606897322014b89e5b3" category="section-title">步驟 3：將 NX-OS 映像複製到Cisco交換器 S2 並重新啟動</block>
-  <block id="04677d95852adc11088eca251913d172" category="list-text">複製 NX-OS 映像檔到 S2 交換器。</block>
   <block id="98c505a2e107ba9ff89b6f7487d2bcbf" category="list-text">安裝系統映像，以便下次交換器 S2 重新啟動時載入新版本。</block>
   <block id="33db1cd1139c8db223a5884820840411" category="paragraph">交換器將在 10 秒後重啟，並套用如下輸出所示的新鏡像：</block>
   <block id="25812ed1432cfe46632186b5957ebe26" category="list-text">儲存配置。</block>
@@ -2800,7 +2791,6 @@
   <block id="cc4668ea483152a8c3b841b60a9a3199" category="list-text">重新啟動後請再次檢查儲存交換器是否可用：</block>
   <block id="5655241624f11355f5911ce18ad8e847" category="list-text">重新啟動後，請確認交換器連接埠運作正常：</block>
   <block id="c75fb03f38414ef60d8a0ffe8c2f06d8" category="list-text">再次檢查叢集是否有儲存交換器或線纜問題：</block>
-  <block id="f543ce97fb14fdd83e102f7c07cb1098" category="list-text">重複上述步驟，升級交換器 S1 上的 NX-OS 軟體和 RCF。</block>
   <block id="bdbcf1c0d7f9cba19eb12819b953fbf1" category="inline-link">在切換作業系統升級期間遷移叢集 LIF 時，節點脫離仲裁。</block>
   <block id="e6ab3c0f7886a69b4cd4dc70d1d4afa9" category="admonition">請務必關閉所有已連接的叢集端口，以避免任何網路連線問題。請參閱知識庫文章<block ref="c9b140831402716d03d51afcd09ff177" category="inline-link-rx"></block>更多詳情請見下文。</block>
   <block id="5c9a17fb96e20e993877a6c20e3979df" category="list-text">記錄目前版本與目前版本之間的任何自訂新增內容。<block ref="092a495b03acdb0bf155d8ff2997a8d6" prefix=" " category="inline-code"></block>以及正在使用的 RCF 檔案（例如貴組織的 SNMP 配置）。</block>
@@ -3503,7 +3493,6 @@
   <block id="b978a3c040fa352cf3eb469eb092efd7" category="list-text">確認 RCF 版本和交換器設定正確後，複製以下內容：<block ref="092a495b03acdb0bf155d8ff2997a8d6" prefix=" " category="inline-code"></block>文件到<block ref="35b7dd24bfd716b0553d5e558b8afe97" prefix=" " category="inline-code"></block>文件。</block>
   <block id="92a263f83655527a8570ddfd3130dcf6" category="paragraph"><block ref="141e63272914863fc9c959b427fdacd7" prefix="" category="inline-code"></block></block>
   <block id="758d64d19fd5c7f49ed73e0b94a6f13f" category="list-text">重啟交換器cs1。</block>
-  <block id="c360869741dd5844f76506c53b837af4" category="list-text">在交換器 cs2 上重複步驟 1 至 13。</block>
   <block id="7abb8bc9df6ce2c7758d9b3973b94f9a" category="summary">請依照下列步驟安裝Cisco Nexus 9336C-FX2 交換器。</block>
   <block id="53ed59a2b084d14def6a7fb55cc8229d" category="doc">安裝 9336C-FX2 和 9336C-FX2-T 叢集交換機</block>
   <block id="34b3dac12b8f309a5cba136b3536b354" category="paragraph">請依照下列步驟設定和設定Cisco Nexus 9336C-FX2 和 9336C-FX2-T 交換器。</block>
@@ -4004,11 +3993,8 @@
   <block id="9129459f5b5477d59e1fbb13abc9bbd4" category="admonition">在安裝新的交換器軟體版本和 RCF 之前，必須清除交換器設定並執行基本設定。在清除交換器設定之前，您必須使用序列控制台連接到交換機，或保留基本設定資訊。</block>
   <block id="b77c6d3e350c043b8f790e806e7bc521" category="list-text">記錄目前運行配置和正在使用的 RCF 檔案之間的任何自訂新增內容（例如，貴組織的 SNMP 配置）。</block>
   <block id="4c4876d5d981da2e6943a052d93bb189" category="list-text">對於 NX-OS 10.2 及更高版本，請使用<block ref="9c370f72db0e0d920841657ac5268365" prefix=" " category="inline-code"></block>用於與 bootflash 中儲存的 RCF 檔案進行比較的命令。否則，請使用第三方差異比較工具。</block>
-  <block id="7a1b725f171ccc55c2b6a943c968b20f" category="list-text">將基本配置詳細資訊儲存到 bootflash 上的 write_erase.cfg 檔案中。</block>
-  <block id="255946ce0bdffe025ba4bdaa710146e6" category="list-text">驗證 write_erase.cfg 檔案是否如預期填入：</block>
   <block id="bc19795a1e2342c4b6ced06c4d40bf1f" category="paragraph"><block ref="06ea8c0ad9680ca72f21fb9acf4190a7" prefix="" category="inline-code"></block></block>
   <block id="0a306731a6993e7a08026ab2d7ca2d97" category="paragraph">您可能需要更新與 SSH 金鑰相關的 hosts 檔案項目。</block>
-  <block id="90b56b330f7736518fea2723b6853482" category="list-text">在交換器 cs2 上重複步驟 1 至 20。</block>
   <block id="3db6619adb39cede96d0fac5db0dc834" category="paragraph">升級 RCF 後，您可以 <block ref="9c3be868eca09e30ec03c7542e485ba6" category="inline-link-macro-rx"></block>。</block>
   <block id="bbcb5718db64a8649c57a997d2183a81" category="doc">Cisco Nexus 9336C-FX2 和 9336C-FX2-T 儲存交換器的元件和零件編號</block>
   <block id="666618fc10fce8f3b4f820a79b261925" category="paragraph">對於Cisco Nexus 9336C-FX2 和 9336C-FX2-T 儲存交換器的安裝和維護，請務必查看組件和零件號碼清單。</block>
@@ -4060,14 +4046,12 @@
   <block id="0aece77864e401ea696f4af5f4c2400c" category="paragraph">根據需要在NetApp機櫃中安裝 9336C-FX2 和 9336C-FX2-T 交換器和直通面板。</block>
   <block id="0da3cc28f42ccf09143f2cd285547a2a" category="doc">準備安裝或升級 NX-OS 軟體和 RCF</block>
   <block id="88225f1c375ed36ece935c872d1fb4d9" category="paragraph">準備好安裝 NX-OS 軟體和 RCF 後，您可以… <block ref="3344c060e83f2395d70c5fc1776e5497" category="inline-link-macro-rx"></block>。</block>
-  <block id="0399e2e67ad24e3896fc54df77685320" category="paragraph">請依照下列步驟在 Nexus 9336C-FX2 和 9336C-FX2-T 交換器上安裝 NX-OS 軟體。</block>
   <block id="61c7408c0e623b660a741b6b2c143251" category="paragraph">開始之前，請先完成以下步驟。<block ref="16a9a5fa8979bab3106e7aad0dfd20d9" category="inline-link-macro-rx"></block> 。</block>
   <block id="f0cf67e2ac311b9ab91b420f0644cb83" category="inline-link-macro">安裝或升級 RCF</block>
   <block id="06f8321f45bda8cdd2fe178c765742ca" category="paragraph">安裝或升級 NX-OS 軟體後，您可以…<block ref="7ffcba0482753b1f6ae93308b4e57219" category="inline-link-macro-rx"></block> 。</block>
   <block id="ea6719e8ba4a5a7aea0b4185afc5408b" category="summary">首次設定 Nexus 9336C-FX2 儲存交換器後，即可安裝 RCF。您也可以使用此程序升級您的 RCF 版本。</block>
   <block id="a4af8e244603f507e79d0e5e42756fd0" category="paragraph">首次設定 Nexus 9336C-FX2 和 9336C-FX2-T 儲存交換器後，安裝參考設定檔 (RCF)。</block>
   <block id="26552c2532e5b34c96d8cef5f736c6ff" category="paragraph">請參閱知識庫文章<block ref="862bab57a4acfb616afcae48c16f2cfe" category="inline-link-macro-rx"></block>安裝 RCF 時，請參閱相關資訊。</block>
-  <block id="f1de50ac922202c9581e806906499ae8" category="paragraph">此範例展示了 RCF<block ref="fcd688c0fb8c0256c7fc0b5ca2fd673d" prefix=" " category="inline-code"></block>正在交換器 cs1 上安裝：</block>
   <block id="a697c9a980376d3a62210b2b53d5b0b8" category="list-text">檢查橫幅輸出<block ref="6d53824b9996e36fd31937e922967215" prefix=" " category="inline-code"></block>命令。您必須閱讀並遵循這些說明，以確保交換器的正確配置和運作。</block>
   <block id="b0d1465a243b273a8f71d6084fd2c12c" category="list-text">請確認 RCF 是否為正確的最新版本：</block>
   <block id="f7b017d791fb57f4bbb1b2ce01659ed8" category="paragraph">系統管理器為叢集設定和配置提供了簡單易用的工作流程，包括分配節點管理 IP 位址、初始化叢集、建立本機層、設定協定和配置初始儲存。</block>
@@ -4076,8 +4060,6 @@
   <block id="8335bad0d130ba0c631cf01fe0fbd9c5" category="paragraph">將交換器安裝到NetApp機櫃後，您可以…<block ref="cd8ba9a916eba0640468a7d563330303" category="inline-link-macro-rx"></block> 。</block>
   <block id="0e20b420112310f5c09a775e13d5ec63" category="summary">首次設定 Nexus 9336C-FX2 交換器後，您可以安裝 RCF。您也可以使用此程序升級您的 RCF 版本。</block>
   <block id="9fbd2c2a1c6faa13eae851caa7d33ad2" category="paragraph">首次設定 Nexus 9336C-FX2 儲存交換器後，您需要安裝參考設定檔 (RCF)。當您的交換器上安裝了現有版本的 RCF 檔案時，您可以升級您的 RCF 版本。</block>
-  <block id="4be048282f782e8a846872f71f451fc2" category="paragraph">連接埠配置為：叢集+HA 40/100GbE，叢集 4x10GbE 分支，叢集+HA 4x25GbE 分支，以及每個儲存 HA 對 100GbE。</block>
-  <block id="a6f7ce910d3dd7c5a5ef8b867451277f" category="paragraph">兩種 RCF 版本，分別分配了不同的 4x10GbE 連接埠（分支）和 40/100GbE 連接埠。除了AFF A320、 AFF A250和FAS500f系統之外，所有FAS和AFF節點均受支援。</block>
   <block id="856674c3de1f4bcf2e5ea5493575c451" category="paragraph">在您查看 RCF 安裝或升級流程後，您可以<block ref="b8f42f23e92e2416c2fcc479cb623e08" category="inline-link-macro-rx"></block>或者<block ref="e1e20e7ec447be8460e088f54ae82b68" category="inline-link-macro-rx"></block>根據需要。</block>
   <block id="5b1bedb3dd2208af0449bbbfcc022136" category="paragraph">如果您已經擁有一個雙節點無交換器叢集環境，則可以使用Cisco Nexus 9336C-FX2 交換器遷移到雙節點有交換器叢集環境，從而使叢集能夠擴展到兩個節點以上。</block>
   <block id="daba0abed2f861ff72b586dd0bd226bf" category="paragraph">您可以將ONTAP叢集的舊Cisco交換器遷移到Cisco Nexus 9336C-FX2 和 9336C-FX2-T 儲存網路交換器。這是一個非破壞性的過程。</block>
@@ -4087,11 +4069,9 @@
   <block id="24785d31e32b1e803a8b6a5d4d156e04" category="list-text">您的系統可以支援Cisco Nexus 9336C-FX2 和 9336C-FX2-T 儲存交換器。</block>
   <block id="52254d9e98d791278e52f39723dbdb4a" category="list-text">您已在Cisco乙太網路交換器頁面上查閱了交換器相容性表，以了解支援的ONTAP、NX-OS 和 RCF 版本。</block>
   <block id="1a2ce2f05b3c6e18de8cabbd6c01b74d" category="list-text">您已參考Cisco網站上提供的相應軟體和升級指南。</block>
-  <block id="169e19c741cd11f6b6e85a04404e32fd" category="paragraph">CiscoNexus 3000 系列交換器：</block>
   <block id="cb2fd89bae4cacf9ac0469f8dcf9f63b" category="list-text">您已下載適用的 RCF 檔案。</block>
   <block id="339640ed23bf08a37b85256207ce1658" category="list-text">現有網路配置有以下特點：</block>
   <block id="757c68d458ffb557df906574529c7526" category="list-text">替代CiscoNexus 9336C-FX2 交換器具有以下特點：</block>
-  <block id="f4f83985a1389235ce7dba05a78dded0" category="list-text">交換器的初始配置已完成。</block>
   <block id="e97cb4c2821391e2b44b00b15712d932" category="doc">Cisco Nexus 9336C-FX2 和 9336C-FX2-T 儲存交換器的文件要求</block>
   <block id="0179cd2b4af562415dcfecf21fede120" category="paragraph">對於Cisco Nexus 9336C-FX2 和 9336C-FX2-T 交換器的安裝和維護，請務必查看特定的交換器和控制器文件以設定您的Cisco 9336-FX2 交換器和ONTAP叢集。</block>
   <block id="db75850a06b1d065268461f70235d0f6" category="paragraph">要設定Cisco Nexus 9336C-FX2 交換機，您需要以下文件：<block ref="f4fbe3bed062fba5aa150f0db2ededbd" category="inline-link-rx"></block>頁：</block>
@@ -4144,10 +4124,6 @@
   <block id="6c7072958775e2716da05784c2834f65" category="paragraph">完成佈線工作表後，您可以 <block ref="d9d3d8dae0a36eea938e144b4f81717e" category="inline-link-macro-rx"></block>。</block>
   <block id="3e1208bc4bf9384a3afbda89e7d0cb5a" category="paragraph">其中 _x_ 為維護視窗的持續時間（小時）。</block>
   <block id="22e5bcc55974e1667f105918832f4dea" category="list-text">對於 NX-OS 10.2 及更高版本，請使用<block ref="9c370f72db0e0d920841657ac5268365" prefix=" " category="inline-code"></block>用於與 bootflash 中儲存的 RCF 檔案進行比較的命令。否則，請使用第三方差異比較工具。</block>
-  <block id="545690f880b0659f4099413677e4a382" category="list-text">升級到 RCF 版本 1.12 及更高版本時，請執行以下命令：<block ref="c43d8f1df82823c11979a10dcc012390" prefix=" " category="inline-code"></block></block>
-  <block id="ebb31683cbe594d17c15073b14f55cf6" category="paragraph"><block ref="71d6cd1eac422fe68a9920549c567f16" prefix="" category="inline-code"></block></block>
-  <block id="7d7e314330aff9e7013f44b93a26b6d5" category="paragraph">此範例展示了 RCF 文件<block ref="f40a54f2bc400ed707f0cc267c8ad07a" prefix=" " category="inline-code"></block>正在交換器 cs1 上安裝：</block>
-  <block id="9594f79ec7c1b5381a4d66f8bdec8cb3" category="list-text">在交換器 cs2 上重複步驟 4 至 19。</block>
   <block id="9c6c3f61af7dff11347a9a97366c4acb" category="summary">在設定Cisco 9364d-gx2a 交換器之前，請先查看以下資訊。</block>
   <block id="b771416dbd66215d66c0fd3bf739e5a2" category="paragraph">在設定Cisco 9364D-GX2A 交換器之前，請先查看以下注意事項。</block>
   <block id="98d47bae71b2dc1d79d4c85b4018180a" category="paragraph">如果使用NVIDIA ConnectX-6 Dx (CX6-DX) NIC 連接埠（零件號碼 X50130B）將交換器連接埠連接到ONTAP控制器，則必須對交換器連接埠速度進行硬編碼。</block>
@@ -5655,7 +5631,6 @@
   <block id="78f85905b5f52a0e5726f2c1d78882b9" category="paragraph">參見<block ref="34774b6dc875898cd8aa59f7081c068c" category="inline-link-macro-rx"></block>驗證平台上的叢集連接埠是否正確。看 <block ref="93586a8f49408f483b5b0ac7e6bc3bac" category="inline-link-macro-rx"></block> 有關交換器安裝要求的詳細資訊。</block>
   <block id="93586a8f49408f483b5b0ac7e6bc3bac" category="list-text"><block ref="93586a8f49408f483b5b0ac7e6bc3bac" category="inline-link-macro-rx"></block></block>
   <block id="fff3dd334cd553c8e4ec9c505edf49b3" category="paragraph">本流程中的範例使用了四個節點：兩個節點使用四個 10 GbE 叢集互連連接埠：e0a、e0b、e0c 和 e0d。另外兩個節點使用兩條 40 GbE 群集互連光纖電纜：e4a 和 e4e。這<block ref="ed925a5605a5afba7260684d8fd47590" category="inline-link-macro-rx"></block>包含有關您平台上的叢集光纖電纜的資訊。看 <block ref="93586a8f49408f483b5b0ac7e6bc3bac" category="inline-link-macro-rx"></block> 有關交換器安裝要求的詳細資訊。</block>
-  <block id="4b5c62962abd78b2f1d7b46e2acefac2" category="paragraph">本流程中的範例使用了兩個節點；節點 1 有兩個儲存端口，節點 2 也有兩個儲存端口。參見<block ref="34774b6dc875898cd8aa59f7081c068c" category="inline-link-macro-rx"></block>請確認您平台上的儲存連接埠是否正確。看 <block ref="93586a8f49408f483b5b0ac7e6bc3bac" category="inline-link-macro-rx"></block> 有關交換器安裝要求的詳細資訊。</block>
   <block id="70cdfafbbfc658158225450a1d735b53" category="paragraph">對於Cisco Nexus 92300YC 交換器的安裝和維護，請務必查看所有交換器組件和零件號碼。查看<block ref="cd25cbe53f0a314145c84729c6ce2c78" category="inline-link-rx"></block>了解詳情。看 <block ref="93586a8f49408f483b5b0ac7e6bc3bac" category="inline-link-macro-rx"></block> 有關交換器安裝要求的詳細資訊。</block>
   <block id="e32282aeafd66288d3d17a82f0b26898" category="paragraph">參見<block ref="2e30f42bb79c7c9fe477a9d63d7f110d" category="inline-link-macro-rx"></block>針對您的平台實際支援的叢集連接埠。看 <block ref="93586a8f49408f483b5b0ac7e6bc3bac" category="inline-link-macro-rx"></block> 有關交換器安裝要求的詳細資訊。</block>
   <block id="56d0c52f84ae87247377186dcd760614" category="list-text">停用叢集所有 LIF 的自動回滾功能：</block>
@@ -5692,15 +5667,12 @@
   <block id="8768b698a7ad01028fd5f7665c522d92" category="paragraph">配置 3232C 儲存交換器。</block>
   <block id="e364784ef63e5aaf282eec6b148178ec" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block><block ref="517191c1c7c31b7ef594262b71ada027" category="inline-link-macro-rx"></block></block>
   <block id="f640735796f6ce4ddcce4b82fbf6aeea" category="paragraph">Cisco NX-OS 軟體和參考組態檔 (RCF) 必須安裝在 Cisco 3232C 儲存交換器上。</block>
-  <block id="c14e333544c9443204c51780fea9e136" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block><block ref="a285c717b6393bead903c98fcbe30022" category="inline-link-macro-rx"></block></block>
   <block id="b8f7a4c738278123d85fffd10fa2a467" category="paragraph">在 Cisco 3232C 儲存交換器上下載並安裝或升級 NX-OS 軟體。</block>
   <block id="c6d0dca6ce709ec3037c12ce665e1d73" category="paragraph-title"><block ref="beadfa85a2fdca06b91edc1131c603e6" category="inline-image-macro-rx" type="image"></block><block ref="587f86a7e8e3c4227a4ab76892548515" category="inline-link-macro-rx"></block></block>
   <block id="3b35dec56eba70b9b8df023e06028e2d" category="paragraph">首次設定 Cisco 3232C 儲存交換器後，安裝 RCF。</block>
-  <block id="90cef7f4abd12b720aa9831aa8ff1a2b" category="paragraph-title"><block ref="ef78558f80439832e0f51cc22cee8b8c" category="inline-image-macro-rx" type="image"></block><block ref="210ba28fb3230dfd3413686e3a1b1df4" category="inline-link-macro-rx"></block></block>
   <block id="18685b134f72eb49ab65bdafb8edba7d" category="paragraph">清除 3232C 儲存交換器設定。</block>
   <block id="8618d738587e805e0480e36e2e58d8ce" category="summary">Cisco Nexus 3232C 儲存交換器的安裝與設定概述</block>
   <block id="5b21fb300b66354ec1c46f9c7ac254ad" category="doc">Cisco Nexus 3232C 儲存交換器的安裝與設定工作流程</block>
-  <block id="2e750c24e9ce28a91d0f8e137313ad85" category="paragraph">Cisco Nexus 3232C 交換器是 Cisco Nexus 9000 平台的一部分，可安裝在 NetApp 系統機櫃中。</block>
   <block id="82c113a0e61023e3323c8ef76ede528a" category="paragraph">請依照下列工作流程步驟安裝並設定您的 Cisco 3232C 交換器。</block>
   <block id="e71da02584d1bd074079559fc3703346" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block><block ref="86563788f2d1652b1dc80bc02b0e35d2" category="inline-link-macro-rx"></block></block>
   <block id="6a90de77da6518f6a96c117f1459a477" category="paragraph">查看 3232C 儲存交換器的組態需求。</block>
@@ -5720,7 +5692,6 @@
   <block id="afae30e17dbe966034a9393f39dd1e47" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block><block ref="d665afab6e1afe1369a1aba08de155e9" category="inline-link-macro-rx"></block></block>
   <block id="d19d028248f4f96d11f8b50ecb04f870" category="paragraph">根據需要，將 3232C 儲存開關和直通面板安裝到 NetApp 機櫃中。</block>
   <block id="894aaaaa87234939304667b89e118803" category="summary">您可以使用此程序在 Nexus 3232C 儲存交換器上安裝 NX-OS 軟體。</block>
-  <block id="75ec6a0c21e68db4a05d186638bf06b8" category="paragraph">請確認您已具備以下條件：* 交換器設定的最新備份。* 叢集運作正常（日誌中無錯誤或類似問題）。* <block ref="f29158c7335be7b7fe0a46dd82de6ed4" category="inline-link-macro-rx"></block>。請查閱交換器相容性列表，以了解支援的 ONTAP 和 NX-OS 版本。* <block ref="ad0d19783ccfa19f931108b838e4b7e4" category="inline-link-macro-rx"></block>。請參閱 Cisco 網站上提供的相應軟體和升級指南，以取得 Cisco 交換器升級和降級步驟的完整文件。</block>
   <block id="2cef7fce55e0de5cf44abcd44c7ab260" category="paragraph">完成 <block ref="2aa57174599b1b56785fe57540877310" category="inline-link-macro-rx"></block> 中的程序，然後依照以下步驟操作。</block>
   <block id="1c27c38bac9a25572e6ba2acc4d485c8" category="paragraph">安裝 NX-OS 軟體後，您可以<block ref="f925453c7ab7d4e5b07986b4df9dd89a" category="inline-link-macro-rx"></block>。</block>
   <block id="2cccef4bbe97b25935d4cf78da1c415a" category="list-text">與交換器的主控台連線，安裝 RCF 時需要此連線。</block>
@@ -5742,7 +5713,6 @@
   <block id="54008da51e28f9ba702bd14f8c52fc24" category="doc">配置 3232C 儲存交換器</block>
   <block id="b9cb0e7c3e4aaa701fe9a8dba9bba547" category="paragraph">請參閱 <block ref="0e11ca331695ddbc443773df5dd19d70" category="inline-link-macro-rx"></block> 以獲取更多資訊。</block>
   <block id="05b22658a16371ac97cf6b7aa3db3009" category="paragraph">有關在 NetApp 機櫃中安裝 Cisco Nexus 3232C 交換器和直通面板的說明，請參閱《在 NetApp 機櫃中安裝 Cisco Nexus 3232C 交換器和直通面板》指南。</block>
-  <block id="66efd157b9c5ea0a2c7173241f89d974" category="list-text">檢查叢集網路交換器上的版本，如有必要，請從<block ref="f823faeecc1cbb37f2d732cc29c07d86" category="inline-link-rx"></block>頁面下載 NetApp 支援的軟體版本到交換器。</block>
   <block id="60ae3edf6d4c0e90e96bfdf1f7e48358" category="paragraph">配置好交換器後，您可以<block ref="d1e6509476f31fcb3085aa2d5f68bf19" category="inline-link-macro-rx"></block>。</block>
   <block id="22b2aaac085da9ad2fe6e40506e29ba1" category="summary">您可以在 AFF 或 FAS 叢集中使用 Cisco Nexus 3232C 交換器作為交換器。</block>
   <block id="5fd0d8a0d6ef3f5a537957b44606d2b5" category="list-text">您已參考 <block ref="62e0b65b4ce6c39360339b91963257d9" category="inline-link-macro-rx"></block> 頁面上提供的相應軟體和升級指南，以取得有關 Cisco 儲存升級和降級程序的完整文件。</block>
@@ -5768,4 +5738,141 @@
   <block id="1ce0015d97074c710fb18a71c0facacd" category="list-text">請查看目標 NX-OS 軟體版本的發行說明，以檢查是否有任何特定要求。</block>
   <block id="07e8467e284d5ad4e9a20246ae001803" category="list-text">請確認您已備份目前的交換器組態。</block>
   <block id="0280c61cdd286c198feabf97c27f4988" category="list-text">請確認您的叢集運作正常 （日誌中沒有錯誤或類似問題）。</block>
+  <block id="0f2a1b59f80acc80b3229da942acd92c" category="paragraph">在配置 3232C 交換器之前、請先檢閱佈線和組態需求。</block>
+  <block id="baed2af64e4cfafff76d7c1c641699e8" category="paragraph">如果您使用 NVIDIA ConnectX-6 (CX6)、ConnectX-6 Dx (CX6-DX) 或 ConnectX-7 (CX7) NIC 連接埠將交換器連接埠連接至 ONTAP 控制器，則必須對交換器連接埠速度進行硬編碼。</block>
+  <block id="a3730a1f284dd57f1f09ed7924d523b0" category="list-text">有關交換器連接埠的更多資訊，請參閱<block ref="c043e01cdc55399f824e6d1e4eb8a5b5" category="inline-link-rx"></block>。</block>
+  <block id="376cb2a56b16bac010a7ff9f53bb0228" category="list-text">如需交換器安裝需求的詳細資訊，請參閱<block ref="359142ce32d011e98a9769217d3e654d" category="inline-link-rx"></block>。</block>
+  <block id="e4028c55a6adfbfb1c697645343b22b3" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block><block ref="2c9a236e199b651a1a8a9bd662d655f1" category="inline-link-macro-rx"></block></block>
+  <block id="d5c56d6c3abbb7dd20246c17ec16d101" category="inline-link-macro">升級 RCF</block>
+  <block id="72917267c911ae36e03fb63fc42dd01d" category="paragraph-title"><block ref="99e8b2f00e172bfcff96afdce69907bc" category="inline-image-macro-rx" type="image"></block><block ref="fce065a17fb039ba33c88cb97cbe827d" category="inline-link-macro-rx"></block></block>
+  <block id="1b42cdac88a717164f0385f92d3e0296" category="paragraph">根據需要升級您現有的 RCF 版本。</block>
+  <block id="c1703aace69301824471ed12f8a7ff6e" category="paragraph-title"><block ref="ef78558f80439832e0f51cc22cee8b8c" category="inline-image-macro-rx" type="image"></block><block ref="4767a0bcf3ab94aeda87c79dd4096ef4" category="inline-link-macro-rx"></block></block>
+  <block id="9a57c19562f772aa73e6c3b979c3bd73" category="paragraph-title"><block ref="36915574c413876eaa75cbd48f69fd00" category="inline-image-macro-rx" type="image"></block><block ref="210ba28fb3230dfd3413686e3a1b1df4" category="inline-link-macro-rx"></block></block>
+  <block id="637ee628c01afe1b42ba7486967296a0" category="paragraph">Cisco Nexus 3232C 交換器是 Cisco Nexus 3000 平台的一部分，可安裝在 NetApp 系統機櫃中。</block>
+  <block id="773b54543dc17ff7e9905cbea2e1c4ed" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block><block ref="be6903c2b43267a0b7a84dc4be6035c6" category="inline-link-macro-rx"></block></block>
+  <block id="a7d90dd179b60baf210fe1fa4ba8d484" category="paragraph">查看 3232C 儲存交換器的佈線和組態注意事項。</block>
+  <block id="5c6eb76888706dd13ec584075c0080ca" category="paragraph">請確認您已具備以下條件：</block>
+  <block id="5f1c3eb3a276ec23520579d0ac7c35bf" category="section-title">安裝或升級軟體</block>
+  <block id="64016321732fe4c681449233b99ab9e5" category="list-text">如果您是第一次設定交換器，請跳至步驟 5。如果您要升級交換器，請繼續執行下一步。</block>
+  <block id="c6e761691e18704a427ed1710ecab03f" category="list-text">檢查每個節點儲存連接埠和儲存架連接埠的管理或運作狀態。</block>
+  <block id="8ae111df4b40043aad064611ab9ed81b" category="list-text">顯示節點儲存連接埠屬性：</block>
+  <block id="f89d9b84256d89e7944ea0e10acdbc1e" category="list-text">顯示儲存櫃連接埠屬性：+<block ref="e8db761632b7ff4634d761c524ad53d0" prefix=" " category="inline-code"></block></block>
+  <block id="e052376257a6ea271d623a33e2145f02" category="list-text">確認交換器已啟用交換器健全狀況監控（CSHM）功能，以便對其進行監控：</block>
+  <block id="7c0829f0d577e9297b8074da0003d1fb" category="list-text">使用 SSH 或透過序列主控台登入交換器。</block>
+  <block id="f5ea4ae040cca27e1867ae3e48f50441" category="list-text">如果您是第一次設定交換器，請跳至步驟 15。如果您要升級交換器，請繼續下一步。</block>
+  <block id="91275bbdd18c3fdb85a74d8389edfcbd" category="list-text">驗證每個節點儲存連接埠和儲存架連接埠的健全狀況狀態。</block>
+  <block id="aa993c90a7f8903cbc6924e764bccf0c" category="list-text">重複步驟 5 至 13 ，在交換器 s1 上安裝 NX-OS 軟體。</block>
+  <block id="5fa673298f15e2e1b9fba3e0b8e76f3c" category="list-text">使用 SSH 或透過序列主控台登入交換器 s2。</block>
+  <block id="c76001ed4d68a160f9fbbf23991a504a" category="list-text">使用下列傳輸協定之一將 RCF 複製到交換器 s2 的 bootflash：FTP、TFTP、SFTP 或 SCP。如需 Cisco 命令的詳細資訊，請參閱<block ref="f93981dab484b88c422e924c27565997" category="inline-link-rx"></block>中的適當指南。</block>
+  <block id="fae0b7c9287a055199b0dc5eb3a8458b" category="paragraph">此範例展示如何使用 TFTP 將 RCF 複製到交換器 s2 的 bootflash 上：</block>
+  <block id="3a8f5a4a83e53760186dc76435d3ba79" category="paragraph">此範例顯示在交換器 s2 上安裝 RCF 檔案<block ref="f40a54f2bc400ed707f0cc267c8ad07a" prefix=" " category="inline-code"></block>：</block>
+  <block id="22dacb04eee9f5938e935e7104c275e8" category="paragraph"><block ref="e73456cd6382e8bf212684a52ee4dfdb" prefix="" category="inline-code"></block></block>
+  <block id="309420dba39f38d664d2021c61dccfc0" category="list-text">重新啟動交換器 s2：</block>
+  <block id="73cfc7cf2451dfeb45a4ccaf2e73bbba" category="paragraph"><block ref="83b7cdb8633465b54a4bafb7fff34042" prefix="" category="inline-code"></block></block>
+  <block id="05d10a2123e553d4a82f23ae4e872fee" category="list-text">在交換器 s1 上重複步驟 1 至 8。</block>
+  <block id="3a5bf4829fe6f10e55d8521a47e2ba5a" category="list-text">將 ONTAP 叢集中所有節點的節點儲存連接埠和儲存架連接埠連接至交換器 s1 和 s2 。</block>
+  <block id="b4ef6149918790b270146c863885f907" category="list-text">確認交換器連接埠為 *up* 狀態。</block>
+  <block id="4928f48bdad77418841ed689562e83bd" category="list-text">使用下列命令驗證節點儲存連接埠和儲存架連接埠是否位於正確的 VLAN 中：</block>
+  <block id="7a99b48f780a085206e92303bab5eee5" category="list-text">這兩個 Cisco 交換器的名稱分別是 s1 和 s2。</block>
+  <block id="d73ee6bf7f0bc16d00e0519573744b8e" category="paragraph">請參閱 <block ref="34774b6dc875898cd8aa59f7081c068c" category="inline-link-macro-rx"></block> 以驗證平台上的正確網路連接埠。如需交換器安裝需求的詳細資訊，請參閱 <block ref="93586a8f49408f483b5b0ac7e6bc3bac" category="inline-link-macro-rx"></block>。</block>
+  <block id="e96ad336f72b89f09e9a519bbd35b2c5" category="list-text">顯示每個節點中為每個交換器設定的介面數量：</block>
+  <block id="fe6d54ed527f55412a73a2bff3780ab0" category="paragraph">此程序將第二個 Nexus 3232C 儲存交換器 s2 替換為新的 3232C 交換器 ns2。這兩個節點分別是 cluster1-01 和 cluster1-02。</block>
+  <block id="1ef4012a3b4f8ad7e6451a1261a2506b" category="section-title">步驟 1：確認待更換的交換器是 s2</block>
+  <block id="e84f9dc384d2fe77eb6104d44f7d6c77" category="list-text">檢查儲存節點連接埠的健全狀況狀態，確保與儲存交換器 s1 有連線：</block>
+  <block id="8bb7ba98c46ef5c58f46b80a1a6dafe0" category="list-text">確認儲存交換器 s1 是否可用：</block>
+  <block id="2d75540c321bded58e1b711b468cd352" category="list-text">拆除連接到儲存交換器 s2 的所有纜線。</block>
+  <block id="b25b3ba469ada3d5620d0e57fcc253b2" category="list-text">將所有纜線重新連接至替換交換器 ns2 。</block>
+  <block id="7c4810aa18f567bf44920d42ffa6f363" category="section-title">步驟 3：驗證交換器 ns2 上的所有裝置組態</block>
+  <block id="46d772191684dc9d062dd965d29610d6" category="list-text">所需的網路和管理網路交換器文件。</block>
+  <block id="f5adf0f0459ae84caf9fc0ebd704e6d6" category="list-text">適用的 NetApp 儲存網路和管理網路 RCF，可從 NetApp 支援網站下載<block ref="28649c93049a329043d206ec7fa0c6f8" category="inline-link-rx"></block>，適用於您收到的交換器。所有 Cisco 儲存網路和管理網路交換器均採用標準 Cisco 出廠預設配置。這些交換器也具有最新版本的 NX-OS 軟體，但未載入 RCF。</block>
+  <block id="d9a1b8276d9b1bb12db706362db8ab1e" category="list-text">將儲存網路及管理網路交換器及控制器安裝到機架上。</block>
+  <block id="07dee03740864e95a75a931849507c00" category="list-text">使用已完成的佈線工作表，將儲存網路和管理網路交換器連接到控制器。</block>
+  <block id="c42cfd2acdf4a413250f7465641d2287" category="list-text">開啟儲存網路和管理網路交換器及控制器的電源。</block>
+  <block id="a0b63f323aba8c4b7ce08c3c76f9e3cd" category="list-text">對儲存網路交換器進行初始組態設定。</block>
+  <block id="44fada417b1c4277d4edf0fe1408e408" category="list-text">檢查網路交換器上的版本，如有必要，請從<block ref="f823faeecc1cbb37f2d732cc29c07d86" category="inline-link-rx"></block>頁面下載 NetApp 支援的軟體版本到交換器。</block>
+  <block id="eda1fcdab9b87e9e9ccc3d501a1aee0c" category="list-text">這兩個儲存交換器的名稱分別為 s1 和 s2。</block>
+  <block id="fc795997725eb034df3021ffc7195aa6" category="list-text">節點分別為 cluster1-01 和 cluster1-02。</block>
+  <block id="9acf4bedfaa15335720937270e33e37c" category="paragraph">本流程中的範例使用兩個節點：cluster1-01（帶兩個儲存連接埠）和 cluster1-02（帶兩個儲存連接埠）。請參閱 <block ref="34774b6dc875898cd8aa59f7081c068c" category="inline-link-macro-rx"></block> 以驗證您平台上的儲存連接埠是否正確。有關交換器安裝要求的更多資訊，請參閱 <block ref="93586a8f49408f483b5b0ac7e6bc3bac" category="inline-link-macro-rx"></block>。</block>
+  <block id="dc414e2065202c4711d44ae38ca17f83" category="section-title">步驟 2：將 RCF 複製到 Cisco 交換器 s2</block>
+  <block id="28b776ee903094c42e9b3914f8a08e12" category="list-text">使用下列傳輸協定之一將交換器 s2 上的 RCF 複製到交換器 bootflash：FTP、HTTP、TFTP、SFTP 或 SCP。</block>
+  <block id="9c8dc54e3f18e88bb06404c6a92beabf" category="paragraph">以下範例展示如何使用 HTTP 將 RCF 複製到交換器 s2 的 bootflash：</block>
+  <block id="5d88822b5ebbb3be7883217a53523289" category="paragraph">以下範例說明在交換器 s2 上安裝 RCF 檔案<block ref="b62271cc82d2a1b3e26d2157f183041f" prefix=" " category="inline-code"></block>：</block>
+  <block id="a6e18f88ceb12e10a883527be5131406" category="list-text">確認軟體版本和交換器設定正確後，將 <block ref="092a495b03acdb0bf155d8ff2997a8d6" prefix=" " category="inline-code"></block> 檔案複製到交換器 s2 上的 <block ref="35b7dd24bfd716b0553d5e558b8afe97" prefix=" " category="inline-code"></block> 檔案。</block>
+  <block id="2b24c7c0c466902dfbfe9215d358b35e" category="section-title">步驟 3：將 NX-OS 映像複製到 Cisco 交換器 s2 並重新開機</block>
+  <block id="8be4e2a90f7e7703fff2f670607d684c" category="list-text">將 NX-OS 映像複製到交換器 s2。</block>
+  <block id="c3ec52c890b7782a875e91b4835c61b6" category="list-text">重複上述步驟、升級交換器 s1 上的 NX-OS 軟體和 RCF。</block>
+  <block id="9302befabfd486e0d1a41bdf9f002fcf" category="paragraph">如果需要更改啟動配置以反映目前的啟動映像，則必須在重新套用 RCF 之前進行更改，以便在以後的重新啟動中包含正確的版本。</block>
+  <block id="39dbb2304fff50016221ce5665a0ac69" category="list-text">確認所有節點儲存連接埠均已啟動且狀態正常：</block>
+  <block id="07071484c86ebbe7091b2f9902c3440b" category="list-text">確認交換器是否處於監控狀態。</block>
+  <block id="9fd0abd5557135736ed98ae69ba14239" category="section-title">步驟 2：升級 RCF</block>
+  <block id="84b85d6cadd7e51de43fffcaad0e2fb8" category="list-text">使用 SSH 或透過序列主控台登入交換器 s2。</block>
+  <block id="3c0de8fcac105f514f995ced8761ad2b" category="list-text">關閉與節點所有連接埠相連的連接埠。</block>
+  <block id="013513757b9e961bb45719d62eb7945d" category="paragraph"><block ref="15dad2d00ac5c36f3c5183f953cb2100" prefix="" category="inline-code"></block></block>
+  <block id="d31ae7a0c27ce3d82540383a0fc903b3" category="paragraph"><block ref="1e54584d11175ceb0e47af752c1c7587" prefix="" category="inline-code"></block></block>
+  <block id="8e8ea9a5a109cd02b9c2dc7bfd15b755" category="paragraph"><block ref="0dcf73db22b0edfbefb6bd20fbaae42f" prefix="" category="inline-code"></block></block>
+  <block id="ace4bcb4ebf70119a5b819670290fec7" category="paragraph"><block ref="ba6c152def3e39825eb63a022d084d2d" prefix="" category="inline-code"></block></block>
+  <block id="0f4fe1b24d630946f8019ac82bde62ff" category="paragraph"><block ref="7638365ccc4978c453a68d8afcc36956" prefix="" category="inline-code"></block></block>
+  <block id="99d9807409576fb0898ac2a7cddd307c" category="paragraph"><block ref="f90f4489b5e86780292a8711f6c5df19" prefix="" category="inline-code"></block></block>
+  <block id="c26afbc6e149f561583f808d27ca314f" category="paragraph"><block ref="69544cd65884cae8e7bf1dda2ed7e8cb" prefix="" category="inline-code"></block></block>
+  <block id="ef69ace8b501de8f0ea55df01d4624cf" category="list-text">使用下列傳輸協定之一將 RCF 複製到交換器 s2 的 bootflash：FTP、TFTP、SFTP 或 SCP。</block>
+  <block id="05252a66f885ff98d084b4d004be374d" category="inline-link">Cisco Nexus 3000 系列 NX-OS 文件</block>
+  <block id="ec79334235c0a3571f37ac16a5186b03" category="paragraph">有關 Cisco 命令的更多資訊，請參閱 <block ref="8bcc5540996ea8c38872248a16eaa971" category="inline-link-rx"></block> 中的相應指南。</block>
+  <block id="38934db91afee2a81d8de75655ab7dc4" category="inline-link">Cisco Nexus 3000 系列文件</block>
+  <block id="c73fd4086a5c2f2493a5e4acb48a689a" category="paragraph">有關 Cisco 命令的更多資訊，請參閱 <block ref="a32091a2e921af3101d992ed74f7a2ac" category="inline-link-rx"></block> 中的相應指南。</block>
+  <block id="586f0547f2a6d2830efbcbc299115cea" category="paragraph">此範例顯示在交換器 s2 上安裝 RCF 檔案<block ref="c29c56085bdbe35073e624a4f557dc44" prefix=" " category="inline-code"></block>：</block>
+  <block id="c28836c43eb45dd9768445207e11b3eb" category="inline-link">Cisco Nexus 9000 系列文件</block>
+  <block id="a5111d51b945b4a8ecc2a368efae1149" category="paragraph">有關 Cisco 命令的更多資訊，請參閱 <block ref="61d438905ad919076049617fb16870a8" category="inline-link-rx"></block> 中的相應指南。</block>
+  <block id="df7c0972a1536147d72a682b254815b1" category="paragraph"><block ref="58d6367cf5d07d7e8b8c35e964e9b11b" prefix="" category="inline-code"></block></block>
+  <block id="6d073feb2025496f1c29d59dd5c40dd1" category="list-text">重新啟動交換器 s2。在交換器重新啟動期間、您可以忽略節點上報告的「`cluster switch health monitor`」警示和「`cluster ports down`」事件。</block>
+  <block id="038c323c8232a35b7a1c256cfa28c8b3" category="list-text">確認交換器是否正在被監控：</block>
+  <block id="1a7f577167c9d4c1b94ac77887325a98" category="list-text">在交換器 s1 上重複步驟 1 至 16。</block>
+  <block id="c7c7af0984c2d883ce65769d3401fecd" category="section-title">步驟 3：驗證儲存網路</block>
+  <block id="fae77d837550e3dc9424d470b10c3826" category="paragraph">在每個儲存交換器上完成以下步驟，以驗證 RCF 升級後儲存網路是否正常運作。</block>
+  <block id="3d5cbcc6ca1d118ee36701676a8cb243" category="list-text">請確認預期的節點儲存連接埠仍處於連線狀態：</block>
+  <block id="f53ac7b19bf8e0bcfb1566b88fbbd033" category="list-text">確認預期的儲存櫃連接埠是否仍保持連線：</block>
+  <block id="ed8991cae6b93ff2c284f5e59ba6cf53" category="paragraph">在設定 9336C-FX2 和 9336C-FX2-T 交換器之前，請先檢閱佈線和組態需求。</block>
+  <block id="544cf5fa3f777d417d7d1bbba43ad7d0" category="paragraph">FAS2820 e0a 和 e0b 連接埠需要更改 FEC 配置才能與 9336C-FX2 和 9336C-FX2-T 交換器連接埠連接。對於交換器連接埠 e0a 和 e0b，<block ref="68e129acd99d4b65789a3c9e07fcbfc0" prefix=" " category="inline-code"></block> 設定已設為 <block ref="49bb002a2d60e4cc69c3dc5b31861c1e" prefix=" " category="inline-code"></block>。</block>
+  <block id="f0080d8ad801f395ca0df70e70741bf7" category="list-text">有關如何解決 TCAM 問題的詳細資訊，請參閱知識庫文章<block ref="882efca0483fcef9d53236590b1d74e9" category="inline-link-rx"></block>。</block>
+  <block id="e5683eb8afcfc64783670932954ce576" category="list-text">在交換器 cs2 上重複步驟 1 至 8 。</block>
+  <block id="571481f22c6418628840a4c563c027a5" category="list-text">檢查每個叢集連接埠、節點儲存連接埠和儲存架連接埠的管理和運作狀態。</block>
+  <block id="86763a75b4c16adc234b4dba527913e3" category="paragraph"><block ref="e8db761632b7ff4634d761c524ad53d0" prefix="" category="inline-code"></block></block>
+  <block id="9090fcce916e78c5e5527bb63d5a9613" category="list-text">驗證叢集上所有連接埠的健全狀況。</block>
+  <block id="51403f34f2f0cc050226e65241460028" category="list-text">檢查每個叢集介面、每個節點儲存連接埠和儲存架連接埠的管理或運作狀態。</block>
+  <block id="2cb2bcd768824e45f827c1d14cf6a6f5" category="list-text">有關任何後續更改的詳細資訊，請參閱 <block ref="9a0b6825ea724c59aed55080f28154e6" category="inline-link-macro-rx"></block>。</block>
+  <block id="4a4e439e7b73f4bbe6ef1a3d6cfb8342" category="list-text">在交換器 cs2 上重複步驟 1 至 21。</block>
+  <block id="c32fa9372c391cb0304984cdf58fbfe7" category="summary">如果您還沒有所需的組態資訊和文件、則需要在設定儲存和管理網路交換器之前收集這些資訊。</block>
+  <block id="76d06128df9f1b8d236bfb398918ef8c" category="list-text">適用的 NetApp 儲存網路和管理網路 RCF 檔案可從 NetApp 支援網站下載<block ref="28649c93049a329043d206ec7fa0c6f8" category="inline-link-rx"></block>。</block>
+  <block id="6915876b61b11170a0df6bfa166b9c6b" category="paragraph">所有 Cisco 儲存網路和管理網路交換器均採用標準 Cisco 出廠預設組態。這些交換器也安裝了最新版本的 NX-OS 軟體，但未載入 RCF。</block>
+  <block id="0a6ae11b17b6dbebb5d16e5542382fa7" category="list-text">將網路和管理網路交換器及控制器安裝到機架上。</block>
+  <block id="16131fd9f5998db5cbf83321d1c7846a" category="list-text">使用已完成的佈線工作表，將網路和管理網路交換器連接到控制器。</block>
+  <block id="3a3af581da5d37a3735bc60b7480ffd2" category="list-text">開啟網路和管理網路交換器與控制器的電源。</block>
+  <block id="01111e21fb1d79627555aebf9ebe209a" category="paragraph-title"><block ref="beadfa85a2fdca06b91edc1131c603e6" category="inline-image-macro-rx" type="image"></block><block ref="f2aac1726dd943b9572fda265eb8659c" category="inline-link-macro-rx"></block></block>
+  <block id="4253792f96b8976ef40b7922bcd28921" category="paragraph">在設定 9336C-FX2 和 9336C-FX2-T 交換器之前，請先檢閱佈線和組態考量事項。</block>
+  <block id="4e7a83da96739a6c51f20930a3c125eb" category="list-text">如果啟用 AutoSupport，請透過叫用 AutoSupport 訊息來隱藏自動建立案例：<block ref="d7d5bc427f3e862624cebf3c133a6ae0" prefix=" " category="inline-code"></block></block>
+  <block id="ae85202383b71ab5e4507c5580e86eba" category="list-text">顯示儲存櫃連接埠屬性：</block>
+  <block id="021ae0485e360df516753cfa37241207" category="list-text">確認交換器已啟用交換器健全狀況監控（CSHM），以便對交換器進行監控：</block>
+  <block id="5491e4fbeeaf7a87f793e4e691796c70" category="paragraph">請依照此程序在 Nexus 9336C-FX2 和 9336C-FX2-T 交換器上安裝或升級 NX-OS 軟體。</block>
+  <block id="bf5552351130a09ac846a8041a66c164" category="list-text">交換器重新開機後，請再次登入並驗證新版本的 EPLD 是否已成功載入。</block>
+  <block id="f4f349e24972b7a763158998e94be078" category="list-text">如果您是第一次設定交換器，請跳至步驟 14。如果您要升級交換器，請繼續執行下一步。</block>
+  <block id="4ccb994d1a7d7d29ff45049a945ae930" category="list-text">交換器 s1 和交換器 s2 已通電，初始交換器設定已完成（管理 IP 位址和 SSH 已設定）。</block>
+  <block id="2552f6fb5c529b065d987564c6e64417" category="list-text">ONTAP 節點儲存連接埠和儲存櫃連接埠未連接。</block>
+  <block id="3b93261c4d695e49986815d153d72f1e" category="paragraph">此範例展示在交換器 s2 上安裝 RCF<block ref="f40a54f2bc400ed707f0cc267c8ad07a" prefix=" " category="inline-code"></block> 的過程：</block>
+  <block id="6c4eff4dd7f332d950bdd70a2a27296d" category="list-text">重新啟動交換器 s2。</block>
+  <block id="03924902e909023c5a43994d0635aba4" category="list-text">在交換器 s1 上重複步驟 1 至 8。</block>
+  <block id="542d8c507d791ad9254cf938727a9574" category="list-text">將 ONTAP 叢集中所有節點的節點儲存連接埠和儲存架連接埠連接至交換器 s1 和 s2。</block>
+  <block id="3e43709f8e4975611a383027e0952b62" category="paragraph">儲存 - （儲存 RCF 1._xx_）是可用的 RCF 組態，其中所有連接埠都設定為 100GbE NVMe 儲存連線。</block>
+  <block id="fd2b8ec62bce69c9ee650dee20c39595" category="list-text">交換器的初始配置已完成。</block>
+  <block id="2b0e07bd0b2b5604df5ac1033ac00a91" category="paragraph">此程序將第二台 Nexus 9336C-FX2 儲存交換器 s2 替換為新的 9336C-FX 交換器 ns2。這兩個節點分別是 cluster1-01 和 cluster1-02。</block>
+  <block id="369e95015aca186e3d9aa5f940889171" category="list-text">確認要更換的交換器是 s2。</block>
+  <block id="a6b83e7ca084f8ff4b37e4c74014d13a" category="list-text">中斷交換器 s2 的纜線連線。</block>
+  <block id="fb307cd09acaf20e054464c5a5c7086d" category="list-text">重新連接纜線至交換器 ns2。</block>
+  <block id="0296e2cb1cdfd384b3b0f2153232f350" category="list-text">驗證交換器 ns2 上的所有裝置組態。</block>
+  <block id="947d27125c3237a386bcf9f3e3a1ce92" category="list-text">驗證儲存系統中的儲存櫃連接埠：</block>
+  <block id="8721fcb92ec0a590a0c522d75ac2cec3" category="list-text">適用的 NetApp 網路和管理網路 RCF 可從 NetApp 支援網站下載<block ref="28649c93049a329043d206ec7fa0c6f8" category="inline-link-rx"></block>。所有 Cisco 網路和管理網路交換器均採用標準 Cisco 原廠預設組態。這些交換器也有最新版本的 NX-OS 軟體，但未載入 RCF。</block>
+  <block id="1198e179d7bab6f263eef5426a533636" category="list-text">對網路交換器進行初始組態設定。</block>
+  <block id="f233dc3cac0f9fb1f6d73f5d05bbc8f6" category="list-text">使用 SSH 或透過序列主控台登入交換器 s2。</block>
+  <block id="46542707463c42329cdbd79448307a22" category="list-text">關閉連接至所有節點連接埠的連接埠。</block>
+  <block id="888d27af1c8bead4bc090f7b57fe47dc" category="paragraph"><block ref="03642bd9ef2a92e7a683427a90d69064" prefix="" category="inline-code"></block></block>
+  <block id="9c16d25919d69afd920c43d400da0ea8" category="paragraph"><block ref="e374209cc99be20be59ee159164d8226" prefix="" category="inline-code"></block></block>
+  <block id="ab72b57a9a9f0e3ccd70b04752a4b2dc" category="list-text">確認連接到節點儲存連接埠和儲存架連接埠的交換器連接埠為 *up*。</block>
 </blocks>

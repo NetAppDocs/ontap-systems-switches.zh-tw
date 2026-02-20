@@ -1,0 +1,41 @@
+---
+permalink: switch-cisco-9336c-fx2-storage/cabling-considerations-9336c-storage.html 
+sidebar: sidebar 
+keywords: 9336c-fx2 cabling setup, 9336c-fx2 switches configuration, nx-os 
+summary: 在設定Cisco 9336C-FX2 交換器之前，請先查看以下資訊。 
+---
+= 審查佈線和配置注意事項
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在設定 9336C-FX2 和 9336C-FX2-T 交換器之前，請先檢閱佈線和組態需求。
+
+
+
+== 支援NVIDIA CX6、CX6-DX 和 CX7 乙太網路端口
+
+如果您使用 NVIDIA ConnectX-6 (CX6)、ConnectX-6 Dx (CX6-DX) 或 ConnectX-7 (CX7) NIC 連接埠將交換器連接埠連接至 ONTAP 控制器，則必須對交換器連接埠速度進行硬編碼。
+
+[listing, subs="+quotes"]
+----
+(s1)(config)# interface Ethernet1/19
+*For 100GbE speed:*
+(s1)(config-if)# *speed 100000*
+*For 40GbE speed:*
+(s1)(config-if)# *speed 40000*
+(s1)(config-if)# no negotiate auto
+(s1)(config-if)# exit
+(s1)(config)# exit
+*Save the changes:*
+(s1)# *copy running-config startup-config*
+----
+
+
+== 相關資訊
+
+* 有關交換器連接埠的更多資訊，請參閱 https://hwu.netapp.com/Switch/Index["Hardware Universe"^]。
+* 如需交換器安裝需求的詳細資訊，請參閱 https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["安裝HWU中沒有的設備還需要哪些額外資訊？"^]。
+

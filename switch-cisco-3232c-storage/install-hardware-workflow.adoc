@@ -20,3 +20,7 @@ summary: 在設定 Cisco Nexus 3232C 儲存交換器之前，請先檢閱組態�
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["二"]link:install-cisco-nexus-3232c-storage.html["將交換器安裝在NetApp機櫃中"]
 [role="quick-margin-para"]
 根據需要，將 3232C 儲存開關和直通面板安裝到 NetApp 機櫃中。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三"]link:cabling-considerations-3232c-storage.html["審查佈線和配置注意事項"]
+[role="quick-margin-para"]
+查看 3232C 儲存交換器的佈線和組態注意事項。

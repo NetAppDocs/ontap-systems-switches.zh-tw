@@ -134,50 +134,6 @@ g mode:
 ----
 cs1# copy running-config startup-config [########################################] 100% Copy complete
 ----
-. 儲存基本配置詳細信息 `write_erase.cfg`啟動閃存上的檔案。
-+
-`cs1# show run | i "username admin password" > bootflash:write_erase.cfg`
-
-+
-`cs1# show run | section "vrf context management" >> bootflash:write_erase.cfg`
-
-+
-`cs1# show run | section "interface mgmt0" >> bootflash:write_erase.cfg`
-
-+
-`cs1# show run | section "switchname" >> bootflash:write_erase.cfg`
-
-. 對於 RCF 版本 1.12 及更高版本，請執行以下命令：
-+
-`cs1# echo "hardware access-list tcam region ing-racl 1024" >> bootflash:write_erase.cfg`
-
-+
-`cs1# echo "hardware access-list tcam region egr-racl 1024" >> bootflash:write_erase.cfg`
-
-+
-`cs1# echo "hardware access-list tcam region ing-l2-qos 1280" >> bootflash:write_erase.cfg`
-
-+
-請參閱知識庫文章link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["如何在保持遠端連線的情況下清除Cisco互連交換器上的配置"^]更多詳情請見下文。
-
-. 確認 `write_erase.cfg`文件已如預期填入：
-+
-`show file bootflash:write_erase.cfg`
-
-. 發出 write erase 指令以擦除目前已儲存的設定：
-+
-`cs1# *write erase*`
-
-+
-`Warning: This command will erase the startup-configuration.`
-
-+
-`Do you wish to proceed anyway? (y/n)  [n] *y*`
-
-. 將先前儲存的基本配置複製到啟動配置中。
-+
-`cs1# *copy bootflash:write_erase.cfg startup-config*`
-
 . 重啟交換器cs1。
 +
 `cs1# *reload*`
@@ -185,7 +141,7 @@ cs1# copy running-config startup-config [#######################################
 +
 `This command will reboot the system. (y/n)?  [n] *y*`
 
-. 在交換器 cs2 上重複步驟 1 至 13。
+. 在交換器 cs2 上重複步驟 1 至 8 。
 . 將ONTAP叢集中所有節點的叢集連接埠連接到交換器 cs1 和 cs2。
 
 
