@@ -58,7 +58,7 @@ Rail Kit， NVIDIA單開關短深度
 
 |===
 
-NOTE: 有關詳細信息，請參閱NVIDIA文件。 https://docs.nvidia.com/networking/display/sn2000pub/Installation["安裝您的 SN2100 道岔和導軌套件"^] 。
+NOTE: 有關 link:https://docs.nvidia.com/networking/display/sn2000pub/Installation["安裝您的 SN2100 道岔和導軌套件"^] 的詳細資訊，請參閱 NVIDIA 文件。
 
 .下一步是什麼？
 確認組件和零件編號後，您可以進行審核。 link:required-documentation-sn2100-cluster.html["所需文件"]。

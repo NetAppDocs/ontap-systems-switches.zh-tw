@@ -2,7 +2,7 @@
 permalink: switch-nvidia-sn2100/install-hardware-sn2100-cluster.html 
 sidebar: sidebar 
 keywords: switches hardware installation 
-summary: 若要安裝 SN2100 硬件，請參閱 NVIDIA 的文件。 
+summary: 若要安裝 SN2100 硬體，請參閱 NVIDIA 文件。 
 ---
 = 安裝NVIDIA SN2100 交換器的硬體
 :allow-uri-read: 
@@ -11,11 +11,13 @@ summary: 若要安裝 SN2100 硬件，請參閱 NVIDIA 的文件。
 
 
 [role="lead"]
-若要安裝 SN2100 硬件，請參閱 NVIDIA 的文件。
+安裝 NVIDIA SN2100 交換器硬體是建置可靠且可擴充的網路基礎架構以支援資料保護、複寫和管理工作流程的關鍵第一步。
+
+請依照下列步驟設定並設定您的 SN2100 交換器。如需詳細說明，請參閱 NVIDIA 的文件。
 
 .步驟
 . 複習link:configure-reqs-sn2100-cluster.html["配置要求"]。
-. 請按照以下說明操作 https://docs.nvidia.com/networking/display/sn2000pub/Installation["NVIDIA開關安裝指南"^]。
+. 按照 link:https://docs.nvidia.com/networking/display/sn2000pub/Installation["NVIDIA開關安裝指南"^] 中的說明進行操作。
 
 
 .下一步是什麼？

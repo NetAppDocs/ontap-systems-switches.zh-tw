@@ -4707,7 +4707,6 @@
   <block id="80ba4b0b3a217933f761ba1440471dee" category="paragraph">X-MTEF-KIT-E</block>
   <block id="65adcaebf2b7d6b4197e6a8aff31717f" category="paragraph">Rail Kit， NVIDIA單開關短深度</block>
   <block id="8a6e8b822a02f19c1d150c230a03bf69" category="inline-link">安裝您的 SN2100 道岔和導軌套件</block>
-  <block id="865b448eabcf17df6b422f9231393d1a" category="admonition">有關詳細信息，請參閱NVIDIA文件。<block ref="39747b316e7d3df3f73757faf591c2d2" category="inline-link-rx"></block> 。</block>
   <block id="4ecfcea68abfc6c5e768c0c05c979d4c" category="paragraph">確認組件和零件編號後，您可以進行審核。 <block ref="49a5e49bddaeabf84f2ee5cfa4f2c2f8" category="inline-link-macro-rx"></block>。</block>
   <block id="2e48063923d7005a1d5b4c086c0a902a" category="summary">NVIDIA SN2100 交換器是一款運行 Cumulus Linux 的 10/25/40/100 GbE 乙太網路交換器。  SN2100 交換器透過不同的交換器對為ONTAP 9.10.1 中的叢集和儲存應用提供服務。</block>
   <block id="4e66bc15577ca34b137ec086186da6aa" category="doc">NVIDIA SN2100 交換器的安裝與設定工作流程</block>
@@ -4842,7 +4841,6 @@
   <block id="ed3b40beeb91dc0a99c4580cb378b4b6" category="paragraph">在 Cumulus 模式下安裝 Cumulus Linux 後，您 <block ref="83ca9f457d58548616bdf5d734a73df4" category="inline-link-macro-rx"></block>。</block>
   <block id="c5e47af2eefc12b7d3685bd941d8a3d9" category="doc">安裝NVIDIA SN2100 交換器的硬體</block>
   <block id="17229d37b35d8241550712be833af4b9" category="inline-link">NVIDIA開關安裝指南</block>
-  <block id="0a24c8e3b4ea2ca8a30ceee3856e7638" category="list-text">請按照以下說明操作<block ref="f3871f65af7ce4ce4161567e6adce2a8" category="inline-link-rx"></block>。</block>
   <block id="15f4bb46c2f563d794f12c95f7363bc3" category="paragraph">硬體安裝完畢後，您可以…<block ref="b80562321e7105a297052828d3712cf7" category="inline-link-macro-rx"></block>要求。</block>
   <block id="c7a001e5237d88fee0ed6a186bf5042e" category="summary">在設定NVIDIA SN2100 叢集交換器之前，請先查看設定概述。</block>
   <block id="19613dba5f729ac14e1b40a3e61a1ab9" category="doc">NVIDIA SN2100 交換器的硬體安裝工作流程</block>
@@ -5875,4 +5873,10 @@
   <block id="888d27af1c8bead4bc090f7b57fe47dc" category="paragraph"><block ref="03642bd9ef2a92e7a683427a90d69064" prefix="" category="inline-code"></block></block>
   <block id="9c16d25919d69afd920c43d400da0ea8" category="paragraph"><block ref="e374209cc99be20be59ee159164d8226" prefix="" category="inline-code"></block></block>
   <block id="ab72b57a9a9f0e3ccd70b04752a4b2dc" category="list-text">確認連接到節點儲存連接埠和儲存架連接埠的交換器連接埠為 *up*。</block>
+  <block id="3050ed36cf7b28894b3ecbbbe2742aa2" category="list-text">升級 EPLD 映像並重新啟動交換器。如果您使用的是 NX-OS 10.5(3)F 或更高版本，則無需單獨升級 EPLD 映像，因為 EPLD 映像已包含在 NX-OS 映像中。跳過此步驟，繼續驗證叢集連接埠運作狀況。</block>
+  <block id="6ff0796068f0d678948e289319a2aa28" category="admonition">有關 <block ref="2e91dc3447d8fccbe6ba718f9aaf0270" category="inline-link-macro-rx"></block> 的詳細資訊，請參閱 NVIDIA 文件。</block>
+  <block id="8b1e9b3cc32c2a1cf644a1cfe3dab553" category="summary">若要安裝 SN2100 硬體，請參閱 NVIDIA 文件。</block>
+  <block id="c10fbc8cfb6421490d3e923dc2ea002a" category="paragraph">安裝 NVIDIA SN2100 交換器硬體是建置可靠且可擴充的網路基礎架構以支援資料保護、複寫和管理工作流程的關鍵第一步。</block>
+  <block id="1fcad359e819ec24939bbd1dc0e8cb54" category="paragraph">請依照下列步驟設定並設定您的 SN2100 交換器。如需詳細說明，請參閱 NVIDIA 的文件。</block>
+  <block id="e14e8d7df79579d38cad8a73b8f91767" category="list-text">按照 <block ref="a88c9397b5cfa4ad77a6fd0eed261f5e" category="inline-link-macro-rx"></block> 中的說明進行操作。</block>
 </blocks>
