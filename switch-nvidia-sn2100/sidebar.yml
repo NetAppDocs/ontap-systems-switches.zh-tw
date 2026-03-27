@@ -40,8 +40,8 @@ entries:
     url: "/switch-nvidia-sn2100/install-rcf-sn2100-cluster.html"
   - title: 安裝 CSHM 文件
     url: "/switch-nvidia-sn2100/setup-install-cshm-file.html"
-  - title: 將交換器重設為出廠預設值
-    url: "/switch-nvidia-sn2100/reset-switch-sn2100.html"
+- title: 將交換器重設為出廠預設值
+  url: "/switch-nvidia-sn2100/reset-switch-sn2100.html"
 - title: 遷移交換機
   pdf-filename: Migrate_switches_sn2100
   entries:

@@ -14,13 +14,13 @@ summary: 對於Cisco Nexus 9364d-gx2a 交換器的安裝和維護，請務必查
 
 
 [role="lead"]
-對於Cisco Nexus 9364D-GX2A 交換器的安裝和維護，請務必查看特定的交換器和控制器文件以設定您的Cisco 9364D-GX2A 交換器和ONTAP叢集。
+對於 Cisco Nexus 9364D-GX2A 交換器的安裝，請務必查看特定的交換器和控制器文件，以設定您的 Cisco 9364D-GX2A 交換器和 ONTAP 叢集。
 
 
 
 == 切換文檔
 
-要設定Cisco Nexus 9364D-GX2A 交換機，您需要以下文件： https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Cisco Nexus 9000 系列交換器支援"^]頁：
+要設定 Cisco Nexus 9364D-GX2A 交換機，您需要來自link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Cisco Nexus 9000 系列交換器支援"^]的以下文件。
 
 [cols="1,2"]
 |===
@@ -79,7 +79,7 @@ link:https://www.cisco.com/c/en/us/td/docs/switches/datacenter/mds9000/hw/regula
 
 == ONTAP 系統文檔
 
-若要設定ONTAP系統，您需要以下適用於您作業系統版本的文件： https://docs.netapp.com/ontap-9/index.jsp["ONTAP 9 文檔中心"^] 。
+要設定 ONTAP 系統、您需要適用於您的作業系統版本的下列文件。
 
 [cols="1,2"]
 |===
@@ -87,21 +87,21 @@ link:https://www.cisco.com/c/en/us/td/docs/switches/datacenter/mds9000/hw/regula
 
 
  a| 
-https://docs.netapp.com/us-en/ontap-afx/index.html["AFX 系統文檔"^]
+link:https://docs.netapp.com/us-en/ontap-afx/index.html["AFX 系統文檔"^]
  a| 
 介紹如何安裝NetApp硬體。
 
 
 
  a| 
-https://docs.netapp.com/us-en/ontap-family/["ONTAP 文檔"^]
+link:https://docs.netapp.com/us-en/ontap-family/["ONTAP 文檔"^]
  a| 
 提供有關ONTAP版本各個方面的詳細資訊。
 
 
 
  a| 
-https://hwu.netapp.com["Hardware Universe"^]
+link:https://hwu.netapp.com["Hardware Universe"^]
  a| 
 提供NetApp硬體配置和相容性資訊。
 

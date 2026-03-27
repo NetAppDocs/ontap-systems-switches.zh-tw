@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords:  
 summary: 了解叢集交換器、儲存交換器和共用交換器。 
 ---
-= 使用 AFX 系統、叢集、儲存和共用交換器啟動並運行
+= 快速上手 AFX 系統、叢集、儲存設備和共享交換器
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -25,25 +25,37 @@ summary: 了解叢集交換器、儲存交換器和共用交換器。
 
  a| 
 .AFX 系統交換機
+[%collapsible]
+====
 * link:https://docs.netapp.com/us-en/ontap-afx/install-setup/install-switches.html["安裝Cisco Nexus 9332D-GX2B 交換機"^]
 * link:https://docs.netapp.com/us-en/ontap-afx/install-setup/install-switches.html["安裝Cisco Nexus 9364D-GX2A 交換機"^]
 
- a| 
+
+==== a| 
 .集群交換機
-* link:../switch-bes-53248/install-hardware-bes53248.html["安裝 BES-53248 交換機"]
-* link:../switch-cisco-9336c-fx2/install-switch-9336c-cluster.html["安裝Cisco Nexus 9336C-FX2 交換機"]
-* link:../switch-nvidia-sn2100/install-hardware-sn2100-cluster.html["安裝NVIDIA SN2100 開關"]
+[%collapsible]
+====
+* link:../switch-bes-53248/install-hardware-bes53248.html["安裝 BES-53248 交換機"^]
+* link:../switch-cisco-9336c-fx2/install-switch-9336c-cluster.html["安裝Cisco Nexus 9336C-FX2 交換機"^]
+* link:../switch-nvidia-sn2100/install-hardware-sn2100-cluster.html["安裝NVIDIA SN2100 開關"^]
 
- a| 
+
+==== a| 
 .儲存交換機
-* link:../switch-cisco-9336c-fx2-storage/install-9336c-storage.html["安裝Cisco Nexus 9336C-FX2 交換機"]
-* link:../switch-nvidia-sn2100-storage/install-hardware-sn2100-storage.html["安裝NVIDIA SN2100 開關"]
+[%collapsible]
+====
+* link:../switch-cisco-9336c-fx2-storage/install-9336c-storage.html["安裝Cisco Nexus 9336C-FX2 交換機"^]
+* link:../switch-nvidia-sn2100-storage/install-hardware-sn2100-storage.html["安裝NVIDIA SN2100 開關"^]
 
- a| 
+
+==== a| 
 .共享交換機
-* link:../switch-cisco-9336c-fx2-shared/install-9336c-shared.html["安裝Cisco Nexus 9336C-FX2 交換機"]
+[%collapsible]
+====
+* link:../switch-cisco-9336c-fx2-shared/install-9336c-shared.html["安裝Cisco Nexus 9336C-FX2 交換機"^]
 
 
+====
 |===
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["二"]安裝儲物系統和置物架
 [role="quick-margin-para"]
@@ -75,25 +87,37 @@ ONTAP系統的安裝和設定說明包括將控制器連接埠連接到交換器
 
  a| 
 .AFX 系統交換機
+[%collapsible]
+====
 * link:https://docs.netapp.com/us-en/ontap-afx/install-setup/afx-cable-overview.html["為Cisco Nexus 9332D-GX2B 交換器佈線"^]
 * link:https://docs.netapp.com/us-en/ontap-afx/install-setup/afx-cable-overview.html["為Cisco Nexus 9364D-GX2A 交換器佈線"^]
 
- a| 
+
+==== a| 
 .集群交換機
-* link:../switch-bes-53248/configure-reqs-bes53248.html#configuration-requirements["為 BES-53248 交換器佈線"]
-* link:../switch-cisco-9336c-fx2/setup-worksheet-9336c-cluster.html["為Cisco Nexus 9336C-FX2 交換器佈線"]
-* link:../switch-nvidia-sn2100/cabling-considerations-sn2100-cluster.html["連接NVIDIA SN2100 交換機"]
+[%collapsible]
+====
+* link:../switch-bes-53248/configure-reqs-bes53248.html#configuration-requirements["為 BES-53248 交換器佈線"^]
+* link:../switch-cisco-9336c-fx2/setup-worksheet-9336c-cluster.html["為Cisco Nexus 9336C-FX2 交換器佈線"^]
+* link:../switch-nvidia-sn2100/cabling-considerations-sn2100-cluster.html["連接NVIDIA SN2100 交換機"^]
 
- a| 
+
+==== a| 
 .儲存交換機
-* link:../switch-cisco-9336c-fx2-storage/setup-worksheet-9336c-storage.html["為Cisco Nexus 9336C-FX2 交換器佈線"]
-* link:../switch-nvidia-sn2100-storage/cabling-considerations-sn2100-storage.html["連接NVIDIA SN2100 交換機"]
+[%collapsible]
+====
+* link:../switch-cisco-9336c-fx2-storage/setup-worksheet-9336c-storage.html["為Cisco Nexus 9336C-FX2 交換器佈線"^]
+* link:../switch-nvidia-sn2100-storage/cabling-considerations-sn2100-storage.html["連接NVIDIA SN2100 交換機"^]
 
- a| 
+
+==== a| 
 .共享交換機
-* link:../switch-cisco-9336c-fx2-shared/cable-9336c-shared.html["為Cisco Nexus 9336C-FX2 交換器佈線"]
+[%collapsible]
+====
+* link:../switch-cisco-9336c-fx2-shared/cable-9336c-shared.html["為Cisco Nexus 9336C-FX2 交換器佈線"^]
 
 
+====
 |===
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["四"]配置交換器軟體
 [role="quick-margin-para"]
@@ -105,25 +129,37 @@ ONTAP系統的安裝和設定說明包括將控制器連接埠連接到交換器
 
  a| 
 .AFX 系統交換機
-* link:../switch-cisco-9332d-gx2b/configure-software-overview-9332d-cluster.html["為Cisco Nexus 9332D-GX2B 交換器安裝軟體"]
-* link:../switch-cisco-9364d-gx2a/configure-software-overview-9364d-cluster.html["為Cisco Nexus 9364D-GX2A 交換器安裝軟體"]
+[%collapsible]
+====
+* link:../switch-cisco-9332d-gx2b/configure-software-overview-9332d-cluster.html["為Cisco Nexus 9332D-GX2B 交換器安裝軟體"^]
+* link:../switch-cisco-9364d-gx2a/configure-software-overview-9364d-cluster.html["為Cisco Nexus 9364D-GX2A 交換器安裝軟體"^]
 
- a| 
+
+==== a| 
 .集群交換機
-* link:../switch-bes-53248/configure-software-overview-bes53248.html["安裝 BES-53248 交換器的軟體"]
-* link:../switch-cisco-9336c-fx2/configure-software-overview-9336c-cluster.html["為Cisco Nexus 9336C-FX2 交換器安裝軟體"]
-* link:../switch-nvidia-sn2100/configure-software-overview-sn2100-cluster.html["安裝NVIDIA SN2100交換器的軟體"]
+[%collapsible]
+====
+* link:../switch-bes-53248/configure-software-overview-bes53248.html["安裝 BES-53248 交換器的軟體"^]
+* link:../switch-cisco-9336c-fx2/configure-software-overview-9336c-cluster.html["為Cisco Nexus 9336C-FX2 交換器安裝軟體"^]
+* link:../switch-nvidia-sn2100/configure-software-overview-sn2100-cluster.html["安裝NVIDIA SN2100交換器的軟體"^]
 
- a| 
+
+==== a| 
 .儲存交換機
-* link:../switch-cisco-9336c-fx2-storage/configure-software-overview-9336c-storage.html["為Cisco Nexus 9336C-FX2 交換器安裝軟體"]
-* link:../switch-nvidia-sn2100-storage/configure-software-sn2100-storage.html["安裝NVIDIA SN2100交換器的軟體"]
+[%collapsible]
+====
+* link:../switch-cisco-9336c-fx2-storage/configure-software-overview-9336c-storage.html["為Cisco Nexus 9336C-FX2 交換器安裝軟體"^]
+* link:../switch-nvidia-sn2100-storage/configure-software-sn2100-storage.html["安裝NVIDIA SN2100交換器的軟體"^]
 
- a| 
+
+==== a| 
 .共享交換機
-* link:../switch-cisco-9336c-fx2-shared/configure-software-overview-9336c-shared.html["為Cisco Nexus 9336C-FX2 交換器安裝軟體"]
+[%collapsible]
+====
+* link:../switch-cisco-9336c-fx2-shared/configure-software-overview-9336c-shared.html["為Cisco Nexus 9336C-FX2 交換器安裝軟體"^]
 
 
+====
 |===
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["五"]完整的系統設置
 [role="quick-margin-para"]

@@ -38,8 +38,8 @@ entries:
       url: "/switch-cisco-9364d-gx2a/upgrade-rcf-software-9364d-cluster.html"
   - title: 驗證 SSH 是否已啟用
     url: "/switch-cisco-9364d-gx2a/configure-ssh-keys.html"
-  - title: 將交換器重設為出廠預設值
-    url: "/switch-cisco-9364d-gx2a/reset-switch-9364d.html"
+- title: 將交換器重設為出廠預設值
+  url: "/switch-cisco-9364d-gx2a/reset-switch-9364d.html"
 - title: 更換 9364D-GX2A 開關
   url: "/switch-cisco-9364d-gx2a/replace-9364d-cluster.html"
   pdf-filename: Replace_switches_9364d-gx2a

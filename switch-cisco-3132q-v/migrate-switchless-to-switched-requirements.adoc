@@ -17,7 +17,7 @@ summary: 在設定Cisco Nexus 3132q-v 交換器之前，請先查看流程概述
 流程需要同時使用ONTAP指令和Cisco Nexus 3000 系列交換器指令；除非另有說明，否則使用ONTAP指令。
 
 ====
-有關詳細信息，請參閱：For more information, see:
+如需更多資訊，請參閱
 
 * link:https://mysupport.netapp.com/site/products/all/details/netapp-cluster-switches/docs-tab["NetApp CN1601 和 CN1610"^]
 * link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換機"^]

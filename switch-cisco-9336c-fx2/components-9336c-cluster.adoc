@@ -116,8 +116,8 @@ N9K-9336C 65CFM，左舷進氣氣流
 
 若要啟動Cisco Nexus 9336C-FX-T 叢集交換器上的 12 個以上端口，您必須購買Cisco Smart 授權。  Cisco Smart 授權透過Cisco Smart 帳戶進行管理。
 
-. 如有需要，請建立新的 Smart 帳戶。看 https://id.cisco.com/signin/register["建立新的智慧帳戶"^]了解詳情。
-. 請求存取現有Smart帳戶。看 https://id.cisco.com/oauth2/default/v1/authorize?response_type=code&scope=openid%20profile%20address%20offline_access%20cci_coimemberOf%20email&client_id=cae-okta-web-gslb-01&state=s2wvKDiBja__7ylXonWrq8w-FAA&redirect_uri=https%3A%2F%2Frpfa.cloudapps.cisco.com%2Fcb%2Fsso&nonce=qO6s3cZE5ZdhC8UKMEfgE6fbu3mvDJ8PTw5jYOp6z30["請求存取現有智慧帳戶"^]了解詳情。
+. 如有需要，請建立新的 Smart 帳戶。詳情請參閱 link:https://id.cisco.com/signin/register["建立新的智慧帳戶"^]。
+. 申請存取現有 Smart 帳戶。詳情請參閱 link:https://id.cisco.com/oauth2/default/v1/authorize?response_type=code&scope=openid%20profile%20address%20offline_access%20cci_coimemberOf%20email&client_id=cae-okta-web-gslb-01&state=s2wvKDiBja__7ylXonWrq8w-FAA&redirect_uri=https%3A%2F%2Frpfa.cloudapps.cisco.com%2Fcb%2Fsso&nonce=qO6s3cZE5ZdhC8UKMEfgE6fbu3mvDJ8PTw5jYOp6z30["請求存取現有智慧帳戶"^]。
 
 
 

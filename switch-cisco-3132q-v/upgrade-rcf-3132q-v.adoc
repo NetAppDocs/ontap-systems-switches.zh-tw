@@ -333,7 +333,7 @@ NOTE: 升級或套用新的 RCF 時，必須清除交換器設定並執行基本
 +
 您可能需要更新與 SSH 金鑰相關的 hosts 檔案項目。
 
-. 使用下列傳輸協定之一將 RCF 複製到交換器 cs2 的 bootflash：FTP、TFTP、SFTP 或 SCP。有關Cisco命令的更多信息，請參閱相應的指南。link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 系列 NX-OS 指令參考"^]指南。
+. 使用下列傳輸協定之一將 RCF 複製到交換器 cs2 的 bootflash：FTP、TFTP、SFTP 或 SCP。如需 Cisco 命令的詳細資訊，請參閱 link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 系列 NX-OS 指令參考"^] 中的適當指南。
 +
 .顯示範例
 [%collapsible]
@@ -350,7 +350,7 @@ Copy complete, now saving to disk (please wait)...
 ====
 . 將先前下載的 RCF 檔案套用到啟動快閃記憶體。
 +
-有關Cisco命令的更多信息，請參閱 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 系列 NX-OS 指令參考"^]指南。
+有關 Cisco 命令的更多資訊，請參閱  https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 系列 NX-OS 指令參考"^] 中的相應指南。
 
 +
 .顯示範例
@@ -383,17 +383,17 @@ cs2# *copy Nexus_3132QV_RCF_v1.6-Cluster-HA-Breakout.txt running-config echo-com
 
 +
 
-NOTE: 有關如何在 RCF 升級後使 10GbE 連接埠連線的步驟，請參閱知識庫文章link:https://kb.netapp.com/onprem%2FSwitches%2FCisco%2F10GbE_ports_on_Cisco_3132Q_cluster_switch_do_not_come_online["Cisco 3132Q 叢集交換器上的 10GbE 連接埠無法連線"^]。
+NOTE: 有關 RCF 升級後如何使 10GbE 連接埠上線的步驟、請參閱知識庫文章 link:https://kb.netapp.com/onprem%2FSwitches%2FCisco%2F10GbE_ports_on_Cisco_3132Q_cluster_switch_do_not_come_online["Cisco 3132Q 叢集交換器上的 10GbE 連接埠無法連線"^]。
 
 
 
 . 驗證 RCF 版本和開關設定正確後，複製 `running-config`文件到 `startup-config`文件。
 +
-有關Cisco命令的更多信息，請參閱相應的指南。link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 系列 NX-OS 指令參考"^]指南。
+如需 Cisco 命令的詳細資訊、請參閱 link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 系列 NX-OS 指令參考"^] 中的適當指南。顯示範例
 
-+
-.顯示範例
-[%collapsible]
+
+
+[]
 ====
 [listing]
 ----

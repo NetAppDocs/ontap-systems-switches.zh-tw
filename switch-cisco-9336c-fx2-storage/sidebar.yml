@@ -49,8 +49,8 @@ entries:
       url: "/switch-cisco-9336c-fx2-storage/upgrade-rcf-software-9336c-storage.html"
   - title: 驗證 SSH 配置
     url: "/switch-cisco-9336c-fx2-storage/configure-ssh-keys.html"
-  - title: 將交換器重設為出廠預設值
-    url: "/switch-cisco-9336c-fx2-storage/reset-switch-9336c-storage.html"
+- title: 將交換器重設為出廠預設值
+  url: "/switch-cisco-9336c-fx2-storage/reset-switch-9336c-storage.html"
 - title: 更換儲存開關
   pdf-filename: 替換交換器 9336c-fx2-存儲
   url: "/switch-cisco-9336c-fx2-storage/replace-storage-switch-9336c-storage.html"

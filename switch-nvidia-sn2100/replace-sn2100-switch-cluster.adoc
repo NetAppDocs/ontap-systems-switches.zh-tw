@@ -49,7 +49,7 @@ NOTE: 您必須從叢集 LIF 所在的節點執行遷移叢集 LIF 的命令。
 NetApp強烈建議您在使用的裝置上啟用控制台日誌記錄，並在更換交換器時執行以下操作：
 
 * 維護期間請保持AutoSupport功能啟用。
-* 在維護前後觸發維護AutoSupport，以在維護期間停用案例建立。請參考這篇知識庫文章 https://kb.netapp.com/Support_Bulletins/Customer_Bulletins/SU92["SU92：如何在計劃維護視窗期間抑制自動建立案例"^]更多詳情請見下文。
+* 在維護前後觸發維護 AutoSupport，以在維護期間停用案例建立功能。如需更多詳細資料，請參閱此知識庫文章 link:https://kb.netapp.com/Support_Bulletins/Customer_Bulletins/SU92["SU92：如何在計劃維護視窗期間抑制自動建立案例"^]。
 * 啟用所有 CLI 會話​​的會話日誌記錄。有關如何啟用會話日誌記錄的說明，請查看此知識庫文章中的「記錄會話輸出」部分。 https://kb.netapp.com/on-prem/ontap/Ontap_OS/OS-KBs/How_to_configure_PuTTY_for_optimal_connectivity_to_ONTAP_systems["如何配置 PuTTY 以獲得與ONTAP系統的最佳連接"^] 。
 
 

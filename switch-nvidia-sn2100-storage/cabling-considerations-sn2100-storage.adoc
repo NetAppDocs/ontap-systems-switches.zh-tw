@@ -50,7 +50,7 @@ swp15-16
 100GbE交換器間鏈路（ISL）端口
 
 |===
-參見 https://hwu.netapp.com/Switch/Index["Hardware Universe"^]有關交換器連接埠的詳細資訊。
+如需交換器連接埠的詳細資訊，請參閱 link:https://hwu.netapp.com/Switch/Index["Hardware Universe"^]。
 
 
 
@@ -190,7 +190,7 @@ UP     swp4      100G  9216   Trunk/L2                     Master: bridge(UP)
 
 --
 ====
-請參閱知識庫文章 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/Fabric_Interconnect_and_Management_Switches/NVIDIA_SN2100_switch_fails_to_connect_using_40_100GbE_copper_cable["SN2100交換器無法使用40/100GbE銅纜連接"^]更多詳情請見下文。
+如需更多詳細資料、請參閱知識庫文章 link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/Fabric_Interconnect_and_Management_Switches/NVIDIA_SN2100_switch_fails_to_connect_using_40_100GbE_copper_cable["SN2100交換器無法使用40/100GbE銅纜連接"^]。
 
 在 Cumulus Linux 4.4.2 中，配備 X1151A NIC、X1146A NIC 或板載 100GbE 連接埠的 SN2100 交換器不支援銅纜連接。例如：
 

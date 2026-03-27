@@ -17,7 +17,7 @@ summary: 您可以將ONTAP叢集中較舊的Cisco交換器無中斷地遷移到N
 
 == 審查要求
 
-當您用NVIDIA SN2100 儲存交換器取代一些較舊的Cisco交換器時，您必須了解某些設定資訊、連接埠連線和佈線要求。看link:configure-overview-sn2100-cluster.html["NVIDIA SN2100交換器的安裝與設定概述"]。
+當您用 NVIDIA SN2100 儲存交換器取代一些老舊的 Cisco 交換器時、必須了解某些組態資訊、連接埠連線和佈線要求。請參閱 link:configure-overview-sn2100-cluster.html["NVIDIA SN2100交換器的安裝與設定概述"]。
 
 .支援的交換機
 支援以下儲存交換器：
@@ -26,7 +26,7 @@ summary: 您可以將ONTAP叢集中較舊的Cisco交換器無中斷地遷移到N
 * CiscoNexus 3232C
 
 
-有關支援的連接埠及其配置的詳細信息，請參閱 https://hwu.netapp.com/["Hardware Universe"^]。
+有關支援的連接埠及其組態的詳細資訊、請參閱 link:https://hwu.netapp.com/["Hardware Universe"^]。
 
 .你需要什麼
 確保：

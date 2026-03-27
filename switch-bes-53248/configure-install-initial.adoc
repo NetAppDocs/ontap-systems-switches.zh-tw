@@ -31,7 +31,7 @@ summary: 您可以使用此程式執行 BES-53248 叢集交換器的初始安裝
 * 集群 LIF 名稱為 `node1_clus1`和 `node1_clus2`對於節點1，以及 `node2_clus1`和 `node2_clus2`對於節點2。
 * IP空間名稱為Cluster。
 * 這 `cluster1::>`prompt 指示叢集名稱。
-* 每個節點上的叢集連接埠都命名為 `e0a`和 `e0b`。參見 https://hwu.netapp.com/Home/Index["NetAppHardware Universe"^]針對您的平台實際支援的叢集連接埠。
+* 每個節點上的叢集連接埠分別命名為 `e0a`和 `e0b`。請參閱link:https://hwu.netapp.com/Home/Index["Hardware Universe"^]，以了解您的平台實際支援的叢集連接埠。
 * NetApp交換器支援的交換器間連結 (ISL) 為連接埠 0/55 和 0/56。
 * NetApp交換器支援的節點連接為連接埠 0/1 至 0/16，採用預設授權。
 * 範例中使用了兩個節點，但叢集中最多可以有 24 個節點。

@@ -13,4 +13,4 @@ summary: 您可以使用提供的命令…
 [role="lead"]
 設定日誌收集後，您可以啟用AutoSupport每小時收集的定期數據，並要求詳細的支援日誌。
 
-看link:config-log-collection.html["配置日誌收集"]更多詳情請見下文。
+如需更多詳細資訊，請參閱 link:config-log-collection.html["配置日誌收集"]。

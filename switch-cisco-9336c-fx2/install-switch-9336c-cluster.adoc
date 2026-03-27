@@ -35,14 +35,14 @@ summary: 請依照下列步驟安裝Cisco Nexus 9336C-FX2 交換器。
  a| 
 NetApp系統機櫃中的Cisco Nexus 9336C-FX2
  a| 
-有關在NetApp機櫃中安裝交換器的說明，請參閱《在NetApp機櫃中安裝Cisco Nexus 9336C-FX2 叢集交換器和直通面板》指南。
+有關在 NetApp 機櫃中安裝交換器的說明，請參閱《在 NetApp 機櫃中安裝 Cisco Nexus 9336C-FX2 叢集交換器和直通面板》指南。
 
 
 
  a| 
 電信機架中的設備
  a| 
-請參閱交換器硬體安裝指南和NetApp安裝設定說明中提供的步驟。
+請參考交換器硬體安裝指南和 NetApp 安裝設定說明中提供的步驟。
 
 |===
 . 使用已完成的佈線工作表，將叢集網路和管理網路交換器連接到控制器。

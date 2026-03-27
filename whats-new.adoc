@@ -11,7 +11,7 @@ summary: 了解FAS和AFF系統的新型交換器。
 
 
 [role="lead"]
-了解FAS和AFF系統的新型交換器。有關交換機的更多信息，請參閱 https://hwu.netapp.com/Switch/Index["NetAppHardware Universe"^]。
+了解 ONTAP 儲存系統的新型交換器。如需其他交換器資訊、請參閱link:https://hwu.netapp.com/Switch/Index["Hardware Universe"^]。
 
 
 

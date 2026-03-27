@@ -40,8 +40,8 @@ entries:
     url: "/switch-cisco-9336c-fx2-shared/install-nxos-rcf-9336c-shared.html"
   - title: 升級您的 RCF 版本
     url: "/switch-cisco-9336c-fx2-shared/upgrade-rcf-software-9336c-shared.html"
-  - title: 將交換器重設為出廠預設值
-    url: "/switch-cisco-9336c-fx2-shared/reset-switch-9336c-shared.html"
+- title: 將交換器重設為出廠預設值
+  url: "/switch-cisco-9336c-fx2-shared/reset-switch-9336c-shared.html"
 - title: 遷移交換機
   pdf-filename: 遷移交換器 9336c-fx2-shared
   entries:

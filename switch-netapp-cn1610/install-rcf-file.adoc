@@ -54,7 +54,7 @@ NOTE: 由於安全性問題，RCF 版本 1.2 中已明確停用對 Telnet 的支
 * 這 `cluster::*>`prompt 指示叢集名稱。
 * 每個節點上的叢集連接埠分別命名為 e1a 和 e2a。
 +
-https://hwu.netapp.com/["Hardware Universe"^]包含有關您的平台支援的實際集群連接埠的更多資訊。
+link:https://hwu.netapp.com/["Hardware Universe"^]提供有關您平台支援的實際叢集連接埠的詳細資訊。
 
 * 支援的交換器間連結 (ISL) 為連接埠 0/13 至 0/16。
 * 支援的節點連接為連接埠 0/1 至 0/12。

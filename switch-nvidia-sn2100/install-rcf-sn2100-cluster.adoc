@@ -16,7 +16,7 @@ summary: 在安裝 RCF 腳本之前，請確保交換器上具備以下條件。
 .開始之前
 在安裝或升級 RCF 腳本之前，請確保交換器上具備以下條件：
 
-* Cumulus Linux 已安裝。參見 https://hwu.netapp.com/Switch/Index["Hardware Universe"^]適用於支援的版本。
+* Cumulus Linux 已安裝。請參閱 link:https://hwu.netapp.com/Switch/Index["Hardware Universe"^] 以了解支援的版本。
 * IP 位址、子網路遮罩和預設閘道透過 DHCP 定義或手動設定。
 
 
@@ -30,7 +30,7 @@ NOTE: 除了管理員使用者之外，您還必須在 RCF 中指定專門用於
 |===
 
 
-| 簇 | 在配置為 4x10GbE 分支的連接埠上，一個連接埠配置為 4x25GbE 分支，其他連接埠配置為 40/100GbE。對於使用共享叢集/HA 連接埠的節點，支援連接埠上的共用叢集/HA 流量。請參閱知識庫文章中的平台表。 https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/What_AFF_ASA_and_FAS_platforms_use_shared_Cluster_and_HA_Ethernet_ports["哪些AFF、 ASA和FAS平台使用共用叢集和 HA 乙太網路連接埠？"^] 。所有連接埠也可以用作專用集群連接埠。 
+| 簇 | 在設定為 4x10GbE 分支的連接埠上，一個連接埠設定為 4x25GbE 分支，其他連接埠則設定為 40/100GbE。支援使用共享叢集 / HA 連接埠之節點上的共享叢集 / HA 流量。請參閱知識庫文章中的平台表格 link:https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/What_AFF_ASA_and_FAS_platforms_use_shared_Cluster_and_HA_Ethernet_ports["哪些AFF、 ASA和FAS平台使用共用叢集和 HA 乙太網路連接埠？"^]。所有連接埠也可做為專用叢集連接埠使用。 
 
 
  a| 

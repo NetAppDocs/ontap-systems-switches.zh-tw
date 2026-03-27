@@ -4,17 +4,17 @@ sidebar: sidebar
 keywords: install rcf,setup rcf,rcf file 
 summary: '設定 BES-53248 叢集交換器並套用新授權後，即可安裝參考設定檔 (RCF)。' 
 ---
-= 安裝參考設定檔（RCF）
+= 安裝參考組態檔（RCF）
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-設定 BES-53248 叢集交換器並套用新授權後，即可安裝參考設定檔 (RCF)。
+設定 BES-53248 叢集交換器並套用新授權後，即可安裝 RCF。
 
 
-CAUTION: 對於 EFOS 3.12 及更高版本，請按照以下安裝步驟進行操作：link:efos-install-rcf-license-file.html["安裝參考設定檔 (RCF) 和授權文件"] 。
+CAUTION: 對於 EFOS 3.12 及更新版本，請遵循 link:efos-install-rcf-license-file.html["安裝參考組態檔（RCF）和授權檔案"] 中的安裝步驟。
 
 
 
@@ -25,13 +25,13 @@ CAUTION: 對於 EFOS 3.12 及更高版本，請按照以下安裝步驟進行操
 
 * 交換器配置的目前備份。
 * 一個功能齊全的群集（日誌中沒有錯誤或類似問題）。
-* 當前 RCF 檔案可從以下位置取得： https://mysupport.netapp.com/site/products/all/details/broadcom-cluster-switches/downloads-tab["博通集群交換機"^]頁。
+* 目前的 RCF 檔案可從 link:https://mysupport.netapp.com/site/products/all/details/broadcom-cluster-switches/downloads-tab["博通集群交換機"^] 頁面取得。
 * RCF 中的啟動配置反映了所需的啟動映像，如果您僅安裝 EFOS 並保留目前的RCF 版本，則需要此配置。如果需要更改啟動配置以反映目前的啟動映像，則必須在重新套用 RCF 之前進行更改，以便在以後的重新啟動中實例化正確的版本。
-* 從出廠預設狀態安裝 RCF 時，需要透過控制台連接到交換器。如果您已使用知識庫文章，則此要求為可選。 https://kb.netapp.com/onprem/Switches/Broadcom/How_to_clear_configuration_on_a_Broadcom_interconnect_switch_while_retaining_remote_connectivity["如何在保持遠端連線的情況下清除博通互連交換器上的配置"^]事先清除配置。
+* 從出廠預設狀態安裝 RCF 時，需要透過控制台連接到交換器。如果您已事先使用知識庫文章link:https://kb.netapp.com/onprem/Switches/Broadcom/How_to_clear_configuration_on_a_Broadcom_interconnect_switch_while_retaining_remote_connectivity["如何在保持遠端連線的情況下清除博通互連交換器上的配置"^]清除配置，則此步驟為可選。
 
 
 .建議的文檔
-請查閱交換器相容性列表，以了解支援的ONTAP和 RCF 版本。參見 https://mysupport.netapp.com/site/info/broadcom-cluster-switch["EFOS軟體下載"^]頁。請注意，RCF 中的指令語法與 EFOS 版本中的指令語法之間可能存在指令依賴關係。
+請查閱交換器相容性列表，以了解支援的 ONTAP 和 RCF 版本。請參閱link:https://mysupport.netapp.com/site/info/broadcom-cluster-switch["EFOS軟體下載"^]。請注意，RCF 中的命令語法與 EFOS 版本中的命令語法可能存在依賴關係。
 
 
 
@@ -44,7 +44,7 @@ CAUTION: 對於 EFOS 3.12 及更高版本，請按照以下安裝步驟進行操
 * 節點名稱為cluster1-01、cluster1-02、cluster1-03和cluster1-04。
 * 群集 LIF 名稱稱為 cluster1-01_clus1、cluster1-01_clus2、cluster1-02_clus1、cluster1-02_clus2、cluster1-03_clus1、cluster1-03_clus2、cluster1-04_clus1 和 cluster1-04_clus2。
 * 這 `cluster1::*>`prompt 指示叢集名稱。
-* 本流程中的範例使用了四個節點。這些節點使用兩個 10GbE 叢集互連端口 `e0a`和 `e0b`。參見 https://hwu.netapp.com/Home/Index["Hardware Universe"^]驗證平台上的叢集連接埠是否正確。
+* 本流程範例中使用了四個節點。這些節點使用兩個 10GbE 叢集互連連接埠 `e0a`和 `e0b`。請參閱link:https://hwu.netapp.com/Home/Index["Hardware Universe"^]以確認您平台上的正確叢集連接埠。
 
 
 
@@ -56,7 +56,7 @@ NOTE: 命令輸出可能因ONTAP版本不同而有所差異。
 在此過程中不需要任何可操作的交換器間連結 (ISL)。這是設計使然，因為 RCF 版本的變更可能會暫時影響 ISL 連線。為確保叢集運作不會中斷，以下步驟會將所有叢集 LIF 遷移到運作夥伴交換機，同時在目標交換器上執行對應步驟。
 
 
-CAUTION: 在安裝新的交換器軟體版本和 RCF 之前，請先閱讀知識庫文章。 https://kb.netapp.com/onprem/Switches/Broadcom/How_to_clear_configuration_on_a_Broadcom_interconnect_switch_while_retaining_remote_connectivity["如何在保持遠端連線的情況下清除博通互連交換器上的配置"^] 。如果必須徹底清除交換器設置，則需要重新進行基本配置。您必須使用序列控制台連接到交換機，因為完全清除設定會重設管理網路的設定。
+CAUTION: 在安裝新的交換器軟體版本和 RCF 之前，請使用知識庫文章 link:https://kb.netapp.com/onprem/Switches/Broadcom/How_to_clear_configuration_on_a_Broadcom_interconnect_switch_while_retaining_remote_connectivity["如何在保持遠端連線的情況下清除博通互連交換器上的配置"^]。如果您必須完全清除交換器設定，則需要再次執行基本組態。您必須使用序列主控台連線至交換器，因為完全清除組態會重設管理網路的組態。
 
 
 
@@ -439,7 +439,7 @@ Are you sure you would like to reset the system? (y/n) *y*
 
 . 請注意以下事項：
 +
-.. 如果交換器上安裝了額外的連接埠許可證，則必須修改 RCF 以設定額外的許可證連接埠。看link:configure-licenses.html#activate-newly-licensed-ports["啟動新授權的端口"]了解詳情。
+.. 如果交換器上已安裝額外的連接埠授權，則必須修改 RCF 以設定這些額外的授權連接埠。如需詳細資訊，請參閱 link:configure-licenses.html#activate-newly-licensed-ports["啟動新授權的端口"]。
 .. 記錄先前 RCF 中所做的任何自訂設置，並將這些設定套用到新的 RCF 中。例如，設定連接埠速度或硬編碼 FEC 模式。
 
 

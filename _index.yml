@@ -1,6 +1,6 @@
 ---
 indexpage:
-  title: ONTAP硬體系統的交換器文檔
+  title: ONTAP 儲存系統的交換器文件
   summary: 使用本網站上的文件來安裝、升級和維護您的叢集、共用儲存和MetroCluster交換器。
   keywords: switches
   lead: NetApp提供叢集交換器、儲存交換器和共用交換機，可在主機儲存和兩個或多個NetApp控制器之間提供連接，讓您能夠在儲存基礎架構中無中斷地移動資料和網路介面。

@@ -11,7 +11,7 @@ summary: 對於NVIDIA SN2100 交換器的安裝和維護，請務必查看所有
 
 
 [role="lead"]
-對於NVIDIA SN2100 交換器的安裝和維護，請務必查看所有建議的文件。
+安裝 NVIDIA SN2100 交換器時，請務必查看所有建議的文件。
 
 下表列出了NVIDIA SN2100 交換器的可用文件。
 
@@ -21,23 +21,23 @@ summary: 對於NVIDIA SN2100 交換器的安裝和維護，請務必查看所有
 
 
  a| 
-link:https://docs.netapp.com/us-en/ontap-systems-switches/switch-nvidia-sn2100/install-hardware-sn2100-cluster.html["設定並設定您的NVIDIA SN2100 交換機"^]
+link:https://docs.netapp.com/us-en/ontap-systems-switches/switch-nvidia-sn2100/install-hardware-sn2100-cluster.html["設定並配置您的 NVIDIA SN2100 交換器"^]
  a| 
 介紹如何設定和設定NVIDIA SN2100 交換機，包括安裝 Cumulus Linux 和適用的 RCF。
 
 
 
  a| 
-link:https://docs.netapp.com/us-en/ontap-systems-switches/switch-nvidia-sn2100-storage/migrate-cisco-storage-switch-sn2100-storage.html["從Cisco儲存交換器遷移到NVIDIA SN2100 儲存交換器"^]
+link:https://docs.netapp.com/us-en/ontap-systems-switches/switch-nvidia-sn2100-storage/migrate-cisco-storage-switch-sn2100-storage.html["將儲存交換器從Cisco)移轉到NVIDIA) SN2100 儲存交換機"^]
  a| 
 說明如何從使用Cisco儲存交換器的環境遷移到使用NVIDIA SN2100 儲存交換器的環境。
 
 
 
  a| 
-link:https://docs.netapp.com/us-en/ontap-systems-switches/switch-nvidia-sn2100/migrate-2n-switched-sn2100-cluster.html["遷移到採用NVIDIA SN2100 叢集交換器的雙節點交換集群"^]
+link:https://docs.netapp.com/us-en/ontap-systems-switches/switch-nvidia-sn2100/migrate-2n-switched-sn2100-cluster.html["遷移至雙節點交換式叢集"^]
  a| 
-介紹如何使用NVIDIA SN2100 叢集交換器遷移到雙節點交換環境。
+介紹如何使用 NVIDIA SN2100 交換器遷移到雙節點交換環境。
 
 
 
@@ -45,5 +45,36 @@ link:https://docs.netapp.com/us-en/ontap-systems-switches/switch-nvidia-sn2100/m
 link:https://docs.netapp.com/us-en/ontap-systems-switches/switch-nvidia-sn2100-storage/replace-sn2100-switch-storage.html["更換NVIDIA SN2100 儲存交換機"^]
  a| 
 描述了更換有缺陷的NVIDIA SN2100 儲存交換器的步驟，並下載了 Cumulus Linux 和參考設定檔。
+
+|===
+
+
+== ONTAP 系統文檔
+
+要設定 ONTAP 系統、您需要適用於您的作業系統版本的下列文件。
+
+[cols="1,2"]
+|===
+| Name | 描述 
+
+
+ a| 
+控制器專用_安裝與設定說明_
+ a| 
+介紹如何安裝NetApp硬體。
+
+
+
+ a| 
+link:https://docs.netapp.com/ontap-9/index.jsp["ONTAP 9"^]
+ a| 
+提供有關ONTAP版本各個方面的詳細資訊。
+
+
+
+ a| 
+link:https://hwu.netapp.com/["Hardware Universe"^]
+ a| 
+允許您確認平台型號支援的硬件，例如儲存交換器和電纜。
 
 |===

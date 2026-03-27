@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: install rcf, cisco switches 
 summary: 您可以使用此程序升級您的 RCF 版本。 
 ---
-= 升級您的參考設定檔 (RCF)
+= 升級您的 RCF 版本
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -428,7 +428,7 @@ cs1(config)# *exit*
 ----
 +
 
-CAUTION: 確保關閉所有連接的連接埠以避免任何網路連線問題。請參閱知識庫文章 https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/Node_out_of_quorum_when_migrating_cluster_lif_during_switch_OS_upgrade["在切換作業系統升級期間遷移叢集 LIF 時，節點脫離仲裁。"^]更多詳情請見下文。
+CAUTION: 請務必關閉 *所有* 已連接的連接埠，以避免任何網路連線問題。如需更多詳細資料，請參閱知識庫文章 https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/Node_out_of_quorum_when_migrating_cluster_lif_during_switch_OS_upgrade["在切換作業系統升級期間遷移叢集 LIF 時，節點脫離仲裁。"^]。
 
 . 驗證叢集 LIF 是否已故障轉移到交換器 cs1 上託管的連接埠。這可能需要幾秒鐘。
 +
@@ -525,7 +525,7 @@ node1-04          true    true          false
 `cs1# echo "hardware access-list tcam region ing-l2-qos 1536" >> bootflash:write_erase.cfg`
 
 +
-請參閱知識庫文章link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["如何在保持遠端連線的情況下清除Cisco互連交換器上的配置"^]更多詳情請見下文。
+如需更多詳細資料，請參閱知識庫文章 link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["如何在保持遠端連線的情況下清除Cisco互連交換器上的配置"^]。
 
 . 確認 `write_erase.cfg`文件已如預期填入：
 +
@@ -558,7 +558,7 @@ node1-04          true    true          false
 
 . 使用下列傳輸協定之一將 RCF 複製到交換器 cs1 的 bootflash：FTP、TFTP、SFTP 或 SCP。
 +
-有關Cisco命令的更多信息，請參閱 https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000 系列 NX-OS 指令參考"^]指南。
+有關 Cisco 命令的更多資訊，請參閱 https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000 系列 NX-OS 指令參考"^]指南中的相關指南。
 
 +
 .顯示範例
@@ -578,7 +578,7 @@ Copy complete, now saving to disk (please wait)...
 ====
 . 將先前下載的 RCF 檔案套用到啟動快閃記憶體。
 +
-有關Cisco命令的更多信息，請參閱 https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000 系列 NX-OS 指令參考"^]指南。
+有關 Cisco 命令的更多資訊，請參閱 https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000 系列 NX-OS 指令參考"^]指南中的相關指南。
 
 +
 此範例展示了 RCF 文件 `NX9332D-GX2B-RCF-v10.0-Shared.txt`正在交換器 cs1 上安裝：
@@ -613,7 +613,7 @@ cs1# *copy NX9332D-GX2B-RCF-v10.0-Shared.txt running-config echo-commands*
 . 將先前對交換器配置所做的任何自訂設定重新套用。
 . 確認 RCF 版本、自訂新增項目和交換器設定正確後，複製以下內容： `running-config`文件到 `startup-config`文件。
 +
-有關Cisco命令的更多信息，請參閱 https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000 系列 NX-OS 指令參考"^]指南。
+有關 Cisco 命令的更多資訊，請參閱 https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000 系列 NX-OS 指令參考"^]指南中的相關指南。
 
 +
 `cs1# *copy running-config startup-config*`

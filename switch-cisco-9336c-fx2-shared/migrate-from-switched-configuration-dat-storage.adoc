@@ -23,7 +23,7 @@ summary:
 * Nexus 3232C
 
 
-此過程中支援的ONTAP和 NX-OS 版本請參閱Cisco乙太網路交換器頁面。看 https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換機"]。
+本流程支援的 ONTAP 和 NX-OS 版本位於 Cisco 乙太網路交換器頁面。請參閱 https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換機"^]。
 
 .連接埠
 交換器使用以下連接埠連接到節點：
@@ -48,7 +48,7 @@ summary:
 
 
 
-這 https://hwu.netapp.com["Hardware Universe"]包含所有群集交換器支援的佈線資訊。
+link:https://hwu.netapp.com["Hardware Universe"^] 包含所有叢集交換器支援的纜線資訊。
 
 .你需要什麼
 * 請確保您已完成以下任務：

@@ -25,13 +25,13 @@ summary: 從ONTAP 9.9.1 開始，您可以使用Cisco Nexus 9364d-gx2a 交換器
 * 管理網路流量的 IP 子網
 * 每個儲存系統控制器和所有適用交換器的主機名稱和 IP 位址
 * 大多數儲存系統控制器透過連接到乙太網路服務連接埠（扳手圖示）透過 e0M 介面進行管理。
-* 請參閱 https://hwu.netapp.com["Hardware Universe"^]獲取最新資訊。
+* 請參閱 link:https://hwu.netapp.com["Hardware Universe"^] 以取得最新資訊。
 
 
 
 
 == 佈線要求
 
-* 您擁有適合您的交換器的數量和類型的電纜和電纜連接器。參見 https://hwu.netapp.com["Hardware Universe"^]。
+* 您的交換器配備了適當數量和類型的纜線及纜線連接器。請參閱 link:https://hwu.netapp.com["Hardware Universe"^]。
 * 根據您最初設定的交換器類型，您需要使用隨附的控制台連接線連接到交換器控制台連接埠。
 

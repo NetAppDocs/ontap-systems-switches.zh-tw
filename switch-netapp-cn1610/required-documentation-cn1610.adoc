@@ -11,7 +11,7 @@ summary: 對於NetApp CN1610 交換器的安裝和維護，請務必查看所有
 
 
 [role="lead"]
-對於NetApp CN1610 交換器的安裝和維護，請務必查看所有建議的文件。
+安裝 NetApp CN1610 交換器時、請務必查看所有建議的文件。
 
 [cols="1,2"]
 |===
@@ -19,21 +19,21 @@ summary: 對於NetApp CN1610 交換器的安裝和維護，請務必查看所有
 
 
  a| 
-https://library.netapp.com/ecm/ecm_download_file/ECMP1117853["1G 安裝指南"^]
+link:https://library.netapp.com/ecm/ecm_download_file/ECMP1117853["1G 安裝指南"^]
  a| 
 CN1601交換器硬體及軟體特性及安裝過程概述。
 
 
 
  a| 
-https://library.netapp.com/ecm/ecm_download_file/ECMP1117824["10G 安裝指南"^]
+link:https://library.netapp.com/ecm/ecm_download_file/ECMP1117824["10G 安裝指南"^]
  a| 
 概述 CN1610 交換器的硬體和軟體特性，並介紹安裝交換器和存取 CLI 的功能。
 
 
 
  a| 
-https://library.netapp.com/ecm/ecm_download_file/ECMP1118645["CN1601 和 CN1610 交換器設定和設定指南"^]
+link:https://library.netapp.com/ecm/ecm_download_file/ECMP1118645["CN1601 和 CN1610 交換器設定和設定指南"^]
  a| 
 詳細介紹如何為您的叢集環境配置交換器硬體和軟體。
 
@@ -44,9 +44,9 @@ CN1601 交換器管理員指南
  a| 
 提供在典型網路中使用 CN1601 交換器的範例。
 
-* https://library.netapp.com/ecm/ecm_download_file/ECMP1117844["管理員指南"^]
-* https://library.netapp.com/ecm/ecm_download_file/ECMLP2811865["管理員指南，版本 1.1.xx"^]
-* https://library.netapp.com/ecm/ecm_download_file/ECMP1117874["管理員指南，版本 1.2.xx"^]
+* link:https://library.netapp.com/ecm/ecm_download_file/ECMP1117844["管理員指南"^]
+* link:https://library.netapp.com/ecm/ecm_download_file/ECMLP2811865["管理員指南，版本 1.1.xx"^]
+* link:https://library.netapp.com/ecm/ecm_download_file/ECMP1117874["管理員指南，版本 1.2.xx"^]
 
 
 
@@ -56,9 +56,9 @@ CN1610 網路交換器 CLI 指令參考
  a| 
 提供有關配置 CN1601 軟體的命令列介面 (CLI) 命令的詳細資訊。
 
-* https://library.netapp.com/ecm/ecm_download_file/ECMP1117834["命令參考"^]
-* https://library.netapp.com/ecm/ecm_download_file/ECMLP2811863["指令參考，版本 1.1.xx"^]
-* https://library.netapp.com/ecm/ecm_download_file/ECMP1117863["指令參考，版本 1.2.xx"^]
+* link:https://library.netapp.com/ecm/ecm_download_file/ECMP1117834["命令參考"^]
+* link:https://library.netapp.com/ecm/ecm_download_file/ECMLP2811863["指令參考，版本 1.1.xx"^]
+* link:https://library.netapp.com/ecm/ecm_download_file/ECMP1117863["指令參考，版本 1.2.xx"^]
 
 
 |===

@@ -468,7 +468,7 @@ cs2#
 ====
 . 如果您要升級至 NX-OS 版本 9.3(11)，則必須升級 EPLD。 `golden`鏡像並再次重新啟動交換器。否則，跳至步驟 12。
 +
-看 https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/epld-rn/nxos_n9K_epldRN_9311.html["EPLD 升級版本說明，版本 9.3(11)"^]更多詳情請見下文。
+如需更多詳細資訊，請參閱 link:https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/epld-rn/nxos_n9K_epldRN_9311.html["EPLD 升級版本說明，版本 9.3(11)"^]。
 
 +
 .顯示範例

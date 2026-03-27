@@ -18,7 +18,7 @@ summary:
 
 具體操作步驟取決於每個控制器上是有兩個專用叢集網路連接埠還是只有一個叢集連接埠。記錄的過程適用於所有使用光纖或 Twinax 連接埠的節點，但如果節點使用板載 10Gb BASE-T RJ45 連接埠作為叢集網路端口，則此交換器不支援此流程。
 
-大多數系統需要在每個控制器上設定兩個專用的叢集網路連接埠。看 https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換機"]了解更多。
+大多數系統需要每個控制器上有兩個專用的叢集網路連接埠。如需詳細資訊，請參閱 link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換機"^]。
 
 如果您已有雙節點無交換器叢集環境，則可以使用Cisco Nexus 9336C-FX2 交換器遷移到雙節點有交換器叢集環境，以便能夠將叢集擴展到兩個以上節點。
 
@@ -41,7 +41,7 @@ summary:
 ** 兩台交換器都具備管理網路連線功能。
 ** 可以透過控制台存取叢集交換器。
 ** Nexus 9336C-FX2 節點到節點交換器和交換器到交換器連接使用 Twinax 或光纖電纜。
-** NetApp https://hwu.netapp.com["Hardware Universe"]包含更多關於佈線的資訊。
+** link:https://hwu.netapp.com["Hardware Universe"^]包含有關佈線的更多資訊。
 ** 交換器間連結 (ISL) 電纜連接到兩個 9336C-FX2 交換器上的連接埠 1/35 和 1/36。
 
 
@@ -65,7 +65,7 @@ summary:
 * 聚類SVM的名稱為_node1_和_node2_。
 * 節點 1 上的 LIF 名稱分別為 _node1_clus1_ 和 _node1_clus2_，節點 2 上的 LIF 名稱分別為 _node2_clus1_ 和 _node2_clus2_。
 * cluster1::*> 提示符號指示叢集的名稱。
-* 根據AFF A400控制器，此過程中使用的叢集連接埠為 _e3a_ 和 _e3b_。這 https://hwu.netapp.com["Hardware Universe"]包含您平台實際集群連接埠的最新資訊。
+* 根據 AFF A400 控制器，此程序中使用的叢集連接埠為 _e3a_ 和 _e3b_。link:https://hwu.netapp.com["Hardware Universe"^]包含有關您平台實際叢集連接埠的最新資訊。
 
 
 
@@ -283,7 +283,7 @@ Cluster
 
 . [[step9]]斷開節點 1 上的叢集連接埠 e3a 的電纜，然後使用 9336C-FX2 交換器支援的適當電纜將 e3a 連接到叢集交換器 cs1 上的連接埠 1。
 +
-NetApp https://hwu.netapp.com["Hardware Universe"]包含更多關於佈線的資訊。看 link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["安裝HWU中沒有的設備還需要哪些額外資訊？"^] 有關交換器安裝要求的詳細資訊。
+link:https://hwu.netapp.com["Hardware Universe"^] 包含更多關於佈線的資訊。如需交換器安裝需求的詳細資訊，請參閱 link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["安裝HWU中沒有的設備還需要哪些額外資訊？"^]。
 
 . 斷開節點 2 上的叢集連接埠 e3a 的電纜，然後使用 9336C-FX2 交換器支援的適當電纜將 e3a 連接到叢集交換器 cs1 上的連接埠 2。
 . 啟用叢集交換器 cs1 上所有面向節點的連接埠。

@@ -16,7 +16,7 @@ summary: 在安裝 RCF 腳本之前，請確保交換器上具備以下條件。
 .開始之前
 在升級 RCF 腳本之前，請確保交換器上具備以下條件：
 
-* Cumulus Linux 已安裝。參見 https://hwu.netapp.com/Switch/Index["Hardware Universe"^]適用於支援的版本。
+* Cumulus Linux 已安裝。請參閱 link:https://hwu.netapp.com/Switch/Index["Hardware Universe"^] 以了解支援的版本。
 * IP 位址、子網路遮罩和預設閘道透過 DHCP 定義或手動設定。
 
 

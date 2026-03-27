@@ -193,7 +193,7 @@ cs2# *exit*
 ----
 +
 
-CAUTION: 請務必關閉所有已連接的叢集端口，以避免任何網路連線問題。請參閱知識庫文章 https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/Node_out_of_quorum_when_migrating_cluster_lif_during_switch_OS_upgrade["在切換作業系統升級期間遷移叢集 LIF 時，節點脫離仲裁。"^]更多詳情請見下文。
+CAUTION: 請務必關閉 *所有* 已連接的叢集連接埠，以避免任何網路連線問題。如需更多詳細資訊，請參閱知識庫文章 link:https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/Node_out_of_quorum_when_migrating_cluster_lif_during_switch_OS_upgrade["在切換作業系統升級期間遷移叢集 LIF 時，節點脫離仲裁。"^]。
 
 . 驗證叢集連接埠是否已故障轉移到叢集交換器 cs1 上託管的連接埠。這可能需要幾秒鐘。
 +
@@ -306,7 +306,7 @@ cluster1::*>
 +
 您可能需要更新與 SSH 金鑰相關的 hosts 檔案項目。
 
-. 使用下列傳輸協定之一將 RCF 複製到交換器 cs2 的 bootflash：FTP、TFTP、SFTP 或 SCP。有關Cisco命令的更多信息，請參閱 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 系列 NX-OS 指令參考"^]指南。
+. 使用下列傳輸協定之一將 RCF 複製到交換器 cs2 的 bootflash：FTP、TFTP、SFTP 或 SCP。如需 Cisco 命令的詳細資訊，請參閱 link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 系列 NX-OS 指令參考"^] 中的適當指南。
 +
 .顯示範例
 [%collapsible]
@@ -325,7 +325,7 @@ Copy complete, now saving to disk (please wait)...
 ====
 . 將先前下載的 RCF 檔案套用到啟動快閃記憶體。
 +
-有關Cisco命令的更多信息，請參閱 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 系列 NX-OS 指令參考"^]指南。
+有關 Cisco 命令的更多資訊，請參閱 link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 系列 NX-OS 指令參考"^] 中的相應指南。
 
 +
 .顯示範例
@@ -363,7 +363,7 @@ cs2# *copy Nexus_3232C_RCF_v1.6-Cluster-HA-Breakout.txt running-config echo-comm
 . 將先前對交換器配置所做的任何自訂設定重新套用。請參閱link:cabling-considerations-3232c.html["審查佈線和配置注意事項"]有關任何後續變更的詳細資訊。
 . 確認 RCF 版本和交換器設定正確後，將運行設定檔複製到啟動設定檔。
 +
-有關Cisco命令的更多信息，請參閱 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 系列 NX-OS 指令參考"^]指南。
+有關 Cisco 命令的更多資訊，請參閱 link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 系列 NX-OS 指令參考"^] 中的相應指南。
 
 +
 [listing]

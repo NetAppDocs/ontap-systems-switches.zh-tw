@@ -194,7 +194,7 @@ cluster1::*>
 +
 `network interface modify -vserver Cluster -lif * -auto-revert false`
 
-. 使用下列傳輸協定之一將 NX-OS 軟體複製到 Nexus 3132Q-V 交換器：FTP、TFTP、SFTP 或 SCP。有關Cisco命令的更多信息，請參閱相應的指南。 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 系列 NX-OS 指令參考指南"^] 。
+. 使用下列傳輸協定之一將 NX-OS 軟體複製到 Nexus 3132Q-V 交換器：FTP、TFTP、SFTP 或 SCP。如需 Cisco 命令的詳細資訊、請參閱 link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 系列 NX-OS 指令參考"^] 中的適當指南。
 +
 .顯示範例
 [%collapsible]

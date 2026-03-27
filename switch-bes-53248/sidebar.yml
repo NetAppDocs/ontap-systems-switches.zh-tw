@@ -35,12 +35,12 @@ entries:
     url: "/switch-bes-53248/efos-install-rcf-license-file.html"
   - title: 安裝許可證
     url: "/switch-bes-53248/configure-licenses.html"
-  - title: 安裝 RCF 設定檔
+  - title: 安裝 RCF
     url: "/switch-bes-53248/configure-install-rcf.html"
   - title: 啟用 SSH 以收集日誌
     url: "/switch-bes-53248/configure-ssh.html"
-  - title: 將交換器重設為出廠預設值
-    url: "/switch-bes-53248/reset-switch-bes-53248.html"
+- title: 將交換器重設為出廠預設值
+  url: "/switch-bes-53248/reset-switch-bes-53248.html"
 - title: 升級交換機
   pdf-filename: Upgrade_switches_bes53248
   entries:

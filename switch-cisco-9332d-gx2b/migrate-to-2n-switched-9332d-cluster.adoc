@@ -25,7 +25,7 @@ summary: 如果您已有雙節點無交換器叢集環境，則可以使用Cisco
 ** 雙節點無交換器配置已正確設定並運作正常。
 ** 叢集所有連接埠均處於*開啟*狀態。
 ** 所有群集邏輯介面（LIF）均處於 *up* 狀態，並位於其主連接埠上。
-** 看 https://hwu.netapp.com["Hardware Universe"^]適用於所有支援的ONTAP版本。
+** 請參閱 https://hwu.netapp.com["Hardware Universe"^]以取得所有支援的 ONTAP 版本。
 
 
 * 對於Cisco Nexus 9332D-GX2B 交換器配置：
@@ -34,7 +34,7 @@ summary: 如果您已有雙節點無交換器叢集環境，則可以使用Cisco
 ** 可以透過控制台存取叢集交換器。
 ** Nexus 9332D-GX2B 節點到節點交換器和交換器到交換器連接使用 Twinax 或光纖電纜。
 +
-看 https://hwu.netapp.com["Hardware Universe"^]有關佈線的更多資訊。
+如需佈線的詳細資訊、請參閱 https://hwu.netapp.com["Hardware Universe"^]。
 
 
 
@@ -57,7 +57,7 @@ summary: 如果您已有雙節點無交換器叢集環境，則可以使用Cisco
 * 此過程中使用的叢集連接埠為 e0a 和 e0b。
 
 
-看 https://hwu.netapp.com["Hardware Universe"^]有關您平台集群連接埠的資訊。看 link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["安裝HWU中沒有的設備還需要哪些額外資訊？"^] 有關交換器安裝要求的詳細資訊。
+請參閱  https://hwu.netapp.com["Hardware Universe"^] 以取得平台叢集連接埠的相關資訊。請參閱 link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["安裝HWU中沒有的設備還需要哪些額外資訊？"^] 以取得交換器安裝需求的詳細資訊。
 
 
 
@@ -291,9 +291,6 @@ Cluster
 . 斷開節點 1 上的叢集連接埠 e0a 的電纜，然後使用 9332D-GX2B 交換器支援的適當電纜將 e0a 連接到叢集交換器 cs1 上的連接埠 1。
 +
 這 https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe- 交換機"^]包含更多關於佈線的資訊。
-
-+
-https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe- 交換機"^]
 
 . 斷開節點 2 上的叢集連接埠 e0a 的電纜，然後使用 9332D-GX2B 交換器支援的適當電纜將 e0a 連接到叢集交換器 cs1 上的連接埠 2。
 . 啟用叢集交換器 cs1 上所有面向節點的連接埠。

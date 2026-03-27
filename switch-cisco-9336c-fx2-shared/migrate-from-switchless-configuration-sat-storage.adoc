@@ -105,7 +105,7 @@ There are no entries matching your query.
 ====
 
 
-. [[step7]]將共用交換器 A 上的儲存 RCF 檔案替換為共用 RCF 檔案。看link:install-nxos-rcf-9336c-shared.html["在Cisco Nexus 9336C-FX2 共用交換器上安裝 RCF"]更多詳情請見下文。
+. [[step7]]將共用交換器 A 上的儲存 RCF 替換為共用 RCF 檔案。請參閱link:install-nxos-rcf-9336c-shared.html["在Cisco Nexus 9336C-FX2 共用交換器上安裝 RCF"]以取得更多詳細資料。
 . 驗證連接到 HA 對 1 的儲存裝置（儲存交換器 B）是否運作正常：
 +
 `system health alert show -instance`
@@ -141,7 +141,7 @@ There are no entries matching your query.
 ====
 
 
-. [[step13]]將共用交換器 B 上的儲存 RCF 檔案替換為共用 RCF 檔案。看link:install-nxos-rcf-9336c-shared.html["在Cisco Nexus 9336C-FX2 共用交換器上安裝 RCF"]更多詳情請見下文。
+. [[step13]]將共用交換器 B 上的儲存 RCF 檔案替換為共用 RCF 檔案。如需詳細資訊，請參閱 link:install-nxos-rcf-9336c-shared.html["在Cisco Nexus 9336C-FX2 共用交換器上安裝 RCF"]。
 . 驗證連接到 HA 對 1 的儲存裝置（儲存交換器 B）是否運作正常：
 +
 `system health alert show -instance`
@@ -183,7 +183,7 @@ sh1 (config)# *exit*
 ====
 
 
-. [[step16]]將 HA 對 1 從無交換器集群轉換為有交換器集群。使用共用 RCF 定義的叢集連接埠分配。看link:prepare-nxos-rcf-9336c-shared.html["安裝 NX-OS 軟體和參考設定檔 (RCF)"]更多詳情請洽。
+. [[step16]]將 HA 配對 1 從無交換器叢集轉換為交換式叢集。使用共享 RCF 定義的叢集連接埠指派。如需詳細資訊、請參閱link:prepare-nxos-rcf-9336c-shared.html["安裝 NX-OS 軟體和參考組態檔（RCF）"]。
 . 驗證交換網路配置是否有效：
 +
 `network port show`

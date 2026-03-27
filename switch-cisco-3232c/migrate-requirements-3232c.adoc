@@ -87,7 +87,7 @@ CN1610 至 3232C（QSFP 至 SFP+）
 * 埠 e1/41-48 (10 GbE)：Nexus 5596
 * 連接埠 e1/31-32 (40/100 GbE)：Nexus 3232C
 +
-** 這link:https://hwu.netapp.com/["硬體宇宙"^]包含有關 Nexus 3232C 交換器支援的佈線資訊：
+** link:https://hwu.netapp.com/["Hardware Universe"^]包含有關 Nexus 3232C 交換器支援佈線的資訊：
 
 
 * 具有 10 GbE 叢集連接的節點需要 QSFP 轉 SFP+ 光纖分支電纜或 QSFP 轉 SFP+ 銅纜分支纜線。

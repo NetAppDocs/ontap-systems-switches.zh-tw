@@ -18,7 +18,7 @@ summary: 如果您已有雙節點無交換器叢集環境，則可以使用Cisco
 大多數系統需要在每個控制器上設定兩個專用的叢集網路連接埠。
 
 
-NOTE: 遷移完成後，您可能需要安裝所需的設定文件，以支援 92300YC 叢集交換器的叢集交換器健康監視器 (CSHM)。看link:../switch-cshm/cshm-overview.html["交換器健康監測 (CSHM)"]。
+NOTE: 遷移完成後、您可能需要安裝必要的組態檔、以支援 92300YC 叢集交換器的叢集交換器健全狀況監視器（ Cluster Switch Health Monitor 、 CSHM ）。請參閱 link:../switch-cshm/cshm-overview.html["交換器健康監測 (CSHM)"]。
 
 
 
@@ -41,7 +41,7 @@ NOTE: 遷移完成後，您可能需要安裝所需的設定文件，以支援 9
 * 可以透過控制台存取叢集交換器。
 * Nexus 92300YC 節點到節點交換器和交換器到交換器的連接使用雙絞線或光纖電纜。
 +
-https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe- 交換機"^]包含更多關於佈線的資訊。
+link:https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe- 交換機"^]包含有關佈線的更多資訊。
 
 * 交換器間連結 (ISL) 電纜連接到兩個 92300YC 交換器上的連接埠 1/65 和 1/66。
 * 兩台 92300YC 交換器的初始客製化工作已完成。因此：
@@ -65,7 +65,7 @@ https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe- 交換機"^]包含更多
 * 這 `cluster1::*>`prompt 指示叢集名稱。
 * 此過程中使用的叢集連接埠為 e0a 和 e0b。
 +
-https://hwu.netapp.com["Hardware Universe"^]包含您平台實際集群連接埠的最新資訊。
+link:https://hwu.netapp.com["Hardware Universe"^] 包含有關您平台實際叢集連接埠的最新資訊。
 
 
 
@@ -311,7 +311,7 @@ Cluster
 ====
 . 斷開節點 1 上的叢集連接埠 e0a 的電纜，然後使用 92300YC 交換器支援的適當電纜將 e0a 連接到叢集交換器 cs1 上的連接埠 1。
 +
-這 https://hwu.netapp.com/SWITCH/INDEX["硬體宇宙 - 交換機"^]包含更多關於佈線的資訊。
+link:https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe- 交換機"^]包含有關佈線的更多資訊。
 
 . 斷開節點 2 上的叢集連接埠 e0a 的電纜，然後使用 92300YC 交換器支援的適當電纜將 e0a 連接到叢集交換器 cs1 上的連接埠 2。
 . 啟用叢集交換器 cs1 上所有面向節點的連接埠。

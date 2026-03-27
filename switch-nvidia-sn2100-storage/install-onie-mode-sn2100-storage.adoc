@@ -14,7 +14,7 @@ summary: '當交換器運行 Cumulus Linux 或 ONIE 時，可以安裝 Cumulus L
 當交換器運作在 ONIE 模式下時，請依照下列步驟安裝 Cumulus Linux (CL) 作業系統。
 
 
-NOTE: Cumulus Linux (CL) 作業系統可以在交換器運行 Cumulus Linux 或 ONIE 時安裝（參見link:install-cumulus-mode-sn2100-storage.html["以 Cumulus 模式安裝"]）。
+NOTE: 當交換器執行 Cumulus Linux 或 ONIE 時，可以安裝 Cumulus Linux (CL) OS（請參閱 link:install-cumulus-mode-sn2100-storage.html["以 Cumulus 模式安裝"]）。
 
 .關於此任務
 您可以使用開放網路安裝環境 (ONIE) 安裝 Cumulus Linux，該環境允許自動發現網路安裝程式映像。這有助於實現透過作業系統選擇（例如 Cumulus Linux）來保護交換器的系統模型。使用 ONIE 安裝 Cumulus Linux 最簡單的方法是透過本機 HTTP 發現。

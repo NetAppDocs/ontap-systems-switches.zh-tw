@@ -21,7 +21,7 @@ summary: 您可以將ONTAP叢集中較舊的Cisco交換器無中斷地遷移到N
 
 * CiscoNexus 9336C-FX2
 * CiscoNexus 3232C
-* 參見 https://hwu.netapp.com/["Hardware Universe"^]有關支援的連接埠及其配置的完整詳細資訊。
+* 有關支援的連接埠及其組態的完整詳細資訊，請參閱 link:https://hwu.netapp.com/["Hardware Universe"^]。
 
 
 .開始之前
@@ -38,7 +38,7 @@ summary: 您可以將ONTAP叢集中較舊的Cisco交換器無中斷地遷移到N
 ** ISL 連接埠已啟用，並已在舊款Cisco交換器和新款交換器之間連接了線纜。
 
 
-* 參見 https://hwu.netapp.com/["Hardware Universe"^]有關支援的連接埠及其配置的完整詳細資訊。
+* 有關支援的連接埠及其組態的完整詳細資訊，請參閱 link:https://hwu.netapp.com/["Hardware Universe"^]。
 * NVIDIA SN2100 交換器上的一些連接埠配置為以 100 GbE 運作。
 * 您已規劃、遷移並記錄了從節點到NVIDIA SN2100 儲存交換器的 100 GbE 連線。
 

@@ -33,8 +33,4 @@ summary: Cisco 9332D-GX2B 交換器軟體設定概述
 [role="quick-margin-para"]
 驗證Cisco 9332D-GX2B 交換器上是否啟用了 SSH，以便與乙太網路交換器健康監視器 (CSHM) 和日誌收集功能一起使用。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["六"]link:reset-switch-9332d.html["將交換器重設為出廠預設值"]
-[role="quick-margin-para"]
-清除Cisco 9332D-GX2B 交換器設定。
-
 交換器配置完成後，請前往link:https://docs.netapp.com/us-en/ontap-afx/install-setup/power-on-hardware.html["啟動 AFX 1K 儲存系統"^]。

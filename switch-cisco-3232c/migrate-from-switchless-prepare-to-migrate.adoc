@@ -121,7 +121,7 @@ link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storag
 . 在“描述”頁面上選擇“繼續”，接受許可協議，然後按照“下載”頁面上的說明下載 RCF。
 . 在 Nexus 3232C 交換器 C1 和 C2 上，停用所有面向節點的連接埠 C1 和 C2，但不要停用 ISL 連接埠 e1/31-32。
 +
-有關Cisco命令的更多信息，請參閱以下列表。 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 系列 NX-OS 指令參考"^] 。
+如需 Cisco 命令的詳細資訊，請參閱 link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 系列 NX-OS 指令參考"^] 中的下列清單。
 
 +
 .顯示範例
@@ -153,7 +153,7 @@ C2(config)# exit
 `show port-channel summary`
 
 +
-有關Cisco命令的更多信息，請參閱以下列表。 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 系列 NX-OS 指令參考"^] 。
+如需 Cisco 命令的詳細資訊，請參閱 link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 系列 NX-OS 指令參考"^] 中的下列清單。
 
 +
 .顯示範例
@@ -191,7 +191,7 @@ Group Port-        Type   Protocol  Member Ports
 ====
 . 顯示交換器上相鄰設備的清單。
 +
-有關Cisco命令的更多信息，請參閱以下列表。 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 系列 NX-OS 指令參考"^] 。
+如需 Cisco 命令的詳細資訊，請參閱 link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 系列 NX-OS 指令參考"^] 中的下列清單。
 
 +
 .顯示範例

@@ -11,13 +11,13 @@ summary: 對於Cisco Nexus 3132Q-V 交換器的安裝和維護，請務必查看
 
 
 [role="lead"]
-對於Cisco Nexus 3132Q-V 交換器的安裝和維護，請務必查看所有建議的文件。
+安裝 Cisco Nexus 3132Q-V 交換器時、請務必查看所有建議的文件。
 
 
 
 == 切換文檔
 
-要設定Cisco Nexus 3132Q-V 交換機，您需要以下文件： https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/series.html["Cisco Nexus 3000 系列交換器支援"^]頁。
+要設定 Cisco Nexus 3132Q-V 交換機、您需要 link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/series.html["Cisco Nexus 3000 系列交換器支援"^] 提供的下列文件。
 
 [cols="1,2"]
 |===
@@ -83,7 +83,7 @@ Cisco Nexus 6000、 Cisco Nexus 5000 系列、 Cisco Nexus 3000 系列和Cisco N
 
 == ONTAP 系統文檔
 
-若要設定ONTAP系統，您需要以下適用於您作業系統版本的文件。 https://docs.netapp.com/ontap-9/index.jsp["ONTAP 9"^] 。
+要設定 ONTAP 系統、您需要適用於您的作業系統版本的下列文件。
 
 [cols="1,2"]
 |===
@@ -98,14 +98,14 @@ Cisco Nexus 6000、 Cisco Nexus 5000 系列、 Cisco Nexus 3000 系列和Cisco N
 
 
  a| 
-ONTAP 文檔
+link:https://docs.netapp.com/ontap-9/index.jsp["ONTAP 9"^]
  a| 
 提供有關ONTAP版本各個方面的詳細資訊。
 
 
 
  a| 
-https://hwu.netapp.com["Hardware Universe"^]
+link:https://hwu.netapp.com["Hardware Universe"^]
  a| 
 提供NetApp硬體配置和相容性資訊。
 
@@ -114,7 +114,7 @@ https://hwu.netapp.com["Hardware Universe"^]
 
 == 軌道套件和機櫃文檔
 
-若要在NetApp機櫃中安裝 3132Q-V Cisco交換機，請參閱下列硬體文件。
+若要在 NetApp 機櫃中安裝 3132Q-V Cisco 交換機，請參閱下列硬體文件。
 
 [cols="1,2"]
 |===
@@ -122,7 +122,7 @@ https://hwu.netapp.com["Hardware Universe"^]
 
 
  a| 
-https://library.netapp.com/ecm/ecm_download_file/ECMM1280394["42U 系統機櫃，深導軌"^]
+link:https://library.netapp.com/ecm/ecm_download_file/ECMM1280394["42U 系統機櫃，深導軌"^]
  a| 
 描述與 42U 系統機櫃相關的 FRU，並提供保養和 FRU 更換說明。
 

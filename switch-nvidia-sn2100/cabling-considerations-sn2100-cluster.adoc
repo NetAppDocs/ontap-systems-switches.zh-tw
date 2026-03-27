@@ -50,7 +50,7 @@ swp15-16
 100GbE交換器間鏈路（ISL）端口
 
 |===
-參見 link:https://hwu.netapp.com/Switch/Index["Hardware Universe"^] 有關交換器連接埠的詳細資訊。
+如需交換器連接埠的詳細資訊，請參閱 link:https://hwu.netapp.com/Switch/Index["Hardware Universe"^]。
 
 
 
@@ -190,7 +190,7 @@ UP     swp4      100G  9216   Trunk/L2                     Master: bridge(UP)
 
 --
 ====
-請參閱知識庫文章link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/Fabric_Interconnect_and_Management_Switches/NVIDIA_SN2100_switch_fails_to_connect_using_40_100GbE_copper_cable["SN2100交換器無法使用40/100GbE銅纜連接"^]更多詳情請見下文。
+如需更多詳細資料、請參閱知識庫文章 link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/Fabric_Interconnect_and_Management_Switches/NVIDIA_SN2100_switch_fails_to_connect_using_40_100GbE_copper_cable["SN2100交換器無法使用40/100GbE銅纜連接"^]。
 
 在 Cumulus Linux 4.4.2 中，配備 X1151A NIC、X1146A NIC 或板載 100GbE 連接埠的 SN2100 交換器不支援銅纜連接。例如：
 
@@ -331,7 +331,7 @@ UP     swp16      100G  9216   BondMember  cs01 (swp16)     Master: cl
 ----
 --
 ====
-參見 link:https://hwu.netapp.com/Switch/Index["Hardware Universe"^]以及知識庫文章 link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["安裝我的設備（HWU中沒有包含這些資訊）還需要哪些其他資訊？"^] 了解更多。
+請參閱 link:https://hwu.netapp.com/Switch/Index["Hardware Universe"^] 和知識庫文章 link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["安裝我的設備（HWU中沒有包含這些資訊）還需要哪些其他資訊？"^] 以獲取更多資訊。
 
 .下一步是什麼？
 在您審核佈線和配置要求後，您可以link:install-cable-shelves-sn2100-cluster.html["將 NS224 貨架連接成交換器連接的儲存設備"]。
