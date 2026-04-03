@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <blocks>
   <block id="135b308ed83c53f1516b7c754566d1c4" category="doc">開始之前</block>
-  <block id="8ac20e3719b6b58e94e5a4385e87b52e" category="paragraph">乙太網路交換器健康監視器 (CSHM) 負責確保叢集和儲存網路交換器的運作健康，並收集交換器日誌以進行偵錯。此流程引導您完成設定收集、請求詳細的*支援*日誌以及啟用由AutoSupport收集的*定期*資料的每小時收集流程。</block>
   <block id="2ded3ff3862adfc6f54d2a2f3ebf1147" category="paragraph">*注意：* 如果啟用 FIPS 模式，則必須完成以下步驟：</block>
   <block id="81f0d5b127adfd87f50ce10bc85e1e65" category="list-text">依照廠商提供的說明，在交換器上重新產生 SSH 金鑰。</block>
   <block id="a60a00967db7342947b326a8f7618f52" category="list-text">使用ONTAP重新產生 SSH 金鑰<block ref="c079360670e0f4f9441a54ac1d262788" prefix=" " category="inline-code"></block></block>
@@ -3019,17 +3018,7 @@
   <block id="71a881be92e62256287d6347bd624fad" category="paragraph">ISL 連接到交換器 A 連接埠 65</block>
   <block id="eda024fd7d2291c043817bf86d68da64" category="paragraph">ISL 連接到交換器 B 連接埠 66</block>
   <block id="fbfe4b7728646e201fb34cdd5d08935c" category="paragraph">ISL 連接到交換器 A 連接埠 66</block>
-  <block id="f5e9ec33bbd550cafe73fcb03480f889" category="summary">在設定Cisco 9332D-GX2B 交換器之前，請先查看以下資訊。</block>
-  <block id="7fb930ad6a0d234e53294ed9bec42b34" category="paragraph">在設定Cisco 9332D-GX2B 交換器之前，請先查看以下注意事項。</block>
-  <block id="a1d07f6c5f2382a1e6db9b0444491cb4" category="section-title">支援NVIDIA CX6-DX 乙太網路端口</block>
-  <block id="a32d4cc05beee2bf611dd754f323b14b" category="paragraph">如果使用NVIDIA ConnectX-6 Dx (CX6-DX) NIC 連接埠（零件號碼 X50130B）將交換器連接埠連接到ONTAP控制器，則必須對交換器連接埠速度進行硬編碼。</block>
-  <block id="43ca6c0708b86c2e3ba5a4b20f4bc474" category="summary">從ONTAP 9.9.1 開始，您可以使用Cisco Nexus 9332D-GX2B 交換器將儲存和叢集功能組合到共用交換器場景。</block>
-  <block id="fd416e48095036f67db7c479cfef73c0" category="doc">Cisco Nexus 9332D-GX2B 交換器的網路需求</block>
-  <block id="83142a06d593700b2ff333694496012b" category="paragraph">對於Cisco Nexus 9332D-GX2B 交換器的安裝和維護，請務必檢查佈線和網路需求。</block>
   <block id="3eb36d6d74c43353c4b5b101aa777feb" category="paragraph">所有交換器配置都需要以下網路資訊。</block>
-  <block id="0c8374c87ef91b0dd751ef764fd68300" category="list-text">大多數儲存系統控制器透過連接到乙太網路服務連接埠（扳手圖示）透過 e0M 介面進行管理。</block>
-  <block id="541fb7ba8b8b8df9c175d1695f706597" category="list-text">請參閱<block ref="16a6d09025d51cb8dd3516798b3fee8a" category="inline-link-rx"></block>獲取最新資訊。</block>
-  <block id="118d935cca54466f59122caecfde09ad" category="section-title">佈線要求</block>
   <block id="922e0472f9731d915fa1e9d3a596e9cf" category="list-text">根據您最初設定的交換器類型，您需要使用隨附的控制台連接線連接到交換器控制台連接埠。</block>
   <block id="209b62e0549113b11f345f2ebaf69962" category="summary">Cisco Nexus 9332D-GX2B 交換器的連接埠詳細信息</block>
   <block id="143e5769c5c85e56dffd181ed3e493aa" category="paragraph">Cisco Nexus 9332D-GX2B 交換器是Cisco Nexus 9000 平台的一部份。AFX 系統交換器可讓您建立具有兩個以上節點的ONTAP叢集。</block>
@@ -3156,26 +3145,9 @@
   <block id="906296921ce498fa9500d86133cb4a2b" category="list-title">可用的 RCF 配置</block>
   <block id="fdb500ee5ab5f21c1b5bc773c9113780" category="list-text"><block ref="fdb500ee5ab5f21c1b5bc773c9113780" category="inline-link-macro-rx"></block></block>
   <block id="fdd1967bcc4179d15ff49af9f4eb5d7e" category="paragraph">在您查看安裝 RCF 或升級 RCF 程式後，您<block ref="804caa6e47e068ee420004b49576cb27" category="inline-link-macro-rx"></block>或者<block ref="34eb350590adb58b30d7d2c85b3e73cb" category="inline-link-macro-rx"></block>按要求。</block>
-  <block id="337fc22f6db10f996d56acc741118e32" category="summary">如果您已有雙節點無交換器叢集環境，則可以使用Cisco Nexus 9332D-GX2B 交換器遷移到雙節點有交換器叢集環境，以便能夠將叢集擴展到兩個以上節點。</block>
   <block id="a2d07f4e7a36ed872e60c08cdcc73771" category="doc">遷移到雙節點交換集群</block>
-  <block id="4ae5628e23c2f96ffb061d8de0b69375" category="paragraph">如果您已有雙節點無交換器叢集環境，則可以使用Cisco Nexus 9332D-GX2B 交換器遷移到雙節點有交換器叢集環境。</block>
   <block id="a693fd2056f9dc0037e9baefb9fbe3bb" category="paragraph">遷移過程適用於所有使用光纖或 Twinax 連接埠的節點，但如果節點使用板載 10Gb BASE-T RJ45 連接埠作為叢集網路端口，則此交換器不支援遷移。</block>
-  <block id="5f082cebdf9c4696324c2ba72f77318c" category="list-text">對於Cisco Nexus 9332D-GX2B 交換器配置：</block>
-  <block id="bfbf5a65ca6d5888e91891feffc4d5da" category="list-text">Nexus 9332D-GX2B 節點到節點交換器和交換器到交換器連接使用 Twinax 或光纖電纜。</block>
-  <block id="440642316e621e445b65a0fd788fc12f" category="list-text">交換器間連結 (ISL) 電纜連接到兩個 9332D-GX2B 交換器上的連接埠 1/35 和 1/36。</block>
-  <block id="a104a175c4457280b283fe9d2234f257" category="list-text">兩台 9332D-GX2B 交換器的初始自訂已完成，因此：</block>
-  <block id="3e3222e2b508ac0b462bb536509dfcaf" category="list-text">9332D-GX2B 交換器運作的是最新版本的軟體。</block>
-  <block id="52a3cee6e7f049fa10ea4376974cb6ad" category="list-text">9332D-GX2B2 交換器的名稱是 cs1 和 cs2。</block>
-  <block id="d96c4aa580b8ee9c1402e467c01d9385" category="list-text">驗證兩個 9332D-GX2B 交換器 cs1 和 cs2 之間的 ISL 以及 ISL 上的實體連接埠在連接埠 1/35 和 1/36 上是否處於啟動狀態：</block>
   <block id="ebcf71eb39f7510f62abf6ea769fb245" category="paragraph">每個集群 LIF 應顯示<block ref="b326b5062b2f0e69046810717534cb09" prefix=" " category="inline-code"></block>為了<block ref="53db3ce0fe0e71f06b3beb0b676b806c" prefix=" " category="inline-code"></block>並且擁有<block ref="4f21ee5a18672b60f4c01e94e6be9c79" prefix=" " category="inline-code"></block>向上/向上。</block>
-  <block id="bdbadd6072a9b09a1ccb52d61a3980cf" category="list-text">斷開節點 1 上的叢集連接埠 e0a 的電纜，然後使用 9332D-GX2B 交換器支援的適當電纜將 e0a 連接到叢集交換器 cs1 上的連接埠 1。</block>
-  <block id="9e8d0650f943d18a4d35bc0a06a58c13" category="list-text">斷開節點 2 上的叢集連接埠 e0a 的電纜，然後使用 9332D-GX2B 交換器支援的適當電纜將 e0a 連接到叢集交換器 cs1 上的連接埠 2。</block>
-  <block id="8d88ef7edb7cad807b1289a0f782c2d2" category="list-text">斷開節點 1 上的叢集連接埠 e0b 的電纜，然後使用 9332D-GX2B 交換器支援的適當電纜將 e0b 連接到叢集交換器 cs2 上的連接埠 1。</block>
-  <block id="4197a5ab4b9f3de6c2c1790cb558ad3c" category="list-text">斷開節點 2 上的叢集連接埠 e0b 的電纜，然後使用 9332D-GX2B 交換器支援的適當電纜將 e0b 連接到叢集交換器 cs2 上的連接埠 2。</block>
-  <block id="2524de6afa6b1569b9b31ebacac83f4a" category="summary">您可以將ONTAP叢集的舊Cisco叢集交換器無中斷地遷移到Cisco Nexus 9332D-GX2B 叢集網路交換器。</block>
-  <block id="a1958649e196dc12917fa23c795fbbe5" category="doc">從較舊的Cisco交換器遷移到Cisco Nexus 9332D-GX2B 交換器</block>
-  <block id="e7d4a6009585d24053e959f7b9c72b8c" category="paragraph">您可以從較舊的Cisco叢集交換器執行無中斷遷移到Cisco Nexus 9332D-GX2B 叢集網路交換器。</block>
-  <block id="cfccb2504d60cade90d43b59059ab531" category="doc">使用無交換器連接取代Cisco Nexus 9332D-GX2B2 叢集交換機</block>
   <block id="034b2ca4f8708065c8d2bc270a8065be" category="summary">更換叢集網路中有缺陷的 Nexus 9332D-GX2B 交換器是一個無中斷過程 \(NDU\)。</block>
   <block id="de26480add46f245a8d5542ad9cca42b" category="doc">更換Cisco Nexus 9332D-GX2B 交換機</block>
   <block id="d791e14d35f87ca6e28ae6a4b9bc0379" category="paragraph">請依照下列步驟更換共用網路中有缺陷的 Nexus 9332D-GX2B 交換器。這是一個無中斷程式 (NDU)。</block>
@@ -3944,12 +3916,6 @@
   <block id="6c7072958775e2716da05784c2834f65" category="paragraph">完成佈線工作表後，您可以 <block ref="d9d3d8dae0a36eea938e144b4f81717e" category="inline-link-macro-rx"></block>。</block>
   <block id="3e1208bc4bf9384a3afbda89e7d0cb5a" category="paragraph">其中 _x_ 為維護視窗的持續時間（小時）。</block>
   <block id="22e5bcc55974e1667f105918832f4dea" category="list-text">對於 NX-OS 10.2 及更高版本，請使用<block ref="9c370f72db0e0d920841657ac5268365" prefix=" " category="inline-code"></block>用於與 bootflash 中儲存的 RCF 檔案進行比較的命令。否則，請使用第三方差異比較工具。</block>
-  <block id="9c6c3f61af7dff11347a9a97366c4acb" category="summary">在設定Cisco 9364d-gx2a 交換器之前，請先查看以下資訊。</block>
-  <block id="b771416dbd66215d66c0fd3bf739e5a2" category="paragraph">在設定Cisco 9364D-GX2A 交換器之前，請先查看以下注意事項。</block>
-  <block id="98d47bae71b2dc1d79d4c85b4018180a" category="paragraph">如果使用NVIDIA ConnectX-6 Dx (CX6-DX) NIC 連接埠（零件號碼 X50130B）將交換器連接埠連接到ONTAP控制器，則必須對交換器連接埠速度進行硬編碼。</block>
-  <block id="c0c8f19e1caa03ae66089f6734ad6427" category="summary">從ONTAP 9.9.1 開始，您可以使用Cisco Nexus 9364d-gx2a 交換器將儲存和叢集功能組合到共用交換器場景。</block>
-  <block id="f8ea0b6a6d5331dd41671be79eba8b80" category="doc">Cisco Nexus 9364D-GX2A 交換器的網路需求</block>
-  <block id="d815f83c6610cf53f479e1ff013e05bd" category="paragraph">對於Cisco Nexus 9364D-GX2A 交換器的安裝和維護，請務必檢查佈線和網路需求。</block>
   <block id="693bb1d6da1a4a39adcbdfb78152a10d" category="summary">Cisco Nexus 9364D-GX2A 交換器的連接埠詳細資訊。</block>
   <block id="75b76d5b0a7f4d1316caaabb8edbbd71" category="doc">Cisco Nexus 9364D-GX2A 交換器的連接埠詳細信息</block>
   <block id="4cd7313cf8af783e1ff5c03134602ed8" category="paragraph">Cisco Nexus 9364D-GX2A 交換器是Cisco Nexus 9000 平台的一部分，可以安裝在NetApp系統機櫃中。9364D-GX2A 交換器可讓您建置具有兩個以上節點的ONTAP叢集。</block>
@@ -3996,12 +3962,6 @@
   <block id="4ddbf9913cf137f28df7ad8a4a25d0f5" category="paragraph">此範例展示了 RCF 文件<block ref="1b86452473f90818e41227cf4b4157de" prefix=" " category="inline-code"></block>正在交換器 cs1 上安裝：</block>
   <block id="7ea042ac2614a0600db9c4b93b98f977" category="summary">首次設定 Nexus 9364d-gx2a 交換器後，您可以安裝 RCF。您也可以使用此程序升級您的 RCF。</block>
   <block id="e78d946d685c3dda4f9e3b88a2f0bba2" category="paragraph">在您查看安裝 RCF 或升級 RCF 程式後，您<block ref="aa26a14f1bc2d7d8cc0e72e6b978adf7" category="inline-link-macro-rx"></block>或者<block ref="4e313e617a2ef8fc435b0fa38938a5e3" category="inline-link-macro-rx"></block>按要求。</block>
-  <block id="0ca59852803eb076c0ee9c67538053fe" category="summary">如果您已有雙節點無交換器叢集環境，則可以使用Cisco Nexus 9364d-gx2a 交換器遷移到雙節點有交換器叢集環境，以便能夠將叢集擴展到兩個以上節點。</block>
-  <block id="7f01c134f69e6ae852c99e15adbc1e2b" category="paragraph">如果您已有雙節點無交換器叢集環境，則可以使用Cisco Nexus 9364D-GX2A 交換器遷移到雙節點有交換器叢集環境。</block>
-  <block id="b6fcfead0738ea09f2b691474609a29e" category="summary">您可以將ONTAP叢集的舊Cisco叢集交換器無中斷地遷移到Cisco Nexus 9364d-gx2a 叢集網路交換器。</block>
-  <block id="db8835a05da545df84b45b247adea01f" category="doc">從較舊的Cisco交換器遷移到Cisco Nexus 9364D-GX2A 交換器</block>
-  <block id="c1a2ea599205b8771310b00480bede1d" category="paragraph">您可以從較舊的Cisco叢集交換器執行無中斷遷移到Cisco Nexus 9364D-GX2A 叢集網路交換器。</block>
-  <block id="5767008faeeaaa4fc001088d92fd2271" category="doc">使用無交換器連接取代Cisco Nexus 9364D-GX2A 交換機</block>
   <block id="9171c26a27d3f56eb4e1f4b69582413f" category="summary">更換叢集網路中有缺陷的 Nexus 9364d-gx2a 交換器是一個無中斷過程 \(NDU\)。</block>
   <block id="06e8a8675fac36562a21ef023e9cd2f4" category="doc">更換Cisco Nexus 9364D-GX2A 交換機</block>
   <block id="f5aff46ac4603cb35601dc593b6fc9f9" category="paragraph">請依照下列步驟更換叢集網路中有缺陷的 Nexus 9364D-GX2A 交換器。這是一個無中斷程式 (NDU)。</block>
@@ -4044,7 +4004,6 @@
   <block id="5b62a4b03175f138ff64effec2560ed7" category="summary">您可以使用此程式為您的特定交換器設定 SNMPv3，該交換器支援乙太網路交換器健康監控 (CSHM)。</block>
   <block id="62f22218ea7fb3cf6669cdfdb6c908e0" category="doc">為交換器配置 SNMPv3（可選）</block>
   <block id="1c10f160ae9b8c4d78cec8e05f3c3a4e" category="paragraph">SNMP 用於監控交換器。請依照以下步驟設定 SNMPv3 監控。</block>
-  <block id="b243d3b653e3e0bac6ab3be1bf2318bf" category="paragraph">乙太網路交換器健康監視器 (CSHM) 利用 SNMP 來監視叢集交換器和儲存交換器的運作狀況和效能。預設情況下，SNMPv2c 透過參考設定檔 (RCF) 自動設定。  SNMPv3 比 SNMPv2 更安全，因為它引入了強大的安全功能，例如身份驗證、加密和訊息完整性，這些功能可以防止未經授權的訪問，並確保傳輸過程中資料的機密性和完整性。</block>
   <block id="1c76d98a8c6bdaf19a0c6e69ecd5d74b" category="doc">交換器健康監控器概述</block>
   <block id="5c1a7fd59da01d98a9fa4672044477e2" category="summary">您可以使用提供的命令…</block>
   <block id="28498a71a5aca6b62e077f2dc8cf0ccb" category="doc">日誌收集概覽</block>
@@ -4071,7 +4030,6 @@
   <block id="b16485fd5118936281137dbf7e67a0d1" category="inline-link">Switch 健康監控器警報解決指南</block>
   <block id="586ef722188ebd1147c5005705cba276" category="summary">了解如何驗證乙太網路交換器的監控功能是否正常運作。</block>
   <block id="73938029de1874ad71500c396fa836b1" category="doc">驗證乙太網路交換器的監控情況</block>
-  <block id="7d446387be9f1d7a1583327a693c81a1" category="paragraph">乙太網路交換器健康監視器 (CSHM) 會自動嘗試監視它發現的交換器；但是，如果交換器設定不正確，則監視可能不會自動進行。您應該確認運作狀況監控器已正確配置，可以監控您的交換器。</block>
   <block id="61c6496b7fc6acc388aea0c4121ad73d" category="summary">若要安裝NetApp CN1610 硬件，請參閱NetApp文件。</block>
   <block id="56d51248b29d38d6d0101b911261169f" category="doc">配置NetApp CN1610 交換器的硬體</block>
   <block id="52663e973f6b6ab69073964e0b15c245" category="inline-link">CN1601 和 CN1610 交換器設定和設定指南</block>
@@ -5732,7 +5690,6 @@
   <block id="fa563af13977c8fa13c2f34c249aa75c" category="paragraph">安裝 Cisco Nexus 92300YC 交換器時、請務必查看所有建議的文件。</block>
   <block id="e97d1cb66bb893f96299c0b61bd825ae" category="paragraph">要設定 Cisco Nexus 92300YC 交換機、您需要 <block ref="93ab07c13dccf0df4a51c609a56ba87d" category="inline-link-macro-rx"></block> 提供的下列文件。</block>
   <block id="747757e1552d37c7acbcac8c2bc74c2e" category="paragraph">若要在 NetApp 機櫃中安裝 Cisco Nexus 92300YC 交換機，請參閱下列硬體文件。</block>
-  <block id="ed4348314b5e585f58fb10e3eb23786d" category="list-text">您的交換器配備了適當數量和類型的纜線及纜線連接器。請參閱 <block ref="9c839fcdfb8699a63c787254d7b1ae03" category="inline-link-macro-rx"></block>。</block>
   <block id="b1b0ac0987476d318ebcba8cc0527236" category="list-text">如需交換器連接埠的詳細資訊，請參閱<block ref="16a6d09025d51cb8dd3516798b3fee8a" category="inline-link-rx"></block>。</block>
   <block id="9de25c87f0b605a29bb38c79425d12e3" category="paragraph">首次設定 Nexus 9332D-GX2B 交換器後，即可安裝 RCF。</block>
   <block id="c0e57b1bc17b0c8e1aa595a81e7affad" category="paragraph">有關 Cisco 命令的更多資訊，請參閱<block ref="dba0e49fdfeab9433bb71da6c505aa34" category="inline-link-rx"></block>指南中的相關指南。</block>
@@ -5740,9 +5697,6 @@
   <block id="48b7dcfee85b5f887d81c4d02d77b17b" category="paragraph">首次設定 Nexus 9332D-GX2B 交換器後，您需要安裝參考組態檔（RCF）。當交換器上已安裝現有版本的 RCF 檔案時，您需要升級 RCF 版本。</block>
   <block id="12b2b90a2df5c424aae239994f423fae" category="paragraph">有關具體的連接埠和 VLAN 使用詳情，請參閱 RCF 中的橫幅和重要說明部分。如需更多資訊，請參閱 <block ref="3f6421172f80f8047523f4f7c07d2e71" category="inline-link-macro-rx"></block>。</block>
   <block id="484285d34e9a7e1700787d621f274175" category="paragraph">請參閱<block ref="cd25cbe53f0a314145c84729c6ce2c78" category="inline-link-rx"></block>以驗證平台上的正確連接埠。</block>
-  <block id="944f6c95118c610c7ab840375bc2c61a" category="list-text">請參閱<block ref="16a6d09025d51cb8dd3516798b3fee8a" category="inline-link-rx"></block>以取得所有支援的 ONTAP 版本。</block>
-  <block id="c33ff637e82e9abbd67d3e88e8c5fac3" category="paragraph">如需佈線的詳細資訊、請參閱<block ref="16a6d09025d51cb8dd3516798b3fee8a" category="inline-link-rx"></block>。</block>
-  <block id="66ccc6f13163db8c9bb3408859a7da1c" category="paragraph">請參閱 <block ref="16a6d09025d51cb8dd3516798b3fee8a" category="inline-link-rx"></block> 以取得平台叢集連接埠的相關資訊。請參閱 <block ref="93586a8f49408f483b5b0ac7e6bc3bac" category="inline-link-macro-rx"></block> 以取得交換器安裝需求的詳細資訊。</block>
   <block id="f8dde6b6e79246450ecfad64e72cf021" category="list-text">在維護前後觸發維護 AutoSupport，以在維護期間停用案例建立功能。如需更多詳細資訊，請參閱此知識庫文章<block ref="9889375293ffeecac54c58b8cad125b2" category="inline-link-rx"></block>。</block>
   <block id="556f9fe16abc11dd3473671f8a35913b" category="paragraph">對於 Cisco Nexus 9332D-GX2B 交換器的安裝、請務必查看特定的交換器和控制器文件、以設定您的 9332D-GX2B 交換器和 ONTAP 叢集。</block>
   <block id="741c229d1d6d0aa9dd2206a8074c4ca0" category="paragraph">要設定 Cisco Nexus 9332D-GX2B 交換機，您需要 <block ref="95a6ab609479cb4b4a9170501544c15c" category="inline-link-macro-rx"></block> 提供的下列文件。</block>
@@ -5807,7 +5761,6 @@
   <block id="52cc1f7a5479f0af3d0ec56f1317fe22" category="paragraph">首次設定 Nexus 9364D-GX2A 交換器後，即可安裝 RCF。</block>
   <block id="fd68007e61003ecb66b52644065d0aa1" category="paragraph">首次設定 Nexus 9364D-GX2A 交換器後，需要安裝 RCF 檔案。如果交換器上已安裝了 RCF 檔案，則需要升級 RCF 版本。</block>
   <block id="63aba13a0110773692f41b0d956d67f0" category="paragraph">請參閱 <block ref="34774b6dc875898cd8aa59f7081c068c" category="inline-link-macro-rx"></block> 以驗證平台上的正確叢集連接埠。</block>
-  <block id="125154abfa6df743751bb0098e41a7ea" category="paragraph">請參閱 <block ref="9c839fcdfb8699a63c787254d7b1ae03" category="inline-link-macro-rx"></block> 以取得有關您平台叢集連接埠的資訊。</block>
   <block id="857d8dfe60bae8fddfe3a2a67889c3b4" category="paragraph">對於 Cisco Nexus 9364D-GX2A 交換器的安裝，請務必查看特定的交換器和控制器文件，以設定您的 Cisco 9364D-GX2A 交換器和 ONTAP 叢集。</block>
   <block id="045f5ff0d012cdec85ca3e1fc396abde" category="paragraph">要設定 Cisco Nexus 9364D-GX2A 交換機，您需要來自<block ref="95a6ab609479cb4b4a9170501544c15c" category="inline-link-macro-rx"></block>的以下文件。</block>
   <block id="705dfa9a6d00cf092dad8dee79dbcde8" category="admonition">如果日誌收集功能報告任何錯誤狀態（在<block ref="88354d538ba5d4e1746193ec5949ab4b" prefix=" " category="inline-code"></block>的輸出中可見），請參閱<block ref="2504f84f3fef22e482d1d3a35d9305fe" category="inline-link-macro-rx"></block>以取得更多詳細資訊。</block>
@@ -5876,4 +5829,15 @@
   <block id="950f0e6f812ad0de9038690a88e004cf" category="paragraph">了解 ONTAP 儲存系統的新型交換器。如需其他交換器資訊、請參閱<block ref="c845c6ffda77bc94ba897d84583cb923" category="inline-link-macro-rx"></block>。</block>
   <block id="3accd457092182b65b303cc399a3e3ff" category="sidebar">ONTAP 儲存系統的交換器文件</block>
   <block id="a5fcc63010ab0a7a26e68d8f04554576" category="sidebar">ONTAP 儲存系統的交換器文件</block>
+  <block id="316fa55db721e45107647fc0de79704f" category="paragraph">乙太網路交換器健康狀況監控器（CSHM）負責確保網路交換器的運作健全狀況，並收集交換器日誌以進行偵錯。本程序將引導您完成設定收集、請求詳細的 *Support* 日誌，以及啟用每小時收集 AutoSupport 所收集之 *Periodic* 資料的程序。</block>
+  <block id="6dbdcd2922ea90d8d9d85b7b2e3f5014" category="inline-link-macro">設定 CSHM</block>
+  <block id="78d07d5b1f80434001bf7ee6902e0e55" category="paragraph-title"><block ref="ef78558f80439832e0f51cc22cee8b8c" category="inline-image-macro-rx" type="image"></block><block ref="89d77223eae1e7b1cf009f838e8ed4ea" category="inline-link-macro-rx"></block></block>
+  <block id="766725015e499832f29c4e8b91bef6ef" category="paragraph">設定交換器健全狀況監控。</block>
+  <block id="1556da421b0bfb50cc7135468542d3b7" category="list-text">啟用 newcs2 交換器上的所有連接埠，從 Eth1/1 到 Eth1/30。</block>
+  <block id="12e67aac3e7f9227cc35f8f047d7dc74" category="inline-image-macro">七</block>
+  <block id="2a70e5cd7fe1206c11949b9c83f67c59" category="paragraph-title"><block ref="36915574c413876eaa75cbd48f69fd00" category="inline-image-macro-rx" type="image"></block><block ref="89d77223eae1e7b1cf009f838e8ed4ea" category="inline-link-macro-rx"></block></block>
+  <block id="3223a18f0d91b37f89ddc5db7054cd87" category="list-text">啟用 newcs2 交換器上的所有連接埠。</block>
+  <block id="4900377d6745b8a03e6c9a542b3fe2f0" category="paragraph">乙太網路交換器健全狀況監視器（CSHM）負責確保網路交換器的運作健全狀況，並收集交換器記錄以進行除錯。</block>
+  <block id="bc2dfd2fdf95de6b810acf0fa5c67356" category="paragraph">乙太網路交換器健康狀況監控器（CSHM）利用 SNMP 來監控網路交換器的健全狀況和效能。預設情況下，SNMPv2c 會透過參考組態檔（RCF）自動設定。SNMPv3 比 SNMPv2 更安全，因為它引入了強大的安全功能，例如驗證、加密和訊息完整性，可防止未經授權的存取，並確保傳輸期間資料的機密性和完整性。</block>
+  <block id="7cb74dd4a33dec5dc1811198729f1a3d" category="paragraph">乙太網路交換器健全狀況監視器（CSHM）會自動嘗試監控其探索到的網路交換器；但是，如果交換器設定不正確，則可能無法自動進行監控。您應該驗證健全狀況監視器是否已正確設定以監控您的交換器。</block>
 </blocks>

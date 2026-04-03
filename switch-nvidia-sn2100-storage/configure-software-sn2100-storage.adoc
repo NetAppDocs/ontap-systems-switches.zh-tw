@@ -32,3 +32,7 @@ summary: NVIDIA SN2100 儲存交換器軟體設定流程概述。
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["五"]link:setup-install-cshm-file.html["安裝 CSHM 文件"]
 [role="quick-margin-para"]
 您可以安裝適用於NVIDIA叢集交換器的乙太網路交換器健康狀況監控的設定檔。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["六"]link:../switch-cshm/config-overview.html["設定 CSHM"]
+[role="quick-margin-para"]
+設定交換器健全狀況監控。

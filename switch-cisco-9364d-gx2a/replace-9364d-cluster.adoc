@@ -248,12 +248,12 @@ newcs2(config-if-range)# *shutdown*
 newcs2(config)# *interface e1/9/1-4,e1/10/1-4,e1/11/1-4,e1/12/1-4,e1/13/1-4,e1/14/1-4,e1/15/1-4,e1/16/1-4*
 newcs2(config-if-range)# *shutdown*
 newcs2(config)# *interface e1/17/1-4,e1/18/1-4,e1/19/1-4,e1/20/1-4,e1/21/1-4,e1/22/1-4,e1/23/1-4,e1/24/1-4*
-csnewcs21(config-if-range)# *shutdown*
+newcs2(config-if-range)# *shutdown*
 newcs2(config)# *interface e1/25/1-4,e1/26/1-4,e1/27/1-4,e1/28/1-4,e1/29/1-4,e1/30/1-4,e1/31/1-4,e1/32/1-4*
 newcs2(config-if-range)# *shutdown*
 newcs2(config)# *interface e1/33/1-4,e1/34/1-4,e1/35/1-4,e1/36/1-4,e1/37/1-4,e1/38/1-4,e1/39/1-4,e1/40/1-4*
 newcs2(config-if-range)# *shutdown*
-newcs2(config)# *interface e1/41/1-4,e1/42/1-4,e1/43/1-4,e1/44/1-4,e1/35/1-4,e1/46/1-4,e1/47/1-4,e1/48/1-4*
+newcs2(config)# *interface e1/41/1-4,e1/42/1-4,e1/43/1-4,e1/44/1-4,e1/45/1-4,e1/46/1-4,e1/47/1-4,e1/48/1-4*
 newcs2(config-if-range)# *shutdown*
 newcs2(config)# *interface e1/49/1-4,e1/50/1-4,e1/51/1-4,e1/52/1-4,e1/53/1-4,e1/54/1-4,e1/55/1-4,e1/56/1-4*
 newcs2(config-if-range)# *shutdown*\
@@ -373,8 +373,8 @@ cs1# *config*
 Enter configuration commands, one per line. End with CNTL/Z.
 cs1(config)# *interface e1/63-64*
 cs1(config-if-range)# *shutdown*
-cs1(config-if-range)# exit
-cs1(config)# exit
+cs1(config-if-range)# *exit*
+cs1(config)# *exit*
 ----
 . 從 Nexus 9364D-GX2B cs2 交換器上拔下所有電纜，然後將它們連接到 Nexus 9364D-GX2A newcs2 交換器上的相同連接埠。
 . 在 cs1 和 newcs2 交換器之間啟動 ISL 連接埠 1/63 和 1/64，然後驗證連接埠通道運作狀態。
@@ -411,6 +411,34 @@ Group Port-        Type     Protocol  Member Ports
 --------------------------------------------------------------------------------
 11     Po1(SU)     Eth      LACP      Eth1/63(P)   Eth1/64(P)
 999    Po999(SD)   Eth      NONE      --
+----
+====
+. 啟用 newcs2 交換器上的所有連接埠。
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+newcs2# *config*
+newcs2(config)# *interface e1/1/1-4,e1/2/1-4,e1/3/1-4,e1/4/1-4,e1/5/1-4,e1/6/1-4,e1/7/1-4,e1/8/1-4*
+newcs2(config-if-range)# *no shutdown*
+newcs2(config)# *interface e1/9/1-4,e1/10/1-4,e1/11/1-4,e1/12/1-4,e1/13/1-4,e1/14/1-4,e1/15/1-4,e1/16/1-4*
+newcs2(config-if-range)# *no shutdown*
+newcs2(config)# *interface e1/17/1-4,e1/18/1-4,e1/19/1-4,e1/20/1-4,e1/21/1-4,e1/22/1-4,e1/23/1-4,e1/24/1-4*
+newcs2(config-if-range)# *no shutdown*
+newcs2(config)# *interface e1/25/1-4,e1/26/1-4,e1/27/1-4,e1/28/1-4,e1/29/1-4,e1/30/1-4,e1/31/1-4,e1/32/1-4*
+newcs2(config-if-range)# *no shutdown*
+newcs2(config)# *interface e1/33/1-4,e1/34/1-4,e1/35/1-4,e1/36/1-4,e1/37/1-4,e1/38/1-4,e1/39/1-4,e1/40/1-4*
+newcs2(config-if-range)# *no shutdown*
+newcs2(config)# *interface e1/41/1-4,e1/42/1-4,e1/43/1-4,e1/44/1-4,e1/45/1-4,e1/46/1-4,e1/47/1-4,e1/48/1-4*
+newcs2(config-if-range)# *no shutdown*
+newcs2(config)# *interface e1/49/1-4,e1/50/1-4,e1/51/1-4,e1/52/1-4,e1/53/1-4,e1/54/1-4,e1/55/1-4,e1/56/1-4*
+newcs2(config-if-range)# *no shutdown*
+newcs2(config)# *interface e1/57/1-4,e1/58/1-4,e1/59/1-4,e1/60/1-4,e1/61/1-4,e1/62/1-4*
+newcs2(config-if-range)# *no shutdown*
+newcs2(config-if-range)# *exit*
+newcs2(config)# *exit*
 ----
 ====
 . 驗證所有節點上的連接埠 e7b 是否已啟動：

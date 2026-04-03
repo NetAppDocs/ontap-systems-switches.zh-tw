@@ -40,3 +40,7 @@ Cisco Nexus 9336C-FX2（36 個連接埠）是高連接埠密度叢集/儲存/資
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["六"]link:configure-software-overview-9336c-cluster.html["設定軟體"]
 [role="quick-margin-para"]
 配置交換器軟體。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-7.png["七"]link:../switch-cshm/config-overview.html["設定 CSHM"]
+[role="quick-margin-para"]
+設定交換器健全狀況監控。
