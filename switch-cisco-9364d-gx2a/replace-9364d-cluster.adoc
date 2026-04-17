@@ -2,7 +2,7 @@
 permalink: switch-cisco-9364d-gx2a/replace-9364d-cluster.html 
 sidebar: sidebar 
 keywords: replacing, replace, defective, nexus, switch, cluster, network, nondisruptive, procedure, ndu, replace a cisco nexus 9364d-gx2a cluster switch - cisco nexus 9364d-gx2a 
-summary: '更換叢集網路中有缺陷的 Nexus 9364d-gx2a 交換器是一個無中斷過程 \(NDU\)。' 
+summary: 在叢集網路中更換有缺陷的 Nexus 9364D-GX2A 交換器是一個不中斷營運程序（NDU）。 
 ---
 = 更換Cisco Nexus 9364D-GX2A 交換機
 :allow-uri-read: 

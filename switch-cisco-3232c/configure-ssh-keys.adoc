@@ -2,7 +2,7 @@
 permalink: switch-cisco-3232c/configure-ssh-keys.html 
 sidebar: sidebar 
 keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, cisco 9336c-fx2 
-summary: '使用群集交換器健康監視器 (CSHM) 和日誌收集功能時需要 SSH。若要在Cisco 3232C 叢集交換器上啟用 SSH，您需要先生成 SSH 金鑰，然後啟用 SSH。' 
+summary: 使用叢集交換器健康監控器（CSHM）和日誌收集功能時，需要啟用 SSH。若要在 Cisco 3232C 叢集交換器上啟用 SSH，您需要先生成 SSH 金鑰，然後再啟用 SSH。 
 ---
 = 請檢查您的 SSH 配置
 :allow-uri-read: 

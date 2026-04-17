@@ -253,7 +253,7 @@ cluster::*> network interface modify -vserver node2 -lif clus4 -auto-revert fals
 .. 在“描述”頁面上點擊“繼續”，接受許可協議，然後按照“下載”頁面上的說明下載 RCF。
 .. 下載對應版本的影像處理軟體。
 +
-link:shttps://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco叢集和管理網路交換器參考設定檔下載"^]
+link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco叢集和管理網路交換器參考設定檔下載"^]
 
 
 

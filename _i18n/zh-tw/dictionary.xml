@@ -1007,7 +1007,6 @@
   <block id="ba4ab00920641dfd5423a47fe9d7f3c9" category="paragraph-title"><block ref="99e8b2f00e172bfcff96afdce69907bc" category="inline-image-macro-rx" type="image"></block><block ref="e2b4c4f5313b05dff7c4a02a4e9e0df6" category="inline-link-macro-rx"></block></block>
   <block id="6839871c951e0451fa16484988485a69" category="paragraph">如果您使用乙太網路交換器健康監視器 (CSHM) 和日誌收集功能，請在交換器上啟用 SSH。</block>
   <block id="7a81f2c0648b303fec3fe1081158d0e3" category="inline-link-macro">將交換器重設為出廠預設值</block>
-  <block id="e90d5ac1532bae79aa9f467efd13168c" category="summary">使用群集交換器健康監視器 (CSHM) 和日誌收集功能時需要 SSH。若要在 BES-53248 叢集交換器上啟用 SSH，首先需要產生 SSH 金鑰，然後再啟用 SSH。</block>
   <block id="ace8956d8976d528bf22aab3553d5953" category="paragraph">如果您正在使用乙太網路交換器健康監視器 (CSHM) 和日誌收集功能，則必須產生 SSH 金鑰，然後在叢集交換器上啟用 SSH。</block>
   <block id="5c60227e684a42ed2c4295981335965a" category="list-text">確認 SSH 已停用：</block>
   <block id="ddf98c782f1bf15e46a4c740b56426ff" category="paragraph"><block ref="031cb810fe7e12b44d30ad57badb18f9" prefix="" category="inline-code"></block></block>
@@ -1162,7 +1161,6 @@
   <block id="1e44ccea9f1ae385026deb840bc9b5f4" category="paragraph">更多資訊請見：<block ref="780f810d0519883e7efdd6ef45cf51ed" category="inline-link-rx"></block></block>
   <block id="393a5f0f5f1f070aac964741815cca76" category="doc">用無開關連接取代 Broadcom BES-53248 集群交換機</block>
   <block id="c79eef3140e00260a78d272576cfba3c" category="paragraph">更換開關後，您可以 <block ref="9c3be868eca09e30ec03c7542e485ba6" category="inline-link-macro-rx"></block>。</block>
-  <block id="56901ba0364771cc3907ec9a30481dd8" category="summary">在叢集網路中更換有缺陷的博通支援的 BES-53248 叢集交換器是一個非中斷程式 \(NDU\)。</block>
   <block id="4cf79f99b322552a5fe0fadeb4c0ae5b" category="doc">更換要求</block>
   <block id="62dbb19af179fc4e75d76db194377a60" category="paragraph">更換交換器之前，請確保目前環境和待更換的交換器符合以下條件。</block>
   <block id="dcc2aa0bf74cf9b9dfc30761986fb4ef" category="section-title">現有集群和網路基礎設施</block>
@@ -1551,7 +1549,6 @@
   <block id="5e4bd304ccd5d3dec08fc2c5ecaecfa8" category="paragraph">下載並安裝或升級Cisco 3132Q-V 叢集交換器上的 NX-OS 軟體。</block>
   <block id="fc9b57bfb616bf5697d55f4dc656cead" category="inline-link-macro">驗證 SSH 配置</block>
   <block id="98e2c8057648b4deb6fd5ef4edfc71b6" category="paragraph-title"><block ref="99e8b2f00e172bfcff96afdce69907bc" category="inline-image-macro-rx" type="image"></block><block ref="4767a0bcf3ab94aeda87c79dd4096ef4" category="inline-link-macro-rx"></block></block>
-  <block id="f68db63213e90f13582fcc01c68930b3" category="summary">使用群集交換器健康監視器 (CSHM) 和日誌收集功能時需要 SSH。若要在Cisco 3132Q-V 叢集交換器上啟用 SSH，您需要先生成 SSH 金鑰，然後啟用 SSH。</block>
   <block id="48c63e1d1783b7749854be6c0e2a3b98" category="doc">請檢查您的 SSH 配置</block>
   <block id="a75620832d0a69ff51b8f472fb723fc0" category="paragraph">如果您正在使用乙太網路交換器健康監視器 (CSHM) 和日誌收集功能，請確認叢集交換器上已啟用 SSH 和 SSH 金鑰。</block>
   <block id="8b5fc97efb2c8cf5fdcb75b300be917a" category="list-text">請確認 SSH 金鑰已啟用：</block>
@@ -1705,7 +1702,6 @@
   <block id="af4d9c4c765c5c1d9c279c35191c82da" category="paragraph"><block ref="e39b44798f52b1532971ab295180e1b0" prefix="" category="inline-code"></block></block>
   <block id="ed34b4f07dbb9044c4aec48959bb5c98" category="list-text">驗證 cs1 和 cs2 之間的 ISL 連線是否正常：</block>
   <block id="1046b0a81eea5dae9091290036b99362" category="paragraph"><block ref="4767a0bcf3ab94aeda87c79dd4096ef4" category="inline-link-macro-rx"></block>。</block>
-  <block id="988b3c94f8e38d6de10d5305c4dd7696" category="summary">使用群集交換器健康監視器 (CSHM) 和日誌收集功能時需要 SSH。若要在Cisco 3132q-v 叢集交換器上啟用 SSH，請先生成 SSH 金鑰，然後啟用 SSH。</block>
   <block id="cb3f16de867ce1284b9d6fd6671e24e8" category="paragraph">首次設定 Nexus 3132Q-V 交換器後，安裝參考設定檔 (RCF)。</block>
   <block id="d37de69b7bcf8176c4ca106360fde225" category="paragraph">請核實以下安裝和連接：</block>
   <block id="df73b0f89510f793b71a90bf50d82c10" category="list-text">當前的RCF。</block>
@@ -1980,7 +1976,6 @@
   <block id="bec7316775648d437864315e0d24e982" category="list-text">斷開連接到 CL1 的所有節點上所有叢集連接埠的電纜，然後使用支援的分支電纜將連接埠重新連接到新的叢集交換器 C1。</block>
   <block id="73ee1667f3e8bb2dbd30f3944db474b2" category="list-text">斷開 ISL 連接埠 CL1 和 C2 之間的電纜連接，然後使用支援的分支電纜將連接埠從 C1 重新連接到 C2。</block>
   <block id="070a4e3693187c2ff603a966e9153a2b" category="list-text">所有遷移叢集連接埠和連接到所有節點上 C1 的 LIF 的流量都將恢復。</block>
-  <block id="be58ca1abc86064ec18ec661760a9b62" category="paragraph"><block ref="be58ca1abc86064ec18ec661760a9b62" category="inline-link-macro-rx"></block></block>
   <block id="928c955165eb4f35b8841a8382ac9007" category="paragraph">此設定與步驟 11 中在兩台交換器上啟動 ISL 時 3132Q-V 交換器 C2 上的 ISL 設定相符。</block>
   <block id="f7201fa31858b5941b544e3bb13b358a" category="summary">對於Cisco Nexus 3132Q-V 交換器的安裝和維護，請務必查看所有建議的文件。</block>
   <block id="b1bff6dbffb3e30186f826822fa9e577" category="doc">Cisco Nexus 3132Q-V 交換器的文件需求</block>
@@ -2334,7 +2329,6 @@
   <block id="e77ca82337609b67c379c3f9592b0987" category="paragraph-title"><block ref="beadfa85a2fdca06b91edc1131c603e6" category="inline-image-macro-rx" type="image"></block><block ref="23b3385327d0e192a837e8de4bc1cc0a" category="inline-link-macro-rx"></block></block>
   <block id="09bfbd56c3552e97c604a7997c5b2b58" category="paragraph">首次設定Cisco 3232C 交換器後安裝 RCF。</block>
   <block id="199183c8c92b86fba116f2f574537c15" category="paragraph">驗證交換器上是否啟用了 SSH 以使用乙太網路交換器健康監視器 (CSHM) 和日誌收集功能。</block>
-  <block id="3a88a5741f799dc33a61b15c6f06ef77" category="summary">使用群集交換器健康監視器 (CSHM) 和日誌收集功能時需要 SSH。若要在Cisco 3232C 叢集交換器上啟用 SSH，您需要先生成 SSH 金鑰，然後啟用 SSH。</block>
   <block id="e506561a53b08f68da8ca7dacc0617c7" category="paragraph">驗證完 SSH 配置後，您<block ref="9c3be868eca09e30ec03c7542e485ba6" category="inline-link-macro-rx"></block>。</block>
   <block id="99f1453e54cf328786466eb07a56c5f2" category="summary">您可以使用交換器隨附的標準支架將Cisco Nexus 3232C 交換器和直通面板安裝在NetApp機櫃中。</block>
   <block id="1fa4ad4927c73726da929663892a7705" category="doc">在NetApp機櫃中安裝Cisco Nexus 3232C 叢集交換機</block>
@@ -2396,7 +2390,6 @@
   <block id="4ed47e98eb6846af4a7b5f99dc5d30fe" category="paragraph">以下範例使用步驟 1 中的介面範例輸出：</block>
   <block id="1399d69a0008babf2e123d92108c9240" category="list-text">在交換器 cs1 上重複步驟 7 至 23。</block>
   <block id="756f5b45c94a8929404edacf08b1bf8c" category="paragraph">如果任何集群 LIFS 尚未返回其主端口，請手動將其恢復：<block ref="af44897f72b682aae5fc0db1bf98e52d" prefix=" " category="inline-code"></block></block>
-  <block id="d75e350c3cf28f8c449927363dd63c2d" category="summary">使用群集交換器健康監視器 (CSHM) 和日誌收集功能時需要 SSH。若要在Cisco 3232c 叢集交換器上啟用 SSH，您需要先生成 SSH 金鑰，然後啟用 SSH。</block>
   <block id="ebdf13bb97bf138835dab6c2a993e949" category="paragraph">首次設定 Nexus 3232C 交換器後，安裝參考設定檔 (RCF)。</block>
   <block id="fe30b32a598525ac96383ad88e17b716" category="list-text">使用 SSH 或序列控制台登入 switch cs2。</block>
   <block id="cb777c10f9fb518790486e5ed5aaa726" category="paragraph">有關Cisco命令的更多信息，請參閱<block ref="f93981dab484b88c422e924c27565997" category="inline-link-rx"></block>。</block>
@@ -2780,7 +2773,6 @@
   <block id="fae4c180e898c8a439235a5e778d2549" category="paragraph-title"><block ref="beadfa85a2fdca06b91edc1131c603e6" category="inline-image-macro-rx" type="image"></block><block ref="246418de61c3ec41b5c3a3cca9731fd8" category="inline-link-macro-rx"></block></block>
   <block id="c1369f0644c2b0550f6997021719c459" category="paragraph">首次設定Cisco 92300YC 交換器後安裝 RCF。</block>
   <block id="0cdecee05dd24db66522b190c7038cbc" category="paragraph">驗證交換器上是否啟用了 SSH 以使用乙太網路交換器健康監視器 (CSHM) 和日誌收集功能。</block>
-  <block id="1ea468ba4330d1b99a20149c0e78b4ed" category="summary">使用群集交換器健康監視器 (CSHM) 和日誌收集功能時需要 SSH。若要在Cisco 92300YC 叢集交換器上啟用 SSH，您需要先生成 SSH 金鑰，然後啟用 SSH。</block>
   <block id="34cd90939ddc2d9ad86fb102a2041314" category="summary">在設定Cisco Nexus 92300YC 叢集交換器之前，請先查看設定概述。</block>
   <block id="95396888979c65e602f693334da7e07d" category="doc">Cisco Nexus 92300YC 交換器的硬體安裝工作流程</block>
   <block id="6afc705e1b933b4766d87b856c3221cf" category="paragraph">若要安裝和設定 92300YC 叢集交換器的硬件，請依照下列步驟操作：</block>
@@ -2790,7 +2782,6 @@
   <block id="9bc4448eb31aa993c138c699e2f63e4f" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block><block ref="f395413a0179bce929cdb94ae83dcac4" category="inline-link-macro-rx"></block></block>
   <block id="f8e39c49855138fc925b248dd42b44d2" category="paragraph">根據需要在NetApp機櫃中安裝 92300YC 交換器和直通面板。</block>
   <block id="3a3eef3e2d1c73e82a0a67e125e3f967" category="paragraph-title"><block ref="beadfa85a2fdca06b91edc1131c603e6" category="inline-image-macro-rx" type="image"></block><block ref="25a280eed05d50e4a92942cf78681f99" category="inline-link-macro-rx"></block></block>
-  <block id="1f564e4f556cdb31888a8f9f8ba59571" category="summary">必須在Cisco Nexus 92300YC 叢集交換器上安裝Cisco NX-OS 軟體和參考設定檔 \(RCFs\)。</block>
   <block id="454d8bacc17503d670940b88fdf44b2a" category="inline-link">CiscoNexus 9000 系列交換機</block>
   <block id="ae8c66ff76ef76693dc8d62308ae1423" category="list-text">相應的軟體和升級指南可從以下管道取得：<block ref="8cf592c671d256b1fe33924853db0b89" category="inline-link-rx"></block> 。</block>
   <block id="ae51aab75debd2e4f744aa3423ddf6cf" category="list-text">集群 LIF 名稱為<block ref="efdc0a97303fb41897cab634f9381835" prefix=" " category="inline-code"></block>和<block ref="bd152ff09f603987e4c87a156b246966" prefix=" " category="inline-code"></block>對於節點1和<block ref="a466bba1804a252e783c3e78c73981b0" prefix=" " category="inline-code"></block>和<block ref="e136e422a5bae645f7cdf8ea4cf1a818" prefix=" " category="inline-code"></block>對於節點2。</block>
@@ -2904,7 +2895,6 @@
   <block id="c1823cd6c866c4f070a5323fbfabc525" category="list-text">從節點的角度來看，每個節點上的叢集連接埠現在會以以下方式連接到叢集交換器：</block>
   <block id="8b46c589466074f9f6f08c5ac2e65338" category="list-text">驗證叢集的最終配置：</block>
   <block id="6dd41d8a8ed57c2ab7e587572c2bf8c5" category="doc">使用無交換器連接取代Cisco Nexus 92300YC 叢集交換機</block>
-  <block id="24e7ed7655bcf90918459c3d0f5803c1" category="summary">更換叢集網路中有缺陷的 Nexus 92300YC 交換器是一個無中斷過程 \(NDU\)。</block>
   <block id="fd77dcf431c664f377add379bb8ba43b" category="doc">更換Cisco Nexus 92300YC 交換機</block>
   <block id="3ab66f1f8f15a5dfa44e3aa2de25a6f7" category="paragraph">在叢集網路中更換有缺陷的 Nexus 92300YC 交換器是一個非中斷程序 (NDU)。</block>
   <block id="3fbd08493d5c275b232c6896255f6eba" category="paragraph">更換交換器之前，請確保：</block>
@@ -3046,7 +3036,6 @@
   <block id="2b1a60cc4bc76953bbd516335d2be7fa" category="paragraph">驗證Cisco 9332D-GX2B 交換器上是否啟用了 SSH，以便與乙太網路交換器健康監視器 (CSHM) 和日誌收集功能一起使用。</block>
   <block id="a4a96858f15187365b823c95ef3aac29" category="inline-link-macro">啟動 AFX 1K 儲存系統</block>
   <block id="3262dc7e6d25e308076701f117abccc1" category="paragraph">交換器配置完成後，請前往<block ref="11bd23d31ed3839e3507aa5fa0b1832c" category="inline-link-macro-rx"></block>。</block>
-  <block id="f11008972ee2878905fcc3e0a80e8081" category="summary">使用群集交換器健康監視器 (CSHM) 和日誌收集功能時需要 SSH。若要在Cisco 9332d-gx2b 叢集交換器上啟用 SSH，您需要先生成 SSH 金鑰，然後啟用 SSH。</block>
   <block id="8bb3529febf5d6e7a19656402f431fbb" category="paragraph">如果您正在使用乙太網路交換器健康監視器 (CSHM) 和日誌收集功能，請驗證交換器上是否啟用了 SSH 和 SSH 金鑰。</block>
   <block id="af9d37c6eaac00fe7a01bcecf53c1a2e" category="summary">Cisco 9332D-GX2B 叢集交換器安裝與設定概述</block>
   <block id="856a235634405efd4c3b85dbbba18c0d" category="doc">Cisco 9332D-GX2B 交換器的安裝與設定工作流程</block>
@@ -3069,7 +3058,6 @@
   <block id="334698b7eb84d87b30b7bd8bb5fd243d" category="list-text">準備場地、拆箱並將箱子內容與裝箱單進行比較以及註冊系統以獲取支持權益的說明。</block>
   <block id="1b38ba07aa7dfd4d295b22ebaf4cee55" category="list-text">有關在NetApp機櫃或電信機架中安裝交換器、控制器和儲存架的說明。</block>
   <block id="8801cee87a71b51bf6e2b2ef5111ab79" category="list-text">有關係統佈線的說明，包括將控制器儲存佈線到交換器連接以及將機架佈線到交換器連接。</block>
-  <block id="c766931e4df877865b88ed7155a25528" category="summary">必須在Cisco Nexus 9332D-GX2B 叢集交換器上安裝Cisco NX-OS 軟體和參考設定檔 \(RCFs\)。</block>
   <block id="13e140071810ed8f750c982c1b699d3d" category="list-text">節點名稱為node1-01、node1-02、node1-03和node1-04。</block>
   <block id="7ce3bf430a060abfbe72d4985db4c66f" category="list-text">集群 LIF 名稱為：</block>
   <block id="c055a0911beb70bb2aa2a11e861b4dc7" category="list-text">node1-01 的 node1-01_clus1 和 node1-01_clus2</block>
@@ -3148,7 +3136,6 @@
   <block id="a2d07f4e7a36ed872e60c08cdcc73771" category="doc">遷移到雙節點交換集群</block>
   <block id="a693fd2056f9dc0037e9baefb9fbe3bb" category="paragraph">遷移過程適用於所有使用光纖或 Twinax 連接埠的節點，但如果節點使用板載 10Gb BASE-T RJ45 連接埠作為叢集網路端口，則此交換器不支援遷移。</block>
   <block id="ebcf71eb39f7510f62abf6ea769fb245" category="paragraph">每個集群 LIF 應顯示<block ref="b326b5062b2f0e69046810717534cb09" prefix=" " category="inline-code"></block>為了<block ref="53db3ce0fe0e71f06b3beb0b676b806c" prefix=" " category="inline-code"></block>並且擁有<block ref="4f21ee5a18672b60f4c01e94e6be9c79" prefix=" " category="inline-code"></block>向上/向上。</block>
-  <block id="034b2ca4f8708065c8d2bc270a8065be" category="summary">更換叢集網路中有缺陷的 Nexus 9332D-GX2B 交換器是一個無中斷過程 \(NDU\)。</block>
   <block id="de26480add46f245a8d5542ad9cca42b" category="doc">更換Cisco Nexus 9332D-GX2B 交換機</block>
   <block id="d791e14d35f87ca6e28ae6a4b9bc0379" category="paragraph">請依照下列步驟更換共用網路中有缺陷的 Nexus 9332D-GX2B 交換器。這是一個無中斷程式 (NDU)。</block>
   <block id="e1d51624c9462dce3c8cb21ee2541c35" category="paragraph">更換開關之前，請確保：</block>
@@ -3291,7 +3278,6 @@
   <block id="14b3b17f755689e5a5fab89b6ae63211" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block><block ref="0a41823d2a109b5dbd6f2fa1f8fe6689" category="inline-link-macro-rx"></block></block>
   <block id="3031e4abbdfc224eed6c14d57d3dbb3d" category="paragraph">在Cisco 9336C-FX2 和 9336C-FX2-T 叢集交換器上下載並安裝或升級 NX-OS 軟體。</block>
   <block id="a47f262edd3b5d4e8f52d95741233056" category="paragraph">首次設定Cisco 9336C-FX2 和 9336C-FX2-T 交換器後安裝或升級 RCF。您也可以使用此程序升級您的 RCF 版本。</block>
-  <block id="2e3301a364286013b9b29237fa347bb1" category="summary">使用群集交換器健康監視器 (CSHM) 和日誌收集功能時需要 SSH。若要在Cisco 9336c-fx2 叢集交換器上啟用 SSH，您需要先生成 SSH 金鑰，然後啟用 SSH。</block>
   <block id="b456d34c399e9d9889e4c0ac830ecb7a" category="summary">Cisco Nexus 9336C-FX2 叢集交換器的安裝與設定概述</block>
   <block id="42bdad1ced4815a43686beb3b9df6dcf" category="doc">Cisco Nexus 9336C-FX2 和 9336C-FX2-T 叢集交換器的安裝和設定工作流程</block>
   <block id="c7ac353ab2ef0a25fb4b857331c7d67a" category="paragraph">Cisco Nexus 9336C-FX2 和 9336C-FX2-T 叢集交換器是Cisco Nexus 9000 平台的一部分，可以安裝在NetApp系統機櫃中。叢集交換器可讓您建立具有兩個以上節點的ONTAP叢集。</block>
@@ -3316,7 +3302,6 @@
   <block id="5c45a309af117bf72296ab3073d25c28" category="paragraph">根據需要在NetApp機櫃中安裝 9336C-FX2 和 9336C-FX2-T 交換器和直通面板。</block>
   <block id="1a93d578061f1724e84a74106f164f03" category="paragraph-title"><block ref="beadfa85a2fdca06b91edc1131c603e6" category="inline-image-macro-rx" type="image"></block><block ref="f31e2218f7cf08b190abb8563911bffd" category="inline-link-macro-rx"></block></block>
   <block id="8608163382dad3a40accd48496936aa9" category="paragraph">查看對NVIDIA乙太網路連接埠、25GbE FEC 要求的支援以及有關 TCAM 資源的資訊。</block>
-  <block id="2436c6df17686f19f38ce6d35e26f6d3" category="summary">必須在Cisco Nexus 9336C-FX2 叢集交換器上安裝Cisco NX-OS 軟體和參考設定檔 \(RCFs\)。</block>
   <block id="cfca9eeb73fd293484872bcafdcb1798" category="paragraph">準備好安裝 NX-OS 軟體和 RCF 後，您可以… <block ref="af60ba4b6c39eb7f1655b798abad8e11" category="inline-link-macro-rx"></block>。</block>
   <block id="bbb9faab95e3e9af13430c6529221602" category="summary">您可以依照以下步驟在 Nexus 9336C-FX2 叢集交換器上安裝 NX-OS 軟體。</block>
   <block id="9eb0d2dee744ca5726b57d78636445af" category="paragraph">請依照下列步驟在 Nexus 9336C-FX2 和 9336C-FX2-T 叢集交換器上安裝或升級 NX-OS 軟體。</block>
@@ -3399,7 +3384,6 @@
   <block id="e275ddb46a068c9b5b18e40afa41bb49" category="doc">從較舊的Cisco交換器遷移到Cisco Nexus 9336C-FX2 和 9336C-FX2-T 交換機</block>
   <block id="8dd5a454f9a20a1b095f4f408856ede3" category="paragraph">您可以從較舊的Cisco叢集交換器無中斷遷移到Cisco Nexus 9336C-FX2 和 9336C-FX2-T 叢集網路交換器。</block>
   <block id="3720fe8aea9ff8d0c50d321ce564038a" category="doc">使用無交換器連接取代Cisco Nexus 9336C-FX2 和 9336C-FX2-T 叢集交換機</block>
-  <block id="79a952b12f7cf9e1b52379a8980a2482" category="summary">更換叢集網路中有缺陷的 Nexus 9336C-FX2 交換器是一個無中斷過程 \(NDU\)。</block>
   <block id="c2007b9efe240a102c3e44d5a46e3f1b" category="doc">更換Cisco Nexus 9336C-FX2 和 9336C-FX2-T 集群交換機</block>
   <block id="503615f764941a8269f9db632cf11546" category="paragraph">請依照下列步驟更換集群網路中有缺陷的 Nexus 9336C-FX2 和 9336C-FX2-T 交換器。這是一個無中斷程式 (NDU)。</block>
   <block id="be75d21e311dd42a9f487f0bf7e5a0d2" category="list-text">所有群集邏輯介面（LIF）均已啟動並位於其所屬連接埠上。</block>
@@ -3937,7 +3921,6 @@
   <block id="ab82b13e954fdca7e5f24588aadef6a8" category="inline-link-macro">驗證 Nexus 9364D-GX2A 交換器上是否啟用了 SSH</block>
   <block id="77aa6e3807b9bd7a74a8303ac399be0e" category="paragraph-title"><block ref="99e8b2f00e172bfcff96afdce69907bc" category="inline-image-macro-rx" type="image"></block><block ref="1abb5536124bb667bc884e3004b7fca6" category="inline-link-macro-rx"></block></block>
   <block id="f4992e2b915446b5c008204f4d875b9a" category="paragraph">驗證Cisco 9364D-GX2A 交換器上是否啟用了 SSH，以便與乙太網路交換器健康監視器 (CSHM) 和日誌收集功能一起使用。</block>
-  <block id="0f6badfac03a8d8160a651364f2e36c4" category="summary">使用群集交換器健康監視器 (CSHM) 和日誌收集功能時需要 SSH。若要在Cisco 9364d-gx2a 叢集交換器上啟用 SSH，您需要先生成 SSH 金鑰，然後啟用 SSH。</block>
   <block id="b0b4f48eb53ab099e0e2fbcce0a01d6a" category="summary">Cisco Nexus 9364d-gx2a 叢集交換器的安裝與設定概述</block>
   <block id="eb5cc136e9980e29c35bd4f91a246a94" category="doc">Cisco 9364D-GX2A 交換器的安裝與設定工作流程</block>
   <block id="7fa867182b591a95898fed6a0742bbbe" category="paragraph">Cisco 9364D-GX2A 交換器是Cisco Nexus 9000 平台的一部份。AFX 系統交換器可讓您建立具有兩個以上節點的ONTAP叢集。</block>
@@ -3962,7 +3945,6 @@
   <block id="4ddbf9913cf137f28df7ad8a4a25d0f5" category="paragraph">此範例展示了 RCF 文件<block ref="1b86452473f90818e41227cf4b4157de" prefix=" " category="inline-code"></block>正在交換器 cs1 上安裝：</block>
   <block id="7ea042ac2614a0600db9c4b93b98f977" category="summary">首次設定 Nexus 9364d-gx2a 交換器後，您可以安裝 RCF。您也可以使用此程序升級您的 RCF。</block>
   <block id="e78d946d685c3dda4f9e3b88a2f0bba2" category="paragraph">在您查看安裝 RCF 或升級 RCF 程式後，您<block ref="aa26a14f1bc2d7d8cc0e72e6b978adf7" category="inline-link-macro-rx"></block>或者<block ref="4e313e617a2ef8fc435b0fa38938a5e3" category="inline-link-macro-rx"></block>按要求。</block>
-  <block id="9171c26a27d3f56eb4e1f4b69582413f" category="summary">更換叢集網路中有缺陷的 Nexus 9364d-gx2a 交換器是一個無中斷過程 \(NDU\)。</block>
   <block id="06e8a8675fac36562a21ef023e9cd2f4" category="doc">更換Cisco Nexus 9364D-GX2A 交換機</block>
   <block id="f5aff46ac4603cb35601dc593b6fc9f9" category="paragraph">請依照下列步驟更換叢集網路中有缺陷的 Nexus 9364D-GX2A 交換器。這是一個無中斷程式 (NDU)。</block>
   <block id="e6655ba5dd7dc1dd04de141889cc1df1" category="list-text">在 Nexus 9364D-GX2A 替換交換器上：</block>
@@ -4795,7 +4777,6 @@
   <block id="64ea4acdf8f09e3b62f8764dea1b5bf4" category="list-text">然後斷開節點與 c2 之間的電纜與 c2 的連接，並重新連接到 sw2。</block>
   <block id="1b42870c5bc0619ec4b57583bfec41e7" category="list-text">然後斷開節點與 c1 之間的電纜與 c1 的連接，並重新連接到 sw1。</block>
   <block id="a7e9b61c9cfaadc2f123f50dfe481898" category="doc">以無交換器連接取代NVIDIA SN2100 群集交換機</block>
-  <block id="a1db73a47f571c20627d62d37a2069c2" category="summary">在叢集網路中更換有缺陷的NVIDIA SN2100 交換器是一個非中斷程序 (NDU)。</block>
   <block id="a3651ea5ff10cfef31750e91f195d5ee" category="doc">更換NVIDIA SN2100 叢集交換機</block>
   <block id="6b3339f062ab261c4987d608ec574504" category="paragraph">請依照下列步驟更換叢集網路中發生故障的NVIDIA SN2100 交換器。這是一個無中斷程式 (NDU)。</block>
   <block id="4d7831edc195e453c0f47fc21741aa5d" category="list-text">現有集群已驗證功能完全正常，至少有一個完全連接的集群交換器。</block>
@@ -4854,7 +4835,6 @@
   <block id="da873dcea6434f241bb6174b47bc5de1" category="paragraph"><block ref="3855b6f7babaffe66134264b2942b8dd" prefix="" category="inline-code"></block></block>
   <block id="e4d429356be5e6da00762aa4e0f17c02" category="inline-link">恢復出廠設定</block>
   <block id="5bfbe06a9c5a1deae1ee6d69cbd2c74d" category="paragraph">重置開關後，您可以<block ref="d31ba40b12700baf930882b0c2782421" category="inline-link-macro-rx"></block>根據需要使用。</block>
-  <block id="c2f363b557f11042735dbadbfbd534d3" category="summary">您可以使用此程式安裝適用於NVIDIA SN2100 叢集交換器的叢集交換器健康狀況監控設定檔。</block>
   <block id="1972298f5ec1d5e6b5fe96dd4ba6f4d3" category="doc">安裝乙太網路交換器健康監視器設定檔</block>
   <block id="0a7fa80f3e44e6ba2121fadd4ba8aea2" category="paragraph">安裝 CSHM 檔案後，您可以<block ref="9c3be868eca09e30ec03c7542e485ba6" category="inline-link-macro-rx"></block>。</block>
   <block id="9742e43179b451c849ed088319254cd9" category="summary">請依照以下步驟升級您的 Cumulus Linux 版本。</block>
@@ -5028,7 +5008,6 @@
   <block id="726a2f4f4691a5d07983be168f30a586" category="list-text">從節點的角度來看，請確認每個節點上的儲存連接埠現在是否以下列方式連接到交換器：</block>
   <block id="8bb6d17a5dad779f6666181778321972" category="list-text">從節點的角度來看，請確認每個節點上的儲存連接埠現在是否以下列方式連接到交換器：</block>
   <block id="2592c17fec9ee0f2f1d872bee517581e" category="doc">使用NVIDIA SN2100 叢集交換機，將叢集從有交換器的遷移到無交換器的。</block>
-  <block id="1a29ca4be6c9125e8ac9fccfa8df289c" category="summary">以非中斷程序 (NDU) 更換有缺陷的NVIDIA SN2100 儲存交換器。</block>
   <block id="ca56e40e95211438888f7e4c9e051ea5" category="doc">更換NVIDIA SN2100 儲存交換機</block>
   <block id="c7d8f9411e8f6d2fafcb913ed385f06f" category="paragraph">您可以更換有缺陷的NVIDIA SN2100 儲存交換器。這是一個非破壞性的過程。</block>
   <block id="a9ef29d807459286e589883a71bb9c80" category="paragraph">在NVIDIA SN2100 儲存交換器上安裝 Cumulus 軟體和 RCF 之前，請確保：</block>
@@ -5057,7 +5036,6 @@
   <block id="8bd633b356e38314c746a25f8da3b76b" category="doc">將 SN2100 儲存交換器重設為出廠預設值</block>
   <block id="c3b2428233cf84612f16bff57a3bfb02" category="paragraph">若要將 SN2100 儲存交換器重設為出廠預設值：</block>
   <block id="03225e13f6008b647272291aae7f9169" category="paragraph">重置開關後，您可以<block ref="bab7f2e68d62a2e1e4a58e02ed320bda" category="inline-link-macro-rx"></block>根據需要使用。</block>
-  <block id="2cd1b70f79d5acd7ffb2c204f4069175" category="summary">您可以使用此程式安裝適用於NVIDIA SN2100 儲存交換器的叢集交換器健康狀況監控的設定檔。</block>
   <block id="65c65b976cfab8bcc3a5fa282181ca5b" category="paragraph">請依照下列步驟安裝適用於NVIDIA叢集交換器的乙太網路交換器健康狀況監控的設定檔。支援的型號有：</block>
   <block id="4439fd91d84b3562f1b65b6624b8e4af" category="list-text">MSN2100-CB2FC</block>
   <block id="95457e019d4e34bf1527cfc720276bde" category="list-text">MSN2100-CB2RC</block>
@@ -5403,7 +5381,6 @@
   <block id="e77c10b1a257ebcc959eb6fe14f2aa4d" category="sidebar">Overview_3232C_storage</block>
   <block id="8382d892581b7184fb83126ff18bb70d" category="sidebar">Install_hardware_3232C_storage</block>
   <block id="efc5205a1684eea7ad72b62e5417e2ce" category="sidebar">Configure_software_3232C_storage</block>
-  <block id="6754d52ab3aba634c1d3868f6ff1173b" category="paragraph"><block ref="4b5c6435698a249ed2ca19ecf903991f" prefix="" category="inline-code"></block></block>
   <block id="eff487118c44b434c2174aab2b3a4e1c" category="list-text">重啟交換器 cs2。</block>
   <block id="fb14b077ecd3df929fa7f98e0e505f8c" category="admonition">升級或套用新的 RCF 時，必須清除交換器設定並執行基本組態。</block>
   <block id="ece376b7acc25f86ff2e09f80d38755c" category="paragraph">請務必完成以下事項：</block>
@@ -5840,4 +5817,32 @@
   <block id="4900377d6745b8a03e6c9a542b3fe2f0" category="paragraph">乙太網路交換器健全狀況監視器（CSHM）負責確保網路交換器的運作健全狀況，並收集交換器記錄以進行除錯。</block>
   <block id="bc2dfd2fdf95de6b810acf0fa5c67356" category="paragraph">乙太網路交換器健康狀況監控器（CSHM）利用 SNMP 來監控網路交換器的健全狀況和效能。預設情況下，SNMPv2c 會透過參考組態檔（RCF）自動設定。SNMPv3 比 SNMPv2 更安全，因為它引入了強大的安全功能，例如驗證、加密和訊息完整性，可防止未經授權的存取，並確保傳輸期間資料的機密性和完整性。</block>
   <block id="7cb74dd4a33dec5dc1811198729f1a3d" category="paragraph">乙太網路交換器健全狀況監視器（CSHM）會自動嘗試監控其探索到的網路交換器；但是，如果交換器設定不正確，則可能無法自動進行監控。您應該驗證健全狀況監視器是否已正確設定以監控您的交換器。</block>
+  <block id="2cc0a4e03235f6214d4b5fa369958e9f" category="summary">使用叢集交換器健康監控器（CSHM）和日誌收集功能時，需要啟用 SSH。若要在 BES-53248 叢集交換器上啟用 SSH，請先生成 SSH 金鑰，然後再啟用 SSH。</block>
+  <block id="57ce4745993a2cb21c9606f06974d3c9" category="summary">在叢集網路中更換有缺陷的 Broadcom 支援的 BES-53248 叢集交換器是一個不中斷營運程序（NDU）。</block>
+  <block id="9bb9d88110e7f202f1952ebcc9fefc08" category="admonition">上傳和套用 RCF 檔案時，必須將檔案命名為<block ref="a890eeb375a613e0acf945129af8cad4" prefix=" " category="inline-code"></block>，否則腳本套用步驟將會失敗。</block>
+  <block id="153aa60e53e376e3c47bb9de3f41cd5c" category="list-text">使用下列傳輸協定之一將 RCF 複製到交換器 cs2：HTTP、HTTPS、FTP、SFTP 或 SCP。</block>
+  <block id="c8db8b64b02e5a6e924b13e7a1c3d54f" category="summary">使用叢集交換器健康監控器（CSHM）和日誌收集功能時，需要啟用 SSH。若要在 Cisco 3132Q-V 叢集交換器上啟用 SSH，您需要先生成 SSH 金鑰，然後再啟用 SSH。</block>
+  <block id="7ab09ec5429db2527654e19eec7bb2bd" category="summary">使用叢集交換器健康監控器（CSHM）和日誌收集功能時，需要啟用 SSH。若要在 Cisco 3132q-v 叢集交換器上啟用 SSH，您需要先生成 SSH 金鑰，然後再啟用 SSH。</block>
+  <block id="832605a2d3ad68151e1f47c56cdfb281" category="summary">使用叢集交換器健康監控器（CSHM）和日誌收集功能時，需要啟用 SSH。若要在 Cisco 3232C 叢集交換器上啟用 SSH，您需要先生成 SSH 金鑰，然後再啟用 SSH。</block>
+  <block id="04a72e0b6098b241a07346d12dc79fdd" category="summary">使用叢集交換器健康監控器（CSHM）和日誌收集功能時，需要啟用 SSH。若要在 Cisco 3232c 叢集交換器上啟用 SSH，您需要先生成 SSH 金鑰，然後再啟用 SSH。</block>
+  <block id="de12ff3a93a3d0a5df28bdea267617ac" category="summary">使用叢集交換器健康監控器（CSHM）和日誌收集功能時，需要啟用 SSH。若要在 Cisco 92300YC 叢集交換器上啟用 SSH，您需要先生成 SSH 金鑰，然後再啟用 SSH。</block>
+  <block id="bd0c2a5487db101df9e69519dbe7db55" category="summary">Cisco Nexus 92300YC 叢集交換器上必須安裝 Cisco NX-OS 軟體和參考設定檔（RCF）。</block>
+  <block id="4bcfba45804fbbbd6422a9b0dea12c5f" category="summary">在叢集網路中更換有缺陷的 Nexus 92300YC 交換器是一個不中斷的程序。</block>
+  <block id="763d50f75a0946cdabf7614582b13354" category="summary">使用叢集交換器健康監控器（CSHM）和日誌收集功能時，需要啟用 SSH。若要在 Cisco 9332d-gx2b 叢集交換器上啟用 SSH，您需要先生成 SSH 金鑰，然後再啟用 SSH。</block>
+  <block id="7e67dabdf4e4228280d37eb5bc37c3d9" category="summary">Cisco NX-OS 軟體和參考組態檔（RCF）必須安裝在 Cisco Nexus 9332D-GX2B 叢集交換器上。</block>
+  <block id="2beefb4d1a7bb9c61f30e6c0adad3ad5" category="summary">在叢集網路中更換有缺陷的 Nexus 9332D-GX2B 交換器是一個非中斷程序（NDU）。</block>
+  <block id="c1975d8a3808282d8337678030b4a81a" category="summary">使用叢集交換器健康監控器 (CSHM) 和日誌收集功能時，SSH 是必要條件。若要在 Cisco 9336c-fx2 叢集交換器上啟用 SSH，您需要先產生 SSH 金鑰，然後再啟用 SSH。</block>
+  <block id="9b32aa934f364be9aa6cdf3bf05d15ee" category="summary">Cisco Nexus 9336C-FX2 叢集交換器上必須安裝 Cisco NX-OS 軟體和參考設定檔（RCF）。</block>
+  <block id="c506cb52e11779e41b9479bb442eec6e" category="list-text">使用下列傳輸協定之一將 RCF 複製到交換器 cs1 的 bootflash：FTP、SFTP 或 SCP。</block>
+  <block id="b3cbf28e617c9f4b35cbc237024a2fbb" category="paragraph">此範例展示如何使用 SFTP 將 RCF 複製到交換器 cs1 的 bootflash 上：</block>
+  <block id="456a5c90687a021221cc54821a27d7f4" category="summary">在叢集網路中更換有缺陷的 Nexus 9336C-FX2 交換器是一個不中斷營運程序 (NDU)。</block>
+  <block id="9daa5d42be0756d3784e9f178a3295c6" category="list-text">使用下列傳輸協定之一將 RCF 複製到交換器 cs1 上的 bootflash：FTP、SFTP 或 SCP。</block>
+  <block id="64678126dc02aa542e8431224df8565f" category="inline-link-macro">Cisco 9336C-FX2 交換器在 RCF 安裝後無法開機 – 開機變數已清除</block>
+  <block id="34b6891d558f2193167ecd55dac3e6cd" category="admonition">如果您的 9336C-FX2 交換器在 RCF 升級後無法啟動,請參閱 NetApp 知識庫文章 <block ref="e42cc9ef430c6ea42d7a305356970328" category="inline-link-macro-rx"></block> 以了解後續步驟。</block>
+  <block id="c2bfedfcb69ad2176d378523a1a938f1" category="summary">使用叢集交換器健全狀況監控器（CSHM）和日誌收集功能時，SSH 是必要條件。若要在 Cisco 9364d-gx2a 叢集交換器上啟用 SSH，您需要先產生 SSH 金鑰，然後再啟用 SSH。</block>
+  <block id="7da9fcbfb01147ad61851b7542efd343" category="summary">在叢集網路中更換有缺陷的 Nexus 9364D-GX2A 交換器是一個不中斷營運程序（NDU）。</block>
+  <block id="087a0cdfa40d1253f83403998d37833d" category="summary">在叢集網路中更換有缺陷的 NVIDIA SN2100 交換器是一個非中斷程序（NDU）。</block>
+  <block id="dcb14dbcf0c3e9fd91e172f33a9223b5" category="summary">您可以使用此程序來安裝適用於 NVIDIA SN2100 交換器的交換器健全狀況監控組態檔案。</block>
+  <block id="4010049d40fdd6031ad12cfe5da5d25b" category="summary">在非中斷程序 (NDU) 中更換有瑕疵的 NVIDIA SN2100 儲存交換器。</block>
+  <block id="5dc8d4198fd0d6a1ba6b728a23ca8894" category="summary">您可以使用此程序安裝適用於 NVIDIA SN2100 儲存交換器的交換器健全狀況監控組態檔案。</block>
 </blocks>

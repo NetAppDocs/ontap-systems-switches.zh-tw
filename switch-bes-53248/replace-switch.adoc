@@ -2,7 +2,7 @@
 permalink: switch-bes-53248/replace-switch.html 
 sidebar: sidebar 
 keywords: replace, replacing, defective, broadcom-supported, bes, cluster, switch, network, nondisruptive, procedure, ndu, replace a broadcom-supported bes-53428 cluster switch - bes-53428 switches 
-summary: '在叢集網路中更換有缺陷的博通支援的 BES-53248 叢集交換器是一個非中斷程式 \(NDU\)。' 
+summary: 在叢集網路中更換有缺陷的 Broadcom 支援的 BES-53248 叢集交換器是一個不中斷營運程序（NDU）。 
 ---
 = 更換博通支援的 BES-53248 集群交換機
 :allow-uri-read: 

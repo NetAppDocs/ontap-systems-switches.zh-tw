@@ -2,7 +2,7 @@
 permalink: switch-cisco-9336c-fx2/install-upgrade-rcf-overview-cluster.html 
 sidebar: sidebar 
 keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, cisco 9336c-fx2 
-summary: '使用群集交換器健康監視器 (CSHM) 和日誌收集功能時需要 SSH。若要在Cisco 9336c-fx2 叢集交換器上啟用 SSH，您需要先生成 SSH 金鑰，然後啟用 SSH。' 
+summary: '使用叢集交換器健康監控器 (CSHM) 和日誌收集功能時，SSH 是必要條件。若要在 Cisco 9336c-fx2 叢集交換器上啟用 SSH，您需要先產生 SSH 金鑰，然後再啟用 SSH。' 
 ---
 = 安裝或升級參考設定檔 (RCF) 概述
 :allow-uri-read: 

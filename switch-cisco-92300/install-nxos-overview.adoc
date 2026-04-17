@@ -2,7 +2,7 @@
 permalink: switch-cisco-92300/install-nxos-overview.html 
 sidebar: sidebar 
 keywords: install nx-os rcf cisco nx 92300yc cluster switch 
-summary: '必須在Cisco Nexus 92300YC 叢集交換器上安裝Cisco NX-OS 軟體和參考設定檔 \(RCFs\)。' 
+summary: Cisco Nexus 92300YC 叢集交換器上必須安裝 Cisco NX-OS 軟體和參考設定檔（RCF）。 
 ---
 = 準備安裝 NX-OS 軟體和參考設定檔 (RCF)
 :allow-uri-read: 
