@@ -2,7 +2,7 @@
 permalink: switch-cshm/config-snmpv3.html 
 sidebar: sidebar 
 keywords: cshm, configure, snmpv3, switch logs, debugging, collection 
-summary: '您可以使用此程式為您的特定交換器設定 SNMPv3，該交換器支援乙太網路交換器健康監控 (CSHM)。' 
+summary: 您可以使用此程序為您的特定交換器設定 SNMPv3，該交換器支援乙太網路交換器健全狀況監控 CSHM。 
 ---
 = 為交換器配置 SNMPv3（可選）
 :allow-uri-read: 

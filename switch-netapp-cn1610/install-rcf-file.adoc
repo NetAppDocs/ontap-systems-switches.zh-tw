@@ -2,7 +2,7 @@
 permalink: switch-netapp-cn1610/install-rcf-file.html 
 sidebar: sidebar 
 keywords: reference configuration, file ,install, cn1610, switch, install rcf 
-summary: '安裝參考設定檔 (RCF) 時，必須先將叢集 LIF 從交換器 cs2 遷移出去。  RCF 安裝並驗證完成後，LIF 即可遷移回去。' 
+summary: 安裝參考組態檔 RCF 時，必須先將叢集 LIF 從交換器 cs2 遷移出去。RCF 安裝並驗證完成後，即可將 LIF 移回。 
 ---
 = 在 CN1610 交換器上安裝參考設定檔
 :allow-uri-read: 

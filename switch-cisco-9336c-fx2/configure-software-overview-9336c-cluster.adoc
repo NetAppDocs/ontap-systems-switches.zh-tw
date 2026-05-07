@@ -25,7 +25,7 @@ summary: Cisco Nexus 9336C-FX2 叢集交換器軟體設定概述
 [role="quick-margin-para"]
 在Cisco 9336C-FX2 和 9336C-FX2-T 叢集交換器上下載並安裝或升級 NX-OS 軟體。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["四"]link:install-upgrade-rcf-overview-cluster.html["安裝或升級 RCF"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["四"]link:install-upgrade-rcf-overview-cluster-9336c.html["安裝或升級 RCF"]
 [role="quick-margin-para"]
 首次設定Cisco 9336C-FX2 和 9336C-FX2-T 交換器後安裝或升級 RCF。您也可以使用此程序升級您的 RCF 版本。
 

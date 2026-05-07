@@ -2,7 +2,7 @@
 permalink: switch-bes-53248/CSHM_log_collection.html 
 sidebar: sidebar 
 keywords: log collection feature,collect switch-related log files,SSh key,crypto key generation,BES-53248 Broadcom setup,BES-53248 switches configuration,EFOS 
-summary: 'ONTAP中的乙太網路交換器健康監視器 (CSHM) 日誌收集功能用於從叢集或儲存網路交換器收集日誌。' 
+summary: ONTAP 中的乙太網路交換器健全狀況監控器 CSHM 記錄收集功能用於從叢集或儲存網路交換器收集記錄。 
 ---
 = 乙太網路交換器健康監控日誌收集
 :allow-uri-read: 

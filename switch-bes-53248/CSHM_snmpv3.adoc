@@ -2,7 +2,7 @@
 permalink: switch-bes-53248/CSHM_snmpv3.html 
 sidebar: sidebar 
 keywords: SNMP,SNMPv3,SNMPv3 setup,BES-53248 Broadcom setup,BES-3248 switches configuration,EFOS 
-summary: 'SNMPv3 可以與乙太網路交換器健康監視器 (CSHM) 一起使用。' 
+summary: SNMPv3 可以與乙太網路交換器健全狀況監控器 CSHM 一起使用。 
 ---
 = 配置 SNMPv3
 :allow-uri-read: 

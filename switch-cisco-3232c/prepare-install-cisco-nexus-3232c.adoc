@@ -2,7 +2,7 @@
 permalink: switch-cisco-3232c/prepare-install-cisco-nexus-3232c.html 
 sidebar: sidebar 
 keywords: nx-os software, install, cisco nexus cluster switches, 3232c, rcfs 
-summary: 'Cisco Nexus 3232C 叢集交換器上必須安裝Cisco NX-OS 軟體和參考設定檔 (RCF)。' 
+summary: Cisco NX-OS 軟體和參考組態檔 RCF 必須安裝在 Cisco Nexus 3232C 叢集交換器上。 
 ---
 = 準備安裝 NX-OS 軟體和參考設定檔 (RCF)
 :allow-uri-read: 

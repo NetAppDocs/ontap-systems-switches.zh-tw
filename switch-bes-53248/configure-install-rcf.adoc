@@ -2,7 +2,7 @@
 permalink: switch-bes-53248/configure-install-rcf.html 
 sidebar: sidebar 
 keywords: install rcf,setup rcf,rcf file 
-summary: '設定 BES-53248 叢集交換器並套用新授權後，即可安裝參考設定檔 (RCF)。' 
+summary: 設定 BES-53248 叢集交換器並套用新授權後，即可安裝參考組態檔 RCF。 
 ---
 = 安裝參考組態檔（RCF）
 :allow-uri-read: 

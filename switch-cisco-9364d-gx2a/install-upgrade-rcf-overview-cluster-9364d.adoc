@@ -1,5 +1,5 @@
 ---
-permalink: switch-cisco-9364d-gx2a/install-upgrade-rcf-overview-cluster.html 
+permalink: switch-cisco-9364d-gx2a/install-upgrade-rcf-overview-cluster-9364d.html 
 sidebar: sidebar 
 keywords: install, upgarde, cluster, switch, cisco 9364d-gx2a 
 summary: 首次設定 Nexus 9364d-gx2a 交換器後，您可以安裝 RCF。您也可以使用此程序升級您的 RCF。 

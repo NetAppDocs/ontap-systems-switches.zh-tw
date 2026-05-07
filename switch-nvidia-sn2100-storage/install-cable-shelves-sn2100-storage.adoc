@@ -2,7 +2,7 @@
 permalink: switch-nvidia-sn2100-storage/install-cable-shelves-sn2100-storage.html 
 sidebar: sidebar 
 keywords: sn2100 cabling setup, msn2100 sn2100 switches configuration, cumulus linux 
-summary: 如果您的系統需要將 NS224 磁碟機架作為交換器連接儲存（而不是直接連接儲存）進行佈線，請使用此處提供的資訊。 
+summary: 如果您的系統需要將 NS224 磁碟機櫃作為交換器連接儲存設備而非直接連接儲存設備進行佈線，請使用此處提供的資訊。 
 ---
 = NS224電纜架用作交換器連接存儲
 :allow-uri-read: 

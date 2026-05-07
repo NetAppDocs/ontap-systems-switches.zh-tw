@@ -1,5 +1,5 @@
 ---
-permalink: switch-cisco-9332d-gx2b/install-upgrade-rcf-overview-cluster.html 
+permalink: switch-cisco-9332d-gx2b/install-upgrade-rcf-overview-cluster-9332d.html 
 sidebar: sidebar 
 keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, cisco 9332d-gx2b 
 summary: 首次設定 Nexus 9332D-GX2B 交換器後，您可以安裝 RCF。您也可以使用此程序升級您的 RCF 版本。 
