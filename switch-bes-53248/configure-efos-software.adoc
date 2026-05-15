@@ -365,8 +365,10 @@ ONIE:/ #
 ====
 . 安裝新的交換器軟體：
 +
-`ONIE:/ # onie-nos-install http://50.50.50.50/Software/onie-installer-x86_64`
-
+[listing]
+----
+ONIE:/ # onie-nos-install http://50.50.50.50/Software/onie-installer-x86_64
+----
 +
 .顯示範例
 [%collapsible]

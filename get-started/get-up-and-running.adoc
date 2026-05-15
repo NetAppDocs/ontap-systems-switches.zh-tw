@@ -68,7 +68,8 @@ summary: 了解叢集交換器、儲存交換器和共用交換器。
  a| 
  a| 
 * https://docs.netapp.com/us-en/ontap-afx/index.html["AFX 系統"^]
-* https://docs.netapp.com/us-en/ontap-systems/aff-landing/index.html["AFF 系統"^]
+* https://docs.netapp.com/us-en/ontap-systems/aff-aseries/index.html["AFF A 系列系統"^]
+* https://docs.netapp.com/us-en/ontap-systems/aff-cseries/index.html["AFF C 系列系統"^]
 * https://docs.netapp.com/us-en/ontap-systems/allsan-landing/index.html["ASA 系統"^]
 * https://docs.netapp.com/us-en/asa-r2/index.html["ASA r2 系統"^]
 * https://docs.netapp.com/us-en/ontap-systems/fas/index.html["FAS 系統"^]
@@ -172,7 +173,8 @@ ONTAP系統的安裝和設定說明包括將控制器連接埠連接到交換器
  a| 
  a| 
 * https://docs.netapp.com/us-en/ontap-afx/index.html["AFX 系統"^]
-* https://docs.netapp.com/us-en/ontap-systems/aff-landing/index.html["AFF 系統"^]
+* https://docs.netapp.com/us-en/ontap-systems/aff-aseries/index.html["AFF A 系列系統"^]
+* https://docs.netapp.com/us-en/ontap-systems/aff-cseries/index.html["AFF C 系列系統"^]
 * https://docs.netapp.com/us-en/ontap-systems/allsan-landing/index.html["ASA 系統"^]
 * https://docs.netapp.com/us-en/asa-r2/index.html["ASA r2 系統"^]
 * https://docs.netapp.com/us-en/ontap-systems/fas/index.html["FAS 系統"^]
