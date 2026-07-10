@@ -4,6 +4,7 @@
 
 
 
+[[new-switch-support]]
 == 新交換器支持
 
 [cols="25h,~,~"]

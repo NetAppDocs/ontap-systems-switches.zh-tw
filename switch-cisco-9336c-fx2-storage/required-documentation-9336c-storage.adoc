@@ -18,6 +18,7 @@ summary: 對於Cisco Nexus 9336C-FX2 交換器的安裝和維護，請務必查�
 
 
 
+[[switch-documentation]]
 == 切換文檔
 
 要設定 Cisco Nexus 9336C-FX2 交換機、您需要 link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Cisco Nexus 9000 系列交換器支援"^] 提供的下列文件。
@@ -84,6 +85,7 @@ Cisco Nexus 9000 系列的法規遵循和安全訊息
 |===
 
 
+[[ontap-systems-documentation]]
 == ONTAP 系統文檔
 
 要設定 ONTAP 系統、您需要適用於您的作業系統版本的下列文件。
@@ -115,6 +117,7 @@ link:https://hwu.netapp.com["Hardware Universe"^]
 |===
 
 
+[[rail-kit-and-cabinet-documentation]]
 == 軌道套件和機櫃文檔
 
 若要在 NetApp 機櫃中安裝 Cisco 9336-FX2 交換機，請參閱下列硬體文件。

@@ -1,0 +1,77 @@
+---
+permalink: switch-cisco-9808/configure-verify-ssh-9808.html 
+sidebar: sidebar 
+keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, cisco 9808 
+summary: '如果您正在設定交換器，作為新 AFX 2K 系統安裝、主管模組更換或重設為原廠預設設定的一部分，並且想要使用叢集交換器健康監視器 (CSHM) 和日誌收集功能，則必須驗證交換器上是否已啟用 SSH 和 SSH 金鑰。' 
+---
+= 驗證 SSH 日誌收集功能 - Cisco Nexus 9808
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果您正在將交換器設定為新 AFX 2K 系統安裝、監督模組更換或重設為原廠預設設定的一部分，若要使用乙太網路交換器健康監視器 (CSHM) 日誌收集功能，則必須確認交換器上已啟用 SSH。
+
+.開始之前
+您必須使用串列埠控制台連接到交換器。
+
+.步驟
+. 確認 SSH 已啟用：
++
+[listing, subs="+quotes"]
+----
+(switch) *show ssh server*
+ssh version 2 is enabled
+----
+. 請確認 SSH 金鑰已啟用：
++
+`show ssh key`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(switch)# *show ssh key*
+
+**************************************
+rsa Keys generated:Wed May 14 18:49:37 2025
+
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQCndfdJesautdCwk5Mk/7pKOFl0IeShc9uBtj74F52vbjyf1FHOCXX7Xf3Vopxs6L1hbzgCpFLo9E7pZBd3I+1AoLyQULtR3svzNieGY8mlWZGLtpKf/P2fDCd8JVJaejrwQhm49WUPiC6ziEqBDMOGhJpD2e9++umyDdr6
+NbmK8Q==
+
+
+bitcount:1024
+fingerprint:
+SHA256:QtNU+Qq2I4ZfYwEfMEB1+z8w7xaKTlantTdsjLBx+OU
+**************************************
+could not retrieve dsa key information
+**************************************
+ecdsa Keys generated:Wed May 14 18:50:56 2025
+
+
+ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBAAYnv17T+JlGmH8rg81xiOow0mPmkbkIG0o7h9EchixO3i3KjgQr8AwqkRHNTcQC3lRnizhJFUeMGCwuQTurziRCwE6fAOkWa2MRyXA1DYRKKXjVEOnW9+MvinMipHQ0cCc
+YSExhh7j4HvWHIuYv8RmD7e3rmDQFlyyiLwdmpGfas2yaw==
+
+
+bitcount:521
+fingerprint:
+SHA256:7cpZ5NGnIq5Iamw67ke+9o4qG9D3xxmGPauVl4X5934
+**************************************
+
+(switch)# *show feature | include scpServer*
+scpServer              1          enabled
+(switch)# *show feature | include ssh*
+sshServer              1          enabled
+(switch)#
+----
+====
+
+
+.下一步是什麼？
+* 確認 SSH 已啟用日誌收集後，您link:../switch-cshm/cshm-overview.html["設定乙太網路交換器健康狀況監控"]。
+* 設定乙太網路交換器健全狀況監控後，如果您想利用 Cisco 的 Smart Call Home 支援功能，您link:configure-smart-call-9808.html["配置 Smart Call Home"]。
+* 如果您將交換器設定為新 AFX 2K 系統安裝的一部分，則必須link:install-complete-afx-setup-9808.html["完成 AFX 系統設定"]。
+

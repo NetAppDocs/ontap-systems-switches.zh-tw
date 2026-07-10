@@ -17,6 +17,7 @@ summary: 如果您已經擁有一個雙節點無交換器叢集環境，則可�
 
 
 
+[[review-requirements]]
 == 審查要求
 
 .雙節點無交換器配置
@@ -53,6 +54,7 @@ link:https://hwu.netapp.com["Hardware Universe"^] 包含有關您平台實際叢
 
 
 
+[[migrate-the-switches]]
 == 遷移交換機
 
 .關於範例
@@ -68,6 +70,7 @@ link:https://hwu.netapp.com["Hardware Universe"^] 包含有關您平台實際叢
 
 
 
+[[step-1-prepare-for-migration]]
 === 步驟 1：準備遷移
 
 . 如果此叢集上啟用了AutoSupport ，則透過呼叫AutoSupport訊息來抑制自動建立案例： `system node autosupport invoke -node * -type all -message MAINT=xh`
@@ -82,6 +85,7 @@ link:https://hwu.netapp.com["Hardware Universe"^] 包含有關您平台實際叢
 
 
 
+[[step-2-configure-ports-and-cabling]]
 === 步驟二：設定埠和線纜
 
 [role="tabbed-block"]
@@ -670,6 +674,7 @@ e3b       Cluster      Cluster          up   9000  auto/10000 healthy  false
 
 
 
+[[step-3-verify-the-configuration]]
 === 步驟 3：驗證配置
 
 . 啟用所有叢集 LIF 的自動回滾功能：

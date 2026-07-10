@@ -15,6 +15,7 @@ summary: 如果您在現有的雙節點無交換器叢集中擁有 FAS22xx 系�
 
 
 
+[[review-requirements]]
 == 審查要求
 
 .開始之前
@@ -32,12 +33,14 @@ https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/
 
 
 
+[[migrate-the-switches]]
 == 遷移交換機
 
 該過程是一個非中斷性過程，它在無交換器環境中移除直接叢集連接，並將每個與交換器的連接替換為與夥伴節點的連接。
 
 
 
+[[step-1-prepare-for-migration]]
 === 步驟 1：準備遷移
 
 . 將權限級別變更為高級，輸入 `y`當系統提示繼續：
@@ -150,6 +153,7 @@ cluster::*> system node autosupport invoke -node * -type all -message MAINT=2h
 
 
 
+[[step-2-configure-cables-and-ports]]
 === 步驟 2：設定線纜和連接埠
 
 . 在每個控制器模組上，斷開將 10 GbE 叢集連接埠連接到無交換器叢集的電纜。
@@ -301,6 +305,7 @@ RPC status:
 ====
 
 
+[[step-3-complete-the-procedure]]
 === 步驟 3：完成該步驟
 
 . 如果您已停用自動建立案例功能，請透過呼叫AutoSupport訊息重新啟用該功能：

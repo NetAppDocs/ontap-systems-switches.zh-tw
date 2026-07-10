@@ -17,6 +17,7 @@ summary: 對於運行ONTAP 8.3.1 或更高版本的NetApp CN1601 管理交換器
 
 
 
+[[review-requirements]]
 == 審查要求
 
 .開始之前
@@ -36,6 +37,7 @@ summary: 對於運行ONTAP 8.3.1 或更高版本的NetApp CN1601 管理交換器
 
 
 
+[[install-the-fastpath-software]]
 == 安裝 FASTPATH 軟體
 
 下列程序使用叢集式Data ONTAP 8.2 語法。因此，叢集 Vserver、LIF 名稱和 CLI 輸出與Data ONTAP 8.3 中的不同。
@@ -62,6 +64,7 @@ link:https://hwu.netapp.com/["Hardware Universe"^]提供有關您平台支援的
 
 
 
+[[step-1-migrate-cluster]]
 === 步驟 1：遷移集群
 
 . 顯示叢集上的網路連接埠資訊：
@@ -252,6 +255,7 @@ Copy operation successful
 
 
 
+[[step-2-install-the-fastpath-software-and-rcf]]
 === 步驟 2：安裝 FASTPATH 軟體和 RCF
 
 . 請確認FASTPATH軟體的運作版本。
@@ -463,6 +467,7 @@ System will now restart!
 
 
 
+[[step-3-validate-installation]]
 === 步驟 3：驗證安裝
 
 . 再次登錄，然後驗證交換器是否正在執行新版本的 FASTPATH 軟體。

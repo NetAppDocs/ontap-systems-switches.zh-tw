@@ -15,6 +15,7 @@ summary: 您可以將ONTAP叢集的NetApp CN1610 叢集交換器無中斷地移�
 
 
 
+[[review-requirements]]
 == 審查要求
 
 使用Cisco 9336C-FX2 和 9336C-FX2-T 叢集交換器取代NetApp CN1610 叢集交換器時，必須了解某些設定資訊、連接埠連線和佈線要求。您還必須驗證交換器序號以確保遷移了正確的交換器。
@@ -48,6 +49,7 @@ summary: 您可以將ONTAP叢集的NetApp CN1610 叢集交換器無中斷地移�
 
 
 
+[[migrate-the-switches]]
 == 遷移交換機
 
 .關於範例
@@ -91,6 +93,7 @@ NOTE: 在此過程中不需要任何可操作的交換器間連結 (ISL)。這�
 
 
 
+[[step-1-prepare-for-migration]]
 === 步驟 1：準備遷移
 
 . 如果此叢集上啟用了AutoSupport ，則透過呼叫AutoSupport訊息來抑制自動建立案例：
@@ -118,6 +121,7 @@ NOTE: 在此過程中不需要任何可操作的交換器間連結 (ISL)。這�
 
 
 
+[[step-2-configure-ports-and-cabling]]
 === 步驟二：設定埠和線纜
 
 . 確定每個叢集介面的管理或運作狀態。
@@ -523,6 +527,7 @@ node2      /cdp
 
 
 
+[[step-3-verify-the-configuration]]
 === 步驟 3：驗證配置
 
 . 啟用叢集 LIF 的自動回滾功能：

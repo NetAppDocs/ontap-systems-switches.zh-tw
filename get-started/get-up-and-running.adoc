@@ -17,7 +17,7 @@ summary: 了解叢集交換器、儲存交換器和共用交換器。
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一"]安裝交換器硬體
 [role="quick-margin-para"]
-將交換器安裝在機架或機櫃中。請參考以下適用於您交換器型號的說明。
+將交換器安裝到機架或機櫃中。請參考以下適用於您的 AFX 系統或交換器型號的說明。
 
 [cols="11,9,9,9"]
 |===
@@ -27,8 +27,9 @@ summary: 了解叢集交換器、儲存交換器和共用交換器。
 .AFX 系統交換機
 [%collapsible]
 ====
-* link:https://docs.netapp.com/us-en/ontap-afx/install-setup/install-switches.html["安裝Cisco Nexus 9332D-GX2B 交換機"^]
-* link:https://docs.netapp.com/us-en/ontap-afx/install-setup/install-switches.html["安裝Cisco Nexus 9364D-GX2A 交換機"^]
+* link:../switch-cisco-9332d-gx2b/install-prepare-9332d.html["準備安裝 Cisco Nexus 9332D-GX2B 交換器"^]
+* link:../switch-cisco-9364d-gx2a/install-prepare-9364d.html["準備安裝 Cisco Nexus 9364D-GX2A 交換器"^]
+* link:../switch-cisco-9808/install-prepare-9808.html["準備安裝 Cisco Nexus 9808 交換機"^]
 
 
 ==== a| 
@@ -80,7 +81,7 @@ summary: 了解叢集交換器、儲存交換器和共用交換器。
 |===
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三"]將開關透過電纜連接到控制器。
 [role="quick-margin-para"]
-ONTAP系統的安裝和設定說明包括將控制器連接埠連接到交換器的說明。但是，如果您需要支援的電纜和收發器列表，以及有關交換器主機連接埠的詳細信息，請訪問以下適用於您的交換器型號的說明。
+ONTAP 系統的安裝和設定說明包含將控制器連接埠連接到交換器的線纜連接說明。但是，如果您需要支援的線纜和收發器清單，以及有關交換器主機連接埠的詳細資訊，請存取適用於您的 AFX 系統或交換器型號的以下說明。
 
 [cols="11,9,9,9"]
 |===
@@ -90,8 +91,8 @@ ONTAP系統的安裝和設定說明包括將控制器連接埠連接到交換器
 .AFX 系統交換機
 [%collapsible]
 ====
-* link:https://docs.netapp.com/us-en/ontap-afx/install-setup/afx-cable-overview.html["為Cisco Nexus 9332D-GX2B 交換器佈線"^]
-* link:https://docs.netapp.com/us-en/ontap-afx/install-setup/afx-cable-overview.html["為Cisco Nexus 9364D-GX2A 交換器佈線"^]
+* link:https://docs.netapp.com/us-en/ontap-afx/install-setup/afx-cable-overview.html["為 AFX 1K 系統安裝 Cisco Nexus 交換器"^]
+* link:https://review.docs.netapp.com/us-en/ontap-afx/install-afx-2k/afx-cable-overview.html["為 AFX 2K 系統安裝 Cisco Nexus 交換器"^]
 
 
 ==== a| 
@@ -122,7 +123,7 @@ ONTAP系統的安裝和設定說明包括將控制器連接埠連接到交換器
 |===
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["四"]配置交換器軟體
 [role="quick-margin-para"]
-若要安裝和設定交換器上的軟體，請依照適用於您交換器型號的軟體安裝工作流程進行操作。
+若要設定交換器並安裝軟體，請依照您的交換器型號的軟體安裝工作流程進行操作。
 
 [cols="11,9,9,9"]
 |===
@@ -132,8 +133,9 @@ ONTAP系統的安裝和設定說明包括將控制器連接埠連接到交換器
 .AFX 系統交換機
 [%collapsible]
 ====
-* link:../switch-cisco-9332d-gx2b/configure-software-overview-9332d-cluster.html["為Cisco Nexus 9332D-GX2B 交換器安裝軟體"^]
-* link:../switch-cisco-9364d-gx2a/configure-software-overview-9364d-cluster.html["為Cisco Nexus 9364D-GX2A 交換器安裝軟體"^]
+* link:../switch-cisco-9332d-gx2b/configure-switch-workflow-9332d.html["設定 Cisco Nexus 9332D-GX2B 交換機"^]
+* link:../switch-cisco-9364d-gx2a/configure-switch-workflow-9364d.html["設定 Cisco Nexus 9364D-GX2A 交換機"^]
+* link:../switch-cisco-9808/configure-switch-workflow-9808.html["配置 Cisco Nexus 9808 交換機"^]
 
 
 ==== a| 

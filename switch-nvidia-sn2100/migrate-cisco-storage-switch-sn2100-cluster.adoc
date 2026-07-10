@@ -15,6 +15,7 @@ summary: 您可以將ONTAP叢集中較舊的Cisco交換器無中斷地遷移到N
 
 
 
+[[review-requirements]]
 == 審查要求
 
 當您用 NVIDIA SN2100 儲存交換器取代一些老舊的 Cisco 交換器時、必須了解某些組態資訊、連接埠連線和佈線要求。請參閱 link:configure-overview-sn2100-cluster.html["NVIDIA SN2100交換器的安裝與設定概述"]。
@@ -48,6 +49,7 @@ summary: 您可以將ONTAP叢集中較舊的Cisco交換器無中斷地遷移到N
 
 
 
+[[migrate-the-switches]]
 == 遷移交換機
 
 .關於範例
@@ -72,6 +74,7 @@ summary: 您可以將ONTAP叢集中較舊的Cisco交換器無中斷地遷移到N
 
 
 
+[[step-1-prepare-for-migration]]
 === 步驟 1：準備遷移
 
 . 如果啟用了AutoSupport，則透過呼叫AutoSupport訊息來阻止自動建立案例：
@@ -89,6 +92,7 @@ summary: 您可以將ONTAP叢集中較舊的Cisco交換器無中斷地遷移到N
 
 
 
+[[step-2-configure-ports-and-cabling]]
 === 步驟二：設定埠和線纜
 
 . 確定每個儲存介面的管理或運作狀態。
@@ -417,6 +421,7 @@ swp6       100G   Trunk/L2  SHFFG1826000102        e0b
 
 
 
+[[step-3-complete-the-procedure]]
 === 步驟 3：完成該步驟
 
 . 為乙太網路交換器健康監控日誌收集功能建立密碼：

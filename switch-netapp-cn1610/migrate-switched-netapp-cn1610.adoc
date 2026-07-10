@@ -15,6 +15,7 @@ summary: 如果您已有雙節點無交換器叢集環境，則可以使用 CN16
 
 
 
+[[review-requirements]]
 == 審查要求
 
 .開始之前
@@ -53,6 +54,7 @@ CN1610群集交換器配置如下：
 
 
 
+[[migrate-the-switches]]
 == 遷移交換機
 
 .關於範例
@@ -70,6 +72,7 @@ CN1610群集交換器配置如下：
 
 
 
+[[step-1-prepare-for-migration]]
 === 步驟 1：準備遷移
 
 . 將權限級別變更為高級，輸入 `y`當系統提示繼續：
@@ -105,6 +108,7 @@ cluster::*> system node autosupport invoke -node * -type all -message MAINT=2h
 
 
 
+[[step-2-configure-ports]]
 === 步驟 2：設定埠
 
 . 停用新叢集交換器 cs1 和 cs2 上所有面向節點的連接埠（非 ISL 連接埠）。
@@ -865,6 +869,7 @@ NOTE: 對於 8.3 及更高版本，命令如下：
 
 
 
+[[step-3-complete-the-configuration]]
 === 步驟 3：完成配置
 
 . 確認所有介面均顯示 `true`在「是否在家」一欄：

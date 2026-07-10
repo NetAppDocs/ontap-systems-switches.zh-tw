@@ -1,0 +1,31 @@
+---
+permalink: switch-cisco-9364d-gx2a/maintain-replace-frus-9364d.html 
+sidebar: sidebar 
+keywords: switches, hardware installation, Cisco Nexus, 9364D-GX2A switches 
+summary: '您的 Cisco Nexus 9364D-GX2A 交換器具有現場可更換單元 (FRU)，您可以在發生故障時進行更換。' 
+---
+= 更換 FRU - Cisco Nexus 9364D-GX2A
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您的 Cisco Nexus 9364D-GX2A 交換器具有現場可更換單元 (FRU)，您可以在發生故障時進行更換。
+
+.關於此任務
+Cisco Nexus 9364D-GX2A 交換器具有以下 FRU：
+
+* 風扇模組（共 4 個）
+* 電源模組（共 2 個）
+* OSFP/QSFP 收發器模組（64 個固定 400GbE 連接埠）
+
+
+.步驟
+. 請造訪 Cisco 網站以取得相關資訊 https://www.cisco.com/c/en/us/td/docs/dcn/hw/nx-os/nexus9000/9364d-gx2a/cisco-nexus-9364d-gx2a-nx-os-mode-switch-hardware-installation-guide.html?dtid=osscdc000283&linkclickid=srch&scid=srch-9364d-gx2a-hw-guide#id_111902["Cisco Nexus 9364D-GX2A NX-OS 模式交換器硬體安裝指南"^]。
+. 請導覽至「更換組件」章節，以查看 FRU 程序。
+. 請依照適用程序更換故障的 FRU。
+
+
+.下一步是什麼？
+在 Cisco 網站上完成對應的 FRU 程序後，即可恢復正常操作。

@@ -15,6 +15,7 @@ summary: 若要將叢集中現有的 CN1610 叢集交換器替換為Cisco Nexus 
 
 
 
+[[review-requirements]]
 == 審查要求
 
 遷移前，請務必查看link:migrate-requirements-3232c.html["遷移要求"]。
@@ -32,6 +33,7 @@ NOTE: 流程需要同時使用ONTAP指令和Cisco Nexus 3000 系列交換器指�
 
 
 
+[[migrate-the-switches]]
 == 遷移交換機
 
 .關於範例
@@ -52,6 +54,7 @@ NOTE: 流程需要同時使用ONTAP指令和Cisco Nexus 3000 系列交換器指�
 
 
 
+[[step-1-prepare-for-migration]]
 === 步驟 1：準備遷移
 
 . 如果此叢集上啟用了AutoSupport ，則透過呼叫AutoSupport訊息來抑制自動建立案例：
@@ -260,6 +263,7 @@ Cluster
 
 
 
+[[step-2-replace-cluster-switch-cl2-with-c2]]
 === 步驟 2：將集群開關 CL2 更換為 C2
 
 . 關閉與交換器 CL2 實體連線的叢集互連連接埠：
@@ -744,6 +748,7 @@ cluster::*> *network interface migrate -vserver cluster -lif n2_clus4 -source-no
 
 
 
+[[step-3-replace-cluster-switch-cl1-with-c1]]
 === 步驟 3：將集群開關 CL1 更換為 C1
 
 . 驗證叢集狀態：
@@ -979,6 +984,7 @@ e0d   cluster   cluster    up    9000  auto/10000     -
 
 
 
+[[step-4-complete-the-procedure]]
 === 第四步：完成該步驟
 
 . 撤銷所有已遷移的叢集互連 LIF，這些 LIF 最初連接到所有節點上的 C1：

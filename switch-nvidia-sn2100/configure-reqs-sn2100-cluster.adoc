@@ -15,6 +15,7 @@ summary: 對於NVIDIA SN2100 交換器的安裝和維護，請務必查看所有
 
 
 
+[[installation-requirements]]
 == 安裝要求
 
 如果要建置包含兩個以上節點的ONTAP集群，則需要兩個受支援的集群網路交換器。您也可以使用額外的管理交換機，這些交換機是可選的。
@@ -25,6 +26,7 @@ summary: 對於NVIDIA SN2100 交換器的安裝和維護，請務必查看所有
 
 
 
+[[ontap-and-linux-support]]
 == ONTAP和 Linux 支援
 
 NVIDIA SN2100 交換器是一款運行 Cumulus Linux 的 10/25/40/100GbE 交換器。此交換器支援以下功能：

@@ -15,6 +15,7 @@ summary: 如果您有一個雙節點無交換器集群，您可以無中斷地�
 
 
 
+[[review-requirements]]
 == 審查要求
 
 .開始之前
@@ -70,6 +71,7 @@ summary: 如果您有一個雙節點無交換器集群，您可以無中斷地�
 ====
 
 
+[[step-1-display-and-migrate-physical-and-logical-ports]]
 == 步驟 1：顯示和遷移實體連接埠和邏輯端口
 
 . 如果此叢集上啟用了AutoSupport ，則透過呼叫AutoSupport訊息來抑制自動建立案例：
@@ -323,6 +325,7 @@ cluster::*> *network interface migrate -vserver cluster -lif n2_clus1 -source-no
 
 
 
+[[step-2-shut-down-the-reassigned-lifs-and-disconnect-the-cables]]
 == 步驟 2：關閉重新分配的 LIF 並斷開電纜
 
 . 驗證叢集介面是否已成功遷移：
@@ -438,6 +441,7 @@ Larger than PMTU communication succeeds on 4 path(s) RPC status:
 
 
 
+[[step-3-enable-the-cluster-ports]]
 == 步驟 3：啟用叢集連接埠
 
 . 斷開節點 n2 上 e4a 的電纜。
@@ -554,6 +558,7 @@ Cluster
 
 
 
+[[step-4-enable-the-reassigned-lifs]]
 == 步驟 4：啟用重新指派的 LIF
 
 . 顯示每個節點上的叢集連接埠連線情況：

@@ -13,8 +13,15 @@ summary: 您可以在AFF或FAS叢集中使用Cisco Nexus 3232C 交換器作為�
 [role="lead"]
 若要使用 Smart Call Home，您必須設定叢集網路交換器以透過電子郵件與 Smart Call Home 系統進行通訊。此外，您也可以選擇設定叢集網路交換機，以利用 Cisco 的嵌入式 Smart Call Home 支援功能。
 
-Smart Call Home 監控您網路上的硬體和軟體元件。當發生關鍵系統配置時，它會產生基於電子郵件的通知並向目標設定檔中配置的所有收件者發出警報。
+Cisco 的 Smart Call Home 可監控您網路中的硬體和軟體元件。當發生關鍵系統設定問題時，它會產生電子郵件通知，並向目標設定檔中設定的所有收件者發出警報。
 
+[NOTE]
+====
+ONTAP 支援乙太網路交換器健康監控 （CSHM），用於監控 AFX 叢集交換器，並能夠收集交換器診斷日誌。
+
+Cisco 的 Smart Call Home 是一項可提供主動支援並協助您解決交換器可能出現的任何問題的選項。
+
+====
 在使用 Smart Call Home 之前，請注意以下要求：
 
 * 必須架設郵件伺服器。
@@ -25,3 +32,5 @@ Smart Call Home 監控您網路上的硬體和軟體元件。當發生關鍵系�
 
 
 這 http://www.cisco.com/c/en/us/products/switches/index.html["Cisco支援網站"^]包含有關配置智慧呼叫中心命令的資訊。
+
+Smart Call Home 可在新系統安裝和設定期間進行設定，也可在之後進行設定。

@@ -15,6 +15,7 @@ summary: 您需要特定的交換器和控制器文件來設定叢集模式配�
 
 
 
+[[broadcom-documentation]]
 == 博通文檔
 
 要設定 BES-53248 叢集交換器、您需要從 Broadcom 支援網站取得下列文件：link:https://www.broadcom.com/support/bes-switch["博通乙太網路交換器產品線"^]
@@ -81,6 +82,7 @@ EFOS 版本說明 v3.4.3
 |===
 
 
+[[ontap-systems-documentation-and-kb-articles]]
 == ONTAP系統文件和知識庫文章
 
 若要設定 ONTAP 系統，您需要從 NetApp 支援網站 link:http://mysupport.netapp.com/["mysupport.netapp.com"^] 或知識庫（KB）網站 link:https://kb.netapp.com/["kb.netapp.com"^] 取得下列文件。

@@ -15,17 +15,17 @@ summary: 如果您還沒有所需的設定資訊和文檔，則需要在設定�
 
 .開始之前
 * 在安裝現場存取 HTTP、FTP 或 TFTP 伺服器，以下載適用的 NX-OS 和參考設定檔 (RCF) 版本。
-* 適用的NX-OS版本，可從以下網址下載： https://software.cisco.com/download/home["Cisco軟體下載"^]頁。
+* 適用的 NX-OS 版本，可從 link:https://software.cisco.com/download/home["Cisco軟體下載"^] 頁面下載。
 * 所需的網路和管理網路交換器文件。
 +
 請參閱 link:required-documentation-3232c-storage.html["所需文件"] 以獲取更多資訊。
 
 * 需要提供控制器文件和ONTAP文件。
 +
-https://netapp.com/us/documenation/index.aspx["NetApp文檔"^]
+link:https://docs.netapp.com/us-en/ontap/index.html["ONTAP 9 文件"^]
 
 * 適用的許可證、網路和設定資訊以及線纜。
-* 適用的 NetApp 儲存網路和管理網路 RCF，可從 NetApp 支援網站下載 http://mysupport.netapp.com/["mysupport.netapp.com"^]，適用於您收到的交換器。所有 Cisco 儲存網路和管理網路交換器均採用標準 Cisco 出廠預設配置。這些交換器也具有最新版本的 NX-OS 軟體，但未載入 RCF。
+* 適用於您收到的交換器的 NetApp 儲存網路和管理網路 RCF 檔案，可從 NetApp 支援網站 link:http://mysupport.netapp.com/["mysupport.netapp.com"^] 下載。所有 Cisco 儲存網路和管理網路交換器均預先安裝了標準的 Cisco 出廠預設設定。這些交換器也安裝了最新版本的 NX-OS 軟體，但未載入 RCF 檔案。
 
 
 .步驟

@@ -17,6 +17,7 @@ EFOS 軟體包含一套用於開發乙太網路和 IP 基礎架構系統的進�
 
 
 
+[[prepare-for-installation]]
 == 準備安裝
 
 .開始之前
@@ -27,6 +28,7 @@ EFOS 軟體包含一套用於開發乙太網路和 IP 基礎架構系統的進�
 
 
 
+[[install-the-software]]
 == 安裝軟體
 
 請使用以下方法之一安裝 EFOS 軟體：
@@ -37,6 +39,7 @@ EFOS 軟體包含一套用於開發乙太網路和 IP 基礎架構系統的進�
 
 
 
+[[method-1-install-efos]]
 === 方法一：安裝 EFOS
 
 請依照以下步驟安裝 EFOS 軟體。
@@ -251,6 +254,7 @@ Additional Packages............................ BGP-4
 
 
 
+[[method-2-install-efos-in-onie-mode]]
 === 方法二：在 ONIE 模式下安裝 EFOS
 
 如果一個 EFOS 版本符合 FIPS 標準，而另一個 EFOS 版本則不符合 FIPS 標準，則可以執行下列步驟。如果交換器無法啟動，可以使用下列步驟從 ONIE 安裝非 FIPS 或符合 FIPS 標準的 EFOS 3.7.xx 映像。

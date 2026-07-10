@@ -21,6 +21,7 @@ summary: 若要將叢集中現有的 CN1610 叢集交換器替換為 Broadcom �
 
 
 
+[[review-requirements]]
 == 審查要求
 
 請確認您的配置符合以下要求：
@@ -39,6 +40,7 @@ summary: 若要將叢集中現有的 CN1610 叢集交換器替換為 Broadcom �
 
 
 
+[[node-connections]]
 === 節點連接
 
 叢集交換器支援以下節點連線：
@@ -53,6 +55,7 @@ NOTE: 可透過購買連接埠許可證啟動其他連接埠。
 
 
 
+[[isl-ports]]
 === ISL 連接埠
 
 叢集交換器使用下列交換器間鏈路（ISL）連接埠：
@@ -65,6 +68,7 @@ link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] 包含有關 ONTAP 
 
 
 
+[[isl-cabling]]
 === ISL佈線
 
 適用的ISL佈線如下：
@@ -75,6 +79,7 @@ link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] 包含有關 ONTAP 
 
 
 
+[[migrate-the-switches]]
 == 遷移交換機
 
 請依照下列步驟將 CN1610 叢集交換器遷移到 BES-53248 叢集交換器。
@@ -115,6 +120,7 @@ NOTE: 在此過程中不需要任何可操作的交換器間連結 (ISL)。這�
 
 
 
+[[step-1-prepare-for-migration]]
 === 步驟 1：準備遷移
 
 . 如果此叢集上啟用了AutoSupport ，則透過呼叫AutoSupport訊息來抑制自動建立案例：
@@ -147,6 +153,7 @@ cluster1::*> system node autosupport invoke -node * -type all -message MAINT=2h
 
 
 
+[[step-2-configure-ports-and-cabling]]
 === 步驟二：設定埠和線纜
 
 . 在新交換器上，確認交換器 cs1 和 cs2 之間的 ISL 線纜連接正常且運作良好：
@@ -651,6 +658,7 @@ cluster::*> system cluster-switch delete -device CL2
 ====
 
 
+[[step-3-verify-the-configuration]]
 === 步驟 3：驗證配置
 
 . 啟用叢集 LIF 的自動回滾功能。

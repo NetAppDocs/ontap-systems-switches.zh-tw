@@ -22,6 +22,7 @@ NOTE: 遷移完成後、您可能需要安裝必要的組態檔、以支援 9230
 
 
 
+[[review-requirements]]
 == 審查要求
 
 .開始之前
@@ -54,6 +55,7 @@ link:https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe- 交換機"^]包含�
 
 
 
+[[migrate-the-switch]]
 == 遷移交換機
 
 .關於範例
@@ -71,6 +73,7 @@ link:https://hwu.netapp.com["Hardware Universe"^] 包含有關您平台實際叢
 
 
 
+[[step-1-prepare-for-migration]]
 === 步驟 1：準備遷移
 
 . 將權限級別變更為高級，輸入 `y`當系統提示繼續：
@@ -106,6 +109,7 @@ cluster1::*> *system node autosupport invoke -node * -type all -message MAINT=2h
 
 
 
+[[step-2-configure-cables-and-ports]]
 === 步驟 2：設定線纜和連接埠
 
 . 停用新叢集交換器 cs1 和 cs2 上所有面向節點的連接埠（非 ISL 連接埠）。
@@ -398,6 +402,7 @@ cs2(config-if-range)# *no shutdown*
 
 
 
+[[step-3-verify-the-configuration]]
 === 步驟 3：驗證配置
 
 . 啟用叢集 LIF 的自動回滾功能。

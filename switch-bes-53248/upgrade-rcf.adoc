@@ -51,6 +51,7 @@ CAUTION: 在安裝新的交換器軟體版本和 RCF 之前，請先閱讀知識
 
 
 
+[[step-1-prepare-for-upgrade]]
 == 第一步：準備升級
 
 . 如果此叢集上啟用了AutoSupport ，則透過呼叫AutoSupport訊息來抑制自動建立案例：
@@ -266,6 +267,7 @@ network interface modify -vserver Cluster -lif * -auto-revert false
 
 
 
+[[step-2-configure-ports]]
 == 步驟 2：設定埠
 
 . 在交換器 cs2 上，確認連接到叢集中節點的連接埠清單。
@@ -927,6 +929,7 @@ network interface show -vserver Cluster
 
 
 
+[[step-3-verify-the-configuration]]
 == 步驟 3：驗證配置
 
 . 在交換器 cs1 上，確認連接到叢集連接埠的交換器連接埠是否已啟動：

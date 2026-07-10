@@ -15,6 +15,7 @@ summary: 在設定Cisco 92300YC 交換器之前，請先查看以下資訊。
 
 
 
+[[support-for-nvidia-cx6-cx6-dx-and-cx7-ethernet-ports]]
 == 支援NVIDIA CX6、CX6-DX 和 CX7 乙太網路端口
 
 如果使用NVIDIA ConnectX-6 (CX6)、ConnectX-6 Dx (CX6-DX) 或 ConnectX-7 (CX7) NIC 連接埠將交換器連接埠連接到ONTAP控制器，則必須硬編碼交換器連接埠速度。

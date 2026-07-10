@@ -19,6 +19,7 @@ summary: 如果要記錄支援的平台，則必須使用已完成的範例佈�
 
 
 
+[[sample-cabling-worksheet]]
 == 佈線工作表示例
 
 每對交換器上的範例連接埠定義如下：
@@ -329,6 +330,7 @@ summary: 如果要記錄支援的平台，則必須使用已完成的範例佈�
 |===
 
 
+[[blank-cabling-worksheet]]
 == 空白佈線工作表
 
 您可以使用空白的佈線工作表來記錄叢集中支援的節點平台。  《支援的集群連結》部分 https://hwu.netapp.com["Hardware Universe"^]定義平台使用的叢集連接埠。

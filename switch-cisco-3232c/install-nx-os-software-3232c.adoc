@@ -15,6 +15,7 @@ summary: 您可以依照下列步驟在 Nexus 3232C 叢集交換器上安裝 NX-
 
 
 
+[[review-requirements]]
 == 審查要求
 
 .開始之前
@@ -26,6 +27,7 @@ summary: 您可以依照下列步驟在 Nexus 3232C 叢集交換器上安裝 NX-
 
 
 
+[[install-the-software]]
 == 安裝軟體
 
 流程需要同時使用ONTAP指令和Cisco Nexus 3000 系列交換器指令；除非另有說明，否則使用ONTAP指令。

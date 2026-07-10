@@ -15,6 +15,7 @@ summary: 對於Cisco Nexus 3132Q-V 交換器的安裝和維護，請務必查看
 
 
 
+[[switch-documentation]]
 == 切換文檔
 
 要設定 Cisco Nexus 3132Q-V 交換機、您需要 link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/series.html["Cisco Nexus 3000 系列交換器支援"^] 提供的下列文件。
@@ -81,6 +82,7 @@ Cisco Nexus 6000、 Cisco Nexus 5000 系列、 Cisco Nexus 3000 系列和Cisco N
 |===
 
 
+[[ontap-systems-documentation]]
 == ONTAP 系統文檔
 
 要設定 ONTAP 系統、您需要適用於您的作業系統版本的下列文件。
@@ -112,6 +114,7 @@ link:https://hwu.netapp.com["Hardware Universe"^]
 |===
 
 
+[[rail-kit-and-cabinet-documentation]]
 == 軌道套件和機櫃文檔
 
 若要在 NetApp 機櫃中安裝 3132Q-V Cisco 交換機，請參閱下列硬體文件。

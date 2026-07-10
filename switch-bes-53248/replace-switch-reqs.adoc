@@ -15,6 +15,7 @@ summary: '在叢集網路中更換有缺陷的 Broadcom 支援的 BES-53248 叢�
 
 
 
+[[existing-cluster-and-network-infrastructure]]
 == 現有集群和網路基礎設施
 
 請確保：
@@ -27,6 +28,7 @@ summary: '在叢集網路中更換有缺陷的 Broadcom 支援的 BES-53248 叢�
 
 
 
+[[bes-53248-replacement-cluster-switch]]
 == BES-53248 替換式集群開關
 
 請確保：
@@ -43,6 +45,7 @@ summary: '在叢集網路中更換有缺陷的 Broadcom 支援的 BES-53248 叢�
 
 
 
+[[enable-console-logging]]
 == 啟用控制台日誌記錄
 
 NetApp強烈建議您在使用的裝置上啟用控制台日誌記錄，並在更換交換器時執行以下操作：
@@ -54,6 +57,7 @@ NetApp強烈建議您在使用的裝置上啟用控制台日誌記錄，並在�
 
 
 
+[[related-information]]
 == 相關資訊
 
 * https://mysupport.netapp.com/["NetApp支援站點"^]

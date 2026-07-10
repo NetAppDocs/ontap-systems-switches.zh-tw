@@ -15,6 +15,7 @@ summary: 更換Cisco Nexus 3132Q-V 叢集交換器時，您必須了解某些設
 
 
 
+[[cisco-nexus-3132q-v-requirements]]
 == Cisco Nexus 3132Q-V 要求
 
 * 支援Cisco Nexus 3132Q-V 集群交換器。
@@ -50,6 +51,7 @@ link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太�
 
 
 
+[[cisco-nexus-5596-requirements]]
 == Cisco Nexus 5596 要求
 
 * 支援以下集群交換器：
@@ -119,6 +121,7 @@ NOTE: 您可以使用下列方法將前六個連接埠配置為 4x10 GbE 模式�
 
 
 
+[[netapp-cn1610-requirements]]
 == NetApp CN1610 要求
 
 * 支援以下集群交換器：

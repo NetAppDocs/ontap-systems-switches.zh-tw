@@ -15,6 +15,7 @@ summary: 您可以透過執行一系列特定任務，在不中斷業務的情�
 
 
 
+[[review-requirements]]
 == 審查要求
 
 .你需要什麼
@@ -47,6 +48,7 @@ Cisco乙太網路交換器頁麵包含交換器上最新的 RCF 和 NX-OS 版本
 
 
 
+[[enable-console-logging]]
 == 啟用控制台日誌記錄
 
 NetApp強烈建議您在使用的裝置上啟用控制台日誌記錄，並在更換交換器時執行以下操作：
@@ -58,6 +60,7 @@ NetApp強烈建議您在使用的裝置上啟用控制台日誌記錄，並在�
 
 
 
+[[replace-the-switch]]
 == 更換開關
 
 .關於此任務
@@ -91,6 +94,7 @@ NetApp強烈建議您在使用的裝置上啟用控制台日誌記錄，並在�
 
 
 
+[[step-1-display-and-migrate-the-cluster-ports-to-switch]]
 === 步驟 1：顯示叢集連接埠並將其遷移到交換機
 
 . 如果此叢集上啟用了AutoSupport ，則透過呼叫AutoSupport訊息來抑制自動建立案例：
@@ -458,6 +462,7 @@ Larger than PMTU communication succeeds on 32 path(s) RPC status:
 ====
 
 
+[[step-2-migrate-isls-to-switch-cl1-and-c2]]
 === 步驟 2：將 ISL 遷移到交換器 CL1 和 C2
 
 . 關閉叢集交換器 CL1 上的連接埠 1/31 和 1/32。
@@ -572,6 +577,7 @@ cluster::*> *network port modify -node n4 -port e4e -up-admin true*
 
 
 
+[[step-3-revert-all-lifs-to-originally-assigned-ports]]
 === 步驟 3：將所有 LIF 恢復到原先指派的端口
 
 . 還原所有節點上所有已遷移的叢集互連 LIF：
@@ -784,6 +790,7 @@ Larger than PMTU communication succeeds on 32 path(s) RPC status:
 ====
 
 
+[[step-4-verify-all-ports-and-lif-are-correctly-migrated]]
 === 步驟 4：驗證所有連接埠和 LIF 是否已正確遷移
 
 . 輸入以下命令，顯示配置中設備的資訊：

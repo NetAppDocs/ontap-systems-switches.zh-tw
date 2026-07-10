@@ -15,6 +15,7 @@ summary: 若要將叢集中現有的 CN1610 叢集交換器替換為Cisco Nexus 
 
 
 
+[[review-requirements]]
 == 審查要求
 
 請查看NetApp CN1610 的要求。link:switch-requirements.html["更換Cisco Nexus 3132Q-V 群集交換器的要求"] 。
@@ -28,6 +29,7 @@ summary: 若要將叢集中現有的 CN1610 叢集交換器替換為Cisco Nexus 
 
 
 
+[[replace-the-switch]]
 == 更換開關
 
 .交換器和節點命名法
@@ -80,6 +82,7 @@ NOTE: 流程需要同時使用ONTAP指令和Cisco Nexus 3000 系列交換器指�
 
 
 
+[[step-1-prepare-for-replacement]]
 === 第一步：準備更換
 
 . 如果此叢集上啟用了AutoSupport ，則透過呼叫AutoSupport訊息來抑制自動建立案例：
@@ -462,6 +465,7 @@ C2(config-if)# exit
 
 
 
+[[step-2-configure-ports]]
 === 步驟 2：設定埠
 
 . 在所有節點上，拆下連接到 CN1610 交換器 CL2 的電纜。
@@ -911,6 +915,7 @@ Copy Complete.
 
 
 
+[[step-3-verify-the-configuration]]
 === 步驟 3：驗證配置
 
 . 確認 ISL 連線是否正常 `up`在 3132Q-V 開關 C2 上：

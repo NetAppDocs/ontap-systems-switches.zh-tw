@@ -15,6 +15,7 @@ summary: 在NetApp交換器上安裝 FASTPATH 軟體時，必須從第二個交�
 
 
 
+[[review-requirements]]
 == 審查要求
 
 .開始之前
@@ -34,6 +35,7 @@ summary: 在NetApp交換器上安裝 FASTPATH 軟體時，必須從第二個交�
 
 
 
+[[install-fastpath]]
 == 安裝 FASTPATH
 
 下列程序使用叢集式Data ONTAP 8.2 語法。因此，叢集 Vserver、LIF 名稱和 CLI 輸出與Data ONTAP 8.3 中的不同。
@@ -57,6 +59,7 @@ link:https://hwu.netapp.com/["Hardware Universe"^]提供有關您平台支援的
 
 
 
+[[step-1-migrate-cluster]]
 === 步驟 1：遷移集群
 
 . 如果此叢集上啟用了AutoSupport ，則透過呼叫AutoSupport訊息來抑制自動建立案例：
@@ -126,6 +129,7 @@ vs2
 
 
 
+[[step-2-install-fastpath-software]]
 === 步驟 2：安裝 FASTPATH 軟體
 
 . 關閉兩個節點上的叢集連接埠 e2a：
@@ -318,6 +322,7 @@ System will now restart!
 
 
 
+[[step-3-validate-installation]]
 === 步驟 3：驗證安裝
 
 . 重新登錄，並驗證 FASTPATH 軟體的新版本。

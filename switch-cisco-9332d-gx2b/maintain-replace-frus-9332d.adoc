@@ -1,0 +1,31 @@
+---
+permalink: switch-cisco-9332d-gx2b/maintain-replace-frus-9332d.html 
+sidebar: sidebar 
+keywords: switches, hardware installation, Cisco Nexus, 9332D-GX2B switches 
+summary: '您的 Cisco Nexus 9332D-GX2B 交換器具有現場可更換單元 (FRU)，您可以在發生故障時進行更換。' 
+---
+= 更換 FRU - Cisco Nexus 9332D-GX2B
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您的 Cisco Nexus 9332D-GX2B 交換器具有現場可更換單元 (FRU)，您可以在發生故障時進行更換。
+
+.關於此任務
+Cisco Nexus 9332D-GX2B 交換器具有以下 FRU：
+
+* 風扇模組（共6個）
+* 電源模組（共 2 個）
+* OSFP/QSFP 收發器模組（32 個固定 400GbE 連接埠）
+
+
+.步驟
+. 請造訪 Cisco 網站以取得相關資訊 https://www.cisco.com/c/en/us/td/docs/dcn/hw/nx-os/nexus9000/9332d-gx2b/cisco-nexus-9332d-gx2b-nx-os-mode-switch-hardware-installation-guide.html?dtid=osscdc000283&linkclickid=srch&scid=srch-9332d-gx2b-hw-guide#id_111902["Cisco Nexus 9332D-GX2B NX-OS 模式交換器硬體安裝指南"^]。
+. 請導覽至「更換組件」章節，以查看 FRU 程序。
+. 請依照適用程序更換故障的 FRU。
+
+
+.下一步是什麼？
+在 Cisco 網站上完成對應的 FRU 程序後，即可恢復正常操作。

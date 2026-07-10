@@ -1,0 +1,433 @@
+---
+permalink: switch-cisco-9364d-gx2a/configure-install-nxos-9364d.html 
+sidebar: sidebar 
+keywords: procedure, install, nx-os, software, nexus, cluster, switch, install the nx-os software - cisco nexus 9364d-gx2a 
+summary: 您可以在 Cisco Nexus 9364D-GX2A 交換器上安裝 NX-OS，作為新 AFX 1K 或 AFX 2K 系統安裝、交換器更換或交換器重設為原廠預設值的一部分。 
+---
+= 安裝 NX-OS - Cisco Nexus 9364D-GX2A
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以在 Cisco Nexus 9364D-GX2A 交換器上安裝 NX-OS，作為新 AFX 1K 或 AFX 2K 系統安裝、交換器更換或交換器重設為原廠預設值的一部分。
+
+.開始之前
+* 交換器必須通電，且您必須已完成 link:configure-complete-initial-setup-9364d.html["完成初始交換器設置"] 程序。
+* 如果您在新 AFX 系統安裝或交換器更換過程中，在交換器上安裝 NX-OS，請確認交換器上的 NX-OS 版本是目前 NetApp 支援的版本。
++
+** 如果您的交換器已安裝目前 NetApp 支援的版本，則無需安裝 NX-OS。您需要安裝 RCF。首先執行link:configure-install-upgrade-rcf-overview-9364d.html["安裝或升級 RCF 概述"]。
+** 如果您的交換器沒有目前 NetApp 支援的版本，請繼續執行此步驟來安裝 NX-OS。
+
+
+* 如果您在交換器上安裝 NX-OS，作為交換器更換或交換器重設為原廠預設值的一部分，請驗證您的叢集是否完全正常運作，即日誌中沒有錯誤或類似問題。
+
+
+
+NOTE: 如果您正在安裝 NX-OS 作為新 AFX 系統安裝的一部分，則可以跳過此要求，因為在 AFX 系統安裝和設定的這一階段，AFX 系統中的控制器尚未通電。
+
+.關於此任務
+* AFX 系統上執行的 ONTAP 版本決定了交換器支援的 NX-OS 版本。
++
+** 對於 AFX 1K 系統中的交換器，執行任何受支援的 ONTAP 版本，均支援 NX-OS 10.4.2 及更新版本。
+** 對於執行 ONTAP 9.19.1GA 或更新版本的 AFX 2K 系統中的交換器，支援 NX-OS 10.6 及更新版本。
++
+有關目前支援的 NX-OS 版本列表，請參閱link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["NetApp Cisco 乙太網路交換器"^]頁面。
+
+
+
+* 此程序僅需使用 Cisco Nexus 9000 系列交換器指令。
+* 本程序中的範例將第一個交換器稱為 cs1，第二個交換器稱為 cs2。
+* 如果您已將交換器作為新的 AFX 1K 或 AFX 2K 系統安裝的一部分進行安裝，則此程序將要求您在第一個交換器 （cs1） 上安裝 NX-OS，然後對第二個交換器 （cs2） 重複這些步驟。
+* 本流程中的範例適用於執行 RCF 10.0 的交換器的 AFX 1K 系統。如果您使用的是 AFX 2K 系統，則輸入和輸出可能會有所不同。
+
+
+
+
+[[step-1-prepare-to-install-the-nx-os]]
+== 步驟 1：準備安裝 NX-OS
+
+要準備在交換器上安裝 NX-OS，請確保您能夠存取具有支援的 NX-OS 版本的伺服器，下載 NX-OS，連接到管理網路進行檔案傳輸，然後驗證與伺服器的連線。
+
+.步驟
+. 您必須擁有對 HTTP、FTP 或 TFTP 伺服器的存取權限。透過存取這些伺服器之一，您可以下載支援的 NX-OS 版本。
+. 從 https://software.cisco.com/download/home["Cisco軟體下載"^]頁面下載正確版本的 NX-OS 到交換器。
+. 將交換器連接到管理網路（用於檔案傳輸）。
+. 使用 ping 指令驗證與託管 NX-OS 之伺服器的連線能力。
++
+`ping <IP address>`
+
++
+.顯示範例
+[%collapsible]
+====
+此範例驗證交換器可以存取 IP 位址為 172.19.2.1 的伺服器：
+
+[listing, subs="+quotes"]
+----
+cs1# *ping 172.19.2.1*
+Pinging 172.19.2.1 with 0 bytes of data:
+
+Reply From 172.19.2.1: icmp_seq = 0. time= 5910 usec.
+----
+====
+
+
+
+
+[[step-2-install-the-nx-os]]
+== 步驟 2：安裝 NX-OS
+
+在第一個交換器 (cs1) 上安裝 NX-OS，方法是安裝並驗證 NX-OS 版本，升級並驗證 EPLD 映像，然後在第二個交換器 (cs2) 上重複這些步驟（如果您要將 NX-OS 作為新 AFX 系統安裝的一部分進行安裝）。
+
+. 將 NX-OS 和 EPLD 映像複製到第一台交換器。
++
+您需要使用此指令兩次：第一次是複製 NX-OS 版本，第二次是複製 EPLD 版本。
+
++
+`copy <protocol>: bootflash: vrf management`
+
++
+.顯示範例
+[%collapsible]
+====
+此範例使用 sftp。
+
+[listing, subs="+quotes"]
+----
+cs2# *copy sftp: bootflash: vrf management*
+Enter source filename: */code/nxos.10.4.2.bin*
+Enter hostname for the sftp server: *172.19.2.1*
+Enter username: *root*
+
+Outbound-ReKey for 172.19.2.1:22
+Inbound-ReKey for 172.19.2.1:22
+root@172.19.2.1's password:
+sftp> progress
+Progress meter enabled
+sftp> get   /code/nxos.10.4.2.bin  /bootflash/nxos.10.4.2.bin
+/code/nxos.10.4.2.bin  100% 1261MB   9.3MB/s   02:15
+sftp> exit
+Copy complete, now saving to disk (please wait)...
+Copy complete.
+
+cs2# *copy sftp: bootflash: vrf management*
+Enter source filename: */code/n9000-epld.10.4.2.F.img*
+Enter hostname for the sftp server: *172.19.2.1*
+Enter username: *user1*
+
+Outbound-ReKey for 172.19.2.1:22
+Inbound-ReKey for 172.19.2.1:22
+user1@172.19.2.1's password:
+sftp> progress
+Progress meter enabled
+sftp> get   /code/n9000-epld.10.4.2.F.img  /bootflash/n9000-epld.10.4.2.F.img
+/code/n9000-epld.10.4.2.F.img  100%  161MB   9.5MB/s   00:16
+sftp> exit
+Copy complete, now saving to disk (please wait)...
+Copy complete.
+----
+====
+. 請確認 NX-OS 的運作版本：
++
+`show version`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cs2# *show version*
+Cisco Nexus Operating System (NX-OS) Software
+TAC support: http://www.cisco.com/tac
+Copyright (C) 2002-2025, Cisco and/or its affiliates.
+All rights reserved.
+The copyrights to certain works contained in this software are
+owned by other third parties and used and distributed under their own
+licenses, such as open source.  This software is provided "as is," and unless
+otherwise stated, there is no warranty, express or implied, including but not
+limited to warranties of merchantability and fitness for a particular purpose.
+Certain components of this software are licensed under
+the GNU General Public License (GPL) version 2.0 or
+GNU General Public License (GPL) version 3.0  or the GNU
+Lesser General Public License (LGPL) Version 2.1 or
+Lesser General Public License (LGPL) Version 2.0.
+A copy of each such license is available at
+http://www.opensource.org/licenses/gpl-2.0.php and
+http://opensource.org/licenses/gpl-3.0.html and
+http://www.opensource.org/licenses/lgpl-2.1.php and
+http://www.gnu.org/licenses/old-licenses/library.txt.
+
+
+Software
+  BIOS: version 01.14
+  NXOS: version 10.4(1) [Feature Release]
+  Host NXOS: version 10.4(1)
+  BIOS compile time:  11/25/2024
+  NXOS image file is: bootflash:///nxos64-cs.10.4.1.F.bin
+  NXOS compile time:  11/30/2023 12:00:00 [12/14/2023 05:25:50]
+  NXOS boot mode: LXC
+
+
+Hardware
+  cisco Nexus9000 C9332D-GX2B Chassis
+  Intel(R) Xeon(R) CPU D-1633N @ 2.50GHz with 32802156 kB of memory.
+  Processor Board ID FLMXXXXXXXX
+  Device name: cs2
+  bootflash:  115802886 kB
+
+
+Kernel uptime is 5 day(s), 2 hour(s), 13 minute(s), 21 second(s)
+
+
+Last reset at 3580 usecs after Thu Jun  5 15:55:08 2025
+  Reason: Reset Requested by CLI command reload
+  System version: 10.4(1)
+  Service:
+
+
+plugin
+  Core Plugin, Ethernet Plugin
+
+
+Active Package(s):
+
+cs2#
+----
+====
+. 安裝 NX-OS 鏡像。
++
+安裝鏡像檔案後，每次交換器重新啟動時都會載入該檔案。
+
++
+`install all nxos bootflash:nxos.<version number>.bin`
+
++
+.顯示範例
+[%collapsible]
+====
+此範例使用 NX-OS 版本 10.4.2。
+
+[listing, subs="+quotes"]
+----
+cs2# *install all nxos bootflash:nxos.10.4.2.bin*
+
+Installer will perform compatibility check first. Please wait.
+Installer is forced disruptive
+
+Verifying image bootflash:/nxos.10.4.2.bin for boot variable "nxos".
+[####################] 100% -- SUCCESS
+
+Verifying image type.
+[####################] 100% -- SUCCESS
+
+Preparing "nxos" version info using image bootflash:/nxos.10.4.2.bin.
+[####################] 100% -- SUCCESS
+
+Preparing "bios" version info using image bootflash:/nxos.10.4.2.bin.
+[####################] 100% -- SUCCESS
+
+Performing module support checks.
+[####################] 100% -- SUCCESS
+
+Notifying services about system upgrade.
+[####################] 100% -- SUCCESS
+
+
+Compatibility check is done:
+Module  Bootable  Impact          Install-type  Reason
+------  --------  --------------- ------------  ---------
+  1     yes       Disruptive      Reset         Default upgrade is not hitless
+
+
+
+Images will be upgraded according to following table:
+
+Module   Image    Running-Version(pri:alt)                 New-Version         Upg-Required
+------- --------- ---------------------------------------- ------------------- ------------
+  1      nxos     10.4(1)                                  10.4(2)             Yes
+  1      bios     xx.xx.:xx.xx                             xxx                 No
+
+
+Switch will be reloaded for disruptive upgrade.
+
+Do you want to continue with the installation (y/n)? [n] *y*
+
+Install is in progress, please wait.
+
+Performing runtime checks.
+[####################] 100% -- SUCCESS
+
+Setting boot variables.
+[####################] 100% -- SUCCESS
+
+Performing configuration copy.
+[####################] 100% -- SUCCESS
+
+Module 1: Refreshing compact flash and upgrading bios/loader/bootrom.
+Warning: please do not remove or power off the module at this time.
+[####################] 100% -- SUCCESS
+
+Finishing the upgrade, switch will reboot in 10 seconds.
+----
+====
+. 交換器重新啟動後，請驗證 NX-OS 的新版本：
++
+`show version`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cs2# *show version*
+Cisco Nexus Operating System (NX-OS) Software
+TAC support: http://www.cisco.com/tac
+Copyright (C) 2002-2025, Cisco and/or its affiliates.
+All rights reserved.
+The copyrights to certain works contained in this software are
+owned by other third parties and used and distributed under their own
+licenses, such as open source.  This software is provided "as is," and unless
+otherwise stated, there is no warranty, express or implied, including but not
+limited to warranties of merchantability and fitness for a particular purpose.
+Certain components of this software are licensed under
+the GNU General Public License (GPL) version 2.0 or
+GNU General Public License (GPL) version 3.0  or the GNU
+Lesser General Public License (LGPL) Version 2.1 or
+Lesser General Public License (LGPL) Version 2.0.
+A copy of each such license is available at
+http://www.opensource.org/licenses/gpl-2.0.php and
+http://opensource.org/licenses/gpl-3.0.html and
+http://www.opensource.org/licenses/lgpl-2.1.php and
+http://www.gnu.org/licenses/old-licenses/library.txt.
+
+
+Software
+  BIOS: version 01.14
+  NXOS: version 10.4(2) [Feature Release]
+  Host NXOS: version 10.4(2)
+  BIOS compile time:  11/25/2024
+  NXOS image file is: bootflash:///nxos64-cs.10.4.2.F.bin
+  NXOS compile time:  11/30/2023 12:00:00 [12/14/2023 05:25:50]
+  NXOS boot mode: LXC
+
+
+Hardware
+  cisco Nexus9000 C9332D-GX2B Chassis
+  Intel(R) Xeon(R) CPU D-1633N @ 2.50GHz with 32802156 kB of memory.
+  Processor Board ID FLMXXXXXXXX
+  Device name: cs2
+  bootflash:  115802886 kB
+
+
+Kernel uptime is 5 day(s), 2 hour(s), 13 minute(s), 21 second(s)
+
+
+Last reset at 3580 usecs after Thu Jun  5 15:55:08 2025
+  Reason: Reset Requested by CLI command reload
+  System version: 10.4(2)
+  Service:
+
+
+plugin
+  Core Plugin, Ethernet Plugin
+
+
+Active Package(s):
+
+cs2#
+----
+====
+. 使用以下命令升級 EPLD 映像：
++
+`show version module 1 epld`
+
++
+`install epld bootflash:n9000-epld.<version>.img module all`
+
++
+最後一條指令執行完畢後，交換器將重新啟動。
+
++
+.顯示範例
+[%collapsible]
+====
+此範例使用 EPLD 版本 10.4.2.F
+
+[listing, subs="+quotes"]
+----
+cs2# *show version module 1 epld*
+
+EPLD Device                     Version
+---------------------------------------
+MI   FPGA                        0x7
+IO   FPGA                        0x17
+MI   FPGA2                       0x2
+GEM  FPGA                        0x2
+GEM  FPGA                        0x2
+GEM  FPGA                        0x2
+GEM  FPGA                        0x2
+
+cs2# *install epld bootflash:n9000-epld.10.4.2.F.img module all*
+Compatibility check:
+Module        Type         Upgradable        Impact    Reason
+------  ------------------ ----------------- --------- -----------
+     1         SUP         Yes       disruptive  Module Upgradable
+
+Retrieving EPLD versions.... Please wait.
+Images will be upgraded according to following table:
+Module  Type   EPLD              Running-Version   New-Version  Upg-Required
+------- ------ ----------------- ----------------- ------------ ------------
+     1  SUP    MI FPGA           0x07              0x07         No
+     1  SUP    IO FPGA           0x17              0x19         Yes
+     1  SUP    MI FPGA2          0x02              0x02         No
+The above modules require upgrade.
+The switch will be reloaded at the end of the upgrade
+Do you want to continue (y/n) ?  [n] *y*
+
+Proceeding to upgrade Modules.
+
+Starting Module 1 EPLD Upgrade
+
+Module 1 : IO FPGA [Programming] : 100.00% (     64 of      64 sectors)
+Module 1 EPLD upgrade is successful.
+Module   Type  Upgrade-Result
+-------- ----- --------------
+     1   SUP   Success
+
+EPLDs upgraded.
+
+Module 1 EPLD upgrade is successful.
+----
+====
+. 交換器重新啟動後，登入並驗證新版本的 EPLD 是否已成功載入：
++
+`show version module 1 epld`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cs1# *show version module 1 epld*
+
+EPLD Device                     Version
+---------------------------------------
+MI   FPGA                        0x7
+IO   FPGA                        0x19
+MI   FPGA2                       0x2
+GEM  FPGA                        0x2
+GEM  FPGA                        0x2
+GEM  FPGA                        0x2
+GEM  FPGA                        0x2
+----
+====
+. 如果您正在安裝 NX-OS 作為新 AFX 系統安裝的一部分，請重複這些步驟，在交換器 cs2 上安裝 NX-OS 和 EPLD 映像。
+
+
+.下一步是什麼？
+在交換器上安裝 NX-OS 後，您需要從 link:configure-install-upgrade-rcf-overview-9364d.html["安裝或升級 RCF 概述"] 開始安裝 RCF。

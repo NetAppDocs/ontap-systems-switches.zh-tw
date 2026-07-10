@@ -15,18 +15,21 @@ summary: 您可以參考 BES-53248 叢集交換器連接埠分配表來設定您
 
 
 
+[[efos-and-ontap-support]]
 == EFOS 和ONTAP支持
 
 請參閱 link:https://hwu.netapp.com/Switch/Index["Hardware Universe"^] 和 link:https://mysupport.netapp.com/site/info/broadcom-cluster-switch["博通交換器相容性矩陣"^] 以取得 BES-53248 交換器的 EFOS 和 ONTAP 相容性資訊。EFOS 和 ONTAP 支援可能因 BES-53248 交換器的特定機型而異。如需所有 BES-53248 交換器機型的詳細資訊、請參閱 link:components-bes53248.html["BES-53248 集群開關的組件和零件編號"]。如需交換器安裝需求的詳細資訊、請參閱 link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["安裝HWU中沒有的設備還需要哪些額外資訊？"]。
 
 
 
+[[configuration-requirements]]
 == 配置要求
 
 要配置集群，您需要集群交換器的相應數量和類型的電纜和電纜連接器。根據您最初設定的群集交換器的類型，您需要使用隨附的控制台連接線連接到交換器控制台連接埠。
 
 
 
+[[cluster-switch-port-assignments]]
 === 集群交換器連接埠分配
 
 您可以參考博通支援的 BES-53248 叢集交換器連接埠分配表來設定您的叢集。
@@ -67,6 +70,7 @@ summary: 您可以參考 BES-53248 叢集交換器連接埠分配表來設定您
 
 
 
+[[port-group-speed-constraint]]
 === 連接埠組速度限制
 
 * 在 BES-53248 群集交換器上，48 個 10/25GbE (SFP28/SFP+) 連接埠組合成 12 個 4 埠組，如下：連接埠 1-4、5-8、9-12、13-16、17-20、21-24、25-283、23-23、36、21-36、 45-48。
@@ -75,6 +79,7 @@ summary: 您可以參考 BES-53248 叢集交換器連接埠分配表來設定您
 
 
 
+[[additional-requirements]]
 === 其他要求
 
 * 如果您購買了額外的授權、請參閱link:configure-licenses.html["啟動新授權端口"]以取得如何啟動授權的詳細資料。

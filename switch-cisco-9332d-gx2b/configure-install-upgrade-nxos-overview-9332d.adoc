@@ -1,0 +1,27 @@
+---
+permalink: switch-cisco-9332d-gx2b/configure-install-upgrade-nxos-overview-9332d.html 
+sidebar: sidebar 
+keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, cisco 9332d-gx2b 
+summary: 您可以為 AFX 1K 和 AFX 2K 系統的 Nexus 9332D-GX2B 交換器安裝或升級 NX-OS。 
+---
+= 安裝或升級 NX-OS 概述 - Cisco Nexus 9332D-GX2B
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以為 AFX 1K 和 AFX 2K 系統的 Nexus 9332D-GX2B 交換器安裝或升級 NX-OS。
+
+
+NOTE: NX-OS 的安裝或升級與 RCF 的安裝或升級相互獨立。如果您要同時安裝或升級 NX-OS 和 RCF，建議您先安裝或升級 NX-OS。
+
+* link:configure-install-nxos-9332d.html["安裝 NX-OS"]
++
+您可以在新安裝 AFX 1K 或 AFX 2K 系統、更換交換器或將交換器重設為原廠預設值時，在交換器上安裝 NX-OS。
+
+* link:configure-upgrade-nxos-9332d.html["升級 NX-OS"]
++
+您可以透過升級交換器上的 NX-OS 來支援 AFX 1K 或 AFX 2K 系統上的新硬體或新的 ONTAP 版本。
+
+

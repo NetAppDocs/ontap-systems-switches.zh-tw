@@ -15,12 +15,14 @@ summary: 如果要建置包含兩個以上節點的ONTAP集群，則需要兩個
 
 
 
+[[cabinet-details]]
 == 內閣細節
 
 您可以使用交換器隨附的標準支架將NVIDIA SN2100 交換器 (X190006) 安裝到NVIDIA雙/單交換器機櫃。
 
 
 
+[[rail-kit-details]]
 == 鐵路套件詳情
 
 下表列出了 SN2100 開關和導軌套件的零件編號和描述：
@@ -58,7 +60,7 @@ Rail Kit， NVIDIA單開關短深度
 
 |===
 
-NOTE: 有關 link:https://docs.nvidia.com/networking/display/sn2000pub/Installation["安裝您的 SN2100 道岔和導軌套件"^] 的詳細資訊，請參閱 NVIDIA 文件。
+NOTE: 有關 link:https://networking-docs.nvidia.com/sn2000hw/latest/installation["安裝您的 SN2100 道岔和導軌套件"^] 的詳細資訊，請參閱 NVIDIA 文件。
 
 .下一步是什麼？
 確認組件和零件編號後，您可以進行審核。 link:required-documentation-sn2100-cluster.html["所需文件"]。

@@ -108,6 +108,7 @@ N9K-9336C 65CFM，左舷進氣氣流
 |===
 
 
+[[cisco-smart-licenses-for-9336c-fx2-t-ports-only]]
 == 僅適用於 9336C-FX2-T 連接埠的Cisco智慧許可證
 
 若要啟動Cisco Nexus 9336C-FX-T 儲存交換器上的 12 個以上端口，您必須購買Cisco Smart 授權。  Cisco Smart 授權透過Cisco Smart 帳戶進行管理。

@@ -33,6 +33,7 @@ CAUTION: 在安裝新的交換器軟體版本和 RCF 之前，必須清除交換
 
 
 
+[[step-1-prepare-for-the-upgrade]]
 == 第一步：準備升級
 
 . 顯示每個節點上連接到叢集交換器的叢集連接埠：
@@ -178,6 +179,7 @@ cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert fals
 
 
 
+[[step-2-configure-ports]]
 == 步驟 2：設定埠
 
 . 在叢集交換器 cs2 上，關閉連接到節點叢集連接埠的連接埠。
@@ -548,6 +550,7 @@ cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert true
 
 
 
+[[step-3-verify-the-cluster-network-configuration-and-cluster-health]]
 == 步驟 3：驗證叢集網路配置和叢集健康狀況
 
 . 確認連接到叢集連接埠的交換器連接埠已啟用。

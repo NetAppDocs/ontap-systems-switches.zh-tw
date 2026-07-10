@@ -15,6 +15,7 @@ summary: 若要將叢集中現有的Cisco Nexus 5596 叢集交換器替換為 Ne
 
 
 
+[[review-requirements]]
 == 審查要求
 
 遷移前，請務必查看link:migrate-requirements-3232c.html["遷移要求"]。
@@ -33,6 +34,7 @@ summary: 若要將叢集中現有的Cisco Nexus 5596 叢集交換器替換為 Ne
 
 
 
+[[migrate-the-switch]]
 == 遷移交換機
 
 .關於範例
@@ -82,6 +84,7 @@ summary: 若要將叢集中現有的Cisco Nexus 5596 叢集交換器替換為 Ne
 
 
 
+[[step-1-prepare-for-migration]]
 === 步驟 1：準備遷移
 
 . 如果此叢集上啟用了AutoSupport ，則透過呼叫AutoSupport訊息來抑制自動建立案例：
@@ -311,6 +314,7 @@ Cluster
 
 
 
+[[step-2-configure-ports]]
 === 步驟 2：設定埠
 
 . 關閉與交換器 CL2 實體連線的叢集互連連接埠：
@@ -1230,6 +1234,7 @@ cluster::> system cluster-switch delete –device CL2
 
 
 
+[[step-3-complete-the-procedure]]
 === 步驟 3：完成該步驟
 
 . 確認已對正確的群集交換器進行監控：

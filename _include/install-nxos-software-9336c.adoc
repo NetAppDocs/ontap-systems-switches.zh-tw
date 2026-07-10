@@ -4,6 +4,7 @@
 
 
 
+[[review-requirements]]
 == 審查要求
 
 .開始之前
@@ -44,6 +45,7 @@
 
 
 
+[[install-the-software]]
 == 安裝軟體
 
 流程需要同時使用ONTAP指令和Cisco Nexus 9000 系列交換器指令；除非另有說明，否則使用ONTAP指令。

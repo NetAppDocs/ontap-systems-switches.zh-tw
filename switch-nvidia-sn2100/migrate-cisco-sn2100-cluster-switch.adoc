@@ -15,6 +15,7 @@ summary: 您可以將ONTAP叢集中較舊的Cisco叢集交換器無中斷地移�
 
 
 
+[[review-requirements]]
 == 審查要求
 
 當您將一些老舊的 Cisco 叢集交換器替換為 NVIDIA SN2100 叢集交換器時，必須了解某些組態資訊、連接埠連線和佈線要求。請參閱 link:configure-overview-sn2100-cluster.html["NVIDIA SN2100交換器的安裝與設定概述"]。
@@ -54,6 +55,7 @@ NOTE: 如果您變更 AFF A800 或 AFF C800 系統上 e0a 和 e1a 叢集連接�
 
 
 
+[[migrate-the-switches]]
 == 遷移交換機
 
 .關於範例
@@ -89,6 +91,7 @@ NOTE: 如果您變更 AFF A800 或 AFF C800 系統上 e0a 和 e1a 叢集連接�
 
 
 
+[[step-1-prepare-for-migration]]
 === 步驟 1：準備遷移
 
 . 如果此叢集上啟用了AutoSupport ，則透過呼叫AutoSupport訊息來抑制自動建立案例：
@@ -113,6 +116,7 @@ NOTE: 如果您變更 AFF A800 或 AFF C800 系統上 e0a 和 e1a 叢集連接�
 
 
 
+[[step-2-configure-ports-and-cabling]]
 === 步驟二：設定埠和線纜
 
 . 確定每個叢集介面的管理或運作狀態。
@@ -522,6 +526,7 @@ swp16      100G   BondMember  sw1                 swp16
 
 
 
+[[step-3-verify-the-configuration]]
 === 步驟 3：驗證配置
 
 . 啟用叢集 LIF 的自動回滾功能：

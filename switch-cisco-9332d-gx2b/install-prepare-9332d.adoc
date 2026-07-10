@@ -1,0 +1,139 @@
+---
+sidebar: sidebar 
+permalink: switch-cisco-9332d-gx2b/install-prepare-9332d.html 
+keywords: shared storage cluster switch 
+summary: 在將 Cisco Nexus 9332D-GX2B 交換器安裝到新的 AFX 1K 或 AFX 2K 系統之前，您應該透過查閱適用的 Cisco 交換器文件和 ONTAP 系統文件來了解交換器及其安裝的各個方面，了解 AFX 系統支援的 RCF 版本，並考慮使用 Smart Call Home。 
+---
+= 準備安裝交換器 - Cisco Nexus 9332D-GX2B
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+在將 Cisco Nexus 9332D-GX2B 交換器安裝到新的 AFX 1K 或 AFX 2K 系統之前，您應該透過查閱適用的 Cisco 交換器文件和 ONTAP 系統文件來了解交換器及其安裝的各個方面，了解 AFX 系統支援的 RCF 版本，並考慮使用 Smart Call Home。
+
+
+
+[[step-1-review-the-cisco-switch-documentation]]
+=== 步驟 1：查閱 Cisco 交換器文件
+
+您應該查看以下 Cisco 安裝和設定文件，以便熟悉交換器版本說明、安全資訊、安裝選項、初始軟體設定和命令參考。
+
+所有 Cisco 文件均可在 link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Cisco Nexus 9000 系列交換器支援"^] 頁面上找到。
+
+* link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-release-notes-list.html["Cisco Nexus 9000 系列 NX-OS 發行說明"^]（請選擇交換器上安裝的 NX-OS 版本對應的說明）
+* link:https://www.cisco.com/c/en/us/td/docs/switches/datacenter/mds9000/hw/regulatory/compliance/RCSI.html?dtid=osscdc000283&linkclickid=srch["Cisco Nexus 9000 系列的法規遵循和安全訊息"^]
+* link:https://www.cisco.com/c/en/us/td/docs/dcn/hw/nx-os/nexus9000/9332d-gx2b/cisco-nexus-9332d-gx2b-nx-os-mode-switch-hardware-installation-guide.html["Cisco Nexus 9332D-GX2B NX-OS 模式交換器硬體安裝指南"^]
+* link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-installation-and-configuration-guides-list.html["Cisco Nexus 9000 系列交換器軟體設定指南"^]（請選擇與您的交換器上安裝的 NX-OS 版本相對應的指南）
+* link:https://www.cisco.com/c/en/us/td/docs/dcn/nx-os/nexus9000/102x/command-reference/config/b_n9k_config_commands_1021.html["Cisco Nexus 9000 系列 NX-OS 指令參考"^] 提供 Cisco 提供的各種指令參考的連結。
+
+
+
+
+[[step-2-review-the-netapp-systems-documentation]]
+=== 步驟 2：查閱 NetApp 系統文件
+
+您應該查看以下 NetApp 系統文件，以便熟悉 AFX 1K 或 AFX 2K 系統安裝、ONTAP 版本資訊以及硬體配置和相容性要求。
+
+* link:https://docs.netapp.com/us-en/ontap-afx/index.html["AFX 系統文檔"^] 介紹如何安裝 NetApp 硬體。
+* link:https://docs.netapp.com/us-en/ontap-family/["ONTAP 文檔"^] 提供有關 ONTAP 版本各個方面的詳細資訊。
+* link:https://hwu.netapp.com["Hardware Universe"^] 提供 NetApp 硬體配置和相容性資訊。
+* link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["安裝HWU中沒有的設備還需要哪些額外資訊？"^] 提供有關儲存系統安裝要求的更多資訊。
+
+
+
+
+[[step-3-understand-the-supported-rcf-versions]]
+=== 步驟 3：了解支援的 RCF 版本
+
+您的 AFX 系統上執行的 ONTAP 版本和交換器上執行的 NX-OS 版本決定了交換器支援的 RCF 版本。RCF 版本具有預設的連接埠速度配置，這些配置決定了交換器連接埠中有多少處於分支模式（4x100GbE）和非分支模式。
+
+[NOTE]
+====
+有關目前支援的 RCF 版本列表，請參閱 link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["NetApp Cisco 乙太網路交換器"^] 頁面。
+
+交換器連接埠資訊也可以在 https://hwu.netapp.com["NetAppHardware Universe"^]中找到。
+
+====
+* 如果您擁有 AFX 1K 系統，則支援 RCF 10.0 及更高版本。
+* 如果您擁有 AFX 2K 系統，則支援 RCF 10.1 及更高版本。
+* RCF 10.0 只有一個檔案，並且支援共用交換器 `Cluster-HA-Storage AFX RCF_10.0`。
++
+例如，下表顯示此 RCF 檔案中交換器連接埠的預設分組、連接埠速度和使用情況。
+
++
+[cols="1,2"]
+|===
+| 交換器連接埠組 | 連接埠速度和使用情況 
+
+
+ a| 
+乙太網路 1/1/1-4 至乙太網路 1/30/1-4
+ a| 
+4x100GbE 模式用於叢集、HA 和儲存連接
+
+
+
+ a| 
+乙太網路1/31、乙太網路1/32
+ a| 
+400GbE ISL
+
+|===
+* RCF 10.1 針對 AFX 1K 和 AFX 2K 系統的不同使用情境提供了不同的檔案。根據您計劃如何在 AFX 1K 或 AFX 2K 系統設定中使用交換器（共用、僅儲存或僅叢集和高可用性），您可以選擇相應的 RCF 檔案。
++
+例如，如果您在 AFX 2K 系統中將交換器用作共享交換器，則需要使用適用於該使用案例的 RCF 檔案。對應的 RCF 檔案名稱可能與此類似 `RCF-v10.1-NX9332D-GX2B-CL1-ST1-100GBR15-400G15.txt`。下表顯示此 RCF 檔案中交換器連接埠的預設群組、連接埠速度及用途。
+
++
+[cols="1,2"]
+|===
+| 交換器連接埠組 | 連接埠速度和使用情況 
+
+
+ a| 
+Ethernet1/1/1-4 至 Ethernet1/15/1-4
+ a| 
+4x100GbE 模式，用於叢集內連接、高可用性連接和儲存架連接
+
+
+
+ a| 
+Ethernet1/16 至 Ethernet1/30
+ a| 
+400GbE 模式適用於叢集內連接、HA 和儲存連接
+
+
+
+ a| 
+乙太網路1/31、乙太網路1/32
+ a| 
+400GbE 叢集內 ISL 連線
+
+|===
++
+[NOTE]
+====
+您可以變更預設群組，以便在需要為 AFX 系統適應不同的連接埠速度配置時，調整分支模式 (4x100GbE) 和 400GbE 模式的交換器連接埠數量。
+
+稍後，在 RCF 安裝過程中，您需要執行此操作。
+
+====
+
+
+
+
+[[step-4-consider-using-smart-call-home]]
+=== 第四步：考慮使用 Smart Call Home
+
+ONTAP 支援乙太網路交換器健康監控 （CSHM），用於監控 AFX 叢集交換器，並能夠收集交換器診斷日誌。
+
+Cisco 的 Smart Call Home 是一項可提供主動支援並協助您解決交換器可能出現的任何問題的選項。
+
+有關 Smart Call Home 的更多資訊，請參閱 link:configure-smart-call-9332d.html["配置 Smart Call Home"] 文件。
+
+.下一步是什麼？
+準備好安裝交換器後，您link:install-switches-9332d.html["安裝交換器"]。

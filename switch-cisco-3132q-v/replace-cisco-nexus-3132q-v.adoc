@@ -15,6 +15,7 @@ summary: 在叢集網路中更換有缺陷的 Cisco Nexus 3132Q-V 交換器是�
 
 
 
+[[review-requirements]]
 == 審查要求
 
 .交換機要求
@@ -45,6 +46,7 @@ link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storag
 
 
 
+[[enable-console-logging]]
 == 啟用控制台日誌記錄
 
 NetApp強烈建議您在使用的裝置上啟用控制台日誌記錄，並在更換交換器時執行以下操作：
@@ -56,6 +58,7 @@ NetApp強烈建議您在使用的裝置上啟用控制台日誌記錄，並在�
 
 
 
+[[replace-the-switch]]
 == 更換開關
 
 此程式將第二個 Nexus 3132Q-V 叢集交換器 CL2 替換為新的 3132Q-V 交換器 C2。
@@ -86,6 +89,7 @@ NetApp強烈建議您在使用的裝置上啟用控制台日誌記錄，並在�
 
 
 
+[[step-1-prepare-for-replacement]]
 === 第一步：準備更換
 
 . 如果此叢集上啟用了AutoSupport ，則透過呼叫AutoSupport訊息來抑制自動建立案例：
@@ -476,6 +480,7 @@ RPC status:
 
 
 
+[[step-2-configure-ports]]
 === 步驟 2：設定埠
 
 . 拆下連接到 Nexus 3132Q-V 交換器 CL2 的所有電纜，並將它們重新連接到所有節點上的替換交換器 C2。
@@ -775,6 +780,7 @@ RPC status:
 ====
 
 
+[[step-3-verify-the-configuration]]
 === 步驟 3：驗證配置
 
 . 顯示配置中設備的資訊：

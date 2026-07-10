@@ -17,6 +17,7 @@ NX-OS 是Cisco系統公司提供的 Nexus 系列乙太網路交換器和 MDS 系
 
 
 
+[[review-requirements]]
 == 審查要求
 
 .支援的連接埠和節點連接
@@ -34,6 +35,7 @@ NX-OS 是Cisco系統公司提供的 Nexus 系列乙太網路交換器和 MDS 系
 
 
 
+[[install-the-software]]
 == 安裝軟體
 
 本流程中的範例使用了兩個節點，但叢集中最多可以有 24 個節點。

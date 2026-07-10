@@ -4,6 +4,7 @@
 
 
 
+[[create-a-switch-entry-so-that-ontap-can-monitor-it]]
 == 建立交換器條目，以便ONTAP可以對其進行監控。
 
 使用 `system switch ethernet create`手動設定並啟用指定乙太網路交換器的監控命令。如果ONTAP沒有自動添加交換機，或者您之前刪除了交換器並想重新添加它，這將很有幫助。
@@ -16,6 +17,7 @@ system switch ethernet create -device DeviceName -address 1.2.3.4 -snmp-version 
 
 
 
+[[disable-monitoring-without-deleting-the-switch]]
 == 停用監控而不刪除開關
 
 如果您想暫停或停止對某個交換器的監控，但仍希望保留該交換器以供日後監控，請修改其設定。 `is-monitoring-enabled-admim`保留參數而不是刪除它。
@@ -30,6 +32,7 @@ system switch ethernet modify -device DeviceName -is-monitoring-enabled-admin fa
 
 
 
+[[remove-a-switch-you-no-longer-need]]
 == 移除不再需要的開關
 
 使用 `system switch ethernet delete`刪除已斷開連接或不再需要的開關：

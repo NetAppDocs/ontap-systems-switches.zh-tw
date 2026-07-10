@@ -15,6 +15,7 @@ summary: 您可以依照下列步驟在 Nexus 3132Q-V 叢集交換器上安裝 N
 
 
 
+[[review-requirements]]
 == 審查要求
 
 .開始之前
@@ -29,6 +30,7 @@ summary: 您可以依照下列步驟在 Nexus 3132Q-V 叢集交換器上安裝 N
 
 
 
+[[install-the-software]]
 == 安裝軟體
 
 .關於此任務

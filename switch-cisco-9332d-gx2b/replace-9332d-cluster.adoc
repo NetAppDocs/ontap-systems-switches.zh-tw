@@ -2,9 +2,9 @@
 permalink: switch-cisco-9332d-gx2b/replace-9332d-cluster.html 
 sidebar: sidebar 
 keywords: replacing, replace, defective, nexus, switch, cluster, network, nondisruptive, procedure, ndu, replace a cisco nexus 9332d-gx2b cluster switch - cisco nexus 9332d-gx2b 
-summary: 在叢集網路中更換有缺陷的 Nexus 9332D-GX2B 交換器是一個不中斷的程序。 
+summary: 請依照下列步驟更換叢集網路中發生故障的 Nexus 9332D-GX2B 交換器。此程序為非中斷操作 （NDU）。 
 ---
-= 更換Cisco Nexus 9332D-GX2B 交換機
+= 更換交換器 - Cisco Nexus 9332D-GX2B
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -15,6 +15,7 @@ summary: 在叢集網路中更換有缺陷的 Nexus 9332D-GX2B 交換器是一�
 
 
 
+[[review-requirements]]
 == 審查要求
 
 更換開關之前，請確保：
@@ -35,7 +36,7 @@ summary: 在叢集網路中更換有缺陷的 Nexus 9332D-GX2B 交換器是一�
 ** 節點連接是連接埠 1/1 至 1/30。
 ** 連接埠 1/31 和 1/32 上的所有交換器間連結 (ISL) 連接埠均停用。
 ** 將所需的參考設定檔 (RCF) 和 NX-OS 作業系統映像交換器載入到交換器上。
-** 交換器的初始客製化工作已完成，詳情如下：link:setup-switch-9332d-cluster.html["配置 9332D-GX2B 集群交換機"] 。
+** 交換器的初始自訂已完成，詳情請見 link:configure-complete-initial-setup-9332d.html["完成初始交換器設置"]。
 +
 先前站點的所有自訂設置，如 STP、SNMP 和 SSH，都會複製到新交換器上。
 
@@ -46,6 +47,7 @@ summary: 在叢集網路中更換有缺陷的 Nexus 9332D-GX2B 交換器是一�
 
 
 
+[[enable-console-logging]]
 == 啟用控制台日誌記錄
 
 NetApp強烈建議您在使用的裝置上啟用控制台日誌記錄，並在更換交換器時執行以下操作：
@@ -57,6 +59,7 @@ NetApp強烈建議您在使用的裝置上啟用控制台日誌記錄，並在�
 
 
 
+[[replace-the-switch]]
 == 更換開關
 
 .關於範例
@@ -214,6 +217,7 @@ Total entries displayed: 18
 ====
 
 
+[[step-1-prepare-for-replacement]]
 === 第一步：準備更換
 
 . 如果此叢集上啟用了AutoSupport ，則透過呼叫AutoSupport訊息來抑制自動建立案例：
@@ -357,6 +361,7 @@ RPC status:
 
 
 
+[[step-2-configure-cables-and-ports]]
 === 步驟 2：設定線纜和連接埠
 
 . 關閉 Nexus 9332D-GX2B 交換器 cs1 上的 ISL 連接埠 Eth1/31 和 Eth1/32。
@@ -635,6 +640,7 @@ RPC status:
 
 
 
+[[step-3-verify-the-configuration]]
 === 步驟 3：驗證配置
 
 . 驗證叢集上所有連接埠的健康狀況。

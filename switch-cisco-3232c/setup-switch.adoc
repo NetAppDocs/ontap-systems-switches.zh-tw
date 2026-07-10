@@ -22,7 +22,7 @@ summary: 如果您還沒有所需的設定資訊和文檔，則需要在設定�
 
 * 需要提供控制器文件和ONTAP文件。
 +
-link:https://netapp.com/us/documenation/index.aspx["NetApp文檔"^]
+link:https://docs.netapp.com/us-en/ontap/index.html["ONTAP 9 文件"^]
 
 * 適用的許可證、網路和設定資訊以及線纜。
 * 已完成佈線工作表。

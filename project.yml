@@ -25,6 +25,7 @@ sidebar:
   - title: AFX 系統交換機
     url: "/afx/index.html"
     entries:
+    - section: switch-cisco-9808
     - section: switch-cisco-9332d-gx2b
     - section: switch-cisco-9364d-gx2a
   - title: 集群交換機

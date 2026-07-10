@@ -4,6 +4,7 @@
 
 
 
+[[review-requirements]]
 == 審查要求
 
 .開始之前
@@ -49,10 +50,12 @@
 
 
 
+[[migrate-the-switches]]
 == 遷移交換機
 
 
 
+[[step-1-prepare-for-migration]]
 === 步驟 1：準備遷移
 
 . 如果此叢集上啟用了AutoSupport ，則透過呼叫AutoSupport訊息來抑制自動建立案例：
@@ -77,6 +80,7 @@ NOTE: AutoSupport訊息會通知技術支援此維護任務，以便在維護視
 
 
 
+[[step-2-configure-ports-and-cabling]]
 === 步驟二：設定埠和線纜
 
 . 停用新叢集交換器 cs1 和 cs2 上所有面向節點的連接埠（非 ISL 連接埠）。
@@ -398,6 +402,7 @@ e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
 
 
 
+[[step-3-verify-the-configuration]]
 === 步驟 3：驗證配置
 
 . 驗證所有介面是否都顯示為 true `Is Home` ：

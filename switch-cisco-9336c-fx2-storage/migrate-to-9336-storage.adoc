@@ -15,6 +15,7 @@ summary: 您可以將ONTAP叢集的舊Cisco叢集交換器無中斷地遷移到C
 
 
 
+[[review-requirements]]
 == 審查要求
 
 確保：
@@ -40,6 +41,7 @@ NOTE: 如果您變更AFF A800或AFF C800系統上 e0a 和 e1a 叢集連接埠的
 
 
 
+[[migrate-the-switches]]
 == 遷移交換機
 
 .關於範例
@@ -93,6 +95,7 @@ NOTE: 在此過程中不需要任何可操作的交換器間連結 (ISL)。這�
 
 
 
+[[step-1-prepare-for-migration]]
 === 步驟 1：準備遷移
 
 . 如果此叢集上啟用了AutoSupport ，則透過呼叫AutoSupport訊息來抑制自動建立案例： `system node autosupport invoke -node * -type all -message MAINT=xh`
@@ -114,6 +117,7 @@ NOTE: AutoSupport訊息會通知技術支援此維護任務，以便在維護視
 
 
 
+[[step-2-configure-ports-and-cabling]]
 === 步驟二：設定埠和線纜
 
 . 在新交換器上，確認交換器 cs1-new 和 cs2-new 之間的 ISL 線連接正常：
@@ -620,6 +624,7 @@ Group Port-       Type     Protocol  Member Ports
 
 
 
+[[step-3-verify-the-configuration]]
 === 步驟 3：驗證配置
 
 . 啟用叢集 LIF 的自動回滾功能。

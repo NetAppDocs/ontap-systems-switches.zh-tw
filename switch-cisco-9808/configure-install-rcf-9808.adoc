@@ -1,0 +1,150 @@
+---
+permalink: switch-cisco-9808/configure-install-rcf-9808.html 
+sidebar: sidebar 
+keywords: install rcf, cisco switches 
+summary: 您可以在新的 Cisco Nexus 9808 交換器上安裝 RCF，作為新 AFX 2K 系統安裝和設定的一部分、更換故障的監督模組，或將交換器重設為原廠預設值。 
+---
+= 安裝 RCF - Cisco Nexus 9808
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以在新的 Cisco Nexus 9808 交換器上安裝 RCF，作為新 AFX 2K 系統安裝的一部分、更換監督模組，或將交換器重設為原廠預設值。
+
+.開始之前
+* 交換器必須通電，且您必須已完成 link:configure-complete-initial-setup-9808.html["完成初始交換器設置"] 程序。
+* 您必須按照link:configure-install-nxos-9808.html["安裝 NX-OS"]步驟安裝所需的 NX-OS 版本。
+* 您必須已閱讀 link:configure-install-upgrade-rcf-overview-9808.html["安裝或升級 RCF 概述"] 頁面。
+* 如果您在交換器上安裝 RCF 是為了更換監督模組或將交換器重設為原廠預設設定，請確認您的叢集是否完全正常運作，即日誌中沒有錯誤或類似問題。
++
+如果您正在安裝 RCF 作為新 AFX 系統安裝的一部分，則可以跳過此要求，因為在 AFX 系統安裝和設定的這一階段，AFX 系統中的控制器尚未通電。
+
+
+
+.關於此任務
+* 如果您已將交換器作為新的 AFX 2K 系統安裝的一部分進行安裝，則您需要在第一個交換器 （cs1） 上安裝參考設定檔案 （RCF），然後使用此程序對第二個交換器 （cs2） 重複這些步驟。
+* 此程序僅需使用 Cisco Nexus 9000 系列交換器指令。
+* 本程序中的範例將第一個交換器稱為 cs1，第二個交換器稱為 cs2。
+
+
+
+
+[[step-1-prepare-to-install-the-rcf]]
+== 步驟 1：準備安裝 RCF
+
+若要準備在交換器上安裝 RCF，請確保您擁有下載 RCF 所需的連接，然後下載 RCF。
+
+.步驟
+. 您必須擁有對 HTTP、FTP 或 TFTP 伺服器的存取權限。存取其中任何一個伺服器，即可下載支援的 RCF 版本。
+. 從 NetApp 支援網站下載適用於您的 AFX 系統類型的 RCF，網址為 link:http://mysupport.netapp.com/["mysupport.netapp.com"^]。
++
+
+NOTE: 新交換器出廠時未預先安裝 RCF。您必須在交換器上安裝 RCF。
+
+. 每個交換器都必須連接到主控台，或者您必須擁有對每個交換器的遠端存取。
+. 您必須使用串列主控台連接到交換器，或保留基本組態資訊。這是因為 RCF 升級程序需要您清除交換器設定並執行基本組態。
+
+
+
+
+[[step-2-install-the-rcf]]
+== 步驟 2：安裝 RCF
+
+首先，您需要將 RCF 複製到啟動快閃記憶體並套用至第一台交換器 (cs1)，然後檢查橫幅輸出，確認 RCF 版本是否正確，記錄任何自訂新增項目，儲存基本組態詳細資訊，確認 `write_erase.cfg`檔案已填入，清除目前儲存的組態，將先前儲存的基本組態複製到啟動組態中，最後重新啟動交換器。如果您要將 RCF 安裝為新 AFX 系統安裝的一部分，請在第二台交換器 (cs2) 上重複這些步驟。
+
+. 使用 SSH 或透過序列主控台登入交換器 cs1。
+. 使用下列傳輸協定之一將 RCF 複製到交換器 cs1 的 bootflash：FTP、TFTP、SFTP 或 SCP。
++
+有關 Cisco 命令的更多資訊，請參閱 https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Cisco Nexus 9000 系列 NX-OS 指令參考"^]指南中的相關指南。
+
++
+`copy <protocol>: bootflash: vrf management`
+
++
+.顯示範例
+[%collapsible]
+====
+此範例展示如何使用 TFTP 將 RCF 檔案複製到交換器 cs1 的啟動快閃記憶體中：
+
+[listing, subs="+quotes"]
+----
+cs1# *copy tftp: bootflash: vrf management*
+Enter source filename: *RCF-v10.1-NX9808-CL1-ST1.txt*
+Enter hostname for the tftp server: *172.22.201.50*
+Trying to connect to tftp server......Connection to Server Established.
+TFTP get operation was successful
+Copy complete, now saving to disk (please wait)...
+----
+====
+. 將先前複製到啟動快閃記憶體的 RCF 套用至啟動快閃記憶體。
++
+有關 Cisco 命令的更多資訊，請參閱 https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Cisco Nexus 9000 系列 NX-OS 指令參考"^]指南中的相關指南。
+
++
+此範例顯示在交換器 cs1 上安裝 RCF 檔案 `RCF-v10.1-NX9808-CL1-ST1.txt`：
+
++
+[listing, subs="+quotes"]
+----
+cs1# *copy RCF-v10.1-NX9808-CL1-ST1.txt running-config echo-commands*
+----
+. 檢查橫幅輸出 `show banner motd`命令。您必須閱讀並遵循這些說明以確保交換器的正確配置和操作。
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+cs1# show banner motd
+
+******************************************************************************
+* NetApp Reference Configuration File (RCF)
+*
+* Switch   : NX9808
+* Filename : RCF-v10.1-NX9808-CL1-ST1.txt
+* Date     : 06-15-2026
+* Version  : v10.1
+* Port Usage:
+* Ports   1-18 (LC1-LC8) : 400GbE Cluster/Storage/HA ports.
+* Ports   19-35 (LC1-LC8): 4 * 100 GbE Storage shelf ports, int e1-e8/{19-35}/1-4
+* Port    36 (LC1-LC8)   : Intra-Cluster ISL Ports, int e1-e8/36
+* IMPORTANT NOTES
+* Interface port-channel998/9 is reserved to identify the version of this file.
+
+******************************************************************************
+----
+====
+. 請確認 RCF 檔案版本是否正確：
++
+`show running-config`
+
++
+檢查輸出結果以驗證是否擁有正確的 RCF 時，請確保以下資訊正確：
+
++
+** RCF橫幅
+** 節點和連接埠設置
+** 客製化
++
+輸出結果會根據您的網站配置而有所不同。檢查連接埠設置，並參考發行說明，以了解您安裝的 RCF 版本是否有任何特定變更。
+
+
+
+. 將目前執行中的組態複製到啟動組態，使其持續生效。
++
+`cs1# *copy bootflash:write_erase.cfg startup-config*`
+
+. 重啟交換器：
++
+`cs1# *reload*`
+
++
+`This command will reboot the system. (y/n)?  [n] *y*`
+
+. 在交換器 cs2 上重複這些步驟。
+
+
+.下一步是什麼？
+在交換器中安裝 RCF 後，您link:configure-verify-ssh-9808.html["驗證 SSH 是否用於日誌收集"]。

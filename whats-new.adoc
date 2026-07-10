@@ -15,6 +15,7 @@ summary: 了解FAS和AFF系統的新型交換器。
 
 
 
+[[new-switch-support]]
 == 新交換器支持
 
 [cols="25h,~,~"]

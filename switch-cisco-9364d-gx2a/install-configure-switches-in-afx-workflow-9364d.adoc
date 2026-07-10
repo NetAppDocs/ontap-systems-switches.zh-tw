@@ -1,0 +1,76 @@
+---
+permalink: switch-cisco-9364d-gx2a/install-configure-switches-in-afx-workflow-9364d.html 
+sidebar: sidebar 
+keywords: switches, initial installation, configure 9364d-gx2ab switch 
+summary: 若要將 Cisco Nexus 9364D-GX2A 交換器安裝並設定為新的 AFX 1K 或 AFX 2K 系統的一部分，您需要結合使用此交換器網站和 AFX 系統網站上的文件。文件中提供了必要的連結，可引導您依需求操作。 
+---
+= 在 AFX 系統工作流程中安裝和設定交換器 - Cisco Nexus 9364D-GX2A
+:allow-uri-read: 
+
+
+[role="lead"]
+若要將 Cisco Nexus 9364D-GX2A 交換器安裝並設定為新的 AFX 1K 或 AFX 2K 系統的一部分，您需要結合使用此交換器網站和 AFX 系統網站上的文件。文件中提供了必要的連結，可引導您依需求操作。
+
+
+
+[[install-switches]]
+=== 安裝交換器
+
+要安裝交換器，您必須先做好安裝準備，然後安裝交換器（以及 AFX 系統硬體），包括佈線和接通交換器的電源。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一"]link:install-prepare-9364d.html["準備安裝"]
+[role="quick-margin-para"]
+請查閱 Cisco 和 ONTAP 系統文件，準備好您的站台，並了解您的 AFX 系統支援的 RCF 版本的交換器連接埠預設配置，以便安裝和設定交換器。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["二"]link:install-switches-9364d.html["安裝交換器"]
+[role="quick-margin-para"]
+您將前往 AFX 1K 或 AFX 2K 系統安裝和設定工作流程，以安裝交換器（連同 AFX 系統硬體）、連接交換器纜線並開啟交換器電源。之後，您將返回此工作流程以設定交換器。
+
+
+
+[[configure-switches]]
+=== 設定交換器
+
+若要設定交換器，您需要完成初始交換器設置，檢查佈線和設定需求，安裝 NX-OS，安裝 RCF，驗證 SSH 以進行日誌收集，設定乙太網路交換器健康監控 (CSHM)，以及設定 Smart Call Home （選購）。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一"]link:configure-complete-initial-setup-9364d.html["完成初始交換器設置"]
+[role="quick-margin-para"]
+交換器通電後，將開始啟動並進入設定精靈。系統會提示您回答一系列問題，以完成交換器的初始（啟動）設定。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["二"]link:configure-review-cabling-config-requirements-9364d.html["審查佈線和配置要求"]
+[role="quick-margin-para"]
+審查佈線和配置要求。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三"]link:configure-install-nxos-9364d.html["安裝 NX-OS"]
+[role="quick-margin-para"]
+在支援您的 AFX 1K 或 AFX 2K 系統的交換器上安裝最新版本的 NX-OS。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["四"]link:configure-install-upgrade-rcf-overview-9364d.html["安裝 RCF"]
+[role="quick-margin-para"]
+在支援您的 AFX 1K 或 AFX 2K 系統的交換器上安裝最新版本的 RCF。該連結將帶您進入 RCF 安裝或升級概述主題，其中包含您在安裝 RCF 之前需要了解的資訊。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["五"]link:configure-verify-ssh-9364d.html["驗證 SSH 是否用於日誌收集"]
+[role="quick-margin-para"]
+請確認 SSH 已啟用，以便您可以使用乙太網路交換器健康監視器 (CSHM) 日誌收集功能。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["六"]link:../switch-cshm/cshm-overview.html["設定乙太網路交換器健康狀況監控"]
+[role="quick-margin-para"]
+設定乙太網路交換器健康監控 (CSHM)，以確保交換器的運作健康，並收集交換器日誌以進行偵錯和故障排除。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-7.png["七"]link:configure-smart-call-9364d.html["設定 Smart Call Home （選用）"]
+[role="quick-margin-para"]
+ONTAP 支援乙太網路交換器健康監控 (CSHM)，用於監控 AFX 叢集交換器，並能夠收集交換器診斷日誌。Cisco 的 Smart Call Home 是一項選用功能，可提供主動支援並協助您解決交換器可能出現的任何問題。
+
+
+
+[[complete-afx-system-setup]]
+=== 完整的 AFX 系統設置
+
+要完成 AFX 1K 或 AFX 2K 系統的設置，您需要完成 AFX 系統組件的通電和系統設定程序。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一"]link:install-complete-afx-setup-9364d.html["完成 AFX 系統設定"]
+[role="quick-margin-para"]
+請參考 AFX 系統文件，透過開啟儲存架和控制器的電源、驗證交換器連線能力，然後完成系統設定程序，來完成 AFX 1K 或 AFX 2K 系統的設定。
+
+.下一步是什麼？
+完成 AFX 系統設定後，即可開始使用 AFX 系統。您還可以link:https://docs.netapp.com/us-en/ontap-afx/index.html["了解更多關於您的 AFX 系統以及如何使用它的資訊"^]。

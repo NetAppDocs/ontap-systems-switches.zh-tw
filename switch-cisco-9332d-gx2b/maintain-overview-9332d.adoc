@@ -1,0 +1,21 @@
+---
+permalink: switch-cisco-9332d-gx2b/maintain-overview-9332d.html 
+sidebar: sidebar 
+keywords: maintain overview, frus, replace switch, reset to factory defaults, cisco 9332d-gx2b 
+summary: 維護您的 Cisco Nexus 9332D-GX2B 交換器，以確保其長期可靠性和最佳效能。您可以執行的維護任務包括更換故障的交換器組件（FRU）、更換故障交換器以及將交換器重設為原廠預設值。 
+---
+= 保持概覽 - Cisco Nexus 9332D-GX2B
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+維護您的 Cisco Nexus 9332D-GX2B 交換器，以確保其長期可靠性和最佳效能。您可以執行的維護任務包括更換故障的交換器組件（FRU）、更換故障的交換器以及將交換器重設為原廠預設值。
+
+您可以對交換器執行以下維護任務：
+
+* link:replace-9332d-cluster.html["更換交換器"]
+* link:maintain-replace-frus-9332d.html["更換 FRU"]
+* link:maintain-reset-switch-9332d.html["將交換器重設為出廠預設值"]
+

@@ -17,6 +17,7 @@ EFOS 軟體包含一套用於開發乙太網路和 IP 基礎架構系統的進�
 
 
 
+[[prepare-for-upgrade]]
 == 準備升級
 
 .開始之前
@@ -125,6 +126,7 @@ IP_switch_a2 # *show fips status*
 ====
 
 
+[[upgrade-the-software]]
 == 升級軟體
 
 請使用以下方法之一：
@@ -138,6 +140,7 @@ NOTE: 一次升級一台交換器上的 EFOS，以確保叢集網路持續運作
 
 
 
+[[method-1-upgrade-efos]]
 === 方法一：升級EFOS
 
 請依照以下步驟升級 EFOS 軟體。
@@ -369,6 +372,7 @@ network interface show -vserver Cluster
 
 
 
+[[method-2-upgrade-efos-using-the-onie-os-installation]]
 === 方法二：使用 ONIE OS 安裝程式升級 EFOS
 
 如果一個 EFOS 版本符合 FIPS 標準，而另一個 EFOS 版本則不符合 FIPS 標準，則可以執行下列步驟。如果交換器無法啟動，可以使用下列步驟從 ONIE 升級非 FIPS 或符合 FIPS 標準的 EFOS 3.7.xx 映像。

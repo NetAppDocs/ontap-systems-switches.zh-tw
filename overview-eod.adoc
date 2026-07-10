@@ -21,6 +21,7 @@ summary: FAS和AFF系統的 EOD 開關。
 
 
 
+[[end-of-sale-and-end-of-life-announcements]]
 == 停售和停產公告
 
 * link:https://www.cisco.com/c/en/us/products/collateral/switches/nexus-3000-series-switches/n3k-c3232c-eol.html["Cisco Nexus 3232C 停止銷售和停止生命週期公告"]

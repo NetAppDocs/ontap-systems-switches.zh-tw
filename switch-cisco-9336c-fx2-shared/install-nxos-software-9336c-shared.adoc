@@ -17,6 +17,7 @@ summary: 您可以依照以下步驟在 Nexus 9336C-FX2 叢集交換器上安裝
 
 
 
+[[review-requirements]]
 == 審查要求
 
 .開始之前
@@ -55,6 +56,7 @@ summary: 您可以依照以下步驟在 Nexus 9336C-FX2 叢集交換器上安裝
 
 
 
+[[install-the-software]]
 == 安裝軟體
 
 流程需要同時使用ONTAP指令和Cisco Nexus 9000 系列交換器指令；除非另有說明，否則使用ONTAP指令。

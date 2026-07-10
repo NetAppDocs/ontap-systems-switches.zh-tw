@@ -1,0 +1,39 @@
+---
+permalink: switch-cisco-9808/maintain-replace-frus-9808.html 
+sidebar: sidebar 
+keywords: switches, hardware installation, Cisco Nexus, 9808 switches 
+summary: '您的 Cisco Nexus 9808 交換器具有現場可更換單元 (FRU)，您可以在發生故障時進行更換。' 
+---
+= 更換 FRU - Cisco Nexus 9808
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您的 Cisco Nexus 9808 交換器具有現場可更換單元 (FRU)，您可以在發生故障時進行更換。
+
+.關於此任務
+Cisco Nexus 9808 交換器具有以下 FRU：
+
+* *底盤門泡棉空氣濾清器*（共 2 個）：機門出廠時已預裝空氣濾清器。您應每 3 個月檢查一次空氣濾清器，並視需要進行更換。
+* *Supervisor module*（1 個或 2 個，取決於交換器的訂購方式）：當交換器中安裝了兩個 Supervisor module 時，一個作為主動模組，另一個作為備用模組。當主動 Supervisor module 被移除時，交換器會自動將備用 Supervisor module 設為主動模組。如果交換器僅安裝了一個 Supervisor module，則可以在運作期間將新的 Supervisor module 安裝到空閒的 Supervisor 插槽中。
+* *線路卡*（共 8 個，每個線路卡有 16 個固定的 400GbE 連接埠）：交換器使用安裝在機箱中的一個或多個線路卡運作。
+* *風扇托盤*（共2個）
+* *Fabric module*（共 2 個）
+* *電源組件* （共 2 個）
+* *風扇模組*（共6個）
+* *OSFP/QSFP 收發器模組*（32 個固定 400GbE 連接埠）
+
+
+.步驟
+. 請造訪 Cisco 網站以取得相關資訊 link:https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/hw/9800/9808/nx-os/cisco-nexus-9808-nx-os-mode-switch-hardware-installation-guide.html["Cisco Nexus 9808 NX-OS 模式交換器硬體安裝指南"^]。
+. 導覽至 link:https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/hw/9800/9808/nx-os/cisco-nexus-9808-nx-os-mode-switch-hardware-installation-guide/m-8000-replace-chassis-components.html["更換底盤零件"^] 區段以查看 FRU 程序。
+. 請依照適用程序更換故障的 FRU。
++
+如需 NetApp 硬體配置和相容性資訊，請參閱 link:https://hwu.netapp.com["NetAppHardware Universe"^]。
+
+
+
+.下一步是什麼？
+在 Cisco 網站上完成對應的 FRU 程序後，即可恢復正常操作。

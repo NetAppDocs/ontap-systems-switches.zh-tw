@@ -1,0 +1,110 @@
+---
+sidebar: sidebar 
+permalink: switch-cisco-9364d-gx2a/reference-documentation-9364d.html 
+keywords: shared storage cluster switch 
+summary: 對於Cisco Nexus 9364d-gx2a 交換器的安裝和維護，請務必查看特定的交換器和控制器文件以設定您的Cisco 9364d-gx2a 交換器和ONTAP叢集。 
+---
+= 參考文件 - Cisco Nexus 9364D-GX2A 交換器
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+對於 Cisco Nexus 9364D-GX2A 交換器的安裝，請務必查看特定的交換器和控制器文件，以設定您的 Cisco 9364D-GX2A 交換器和 ONTAP 叢集。
+
+
+
+[[switch-documentation]]
+== 切換文檔
+
+要設定 Cisco Nexus 9364D-GX2A 交換機，您需要來自link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Cisco Nexus 9000 系列交換器支援"^]的以下文件。
+
+[cols="1,2"]
+|===
+| 文件標題 | 描述 
+
+
+ a| 
+link:https://www.cisco.com/c/en/us/td/docs/dcn/hw/nx-os/nexus9000/9364d-gx2a/cisco-nexus-9364d-gx2a-nx-os-mode-switch-hardware-installation-guide.html["Cisco Nexus 9364D-GX2A NX-OS 模式交換器硬體安裝指南"^]
+ a| 
+提供有關站點要求、交換器硬體詳情和安裝選項的詳細資訊。
+
+
+
+ a| 
+link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-installation-and-configuration-guides-list.html["Cisco Nexus 9000 系列交換器軟體設定指南"^]（請選擇與您的交換器上安裝的 NX-OS 版本相對應的指南）
+ a| 
+提供在配置交換器以進行ONTAP操作之前所需的初始交換器配置資訊。
+
+
+
+ a| 
+link:https://www.cisco.com/c/en/us/td/docs/dcn/nx-os/nexus9000/101x/upgrade/cisco-nexus-9000-nx-os-software-upgrade-downgrade-guide-101x.html["Cisco Nexus 9000 系列 NX-OS 軟體升級與降級指南"^]（請選擇與您的交換器上安裝的 NX-OS 版本相對應的指南）
+ a| 
+提供有關如何將交換器降級到ONTAP支援的交換器軟體（如有必要）的資訊。
+
+
+
+ a| 
+link:https://www.cisco.com/c/en/us/td/docs/dcn/nx-os/nexus9000/102x/command-reference/config/b_n9k_config_commands_1021.html["Cisco Nexus 9000 系列 NX-OS 指令參考"^]
+ a| 
+提供Cisco提供的各種指令參考的連結。
+
+
+
+ a| 
+link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-system-message-guides-list.html["Cisco Nexus 9000 系列 NX-OS 系統訊息參考"^]
+ a| 
+描述Cisco Nexus 9000 系列交換器的系統訊息，包括資訊性訊息和其他可能有助於診斷連結、內部硬體或系統軟體問題的訊息。
+
+
+
+ a| 
+link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-release-notes-list.html["Cisco Nexus 9000 系列 NX-OS 發行說明"^]（請選擇交換器上安裝的 NX-OS 版本對應的說明）
+ a| 
+描述了CiscoNexus 9000 系列的功能、缺陷和限制。
+
+
+
+ a| 
+link:https://www.cisco.com/c/en/us/td/docs/switches/datacenter/mds9000/hw/regulatory/compliance/RCSI.html?dtid=osscdc000283&linkclickid=srch["Cisco Nexus 9000 系列的法規遵循和安全訊息"^]
+ a| 
+提供 Nexus 9000 系列交換器的國際機構合規性、安全性和法規資訊。
+
+|===
+
+
+[[ontap-systems-documentation]]
+== ONTAP 系統文檔
+
+要設定 ONTAP 系統、您需要適用於您的作業系統版本的下列文件。
+
+[cols="1,2"]
+|===
+| Name | 描述 
+
+
+ a| 
+link:https://docs.netapp.com/us-en/ontap-afx/index.html["AFX 系統文檔"^]
+ a| 
+介紹如何安裝NetApp硬體。
+
+
+
+ a| 
+link:https://docs.netapp.com/us-en/ontap-family/["ONTAP 文檔"^]
+ a| 
+提供有關ONTAP版本各個方面的詳細資訊。
+
+
+
+ a| 
+link:https://hwu.netapp.com["Hardware Universe"^]
+ a| 
+提供NetApp硬體配置和相容性資訊。
+
+|===

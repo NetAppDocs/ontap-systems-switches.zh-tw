@@ -17,6 +17,7 @@ summary: 安裝參考組態檔 RCF 時，必須先將叢集 LIF 從交換器 cs2
 
 
 
+[[review-requirements]]
 == 審查要求
 
 .開始之前
@@ -36,6 +37,7 @@ summary: 安裝參考組態檔 RCF 時，必須先將叢集 LIF 從交換器 cs2
 
 
 
+[[install-the-rcf]]
 == 安裝 RCF
 
 下列程序使用叢集式Data ONTAP 8.2 語法。因此，叢集 Vserver、LIF 名稱和 CLI 輸出與Data ONTAP 8.3 中的不同。
@@ -66,6 +68,7 @@ link:https://hwu.netapp.com/["Hardware Universe"^]提供有關您平台支援的
 
 
 
+[[step-1-migrate-cluster]]
 === 步驟 1：遷移集群
 
 . 儲存您目前的交換器設定資訊：
@@ -180,6 +183,7 @@ node2
 
 
 
+[[step-2-install-rcf]]
 === 步驟 2：安裝 RCF
 
 . 將 RCF 複製到交換器。
@@ -369,6 +373,7 @@ cluster::*> network port modify -node node2 -port e2a -up-admin true
 
 
 
+[[step-3-validate-installation]]
 === 步驟 3：驗證安裝
 
 . 請確認兩個節點上的 e2a 連接埠都已啟動：

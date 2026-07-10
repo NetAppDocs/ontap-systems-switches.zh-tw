@@ -1,0 +1,35 @@
+---
+permalink: switch-cisco-9332d-gx2b/configure-review-cabling-config-requirements-9332d.html 
+sidebar: sidebar 
+keywords: 9332d-gx2b cabling setup, 9332d-gx2b switches configuration, nx-os 
+summary: 如果您正在安裝新的 Cisco Nexus 9332D-GX2B 交換器，作為新的 AFX 1K 或 AFX 2K 系統安裝的一部分、更換交換器，或將交換器重設為出廠預設設定，則必須檢閱以下纜線配置和組態需求。 
+---
+= 檢查佈線和設定需求 - Cisco Nexus 9332D-GX2B
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果您正在安裝 Cisco Nexus 9332D-GX2B 交換器，作為新的 AFX 1K 或 AFX 2K 系統安裝的一部分、更換交換器，或將交換器重設為出廠預設設定，則必須檢閱以下佈線和組態需求。
+
+
+
+[[hard-code-the-speed-on-breakout-ports]]
+== 將分線連接埠的速度硬式編碼
+
+您必須將交換器分線連接埠（4x100GbE）的速率硬編碼為 100GbE。如果您不硬編碼速率，這些連接埠將無法啟動，並處於錯誤停用狀態。
+
+例如，若要在分支連接埠 1-14 上硬編碼 100GbE，請在設定模式下執行下列操作。範例中顯示的是套用於第一台交換器 （cs1） 的命令。您需要對第二台交換器重複這些命令。
+
+[listing, subs="+quotes"]
+----
+(cs1)(config)# *interface e1/1/1-4, e1/2/1-4, e1/3/1-4, e1/4/1-4, e1/5/1-4, e1/6/1-4, e1/7/1-4, e1/8/1-4, e1/9/1-4, e1/10/1-4, e1/11/1-4, e1/12/1-4, e1/13/1-4, e1/14/1-4*
+(cs1)(config-if)# *speed 100000*
+(cs1)(config-if)# *no negotiate auto*
+(cs1)(config-if)# *exit*
+(cs1)(config)# *exit*
+(cs1)# *copy running-config startup-config*
+----
+.下一步是什麼？
+滿足佈線和配置要求後，您link:configure-install-nxos-9332d.html["安裝 NX-OS"]。

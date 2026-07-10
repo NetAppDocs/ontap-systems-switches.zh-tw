@@ -30,6 +30,7 @@ CAUTION: 在安裝新的交換器軟體版本和 RCF 之前，必須清除交換
 
 
 
+[[step-1-prepare-for-the-upgrade]]
 == 第一步：準備升級
 
 . 如果此叢集上啟用了AutoSupport ，則透過呼叫AutoSupport訊息來抑制自動建立案例：
@@ -164,6 +165,7 @@ cluster1::*> *system switch ethernet show*
 
 
 
+[[step-2-upgrade-the-rcf]]
 == 步驟 2：升級 RCF
 
 . 使用 SSH 或透過序列主控台登入交換器 s2。
@@ -416,6 +418,7 @@ cluster1::*> *system switch ethernet show*
 
 
 
+[[step-3-verify-the-storage-network]]
 == 步驟 3：驗證儲存網路
 
 在每個儲存交換器上完成以下步驟，以驗證 RCF 升級後儲存網路是否正常運作。

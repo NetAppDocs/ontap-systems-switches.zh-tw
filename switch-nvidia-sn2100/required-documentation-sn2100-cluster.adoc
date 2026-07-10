@@ -19,7 +19,7 @@ summary: 對於NVIDIA SN2100 交換器的安裝和維護，請務必查看所有
 
 
  a| 
-link:https://docs.nvidia.com/networking/display/sn2000pub/Installation["NVIDIA開關安裝指南"^]
+link:https://networking-docs.nvidia.com/sn2000hw/latest["NVIDIA開關安裝指南"^]
  a| 
 介紹如何安裝NVIDIA SN2100 交換器。
 
@@ -33,6 +33,7 @@ link:https://library.netapp.com/ecm/ecm_download_file/ECMLP2876580["NS224 NVMe �
 |===
 
 
+[[ontap-systems-documentation]]
 == ONTAP 系統文檔
 
 要設定 ONTAP 系統、您需要適用於您的作業系統版本的下列文件。

@@ -25,6 +25,7 @@ summary: ONTAP 中的乙太網路交換器健全狀況監控器 CSHM 記錄收�
 ====
 
 
+[[before-you-begin]]
 == 開始之前
 
 * 使用者必須有權存取該開關。 `show`命令。如果這些使用者不可用，請建立一個新使用者並授予該使用者必要的權限。
@@ -43,6 +44,7 @@ summary: ONTAP 中的乙太網路交換器健全狀況監控器 CSHM 記錄收�
 
 
 
+[[steps]]
 == 步驟
 
 [role="tabbed-block"]

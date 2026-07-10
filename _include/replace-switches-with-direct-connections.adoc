@@ -6,6 +6,7 @@
 
 
 
+[[review-requirements]]
 == 審查要求
 
 .指南
@@ -25,6 +26,7 @@
 
 
 
+[[migrate-the-switches]]
 == 遷移交換機
 
 .關於此任務
@@ -37,6 +39,7 @@ image::../media/tnsc_clusterswitches_and_direct_connections.PNG[集群交換器�
 
 
 
+[[step-1-prepare-for-migration]]
 === 步驟 1：準備遷移
 
 . 將權限級別變更為高級，輸入 `y`當系統提示繼續：
@@ -92,6 +95,7 @@ cluster::*> system node autosupport invoke -node * -type all -message MAINT=2h
 
 
 
+[[step-2-configure-ports-and-cabling]]
 === 步驟二：設定埠和線纜
 
 . 將每台交換器上的群集連接埠分成幾組，使第 1 組的群集連接埠連接到群集交換器 1，第 2 組的群集連接埠連接到群集交換器 2。這些組別在後續手術過程中是需要的。
@@ -399,6 +403,7 @@ image::../media/tnsc_node1_and_node2_direct_connection.PNG[節點1和節點2上�
 
 
 
+[[step-3-verify-the-configuration]]
 === 步驟 3：驗證配置
 
 . 請確認兩個節點上的連接埠連接正確：

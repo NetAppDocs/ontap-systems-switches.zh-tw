@@ -31,6 +31,7 @@ summary: 使用叢集交換器健全狀況監控和日誌收集功能時，需�
 
 
 
+[[step-1-install-the-rcf-on-the-switches]]
 == 步驟 1：在交換器上安裝 RCF
 
 . 使用 SSH 或序列控制台登入 switch cs2。
@@ -153,6 +154,7 @@ cs2# *copy Nexus_3232C_RCF_v1.6-Cluster-HA-Breakout.txt running-config echo-comm
 
 
 
+[[step-2-verify-the-switch-connections]]
 == 步驟 2：驗證交換器連接
 
 . 確認連接到叢集連接埠的交換器連接埠已啟用。
@@ -259,6 +261,7 @@ cluster1::*>
 
 
 
+[[step-3-setup-your-ontap-cluster]]
 == 步驟 3：設定ONTAP集群
 
 NetApp建議您使用系統管理員來設定新的叢集。

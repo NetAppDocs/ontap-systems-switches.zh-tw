@@ -17,7 +17,7 @@ summary: 若要安裝 SN2100 硬體，請參閱 NVIDIA 文件。
 
 .步驟
 . 複習link:configure-reqs-sn2100-cluster.html["配置要求"]。
-. 按照 link:https://docs.nvidia.com/networking/display/sn2000pub/Installation["NVIDIA開關安裝指南"^] 中的說明進行操作。
+. 按照 link:https://networking-docs.nvidia.com/sn2000hw/latest["NVIDIA開關安裝指南"^] 中的說明進行操作。
 
 
 .下一步是什麼？

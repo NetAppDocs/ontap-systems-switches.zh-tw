@@ -2,44 +2,60 @@
 section: switch-cisco-9332d-gx2b
 title: CiscoNexus 9332D-GX2B
 entries:
-- title: 開始
-  pdf-filename: Overview_9332d-gx2b
+- title: 參考文件
+  pdf-filename: Reference_documents_9332d-gx2b
+  url: "/switch-cisco-9332d-gx2b/reference-documentation-9332d.html"
+- title: 在 AFX 系統中安裝並設定交換器
+  pdf-filename: 在 AFX 系統中安裝和設定交換器 9332d-gx2b
   entries:
-  - title: 快速啟動
-    url: "/switch-cisco-9332d-gx2b/configure-switch-overview-9332d-cluster.html"
-  - title: 交換器連接埠詳細信息
-    url: "/switch-cisco-9332d-gx2b/configure-setup-ports-9332d.html"
-  - title: 所需文件
-    url: "/switch-cisco-9332d-gx2b/required-documentation-9332d-cluster.html"
-  - title: 智慧呼叫中心的要求
-    url: "/switch-cisco-9332d-gx2b/smart-call-9332d-cluster.html"
-- title: 安裝硬體
-  url: "/switch-cisco-9332d-gx2b/install-hardware.html"
-  pdf-filename: Install_hardware_9332d-gx2b
-- title: 設定軟體
-  pdf-filename: Configure_software_9332d-gx2b
+  - title: 安裝和設定交換器工作流程
+    url: "/switch-cisco-9332d-gx2b/install-configure-switches-in-afx-workflow-9332d.html"
+  - title: 準備安裝
+    url: "/switch-cisco-9332d-gx2b/install-prepare-9332d.html"
+  - title: 安裝交換器
+    url: "/switch-cisco-9332d-gx2b/install-switches-9332d.html"
+    pdf-filename: Install_hardware_9332d-gx2b
+  - title: 完整的 AFX 系統設置
+    url: "/switch-cisco-9332d-gx2b/install-complete-afx-setup-9332d.html"
+- title: 設定交換器
+  pdf-filename: configure_switch_9332d-gx2b
   entries:
-  - title: 配置軟體工作流程
-    url: "/switch-cisco-9332d-gx2b/configure-software-overview-9332d-cluster.html"
-  - title: 配置交換機
-    url: "/switch-cisco-9332d-gx2b/setup-switch-9332d-cluster.html"
-  - title: 準備安裝 NX-OS 和 RCF
-    url: "/switch-cisco-9332d-gx2b/install-nxos-overview-9332d-cluster.html"
-  - title: 安裝或升級 NX-OS 軟體
-    url: "/switch-cisco-9332d-gx2b/install-nxos-software-9332d-cluster.html"
+  - title: 配置交換器工作流程
+    url: "/switch-cisco-9332d-gx2b/configure-switch-workflow-9332d.html"
+  - title: 完成初始交換器設置
+    url: "/switch-cisco-9332d-gx2b/configure-complete-initial-setup-9332d.html"
+  - title: 審查佈線和配置要求
+    url: "/switch-cisco-9332d-gx2b/configure-review-cabling-config-requirements-9332d.html"
+  - title: 安裝或升級 NX-OS
+    pdf-filename: 安裝升級 nx-os
+    entries:
+    - title: 安裝或升級 NX-OS 概述
+      url: "/switch-cisco-9332d-gx2b/configure-install-upgrade-nxos-overview-9332d.html"
+    - title: 安裝 NX-OS
+      url: "/switch-cisco-9332d-gx2b/configure-install-nxos-9332d.html"
+    - title: 升級 NX-OS
+      url: "/switch-cisco-9332d-gx2b/configure-upgrade-nxos-9332d.html"
   - title: 安裝或升級 RCF
-    pdf-filename: 安裝升級 rcf 9332d-gx2b
+    pdf-filename: 安裝升級 rcf
     entries:
     - title: 安裝或升級 RCF 概述
-      url: "/switch-cisco-9332d-gx2b/install-upgrade-rcf-overview-cluster-9332d.html"
+      url: "/switch-cisco-9332d-gx2b/configure-install-upgrade-rcf-overview-9332d.html"
     - title: 安裝 RCF
-      url: "/switch-cisco-9332d-gx2b/install-rcf-software-9332d-cluster.html"
-    - title: 升級您的 RCF 版本
-      url: "/switch-cisco-9332d-gx2b/upgrade-rcf-software-9332d-cluster.html"
-  - title: 驗證 SSH 是否已啟用
-    url: "/switch-cisco-9332d-gx2b/configure-ssh-keys.html"
-- title: 將交換器重設為出廠預設值
-  url: "/switch-cisco-9332d-gx2b/reset-switch-9332d.html"
-- title: 更換 9332D-GX2B 開關
-  pdf-filename: Replace_switches_9332d-gx2b
-  url: "/switch-cisco-9332d-gx2b/replace-9332d-cluster.html"
+      url: "/switch-cisco-9332d-gx2b/configure-install-rcf-9332d.html"
+    - title: 升級 RCF
+      url: "/switch-cisco-9332d-gx2b/configure-upgrade-rcf-9332d.html"
+  - title: 驗證 SSH 是否用於日誌收集
+    url: "/switch-cisco-9332d-gx2b/configure-verify-ssh-9332d.html"
+  - title: 配置 Smart Call Home
+    url: "/switch-cisco-9332d-gx2b/configure-smart-call-9332d.html"
+- title: 維護
+  pdf-filename: 維護交換器_9332d-gx2b
+  entries:
+  - title: 保持概覽
+    url: "/switch-cisco-9332d-gx2b/maintain-overview-9332d.html"
+  - title: 更換交換器
+    url: "/switch-cisco-9332d-gx2b/replace-9332d-cluster.html"
+  - title: 更換 FRU
+    url: "/switch-cisco-9332d-gx2b/maintain-replace-frus-9332d.html"
+  - title: 將交換器重設為出廠預設值
+    url: "/switch-cisco-9332d-gx2b/maintain-reset-switch-9332d.html"

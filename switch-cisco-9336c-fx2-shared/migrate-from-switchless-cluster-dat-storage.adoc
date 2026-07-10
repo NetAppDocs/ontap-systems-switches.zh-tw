@@ -24,6 +24,7 @@ summary:
 
 
 
+[[review-requirements]]
 == 審查要求
 
 確保：
@@ -56,6 +57,7 @@ summary:
 
 
 
+[[migrate-the-switches]]
 == 遷移交換機
 
 .關於範例
@@ -70,6 +72,7 @@ summary:
 
 
 
+[[step-1-migrate-from-a-switchless-cluster-with-direct-attached]]
 === 步驟 1：從無交換器的集群遷移到直連式集群
 
 . 如果此叢集上啟用了AutoSupport ，則透過呼叫AutoSupport訊息來抑制自動建立案例： `system node autosupport invoke -node * -type all -message MAINT=xh` 。
@@ -649,6 +652,7 @@ RPC status:
 
 
 
+[[step-2-set-up-the-shared-switch]]
 === 步驟 2：設定共享交換機
 
 本流程中的範例使用以下開關和節點命名規則：

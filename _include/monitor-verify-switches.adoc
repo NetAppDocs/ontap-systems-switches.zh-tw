@@ -4,6 +4,7 @@
 
 
 
+[[confirm-monitoring-of-the-connected-ethernet-switches]]
 == 確認對已連接的乙太網路交換器進行監控
 
 若要確認已連接的乙太網路交換器正在被監控，請運作：
@@ -23,6 +24,7 @@ system switch ethernet show
 ====
 
 
+[[confirm-firmware-and-rcf-versions-are-up-to-date]]
 == 請確認韌體和 RCF 版本均為最新版本。
 
 確保交換器運作的是最新支援的韌體，並且已套用相容的參考設定檔（RCF）。更多資訊請造訪[此處]。https://mysupport.netapp.com/site/downloads["NetApp支援下載頁面"^] 。
@@ -40,6 +42,7 @@ NOTE: 看link:config-snmpv3.html["可選：配置 SNMPv3"]有關配置 SNMPv3 �
 
 
 
+[[confirm-management-network-connection]]
 == 確認管理網路連接
 
 確認交換器的管理連接埠已連接至管理網路。

@@ -1,0 +1,59 @@
+---
+section: switch-cisco-9808
+title: Cisco Nexus 9808
+entries:
+- title: 參考文件
+  pdf-filename: Reference_documents_9808
+  url: "/switch-cisco-9808/reference-documentation-9808.html"
+- title: 在 AFX 系統中安裝並設定交換器
+  pdf-filename: 在 AFX 系統中安裝和設定交換器 9808
+  entries:
+  - title: 安裝和設定交換器工作流程
+    url: "/switch-cisco-9808/install-configure-switches-in-afx-workflow-9808.html"
+  - title: 準備安裝
+    url: "/switch-cisco-9808/install-prepare-9808.html"
+  - title: 安裝交換器
+    url: "/switch-cisco-9808/install-switches-9808.html"
+    pdf-filename: Install_hardware_9808
+  - title: 完整的 AFX 系統設置
+    url: "/switch-cisco-9808/install-complete-afx-setup-9808.html"
+- title: 設定交換器
+  pdf-filename: configure_switch_9808
+  entries:
+  - title: 配置交換器工作流程
+    url: "/switch-cisco-9808/configure-switch-workflow-9808.html"
+  - title: 完成初始交換器設置
+    url: "/switch-cisco-9808/configure-complete-initial-setup-9808.html"
+  - title: 審查佈線和配置要求
+    url: "/switch-cisco-9808/configure-review-cabling-config-requirements-9808.html"
+  - title: 安裝或升級 NX-OS
+    pdf-filename: 安裝升級 nx-os
+    entries:
+    - title: 安裝或升級 NX-OS 概述
+      url: "/switch-cisco-9808/configure-install-upgrade-nxos-overview-9808.html"
+    - title: 安裝 NX-OS
+      url: "/switch-cisco-9808/configure-install-nxos-9808.html"
+    - title: 升級 NX-OS
+      url: "/switch-cisco-9808/configure-upgrade-nxos-9808.html"
+  - title: 安裝或升級 RCF
+    pdf-filename: 安裝升級 rcf
+    entries:
+    - title: 安裝或升級 RCF 概述
+      url: "/switch-cisco-9808/configure-install-upgrade-rcf-overview-9808.html"
+    - title: 安裝 RCF
+      url: "/switch-cisco-9808/configure-install-rcf-9808.html"
+    - title: 升級 RCF
+      url: "/switch-cisco-9808/configure-upgrade-rcf-9808.html"
+  - title: 驗證 SSH 是否用於日誌收集
+    url: "/switch-cisco-9808/configure-verify-ssh-9808.html"
+  - title: 配置 Smart Call Home
+    url: "/switch-cisco-9808/configure-smart-call-9808.html"
+- title: 維護
+  pdf-filename: Maintain_switches_9808
+  entries:
+  - title: 保持概覽
+    url: "/switch-cisco-9808/maintain-overview-9808.html"
+  - title: 更換 FRU
+    url: "/switch-cisco-9808/maintain-replace-frus-9808.html"
+  - title: 將交換器重設為出廠預設值
+    url: "/switch-cisco-9808/maintain-reset-switch-9808.html"

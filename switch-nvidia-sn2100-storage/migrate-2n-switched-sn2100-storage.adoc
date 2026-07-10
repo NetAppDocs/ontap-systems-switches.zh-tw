@@ -17,6 +17,7 @@ summary: 如果您已經擁有一個雙節點無交換器叢集環境，則可�
 
 
 
+[[review-requirements]]
 == 審查要求
 
 .你需要什麼
@@ -52,6 +53,7 @@ link:https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe- 交換機"^]包含�
 
 
 
+[[migrate-the-switches]]
 == 遷移交換機
 
 .關於範例
@@ -70,6 +72,7 @@ link:https://hwu.netapp.com["Hardware Universe"^] 包含有關您平台實際叢
 
 
 
+[[step-1-prepare-for-migration]]
 === 步驟 1：準備遷移
 
 . 如果此叢集上啟用了AutoSupport ，則透過呼叫AutoSupport訊息來抑制自動建立案例：
@@ -90,6 +93,7 @@ link:https://hwu.netapp.com["Hardware Universe"^] 包含有關您平台實際叢
 
 
 
+[[step-2-configure-cables-and-ports]]
 === 步驟 2：設定線纜和連接埠
 
 . 停用新叢集交換器 sw1 和 sw2 上所有面向節點的連接埠（非 ISL 連接埠）。
@@ -420,6 +424,7 @@ swp16      100G   BondMember  sw1                swp16
 
 
 
+[[step-3-complete-the-procedure]]
 === 步驟 3：完成該步驟
 
 . 顯示集群中已發現的網路設備資訊：

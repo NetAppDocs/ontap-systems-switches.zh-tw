@@ -1,0 +1,180 @@
+---
+permalink: switch-cisco-9332d-gx2b/configure-install-upgrade-rcf-overview-9332d.html 
+sidebar: sidebar 
+keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, cisco 9332d-gx2b 
+summary: 您可以在 Nexus 9332D-GX2B 交換器上安裝或升級參考設定檔案 （RCF）。在新安裝 AFX 1K 或 AFX 2K 系統、更換交換器或恢復原廠預設設定時，您需要在交換器上安裝支援的 RCF 版本。為了支援新硬體、新的 ONTAP 版本，或與 AFX 1K 或 AFX 2K 系統組態中的新 NX-OS 版本保持一致，您需要將交換器上的 RCF 升級至支援的版本。 
+---
+= 安裝或升級 RCF 概覽 - Cisco Nexus 9332D-GX2B
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以在 Nexus 9332D-GX2B 交換器上安裝或升級參考設定檔案（RCF）。在新安裝 AFX 1K 或 AFX 2K 系統、更換交換器或將交換器重設為原廠預設值時，您需要在交換器上安裝支援的 RCF 版本。為了支援新硬體、新的 ONTAP 版本或與 AFX 系統配置中的新 NX-OS 版本保持一致，您需要將交換器上的 RCF 升級至支援的版本。
+
+
+NOTE: RCF 的安裝或升級與 NX-OS 的安裝或升級相互獨立。如果您要同時安裝或升級 NX-OS 和 RCF，建議您先安裝或升級 NX-OS。
+
+
+
+[[understand-the-supported-rcf-versions]]
+=== 了解支援的 RCF 版本
+
+您的 AFX 系統上執行的 ONTAP 版本和交換器上執行的 NX-OS 版本決定了交換器支援的 RCF 版本。RCF 版本具有預設的連接埠速度配置，這些配置決定了交換器連接埠中有多少處於分支模式（4x100GbE）和非分支模式。
+
+[NOTE]
+====
+有關目前支援的 RCF 版本列表，請參閱 link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["NetApp Cisco 乙太網路交換器"^] 頁面。
+
+交換器連接埠資訊也可以在 https://hwu.netapp.com["NetAppHardware Universe"^]中找到。
+
+====
+* 如果您擁有 AFX 1K 系統，則支援 RCF 10.0 及更高版本。
+* 如果您擁有 AFX 2K 系統，則支援 RCF 10.1 及更高版本。
+* RCF 10.0 只有一個檔案，並且支援共用交換器 `Cluster-HA-Storage AFX RCF_10.0`。
++
+例如，下表顯示此 RCF 檔案中交換器連接埠的預設分組、連接埠速度和使用情況。
+
++
+[cols="1,2"]
+|===
+| 交換器連接埠組 | 連接埠速度和使用情況 
+
+
+ a| 
+乙太網路 1/1/1-4 至乙太網路 1/30/1-4
+ a| 
+4x100GbE 模式用於叢集、HA 和儲存連接
+
+
+
+ a| 
+乙太網路1/31、乙太網路1/32
+ a| 
+400GbE ISL
+
+|===
+* RCF 10.1 針對 AFX 1K 和 AFX 2K 系統的不同使用情境提供了不同的檔案。根據您計劃如何在 AFX 1K 或 AFX 2K 系統設定中使用交換器（共用、僅儲存或僅叢集和高可用性），您可以選擇相應的 RCF 檔案。
++
+例如，如果您在 AFX 2K 系統中將交換器用作共享交換器，則需要使用適用於該使用案例的 RCF 檔案。對應的 RCF 檔案名稱可能與此類似 `RCF-v10.1-NX9332D-GX2B-CL1-ST1-100GBR15-400G15.txt`。下表顯示此 RCF 檔案中交換器連接埠的預設群組、連接埠速度及用途。
+
++
+[cols="1,2"]
+|===
+| 交換器連接埠組 | 連接埠速度和使用情況 
+
+
+ a| 
+Ethernet1/1/1-4 至 Ethernet1/15/1-4
+ a| 
+4x100GbE 模式，用於叢集內連接、高可用性連接和儲存架連接
+
+
+
+ a| 
+Ethernet1/16 至 Ethernet1/30
+ a| 
+400GbE 模式適用於叢集內連接、HA 和儲存連接
+
+
+
+ a| 
+乙太網路1/31、乙太網路1/32
+ a| 
+400GbE 叢集內 ISL 連線
+
+|===
++
+[NOTE]
+====
+您可以變更預設群組，以便在需要為 AFX 系統適應不同的連接埠速度配置時，調整分支模式 (4x100GbE) 和 400GbE 模式的交換器連接埠數量。
+
+稍後，您將在 RCF 安裝或升級程序中執行此操作。
+
+====
+
+
+
+
+[[change-port-speed-configuration]]
+=== 更改連接埠速度配置
+
+對於使用 RCF 10.1 及更高版本的交換器，您可以變更連接埠速度配置，以便在需要為 AFX 系統適應不同的連接埠速度配置時，調整分支模式 (4x100GbE) 和非分支模式 (400GbE) 中的交換器連接埠數量。
+
+此變更是 RCF 安裝或 RCF 升級過程中的一部分。相關步驟會引導您造訪此頁面。
+
+您需要在兩台交換器上輸入命令。
+
+[cols="1,2"]
+|===
+| 更改連接埠速度 | 步驟 
+
+
+ a| 
+將非分支連接埠變更為分支連接埠
+ a| 
+. 進入命令列介面的設定模式。
+. 修改交換器的連接埠速度和分支模式：
++
+若要指定分支連接埠，請使用 `interface breakout module`命令。
+
++
+例如，若要將 400GbE 模式連接埠 15-19 指定為分支 （4x100GbE） 連接埠，請使用下列方法：
+
++
+`interface breakout module 1 port 15-19 map 100g-4x`
+
+. 修改連接埠列表，新增需要使用特定連接埠設定檔以實現所需連接埠速度的新連接埠。
++
+例如，若要使用新連接埠 15-19 修改 100G 速度連接埠設定檔的連接埠列表，請使用下列命令：
+
++
+`interface e1/15/1-4, e1/16/1-4, e1/17/1-4, e1/18/1-4, e1/19/1-4`
+
+. 將交換器分支連接埠（4 個 100GbE 連接埠）的速率硬編碼為 100GbE。如果不硬編碼速率，這些連接埠將無法啟動，並處於錯誤停用狀態。
++
+`speed 100000`
+
++
+`no negotiate auto`
+
+
+
+
+
+ a| 
+將分支連接埠恢復為非分支連接埠
+ a| 
+. 進入命令列介面的設定模式。
+. 若要將分線連接埠恢復為非分線連接埠，請在設定模式下使用 `no interface breakout`命令。
++
+例如，要將連接埠 15-19 恢復為 400GbE 模式，請使用下列命令：
+
++
+`no interface breakout module 1 port 15-19`
+
+
+
+|===
+
+
+[[suggested-documentation]]
+=== 建議的文檔
+
+在交換器上安裝或升級 RCF 之前，建議您先閱讀以下文件：
+
+* 安裝或升級 RCF 時，請參閱 NetApp 知識庫文章 link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["如何在保持遠端連線的情況下清除Cisco互連交換器上的配置"^] 以取得更多資訊。
+* 請參閱 https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^]以驗證平台上的正確連接埠。
+* link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器（NSS）"^]
++
+請參閱NetApp支援網站上的交換器相容性表格，以了解支援的ONTAP和 RCF 版本。請注意，RCF 中的命令語法與特定版本的 NX-OS 中的語法之間可能存在命令依賴關係。
+
+* link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["CiscoNexus 9000 系列交換機"^]
++
+有關Cisco交換器升級和降級程序的完整文檔，請參閱Cisco網站上提供的相應軟體和升級指南。
+
+
+
+.下一步是什麼？
+在您查看安裝或升級 RCF 概述後，您可以 link:configure-install-rcf-9332d.html["安裝 RCF"] 或 link:configure-upgrade-rcf-9332d.html["升級 RCF"]（視需要而定）。

@@ -15,6 +15,7 @@ summary: 在設定NVIDIA SN2100 交換器之前，請先查看以下資訊。
 
 
 
+[[nvidia-port-details]]
 == NVIDIA連接埠詳情
 
 |===
@@ -54,6 +55,7 @@ swp15-16
 
 
 
+[[link-up-delays-with-optical-connections]]
 == 光纖連接中的鏈路延遲
 
 如果您遇到連線延遲超過五秒的情況，Cumulus Linux 5.4 及更高版本包含對快速連線的支援。您可以使用以下方法配置連結： `nv set`命令如下：
@@ -81,6 +83,7 @@ Only switchd reload required
 ====
 
 
+[[support-for-copper-connections]]
 == 支援銅連接
 
 要解決此問題，需要進行以下配置變更。
@@ -200,6 +203,7 @@ UP     swp4      100G  9216   Trunk/L2                     Master: bridge(UP)
 
 
 
+[[qsa-module]]
 == QSA 模組
 
 使用 QSFP+ (40GbE) 轉 SFP+ (10GbE) 轉接器或 QSFP28 (100GbE) 轉 SFP28 (25GbE) 轉接器 (QSA) 時，請將其插入非分線 40GbE/100GbE 交換器連接埠 (wps4)。請勿將 QSA 模組插入配置為分線連接埠的連接埠。
@@ -214,6 +218,7 @@ UP     swp4      100G  9216   Trunk/L2                     Master: bridge(UP)
 
 
 
+[[setting-interface-speed-on-breakout-ports]]
 == 設定分支端口的介面速度
 
 根據交換器連接埠中的收發器，您可能需要將交換器介面的速度設定為固定速度。如果使用 10GbE 和 25GbE 分支連接埠或 QSA 模組，請確認自動協商已關閉，並在交換器上設定介面速度。

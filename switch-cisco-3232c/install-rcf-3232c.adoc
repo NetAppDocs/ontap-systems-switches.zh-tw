@@ -17,6 +17,7 @@ summary: 首次設定好 Nexus 3232C 交換器後，即可安裝 RCF。您也可
 
 
 
+[[review-requirements]]
 == 審查要求
 
 .開始之前
@@ -30,6 +31,7 @@ summary: 首次設定好 Nexus 3232C 交換器後，即可安裝 RCF。您也可
 
 
 
+[[install-the-file]]
 == 安裝檔案
 
 .關於範例

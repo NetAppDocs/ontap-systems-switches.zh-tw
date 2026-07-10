@@ -18,6 +18,7 @@ summary: 使用佈線圖完成控制器和交換器之間的佈線。
 
 
 
+[[cable-ns224-storage-as-switch-attached]]
 == NS224 電纜儲存作為交換器連接
 
 若要將 NS224 儲存裝置以交換器連接方式進行佈線，請依照交換器連接圖進行操作：
@@ -28,6 +29,7 @@ image:9336c_image1.jpg["開關連接"]
 
 
 
+[[cable-ns224-storage-as-direct-attached]]
 == NS224 電纜儲存作為直接連接
 
 如果您要將 NS224 儲存裝置以直連方式連接，而不是使用共用交換器儲存端口，請按照直連接線圖進行操作：
@@ -38,6 +40,7 @@ image:9336c_image2.jpg["直連式"]
 
 
 
+[[cisco-nexus-9336c-fx2-cabling-worksheet]]
 == Cisco Nexus 9336C-FX2 佈線工作表
 
 如果要記錄支援的平台，則必須使用已完成的範例佈線工作表作為指南，填寫空白的佈線工作表。
@@ -56,6 +59,7 @@ image:cabling-worksheet.jpg["佈線工作表"]
 
 
 
+[[blank-cabling-worksheet]]
 == 空白佈線工作表
 
 您可以使用空白的佈線工作表來記錄叢集中支援的節點平台。link:https://hwu.netapp.com["Hardware Universe"^] 的支援叢集連線表定義了平台使用的叢集連接埠。

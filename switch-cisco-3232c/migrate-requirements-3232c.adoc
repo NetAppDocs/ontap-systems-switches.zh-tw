@@ -15,6 +15,7 @@ summary: 當您以Cisco Nexus 3232C 叢集交換器取代 CN1610 叢集交換器
 
 
 
+[[cn1610-migrate-requirements]]
 == CN1610遷移要求
 
 叢集交換器支援以下節點連線：
@@ -74,6 +75,7 @@ CN1610 至 3232C（QSFP 至 SFP+）
 
 
 
+[[cn5596-requirements]]
 == CN5596 要求
 
 叢集交換器使用下列連接埠連接到節點：

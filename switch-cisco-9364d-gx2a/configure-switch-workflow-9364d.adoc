@@ -1,0 +1,49 @@
+---
+permalink: switch-cisco-9364d-gx2a/configure-switch-workflow-9364d.html 
+sidebar: sidebar 
+keywords: switches, initial installation, configure 9364d-gx2a switch 
+summary: 您可以在安裝新的 AFX 1K 或 AFX 2K 系統、更換交換器或將交換器重設為原廠預設值時設定 Cisco 9332D-GX2B 交換器。 
+---
+= 設定交換器工作流程 - Cisco Nexus 9364D-GX2A
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以在安裝新的 AFX 1K 或 AFX 2K 系統、更換交換器或將交換器重設為原廠預設值時設定 Cisco 9364D-GX2A 交換器。
+
+根據您的特定流程，您可能會被引導至此工作流程或此工作流程中的特定主題，以執行 link:install-configure-switches-in-afx-workflow-9364d.html["安裝並設定新的 AFX 1K 或 AFX 2K 系統"]、link:replace-9364d-cluster.html["更換交換器"] 或 link:maintain-reset-switch-9364d.html["將交換器重設為出廠預設值"]。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一"]link:configure-complete-initial-setup-9364d.html["完成初始交換器設置"]
+[role="quick-margin-para"]
+交換器通電後，將開始啟動並進入設定精靈。系統會提示您回答一系列問題，以完成交換器的初始（啟動）設定。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["二"]link:configure-review-cabling-config-requirements-9364d.html["審查佈線和配置要求"]
+[role="quick-margin-para"]
+審查佈線和配置要求。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三"]link:configure-install-nxos-9364d.html["安裝 NX-OS"]
+[role="quick-margin-para"]
+在支援您的 AFX 1K 或 AFX 2K 系統的交換器上安裝最新版本的 NX-OS。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["四"]link:configure-install-upgrade-rcf-overview-9364d.html["安裝 RCF"]
+[role="quick-margin-para"]
+在支援您的 AFX 1K 或 AFX 2K 系統的交換器上安裝最新版本的 RCF。該連結將帶您進入 RCF 安裝或升級概述主題，其中包含您在安裝 RCF 之前需要了解的資訊。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["五"]link:configure-verify-ssh-9364d.html["驗證 SSH 是否用於日誌收集"]
+[role="quick-margin-para"]
+請確認 SSH 已啟用，以便您可以使用乙太網路交換器健康監視器 (CSHM) 日誌收集功能。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["六"]link:../switch-cshm/cshm-overview.html["設定乙太網路交換器健康狀況監控"]
+[role="quick-margin-para"]
+設定乙太網路交換器健康監控 (CSHM)，以確保交換器的運作健康，並收集交換器日誌以進行偵錯和故障排除。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-7.png["七"]link:configure-smart-call-9364d.html["設定 Smart Call Home （選用）"]
+[role="quick-margin-para"]
+ONTAP 支援乙太網路交換器健康監控 (CSHM)，用於監控 AFX 叢集交換器，並能夠收集交換器診斷日誌。Cisco 的 Smart Call Home 是一項選用功能，可提供主動支援並協助您解決交換器可能出現的任何問題。
+
+.下一步是什麼？
+* 如果您將交換器設定為新 AFX 1K 或 AFX 2K 系統安裝的一部分，則必須 link:install-complete-afx-setup-9364d.html["完成 AFX 系統設定"]。
+* 如果您在更換交換器時配置了交換器，或將交換器重設為原廠預設設定，則您的交換器應該可以正常運作。
+

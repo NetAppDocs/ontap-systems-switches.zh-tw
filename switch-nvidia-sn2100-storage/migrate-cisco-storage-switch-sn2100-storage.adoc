@@ -15,6 +15,7 @@ summary: 您可以將ONTAP叢集中較舊的Cisco交換器無中斷地遷移到N
 
 
 
+[[review-requirements]]
 == 審查要求
 
 支援以下儲存交換器：
@@ -45,6 +46,7 @@ summary: 您可以將ONTAP叢集中較舊的Cisco交換器無中斷地遷移到N
 
 
 
+[[migrate-the-switches]]
 == 遷移交換機
 
 .關於範例
@@ -69,6 +71,7 @@ summary: 您可以將ONTAP叢集中較舊的Cisco交換器無中斷地遷移到N
 
 
 
+[[step-1-prepare-for-migration]]
 === 步驟 1：準備遷移
 
 . 如果啟用了AutoSupport，則透過呼叫AutoSupport訊息來阻止自動建立案例：
@@ -93,6 +96,7 @@ summary: 您可以將ONTAP叢集中較舊的Cisco交換器無中斷地遷移到N
 
 
 
+[[step-2-configure-cables-and-ports]]
 === 步驟 2：設定線纜和連接埠
 
 . 顯示網路連接埠屬性：
@@ -336,6 +340,7 @@ node2      /lldp
 
 
 
+[[step-3-verify-the-configuration]]
 === 步驟 3：驗證配置
 
 . 驗證最終配置：

@@ -17,6 +17,7 @@ summary: 如果您有一個雙節點無交換器集群，您可以無中斷地�
 
 
 
+[[review-requirements]]
 == 審查要求
 
 請查看以下叢集環境要求。
@@ -61,6 +62,7 @@ link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] 包含有關 ONTAP 
 
 
 
+[[migrate-to-the-cluster-environment]]
 == 遷移到叢集環境
 
 .關於範例
@@ -78,6 +80,7 @@ link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] 包含有關您平�
 
 
 
+[[step-1-prepare-for-migration]]
 === 步驟 1：準備遷移
 
 . 如果此叢集上啟用了AutoSupport ，則透過呼叫AutoSupport訊息來抑制自動建立案例：
@@ -110,6 +113,7 @@ cluster1::*> system node autosupport invoke -node * -type all -message MAINT=2h
 
 
 
+[[step-2-configure-ports-and-cabling]]
 === 步驟二：設定埠和線纜
 
 . 停用新叢集交換器 cs1 *和* cs2 上所有已啟動的面向節點的連接埠（不是 ISL 連接埠）。
@@ -415,6 +419,7 @@ e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
 
 
 
+[[step-3-verify-the-configuration]]
 === 步驟 3：驗證配置
 
 . 啟用叢集 LIF 的自動回滾功能。
