@@ -37,4 +37,4 @@ BES-53248 是一款裸金屬交換機，設計用於 2 到 24 個節點的ONTAP�
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["六"]link:../switch-cshm/config-overview.html["設定 CSHM"]
 [role="quick-margin-para"]
-設定交換器健全狀況監控。
+設定乙太網路交換器健全狀況監控。

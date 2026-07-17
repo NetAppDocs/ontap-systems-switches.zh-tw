@@ -109,3 +109,6 @@ systemshell -node <node> -command sudo sysctl dev.ice.<X>.requested_fec=<auto/fc
 
 
 
+
+.下一步是什麼？
+滿足佈線和組態要求後，將 link:configure-efos-software.html["安裝 EFOS 軟體"] 安裝在交換器上。

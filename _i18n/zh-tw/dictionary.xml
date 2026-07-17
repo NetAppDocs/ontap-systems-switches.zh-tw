@@ -749,8 +749,6 @@
   <block id="1fc245f373dd47304db35c4ef2df408e" category="inline-link-macro">配置交換機</block>
   <block id="163c95e139774086e604f88f7e2f31d3" category="list-text"><block ref="163c95e139774086e604f88f7e2f31d3" category="inline-link-macro-rx"></block></block>
   <block id="04204be9eff305a81c8050c2ee21ed34" category="list-text">在夥伴交換器上重複步驟 1 至 8。</block>
-  <block id="74af5112ab6cf8732ffe8eba910e2290" category="inline-link-macro">安裝您的許可證</block>
-  <block id="85290349ee32e9f062a4795f3e1e06bb" category="paragraph">安裝 EFOS 軟體後，您可以… <block ref="172517aa1fa2cd21dd6fb86167c00f86" category="inline-link-macro-rx"></block>。</block>
   <block id="88045e5af7830d69afafc3e6e7a9cf86" category="summary">您可以使用此程式執行 BES-53248 叢集交換器的初始安裝。</block>
   <block id="a804fe3633b3e8edd13e681d83563c08" category="doc">配置 BES-53248 集群交換機</block>
   <block id="67777be64987c8c0fadb924db93389aa" category="paragraph">請依照下列步驟對 BES-53248 叢集交換器進行初步設定。</block>
@@ -1306,18 +1304,13 @@
   <block id="c0d96a8467e1acc3623933447f6f212c" category="inline-link-macro">安裝 RCF</block>
   <block id="11c8d833dc677f2da3e3a05f17e029da" category="list-text"><block ref="11c8d833dc677f2da3e3a05f17e029da" category="inline-link-macro-rx"></block></block>
   <block id="b75ec32f89267a27b5a0e0b014097f77" category="list-text">在交換器 cs1 上重複步驟 2 至 8。</block>
-  <block id="d814617aab418a35a7ebbe46f6db2549" category="list-text">從出廠預設狀態安裝 RCF 時，需要透過控制台連接到交換器。如果您已使用知識庫文章，則此要求為可選。<block ref="18b4271d2bf70dbfb01e42cb4850cea6" category="inline-link-rx"></block>事先清除配置。</block>
   <block id="93933c6ca68705cf2c6eee19987428b0" category="inline-link">博通</block>
-  <block id="20e5ec5f7186bff24f7aeef0c34a7edc" category="admonition">在安裝新的交換器軟體版本和 RCF 之前，請先閱讀知識庫文章。<block ref="18b4271d2bf70dbfb01e42cb4850cea6" category="inline-link-rx"></block> 。如果必須完全清除交換器設置，則需要重新進行基本配置。您必須使用序列控制台連接到交換機，因為完全清除設定會重設管理網路的設定。</block>
   <block id="833aa928a446532020e8ea26e29a32b7" category="section-title">第一步：準備升級</block>
   <block id="31e544384f3325abd25b797e025ef614" category="list-text">在交換器 cs2 上，關閉連接到節點叢集連接埠的連接埠。例如，如果連接埠 0/1 到 0/16 連接到ONTAP節點：</block>
   <block id="c66ea64be71d87967746ef74fac6ec75" category="list-text">步驟11：檢查橫幅輸出。<block ref="db837131dc56fab41bddc52d5aff8865" prefix=" " category="inline-code"></block>命令。您必須閱讀並遵循這些說明以確保交換器的正確配置和操作。</block>
   <block id="05299bd158481c8acf552dc1d004ab41" category="paragraph"><block ref="db837131dc56fab41bddc52d5aff8865" prefix="" category="inline-code"></block></block>
   <block id="4a00b51f01daee860d41dd95bb500266" category="list-text">請在交換器上確認您的變更已生效。</block>
   <block id="f35806549fff4250f43cb0acde28b920" category="list-text">重新啟動交換器並驗證運轉配置是否正確。</block>
-  <block id="111cada5d22121a7e11aef39f4aca355" category="list-text">在叢集交換器 cs2 上，啟動連接到節點叢集連接埠的連接埠。</block>
-  <block id="7271f66e0cb527adb71302d7377910b7" category="list-text">[[step21]]在交換器 cs1 上重複步驟 1 到 20。</block>
-  <block id="9b241cba96d2cafd3c0f5c9f7bf12560" category="list-text">。確認叢集 LIF 已恢復到其原始連接埠：</block>
   <block id="16d074a2c9c574f7e8d9dbc312b16d88" category="summary">在設定 BES-53248 叢集交換器之前，請先檢視流程概述和命名規則。</block>
   <block id="510290e42c307729b66d338637599287" category="doc">BES-53248 叢集交換器的升級工作流程</block>
   <block id="95731780fd3171c29b73f348e1722fda" category="paragraph">請依照以下步驟升級 Broadcom BES-54328 叢集交換器上的 EFOS 軟體和參考設定檔 (RCF)（如適用）。</block>
@@ -5331,7 +5324,6 @@
   <block id="888d27af1c8bead4bc090f7b57fe47dc" category="paragraph"><block ref="03642bd9ef2a92e7a683427a90d69064" prefix="" category="inline-code"></block></block>
   <block id="9c16d25919d69afd920c43d400da0ea8" category="paragraph"><block ref="e374209cc99be20be59ee159164d8226" prefix="" category="inline-code"></block></block>
   <block id="ab72b57a9a9f0e3ccd70b04752a4b2dc" category="list-text">確認連接到節點儲存連接埠和儲存架連接埠的交換器連接埠為 *up*。</block>
-  <block id="3050ed36cf7b28894b3ecbbbe2742aa2" category="list-text">升級 EPLD 映像並重新啟動交換器。如果您使用的是 NX-OS 10.5(3)F 或更高版本，則無需單獨升級 EPLD 映像，因為 EPLD 映像已包含在 NX-OS 映像中。跳過此步驟，繼續驗證叢集連接埠運作狀況。</block>
   <block id="8b1e9b3cc32c2a1cf644a1cfe3dab553" category="summary">若要安裝 SN2100 硬體，請參閱 NVIDIA 文件。</block>
   <block id="c10fbc8cfb6421490d3e923dc2ea002a" category="paragraph">安裝 NVIDIA SN2100 交換器硬體是建置可靠且可擴充的網路基礎架構以支援資料保護、複寫和管理工作流程的關鍵第一步。</block>
   <block id="1fcad359e819ec24939bbd1dc0e8cb54" category="paragraph">請依照下列步驟設定並設定您的 SN2100 交換器。如需詳細說明，請參閱 NVIDIA 的文件。</block>
@@ -5609,7 +5601,6 @@
   <block id="4900377d6745b8a03e6c9a542b3fe2f0" category="paragraph">乙太網路交換器健全狀況監視器（CSHM）負責確保網路交換器的運作健全狀況，並收集交換器記錄以進行除錯。</block>
   <block id="bc2dfd2fdf95de6b810acf0fa5c67356" category="paragraph">乙太網路交換器健康狀況監控器（CSHM）利用 SNMP 來監控網路交換器的健全狀況和效能。預設情況下，SNMPv2c 會透過參考組態檔（RCF）自動設定。SNMPv3 比 SNMPv2 更安全，因為它引入了強大的安全功能，例如驗證、加密和訊息完整性，可防止未經授權的存取，並確保傳輸期間資料的機密性和完整性。</block>
   <block id="7cb74dd4a33dec5dc1811198729f1a3d" category="paragraph">乙太網路交換器健全狀況監視器（CSHM）會自動嘗試監控其探索到的網路交換器；但是，如果交換器設定不正確，則可能無法自動進行監控。您應該驗證健全狀況監視器是否已正確設定以監控您的交換器。</block>
-  <block id="9bb9d88110e7f202f1952ebcc9fefc08" category="admonition">上傳和套用 RCF 檔案時，必須將檔案命名為<block ref="a890eeb375a613e0acf945129af8cad4" prefix=" " category="inline-code"></block>，否則腳本套用步驟將會失敗。</block>
   <block id="153aa60e53e376e3c47bb9de3f41cd5c" category="list-text">使用下列傳輸協定之一將 RCF 複製到交換器 cs2：HTTP、HTTPS、FTP、SFTP 或 SCP。</block>
   <block id="4bcfba45804fbbbd6422a9b0dea12c5f" category="summary">在叢集網路中更換有缺陷的 Nexus 92300YC 交換器是一個不中斷的程序。</block>
   <block id="c506cb52e11779e41b9479bb442eec6e" category="list-text">使用下列傳輸協定之一將 RCF 複製到交換器 cs1 的 bootflash：FTP、SFTP 或 SCP。</block>
@@ -6376,4 +6367,43 @@
   <block id="c14342e34fe3c58a209b86a79b1bb2d0" category="sidebar">Install_hardware_9808</block>
   <block id="4d9fbccb0431ca8e11e51b3dc51e81fb" category="sidebar">configure_switch_9808</block>
   <block id="ff8b1c67dbbb7af6775723d31c9e196a" category="sidebar">Maintain_switches_9808</block>
+  <block id="bbe11fdd91fda58af0bba559cb07294d" category="paragraph">請參閱 Cisco 網站以取得軟體升級和降級指南。</block>
+  <block id="aa5c6ec45e4c4b6dcc0850deb97f2e44" category="paragraph">除非另有指定 Cisco Nexus 9000 Series Switch 命令，否則請在此程序中使用 ONTAP 命令。</block>
+  <block id="9fc86f4dabe0859a40dac8d1f8b5531d" category="paragraph"><block ref="b67d565e5390da794178d81e41d9d587" prefix="" category="inline-code"></block></block>
+  <block id="9487ccc182d124ffae84e3326c18b6cf" category="list-text">下載並安裝 NX-OS 軟體和 EPLD 映像。具體步驟可能會因您目前的 NX-OS 版本和目標 NX-OS 版本而異。</block>
+  <block id="c25086ea467dc08f96b34fa5ddfe6f95" category="paragraph">請選擇符合您情況的索引標籤：</block>
+  <block id="545f32c102da8b5c806f0a9252f74aa7" category="list-text">升級至 10.4(5)(M)</block>
+  <block id="6d4c71f053835d50b253965bf9e22247" category="list-text">從 10.4(5)(M) 或更早版本升級到 10.5(3)(F) 或更新版本</block>
+  <block id="6a3e1271fda881036b04a9948f12b930" category="list-text">從 10.5(3)(F) 升級到更高版本</block>
+  <block id="22c721af68f3e238337fd6682565a004" category="list-text">[[stepa]] 將 NX-OS 軟體和 EPLD 映像複製到 Nexus 9336C-FX2 交換器。</block>
+  <block id="0a52730597fb4ffa01fc117d9e71e3a9" category="example-title">範例</block>
+  <block id="5471ccde54f76964db229481cc1fb109" category="paragraph"><block ref="741d4bb5899dd2abc3bdd986dd32f159" prefix="" category="inline-code"></block></block>
+  <block id="6634794e8c206b378c65c5faa7c4c80b" category="paragraph"><block ref="a121d8672e9b479ad82c8ef2e7e9c717" prefix="" category="inline-code"></block></block>
+  <block id="f005b45baba8377a1ac45612282d2dc7" category="list-text">[[stepa]] 將 NX-OS 軟體和 EPLD 映像複製到 Nexus 9336C-FX2 交換器。</block>
+  <block id="5a252ea0dbbfb3da5e794e2acb54d70e" category="list-text">安裝 NX-OS 和 EPLD 映像。</block>
+  <block id="ee1c8dab6911f396921f8d9c99310d8e" category="paragraph">升級至 NX-OS 10.5(3)(F) 及更高版本時，EPLD 映像不會自動更新。升級完成且交換器重新開機後，您必須再次執行相同的升級<block ref="1f3226f23ea270e1a1024cd0db05413e" prefix=" " category="inline-code"></block>命令。</block>
+  <block id="63866b50d1c752b87d0a35424ec78d9f" category="list-text">第二次升級程序會進行驗證，但會跳過 NX-OS 升級；只會更新 EPLD 映像。</block>
+  <block id="e891366244f7639a1cebce5d7b254878" category="list-text">當您已升級至 NX-OS 10.5(3)(F) 及更新版本時，兩個映像將同時更新。</block>
+  <block id="7d625d674a5fa1ee8f231bbe934d59c5" category="paragraph">以下步驟展示從 NX-OS 10.4(5)(M) 升級至 10.5(3)(F) 的過程。第一步執行 NX-OS 升級，第二步執行 EPLD 映像升級。</block>
+  <block id="49b200eb8820638568f5d815c24fbe04" category="paragraph"><block ref="5ea68978710e999c37e81ef89e1609fb" prefix="" category="inline-code"></block></block>
+  <block id="30c31bba00ddc5f435e1609b696cfc11" category="paragraph">此範例使用 NX-OS 版本 10.5(4)(M)。</block>
+  <block id="03ff4c3f972d17b8f10bd0edb3043c3a" category="paragraph">此範例使用 EPLD 版本 10.5(4)(M)。</block>
+  <block id="28ccfd0538434ca8f7c3ed05eb919f9d" category="list-text">[[step7]]驗證叢集上叢集連接埠的健全狀況。</block>
+  <block id="7b7c6479e04cac8c2008fe7ca440afea" category="list-text">重複步驟 6 至 8 ，在交換器 cs1 上安裝 NX-OS 軟體。</block>
+  <block id="95a058e5eceffbda103e7cb32bf0371d" category="list-text">[[step11]]啟用叢集 LIF 的自動回復功能。</block>
+  <block id="131977f29895c23a06e7ceb348f34fc9" category="paragraph">如果叢集 LIF 尚未返回其主連接埠，請從本機節點手動回復：</block>
+  <block id="c6d44233ebeaa055e8f937a641fb1053" category="paragraph">滿足佈線和組態要求後，將 <block ref="5f8c635ef985b849c8790b2e319cc3c1" category="inline-link-macro-rx"></block> 安裝在交換器上。</block>
+  <block id="56195d3edc2ef765239236e19cf9f9d8" category="paragraph">安裝 EFOS 軟體後，您可以：</block>
+  <block id="69a4ab133a7f329e3b6d964412122368" category="inline-link-macro">安裝您的授權</block>
+  <block id="c22dd3ffbd7eb0da1c9a797307a0e3d8" category="list-text"><block ref="f2a6d573030fd5cb26e30ca5f2de8d3e" category="inline-link-macro-rx"></block>。</block>
+  <block id="30c3e1a7dac3e78e6712ff0d67b9ecd3" category="inline-link-macro">安裝適用於 EFOS 3.12.0.1 及更高版本的 RCF 和授權檔案</block>
+  <block id="a20a23e9f22d1c30ea89d18cbe86e2c5" category="list-text"><block ref="313ea9029f73da8a306189cf101a9b89" category="inline-link-macro-rx"></block>，如果適用於您的設定。</block>
+  <block id="a70191390fbf57b5cfe38e5b6a014d4a" category="paragraph">設定乙太網路交換器健全狀況監控。</block>
+  <block id="af2af2f8127907c37bce58e3ce83eff9" category="list-text">從出廠預設狀態安裝 RCF 時，需要透過控制台連接到交換器。</block>
+  <block id="f0da8e888101343acd4a7e72e76cff36" category="paragraph">您可以使用交換器 CLI 和 ONTAP CLI （如下列步驟所示）進行連接埠組態設定。首先在第一台交換器 （cs2） 上設定連接埠，然後對第二台交換器 （cs1） 重複這些步驟。</block>
+  <block id="c32a2c4a7520ad02a1a78600f2a6b3bd" category="admonition">更新或套用新的 RCF 時，必須清除交換器設定並執行基本組態。必須使用串列主控台連接到交換器才能清除交換器設定。</block>
+  <block id="7032c38c00e10472c490db066ff31b0f" category="list-text">[[step20]]在交換器 cs1 上重複步驟 1 到 19。</block>
+  <block id="0e18e00d28d8ccbabfbea2b32f607774" category="list-text">[[step6]] 將權限層級改回 admin：</block>
+  <block id="68c1d03c0bb262a8147f6acaedfa16af" category="inline-link-macro">啟用 SSH 以收集日誌</block>
+  <block id="3bbb1b891d8356deadf8d546d8aecf27" category="paragraph">升級 RCF 後，您可以<block ref="00e69d49421223dfe97c48056e7abc6c" category="inline-link-macro-rx"></block>。</block>
 </blocks>

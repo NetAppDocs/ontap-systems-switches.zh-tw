@@ -20,7 +20,7 @@ summary: 設定 BES-53248 叢集交換器並套用任何新授權後，即可升
 * 一個功能齊全的群集（日誌中沒有錯誤或類似問題）。
 * 當前 RCF 檔案可從以下位置取得： https://mysupport.netapp.com/site/products/all/details/broadcom-cluster-switches/downloads-tab["博通集群交換機"^]頁。
 * RCF 中的啟動配置反映了所需的啟動映像，如果您僅安裝 EFOS 並保留目前的RCF 版本，則需要此配置。如果需要更改啟動配置以反映目前的啟動映像，則必須在重新套用 RCF 之前進行更改，以便在以後的重新啟動中實例化正確的版本。
-* 從出廠預設狀態安裝 RCF 時，需要透過控制台連接到交換器。如果您已使用知識庫文章，則此要求為可選。 https://kb.netapp.com/onprem/Switches/Broadcom/How_to_clear_configuration_on_a_Broadcom_interconnect_switch_while_retaining_remote_connectivity["如何在保持遠端連線的情況下清除博通互連交換器上的配置"^]事先清除配置。
+* 從出廠預設狀態安裝 RCF 時，需要透過控制台連接到交換器。
 
 
 .建議的文檔
@@ -47,12 +47,11 @@ NOTE: 命令輸出可能因ONTAP版本不同而有所差異。
 在此過程中不需要任何可操作的交換器間連結 (ISL)。這是設計使然，因為 RCF 版本的變更可能會暫時影響 ISL 連線。為確保叢集運作不會中斷，以下步驟會將所有叢集 LIF 遷移到運作夥伴交換機，同時在目標交換器上執行對應步驟。
 
 
-CAUTION: 在安裝新的交換器軟體版本和 RCF 之前，請先閱讀知識庫文章。 https://kb.netapp.com/onprem/Switches/Broadcom/How_to_clear_configuration_on_a_Broadcom_interconnect_switch_while_retaining_remote_connectivity["如何在保持遠端連線的情況下清除博通互連交換器上的配置"^] 。如果必須完全清除交換器設置，則需要重新進行基本配置。您必須使用序列控制台連接到交換機，因為完全清除設定會重設管理網路的設定。
-
-
 
 [[step-1-prepare-for-upgrade]]
 == 第一步：準備升級
+
+使用 ONTAP CLI 執行以下步驟，準備 RCF 升級，方法是根據需要抑制自動建立案例，檢查連接埠的管理和操作狀態，並停用叢集 LIF 上的自動還原。
 
 . 如果此叢集上啟用了AutoSupport ，則透過呼叫AutoSupport訊息來抑制自動建立案例：
 +
@@ -270,6 +269,8 @@ network interface modify -vserver Cluster -lif * -auto-revert false
 [[step-2-configure-ports]]
 == 步驟 2：設定埠
 
+您可以使用交換器 CLI 和 ONTAP CLI （如下列步驟所示）進行連接埠組態設定。首先在第一台交換器 （cs2） 上設定連接埠，然後對第二台交換器 （cs1） 重複這些步驟。
+
 . 在交換器 cs2 上，確認連接到叢集中節點的連接埠清單。
 +
 [source, cli]
@@ -344,7 +345,7 @@ show running-config
 . 清除交換器 cs2 上的配置並執行基本設定。
 +
 
-CAUTION: 更新或套用新的 RCF 時，必須清除交換器設定並執行基本配置。必須使用串列埠控制台連接到交換器才能清除交換器設定。如果您已使用知識庫文章，則此要求為可選。 https://kb.netapp.com/onprem/Switches/Broadcom/How_to_clear_configuration_on_a_Broadcom_interconnect_switch_while_retaining_remote_connectivity["如何在保持遠端連線的情況下清除博通互連交換器上的配置"]事先清除配置。
+CAUTION: 更新或套用新的 RCF 時，必須清除交換器設定並執行基本組態。必須使用串列主控台連接到交換器才能清除交換器設定。
 
 +
 
@@ -457,9 +458,6 @@ Are you sure you would like to reset the system? (y/n) *y*
 ====
 .EFOS 版本 3.12.x 及更高版本
 --
-
-CAUTION: 上傳和套用 RCF 檔案時，必須將檔案命名為 `reference-config.scr`，否則腳本套用步驟將會失敗。
-
 . 使用下列傳輸協定之一將 RCF 複製到交換器 cs2：HTTP、HTTPS、FTP、SFTP 或 SCP。
 +
 此範例展示如何使用 SFTP 將 RCF 檔案複製到交換器 cs2 的啟動快閃記憶體中：
@@ -468,7 +466,7 @@ CAUTION: 上傳和套用 RCF 檔案時，必須將檔案命名為 `reference-con
 
 [listing, subs="+quotes"]
 ----
-(cs2)# *copy sftp://172.19.2.1/BES-53248_RCF_v1.9-Cluster-HA.txt nvram:reference-config.scr*
+(cs2)# *copy sftp://172.19.2.1/BES-53248_RCF_v1.9-Cluster-HA.txt nvram:reference-config*
 Remote Password:**
 Mode........................................... SFTP
 Set Server IP.................................. 172.19.2.1
@@ -528,7 +526,7 @@ Configuration script 'reference-config.scr' applied.
 [listing, subs="+quotes"]
 ----
 (cs2)# *copy sftp://172.19.2.1/tmp/BES-53248_RCF_v1.9-Cluster-HA.txt
-nvram:script BES-53248_RCF_v1.9-Cluster-HA.scr*
+nvram:script BES-53248_RCF_v1.9-Cluster-HA*
 Remote Password:**
 Mode........................................... SFTP
 Set Server IP.................................. 172.19.2.1
@@ -696,16 +694,6 @@ Configuration Saved!
 (cs2)# *reload*
 Are you sure you would like to reset the system? (y/n) *y*
 System will now restart!
-----
-. 在叢集交換器 cs2 上，啟動連接到節點叢集連接埠的連接埠。
-+
-[listing, subs="+quotes"]
-----
-(cs2)> *enable*
-(cs2)# *configure*
-(cs2)(Config)# *interface 0/1-0/16*
-(cs2)(Interface 0/1-0/16)# *no shutdown*
-(cs2)(Config)# *exit*
 ----
 . 將運行配置儲存到啟動配置：
 +
@@ -909,14 +897,14 @@ cluster1::*>
 ----
 --
 ====
-. [[step21]]在交換器 cs1 上重複步驟 1 到 20。
+. [[step20]]在交換器 cs1 上重複步驟 1 到 19。
 . 啟用叢集 LIF 的自動回滾功能：
 +
 [source, cli]
 ----
 network interface modify -vserver Cluster -lif * -auto-revert true
 ----
-. 。確認叢集 LIF 已恢復到其原始連接埠：
+. 確認叢集 LIF 已恢復到其原始連接埠：
 +
 [source, cli]
 ----
@@ -931,6 +919,8 @@ network interface show -vserver Cluster
 
 [[step-3-verify-the-configuration]]
 == 步驟 3：驗證配置
+
+在兩台交換器上完成 RCF 升級後，驗證叢集網路配置和叢集運作狀況。
 
 . 在交換器 cs1 上，確認連接到叢集連接埠的交換器連接埠是否已啟動：
 +
@@ -1124,7 +1114,7 @@ RPC status:
 ----
 --
 ====
-. 將權限等級改回管理員：
+. [[step6]] 將權限層級改回 admin：
 +
 [source, cli]
 ----
@@ -1137,3 +1127,6 @@ set -privilege admin
 system node autosupport invoke -node * -type all -message MAINT=END
 ----
 
+
+.下一步是什麼？
+升級 RCF 後，您可以link:configure-ssh.html["啟用 SSH 以收集日誌"]。

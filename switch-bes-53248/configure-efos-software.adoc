@@ -428,4 +428,8 @@ unit 	active 	    backup   current-active  next-active
 
 
 .下一步
-安裝 EFOS 軟體後，您可以… link:configure-licenses.html["安裝您的許可證"]。
+安裝 EFOS 軟體後，您可以：
+
+* link:configure-licenses.html["安裝您的授權"]。
+* link:efos-install-rcf-license-file.html["安裝適用於 EFOS 3.12.0.1 及更高版本的 RCF 和授權檔案"]，如果適用於您的設定。
+
