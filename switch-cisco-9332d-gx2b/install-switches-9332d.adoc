@@ -39,4 +39,4 @@ summary: 安裝 Cisco Nexus 9332D-GX2B 交換器作為新的 AFX 1K 或 AFX 2K �
 NOTE: 安裝交換器後，AFX 安裝和設定工作流程說明會將您重新導向回此交換器文件以設定交換器。
 
 .下一步是什麼？
-在您完成 AFX 1K 或 AFX 2K 系統安裝過程中交換器的安裝、佈線和通電後，您link:https://review.docs.netapp.com/us-en/ontap-systems-switches_hotfix-refactor-phase1/switch-cisco-9332d-gx2b/install-configure-switches-in-afx-workflow-9332d.html#configure-switches["配置您的交換器"]，然後link:https://review.docs.netapp.com/us-en/ontap-systems-switches_hotfix-refactor-phase1/switch-cisco-9332d-gx2b/install-configure-switches-in-afx-workflow-9332d.html#complete-afx-system-setup["完成 AFX 系統設定"]。
+在您完成 AFX 1K 或 AFX 2K 系統安裝過程中交換器的安裝、佈線和通電後，您 link:install-configure-switches-in-afx-workflow-9332d.html#configure-switches["配置您的交換器"]，然後 link:install-configure-switches-in-afx-workflow-9332d.html#complete-afx-system-setup["完成 AFX 系統設定"]。

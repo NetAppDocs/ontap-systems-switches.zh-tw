@@ -1,0 +1,36 @@
+---
+indexpage:
+  title: 可用性終止開關
+  summary: 使用本網站上的文件來安裝、設定和維護 ONTAP 儲存系統的可用度終止交換器。
+  keywords: end of availability, NVIDIA SN2100, cluster switches, storage switches,
+    ONTAP
+  lead: 這些交換器已停止銷售，但仍支援與 ONTAP 儲存系統搭配使用。
+  tiles:
+  - title: NVIDIA SN2100 叢集交換器
+    links:
+    - title: 開始
+      url: "../switch-nvidia-sn2100/configure-overview-sn2100-cluster.html"
+    - title: 安裝硬體
+      url: "../switch-nvidia-sn2100/install-hardware-workflow.html"
+    - title: 設定軟體
+      url: "../switch-nvidia-sn2100/configure-software-overview-sn2100-cluster.html"
+    - title: 遷移交換機
+      url: "../switch-nvidia-sn2100/migrate-cisco-sn2100-cluster-switch.html"
+    - title: 更換開關
+      url: "../switch-nvidia-sn2100/replace-sn2100-switch-cluster.html"
+  - title: NVIDIA SN2100 儲存網路交換器
+    links:
+    - title: 開始
+      url: "../switch-nvidia-sn2100-storage/configure-overview-sn2100-storage.html"
+    - title: 安裝硬體
+      url: "../switch-nvidia-sn2100-storage/install-hardware-workflow.html"
+    - title: 設定軟體
+      url: "../switch-nvidia-sn2100-storage/configure-software-sn2100-storage.html"
+    - title: 遷移交換機
+      url: "../switch-nvidia-sn2100-storage/migrate-cisco-storage-switch-sn2100-storage.html"
+    - title: 更換開關
+      url: "../switch-nvidia-sn2100-storage/replace-sn2100-switch-storage.html"
+  - title: 停售和停產公告
+    links:
+    - title: NVIDIA SN2100 系列可用度終止
+      url: https://mysupport.netapp.com/info/communications/CPC-00635.html

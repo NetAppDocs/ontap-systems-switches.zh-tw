@@ -2,7 +2,7 @@
 permalink: switch-cshm/log-collection-overview.html 
 sidebar: sidebar 
 keywords: cshm, cluster, storage, switch logs, debugging, collection 
-summary: 您可以使用提供的命令… 
+summary: 使用 CSHM 日誌收集功能收集交換器日誌和診斷資料，以便疑難排解網路交換器問題。 
 ---
 = 日誌收集概覽
 :allow-uri-read: 
@@ -12,5 +12,7 @@ summary: 您可以使用提供的命令…
 
 [role="lead"]
 設定日誌收集後，您可以啟用AutoSupport每小時收集的定期數據，並要求詳細的支援日誌。
+
+日誌收集功能可自動收集交換器日誌和診斷資料，幫助您疑難排解網路交換器問題。您可以透過 AutoSupport 按排程定期收集資料，或在需要詳細日誌以疑難排解特定問題時觸發隨需收集。收集的日誌可提供交換器健全狀況、組態變更和網路事件的可見度。
 
 如需更多詳細資訊，請參閱 link:config-log-collection.html["配置日誌收集"]。

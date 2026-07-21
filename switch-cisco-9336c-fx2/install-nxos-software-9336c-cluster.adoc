@@ -16,6 +16,9 @@ summary: 您可以依照以下步驟在 Nexus 9336C-FX2 叢集交換器上安裝
 開始之前，請先完成以下步驟。link:install-nxos-overview-9336c-cluster.html["準備安裝 NX-OS 和 RCF"] 。
 
 
+NOTE: NetApp 建議您先完成 ONTAP 軟體升級，然後再對交換器進行軟體升級。
+
+
 
 [[review-requirements]]
 == 審查要求

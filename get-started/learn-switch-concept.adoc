@@ -4,10 +4,8 @@ sidebar: sidebar
 keywords:  
 summary: 了解叢集交換器、儲存交換器和共用交換器。 
 ---
-= 瞭解 AFX 系統、叢集、儲存設備和共用交換器
+= 了解您的 ONTAP 系統交換器
 :allow-uri-read: 
-:icons: font
-:imagesdir: ../media/
 
 
 [role="lead"]
@@ -19,12 +17,16 @@ NetApp提供 AFX 系統、叢集、儲存和共享交換機，可實現內部通
 NOTE: 僅支援經NetApp驗證的後端交換器（從NetApp訂購）。
 
 
+CAUTION: 如果您要升級交換器，NetApp 建議您先完成 ONTAP 軟體升級，然後再對交換器進行軟體升級。
+
+
 
 [[afx-systems-switches]]
 == AFX 系統交換機
 
-AFX 系統交換器可讓您建立快速、節能且節省空間的網路交換器。它們體積小、端口密度高，非常適合處理大型網路。這些連接埠支援不同的速度，並且可以分成多個連接。NetApp支援的 AFX 系統交換器包括：
+AFX 系統交換器可協助您建置快速、節能且節省空間的網路交換器。其小巧的體積和高連接埠密度使其成為處理大型網路的理想選擇。連接埠支援不同的傳輸速率，並可分割為多個連線。NetApp 支援的 AFX 系統交換器包括：
 
+* Cisco Nexus 9808
 * CiscoNexus 9332D-GX2B
 * CiscoNexus 9364D-GX2A
 
@@ -49,7 +51,6 @@ AFX 系統交換器可讓您建立快速、節能且節省空間的網路交換�
 儲存交換器可讓您在儲存區域網路 (SAN) 中的伺服器和儲存陣列之間路由資料。  NetApp支援的儲存交換器包括：
 
 * CiscoNexus 9336C-FX2
-* CiscoNexus 3232C
 * NVIDIA SN2100
 
 
@@ -68,4 +69,4 @@ AFX 系統交換器可讓您建立快速、節能且節省空間的網路交換�
 [[end-of-availability-switches]]
 == 可用性終止開關
 
-有關已停止銷售但仍提供支援的交換器清單，請參閱 link:../overview-eod.html["可用性終止開關"]。
+有關已停止銷售但仍提供支援的交換器清單，請參閱 link:../eoa/index.html["可用性終止開關"]。

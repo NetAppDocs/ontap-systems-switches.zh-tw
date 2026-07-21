@@ -11,6 +11,9 @@ summary: Cisco NX-OS 軟體和參考設定檔必須安裝在 Cisco Nexus 9336C-F
 [role="lead"]
 在安裝 NX-OS 軟體和參考設定檔 (RCF) 之前，請依照下列步驟操作。
 
+
+NOTE: NetApp 建議您先完成 ONTAP 軟體升級，然後再對交換器進行軟體升級。
+
 .建議的文檔
 * link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器頁面"^]
 +

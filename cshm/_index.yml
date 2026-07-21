@@ -1,0 +1,32 @@
+---
+indexpage:
+  title: 乙太網路交換器健全狀況監視器
+  summary: 請使用本網站上的文件來設定和維護儲存設備交換器的乙太網路交換器健全狀況監視器。
+  keywords: Ethernet switch health monitor, storage switches, cisco nexus switches,
+    cluster switches, ontap clusters
+  lead: 乙太網路交換器健全狀況監視器可讓您監控 ONTAP 叢集中乙太網路儲存設備交換器的健全狀況。
+  tiles:
+  - title: 配置交換器健康監控
+    links:
+    - title: 配置概述
+      url: "../switch-cshm/config-overview.html"
+    - title: 配置日誌收集
+      url: "../switch-cshm/log-collection-overview.html"
+    - title: 設定 SNMPv3（可選）
+      url: "../switch-cshm/config-snmpv3.html"
+  - title: 檢查交換機健康狀況
+    links:
+    - title: 檢查交換器健全狀況
+      url: "../switch-cshm/monitor-overview.html"
+    - title: 管理交換器監控
+      url: "../switch-cshm/monitor-manage.html"
+    - title: 驗證交換器監控
+      url: "../switch-cshm/monitor-verify.html"
+    - title: 故障排除警報
+      url: "../switch-cshm/monitor-troubleshoot.html"
+  - title: 日誌收集
+    links:
+    - title: 日誌收集
+      url: "../switch-cshm/log-collection-overview.html"
+    - title: 排查日誌收集問題
+      url: "../switch-cshm/log-collection-troubleshoot.html"

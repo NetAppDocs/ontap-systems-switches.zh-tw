@@ -13,6 +13,9 @@ summary: 請依照以下步驟升級您的 Cumulus Linux 版本。
 [role="lead"]
 請依照以下步驟升級您的 Cumulus Linux 版本（如有需要）。
 
+
+NOTE: NetApp 建議您先完成 ONTAP 軟體升級，然後再對交換器進行軟體升級。
+
 .開始之前
 請確保您擁有以下物品：
 

@@ -2,6 +2,9 @@
 :allow-uri-read: 
 
 
+
+NOTE: NetApp 建議您先完成 ONTAP 軟體升級，然後再對交換器進行軟體升級。
+
 .建議的文檔
 * link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器頁面"^]
 +

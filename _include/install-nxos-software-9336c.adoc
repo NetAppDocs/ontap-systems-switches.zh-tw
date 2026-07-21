@@ -3,6 +3,9 @@
 
 
 
+NOTE: NetApp 建議您先完成 ONTAP 軟體升級，然後再對交換器進行軟體升級。
+
+
 
 [[review-requirements]]
 == 審查要求

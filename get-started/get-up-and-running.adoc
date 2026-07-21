@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords:  
 summary: 了解叢集交換器、儲存交換器和共用交換器。 
 ---
-= 快速上手 AFX 系統、叢集、儲存設備和共享交換器
+= AFX 系統、叢集、儲存設備和共享的交換器的快速入門
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -92,7 +92,7 @@ ONTAP 系統的安裝和設定說明包含將控制器連接埠連接到交換�
 [%collapsible]
 ====
 * link:https://docs.netapp.com/us-en/ontap-afx/install-setup/afx-cable-overview.html["為 AFX 1K 系統安裝 Cisco Nexus 交換器"^]
-* link:https://review.docs.netapp.com/us-en/ontap-afx/install-afx-2k/afx-cable-overview.html["為 AFX 2K 系統安裝 Cisco Nexus 交換器"^]
+* link:https://docs.netapp.com/us-en/ontap-afx/install-afx-2k/afx-cable-overview.html["為 AFX 2K 系統安裝 Cisco Nexus 交換器"^]
 
 
 ==== a| 

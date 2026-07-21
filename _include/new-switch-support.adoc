@@ -1,100 +1,103 @@
-= 新交換器支持
+= 2026 年 7 月
 :allow-uri-read: 
 
 
 
 
-[[new-switch-support]]
-== 新交換器支持
-
-[cols="25h,~,~"]
-|===
-| 開關 | 描述 | 可開始 
-
-
- a| 
-32 連接埠 400GbECisco交換器（X190300-CS-PI 和 X190300-PE）
- a| 
-Cisco 9332D-GX2B 叢集內/HA/儲存交換器支援。
- a| 
-ONTAP 9.17.1
+[[july-2026]]
+== 2026 年 7 月
 
 
 
- a| 
-64埠400GbECisco交換器（X190310-CS-PI）
- a| 
-Cisco 9364D-GX2A 叢集內/HA/儲存交換器支援。
- a| 
-ONTAP 9.17.1
+[[new-cisco-nexus-9808-switch-for-afx-2k]]
+=== 適用於 AFX 2K 的新型 Cisco Nexus 9808 交換器
+
+新型 Cisco 9808 交換器透過儲存設備機架連接至 AFX 2K 控制器節點。這款新型交換器支援建置包含兩個以上節點的 ONTAP 叢集。它採用進階協定來最佳化效能。該設計以 VLAN 標記搭配多網路路徑為基礎，並支援技術重新整理組態，以確保持續運作並簡化升級程序。
+
+它們是 36 連接埠 400GbE Cisco 交換器，配備 1 個 Supervisor 模組、7 個 Fabric 模組和 4 個電源供應器 (PSU) (X-N9K-C9808-B1-A)，支援 ONTAP 9.19.1 及更新版本。
 
 
 
- a| 
-12 連接埠 10/25/40/100GbE Cisco Nexus 9336C-FX2-T 叢集和儲存交換器（X190212-CS-PE 和 X190212-CS-PI）
- a| 
-支援 10/25/40/100GbE 叢集配置和 100GbE 儲存（交換器連接儲存）配置。
- a| 
-ONTAP 9.10.1
+[[2025-releases]]
+== 2025 年發布
+
+.2025 年 10 月
+[%collapsible]
+====
+.適用於 AFX 1K 的 Cisco Nexus 9332D-GX2B 和 9364D-GX2A 交換器
+Cisco 9364D-GX2A 和 Cisco 9332D-GX2B 交換器支援建置包含兩個以上節點的 ONTAP 叢集。它們採用先進的協定來優化效能。該設計以 VLAN 標記搭配多個網路路徑為基礎，並支援技術重新整理組態，以確保持續運作並簡化升級程序。
+
+它們是支援 ONTAP 9.17.1 及更新版本的 32 連接埠和 64 連接埠 400GbE Cisco 交換器（X190300-CS-PI、X190300-PE 和 X190310-CS-PI）。
+
+全新的 NetApp AFX 儲存系統提供了一種解耦式解決方案，旨在滿足高效能 NAS 和 S3 工作負載（包括 AI/ML 應用）的嚴苛要求。AFX 系統為需要易擴充的高吞吐量檔案和物件儲存的客戶提供專業功能。
+
+====
+.2025 年 5 月
+[%collapsible]
+====
+.Cisco Nexus 9336C-FX2-T 儲存設備交換器
+這些是支援 ONTAP 9.10.1 及更新版本的 12 連接埠 10/25/40/100GbE Cisco 儲存交換器（X190212-CS-PE 和 X190212-CS-PI）。它們支援 100GbE 儲存設備（交換器附加儲存設備）組態。
+
+====
 
 
+[[2023-release]]
+== 2023 版本
 
- a| 
-12 連接埠 10/25/40/100GbE Cisco Nexus 9336C-FX2-T 叢集和儲存交換器（X190212-CS-PE 和 X190212-CS-PI）
- a| 
-支援 10/25/40/100GbE 叢集配置和 100GbE 儲存（交換器連接儲存）配置。
- a| 
-ONTAP 9.10.1
+.2023 年 5 月
+[%collapsible]
+====
+.Cisco Nexus 9336C-FX2-T 叢集交換器
+這些是支援 ONTAP 9.10.1 及更新版本的 12 連接埠 10/25/40/100GbE Cisco 叢集交換器（X190212-CS-PE 和 X190212-CS-PI）。它們支援 10/25/40/100GbE 叢集組態。
 
-
-
- a| 
-16埠100GbE NVIDIA交換器（X190006-PE和X190006-PI）
- a| 
-支援NVIDIA SN2100 叢集互連交換器和儲存交換機，包括支援MetroCluster IP 配置。
- a| 
-ONTAP 9.10.1
+====
 
 
+[[2022-release]]
+== 2022 版本
 
- a| 
-36埠100GbECisco交換器（X190200-CS-PE和X190200-CS-PI）
- a| 
-支援在同一對Cisco Nexus 9336C-FX2 交換器上共用基礎架構（叢集、HA 和交換器附加儲存），包括對MetroCluster IP 配置的支援。
- a| 
-ONTAP 9.9.1
+.2022 年 10 月
+[%collapsible]
+====
+.NVIDIA SN2100 交換器
+NVIDIA SN2100 是一款 16 埠 100GbE NVIDIA 交換器（型號為 X190006-PE 和 X190006-PI），可讓您建置包含兩個以上節點的 ONTAP 叢集，並支援 ONTAP 9.10.1 及更新版本。它是一款 NVIDIA SN2100 叢集互連交換器和儲存網路交換器，並支援 MetroCluster IP 組態。
 
-
-
- a| 
-36埠100GbECisco交換器（X190200-CS-PE和X190200-CS-PI），（X190210-FE-PE和X190210-FE-PI）
- a| 
-Cisco Nexus 9336C-FX2 叢集互連交換器和儲存交換器支援AFF和ASA儲存系統，以及前端資料連線。
- a| 
-ONTAP 9.8
+====
 
 
+[[2021-release]]
+== 2021 版本
 
- a| 
-博通 BES-53248 交換器（X190005 和 X190005R）
- a| 
-Broadcom BES-53248 群集互連交換器支援AFF/ FAS控制器，具有 10/25GbE 和 40/100GbE 連接埠。
- a| 
-ONTAP 9.8
+.2021 年 5 月
+[%collapsible]
+====
+.Cisco Nexus 9336C-FX2 交換器
+Cisco Nexus 9336C-FX2 是一款 36 連接埠 100GbE Cisco 交換器（X190200-CS-PE 和 X190200-CS-PI）。它支援在同一對 Cisco Nexus 9336C-FX2 交換器上建置共享的基礎架構（叢集、HA 和交換器附加儲存設備），包括支援 MetroCluster IP 組態，並支援 ONTAP 9.9.1 及更新版本。
+
+====
 
 
+[[2019-release]]
+== 2019 版本
 
- a| 
-36埠100GbECisco交換器（X190200）及32埠100GbECisco交換器（X190100和X190100R）
- a| 
-Cisco Nexus 3232C 儲存交換器支援連接 NS224 NVMe 磁碟機架AFF和ASA儲存系統：
+.2019 年 5 月
+[%collapsible]
+====
+.Broadcom BES-53248 交換器
+Broadcom BES-53248 交換器（X190005 和 X190005R）支援具有 10/25GbE 和 40/100GbE 連接埠的 AFF/FAS 控制器，並支援 ONTAP 9.8 及更新版本。
+
+====
+.2019 年 3 月
+[%collapsible]
+====
+.Cisco Nexus 3232C 叢集與儲存交換器
+Cisco Nexus 3232C 交換器是一台 36 埠 100GbE Cisco 交換器 （X190200） 和一台 32 埠 100GbE Cisco 交換器 （X190100 和 X190100R）。Cisco Nexus 3232C 儲存交換器支援連接至下列 NS224 NVMe 磁碟機櫃 AFF 和 ASA 儲存系統：
 
 * AFF A800/ AFF ASA A800
 * AFF A700/ AFF ASA A700
 * AFF A400/ AFF ASA A400
-* AFF A320
 
- a| 
-ONTAP 9.8
 
-|===
+它們支援 ONTAP 9.8 及更新版本。
+
+====

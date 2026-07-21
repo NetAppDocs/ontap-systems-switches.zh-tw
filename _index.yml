@@ -9,7 +9,7 @@ indexpage:
     links:
     - title: 什麼是新的
       url: whats-new.html
-    - title: 快速啟動
+    - title: 開始
       url: "/get-started/get-up-and-running.html"
     - title: ONTAP發行說明
       url: https://library.netapp.com/ecm/ecm_download_file/ECMLP2492508
@@ -25,14 +25,10 @@ indexpage:
       url: "/shared/index.html"
   - title: 可用性終止開關
     links:
-    - title: 叢集交換器 - Cisco Nexus 3232c
-      url: "/switch-cisco-3232c/install-overview-cisco-3232c.html"
-    - title: 叢集交換器 - Cisco Nexus 3132Q-V
-      url: "/switch-cisco-3132q-v/install-overview-cisco-3132qv.html"
-    - title: 叢集交換器 - Cisco Nexus 92300YC
-      url: "/switch-cisco-92300/install-overview-cisco-92300.html"
-    - title: 叢集交換器 - NetApp CN1610
-      url: "/switch-netapp-cn1610/switch-overview-cn1610.html"
+    - title: NVIDIA SN2100
+      url: "/switch-nvidia-sn2100/configure-overview-sn2100-cluster.html"
+    - title: NVIDIA SN2100 儲存設備
+      url: "/switch-nvidia-sn2100-storage/configure-overview-sn2100-storage.html"
   - title: 乙太網路交換器健康狀況監控
     links:
     - title: 配置交換器健康監控

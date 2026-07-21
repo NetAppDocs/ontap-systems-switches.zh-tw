@@ -2,7 +2,7 @@
 permalink: switch-cshm/monitor-overview.html 
 sidebar: sidebar 
 keywords: cshm, cluster, storage, switch logs, debugging, collection 
-summary: 您可以使用以下命令… 
+summary: 使用乙太網路交換器健全狀況監視器警報來識別和解決 ONTAP 叢集中的網路交換器問題。 
 ---
 = 健康檢查概述
 :allow-uri-read: 
@@ -12,6 +12,8 @@ summary: 您可以使用以下命令…
 
 [role="lead"]
 健康監控器會主動監控叢集中的某些關鍵狀況，並在偵測到故障或風險時發出警報。
+
+設定 CSHM 後，健全狀況監視器會持續檢查網路交換器是否有潛在問題。當健全狀況監視器偵測到故障或風險時，它會產生包含診斷資訊的警報，協助您快速回應。您可以檢視作用中的警報以識別當前問題，並檢視可用的警報定義以了解正在監控哪些條件。
 
 若要查看目前已觸發的乙太網路交換器健康監控警報，請執行以下命令： `system health alert show -monitor ethernet-switch`
 

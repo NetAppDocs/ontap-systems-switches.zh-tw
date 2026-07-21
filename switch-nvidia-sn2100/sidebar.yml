@@ -4,7 +4,7 @@ title: NVIDIA SN2100
 entries:
 - title: 開始
   entries:
-  - title: 快速啟動
+  - title: 安裝和設定工作流程
     url: "/switch-nvidia-sn2100/configure-overview-sn2100-cluster.html"
   - title: 配置要求
     url: "/switch-nvidia-sn2100/configure-reqs-sn2100-cluster.html"

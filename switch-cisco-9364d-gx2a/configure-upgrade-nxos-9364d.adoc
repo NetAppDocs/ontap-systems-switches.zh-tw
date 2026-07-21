@@ -13,6 +13,9 @@ summary: 您可以升級 Cisco Nexus 9364D-GX2A 交換器上的 NX-OS，以支�
 [role="lead"]
 您可以升級 Cisco Nexus 9364D-GX2A 交換器上的 NX-OS，以支援新硬體或 AFX 1K 或 AFX 2K 系統上的新 ONTAP 版本。
 
+
+NOTE: NetApp 建議您先完成 ONTAP 軟體升級，然後再對交換器進行軟體升級。
+
 .開始之前
 * 請確保您已備份最新的交換器組態。
 * 確認您的叢集功能完全正常，即日誌中沒有錯誤或類似問題。
@@ -455,7 +458,7 @@ network interface modify -vserver Cluster -lif * -auto-revert false
 [[step-2-install-the-nx-os]]
 == 步驟 2：安裝 NX-OS
 
-在第一個交換器 （cs1） 上安裝 NX-OS，方法是安裝並驗證 NX-OS 和 EPLD 的新版本，驗證叢集上所有連接埠的運作狀況，然後在第二個交換器 （cs2） 上重複這些步驟。
+在第一個交換器 （cs1） 上安裝 NX-OS，方法是安裝並驗證 NX-OS 和 EPLD 的新版本，驗證叢集上所有連接埠的健全狀況，然後在第二個交換器 （cs2） 上重複這些步驟。
 
 . 使用交換器 CLI，將 NX-OS 和 EPLD 映像複製到交換器。
 +
@@ -472,7 +475,7 @@ network interface modify -vserver Cluster -lif * -auto-revert false
 
 [listing, subs="+quotes"]
 ----
-cs2# *copy sftp: bootflash: vrf management*
+cs1# *copy sftp: bootflash: vrf management*
 Enter source filename: */code/nxos.10.4.2.bin*
 Enter hostname for the sftp server: *172.19.2.1*
 Enter username: *root*
@@ -488,7 +491,7 @@ sftp> exit
 Copy complete, now saving to disk (please wait)...
 Copy complete.
 
-cs2# *copy sftp: bootflash: vrf management*
+cs1# *copy sftp: bootflash: vrf management*
 Enter source filename: */code/n9000-epld.10.4.2.F.img*
 Enter hostname for the sftp server: *172.19.2.1*
 Enter username: *user1*
@@ -515,7 +518,7 @@ Copy complete.
 ====
 [listing, subs="+quotes"]
 ----
-cs2# *show version*
+cs1# *show version*
 Cisco Nexus Operating System (NX-OS) Software
 TAC support: http://www.cisco.com/tac
 Copyright (C) 2002-2025, Cisco and/or its affiliates.
@@ -548,7 +551,7 @@ Software
 
 
 Hardware
-  cisco Nexus9000 C9332D-GX2B Chassis
+  cisco Nexus9000 C9364D-GX2A Chassis
   Intel(R) Xeon(R) CPU D-1633N @ 2.50GHz with 32802156 kB of memory.
   Processor Board ID FLMXXXXXXXX
   Device name: cs2
@@ -570,7 +573,7 @@ plugin
 
 Active Package(s):
 
-cs2#
+cs1#
 ----
 ====
 . 使用交換器 CLI 安裝 NX-OS 映像。
@@ -588,7 +591,7 @@ cs2#
 
 [listing, subs="+quotes"]
 ----
-cs2# *install all nxos bootflash:nxos.10.4.2.bin*
+cs1# *install all nxos bootflash:nxos.10.4.2.bin*
 
 Installer will perform compatibility check first. Please wait.
 Installer is forced disruptive
@@ -659,7 +662,7 @@ Finishing the upgrade, switch will reboot in 10 seconds.
 ====
 [listing, subs="+quotes"]
 ----
-cs2# *show version*
+cs1# *show version*
 Cisco Nexus Operating System (NX-OS) Software
 TAC support: http://www.cisco.com/tac
 Copyright (C) 2002-2025, Cisco and/or its affiliates.
@@ -692,7 +695,7 @@ Software
 
 
 Hardware
-  cisco Nexus9000 C9332D-GX2B Chassis
+  cisco Nexus9000 C9364D-GX2A Chassis
   Intel(R) Xeon(R) CPU D-1633N @ 2.50GHz with 32802156 kB of memory.
   Processor Board ID FLMXXXXXXXX
   Device name: cs2
@@ -714,7 +717,7 @@ plugin
 
 Active Package(s):
 
-cs2#
+cs1#
 ----
 ====
 . 使用交換器 CLI，透過以下指令升級 EPLD 映像：
@@ -735,7 +738,7 @@ cs2#
 
 [listing, subs="+quotes"]
 ----
-cs2# *show version module 1 epld*
+cs1# *show version module 1 epld*
 
 EPLD Device                     Version
 ---------------------------------------
@@ -747,7 +750,7 @@ GEM  FPGA                        0x2
 GEM  FPGA                        0x2
 GEM  FPGA                        0x2
 
-cs2# *install epld bootflash:n9000-epld.10.4.2.F.img module all*
+cs1# *install epld bootflash:n9000-epld.10.4.2.F.img module all*
 Compatibility check:
 Module        Type         Upgradable        Impact    Reason
 ------  ------------------ ----------------- --------- -----------

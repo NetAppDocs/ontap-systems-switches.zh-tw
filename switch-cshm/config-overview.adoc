@@ -13,6 +13,8 @@ summary: 乙太網路交換器健全狀況監控器 CSHM 負責確保叢集和�
 [role="lead"]
 乙太網路交換器健全狀況監視器（CSHM）負責確保網路交換器的運作健全狀況，並收集交換器記錄以進行除錯。
 
+在使用 CSHM 監控網路交換器之前，您必須設定日誌收集，並可選擇設定 SNMPv3 以增強安全性。CSHM 需要日誌收集功能來收集交換器日誌和診斷資料。SNMPv3 則提供 ONTAP 和交換器之間安全的通訊。
+
 * link:config-log-collection.html["配置日誌收集"]
 * link:config-snmpv3.html["配置 SNMPv3（可選）"]
 

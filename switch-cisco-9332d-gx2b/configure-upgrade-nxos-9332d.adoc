@@ -13,6 +13,9 @@ summary: 您可以升級 Cisco Nexus 9332D-GX2B 交換器上的 NX-OS，以支�
 [role="lead"]
 您可以升級 Cisco Nexus 9332D-GX2B 交換器上的 NX-OS，以支援新硬體或 AFX 1K 或 AFX 2K 系統上的新 ONTAP 版本。
 
+
+NOTE: NetApp 建議您先完成 ONTAP 軟體升級，然後再對交換器進行軟體升級。
+
 .開始之前
 * 請確保您已備份最新的交換器組態。
 * 確認您的叢集功能完全正常，即日誌中沒有錯誤或類似問題。
@@ -455,7 +458,7 @@ network interface modify -vserver Cluster -lif * -auto-revert false
 [[step-2-install-the-nx-os]]
 == 步驟 2：安裝 NX-OS
 
-在第一個交換器 （cs1） 上安裝 NX-OS，方法是安裝並驗證 NX-OS 和 EPLD 的新版本，驗證叢集上所有連接埠的運作狀況，然後在第二個交換器 （cs2） 上重複這些步驟。
+在第一個交換器 （cs1） 上安裝 NX-OS，方法是安裝並驗證 NX-OS 和 EPLD 的新版本，驗證叢集上所有連接埠的健全狀況，然後在第二個交換器 （cs2） 上重複這些步驟。
 
 . 使用交換器 CLI，將 NX-OS 和 EPLD 映像複製到交換器。
 +
@@ -904,7 +907,7 @@ node1-01/cdp
 cluster1::*> *system cluster-switch show -is-monitoring-enabled-operational true*
 Switch                      Type               Address          Model
 --------------------------- ------------------ ---------------- ---------------
-cs1(FDOXXXXXXXX)            cluster-network    10.228.137.233   N9K-C9332D-GX2B
+cs2(FDOXXXXXXXX)            cluster-network    10.228.137.233   N9K-C9332D-GX2B
      Serial Number: FDOXXXXXXXX
       Is Monitored: true
             Reason: None
