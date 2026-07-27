@@ -55,6 +55,11 @@ sidebar:
   - title: 可用性終止開關
     url: "/eoa/index.html"
     entries:
+    - section: switch-cisco-3232c
+    - section: switch-cisco-3232c-storage
+    - section: switch-cisco-3132q-v
+    - section: switch-cisco-92300
+    - section: switch-netapp-cn1610
     - section: switch-nvidia-sn2100
     - section: switch-nvidia-sn2100-storage
   - title: 法律聲明

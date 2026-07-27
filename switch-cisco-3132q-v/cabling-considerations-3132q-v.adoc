@@ -1,0 +1,33 @@
+---
+permalink: switch-cisco-3132q-v/cabling-considerations-3132q-v.html 
+sidebar: sidebar 
+keywords: 3132Q-V cabling setup, 3132Q-V switches configuration, nx-os 
+summary: 在設定 Cisco 3132Q-V 交換器之前，請審查以下資訊。 
+---
+= 審查佈線和配置注意事項
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在設定 Cisco 3132Q-V 交換器之前，請審查以下注意事項。
+
+
+
+[[support-for-nvidia-cx6-cx6-dx-and-cx7-ethernet-ports]]
+== 支援NVIDIA CX6、CX6-DX 和 CX7 乙太網路端口
+
+如果使用NVIDIA ConnectX-6 (CX6)、ConnectX-6 Dx (CX6-DX) 或 ConnectX-7 (CX7) NIC 連接埠將交換器連接埠連接到ONTAP控制器，則必須硬編碼交換器連接埠速度。
+
+[listing, subs="+quotes"]
+----
+(cs1)(config)# interface Ethernet1/19
+(cs1)(config-if)# *speed 40000*
+(cs1)(config-if)# no negotiate auto
+(cs1)(config-if)# exit
+(cs1)(config)# exit
+*Save the changes:*
+(cs1)# *copy running-config startup-config*
+----
+如需交換器連接埠的詳細資訊，請參閱link:https://hwu.netapp.com/Switch/Index["Hardware Universe"^]。如需交換器安裝需求的詳細資訊，請參閱link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["安裝HWU中沒有的設備還需要哪些額外資訊？"^]。

@@ -1,0 +1,121 @@
+---
+permalink: switch-cisco-92300/92300-overview.html 
+sidebar: sidebar 
+keywords: cisco nexus 92300YC 
+summary: 如果要建置包含兩個以上節點的ONTAP集群，則需要兩個受支援的集群網路交換器。您也可以使用額外的管理交換機，這些交換機是可選的。 
+---
+= Cisco Nexus 92300YC 交換器總覽
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果要建置包含兩個以上節點的ONTAP集群，則需要兩個受支援的集群網路交換器。您也可以使用額外的管理交換機，這些交換機是可選的。
+
+您可以使用交換器隨附的標準支架，將 Cisco Nexus 92300YC 交換器 （X190003/R） 安裝在 NetApp 系統機櫃或第三方機櫃中。
+
+下表列出 92300YC 交換器、風扇和電源供應器的產品編號和執行摘要：
+
+[cols="1,2"]
+|===
+| 零件編號 | 描述 
+
+
+ a| 
+190003
+ a| 
+Cisco 92300YC、CLSW、48Pt10/25GB、18Pt100G、PTSX（PTSX = Port Side Exhaust）
+
+
+
+ a| 
+190003R
+ a| 
+Cisco 92300YC、CLSW、48Pt10/25GB、18Pt100G、PSIN（PSIN = Port Side Intake）
+
+
+
+ a| 
+X-NXA-FAN-35CFM-B
+ a| 
+風扇，Cisco N9K 連接埠側進氣氣流
+
+
+
+ a| 
+X-NXA-FAN-35CFM-F
+ a| 
+風扇，Cisco N9K 連接埠側排氣氣流
+
+
+
+ a| 
+X-NXA-PAC-650W-B
+ a| 
+電源供應，Cisco 650W - 連接埠側進線
+
+
+
+ a| 
+X-NXA-PAC-650W-F
+ a| 
+電源供應，Cisco 650W - 連接埠側排氣
+
+|===
+Cisco Nexus 92300YC 交換器氣流詳細資訊：
+
+* 連接埠側排氣氣流（標準氣流）——冷空氣通過冷通道中的風扇和電源供應模組進入機箱，然後從機箱連接埠端的熱通道排出。連接埠側排氣氣流以藍色標示。
+* 連接埠側進氣氣流（逆向氣流）──冷空氣從冷通道的連接埠端進入機箱，然後通過熱通道的風扇和電源供應模組排出。連接埠側進氣氣流以酒紅色標示。
+
+
+.可用文件
+下表列出了 Cisco Nexus 92300YC 交換器的可用文件。
+
+|===
+
+
+| 標題 | 描述 
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-92300/install-overview-cisco-92300.html["設定 Cisco® Nexus 92300YC 叢集交換器"^]
+ a| 
+介紹如何設定和組態 Cisco Nexus 92300YC 叢集交換器。
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-92300/install-nxos-overview.html["安裝 NX-OS 和參考組態檔案 (RCFs)"^]
+ a| 
+說明如何在 Nexus 92300YC 叢集交換器上安裝 NX-OS 和參考組態檔 (RCF)。
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-92300/configure-install-initial.html["設定新的 Cisco Nexus 92300YC 交換器"^]
+ a| 
+說明如何從使用舊式 Cisco 交換器的環境移轉至使用 Cisco 92300YC 交換器的環境。
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-92300/migrate-to-92300yc.html["將舊款 Cisco 交換器移轉至 Cisco Nexus 92300YC 交換器"^]
+ a| 
+說明以 Cisco Nexus 92300YC 叢集交換器取代舊版 Cisco 交換器的步驟。
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-92300/migrate-to-2n-switched.html["從雙節點無交換器式叢集移轉"^]
+ a| 
+說明如何使用 Cisco Nexus 92300YC 叢集交換器，從雙節點無交換器式叢集環境移轉到雙節點有交換器環境。
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-92300/replace-92300yc.html["更換 Cisco Nexus 92300YC 叢集交換器"^]
+ a| 
+說明在叢集中更換有缺陷的 Cisco Nexus 92300YC 交換器的步驟，以及下載交換器作業系統和參考組態檔案。
+
+|===

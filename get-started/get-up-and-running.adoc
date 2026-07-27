@@ -19,55 +19,34 @@ summary: 了解叢集交換器、儲存交換器和共用交換器。
 [role="quick-margin-para"]
 將交換器安裝到機架或機櫃中。請參考以下適用於您的 AFX 系統或交換器型號的說明。
 
-[cols="11,9,9,9"]
+[cols="1,1,1,1"]
 |===
+| AFX 系統交換機 | 集群交換機 | 儲存交換機 | 共享交換機 
 
 
  a| 
-.AFX 系統交換機
-[%collapsible]
-====
-* link:../switch-cisco-9332d-gx2b/install-prepare-9332d.html["準備安裝 Cisco Nexus 9332D-GX2B 交換器"^]
-* link:../switch-cisco-9364d-gx2a/install-prepare-9364d.html["準備安裝 Cisco Nexus 9364D-GX2A 交換器"^]
-* link:../switch-cisco-9808/install-prepare-9808.html["準備安裝 Cisco Nexus 9808 交換機"^]
+* link:../switch-cisco-9332d-gx2b/install-prepare-9332d.html["Cisco Nexus 9332D-GX2B 交換器"^]
+* link:../switch-cisco-9364d-gx2a/install-prepare-9364d.html["Cisco Nexus 9364D-GX2A 交換器"^]
+* link:../switch-cisco-9808/install-prepare-9808.html["Cisco Nexus 9808 交換器"^]
+
+ a| 
+* link:../switch-bes-53248/install-hardware-bes53248.html["BES-53248 交換器"^]
+* link:../switch-cisco-9336c-fx2/install-switch-9336c-cluster.html["Cisco Nexus 9336C-FX2 交換器"^]
+* link:../switch-nvidia-sn2100/install-hardware-sn2100-cluster.html["NVIDIA SN2100 交換器"^]
+
+ a| 
+* link:../switch-cisco-9336c-fx2-storage/install-9336c-storage.html["Cisco Nexus 9336C-FX2 交換器"^]
+* link:../switch-nvidia-sn2100-storage/install-hardware-sn2100-storage.html["NVIDIA SN2100 交換器"^]
+
+ a| 
+* link:../switch-cisco-9336c-fx2-shared/install-9336c-shared.html["Cisco Nexus 9336C-FX2 交換器"^]
 
 
-==== a| 
-.集群交換機
-[%collapsible]
-====
-* link:../switch-bes-53248/install-hardware-bes53248.html["安裝 BES-53248 交換機"^]
-* link:../switch-cisco-9336c-fx2/install-switch-9336c-cluster.html["安裝Cisco Nexus 9336C-FX2 交換機"^]
-* link:../switch-nvidia-sn2100/install-hardware-sn2100-cluster.html["安裝NVIDIA SN2100 開關"^]
-
-
-==== a| 
-.儲存交換機
-[%collapsible]
-====
-* link:../switch-cisco-9336c-fx2-storage/install-9336c-storage.html["安裝Cisco Nexus 9336C-FX2 交換機"^]
-* link:../switch-nvidia-sn2100-storage/install-hardware-sn2100-storage.html["安裝NVIDIA SN2100 開關"^]
-
-
-==== a| 
-.共享交換機
-[%collapsible]
-====
-* link:../switch-cisco-9336c-fx2-shared/install-9336c-shared.html["安裝Cisco Nexus 9336C-FX2 交換機"^]
-
-
-====
 |===
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["二"]安裝儲物系統和置物架
 [role="quick-margin-para"]
 將儲物系統和儲物架安裝到櫃子或貨架上。請查閱適用於您平台型號的安裝和設定說明。
 
-[cols="2,9,9,9"]
-|===
-
-
- a| 
- a| 
 * https://docs.netapp.com/us-en/ontap-afx/index.html["AFX 系統"^]
 * https://docs.netapp.com/us-en/ontap-systems/aff-aseries/index.html["AFF A 系列系統"^]
 * https://docs.netapp.com/us-en/ontap-systems/aff-cseries/index.html["AFF C 系列系統"^]
@@ -75,105 +54,66 @@ summary: 了解叢集交換器、儲存交換器和共用交換器。
 * https://docs.netapp.com/us-en/asa-r2/index.html["ASA r2 系統"^]
 * https://docs.netapp.com/us-en/ontap-systems/fas/index.html["FAS 系統"^]
 
- a| 
- a| 
 
-|===
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三"]將開關透過電纜連接到控制器。
 [role="quick-margin-para"]
 ONTAP 系統的安裝和設定說明包含將控制器連接埠連接到交換器的線纜連接說明。但是，如果您需要支援的線纜和收發器清單，以及有關交換器主機連接埠的詳細資訊，請存取適用於您的 AFX 系統或交換器型號的以下說明。
 
-[cols="11,9,9,9"]
+[cols="1,1,1,1"]
 |===
+| AFX 系統交換機 | 集群交換機 | 儲存交換機 | 共享交換機 
 
 
  a| 
-.AFX 系統交換機
-[%collapsible]
-====
-* link:https://docs.netapp.com/us-en/ontap-afx/install-setup/afx-cable-overview.html["為 AFX 1K 系統安裝 Cisco Nexus 交換器"^]
-* link:https://docs.netapp.com/us-en/ontap-afx/install-afx-2k/afx-cable-overview.html["為 AFX 2K 系統安裝 Cisco Nexus 交換器"^]
+* link:https://docs.netapp.com/us-en/ontap-afx/install-setup/afx-cable-overview.html["適用於 AFX 1K 系統的 Cisco Nexus 交換器"^]
+* link:https://docs.netapp.com/us-en/ontap-afx/install-afx-2k/afx-cable-overview.html["適用於 AFX 2K 系統的 Cisco Nexus 交換器"^]
+
+ a| 
+* link:../switch-bes-53248/configure-reqs-bes53248.html#configuration-requirements["BES-53248 交換器"^]
+* link:../switch-cisco-9336c-fx2/setup-worksheet-9336c-cluster.html["Cisco Nexus 9336C-FX2 交換器"^]
+* link:../switch-nvidia-sn2100/cabling-considerations-sn2100-cluster.html["NVIDIA SN2100 交換器"^]
+
+ a| 
+* link:../switch-cisco-9336c-fx2-storage/setup-worksheet-9336c-storage.html["Cisco Nexus 9336C-FX2 交換器"^]
+* link:../switch-nvidia-sn2100-storage/cabling-considerations-sn2100-storage.html["NVIDIA SN2100 交換器"^]
+
+ a| 
+* link:../switch-cisco-9336c-fx2-shared/cable-9336c-shared.html["Cisco Nexus 9336C-FX2 交換器"^]
 
 
-==== a| 
-.集群交換機
-[%collapsible]
-====
-* link:../switch-bes-53248/configure-reqs-bes53248.html#configuration-requirements["為 BES-53248 交換器佈線"^]
-* link:../switch-cisco-9336c-fx2/setup-worksheet-9336c-cluster.html["為Cisco Nexus 9336C-FX2 交換器佈線"^]
-* link:../switch-nvidia-sn2100/cabling-considerations-sn2100-cluster.html["連接NVIDIA SN2100 交換機"^]
-
-
-==== a| 
-.儲存交換機
-[%collapsible]
-====
-* link:../switch-cisco-9336c-fx2-storage/setup-worksheet-9336c-storage.html["為Cisco Nexus 9336C-FX2 交換器佈線"^]
-* link:../switch-nvidia-sn2100-storage/cabling-considerations-sn2100-storage.html["連接NVIDIA SN2100 交換機"^]
-
-
-==== a| 
-.共享交換機
-[%collapsible]
-====
-* link:../switch-cisco-9336c-fx2-shared/cable-9336c-shared.html["為Cisco Nexus 9336C-FX2 交換器佈線"^]
-
-
-====
 |===
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["四"]配置交換器軟體
 [role="quick-margin-para"]
 若要設定交換器並安裝軟體，請依照您的交換器型號的軟體安裝工作流程進行操作。
 
-[cols="11,9,9,9"]
+[cols="1,1,1,1"]
 |===
+| AFX 系統交換機 | 集群交換機 | 儲存交換機 | 共享交換機 
 
 
  a| 
-.AFX 系統交換機
-[%collapsible]
-====
-* link:../switch-cisco-9332d-gx2b/configure-switch-workflow-9332d.html["設定 Cisco Nexus 9332D-GX2B 交換機"^]
-* link:../switch-cisco-9364d-gx2a/configure-switch-workflow-9364d.html["設定 Cisco Nexus 9364D-GX2A 交換機"^]
-* link:../switch-cisco-9808/configure-switch-workflow-9808.html["配置 Cisco Nexus 9808 交換機"^]
+* link:../switch-cisco-9332d-gx2b/configure-switch-workflow-9332d.html["Cisco Nexus 9332D-GX2B 交換器"^]
+* link:../switch-cisco-9364d-gx2a/configure-switch-workflow-9364d.html["Cisco Nexus 9364D-GX2A 交換器"^]
+* link:../switch-cisco-9808/configure-switch-workflow-9808.html["Cisco Nexus 9808 交換器"^]
+
+ a| 
+* link:../switch-bes-53248/configure-software-overview-bes53248.html["BES-53248 交換器"^]
+* link:../switch-cisco-9336c-fx2/configure-software-overview-9336c-cluster.html["Cisco Nexus 9336C-FX2 交換器"^]
+* link:../switch-nvidia-sn2100/configure-software-overview-sn2100-cluster.html["NVIDIA SN2100 交換器"^]
+
+ a| 
+* link:../switch-cisco-9336c-fx2-storage/configure-software-overview-9336c-storage.html["Cisco Nexus 9336C-FX2 交換器"^]
+* link:../switch-nvidia-sn2100-storage/configure-software-sn2100-storage.html["NVIDIA SN2100 交換器"^]
+
+ a| 
+* link:../switch-cisco-9336c-fx2-shared/configure-software-overview-9336c-shared.html["Cisco Nexus 9336C-FX2 交換器"^]
 
 
-==== a| 
-.集群交換機
-[%collapsible]
-====
-* link:../switch-bes-53248/configure-software-overview-bes53248.html["安裝 BES-53248 交換器的軟體"^]
-* link:../switch-cisco-9336c-fx2/configure-software-overview-9336c-cluster.html["為Cisco Nexus 9336C-FX2 交換器安裝軟體"^]
-* link:../switch-nvidia-sn2100/configure-software-overview-sn2100-cluster.html["安裝NVIDIA SN2100交換器的軟體"^]
-
-
-==== a| 
-.儲存交換機
-[%collapsible]
-====
-* link:../switch-cisco-9336c-fx2-storage/configure-software-overview-9336c-storage.html["為Cisco Nexus 9336C-FX2 交換器安裝軟體"^]
-* link:../switch-nvidia-sn2100-storage/configure-software-sn2100-storage.html["安裝NVIDIA SN2100交換器的軟體"^]
-
-
-==== a| 
-.共享交換機
-[%collapsible]
-====
-* link:../switch-cisco-9336c-fx2-shared/configure-software-overview-9336c-shared.html["為Cisco Nexus 9336C-FX2 交換器安裝軟體"^]
-
-
-====
 |===
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["五"]完整的系統設置
 [role="quick-margin-para"]
 配置交換器並安裝所需軟體後，請查閱ONTAP系統平台型號的安裝和設定說明，以完成系統設定。
 
-[cols="2,9,9,9"]
-|===
-
-
- a| 
- a| 
 * https://docs.netapp.com/us-en/ontap-afx/index.html["AFX 系統"^]
 * https://docs.netapp.com/us-en/ontap-systems/aff-aseries/index.html["AFF A 系列系統"^]
 * https://docs.netapp.com/us-en/ontap-systems/aff-cseries/index.html["AFF C 系列系統"^]
@@ -181,10 +121,7 @@ ONTAP 系統的安裝和設定說明包含將控制器連接埠連接到交換�
 * https://docs.netapp.com/us-en/asa-r2/index.html["ASA r2 系統"^]
 * https://docs.netapp.com/us-en/ontap-systems/fas/index.html["FAS 系統"^]
 
- a| 
- a| 
 
-|===
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["六"]完成ONTAP配置
 [role="quick-margin-para"]
 安裝並設定好ONTAP系統控制器和交換器後，您必須在ONTAP中完成儲存設定。根據您的部署配置，取得以下說明。

@@ -1,0 +1,1349 @@
+---
+permalink: switch-cisco-3132q-v/replace-cn1610-with-cisco-nexus-3232c.html 
+sidebar: sidebar 
+keywords: replace, cn1610 cluster switches, cisco nexus 3132q-v 
+summary: 若要將叢集中現有的 CN1610 叢集交換器替換為 Cisco Nexus 3132Q-V 叢集交換器，必須執行一系列特定的任務。 
+---
+= 將 CN1610 叢集交換器移轉至 Cisco Nexus 3132Q-V 叢集交換器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+請依照下列步驟將現有的 CN1610 叢集交換器替換為 Cisco Nexus 3132Q-V 叢集交換器。
+
+
+
+[[review-requirements]]
+== 審查要求
+
+請查看 NetApp CN1610 的要求，詳見 link:switch-requirements.html["更換 Cisco Nexus 3132Q-V 叢集交換器的需求"]。
+
+更多資訊請見：
+
+* link:https://mysupport.netapp.com/site/products/all/details/netapp-cluster-switches/docs-tab["NetApp CN1601 和 CN1610"^]
+* link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco 乙太網路交換器"^]
+* link:http://hwu.netapp.com["Hardware Universe"^]
+
+
+
+
+[[replace-the-switch]]
+== 更換開關
+
+.交換器和節點命名法
+本流程中的範例使用以下開關和節點命名規則：
+
+* 命令輸出可能因ONTAP軟體版本不同而有所差異。
+* 需要更換的 CN1610 交換器是 CL1 和 CL2。
+* 用於取代 CN1610 交換器的 Nexus 3132Q-V 交換器是 C1 和 C2。
+* n1_clus1 是連接到節點 n1 的叢集交換器 1 （CL1 或 C1） 的第一個叢集邏輯介面 （LIF）。
+* n1_clus2 是連接到節點 n1 的叢集交換器 2 （CL2 或 C2） 的第一個叢集 LIF。
+* n1_clus3 是連接到節點 n1 的叢集交換器 2 （CL2 或 C2） 的第二個 LIF。
+* n1_clus4 是連接到節點 n1 的叢集交換器 1 （CL1 或 C1） 的第二個 LIF。
+* 節點編號為 n1、n2、n3 和 n4。
+* 10 GbE 和 40 GbE 連接埠的數量在參考組態檔 (RCF) 中定義，可在 link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco® 叢集網路交換器參考組態檔下載"^] 取得。
+
+
+.關於範例
+本流程範例中使用了四個節點：
+
+* 兩個節點使用四個 10 GbE 叢集互連連接埠：e0a、e0b、e0c 和 e0d。
+* 另外兩個節點使用兩條 40 GbE 叢集互連光纖纜線：e4a 和 e4e。
+
+
+link:https://hwu.netapp.com/["Hardware Universe"^]包含有關您平台上的叢集光纖電纜的資訊。
+
+.關於此任務
+本流程涵蓋以下情況：
+
+* 叢集由兩個節點組成，這兩個節點連接到兩個 CN1610 叢集交換器。
+* 叢集交換器 CL2 將由 C2 取代。
++
+** 連接到 CL2 的所有節點上的所有叢集連接埠和邏輯介面的流量，將移轉至連接到 CL1 的第一個叢集連接埠和邏輯介面。
+** 拔除連接至 CL2 的所有節點上所有叢集連接埠的纜線，然後使用支援的分支纜線將連接埠重新連接至新的叢集交換器 C2。
+** 斷開 ISL 連接埠 CL1 和 CL2 之間的纜線連接，然後使用支援的分支纜線將連接埠從 CL1 重新連接到 C2。
+** 所有節點上連接到 C2 的所有叢集連接埠和 LIF 上的流量均已回復。
+
+
+* 叢集交換器 CL1 將由 C1 取代
++
+** 連接到 CL1 的所有節點上的所有叢集連接埠和 LIF 上的流量，將移轉到連接到 C2 的第二個叢集連接埠和 LIF 上。
+** 斷開連接到 CL1 的所有節點上所有叢集連接埠的纜線，然後使用支援的分支纜線將連接埠重新連接到新的叢集交換器 C1。
+** 斷開 ISL 連接埠 CL1 和 C2 之間的纜線連接，然後使用支援的分支纜線將連接埠從 C1 重新連接到 C2。
+** 所有節點上已移轉的叢集連接埠及連接至 C1 的 LIF 流量均已回復。
+
+
+
+
+
+NOTE: 流程需要同時使用 ONTAP 命令和 Cisco Nexus 3000 系列交換器命令；除非另有說明，否則使用 ONTAP 命令。
+
+
+
+[[step-1-prepare-for-replacement]]
+=== 第一步：準備更換
+
+. 如果此叢集上啟用了AutoSupport ，則透過呼叫AutoSupport訊息來抑制自動建立案例：
++
+`system node autosupport invoke -node * -type all - message MAINT=xh`
+
++
+_x_ 是維護視窗的持續時間，單位為小時。
+
++
+
+NOTE: AutoSupport訊息會通知技術支援此維護任務，以便在維護視窗期間抑制自動建立案例。
+
+. 顯示組態中設備的資訊：
++
+`network device-discovery show`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示了每個節點上每個叢集互連交換器配置的叢集互連連接口數量：
+
+[listing]
+----
+cluster::> network device-discovery show
+
+       Local  Discovered
+Node   Port   Device       Interface   Platform
+------ ------ ------------ ----------- ----------
+n1     /cdp
+        e0a   CL1          0/1         CN1610
+        e0b   CL2          0/1         CN1610
+        e0c   CL2          0/2         CN1610
+        e0d   CL1          0/2         CN1610
+n2     /cdp
+        e0a   CL1          0/3         CN1610
+        e0b   CL2          0/3         CN1610
+        e0c   CL2          0/4         CN1610
+        e0d   CL1          0/4         CN1610
+
+8 entries were displayed.
+----
+====
+. 確定每個叢集介面的管理或運作狀態。
++
+.. 顯示叢集網路連接埠屬性：
++
+`network port show`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示系統上的網路連接埠屬性：
+
+[listing]
+----
+cluster::*> network port show -role Cluster
+       (network port show)
+
+Node: n1
+                Broadcast              Speed (Mbps) Health Ignore
+Port  IPspace   Domain     Link  MTU   Admin/Open   Status Health Status
+----- --------- ---------- ----- ----- ------------ ------ -------------
+e0a   cluster   cluster    up    9000  auto/10000     -        -
+e0b   cluster   cluster    up    9000  auto/10000     -        -
+e0c   cluster   cluster    up    9000  auto/10000     -        -
+e0d   cluster   cluster    up    9000  auto/10000     -        -
+
+Node: n2
+                Broadcast              Speed (Mbps) Health Ignore
+Port  IPspace   Domain     Link  MTU   Admin/Open   Status Health Status
+----- --------- ---------- ----- ----- ------------ ------ -------------
+e0a   cluster   cluster    up    9000  auto/10000     -        -
+e0b   cluster   cluster    up    9000  auto/10000     -        -
+e0c   cluster   cluster    up    9000  auto/10000     -        -
+e0d   cluster   cluster    up    9000  auto/10000     -        -
+
+8 entries were displayed.
+----
+====
+.. 顯示邏輯介面資訊：+
+`network interface show`
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示系統中所有 LIF 的一般資訊：
+
+[listing]
+----
+cluster::*> network interface show -role Cluster
+       (network interface show)
+
+         Logical    Status      Network        Current  Current  Is
+Vserver  Interface  Admin/Oper  Address/Mask   Node     Port     Home
+-------- ---------- ----------- -------------- -------- -------- -----
+Cluster
+         n1_clus1   up/up       10.10.0.1/24   n1       e0a      true
+         n1_clus2   up/up       10.10.0.2/24   n1       e0b      true
+         n1_clus3   up/up       10.10.0.3/24   n1       e0c      true
+         n1_clus4   up/up       10.10.0.4/24   n1       e0d      true
+         n2_clus1   up/up       10.10.0.5/24   n2       e0a      true
+         n2_clus2   up/up       10.10.0.6/24   n2       e0b      true
+         n2_clus3   up/up       10.10.0.7/24   n2       e0c      true
+         n2_clus4   up/up       10.10.0.8/24   n2       e0d      true
+
+8 entries were displayed.
+----
+====
+.. 顯示已探索到的叢集交換器相關資訊：
++
+`system cluster-switch show`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示叢集已知的叢集交換器及其管理 IP 位址：
+
+[listing]
+----
+cluster::> system cluster-switch show
+
+Switch                        Type             Address       Model
+----------------------------- ---------------- ------------- --------
+CL1                           cluster-network  10.10.1.101   CN1610
+     Serial Number: 01234567
+      Is Monitored: true
+            Reason:
+  Software Version: 1.2.0.7
+    Version Source: ISDP
+
+CL2                           cluster-network  10.10.1.102   CN1610
+     Serial Number: 01234568
+      Is Monitored: true
+            Reason:
+  Software Version: 1.2.0.7
+    Version Source: ISDP
+
+2 entries were displayed.
+----
+====
+
+
+. 在兩個節點上，將叢集 LIF clus1 和 clus4 的  `-auto-revert` 參數設定為 false：
++
+`network interface modify`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+cluster::*> network interface modify -vserver node1 -lif clus1 -auto-revert false
+cluster::*> network interface modify -vserver node1 -lif clus4 -auto-revert false
+cluster::*> network interface modify -vserver node2 -lif clus1 -auto-revert false
+cluster::*> network interface modify -vserver node2 -lif clus4 -auto-revert false
+----
+====
+. 確認新的 3132Q-V 交換器上已根據您的要求安裝了相應的 RCF 和映像，並進行任何必要的站台自訂，例如使用者和密碼、網路位址等。
++
+此時您必須準備好兩台交換器。如果需要升級 RCF 和映像，請依照下列步驟操作：
+
++
+.. 請參閱 NetApp 支援網站上的 link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換機"^]。
+.. 請記下您交換器的型號以及該頁表格中所需的軟體版本。
+.. 下載適當版本的 RCF。
+.. 在 *Description* 頁面上按一下 *CONTINUE*，接受授權合約，然後依照 *Download* 頁面上的說明下載 RCF。
+.. 下載對應版本的映像軟體。
++
+link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco® 叢集和管理網路交換器參考組態檔下載"^]
+
+
+
+. 移轉與待替換的第二台 CN1610 交換器相關的 LIF：
++
+`network interface migrate`
+
++
+[NOTE]
+====
+您必須透過服務處理器或節點管理介面，從與節點的連線移轉叢集 LIF，該節點擁有要移轉的叢集 LIF。
+
+====
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示了 n1 和 n2，但 LIF 移轉必須在所有節點上執行：
+
+[listing]
+----
+
+cluster::*> network interface migrate -vserver Cluster -lif n1_clus2 -destination-node  n1  -destination-port  e0a
+cluster::*> network interface migrate -vserver Cluster -lif n1_clus3 -destination-node  n1  -destination-port  e0d
+cluster::*> network interface migrate -vserver Cluster -lif n2_clus2 -destination-node  n2  -destination-port  e0a
+cluster::*> network interface migrate -vserver Cluster -lif n2_clus3 -destination-node  n2  -destination-port  e0d
+----
+====
+. 驗證叢集健全狀況：
++
+`network interface show`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示上一個 `network interface migrate`命令的結果：
+
+[listing]
+----
+cluster::*> network interface show -role Cluster
+       (network interface show)
+
+         Logical    Status      Network         Current  Current  Is
+Vserver  Interface  Admin/Oper  Address/Mask    Node     Port     Home
+-------- ---------- ----------- --------------- -------- -------- -----
+Cluster
+         n1_clus1   up/up       10.10.0.1/24    n1       e0a      true
+         n1_clus2   up/up       10.10.0.2/24    n1       e0a      false
+         n1_clus3   up/up       10.10.0.3/24    n1       e0d      false
+         n1_clus4   up/up       10.10.0.4/24    n1       e0d      true
+         n2_clus1   up/up       10.10.0.5/24    n2       e0a      true
+         n2_clus2   up/up       10.10.0.6/24    n2       e0a      false
+         n2_clus3   up/up       10.10.0.7/24    n2       e0d      false
+         n2_clus4   up/up       10.10.0.8/24    n2       e0d      true
+
+8 entries were displayed.
+----
+====
+. 關閉與交換器 CL2 實體連線的叢集互連連接埠：
++
+`network port modify`
+
++
+.顯示範例
+[%collapsible]
+====
+以下命令關閉 n1 和 n2 上的指定連接埠，但必須關閉所有節點上的連接埠：
+
+[listing]
+----
+cluster::*> network port modify -node n1 -port e0b -up-admin false
+cluster::*> network port modify -node n1 -port e0c -up-admin false
+cluster::*> network port modify -node n2 -port e0b -up-admin false
+cluster::*> network port modify -node n2 -port e0c -up-admin false
+----
+====
+. 驗證遠端集群介面的連接性：
+
+
+[role="tabbed-block"]
+====
+.ONTAP 9.9.1 及更高版本
+--
+你可以使用 `network interface check cluster-connectivity`執行命令以啟動叢集連接性檢查，然後顯示詳細資訊：
+
+`network interface check cluster-connectivity start`和 `network interface check cluster-connectivity show`
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity start*
+----
+*注意：*在執行 show 命令顯示詳細資訊之前，請等待幾秒鐘。
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity show*
+                                  Source      Destination   Packet
+Node   Date                       LIF         LIF           Loss
+------ -------------------------- ---------- -------------- -----------
+n1
+       3/5/2022 19:21:18 -06:00   n1_clus2   n1_clus1       none
+       3/5/2022 19:21:20 -06:00   n1_clus2   n2_clus2       none
+
+n2
+       3/5/2022 19:21:18 -06:00   n2_clus2   n1_clus1       none
+       3/5/2022 19:21:20 -06:00   n2_clus2   n1_clus2       none
+----
+--
+.所有ONTAP版本
+--
+對於所有ONTAP版本，您也可以使用 `cluster ping-cluster -node <name>`檢查連接性的命令：
+
+`cluster ping-cluster -node <name>`
+
+[listing, subs="+quotes"]
+----
+cluster::*> *cluster ping-cluster -node n1*
+Host is n1
+Getting addresses from network interface table...
+Cluster n1_clus1 n1       e0a    10.10.0.1
+Cluster n1_clus2 n1       e0b    10.10.0.2
+Cluster n1_clus3 n1       e0c    10.10.0.3
+Cluster n1_clus4 n1       e0d    10.10.0.4
+Cluster n2_clus1 n2       e0a    10.10.0.5
+Cluster n2_clus2 n2       e0b    10.10.0.6
+Cluster n2_clus3 n2       e0c    10.10.0.7
+Cluster n2_clus4 n2       e0d    10.10.0.8
+
+Local = 10.10.0.1 10.10.0.2 10.10.0.3 10.10.0.4
+Remote = 10.10.0.5 10.10.0.6 10.10.0.7 10.10.0.8
+Cluster Vserver Id = 4294967293
+Ping status:....
+Basic connectivity succeeds on 16 path(s)
+Basic connectivity fails on 0 path(s)
+................
+Detected 1500 byte MTU on 16 path(s):
+    Local 10.10.0.1 to Remote 10.10.0.5
+    Local 10.10.0.1 to Remote 10.10.0.6
+    Local 10.10.0.1 to Remote 10.10.0.7
+    Local 10.10.0.1 to Remote 10.10.0.8
+    Local 10.10.0.2 to Remote 10.10.0.5
+    Local 10.10.0.2 to Remote 10.10.0.6
+    Local 10.10.0.2 to Remote 10.10.0.7
+    Local 10.10.0.2 to Remote 10.10.0.8
+    Local 10.10.0.3 to Remote 10.10.0.5
+    Local 10.10.0.3 to Remote 10.10.0.6
+    Local 10.10.0.3 to Remote 10.10.0.7
+    Local 10.10.0.3 to Remote 10.10.0.8
+    Local 10.10.0.4 to Remote 10.10.0.5
+    Local 10.10.0.4 to Remote 10.10.0.6
+    Local 10.10.0.4 to Remote 10.10.0.7
+    Local 10.10.0.4 to Remote 10.10.0.8
+
+Larger than PMTU communication succeeds on 16 path(s)
+RPC status:
+4 paths up, 0 paths down (tcp check)
+4 paths up, 0 paths down (udp check)
+----
+--
+====
+. [[step10]] 關閉作用中 CN1610 交換器 CL1 上的 ISL 連接埠 13 至 16：
++
+`shutdown`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例展示如何關閉 CN1610 交換器 CL1 上的 ISL 連接埠 13 至 16：
+
+[listing]
+----
+(CL1)# configure
+(CL1)(Config)# interface 0/13-0/16
+(CL1)(Interface 0/13-0/16)# shutdown
+(CL1)(Interface 0/13-0/16)# exit
+(CL1)(Config)# exit
+(CL1)#
+----
+====
+. 在 CL1 和 C2 之間建立臨時 ISL：
++
+.顯示範例
+[%collapsible]
+====
+以下範例在 CL1（連接埠 13-16）和 C2（連接埠 e1/24/1-4）之間建立臨時 ISL：
+
+[listing]
+----
+C2# configure
+C2(config)# interface port-channel 2
+C2(config-if)# switchport mode trunk
+C2(config-if)# spanning-tree port type network
+C2(config-if)# mtu 9216
+C2(config-if)# interface breakout module 1 port 24 map 10g-4x
+C2(config)# interface e1/24/1-4
+C2(config-if-range)# switchport mode trunk
+C2(config-if-range)# mtu 9216
+C2(config-if-range)# channel-group 2 mode active
+C2(config-if-range)# exit
+C2(config-if)# exit
+----
+====
+
+
+
+
+[[step-2-configure-ports]]
+=== 步驟 2：設定埠
+
+. 在所有節點上，移除連接到 CN1610 交換器 CL2 的電纜。
++
+使用支援的佈線，您必須將所有節點上斷開的連接埠重新連接到 Nexus 3132Q-V 交換器 C2。
+
+. 從 CN1610 交換器 CL1 的 13 至 16 號連接埠移除四條 ISL 纜線。
++
+您必須將適當的 Cisco QSFP 轉 SFP+ 分支電纜連接到新的 Cisco 3132Q-V 交換器 C2 的連接埠 1/24 和現有 CN1610 交換器 CL1 的連接埠 13 至 16。
+
++
+
+NOTE: 將任何電纜重新連接到新的 Cisco 3132Q-V 交換器時，必須使用光纖或 Cisco twinax 電纜。
+
+. 若要使 ISL 動態，請將作用中 CN1610 交換器上的 ISL 介面 3/1 設定為停用靜態模式： `no port-channel static`
++
+此組態與步驟 11 中在兩台交換器上啟動 ISL 時 3132Q-V 交換器 C2 上的 ISL 組態相符。
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例展示如何使用  `no port-channel static` 命令將 ISL 介面 3/1 的組態設定為動態：
+
+[listing]
+----
+(CL1)# configure
+(CL1)(Config)# interface 3/1
+(CL1)(Interface 3/1)# no port-channel static
+(CL1)(Interface 3/1)# exit
+(CL1)(Config)# exit
+(CL1)#
+----
+====
+. 在作用中的 CN1610 交換器 CL1 上啟動 ISL 13 至 16。
++
+.顯示範例
+[%collapsible]
+====
+以下範例說明在連接埠通道介面 3/1 上啟動 ISL 連接埠 13 至 16 的過程：
+
+[listing]
+----
+(CL1)# configure
+(CL1)(Config)# interface 0/13-0/16,3/1
+(CL1)(Interface 0/13-0/16,3/1)# no shutdown
+(CL1)(Interface 0/13-0/16,3/1)# exit
+(CL1)(Config)# exit
+(CL1)#
+----
+====
+. 確認 CN1610 交換器 CL1 上的 ISL 是否 `up`：
++
+`show port-channel`
+
++
+「Link State」應為 `Up`，「Type」應為 `Dynamic`，而連接埠 0/13 至 0/16 的「Port Active」欄應為 `True`：
+
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+(CL1)# show port-channel 3/1
+Local Interface................................ 3/1
+Channel Name................................... ISL-LAG
+Link State..................................... Up
+Admin Mode..................................... Enabled
+Type........................................... Dynamic
+Load Balance Option............................ 7
+(Enhanced hashing mode)
+
+Mbr    Device/       Port        Port
+Ports  Timeout       Speed       Active
+------ ------------- ----------  -------
+0/13   actor/long    10 Gb Full  True
+       partner/long
+0/14   actor/long    10 Gb Full  True
+       partner/long
+0/15   actor/long    10 Gb Full  True
+       partner/long
+0/16   actor/long    10 Gb Full  True
+       partner/long
+----
+====
+. 確認 ISL 是否位於 `up` 3132Q-V 交換器 C2 上：
++
+`show port-channel summary`
+
++
+.顯示範例
+[%collapsible]
+====
+連接埠 Eth1/24/1 至 Eth1/24/4 應顯示 `(P)`，表示所有四個 ISL 連接埠均已在連接埠通道中建立連線。Eth1/31 和 Eth1/32 應顯示 `(D)`，因為它們未連接：
+
+[listing]
+----
+C2# show port-channel summary
+
+Flags:  D - Down        P - Up in port-channel (members)
+        I - Individual  H - Hot-standby (LACP only)
+        s - Suspended   r - Module-removed
+        S - Switched    R - Routed
+        U - Up (port-channel)
+        M - Not in use. Min-links not met
+------------------------------------------------------------------------------
+Group Port-       Type     Protocol  Member Ports
+      Channel
+------------------------------------------------------------------------------
+1     Po1(SU)     Eth      LACP      Eth1/31(D)   Eth1/32(D)
+2     Po2(SU)     Eth      LACP      Eth1/24/1(P) Eth1/24/2(P) Eth1/24/3(P)
+                                     Eth1/24/4(P)
+----
+====
+. 在所有節點上啟用連接到 3132Q-V 交換器 C2 的所有叢集互連連接埠：
++
+`network port modify`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例展示如何啟動連接至 3132Q-V 交換器 C2 的叢集互連埠：
+
+[listing]
+----
+cluster::*> network port modify -node n1 -port e0b -up-admin true
+cluster::*> network port modify -node n1 -port e0c -up-admin true
+cluster::*> network port modify -node n2 -port e0b -up-admin true
+cluster::*> network port modify -node n2 -port e0c -up-admin true
+----
+====
+. 回復所有節點上已移轉且連接至 C2 的叢集互連 LIF：
++
+`network interface revert`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+cluster::*> network interface revert -vserver Cluster -lif n1_clus2
+cluster::*> network interface revert -vserver Cluster -lif n1_clus3
+cluster::*> network interface revert -vserver Cluster -lif n2_clus2
+cluster::*> network interface revert -vserver Cluster -lif n2_clus3
+----
+====
+. 確認所有叢集互連連接埠都已回復至其主連接埠：
++
+`network interface show`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示 clus2 上的 LIF 已回復至其主連接埠，並顯示如果「Current Port」欄中的連接埠在「Is Home」欄中的狀態為 `true`，則 LIF 已成功回復。如果 Is Home 值為 `false`，則 LIF 未回復。
+
+[listing]
+----
+cluster::*> network interface show -role cluster
+       (network interface show)
+
+         Logical    Status      Network        Current  Current  Is
+Vserver  Interface  Admin/Oper  Address/Mask   Node     Port     Home
+-------- ---------- ----------- -------------- -------- -------- -----
+Cluster
+         n1_clus1   up/up       10.10.0.1/24   n1       e0a      true
+         n1_clus2   up/up       10.10.0.2/24   n1       e0b      true
+         n1_clus3   up/up       10.10.0.3/24   n1       e0c      true
+         n1_clus4   up/up       10.10.0.4/24   n1       e0d      true
+         n2_clus1   up/up       10.10.0.5/24   n2       e0a      true
+         n2_clus2   up/up       10.10.0.6/24   n2       e0b      true
+         n2_clus3   up/up       10.10.0.7/24   n2       e0c      true
+         n2_clus4   up/up       10.10.0.8/24   n2       e0d      true
+
+8 entries were displayed.
+----
+====
+. 確認叢集所有連接埠均已連線：
++
+`network port show`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示上一個 `network port modify`命令的結果，驗證所有叢集互連均為 `up`：
+
+[listing]
+----
+cluster::*> network port show -role Cluster
+       (network port show)
+
+Node: n1
+                Broadcast               Speed (Mbps) Health   Ignore
+Port  IPspace   Domain      Link  MTU   Admin/Open   Status   Health Status
+----- --------- ----------- ----- ----- ------------ -------- -------------
+e0a   cluster   cluster     up    9000  auto/10000     -        -
+e0b   cluster   cluster     up    9000  auto/10000     -        -
+e0c   cluster   cluster     up    9000  auto/10000     -        -
+e0d   cluster   cluster     up    9000  auto/10000     -        -
+
+Node: n2
+                Broadcast               Speed (Mbps) Health   Ignore
+Port  IPspace   Domain      Link  MTU   Admin/Open   Status   Health Status
+----- --------- ----------- ----- ----- ------------ -------- -------------
+e0a   cluster   cluster     up    9000  auto/10000     -        -
+e0b   cluster   cluster     up    9000  auto/10000     -        -
+e0c   cluster   cluster     up    9000  auto/10000     -        -
+e0d   cluster   cluster     up    9000  auto/10000     -        -
+
+8 entries were displayed.
+----
+====
+. 驗證遠端集群介面的連接性：
+
+
+[role="tabbed-block"]
+====
+.ONTAP 9.9.1 及更高版本
+--
+你可以使用 `network interface check cluster-connectivity`執行命令以啟動叢集連接性檢查，然後顯示詳細資訊：
+
+`network interface check cluster-connectivity start`和 `network interface check cluster-connectivity show`
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity start*
+----
+*注意：*在執行 show 命令顯示詳細資訊之前，請等待幾秒鐘。
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity show*
+                                  Source      Destination   Packet
+Node   Date                       LIF         LIF           Loss
+------ -------------------------- ---------- -------------- -----------
+n1
+       3/5/2022 19:21:18 -06:00   n1_clus2   n1_clus1       none
+       3/5/2022 19:21:20 -06:00   n1_clus2   n2_clus2       none
+
+n2
+       3/5/2022 19:21:18 -06:00   n2_clus2   n1_clus1       none
+       3/5/2022 19:21:20 -06:00   n2_clus2   n1_clus2       none
+----
+--
+.所有ONTAP版本
+--
+對於所有ONTAP版本，您也可以使用 `cluster ping-cluster -node <name>`檢查連接性的命令：
+
+`cluster ping-cluster -node <name>`
+
+[listing, subs="+quotes"]
+----
+cluster::*> *cluster ping-cluster -node n1*
+Host is n1
+Getting addresses from network interface table...
+Cluster n1_clus1 n1       e0a    10.10.0.1
+Cluster n1_clus2 n1       e0b    10.10.0.2
+Cluster n1_clus3 n1       e0c    10.10.0.3
+Cluster n1_clus4 n1       e0d    10.10.0.4
+Cluster n2_clus1 n2       e0a    10.10.0.5
+Cluster n2_clus2 n2       e0b    10.10.0.6
+Cluster n2_clus3 n2       e0c    10.10.0.7
+Cluster n2_clus4 n2       e0d    10.10.0.8
+
+Local = 10.10.0.1 10.10.0.2 10.10.0.3 10.10.0.4
+Remote = 10.10.0.5 10.10.0.6 10.10.0.7 10.10.0.8
+Cluster Vserver Id = 4294967293
+Ping status:....
+Basic connectivity succeeds on 16 path(s)
+Basic connectivity fails on 0 path(s)
+................
+Detected 1500 byte MTU on 16 path(s):
+    Local 10.10.0.1 to Remote 10.10.0.5
+    Local 10.10.0.1 to Remote 10.10.0.6
+    Local 10.10.0.1 to Remote 10.10.0.7
+    Local 10.10.0.1 to Remote 10.10.0.8
+    Local 10.10.0.2 to Remote 10.10.0.5
+    Local 10.10.0.2 to Remote 10.10.0.6
+    Local 10.10.0.2 to Remote 10.10.0.7
+    Local 10.10.0.2 to Remote 10.10.0.8
+    Local 10.10.0.3 to Remote 10.10.0.5
+    Local 10.10.0.3 to Remote 10.10.0.6
+    Local 10.10.0.3 to Remote 10.10.0.7
+    Local 10.10.0.3 to Remote 10.10.0.8
+    Local 10.10.0.4 to Remote 10.10.0.5
+    Local 10.10.0.4 to Remote 10.10.0.6
+    Local 10.10.0.4 to Remote 10.10.0.7
+    Local 10.10.0.4 to Remote 10.10.0.8
+
+Larger than PMTU communication succeeds on 16 path(s)
+RPC status:
+4 paths up, 0 paths down (tcp check)
+4 paths up, 0 paths down (udp check)
+----
+--
+====
+. [[step12]] 在叢集中的每個節點上，移轉與第一個待替換的 CN1610 交換器 CL1 關聯的介面：
++
+`network interface migrate`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示節點 n1 和 n2 上正在移轉的連接埠或 LIF：
+
+[listing]
+----
+cluster::*> network interface migrate -vserver Cluster -lif n1_clus1 -destination-node n1 -destination-port e0b
+cluster::*> network interface migrate -vserver Cluster -lif n1_clus4 -destination-node n1 -destination-port e0c
+cluster::*> network interface migrate -vserver Cluster -lif n2_clus1 -destination-node n2 -destination-port e0b
+cluster::*> network interface migrate -vserver Cluster -lif n2_clus4 -destination-node n2 -destination-port e0c
+----
+====
+. 驗證叢集狀態：
++
+`network interface show`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示，所需的叢集 LIF 已移轉至叢集交換器 C2 上託管的相應叢集連接埠：
+
+[listing]
+----
+cluster::*> network interface show -role Cluster
+       (network interface show)
+
+         Logical    Status      Network        Current  Current  Is
+Vserver  Interface  Admin/Oper  Address/Mask   Node     Port     Home
+-------- ---------- ----------- -------------- -------- -------- -----
+Cluster
+         n1_clus1   up/up       10.10.0.1/24   n1       e0b      false
+         n1_clus2   up/up       10.10.0.2/24   n1       e0b      true
+         n1_clus3   up/up       10.10.0.3/24   n1       e0c      true
+         n1_clus4   up/up       10.10.0.4/24   n1       e0c      false
+         n2_clus1   up/up       10.10.0.5/24   n2       e0b      false
+         n2_clus2   up/up       10.10.0.6/24   n2       e0b      true
+         n2_clus3   up/up       10.10.0.7/24   n2       e0c      true
+         n2_clus4   up/up       10.10.0.8/24   n2       e0c      false
+
+8 entries were displayed.
+----
+====
+. 關閉所有節點上連接到 CL1 的節點連接埠：
++
+`network port modify`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示如何關閉節點 n1 和 n2 上的指定連接埠：
+
+[listing]
+----
+cluster::*> network port modify -node n1 -port e0a -up-admin false
+cluster::*> network port modify -node n1 -port e0d -up-admin false
+cluster::*> network port modify -node n2 -port e0a -up-admin false
+cluster::*> network port modify -node n2 -port e0d -up-admin false
+----
+====
+. 關閉作用中 3132Q-V 交換器 C2 上的 ISL 連接埠 24、31 和 32：
++
+`shutdown`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示如何關閉作用中 3132Q-V 交換器 C2 上的 ISL 24、31 和 32：
+
+[listing]
+----
+C2# configure
+C2(config)# interface ethernet 1/24/1-4
+C2(config-if-range)# shutdown
+C2(config-if-range)# exit
+C2(config)# interface ethernet 1/31-32
+C2(config-if-range)# shutdown
+C2(config-if-range)# exit
+C2(config)# exit
+C2#
+----
+====
+. 拆下所有節點上連接到 CN1610 交換器 CL1 的電纜。
++
+使用支援的佈線，您必須將所有節點上斷開的連接埠重新連接到 Nexus 3132Q-V 交換器 C1。
+
+. 從 Nexus 3132Q-V C2 連接埠 e1/24 移除 QSFP 纜線。
++
+您必須使用支援的 Cisco QSFP 光纖或直連接線將 C1 上的 e1/31 和 e1/32 連接埠連接到 C2 上的 e1/31 和 e1/32 連接埠。
+
+. 恢復連接埠 24 的組態，並透過將 `running-configuration`檔案複製到 `startup-configuration`檔案來移除 C2 上的臨時連接埠通道 2。
++
+.顯示範例
+[%collapsible]
+====
+以下範例將 `running-configuration`檔案複製到 `startup-configuration`檔案：
+
+[listing]
+----
+C2# configure
+C2(config)# no interface breakout module 1 port 24 map 10g-4x
+C2(config)# no interface port-channel 2
+C2(config-if)# interface e1/24
+C2(config-if)# description 40GbE Node Port
+C2(config-if)# spanning-tree port type edge
+C2(config-if)# spanning-tree bpduguard enable
+C2(config-if)# mtu 9216
+C2(config-if-range)# exit
+C2(config)# exit
+C2# copy running-config startup-config
+[########################################] 100%
+Copy Complete.
+----
+====
+. 啟用 C2 （活躍 3132Q-V 交換器）上的 ISL 連接埠 31 和 32：
++
+`no shutdown`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例展示如何在 3132Q-V 交換器 C2 上啟動 ISL 31 和 32：
+
+[listing]
+----
+
+C2# configure
+C2(config)# interface ethernet 1/31-32
+C2(config-if-range)# no shutdown
+C2(config-if-range)# exit
+C2(config)# exit
+C2# copy running-config startup-config
+[########################################] 100%
+Copy Complete.
+----
+====
+
+
+
+
+[[step-3-verify-the-configuration]]
+=== 步驟 3：驗證配置
+
+. 確認 ISL 連線在 `up` 3132Q-V 交換器 C2 上：
++
+`show port-channel summary`
+
++
+連接埠 Eth1/31 和 Eth1/32 應指示 `(P)`，這表示兩個 ISL 連接埠都 `up`在連接埠通道中。
+
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+
+C1# show port-channel summary
+Flags:  D - Down        P - Up in port-channel (members)
+        I - Individual  H - Hot-standby (LACP only)
+        s - Suspended   r - Module-removed
+        S - Switched    R - Routed
+        U - Up (port-channel)
+        M - Not in use. Min-links not met
+------------------------------------------------------------------------------
+Group Port-       Type     Protocol  Member Ports
+      Channel
+------------------------------------------------------------------------------
+1     Po1(SU)     Eth      LACP      Eth1/31(P)   Eth1/32(P)
+----
+====
+. 在所有節點上啟用連接到新的 3132Q-V 交換器 C1 的所有叢集互連埠：
++
+`network port modify`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例展示如何啟動連接到新的 3132Q-V 交換器 C1 的所有叢集互連埠：
+
+[listing]
+----
+cluster::*> network port modify -node n1 -port e0a -up-admin true
+cluster::*> network port modify -node n1 -port e0d -up-admin true
+cluster::*> network port modify -node n2 -port e0a -up-admin true
+cluster::*> network port modify -node n2 -port e0d -up-admin true
+----
+====
+. 驗證叢集節點連接埠狀態：
++
+`network port show`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例驗證新的 3132Q-V 交換器 C1 上的 n1 和 n2 上的所有叢集互連埠均為 `up`：
+
+[listing]
+----
+cluster::*> network port show -role Cluster
+       (network port show)
+
+Node: n1
+                Broadcast              Speed (Mbps) Health   Ignore
+Port  IPspace   Domain     Link  MTU   Admin/Open   Status   Health Status
+----- --------- ---------- ----- ----- ------------ -------- -------------
+e0a   cluster   cluster    up    9000  auto/10000     -        -
+e0b   cluster   cluster    up    9000  auto/10000     -        -
+e0c   cluster   cluster    up    9000  auto/10000     -        -
+e0d   cluster   cluster    up    9000  auto/10000     -        -
+
+Node: n2
+                Broadcast              Speed (Mbps) Health   Ignore
+Port  IPspace   Domain     Link  MTU   Admin/Open   Status   Health Status
+----- --------- ---------- ----- ----- ------------ -------- -------------
+e0a   cluster   cluster    up    9000  auto/10000     -        -
+e0b   cluster   cluster    up    9000  auto/10000     -        -
+e0c   cluster   cluster    up    9000  auto/10000     -        -
+e0d   cluster   cluster    up    9000  auto/10000     -        -
+
+8 entries were displayed.
+----
+====
+. 回復所有已移轉的叢集互連 LIF，這些 LIF 最初連接到所有節點上的 C1：
++
+`network interface revert`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例展示如何將移轉後的叢集 LIF 回復到其主連接埠：
+
+[listing]
+----
+cluster::*> network interface revert -vserver Cluster -lif n1_clus1
+cluster::*> network interface revert -vserver Cluster -lif n1_clus4
+cluster::*> network interface revert -vserver Cluster -lif n2_clus1
+cluster::*> network interface revert -vserver Cluster -lif n2_clus4
+----
+====
+. 確認介面現在已在主位：
++
+`network interface show`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示 n1 和 n2 的叢集互連介面狀態為 `up`和 `Is home`：
+
+[listing]
+----
+cluster::*> network interface show -role Cluster
+       (network interface show)
+
+         Logical    Status      Network        Current  Current  Is
+Vserver  Interface  Admin/Oper  Address/Mask   Node     Port     Home
+-------- ---------- ----------- -------------- -------- -------- -----
+Cluster
+         n1_clus1   up/up       10.10.0.1/24   n1       e0a      true
+         n1_clus2   up/up       10.10.0.2/24   n1       e0b      true
+         n1_clus3   up/up       10.10.0.3/24   n1       e0c      true
+         n1_clus4   up/up       10.10.0.4/24   n1       e0d      true
+         n2_clus1   up/up       10.10.0.5/24   n2       e0a      true
+         n2_clus2   up/up       10.10.0.6/24   n2       e0b      true
+         n2_clus3   up/up       10.10.0.7/24   n2       e0c      true
+         n2_clus4   up/up       10.10.0.8/24   n2       e0d      true
+
+8 entries were displayed.
+----
+====
+. 驗證遠端集群介面的連接性：
+
+
+[role="tabbed-block"]
+====
+.ONTAP 9.9.1 及更高版本
+--
+你可以使用 `network interface check cluster-connectivity`執行命令以啟動叢集連接性檢查，然後顯示詳細資訊：
+
+`network interface check cluster-connectivity start`和 `network interface check cluster-connectivity show`
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity start*
+----
+*注意：*在執行 show 命令顯示詳細資訊之前，請等待幾秒鐘。
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity show*
+                                  Source      Destination   Packet
+Node   Date                       LIF         LIF           Loss
+------ -------------------------- ---------- -------------- -----------
+n1
+       3/5/2022 19:21:18 -06:00   n1_clus2   n1_clus1       none
+       3/5/2022 19:21:20 -06:00   n1_clus2   n2_clus2       none
+
+n2
+       3/5/2022 19:21:18 -06:00   n2_clus2   n1_clus1       none
+       3/5/2022 19:21:20 -06:00   n2_clus2   n1_clus2       none
+----
+--
+.所有ONTAP版本
+--
+對於所有ONTAP版本，您也可以使用 `cluster ping-cluster -node <name>`檢查連接性的命令：
+
+`cluster ping-cluster -node <name>`
+
+[listing, subs="+quotes"]
+----
+cluster::*> *cluster ping-cluster -node n1*
+Host is n1
+Getting addresses from network interface table...
+Cluster n1_clus1 n1       e0a    10.10.0.1
+Cluster n1_clus2 n1       e0b    10.10.0.2
+Cluster n1_clus3 n1       e0c    10.10.0.3
+Cluster n1_clus4 n1       e0d    10.10.0.4
+Cluster n2_clus1 n2       e0a    10.10.0.5
+Cluster n2_clus2 n2       e0b    10.10.0.6
+Cluster n2_clus3 n2       e0c    10.10.0.7
+Cluster n2_clus4 n2       e0d    10.10.0.8
+
+Local = 10.10.0.1 10.10.0.2 10.10.0.3 10.10.0.4
+Remote = 10.10.0.5 10.10.0.6 10.10.0.7 10.10.0.8
+Cluster Vserver Id = 4294967293
+Ping status:....
+Basic connectivity succeeds on 16 path(s)
+Basic connectivity fails on 0 path(s)
+................
+Detected 1500 byte MTU on 16 path(s):
+    Local 10.10.0.1 to Remote 10.10.0.5
+    Local 10.10.0.1 to Remote 10.10.0.6
+    Local 10.10.0.1 to Remote 10.10.0.7
+    Local 10.10.0.1 to Remote 10.10.0.8
+    Local 10.10.0.2 to Remote 10.10.0.5
+    Local 10.10.0.2 to Remote 10.10.0.6
+    Local 10.10.0.2 to Remote 10.10.0.7
+    Local 10.10.0.2 to Remote 10.10.0.8
+    Local 10.10.0.3 to Remote 10.10.0.5
+    Local 10.10.0.3 to Remote 10.10.0.6
+    Local 10.10.0.3 to Remote 10.10.0.7
+    Local 10.10.0.3 to Remote 10.10.0.8
+    Local 10.10.0.4 to Remote 10.10.0.5
+    Local 10.10.0.4 to Remote 10.10.0.6
+    Local 10.10.0.4 to Remote 10.10.0.7
+    Local 10.10.0.4 to Remote 10.10.0.8
+
+Larger than PMTU communication succeeds on 16 path(s)
+RPC status:
+4 paths up, 0 paths down (tcp check)
+4 paths up, 0 paths down (udp check)
+----
+--
+====
+. [[step7]]透過在 Nexus 3132Q-V 叢集交換器中新增節點來擴展叢集。
+. 顯示組態中設備的資訊：
++
+** `network device-discovery show`
+** `network port show -role cluster`
+** `network interface show -role cluster`
+** `system cluster-switch show`
++
+.顯示範例
+[%collapsible]
+====
+以下範例展示節點 n3 和 n4 分別透過 40 GbE 叢集連接埠連接到兩台 Nexus 3132Q-V 叢集交換器的 e1/7 和 e1/8 連接埠，且這兩個節點均已加入叢集。所使用的 40 GbE 叢集互連連接埠為 e4a 和 e4e。
+
+[listing]
+----
+cluster::*> network device-discovery show
+
+       Local  Discovered
+Node   Port   Device       Interface       Platform
+------ ------ ------------ --------------- -------------
+n1     /cdp
+        e0a   C1           Ethernet1/1/1   N3K-C3132Q-V
+        e0b   C2           Ethernet1/1/1   N3K-C3132Q-V
+        e0c   C2           Ethernet1/1/2   N3K-C3132Q-V
+        e0d   C1           Ethernet1/1/2   N3K-C3132Q-V
+n2     /cdp
+        e0a   C1           Ethernet1/1/3   N3K-C3132Q-V
+        e0b   C2           Ethernet1/1/3   N3K-C3132Q-V
+        e0c   C2           Ethernet1/1/4   N3K-C3132Q-V
+        e0d   C1           Ethernet1/1/4   N3K-C3132Q-V
+n3     /cdp
+        e4a   C1           Ethernet1/7     N3K-C3132Q-V
+        e4e   C2           Ethernet1/7     N3K-C3132Q-V
+n4     /cdp
+        e4a   C1           Ethernet1/8     N3K-C3132Q-V
+        e4e   C2           Ethernet1/8     N3K-C3132Q-V
+
+12 entries were displayed.
+----
+[listing]
+----
+cluster::*> network port show -role cluster
+       (network port show)
+
+Node: n1
+                Broadcast              Speed (Mbps) Health   Ignore
+Port  IPspace   Domain     Link  MTU   Admin/Open   Status   Health Status
+----- --------- ---------- ----- ----- ------------ -------- -------------
+e0a   cluster   cluster    up    9000  auto/10000     -        -
+e0b   cluster   cluster    up    9000  auto/10000     -        -
+e0c   cluster   cluster    up    9000  auto/10000     -        -
+e0d   cluster   cluster    up    9000  auto/10000     -        -
+
+Node: n2
+                Broadcast              Speed (Mbps) Health   Ignore
+Port  IPspace   Domain     Link  MTU   Admin/Open   Status   Health Status
+----- --------- ---------- ----- ----- ------------ -------- -------------
+e0a   cluster   cluster    up    9000  auto/10000     -        -
+e0b   cluster   cluster    up    9000  auto/10000     -        -
+e0c   cluster   cluster    up    9000  auto/10000     -        -
+e0d   cluster   cluster    up    9000  auto/10000     -        -
+
+Node: n3
+                Broadcast              Speed (Mbps) Health   Ignore
+Port  IPspace   Domain     Link  MTU   Admin/Open   Status   Health Status
+----- --------- ---------- ----- ----- ------------ -------- -------------
+e4a   cluster   cluster    up    9000  auto/40000     -        -
+e4e   cluster   cluster    up    9000  auto/40000     -        -
+
+Node: n4
+                Broadcast              Speed (Mbps) Health   Ignore
+Port  IPspace   Domain     Link  MTU   Admin/Open   Status   Health Status
+----- --------- ---------- ----- ----- ------------ -------- -------------
+e4a   cluster   cluster    up    9000  auto/40000     -        -
+e4e   cluster   cluster    up    9000  auto/40000     -        -
+
+12 entries were displayed.
+----
+[listing]
+----
+cluster::*> network interface show -role Cluster
+       (network interface show)
+
+         Logical    Status      Network        Current  Current  Is
+Vserver  Interface  Admin/Oper  Address/Mask   Node     Port     Home
+-------- ---------- ----------- -------------- -------- -------- -----
+Cluster
+         n1_clus1   up/up       10.10.0.1/24   n1       e0a      true
+         n1_clus2   up/up       10.10.0.2/24   n1       e0b      true
+         n1_clus3   up/up       10.10.0.3/24   n1       e0c      true
+         n1_clus4   up/up       10.10.0.4/24   n1       e0d      true
+         n2_clus1   up/up       10.10.0.5/24   n2       e0a      true
+         n2_clus2   up/up       10.10.0.6/24   n2       e0b      true
+         n2_clus3   up/up       10.10.0.7/24   n2       e0c      true
+         n2_clus4   up/up       10.10.0.8/24   n2       e0d      true
+         n3_clus1   up/up       10.10.0.9/24   n3       e4a      true
+         n3_clus2   up/up       10.10.0.10/24  n3       e4e      true
+         n4_clus1   up/up       10.10.0.11/24  n4       e4a      true
+         n4_clus2   up/up       10.10.0.12/24  n4       e4e      true
+
+12 entries were displayed.
+----
+[listing]
+----
+cluster::> system cluster-switch show
+
+Switch                      Type             Address       Model
+--------------------------- ---------------- ------------- ---------
+C1                          cluster-network  10.10.1.103   NX3132V
+     Serial Number: FOX000001
+      Is Monitored: true
+            Reason:
+  Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
+                    7.0(3)I4(1)
+    Version Source: CDP
+
+C2                          cluster-network  10.10.1.104   NX3132V
+     Serial Number: FOX000002
+      Is Monitored: true
+            Reason:
+  Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
+                    7.0(3)I4(1)
+    Version Source: CDP
+
+CL1                         cluster-network  10.10.1.101   CN1610
+     Serial Number: 01234567
+      Is Monitored: true
+            Reason:
+  Software Version: 1.2.0.7
+    Version Source: ISDP
+
+CL2                         cluster-network  10.10.1.102    CN1610
+     Serial Number: 01234568
+      Is Monitored: true
+            Reason:
+  Software Version: 1.2.0.7
+    Version Source: ISDP
+
+4 entries were displayed.
+----
+====
+
+
+. 如果更換後的 CN1610 交換器沒有自動移除，請將其移除：
++
+`system cluster-switch delete`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例展示如何移除 CN1610 交換器：
+
+[listing]
+----
+
+cluster::> system cluster-switch delete -device CL1
+cluster::> system cluster-switch delete -device CL2
+----
+====
+. 將每個節點上的叢集 clus1 和 clus4 設定為 `-auto-revert`，並確認：
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+cluster::*> network interface modify -vserver node1 -lif clus1 -auto-revert true
+cluster::*> network interface modify -vserver node1 -lif clus4 -auto-revert true
+cluster::*> network interface modify -vserver node2 -lif clus1 -auto-revert true
+cluster::*> network interface modify -vserver node2 -lif clus4 -auto-revert true
+----
+====
+. 確認已對正確的叢集交換器進行監控：
++
+`system cluster-switch show`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+cluster::> system cluster-switch show
+
+Switch                      Type               Address          Model
+--------------------------- ------------------ ---------------- ---------------
+C1                          cluster-network    10.10.1.103      NX3132V
+     Serial Number: FOX000001
+      Is Monitored: true
+            Reason:
+  Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
+                    7.0(3)I4(1)
+    Version Source: CDP
+
+C2                          cluster-network    10.10.1.104      NX3132V
+     Serial Number: FOX000002
+      Is Monitored: true
+            Reason:
+  Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
+                    7.0(3)I4(1)
+    Version Source: CDP
+
+2 entries were displayed.
+----
+====
+. [[step43_replacecn1610]]如果您已停用自動建立案例，請透過呼叫一則 AutoSupport 訊息重新啟用它：
++
+`system node autosupport invoke -node * -type all -message MAINT=END`
+
+
+
+.下一步是什麼？
+link:../switch-cshm/config-overview.html["配置交換器健康監控"]。

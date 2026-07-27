@@ -1,0 +1,499 @@
+---
+permalink: switch-netapp-cn1610/replace-cn1610-switch.html 
+sidebar: sidebar 
+keywords: replace, netapp cn1610, cluster switch 
+summary: 您可以按照特定步驟，在不中斷業務的情況下更換有缺陷的 NetApp CN1610 叢集交換器。 
+---
+= 更換 NetApp CN1610 叢集交換器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+請依照下列步驟更換叢集網路中發生故障的 NetApp CN1610 交換器。這是一個非中斷性操作 （NDU）。
+
+
+
+[[review-requirements]]
+== 審查要求
+
+.開始之前
+在執行交換器更換之前，目前環境和替換交換器上的現有叢集和網路基礎架構必須符合下列條件：
+
+* 必須驗證現有叢集是否完全正常運作，且至少有一個完全連接的叢集交換器。
+* 叢集中的所有連接埠必須處於啟用狀態。
+* 叢集中的所有邏輯介面（LIF）必須處於啟用狀態，且不得已被移轉。
+* ONTAP 叢集 `ping-cluster -node node1`命令必須表示所有路徑上的基本連線和大於 PMTU 的通訊均已成功。
+
+
+
+
+[[enable-console-logging]]
+== 啟用控制台日誌記錄
+
+NetApp強烈建議您在使用的裝置上啟用控制台日誌記錄，並在更換交換器時執行以下操作：
+
+* 維護期間請保持AutoSupport功能啟用。
+* 在維護前後觸發維護 AutoSupport，以在維護期間停用案例建立功能。如需更多詳細資料，請參閱此知識庫文章 link:https://kb.netapp.com/Support_Bulletins/Customer_Bulletins/SU92["SU92：如何在計劃維護視窗期間抑制自動建立案例"^]。
+* 啟用所有 CLI 會話​​的會話日誌記錄。有關如何啟用會話日誌記錄的說明，請查看此知識庫文章中的「記錄會話輸出」部分。link:https://kb.netapp.com/on-prem/ontap/Ontap_OS/OS-KBs/How_to_configure_PuTTY_for_optimal_connectivity_to_ONTAP_systems["如何配置 PuTTY 以獲得與ONTAP系統的最佳連接"^] 。
+
+
+
+
+[[replace-the-switch]]
+== 更換開關
+
+.關於此任務
+您必須從叢集 LIF 所在的節點執行遷移叢集 LIF 的命令。
+
+本流程中的範例使用下列叢集交換器和節點命名規則：
+
+* 兩個 CN1610 叢集交換器的名稱分別是 `cs1`和 `cs2`。
+* 待更換的 CN1610 交換器（故障交換器）的名稱是 `old_cs1`。
+* 新的 CN1610 交換器（替代交換器）的名稱是 `new_cs1`。
+* 未被替換的合作夥伴交換器的名稱是 `cs2`。
+
+
+.步驟
+. 確認啟動組態檔案與執行中組態檔案相符。您必須將這些檔案儲存至本機，以便在更換過程中使用。
++
+以下範例中的組態命令適用於 FASTPATH 1.2.0.7：
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(old_cs1)> *enable*
+(old_cs1)# *show running-config*
+(old_cs1)# *show startup-config*
+----
+====
+. 建立執行中組態檔案的複本。
++
+以下範例中的命令適用於 FASTPATH 1.2.0.7：
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(old_cs1)# *show running-config filename.scr*
+Config script created successfully.
+----
+====
+
+
+
+NOTE: 您可以使用任何檔案名稱，但 `CN1610_CS_RCF_v1.2.scr`除外。檔案名稱必須帶有 *.scr* 副檔名。
+
+. [[step3]]將交換器的執行中組態檔案儲存到外部主機，以便進行更換。
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(old_cs1)# *copy nvram:script filename.scr scp://<Username>@<remote_IP_address>/path_to_file/filename.scr*
+----
+====
+. 請核對交換器和 ONTAP 版本是否在相容性清單中匹配。詳情請參閱 link:https://mysupport.netapp.com/site/info/netapp-cluster-switch["NetApp CN1601 和 CN1610 交換器"^]。
+. 從 link:https://mysupport.netapp.com/site/products/all/details/netapp-cluster-switches/downloads-tab["軟體下載頁面"^] 上的 NetApp 支援網站，選取 NetApp Cluster Switches 以下載相應的 RCF 和 FASTPATH 版本。
+. 使用 FASTPATH、RCF 和已儲存的組態 `.scr`檔案設定簡單檔案傳輸協定 (TFTP) 伺服器，以便與新交換器一起使用。
+. 將序列埠（交換器右側標示為「IOIOI」的 RJ-45 連接器）連接至具有終端模擬功能的可用主機。
+. 在主機上，設定串列終端機連線設定：
++
+.. 9600 baud
+.. 8 位元數據
+.. 1 停止位
+.. 奇偶性：無
+.. 流量控制：無
+
+
+. 將管理連接埠（交換器左側的 RJ-45 扳手連接埠）連接到 TFTP 伺服器所在的相同網路。
+. 準備透過 TFTP 伺服器連線至網路。
++
+如果您使用的是動態主機設定協定 (DHCP)，目前無需為交換器設定 IP 位址。服務連接埠預設為使用 DHCP。網路管理連接埠的 IPv4 和 IPv6 協定設定均設定為「無」。如果您的扳手連接埠連接到具有 DHCP 伺服器的網路，則伺服器設定將自動完成組態設定。
+
++
+要設定靜態 IP 位址，您應該使用 serviceport protocol、network protocol 和 serviceport ip 命令。
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(new_cs1)# *serviceport ip <ipaddr> <netmask> <gateway>*
+----
+====
+. 如果 TFTP 伺服器位於筆記型電腦上，則可以選擇使用標準乙太網路線將 CN1610 交換器連接到筆記型電腦，然後使用備用 IP 位址設定其在相同網路中的網路連接埠。
++
+您可以使用該 `ping`命令驗證位址。如果無法建立連線，則應使用非路由網路，並將服務連接埠設定為 IP 位址 192.168.x 或 172.16.x。您可以稍後將服務連接埠重新設定為正式作業管理 IP 位址。
+
+. （選用）驗證並安裝適用於新交換器的 RCF 和 FASTPATH 軟體的相應版本。如果您已驗證新交換器設定正確且無需更新 RCF 和 FASTPATH 軟體，則應跳至步驟 13。
++
+.. 驗證新的交換器設定。
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(new_cs1)> *enable*
+(new_cs1)# *show version*
+----
+====
+.. 將 RCF 下載到新交換器。
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(new_cs1)# *copy tftp://<server_ip_address>/CN1610_CS_RCF_v1.2.txt nvram:script CN1610_CS_RCF_v1.2.scr*
+Mode.	TFTP
+Set Server IP.	172.22.201.50
+Path.	/
+Filename....................................... CN1610_CS_RCF_v1.2.txt
+Data Type...................................... Config Script
+Destination Filename........................... CN1610_CS_RCF_v1.2.scr
+File with same name already exists.
+WARNING:Continuing with this command will overwrite the existing file.
+
+Management access will be blocked for the duration of the transfer Are you sure you want to start? (y/n) y
+
+File transfer in progress. Management access will be blocked for the duration of the transfer. please wait...
+Validating configuration script...
+(the entire script is displayed line by line)
+...
+description "NetApp CN1610 Cluster Switch RCF v1.2 - 2015-01-13"
+...
+Configuration script validated.
+File transfer operation completed successfully.
+----
+====
+.. 確認 RCF 已下載到交換器。
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(new_cs1)# *script list*
+Configuration Script Nam   Size(Bytes)
+-------------------------- -----------
+CN1610_CS_RCF_v1.1.scr            2191
+CN1610_CS_RCF_v1.2.scr            2240
+latest_config.scr                 2356
+
+4 configuration script(s) found.
+2039 Kbytes free.
+----
+====
+
+
+. 將 RCF 套用至 CN1610 交換器。
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(new_cs1)# *script apply CN1610_CS_RCF_v1.2.scr*
+Are you sure you want to apply the configuration script? (y/n) *y*
+...
+(the entire script is displayed line by line)
+...
+description "NetApp CN1610 Cluster Switch RCF v1.2 - 2015-01-13"
+...
+Configuration script 'CN1610_CS_RCF_v1.2.scr' applied. Note that the script output will go to the console.
+After the script is applied, those settings will be active in the running-config file. To save them to the startup-config file, you must use the write memory command, or if you used the reload answer yes when asked if you want to save the changes.
+----
+====
++
+.. 儲存運作組態檔案，以便交換器重新開機時將其設為啟動組態檔案。
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(new_cs1)# *write memory*
+This operation may take a few minutes.
+Management interfaces will not be available during this time.
+
+Are you sure you want to save? (y/n) *y*
+
+Config file 'startup-config' created successfully.
+
+Configuration Saved!
+----
+====
+.. 將映像下載到 CN1610 交換器。
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(new_cs1)# *copy tftp://<server_ip_address>/NetApp_CN1610_1.2.0.7.stk active*
+Mode.	TFTP
+Set Server IP.	tftp_server_ip_address
+Path.	/
+Filename....................................... NetApp_CN1610_1.2.0.7.stk
+Data Type.	Code
+Destination Filename.	active
+
+Management access will be blocked for the duration of the transfer
+
+Are you sure you want to start? (y/n) *y*
+
+TFTP Code transfer starting...
+
+File transfer operation completed successfully.
+----
+====
+.. 透過重新開機交換器來執行新的作用中開機映像。
++
+必須重新開機交換器，步驟 6 中的命令才能使新映像生效。輸入 reload 命令後，您可能會看到兩種不同的回應視圖。
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(new_cs1)# *reload*
+The system has unsaved changes.
+Would you like to save them now? (y/n) *y*
+
+Config file 'startup-config' created successfully.
+
+Configuration Saved! System will now restart!
+.
+.
+.
+Cluster Interconnect Infrastructure
+
+User:admin Password: (new_cs1) >*enable*
+----
+====
+.. 將舊交換器上儲存的組態檔案複製到新交換器上。
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(new_cs1)# *copy tftp://<server_ip_address>/<filename>.scr nvram:script <filename>.scr*
+----
+====
+.. 將先前儲存的組態套用到新交換器。
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(new_cs1)# *script apply <filename>.scr*
+Are you sure you want to apply the configuration script? (y/n) *y*
+
+The system has unsaved changes.
+Would you like to save them now? (y/n) *y*
+
+Config file 'startup-config' created successfully.
+
+Configuration Saved!
+----
+====
+.. 將執行中的組態檔案儲存至啟動組態檔案。
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(new_cs1)# *write memory*
+----
+====
+
+
+. 如果此叢集已啟用 AutoSupport，請透過叫用 AutoSupport 訊息來抑制自動建立案例：
+`system node autosupport invoke -node * -type all - message MAINT=xh`
++
+_x_ 是維護視窗的持續時間，單位為小時。
+
++
+[NOTE]
+====
+AutoSupport訊息會通知技術支援此維護任務，以便在維護視窗期間抑制自動建立案例。
+
+====
+. 在新交換器 new_cs1 上，以 admin 使用者身分登入，並關閉所有連接到節點叢集介面的連接埠（連接埠 1 到 12）。
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+User:*admin*
+Password:
+(new_cs1)> *enable*
+(new_cs1)#
+(new_cs1)# *config*
+(new_cs1)(config)# *interface 0/1-0/12*
+(new_cs1)(interface 0/1-0/12)# *shutdown*
+(new_cs1)(interface 0/1-0/12)# *exit*
+(new_cs1)# *write memory*
+----
+====
+. 將叢集 LIF 從連接到 old_cs1 交換器的連接埠移轉。
++
+您必須從目前節點的管理介面移轉每個叢集 LIF。
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster::> *set -privilege advanced*
+cluster::> *network interface migrate -vserver <vserver_name> -lif <Cluster_LIF_to_be_moved> - sourcenode <current_node> -dest-node <current_node> -dest-port <cluster_port_that_is_UP>*
+----
+====
+. 確認所有叢集 LIF 都已移動到每個節點上的對應叢集連接埠。
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster::> *network interface show -role cluster*
+----
+====
+. 關閉連接至您所更換之交換器的叢集連接埠。
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster::*> *network port modify -node <node_name> -port <port_to_admin_down> -up-admin false*
+----
+====
+. 驗證叢集的健全狀況。
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster::*> *cluster show*
+----
+====
+. 請確認連接埠已關閉。
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster::*> *cluster ping-cluster -node <node_name>*
+----
+====
+. 在交換器 cs2 上，關閉 ISL 連接埠 13 至 16。
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(cs2)# *config*
+(cs2)(config)# *interface 0/13-0/16*
+(cs2)(interface 0/13-0/16)# *shutdown*
+(cs2)# *show port-channel 3/1*
+----
+====
+. 確認儲存管理員是否已準備好更換交換器。
+. 從 old_cs1 交換器上拔除所有纜線，然後將纜線連接到 new_cs1 交換器上的相同連接埠。
+. 在 cs2 交換器上，啟用 ISL 連接埠 13 至 16。
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(cs2)# *config*
+(cs2)(config)# *interface 0/13-0/16*
+(cs2)(interface 0/13-0/16)# *no shutdown*
+----
+====
+. 啟用新交換器上與叢集節點關聯的連接埠。
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(new_cs1)# *config*
+(new_cs1)(config)# *interface 0/1-0/12*
+(new_cs1)(interface 0/13-0/16)# *no shutdown*
+----
+====
+. 在單一節點上，啟動連接至已更換交換器的叢集節點連接埠，然後確認連結已建立。
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster::*> *network port modify -node node1 -port <port_to_be_onlined> -up-admin true*
+cluster::*> *network port show -role cluster*
+----
+====
+. 將與步驟 25 中連接埠關聯的叢集 LIF 還原至相同節點。
++
+在本例中，如果「Is Home」欄為 true，則 node1 上的 LIF 將會成功回復。
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster::*> *network interface revert -vserver node1 -lif <cluster_lif_to_be_reverted>*
+cluster::*> *network interface show -role cluster*
+----
+====
+. 如果第一個節點的叢集 LIF 已啟動並回復到其主連接埠，請重複步驟 25 和 26，以啟動叢集連接埠並回復叢集中其他節點的叢集 LIF。
+. 顯示叢集中節點的相關資訊。
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster::*> *cluster show*
+----
+====
+. 確認更換後的交換器上的啟動組態檔案和運作組態檔案是否正確。此組態檔案應與步驟 1 中的輸出一致。
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(new_cs1)> *enable*
+(new_cs1)# *show running-config*
+(new_cs1)# *show startup-config*
+----
+====
+. 如果您已停用自動建立案例功能，請透過呼叫AutoSupport訊息重新啟用該功能：
++
+`system node autosupport invoke -node * -type all -message MAINT=END`
+
+

@@ -1,0 +1,30 @@
+---
+permalink: switch-cisco-92300/install-hardware-workflow.html 
+sidebar: sidebar 
+keywords: switches, initial installation, configure switch-cisco-92300yc switch 
+summary: 在設定 Cisco Nexus 92300YC 叢集交換器之前，請先審查組態總覽。 
+---
+= Cisco Nexus 92300YC 交換器的硬體安裝工作流程
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+若要安裝和設定 92300YC 叢集交換器的硬體，請依照下列步驟操作：
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一"]link:setup-worksheet-92300yc.html["完成佈線工作表"]
+[role="quick-margin-para"]
+範例佈線工作表提供了從交換器到控制器的建議連接埠分配範例。空白工作表提供了一個模板，您可以在設定叢集時使用該模板。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["二"]link:install-switch-92300yc.html["安裝開關"]
+[role="quick-margin-para"]
+安裝 92300YC 交換器。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三"]link:install-switch-netapp-cabinet-92300yc.html["將交換器安裝在NetApp機櫃中"]
+[role="quick-margin-para"]
+根據需要，將 92300YC 交換器和直通面板安裝到 NetApp 機櫃中。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["四"]link:cabling-considerations-92300.html["檢查佈線和配置"]
+[role="quick-margin-para"]
+審查 NVIDIA 乙太網路連接埠的支援。

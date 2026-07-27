@@ -1,0 +1,1105 @@
+---
+permalink: switch-netapp-cn1610/migrate-switched-netapp-cn1610.html 
+sidebar: sidebar 
+keywords: migrate, switchless cluster environment, switched netapp cn1610 
+summary: 如果您已有雙節點無交換器式叢集環境，則可以使用 CN1610 叢集網路交換器移轉至雙節點有交換器叢集環境，從而實現兩個節點以上的擴充。 
+---
+= 從無交換器式叢集環境移轉至有交換器的 NetApp CN1610 叢集環境
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果您已有雙節點無交換器式叢集環境，則可以使用 CN1610 叢集網路交換器移轉至雙節點有交換器叢集環境，從而實現兩個節點以上的擴充。
+
+
+
+[[review-requirements]]
+== 審查要求
+
+.開始之前
+請確保您擁有以下物品：
+
+對於雙節點無交換器組態，請確保：
+
+* 雙節點無交換器配置已正確設定並運作正常。
+* 節點執行的是 ONTAP 8.2 或更新版本。
+* 所有叢集連接埠均處於 `up`狀態。
+* 所有叢集邏輯介面（LIF）均處於 `up`狀態，並位於其主連接埠上。
+
+
+CN1610 叢集交換器組態：
+
+* CN1610 叢集交換器基礎架構在兩台交換器上均完全正常運作。
+* 兩台交換器都具備管理網路連線功能。
+* 可以透過控制台存取叢集交換器。
+* CN1610 節點對節點交換器和交換器對交換器的連接使用雙軸或光纖電纜。
++
+link:https://hwu.netapp.com/["Hardware Universe"^] 包含更多關於佈線的資訊。
+
+* 交換器間連結 (ISL) 纜線連接到兩台 CN1610 交換器的 13 至 16 號連接埠。
+* CN1610 交換器的初始自訂已完成。
++
+之前站點的所有自訂，例如 SMTP、SNMP 和 SSH，都應複製到新的交換器。
+
+
+
+.相關資訊
+* link:http://hwu.netapp.com["Hardware Universe"^]
+* link:https://mysupport.netapp.com/site/products/all/details/netapp-cluster-switches/docs-tab["NetApp CN1601 和 CN1610"]
+* link:https://library.netapp.com/ecm/ecm_download_file/ECMP1118645["CN1601 和 CN1610 交換器設定與組態"^]
+* link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/How_to_suppress_automatic_case_creation_during_scheduled_maintenance_windows["NetApp知識庫文章 1010449：如何在計畫維護窗口期間禁止自動建立案例"^]
+
+
+
+
+[[migrate-the-switches]]
+== 遷移交換機
+
+.關於範例
+本流程中的範例使用下列叢集交換器和節點命名規則：
+
+* CN1610 交換器的名稱是 cs1 和 cs2。
+* LIF 的名稱是 clus1 和 clus2。
+* 節點的名稱分別為 node1 和 node2。
+* The `cluster::*>` 提示訊息會顯示群集名稱。
+* 此程序中使用的叢集連接埠為 e1a 和 e2a。
++
+link:https://hwu.netapp.com/["Hardware Universe"^]包含有關您平台實際叢集連接埠的最新資訊。
+
+
+
+
+
+[[step-1-prepare-for-migration]]
+=== 步驟 1：準備遷移
+
+. 將權限級別變更為高級，輸入 `y`當系統提示繼續：
++
+`set -privilege advanced`
+
++
+出現高階提示符號（*>）。
+
+. 如果此叢集上啟用了AutoSupport ，則透過呼叫AutoSupport訊息來抑制自動建立案例：
++
+`system node autosupport invoke -node * -type all -message MAINT=xh`
+
++
+_x_ 是維護視窗的持續時間，單位為小時。
+
++
+
+NOTE: AutoSupport訊息會通知技術支援此維護任務，以便在維護視窗期間抑制自動建立案例。
+
++
+.顯示範例
+[%collapsible]
+====
+以下命令可抑制自動建立案件兩小時：
+
+[listing]
+----
+cluster::*> system node autosupport invoke -node * -type all -message MAINT=2h
+----
+====
+
+
+
+
+[[step-2-configure-ports]]
+=== 步驟 2：設定埠
+
+. 停用新叢集交換器 cs1 和 cs2 上所有面向節點的連接埠（非 ISL 連接埠）。
++
+您不得禁用 ISL 連接埠。
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示交換器 cs1 上面向節點的連接埠 1 到 12 已停用：
+
+[listing]
+----
+
+(cs1)> enable
+(cs1)# configure
+(cs1)(Config)# interface 0/1-0/12
+(cs1)(Interface 0/1-0/12)# shutdown
+(cs1)(Interface 0/1-0/12)# exit
+(cs1)(Config)# exit
+----
+以下範例顯示交換器 cs2 上面向節點的連接埠 1 到 12 已停用：
+
+[listing]
+----
+
+(c2)> enable
+(cs2)# configure
+(cs2)(Config)# interface 0/1-0/12
+(cs2)(Interface 0/1-0/12)# shutdown
+(cs2)(Interface 0/1-0/12)# exit
+(cs2)(Config)# exit
+----
+====
+. 確認兩台 CN1610 叢集交換器 cs1 和 cs2 之間的 ISL 以及 ISL 上的實體連接埠是否 `up`：
++
+`show port-channel`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例表示 ISL 連接埠位於 `up`交換器 cs1 上：
+
+[listing]
+----
+
+(cs1)# show port-channel 3/1
+Local Interface................................ 3/1
+Channel Name................................... ISL-LAG
+Link State..................................... Up
+Admin Mode..................................... Enabled
+Type........................................... Static
+Load Balance Option............................ 7
+(Enhanced hashing mode)
+
+Mbr    Device/       Port      Port
+Ports  Timeout       Speed     Active
+------ ------------- --------- -------
+0/13   actor/long    10G Full  True
+       partner/long
+0/14   actor/long    10G Full  True
+       partner/long
+0/15   actor/long    10G Full  True
+       partner/long
+0/16   actor/long    10G Full  True
+       partner/long
+----
+以下範例表示 ISL 連接埠位於 `up`交換器 cs2 上：
+
+[listing]
+----
+
+(cs2)# show port-channel 3/1
+Local Interface................................ 3/1
+Channel Name................................... ISL-LAG
+Link State..................................... Up
+Admin Mode..................................... Enabled
+Type........................................... Static
+Load Balance Option............................ 7
+(Enhanced hashing mode)
+
+Mbr    Device/       Port      Port
+Ports  Timeout       Speed     Active
+------ ------------- --------- -------
+0/13   actor/long    10G Full  True
+       partner/long
+0/14   actor/long    10G Full  True
+       partner/long
+0/15   actor/long    10G Full  True
+       partner/long
+0/16   actor/long    10G Full  True
+       partner/long
+----
+====
+. 顯示相鄰設備清單：
++
+`show isdp neighbors`
+
++
+此命令提供有關連接到系統的設備的資訊。
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例列出了交換器 cs1 上的相鄰設備：
+
+[listing]
+----
+
+(cs1)# show isdp neighbors
+Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge,
+                  S - Switch, H - Host, I - IGMP, r - Repeater
+Device ID              Intf         Holdtime  Capability   Platform  Port ID
+---------------------- ------------ --------- ------------ --------- ------------
+cs2                    0/13         11        S            CN1610    0/13
+cs2                    0/14         11        S            CN1610    0/14
+cs2                    0/15         11        S            CN1610    0/15
+cs2                    0/16         11        S            CN1610    0/16
+----
+以下範例列出了交換器 cs2 上的相鄰設備：
+
+[listing]
+----
+
+(cs2)# show isdp neighbors
+Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge,
+                  S - Switch, H - Host, I - IGMP, r - Repeater
+Device ID              Intf         Holdtime  Capability   Platform  Port ID
+---------------------- ------------ --------- ------------ --------- ------------
+cs1                    0/13         11        S            CN1610    0/13
+cs1                    0/14         11        S            CN1610    0/14
+cs1                    0/15         11        S            CN1610    0/15
+cs1                    0/16         11        S            CN1610    0/16
+----
+====
+. 顯示叢集連接埠清單：
++
+`network port show`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示了可用的叢集連接埠：
+
+[listing]
+----
+
+cluster::*> network port show -ipspace Cluster
+Node: node1
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
+e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
+e0c       Cluster      Cluster          up   9000  auto/10000 healthy  false
+e0d       Cluster      Cluster          up   9000  auto/10000 healthy  false
+e4a       Cluster      Cluster          up   9000  auto/10000 healthy  false
+e4b       Cluster      Cluster          up   9000  auto/10000 healthy  false
+
+Node: node2
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
+e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
+e0c       Cluster      Cluster          up   9000  auto/10000 healthy  false
+e0d       Cluster      Cluster          up   9000  auto/10000 healthy  false
+e4a       Cluster      Cluster          up   9000  auto/10000 healthy  false
+e4b       Cluster      Cluster          up   9000  auto/10000 healthy  false
+12 entries were displayed.
+----
+====
+. 確認每個叢集連接埠都已連接到其合作夥伴叢集節點上的對應連接埠：
++
+`run * cdpd show-neighbors`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例表示叢集連接埠 e1a 和 e2a 連接到其叢集合作夥伴節點上的相同連接埠：
+
+[listing]
+----
+
+cluster::*> run * cdpd show-neighbors
+2 entries were acted on.
+
+Node: node1
+Local  Remote          Remote                 Remote           Hold  Remote
+Port   Device          Interface              Platform         Time  Capability
+------ --------------- ---------------------- ---------------- ----- ----------
+e1a    node2           e1a                    FAS3270           137   H
+e2a    node2           e2a                    FAS3270           137   H
+
+
+Node: node2
+
+Local  Remote          Remote                 Remote           Hold  Remote
+Port   Device          Interface              Platform         Time  Capability
+------ --------------- ---------------------- ---------------- ----- ----------
+e1a    node1           e1a                    FAS3270           161   H
+e2a    node1           e2a                    FAS3270           161   H
+----
+====
+. 確認所有叢集 LIF 均已存在 `up`且運作正常：
++
+`network interface show -vserver Cluster`
+
++
+每個叢集 LIF 都應在「`Is Home`」欄中顯示 `true`。
+
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+
+cluster::*> network interface show -vserver Cluster
+            Logical    Status     Network       Current       Current Is
+Vserver     Interface  Admin/Oper Address/Mask  Node          Port    Home
+----------- ---------- ---------- ------------- ------------- ------- ----
+node1
+            clus1      up/up      10.10.10.1/16 node1         e1a     true
+            clus2      up/up      10.10.10.2/16 node1         e2a     true
+node2
+            clus1      up/up      10.10.11.1/16 node2         e1a     true
+            clus2      up/up      10.10.11.2/16 node2         e2a     true
+
+4 entries were displayed.
+----
+====
++
+
+NOTE: 步驟 10 到 13 中的以下修改和移轉命令必須從本機節點執行。
+
+. 確認所有叢集連接埠均 `up`：
++
+`network port show -ipspace Cluster`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+cluster::*> network port show -ipspace Cluster
+
+                                       Auto-Negot  Duplex     Speed (Mbps)
+Node   Port   Role         Link  MTU   Admin/Oper  Admin/Oper Admin/Oper
+------ ------ ------------ ----- ----- ----------- ---------- ------------
+node1
+       e1a    clus1        up    9000  true/true  full/full   auto/10000
+       e2a    clus2        up    9000  true/true  full/full   auto/10000
+node2
+       e1a    clus1        up    9000  true/true  full/full   auto/10000
+       e2a    clus2        up    9000  true/true  full/full   auto/10000
+
+4 entries were displayed.
+----
+====
+. 在兩個節點上，對叢集 LIF clus1 和 clus2 將 `-auto-revert`參數設定為 `false`：
++
+`network interface modify`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+
+cluster::*> network interface modify -vserver node1 -lif clus1 -auto-revert false
+cluster::*> network interface modify -vserver node1 -lif clus2 -auto-revert false
+cluster::*> network interface modify -vserver node2 -lif clus1 -auto-revert false
+cluster::*> network interface modify -vserver node2 -lif clus2 -auto-revert false
+----
+====
++
+
+NOTE: 對於 8.3 及更高版本，請使用以下命令： `network interface modify -vserver Cluster -lif * -auto-revert false`
+
+. 驗證遠端集群介面的連接性：
+
+
+[role="tabbed-block"]
+====
+.ONTAP 9.9.1 及更高版本
+--
+你可以使用 `network interface check cluster-connectivity`執行命令以啟動叢集連接性檢查，然後顯示詳細資訊：
+
+`network interface check cluster-connectivity start`和 `network interface check cluster-connectivity show`
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity start*
+----
+*注意：*運行程式前請等待幾秒鐘 `show`顯示詳細資訊的命令。
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity show*
+                                  Source           Destination      Packet
+Node   Date                       LIF              LIF              Loss
+------ -------------------------- ---------------- ---------------- -----------
+node1
+       3/5/2022 19:21:18 -06:00   node1_clus2      node2-clus1      none
+       3/5/2022 19:21:20 -06:00   node1_clus2      node2_clus2      none
+node2
+       3/5/2022 19:21:18 -06:00   node2_clus2      node1_clus1      none
+       3/5/2022 19:21:20 -06:00   node2_clus2      node1_clus2      none
+----
+--
+.所有ONTAP版本
+--
+對於所有ONTAP版本，您也可以使用 `cluster ping-cluster -node <name>`檢查連接性的命令：
+
+`cluster ping-cluster -node <name>`
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *cluster ping-cluster -node local*
+Host is node2
+Getting addresses from network interface table...
+Cluster node1_clus1 169.254.209.69 node1 e0a
+Cluster node1_clus2 169.254.49.125 node1 e0b
+Cluster node2_clus1 169.254.47.194 node2 e0a
+Cluster node2_clus2 169.254.19.183 node2 e0b
+Local = 169.254.47.194 169.254.19.183
+Remote = 169.254.209.69 169.254.49.125
+Cluster Vserver Id = 4294967293
+Ping status:
+....
+Basic connectivity succeeds on 4 path(s)
+Basic connectivity fails on 0 path(s)
+................
+Detected 9000 byte MTU on 4 path(s):
+Local 169.254.47.194 to Remote 169.254.209.69
+Local 169.254.47.194 to Remote 169.254.49.125
+Local 169.254.19.183 to Remote 169.254.209.69
+Local 169.254.19.183 to Remote 169.254.49.125
+Larger than PMTU communication succeeds on 4 path(s)
+RPC status:
+2 paths up, 0 paths down (tcp check)
+2 paths up, 0 paths down (udp check)
+----
+--
+====
+. [[step10]] 將 clus1 移轉至每個節點主控台上的連接埠 e2a：
++
+`network interface migrate`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例展示了將 clus1 移轉至 node1 和 node2 上的 e2a 連接埠的過程：
+
+[listing]
+----
+
+cluster::*> network interface migrate -vserver node1 -lif clus1 -source-node node1 -dest-node node1 -dest-port e2a
+cluster::*> network interface migrate -vserver node2 -lif clus1 -source-node node2 -dest-node node2 -dest-port e2a
+----
+====
++
+
+NOTE: 對於 8.3 及更高版本，請使用以下命令： `network interface migrate -vserver Cluster -lif clus1 -destination-node node1 -destination-port e2a`
+
+. 確認移轉已完成：
++
+`network interface show -vserver Cluster`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例驗證 clus1 已移轉至 node1 和 node2 上的連接埠 e2a：
+
+[listing]
+----
+
+cluster::*> network interface show -vserver Cluster
+            Logical    Status     Network       Current       Current Is
+Vserver     Interface  Admin/Oper Address/Mask  Node          Port    Home
+----------- ---------- ---------- ------------- ------------- ------- ----
+node1
+            clus1      up/up    10.10.10.1/16   node1         e2a     false
+            clus2      up/up    10.10.10.2/16   node1         e2a     true
+node2
+            clus1      up/up    10.10.11.1/16   node2         e2a     false
+            clus2      up/up    10.10.11.2/16   node2         e2a     true
+
+4 entries were displayed.
+----
+====
+. 關閉兩個節點上的叢集連接埠 e1a：
++
+`network port modify`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示如何關閉 node1 和 node2 上的連接埠 e1a：
+
+[listing]
+----
+
+cluster::*> network port modify -node node1 -port e1a -up-admin false
+cluster::*> network port modify -node node2 -port e1a -up-admin false
+----
+====
+. 請檢查連接埠狀態：
++
+`network port show`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示連接埠 e1a 位於 `down` node1 和 node2 上：
+
+[listing]
+----
+
+cluster::*> network port show -role cluster
+                                      Auto-Negot  Duplex     Speed (Mbps)
+Node   Port   Role         Link   MTU Admin/Oper  Admin/Oper Admin/Oper
+------ ------ ------------ ---- ----- ----------- ---------- ------------
+node1
+       e1a    clus1        down  9000  true/true  full/full   auto/10000
+       e2a    clus2        up    9000  true/true  full/full   auto/10000
+node2
+       e1a    clus1        down  9000  true/true  full/full   auto/10000
+       e2a    clus2        up    9000  true/true  full/full   auto/10000
+
+4 entries were displayed.
+----
+====
+. 拔除 node1 上叢集連接埠 e1a 的纜線，然後使用 CN1610 交換器支援的適當纜線，將 e1a 連接至叢集交換器 cs1 上的連接埠 1。
++
+link:https://hwu.netapp.com/Switch/Index["Hardware Universe"^] 包含更多關於佈線的資訊。
+
+. 拔除 node2 上叢集連接埠 e1a 的纜線，然後使用 CN1610 交換器支援的適當纜線，將 e1a 連接至叢集交換器 cs1 上的連接埠 2。
+. 啟用叢集交換器 cs1 上所有面向節點的連接埠。
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示交換器 cs1 上的連接埠 1 到 12 已啟用：
+
+[listing]
+----
+
+(cs1)# configure
+(cs1)(Config)# interface 0/1-0/12
+(cs1)(Interface 0/1-0/12)# no shutdown
+(cs1)(Interface 0/1-0/12)# exit
+(cs1)(Config)# exit
+----
+====
+. 在每個節點上啟用第一個叢集連接埠 e1a：
++
+`network port modify`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例展示如何在節點 1 和節點 2 上啟用連接埠 e1a：
+
+[listing]
+----
+
+cluster::*> network port modify -node node1 -port e1a -up-admin true
+cluster::*> network port modify -node node2 -port e1a -up-admin true
+----
+====
+. 確認所有叢集連接埠均為 `up`：
++
+`network port show -ipspace Cluster`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示，node1 和 node2 上的所有叢集連接埠均 `up`：
+
+[listing]
+----
+
+cluster::*> network port show -ipspace Cluster
+                                      Auto-Negot  Duplex     Speed (Mbps)
+Node   Port   Role         Link   MTU Admin/Oper  Admin/Oper Admin/Oper
+------ ------ ------------ ---- ----- ----------- ---------- ------------
+node1
+       e1a    clus1        up    9000  true/true  full/full   auto/10000
+       e2a    clus2        up    9000  true/true  full/full   auto/10000
+node2
+       e1a    clus1        up    9000  true/true  full/full   auto/10000
+       e2a    clus2        up    9000  true/true  full/full   auto/10000
+
+4 entries were displayed.
+----
+====
+. 將兩個節點上的 clus1（之前已移轉）回復為 e1a：
++
+`network interface revert`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例展示如何將 node1 和 node2 上的 clus1 回復到連接埠 e1a：
+
+[listing]
+----
+
+cluster::*> network interface revert -vserver node1 -lif clus1
+cluster::*> network interface revert -vserver node2 -lif clus1
+----
+====
++
+
+NOTE: 對於 8.3 及更高版本，請使用以下命令： `network interface revert -vserver Cluster -lif <nodename_clus<N>>`
+
+. 確認所有叢集 LIF 均已啟用 `up`、運作正常，並在「Is Home」欄中顯示為 `true`：
++
+`network interface show -vserver Cluster`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示所有 LIF 都 `up`位於 node1 和 node2 上，而「Is Home」欄的結果為 `true`：
+
+[listing]
+----
+
+cluster::*> network interface show -vserver Cluster
+            Logical    Status     Network       Current       Current Is
+Vserver     Interface  Admin/Oper Address/Mask  Node          Port    Home
+----------- ---------- ---------- ------------- ------------- ------- ----
+node1
+            clus1      up/up    10.10.10.1/16   node1         e1a     true
+            clus2      up/up    10.10.10.2/16   node1         e2a     true
+node2
+            clus1      up/up    10.10.11.1/16   node2         e1a     true
+            clus2      up/up    10.10.11.2/16   node2         e2a     true
+
+4 entries were displayed.
+----
+====
+. 顯示叢集中節點的狀態資訊：
++
+`cluster show`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示了叢集中節點的健康狀況和資格資訊：
+
+[listing]
+----
+
+cluster::*> cluster show
+Node                 Health  Eligibility   Epsilon
+-------------------- ------- ------------  ------------
+node1                true    true          false
+node2                true    true          false
+----
+====
+. 將 clus2 移轉至每個節點主控台上的連接埠 e1a：
++
+`network interface migrate`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例展示了將 clus2 移轉至 node1 和 node2 上的連接埠 e1a 的過程：
+
+[listing]
+----
+
+cluster::*> network interface migrate -vserver node1 -lif clus2 -source-node node1 -dest-node node1 -dest-port e1a
+cluster::*> network interface migrate -vserver node2 -lif clus2 -source-node node2 -dest-node node2 -dest-port e1a
+----
+====
++
+
+NOTE: 對於 8.3 及更高版本，請使用以下命令： `network interface migrate -vserver Cluster -lif node1_clus2 -dest-node node1 -dest-port e1a`
+
+. 確認移轉已完成：
++
+`network interface show -vserver Cluster`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例驗證 clus2 已移轉至 node1 和 node2 上的連接埠 e1a：
+
+[listing]
+----
+
+cluster::*> network interface show -vserver Cluster
+            Logical    Status     Network       Current       Current Is
+Vserver     Interface  Admin/Oper Address/Mask  Node          Port    Home
+----------- ---------- ---------- ------------- ------------- ------- ----
+node1
+            clus1      up/up    10.10.10.1/16   node1         e1a     true
+            clus2      up/up    10.10.10.2/16   node1         e1a     false
+node2
+            clus1      up/up    10.10.11.1/16   node2         e1a     true
+            clus2      up/up    10.10.11.2/16   node2         e1a     false
+
+4 entries were displayed.
+----
+====
+. 關閉兩個節點上的叢集連接埠 e2a：
++
+`network port modify`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示如何關閉 node1 和 node2 上的連接埠 e2a：
+
+[listing]
+----
+
+cluster::*> network port modify -node node1 -port e2a -up-admin false
+cluster::*> network port modify -node node2 -port e2a -up-admin false
+----
+====
+. 請檢查連接埠狀態：
++
+`network port show`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示連接埠 e2a 位於 `down` node1 和 node2 上：
+
+[listing]
+----
+
+cluster::*> network port show -role cluster
+                                      Auto-Negot  Duplex     Speed (Mbps)
+Node   Port   Role         Link   MTU Admin/Oper  Admin/Oper Admin/Oper
+------ ------ ------------ ---- ----- ----------- ---------- ------------
+node1
+       e1a    clus1        up    9000  true/true  full/full   auto/10000
+       e2a    clus2        down  9000  true/true  full/full   auto/10000
+node2
+       e1a    clus1        up    9000  true/true  full/full   auto/10000
+       e2a    clus2        down  9000  true/true  full/full   auto/10000
+
+4 entries were displayed.
+----
+====
+. 斷開節點 1 上叢集連接埠 e2a 的電纜，然後使用 CN1610 交換器支援的適當電纜將 e2a 連接到叢集交換器 cs2 的連接埠 1。
+. 斷開節點 2 上叢集連接埠 e2a 的纜線，然後使用 CN1610 交換器支援的適當纜線將 e2a 連接到叢集交換器 cs2 上的連接埠 2。
+. 啟用叢集交換器 cs2 上所有面向節點的連接埠。
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示交換器 cs2 上的連接埠 1 到 12 已啟用：
+
+[listing]
+----
+
+(cs2)# configure
+(cs2)(Config)# interface 0/1-0/12
+(cs2)(Interface 0/1-0/12)# no shutdown
+(cs2)(Interface 0/1-0/12)# exit
+(cs2)(Config)# exit
+----
+====
+. 在每個節點上啟用第二個叢集連接埠 e2a。
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示如何在節點 1 和節點 2 上啟用連接埠 e2a：
+
+[listing]
+----
+
+cluster::*> network port modify -node node1 -port e2a -up-admin true
+cluster::*> network port modify -node node2 -port e2a -up-admin true
+----
+====
+. 確認所有叢集連接埠均為 `up`：
++
+`network port show -ipspace Cluster`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示，node1 和 node2 上的所有叢集連接埠均 `up`：
+
+[listing]
+----
+
+cluster::*> network port show -ipspace Cluster
+                                      Auto-Negot  Duplex     Speed (Mbps)
+Node   Port   Role         Link   MTU Admin/Oper  Admin/Oper Admin/Oper
+------ ------ ------------ ---- ----- ----------- ---------- ------------
+node1
+       e1a    clus1        up    9000  true/true  full/full   auto/10000
+       e2a    clus2        up    9000  true/true  full/full   auto/10000
+node2
+       e1a    clus1        up    9000  true/true  full/full   auto/10000
+       e2a    clus2        up    9000  true/true  full/full   auto/10000
+
+4 entries were displayed.
+----
+====
+. 將兩個節點上的 clus2 （之前已移轉）回復為 e2a：
++
+`network interface revert`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例展示如何將 node1 和 node2 上的 clus2 回復到連接埠 e2a：
+
+[listing]
+----
+
+cluster::*> network interface revert -vserver node1 -lif clus2
+cluster::*> network interface revert -vserver node2 -lif clus2
+----
+====
++
+
+NOTE: 對於 8.3 及更高版本，命令如下：
+`cluster::*> network interface revert -vserver Cluster -lif node1_clus2` 和
+`cluster::*> network interface revert -vserver Cluster -lif node2_clus2`
+
+
+
+
+
+[[step-3-complete-the-configuration]]
+=== 步驟 3：完成組態
+
+. 確認所有介面在「Is Home」欄中均顯示 `true`：
++
+`network interface show -vserver Cluster`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示所有 LIF 都 `up`位於 node1 和 node2 上，而「Is Home」欄的結果為 `true`：
+
+[listing]
+----
+
+cluster::*> network interface show -vserver Cluster
+
+             Logical    Status     Network            Current     Current Is
+Vserver      Interface  Admin/Oper Address/Mask       Node        Port    Home
+-----------  ---------- ---------- ------------------ ----------- ------- ----
+node1
+             clus1      up/up      10.10.10.1/16      node1       e1a     true
+             clus2      up/up      10.10.10.2/16      node1       e2a     true
+node2
+             clus1      up/up      10.10.11.1/16      node2       e1a     true
+             clus2      up/up      10.10.11.2/16      node2       e2a     true
+----
+====
+. 驗證遠端集群介面的連接性：
+
+
+[role="tabbed-block"]
+====
+.ONTAP 9.9.1 及更高版本
+--
+你可以使用 `network interface check cluster-connectivity`執行命令以啟動叢集連接性檢查，然後顯示詳細資訊：
+
+`network interface check cluster-connectivity start`和 `network interface check cluster-connectivity show`
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity start*
+----
+*注意：*運行程式前請等待幾秒鐘 `show`顯示詳細資訊的命令。
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity show*
+                                  Source           Destination      Packet
+Node   Date                       LIF              LIF              Loss
+------ -------------------------- ---------------- ---------------- -----------
+node1
+       3/5/2022 19:21:18 -06:00   node1_clus2      node2-clus1      none
+       3/5/2022 19:21:20 -06:00   node1_clus2      node2_clus2      none
+node2
+       3/5/2022 19:21:18 -06:00   node2_clus2      node1_clus1      none
+       3/5/2022 19:21:20 -06:00   node2_clus2      node1_clus2      none
+----
+--
+.所有ONTAP版本
+--
+對於所有ONTAP版本，您也可以使用 `cluster ping-cluster -node <name>`檢查連接性的命令：
+
+`cluster ping-cluster -node <name>`
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *cluster ping-cluster -node local*
+Host is node2
+Getting addresses from network interface table...
+Cluster node1_clus1 169.254.209.69 node1 e0a
+Cluster node1_clus2 169.254.49.125 node1 e0b
+Cluster node2_clus1 169.254.47.194 node2 e0a
+Cluster node2_clus2 169.254.19.183 node2 e0b
+Local = 169.254.47.194 169.254.19.183
+Remote = 169.254.209.69 169.254.49.125
+Cluster Vserver Id = 4294967293
+Ping status:
+....
+Basic connectivity succeeds on 4 path(s)
+Basic connectivity fails on 0 path(s)
+................
+Detected 9000 byte MTU on 4 path(s):
+Local 169.254.47.194 to Remote 169.254.209.69
+Local 169.254.47.194 to Remote 169.254.49.125
+Local 169.254.19.183 to Remote 169.254.209.69
+Local 169.254.19.183 to Remote 169.254.49.125
+Larger than PMTU communication succeeds on 4 path(s)
+RPC status:
+2 paths up, 0 paths down (tcp check)
+2 paths up, 0 paths down (udp check)
+----
+--
+====
+. [[step3]] 驗證兩個節點是否都與每個交換器有兩個連線：
++
+`show isdp neighbors`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示了兩種開關的正確結果：
+
+[listing]
+----
+
+(cs1)# show isdp neighbors
+Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge,
+                  S - Switch, H - Host, I - IGMP, r - Repeater
+Device ID              Intf         Holdtime  Capability   Platform  Port ID
+---------------------- ------------ --------- ------------ --------- ------------
+node1                  0/1          132       H            FAS3270   e1a
+node2                  0/2          163       H            FAS3270   e1a
+cs2                    0/13         11        S            CN1610    0/13
+cs2                    0/14         11        S            CN1610    0/14
+cs2                    0/15         11        S            CN1610    0/15
+cs2                    0/16         11        S            CN1610    0/16
+
+(cs2)# show isdp neighbors
+Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge,
+                  S - Switch, H - Host, I - IGMP, r - Repeater
+Device ID              Intf         Holdtime  Capability   Platform  Port ID
+---------------------- ------------ --------- ------------ --------- ------------
+node1                  0/1          132       H            FAS3270   e2a
+node2                  0/2          163       H            FAS3270   e2a
+cs1                    0/13         11        S            CN1610    0/13
+cs1                    0/14         11        S            CN1610    0/14
+cs1                    0/15         11        S            CN1610    0/15
+cs1                    0/16         11        S            CN1610    0/16
+----
+====
+. 顯示組態中設備的資訊：
++
+`network device discovery show`
+
+. 使用進階權限命令停用兩個節點上的雙節點無交換器組態設定：
++
+`network options detect-switchless modify`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例展示如何停用無交換器組態設定：
+
+[listing]
+----
+
+cluster::*> network options detect-switchless modify -enabled false
+----
+====
++
+
+NOTE: 對於 9.2 及更高版本，請跳過此步驟，因為組態會自動轉換。
+
+. 請確認這些設定已停用：
++
+`network options detect-switchless-cluster show`
+
++
+.顯示範例
+[%collapsible]
+====
+這 `false`以下範例的輸出表示組態設定已停用：
+
+[listing]
+----
+
+cluster::*> network options detect-switchless-cluster show
+Enable Switchless Cluster Detection: false
+----
+====
++
+
+NOTE: 對於 9.2 及更高版本，請等待 `Enable Switchless Cluster`設定為 false。這可能需要長達三分鐘的時間。
+
+. 設定叢集 clus1 和 clus2 在每個節點上自動回復，並確認。
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+
+cluster::*> network interface modify -vserver node1 -lif clus1 -auto-revert true
+cluster::*> network interface modify -vserver node1 -lif clus2 -auto-revert true
+cluster::*> network interface modify -vserver node2 -lif clus1 -auto-revert true
+cluster::*> network interface modify -vserver node2 -lif clus2 -auto-revert true
+----
+====
++
+
+NOTE: 對於 8.3 及更新版本，請使用下列命令： `network interface modify -vserver Cluster -lif * -auto-revert true`以在叢集中的所有節點上啟用自動還原。
+
+. 驗證叢集中節點成員的狀態：
++
+`cluster show`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示了叢集中節點的健康狀況和資格資訊：
+
+[listing]
+----
+
+cluster::*> cluster show
+Node                 Health  Eligibility   Epsilon
+-------------------- ------- ------------  ------------
+node1                true    true          false
+node2                true    true          false
+----
+====
+. 如果您已停用自動建立案例功能，請透過呼叫AutoSupport訊息重新啟用該功能：
++
+`system node autosupport invoke -node * -type all -message MAINT=END`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+cluster::*> system node autosupport invoke -node * -type all -message MAINT=END
+----
+====
+. 將權限等級改回管理員：
++
+`set -privilege admin`
+
+

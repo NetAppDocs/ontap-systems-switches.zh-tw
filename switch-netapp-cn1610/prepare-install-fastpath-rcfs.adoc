@@ -1,0 +1,51 @@
+---
+permalink: switch-netapp-cn1610/prepare-install-fastpath-rcfs.html 
+sidebar: sidebar 
+keywords: install, fastpath, software, rcfs, netapp cluster switch 
+summary: 您必須在 NetApp CN1610 叢集交換器上安裝 FASTPATH 軟體和參考設定檔 RCF。 
+---
+= 準備在 NetApp 叢集交換器上安裝 FASTPATH 軟體和 RCF
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須在 NetApp CN1610 叢集交換器上安裝 FASTPATH 軟體和參考組態檔 （RCF）。
+
+.開始之前
+* 叢集必須是功能完整的叢集。
+* 叢集網路介面卡（NIC）不得有任何缺陷，叢集交換器上的所有已連接連接埠必須功能正常。
+* 叢集所有連接埠必須處於啟用狀態。
+* 所有叢集邏輯介面（LIF）必須處於啟用狀態，且不得已移轉。
+* ONTAP （權限：進階） `cluster ping-cluster -node node1` 命令必須指示 `larger than PMTU communication`在所有路徑上均成功。
+* 您必須查閱 http://mysupport.netapp.com/NOW/download/software/cm_switches_ntap/["NetApp CN1601 和 CN1610 交換器"^]頁面上的交換器相容性表格，以了解支援的 FASTPATH、RCF 和 ONTAP 版本。
++
+RCF 和 FASTPATH 版本中的命令語法之間可能存在命令相依性。
+
+
+
+
+NOTE: 出於安全性考慮，RCF 1.2 版本已明確停用 Telnet 支援。為避免安裝 RCF 1.2 時出現連線問題，您必須確認已啟用安全外殼協定 （SSH）。 https://library.netapp.com/ecm/ecm_get_file/ECMP1117874["NetApp® CN1610 交換器管理員指南"^]有關 SSH 的詳細資訊。
+
+.關於此任務
+本流程中的範例使用以下開關和節點命名規則：
+
+* 本文件中的步驟使用叢集式 Data ONTAP 8.2 語法。因此，叢集 Vserver、LIF 名稱和 CLI 輸出將與 Data ONTAP 8.3 中的有所不同。
+* 這兩個 NetApp 交換器分別是 cs1 和 cs2。
+* 這兩個叢集 LIF 分別是 clus1 和 clus2。
+* 虛擬伺服器為 vs1 和 vs2。
+* The `cluster::*>` 提示訊息會顯示群集名稱。
+* 每個節點上的叢集連接埠分別命名為 e1a 和 e2a。
++
+其中 https://hwu.netapp.com/["Hardware Universe"^]包含有關您平台所支援之實際叢集連接埠的詳細資訊。
+
+* NetApp 叢集交換器支援的交換器間連結 (ISL) 為連接埠 0/13 至 0/16。
+* NetApp 叢集交換器支援的節點連接埠為 0/1 至 0/12。
+
+
+此程序分為兩部分：
+
+* link:install-fastpath-software.html["安裝 FASTPATH 軟體"]介紹如何安裝 FASTPATH 軟體。
+* link:install-rcf-file.html["在 CN1610 交換器上安裝 RCF"] 描述如何安裝 RCF。
+

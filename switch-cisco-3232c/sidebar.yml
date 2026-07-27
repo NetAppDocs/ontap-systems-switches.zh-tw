@@ -1,6 +1,6 @@
 ---
 section: switch-cisco-3232c
-title: CiscoNexus 3232C
+title: Cisco Nexus 3232C 叢集交換器
 entries:
 - title: 開始
   pdf-filename: Overview_3232C
@@ -38,7 +38,7 @@ entries:
   - title: 安裝 NX-OS 軟體
     url: "/switch-cisco-3232c/install-nx-os-software-3232c.html"
   - title: 安裝或升級 RCF
-    pdf-filename: 安裝升級
+    pdf-filename: install_upgrade_rcf
     entries:
     - title: 安裝或升級 RCF 概述
       url: "/switch-cisco-3232c/install-upgrade-rcf-overview-3232c.html"
@@ -56,15 +56,15 @@ entries:
   - title: 從雙節點無交換器叢集遷移
     pdf-filename: 從無交換器叢集遷移
     entries:
-    - title: 從雙節點無交換器叢集工作流程遷移
+    - title: 從雙節點無交換器叢集移轉工作流程
       url: "/switch-cisco-3232c/migrate-from-switchless-workflow.html"
-    - title: 遷移要求
+    - title: 移轉需求
       url: "/switch-cisco-3232c/migrate-from-switchless-migrate-requirements.html"
-    - title: 做好遷移準備
+    - title: 做好移轉準備
       url: "/switch-cisco-3232c/migrate-from-switchless-prepare-to-migrate.html"
-    - title: 配置連接埠
+    - title: 設定連接埠
       url: "/switch-cisco-3232c/migrate-from-switchless-configure-ports.html"
-    - title: 完成遷移
+    - title: 完成移轉
       url: "/switch-cisco-3232c/migrate-from-switchless-complete-migration.html"
 - title: 更換開關
   pdf-filename: Replace_switches_3232C

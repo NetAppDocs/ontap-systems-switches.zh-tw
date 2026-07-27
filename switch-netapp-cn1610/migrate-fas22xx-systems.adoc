@@ -1,0 +1,328 @@
+---
+permalink: switch-netapp-cn1610/migrate-fas22xx-systems.html 
+sidebar: sidebar 
+keywords: migrate, two-node switched cluster, fas22xx systems, single, network connection 
+summary: 如果您在現有的雙節點無交換器式叢集中擁有 FAS22xx 系統，其中每個控制器模組都有單一用於叢集連線的後端對後端 10 GbE 連線，則可以使用無交換器式叢集連網選項，並將直接後端對後端連線替換為交換器連線。 
+---
+= 在 FAS22xx 系統中、使用單一叢集網路連線移轉至雙節點交換式叢集
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果您在現有的雙節點無交換器式叢集中擁有 FAS22xx 系統，其中每個控制器模組都有單一用於叢集連線的後端對後端 10 GbE 連線，則可以使用無交換器式叢集連網選項，並將直接後端對後端連線替換為交換器連線。
+
+
+
+[[review-requirements]]
+== 審查要求
+
+.開始之前
+請確保您擁有以下物品：
+
+* 從無交換器式叢集組態移轉至有交換器組態需要建立兩個叢集連線。
+* 叢集運作狀況良好，由兩個透過後端對後端連線連接的節點組成。
+* 節點執行的是 ONTAP 8.2 或更新版本。
+* 無交換器式叢集功能不能用於兩個以上的節點。
+* 所有叢集連接埠均處於 `up`狀態。
+
+
+.相關資訊
+https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/How_to_suppress_automatic_case_creation_during_scheduled_maintenance_windows["NetApp知識庫文章 1010449：如何在計畫維護窗口期間禁止自動建立案例"^]
+
+
+
+[[migrate-the-switches]]
+== 遷移交換機
+
+此程序是一個不中斷營運的程序，可在無交換器式叢集環境中移除直接叢集連線，並將每個與交換器的連線替換為與合作夥伴節點的連線。
+
+
+
+[[step-1-prepare-for-migration]]
+=== 步驟 1：準備遷移
+
+. 將權限級別變更為高級，輸入 `y`當系統提示繼續：
++
+`set -privilege advanced`
+
++
+進階提示(`*>`出現。
+
+. 在任一節點的系統主控台上檢查節點的叢集狀態：
++
+`cluster show`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示了叢集中節點的健康狀況和資格資訊：
+
+[listing]
+----
+
+cluster::*> cluster show
+Node                 Health  Eligibility   Epsilon
+-------------------- ------- ------------  ------------
+node1                true    true          false
+node2                true    true          false
+
+2 entries were displayed.
+----
+====
+. 在任一節點的系統控制台上檢查 HA 配對的狀態： `storage failover show`
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示節點 1 和節點 2 的狀態：
+
+[listing]
+----
+
+Node           Partner        Possible State Description
+-------------- -------------- -------- -------------------------------------
+node1          node2          true      Connected to node2
+node2          node1          true      Connected to node1
+
+2 entries were displayed.
+----
+====
+. 如果此叢集上啟用了AutoSupport ，則透過呼叫AutoSupport訊息來抑制自動建立案例：
++
+`system node autosupport invoke -node * -type all -message MAINT=xh`
+
++
+`x` 是維護所需時間的持續時間，以小時為單位。
+
++
+
+NOTE: 此訊息通知技術支援部門此維護工作，以便在維護所需時間期間抑制自動建立案例。
+
++
+.顯示範例
+[%collapsible]
+====
+以下命令可抑制自動建立案件兩小時：
+
+[listing]
+----
+cluster::*> system node autosupport invoke -node * -type all -message MAINT=2h
+----
+====
+. 確認無交換器式叢集的目前狀態為  `true`，然後停用無交換器式叢集模式：
++
+`network options switchless-cluster modify -enabled false`
+
+. 接管目標節點：
++
+`storage failover takeover -ofnode _target_node_name_`
+
++
+目標節點是哪個並不重要。當目標節點被接管後，它會自動重新啟動並顯示該 `Waiting for giveback...`訊息。
+
++
+目前作用中節點正在為被接管的合作夥伴（目標）節點提供資料服務。
+
+. 接管受損節點後，請等待兩分鐘以確認接管已成功完成。
+. 當目標節點顯示該 `Waiting for giveback...`訊息時，將其關閉。
++
+關閉節點的方法取決於您是否透過節點 Service Processor （SP）進行遠端管理。
+
++
+|===
+| 如果 SP | 然後... 
+
+
+ a| 
+已組態
+ a| 
+登入受損節點 SP，然後關閉系統電源： `system power off`
+
+
+
+ a| 
+未組態
+ a| 
+在出現受損節點提示時，按 `Ctrl-C`，然後回應 `y`以停止節點。
+
+|===
+
+
+
+
+[[step-2-configure-cables-and-ports]]
+=== 步驟 2：設定線纜和連接埠
+
+. 在每個控制器模組上，拔除將 10 GbE 叢集連接埠連接至無交換器式叢集的纜線。
+. 將兩個控制器模組上的 10 GbE 叢集連接埠連接到交換器。
+. 確認交換器上連接的 10 GbE 叢集連接埠已組態為屬於同一個 VLAN。
++
+如果您打算將每個控制器模組上的叢集連接埠連接到不同的交換器，則必須驗證每個交換器上連接叢集連接埠的連接埠是否已設定為相同的 VLAN，以及兩個交換器上是否已正確設定主幹連線。
+
+. 將儲存設備歸還給目標節點：
++
+`storage failover giveback -ofnode node2`
+
+. 監控歸還活動的進度：
++
+`storage failover show-giveback`
+
+. 歸還操作完成後，確認 HA 配對正常且可以接管：
++
+`storage failover show`
+
++
+.顯示範例
+[%collapsible]
+====
+輸出結果應類似以下內容：
+
+[listing]
+----
+
+Node           Partner        Possible State Description
+-------------- -------------- -------- -------------------------------------
+node1          node2          true      Connected to node2
+node2          node1          true      Connected to node1
+
+2 entries were displayed.
+----
+====
+. 驗證叢集連接埠 LIF 是否正常運作：
++
+`network interface show -role cluster`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示 LIF `up`位於 node1 和 node2 上，而「Is Home」欄的結果為 `true`：
+
+[listing]
+----
+
+cluster::*> network interface show -role cluster
+            Logical    Status     Network            Current       Current Is
+Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
+----------- ---------- ---------- ------------------ ------------- ------- ----
+node1
+            clus1        up/up    192.168.177.121/24  node1        e1a     true
+node2
+            clus1        up/up    192.168.177.123/24  node2        e1a     true
+
+2 entries were displayed.
+----
+====
+. 在任一節點的系統主控台上檢查節點的叢集狀態：
++
+`cluster show`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示了叢集中節點的健康狀況和資格資訊：
+
+[listing]
+----
+
+cluster::*> cluster show
+Node                 Health  Eligibility   Epsilon
+-------------------- ------- ------------  ------------
+node1                true    true          false
+node2                true    true          false
+
+2 entries were displayed.
+----
+====
+. 驗證遠端集群介面的連接性：
+
+
+[role="tabbed-block"]
+====
+.ONTAP 9.9.1 及更高版本
+--
+你可以使用 `network interface check cluster-connectivity`執行命令以啟動叢集連接性檢查，然後顯示詳細資訊：
+
+`network interface check cluster-connectivity start`和 `network interface check cluster-connectivity show`
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity start*
+----
+*注意：*運行程式前請等待幾秒鐘 `show`顯示詳細資訊的命令。
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity show*
+                                  Source           Destination      Packet
+Node   Date                       LIF              LIF              Loss
+------ -------------------------- ---------------- ---------------- -----------
+node1
+       3/5/2022 19:21:18 -06:00   node1_clus2      node2-clus1      none
+       3/5/2022 19:21:20 -06:00   node1_clus2      node2_clus2      none
+node2
+       3/5/2022 19:21:18 -06:00   node2_clus2      node1_clus1      none
+       3/5/2022 19:21:20 -06:00   node2_clus2      node1_clus2      none
+----
+--
+.所有ONTAP版本
+--
+對於所有ONTAP版本，您也可以使用 `cluster ping-cluster -node <name>`檢查連接性的命令：
+
+`cluster ping-cluster -node <name>`
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *cluster ping-cluster -node local*
+Host is node2
+Getting addresses from network interface table...
+Cluster node1_clus1 169.254.209.69 node1 e0a
+Cluster node1_clus2 169.254.49.125 node1 e0b
+Cluster node2_clus1 169.254.47.194 node2 e0a
+Cluster node2_clus2 169.254.19.183 node2 e0b
+Local = 169.254.47.194 169.254.19.183
+Remote = 169.254.209.69 169.254.49.125
+Cluster Vserver Id = 4294967293
+Ping status:....
+Basic connectivity succeeds on 4 path(s)
+Basic connectivity fails on 0 path(s)
+................
+Detected 9000 byte MTU on 4 path(s):
+Local 169.254.47.194 to Remote 169.254.209.69
+Local 169.254.47.194 to Remote 169.254.49.125
+Local 169.254.19.183 to Remote 169.254.209.69
+Local 169.254.19.183 to Remote 169.254.49.125
+Larger than PMTU communication succeeds on 4 path(s)
+RPC status:
+2 paths up, 0 paths down (tcp check)
+2 paths up, 0 paths down (udp check)
+----
+--
+====
+
+
+[[step-3-complete-the-procedure]]
+=== 步驟 3：完成該步驟
+
+. 如果您已停用自動建立案例功能，請透過呼叫AutoSupport訊息重新啟用該功能：
++
+`system node autosupport invoke -node * -type all -message MAINT=END`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+cluster::*> system node autosupport invoke -node * -type all -message MAINT=END
+----
+====
+. 將權限等級改回管理員：
++
+`set -privilege admin`
+
+

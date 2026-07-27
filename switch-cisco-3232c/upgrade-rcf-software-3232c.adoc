@@ -1,0 +1,748 @@
+---
+permalink: switch-cisco-3232c/upgrade-rcf-software-3232c.html 
+sidebar: sidebar 
+keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, cisco 3232c 
+summary: 使用叢集交換器健全狀況監控和記錄收集功能時，需要啟用 SSH。若要在 Cisco 3232c 叢集交換器上啟用 SSH，您需要先產生 SSH 金鑰，然後再啟用 SSH。 
+---
+= 升級您的參考設定檔 (RCF)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+當您的運行交換器上已安裝了現有版本的 RCF 檔案時，您需要升級 RCF 版本。
+
+.開始之前
+請確保您擁有以下物品：
+
+* 交換器配置的目前備份。
+* 一個功能齊全的群集（日誌中沒有錯誤或類似問題）。
+* 當前的RCF。
+* 如果您要更新 RCF 版本，則需要在 RCF 中進行啟動配置，以反映所需的啟動映像。
++
+如果需要更改啟動配置以反映目前的啟動映像，則必須在重新套用 RCF 之前進行更改，以便在以後的重新啟動中實例化正確的版本。
+
+
+
+
+NOTE: 在此過程中不需要任何可操作的交換器間連結 (ISL)。這是設計使然，因為 RCF 版本的變更可能會暫時影響 ISL 連線。為確保叢集運作不會中斷，以下步驟將所有叢集 LIF 遷移到運作夥伴交換機，同時在目標交換器上執行對應步驟。
+
+
+CAUTION: 在安裝新的交換器軟體版本和 RCF 之前，必須清除交換器設定並執行基本設定。您必須使用序列控制台連接到交換機，或在擦除交換器設定之前保留基本設定資訊。
+
+
+
+[[step-1-prepare-for-the-upgrade]]
+== 第一步：準備升級
+
+. 顯示每個節點上連接到叢集交換器的叢集連接埠：
++
+`network device-discovery show`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network device-discovery show*
+Node/       Local  Discovered
+Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
+----------- ------ ------------------------- ----------------  --------
+cluster1-01/cdp
+            e0a    cs1                       Ethernet1/7       N3K-C3232C
+            e0d    cs2                       Ethernet1/7       N3K-C3232C
+cluster1-02/cdp
+            e0a    cs1                       Ethernet1/8       N3K-C3232C
+            e0d    cs2                       Ethernet1/8       N3K-C3232C
+cluster1-03/cdp
+            e0a    cs1                       Ethernet1/1/1     N3K-C3232C
+            e0b    cs2                       Ethernet1/1/1     N3K-C3232C
+cluster1-04/cdp
+            e0a    cs1                       Ethernet1/1/2     N3K-C3232C
+            e0b    cs2                       Ethernet1/1/2     N3K-C3232C
+cluster1::*>
+----
+====
+. 檢查每個叢集連接埠的管理和運作狀態。
++
+.. 確認叢集所有連接埠均已啟動且狀態正常：
++
+`network port show –role cluster`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network port show -role cluster*
+Node: cluster1-01
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+e0a       Cluster      Cluster          up   9000  auto/100000 healthy false
+e0d       Cluster      Cluster          up   9000  auto/100000 healthy false
+Node: cluster1-02
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+e0a       Cluster      Cluster          up   9000  auto/100000 healthy false
+e0d       Cluster      Cluster          up   9000  auto/100000 healthy false
+8 entries were displayed.
+Node: cluster1-03
+   Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
+e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
+Node: cluster1-04
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
+e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
+cluster1::*>
+----
+====
+.. 確認所有叢集介面（LIF）都位於主連接埠上：
++
+`network interface show -role cluster`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface show -role cluster*
+            Logical            Status     Network           Current      Current Is
+Vserver     Interface          Admin/Oper Address/Mask      Node         Port    Home
+----------- ------------------ ---------- ----------------- ------------ ------- ----
+Cluster
+            cluster1-01_clus1  up/up     169.254.3.4/23     cluster1-01  e0a     true
+            cluster1-01_clus2  up/up     169.254.3.5/23     cluster1-01  e0d     true
+            cluster1-02_clus1  up/up     169.254.3.8/23     cluster1-02  e0a     true
+            cluster1-02_clus2  up/up     169.254.3.9/23     cluster1-02  e0d     true
+            cluster1-03_clus1  up/up     169.254.1.3/23     cluster1-03  e0a     true
+            cluster1-03_clus2  up/up     169.254.1.1/23     cluster1-03  e0b     true
+            cluster1-04_clus1  up/up     169.254.1.6/23     cluster1-04  e0a     true
+            cluster1-04_clus2  up/up     169.254.1.7/23     cluster1-04  e0b     true
+8 entries were displayed.
+cluster1::*>
+----
+====
+.. 確認集群顯示兩個集群交換器的資訊：
++
+`system cluster-switch show -is-monitoring-enabled-operational true`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *system cluster-switch show -is-monitoring-enabled-operational true*
+Switch                      Type               Address          Model
+--------------------------- ------------------ ---------------- ---------------
+cs1                         cluster-network    10.233.205.92    NX3232C
+     Serial Number: FOXXXXXXXGS
+      Is Monitored: true
+            Reason: None
+  Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
+                    9.3(4)
+    Version Source: CDP
+cs2                         cluster-network    10.233.205.93    NX3232C
+     Serial Number: FOXXXXXXXGD
+      Is Monitored: true
+            Reason: None
+  Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
+                    9.3(4)
+    Version Source: CDP
+2 entries were displayed.
+----
+====
+
+
+. 停用群集 LIF 的自動回滾功能。
++
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert false*
+----
+
+
+
+
+[[step-2-configure-ports]]
+== 步驟 2：設定埠
+
+. 在叢集交換器 cs2 上，關閉連接到節點叢集連接埠的連接埠。
++
+[listing, subs="+quotes"]
+----
+cs2> *enable*
+cs2# *configure*
+cs2(config)# *interface eth1/1/1-2,eth1/7-8*
+cs2(config-if-range)# *shutdown*
+cs2(config-if-range)# *exit*
+cs2# *exit*
+----
++
+
+CAUTION: 請務必關閉 *所有* 已連接的叢集連接埠，以避免任何網路連線問題。如需更多詳細資訊，請參閱知識庫文章 link:https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/Node_out_of_quorum_when_migrating_cluster_lif_during_switch_OS_upgrade["在切換作業系統升級期間遷移叢集 LIF 時，節點脫離仲裁。"^]。
+
+. 確認叢集連接埠已故障轉移到叢集交換器 cs1 上的連接埠。這可能需要幾秒鐘。
++
+`network interface show -role cluster`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface show -role cluster*
+            Logical           Status     Network            Current       Current Is
+Vserver     Interface         Admin/Oper Address/Mask       Node          Port    Home
+----------- ----------------- ---------- ------------------ ------------- ------- ----
+Cluster
+            cluster1-01_clus1 up/up      169.254.3.4/23     cluster1-01   e0a     true
+            cluster1-01_clus2 up/up      169.254.3.5/23     cluster1-01   e0a     false
+            cluster1-02_clus1 up/up      169.254.3.8/23     cluster1-02   e0a     true
+            cluster1-02_clus2 up/up      169.254.3.9/23     cluster1-02   e0a     false
+            cluster1-03_clus1 up/up      169.254.1.3/23     cluster1-03   e0a     true
+            cluster1-03_clus2 up/up      169.254.1.1/23     cluster1-03   e0a     false
+            cluster1-04_clus1 up/up      169.254.1.6/23     cluster1-04   e0a     true
+            cluster1-04_clus2 up/up      169.254.1.7/23     cluster1-04   e0a     false
+8 entries were displayed.
+cluster1::*>
+----
+====
+. 驗證叢集是否運作正常：
++
+`cluster show`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *cluster show*
+Node                 Health  Eligibility   Epsilon
+-------------------- ------- ------------  -------
+cluster1-01          true    true          false
+cluster1-02          true    true          false
+cluster1-03          true    true          true
+cluster1-04          true    true          false
+4 entries were displayed.
+cluster1::*>
+----
+====
+. 如果您尚未儲存目前交換器配置，請將以下命令的輸出複製到文字檔案中：
++
+`show running-config`
+
+. 記錄目前版本與目前版本之間的任何自訂新增內容。 `running-config`以及正在使用的 RCF 檔案（例如貴組織的 SNMP 配置）。
+. 儲存基本配置詳細信息 `write_erase.cfg`啟動閃存上的檔案。
++
+[NOTE]
+====
+請務必設定以下內容：* 使用者名稱和密碼 * 管理 IP 位址 * 預設閘道 * 交換器名稱
+
+====
++
+`cs2# show run | section "switchname" > bootflash:write_erase.cfg`
+
++
+`cs2# show run | section "hostname" >> bootflash:write_erase.cfg`
+
++
+`cs2# show run | i "username admin password" >> bootflash:write_erase.cfg`
+
++
+`cs2# show run | section "vrf context management" >> bootflash:write_erase.cfg`
+
++
+`cs2# show run | section "interface mgmt0" >> bootflash:write_erase.cfg`
+
+. 升級到 RCF 版本 1.12 及更高版本時，請執行以下命令：
++
+`cs2# echo "hardware access-list tcam region racl-lite 512" >> bootflash:write_erase.cfg`
+
++
+`cs2# echo "hardware access-list tcam region qos 256" >> bootflash:write_erase.cfg`
+
+. 確認 `write_erase.cfg`文件已如預期填入：
++
+`*show file bootflash:write_erase.cfg*`
+
+. 問題 `write erase`清除目前已儲存配置的命令：
++
+`cs2# *write erase*`
+
++
+`Warning: This command will erase the startup-configuration.`
+
++
+`Do you wish to proceed anyway? (y/n)  [n] *y*`
+
+. 將先前儲存的基本配置複製到啟動配置中。
++
+`cs2# *copy bootflash:write_erase.cfg startup-config*`
+
+. 重新開機交換器 cs2：
++
+`cs2# *reload*`
+
++
+`This command will reboot the system. (y/n)?  [n] *y*`
+
+. 管理 IP 位址恢復正常後，透過 SSH 登入交換器。
++
+您可能需要更新與 SSH 金鑰相關的 hosts 檔案項目。
+
+. 使用下列傳輸協定之一將 RCF 複製到交換器 cs2 的 bootflash：FTP、TFTP、SFTP 或 SCP。如需 Cisco 命令的詳細資訊，請參閱 link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 系列 NX-OS 命令參考"^] 中的適當指南。
++
+.顯示範例
+[%collapsible]
+====
+此範例展示如何使用 TFTP 將 RCF 複製到交換器 cs2 的 bootflash 上：
+
+[listing, subs="+quotes"]
+----
+cs2# *copy tftp: bootflash: vrf management*
+Enter source filename: *Nexus_3232C_RCF_v1.6-Cluster-HA-Breakout.txt*
+Enter hostname for the tftp server: *172.22.201.50*
+Trying to connect to tftp server......Connection to Server Established.
+TFTP get operation was successful
+Copy complete, now saving to disk (please wait)...
+----
+====
+. 將先前下載的 RCF 檔案套用到啟動快閃記憶體。
++
+如需 Cisco 命令的詳細資訊，請參閱 link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 系列 NX-OS 命令參考"^] 中的適當指南。
+
++
+.顯示範例
+[%collapsible]
+====
+此範例顯示在交換器 cs2 上安裝 RCF 檔案 `Nexus_3232C_RCF_v1.6-Cluster-HA-Breakout.txt`：
+
+[listing, subs="+quotes"]
+----
+cs2# *copy Nexus_3232C_RCF_v1.6-Cluster-HA-Breakout.txt running-config echo-commands*
+----
+====
++
+[CAUTION]
+====
+請務必仔細閱讀 RCF 的 *安裝說明*、*重要說明* 和 *橫幅* 部分。您必須閱讀並遵循這些說明以確保交換器的正確配置和操作。
+
+====
+. 請確認 RCF 檔案是否為最新版本：
++
+`show running-config`
+
++
+檢查輸出結果以驗證是否擁有正確的 RCF 時，請確保以下資訊正確：
+
++
+** RCF橫幅
+** 節點和連接埠設置
+** 客製化
++
+輸出結果會根據您的網站配置而有所不同。檢查連接埠設置，並參考發行說明，以了解您安裝的 RCF 版本是否有任何特定變更。
+
+
+
+. 將先前對交換器組態所做的任何自訂設定重新套用。如需任何進一步變更的詳細資訊，請參閱 link:cabling-considerations-3232c.html["審查佈線和配置注意事項"]。
+. 確認 RCF 版本和交換器設定正確後，將 running-config 檔案複製到 startup-config 檔案。
++
+如需 Cisco 命令的詳細資訊，請參閱 link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 系列 NX-OS 命令參考"^] 中的適當指南。
+
++
+[listing]
+----
+cs2# copy running-config startup-config [########################################] 100% Copy complete
+----
+. 重新啟動交換器 cs2。交換器重新啟動期間，您可以忽略節點上報告的「叢集連接埠關閉」事件。
++
+[listing, subs="+quotes"]
+----
+cs2# *reload*
+This command will reboot the system. (y/n)?  [n] *y*
+----
+. 檢查叢集上叢集連接埠的運作狀況。
++
+.. 驗證叢集中所有節點的 e0d 連接埠是否已啟動且運作狀況良好：
++
+`network port show -role cluster`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network port show -role cluster*
+Node: cluster1-01
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
+e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
+Node: cluster1-02
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
+e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
+Node: cluster1-03
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+e0a       Cluster      Cluster          up   9000  auto/100000 healthy false
+e0d       Cluster      Cluster          up   9000  auto/100000 healthy false
+Node: cluster1-04
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+e0a       Cluster      Cluster          up   9000  auto/100000 healthy false
+e0d       Cluster      Cluster          up   9000  auto/100000 healthy false
+8 entries were displayed.
+----
+====
+.. 從叢集驗證交換器的健全狀況（這可能不會顯示交換器 cs2，因為 LIF 沒有歸位到 e0d）。
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network device-discovery show -protocol cdp*
+Node/       Local  Discovered
+Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
+----------- ------ ------------------------- ----------------- --------
+cluster1-01/cdp
+            e0a    cs1                       Ethernet1/7       N3K-C3232C
+            e0d    cs2                       Ethernet1/7       N3K-C3232C
+cluster01-2/cdp
+            e0a    cs1                       Ethernet1/8       N3K-C3232C
+            e0d    cs2                       Ethernet1/8       N3K-C3232C
+cluster01-3/cdp
+            e0a    cs1                       Ethernet1/1/1     N3K-C3232C
+            e0b    cs2                       Ethernet1/1/1     N3K-C3232C
+cluster1-04/cdp
+            e0a    cs1                       Ethernet1/1/2     N3K-C3232C
+            e0b    cs2                       Ethernet1/1/2     N3K-C3232C
+cluster1::*> system cluster-switch show -is-monitoring-enabled-operational true
+Switch                      Type               Address          Model
+--------------------------- ------------------ ---------------- -----
+cs1                         cluster-network    10.233.205.90    N3K-C3232C
+     Serial Number: FOXXXXXXXGD
+      Is Monitored: true
+            Reason: None
+  Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
+                    9.3(4)
+    Version Source: CDP
+cs2                         cluster-network    10.233.205.91    N3K-C3232C
+     Serial Number: FOXXXXXXXGS
+      Is Monitored: true
+            Reason: None
+  Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
+                    9.3(4)
+    Version Source: CDP
+2 entries were displayed.
+----
+====
++
+[NOTE]
+====
+視先前在交換器上載入的 RCF 版本而定，您可能會在 cs1 交換器主控台上看到以下輸出：2020 Nov 17 16:07:18 cs1 %$ VDC-1 %$ %STP-2-UNBLOCK_CONSIST_PORT: Unblocking port port-channel1 on VLAN0092.Port consistency restored.2020 Nov 17 16:07:23 cs1 %$ VDC-1 %$ %STP-2-BLOCK_PVID_PEER: Blocking port-channel1 on VLAN0001.Inconsistent peer vlan.2020 Nov 17 16:07:23 cs1 %$ VDC-1 %$ %STP-2-BLOCK_PVID_LOCAL: Blocking port-channel1 on VLAN0092.Inconsistent local vlan.
+
+====
+
+
++
+
+NOTE: 叢集節點最多可能需要 5 分鐘才能報告為健康狀態。
+
+. 在叢集交換器 cs1 上，關閉連接到節點叢集連接埠的連接埠。
++
+.顯示範例
+[%collapsible]
+====
+以下範例使用步驟 1 中的介面範例輸出：
+
+[listing, subs="+quotes"]
+----
+cs1(config)# *interface eth1/1/1-2,eth1/7-8*
+cs1(config-if-range)# *shutdown*
+----
+====
+. 確認叢集 LIF 已遷移到交換器 cs2 上託管的連接埠。這可能需要幾秒鐘。
++
+`network interface show -role cluster`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface show -role cluster*
+            Logical            Status     Network            Current             Current Is
+Vserver     Interface          Admin/Oper Address/Mask       Node                Port    Home
+----------- ------------------ ---------- ------------------ ------------------- ------- ----
+Cluster
+            cluster1-01_clus1  up/up      169.254.3.4/23     cluster1-01         e0d     false
+            cluster1-01_clus2  up/up      169.254.3.5/23     cluster1-01         e0d     true
+            cluster1-02_clus1  up/up      169.254.3.8/23     cluster1-02         e0d     false
+            cluster1-02_clus2  up/up      169.254.3.9/23     cluster1-02         e0d     true
+            cluster1-03_clus1  up/up      169.254.1.3/23     cluster1-03         e0b     false
+            cluster1-03_clus2  up/up      169.254.1.1/23     cluster1-03         e0b     true
+            cluster1-04_clus1  up/up      169.254.1.6/23     cluster1-04         e0b     false
+            cluster1-04_clus2  up/up      169.254.1.7/23     cluster1-04         e0b     true
+8 entries were displayed.
+cluster1::*>
+----
+====
+. 驗證叢集是否運作正常：
++
+`cluster show`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *cluster show*
+Node                 Health   Eligibility   Epsilon
+-------------------- -------- ------------- -------
+cluster1-01          true     true          false
+cluster1-02          true     true          false
+cluster1-03          true     true          true
+cluster1-04          true     true          false
+4 entries were displayed.
+cluster1::*>
+----
+====
+. 在交換器 cs1 上重複步驟 4 至 19。
+. 啟用叢集 LIF 的自動回滾功能。
++
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert true*
+----
+
+
+
+
+[[step-3-verify-the-cluster-network-configuration-and-cluster-health]]
+== 步驟 3：驗證叢集網路配置和叢集健康狀況
+
+. 確認連接到叢集連接埠的交換器連接埠已啟用。
++
+`show interface brief | grep up`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cs1# *show interface brief | grep up*
+.
+.
+Eth1/1/1      1       eth  access up      none                    10G(D) --
+Eth1/1/2      1       eth  access up      none                    10G(D) --
+Eth1/7        1       eth  trunk  up      none                   100G(D) --
+Eth1/8        1       eth  trunk  up      none                   100G(D) --
+.
+.
+----
+====
+. 驗證 cs1 和 cs2 之間的 ISL 連線是否正常：
++
+`show port-channel summary`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cs1# *show port-channel summary*
+Flags:  D - Down        P - Up in port-channel (members)
+        I - Individual  H - Hot-standby (LACP only)
+        s - Suspended   r - Module-removed
+        b - BFD Session Wait
+        S - Switched    R - Routed
+        U - Up (port-channel)
+        p - Up in delay-lacp mode (member)
+        M - Not in use. Min-links not met
+--------------------------------------------------------------------------------
+Group Port-       Type     Protocol  Member Ports
+      Channel
+--------------------------------------------------------------------------------
+1     Po1(SU)     Eth      LACP      Eth1/31(P)   Eth1/32(P)
+cs1#
+----
+====
+. 確認叢集 LIF 已恢復到其原始連接埠：
++
+`network interface show -role cluster`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface show -role cluster*
+            Logical            Status     Network            Current             Current Is
+Vserver     Interface          Admin/Oper Address/Mask       Node                Port    Home
+----------- ------------------ ---------- ------------------ ------------------- ------- ----
+Cluster
+            cluster1-01_clus1  up/up      169.254.3.4/23     cluster1-01         e0d     true
+            cluster1-01_clus2  up/up      169.254.3.5/23     cluster1-01         e0d     true
+            cluster1-02_clus1  up/up      169.254.3.8/23     cluster1-02         e0d     true
+            cluster1-02_clus2  up/up      169.254.3.9/23     cluster1-02         e0d     true
+            cluster1-03_clus1  up/up      169.254.1.3/23     cluster1-03         e0b     true
+            cluster1-03_clus2  up/up      169.254.1.1/23     cluster1-03         e0b     true
+            cluster1-04_clus1  up/up      169.254.1.6/23     cluster1-04         e0b     true
+            cluster1-04_clus2  up/up      169.254.1.7/23     cluster1-04         e0b     true
+8 entries were displayed.
+cluster1::*>
+----
+====
++
+如果任何叢集 LIF 尚未返回其主連接埠，請手動回復：
+`network interface revert -vserver _vserver_name_ -lif _lif_name_`
+
+. 驗證叢集是否運作正常：
++
+`cluster show`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *cluster show*
+Node                 Health  Eligibility   Epsilon
+-------------------- ------- ------------- -------
+cluster1-01          true    true          false
+cluster1-02          true    true          false
+cluster1-03          true    true          true
+cluster1-04          true    true          false
+4 entries were displayed.
+cluster1::*>
+----
+====
+. 驗證遠端集群介面的連接性：
+
+
+[role="tabbed-block"]
+====
+.ONTAP 9.9.1 及更高版本
+--
+您可以使用 `network interface check cluster-connectivity`命令啟動叢集連接性的存取能力檢查，然後顯示詳細資訊：
+`network interface check cluster-connectivity start`和 `network interface check cluster-connectivity show`
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity start*
+----
+*注意：*運行程式前請等待幾秒鐘 `show`顯示詳細資訊的命令。
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity show*
+                                  Source              Destination         Packet
+Node   Date                       LIF                 LIF                 Loss
+------ -------------------------- ------------------- ------------------- -----------
+cluster1-01
+       3/5/2022 19:21:18 -06:00   cluster1-01_clus2   cluster1-02_clus1   none
+       3/5/2022 19:21:20 -06:00   cluster1-01_clus2   cluster1-02_clus2   none
+.
+.
+cluster1-02
+       3/5/2022 19:21:18 -06:00   cluster1-02_clus2   cluster1-01_clus1   none
+       3/5/2022 19:21:20 -06:00   cluster1-02_clus2   cluster1-01_clus2   none
+.
+.
+cluster1-03
+.
+.
+.
+.
+cluster1-04
+.
+.
+.
+.
+----
+--
+.所有ONTAP版本
+--
+對於所有 ONTAP 版本，您也可以使用
+`cluster ping-cluster -node <name>`命令來檢查連線能力：
+`cluster ping-cluster -node <name>`
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *cluster ping-cluster -node local*
+Host is cluster1-03
+Getting addresses from network interface table...
+Cluster cluster1-03_clus1 169.254.1.3 cluster1-03 e0a
+Cluster cluster1-03_clus2 169.254.1.1 cluster1-03 e0b
+Cluster cluster1-04_clus1 169.254.1.6 cluster1-04 e0a
+Cluster cluster1-04_clus2 169.254.1.7 cluster1-04 e0b
+Cluster cluster1-01_clus1 169.254.3.4 cluster1-01 e0a
+Cluster cluster1-01_clus2 169.254.3.5 cluster1-01 e0d
+Cluster cluster1-02_clus1 169.254.3.8 cluster1-02 e0a
+Cluster cluster1-02_clus2 169.254.3.9 cluster1-02 e0d
+Local = 169.254.1.3 169.254.1.1
+Remote = 169.254.1.6 169.254.1.7 169.254.3.4 169.254.3.5 169.254.3.8 169.254.3.9
+Cluster Vserver Id = 4294967293
+Ping status:
+............
+Basic connectivity succeeds on 12 path(s)
+Basic connectivity fails on 0 path(s)
+................................................
+Detected 9000 byte MTU on 12 path(s):
+    Local 169.254.1.3 to Remote 169.254.1.6
+    Local 169.254.1.3 to Remote 169.254.1.7
+    Local 169.254.1.3 to Remote 169.254.3.4
+    Local 169.254.1.3 to Remote 169.254.3.5
+    Local 169.254.1.3 to Remote 169.254.3.8
+    Local 169.254.1.3 to Remote 169.254.3.9
+    Local 169.254.1.1 to Remote 169.254.1.6
+    Local 169.254.1.1 to Remote 169.254.1.7
+    Local 169.254.1.1 to Remote 169.254.3.4
+    Local 169.254.1.1 to Remote 169.254.3.5
+    Local 169.254.1.1 to Remote 169.254.3.8
+    Local 169.254.1.1 to Remote 169.254.3.9
+Larger than PMTU communication succeeds on 12 path(s)
+RPC status:
+6 paths up, 0 paths down (tcp check)
+6 paths up, 0 paths down (udp check)
+----
+--
+====
+.下一步是什麼？
+升級 RCF 後，您可以link:configure-ssh-keys.html["驗證 SSH 配置"]。

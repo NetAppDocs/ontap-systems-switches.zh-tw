@@ -1,0 +1,184 @@
+---
+permalink: switch-cisco-3132q-v/switch-requirements.html 
+sidebar: sidebar 
+keywords: replace, cisco nexus 3132q-v cluster switches 
+summary: 更換 Cisco Nexus 3132Q-V 叢集交換器時，您必須瞭解某些組態資訊、連接埠連線和佈線需求。 
+---
+= 更換 Cisco Nexus 3132Q-V 叢集交換器的需求
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+更換叢集交換器時，請務必了解組態需求、連接埠連接和佈線要求。
+
+
+
+[[cisco-nexus-3132q-v-requirements]]
+== Cisco Nexus 3132Q-V 要求
+
+* 支援 Cisco Nexus 3132Q-V 叢集交換器。
+* 10 GbE 和 40 GbE 連接埠的數量在參考組態檔 (RCF) 中定義，可在 link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco® 叢集網路交換器參考組態檔下載"^] 取得。
+* 叢集交換器使用交換器間連結 (ISL) 連接埠 e1/31-32。
+* link:https://hwu.netapp.com["Hardware Universe"^]包含有關 Nexus 3132Q-V 交換器支援佈線的資訊：
++
+** 具有 10 GbE 叢集連接的節點需要 QSFP 光模組搭配分支光纖纜線，或 QSFP 轉 SFP+ 銅分支纜線。
+** 具有 40 GbE 叢集連接的節點需要支援的 QSFP/QSFP28 光模組搭配光纖纜線，或 QSFP/QSFP28 銅直連線。
+** 叢集交換器使用適當的 ISL 佈線：2x QSFP28 光纖或銅直連接纜線。
+
+
+* 在 Nexus 3132Q-V 上，您可以將 QSFP 連接埠用作 40 Gb 乙太網路或 4x10 Gb 乙太網路模式。
++
+預設情況下，40 Gb 乙太網路模式下有 32 個連接埠。這些 40 Gb 乙太網路連接埠採用二元組命名慣例進行編號。例如，第二個 40 Gb 乙太網路連接埠的編號為 1/2。將組態從 40 Gb 乙太網路改為 10 Gb 乙太網路的過程稱為 _breakout_，將組態從 10 Gb 乙太網路改為 40 Gb 乙太網路的過程稱為 _breakin_。當您將一個 40 Gb 乙太網路連接埠分線為 10 Gb 乙太網路連接埠時，分線後的連接埠會採用三元組命名慣例進行編號。例如，第二個 40 Gb 乙太網路連接埠分線後的連接埠編號為 1/2/1、1/2/2、1/2/3 和 1/2/4。
+
+* Nexus 3132Q-V 的左側有一組四個 SFP+ 連接埠，多工傳輸至第一個 QSFP 連接埠。
++
+預設情況下，RCF 結構為使用第一個 QSFP 連接埠。
+
++
+您可以使用 `hardware profile front portmode sfp-plus`命令，將 Nexus 3132Q-V 的四個 SFP+ 連接埠設定為作用中狀態，而非使用 QSFP 連接埠。同樣地，您可以使用 `hardware profile front portmode qsfp`命令，將 Nexus 3132Q-V 重設為使用 QSFP 連接埠，而非使用四個 SFP+ 連接埠。
+
+* 您必須將 Nexus 3132Q-V 上的某些連接埠設定為以 10 GbE 或 40 GbE 運作。
++
+您可以使用 `interface breakout module 1 port 1-6 map 10g-4x`命令將前六個連接埠拆分為 4x10 GbE 模式。同樣，您可以使用 `no interface breakout module 1 port 1-6 map 10g-4x`命令將前六個 QSFP+ 連接埠從拆分組態中重新組合。
+
+* 您必須已完成規劃、移轉，並閱讀有關從節點到 Nexus 3132Q-V 叢集交換器的 10 GbE 和 40 GbE 連接的必要文件。
++
+link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換機"^] 包含有關此程序中支援的 ONTAP 和 NX-OS 版本的資訊。
+
+
+
+
+
+[[cisco-nexus-5596-requirements]]
+== Cisco Nexus 5596 要求
+
+* 支援以下集群交換器：
++
+** Nexus 5596
+** Nexus 3132Q-V
+
+
+* 10 GbE 和 40 GbE 連接埠的數量在參考組態檔 (RCF) 中定義，可在 link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco® 叢集網路交換器參考組態檔下載"^] 取得。
+* 叢集交換器使用下列連接埠連接到節點：
++
+** 連接埠 e1/1-40 (10 GbE)：Nexus 5596
+** 埠 e1/1-30 (40 GbE)：Nexus 3132Q-V
+
+
+* 叢集交換器使用下列交換器間連結 (ISL) 連接埠：
++
+** 連接埠 e1/41-48 (10 GbE)：Nexus 5596
+** 連接埠 e1/31-32 (40 GbE)：Nexus 3132Q-V
+
+
+* link:https://hwu.netapp.com/["Hardware Universe"^]包含有關 Nexus 3132Q-V 交換器支援佈線的資訊：
++
+** 具有 10 GbE 叢集連接的節點需要 QSFP 轉 SFP+ 光纖分支纜線或 QSFP 轉 SFP+ 銅分支纜線。
+** 具有 40 GbE 叢集連接的節點需要支援的 QSFP/QSFP28 光模組（配備光纖纜線）或 QSFP/QSFP28 銅直連線。
+
+
+* 叢集交換器使用對應的ISL電纜：
++
+** 起始端：Nexus 5596 至 Nexus 5596（SFP+ 至 SFP+）
++
+*** 8 條 SFP+ 光纖或銅直連接纜
+
+
+** 中期：Nexus 5596 至 Nexus 3132Q-V（QSFP 至 4xSFP+ 分支）
++
+*** 1 條 QSFP 轉 SFP+ 光纖分支線或銅分支線
+
+
+** 最終版：Nexus 3132Q-V 至 Nexus 3132Q-V（QSFP28 至 QSFP28）
++
+*** 2 條 QSFP28 光纖或銅直連接電纜
+
+
+
+
+* 在 Nexus 3132Q-V 交換器上，您可以將 QSFP/QSFP28 連接埠作為 40 Gigabit Ethernet 或 4 x10 Gigabit Ethernet 模式運作。
++
+預設情況下，40 Gigabit Ethernet 模式下有 32 個連接埠。這些 40 Gigabit Ethernet 連接埠採用二元組命名慣例進行編號。例如，第二個 40 Gigabit Ethernet 連接埠的編號為 1/2。將組態從 40 Gigabit Ethernet 變更為 10 Gigabit Ethernet 的程序稱為 _breakout_，將組態從 10 Gigabit Ethernet 變更為 40 Gigabit Ethernet 的程序稱為 _breakin_。當您將一個 40 Gigabit Ethernet 連接埠分出為 10 Gigabit Ethernet 連接埠時，產生的連接埠會採用三元組命名慣例進行編號。例如，第二個 40 Gigabit Ethernet 連接埠的分線連接埠編號分別為 1/2/1、1/2/2、1/2/3 和 1/2/4。
+
+* Nexus 3132Q-V 交換器左側有一組 4 個 SFP+ 連接埠，多工連接至該 QSFP28 連接埠。
++
+預設情況下，RCF 結構設計為使用 QSFP28 連接埠。
+
++
+
+NOTE: 您可以使用 `hardware profile front portmode sfp-plus`命令，將 Nexus 3132Q-V 交換器的 4 個 SFP+ 連接埠設為作用中狀態，而非使用 QSFP 連接埠。同樣地，您可以使用 `hardware profile front portmode qsfp`命令，將 Nexus 3132Q-V 交換器重設為使用 QSFP 連接埠，而非使用 4 個 SFP+ 連接埠。
+
+* 您已將 Nexus 3132Q-V 交換器上的部分連接埠設定為以 10 GbE 或 40 GbE 運作。
++
+
+NOTE: 您可以使用 `interface breakout module 1 port 1-6 map 10g-4x`命令將前六個連接埠拆分為 4x10 GbE 模式。同樣，您可以使用 `no interface breakout module 1 port 1-6 map 10g-4x`命令將前六個 QSFP+ 連接埠從分割組態重新組合。
+
+* 您已完成規劃、移轉，並閱讀了有關節點到 Nexus 3132Q-V 叢集交換器的 10 GbE 和 40 GbE 連線的必要文件。
+* 此程序支援的 ONTAP 和 NX-OS 版本位於 link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換機"^]。
+
+
+
+
+[[netapp-cn1610-requirements]]
+== NetApp CN1610 要求
+
+* 支援以下集群交換器：
++
+** NetApp CN1610
+** CiscoNexus 3132Q-V
+
+
+* 叢集交換器支援以下節點連線：
++
+** NetApp CN1610：連接埠 0/1 至 0/12（10 GbE）
+** Cisco Nexus 3132Q-V：連接埠 e1/1-30 (40 GbE)
+
+
+* 叢集交換器使用下列交換器間鏈路（ISL）連接埠：
++
+** NetApp CN1610：連接埠 0/13 至 0/16（10 GbE）
+** Cisco Nexus 3132Q-V：連接埠 e1/31-32 (40 GbE)
+
+
+* link:https://hwu.netapp.com/["Hardware Universe"^]包含有關 Nexus 3132Q-V 交換器支援佈線的資訊：
++
+** 具有 10 GbE 叢集連接的節點需要 QSFP 轉 SFP+ 光纖分支纜線或 QSFP 轉 SFP+ 銅分支纜線。
+** 具有 40 GbE 叢集連線的節點需要支援的 QSFP/QSFP28 光模組搭配光纖纜線，或 QSFP/QSFP28 銅直連纜線。
+
+
+* 適用的ISL佈線如下：
++
+** 起始端：對於 CN1610 到 CN1610（SFP+ 到 SFP+），四條 SFP+ 光纖或銅直連接電纜
+** 臨時方案：對於 CN1610 到 Nexus 3132Q-V（QSFP 轉四個 SFP+ 分支），使用一條 QSFP 轉 SFP+ 光纖或銅分支電纜
+** 最後：對於 Nexus 3132Q-V 到 Nexus 3132Q-V （QSFP28 到 QSFP28），需要兩條 QSFP28 光纖或銅直連接線。
+
+
+* NetApp 雙絞線電纜與 Cisco Nexus 3132Q-V 交換器不相容。
++
+如果您目前的 CN1610 組態使用 NetApp 雙軸電纜進行叢集節點到交換器的連線或 ISL 連線，且您希望繼續在環境中使用雙軸電纜，則需要購買 Cisco 雙軸電纜。或者，您也可以使用光纖電纜進行 ISL 連線和叢集節點到交換器的連線。
+
+* 在 Nexus 3132Q-V 交換器上，您可以將 QSFP/QSFP28 連接埠用作 40 Gb 乙太網路或 4x 10 Gb 乙太網路模式。
++
+預設情況下，40 Gb 乙太網路模式下有 32 個連接埠。這些 40 Gb 乙太網路連接埠採用二元組命名慣例進行編號。例如，第二個 40 Gb 乙太網路連接埠的編號為 1/2。將組態從 40 Gb 乙太網路改為 10 Gb 乙太網路的過程稱為 _breakout_，將組態從 10 Gb 乙太網路改為 40 Gb 乙太網路的過程稱為 _breakin_。當您將一個 40 Gb 乙太網路連接埠分線為 10 Gb 乙太網路連接埠時，分線後的連接埠會採用三元組命名慣例進行編號。例如，第二個 40 Gb 乙太網路連接埠分線後的連接埠編號為 1/2/1、1/2/2、1/2/3 和 1/2/4。
+
+* Nexus 3132Q-V 交換器左側有一組四個 SFP+ 連接埠，多工連接至第一個 QSFP 連接埠。
++
+預設情況下，參考組態檔案 （RCF） 的結構是使用第一個 QSFP 連接埠。
+
++
+您可以使用 `hardware profile front portmode sfp-plus`命令，將 Nexus 3132Q-V 交換器的四個 SFP+ 連接埠設為作用中狀態，而非使用一個 QSFP 連接埠。同樣地，您可以使用 `hardware profile front portmode qsfp`命令，將 Nexus 3132Q-V 交換器重設為使用一個 QSFP 連接埠，而非使用四個 SFP+ 連接埠。
+
++
+
+NOTE: 當您使用前四個 SFP+ 連接埠時，第一個 40GbE QSFP 連接埠將會停用。
+
+* 您必須已將 Nexus 3132Q-V 交換器上的某些連接埠設定為以 10 GbE 或 40 GbE 運作。
++
+您可以使用 `interface breakout module 1 port 1-6 map 10g-4x`命令將前六個連接埠拆分為 4x10 GbE 模式。同樣，您可以使用 `no interface breakout module 1 port 1-6 map 10g-4x`命令將前六個 QSFP+ 連接埠從 _breakout_ 組態中重新組合。
+
+* 您必須已完成規劃、移轉，並閱讀有關從節點到 Nexus 3132Q-V 叢集交換器的 10 GbE 和 40 GbE 連接的必要文件。
+* 此程序支援的 ONTAP 和 NX-OS 版本列於 link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換機"^]。
+* 此程序支援的 ONTAP 和 FASTPATH 版本列於 link:https://mysupport.netapp.com/site/products/all/details/netapp-cluster-switches/docs-tab["NetApp CN1601 和 CN1610 交換器"^]。
+

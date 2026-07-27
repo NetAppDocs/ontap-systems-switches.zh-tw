@@ -1,0 +1,384 @@
+---
+permalink: switch-cisco-92300/install-nxos-software.html 
+sidebar: sidebar 
+keywords: install nx-os,nx-os configure 
+summary: 您可以依照下列步驟在 Nexus 92300YC 交換器上安裝 NX-OS 軟體。 
+---
+= 安裝 NX-OS 軟體
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+請依照下列步驟在 Nexus 92300YC 交換器上安裝 NX-OS 軟體。
+
+NX-OS 是 Cisco Systems 提供的 Nexus 系列乙太網路交換器和 MDS 系列 Fibre Channel （FC） 儲存設備區域網路交換器的網路作業系統。
+
+
+
+[[review-requirements]]
+== 審查要求
+
+.支援的連接埠和節點連接
+* Nexus 92300YC 交換器支援的交換器間連結 (ISL) 為連接埠 1/65 和 1/66。
+* Nexus 92300YC 交換器支援的節點連接為連接埠 1/1 至 1/66。
+
+
+.開始之前
+請確保您擁有以下物品：
+
+* 適用於您交換器的 NetApp Cisco NX-OS 軟體，請從 NetApp 支援網站取得，網址為 http://mysupport.netapp.com/["mysupport.netapp.com"]
+* 一個功能齊全的群集（日誌中沒有錯誤或類似問題）。
+* link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco乙太網路交換器頁面"^]。請查閱交換器相容性列表，以了解支援的 ONTAP 和 NX-OS 版本。
+
+
+
+
+[[install-the-software]]
+== 安裝軟體
+
+本流程中的範例使用了兩個節點，但叢集中最多可以有 24 個節點。
+
+.關於範例
+本流程中的範例使用以下開關和節點命名規則：
+
+* Nexus 92300YC 交換器的名稱是 `cs1`和 `cs2`。
+* 本程序中使用的範例從第二個交換器 _*cs2*_ 開始升級。
+* 集群 LIF 名稱為 `node1_clus1`和 `node1_clus2`對於節點1，以及 `node2_clus1`和 `node2_clus2`對於節點2。
+* IP空間名稱為 `Cluster`。
+* 這 `cluster1::*>`prompt 指示叢集名稱。
+* 每個節點上的叢集連接埠都命名為 `e0a`和 `e0b`。
++
+請參閱 link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] 以了解您的平台支援的實際叢集連接埠。如需交換器安裝需求的詳細資訊，請參閱 link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["安裝HWU中沒有的設備還需要哪些額外資訊？"^]。
+
+
+
+.步驟
+. 將集群交換器連接到管理網路。
+. 使用 `ping`用於驗證與託管 NX-OS 軟體和 RCF 的伺服器的連接性的命令。
++
+.顯示範例
+[%collapsible]
+====
+此範例驗證交換器可以存取 IP 位址為 172.19.2.1 的伺服器：
+
+[listing, subs="+quotes"]
+----
+cs2# *ping 172.19.2.1*
+Pinging 172.19.2.1 with 0 bytes of data:
+
+Reply From 172.19.2.1: icmp_seq = 0. time= 5910 usec.
+----
+====
+. 將 NX-OS 軟體和 EPLD "映像"複製到 Nexus 92300YC 交換器。
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cs2# *copy sftp: bootflash: vrf management*
+Enter source filename: */code/nxos.9.2.2.bin*
+Enter hostname for the sftp server: *172.19.2.1*
+Enter username: *user1*
+
+Outbound-ReKey for 172.19.2.1:22
+Inbound-ReKey for 172.19.2.1:22
+user1@172.19.2.1's password:
+sftp> progress
+Progress meter enabled
+sftp> get   /code/nxos.9.2.2.bin  /bootflash/nxos.9.2.2.bin
+/code/nxos.9.2.2.bin  100% 1261MB   9.3MB/s   02:15
+sftp> exit
+Copy complete, now saving to disk (please wait)...
+Copy complete.
+
+
+cs2# *copy sftp: bootflash: vrf management*
+Enter source filename: */code/n9000-epld.9.2.2.img*
+Enter hostname for the sftp server: *172.19.2.1*
+Enter username: *user1*
+
+Outbound-ReKey for 172.19.2.1:22
+Inbound-ReKey for 172.19.2.1:22
+user1@172.19.2.1's password:
+sftp> progress
+Progress meter enabled
+sftp> get   /code/n9000-epld.9.2.2.img  /bootflash/n9000-epld.9.2.2.img
+/code/n9000-epld.9.2.2.img  100%  161MB   9.5MB/s   00:16
+sftp> exit
+Copy complete, now saving to disk (please wait)...
+Copy complete.
+----
+====
+. 請確認NX-OS軟體的運作版本：
++
+`show version`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cs2# *show version*
+Cisco Nexus Operating System (NX-OS) Software
+TAC support: http://www.cisco.com/tac
+Copyright (C) 2002-2018, Cisco and/or its affiliates.
+All rights reserved.
+The copyrights to certain works contained in this software are
+owned by other third parties and used and distributed under their own
+licenses, such as open source.  This software is provided "as is," and unless
+otherwise stated, there is no warranty, express or implied, including but not
+limited to warranties of merchantability and fitness for a particular purpose.
+Certain components of this software are licensed under
+the GNU General Public License (GPL) version 2.0 or
+GNU General Public License (GPL) version 3.0  or the GNU
+Lesser General Public License (LGPL) Version 2.1 or
+Lesser General Public License (LGPL) Version 2.0.
+A copy of each such license is available at
+http://www.opensource.org/licenses/gpl-2.0.php and
+http://opensource.org/licenses/gpl-3.0.html and
+http://www.opensource.org/licenses/lgpl-2.1.php and
+http://www.gnu.org/licenses/old-licenses/library.txt.
+
+Software
+  BIOS: version 05.31
+  NXOS: version 9.2(1)
+  BIOS compile time:  05/17/2018
+  NXOS image file is: bootflash:///nxos.9.2.1.bin
+  NXOS compile time:  7/17/2018 16:00:00 [07/18/2018 00:21:19]
+
+
+Hardware
+  cisco Nexus9000 C92300YC Chassis
+  Intel(R) Xeon(R) CPU D-1526 @ 1.80GHz with 16337884 kB of memory.
+  Processor Board ID FDO220329V5
+
+  Device name: cs2
+  bootflash:  115805356 kB
+Kernel uptime is 0 day(s), 4 hour(s), 23 minute(s), 11 second(s)
+
+Last reset at 271444 usecs after Wed Apr 10 00:25:32 2019
+  Reason: Reset Requested by CLI command reload
+  System version: 9.2(1)
+  Service:
+
+plugin
+  Core Plugin, Ethernet Plugin
+
+Active Package(s):
+
+cs2#
+----
+====
+. 安裝 NX-OS 鏡像。
++
+安裝鏡像檔案後，每次交換器重新啟動時都會載入該檔案。
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cs2# *install all nxos bootflash:nxos.9.2.2.bin*
+
+Installer will perform compatibility check first. Please wait.
+Installer is forced disruptive
+
+Verifying image bootflash:/nxos.9.2.2.bin for boot variable "nxos".
+[####################] 100% -- SUCCESS
+
+Verifying image type.
+[####################] 100% -- SUCCESS
+
+Preparing "nxos" version info using image bootflash:/nxos.9.2.2.bin.
+[####################] 100% -- SUCCESS
+
+Preparing "bios" version info using image bootflash:/nxos.9.2.2.bin.
+[####################] 100% -- SUCCESS
+
+Performing module support checks.
+[####################] 100% -- SUCCESS
+
+Notifying services about system upgrade.
+[####################] 100% -- SUCCESS
+
+
+
+Compatibility check is done:
+Module  bootable       Impact     Install-type  Reason
+------  --------  --------------- ------------  ------
+  1       yes      disruptive         reset     default upgrade is not hitless
+
+
+
+Images will be upgraded according to following table:
+
+Module   Image         Running-Version(pri:alt            New-Version         Upg-Required
+------  --------  --------------------------------------  ------------------  ------------
+  1       nxos                                  9.2(1)              9.2(2)         yes
+  1       bios    v05.31(05/17/2018):v05.28(01/18/2018)   v05.33(09/08/2018)       yes
+
+
+Switch will be reloaded for disruptive upgrade.
+Do you want to continue with the installation (y/n)?  [n] *y*
+
+
+Install is in progress, please wait.
+
+Performing runtime checks.
+[####################] 100% -- SUCCESS
+
+Setting boot variables.
+[####################] 100% -- SUCCESS
+
+Performing configuration copy.
+[####################] 100% -- SUCCESS
+
+Module 1: Refreshing compact flash and upgrading bios/loader/bootrom.
+Warning: please do not remove or power off the module at this time.
+[####################] 100% -- SUCCESS
+2019 Apr 10 04:59:35 cs2 %$ VDC-1 %$ %VMAN-2-ACTIVATION_STATE: Successfully deactivated virtual service 'guestshell+'
+
+Finishing the upgrade, switch will reboot in 10 seconds.
+----
+====
+. 交換器重新啟動後，請先驗證NX-OS軟體的新版本：
++
+`show version`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cs2# *show version*
+
+Cisco Nexus Operating System (NX-OS) Software
+TAC support: http://www.cisco.com/tac
+Copyright (C) 2002-2018, Cisco and/or its affiliates.
+All rights reserved.
+The copyrights to certain works contained in this software are
+owned by other third parties and used and distributed under their own
+licenses, such as open source.  This software is provided "as is," and unless
+otherwise stated, there is no warranty, express or implied, including but not
+limited to warranties of merchantability and fitness for a particular purpose.
+Certain components of this software are licensed under
+the GNU General Public License (GPL) version 2.0 or
+GNU General Public License (GPL) version 3.0  or the GNU
+Lesser General Public License (LGPL) Version 2.1 or
+Lesser General Public License (LGPL) Version 2.0.
+A copy of each such license is available at
+http://www.opensource.org/licenses/gpl-2.0.php and
+http://opensource.org/licenses/gpl-3.0.html and
+http://www.opensource.org/licenses/lgpl-2.1.php and
+http://www.gnu.org/licenses/old-licenses/library.txt.
+
+Software
+  BIOS: version 05.33
+  NXOS: version 9.2(2)
+  BIOS compile time:  09/08/2018
+  NXOS image file is: bootflash:///nxos.9.2.2.bin
+  NXOS compile time:  11/4/2018 21:00:00 [11/05/2018 06:11:06]
+
+
+Hardware
+  cisco Nexus9000 C92300YC Chassis
+  Intel(R) Xeon(R) CPU D-1526 @ 1.80GHz with 16337884 kB of memory.
+  Processor Board ID FDO220329V5
+
+  Device name: cs2
+  bootflash:  115805356 kB
+  Kernel uptime is 0 day(s), 0 hour(s), 3 minute(s), 52 second(s)
+
+Last reset at 182004 usecs after Wed Apr 10 04:59:48 2019
+  Reason: Reset due to upgrade
+  System version: 9.2(1)
+  Service:
+
+plugin
+  Core Plugin, Ethernet Plugin
+
+Active Package(s):
+----
+====
+. 升級EPLD鏡像並重新啟動交換器。
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cs2# *show version module 1 epld*
+
+EPLD Device                     Version
+---------------------------------------
+MI FPGA                          0x7
+IO FPGA                          0x17
+MI FPGA2                         0x2
+GEM FPGA                         0x2
+GEM FPGA                         0x2
+GEM FPGA                         0x2
+GEM FPGA                         0x2
+
+cs2# *install epld bootflash:n9000-epld.9.2.2.img module 1*
+Compatibility check:
+Module        Type         Upgradable        Impact   Reason
+------  -----------------  ----------    ----------   ------
+     1            SUP           Yes       disruptive  Module Upgradable
+
+Retrieving EPLD versions.... Please wait.
+Images will be upgraded according to following table:
+Module  Type   EPLD              Running-Version   New-Version  Upg-Required
+------  ----  -------------      ---------------   -----------  ------------
+     1   SUP  MI FPGA                   0x07        0x07             No
+     1   SUP  IO FPGA                   0x17        0x19            Yes
+     1   SUP  MI FPGA2                  0x02        0x02             No
+The above modules require upgrade.
+The switch will be reloaded at the end of the upgrade
+Do you want to continue (y/n) ?  [n] *y*
+
+Proceeding to upgrade Modules.
+
+Starting Module 1 EPLD Upgrade
+
+Module 1 : IO FPGA [Programming] : 100.00% (     64 of      64 sectors)
+Module 1 EPLD upgrade is successful.
+Module        Type  Upgrade-Result
+------  ------------------  --------------
+     1         SUP         Success
+
+
+EPLDs upgraded.
+
+Module 1 EPLD upgrade is successful.
+----
+====
+. 交換器重新啟動後，再次登入並驗證新版本的 EPLD 是否已成功載入。
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+cs2# *show version module 1 epld*
+
+EPLD Device                     Version
+---------------------------------------
+MI FPGA                          0x7
+IO FPGA                          0x19
+MI FPGA2                         0x2
+GEM FPGA                         0x2
+GEM FPGA                         0x2
+GEM FPGA                         0x2
+GEM FPGA                         0x2
+----
+====
+
+
+.下一步是什麼？
+安裝 NX-OS 軟體後，您可以link:install-the-rcf-file.html["安裝 RCF"]。

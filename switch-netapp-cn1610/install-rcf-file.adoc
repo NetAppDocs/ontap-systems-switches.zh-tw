@@ -1,0 +1,484 @@
+---
+permalink: switch-netapp-cn1610/install-rcf-file.html 
+sidebar: sidebar 
+keywords: reference configuration, file ,install, cn1610, switch, install rcf 
+summary: 安裝參考組態檔 RCF 時，必須先將叢集 LIF 從交換器 cs2 遷移出去。RCF 安裝並驗證完成後，即可將 LIF 移回。 
+---
+= 在 CN1610 交換器上安裝參考組態檔案
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+請依照以下步驟安裝參考組態檔案 (RCF)。
+
+安裝 RCF 之前，必須先將叢集 LIF 從交換器 cs2 移轉出去。RCF 安裝並驗證完成後，即可將 LIF 移回。
+
+
+
+[[review-requirements]]
+== 審查要求
+
+.開始之前
+請確保您擁有以下物品：
+
+* 交換器配置的目前備份。
+* 一個功能齊全的叢集（日誌中沒有錯誤，叢集網路介面卡（NIC）也沒有缺陷或類似問題）。
+* 叢集交換器上的連接埠連線功能齊全。
+* 所有叢集連接埠均已設定。
+* 所有叢集邏輯介面（LIF）均已設定。
+* 成功的通訊路徑：ONTAP （權限：進階） `cluster ping-cluster -node node1` 命令必須指示 `larger than PMTU communication`在所有路徑上均成功。
+* 受支援的 RCF 和 ONTAP 版本。
++
+請務必查閱 http://mysupport.netapp.com/NOW/download/software/cm_switches_ntap/["NetApp CN1601 和 CN1610 交換器"^]頁面上的交換器相容性表格，以了解支援的 RCF 和 ONTAP 版本。
+
+
+
+
+
+[[install-the-rcf]]
+== 安裝 RCF
+
+以下步驟使用叢集式 Data ONTAP 8.2 語法。因此，叢集 Vserver、LIF 名稱和 CLI 輸出與 Data ONTAP 8.3 中的有所不同。
+
+RCF 和 FASTPATH 版本中的命令語法之間可能存在命令相依性。
+
+
+NOTE: 出於安全性考慮，RCF 1.2 版本已明確停用 Telnet 支援。為避免安裝 RCF 1.2 時出現連線問題，請確認已啟用 Secure Shell （SSH）。 https://library.netapp.com/ecm/ecm_get_file/ECMP1117874["NetApp CN1610 交換器管理員指南"^]有關 SSH 的詳細資訊。
+
+.關於範例
+本流程中的範例使用以下開關和節點命名規則：
+
+* 這兩個 NetApp 交換器分別是 cs1 和 cs2。
+* 這兩個叢集 LIF 分別是 clus1 和 clus2。
+* 虛擬伺服器為 vs1 和 vs2。
+* The `cluster::*>` 提示訊息會顯示群集名稱。
+* 每個節點上的叢集連接埠分別命名為 e1a 和 e2a。
++
+link:https://hwu.netapp.com/["Hardware Universe"^]提供有關您平台支援的實際叢集連接埠的詳細資訊。
+
+* 支援的交換器間連結 (ISL) 為連接埠 0/13 至 0/16。
+* 支援的節點連接為連接埠 0/1 至 0/12。
+* 支援的 FASTPATH、RCF 和 ONTAP 版本。
++
+請務必查閱 http://mysupport.netapp.com/NOW/download/software/cm_switches_ntap/["NetApp CN1601 和 CN1610 交換器"^]頁面上的交換器相容性表格，以了解支援的 FASTPATH、RCF 和 ONTAP 版本。
+
+
+
+
+
+[[step-1-migrate-cluster]]
+=== 步驟 1：移轉叢集
+
+. 儲存您目前的交換器組態資訊：
++
+`write memory`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例展示如何將目前交換器組態儲存到交換器 cs2 的啟動組態(`startup-config`）檔案：
+
+[listing]
+----
+(cs2) # write memory
+This operation may take a few minutes.
+Management interfaces will not be available during this time.
+
+Are you sure you want to save? (y/n) y
+
+Config file 'startup-config' created successfully.
+
+Configuration Saved!
+----
+====
+. 在每個節點的主控台上，將 clus2 移轉到連接埠 e1a：
++
+`network interface migrate`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+cluster::*> network interface migrate -vserver vs1 -lif clus2 -source-node node1 -destnode node1 -dest-port e1a
+
+cluster::*> network interface migrate -vserver vs2 -lif clus2 -source-node node2 -destnode node2 -dest-port e1a
+----
+====
+. 在每個節點的主控台上，驗證移轉是否已完成：
++
+`network interface show -role cluster`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示 clus2 已移轉至兩個節點上的連接埠 e1a：
+
+[listing]
+----
+cluster::*> network port show -role cluster
+         clus1      up/up      10.10.10.1/16   node2    e1a     true
+         clus2      up/up      10.10.10.2/16   node2    e1a     false
+----
+====
+. 關閉兩個節點上的 e2a 連接埠：
++
+`network port modify`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例顯示兩個節點上的 e2a 連接埠都已關閉：
+
+[listing]
+----
+cluster::*> network port modify -node node1 -port e2a -up-admin false
+cluster::*> network port modify -node node2 -port e2a -up-admin false
+----
+====
+. 請確認兩個節點上的 e2a 連接埠均已關閉：
++
+`network port show`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+cluster::*> network port show -role cluster
+
+                                  Auto-Negot  Duplex      Speed (Mbps)
+Node   Port   Role     Link MTU   Admin/Oper  Admin/Oper  Admin/Oper
+------ ------ -------- ---- ----- ----------- ----------  -----------
+node1
+       e1a    cluster  up   9000  true/true   full/full   auto/10000
+       e2a    cluster  down 9000  true/true   full/full   auto/10000
+node2
+       e1a    cluster  up   9000  true/true   full/full   auto/10000
+       e2a    cluster  down 9000  true/true   full/full   auto/10000
+----
+====
+. 關閉作用中 NetApp 交換器 cs1 上的 ISL 連接埠。
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+(cs1) # configure
+(cs1) (config) # interface 0/13-0/16
+(cs1) (interface 0/13-0/16) # shutdown
+(cs1) (interface 0/13-0/16) # exit
+(cs1) (config) # exit
+----
+====
+
+
+
+
+[[step-2-install-rcf]]
+=== 步驟 2：安裝 RCF
+
+. 將 RCF 複製到交換器。
++
+
+NOTE: 您必須在呼叫指令碼之前，將 `.scr`副檔名設定為檔案名稱的一部分。此副檔名是 FASTPATH 作業系統的副檔名。
+
++
+交換器會在指令碼下載到交換器時自動驗證指令碼，並將輸出結果傳送至主控台。
+
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+(cs2) # copy tftp://10.10.0.1/CN1610_CS_RCF_v1.1.txt nvram:script CN1610_CS_RCF_v1.1.scr
+
+[the script is now displayed line by line]
+Configuration script validated.
+File transfer operation completed successfully.
+----
+====
+. 請確認指令碼已下載並以您指定的檔案名稱儲存。
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+(cs2) # script list
+Configuration Script Name        Size(Bytes)
+-------------------------------- -----------
+running-config.scr               6960
+CN1610_CS_RCF_v1.1.scr           2199
+
+2 configuration script(s) found.
+6038 Kbytes free.
+----
+====
+. 驗證指令碼。
++
+
+NOTE: 下載過程中會對指令碼進行驗證，以確認每一行都是有效的交換器命令列。
+
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+(cs2) # script validate CN1610_CS_RCF_v1.1.scr
+[the script is now displayed line by line]
+Configuration script 'CN1610_CS_RCF_v1.1.scr' validated.
+----
+====
+. 將指令碼應用於交換器。
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+(cs2) #script apply CN1610_CS_RCF_v1.1.scr
+
+Are you sure you want to apply the configuration script? (y/n) y
+[the script is now displayed line by line]...
+
+Configuration script 'CN1610_CS_RCF_v1.1.scr' applied.
+----
+====
+. 請確認您的變更已在交換器上生效。
++
+[listing]
+----
+(cs2) # show running-config
+----
++
+此範例會顯示交換器上的 `running-config`檔案。您必須將該檔案與 RCF 進行比較，以驗證您設定的參數是否符合預期。
+
+. 儲存變更。
+. 將該 `running-config`檔案設定為標準檔案。
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+(cs2) # write memory
+This operation may take a few minutes.
+Management interfaces will not be available during this time.
+
+Are you sure you want to save? (y/n) y
+
+Config file 'startup-config' created successfully.
+----
+====
+. 重新開機交換器並驗證  `running-config` 檔案是否正確。
++
+重新開機完成後，您必須登入、檢視 `running-config`檔案，然後尋找介面 3/64 上的執行摘要，即 RCF 的版本標籤。
+
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+(cs2) # reload
+
+The system has unsaved changes.
+Would you like to save them now? (y/n) y
+
+
+Config file 'startup-config' created successfully.
+Configuration Saved!
+System will now restart!
+----
+====
+. 在作用中交換器 cs1 上啟用 ISL 連接埠。
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+(cs1) # configure
+(cs1) (config)# interface 0/13-0/16
+(cs1) (Interface 0/13-0/16)# no shutdown
+(cs1) (Interface 0/13-0/16)# exit
+(cs1) (config)# exit
+----
+====
+. 確認ISL是否正常運作：
++
+`show port-channel 3/1`
+
++
+連結狀態欄位應指示 `Up`。
+
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+
+(cs2) # show port-channel 3/1
+
+Local Interface................................ 3/1
+Channel Name................................... ISL-LAG
+Link State..................................... Up
+Admin Mode..................................... Enabled
+Type........................................... Static
+Load Balance Option............................ 7
+(Enhanced hashing mode)
+
+Mbr    Device/       Port      Port
+Ports  Timeout       Speed     Active
+------ ------------- --------- -------
+0/13   actor/long    10G Full  True
+       partner/long
+0/14   actor/long    10G Full  True
+       partner/long
+0/15   actor/long    10G Full  True
+       partner/long
+0/16   actor/long    10G Full  True
+       partner/long
+----
+====
+. 在兩個節點上啟動叢集連接埠 e2a：
++
+`network port modify`
+
++
+.顯示範例
+[%collapsible]
+====
+以下範例展示如何在節點 1 和節點 2 上啟動連接埠 e2a：
+
+[listing]
+----
+cluster::*> network port modify -node node1 -port e2a -up-admin true
+cluster::*> network port modify -node node2 -port e2a -up-admin true
+----
+====
+
+
+
+
+[[step-3-validate-installation]]
+=== 步驟 3：驗證安裝
+
+. 請確認兩個節點上的 e2a 連接埠都已啟動：
++
+`network port show -_role cluster_`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+cluster::*> network port show -role cluster
+
+                                Auto-Negot  Duplex      Speed (Mbps)
+Node   Port Role     Link MTU   Admin/Oper  Admin/Oper  Admin/Oper
+------ ---- -------- ---- ----  ----------- ----------  ------------
+node1
+       e1a  cluster  up   9000  true/true   full/full   auto/10000
+       e2a  cluster  up   9000  true/true   full/full   auto/10000
+node2
+       e1a  cluster  up   9000  true/true   full/full   auto/10000
+       e2a  cluster  up   9000  true/true   full/full   auto/10000
+----
+====
+. 在兩個節點上，回復與連接埠 e2a 關聯的 clus2：
++
+`network interface revert`
+
++
+LIF 可能會自動回復，具體取決於您的 ONTAP 版本。
+
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+cluster::*> network interface revert -vserver node1 -lif clus2
+cluster::*> network interface revert -vserver node2 -lif clus2
+----
+====
+. 確認 LIF 現在在兩個節點上都處於主目錄（(`true`）狀態：
++
+`network interface show -_role cluster_`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+cluster::*> network interface show -role cluster
+
+        Logical    Status     Network        Current  Current Is
+Vserver Interface  Admin/Oper Address/Mask   Node     Port    Home
+------- ---------- ---------- -------------- -------- ------- ----
+vs1
+        clus1      up/up      10.10.10.1/24  node1    e1a     true
+        clus2      up/up      10.10.10.2/24  node1    e2a     true
+vs2
+        clus1      up/up      10.10.10.1/24  node2    e1a     true
+        clus2      up/up      10.10.10.2/24  node2    e2a     true
+----
+====
+. 檢視節點成員的狀態：
++
+`cluster show`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+cluster::> cluster show
+
+Node           Health  Eligibility
+-------------- ------- ------------
+node1
+               true    true
+node2
+               true    true
+----
+====
+. 當您對軟體版本和交換器設定滿意後，請將  `running-config` 檔案複製到  `startup-config` 檔案。
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+(cs2) # write memory
+This operation may take a few minutes.
+Management interfaces will not be available during this time.
+
+Are you sure you want to save? (y/n) y
+
+Config file 'startup-config' created successfully.
+
+Configuration Saved!
+----
+====
+. 重複上述步驟，在另一台交換器 cs1 上安裝 RCF。
+
+
+.下一步是什麼？
+link:../switch-cshm/config-overview.html["配置交換器健康監控"]

@@ -1,0 +1,24 @@
+---
+permalink: switch-netapp-cn1610/migrate-overview.html 
+sidebar: sidebar 
+keywords: migrate, two-node switched cluster, netapp cn1610 
+summary: 如果您有一個雙節點無交換器式叢集，您可以無中斷地移轉到包含 NetApp CN1610 叢集網路交換器的雙節點交換式叢集。 
+---
+= 採用 NetApp CN1610 叢集交換器的雙節點交換叢集移轉選項
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果您有一個雙節點無交換器式叢集，您可以無中斷地移轉到包含 NetApp CN1610 叢集網路交換器的雙節點有交換器式叢集。您所使用的程序取決於每個控制器上是否有兩個專用叢集網路連接埠，或每個控制器上只有單一叢集連接埠。
+
+大多數系統需要每個控制器上有兩個專用的叢集網路連接埠。
+
+FAS22xx 節點允許每個控制器上有單一叢集連接埠。
+
+有兩種移轉方案可供選擇：
+
+* link:migrate-switched-netapp-cn1610.html["從無交換器式叢集移轉至有交換器的 NetApp CN1610 叢集環境"]
+* link:migrate-fas22xx-systems.html["從無交換器式叢集（具有單一叢集網路連線的 FAS22xx 系統）移轉"]
+
