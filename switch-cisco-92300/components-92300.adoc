@@ -2,16 +2,16 @@
 permalink: switch-cisco-92300/components-92300.html 
 sidebar: sidebar 
 keywords: cisco nexus 92300YC 
-summary: 如果要建置包含兩個以上節點的ONTAP集群，則需要兩個受支援的集群網路交換器。您也可以使用額外的管理交換機，這些交換機是可選的。 
+summary: 識別 Cisco Nexus 92300YC 叢集交換器的元件和零件編號，以支援硬體安裝和後續維護。 
 ---
-= Cisco Nexus 92300YC 交換器的組件和零件編號
+= 查看 Cisco Nexus 92300YC 叢集交換器的組件和零件編號
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-安裝及維護 Cisco Nexus 92300YC 交換器時、請務必查看所有交換器元件及其零件編號。詳情請參閱 link:https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^]。如需交換器安裝需求的詳細資訊，請參閱 link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["安裝HWU中沒有的設備還需要哪些額外資訊？"^]。
+確定 Cisco Nexus 92300YC 叢集交換器的組件和零件號碼，以支援硬體安裝和後續維護。如需詳細資訊，請參閱 link:https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^]。如需有關交換器安裝需求的詳細資訊，請參閱 link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["安裝HWU中沒有的設備還需要哪些額外資訊？"^]。
 
 下表列出 92300YC 交換器、風扇和電源供應器的產品編號和執行摘要：
 

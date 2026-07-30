@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: switch-cisco-9364d-gx2a/reference-documentation-9364d.html 
 keywords: shared storage cluster switch 
-summary: 對於Cisco Nexus 9364d-gx2a 交換器的安裝和維護，請務必查看特定的交換器和控制器文件以設定您的Cisco 9364d-gx2a 交換器和ONTAP叢集。 
+summary: 查閱 Cisco 交換器和 NetApp 系統文件，了解 Cisco Nexus 9364D-GX2A 交換器在 AFX 1K 和 AFX 2K 系統中的安裝和維護。 
 ---
-= 參考文件 - Cisco Nexus 9364D-GX2A 交換器
+= 查閱 Cisco Nexus 9364D-GX2A 交換器的參考文件
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,7 @@ summary: 對於Cisco Nexus 9364d-gx2a 交換器的安裝和維護，請務必查
 
 
 [role="lead"]
-對於 Cisco Nexus 9364D-GX2A 交換器的安裝，請務必查看特定的交換器和控制器文件，以設定您的 Cisco 9364D-GX2A 交換器和 ONTAP 叢集。
+請查看適用的 Cisco 交換器文件和 NetApp 系統文件，以了解 Cisco Nexus 9364D-GX2A 交換器在 AFX 1K 和 AFX 2K 系統中的安裝、組態和維護。
 
 
 

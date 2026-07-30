@@ -2,7 +2,7 @@
 permalink: switch-cisco-3132q-v/replace-cisco-nexus-3132q-v.html 
 sidebar: sidebar 
 keywords: replace, cisco nexus 3132q-v cluster switches 
-summary: 在叢集網路中更換有缺陷的 Cisco Nexus 3132Q-V 交換器是一個非中斷程序（NDU），您必須執行特定的任務順序。 
+summary: 更換發生故障的 Cisco Nexus 3132Q-V 叢集交換器。此程序不會中斷營運。 
 ---
 = 更換 Cisco Nexus 3132Q-V 叢集交換器
 :allow-uri-read: 
@@ -11,7 +11,7 @@ summary: 在叢集網路中更換有缺陷的 Cisco Nexus 3132Q-V 交換器是�
 
 
 [role="lead"]
-請依照下列步驟更換叢集網路中發生故障的 Cisco Nexus 3132Q-V 交換器。此更換程序為不中斷營運的程序 （NDO）。
+在不中斷叢集運作的情況下更換故障的 Cisco Nexus 3132Q-V 叢集交換器。此不中斷營運的程序 （NDU） 包括準備替換交換器，並將連線從故障交換器移轉過來。
 
 
 

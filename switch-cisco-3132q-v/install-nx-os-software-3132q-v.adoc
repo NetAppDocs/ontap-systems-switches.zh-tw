@@ -2,16 +2,16 @@
 permalink: switch-cisco-3132q-v/install-nx-os-software-3132q-v.html 
 sidebar: sidebar 
 keywords: install, nx-os software 
-summary: 您可以依照下列步驟在 Nexus 3132Q-V 叢集交換器上安裝 NX-OS 軟體。 
+summary: 在 Cisco Nexus 3132Q-V 叢集交換器上安裝 NX-OS 軟體，使其做好叢集運作的準備。 
 ---
-= 安裝 NX-OS 軟體
+= 在 Cisco Nexus 3132Q-V 叢集交換器上安裝 NX-OS 軟體
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-請依照下列步驟在 Nexus 3132Q-V 叢集交換器上安裝 NX-OS 軟體。
+在 Cisco Nexus 3132Q-V 叢集交換器上安裝 NX-OS 軟體，使其做好叢集運作的準備。
 
 
 

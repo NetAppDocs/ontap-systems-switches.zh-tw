@@ -2,14 +2,14 @@
 permalink: switch-cisco-9336c-fx2-shared/reset-switch-9336c-shared.html 
 sidebar: sidebar 
 keywords: 9336C-FX2 reset switch to factory defaults, 9336C-FX2 switches configuration, efos 
-summary: 在設定Cisco Nexus 9336C-FX2 交換器之前，請先查看以下資訊。 
+summary: 透過清除目前交換器組態，將 Cisco Nexus 9336C-FX2 共享交換器重設為出廠預設值。 
 ---
-= 將 9336C-FX2 共享交換器重設為出廠預設值
+= 將 Cisco Nexus 9336C-FX2 共享交換器重設為出廠預設值
 :allow-uri-read: 
 
 
 [role="lead"]
-若要將 9336C-FX2 共享交換器重設為原廠預設設置，必須清除 9336C-FX2 交換器設定。
+將 Cisco Nexus 9336C-FX2 共享的交換器重設為原廠預設值，方法是清除目前交換器組態並將交換器還原至其原始設定。
 
 .關於此任務
 * 您必須使用串列埠控制台連接到交換器。

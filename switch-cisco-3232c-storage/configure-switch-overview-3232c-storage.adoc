@@ -2,7 +2,7 @@
 permalink: switch-cisco-3232c-storage/configure-switch-overview-3232c-storage.html 
 sidebar: sidebar 
 keywords: initial installation, configure switch-cisco-3232c-storage switch 
-summary: Cisco Nexus 3232C 儲存交換器的安裝與設定概述 
+summary: 依照下列工作流程在 ONTAP 環境中安裝並設定 Cisco Nexus 3232C 儲存設備交換器。 
 ---
 = Cisco Nexus 3232C 儲存交換器的安裝與設定工作流程
 :allow-uri-read: 
@@ -11,7 +11,7 @@ summary: Cisco Nexus 3232C 儲存交換器的安裝與設定概述
 
 
 [role="lead"]
-Cisco Nexus 3232C 交換器是 Cisco Nexus 3000 平台的一部分，可安裝在 NetApp 系統機櫃中。
+請依照下列工作流程在 ONTAP 環境中安裝和設定 Cisco Nexus 3232C 儲存網路交換器。這些交換器是 Cisco Nexus 3000 平台的一部分。
 
 請依照下列工作流程步驟安裝並設定您的 Cisco 3232C 交換器。
 

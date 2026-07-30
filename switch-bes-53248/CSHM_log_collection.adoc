@@ -2,16 +2,16 @@
 permalink: switch-bes-53248/CSHM_log_collection.html 
 sidebar: sidebar 
 keywords: log collection feature,collect switch-related log files,SSh key,crypto key generation,BES-53248 Broadcom setup,BES-53248 switches configuration,EFOS 
-summary: ONTAP 中的乙太網路交換器健全狀況監控器 CSHM 記錄收集功能用於從叢集或儲存網路交換器收集記錄。 
+summary: 在 Broadcom BES-53248 叢集交換器上設定日誌收集，使 CSHM 能夠收集交換器日誌以進行偵錯和 AutoSupport 報告。 
 ---
-= 乙太網路交換器健康監控日誌收集
+= 設定 Broadcom BES-53248 叢集交換器的日誌收集
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-乙太網路交換器健康監視器 (CSHM) 負責確保叢集和儲存網路交換器的運作健康，並收集交換器日誌以進行偵錯。此程式引導您完成從交換器設定和開始收集詳細*支援*日誌的流程，並開始每小時收集由AutoSupport收集的*定期*資料。
+在 Broadcom BES-53248 叢集交換器上設定日誌收集，以啟用乙太網路交換器健全狀況監視器 （CSHM） 收集交換器日誌，用於偵錯和 AutoSupport 報告。此程序可設定隨需支援日誌收集和每小時定期資料收集。
 
 .開始之前
 * 若要啟用日誌收集功能，您必須執行ONTAP版本 9.10.1P15、9.11.1P12 或 9.12.1 或更高版本以及 EFOS 3.8.0.2 或更高版本。

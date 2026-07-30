@@ -2,16 +2,16 @@
 permalink: switch-netapp-cn1610/migrate-fas22xx-systems.html 
 sidebar: sidebar 
 keywords: migrate, two-node switched cluster, fas22xx systems, single, network connection 
-summary: 如果您在現有的雙節點無交換器式叢集中擁有 FAS22xx 系統，其中每個控制器模組都有單一用於叢集連線的後端對後端 10 GbE 連線，則可以使用無交換器式叢集連網選項，並將直接後端對後端連線替換為交換器連線。 
+summary: 將 FAS22xx 系統從具有單一叢集網路連線的無交換器式叢集移轉至使用 NetApp CN1610 叢集交換器的交換式叢集。 
 ---
-= 在 FAS22xx 系統中、使用單一叢集網路連線移轉至雙節點交換式叢集
+= 使用 NetApp CN1610 叢集交換器將 FAS22xx 系統移轉至交換式叢集
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-如果您在現有的雙節點無交換器式叢集中擁有 FAS22xx 系統，其中每個控制器模組都有單一用於叢集連線的後端對後端 10 GbE 連線，則可以使用無交換器式叢集連網選項，並將直接後端對後端連線替換為交換器連線。
+將 FAS22xx 系統從每個控制器只有單一 10 GbE 連接的雙節點無交換器式叢集移轉至使用 NetApp CN1610 叢集交換器的交換式叢集。
 
 
 

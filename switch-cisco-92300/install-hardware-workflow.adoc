@@ -2,16 +2,16 @@
 permalink: switch-cisco-92300/install-hardware-workflow.html 
 sidebar: sidebar 
 keywords: switches, initial installation, configure switch-cisco-92300yc switch 
-summary: 在設定 Cisco Nexus 92300YC 叢集交換器之前，請先審查組態總覽。 
+summary: 請依照下列工作流程安裝 Cisco Nexus 92300YC 叢集交換器的硬體。 
 ---
-= Cisco Nexus 92300YC 交換器的硬體安裝工作流程
+= Cisco Nexus 92300YC 叢集交換器的硬體安裝工作流程
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-若要安裝和設定 92300YC 叢集交換器的硬體，請依照下列步驟操作：
+依照下列工作流程安裝和設定 Cisco Nexus 92300YC 叢集交換器的硬體。
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一"]link:setup-worksheet-92300yc.html["完成佈線工作表"]
 [role="quick-margin-para"]

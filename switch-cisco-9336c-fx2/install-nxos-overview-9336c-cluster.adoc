@@ -2,14 +2,14 @@
 permalink: switch-cisco-9336c-fx2/install-nxos-overview-9336c-cluster.html 
 sidebar: sidebar 
 keywords: cisco, nx-os, software, reference, configuration, file, rcf, install, fx2, cluster, switch, install nx-os software and rcfs on cisco nexus 9336-fx2 cluster switches - cisco nexus 9336x-fx2 
-summary: Cisco NX-OS 軟體和參考設定檔必須安裝在 Cisco Nexus 9336C-FX2 叢集交換器上。 
+summary: 在安裝 NX-OS 軟體和參考組態檔案 （RCF） 之前，請準備 Cisco Nexus 9336C-FX2 和 9336C-FX2-T 叢集交換器。 
 ---
-= 準備安裝 NX-OS 軟體和 RCF
+= 準備在 Cisco Nexus 9336C-FX2 和 9336C-FX2-T 叢集交換器上安裝 NX-OS 軟體和 RCF
 :allow-uri-read: 
 
 
 [role="lead"]
-在安裝 NX-OS 軟體和參考設定檔 (RCF) 之前，請依照下列步驟操作。
+在安裝 NX-OS 軟體和參考組態檔案 （RCF） 之前，請先準備 Cisco Nexus 9336C-FX2 和 9336C-FX2-T 叢集交換器。交換器必須先安裝 NX-OS 和 RCF，才能在 ONTAP 叢集中運作。
 
 
 NOTE: NetApp 建議您先完成 ONTAP 軟體升級，然後再對交換器進行軟體升級。

@@ -2,16 +2,16 @@
 permalink: switch-cisco-9332d-gx2b/maintain-replace-frus-9332d.html 
 sidebar: sidebar 
 keywords: switches, hardware installation, Cisco Nexus, 9332D-GX2B switches 
-summary: '您的 Cisco Nexus 9332D-GX2B 交換器具有現場可更換單元 (FRU)，您可以在發生故障時進行更換。' 
+summary: '更換 Cisco Nexus 9332D-GX2B 交換器上的故障現場可更換單元 (FRU)。' 
 ---
-= 更換 FRU - Cisco Nexus 9332D-GX2B
+= 更換 Cisco Nexus 9332D-GX2B 交換器中的 FRU（現場可更換單元）
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-您的 Cisco Nexus 9332D-GX2B 交換器具有現場可更換單元 (FRU)，您可以在發生故障時進行更換。
+更換 Cisco Nexus 9332D-GX2B 交換器上的故障現場可更換單元 （FRU），以還原交換器功能，而無需更換整個交換器。
 
 .關於此任務
 Cisco Nexus 9332D-GX2B 交換器具有以下 FRU：

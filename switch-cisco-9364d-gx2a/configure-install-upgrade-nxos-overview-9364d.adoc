@@ -2,16 +2,16 @@
 permalink: switch-cisco-9364d-gx2a/configure-install-upgrade-nxos-overview-9364d.html 
 sidebar: sidebar 
 keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, cisco 9364d-gx2a 
-summary: 您可以為 AFX 1K 和 AFX 2K 系統在 Nexus 9364D-GX2A 交換器上安裝或升級 NX-OS。 
+summary: 在 Cisco Nexus 9364D-GX2A 交換器上安裝或升級 NX-OS，適用於 AFX 1K 和 AFX 2K 系統。 
 ---
-= 安裝或升級 NX-OS 概述 - Cisco Nexus 9364D-GX2A
+= 了解如何在 Cisco Nexus 9364D-GX2A 交換器上安裝或升級 NX-OS
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-您可以為 AFX 1K 和 AFX 2K 系統在 Nexus 9364D-GX2A 交換器上安裝或升級 NX-OS。
+在 Cisco Nexus 9364D-GX2A 交換器上安裝或升級 NX-OS，適用於 AFX 1K 和 AFX 2K 系統。
 
 
 NOTE: NX-OS 的安裝或升級與 RCF 的安裝或升級相互獨立。如果您要同時安裝或升級 NX-OS 和 RCF，建議您先安裝或升級 NX-OS。

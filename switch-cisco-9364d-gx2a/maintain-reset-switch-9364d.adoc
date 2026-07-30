@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: switch-cisco-9364d-gx2a/maintain-reset-switch-9364d.html 
 keywords: reset switch factory defaults 
-summary: 當 Cisco Nexus 9364D-GX2A 交換器停用或發生故障且無法恢復，需要手動重新設定時，您可以將該交換器重設為原廠預設值。 
+summary: 當停用或恢復無法設定的 Cisco Nexus 9364D-GX2A 交換器時，將其重設為出廠預設值。 
 ---
-= 將交換器重設為出廠預設值 - Cisco Nexus 9364D-GX2A
+= 將 Cisco Nexus 9364D-GX2A 交換器重設為出廠預設值
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,7 @@ summary: 當 Cisco Nexus 9364D-GX2A 交換器停用或發生故障且無法恢�
 
 
 [role="lead"]
-當 Cisco Nexus 9364D-GX2A 交換器停用或發生故障且無法恢復，需要手動重新設定時，您可以將該交換器重設為原廠預設值。
+當 Cisco Nexus 9364D-GX2A 交換器停用或發生故障且無法透過正常組態方法還原時，將交換器重設為出廠預設值。
 
 .開始之前
 您必須使用串列埠控制台連接到交換器。

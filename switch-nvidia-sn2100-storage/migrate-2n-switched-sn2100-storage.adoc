@@ -2,7 +2,7 @@
 permalink: switch-nvidia-sn2100-storage/migrate-2n-switched-sn2100-storage.html 
 sidebar: sidebar 
 keywords: two-node switchless cluster environments,migrating to a two-node switched NVIDIA SN2100 cluster environment,switchless cluster environments,NVIDIA SN2100 switches 
-summary: 如果您已經擁有一個雙節點無交換器叢集環境，則可以使用NVIDIA SN2100 交換器遷移到雙節點有交換器叢集環境，從而使叢集能夠擴展到兩個以上的節點。 
+summary: 將現有的雙節點無交換器式叢集移轉至使用 NVIDIA SN2100 叢集交換器的交換式叢集環境。 
 ---
 = 遷移到採用NVIDIA SN2100 叢集交換器的雙節點交換集群
 :allow-uri-read: 
@@ -11,7 +11,7 @@ summary: 如果您已經擁有一個雙節點無交換器叢集環境，則可�
 
 
 [role="lead"]
-如果您已經擁有一個雙節點無交換器叢集環境，則可以使用NVIDIA SN2100 交換器遷移到雙節點有交換器叢集環境，從而使叢集能夠擴展到兩個以上的節點。
+使用 NVIDIA SN2100 叢集交換器，將現有的雙節點無交換器式叢集移轉至有交換器叢集環境。這種不中斷營運的移轉可讓您將叢集擴充至兩個節點以上。
 
 具體操作步驟取決於每個控制器上是有兩個專用叢集網路連接埠還是只有一個叢集連接埠。記錄的過程適用於所有使用光纖或 Twinax 連接埠的節點，但如果節點使用板載 10GBASE-T RJ45 連接埠作為叢集網路端口，則此交換器不支援此過程。
 

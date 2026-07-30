@@ -1,17 +1,17 @@
 ---
 permalink: switch-cisco-9364d-gx2a/maintain-overview-9364d.html 
 sidebar: sidebar 
-keywords: maintain overview, frus, replace switch, reset to factory defaults, cisco 9332d-gx2b 
-summary: 維護您的 Cisco Nexus 9364D-GX2A 交換器，以確保其長期可靠性和最佳效能。您可以執行的維護任務包括更換故障的交換器組件（FRU）、更換故障交換器以及將交換器重設為原廠預設值。 
+keywords: maintain overview, frus, replace switch, reset to factory defaults, cisco 9364d-gx2a 
+summary: 檢閱 Cisco Nexus 9364D-GX2A 交換器的維護工作，包括 FRU 更換、交換器更換及重設為原廠預設值。 
 ---
-= 保持概覽 - Cisco Nexus 9364D-GX2A
+= 了解 Cisco Nexus 9364D-GX2A 交換器的維護選項
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-維護您的 Cisco Nexus 9364D-GX2A 交換器，以確保其長期可靠性和最佳效能。您可以執行的維護任務包括更換故障的交換器組件 （FRU）、更換故障的交換器以及將交換器重設為原廠預設值。
+查看 Cisco Nexus 9364D-GX2A 交換器的可用維護工作，包括更換故障交換器組件 (FRU)、更換故障交換器以及將交換器重設為出廠預設值。
 
 您可以對交換器執行以下維護任務：
 

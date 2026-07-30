@@ -2,16 +2,16 @@
 permalink: switch-bes-53248/install-hardware-bes53248.html 
 sidebar: sidebar 
 keywords: switches hardware installation 
-summary: 若要安裝 BES-53248 硬件，請參閱博通公司的文件。 
+summary: 依照 Broadcom 支援的 BES-53248 叢集交換器安裝指南安裝 Broadcom BES-53248 叢集交換器硬體。 
 ---
-= 安裝 BES-53248 叢集交換器的硬體
+= 安裝 Broadcom BES-53248 叢集交換器的硬體
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-若要安裝 BES-53248 硬件，請參閱博通公司的文件。
+依照 Broadcom 支援的 BES-53248 叢集交換器安裝指南安裝 Broadcom BES-53248 叢集交換器硬體。
 
 .步驟
 . 複習link:configure-reqs-bes53248.html["配置要求"]。

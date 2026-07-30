@@ -2,16 +2,16 @@
 permalink: switch-cisco-3232c/prepare-install-cisco-nexus-3232c.html 
 sidebar: sidebar 
 keywords: nx-os software, install, cisco nexus cluster switches, 3232c, rcfs 
-summary: Cisco NX-OS 軟體和參考組態檔 RCF 必須安裝在 Cisco Nexus 3232C 叢集交換器上。 
+summary: '在安裝 NX-OS 軟體和參考組態檔案 (RCF) 之前，請準備好 Cisco Nexus 3232C 叢集交換器。' 
 ---
-= 準備安裝 NX-OS 軟體和參考組態檔案 (RCF)
+= 準備在 Cisco Nexus 3232C 叢集交換器上安裝 NX-OS 軟體和 RCF
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-在安裝 NX-OS 軟體和參考設定檔 (RCF) 之前，請依照下列步驟操作。
+在安裝 NX-OS 軟體和參考組態檔案（RCF）之前，請先準備好 Cisco Nexus 3232C 叢集交換器。交換器必須先安裝 NX-OS 和 RCF，才能在 ONTAP 叢集中運作。
 
 .關於範例
 本流程範例中使用了兩個節點。這些節點使用兩個 10GbE 叢集互連連接埠 `e0a`和 `e0b`。

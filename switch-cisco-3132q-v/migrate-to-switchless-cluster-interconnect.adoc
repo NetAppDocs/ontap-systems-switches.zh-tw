@@ -2,7 +2,7 @@
 permalink: switch-cisco-3132q-v/migrate-to-switchless-cluster-interconnect.html 
 sidebar: sidebar 
 keywords: migrate, switchless cluster interconnect, cisco nexus 3132q-v 
-summary: 對於ONTAP 9.3 及更高版本，您可以將叢集從具有交換叢集網路的叢集遷移到兩個節點直接連接的叢集。 
+summary: 使用無交換器式連接取代 Cisco Nexus 3132Q-V 叢集交換器，以支援 ONTAP 9.3 及更新版本。 
 ---
 = 用無交換器連接取代 Cisco Nexus 3132Q-V 叢集交換器
 :allow-uri-read: 
@@ -11,7 +11,7 @@ summary: 對於ONTAP 9.3 及更高版本，您可以將叢集從具有交換叢�
 
 
 [role="lead"]
-在 ONTAP 9.3 及更新版本中，您可以將具有交換器式叢集網路的叢集移轉至兩個節點直接連接的叢集。
+在 ONTAP 9.3 及更新版本中，透過將 Cisco Nexus 3132Q-V 叢集交換器替換為直接連線，將具有交換式互連的叢集移轉至兩個節點直接連線的叢集。
 
 [NOTE]
 ====

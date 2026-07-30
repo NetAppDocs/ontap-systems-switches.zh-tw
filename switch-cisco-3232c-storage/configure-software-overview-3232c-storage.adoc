@@ -2,16 +2,16 @@
 permalink: switch-cisco-3232c-storage/configure-software-overview-3232c-storage.html 
 sidebar: sidebar 
 keywords: switches, initial installation, configure switch-cisco-9336c-fx2 switch 
-summary: Cisco Nexus 3232C 儲存交換器的軟體設定概述 
+summary: 請依照下列工作流程在 Cisco Nexus 3232C 儲存網路交換器上安裝 NX-OS 軟體和 RCF。 
 ---
-= Cisco Nexus 3232C 儲存交換器的軟體安裝工作流程
+= Cisco Nexus 3232C 儲存設備交換器的軟體安裝工作流程
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-若要為 Cisco Nexus 3232C 交換器安裝和設定軟體，並安裝或升級參考組態檔案 （RCF），請依照下列步驟操作：
+請依照下列工作流程在 Cisco Nexus 3232C 儲存設備交換器上安裝 NX-OS 軟體和參考組態檔案 （RCF）。
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一"]link:setup-switch-3232c-storage.html["配置交換機"]
 [role="quick-margin-para"]

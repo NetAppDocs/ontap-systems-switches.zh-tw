@@ -2,7 +2,7 @@
 permalink: switch-cisco-9336c-fx2/replace-storage-switch-9336c-cluster.html 
 sidebar: sidebar 
 keywords: replacing, replace, defective, nexus, switch, cluster, network, nondisruptive, procedure, ndu, replace a cisco nexus 9336c-fx2 cluster switch - cisco nexus 9336c-fx2 
-summary: 在叢集網路中更換有缺陷的 Nexus 9336C-FX2 交換器是一個不中斷的程序。 
+summary: 在更換有缺陷的 Cisco Nexus 9336C-FX2 儲存設備交換器之前，請先檢查連接埠連接和佈線需求。 
 ---
 = 更換Cisco Nexus 9336C-FX2 儲存交換機
 :allow-uri-read: 
@@ -11,7 +11,7 @@ summary: 在叢集網路中更換有缺陷的 Nexus 9336C-FX2 交換器是一個
 
 
 [role="lead"]
-更換Cisco Nexus 9336C-FX2 儲存交換器時，您必須了解某些設定資訊、連接埠連線和佈線需求。
+在更換 Cisco Nexus 9336C-FX2 儲存設備交換器之前，請檢閱組態資訊、連接埠連線和佈線需求。
 
 .你需要什麼
 在Cisco Nexus 9336C-FX2 儲存交換器上安裝 NX-OS 軟體和 RCF 之前，必須先驗證以下條件是否存在：

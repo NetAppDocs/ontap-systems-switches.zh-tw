@@ -2,7 +2,7 @@
 permalink: switch-cisco-92300/configure-software-overview-92300-cluster.html 
 sidebar: sidebar 
 keywords: switches, initial installation, configure switch-92300 switch 
-summary: Cisco Nexus 92300YC 叢集交換器軟體組態總覽 
+summary: 請依照下列工作流程在 Cisco Nexus 92300YC 叢集交換器上安裝 NX-OS 軟體和 RCF。 
 ---
 = Cisco Nexus 92300YC 叢集交換器的軟體安裝工作流程
 :allow-uri-read: 
@@ -11,7 +11,7 @@ summary: Cisco Nexus 92300YC 叢集交換器軟體組態總覽
 
 
 [role="lead"]
-若要安裝和設定 Cisco Nexus 92300YC 交換器的軟體，以及安裝或升級參考組態檔 （RCF），請依照下列步驟操作：
+請依照下列工作流程在 Cisco Nexus 92300YC 叢集交換器上安裝 NX-OS 軟體和參考組態檔案 （RCF）。
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一"]link:configure-install-initial.html["配置交換機"]
 [role="quick-margin-para"]

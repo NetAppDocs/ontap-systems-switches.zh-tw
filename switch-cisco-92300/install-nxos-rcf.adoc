@@ -2,16 +2,16 @@
 permalink: switch-cisco-92300/install-nxos-rcf.html 
 sidebar: sidebar 
 keywords: install rcf,rcf configure 
-summary: 首次設定 Nexus 92300YC 交換器後，即可安裝 RCF。 
+summary: 在 Cisco Nexus 92300YC 叢集交換器上完成初始設定後，安裝參考組態檔案 （RCF）。 
 ---
-= 安裝參考設定檔（RCF）
+= 在 Cisco Nexus 92300YC 叢集交換器上安裝 RCF
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-首次設定 Nexus 92300YC 交換器後，即可安裝 RCF。
+完成初始設定後，在 Cisco Nexus 92300YC 叢集交換器上安裝參考組態檔案 （RCF）。RCF 定義叢集運作所需的連接埠分配和網路設定。
 
 .交換器和節點命名法
 本流程中的範例使用以下開關和節點命名規則：

@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: switch-cisco-9336c-fx2-storage/components-9336c-storage.html 
 keywords: shared storage cluster switch 
-summary: 從ONTAP 9.9.1 開始，您可以使用Cisco Nexus 9336C-FX2 交換器將儲存和叢集功能組合到共用交換器場景。 
+summary: 確定 Cisco Nexus 9336C-FX2 和 9336C-FX2-T 儲存交換器的組件和零件編號，以支援硬體安裝和後續維護。 
 ---
-= Cisco Nexus 9336C-FX2 和 9336C-FX2-T 儲存交換器的元件和零件編號
+= 查看 Cisco Nexus 9336C-FX2 和 9336C-FX2-T 儲存交換器的組件和零件編號
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,7 @@ summary: 從ONTAP 9.9.1 開始，您可以使用Cisco Nexus 9336C-FX2 交換器�
 
 
 [role="lead"]
-對於Cisco Nexus 9336C-FX2 和 9336C-FX2-T 儲存交換器的安裝和維護，請務必查看組件和零件號碼清單。
+確定 Cisco Nexus 9336C-FX2 和 9336C-FX2-T 儲存交換器的組件和零件編號，以支援硬體安裝和後續維護。
 
 下表列出了 9336C-FX2 和 9336C-FX2-T 儲存交換器、風扇和電源的零件號碼和描述：
 

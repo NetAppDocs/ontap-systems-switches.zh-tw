@@ -2,16 +2,16 @@
 permalink: switch-cisco-3232c/install-overview-cisco-3232c.html 
 sidebar: sidebar 
 keywords: install, cisco nexus 3232c switch, 
-summary: 在設定 Cisco Nexus 3232c 交換器之前，請先審查流程總覽和命名慣例。 
+summary: 依照下列工作流程在 ONTAP 環境中安裝並設定 Cisco Nexus 3232C 叢集交換器。 
 ---
-= Cisco Nexus 3232C 交換器的安裝與設定工作流程
+= Cisco Nexus 3232C 叢集交換器的安裝與設定工作流程
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Cisco Nexus 3232C 交換器可作為 AFF 或 FAS 叢集中的叢集交換器。叢集交換器可讓您建立包含兩個以上節點的 ONTAP 叢集。
+請依照下列工作流程在 ONTAP 環境中安裝並設定 Cisco Nexus 3232C 叢集交換器。3232C 支援包含兩個以上節點的 ONTAP 叢集。
 
 請依照下列工作流程步驟安裝並設定您的 Cisco Nexus 3232C 交換器。
 

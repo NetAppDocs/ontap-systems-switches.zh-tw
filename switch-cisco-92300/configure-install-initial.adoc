@@ -2,16 +2,16 @@
 permalink: switch-cisco-92300/configure-install-initial.html 
 sidebar: sidebar 
 keywords: install cisco 92300YC cluster switch, cisco nx 92300yc 
-summary: 您可以依照下列步驟執行 Cisco Nexus 92300YC 交換器的初始安裝。 
+summary: 設定 Cisco Nexus 92300YC 叢集交換器，使其做好叢集運作準備。 
 ---
-= 設定 Cisco Nexus 92300YC 交換機
+= 設定 Cisco Nexus 92300YC 叢集交換器
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-請依照下列步驟設定和組態 Cisco Nexus 92300YC 交換器。
+使用初始設定指令設定 Cisco Nexus 92300YC 叢集交換器，使其做好叢集運作的準備。
 
 .步驟
 . 將串口連接到主機或串列埠。

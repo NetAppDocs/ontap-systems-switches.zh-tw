@@ -2,16 +2,16 @@
 permalink: switch-bes-53248/configure-reqs-bes53248.html 
 sidebar: sidebar 
 keywords: bes, cluster, switch, port, assignment, table, configure, bes-53428 cluster switch port assignments - bes-53428 switches 
-summary: 您可以參考 BES-53248 叢集交換器連接埠分配表來設定您的叢集。 
+summary: 安裝 Broadcom BES-53248 叢集交換器之前，請先檢閱 EFOS 和 ONTAP 版本要求及支援的組態。 
 ---
-= BES-53248 叢集交換器的設定需求
+= 查看 Broadcom BES-53248 叢集交換器的組態需求
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-對於 BES-53248 交換器的安裝和維護，請務必查看 EFOS 和ONTAP支援和設定要求。
+在安裝或升級 Broadcom BES-53248 叢集交換器之前，請檢閱 EFOS 和 ONTAP 相容性要求以及連接埠組態詳細資訊。
 
 
 

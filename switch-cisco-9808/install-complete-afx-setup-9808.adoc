@@ -2,16 +2,16 @@
 permalink: switch-cisco-9808/install-complete-afx-setup-9808.html 
 sidebar: sidebar 
 keywords: switches, complete system setup, Cisco Nexus, 9808 switches, AFX 
-summary: 完成 Cisco Nexus 9808 交換器設定程序後，您需要前往 AFX 系統文件網站，開啟 AFX 2K 系統中的儲存架和控制器電源，驗證交換器連線能力，並完成 AFX 系統設定。 
+summary: 完成 Cisco Nexus 9808 交換器組態後，完成 AFX 2K 系統設定。 
 ---
-= 完成 AFX 系統設定 - Cisco Nexus 9808
+= 完成 Cisco Nexus 9808 交換器的 AFX 系統設定
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-完成 Cisco Nexus 9808 交換器設定程序後，您需要前往 AFX 系統文件網站，開啟 AFX 2K 系統中的儲存架和控制器電源，驗證交換器連線能力，並完成 AFX 系統設定。
+完成 Cisco Nexus 9808 交換器組態後，開啟儲存設備架和控制器的電源，驗證交換器連線能力，並完成 AFX 2K 系統設定。
 
 .開始之前
 * 您必須已完成 link:configure-switch-workflow-9808.html["配置交換器工作流程"] 中的交換器設定程序。

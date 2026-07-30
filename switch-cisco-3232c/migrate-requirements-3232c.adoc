@@ -2,16 +2,16 @@
 permalink: switch-cisco-3232c/migrate-requirements-3232c.html 
 sidebar: sidebar 
 keywords: migrate, cn1610 switch, cisco nexus 3232c cluster 
-summary: 當您以 Cisco Nexus 3232C 叢集交換器取代 CN1610 叢集交換器時，您必須瞭解某些組態資訊、連接埠連線和佈線需求。 
+summary: 在以 Cisco Nexus 3232C 叢集交換器取代 CN1610 叢集交換器之前，請先檢視移轉需求。 
 ---
-= Cisco Nexus 3232C 叢集交換器的移轉需求
+= 審查 Cisco Nexus 3232C 叢集交換器的移轉需求
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-在移轉至 Cisco Nexus 3232C 叢集交換器之前，請審查組態資訊、連接埠連線和佈線要求。
+在以 Cisco Nexus 3232C 叢集交換器取代 CN1610 叢集交換器之前，請檢查組態資訊、連接埠連線和佈線需求。
 
 
 

@@ -2,16 +2,16 @@
 permalink: switch-cisco-9336c-fx2/install-hardware-workflow.html 
 sidebar: sidebar 
 keywords: witches, initial installation, configure switch-cisco-9336c-fx2 switch 
-summary: 在設定Cisco Nexus 9336C-FX2 叢集交換器之前，請先查看設定概述。 
+summary: 請依照下列工作流程安裝 Cisco Nexus 9336C-FX2 和 9336C-FX2-T 叢集交換器的硬體。 
 ---
-= Cisco Nexus 9336C-FX2 和 9336C-FX2-T 交換器的硬體安裝工作流程
+= Cisco Nexus 9336C-FX2 和 9336C-FX2-T 叢集交換器的硬體安裝工作流程
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-若要安裝和設定 9336C-FX2 和 9336C-FX2-T 叢集交換器的硬件，請按照下列步驟操作：
+依照以下工作流程安裝和設定 Cisco Nexus 9336C-FX2 和 9336C-FX2-T 叢集交換器的硬體。
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一"]link:setup-worksheet-9336c-cluster.html["完成佈線工作表"]
 [role="quick-margin-para"]

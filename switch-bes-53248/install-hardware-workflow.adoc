@@ -2,16 +2,16 @@
 permalink: switch-bes-53248/install-hardware-workflow.html 
 sidebar: sidebar 
 keywords: BES-53248 switches, initial installation, configure new bes-53248 switch 
-summary: 在設定 BES-53248 叢集交換器之前，請先查看設定概述。 
+summary: 請依照下列工作流程安裝和設定新的 Broadcom BES-53248 叢集交換器的硬體。 
 ---
-= BES-53248 交換器的硬體安裝工作流程
+= Broadcom BES-53248 叢集交換器的硬體安裝工作流程
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-若要安裝和設定 BES-53248 叢集交換器的硬件，請依照下列步驟操作：
+請依照下列工作流程安裝和設定新的 Broadcom BES-53248 叢集交換器的硬體。
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一"]link:install-hardware-bes53248.html["安裝交換器硬體"]
 [role="quick-margin-para"]

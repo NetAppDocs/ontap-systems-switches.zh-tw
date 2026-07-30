@@ -2,16 +2,16 @@
 permalink: switch-cisco-9364d-gx2a/configure-upgrade-rcf-9364d.html 
 sidebar: sidebar 
 keywords: install rcf, cisco switches 
-summary: 您可以升級 Cisco Nexus 9364D-GX2A 交換器上的參考組態檔案 （RCF） 版本，以支援新硬體、新的 ONTAP 版本，或與 AFX 1K 或 AFX 2K 系統組態中的新 NX-OS 版本保持一致。 
+summary: 升級 Cisco Nexus 9364D-GX2A 交換器上的 RCF，以支援 AFX 1K 或 AFX 2K 系統上的新硬體、新的 ONTAP 版本或新的 NX-OS 版本。 
 ---
-= 升級 RCF 版本 - Cisco Nexus 9364D-GX2A
+= 升級 Cisco Nexus 9364D-GX2A 交換器上的 RCF
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-您可以升級 Cisco Nexus 9364D-GX2A 交換器上的參考組態檔案 （RCF） 版本，以支援新硬體、新的 ONTAP 版本，或與 AFX 1K 或 AFX 2K 系統組態中的新 NX-OS 版本保持一致。
+升級 Cisco Nexus 9364D-GX2A 交換器上的參考組態檔案 （RCF），以支援 AFX 1K 或 AFX 2K 系統上的新硬體、新的 ONTAP 版本或新的 NX-OS 版本。
 
 
 NOTE: 請勿將您的 RCF 版本升級或降級至不受支援的版本。

@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: switch-cisco-9332d-gx2b/install-prepare-9332d.html 
 keywords: shared storage cluster switch 
-summary: 在將 Cisco Nexus 9332D-GX2B 交換器安裝到新的 AFX 1K 或 AFX 2K 系統之前，您應該透過查閱適用的 Cisco 交換器文件和 ONTAP 系統文件來了解交換器及其安裝的各個方面，了解 AFX 系統支援的 RCF 版本，並考慮使用 Smart Call Home。 
+summary: 若要準備將 Cisco Nexus 9332D-GX2B 交換器安裝到新的 AFX 1K 或 AFX 2K 系統中，請查閱交換器文件、支援的 RCF 版本和 Smart Call Home 需求。 
 ---
-= 準備安裝交換器 - Cisco Nexus 9332D-GX2B
+= 準備在 AFX 系統中安裝 Cisco Nexus 9332D-GX2B 交換器
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,7 @@ summary: 在將 Cisco Nexus 9332D-GX2B 交換器安裝到新的 AFX 1K 或 AFX 2
 
 
 [role="lead"]
-在將 Cisco Nexus 9332D-GX2B 交換器安裝到新的 AFX 1K 或 AFX 2K 系統之前，您應該透過查閱適用的 Cisco 交換器文件和 ONTAP 系統文件來了解交換器及其安裝的各個方面，了解 AFX 系統支援的 RCF 版本，並考慮使用 Smart Call Home。
+若要將 Cisco Nexus 9332D-GX2B 交換器安裝到新的 AFX 1K 或 AFX 2K 系統中，請查閱適用的 Cisco 交換器文件，以了解支援的 RCF 版本，並考慮 Smart Call Home 組態。
 
 
 

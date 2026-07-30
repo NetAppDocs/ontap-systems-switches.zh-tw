@@ -2,16 +2,16 @@
 permalink: switch-nvidia-sn2100/migrate-cn1610-sn2100-cluster-switch.html 
 sidebar: sidebar 
 keywords: migrate cluster NVIDIA SN2100 cluster switches cn1610 
-summary: 您可以將用於ONTAP叢集的NetApp CN1610 叢集交換器無中斷地移轉到NVIDIA SN2100 叢集網路交換器。 
+summary: 將現有的 NetApp CN1610 叢集交換器移轉至 NVIDIA SN2100 叢集交換器，而不中斷叢集運作。 
 ---
-= 將 CN1610 叢集交換器遷移到NVIDIA SN2100 叢集交換機
+= 將 NetApp CN1610 叢集交換器移轉至 NVIDIA SN2100 叢集交換器
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-您可以將用於ONTAP叢集的NetApp CN1610 叢集交換器移轉到NVIDIA SN2100 叢集交換器。這是一個非破壞性的過程。
+將現有的 NetApp CN1610 叢集交換器移轉至 NVIDIA SN2100 叢集交換器，而不中斷叢集運作。
 
 
 

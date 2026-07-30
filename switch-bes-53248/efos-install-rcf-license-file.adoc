@@ -2,16 +2,16 @@
 permalink: switch-bes-53248/efos-install-rcf-license-file.html 
 sidebar: sidebar 
 keywords: install rcf,setup rcf,rcf file, efos, license file 
-summary: 設定 BES-53248 叢集交換器並套用新授權後，即可安裝參考組態檔 RCF。 
+summary: 完成初始組態後，在 Broadcom BES-53248 叢集交換器上安裝參考組態檔案 （RCF） 和授權檔案。 
 ---
-= 安裝參考組態檔（RCF）和授權檔案
+= 在 Broadcom BES-53248 叢集交換器上安裝 RCF 和授權檔案
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-從 EFOS 3.12.0.1 開始，您可以在設定 BES-53248 叢集交換器後安裝 RCF 和授權檔案。
+在 Broadcom BES-53248 叢集交換器上同時安裝參考組態檔案（RCF）和授權檔案。從 EFOS 3.12.0.1 開始，完成交換器初始組態後即可安裝這兩個檔案。
 
 
 CAUTION: 安裝 RCF 時所有連接埠均已配置，但您需要安裝授權才能啟動已配置的連接埠。

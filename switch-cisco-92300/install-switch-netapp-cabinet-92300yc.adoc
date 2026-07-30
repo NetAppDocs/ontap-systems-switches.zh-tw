@@ -2,7 +2,7 @@
 permalink: switch-cisco-92300/install-switch-netapp-cabinet-92300yc.html 
 sidebar: sidebar 
 keywords: install, cisco nexus, 92300yc cluster switch, pass-through panel, netapp cabinet 
-summary: 您可以使用交換器隨附的標準支架，將 Cisco Nexus 92300YC 交換器和直通面板安裝到 NetApp 機櫃中。 
+summary: 使用交換器隨附的標準支架，將 Cisco Nexus 92300YC 叢集交換器和直通面板安裝到 NetApp 機櫃中。 
 ---
 = 在 NetApp 機櫃中安裝 Cisco Nexus 92300YC 叢集交換器
 :allow-uri-read: 
@@ -11,7 +11,7 @@ summary: 您可以使用交換器隨附的標準支架，將 Cisco Nexus 92300YC
 
 
 [role="lead"]
-根據您的組態，您可能需要將 Cisco Nexus 92300YC 叢集交換器和直通面板安裝在 NetApp 機櫃中，並使用交換器隨附的標準支架。
+使用交換器隨附的標準支架，將 Cisco Nexus 92300YC 叢集交換器和直通面板安裝到 NetApp 機櫃中。
 
 .開始之前
 * 初始準備要求、工具包內容和安全注意事項，請參閱 link:https://www.cisco.com/site/us/en/products/networking/cloud-networking-switches/nexus-9200-series-switches/index.html["Cisco Nexus 9000 系列硬體安裝指南"^]。

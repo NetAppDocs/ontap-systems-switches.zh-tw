@@ -2,16 +2,16 @@
 permalink: switch-nvidia-sn2100/replace-sn2100-switch-cluster.html 
 sidebar: sidebar 
 keywords: replacing, replace, defective, nvidia, switch, cluster, network, nondisruptive, procedure, ndu, replace a nvidia msn2100 cluster switch - nvidia SN2100 
-summary: 在叢集網路中更換有缺陷的 NVIDIA SN2100 交換器是一個不會中斷網路運作的過程。 
+summary: 更換叢集網路中故障的 NVIDIA SN2100 叢集交換器。此程序不中斷營運的服務。 
 ---
-= 更換NVIDIA SN2100 叢集交換機
+= 更換 NVIDIA SN2100 叢集交換器
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-請依照下列步驟更換叢集網路中發生故障的NVIDIA SN2100 交換器。這是一個無中斷程式 (NDU)。
+在不中斷叢集運作的情況下，更換叢集網路中發生故障的 NVIDIA SN2100 叢集交換器。此不中斷營運的程序 （NDU） 包括準備替換交換器，並將連線從故障交換器移轉至新交換器。
 
 
 

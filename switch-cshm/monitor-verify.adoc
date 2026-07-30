@@ -2,9 +2,9 @@
 permalink: switch-cshm/monitor-verify.html 
 sidebar: sidebar 
 keywords: verify, monitor, cluster, management, network, switches, heath, monitor 
-summary: 了解如何驗證乙太網路交換器的監控功能是否正常運作。 
+summary: 請確認您的乙太網路交換器健全狀況監控已正確設定並正常運作。 
 ---
-= 驗證乙太網路交換器的監控情況
+= 驗證乙太網路交換器健全狀況監視器的組態
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

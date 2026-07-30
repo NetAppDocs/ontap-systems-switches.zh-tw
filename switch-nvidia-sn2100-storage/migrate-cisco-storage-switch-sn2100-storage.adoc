@@ -2,16 +2,16 @@
 permalink: switch-nvidia-sn2100-storage/migrate-cisco-storage-switch-sn2100-storage.html 
 sidebar: sidebar 
 keywords: migrating to a storage switch with NVIDIA SN2100 storage switches, how to migrate 
-summary: 您可以將ONTAP叢集中較舊的Cisco交換器無中斷地遷移到NVIDIA SN2100 儲存交換器。 
+summary: 在不中斷儲存網路運作的情況下，將舊款 Cisco 儲存交換器移轉至 NVIDIA SN2100 儲存交換器。 
 ---
-= 將儲存交換器從Cisco)移轉到NVIDIA) SN2100 儲存交換機
+= 將儲存設備交換器從 Cisco 移轉至 NVIDIA SN2100 儲存設備交換器
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-您可以將ONTAP叢集中較舊的Cisco交換器遷移到NVIDIA SN2100 儲存交換器。這是一個非破壞性的過程。
+在不中斷儲存網路運作的情況下，將舊款 Cisco 儲存交換器移轉至 NVIDIA SN2100 儲存交換器。
 
 
 

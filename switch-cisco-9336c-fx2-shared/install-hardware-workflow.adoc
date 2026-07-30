@@ -2,7 +2,7 @@
 permalink: switch-cisco-9336c-fx2-shared/install-hardware-workflow.html 
 sidebar: sidebar 
 keywords: switches, initial installation, configure switch-cisco-9336c-fx2 switch 
-summary: 在設定Cisco Nexus 9336C-FX2 交換器之前，請先查看設定概述。 
+summary: 請依照下列工作流程安裝 Cisco Nexus 9336C-FX2 共享交換器的硬體。 
 ---
 = Cisco Nexus 9336C-FX2 共享交換器的硬體安裝工作流程
 :allow-uri-read: 
@@ -11,7 +11,7 @@ summary: 在設定Cisco Nexus 9336C-FX2 交換器之前，請先查看設定概�
 
 
 [role="lead"]
-若要安裝和設定 9336C-FX2 共用交換器的硬件，請依照下列步驟操作：
+請依照下列工作流程安裝和設定 Cisco Nexus 9336C-FX2 共享交換器的硬體。
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一"]link:cable-9336c-shared.html["完成佈線工作表"]
 [role="quick-margin-para"]

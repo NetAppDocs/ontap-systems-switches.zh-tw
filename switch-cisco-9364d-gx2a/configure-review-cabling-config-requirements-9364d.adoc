@@ -2,16 +2,16 @@
 permalink: switch-cisco-9364d-gx2a/configure-review-cabling-config-requirements-9364d.html 
 sidebar: sidebar 
 keywords: 9364d-gx2a cabling setup, 9364d-gx2a switches configuration, nx-os 
-summary: 如果您正在安裝新的 Cisco Nexus 9364D-GX2A 交換器，作為新的 AFX 1K 或 AFX 2K 系統安裝的一部分、更換交換器，或將交換器重設為出廠預設設定，則必須檢閱以下纜線佈線和組態需求。 
+summary: 在將 Cisco Nexus 9364D-GX2A 交換器安裝為 AFX 1K 或 AFX 2K 系統的一部分之前，請先檢查其佈線和組態需求。 
 ---
-= 檢查佈線和設定需求 - Cisco Nexus 9364D-GX2A
+= 查看 Cisco Nexus 9364D-GX2A 交換器的佈線和組態要求
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-如果您正在安裝 Cisco Nexus 9364D-GX2A 交換器，作為新的 AFX 1K 或 AFX 2K 系統安裝的一部分、更換交換器，或將交換器重設為出廠預設設定，則必須檢閱以下纜線佈線和組態需求。
+在將 Cisco Nexus 9364D-GX2A 交換器安裝為新的 AFX 1K 或 AFX 2K 系統的一部分、更換交換器或將交換器重設為原廠預設值之前，請先檢閱其佈線和組態需求。
 
 
 

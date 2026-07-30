@@ -2,16 +2,16 @@
 permalink: switch-nvidia-sn2100-storage/required-documentation-sn2100-storage.html 
 sidebar: sidebar 
 keywords: nvidia SN2100 switches 
-summary: 對於NVIDIA SN2100 交換器的安裝和維護，請務必查看所有建議的文件。 
+summary: 請查閱安裝和維護 NVIDIA SN2100 儲存設備交換器所需的文件。 
 ---
-= NVIDIA SN2100交換器的文件需求
+= 檢閱 NVIDIA SN2100 儲存設備交換器的文件需求
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-安裝 NVIDIA SN2100 交換器時，請務必查看所有建議的文件。
+查看設定 NVIDIA SN2100 儲存設備交換器所需的交換器和控制器文件，並在 ONTAP 儲存網路中進行設定。
 
 下表列出了NVIDIA SN2100 交換器的可用文件。
 

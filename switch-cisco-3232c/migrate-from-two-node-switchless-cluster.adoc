@@ -2,16 +2,16 @@
 permalink: switch-cisco-3232c/migrate-from-two-node-switchless-cluster.html 
 sidebar: sidebar 
 keywords: migrate, two-node cluster, switchless, cisco nexus 3232c 
-summary: 如果您有雙節點無交換器式叢集，您可以不中斷營運地移轉至包含 Cisco Nexus 3232C 叢集網路交換器的雙節點交換式叢集。 
+summary: 將雙節點無交換器式叢集移轉至使用 Cisco Nexus 3232C 叢集交換器的交換式叢集。這是不中斷營運的程序。 
 ---
-= 將雙節點無交換器式叢集移轉至使用 Cisco Nexus 3232C 叢集交換器的叢集
+= 將雙節點無交換器式叢集移轉至 Cisco Nexus 3232C 叢集交換器
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-如果您有雙節點無交換器式叢集，可以移轉至包含 Cisco Nexus 3232C 叢集網路交換器的雙節點有交換器式叢集。這是不中斷營運的程序。
+將雙節點無交換器式叢集移轉至使用 Cisco Nexus 3232C 叢集交換器的交換式叢集。這是不中斷營運的程序。
 
 
 

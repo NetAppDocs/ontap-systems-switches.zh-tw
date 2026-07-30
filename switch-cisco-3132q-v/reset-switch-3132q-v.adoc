@@ -2,14 +2,14 @@
 permalink: switch-cisco-3132q-v/reset-switch-3132q-v.html 
 sidebar: sidebar 
 keywords: 3132Q-V reset switch to factory defaults, 3132Q-V2 switches configuration, efos 
-summary: 在設定 Cisco Nexus 3132Q-V 交換器之前，請審查以下資訊。 
+summary: 透過清除目前交換器組態，將 Cisco Nexus 3132Q-V 叢集交換器重設為出廠預設值。 
 ---
-= 將 3132Q-V 叢集交換器重設為出廠預設值
+= 將 Cisco Nexus 3132Q-V 叢集交換器重設為出廠預設值
 :allow-uri-read: 
 
 
 [role="lead"]
-若要將 3132Q-V 叢集交換器重設為出廠預設值，必須清除 3132Q-V 交換器設定。
+將 Cisco Nexus 3132Q-V 叢集交換器重設為出廠預設值，方法是清除目前交換器組態並將交換器還原至其原始設定。
 
 .關於此任務
 * 您必須使用串列埠控制台連接到交換器。

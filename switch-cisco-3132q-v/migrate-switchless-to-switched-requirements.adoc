@@ -2,15 +2,15 @@
 permalink: switch-cisco-3132q-v/migrate-switchless-to-switched-requirements.html 
 sidebar: sidebar 
 keywords: install, cisco nexus 3132q-v switch, 
-summary: 在設定 Cisco Nexus 3132Q-V 交換器之前，請先審查流程總覽和命名慣例。 
+summary: 檢閱從雙節點無交換器式叢集移轉至 Cisco Nexus 3132Q-V 叢集交換器的移轉需求。 
 ---
-= 移轉需求
+= 審查 Cisco Nexus 3132Q-V 叢集交換器的移轉需求
 :allow-uri-read: 
 :imagesdir: ../media/
 
 
 [role="lead"]
-如果您有雙節點無交換器式叢集，請審查此程序，以了解移轉至雙節點交換器式叢集的適用要求。
+檢視從雙節點無交換器式叢集移轉至使用 Cisco Nexus 3132Q-V 叢集交換器的交換式叢集的需求。
 
 [NOTE]
 ====

@@ -2,16 +2,16 @@
 permalink: switch-cisco-3232c-storage/install-switch-3232c-storage.html 
 sidebar: sidebar 
 keywords: require, configuration, information, documentation, cluster, management, network, switches, set up the switches - cisco nexus 3232c 
-summary: 請依照下列步驟安裝 Cisco Nexus 3232C 儲存交換器。 
+summary: 安裝 Cisco Nexus 3232C 儲存交換器，使其為儲存網路運作做好準備。 
 ---
-= 安裝 3232C 儲存交換器
+= 安裝 Cisco Nexus 3232C 儲存設備交換器
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-請依照下列步驟設定並配置 Cisco Nexus 3232C 儲存交換器。
+安裝 Cisco Nexus 3232C 儲存交換器，使其為儲存網路運作做好準備。
 
 .開始之前
 請確保您擁有以下物品：

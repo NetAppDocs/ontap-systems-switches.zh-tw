@@ -2,7 +2,7 @@
 permalink: switch-cisco-9336c-fx2/configure-switch-overview-9336c-cluster.html 
 sidebar: sidebar 
 keywords: switches, initial installation, configure switch-cisco-9336c-fx2 switch 
-summary: Cisco Nexus 9336C-FX2 叢集交換器的安裝與設定概述 
+summary: 依照以下工作流程在 ONTAP 環境中安裝並設定 Cisco Nexus 9336C-FX2 和 9336C-FX2-T 叢集交換器。 
 ---
 = Cisco Nexus 9336C-FX2 和 9336C-FX2-T 叢集交換器的安裝和設定工作流程
 :allow-uri-read: 
@@ -11,7 +11,7 @@ summary: Cisco Nexus 9336C-FX2 叢集交換器的安裝與設定概述
 
 
 [role="lead"]
-Cisco Nexus 9336C-FX2 和 9336C-FX2-T 叢集交換器是Cisco Nexus 9000 平台的一部分，可以安裝在NetApp系統機櫃中。叢集交換器可讓您建立具有兩個以上節點的ONTAP叢集。
+請依照以下工作流程在 ONTAP 環境中安裝並設定 Cisco Nexus 9336C-FX2 和 9336C-FX2-T 叢集交換器。這些交換器屬於 Cisco Nexus 9000 平台，支援包含兩個以上節點的 ONTAP 叢集。
 
 Cisco Nexus 9336C-FX2（36 個連接埠）是高連接埠密度叢集/儲存/資料交換器。Cisco Nexus 9336C-FX2-T（12 埠）是一款低埠密度、高效能交換機，支援 10/25/40/100GbE 叢集配置。
 

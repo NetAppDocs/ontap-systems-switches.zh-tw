@@ -2,16 +2,16 @@
 permalink: switch-nvidia-sn2100-storage/install-rcf-sn2100-storage.html 
 sidebar: sidebar 
 keywords: install rcf script, python script, sn2100 SN2100 switches, cumulus 
-summary: 請依照以下步驟安裝 RCF 腳本。 
+summary: '在 NVIDIA SN2100 儲存交換器上安裝或升級參考組態檔案 (RCF) 指令碼。' 
 ---
-= 安裝或升級 RCF 腳本
+= 在 NVIDIA SN2100 儲存交換器上安裝或升級 RCF 指令碼
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-請依照以下步驟安裝或升級 RCF 腳本。
+在 NVIDIA SN2100 儲存設備交換器上安裝或升級參考組態檔案 （RCF） 指令碼，以設定連接埠指派和網路設定。
 
 .開始之前
 在安裝或升級 RCF 腳本之前，請確保交換器上具備以下條件：

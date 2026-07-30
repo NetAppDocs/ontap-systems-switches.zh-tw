@@ -2,16 +2,16 @@
 permalink: switch-nvidia-sn2100-storage/install-snmpv3-sn2100-storage.html 
 sidebar: sidebar 
 keywords: sn2100 SN2100 cabling setup, sn2100 switches configuration, cumulus linux os 
-summary: 此版本新增了對SNMPv3日誌監控的支援。 
+summary: 在 NVIDIA SN2100 儲存交換器上設定 SNMPv3，以啟用安全的交換器日誌收集和健全狀況監控。 
 ---
-= 設定 SNMPv3 以收集交換器日誌
+= 為 NVIDIA SN2100 儲存網路交換器設定 SNMPv3
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-請依照下列步驟設定 SNMPv3，SNMPv3 支援交換器日誌收集和交換器健康監控 (SHM)。
+在 NVIDIA SN2100 儲存交換器上設定 SNMPv3，以啟用安全的、經過驗證的交換器日誌收集和乙太網路交換器健全狀況監視器 （CSHM）。
 
 .關於此任務
 以下指令用於在NVIDIA SN2100 交換器上設定 SNMPv3 使用者名稱：
@@ -27,7 +27,7 @@ summary: 此版本新增了對SNMPv3日誌監控的支援。
 以下指令在ONTAP端設定 SNMPv3 使用者名稱：
 `cluster1::*> security login create -user-or-group-name _SNMPv3_USER_ -application snmp -authentication-method usm -remote-switch-ipaddress _ADDRESS_`
 
-以下命令用於在 SHM 中建立 SNMPv3 使用者名稱：
+以下命令用於在 CSHM 中建立 SNMPv3 使用者名稱：
 `cluster1::*> system switch ethernet modify -device _DEVICE_ -snmp-version SNMPv3 -community-or-username _SNMPv3_USER_`
 
 .步驟

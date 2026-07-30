@@ -1,17 +1,17 @@
 ---
 permalink: switch-cisco-9364d-gx2a/configure-smart-call-9364d.html 
 sidebar: sidebar 
-keywords: cisco smart call,small call home 
-summary: 若要使用 Smart Call Home，您必須設定叢集網路交換器以透過電子郵件與 Smart Call Home 系統進行通訊。此外，您也可以選擇設定叢集網路交換機，以利用 Cisco 的嵌入式 Smart Call Home 支援功能。 
+keywords: cisco smart call,smart call home 
+summary: 在 Cisco Nexus 9364D-GX2A 交換器上設定 Smart Call Home，以啟用關鍵系統事件的自動電子郵件通知。 
 ---
-= 設定智慧呼叫中心 - Cisco Nexus 9364D-GX2A
+= 設定 Cisco Nexus 9364D-GX2A 交換器的 Smart Call Home 功能
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-若要使用 Smart Call Home，您必須設定叢集網路交換器以透過電子郵件與 Smart Call Home 系統進行通訊。此外，您也可以選擇設定叢集網路交換機，以利用 Cisco 的嵌入式 Smart Call Home 支援功能。
+在 Cisco Nexus 9364D-GX2A 交換器上設定 Smart Call Home，以啟用關鍵系統事件的自動電子郵件通知。
 
 Cisco 的 Smart Call Home 可監控您網路中的硬體和軟體元件。當發生關鍵系統設定問題時，它會產生電子郵件通知，並向目標設定檔中設定的所有收件者發出警報。
 

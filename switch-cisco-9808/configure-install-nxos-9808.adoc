@@ -2,16 +2,16 @@
 permalink: switch-cisco-9808/configure-install-nxos-9808.html 
 sidebar: sidebar 
 keywords: procedure, install, nx-os, software, nexus, cluster, switch, install the nx-os software - cisco nexus 9808 
-summary: 您可以在 Cisco Nexus 9808 交換器上安裝 NX-OS，作為新 AFX 2K 系統安裝、主管模組更換或交換器重設為原廠預設值的一部分。 
+summary: 在 Cisco Nexus 9808 交換器上安裝 NX-OS，用於新的 AFX 2K 系統安裝、監督模組更換或恢復原廠預設值。 
 ---
-= 安裝 NX-OS - Cisco Nexus 9808
+= 在 Cisco Nexus 9808 交換器上安裝 NX-OS
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-您可以在 Cisco Nexus 9808 交換器上安裝 NX-OS，作為新 AFX 2K 系統安裝、主管模組更換或交換器重設為原廠預設值的一部分。
+在 Cisco Nexus 9808 交換器上安裝 NX-OS，用於新的 AFX 2K 系統安裝、更換管理模組或將交換器重設為原廠預設值。
 
 .開始之前
 * 交換器必須通電，且您必須已完成 link:configure-complete-initial-setup-9808.html["完成初始交換器設置"] 程序。

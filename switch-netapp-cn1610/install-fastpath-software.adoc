@@ -2,16 +2,16 @@
 permalink: switch-netapp-cn1610/install-fastpath-software.html 
 sidebar: sidebar 
 keywords: install, fastpath, software 
-summary: 在 NetApp 交換器上安裝 FASTPATH 軟體時，必須從第二個交換器 cs2 開始升級。 
+summary: 在 NetApp CN1610 叢集交換器上安裝 FASTPATH 軟體，從第二個交換器 （cs2） 開始升級。 
 ---
-= 安裝 FASTPATH 軟體
+= 在 NetApp CN1610 叢集交換器上安裝 FASTPATH 軟體
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-在 NetApp 交換器上安裝 FASTPATH 軟體時，必須從第二個交換器 _cs2_ 開始升級。
+在 NetApp CN1610 叢集交換器上安裝 FASTPATH 軟體，從第二個交換器 _cs2_ 開始升級。
 
 
 

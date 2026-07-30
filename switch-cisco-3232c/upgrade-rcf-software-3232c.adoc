@@ -1,17 +1,17 @@
 ---
 permalink: switch-cisco-3232c/upgrade-rcf-software-3232c.html 
 sidebar: sidebar 
-keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, cisco 3232c 
-summary: 使用叢集交換器健全狀況監控和記錄收集功能時，需要啟用 SSH。若要在 Cisco 3232c 叢集交換器上啟用 SSH，您需要先產生 SSH 金鑰，然後再啟用 SSH。 
+keywords: rcf, upgrade, cluster switch, cisco nexus 3232c 
+summary: '當 Cisco Nexus 3232C 叢集交換器上有新版本可用時，請升級參考組態檔案 (RCF)。' 
 ---
-= 升級您的參考設定檔 (RCF)
+= 升級 Cisco Nexus 3232C 叢集交換器上的 RCF
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-當您的運行交換器上已安裝了現有版本的 RCF 檔案時，您需要升級 RCF 版本。
+當 Cisco Nexus 3232C 叢集交換器上有更新版本的參考組態檔案 （RCF） 時，請升級 RCF。
 
 .開始之前
 請確保您擁有以下物品：

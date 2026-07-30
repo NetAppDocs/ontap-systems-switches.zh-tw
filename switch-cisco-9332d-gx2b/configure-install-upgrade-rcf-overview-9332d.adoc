@@ -2,16 +2,16 @@
 permalink: switch-cisco-9332d-gx2b/configure-install-upgrade-rcf-overview-9332d.html 
 sidebar: sidebar 
 keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, cisco 9332d-gx2b 
-summary: 您可以在 Nexus 9332D-GX2B 交換器上安裝或升級參考設定檔案 （RCF）。在新安裝 AFX 1K 或 AFX 2K 系統、更換交換器或恢復原廠預設設定時，您需要在交換器上安裝支援的 RCF 版本。為了支援新硬體、新的 ONTAP 版本，或與 AFX 1K 或 AFX 2K 系統組態中的新 NX-OS 版本保持一致，您需要將交換器上的 RCF 升級至支援的版本。 
+summary: 在 Cisco Nexus 9332D-GX2B 交換器上安裝或升級 RCF，以用於 AFX 1K 和 AFX 2K 系統安裝、交換器更換，或支援新的硬體或 ONTAP 版本。 
 ---
-= 安裝或升級 RCF 概覽 - Cisco Nexus 9332D-GX2B
+= 了解如何在 Cisco Nexus 9332D-GX2B 交換器上安裝或升級 RCF
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-您可以在 Nexus 9332D-GX2B 交換器上安裝或升級參考設定檔案（RCF）。在新安裝 AFX 1K 或 AFX 2K 系統、更換交換器或將交換器重設為原廠預設值時，您需要在交換器上安裝支援的 RCF 版本。為了支援新硬體、新的 ONTAP 版本或與 AFX 系統配置中的新 NX-OS 版本保持一致，您需要將交換器上的 RCF 升級至支援的版本。
+在 Cisco Nexus 9332D-GX2B 交換器上安裝或升級參考組態檔案 （RCF）。為 AFX 1K 或 AFX 2K 系統安裝或交換器更換安裝新的 RCF，或升級現有 RCF 以支援新的硬體或 ONTAP 版本。
 
 
 NOTE: RCF 的安裝或升級與 NX-OS 的安裝或升級相互獨立。如果您要同時安裝或升級 NX-OS 和 RCF，建議您先安裝或升級 NX-OS。

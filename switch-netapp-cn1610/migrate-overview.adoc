@@ -2,16 +2,16 @@
 permalink: switch-netapp-cn1610/migrate-overview.html 
 sidebar: sidebar 
 keywords: migrate, two-node switched cluster, netapp cn1610 
-summary: 如果您有一個雙節點無交換器式叢集，您可以無中斷地移轉到包含 NetApp CN1610 叢集網路交換器的雙節點交換式叢集。 
+summary: 查看從雙節點無交換器式叢集移轉至使用 NetApp CN1610 叢集交換器的交換式叢集的移轉選項。 
 ---
-= 採用 NetApp CN1610 叢集交換器的雙節點交換叢集移轉選項
+= 審查 NetApp CN1610 叢集交換器的移轉選項
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-如果您有一個雙節點無交換器式叢集，您可以無中斷地移轉到包含 NetApp CN1610 叢集網路交換器的雙節點有交換器式叢集。您所使用的程序取決於每個控制器上是否有兩個專用叢集網路連接埠，或每個控制器上只有單一叢集連接埠。
+請查看如何將雙節點無交換器式叢集移轉到使用 NetApp CN1610 叢集交換器的有交換器叢集。具體步驟取決於每個控制器上是兩個專用叢集網路連接埠還是單一叢集連接埠。
 
 大多數系統需要每個控制器上有兩個專用的叢集網路連接埠。
 

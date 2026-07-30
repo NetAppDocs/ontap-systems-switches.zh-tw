@@ -2,16 +2,16 @@
 permalink: switch-bes-53248/configure-licenses.html 
 sidebar: sidebar 
 keywords: bes, cluster, switch, base, model, license, 10gbe, 25gbe, 100gbe, port, add, purchasing, purchase, install licenses for bes-53248 cluster switches - bes-53248 switches 
-summary: BES-53248 叢集交換器基本型號授權配備 16 個 10GbE 或 25GbE 連接埠和 2 個 100GbE 連接埠。可以透過購買更多許可證來新增連接埠。 
+summary: Broadcom BES-53248 叢集交換器基本型號支援 16 個 10GbE 或 25GbE 連接埠和 2 個 100GbE 連接埠。安裝額外的連接埠授權以擴充交換器容量。 
 ---
-= 安裝 BES-53248 叢集交換器的許可證
+= 安裝 Broadcom BES-53248 叢集交換器的授權
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-BES-53248 叢集交換器基本型號授權配備 16 個 10GbE 或 25GbE 連接埠和 2 個 100GbE 連接埠。您可以透過購買更多許可證來新增連接埠。
+Broadcom BES-53248 叢集交換器基本型號已獲授權支援 16 個 10GbE 或 25GbE 連接埠及兩個 100GbE 連接埠。安裝額外的連接埠授權即可擴充交換器，以支援更多 10GbE 或 25GbE 叢集連接埠。
 
 
 CAUTION: 對於 EFOS 3.12 及更高版本，請按照以下安裝步驟進行操作：link:efos-install-rcf-license-file.html["安裝參考設定檔 (RCF) 和授權文件"] 。

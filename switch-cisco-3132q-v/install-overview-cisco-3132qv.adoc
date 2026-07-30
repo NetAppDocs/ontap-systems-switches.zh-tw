@@ -2,16 +2,16 @@
 permalink: switch-cisco-3132q-v/install-overview-cisco-3132qv.html 
 sidebar: sidebar 
 keywords: install, Cisco Nexus 3132Q-V 
-summary: 在設定 Cisco Nexus 3132Q-V 交換器之前，請先審查流程總覽和命名規則。 
+summary: 依照下列工作流程在 ONTAP 環境中安裝並設定 Cisco Nexus 3132Q-V 叢集交換器。 
 ---
-= Cisco Nexus 3132Q-V 交換器的安裝與設定工作流程
+= Cisco Nexus 3132Q-V 叢集交換器的安裝與設定工作流程
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Cisco Nexus 3132Q-V 交換器可作為 AFF 或 FAS 叢集中的叢集交換器。叢集交換器可讓您建立包含兩個以上節點的 ONTAP 叢集。
+請依照下列工作流程在 ONTAP 環境中安裝並設定 Cisco Nexus 3132Q-V 叢集交換器。3132Q-V 支援包含兩個以上節點的 ONTAP 叢集。
 
 請依照下列工作流程步驟安裝並設定您的 Cisco Nexus 3132Q-V 交換器。
 

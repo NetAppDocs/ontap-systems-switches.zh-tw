@@ -2,16 +2,16 @@
 permalink: switch-nvidia-sn2100/configure-software-overview-sn2100-cluster.html 
 sidebar: sidebar 
 keywords: sn2100 SN2100 switches setup, sn2100 SN2100 switches install, cumulus linux 
-summary: NVIDIA SN2100交換器的軟體設定概述。 
+summary: 依照以下工作流程在 NVIDIA SN2100 叢集交換器上安裝 Cumulus Linux 和 RCF。 
 ---
-= NVIDIA SN2100交換器的軟體安裝工作流程
+= NVIDIA SN2100 叢集交換器的軟體安裝工作流程
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-若要為NVIDIA SN2100 交換器安裝和設定軟體，請依照下列步驟操作：
+依照以下工作流程在 NVIDIA SN2100 叢集交換器上安裝 Cumulus Linux 和參考組態檔案 （RCF）。
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一"]link:configure-sn2100-cluster.html["配置交換機"]
 [role="quick-margin-para"]

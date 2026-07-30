@@ -2,16 +2,16 @@
 permalink: switch-cshm/monitor-troubleshoot.html 
 sidebar: sidebar 
 keywords: cshm, cluster, storage, switch logs, debugging, collection 
-summary: 您可以使用以下命令… 
+summary: 排除 ONTAP 叢集中 CSHM 引發的乙太網路交換器健全狀況監控警報問題。 
 ---
-= 故障排除警報
+= 排查乙太網路交換器健全狀況監視器的警報
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-如果叢集中的乙太網路交換器偵測到故障、風險或嚴重情況，則會發出警報。
+當 ONTAP 叢集中的網路交換器偵測到故障、風險或關鍵情況時，對乙太網路交換器健全狀況監視器 (CSHM) 所發出的警示進行疑難排解。
 
 如果發出警報，系統健康狀況報告群集狀態下降。發出的警報包含您需要應對系統健康狀況下降的資訊。
 

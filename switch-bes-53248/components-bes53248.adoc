@@ -2,16 +2,16 @@
 permalink: switch-bes-53248/components-bes53248.html 
 sidebar: sidebar 
 keywords: cluster-mode,supported versions,switches supported,cluster network,efos 
-summary: 對於 BES-53248 交換器的安裝和維護，請務必查看組件和零件編號清單。 
+summary: 確定 Broadcom BES-53248 叢集交換器的組件和零件號碼，以支援硬體安裝和後續維護。 
 ---
-= BES-53248 集群開關的組件和零件編號
+= 了解 Broadcom BES-53248 叢集交換器的元件和零件編號
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-對於 BES-53248 交換器的安裝和維護，請務必查看組件和零件編號清單。
+確定 Broadcom BES-53248 叢集交換器的組件和零件號碼，以支援硬體安裝和後續維護。
 
 下表列出了 BES-53248 叢集交換器組件的零件號碼、描述以及最低 EFOS 和ONTAP版本，包括機架安裝導軌套件的詳細資訊。
 

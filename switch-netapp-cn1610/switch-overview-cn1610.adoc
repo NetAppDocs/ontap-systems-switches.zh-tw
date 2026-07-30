@@ -2,16 +2,16 @@
 permalink: switch-netapp-cn1610/switch-overview-cn1610.html 
 sidebar: sidebar 
 keywords: install, fastpath, software, rcfs 
-summary: 在設定 NetApp CN1610 交換器之前，請審查流程總覽。 
+summary: 了解 NetApp CN1610 叢集交換器及其在 ONTAP 叢集連網中的角色。 
 ---
-= NetApp CN1610 交換器的安裝與組態概述
+= 了解 NetApp CN1610 叢集交換器
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-CN1610 是一款高頻寬、可管理的第 2 層交換器，提供 16 個 10 Gigabit 小型可插拔增強型 （SFP+） 連接埠。
+NetApp CN1610 是一款大頻寬、可管理的第 2 層叢集交換器，提供 16 個 10 Gigabit SFP+ 連接埠。請查看此頁面，以了解該交換器的功能及其在 ONTAP 叢集連網中的角色。
 
 此交換器包含備援電源和支援熱插拔的風扇托架，可實現高可用度。這款 1U 交換器可安裝在標準的 19 吋 NetApp 42U 系統機櫃或第三方機櫃中。
 

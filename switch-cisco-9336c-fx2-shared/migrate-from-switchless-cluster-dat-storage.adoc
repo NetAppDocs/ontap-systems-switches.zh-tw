@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: switch-cisco-9336c-fx2-shared/migrate-from-switchless-cluster-dat-storage.html 
 keywords:  
-summary:  
+summary: 透過新增兩個新的共享交換器，將無交換器式叢集（採用直連式儲存設備）移轉至 Cisco Nexus 9336C-FX2 共享交換器。 
 ---
-= 從無交換器叢集遷移到直連存儲
+= 將採用直連式儲存設備的無交換器式叢集移轉至 Cisco Nexus 9336C-FX2 共享的交換器
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,7 @@ summary:
 
 
 [role="lead"]
-您可以透過新增兩個新的共用交換機，從無交換機叢集（採用直連儲存）遷移到共用叢集。
+透過新增兩個新的共享交換器，將無交換器式叢集（採用直連式儲存設備）移轉至 Cisco Nexus 9336C-FX2 共享交換器。
 
 具體操作步驟取決於每個控制器上是有兩個專用叢集網路連接埠還是只有一個叢集連接埠。記錄的過程適用於所有使用光纖或 Twinax 連接埠的節點，但如果節點使用板載 10Gb BASE-T RJ45 連接埠作為叢集網路端口，則此交換器不支援此流程。
 

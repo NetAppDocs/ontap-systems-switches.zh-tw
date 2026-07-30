@@ -2,16 +2,16 @@
 permalink: switch-cisco-3132q-v/setup-switch.html 
 sidebar: sidebar 
 keywords: require, configuration, information, documentation, cluster, management, network, switches, set up the switches - cisco nexus 9336c-fx2 
-summary: 如果您還沒有所需的設定資訊和文檔，則需要在設定叢集和管理網路交換器之前收集這些資訊。 
+summary: 使用初始設定指令設定 Cisco Nexus 3132Q-V 叢集交換器，使其做好叢集運作的準備。 
 ---
-= 設定 Cisco Nexus 3132Q-V 交換機
+= 設定 Cisco Nexus 3132Q-V 叢集交換器
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-請依照下列步驟設定 Cisco Nexus 3132Q-V 交換器。
+使用初始設定指令設定 Cisco Nexus 3132Q-V 叢集交換器，使其做好叢集運作的準備。
 
 .開始之前
 * 在安裝現場存取 HTTP、FTP 或 TFTP 伺服器，以下載適用的 NX-OS 和參考設定檔 (RCF) 版本。

@@ -2,16 +2,16 @@
 permalink: switch-cisco-9364d-gx2a/configure-complete-initial-setup-9364d.html 
 sidebar: sidebar 
 keywords: require, configuration, information, documentation, cluster, management, network, switches, set up the switches - cisco nexus 9364d-gx2a 
-summary: 安裝新的 AFX 1K 或 AFX 2K 系統或更換交換器時，或將交換器重設為原廠預設設定後，當您啟動 Cisco Nexus 9364D-GX2A 交換器時，系統會提示您使用設定精靈完成交換器的初始設定。您可以參考以下設定精靈問題和建議答案，以協助您完成交換器的初始設定。 
+summary: 使用組態精靈完成 Cisco Nexus 9364D-GX2A 交換器的初始設定，適用於新的 AFX 1K 或 AFX 2K 系統、交換器更換或恢復原廠設定。 
 ---
-= 完成初始交換器設定 - Cisco Nexus 9364D-GX2A
+= 完成 Cisco Nexus 9364D-GX2A 交換器的初始設定
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-安裝新的 AFX 1K 或 AFX 2K 系統或更換交換器時，或將交換器重設為原廠預設設定後，當您啟動 Cisco Nexus 9364D-GX2A 交換器時，系統會提示您使用設定精靈完成交換器的初始設定。您可以參考以下設定精靈問題和建議答案，以協助您完成交換器的初始設定。
+使用組態精靈完成 Cisco Nexus 9364D-GX2A 交換器的初始設定。此步驟適用於新安裝的 AFX 1K 或 AFX 2K 系統、交換器更換以及交換器重設為原廠預設設定的情況。
 
 .開始之前
 請確保您擁有每台交換器的網路和組態資訊以及相應的授權。

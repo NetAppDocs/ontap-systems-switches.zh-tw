@@ -2,16 +2,16 @@
 permalink: switch-cisco-92300/install-nxos-overview.html 
 sidebar: sidebar 
 keywords: install nx-os rcf cisco nx 92300yc cluster switch 
-summary: Cisco NX-OS 軟體和參考設定檔必須安裝在 Cisco Nexus 92300YC 叢集交換器上。 
+summary: '在安裝 NX-OS 軟體和參考組態檔案 (RCF) 之前，請準備好 Cisco Nexus 92300YC 叢集交換器。' 
 ---
-= 準備安裝 NX-OS 軟體和參考組態檔案 (RCF)
+= 準備在 Cisco Nexus 92300YC 叢集交換器上安裝 NX-OS 軟體和 RCF
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-在安裝 NX-OS 軟體和參考設定檔 (RCF) 之前，請依照下列步驟操作。
+在安裝 NX-OS 軟體和參考組態檔案（RCF）之前，請先準備好 Cisco Nexus 92300YC 叢集交換器。交換器必須先安裝 NX-OS 和 RCF，才能在 ONTAP 叢集中運作。
 
 .開始之前
 請確保您擁有以下物品：

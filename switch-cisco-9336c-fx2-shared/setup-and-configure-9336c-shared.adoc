@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: switch-cisco-9336c-fx2-shared/setup-and-configure-9336c-shared.html 
 keywords:  
-summary:  
+summary: 設定 Cisco Nexus 9336C-FX2 共享交換器，為叢集與儲存設備的組合操作做好準備。 
 ---
 = 設定Cisco Nexus 9336C-FX2 共用交換機
 :hardbreaks:
@@ -14,7 +14,7 @@ summary:
 
 
 [role="lead"]
-請依照以下說明設定Cisco Nexus 9336C-FX2 共用交換器。
+設定 Cisco Nexus 9336C-FX2 共享的交換器，使其準備好用於叢集和儲存網路的組合操作。
 
 .開始之前
 請確保您擁有以下物品：

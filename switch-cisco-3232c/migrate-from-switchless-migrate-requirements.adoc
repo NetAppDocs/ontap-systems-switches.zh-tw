@@ -2,15 +2,15 @@
 permalink: switch-cisco-3232c/migrate-from-switchless-migrate-requirements.html 
 sidebar: sidebar 
 keywords: install, cisco nexus 3232c switch, 
-summary: 在設定 Cisco Nexus 3232c 交換器之前，請先審查流程總覽和命名慣例。 
+summary: 審查從雙節點無交換器式叢集移轉至 Cisco Nexus 3232C 叢集交換器的需求。 
 ---
-= 移轉需求
+= 審查從無交換器式叢集移轉至 Cisco Nexus 3232C 叢集交換器的需求
 :allow-uri-read: 
 :imagesdir: ../media/
 
 
 [role="lead"]
-如果您擁有一個雙節點無交換器式叢集，您可以移轉到包含 Cisco Nexus 3232C 叢集網路交換器的雙節點有交換器式叢集。這是不中斷營運的程序。
+檢視從雙節點無交換器式叢集移轉至使用 Cisco Nexus 3232C 叢集交換器的交換式叢集的要求。
 
 .開始之前
 請核實以下安裝和連接：

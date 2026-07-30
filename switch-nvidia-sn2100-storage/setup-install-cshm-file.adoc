@@ -2,16 +2,16 @@
 permalink: switch-nvidia-sn2100-storage/setup-install-cshm-file.html 
 sidebar: sidebar 
 keywords: install, applicable, configuration, file, cluster, switch, health, monitor, ontap, install the cluster switch health monitor configuration file for sn2100 switches 
-summary: 您可以使用此程序安裝適用於 NVIDIA SN2100 儲存交換器的叢集交換器健全狀況監控的組態檔案。 
+summary: '安裝 NVIDIA SN2100 儲存設備交換器的乙太網路交換器健全狀況監視器 (CSHM) 組態檔案，以在 ONTAP 中啟用交換器健全狀況監控。' 
 ---
-= 安裝乙太網路交換器健康監視器設定檔
+= 為 NVIDIA SN2100 儲存設備交換器安裝乙太網路交換器健全狀況監視器組態檔案
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-請依照下列步驟安裝適用於NVIDIA叢集交換器的乙太網路交換器健康狀況監控的設定檔。支援的型號有：
+安裝適用於 NVIDIA SN2100 儲存設備交換器的乙太網路交換器健全狀況監視器 (CSHM) 組態檔案，以在 ONTAP 中啟用交換器健全狀況監控。支援的型號包括：
 
 * MSN2100-CB2FC
 * MSN2100-CB2RC

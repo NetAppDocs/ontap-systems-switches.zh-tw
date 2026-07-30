@@ -2,16 +2,16 @@
 permalink: switch-bes-53248/CSHM_snmpv3.html 
 sidebar: sidebar 
 keywords: SNMP,SNMPv3,SNMPv3 setup,BES-53248 Broadcom setup,BES-3248 switches configuration,EFOS 
-summary: SNMPv3 可以與乙太網路交換器健全狀況監控器 CSHM 一起使用。 
+summary: 在 Broadcom BES-53248 叢集交換器上設定 SNMPv3，以啟用與乙太網路交換器健全狀況監視器（CSHM）的安全通訊。 
 ---
-= 配置 SNMPv3
+= 為 Broadcom BES-53248 叢集交換器設定 SNMPv3
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-請依照下列步驟設定 SNMPv3，SNMPv3 支援乙太網路交換器健康監控 (CSHM)。
+在 Broadcom BES-53248 叢集交換器上設定 SNMPv3，以啟用與乙太網路交換器健全狀況監視器 （CSHM） 的安全的認證通訊。SNMPv3 提供交換器狀態的加密輪詢，用於 ONTAP 中的健全狀況監控。
 
 .關於此任務
 以下命令用於在 Broadcom BES-53248 交換器上設定 SNMPv3 使用者名稱：

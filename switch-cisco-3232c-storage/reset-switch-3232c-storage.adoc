@@ -2,14 +2,14 @@
 permalink: switch-cisco-3232c-storage/reset-switch-3232c-storage.html 
 sidebar: sidebar 
 keywords: 3232C reset switch to factory defaults, 3232C switches configuration, efos 
-summary: 在設定 Cisco Nexus 3232C 交換器之前，請審查以下資訊。 
+summary: 透過清除目前交換器組態，將 Cisco Nexus 3232C 儲存設備交換器重設為出廠預設值。 
 ---
-= 將 3232C 儲存交換器重設為原廠預設值
+= 將 Cisco Nexus 3232C 儲存設備交換器重設為出廠預設值
 :allow-uri-read: 
 
 
 [role="lead"]
-若要將 3232C 儲存交換器重設為原廠預設值，您必須清除 3232C 儲存交換器設定。
+將 Cisco Nexus 3232C 儲存設備交換器重設為出廠預設值，方法是清除目前的交換器組態並將交換器還原至其原始設定。
 
 .關於此任務
 * 您必須使用串列埠控制台連接到交換器。

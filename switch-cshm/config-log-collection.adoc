@@ -2,50 +2,41 @@
 permalink: switch-cshm/config-log-collection.html 
 sidebar: sidebar 
 keywords: log collection feature,collect switch-related log files,SSh key,crypto key generation 
-summary: ONTAP 中的乙太網路交換器健全狀況監控器 CSHM 記錄收集功能用於從叢集或儲存網路交換器收集記錄。 
+summary: 設定日誌收集，使 CSHM 能夠從叢集和儲存網路交換器收集交換器日誌和診斷資料。 
 ---
-= 配置日誌收集
+= 設定乙太網路交換器健全狀況監視器的日誌收集
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-乙太網路交換器健康狀況監控器（CSHM）負責確保網路交換器的運作健全狀況，並收集交換器日誌以進行偵錯。本程序將引導您完成設定收集、請求詳細的 *Support* 日誌，以及啟用每小時收集 AutoSupport 所收集之 *Periodic* 資料的程序。
+設定乙太網路交換器的日誌收集功能，使乙太網路交換器健全狀況監視器 （CSHM） 能夠收集交換器日誌以進行偵錯和 AutoSupport 報告。此程序將在 ONTAP 中設定按需支援日誌收集和每小時定期資料收集。
 
-*注意：* 如果啟用 FIPS 模式，則必須完成以下步驟：
-
-[NOTE]
-====
-. 依照廠商提供的說明，在交換器上重新產生 SSH 金鑰。
-. 使用ONTAP重新產生 SSH 金鑰 `debug system regenerate-systemshell-key-pair`
-. 使用以下方式重新執行日誌收集設定例程： `system switch ethernet log setup-password`命令
-
-
-====
+.開始之前
+* 如果使用 FIPS 模式，請在設定日誌收集之前完成以下步驟：
++
+.. 依照廠商提供的說明，在交換器上重新產生 SSH 金鑰。
+.. 使用  `debug system regenerate-systemshell-key-pair` 在 ONTAP 中重新產生 SSH 金鑰。
+.. 使用 `system switch ethernet log setup-password`命令重新執行日誌收集設定。
 
 
-[[before-you-begin]]
-== 開始之前
-
-* 使用者必須有權存取該開關。 `show`命令。如果這些使用者不可用，請建立一個新使用者並授予該使用者必要的權限。
-* 必須為交換器啟用交換器健康監控功能。透過確保以下方式驗證這一點： `Is Monitored:`輸出中該欄位設定為*true* `system switch ethernet show`命令。
+* 您必須擁有交換器 `show`命令的存取權限。如果沒有，請建立新的交換器使用者並授予其必要的權限。
+* 必須為交換器啟用交換器健全狀況監控。透過檢查 `Is Monitored:`欄位在 `system switch ethernet show`輸出中是否設為 *true* 來驗證。
 * 用於收集博通和Cisco交換器的日誌：
 +
 ** 本機使用者必須具有網路管理員權限。
-** 對於每個啟用了日誌收集的叢集設置，都應該在交換器上建立一個新使用者。這些交換器不支援同一用戶使用多個 SSH 金鑰。任何額外的日誌收集設定都會覆蓋使用者的任何現有 SSH 金鑰。
+** 為每個啟用日誌收集的叢集建立一個新的交換器使用者。這些交換器不支援相同使用者使用多個 SSH 金鑰，再次執行設定會覆寫現有的 SSH 金鑰。
 
 
-* 為了支援使用NVIDIA交換器收集日誌，必須允許用於日誌收集的_user_ 執行此交換器。 `cl-support`無需提供密碼即可執行命令。若要啟用此用法，請執行下列命令：
+* 為了支援使用 NVIDIA 交換器進行日誌收集，日誌收集使用者必須能夠在不需要密碼的情況下執行 `cl-support`命令。若要允許此操作，請執行：
 +
 `echo '_<user>_ ALL = NOPASSWD: /usr/cumulus/bin/cl-support' | sudo EDITOR='tee -a' visudo -f /etc/sudoers.d/cumulus`
 
 
 
-
-
-[[steps]]
-== 步驟
+.步驟
+依照適用於您的 ONTAP 版本的步驟設定日誌收集、啟用定期資料收集，並可選擇性地要求隨需支援日誌。
 
 [role="tabbed-block"]
 ====

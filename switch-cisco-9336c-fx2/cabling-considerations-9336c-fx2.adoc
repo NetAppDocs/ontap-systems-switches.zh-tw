@@ -2,16 +2,16 @@
 permalink: switch-cisco-9336c-fx2/cabling-considerations-9336c-fx2.html 
 sidebar: sidebar 
 keywords: 9336c-fx2 cabling setup, 9336c-fx2 switches configuration, nx-os 
-summary: 在設定Cisco 9336C-FX2 交換器之前，請先查看以下資訊。 
+summary: 在部署之前，請檢查 Cisco Nexus 9336C-FX2 和 9336C-FX2-T 叢集交換器的佈線和組態注意事項。 
 ---
-= 審查佈線和配置注意事項
+= 檢閱 Cisco Nexus 9336C-FX2 叢集交換器的佈線和組態注意事項
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-在設定 9336C-FX2 和 9336C-FX2-T 交換器之前，請先閱讀以下注意事項。
+在部署之前，請檢查 Cisco Nexus 9336C-FX2 和 9336C-FX2-T 叢集交換器的佈線和組態注意事項。
 
 
 

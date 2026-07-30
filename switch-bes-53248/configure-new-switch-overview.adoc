@@ -2,16 +2,16 @@
 permalink: switch-bes-53248/configure-new-switch-overview.html 
 sidebar: sidebar 
 keywords: BES-53248 switches, initial installation, configure new bes-53248 switch 
-summary: 在設定 BES-53248 叢集交換器之前，請先查看設定概述。 
+summary: 請依照以下工作流程安裝和設定新的 Broadcom BES-53248 叢集交換器，從審查需求到硬體和軟體設定。 
 ---
-= BES-53248 交換器的安裝與設定工作流程
+= Broadcom BES-53248 叢集交換器的安裝與設定工作流程
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-BES-53248 是一款裸金屬交換機，設計用於 2 到 24 個節點的ONTAP叢集。
+請依照下列工作流程在 ONTAP 環境中安裝並設定新的 Broadcom BES-53248 叢集交換器。BES-53248 是一款裸機交換器，支援 2 到 24 個節點的 ONTAP 叢集。
 
 請依照這些工作流程步驟安裝並設定您的 BES-53248 交換器。
 

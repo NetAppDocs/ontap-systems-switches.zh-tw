@@ -2,16 +2,16 @@
 permalink: switch-cisco-9808/configure-verify-ssh-9808.html 
 sidebar: sidebar 
 keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, cisco 9808 
-summary: '如果您正在設定交換器，作為新 AFX 2K 系統安裝、主管模組更換或重設為原廠預設設定的一部分，並且想要使用叢集交換器健康監視器 (CSHM) 和日誌收集功能，則必須驗證交換器上是否已啟用 SSH 和 SSH 金鑰。' 
+summary: 確認 Cisco Nexus 9808 交換器上已啟用 SSH，以支援乙太網路交換器健全狀況監視器 （CSHM） 和日誌收集。 
 ---
-= 驗證 SSH 日誌收集功能 - Cisco Nexus 9808
+= 驗證 Cisco Nexus 9808 交換器上的 SSH 日誌收集功能
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-如果您正在將交換器設定為新 AFX 2K 系統安裝、監督模組更換或重設為原廠預設設定的一部分，若要使用乙太網路交換器健康監視器 (CSHM) 日誌收集功能，則必須確認交換器上已啟用 SSH。
+確認 Cisco Nexus 9808 交換器上已啟用 SSH，以支援乙太網路交換器健全狀況監視器 （CSHM） 和日誌收集功能。
 
 .開始之前
 您必須使用串列埠控制台連接到交換器。

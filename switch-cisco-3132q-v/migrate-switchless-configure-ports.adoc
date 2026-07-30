@@ -2,16 +2,16 @@
 permalink: switch-cisco-3132q-v/migrate-switchless-configure-ports.html 
 sidebar: sidebar 
 keywords: cisco 3132q-v, cluster switches 
-summary: 您可以在 AFF 或 FAS 叢集中使用 Cisco Nexus 3132q-v 交換器作為叢集交換器。 
+summary: 設定連接埠，以便從雙節點無交換器式叢集移轉到 Cisco Nexus 3132Q-V 叢集交換器。 
 ---
-= 設定連接埠，以便從無交換器式叢集移轉至有交換器式叢集
+= 設定連接埠以從無交換器式叢集移轉至 Cisco Nexus 3132Q-V 叢集交換器
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-請依照下列步驟設定連接埠，以便從雙節點無交換器式叢集移轉到雙節點有交換器叢集。
+使用 Cisco Nexus 3132Q-V 叢集交換器，設定連接埠以從雙節點無交換器式叢集移轉至雙節點交換式叢集。
 
 .步驟
 . 在 Nexus 3132Q-V 交換器 C1 和 C2 上，停用所有面向節點的連接埠 C1 和 C2，但不要停用 ISL 連接埠。

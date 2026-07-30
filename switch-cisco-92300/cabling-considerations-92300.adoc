@@ -2,16 +2,16 @@
 permalink: switch-cisco-92300/cabling-considerations-92300.html 
 sidebar: sidebar 
 keywords: 92300YC cabling setup, 92300YC switches configuration, nx-os 
-summary: 在設定 Cisco 92300YC 交換器之前，請審查以下資訊。 
+summary: 在部署 Cisco Nexus 92300YC 叢集交換器之前，請檢閱佈線和組態注意事項。 
 ---
-= 審查佈線和配置注意事項
+= 檢閱 Cisco Nexus 92300YC 叢集交換器的佈線和組態注意事項
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-在設定 Cisco 92300YC 交換器之前，請審查以下注意事項。
+在部署 Cisco Nexus 92300YC 叢集交換器之前，請檢閱佈線和組態注意事項。
 
 
 

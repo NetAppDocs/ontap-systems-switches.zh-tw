@@ -2,16 +2,16 @@
 permalink: switch-cisco-9336c-fx2/smart-call-9336c-cluster.html 
 sidebar: sidebar 
 keywords: cisco smart call,small call home 
-summary: Smart Call Home 監控您網路上的硬體和軟體元件，並在出現關鍵系統狀況時透過電子郵件發出通知。當您的裝置上發生事件時，Smart Call Home 會向您目標設定檔中配置的所有接收者發出警報。 
+summary: 查看 Cisco Nexus 9336C-FX2 叢集交換器的 Smart Call Home 需求與組態選項。 
 ---
-= 智慧呼叫中心的要求
+= 檢閱 Cisco Nexus 9336C-FX2 叢集交換器的 Smart Call Home 需求
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-若要使用 Smart Call Home，您必須設定叢集網路交換器以透過電子郵件與 Smart Call Home 系統進行通訊。此外，您也可以選擇設定叢集網路交換機，以利用 Cisco 的嵌入式 Smart Call Home 支援功能。
+查看在 Cisco Nexus 9336C-FX2 叢集交換器上設定 Smart Call Home 以啟用關鍵系統事件自動電子郵件通知的要求。
 
 Cisco 的 Smart Call Home 可監控您網路中的硬體和軟體元件。當發生關鍵系統設定問題時，它會產生電子郵件通知，並向目標設定檔中設定的所有收件者發出警報。
 

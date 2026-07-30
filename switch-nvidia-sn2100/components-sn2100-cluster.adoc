@@ -2,16 +2,16 @@
 permalink: switch-nvidia-sn2100/components-sn2100-cluster.html 
 sidebar: sidebar 
 keywords: nvidia SN2100 switches 
-summary: 如果要建置包含兩個以上節點的ONTAP集群，則需要兩個受支援的集群網路交換器。您也可以使用額外的管理交換機，這些交換機是可選的。 
+summary: 識別 NVIDIA SN2100 叢集交換器的元件和零件編號，以支援硬體安裝和後續維護。 
 ---
-= NVIDIA SN2100交換器的組件和零件號
+= 查看 NVIDIA SN2100 叢集交換器的組件和零件編號
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-對於NVIDIA SN2100 交換器的安裝和維護，請務必查看機櫃和導軌套件的組件和零件號碼清單。
+識別 NVIDIA SN2100 叢集交換器的元件和零件編號，以支援硬體安裝和後續維護。
 
 
 

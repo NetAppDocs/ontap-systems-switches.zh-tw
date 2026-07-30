@@ -2,16 +2,16 @@
 permalink: switch-cisco-9808/configure-install-rcf-9808.html 
 sidebar: sidebar 
 keywords: install rcf, cisco switches 
-summary: 您可以在新的 Cisco Nexus 9808 交換器上安裝 RCF，作為新 AFX 2K 系統安裝和設定的一部分、更換故障的監督模組，或將交換器重設為原廠預設值。 
+summary: 在 Cisco Nexus 9808 交換器上安裝 RCF，用於新的 AFX 2K 系統安裝、監督模組更換或恢復原廠預設值。 
 ---
-= 安裝 RCF - Cisco Nexus 9808
+= 在 Cisco Nexus 9808 交換器上安裝 RCF
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-您可以在新的 Cisco Nexus 9808 交換器上安裝 RCF，作為新 AFX 2K 系統安裝的一部分、更換監督模組，或將交換器重設為原廠預設值。
+對於新的 AFX 2K 系統安裝、supervisor 模組更換或將交換器重設為原廠預設值時，請在 Cisco Nexus 9808 交換器上安裝參考組態檔案 （RCF）。
 
 .開始之前
 * 交換器必須通電，且您必須已完成 link:configure-complete-initial-setup-9808.html["完成初始交換器設置"] 程序。

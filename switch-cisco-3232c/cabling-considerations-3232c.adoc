@@ -2,16 +2,16 @@
 permalink: switch-cisco-3232c/cabling-considerations-3232c.html 
 sidebar: sidebar 
 keywords: 3232c cabling setup, 3232c switches configuration, nx-os 
-summary: 在設定 Cisco 3232C 交換器之前，請審查以下資訊。 
+summary: 部署前請檢查 Cisco Nexus 3232C 叢集交換器的佈線和組態注意事項。 
 ---
-= 審查佈線和配置注意事項
+= 檢閱 Cisco Nexus 3232C 叢集交換器的佈線和組態注意事項
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-在設定 Cisco 3232C 交換器之前，請審查以下注意事項。
+部署前請檢查 Cisco Nexus 3232C 叢集交換器的佈線和組態注意事項。
 
 
 

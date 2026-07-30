@@ -2,16 +2,16 @@
 permalink: switch-cisco-9336c-fx2/migrate-to-2n-switched-9336-cluster.html 
 sidebar: sidebar 
 keywords: two-node switchless cluster environments,migrating to a two-node switched 9336C-FX2 cluster environment,switchless cluster environments,9336C-FX2 switches 
-summary: 如果您已有雙節點無交換器叢集環境，則可以使用Cisco Nexus 9336C-FX2 交換器遷移到雙節點有交換器叢集環境，以便能夠將叢集擴展到兩個以上節點。 
+summary: 使用 Cisco Nexus 9336C-FX2 和 9336C-FX2-T 叢集交換器，將現有的雙節點無交換器式叢集移轉至交換式叢集環境。 
 ---
-= 遷移到雙節點交換集群
+= 使用 Cisco Nexus 9336C-FX2 叢集交換器移轉至雙節點交換式叢集
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-如果您已有雙節點無交換器叢集環境，則可以使用Cisco Nexus 9336C-FX2 和 9336C-FX2-T 交換器遷移到雙節點有交換器叢集環境。
+使用 Cisco Nexus 9336C-FX2 和 9336C-FX2-T 叢集交換器，將現有的雙節點無交換器式叢集移轉至有交換器的叢集環境。此不中斷營運的移轉可讓您將叢集擴充至兩個節點以上。
 
 遷移過程適用於所有使用光纖或 Twinax 連接埠的節點，但如果節點使用板載 10Gb BASE-T RJ45 連接埠作為叢集網路端口，則此交換器不支援遷移。
 

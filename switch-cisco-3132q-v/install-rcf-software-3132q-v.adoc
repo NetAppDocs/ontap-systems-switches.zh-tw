@@ -1,17 +1,17 @@
 ---
 permalink: switch-cisco-3132q-v/install-rcf-software-3132q-v.html 
 sidebar: sidebar 
-keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, cisco 3132q-v 
-summary: 使用叢集交換器健全狀況監控和記錄收集功能時，需要啟用 SSH。若要在 Cisco 3132q-v 叢集交換器上啟用 SSH，您需要先產生 SSH 金鑰，然後再啟用 SSH。 
+keywords: rcf, install, cluster switch, cisco nexus 3132q-v 
+summary: 在 Cisco Nexus 3132Q-V 叢集交換器上完成初始設定後，安裝參考組態檔案 （RCF）。 
 ---
-= 安裝參考設定檔（RCF）
+= 在 Cisco Nexus 3132Q-V 叢集交換器上安裝 RCF
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-首次設定 Nexus 3132Q-V 交換器後，您需要安裝參考組態檔 (RCF)。
+完成初始設定後，在 Cisco Nexus 3132Q-V 叢集交換器上安裝參考組態檔案 （RCF）。RCF 定義叢集運作所需的連接埠分配和網路設定。
 
 .開始之前
 請核實以下安裝和連接：

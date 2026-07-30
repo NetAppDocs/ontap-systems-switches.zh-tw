@@ -2,16 +2,16 @@
 permalink: switch-cisco-3232c-storage/install-nx-os-software-3232c-storage.html 
 sidebar: sidebar 
 keywords: install, nx-os software 
-summary: 您可以使用此程序在 Nexus 3232C 儲存交換器上安裝 NX-OS 軟體。 
+summary: 在 Cisco Nexus 3232C 儲存設備交換器上安裝或升級 NX-OS 軟體。 
 ---
-= 安裝或升級 NX-OS 軟體
+= 在 Cisco Nexus 3232C 儲存設備交換器上安裝或升級 NX-OS 軟體
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-您可以使用此程序在 Nexus 3232C 儲存交換器上安裝 NX-OS 軟體。
+在 Cisco Nexus 3232C 儲存設備交換器上安裝或升級 NX-OS 軟體，使其為儲存網路操作做好準備。
 
 
 NOTE: NetApp 建議您先完成 ONTAP 軟體升級，然後再對交換器進行軟體升級。

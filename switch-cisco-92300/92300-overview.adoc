@@ -2,16 +2,16 @@
 permalink: switch-cisco-92300/92300-overview.html 
 sidebar: sidebar 
 keywords: cisco nexus 92300YC 
-summary: 如果要建置包含兩個以上節點的ONTAP集群，則需要兩個受支援的集群網路交換器。您也可以使用額外的管理交換機，這些交換機是可選的。 
+summary: 了解 Cisco Nexus 92300YC 叢集交換器及其在 ONTAP 叢集連網中的角色。 
 ---
-= Cisco Nexus 92300YC 交換器總覽
+= 了解 Cisco Nexus 92300YC 交換器
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-如果要建置包含兩個以上節點的ONTAP集群，則需要兩個受支援的集群網路交換器。您也可以使用額外的管理交換機，這些交換機是可選的。
+Cisco Nexus 92300YC 是一款適用於擁有兩個以上節點的 ONTAP 環境的叢集交換器。在將其部署到叢集之前，請先了解該交換器的功能和使用案例。
 
 您可以使用交換器隨附的標準支架，將 Cisco Nexus 92300YC 交換器 （X190003/R） 安裝在 NetApp 系統機櫃或第三方機櫃中。
 

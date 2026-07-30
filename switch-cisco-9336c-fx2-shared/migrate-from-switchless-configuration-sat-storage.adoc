@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: switch-cisco-9336c-fx2-shared/migrate-from-switchless-configuration-sat-storage.html 
 keywords:  
-summary:  
+summary: 透過重複使用現有儲存設備交換器，將無交換器式組態（含交換器附加儲存設備）移轉至 Cisco Nexus 9336C-FX2 共享的交換器。 
 ---
-= 透過重複使用儲存交換機，從無交換器配置遷移到有交換器的儲存配置。
+= 從無交換器式組態（使用交換器連接儲存設備）移轉至 Cisco Nexus 9336C-FX2 共享的交換器
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,7 @@ summary:
 
 
 [role="lead"]
-你可以透過重複使用儲存交換機，從無交換機設定遷移到有交換器的儲存配置。
+透過重複使用現有儲存設備交換器，將無交換器式組態（含交換器附加儲存設備）移轉至 Cisco Nexus 9336C-FX2 共享的交換器。
 
 透過重複使用儲存交換機，HA 對 1 的儲存交換機變成共用交換機，如下圖所示。
 

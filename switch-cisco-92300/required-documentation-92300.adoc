@@ -2,16 +2,16 @@
 permalink: switch-cisco-92300/required-documentation-92300.html 
 sidebar: sidebar 
 keywords: cisco nexus 92300YC 
-summary: 對於 Cisco Nexus 92300YC 交換器的安裝和維護，請務必審查所有建議的文件。 
+summary: 查閱安裝和維護 Cisco Nexus 92300YC 叢集交換器所需的文件。 
 ---
-= Cisco Nexus 92300YC 交換器的文件需求
+= 審查 Cisco Nexus 92300YC 叢集交換器的文件需求
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-安裝 Cisco Nexus 92300YC 交換器時、請務必查看所有建議的文件。
+查看設定 Cisco Nexus 92300YC 叢集交換器以及在 ONTAP 叢集中進行組態設定所需的交換器和控制器文件。
 
 
 

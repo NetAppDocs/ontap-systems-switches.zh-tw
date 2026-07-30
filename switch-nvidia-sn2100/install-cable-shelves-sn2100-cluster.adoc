@@ -2,16 +2,16 @@
 permalink: switch-nvidia-sn2100/install-cable-shelves-sn2100-cluster.html 
 sidebar: sidebar 
 keywords: sn2100 cabling setup, msn2100 sn2100 switches configuration, cumulus linux 
-summary: 如果您的系統需要將 NS224 磁碟機櫃作為交換器連接儲存設備而非直接連接儲存設備進行佈線，請使用此處提供的資訊。 
+summary: 當不使用直連式儲存設備時，可以使用 NVIDIA SN2100 叢集交換器將 NS224 磁碟機架連接成交換器連接的儲存設備。 
 ---
-= 將 NS224 機架連接成交換器連接的儲存設備
+= 將 NS224 磁碟機櫃以纜線連接為 NVIDIA SN2100 叢集交換器的交換器附加儲存設備
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-如果您的系統需要將 NS224 磁碟機架作為交換器連接儲存（而不是直接連接儲存）進行佈線，請使用此處提供的資訊。
+當直連式儲存設備不適合您的組態時，可以使用 NVIDIA SN2100 叢集交換器將 NS224 磁碟機架連接成交換器連接的儲存設備。
 
 * NS224 電纜驅動貨架透過儲存交換器：
 +

@@ -2,7 +2,7 @@
 permalink: switch-netapp-cn1610/replace-cn1610-switch.html 
 sidebar: sidebar 
 keywords: replace, netapp cn1610, cluster switch 
-summary: 您可以按照特定步驟，在不中斷業務的情況下更換有缺陷的 NetApp CN1610 叢集交換器。 
+summary: 更換故障的 NetApp CN1610 叢集交換器。此程序不會中斷營運。 
 ---
 = 更換 NetApp CN1610 叢集交換器
 :allow-uri-read: 
@@ -11,7 +11,7 @@ summary: 您可以按照特定步驟，在不中斷業務的情況下更換有�
 
 
 [role="lead"]
-請依照下列步驟更換叢集網路中發生故障的 NetApp CN1610 交換器。這是一個非中斷性操作 （NDU）。
+在不中斷叢集運作的情況下，更換叢集網路中發生故障的 NetApp CN1610 叢集交換器。此不中斷營運的程序 (NDU) 包括準備替換交換器，並將連線從故障交換器移轉過來。
 
 
 

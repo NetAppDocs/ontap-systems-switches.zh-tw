@@ -2,16 +2,16 @@
 permalink: switch-netapp-cn1610/required-documentation-cn1610.html 
 sidebar: sidebar 
 keywords: cn1610, switch, netapp 
-summary: 對於 NetApp CN1610 交換器的安裝和維護，請務必審查所有建議的文件。 
+summary: 查閱安裝和維護 NetApp CN1610 叢集交換器所需的文件。 
 ---
-= NetApp CN1610 交換器的文件要求
+= 審查 NetApp CN1610 叢集交換器的文件要求
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-安裝 NetApp CN1610 交換器時、請務必查看所有建議的文件。
+查看設定 NetApp CN1610 叢集交換器所需的交換器和控制器文件，並在 ONTAP 叢集中進行設定。
 
 [cols="1,2"]
 |===

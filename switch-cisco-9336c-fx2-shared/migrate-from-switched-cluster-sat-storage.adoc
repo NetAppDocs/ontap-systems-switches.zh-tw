@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: switch-cisco-9336c-fx2-shared/migrate-from-switched-cluster-sat-storage.html 
 keywords:  
-summary:  
+summary: 透過重複使用現有儲存交換器，將具有交換器連接儲存設備的交換式叢集移轉至 Cisco Nexus 9336C-FX2 共享交換器。 
 ---
-= 從具有交換器連接儲存的交換叢集遷移
+= 將使用交換器連接儲存設備的交換式叢集移轉至 Cisco Nexus 9336C-FX2 共享交換器
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,7 @@ summary:
 
 
 [role="lead"]
-你可以透過重複使用儲存交換機，從有交換器連接儲存的交換集群進行遷移。
+將現有儲存設備交換器重複用作共享的交換器，從而將具有交換器連接儲存設備的交換式叢集移轉至 Cisco Nexus 9336C-FX2 共享的交換器。
 
 透過重複使用儲存交換機，HA 對 1 的儲存交換機變成共用交換機，如下圖所示。
 

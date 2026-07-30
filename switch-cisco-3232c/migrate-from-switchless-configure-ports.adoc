@@ -2,16 +2,16 @@
 permalink: switch-cisco-3232c/migrate-from-switchless-configure-ports.html 
 sidebar: sidebar 
 keywords: cisco 3232c, cluster switches 
-summary: 您可以在 AFF 或 FAS 叢集中使用 Cisco Nexus 3232C 交換器作為叢集交換器。 
+summary: 設定連接埠，以便從雙節點無交換器式叢集移轉到 Cisco Nexus 3232C 叢集交換器。 
 ---
-= 設定連接埠，以便從雙節點無交換器式叢集移轉到雙節點交換式叢集
+= 設定連接埠，以便從雙節點無交換器式叢集移轉到 Cisco Nexus 3232C 叢集交換器
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-請依照下列步驟設定連接埠，以便從雙節點無交換器式叢集移轉到 Nexus 3232C 交換器上的雙節點交換叢集。
+設定連接埠，以便使用 Cisco Nexus 3232C 叢集交換器從雙節點無交換器式叢集移轉至雙節點交換式叢集。
 
 .步驟
 . 將 n1_clus1 和 n2_clus1 LIF 移轉至其目的地節點的實體連接埠：

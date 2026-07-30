@@ -2,16 +2,16 @@
 permalink: switch-cisco-9364d-gx2a/install-switches-9364d.html 
 sidebar: sidebar 
 keywords: switches, hardware installation, Cisco Nexus, 9364D-GX2A switches 
-summary: 安裝 Cisco Nexus 9364D-GX2A 交換器作為新的 AFX 1K 或 AFX 2K 系統安裝的一部分，包括將交換器安裝到機架或機櫃中、將其連接至系統控制器和磁碟櫃，然後開機。 
+summary: 安裝 Cisco Nexus 9364D-GX2A 交換器，作為新的 AFX 1K 或 AFX 2K 系統的一部分，包括機架安裝、連接至控制器和磁碟櫃的佈線以及開機。 
 ---
-= 安裝交換器 - Cisco Nexus 9364D-GX2A
+= 在 AFX 系統中安裝 Cisco Nexus 9364D-GX2A 交換器
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-安裝 Cisco Nexus 9364D-GX2A 交換器作為新的 AFX 1K 或 AFX 2K 系統安裝的一部分，包括將交換器安裝到機架或機櫃中、將其連接至系統控制器和磁碟櫃，然後開機。
+將 Cisco Nexus 9364D-GX2A 交換器安裝到新的 AFX 1K 或 AFX 2K 系統。這包括將交換器安裝到機架或機櫃中、將其連接到系統控制器和磁碟櫃，並接上電源。
 
 .開始之前
 您必須已完成交換器準備步驟link:install-prepare-9364d.html["準備安裝交換器"]。

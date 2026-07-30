@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: switch-cisco-9336c-fx2-shared/install-9336c-shared.html 
 keywords:  
-summary:  
+summary: 安裝 Cisco Nexus 9336C-FX2 共享的交換器，以在 ONTAP 環境中結合叢集和儲存設備功能。 
 ---
 = 安裝Cisco Nexus 9336C-FX2 共用交換機
 :hardbreaks:
@@ -14,7 +14,7 @@ summary:
 
 
 [role="lead"]
-請依照以下說明設定Cisco Nexus 9336C-FX2 共用交換器。
+安裝 Cisco Nexus 9336C-FX2 共享的交換器，以在 ONTAP 環境中結合叢集和儲存設備功能。
 
 .開始之前
 請確保您擁有以下物品：

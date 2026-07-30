@@ -2,9 +2,9 @@
 permalink: switch-cshm/log-collection-troubleshoot.html 
 sidebar: sidebar 
 keywords: cshm, cluster, storage, switch logs, debugging, collection 
-summary: 您可以使用此處提供的命令來… 
+summary: 排查乙太網路交換器健全狀況監視器 （CSHM） 日誌收集錯誤和故障。 
 ---
-= 排查日誌收集問題
+= 乙太網路交換器健全狀況監視器的日誌收集故障排除
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

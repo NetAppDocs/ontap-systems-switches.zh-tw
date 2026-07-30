@@ -2,7 +2,7 @@
 permalink: switch-cisco-3132q-v/install-cisco-nexus-3132qv.html 
 sidebar: sidebar 
 keywords: install, cisco nexus 3132q-v cluster switch, pass-through panel, netapp cabinet 
-summary: 您可以使用交換器隨附的標準支架，將 Cisco Nexus 3132Q-V 交換器和直通面板安裝到 NetApp 機櫃中。 
+summary: 使用交換器隨附的標準支架，將 Cisco Nexus 3132Q-V 叢集交換器和直通面板安裝到 NetApp 機櫃中。 
 ---
 = 在 NetApp 機櫃中安裝 Cisco Nexus 3132Q-V 叢集交換器
 :allow-uri-read: 
@@ -11,7 +11,7 @@ summary: 您可以使用交換器隨附的標準支架，將 Cisco Nexus 3132Q-V
 
 
 [role="lead"]
-根據您的組態，您可能需要將 Cisco Nexus 3132Q-V 交換器和直通面板安裝在 NetApp 機櫃中，並使用交換器隨附的標準支架。
+使用交換器隨附的標準支架，將 Cisco Nexus 3132Q-V 叢集交換器和直通面板安裝到 NetApp 機櫃中。
 
 .開始之前
 * 初始準備要求、套件內容和安全注意事項，請參閱 http://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus3000/hw/installation/guide/b_n3000_hardware_install_guide.html["Cisco Nexus 3000 系列硬體安裝指南"^]。開始操作之前，請先審查這些文件。

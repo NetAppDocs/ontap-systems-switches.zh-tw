@@ -2,16 +2,16 @@
 permalink: switch-cisco-3232c-storage/configure-ssh-keys.html 
 sidebar: sidebar 
 keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, cisco 9336c-fx2 
-summary: 使用叢集交換器健全狀況監控和記錄收集功能時，需要啟用 SSH。若要在 Cisco 3232C 叢集交換器上啟用 SSH，您需要先產生 SSH 金鑰，然後再啟用 SSH。 
+summary: 確認 Cisco Nexus 3232C 儲存設備交換器上已啟用 SSH 和 SSH 金鑰，以支援 CSHM 和日誌收集。 
 ---
-= 請檢查您的 SSH 配置
+= 驗證 Cisco Nexus 3232C 儲存設備交換器的 SSH 組態
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-如果您正在使用乙太網路交換器健康監視器 (CSHM) 和日誌收集功能，請驗證交換器上是否啟用了 SSH 和 SSH 金鑰。
+確認 Cisco Nexus 3232C 儲存設備交換器上已啟用 SSH 和 SSH 金鑰，以支援乙太網路交換器健康監視器 (CSHM) 和日誌收集功能。
 
 .步驟
 . 確認 SSH 已啟用：

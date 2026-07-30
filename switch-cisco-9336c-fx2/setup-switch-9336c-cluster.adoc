@@ -2,16 +2,16 @@
 permalink: switch-cisco-9336c-fx2/setup-switch-9336c-cluster.html 
 sidebar: sidebar 
 keywords: require, configuration, information, documentation, cluster, management, network, switches, set up the switches - cisco nexus 9336c-fx2 
-summary: 請依照下列步驟設定和設定Cisco Nexus 9336C-FX2 交換器。 
+summary: 設定 Cisco Nexus 9336C-FX2 和 9336C-FX2-T 叢集交換器，使其做好叢集運作的準備。 
 ---
-= 配置 9336C-FX2 和 9336C-FX2-T 叢集交換機
+= 設定 Cisco Nexus 9336C-FX2 和 9336C-FX2-T 叢集交換器
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-請依照下列步驟設定Cisco Nexus 9336C-FX2 和 9336C-FX2-T 交換器。
+使用初始設定指令設定 Cisco Nexus 9336C-FX2 和 9336C-FX2-T 叢集交換器，以便在 ONTAP 環境中進行叢集作業。
 
 .開始之前
 請確保您擁有以下物品：

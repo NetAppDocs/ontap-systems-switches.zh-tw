@@ -2,7 +2,7 @@
 permalink: switch-cisco-9336c-fx2-storage/setup-worksheet-9336c-storage.html 
 sidebar: sidebar 
 keywords: document, support, platform, complete, blank, cabling, worksheet, guide, cisco, nexus, cisco nexus 9336c-fx2 cabling worksheet - cisco nexus 9336-fx2 
-summary: 如果要記錄支援的平台，則必須使用已完成的範例佈線工作表作為指南，填寫空白的佈線工作表。 
+summary: 完成 Cisco Nexus 9336C-FX2 或 9336C-FX2-T 儲存交換器的佈線工作表，以記錄連接埠連接和支援的平台組態。 
 ---
 = 完成Cisco Nexus 9336C-FX2 或 9336C-FX2-T 佈線工作表
 :allow-uri-read: 
@@ -11,7 +11,7 @@ summary: 如果要記錄支援的平台，則必須使用已完成的範例佈�
 
 
 [role="lead"]
-如果您想記錄支援的平台，請下載此頁面的 PDF 檔案並填寫佈線工作表。
+完成 Cisco Nexus 9336C-FX2 或 9336C-FX2-T 儲存交換器的佈線工作表，以記錄連接埠連接和支援的平台組態。
 
 範例佈線工作表提供了從交換器到控制器的建議連接埠分配範例。空白工作表提供了一個模板，您可以在設定叢集時使用該模板。
 

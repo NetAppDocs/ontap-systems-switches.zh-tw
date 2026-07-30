@@ -2,16 +2,16 @@
 permalink: switch-cisco-3132q-v/migrate-switchless-complete-migration.html 
 sidebar: sidebar 
 keywords: cisco 3132q-v, cluster switches 
-summary: 您可以在 AFF 或 FAS 叢集中使用 Cisco Nexus 3132q-v 交換器作為叢集交換器。 
+summary: 完成從雙節點無交換器式叢集到 Cisco Nexus 3132Q-V 叢集交換器的移轉。 
 ---
-= 完成從雙節點無交換器式叢集到雙節點有交換器叢集的移轉
+= 完成從雙節點無交換器式叢集到 Cisco Nexus 3132Q-V 叢集交換器的移轉
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-請依照下列步驟完成從無交換器式叢集到雙節點交換器叢集的移轉。
+使用 Cisco Nexus 3132Q-V 叢集交換器，完成從雙節點無交換器式叢集移轉至雙節點有交換器式叢集的最後步驟。
 
 .步驟
 . 顯示每個節點上每個叢集連接埠所連接的叢集交換器連接埠號碼：

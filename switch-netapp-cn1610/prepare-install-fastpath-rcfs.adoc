@@ -2,16 +2,16 @@
 permalink: switch-netapp-cn1610/prepare-install-fastpath-rcfs.html 
 sidebar: sidebar 
 keywords: install, fastpath, software, rcfs, netapp cluster switch 
-summary: 您必須在 NetApp CN1610 叢集交換器上安裝 FASTPATH 軟體和參考設定檔 RCF。 
+summary: '在安裝 FASTPATH 軟體和參考組態檔 (RCF) 之前，請先準備好 NetApp CN1610 叢集交換器。' 
 ---
-= 準備在 NetApp 叢集交換器上安裝 FASTPATH 軟體和 RCF
+= 準備在 NetApp CN1610 叢集交換器上安裝 FASTPATH 軟體和 RCF
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-您必須在 NetApp CN1610 叢集交換器上安裝 FASTPATH 軟體和參考組態檔 （RCF）。
+在安裝 FASTPATH 軟體和參考組態檔 (RCF) 之前，請先準備好 NetApp CN1610 叢集交換器。
 
 .開始之前
 * 叢集必須是功能完整的叢集。

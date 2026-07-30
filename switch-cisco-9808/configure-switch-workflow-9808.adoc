@@ -2,16 +2,16 @@
 permalink: switch-cisco-9808/configure-switch-workflow-9808.html 
 sidebar: sidebar 
 keywords: switches, initial installation, configure switch-cisco-9808 switch 
-summary: 在進行新的 AFX 2K 系統安裝、更換管理模組或將交換器重設為原廠預設值時，您需要設定 Cisco 9808 交換器。 
+summary: 請依照此工作流程設定 Cisco Nexus 9808 交換器，以進行 AFX 2K 系統安裝、監督模組更換或恢復原廠預設值。 
 ---
-= 設定交換器工作流程 - Cisco Nexus 9808
+= Cisco Nexus 9808 交換器的設定工作流程
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-您可以在安裝新的 AFX 2K 系統、更換管理模組或將交換器重設為出廠預設值時設定 Cisco Nexus 9808 交換器。
+請依照此工作流程設定 Cisco Nexus 9808 交換器，以進行 AFX 2K 系統安裝、監督模組更換或將交換器重設為原廠預設值。
 
 當您link:install-configure-switches-in-afx-workflow-9808.html["安裝並設定新的 AFX 2K 系統"]、link:maintain-replace-frus-9808.html["更換 FRU"]或link:maintain-reset-switch-9808.html["將交換器重設為出廠預設值"]時，可能會根據需要將您引導至此工作流程或此工作流程中的各個主題。
 

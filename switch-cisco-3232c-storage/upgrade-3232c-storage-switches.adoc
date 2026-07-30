@@ -2,16 +2,16 @@
 permalink: switch-cisco-3232c-storage/upgrade-3232c-storage-switches.html 
 sidebar: sidebar 
 keywords: upgrade, cisco nexus, 3232c storage switch 
-summary: Cisco Nexus 3232C 儲存交換器可以升級 Cisco NX-OS 軟體和參考設定檔 RCF。 
+summary: 升級 Cisco Nexus 3232C 儲存設備交換器上的 NX-OS 軟體和 RCF。 
 ---
-= 升級 Cisco Nexus 3232C 儲存設備交換器
+= 升級 Cisco Nexus 3232C 儲存交換器
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-請依照下列步驟升級 Cisco Nexus 3232C 交換器上的 Cisco NX-OS 軟體和參考組態檔 (RCF)。
+升級 Cisco Nexus 3232C 儲存設備交換器上的 NX-OS 軟體和參考組態檔案 （RCF），以維持與 ONTAP 的相容性並存取最新功能。
 
 
 

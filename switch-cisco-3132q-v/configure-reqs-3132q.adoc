@@ -2,16 +2,16 @@
 permalink: switch-cisco-3132q-v/configure-reqs-3132q.html 
 sidebar: sidebar 
 keywords: Cisco, 3132Q-V 
-summary: 安裝和維護 Cisco Nexus 3132Q-V 交換器時，請務必審查網路和組態需求。 
+summary: 在安裝或升級 Cisco Nexus 3132Q-V 叢集交換器之前，請先查看其組態需求。 
 ---
-= Cisco Nexus 3132Q-V 交換器的組態需求
+= 檢閱 Cisco Nexus 3132Q-V 叢集交換器的組態需求
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-對於 Cisco Nexus 3132Q-V 交換器的安裝和維護，請務必審查網路和組態需求。
+在安裝或升級 Cisco Nexus 3132Q-V 叢集交換器之前，請先查看其組態需求。
 
 
 

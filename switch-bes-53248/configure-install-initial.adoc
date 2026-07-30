@@ -2,16 +2,16 @@
 permalink: switch-bes-53248/configure-install-initial.html 
 sidebar: sidebar 
 keywords: switches initial setup,initial setup,efos download 
-summary: 您可以使用此程式執行 BES-53248 叢集交換器的初始安裝。 
+summary: 對 Broadcom BES-53248 叢集交換器執行初始組態，以準備進行 EFOS 軟體安裝和叢集部署。 
 ---
-= 配置 BES-53248 集群交換機
+= 設定 Broadcom BES-53248 叢集交換器
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-請依照下列步驟對 BES-53248 叢集交換器進行初步設定。
+對 Broadcom BES-53248 叢集交換器執行初始組態，以準備進行 EFOS 軟體安裝和叢集部署。
 
 .開始之前
 * 硬體已按所述方式安裝。link:install-hardware-bes53248.html["安裝硬體"] 。

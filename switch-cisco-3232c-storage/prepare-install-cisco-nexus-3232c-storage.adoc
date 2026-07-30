@@ -2,16 +2,16 @@
 permalink: switch-cisco-3232c-storage/prepare-install-cisco-nexus-3232c-storage.html 
 sidebar: sidebar 
 keywords: nx-os software, install, cisco nexus storage switches, 3232c, rcfs 
-summary: Cisco Nexus 3232C 儲存交換器上必須安裝 Cisco NX-OS 軟體和參考設定檔 RCF。 
+summary: 在安裝 NX-OS 軟體和參考組態檔案 （RCF） 之前，請準備好 Cisco Nexus 3232C 儲存設備交換器。 
 ---
-= 準備安裝 NX-OS 軟體和參考組態檔案 (RCF)
+= 準備在 Cisco Nexus 3232C 儲存設備交換器上安裝 NX-OS 軟體和 RCF
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-在安裝 NX-OS 軟體和參考設定檔 (RCF) 之前，請依照下列步驟操作。
+在安裝 NX-OS 軟體和參考組態檔案（RCF）之前，請先準備好 Cisco Nexus 3232C 儲存設備交換器。必須先安裝 NX-OS 和 RCF，交換器才能在 ONTAP 儲存網路中運作。
 
 .關於範例
 本流程中的範例使用以下開關和節點命名規則：

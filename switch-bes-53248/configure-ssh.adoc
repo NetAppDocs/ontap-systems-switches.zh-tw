@@ -2,16 +2,16 @@
 permalink: switch-bes-53248/configure-ssh.html 
 sidebar: sidebar 
 keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, bes, enable ssh on bes-53248 cluster switches - bes-53248 switches 
-summary: 使用叢集交換器健康狀況監控器 CSHM 和日誌收集功能時，SSH 是必要條件。若要在 BES-53248 叢集交換器上啟用 SSH，您需要先產生 SSH 金鑰，然後再啟用 SSH。 
+summary: 在 Broadcom BES-53248 叢集交換器上啟用 SSH，以支援乙太網路交換器健全狀況監視器 （CSHM） 和記錄收集功能。 
 ---
-= 在 BES-53248 叢集交換器上啟用 SSH
+= 在 Broadcom BES-53248 叢集交換器上啟用 SSH
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-如果您正在使用乙太網路交換器健康監視器 (CSHM) 和日誌收集功能，則必須產生 SSH 金鑰，然後在叢集交換器上啟用 SSH。
+在 Broadcom BES-53248 叢集交換器上啟用 SSH，以支援乙太網路交換器健全狀況監視器（CSHM）和日誌收集功能。此步驟包括產生 SSH 金鑰和啟動交換器上的 SSH 存取。
 
 .步驟
 . 確認 SSH 已停用：

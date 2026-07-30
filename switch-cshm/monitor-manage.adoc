@@ -2,9 +2,9 @@
 permalink: switch-cshm/monitor-manage.html 
 sidebar: sidebar 
 keywords: create, remove, switch, cluster, monitor, health, management 
-summary: 了解如何手動建立、變更預設監控設定以及從監控中刪除乙太網路交換器。 
+summary: 手動新增、設定或從 CSHM 監控中移除乙太網路交換器，或在維護期間暫停監控。 
 ---
-= 管理乙太網路交換器的監控
+= 管理乙太網路交換器健全狀況監控
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

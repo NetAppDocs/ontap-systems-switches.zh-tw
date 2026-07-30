@@ -2,16 +2,16 @@
 permalink: switch-nvidia-sn2100/upgrade-cl-version.html 
 sidebar: sidebar 
 keywords: nvidia SN2100 switches 
-summary: 請依照以下步驟升級您的 Cumulus Linux 版本。 
+summary: 升級 NVIDIA SN2100 叢集交換器上的 Cumulus Linux 版本，以維持與 ONTAP 的相容性並存取最新的軟體功能。 
 ---
-= 升級 Cumulus Linux 版本
+= 在 NVIDIA SN2100 叢集交換器上升級 Cumulus Linux
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-請依照以下步驟升級您的 Cumulus Linux 版本（如有需要）。
+升級 NVIDIA SN2100 叢集交換器上的 Cumulus Linux 版本，以維持與 ONTAP 的相容性並存取最新的軟體功能。
 
 
 NOTE: NetApp 建議您先完成 ONTAP 軟體升級，然後再對交換器進行軟體升級。

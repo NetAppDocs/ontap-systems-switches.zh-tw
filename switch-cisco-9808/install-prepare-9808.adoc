@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: switch-cisco-9808/install-prepare-9808.html 
 keywords: shared storage cluster switch 
-summary: 在將 Cisco Nexus 9808 交換器作為新的 AFX 2K 系統安裝的一部分進行安裝之前，您應該透過查看適用的 Cisco 交換器文件和 ONTAP 系統文件來了解交換器及其安裝的各個方面，了解 AFX 系統支援的 RCF 版本，並考慮使用 Smart Call Home。 
+summary: 若要準備安裝 Cisco Nexus 9808 交換器作為新的 AFX 2K 系統的一部分，請查閱交換器文件、支援的 RCF 版本和 Smart Call Home 需求。 
 ---
-= 準備安裝交換器 - Cisco Nexus 9808
+= 準備在 AFX 系統中安裝 Cisco Nexus 9808 交換器
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,7 @@ summary: 在將 Cisco Nexus 9808 交換器作為新的 AFX 2K 系統安裝的一
 
 
 [role="lead"]
-在將 Cisco Nexus 9808 交換器作為新的 AFX 2K 系統安裝的一部分進行安裝之前，您應該透過查看適用的 Cisco 交換器文件和 ONTAP 系統文件來了解交換器及其安裝的各個方面，了解 AFX 系統支援的參考組態檔案 （RCF） 版本，並考慮使用 Smart Call Home。
+若要準備安裝 Cisco Nexus 9808 交換器作為新的 AFX 2K 系統的一部分，請查閱適用的 Cisco 交換器文件，以了解支援的 RCF 版本，並考慮 Smart Call Home 組態。
 
 
 

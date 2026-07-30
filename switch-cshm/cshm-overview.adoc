@@ -2,15 +2,15 @@
 permalink: switch-cshm/cshm-overview.html 
 sidebar: sidebar 
 keywords: cshm, cluster, storage, switch logs, debugging, collection 
-summary: 乙太網路交換器健全狀況監控器 CSHM 負責確保叢集和儲存網路交換器的運作健全狀況，並收集交換器記錄以進行除錯。 
+summary: 了解乙太網路交換器健全狀況監視器 （CSHM） 以及它如何在 ONTAP 中監控叢集和儲存網路交換器的健全狀況。 
 ---
-= 乙太網路交換器健全狀況監視器
+= 了解乙太網路交換器健全狀況監控
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-乙太網路交換器健全狀況監視器（CSHM）負責確保網路交換器的運作健全狀況，並收集交換器記錄以進行除錯。
+乙太網路交換器健全狀況監視器 （CSHM） 主動監視 ONTAP 中的叢集和儲存網路交換器的健全狀況，對偵測到的故障發出警報，並收集交換器日誌以進行偵錯。
 
 CSHM 監控叢集和儲存網路交換器，以維護網路基礎架構的可靠性。此健全狀況監視器可自動偵測交換器問題、收集日誌以進行疑難排解，並在網路出現問題時發出警報。CSHM 支援多種交換器廠商和型號，可協助您在網路連線問題影響儲存環境之前識別並解決這些問題。

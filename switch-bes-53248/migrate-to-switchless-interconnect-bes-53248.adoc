@@ -2,9 +2,9 @@
 permalink: switch-bes-53248/migrate-to-switchless-interconnect-bes-53248.html 
 sidebar: sidebar 
 keywords: migrate, switchless cluster interconnect, broadcom bes-53248 switch 
-summary: 對於ONTAP 9.3 及更高版本，您可以將叢集從具有交換叢集網路的叢集遷移到兩個節點直接連接的叢集。 
+summary: 將使用 Broadcom BES-53248 叢集交換器的交換式叢集網路移轉至適用於 ONTAP 9.3 及更新版本的雙節點無交換器式叢集組態。 
 ---
-= 用無開關連接取代 Broadcom BES-53248 集群交換機
+= 從 Broadcom BES-53248 叢集交換器移轉至無交換器式連接
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

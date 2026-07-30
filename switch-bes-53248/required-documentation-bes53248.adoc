@@ -2,16 +2,16 @@
 permalink: switch-bes-53248/required-documentation-bes53248.html 
 sidebar: sidebar 
 keywords: documentation requirements, BES-53248 switches,cluster switches 
-summary: 您需要特定的交換器和控制器文件來設定叢集模式配置。 
+summary: 檢視設定和組態 Broadcom BES-53248 叢集交換器所需的交換器和控制器文件。 
 ---
-= BES-53248 叢集交換器的文件需求
+= 請查閱設定 Broadcom BES-53248 叢集交換器的文件需求。
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-對於 BES-53248 交換器安裝，請務必檢閱特定的交換器和控制器文件。
+查看設定 Broadcom BES-53248 叢集交換器並在 ONTAP 叢集中進行設定所需的交換器和控制器文件。
 
 
 

@@ -2,7 +2,7 @@
 permalink: switch-cisco-3232c/replace-cluster-switch.html 
 sidebar: sidebar 
 keywords: replace, cisco nexus 3232c, cluster switch 
-summary: 您可以透過執行一系列特定任務，在不中斷營運的情況下更換叢集中發生故障的 Cisco Nexus 3232C 交換器。 
+summary: 更換發生故障的 Cisco Nexus 3232C 叢集交換器。此程序不會中斷營運。 
 ---
 = 更換 Cisco Nexus 3232C 叢集交換器
 :allow-uri-read: 
@@ -11,7 +11,7 @@ summary: 您可以透過執行一系列特定任務，在不中斷營運的情�
 
 
 [role="lead"]
-請依照下列步驟更換叢集中發生故障的 Cisco Nexus 3232C 交換器。此程序不會造成服務中斷。
+在不中斷叢集運作的情況下更換故障的 Cisco Nexus 3232C 叢集交換器。此不中斷營運的程序包括準備替換交換器，並將連線從故障交換器移轉過來。
 
 
 

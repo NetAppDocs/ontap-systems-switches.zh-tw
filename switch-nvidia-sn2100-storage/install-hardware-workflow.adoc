@@ -2,7 +2,7 @@
 permalink: switch-nvidia-sn2100-storage/install-hardware-workflow.html 
 sidebar: sidebar 
 keywords: switches, initial installation, configure switch-nvidia-sn2100 switch 
-summary: 在設定NVIDIA SN2100 叢集交換器之前，請先查看設定概述。 
+summary: 請依照下列工作流程安裝 NVIDIA SN2100 儲存設備交換器的硬體。 
 ---
 = NVIDIA SN2100 儲存交換器的硬體安裝工作流程
 :allow-uri-read: 
@@ -11,7 +11,7 @@ summary: 在設定NVIDIA SN2100 叢集交換器之前，請先查看設定概述
 
 
 [role="lead"]
-若要安裝和設定 SN2100 儲存交換器的硬件，請依照下列步驟操作：
+請依照下列工作流程安裝和設定 NVIDIA SN2100 儲存網路交換器的硬體。
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一"]link:install-hardware-sn2100-storage.html["安裝硬體"]
 [role="quick-margin-para"]

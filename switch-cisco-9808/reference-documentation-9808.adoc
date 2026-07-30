@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: switch-cisco-9808/reference-documentation-9808.html 
 keywords: shared storage cluster switch 
-summary: 對於 Cisco Nexus 9808 交換器的安裝和設定（作為新 AFX 2K 系統的一部分）或現有交換器的維護，您可以參考適用的 Cisco 交換器文件和 NetApp 系統文件。 
+summary: 查閱 Cisco 交換器和 NetApp 系統文件，以了解 Cisco Nexus 9808 交換器在 AFX 2K 系統中的安裝與維護。 
 ---
-= 參考文件 - Cisco Nexus 9808
+= 查閱 Cisco Nexus 9808 交換器的參考文件
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,7 @@ summary: 對於 Cisco Nexus 9808 交換器的安裝和設定（作為新 AFX 2K 
 
 
 [role="lead"]
-對於 Cisco Nexus 9808 交換器的安裝和設定（作為新 AFX 2K 系統的一部分）或現有交換器的維護，您可以參考適用的 Cisco 交換器文件和 NetApp 系統文件。
+查看適用的 Cisco 交換器文件和 NetApp 系統文件，以了解 AFX 2K 系統中 Cisco Nexus 9808 交換器的安裝、組態和維護。
 
 
 NOTE: 有關如何將交換器安裝和設定為新的 AFX 2K 系統的一部分的逐步說明，請參閱link:install-configure-switches-in-afx-workflow-9808.html["在 AFX 系統工作流程中安裝並設定交換器"]。
