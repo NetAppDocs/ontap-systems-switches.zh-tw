@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: document, support, platform, complete, blank, cabling, worksheet, guide, cisco, nexus, cisco nexus 9336c-fx2 cabling worksheet - cisco nexus 9336-fx2-t 
 summary: 完成 Cisco Nexus 9336C-FX2 或 9336C-FX2-T 叢集交換器的佈線工作表，以記錄連接埠連接和支援的平台組態。 
 ---
-= 完成Cisco Nexus 9336C-FX2 或 9336C-FX2-T 佈線工作表
+= 請查看 Cisco Nexus 9336C-FX2 或 9336C-FX2-T 叢集交換器的佈線工作表
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

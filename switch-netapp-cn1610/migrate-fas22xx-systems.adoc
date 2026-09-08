@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: migrate, two-node switched cluster, fas22xx systems, single, network connection 
 summary: 將 FAS22xx 系統從具有單一叢集網路連線的無交換器式叢集移轉至使用 NetApp CN1610 叢集交換器的交換式叢集。 
 ---
-= 使用 NetApp CN1610 叢集交換器將 FAS22xx 系統移轉至交換式叢集
+= 使用 NetApp CN1610 叢集交換器移轉 FAS22xx 系統
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

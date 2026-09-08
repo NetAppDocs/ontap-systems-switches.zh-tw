@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: migrate, switchless cluster interconnect, NVIDIA SN2100 
 summary: 對於ONTAP 9.3 及更高版本，您可以將叢集從具有交換叢集網路的叢集遷移到兩個節點直接連接的叢集。 
 ---
-= 使用NVIDIA SN2100 叢集交換機，將叢集從有交換器的遷移到無交換器的。
+= 使用 NVIDIA SN2100 叢集交換器從有交換器式移轉至無交換器式
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

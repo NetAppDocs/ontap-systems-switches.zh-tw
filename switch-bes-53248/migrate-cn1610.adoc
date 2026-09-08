@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: CN1610, CN1610 replacing, migrate from CN1610 
 summary: 依照移轉需求和步驟，將現有的 NetApp CN1610 叢集交換器移轉至 Broadcom BES-53248 叢集交換器。 
 ---
-= 將 NetApp CN1610 叢集交換器移轉至 Broadcom BES-53248 叢集交換器
+= 從 NetApp CN1610 叢集交換器移轉至 Broadcom BES-53248 叢集交換器
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

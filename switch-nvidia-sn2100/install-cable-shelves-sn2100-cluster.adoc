@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: sn2100 cabling setup, msn2100 sn2100 switches configuration, cumulus linux 
 summary: 當不使用直連式儲存設備時，可以使用 NVIDIA SN2100 叢集交換器將 NS224 磁碟機架連接成交換器連接的儲存設備。 
 ---
-= 將 NS224 磁碟機櫃以纜線連接為 NVIDIA SN2100 叢集交換器的交換器附加儲存設備
+= 將 NS224 磁碟櫃佈線為 NVIDIA SN2100 交換器上的交換器連接儲存設備
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

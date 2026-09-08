@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: cluster-mode,supported versions,switches supported,cluster network,efos 
 summary: 確定 Broadcom BES-53248 叢集交換器的組件和零件號碼，以支援硬體安裝和後續維護。 
 ---
-= 了解 Broadcom BES-53248 叢集交換器的元件和零件編號
+= Broadcom BES-53248 叢集交換器的組件與零件編號
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

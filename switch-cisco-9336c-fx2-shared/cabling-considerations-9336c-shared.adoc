@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: 9336c-fx2 cabling setup, 9336c-fx2 switches configuration, nx-os 
 summary: 在部署 Cisco Nexus 9336C-FX2 共享交換器之前，請檢閱佈線和組態注意事項。 
 ---
-= 檢閱 Cisco Nexus 9336C-FX2 共享交換器的佈線和組態注意事項
+= 檢閱 Cisco Nexus 9336C-FX2 共享的交換器的佈線與組態需求
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

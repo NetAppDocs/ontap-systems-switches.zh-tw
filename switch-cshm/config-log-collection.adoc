@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: log collection feature,collect switch-related log files,SSh key,crypto key generation 
 summary: 設定日誌收集，使 CSHM 能夠從叢集和儲存網路交換器收集交換器日誌和診斷資料。 
 ---
-= 設定乙太網路交換器健全狀況監視器的日誌收集
+= 設定乙太網路交換器健全狀況監控的日誌收集
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

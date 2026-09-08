@@ -409,7 +409,7 @@ cs2# copy running-config startup-config [#######################################
 cs2# *reload*
 This command will reboot the system. (y/n)?  [n] *y*
 ----
-. 將先前對交換器組態所做的任何自訂設定重新套用。有關其他所需變更的詳細資訊，請參閱 link:cabling-considerations-3132q-v.html["審查佈線和配置注意事項"]。
+. 將先前對交換器組態所做的任何自訂設定重新套用。有關其他所需變更的詳細資訊，請參閱 link:cabling-considerations-3132q-v.html["審查佈線和配置要求"]。
 . 檢查叢集上叢集連接埠的運作狀況。
 +
 .. 確認叢集中所有節點的叢集連接埠均已啟動且運作狀況良好：

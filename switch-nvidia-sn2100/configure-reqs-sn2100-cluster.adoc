@@ -22,7 +22,7 @@ summary: 在安裝或升級 NVIDIA SN2100 叢集交換器之前，請先查看�
 
 您可以使用交換器隨附的標準支架將NVIDIA SN2100 交換器 (X190006) 安裝到NVIDIA雙/單交換器機櫃。
 
-有關佈線準則、請參閱 link:cabling-considerations-sn2100-cluster.html["審查佈線和配置注意事項"]。
+有關佈線準則，請參閱 link:cabling-considerations-sn2100-cluster.html["檢閱佈線和組態指南"]。
 
 
 

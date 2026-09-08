@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: cshm, cluster, storage, switch logs, debugging, collection 
 summary: 排除 ONTAP 叢集中 CSHM 引發的乙太網路交換器健全狀況監控警報問題。 
 ---
-= 排查乙太網路交換器健全狀況監視器的警報
+= 疑難排解乙太網路交換器健全狀況監控的警報
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

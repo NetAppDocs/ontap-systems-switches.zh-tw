@@ -37,7 +37,7 @@ summary: 將現有的雙節點無交換器式叢集移轉至使用 NVIDIA SN2100
 * NVIDIA SN2100 節點到節點交換器和交換器到交換器的連接使用 Twinax 或光纖電纜。
 +
 
-IMPORTANT: 請參閱 link:cabling-considerations-sn2100-cluster.html["審查佈線和配置注意事項"] 以瞭解注意事項和更多詳細資料。link:https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe- 交換機"^] 也包含有關佈線的更多資訊。
+IMPORTANT: 有關注意事項和更多詳情，請參閱 link:cabling-considerations-sn2100-cluster.html["檢閱佈線和組態指南"]。link:https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe- 交換機"^] 也包含有關佈線的更多資訊。
 
 * 交換器間連結 (ISL) 電纜連接到兩台NVIDIA SN2100 交換器的 swp15 和 swp16 連接埠。
 * 兩台 SN2100 交換器的初始自訂已完成，因此：

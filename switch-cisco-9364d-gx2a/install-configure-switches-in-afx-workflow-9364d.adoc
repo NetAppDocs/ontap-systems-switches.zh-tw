@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: switches, initial installation, configure 9364d-gx2ab switch 
 summary: 依照以下工作流程，安裝和設定 Cisco Nexus 9364D-GX2A 交換器，作為新的 AFX 1K 或 AFX 2K 系統的一部分。 
 ---
-= 在 AFX 系統中安裝並設定 Cisco Nexus 9364D-GX2A 交換器
+= Cisco Nexus 9364D-GX2A 交換器的安裝與組態工作流程
 :allow-uri-read: 
 
 

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: SN2100 cabling setup, sn2100 switches configuration, cumulus linux os 
 summary: 部署前請檢閱 NVIDIA SN2100 叢集交換器的佈線和組態注意事項。 
 ---
-= 檢閱 NVIDIA SN2100 叢集交換器的佈線和組態注意事項
+= 查閱 NVIDIA SN2100 叢集交換器的佈線與組態指南
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

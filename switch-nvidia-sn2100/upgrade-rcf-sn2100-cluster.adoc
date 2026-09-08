@@ -140,7 +140,7 @@ admin@sw1:mgmt:~$ cat /etc/issue
 
 NOTE: 如果遇到任何無法解決的 RCF Python 腳本問題，請聯絡我們。 https://mysupport.netapp.com/["NetApp支援"^]尋求幫助。
 
-. 將先前對交換器配置所做的任何自訂設定重新套用。請參閱link:cabling-considerations-sn2100-cluster.html["審查佈線和配置注意事項"]有關任何後續變更的詳細資訊。
+. 將先前對交換器組態所做的任何自訂設定重新套用。有關其他所需變更的詳細資訊，請參閱 link:cabling-considerations-sn2100-cluster.html["檢閱佈線和組態指南"]。
 . 重啟後驗證配置：
 +
 [listing, subs="+quotes"]
@@ -462,7 +462,7 @@ admin@sw1:mgmt:~$ cat /etc/issue
 
 NOTE: 如果遇到任何無法解決的 RCF Python 腳本問題，請聯絡我們。 https://mysupport.netapp.com/["NetApp支援"^]尋求幫助。
 
-. 將先前對交換器配置所做的任何自訂設定重新套用。請參閱link:cabling-considerations-sn2100-cluster.html["審查佈線和配置注意事項"]有關任何後續變更的詳細資訊。
+. 將先前對交換器組態所做的任何自訂設定重新套用。有關其他所需變更的詳細資訊，請參閱 link:cabling-considerations-sn2100-cluster.html["檢閱佈線和組態指南"]。
 . 重啟後驗證配置：
 +
 [listing, subs="+quotes"]
@@ -756,7 +756,7 @@ NOTE: 在上述步驟 3「更新 MOTD 檔案」中，該指令 `cat /etc/motd`�
 
 NOTE: 如果遇到任何無法解決的 RCF Python 腳本問題，請聯絡我們。 https://mysupport.netapp.com/["NetApp支援"^]尋求幫助。
 
-. 將先前對交換器配置所做的任何自訂設定重新套用。請參閱link:cabling-considerations-sn2100-cluster.html["審查佈線和配置注意事項"]有關任何後續變更的詳細資訊。
+. 將先前對交換器組態所做的任何自訂設定重新套用。有關其他所需變更的詳細資訊，請參閱 link:cabling-considerations-sn2100-cluster.html["檢閱佈線和組態指南"]。
 . 重啟後驗證配置：
 +
 [listing, subs="+quotes"]

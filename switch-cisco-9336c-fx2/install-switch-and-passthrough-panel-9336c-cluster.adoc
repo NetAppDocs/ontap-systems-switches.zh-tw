@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: install, cisco, nexus, switch, pass-through, panel, netapp, cabinet, bracket, switch, install a cisco nexus 9336c-fx2 switch and pass-through panel in a netapp cabinet - cisco nexus 9336c-fx2 
 summary: 使用交換器隨附的標準支架，在 NetApp 機櫃中安裝 Cisco Nexus 9336C-FX2 和 9336C-FX2-T 叢集交換器以及直通面板。 
 ---
-= 在 NetApp 機櫃中安裝 Cisco Nexus 9336C-FX2 和 9336C-FX2-T 叢集交換器
+= 在 NetApp 機櫃中安裝 Cisco Nexus 9336C-FX2 叢集交換器和直通面板
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

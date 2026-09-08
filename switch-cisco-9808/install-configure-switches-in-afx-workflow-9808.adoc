@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: switches, initial installation, configure switch-cisco-9808 switch 
 summary: 請依照此工作流程安裝和設定 Cisco Nexus 9808 交換器，作為新的 AFX 2K 系統的一部分。 
 ---
-= 在 AFX 系統中安裝並設定 Cisco Nexus 9808 交換器的工作流程
+= Cisco Nexus 9808 交換器的安裝與組態工作流程
 :allow-uri-read: 
 
 

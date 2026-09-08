@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: migrate, switchless cluster interconnect, cisco nexus switch 92300YC 
 summary: 對於ONTAP 9.3 及更高版本，您可以將叢集從具有交換叢集網路的叢集遷移到兩個節點直接連接的叢集。 
 ---
-= 以無交換器式連接取代 Cisco Nexus 92300YC 叢集交換器
+= 使用 Cisco Nexus 92300YC 叢集交換器移轉至無交換器式叢集互連
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: cshm, cluster, storage, switch logs, debugging, collection 
 summary: 使用乙太網路交換器健全狀況監視器警報來識別和解決 ONTAP 叢集中的網路交換器問題。 
 ---
-= 了解乙太網路交換器健全狀況監視器的警報
+= 了解乙太網路交換器健全狀況監控的警報
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

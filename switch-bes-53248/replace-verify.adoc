@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: command, verify, operational, bes, cluster, switch, upgrade, verify the configuration after a cluster switch upgrade - bes-53428 switches 
 summary: 在 Broadcom BES-53248 叢集交換器上升級 EFOS 軟體或 RCF 後，驗證 ONTAP 叢集網路的健全狀況。 
 ---
-= 升級 Broadcom BES-53248 叢集交換器上的 EFOS 軟體或 RCF 後，請驗證 ONTAP 叢集網路。
+= 升級 Broadcom BES-53248 交換器後，請驗證叢集網路
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

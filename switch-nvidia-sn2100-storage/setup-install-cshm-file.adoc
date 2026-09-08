@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: install, applicable, configuration, file, cluster, switch, health, monitor, ontap, install the cluster switch health monitor configuration file for sn2100 switches 
 summary: '安裝 NVIDIA SN2100 儲存設備交換器的乙太網路交換器健全狀況監視器 (CSHM) 組態檔案，以在 ONTAP 中啟用交換器健全狀況監控。' 
 ---
-= 為 NVIDIA SN2100 儲存設備交換器安裝乙太網路交換器健全狀況監視器組態檔案
+= 為 NVIDIA SN2100 儲存設備交換器安裝 CSHM 組態檔案
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

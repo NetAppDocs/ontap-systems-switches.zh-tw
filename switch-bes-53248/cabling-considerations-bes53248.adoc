@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: BES-53248 cabling setup, BES-53248 switches configuration, efos 
 summary: 在部署之前，請先了解 Broadcom BES-53248 叢集交換器的佈線和組態限制，包括叢集連接埠分配、連接埠組速度限制和 FEC 設定。 
 ---
-= 檢視 Broadcom BES-53248 叢集交換器的佈線和組態注意事項
+= 查看 Broadcom BES-53248 叢集交換器的佈線和組態需求
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

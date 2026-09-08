@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: nx-os software, install, cisco nexus storage switches, 3232c, rcfs 
 summary: 在安裝 NX-OS 軟體和參考組態檔案 （RCF） 之前，請準備好 Cisco Nexus 3232C 儲存設備交換器。 
 ---
-= 準備在 Cisco Nexus 3232C 儲存設備交換器上安裝 NX-OS 軟體和 RCF
+= 準備 Cisco Nexus 3232C 儲存設備交換器以安裝 NX-OS 和 RCF
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

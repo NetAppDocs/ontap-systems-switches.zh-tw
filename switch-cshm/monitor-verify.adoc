@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: verify, monitor, cluster, management, network, switches, heath, monitor 
 summary: 請確認您的乙太網路交換器健全狀況監控已正確設定並正常運作。 
 ---
-= 驗證乙太網路交換器健全狀況監視器的組態
+= 驗證乙太網路交換器健全狀況監控的組態
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
