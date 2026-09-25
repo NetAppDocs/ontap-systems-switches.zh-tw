@@ -36,6 +36,13 @@ CAUTION: 在安裝新的交換器軟體版本和 RCF 之前，必須清除交換
 [[step-1-prepare-for-the-upgrade]]
 == 第一步：準備升級
 
+. 將權限級別變更為高級，並在提示繼續時輸入 *y*：
++
+`set -privilege advanced`
+
++
+進階提示(`*>`出現。
+
 . 顯示每個節點上連接到叢集交換器的叢集連接埠：
 +
 `network device-discovery show`
@@ -696,7 +703,7 @@ cluster1::*>
 . 在交換器 cs2 上重複步驟 1 至 21。
 . 啟用叢集 LIF 的自動回滾功能。
 +
-`cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert True*`
+`cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert true*`
 
 
 
@@ -994,14 +1001,16 @@ cluster1-04          true    true          false
 --
 你可以使用 `network interface check cluster-connectivity`執行命令以啟動叢集連接性檢查，然後顯示詳細資訊：
 
-`network interface check cluster-connectivity start`和 `network interface check cluster-connectivity show`
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity start -node **
+----
+*注意：*執行  `show` 命令以顯示詳細資料前，請等待幾秒鐘。檢查與今天日期相符的項目。
 
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network interface check cluster-connectivity start*
+cluster1::*> *network interface check cluster-connectivity show*
 ----
-*注意：*運行程式前請等待幾秒鐘 `show`顯示詳細資訊的命令。
-
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity show*

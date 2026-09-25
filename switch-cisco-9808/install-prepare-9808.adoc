@@ -69,21 +69,21 @@ summary: 若要準備安裝 Cisco Nexus 9808 交換器作為新的 AFX 2K 系統
 
 
  a| 
-Ethernet1/1/1-4 至 Ethernet1/14/1-4
+Ethernet1/1 至 Ethernet1/18
  a| 
-4x100GbE 模式，用於叢集內連接、高可用性連接和儲存架連接
-
-
-
- a| 
-Ethernet1/15 至 Ethernet1/30
- a| 
-400GbE 模式適用於叢集內連接、HA 和儲存連接
+400GbE 模式適用於叢集內連接、HA 和儲存架連接
 
 
 
  a| 
-乙太網路1/31、乙太網路1/32
+Ethernet1/19 至 Ethernet1/35
+ a| 
+4x100Gb 模式，用於叢集內連接、HA 連接和儲存連接
+
+
+
+ a| 
+Ethernet1/36
  a| 
 400GbE 叢集內 ISL 連線
 

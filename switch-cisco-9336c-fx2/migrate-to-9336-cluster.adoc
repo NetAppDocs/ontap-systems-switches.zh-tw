@@ -631,34 +631,33 @@ Group Port-       Type     Protocol  Member Ports
 +
 `network interface modify -vserver Cluster -lif * -auto-revert true`
 
-. 在交換器 cs2 上，關閉並重新啟動所有叢集端口，以觸發所有不在它們所屬端口上的集群 LIF 的自動恢復。
-+
-[listing, subs="+quotes"]
-----
-cs2> *enable*
-cs2# *configure*
-cs2(config)# *interface eth1/1-1/2*
-cs2(config-if-range)# *shutdown*
-
-(Wait for 5-10 seconds before re-enabling the ports)
-
-cs2(config-if-range)# *no shutdown*
-
-(After executing the no shutdown command, the nodes detect the change and begin to auto-revert the cluster LIFs to their home ports)
-
-cs2(config-if-range)# *exit*
-cs2(config)# *exit*
-cs2#
-----
-. 驗證叢集 LIF 是否已恢復到其原始連接埠（這可能需要一分鐘）：
+. 確認叢集 LIF 已恢復到其原始連接埠：
 +
 `network interface show -vserver Cluster`
 
 +
-如果叢集中的任何 LIF 尚未恢復到其主端口，請手動將其復原。您必須連接到擁有該 LIF 的本機節點的每個節點管理 LIF 或SP/ BMC系統控制台：
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface show -vserver Cluster*
+            Logical            Status     Network            Current             Current Is
+Vserver     Interface          Admin/Oper Address/Mask       Node                Port    Home
+----------- ------------------ ---------- -----------------  ------------------- ------- ----
+Cluster
+            node1_clus1        up/up      169.254.3.4/23     node1               e0b     true
+            node1_clus2        up/up      169.254.3.5/23     node1               e0b     true
+            node2_clus1        up/up      169.254.3.8/23     node2               e0b     true
+            node2_clus2        up/up      169.254.3.9/23     node2               e0b     true
+cluster1::*>
+----
+====
++
+如果叢集 LIF 尚未返回其主連接埠，請從本機節點手動回復：
 
 +
-`network interface revert -vserver Cluster -lif *`
+`network interface revert -vserver Cluster -lif <lif_name>`
 
 . 驗證叢集是否運作正常：
 +
@@ -673,15 +672,16 @@ cs2#
 --
 你可以使用 `network interface check cluster-connectivity`執行命令以啟動叢集連接性檢查，然後顯示詳細資訊：
 
-`network interface check cluster-connectivity start`和 `network interface check cluster-connectivity show`
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity start -node **
+----
+*注意：*執行  `show` 命令以顯示詳細資料前，請等待幾秒鐘。檢查與今天日期相符的項目。
 
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network interface check cluster-connectivity start*
+cluster1::*> *network interface check cluster-connectivity show*
 ----
-
-NOTE: 運行前請等待幾秒鐘 `show`顯示詳細資訊的命令。
-
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity show*

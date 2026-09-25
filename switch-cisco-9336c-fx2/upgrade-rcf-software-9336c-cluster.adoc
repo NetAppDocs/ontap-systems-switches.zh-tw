@@ -417,6 +417,11 @@ cs1# *copy Nexus_9336C_RCF_v1.6-Cluster-HA-Breakout.txt running-config echo-comm
 +
 `This command will reboot the system. (y/n)?  [n] *y*`
 
+
+
+
+CAUTION: 如果您的 9336C-FX2 交換器在 RCF 升級後無法啟動,請參閱 NetApp 知識庫文章 link:https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/Cisco_9336C-FX2_Switch_Fails_to_Boot_After_RCF_Install_%E2%80%93_Boot_Variable_Cleared["Cisco 9336C-FX2 交換器在 RCF 安裝後無法開機 – 開機變數已清除"^] 以了解後續步驟。
+
 . 檢查叢集上叢集連接埠的運作狀況。
 +
 .. 確認叢集中所有節點的叢集連接埠均已啟動且運作狀況良好：
@@ -492,34 +497,6 @@ cluster1-04/cdp
             e0a    cs1                       Ethernet1/1/2     N9K-C9336C
             e0b    cs2                       Ethernet1/1/2     N9K-C9336C
 
-cluster1::*> *system cluster-switch show -is-monitoring-enabled-operational true*
-Switch                      Type               Address          Model
---------------------------- ------------------ ---------------- -----
-cs1                         cluster-network    10.233.205.90    NX9-C9336C
-     Serial Number: FOCXXXXXXGD
-      Is Monitored: true
-            Reason: None
-  Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
-                    9.3(5)
-    Version Source: CDP
-
-cs2                         cluster-network    10.233.205.91    NX9-C9336C
-     Serial Number: FOCXXXXXXGS
-      Is Monitored: true
-            Reason: None
-  Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
-                    9.3(5)
-    Version Source: CDP
-
-2 entries were displayed.
-----
-根據交換器上先前載入的 RCF 版本，您可能會在 cs1 交換器控制台上看到以下輸出：
-
-[listing]
-----
-2020 Nov 17 16:07:18 cs1 %$ VDC-1 %$ %STP-2-UNBLOCK_CONSIST_PORT: Unblocking port port-channel1 on VLAN0092. Port consistency restored.
-2020 Nov 17 16:07:23 cs1 %$ VDC-1 %$ %STP-2-BLOCK_PVID_PEER: Blocking port-channel1 on VLAN0001. Inconsistent peer vlan.
-2020 Nov 17 16:07:23 cs1 %$ VDC-1 %$ %STP-2-BLOCK_PVID_LOCAL: Blocking port-channel1 on VLAN0092. Inconsistent local vlan.
 ----
 ====
 
@@ -548,19 +525,9 @@ cluster1::*>
 . 在交換器 cs2 上重複步驟 1 至 19。
 . 啟用叢集 LIF 的自動回滾功能。
 +
-`cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert True*`
-
-. 重啟交換器 cs2。
-+
-`cs2# *reload*`
-
-+
-`This command will reboot the system. (y/n)?  [n] *y*`
+`cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert true*`
 
 
-
-
-CAUTION: 如果您的 9336C-FX2 交換器在 RCF 升級後無法啟動,請參閱 NetApp 知識庫文章 link:https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/Cisco_9336C-FX2_Switch_Fails_to_Boot_After_RCF_Install_%E2%80%93_Boot_Variable_Cleared["Cisco 9336C-FX2 交換器在 RCF 安裝後無法開機 – 開機變數已清除"^] 以了解後續步驟。
 
 
 
@@ -860,14 +827,16 @@ cluster1::*>
 --
 你可以使用 `network interface check cluster-connectivity`執行命令以啟動叢集連接性檢查，然後顯示詳細資訊：
 
-`network interface check cluster-connectivity start`和 `network interface check cluster-connectivity show`
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity start -node **
+----
+*注意：*執行  `show` 命令以顯示詳細資料前，請等待幾秒鐘。檢查與今天日期相符的項目。
 
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network interface check cluster-connectivity start*
+cluster1::*> *network interface check cluster-connectivity show*
 ----
-*注意：*運行程式前請等待幾秒鐘 `show`顯示詳細資訊的命令。
-
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity show*

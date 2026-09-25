@@ -18,15 +18,16 @@ summary: 在 Cisco Nexus 9808 交換器上安裝 RCF，用於新的 AFX 2K 系�
 * 您必須按照link:configure-install-nxos-9808.html["安裝 NX-OS"]步驟安裝所需的 NX-OS 版本。
 * 您必須已閱讀 link:configure-install-upgrade-rcf-overview-9808.html["安裝或升級 RCF 概述"] 頁面。
 * 如果您在交換器上安裝 RCF 是為了更換監督模組或將交換器重設為原廠預設設定，請確認您的叢集是否完全正常運作，即日誌中沒有錯誤或類似問題。
-+
-如果您正在安裝 RCF 作為新 AFX 系統安裝的一部分，則可以跳過此要求，因為在 AFX 系統安裝和設定的這一階段，AFX 系統中的控制器尚未通電。
 
 
+
+NOTE: 如果您正在安裝 RCF 作為新 AFX 系統安裝的一部分，則可以跳過此要求，因為在 AFX 系統安裝和設定的這一階段，AFX 系統中的控制器尚未通電。
 
 .關於此任務
 * 如果您已將交換器作為新的 AFX 2K 系統安裝的一部分進行安裝，則您需要在第一個交換器 （cs1） 上安裝參考設定檔案 （RCF），然後使用此程序對第二個交換器 （cs2） 重複這些步驟。
 * 此程序僅需使用 Cisco Nexus 9000 系列交換器指令。
 * 本程序中的範例將第一個交換器稱為 cs1，第二個交換器稱為 cs2。
+* 本程序中顯示的範例適用於配備執行 RCF 10.1 交換器的 AFX 2K 系統。輸入和輸出可能會因您的 RCF 版本而異。
 
 
 
@@ -52,12 +53,12 @@ NOTE: 新交換器出廠時未預先安裝 RCF。您必須在交換器上安裝 
 [[step-2-install-the-rcf]]
 == 步驟 2：安裝 RCF
 
-首先，您需要將 RCF 複製到啟動快閃記憶體並套用至第一台交換器 (cs1)，然後檢查橫幅輸出，確認 RCF 版本是否正確，記錄任何自訂新增項目，儲存基本組態詳細資訊，確認 `write_erase.cfg`檔案已填入，清除目前儲存的組態，將先前儲存的基本組態複製到啟動組態中，最後重新啟動交換器。如果您要將 RCF 安裝為新 AFX 系統安裝的一部分，請在第二台交換器 (cs2) 上重複這些步驟。
+您可以透過將 RCF 複製並套用至 bootflash、檢查橫幅輸出、確認 RCF 版本正確、使目前的執行中組態持續存在，然後將交換器重新開機，在第一台交換器（cs1）上安裝 RCF。如果您是作為新 AFX 系統安裝的一部分來安裝 RCF，請在第二台交換器（cs2）上重複這些步驟。
 
 . 使用 SSH 或透過序列主控台登入交換器 cs1。
 . 使用下列傳輸協定之一將 RCF 複製到交換器 cs1 的 bootflash：FTP、TFTP、SFTP 或 SCP。
 +
-有關 Cisco 命令的更多資訊，請參閱 https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Cisco Nexus 9000 系列 NX-OS 指令參考"^]指南中的相關指南。
+如需 Cisco 命令的詳細資訊，請參閱 link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Cisco Nexus 9000 系列 NX-OS 指令參考"^] 中的適當指南。
 
 +
 `copy <protocol>: bootflash: vrf management`
@@ -80,7 +81,7 @@ Copy complete, now saving to disk (please wait)...
 ====
 . 將先前複製到啟動快閃記憶體的 RCF 套用至啟動快閃記憶體。
 +
-有關 Cisco 命令的更多資訊，請參閱 https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Cisco Nexus 9000 系列 NX-OS 指令參考"^]指南中的相關指南。
+如需 Cisco 命令的詳細資訊，請參閱 link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Cisco Nexus 9000 系列 NX-OS 指令參考"^] 中的適當指南。
 
 +
 此範例顯示在交換器 cs1 上安裝 RCF 檔案 `RCF-v10.1-NX9808-CL1-ST1.txt`：
@@ -132,9 +133,9 @@ cs1# show banner motd
 
 
 
-. 將目前執行中的組態複製到啟動組態，使其持續生效。
+. 將目前運行組態複製到啟動組態中，使其永久生效：
 +
-`cs1# *copy bootflash:write_erase.cfg startup-config*`
+`cs1# *copy running-config startup-config*`
 
 . 重啟交換器：
 +

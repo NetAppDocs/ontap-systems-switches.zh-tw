@@ -23,6 +23,10 @@ NOTE: NetApp 建議您先完成 ONTAP 軟體升級，然後再對交換器進行
 
 .關於此任務
 * 如有需要，您可以參考 link:https://www.cisco.com/c/en/us/td/docs/dcn/nx-os/nexus9000/101x/upgrade/cisco-nexus-9000-nx-os-software-upgrade-downgrade-guide-101x.html["Cisco Nexus 9000 系列 NX-OS 軟體升級與降級指南"^] 以取得更多資訊。
+* 如有需要，您可以參考 link:https://www.cisco.com/c/dam/en/us/td/docs/dcn/tools/nexus-9k3k-issu-matrix/index.html["Cisco Nexus 9000 和 3000 升級和 ISSU 矩陣"^]，其中提供了基於您目前版本和目標版本的 Cisco Nexus 9000 系列交換器的線上軟體升級 （ISSU） 資訊。
++
+在頁面上，選擇“中斷式升級”，然後從下拉清單中選擇目前版本和目標版本。
+
 * AFX 系統上執行的 ONTAP 版本決定了交換器支援的 NX-OS 版本。
 +
 ** 對於執行 ONTAP 9.19.1GA 或更新版本的 AFX 2K 系統中的交換器，支援 NX-OS 10.6 及更新版本。
@@ -51,6 +55,7 @@ NOTE: 請勿將 NX-OS 版本升級或降級至不支援的版本。
 ** 這 `cluster1::*>`prompt 指示叢集名稱。
 
 
+* 本程序中顯示的範例適用於配備執行 RCF 10.1 交換器的 AFX 2K 系統。輸入和輸出可能會因您的 RCF 版本而異。
 
 
 
@@ -62,7 +67,7 @@ NOTE: 請勿將 NX-OS 版本升級或降級至不支援的版本。
 
 .步驟
 . 將每台交換器連接到管理網路。
-. 使用交換器 CLI，驗證與託管 NX-OS 的伺服器的連線。
+. 使用交換器 CLI，驗證與託管 NX-OS 的伺服器的連線：
 +
 `ping <IP address>`
 
@@ -494,9 +499,9 @@ network interface modify -vserver Cluster -lif * -auto-revert false
 [[step-2-install-the-nx-os]]
 == 步驟 2：安裝 NX-OS
 
-在第一個交換器 (cs1) 上安裝 NX-OS，方法是安裝並驗證新版本的 NX-OS 和 EPLD，驗證叢集上所有連接埠的運作狀況，然後在第二個交換器 (cs2) 上重複這些步驟。
+在第一個交換器（cs1）上安裝 NX-OS，方法是安裝並驗證新版本的 NX-OS 和 EPLD，驗證叢集上所有連接埠的健全狀況，然後在第二個交換器（cs2）上重複這些步驟。
 
-. 使用交換器 CLI，將 NX-OS 和 EPLD 映像複製到交換器。
+. 使用交換器命令列介面（CLI），將 NX-OS 和 EPLD 映像複製到交換器：
 +
 `copy <protocol>: bootflash: vrf management`
 
@@ -595,7 +600,7 @@ cs1#
 ====
 . 使用交換器 CLI 安裝 NX-OS 和 EPLD 映像。
 +
-安裝鏡像檔案後，每次交換器重新啟動時都會載入該檔案。
+安裝映像檔案後，每次交換器重新開機時都會載入該檔案：
 
 +
 `install all nxos bootflash:nxos.<version number>.bin`
@@ -669,7 +674,7 @@ Warning: please do not remove or power off the module at this time.
 Finishing the upgrade, switch will reboot in 10 seconds.
 ----
 ====
-. 交換器重新啟動後，使用交換器 CLI 驗證 NX-OS 的新版本：
+. 交換器重新開機後，使用交換器 CLI 驗證 NX-OS 的新版本：
 +
 `show version`
 
@@ -1288,7 +1293,7 @@ node1-04             true    true          true
 
 使用 ONTAP CLI，重新啟用叢集 LIF 上的自動還原功能，並驗證叢集 LIF 是否已還原至其主連接埠，從而完成 NX-OS 升級。
 
-. 重新啟用叢集 LIF 的自動回復功能。
+. 重新啟用叢集 LIF 上的自動回復：
 +
 [source, cli]
 ----

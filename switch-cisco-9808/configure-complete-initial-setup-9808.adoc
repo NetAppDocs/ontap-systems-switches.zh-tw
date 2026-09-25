@@ -18,7 +18,7 @@ summary: 使用組態精靈完成 Cisco Nexus 9808 交換器的初始設定，�
 
 .關於此任務
 * 您必須完成每個交換器的初始設定。
-* 如有需要，您可以參考 link:https://www.cisco.com/c/en/us/td/docs/dcn/nx-os/nexus9000/106x/configuration/fundamentals/cisco-nexus-9000-series-nx-os-fundamentals-configuration-guide-release-106x/m-using-nnxos-setup-utility.html["Cisco Nexus 9000 系列 NX-OS 基礎設定指南，版本 10.6(x)"^] 的《使用 Cisco NX-OS 設定公用程式》章節中的交換器設定資訊。
+* 如有需要，您可以參考 NX-OS 版本的link:https://www.cisco.com/c/en/us/td/docs/dcn/nx-os/nexus9000/106x/configuration/fundamentals/cisco-nexus-9000-series-nx-os-fundamentals-configuration-guide-release-106x.html["Cisco Nexus 9000 系列 NX-OS 基礎設定指南"^]，以了解有關交換器設定的資訊，相關內容位於「Using the Cisco NX-OS Setup Utility」章節。您也可以在「Configuring Terminal Settings and Sessions」章節中找到有關終端設定的資訊。
 
 
 .步驟

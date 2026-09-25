@@ -22,8 +22,10 @@ summary: 在 Cisco Nexus 9808 交換器上安裝 NX-OS，用於新的 AFX 2K 系
 
 
 * 如果您在交換器上安裝 NX-OS，作為交換器更換或交換器重設為原廠預設值的一部分，請驗證您的叢集是否完全正常運作，即日誌中沒有錯誤或類似問題。
-* 如果您正在安裝 NX-OS 作為新 AFX 系統安裝的一部分，則可以跳過此要求，因為在 AFX 系統安裝和設定的這一階段，AFX 系統中的控制器尚未通電。
 
+
+
+NOTE: 如果您正在安裝 NX-OS 作為新 AFX 系統安裝的一部分，則可以跳過此要求，因為在 AFX 系統安裝和設定的這一階段，AFX 系統中的控制器尚未通電。
 
 .關於此任務
 * AFX 系統上執行的 ONTAP 版本決定了交換器支援的 NX-OS 版本。
@@ -37,6 +39,7 @@ summary: 在 Cisco Nexus 9808 交換器上安裝 NX-OS，用於新的 AFX 2K 系
 * 此程序僅需使用 Cisco Nexus 9000 系列交換器指令。
 * 本程序中的範例將第一個交換器稱為 cs1，第二個交換器稱為 cs2。
 * 如果您已將交換器作為新的 AFX 2K 系統安裝的一部分進行安裝，請先在第一個交換器 (cs1) 上安裝 NX-OS，然後使用此程序對第二個交換器 (cs2) 重複這些步驟。
+* 本程序中顯示的範例適用於配備執行 RCF 10.1 交換器的 AFX 2K 系統。輸入和輸出可能會因您的 RCF 版本而異。
 
 
 
@@ -50,7 +53,7 @@ summary: 在 Cisco Nexus 9808 交換器上安裝 NX-OS，用於新的 AFX 2K 系
 . 您必須擁有對 HTTP、SFTP、FTP 或 TFTP 伺服器的存取權限。存取其中任何一個伺服器，即可下載支援的 NX-OS 版本。
 . 從 https://software.cisco.com/download/home["Cisco軟體下載"^]頁面下載正確版本的 NX-OS 和 EPLD 映像檔到交換器。
 . 將交換器連接到管理網路（用於檔案傳輸）。
-. 使用  `ping` 命令驗證與託管 NX-OS 之伺服器的連線。
+. 使用  `ping` 命令驗證與託管 NX-OS 的伺服器的連線：
 +
 `ping <IP address>`
 
@@ -77,7 +80,7 @@ Reply From 172.19.2.1: icmp_seq = 0. time= 5910 usec.
 
 在第一個交換器 (cs1) 上安裝 NX-OS 和 EPLD 映像，方法是安裝並驗證 NX-OS 和 EPLD 映像版本；如果要將 NX-OS 作為新的 AFX 系統安裝的一部分進行安裝，請在第二個交換器 (cs2) 上重複這些步驟。
 
-. 將 NX-OS 和 EPLD 映像複製到第一台交換器。
+. 將 NX-OS 和 EPLD 映像複製到第一台交換器：
 +
 `copy <protocol>: bootflash: vrf management`
 
@@ -176,7 +179,7 @@ cs1#
 ====
 . 安裝 NX-OS 和 EPLD 映像。
 +
-安裝鏡像檔案後，每次交換器重新啟動時都會載入該檔案。
+安裝映像檔案後，每次交換器重新開機時都會載入該檔案：
 
 +
 `install all nxos bootflash:nxos.<image_file>.bin`

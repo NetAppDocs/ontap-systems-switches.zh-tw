@@ -29,12 +29,8 @@ NOTE: 請勿將您的 RCF 版本升級或降級至不受支援的版本。
 
 
 .關於此任務
-* 對兩台交換器上的 RCF 進行升級是不中斷營運的程序。
-+
-** 此過程中無需使用任何運作中的交換器間連結 (ISL)。這是有意為之，因為 RCF 版本變更可能會暫時影響 ISL 連線。為確保叢集運作不會中斷，此程序要求您在目標交換器上執行對應步驟的同時，將所有叢集 LIF 移轉到運作中的夥伴交換器。
-** 此程序要求您升級第一個交換器 (cs1) 上的 RCF，然後對第二個交換器 (cs2) 重複這些步驟。
-
-
+* 為確保叢集運作不會中斷，此程序要求您在目標交換器上執行步驟的同時，將所有叢集 LIF 遷移到執行中的夥伴交換器。
+* 此程序期間無需運作中的交換器間連結 (ISL)。這是刻意設計的，因為 RCF 版本變更可能會暫時影響 ISL 連線。
 * 此程序需要使用 ONTAP 指令和 Cisco Nexus 9000 系列交換器指令，步驟中會說明您使用哪個 CLI 來輸入指令。
 * 本流程中的範例使用以下開關和節點命名規則：
 +
@@ -51,6 +47,7 @@ NOTE: 請勿將您的 RCF 版本升級或降級至不受支援的版本。
 ** 這 `cluster1::*>`prompt 指示叢集名稱。
 
 
+* 本程序中顯示的範例適用於配備執行 RCF 10.1 交換器的 AFX 2K 系統。輸入和輸出可能會因您的 RCF 版本而異。
 
 
 
@@ -58,17 +55,14 @@ NOTE: 請勿將您的 RCF 版本升級或降級至不受支援的版本。
 [[step-1-prepare-for-the-upgrade]]
 == 第一步：準備升級
 
-您可以透過 ONTAP CLI 輸入以下步驟的命令。
+使用 ONTAP CLI 執行以下步驟，準備 RCF 升級，方法是根據需要抑制自動建立案例，檢查連接埠的管理和操作狀態，並停用叢集 LIF 上的自動還原。
 
 . 如果此叢集上啟用了AutoSupport ，則透過呼叫AutoSupport訊息來抑制自動建立案例：
 +
 [source, cli]
 ----
-system node autosupport invoke -node * -type all -message MAINT=xh
+system node autosupport invoke -node * -type all -message MAINT=<number of hours down>h
 ----
-+
-其中 _x_ 為維護視窗的持續時間（小時）。
-
 . 將權限級別變更為高級，並在提示繼續時輸入 *y*：
 +
 [source, cli]
@@ -490,10 +484,16 @@ network interface modify -vserver Cluster -lif * -auto-revert false
 
 
 
-[[step-2-configure-ports]]
-== 步驟 2：設定埠
+[[step-2-upgrade-the-rcf]]
+== 步驟 2：升級 RCF
+
+您可以使用交換器 CLI 和 ONTAP CLI （如下步驟所示）進行 RCF 升級。首先在第一台交換器 （cs1） 上升級 RCF，然後對第二台交換器 （cs2） 重複這些步驟。
 
 . 使用交換器 CLI，在交換器 cs1 上，關閉連接到每個線路卡所有節點連接埠的連接埠。
++
+
+CAUTION: 請務必關閉 *所有* 已連接的連接埠，以避免任何網路連線問題。如需更多詳細資料，請參閱知識庫文章 link:https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/Node_out_of_quorum_when_migrating_cluster_lif_during_switch_OS_upgrade["在切換作業系統升級期間遷移叢集 LIF 時，節點脫離仲裁。"^]。
+
 +
 以下範例顯示了關閉線路卡 1  `e1`、 `e1-1/1-18`、 `e1/19/1-4`、 `e1/20/1-4` …… `e1/35/1-4` 上所有連接埠的命令。對交換器上的每個線路卡重複這些命令。
 
@@ -509,10 +509,6 @@ cs1(config-if-range)# *shutdown*
 cs1(config-if-range)# *exit*
 cs1(config)# *exit*
 ----
-+
-
-CAUTION: 請務必關閉 *所有* 已連接的連接埠，以避免任何網路連線問題。如需更多詳細資料，請參閱知識庫文章 link:https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/Node_out_of_quorum_when_migrating_cluster_lif_during_switch_OS_upgrade["在切換作業系統升級期間遷移叢集 LIF 時，節點脫離仲裁。"^]。
-
 . 使用 ONTAP CLI，驗證叢集 LIF 是否已故障轉移到交換器 cs1 上託管的連接埠。這可能需要幾秒鐘。
 +
 [source, cli]
@@ -590,20 +586,20 @@ node1-04          true    true          false
 ====
 如果 `write_erase.cfg`檔案已存在，請將其重新命名為 `write_erase_old.cfg`，如下所示：
 
-`cs1# move bootflash:write_erase.cfg write_erase_old.cfg`
+`move bootflash:write_erase.cfg write_erase_old.cfg`
 
 ====
 +
-`cs1# show run | i "username admin password" > bootflash:write_erase.cfg`
+`show run | i "username admin password" > bootflash:write_erase.cfg`
 
 +
-`cs1# show run | section "vrf context management" >> bootflash:write_erase.cfg`
+`show run | section "vrf context management" >> bootflash:write_erase.cfg`
 
 +
-`cs1# show run | section "interface mgmt0" >> bootflash:write_erase.cfg`
+`show run | section "interface mgmt0" >> bootflash:write_erase.cfg`
 
 +
-`cs1# show run | section "switchname" >> bootflash:write_erase.cfg`
+`show run | section "switchname" >> bootflash:write_erase.cfg`
 
 +
 如需更多詳細資料，請參閱知識庫文章 link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["如何在保持遠端連線的情況下清除Cisco互連交換器上的配置"^]。
@@ -612,9 +608,9 @@ node1-04          true    true          false
 +
 `show file bootflash:write_erase.cfg`
 
-. 使用交換器 CLI，發出 `write erase`命令以清除目前已儲存的組態：
+. 使用交換器命令列介面 (CLI) 清除目前已儲存的設定：
 +
-`cs1# *write erase*`
+`write erase`
 
 +
 `Warning: This command will erase the startup-configuration.`
@@ -622,13 +618,13 @@ node1-04          true    true          false
 +
 `Do you wish to proceed anyway? (y/n)  [n] *y*`
 
-. 使用交換器 CLI，將先前儲存的基本設定複製到啟動設定。
+. 使用交換器 CLI，將先前儲存的基本組態複製到啟動組態中：
 +
-`cs1# *copy bootflash:write_erase.cfg startup-config*`
+`copy bootflash:write_erase.cfg startup-config`
 
 . 使用交換器命令列介面 (CLI) 重新啟動交換器：
 +
-`cs1# *reload*`
+`reload`
 
 +
 `This command will reboot the system. (y/n)?  [n] *y*`
@@ -639,7 +635,7 @@ node1-04          true    true          false
 
 . 使用交換器 CLI，透過下列傳輸協定之一將 RCF 複製到交換器 cs1 的 bootflash：FTP、TFTP、SFTP 或 SCP。
 +
-有關 Cisco 命令的詳細資訊，請參閱 link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Cisco Nexus 9000 系列 NX-OS 指令參考"^] 指南中的適當指南。
+如需 Cisco 命令的詳細資訊，請參閱 link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Cisco Nexus 9000 系列 NX-OS 指令參考"^] 中的適當指南。
 
 +
 `copy <protocol>: bootflash: vrf management`
@@ -662,7 +658,7 @@ Copy complete, now saving to disk (please wait)...
 ====
 . 使用交換器 CLI，將先前下載的 RCF 套用至 bootflash。
 +
-有關 Cisco 命令的詳細資訊，請參閱 link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Cisco Nexus 9000 系列 NX-OS 指令參考"^] 指南中的適當指南。
+如需 Cisco 命令的詳細資訊，請參閱 link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Cisco Nexus 9000 系列 NX-OS 指令參考"^] 中的適當指南。
 
 +
 此範例展示在交換器 cs1 上安裝 RCF `RCF-v10.1-NX9808-CL1-ST1.txt` 的過程：
@@ -700,17 +696,17 @@ cs1# *copy RCF-v10.1-NX9808-CL1-ST1.txt running-config echo-commands*
 
 . 使用交換器 CLI，在驗證 RCF 版本、自訂新增項目和交換器設定正確後，將 `running-config`檔案複製到 `startup-config`檔案。
 +
-有關 Cisco 命令的更多資訊，請參閱 https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Cisco Nexus 9000 系列 NX-OS 指令參考"^]指南中的相關指南。
+如需 Cisco 命令的詳細資訊，請參閱 link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Cisco Nexus 9000 系列 NX-OS 指令參考"^] 中的適當指南。
 
 +
-`cs1# *copy running-config startup-config*`
+`copy running-config startup-config`
 
 +
 `[########################################] 100% Copy complete`
 
 . 使用交換器 CLI 重新啟動交換器 cs1。在交換器重新啟動期間，您可以忽略節點上報告的「`cluster switch health monitor`」警報和「`cluster ports down`」事件。
 +
-`cs1# *reload*`
+`reload`
 
 +
 `This command will reboot the system. (y/n)?  [n] *y*`
@@ -766,7 +762,7 @@ e2a       Cluster      Cluster          up   9000  auto/400000 healthy  false
 e2b       Cluster      Cluster          up   9000  auto/400000 healthy  false
 ----
 ====
-... 從叢集中驗證交換器的運作狀況。
+... 從叢集驗證交換器運作狀況：
 +
 [source, cli]
 ----
@@ -1085,7 +1081,7 @@ node1-04          true     true          false
 ----
 ====
 . 在交換器 cs2 上重複步驟 4 至 18。
-. 使用 ONTAP CLI，啟用叢集 LIF 的自動復原功能。
+. 使用 ONTAP CLI，啟用叢集 LIF 的自動回復：
 +
 [source, cli]
 ----
@@ -1098,7 +1094,9 @@ network interface modify -vserver Cluster -lif * -auto-revert true
 [[step-3-verify-the-cluster-network-configuration-and-cluster-health]]
 == 步驟 3：驗證叢集網路配置和叢集健康狀況
 
-. 使用交換器 CLI，驗證連接到叢集連接埠的交換器連接埠是否已啟動。
+在兩台交換器上完成 RCF 升級後，驗證叢集網路配置和叢集運作狀況。
+
+. 使用交換器 CLI，驗證連接到叢集連接埠的交換器連接埠是否為 *up*：
 +
 [source, cli]
 ----
@@ -1649,8 +1647,10 @@ Cluster
 如果任何叢集 LIF 尚未返回其來源端口，請從本機節點手動將其還原：
 
 +
+[source, cli]
+----
 `network interface revert -vserver vserver_name -lif <lif-name>`
-
+----
 . 使用 ONTAP CLI 驗證叢集是否運作正常：
 +
 [source, cli]
@@ -1672,9 +1672,9 @@ node1-03          true    true          true
 node1-04          true    true          false
 ----
 ====
-. 使用 ONTAP CLI 驗證遠端叢集介面的連線性：
+. 使用 ONTAP CLI，驗證遠端叢集介面的連線性。
 +
-.. 你可以使用 `network interface check cluster-connectivity show`用於顯示叢集連接性可訪問性檢查詳細資訊的命令：
+** 您可以使用以下命令顯示叢集連接性可存取性檢查的詳細資訊：
 +
 [source, cli]
 ----
@@ -1704,7 +1704,7 @@ node1-02
 .
 ----
 ====
-.. 或者，您可以使用 `cluster ping-cluster -node <node-name>`檢查連接性的命令：
+** 或者，您可以使用以下命令檢查連接性：
 +
 [source, cli]
 ----
