@@ -661,19 +661,17 @@ Warning: please do not remove or power off the module at this time.
 [####################] 100% -- SUCCESS
 
 Finishing the upgrade, switch will reboot in 10 seconds.
-
-. Using the switch CLI, verify the new version of NX-OS after the switch reboots:
-+
-`show version`
-+
-
-.Example
-[%collapsible]
-
 ....
 =====
++
+.. 交換器重新開機後，使用交換器 CLI 驗證 NX-OS 的新版本：
++
+`show version`
 
-
++
+.範例
+[%collapsible]
+=====
 ....
 cs1# *show version*
 Cisco Nexus Operating System (NX-OS) Software
@@ -723,14 +721,16 @@ plugin
 
 Active Package(s):
 ....
-[]
 =====
+
+
 . 交換器重新啟動後，再次登入並驗證新版本的 EPLD 是否已成功載入。
 +
 `show version module 1 epld`
 
-
-
++
+.範例
+[%collapsible]
 =====
 ....
 cs2# *show version module 1 epld*
@@ -745,10 +745,9 @@ GEM  FPGA                        0x2
 GEM  FPGA                        0x2
 GEM  FPGA                        0x2
 ....
-[]
 =====
 
-=====
+
 --
 .從 10.6(3)F 升級至較新版本
 --
