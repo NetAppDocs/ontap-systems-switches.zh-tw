@@ -2786,13 +2786,9 @@
   <block id="098d312f939d7511ad5f9bf80ccaea96" category="list-text">請驗證 Cumulus Linux 版本：</block>
   <block id="738a5885a3f1e978619a10d76a3f0d58" category="paragraph"><block ref="98f5dff8534e8c39673b544f567273e7" prefix="" category="inline-code"></block></block>
   <block id="e97e9b3be2fac0213159d6416ed26304" category="paragraph">在 ONIE 模式下安裝 Cumulus Linux 後，您可以…<block ref="3acf483c9de841e025c40a5da17bc790" category="inline-link-macro-rx"></block> 。</block>
-  <block id="8f77c20cd9bd8afa1521eb15ea44a8ef" category="list-text">已安裝 Cumulus Linux 4.4.3。</block>
-  <block id="7baa7758ed49797651dc1e276762ae15" category="list-text">叢集：*MSN2100-RCF-v1._x_-Cluster*</block>
   <block id="57b0a80c5a3ed4944b5b9a4dee8543f0" category="list-text">將 RCF Python 腳本複製到交換器：</block>
-  <block id="31f5d9c51b1172585d012a33be1bef72" category="list-text">應用 RCF Python 腳本 *MSN2100-RCF-v1.8-Cluster*：</block>
   <block id="458ab89f862895d8f5ce855c654868d6" category="paragraph">RCF腳本會完成上述步驟。</block>
   <block id="e4da4813fef5b96a216a043d594bf245" category="list-text">將先前對交換器配置所做的任何自訂設定重新套用。請參閱<block ref="75ce5666fba6992a0719935651dd5b1b" category="inline-link-macro-rx"></block>有關任何後續變更的詳細資訊。</block>
-  <block id="101f004ff19ed2b05722d5518355aec8" category="paragraph"><block ref="a2261d8cf22fcce07337ff5c78acfa87" prefix="" category="inline-code"></block></block>
   <block id="d1c87417ef01b3bb9ef749bfc91a91cd" category="paragraph">安裝或升級 RCF 後，您可以…<block ref="f3791ff783629f66fe5f05b40418ed92" category="inline-link-macro-rx"></block> 。</block>
   <block id="e1ca8fa9e4221b7b9a580ee069ca1bd2" category="paragraph">以下指令用於在NVIDIA SN2100 交換器上設定 SNMPv3 使用者名稱：</block>
   <block id="110a40639a346b7c822f54dc5b7a9ef8" category="list-text">對於*無需身份驗證*的情況：<block ref="0069c6683a9b71a6ce43ff40deb246ce" prefix=" " category="inline-code"></block></block>
@@ -3701,7 +3697,6 @@
   <block id="97baec035cc13209f73c70eb4ec770ba" category="list-text">從<block ref="f823faeecc1cbb37f2d732cc29c07d86" category="inline-link-rx"></block>頁面下載正確版本的 NX-OS 和 EPLD 映像檔到交換器。</block>
   <block id="fe27c1314cf866810ddbc667418c980b" category="section-title">步驟 2：安裝 NX-OS 和 EPLD 映像</block>
   <block id="f503bf6e3a7ef530427ba9ee9f151aa9" category="paragraph">在第一個交換器 (cs1) 上安裝 NX-OS 和 EPLD 映像，方法是安裝並驗證 NX-OS 和 EPLD 映像版本；如果要將 NX-OS 作為新的 AFX 系統安裝的一部分進行安裝，請在第二個交換器 (cs2) 上重複這些步驟。</block>
-  <block id="ee1edacd9870512b9996cec446c3a4e9" category="list-text">將 NX-OS 和 EPLD 映像複製到第一台交換器。</block>
   <block id="e2e19b5720be0713584948e2d295ae69" category="list-text">安裝 NX-OS 和 EPLD 映像。</block>
   <block id="35d09e78c946cc8aa5c35b0c526f19c8" category="paragraph"><block ref="6df29248bb27b899618751498c8a0599" prefix="" category="inline-code"></block></block>
   <block id="3652e4cb89e846b17f60cbfacf554a98" category="paragraph">此範例使用 NX-OS 版本 10.6(3)(F)。</block>
@@ -3860,24 +3855,17 @@
   <block id="bbe11fdd91fda58af0bba559cb07294d" category="paragraph">請參閱 Cisco 網站以取得軟體升級和降級指南。</block>
   <block id="aa5c6ec45e4c4b6dcc0850deb97f2e44" category="paragraph">除非另有指定 Cisco Nexus 9000 Series Switch 命令，否則請在此程序中使用 ONTAP 命令。</block>
   <block id="9fc86f4dabe0859a40dac8d1f8b5531d" category="paragraph"><block ref="b67d565e5390da794178d81e41d9d587" prefix="" category="inline-code"></block></block>
-  <block id="9487ccc182d124ffae84e3326c18b6cf" category="list-text">下載並安裝 NX-OS 軟體和 EPLD 映像。具體步驟可能會因您目前的 NX-OS 版本和目標 NX-OS 版本而異。</block>
   <block id="c25086ea467dc08f96b34fa5ddfe6f95" category="paragraph">請選擇符合您情況的索引標籤：</block>
-  <block id="545f32c102da8b5c806f0a9252f74aa7" category="list-text">升級至 10.4(5)(M)</block>
-  <block id="6d4c71f053835d50b253965bf9e22247" category="list-text">從 10.4(5)(M) 或更早版本升級到 10.5(3)(F) 或更新版本</block>
-  <block id="6a3e1271fda881036b04a9948f12b930" category="list-text">從 10.5(3)(F) 升級到更高版本</block>
   <block id="22c721af68f3e238337fd6682565a004" category="list-text">[[stepa]] 將 NX-OS 軟體和 EPLD 映像複製到 Nexus 9336C-FX2 交換器。</block>
   <block id="0a52730597fb4ffa01fc117d9e71e3a9" category="example-title">範例</block>
   <block id="5471ccde54f76964db229481cc1fb109" category="paragraph"><block ref="741d4bb5899dd2abc3bdd986dd32f159" prefix="" category="inline-code"></block></block>
   <block id="6634794e8c206b378c65c5faa7c4c80b" category="paragraph"><block ref="a121d8672e9b479ad82c8ef2e7e9c717" prefix="" category="inline-code"></block></block>
-  <block id="f005b45baba8377a1ac45612282d2dc7" category="list-text">[[stepa]] 將 NX-OS 軟體和 EPLD 映像複製到 Nexus 9336C-FX2 交換器。</block>
   <block id="5a252ea0dbbfb3da5e794e2acb54d70e" category="list-text">安裝 NX-OS 和 EPLD 映像。</block>
   <block id="ee1c8dab6911f396921f8d9c99310d8e" category="paragraph">升級至 NX-OS 10.5(3)(F) 及更高版本時，EPLD 映像不會自動更新。升級完成且交換器重新開機後，您必須再次執行相同的升級<block ref="1f3226f23ea270e1a1024cd0db05413e" prefix=" " category="inline-code"></block>命令。</block>
   <block id="63866b50d1c752b87d0a35424ec78d9f" category="list-text">第二次升級程序會進行驗證，但會跳過 NX-OS 升級；只會更新 EPLD 映像。</block>
   <block id="e891366244f7639a1cebce5d7b254878" category="list-text">當您已升級至 NX-OS 10.5(3)(F) 及更新版本時，兩個映像將同時更新。</block>
-  <block id="7d625d674a5fa1ee8f231bbe934d59c5" category="paragraph">以下步驟展示從 NX-OS 10.4(5)(M) 升級至 10.5(3)(F) 的過程。第一步執行 NX-OS 升級，第二步執行 EPLD 映像升級。</block>
   <block id="49b200eb8820638568f5d815c24fbe04" category="paragraph"><block ref="5ea68978710e999c37e81ef89e1609fb" prefix="" category="inline-code"></block></block>
   <block id="30c31bba00ddc5f435e1609b696cfc11" category="paragraph">此範例使用 NX-OS 版本 10.5(4)(M)。</block>
-  <block id="03ff4c3f972d17b8f10bd0edb3043c3a" category="paragraph">此範例使用 EPLD 版本 10.5(4)(M)。</block>
   <block id="28ccfd0538434ca8f7c3ed05eb919f9d" category="list-text">[[step7]]驗證叢集上叢集連接埠的健全狀況。</block>
   <block id="7b7c6479e04cac8c2008fe7ca440afea" category="list-text">重複步驟 6 至 8 ，在交換器 cs1 上安裝 NX-OS 軟體。</block>
   <block id="95a058e5eceffbda103e7cb32bf0371d" category="list-text">[[step11]]啟用叢集 LIF 的自動回復功能。</block>
@@ -6493,9 +6481,6 @@
   <block id="673ae793392a47aa63a6e19dee788e49" category="summary">在 NVIDIA SN2100 儲存交換器以 ONIE 模式運作時，請在其上安裝 Cumulus Linux。</block>
   <block id="c22c89a37b9f177e384532a7f1ece079" category="doc">在 NVIDIA SN2100 儲存交換器上以 ONIE 模式安裝 Cumulus Linux</block>
   <block id="8d59a1c1c12d6a7e63c0b9b284e508ef" category="paragraph">在 NVIDIA SN2100 儲存交換器以 ONIE 模式運作時，在交換器上安裝 Cumulus Linux （CL）。</block>
-  <block id="c6741893a45d37d5e205eeb008e7f397" category="summary">在 NVIDIA SN2100 儲存交換器上安裝或升級參考組態檔案 (RCF) 指令碼。</block>
-  <block id="d627507127ea31471cd85704cc78868c" category="doc">在 NVIDIA SN2100 儲存交換器上安裝或升級 RCF 指令碼</block>
-  <block id="e0a62f41a6a7eafa3cec3737408302a8" category="paragraph">在 NVIDIA SN2100 儲存設備交換器上安裝或升級參考組態檔案 （RCF） 指令碼，以設定連接埠指派和網路設定。</block>
   <block id="6c02f4f0cecf93bc67137d416dae0717" category="summary">在 NVIDIA SN2100 儲存交換器上設定 SNMPv3，以啟用安全的交換器日誌收集和健全狀況監控。</block>
   <block id="bb60df157481eef2a3bc6527739082fb" category="doc">為 NVIDIA SN2100 儲存網路交換器設定 SNMPv3</block>
   <block id="e61d07468608a5163b9516fbf4e7d7cc" category="paragraph">在 NVIDIA SN2100 儲存交換器上設定 SNMPv3，以啟用安全的、經過驗證的交換器日誌收集和乙太網路交換器健全狀況監視器 （CSHM）。</block>
@@ -6585,7 +6570,6 @@
   <block id="ee01384cf8d137f89bc685e22c4be2d8" category="list-text">交換器重新開機後，驗證 NX-OS 的新版本：</block>
   <block id="a2bfa4b1027a4489b14fe1e1da98d3b6" category="paragraph">此範例使用 EPLD 版本 10.4(2)F</block>
   <block id="bf2613a62b8382033c4d11fca50c73ac" category="list-text">交換器重新開機後，登入並驗證新版本的 EPLD 是否已成功載入：</block>
-  <block id="ec73a52c8df4c017f18b7e0f0728d851" category="list-text">[[stepa]] 將 NX-OS 和 EPLD 映像複製到第一台交換器：</block>
   <block id="d9235186cc0e8d3882e806417185d7b9" category="list-text">驗證 NX-OS 的執行版本：</block>
   <block id="f654c58cdecf7be775bef7ae06fe441a" category="paragraph">升級至 NX-OS 10.6(3)F 及更高版本時，EPLD 映像不會自動更新。升級完成且交換器重新開機後，您必須再次執行相同的升級<block ref="1f3226f23ea270e1a1024cd0db05413e" prefix=" " category="inline-code"></block> 命令。</block>
   <block id="56087f857f3cca64fb99f1b3f5890604" category="list-text">當您已經升級到 NX-OS 10.6(3)F 及更高版本時，兩個映像將同時更新。</block>
@@ -6596,7 +6580,6 @@
   <block id="6065efd0847dd53d5a9d542258344276" category="list-text">安裝 NX-OS 和 EPLD 映像。具體步驟可能會因您目前的 NX-OS 版本和目標 NX-OS 版本而異。</block>
   <block id="2737688c7e1f6ffba26f9c6951fa5abe" category="list-text">從 10.4(2)F 升級到 10.6(3)F 或更高版本</block>
   <block id="6f2c4a1a8b2baa286198fb324d542a64" category="list-text">從 10.6(3)F 升級至較新版本</block>
-  <block id="a74a897521538b72e1b914e5b98566be" category="list-text">[[stepa]] 將 NX-OS 和 EPLD 映像複製到第一個交換器。</block>
   <block id="cb5e235c5bd5a3a4562b1566219f4a89" category="paragraph">此範例使用 sftp 和 NX-OS 版本 10.6(4)M。</block>
   <block id="0cb3992a66607246eb74aebe3e9789e9" category="paragraph">此範例使用 NX-OS 版本 10.6(4)M。</block>
   <block id="caf4113ef5fadfeda9c26a5fee89f6b8" category="paragraph">此範例使用 EPLD 版本 10.6(4)M。</block>
@@ -6604,14 +6587,12 @@
   <block id="1770fc40d3a238691ea3c831f562c744" category="list-text">如有需要，您可以參考 NX-OS 版本的<block ref="0ecf3652e1ad34634084ecc7cb5a512e" category="inline-link-macro-rx"></block>，以了解有關交換器設定的資訊，相關內容位於「Using the Cisco NX-OS Setup Utility」章節。您也可以在「Configuring Terminal Settings and Sessions」章節中找到有關終端設定的資訊。</block>
   <block id="c7e5b41e9730af5b00e7d3ece00450f7" category="list-text">本程序中顯示的範例適用於配備執行 RCF 10.1 交換器的 AFX 2K 系統。輸入和輸出可能會因您的 RCF 版本而異。</block>
   <block id="8ed0d8caaf00274a6af9f5e5e2f160db" category="list-text">使用 <block ref="df911f0151f9ef021d410b4be5060972" prefix=" " category="inline-code"></block> 命令驗證與託管 NX-OS 的伺服器的連線：</block>
-  <block id="a2762799f1b4a38f437069b7d8e422fa" category="list-text">將 NX-OS 和 EPLD 映像複製到第一台交換器：</block>
   <block id="f05462b6e392b8a6443947a98e5ffb24" category="paragraph">安裝映像檔案後，每次交換器重新開機時都會載入該檔案：</block>
   <block id="cad34ccba01154fef5046fa387039b5c" category="paragraph">如需 Cisco 命令的詳細資訊，請參閱 <block ref="232762645b4df5c60acd4583f4d3b328" category="inline-link-macro-rx"></block> 中的適當指南。</block>
   <block id="b6025372f7e09e40fa5e0cf9e13ab3e3" category="list-text">將目前運行組態複製到啟動組態中，使其永久生效：</block>
   <block id="34a91a5720a9f504b3aa62be5dafbbad" category="list-text">將交換器分支（4x100GbE）連接埠硬編碼為 100GbE。如果不硬編碼速率，這些連接埠將無法啟動，並處於錯誤停用狀態：</block>
   <block id="3bb353ce15c345888ad0235997853aba" category="list-text">使用交換器 CLI，驗證與託管 NX-OS 的伺服器的連線：</block>
   <block id="b0cd9db5b65d1a7552f0d4d1776cf02b" category="paragraph">在第一個交換器（cs1）上安裝 NX-OS，方法是安裝並驗證新版本的 NX-OS 和 EPLD，驗證叢集上所有連接埠的健全狀況，然後在第二個交換器（cs2）上重複這些步驟。</block>
-  <block id="d5db34440fb801ce1e7b21aa9a1a260c" category="list-text">使用交換器命令列介面（CLI），將 NX-OS 和 EPLD 映像複製到交換器：</block>
   <block id="cf1d77fd6309b116f050d88f91cf96dd" category="list-text">交換器重新開機後，使用交換器 CLI 驗證 NX-OS 的新版本：</block>
   <block id="7aa43663a4fe610113c6066b203a8840" category="list-text">重新啟用叢集 LIF 上的自動回復：</block>
   <block id="cd83220db451d36aa03d8ca6c291a49e" category="paragraph"><block ref="5dc73071d11217e5e2e49444f79c8eac" prefix="" category="inline-code"></block></block>
@@ -6622,4 +6603,45 @@
   <block id="bd0444d020b86183862bbc6948afd8e8" category="list-text">使用 ONTAP CLI，啟用叢集 LIF 的自動回復：</block>
   <block id="0641c404b90355fd340627cc3967a213" category="list-text">使用交換器 CLI，驗證連接到叢集連接埠的交換器連接埠是否為 *up*：</block>
   <block id="630d4b1d7a71915882986f040a422234" category="paragraph">4x100Gb 模式，用於叢集內連接、HA 連接和儲存連接</block>
+  <block id="4b7e002618aa7ffd519fec86287f8771" category="list-text">下載並安裝 NX-OS 和 EPLD 映像。具體步驟可能會因您目前的 NX-OS 版本和目標 NX-OS 版本而異。</block>
+  <block id="2d35ac78d9772d450de6f690db95af00" category="list-text">升級至 10.4(6)M 或更早版本</block>
+  <block id="8427a13468c66aeac64ef34926dc67c8" category="list-text">從 10.4(6)M 或更早版本升級到 10.5(3)(F) 或更高版本</block>
+  <block id="49d23689c6bb644c5a4647e289d74238" category="list-text">從 10.5(3)F 升級至較新版本</block>
+  <block id="cd1e26275b27e242fc6497adfac2e9a7" category="open-title">從 10.4(6)M 或更早版本升級到 10.5(3)F 或更高版本</block>
+  <block id="7d45f34ac662bcd6ac76c330d2da43d4" category="list-text">[[stepa]] 將合併後的 NX-OS 和 EPLD 映像複製到 Nexus 9336C-FX2 交換器。</block>
+  <block id="c4428e5364d6e4f823ee10eb43c34de0" category="paragraph">以下步驟顯示從 NX-OS 10.4(5)(M) 升級至 10.5(3)(F) 的第一次安裝過程。</block>
+  <block id="5f27a7f847740894095dab35026bcee0" category="paragraph">以下步驟顯示更新 EPLD 映像的第二次安裝過程。</block>
+  <block id="53afc27f2f545e2f9fe2b6256536f632" category="list-text">將合併後的 NX-OS 和 EPLD 映像複製到第一台交換器。</block>
+  <block id="504bf6b171a5d3a2d7e019caf7bd443a" category="list-text">[[stepa]] 將合併後的 NX-OS 和 EPLD 映像複製到第一台交換器：</block>
+  <block id="81753b5dd20f91aa4043bf31d0c177ce" category="paragraph">以下步驟顯示從 NX-OS 10.4(2)F 升級到 10.6(3)F 的第一次安裝階段。</block>
+  <block id="548f00151fa2e05717273bd582bcd97f" category="list-text">[[stepa]] 將合併後的 NX-OS 和 EPLD 映像複製到第一個交換器。</block>
+  <block id="ac4e288dd7e1a8fb79f35c8906d01d71" category="list-text">[[stepd]]交換器重新啟動後，使用交換器 CLI 驗證 NX-OS 的新版本：</block>
+  <block id="5641da6edf405a2251dc2bb428fe96aa" category="list-text">將合併後的 NX-OS 和 EPLD 映像複製到第一台交換器：</block>
+  <block id="95d82cccd68b4c1652736b48471a37eb" category="list-text">使用交換器 CLI，將合併的 NX-OS 和 EPLD 映像複製到交換器：</block>
+  <block id="ebf2c8fa0cd1e5ddd1627b1aae6ba52c" category="summary">在 NVIDIA SN2100 儲存設備交換器上安裝參考組態檔案（RFC）指令碼。</block>
+  <block id="d9d8772d4e81d0eed1afdcd5b8f535b7" category="doc">在 NVIDIA SN2100 儲存設備交換器上安裝 RCF 指令碼</block>
+  <block id="c1cb629c9621525de753459b6f2c0ae9" category="paragraph">在 NVIDIA SN2100 儲存設備交換器上安裝參考組態檔案（RCF）指令碼，以設定連接埠指派和網路設定。</block>
+  <block id="2123b47f46a6b2a44de513e0c343098f" category="paragraph">安裝 RCF 指令碼之前，請確保交換器上具備以下條件：</block>
+  <block id="ac5b3627a9104bb66c14498d1d7100da" category="list-text">已安裝受支援的 Cumulus Linux 版本。</block>
+  <block id="d1f4d61f91bcd128da395d340c176730" category="list-text">管理連接埠 IP 位址、子網路遮罩和預設閘道透過 DHCP 定義或手動設定。</block>
+  <block id="cf7ed8a36063537c516bd59674af6224" category="paragraph-title">RCF 指令碼版本</block>
+  <block id="8bc421c29e23e35d5544d9ae5aeceaef" category="paragraph">請根據您目前的 ONTAP 和 Cumulus Linux 版本選擇合適的儲存設備 RCF 指令碼版本。從 <block ref="5baf2e10c7d5342617f6966efa0bb2fe" category="inline-link-rx"></block> 頁面下載 RCF。</block>
+  <block id="e591ad610e57cfe690a9967fdf601b46" category="paragraph">以下範例步驟顯示如何下載和套用儲存設備交換器的 RCF 指令碼。</block>
+  <block id="f5dd383047da5ef0dc3e4c8c2357b39f" category="section-title">步驟 1：在交換器上安裝 RCF</block>
+  <block id="fc71b86dc7948363fd49005c2958e6a3" category="list-text">套用 RCF Python 指令碼 *RCF-v1.14-MSN2100-ST1*：</block>
+  <block id="bb96130dde758202b0e5f4f4d6ba920c" category="list-text">將控制器儲存設備埠和 NS224 機櫃連接埠連接到交換器。</block>
+  <block id="581218a22ca238be40ff0989a8d71a30" category="section-title">步驟 2：驗證交換器和儲存設備的連接性</block>
+  <block id="ee75e4fc3527723888afd59f68fb0764" category="list-text">驗證儲存設備連接埠的健全狀況和交換器連線。</block>
+  <block id="e487e2a4018baf9c4da8035ce151c899" category="list-text">驗證節點儲存設備連接埠的狀態：</block>
+  <block id="eea6e9b8252d81d7f8dc2569fd073d2d" category="list-text">請確認交換器是否可用：</block>
+  <block id="16eeba3f541a7b36f32ba0b8be58737d" category="list-text">在合作夥伴（或其他）交換器上重複這些驗證步驟。</block>
+  <block id="e952e874589e08c72accb419491aef86" category="summary">升級 NVIDIA SN2100 儲存設備交換器上的參考組態檔案（RFC）指令碼。</block>
+  <block id="c41ae9e39b11d04568136ed5e1576ec2" category="doc">升級 NVIDIA SN2100 儲存設備交換器上的 RCF 指令碼</block>
+  <block id="0f0a56e197588dcaaee6fb366c5eac78" category="paragraph">升級 NVIDIA SN2100 儲存設備交換器上的參考組態檔案（RCF）指令碼，以設定連接埠指派和網路設定。</block>
+  <block id="2f12078db8d3940411ac90f4d09d660f" category="section-title">步驟 1：驗證目前交換器和儲存設備的健全狀況</block>
+  <block id="d831501cc1e0c296f7725582b3504295" category="section-title">步驟 2：升級交換器上的 RCF</block>
+  <block id="97c45dd149bbfb8592d570a009fee385" category="section-title">步驟 3：驗證交換器和儲存設備的連接性</block>
+  <block id="7623b95e402cfc99d5158cb118b665be" category="open-title">Cumulus Linux 5.4：</block>
+  <block id="e2dc54ffd947e067753fc8664e33a3e3" category="open-title">Cumulus Linux 5.11 及更高版本：</block>
+  <block id="d5ff2396abf906847a759be491ef8ed5" category="list-text">確認升級後的交換器及其儲存設備路徑運作正常後，在合作夥伴交換器上重複步驟 1 至 3。</block>
 </blocks>

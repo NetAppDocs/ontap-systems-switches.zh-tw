@@ -1,0 +1,459 @@
+---
+permalink: switch-nvidia-sn2100-storage/upgrade-rcf-sn2100-storage.html 
+sidebar: sidebar 
+keywords: upgrade rcf script, python script, sn2100 SN2100 switches, cumulus 
+summary: 升級 NVIDIA SN2100 儲存設備交換器上的參考組態檔案（RFC）指令碼。 
+---
+= 升級 NVIDIA SN2100 儲存設備交換器上的 RCF 指令碼
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+升級 NVIDIA SN2100 儲存設備交換器上的參考組態檔案（RCF）指令碼，以設定連接埠指派和網路設定。
+
+.開始之前
+請確保您擁有以下物品：
+
+* 交換器配置的目前備份。
+* 一個功能齊全的群集（日誌中沒有錯誤或類似問題）。
+* 當前的RCF。
+* 如果您要更新 RCF 版本，則需要在 RCF 中進行啟動配置，以反映所需的啟動映像。
++
+如果需要更改啟動配置以反映目前的啟動映像，則必須在重新套用 RCF 之前進行更改，以便在以後的重新啟動中實例化正確的版本。
+
+
+
+
+CAUTION: 在安裝新的交換器軟體版本和 RCF 之前，必須清除交換器設定並執行基本設定。在清除交換器設定之前，您必須使用序列控制台連接到交換機，或保留基本設定資訊。
+
+.RCF 指令碼版本
+請根據您目前的 ONTAP 和 Cumulus Linux 版本選擇合適的儲存設備 RCF 指令碼版本。從  https://mysupport.netapp.com/site/info/nvidia-cluster-switch["NVIDIA SN2100 軟體下載"^] 頁面下載 RCF。
+
+.關於範例
+以下範例步驟顯示如何下載和套用儲存設備交換器的 RCF 指令碼。
+
+範例指令輸出使用交換器管理 IP 位址 10.233.204.71，子網路遮罩 255.255.254.0 和預設閘道 10.233.204.1。
+
+
+
+[[step-1-verify-current-switch-and-storage-health]]
+== 步驟 1：驗證目前交換器和儲存設備的健全狀況
+
+. 顯示SN2100交換器上的可用介面：
++
+[source, cli]
+----
+nv show interface
+----
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cumulus@cumulus:mgmt:~$ *nv show interface*
+
+State  Name   Spd  MTU    Mode         LLDP                Summary
+-----  -----  ---  -----  -----------  ------------------  --------------
+...
+...
+ADMDN  swp1   N/A  9216   NotConfigured
+ADMDN  swp2   N/A  9216   NotConfigured
+ADMDN  swp3   N/A  9216   NotConfigured
+ADMDN  swp4   N/A  9216   NotConfigured
+ADMDN  swp5   N/A  9216   NotConfigured
+ADMDN  swp6   N/A  9216   NotConfigured
+ADMDN  swp7   N/A  9216   NotConfigured
+ADMDN  swp8   N/A  9216   NotConfigured
+ADMDN  swp9   N/A  9216   NotConfigured
+ADMDN  swp10  N/A  9216   NotConfigured
+ADMDN  swp11  N/A  9216   NotConfigured
+ADMDN  swp12  N/A  9216   NotConfigured
+ADMDN  swp13  N/A  9216   NotConfigured
+ADMDN  swp14  N/A  9216   NotConfigured
+ADMDN  swp15  N/A  9216   NotConfigured
+ADMDN  swp16  N/A  9216   NotConfigured
+----
+====
+. 驗證儲存設備連接埠的健全狀況和交換器連線。
++
+.. 驗證節點儲存設備連接埠的狀態：
++
+[source, cli]
+----
+storage port show -port-type ENET
+----
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> storage port show -port-type ENET
+
+
+                                      Speed
+Node               Port Type  Mode    (Gb/s) State    Status
+------------------ ---- ----- ------- ------ -------- ---------------
+node1
+                   e3a  ENET  storage    100 enabled  online
+                   e3b  ENET  storage    100 enabled  online
+node2
+                   e3a  ENET  storage    100 enabled  online
+                   e3b  ENET  storage    100 enabled  online
+4 entries were displayed.
+----
+====
+
+
+. 檢查儲存系統中的貨架連接埠：
++
+`storage shelf port show -fields remote-device, remote-port`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *storage shelf port show -fields remote-device, remote-port*
+shelf   id    remote-port     remote-device
+-----   --    -----------     -------------
+3.20    0     swp3            sw1
+3.20    1     swp3            sw2
+3.20    2     swp4            sw1
+3.20    3     swp4            sw2
+3.30    0     swp5            sw1
+3.30    1     swp5            sw2
+3.30    2     swp6            sw1
+3.30    3     swp6            sw2
+cluster1::*>
+----
+====
+. 確認交換器是否處於監控狀態。
++
+[source, cli]
+----
+system switch ethernet show -is-monitoring-enabled-operational true
+----
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *system switch ethernet show -is-monitoring-enabled-operational true*
+Switch                      Type               Address          Model
+--------------------------- ------------------ ---------------- -----
+sw1                         storage-network    192.0.2.71       MSN2100-CB2RC
+     Serial Number: MNXXXXXXGD
+      Is Monitored: true
+            Reason: None
+  Software Version: Cumulus Linux version 5.11.1 running on Mellanox
+                    Technologies Ltd. MSN2100
+    Version Source: LLDP
+
+sw2                         storage-network    192.0.2.72       MSN2100-CB2RC
+     Serial Number: MNCXXXXXXGS
+      Is Monitored: true
+            Reason: None
+  Software Version: Cumulus Linux version 5.11.1 running on Mellanox
+                    Technologies Ltd. MSN2100
+    Version Source: LLDP
+----
+====
+
+
+
+
+[[step-2-upgrade-the-rcf-on-the-switch]]
+== 步驟 2：升級交換器上的 RCF
+
+. 將 RCF Python 腳本複製到交換器：
++
+[listing, subs="+quotes"]
+----
+admin@sw1:mgmt:~$ *pwd*
+/home/cumulus
+cumulus@cumulus:mgmt:~$ *cd /tmp*
+cumulus@cumulus:mgmt:/tmp$ *scp <user>@<host:/<path>/RCF-v1.14-MSN2100-ST1*
+ssologin@10.233.204.71's password:
+RCF-v1.14-MSN2100-ST1                 100% 8607   111.2KB/s         00:00
+----
+. 套用 RCF Python 指令碼 *RCF-v1.14-MSN2100-ST1*：
++
+[listing, subs="+quotes"]
+----
+cumulus@cumulus:mgmt:/tmp$ *sudo python3 RCF-v1.14-MSN2100-ST1*
+[sudo] password for cumulus:
+...
+Step 1: Creating the banner file
+Step 2: Registering banner message
+Step 3: Updating the MOTD file
+Step 4: Ensuring passwordless use of cl-support command by admin
+Step 5: Disabling apt-get
+Step 6: Creating the interfaces
+Step 7: Adding the interface config
+Step 8: Disabling cdp
+Step 9: Adding the lldp config
+Step 10: Adding the RoCE base config
+Step 11: Modifying RoCE Config
+Step 12: Configure SNMP
+Step 13: Reboot the switch
+----
++
+RCF腳本會完成上述步驟。
+
++
+
+NOTE: 如果遇到任何無法解決的 RCF Python 腳本問題，請聯絡我們。 https://mysupport.netapp.com/["NetApp支援"^]尋求幫助。
+
+. 將先前對交換器配置所做的任何自訂設定重新套用。請參閱link:cabling-considerations-sn2100-storage.html["審查佈線和配置注意事項"]有關任何後續變更的詳細資訊。
+. 將控制器儲存設備埠和 NS224 機櫃連接埠連接到交換器。
+
+
+
+
+[[step-3-verify-the-switch-and-storage-connectivity]]
+== 步驟 3：驗證交換器和儲存設備的連接性
+
+. 重啟後驗證配置：
++
+[source, cli]
+----
+nv show interface
+----
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cumulus@cumulus:mgmt:~$ nv show interface
+Interface   Admin Status  Oper Status  Speed  MTU    Type      Remote Host                         Remote Port  Summary
+----------  ------------  -----------  -----  -----  --------  ----------------------------------  -----------  --------------------------------------------------------
+bond998     up            down                9216   bond
+bond999     up            down                9216   bond
+br_default  up            up                  9216   bridge                                                     IPv6 Address:               fe80::1234:5678:9abc:def0/64
+eth0        up            up           100M   1500   eth       mgmt-switch                         Eth105/1/17  IPv4 Address:                             192.0.2.209/24
+                                                                                                                Address type:                                    primary
+                                                                                                                IPv6 Address:                        2001:db8:1::495e/64
+                                                                                                                IPv6 Address:               fe80::1234:5678:9abc:def0/64
+lo          up            unknown             65536  loopback                                                   IPv4 Address:                                127.0.0.1/8
+                                                                                                                Address type:                                    primary
+                                                                                                                IPv6 Address:                                    ::1/128
+mgmt        up            up                  65575  vrf                                                        IPv4 Address:                                127.0.0.1/8
+                                                                                                                IPv4 Address:                                127.0.1.1/8
+                                                                                                                Address type:                                    primary
+                                                                                                                Address type:                                  secondary
+                                                                                                                IPv6 Address:                                    ::1/128
+swp1        up            up           100G   9216   swp       node1                               e3b
+swp2        up            up           100G   9216   swp       node2                               e3b
+swp3        up            down                9216   swp
+swp4        up            down                9216   swp
+swp5        up            down                9216   swp
+swp6        up            up           100G   9216   swp       952347XXXXXX                        e1b
+swp7        up            down                9216   swp
+swp8        up            down                9216   swp
+swp9        up            down                9216   swp
+swp10       up            down                9216   swp
+swp11       up            down                9216   swp
+swp12       up            down                9216   swp
+swp13       up            down                9216   swp
+swp14       up            down                9216   swp
+swp15       up            down                9216   swp
+swp16       up            down                9216   swp
+...
+...
+
+
+----
+====
+. 請核對介面中收發器的資訊：
++
+[role="tabbed-block"]
+====
+.Cumulus Linux 5.4
+--
+[source, cli]
+----
+nv show interface --view=pluggables
+----
+.顯示範例
+[%collapsible]
+=====
+[listing, subs="+quotes"]
+----
+cumulus@cumulus:mgmt:~$ *nv show interface --view=pluggables*
+Interface  Identifier     Vendor Name  Vendor PN        Vendor SN       Vendor Rev
+---------  -------------  -----------  ---------------  --------------  ----------
+swp3       0x11 (QSFP28)  Amphenol     112-00574        APF20379253516  B0
+swp4       0x11 (QSFP28)  AVAGO        332-00440        AF1815GU05Z     A0
+swp15      0x11 (QSFP28)  Amphenol     112-00573        APF21109348001  B0
+swp16      0x11 (QSFP28)  Amphenol     112-00573        APF21109347895  B0
+----
+=====
+--
+.Cumulus Linux 5.11 及更高版本
+--
+[source, cli]
+----
+nv show platform transceiver
+----
+.顯示範例
+[%collapsible]
+=====
+[listing, subs="+quotes"]
+----
+cumulus@cumulus:mgmt:~$ nv show platform transceiver
+Transceiver  Identifier  Vendor name   Vendor PN  Vendor SN       Vendor revision
+-----------  ----------  ------------  ---------  --------------  ---------------
+swp1         QSFP28      FINISAR CORP  332-00440  XA7C325         A1
+swp2         QSFP28      FINISAR CORP  332-00440  XA7C33W         A1
+swp5         QSFP28      FINISAR CORP  332-00440  XA7C1RV         A1
+swp6         QSFP28      FINISAR CORP  332-00440  X4QANNS         A1
+----
+=====
+--
+====
+. 確認每個節點都與每個交換器有連接：
++
+[role="tabbed-block"]
+====
+.Cumulus Linux 5.4：
+--
+[source, cli]
+----
+nv show interface --view=lldp
+----
+.顯示範例
+[%collapsible]
+=====
+[listing, subs="+quotes"]
+----
+cumulus@cumulus:mgmt:~$ *net show lldp*
+
+LocalPort  Speed  Mode        RemoteHost              RemotePort
+---------  -----  ----------  ----------------------  -----------
+swp3       100G   Trunk/L2    sw1                     e3a
+swp4       100G   Trunk/L2    sw2                     e3b
+swp15      100G   Trunk/L2    sw13                    swp15
+swp16      100G   Trunk/L2    sw14                    swp16
+----
+=====
+--
+.Cumulus Linux 5.11 及更高版本：
+--
+[source, cli]
+----
+nv show interface lldp
+----
+.顯示範例
+[%collapsible]
+=====
+[listing, subs="+quotes"]
+----
+cumulus@cumulus:mgmt:~$ nv show interface lldp
+Interface  Speed  Type  Remote Host                         Remote Port
+---------  -----  ----  ----------------------------------  -----------
+eth0       100M   eth   mgmt-switch                          Eth105/1/15
+swp1       100G   swp   cluster1-01                          e3a
+swp2       100G   swp   cluster1-02                          e3a
+swp5       100G   swp   952347XXXXXX                         e1a
+swp6       100G   swp   952347XXXXXX                         e1a
+----
+=====
+--
+====
+. 驗證儲存設備連接埠的健全狀況和交換器連線。
++
+.. 驗證節點儲存設備連接埠的狀態：
++
+`storage port show -port-type ENET`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> storage port show -port-type ENET
+
+
+                                      Speed
+Node               Port Type  Mode    (Gb/s) State    Status
+------------------ ---- ----- ------- ------ -------- ---------------
+node1
+                   e3a  ENET  storage    100 enabled  online
+                   e3b  ENET  storage    100 enabled  online
+node2
+                   e3a  ENET  storage    100 enabled  online
+                   e3b  ENET  storage    100 enabled  online
+4 entries were displayed.
+----
+====
+
+
+. 檢查儲存系統中的貨架連接埠：
++
+`storage shelf port show -fields remote-device, remote-port`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *storage shelf port show -fields remote-device, remote-port*
+shelf   id    remote-port     remote-device
+-----   --    -----------     -------------
+3.20    0     swp3            sw1
+3.20    1     swp3            sw2
+3.20    2     swp4            sw1
+3.20    3     swp4            sw2
+3.30    0     swp5            sw1
+3.30    1     swp5            sw2
+3.30    2     swp6            sw1
+3.30    3     swp6            sw2
+cluster1::*>
+----
+====
+. 確認交換器是否處於監控狀態。
++
+[source, cli]
+----
+system switch ethernet show -is-monitoring-enabled-operational true
+----
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *system switch ethernet show -is-monitoring-enabled-operational true*
+Switch                      Type               Address          Model
+--------------------------- ------------------ ---------------- -----
+sw1                         storage-network    192.0.2.71       MSN2100-CB2RC
+     Serial Number: MNXXXXXXGD
+      Is Monitored: true
+            Reason: None
+  Software Version: Cumulus Linux version 5.11.1 running on Mellanox
+                    Technologies Ltd. MSN2100
+    Version Source: LLDP
+
+sw2                         storage-network    192.0.2.72       MSN2100-CB2RC
+     Serial Number: MNCXXXXXXGS
+      Is Monitored: true
+            Reason: None
+  Software Version: Cumulus Linux version 5.11.1 running on Mellanox
+                    Technologies Ltd. MSN2100
+    Version Source: LLDP
+----
+====
+. 確認升級後的交換器及其儲存設備路徑運作正常後，在合作夥伴交換器上重複步驟 1 至 3。
+
+
+.下一步是什麼？
+安裝或升級 RCF 後，您可以…link:setup-install-cshm-file.html["安裝 CSHM 文件"] 。

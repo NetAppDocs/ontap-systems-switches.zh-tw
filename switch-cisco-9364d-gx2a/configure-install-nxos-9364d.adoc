@@ -158,24 +158,7 @@ Copy complete.
 ----
 cs1# *show version*
 Cisco Nexus Operating System (NX-OS) Software
-TAC support: http://www.cisco.com/tac
-Copyright (C) 2002-2025, Cisco and/or its affiliates.
-All rights reserved.
-The copyrights to certain works contained in this software are
-owned by other third parties and used and distributed under their own
-licenses, such as open source.  This software is provided "as is," and unless
-otherwise stated, there is no warranty, express or implied, including but not
-limited to warranties of merchantability and fitness for a particular purpose.
-Certain components of this software are licensed under
-the GNU General Public License (GPL) version 2.0 or
-GNU General Public License (GPL) version 3.0  or the GNU
-Lesser General Public License (LGPL) Version 2.1 or
-Lesser General Public License (LGPL) Version 2.0.
-A copy of each such license is available at
-http://www.opensource.org/licenses/gpl-2.0.php and
-http://opensource.org/licenses/gpl-3.0.html and
-http://www.opensource.org/licenses/lgpl-2.1.php and
-http://www.gnu.org/licenses/old-licenses/library.txt.
+...
 
 
 Software
@@ -290,8 +273,7 @@ Warning: please do not remove or power off the module at this time.
 Finishing the upgrade, switch will reboot in 10 seconds.
 ----
 =====
-+
-.. 交換器重新開機後，驗證 NX-OS 的新版本：
+. 交換器重新開機後，驗證 NX-OS 的新版本：
 +
 `show version`
 
@@ -302,25 +284,7 @@ Finishing the upgrade, switch will reboot in 10 seconds.
 [listing, subs="+quotes"]
 ----
 cs1# *show version*
-Cisco Nexus Operating System (NX-OS) Software
-TAC support: http://www.cisco.com/tac
-Copyright (C) 2002-2025, Cisco and/or its affiliates.
-All rights reserved.
-The copyrights to certain works contained in this software are
-owned by other third parties and used and distributed under their own
-licenses, such as open source.  This software is provided "as is," and unless
-otherwise stated, there is no warranty, express or implied, including but not
-limited to warranties of merchantability and fitness for a particular purpose.
-Certain components of this software are licensed under
-the GNU General Public License (GPL) version 2.0 or
-GNU General Public License (GPL) version 3.0  or the GNU
-Lesser General Public License (LGPL) Version 2.1 or
-Lesser General Public License (LGPL) Version 2.0.
-A copy of each such license is available at
-http://www.opensource.org/licenses/gpl-2.0.php and
-http://opensource.org/licenses/gpl-3.0.html and
-http://www.opensource.org/licenses/lgpl-2.1.php and
-http://www.gnu.org/licenses/old-licenses/library.txt.
+...
 
 
 Software
@@ -359,8 +323,6 @@ Active Package(s):
 cs1#
 ----
 =====
-
-
 . 使用以下命令升級 EPLD 映像：
 +
 `show version module 1 epld`
@@ -423,8 +385,7 @@ EPLDs upgraded.
 Module 1 EPLD upgrade is successful.
 ----
 =====
-+
-.. 交換器重新開機後，登入並驗證新版本的 EPLD 是否已成功載入：
+. 交換器重新開機後，登入並驗證新版本的 EPLD 是否已成功載入：
 +
 `show version module 1 epld`
 
@@ -449,14 +410,12 @@ GEM  FPGA                        0x2
 =====
 
 
-
-
 --
 .安裝 10.6(3)F 或更高版本
 --
 您可以使用交換器 CLI 輸入以下步驟的命令。
 
-. [[stepa]] 將 NX-OS 和 EPLD 映像複製到第一台交換器：
+. [[stepa]] 將合併後的 NX-OS 和 EPLD 映像複製到第一台交換器：
 +
 `copy <protocol>: bootflash: vrf management`
 
@@ -480,23 +439,6 @@ sftp> *get /code/nxos.10.6.3.F.bin /bootflash/nxos.10.6.3.F.bin*
 sftp> *exit*
 Copy complete, now saving to disk (please wait)...
 Copy complete.
-
-
-cs1# *copy sftp: bootflash: vrf management*
-Enter source filename: */code/n9000-epld.10.6.3.F.img*
-Enter hostname for the sftp server: *172.19.2.1*
-Enter username: *user1*
-
-Outbound-ReKey for 172.19.2.1:22
-Inbound-ReKey for 172.19.2.1:22
-user1@172.19.2.1's password:
-sftp> *progress*
-Progress meter enabled
-sftp> *get /code/n9000-epld.10.6.3.F.img /bootflash/n9000-epld.10.6.3.F.img*
-/code/n9000-epld.10.6.3.F.img  100%  161MB   9.5MB/s   00:16
-sftp> *exit*
-Copy complete, now saving to disk (please wait)...
-Copy complete.
 ....
 =====
 . 驗證 NX-OS 的執行版本：
@@ -509,25 +451,7 @@ Copy complete.
 =====
 ....
 cs1# *show version*
-Cisco Nexus Operating System (NX-OS) Software
-TAC support: http://www.cisco.com/tac
-Copyright (C) 2002-2020, Cisco and/or its affiliates.
-All rights reserved.
-The copyrights to certain works contained in this software are
-owned by other third parties and used and distributed under their own
-licenses, such as open source.  This software is provided "as is," and unless
-otherwise stated, there is no warranty, express or implied, including but not
-limited to warranties of merchantability and fitness for a particular purpose.
-Certain components of this software are licensed under
-the GNU General Public License (GPL) version 2.0 or
-GNU General Public License (GPL) version 3.0  or the GNU
-Lesser General Public License (LGPL) Version 2.1 or
-Lesser General Public License (LGPL) Version 2.0.
-A copy of each such license is available at
-http://www.opensource.org/licenses/gpl-2.0.php and
-http://opensource.org/licenses/gpl-3.0.html and
-http://www.opensource.org/licenses/lgpl-2.1.php and
-http://www.gnu.org/licenses/old-licenses/library.txt.
+...
 
 Software
   BIOS: version 08.38
@@ -743,25 +667,7 @@ Install has been successful.
 =====
 ....
 cs1# *show version*
-Cisco Nexus Operating System (NX-OS) Software
-TAC support: http://www.cisco.com/tac
-Copyright (C) 2002-2020, Cisco and/or its affiliates.
-All rights reserved.
-The copyrights to certain works contained in this software are
-owned by other third parties and used and distributed under their own
-licenses, such as open source.  This software is provided "as is," and unless
-otherwise stated, there is no warranty, express or implied, including but not
-limited to warranties of merchantability and fitness for a particular purpose.
-Certain components of this software are licensed under
-the GNU General Public License (GPL) version 2.0 or
-GNU General Public License (GPL) version 3.0  or the GNU
-Lesser General Public License (LGPL) Version 2.1 or
-Lesser General Public License (LGPL) Version 2.0.
-A copy of each such license is available at
-http://www.opensource.org/licenses/gpl-2.0.php and
-http://opensource.org/licenses/gpl-3.0.html and
-http://www.opensource.org/licenses/lgpl-2.1.php and
-http://www.gnu.org/licenses/old-licenses/library.txt.
+...
 
 Software
   BIOS: version 05.33

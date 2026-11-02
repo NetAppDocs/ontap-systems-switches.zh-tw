@@ -501,7 +501,7 @@ network interface modify -vserver Cluster -lif * -auto-revert false
 
 在第一個交換器（cs1）上安裝 NX-OS，方法是安裝並驗證新版本的 NX-OS 和 EPLD，驗證叢集上所有連接埠的健全狀況，然後在第二個交換器（cs2）上重複這些步驟。
 
-. 使用交換器命令列介面（CLI），將 NX-OS 和 EPLD 映像複製到交換器：
+. 使用交換器 CLI，將合併的 NX-OS 和 EPLD 映像複製到交換器：
 +
 `copy <protocol>: bootflash: vrf management`
 

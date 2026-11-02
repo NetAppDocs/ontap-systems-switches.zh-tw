@@ -80,7 +80,7 @@ Reply From 172.19.2.1: icmp_seq = 0. time= 5910 usec.
 
 在第一個交換器 (cs1) 上安裝 NX-OS 和 EPLD 映像，方法是安裝並驗證 NX-OS 和 EPLD 映像版本；如果要將 NX-OS 作為新的 AFX 系統安裝的一部分進行安裝，請在第二個交換器 (cs2) 上重複這些步驟。
 
-. 將 NX-OS 和 EPLD 映像複製到第一台交換器：
+. 將合併後的 NX-OS 和 EPLD 映像複製到第一台交換器：
 +
 `copy <protocol>: bootflash: vrf management`
 
