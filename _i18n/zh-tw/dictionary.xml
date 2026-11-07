@@ -37,7 +37,6 @@
   <block id="d3280214c17ea96ca13a6e79765d0b3c" category="list-text">在交換器上設定 SNMPv3 使用者以使用身份驗證和加密：</block>
   <block id="8379e83fc1ad68bfb1ad877f1b7fda6b" category="list-text">在ONTAP端設定 SNMPv3 用戶：</block>
   <block id="6b9f542dd155c40aa5e4484b5ff61711" category="list-text">設定 CSHM 以使用新的 SNMPv3 使用者進行監控：</block>
-  <block id="f1d85c8d2abe8fba947527035ed0f381" category="list-text">等待 CSHM 輪詢週期結束後，確認乙太網路交換器的序號已填入。</block>
   <block id="250f3098aa37d3a08b48b8157db8a62e" category="open-title">Cisco交換機</block>
   <block id="d4d693d9dd779d0daf149c2e448b60b2" category="list-text">在 CSHM 輪詢週期結束後，驗證使用新建立的 SNMPv3 使用者查詢的序號是否與上一個步驟中詳細說明的序號相同。</block>
   <block id="05918726f836c344025fecbcf0275f1b" category="open-title">NVIDIA - CL 5.4.0</block>
@@ -6497,10 +6496,7 @@
   <block id="3cae774c7c6533201ed9c6e85e470a94" category="paragraph">將 NVIDIA SN2100 儲存設備交換器重設為出廠預設值，方法是清除目前交換器組態並將交換器還原至原始設定。</block>
   <block id="d4349ec8e1165e70a8d12a795df9127a" category="summary">安裝 NVIDIA SN2100 儲存設備交換器的乙太網路交換器健全狀況監視器 (CSHM) 組態檔案，以在 ONTAP 中啟用交換器健全狀況監控。</block>
   <block id="b47e16b6084121d1532c4351aca5f247" category="paragraph">安裝適用於 NVIDIA SN2100 儲存設備交換器的乙太網路交換器健全狀況監視器 (CSHM) 組態檔案，以在 ONTAP 中啟用交換器健全狀況監控。支援的型號包括：</block>
-  <block id="706bc34d657098e3dcd81db43d280c53" category="paragraph">在 Cisco Nexus 交換器上設定 SNMPv3 使用者名稱 SNMPv3_USER：</block>
-  <block id="5a523817621c85574dfcbf0b11c07075" category="paragraph">在執行 CL 5.4.0 的 NVIDIA Cumulus 交換器上設定 SNMPv3 使用者名稱 SNMPv3_USER：</block>
   <block id="4451c276144ff12f4a59bad51c0a1181" category="open-title">NVIDIA - CL 5.11.0+</block>
-  <block id="d1f08b7bd68bdc79984e047bc1939c5d" category="paragraph">在執行 CLI 5.11.0 及更高版本的 NVIDIA Cumulus 交換器上設定 SNMPv3 使用者名稱 SNMPv3_USER：</block>
   <block id="270c6f87474b0df2a80dcd0768153806" category="doc">了解 ONTAP 系統交換器</block>
   <block id="d93760fb3a470322e2ee0a6a058252ec" category="paragraph">ONTAP 提供 AFX 系統、叢集、儲存設備和共享的交換器，可交付內部通訊，並能夠在叢集內無中斷地移動資料和網路介面。</block>
   <block id="8929567fcded4cf1b93f4a787d71a97c" category="doc">查看 Broadcom BES-53248 叢集交換器的佈線和組態需求</block>
@@ -6644,4 +6640,16 @@
   <block id="7623b95e402cfc99d5158cb118b665be" category="open-title">Cumulus Linux 5.4：</block>
   <block id="e2dc54ffd947e067753fc8664e33a3e3" category="open-title">Cumulus Linux 5.11 及更高版本：</block>
   <block id="d5ff2396abf906847a759be491ef8ed5" category="list-text">確認升級後的交換器及其儲存設備路徑運作正常後，在合作夥伴交換器上重複步驟 1 至 3。</block>
+  <block id="e6fb84558de7078767b104ca13b55d79" category="admonition">從 ONTAP 9.20.1 開始，您可以在 Broadcom 交換器上設定 SHA-512 驗證。</block>
+  <block id="3dbb7476f9c2ebc70cf21948afa0cd9d" category="list-text">用於 *MD5/SHA/SHA-512 驗證*：</block>
+  <block id="4fc1797aada9784a0d12d54fd394cd62" category="list-text">用於 *MD5/SHA/SHA-512 驗證和 AES/DES 加密*：</block>
+  <block id="c4ee5379f9ca6f1a0a5bf5cad388ada5" category="list-title">範例步驟</block>
+  <block id="1dae6f6450cde6628715c8de87b21a2a" category="list-text">在交換器上設定 SNMPv3 使用者，以使用 SHA 驗證和 AES-128 加密：</block>
+  <block id="df714ebd186f65d53f3ec7b187fc3f1d" category="list-text">等待 CSHM 輪詢週期後，確認「不監控的原因」設定為「無」。</block>
+  <block id="1ca543b8df71f7fea0988934cb5fbbdb" category="paragraph">在 Cisco Nexus 交換器上設定 SNMPv3 使用者名稱<block ref="1d01e49b925b678020532b8f0e9ee3fa" prefix=" " category="inline-code"></block>。</block>
+  <block id="66192d10cca900d3c24ad9104d86b9e4" category="admonition">從 ONTAP 9.20.1 開始，您可以在 Cisco 交換器上設定 SHA-512 或 SHA-256 驗證。</block>
+  <block id="aa1770478094ea74329bcba08e9a34b7" category="list-text">用於 *MD5/SHA/SHA-256/SHA-512 驗證*：</block>
+  <block id="cf4344df088f1ec77d17a3dae71447b4" category="list-text">用於 *MD5/SHA/SHA-256/SHA-512 驗證，並採用 AES/DES 加密*：</block>
+  <block id="48dbdd390fa480b5eda78d1e7f0d3b54" category="paragraph">在執行 CL 5.4.0 的 NVIDIA Cumulus 交換器上設定 SNMPv3 使用者名稱<block ref="1d01e49b925b678020532b8f0e9ee3fa" prefix=" " category="inline-code"></block>：</block>
+  <block id="7ef0886eac0b0f59b0747fa52398c0c3" category="paragraph">在執行 CLI 5.11.0 及更新版本的 NVIDIA Cumulus 交換器上設定 SNMPv3 使用者名稱<block ref="1d01e49b925b678020532b8f0e9ee3fa" prefix=" " category="inline-code"></block>：</block>
 </blocks>
